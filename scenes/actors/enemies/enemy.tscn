@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://d0r6ci6vp37e"]
+
+[ext_resource type="Texture2D" uid="uid://crng4f3f2avnf" path="res://icon.svg" id="1_6sec6"]
+[ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="2_m8jit"]
+[ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="3_54fah"]
+[ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="3_jkm84"]
+[ext_resource type="PackedScene" uid="uid://c6wep4oftfyke" path="res://scenes/components/state_machine/state_machine.tscn" id="4_m8jit"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_md0e3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6sec6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4ra3w"]
+size = Vector3(1.285553, 3.2021484, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_54fah"]
+size = Vector3(1.294342, 3.2011719, 1)
+
+[node name="Enemy" type="CharacterBody3D" unique_id=1506947017]
+collision_layer = 4
+floor_constant_speed = true
+platform_floor_layers = 1
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1465648794]
+transform = Transform3D(1, 0, 0, 0, 2.5, 0, 0, 0, 1, 0, 0, 0)
+sprite_frames = SubResource("SpriteFrames_md0e3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1334864593]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.008743286, 0.0034179688, 0)
+shape = SubResource("BoxShape3D_4ra3w")
+
+[node name="TeamComponent" parent="." unique_id=2076917082 instance=ExtResource("3_54fah")]
+team = 2
+
+[node name="HealthComponent" parent="." unique_id=236252344 instance=ExtResource("2_m8jit")]
+
+[node name="HurtboxComponent" parent="." unique_id=338394069 node_paths=PackedStringArray("team_component", "health_component") instance=ExtResource("3_jkm84")]
+team_component = NodePath("../TeamComponent")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtboxComponent" unique_id=1766554893]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005874634, 0.0009765625, 0)
+shape = SubResource("BoxShape3D_54fah")
+
+[node name="StateMachine" parent="." unique_id=1499026333 instance=ExtResource("4_m8jit")]
