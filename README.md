@@ -14,3 +14,4 @@ Welcome to the project repository for CATGUNGIRL, a fast-paced sidescrolling sha
 - Corey Chan (Developer)
 - Travis S (Developer)
 - Colby R (Developer)
+- Emily H (Developer) [Freelance]
