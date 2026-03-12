@@ -7,7 +7,7 @@ var current_state : State
 var states : Dictionary = {}
 
 
-func init(blackboard: Dictionary) -> void:
+func init(blackboard: Dictionary = {}) -> void:
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()] = child
