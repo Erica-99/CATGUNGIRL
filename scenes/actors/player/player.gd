@@ -4,10 +4,12 @@ const SPEED: float = 5.0
 const JUMP_VELOCITY: float = 4.5
 
 @export var movement_state_machine: StateMachine
+@export var input_component: InputComponent
 
 var blackboard : Dictionary = {
-	"actor": self, 
+	"actor": self,
 	"movespeed" : SPEED,
+	"input_component": input_component,
 	}
 
 func _ready() -> void:
@@ -33,5 +35,5 @@ func _ready() -> void:
 	#else:
 		#velocity.x = move_toward(velocity.x, 0, SPEED)
 		#velocity.z = move_toward(velocity.z, 0, SPEED)
-#
+		
 	#move_and_slide()

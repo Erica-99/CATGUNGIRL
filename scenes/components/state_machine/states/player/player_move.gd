@@ -2,10 +2,13 @@ extends State
 class_name PlayerMove
 
 var actor: CharacterBody3D
+var input_component: InputComponent
 
 func init(blackboard_dict : Dictionary) -> void:
 	super(blackboard_dict)
 	actor = blackboard['actor']
+	input_component = blackboard['input_component']
+	input_component.input_signal.connect(_on_input_signal)
 
 
 func update(_delta: float) -> void:
@@ -37,3 +40,6 @@ func physics_update(_delta: float) -> void:
 		actor.velocity.z = move_toward(actor.velocity.z, 0, speed)
 
 	actor.move_and_slide()
+
+func _on_input_signal(_event: InputEvent):
+	pass
