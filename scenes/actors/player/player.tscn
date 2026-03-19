@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="3_qdyt2"]
 [ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="3_yg5k4"]
 [ext_resource type="PackedScene" uid="uid://c6wep4oftfyke" path="res://scenes/components/state_machine/state_machine.tscn" id="4_qdyt2"]
+[ext_resource type="PackedScene" uid="uid://bhbvwfn31wib0" path="res://scenes/components/insanity_component/insanity_component.tscn" id="5_5bhx7"]
 [ext_resource type="Script" uid="uid://v055xcit8y78" path="res://scenes/components/state_machine/states/player/player_idle.gd" id="7_fp13k"]
 [ext_resource type="Script" uid="uid://cio1svqx3j5hj" path="res://scenes/components/state_machine/states/player/player_move.gd" id="8_5bhx7"]
 
@@ -42,6 +43,10 @@ shape = SubResource("BoxShape3D_g2els")
 team = 1
 
 [node name="HealthComponent" parent="." unique_id=236252344 instance=ExtResource("2_mpktj")]
+decay_cd = 5.0
+decay_tick = 0.2
+
+[node name="InsanityComponent" parent="." unique_id=1673641464 instance=ExtResource("5_5bhx7")]
 
 [node name="HurtboxComponent" parent="." unique_id=338394069 node_paths=PackedStringArray("team_component", "health_component") instance=ExtResource("3_yg5k4")]
 team_component = NodePath("../TeamComponent")
@@ -59,3 +64,7 @@ script = ExtResource("7_fp13k")
 
 [node name="PlayerMove" type="Node" parent="MovementStateMachine" unique_id=2133565124]
 script = ExtResource("8_5bhx7")
+
+[connection signal="health_changed" from="HealthComponent" to="InsanityComponent" method="_on_health_component_health_changed"]
+[connection signal="killed" from="HealthComponent" to="InsanityComponent" method="_on_health_component_killed"]
+[connection signal="ilevel_changed" from="InsanityComponent" to="HealthComponent" method="_on_insanity_component_ilevel_changed"]
