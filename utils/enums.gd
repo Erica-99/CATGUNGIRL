@@ -11,4 +11,13 @@ enum Team {
 ## Used to refer to different damage types like normal, fire, explosive, etc. Useful for having interesting death animations.
 enum DamageType {
 	NORMAL,
+	DECAY,
+}
+
+## Based off of the health bar, rank would affect access to moves
+## and appearance of the UI (e.g. Low Health Indicator)
+enum InsanityRank {
+	LOW, ## Names could change (e.g. HEART_BREAK)
+	MEDIUM,
+	HIGH,
 }
