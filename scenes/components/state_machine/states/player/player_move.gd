@@ -16,12 +16,18 @@ func exit() -> void:
 	pass
 
 func update(_delta: float) -> void:
-	pass
+	var input_state = input_component.get_input_state()
+	if input_state["jumping"]:
+		transitioned.emit(self, "playerjump")
+	elif input_state["crouching"]:
+		transitioned.emit(self, "playercrouch")
+	elif actor.velocity.x == 0:
+		transitioned.emit(self, "playeridle")
 
 
 func physics_update(_delta: float) -> void:
 	var input_state = input_component.get_input_state()
-	# Right now this is all just using the provided godot sample code for movement so i can test. This will be completely changed.
+	# Right now this is all just using the provided godot sample code for movement so I can test. This will be completely changed.
 	# Handling inputs inside states is a horrible idea.
 	
 	# Add the gravity.
