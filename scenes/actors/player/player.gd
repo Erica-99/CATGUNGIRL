@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 const SPEED: float = 5.0
+const CROUCH_SPEED: float = 2.0
 const JUMP_VELOCITY: float = 4.5
 
 @export var movement_state_machine: StateMachine
@@ -11,7 +12,8 @@ var blackboard: Dictionary
 func _ready() -> void:
 	blackboard = {
 	"actor": self,
-	"movespeed" : SPEED,
+	"move_speed" : SPEED,
+	"crouch_speed": CROUCH_SPEED,
 	"input_component": input_component,
 	}
 	

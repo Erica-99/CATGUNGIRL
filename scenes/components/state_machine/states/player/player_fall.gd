@@ -1,10 +1,8 @@
 extends State
-class_name PlayerJump
+class_name PlayerFall
 
 var actor: CharacterBody3D
 var input_component: InputComponent
-
-var jump_velocity_applied := false
 
 func init(blackboard_dict : Dictionary) -> void:
 	super(blackboard_dict)
@@ -12,10 +10,10 @@ func init(blackboard_dict : Dictionary) -> void:
 	input_component = blackboard["input_component"]
 
 func enter() -> void:
-	jump_velocity_applied = false
+	pass
 
 func exit() -> void:
-	jump_velocity_applied = false
+	pass
 
 func update(_delta: float) -> void:
 	if actor.is_on_floor():
@@ -23,14 +21,8 @@ func update(_delta: float) -> void:
 			transitioned.emit(self, "playeridle")
 		else:
 			transitioned.emit(self, "playermove")
-	elif actor.velocity.y < 0:
-		transitioned.emit(self, "playerfall")
 
 func physics_update(_delta: float) -> void:
-	
-	if not jump_velocity_applied:
-		actor.velocity.y = actor.JUMP_VELOCITY
-		jump_velocity_applied = true
 	
 	# Add gravity
 	if not actor.is_on_floor():

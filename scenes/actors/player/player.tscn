@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://cio1svqx3j5hj" path="res://scenes/components/state_machine/states/player/player_move.gd" id="8_5bhx7"]
 [ext_resource type="Script" uid="uid://cphc3yxpolyei" path="res://scenes/components/state_machine/states/player/player_crouch.gd" id="10_i174x"]
 [ext_resource type="Script" uid="uid://vahtf825b586" path="res://scenes/components/state_machine/states/player/player_jump.gd" id="11_8bj4u"]
+[ext_resource type="Script" uid="uid://cs2vma24rddcy" path="res://scenes/components/state_machine/states/player/player_fall.gd" id="13_hcvpp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3vyb7"]
 animations = [{
@@ -80,6 +81,10 @@ metadata/_custom_type_script = "uid://dropwvjh2s43u"
 
 [node name="PlayerJump" type="Node" parent="MovementStateMachine" unique_id=1318792244]
 script = ExtResource("11_8bj4u")
+metadata/_custom_type_script = "uid://dropwvjh2s43u"
+
+[node name="PlayerFall" type="Node" parent="MovementStateMachine" unique_id=1314206425]
+script = ExtResource("13_hcvpp")
 metadata/_custom_type_script = "uid://dropwvjh2s43u"
 
 [connection signal="state_changed" from="MovementStateMachine" to="DebugStateDisplay" method="_on_movement_state_machine_state_changed"]
