@@ -23,6 +23,8 @@ func _ready() -> void:
 	print("TEST 3: Print dialogue 2 (via specifying room requirement)")
 	print(DialogueLoader._retrieve_random_dialogue(raw_dialogue, false, "hallway") + "\r\n")
 	
+	print("TEST 4: Print non-random dialogue (still using requirement bypass)")
+	print(DialogueLoader._retrieve_non_random_dialogue(raw_dialogue, true) + "\r\n")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
