@@ -1,6 +1,8 @@
 extends State
 class_name PlayerFall
 
+@export var gravity_multiplier: float
+
 var actor: CharacterBody3D
 var input_component: InputComponent
 
@@ -26,6 +28,6 @@ func physics_update(_delta: float) -> void:
 	
 	# Add gravity
 	if not actor.is_on_floor():
-		actor.velocity += actor.get_gravity() * _delta
+		actor.velocity += actor.get_gravity() * _delta * gravity_multiplier
 	
 	actor.move_and_slide()
