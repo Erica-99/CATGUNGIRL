@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://cphc3yxpolyei" path="res://scenes/components/state_machine/states/player/player_crouch.gd" id="10_i174x"]
 [ext_resource type="Script" uid="uid://vahtf825b586" path="res://scenes/components/state_machine/states/player/player_jump.gd" id="11_8bj4u"]
 [ext_resource type="Script" uid="uid://cs2vma24rddcy" path="res://scenes/components/state_machine/states/player/player_fall.gd" id="13_hcvpp"]
-[ext_resource type="Script" uid="uid://dropwvjh2s43u" path="res://scenes/components/state_machine/state.gd" id="14_4iwnj"]
+[ext_resource type="Script" uid="uid://bpl2nhpm4ebce" path="res://scenes/components/state_machine/states/player/player_mantle.gd" id="15_068wj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3vyb7"]
 animations = [{
@@ -34,6 +34,7 @@ size = Vector3(1.2752914, 3.192688, 1)
 size = Vector3(1.2752686, 3.1870117, 1)
 
 [node name="Player" type="CharacterBody3D" unique_id=1349193765 node_paths=PackedStringArray("movement_state_machine", "input_component", "mantle_detector", "feet_point")]
+collision_layer = 2
 platform_floor_layers = 1
 script = ExtResource("1_qdyt2")
 movement_state_machine = NodePath("MovementStateMachine")
@@ -116,7 +117,7 @@ gravity_multiplier = 1.4
 metadata/_custom_type_script = "uid://dropwvjh2s43u"
 
 [node name="PlayerMantle" type="Node" parent="MovementStateMachine" unique_id=1914648426]
-script = ExtResource("14_4iwnj")
+script = ExtResource("15_068wj")
 metadata/_custom_type_script = "uid://dropwvjh2s43u"
 
 [connection signal="facing_changed" from="." to="MantleDetector" method="_on_player_facing_changed"]

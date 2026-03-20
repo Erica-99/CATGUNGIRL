@@ -25,11 +25,12 @@ func _ready() -> void:
 	"input_component": input_component,
 	"mantle_detector": mantle_detector,
 	"feet_point": feet_point,
+	"current_mantle_target": Vector3()
 	}
 	
 	movement_state_machine.init(blackboard)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var current_state = input_component.get_input_state()
 	
 	if current_state["movement"] != 0:

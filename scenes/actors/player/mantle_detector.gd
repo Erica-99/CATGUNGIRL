@@ -20,6 +20,8 @@ var can_mantle: bool:
 		if not _currently_enabled:
 			return false
 		
+		_force_position_updates()
+		
 		if (target_raycast.is_colliding() and platform_raycast.is_colliding() 
 		and not wall_raycast.is_colliding()):
 			return true
@@ -30,8 +32,14 @@ var can_mantle: bool:
 func get_target_mantle_point() -> Vector3:
 	return target_raycast.get_collision_point()
 
+## Forces raycasts to update their positions.
+func _force_position_updates() -> void:
+	for detector in detectors:
+		detector.force_raycast_update()
+
 ## Update raycast positions when the player turns around.
 func _on_player_facing_changed(new_facing: float) -> void:
 	for detector in detectors:
 		detector.position.x = new_facing*abs(detector.position.x)
 		detector.target_position.x = new_facing*abs(detector.target_position.x)
+	_force_position_updates()

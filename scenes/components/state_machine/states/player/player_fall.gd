@@ -12,10 +12,12 @@ func init(blackboard_dict : Dictionary) -> void:
 	input_component = blackboard["input_component"]
 
 func enter() -> void:
-	pass
+	if blackboard["mantle_detector"] != null:
+		blackboard["mantle_detector"].set_checking_enabled(true)
 
 func exit() -> void:
-	pass
+	if blackboard["mantle_detector"] != null:
+		blackboard["mantle_detector"].set_checking_enabled(false)
 
 func update(_delta: float) -> void:
 	if actor.is_on_floor():
@@ -31,3 +33,7 @@ func physics_update(_delta: float) -> void:
 		actor.velocity += actor.get_gravity() * _delta * gravity_multiplier
 	
 	actor.move_and_slide()
+	
+	if blackboard["mantle_detector"].can_mantle:
+		blackboard["current_mantle_target"] = blackboard["mantle_detector"].get_target_mantle_point()
+		transitioned.emit(self, "playermantle")

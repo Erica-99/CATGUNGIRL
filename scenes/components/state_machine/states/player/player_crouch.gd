@@ -45,6 +45,4 @@ func physics_update(_delta: float) -> void:
 		actor.velocity.x = move_toward(actor.velocity.x, 0, speed)
 		actor.velocity.z = move_toward(actor.velocity.z, 0, speed)
 	
-	# Handle jump.
-	if input_state["jumping"] and actor.is_on_floor():
-		actor.velocity.y = actor.JUMP_VELOCITY
+	actor.move_and_slide()
