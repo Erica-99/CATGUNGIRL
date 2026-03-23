@@ -37,12 +37,10 @@ func physics_update(_delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir: float = input_state["movement"]
 	var direction := (actor.transform.basis * Vector3(input_dir, 0, 0)).normalized()
-	var speed = blackboard['crouch_speed']
+	var speed = actor.crouch_speed
 	if direction:
 		actor.velocity.x = direction.x * speed
-		actor.velocity.z = direction.z * speed
 	else:
 		actor.velocity.x = move_toward(actor.velocity.x, 0, speed)
-		actor.velocity.z = move_toward(actor.velocity.z, 0, speed)
 	
 	actor.move_and_slide()
