@@ -3,6 +3,12 @@ extends CharacterBody3D
 const SPEED: float = 5.0
 const JUMP_VELOCITY: float = 4.5
 
+## Extending signals for ui and other components
+signal player_health_initialiased(init_current_health: float, init_max_health: float)
+signal player_health_changed(old_health, new_health, damage_or_heal_instance)
+signal player_insanity_gained(amount, buffer)
+signal player_interest_rank_changed(new_rank)
+
 @export var movement_state_machine: StateMachine
 
 var blackboard : Dictionary = {
@@ -35,3 +41,21 @@ func _ready() -> void:
 		#velocity.z = move_toward(velocity.z, 0, SPEED)
 #
 	#move_and_slide()
+
+
+func _on_health_component_health_initialised(init_current_health, init_max_health):
+	player_health_initialiased.emit(init_current_health, init_max_health)
+
+func _on_health_component_health_changed(old_health, new_health, damage_or_heal_instance):
+	player_health_changed.emit(old_health, new_health, damage_or_heal_instance)
+
+func _on_insanity_component_insanity_gained(amount, buffer):
+	player_insanity_gained.emit(amount, buffer)
+
+## When Insanity reaches max, game over
+func _on_insanity_component_insanity_death():
+	## TODO: Death stuff
+	print("Oof ouch owie I'm dead")
+
+func _on_insanity_component_interest_rank_changed(new_rank):
+	player_interest_rank_changed.emit(new_rank)
