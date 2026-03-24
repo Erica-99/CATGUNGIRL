@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="CATGUNGIRL"
+run/main_scene="uid://x6ewayoj6cxb"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -23,6 +24,32 @@ CustomResourceLoader="*uid://lb4cykwo6rn2"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+
+[file_customization]
+
+folder_colors={
+"res://art/": "red",
+"res://resources/": "orange",
+"res://scenes/": "yellow",
+"res://scenes/actors/": "yellow",
+"res://scenes/components/": "green",
+"res://scenes/levels/": "blue",
+"res://scenes/ui/": "pink",
+"res://utils/": "purple"
+}
+
+[input]
+
+debug_heal={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":72,"key_label":0,"unicode":104,"location":0,"echo":false,"script":null)
+]
+}
+debug_damage={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":74,"key_label":0,"unicode":106,"location":0,"echo":false,"script":null)
+]
+}
 
 [layer_names]
 
