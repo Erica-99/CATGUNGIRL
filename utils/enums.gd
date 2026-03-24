@@ -16,8 +16,9 @@ enum DamageType {
 
 ## Based off of the health bar, rank would affect access to moves
 ## and appearance of the UI (e.g. Low Health Indicator)
-enum InsanityRank {
+enum InterestRank {
 	LOW, ## Names could change (e.g. HEART_BREAK)
-	MEDIUM,
-	HIGH,
+	MEDLOW,
+	MEDHIGH,
+	HIGH, ##MADLY_IN_LOVE
 }

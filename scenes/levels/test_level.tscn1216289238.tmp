@@ -29,9 +29,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.556258, 11.460891)
 projection = 1
 size = 20.0
 
-[node name="InterestBar" parent="." unique_id=2086963886 instance=ExtResource("2_yautc")]
+[node name="TextureProgressBar" parent="." unique_id=2086963886 instance=ExtResource("2_yautc")]
 
-[connection signal="player_health_changed" from="Player" to="InterestBar" method="_on_player_health_changed"]
-[connection signal="player_health_initialiased" from="Player" to="InterestBar" method="_on_player_health_initialiased"]
-[connection signal="player_insanity_gained" from="Player" to="InterestBar" method="_on_player_insanity_gained"]
-[connection signal="player_interest_rank_changed" from="Player" to="InterestBar" method="_on_player_interest_rank_changed"]
+[connection signal="player_health_changed" from="Player" to="TextureProgressBar" method="_on_player_health_changed"]
+[connection signal="player_health_initialiased" from="Player" to="TextureProgressBar" method="_on_player_health_initialiased"]
