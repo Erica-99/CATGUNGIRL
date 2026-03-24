@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://d0r6ci6vp37e"]
 
 [ext_resource type="Texture2D" uid="uid://crng4f3f2avnf" path="res://icon.svg" id="1_6sec6"]
+[ext_resource type="Script" uid="uid://be1qgj2hdjbox" path="res://scenes/actors/enemies/convict_enemy.gd" id="1_87lvi"]
 [ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="2_m8jit"]
 [ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="3_54fah"]
 [ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="3_jkm84"]
 [ext_resource type="PackedScene" uid="uid://c6wep4oftfyke" path="res://scenes/components/state_machine/state_machine.tscn" id="4_m8jit"]
+[ext_resource type="Script" uid="uid://dyr3mhryox7qn" path="res://scenes/components/state_machine/states/enemy/enemy_idle.gd" id="6_lwpd1"]
+[ext_resource type="Script" uid="uid://c1a7osbqykg2" path="res://scenes/components/state_machine/states/enemy/enemy_move.gd" id="7_87lvi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_md0e3"]
 animations = [{
@@ -27,6 +30,7 @@ size = Vector3(1.294342, 3.2011719, 1)
 collision_layer = 4
 floor_constant_speed = true
 platform_floor_layers = 1
+script = ExtResource("1_87lvi")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1465648794]
 transform = Transform3D(1, 0, 0, 0, 2.5, 0, 0, 0, 1, 0, 0, 0)
@@ -50,3 +54,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005874634, 0.0009765625, 0)
 shape = SubResource("BoxShape3D_54fah")
 
 [node name="StateMachine" parent="." unique_id=1499026333 instance=ExtResource("4_m8jit")]
+
+[node name="EnemyIdle" type="Node" parent="StateMachine" unique_id=168144029]
+script = ExtResource("6_lwpd1")
+
+[node name="EnemyMove" type="Node" parent="StateMachine" unique_id=1477977903]
+script = ExtResource("7_87lvi")
