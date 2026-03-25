@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="3_yg5k4"]
 [ext_resource type="PackedScene" uid="uid://c6wep4oftfyke" path="res://scenes/components/state_machine/state_machine.tscn" id="4_qdyt2"]
 [ext_resource type="Script" uid="uid://8h705llnu2ce" path="res://scenes/actors/player/player_input.gd" id="6_5bhx7"]
+[ext_resource type="PackedScene" uid="uid://w5w2v43x13xk" path="res://scenes/components/dialogue_component/dialogue_component.tscn" id="6_qdyt2"]
+[ext_resource type="PackedScene" uid="uid://bhbvwfn31wib0" path="res://scenes/components/insanity_component/insanity_component.tscn" id="5_5bhx7"]
 [ext_resource type="Script" uid="uid://v055xcit8y78" path="res://scenes/components/state_machine/states/player/player_idle.gd" id="7_fp13k"]
 [ext_resource type="Script" uid="uid://cio1svqx3j5hj" path="res://scenes/components/state_machine/states/player/player_move.gd" id="8_5bhx7"]
 [ext_resource type="Script" uid="uid://bep3raq0oatlk" path="res://scenes/actors/player/mantle_detector.gd" id="8_068wj"]
@@ -61,6 +63,9 @@ team = 1
 
 [node name="HealthComponent" parent="." unique_id=236252344 instance=ExtResource("2_mpktj")]
 
+[node name="InsanityComponent" parent="." unique_id=1673641464 instance=ExtResource("5_5bhx7")]
+min_insanity_damage = 5.0
+
 [node name="HurtboxComponent" parent="." unique_id=338394069 node_paths=PackedStringArray("team_component", "health_component") instance=ExtResource("3_yg5k4")]
 team_component = NodePath("../TeamComponent")
 health_component = NodePath("../HealthComponent")
@@ -93,6 +98,9 @@ target_position = Vector3(0, -2, 0)
 [node name="FeetPoint" type="Marker3D" parent="." unique_id=699882928]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6085612, 0)
 
+[node name="DialogueComponent" parent="." unique_id=1775697624 instance=ExtResource("6_qdyt2")]
+dialogue_file = "res://resources/dialogue/player_dialogue.json"
+
 [node name="MovementStateMachine" parent="." unique_id=1499026333 node_paths=PackedStringArray("initial_state") instance=ExtResource("4_qdyt2")]
 initial_state = NodePath("PlayerIdle")
 
@@ -122,3 +130,11 @@ metadata/_custom_type_script = "uid://dropwvjh2s43u"
 
 [connection signal="facing_changed" from="." to="MantleDetector" method="_on_player_facing_changed"]
 [connection signal="state_changed" from="MovementStateMachine" to="DebugStateDisplay" method="_on_movement_state_machine_state_changed"]
+[connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
+[connection signal="health_changed" from="HealthComponent" to="InsanityComponent" method="_on_health_component_health_changed"]
+[connection signal="health_initialised" from="HealthComponent" to="." method="_on_health_component_health_initialised"]
+[connection signal="killed" from="HealthComponent" to="InsanityComponent" method="_on_health_component_killed"]
+[connection signal="insanity_death" from="InsanityComponent" to="." method="_on_insanity_component_insanity_death"]
+[connection signal="insanity_gained" from="InsanityComponent" to="." method="_on_insanity_component_insanity_gained"]
+[connection signal="insanity_gained" from="InsanityComponent" to="HealthComponent" method="_on_insanity_component_insanity_gained"]
+[connection signal="interest_rank_changed" from="InsanityComponent" to="." method="_on_insanity_component_interest_rank_changed"]
