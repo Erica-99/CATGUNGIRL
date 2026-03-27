@@ -2,14 +2,21 @@
 
 [ext_resource type="Texture2D" uid="uid://crng4f3f2avnf" path="res://icon.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://cabb16sxnh4bu" path="res://scenes/actors/player/player.gd" id="1_qdyt2"]
+[ext_resource type="Script" uid="uid://c71argnkra1em" path="res://scenes/actors/player/debug_state_display.gd" id="2_inh5e"]
 [ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="2_mpktj"]
 [ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="3_qdyt2"]
 [ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="3_yg5k4"]
 [ext_resource type="PackedScene" uid="uid://c6wep4oftfyke" path="res://scenes/components/state_machine/state_machine.tscn" id="4_qdyt2"]
+[ext_resource type="Script" uid="uid://8h705llnu2ce" path="res://scenes/actors/player/player_input.gd" id="6_5bhx7"]
 [ext_resource type="PackedScene" uid="uid://w5w2v43x13xk" path="res://scenes/components/dialogue_component/dialogue_component.tscn" id="6_qdyt2"]
 [ext_resource type="PackedScene" uid="uid://bhbvwfn31wib0" path="res://scenes/components/insanity_component/insanity_component.tscn" id="5_5bhx7"]
 [ext_resource type="Script" uid="uid://v055xcit8y78" path="res://scenes/components/state_machine/states/player/player_idle.gd" id="7_fp13k"]
 [ext_resource type="Script" uid="uid://cio1svqx3j5hj" path="res://scenes/components/state_machine/states/player/player_move.gd" id="8_5bhx7"]
+[ext_resource type="Script" uid="uid://bep3raq0oatlk" path="res://scenes/actors/player/mantle_detector.gd" id="8_068wj"]
+[ext_resource type="Script" uid="uid://cphc3yxpolyei" path="res://scenes/components/state_machine/states/player/player_crouch.gd" id="10_i174x"]
+[ext_resource type="Script" uid="uid://vahtf825b586" path="res://scenes/components/state_machine/states/player/player_jump.gd" id="11_8bj4u"]
+[ext_resource type="Script" uid="uid://cs2vma24rddcy" path="res://scenes/components/state_machine/states/player/player_fall.gd" id="13_hcvpp"]
+[ext_resource type="Script" uid="uid://bpl2nhpm4ebce" path="res://scenes/components/state_machine/states/player/player_mantle.gd" id="15_068wj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3vyb7"]
 animations = [{
@@ -28,16 +35,27 @@ size = Vector3(1.2752914, 3.192688, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_g2g7f"]
 size = Vector3(1.2752686, 3.1870117, 1)
 
-[node name="Player" type="CharacterBody3D" unique_id=1349193765 node_paths=PackedStringArray("movement_state_machine")]
+[node name="Player" type="CharacterBody3D" unique_id=1349193765 node_paths=PackedStringArray("movement_state_machine", "input_component", "mantle_detector", "feet_point")]
+collision_layer = 2
+platform_floor_layers = 1
 script = ExtResource("1_qdyt2")
 movement_state_machine = NodePath("MovementStateMachine")
+input_component = NodePath("PlayerInput")
+mantle_detector = NodePath("MantleDetector")
+feet_point = NodePath("FeetPoint")
+
+[node name="DebugStateDisplay" type="Label3D" parent="." unique_id=1950289760]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8428236, 0)
+text = "PlayerState"
+font_size = 64
+script = ExtResource("2_inh5e")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=541628882]
 transform = Transform3D(1, 0, 0, 0, 2.5, 0, 0, 0, 1, 0, 0, 0)
 sprite_frames = SubResource("SpriteFrames_3vyb7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1618314844]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0008277893, 0.0028381348, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001, 0.003, 0)
 shape = SubResource("BoxShape3D_g2els")
 
 [node name="TeamComponent" parent="." unique_id=2076917082 instance=ExtResource("3_qdyt2")]
@@ -56,6 +74,29 @@ health_component = NodePath("../HealthComponent")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0025024414, 0.0026855469, 0)
 shape = SubResource("BoxShape3D_g2g7f")
 
+[node name="PlayerInput" type="Node" parent="." unique_id=1668622084]
+script = ExtResource("6_5bhx7")
+
+[node name="MantleDetector" type="Node3D" parent="." unique_id=1887156399]
+script = ExtResource("8_068wj")
+
+[node name="TargetPoint" type="RayCast3D" parent="MantleDetector" unique_id=19041248]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 1.6, 0)
+enabled = false
+target_position = Vector3(0, -3.5, 0)
+
+[node name="WallDetector" type="RayCast3D" parent="MantleDetector" unique_id=1769676898]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47358042, 0)
+enabled = false
+target_position = Vector3(1, 0, 0)
+
+[node name="PlatformDetector" type="RayCast3D" parent="MantleDetector" unique_id=1464047738]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.96073925, 0.42800725, 0)
+enabled = false
+target_position = Vector3(0, -2, 0)
+
+[node name="FeetPoint" type="Marker3D" parent="." unique_id=699882928]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6085612, 0)
 
 [node name="DialogueComponent" parent="." unique_id=1775697624 instance=ExtResource("6_qdyt2")]
 dialogue_file = "res://resources/dialogue/player_dialogue.json"
@@ -69,6 +110,26 @@ script = ExtResource("7_fp13k")
 [node name="PlayerMove" type="Node" parent="MovementStateMachine" unique_id=2133565124]
 script = ExtResource("8_5bhx7")
 
+[node name="PlayerCrouch" type="Node" parent="MovementStateMachine" unique_id=262156650]
+script = ExtResource("10_i174x")
+metadata/_custom_type_script = "uid://dropwvjh2s43u"
+
+[node name="PlayerJump" type="Node" parent="MovementStateMachine" unique_id=1318792244]
+script = ExtResource("11_8bj4u")
+gravity_multiplier = 1.0
+metadata/_custom_type_script = "uid://dropwvjh2s43u"
+
+[node name="PlayerFall" type="Node" parent="MovementStateMachine" unique_id=1314206425]
+script = ExtResource("13_hcvpp")
+gravity_multiplier = 1.4
+metadata/_custom_type_script = "uid://dropwvjh2s43u"
+
+[node name="PlayerMantle" type="Node" parent="MovementStateMachine" unique_id=1914648426]
+script = ExtResource("15_068wj")
+metadata/_custom_type_script = "uid://dropwvjh2s43u"
+
+[connection signal="facing_changed" from="." to="MantleDetector" method="_on_player_facing_changed"]
+[connection signal="state_changed" from="MovementStateMachine" to="DebugStateDisplay" method="_on_movement_state_machine_state_changed"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="health_changed" from="HealthComponent" to="InsanityComponent" method="_on_health_component_health_changed"]
 [connection signal="health_initialised" from="HealthComponent" to="." method="_on_health_component_health_initialised"]
