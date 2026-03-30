@@ -1,13 +1,15 @@
 extends State
 class_name EnemyIdle
 
+@export var idle_min_time: float
+@export var idle_max_time: float
 var idle_duration: float
 var idle_timer: float
 
 
 # On Enter, sets a random duration to pause for and sets timer to 0
 func enter() -> void:
-	idle_duration = randf_range(2.0, 5.0)
+	idle_duration = randf_range(idle_min_time, idle_max_time)
 	idle_timer = 0.0
 	pass
 
