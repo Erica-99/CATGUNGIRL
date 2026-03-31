@@ -2,6 +2,8 @@ extends CharacterBody3D
 
 @export var animator: AnimatedSprite3D
 
+
+
 var machine: AltStateMachine
 var state:
 	get:
