@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://cabb16sxnh4bu" path="res://scenes/actors/player/player.gd" id="1_qdyt2"]
 [ext_resource type="Script" uid="uid://c71argnkra1em" path="res://scenes/actors/player/debug_state_display.gd" id="2_inh5e"]
 [ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="2_mpktj"]
-[ext_resource type="Script" uid="uid://ndxi1q85p2pt" path="res://scenes/actors/player/Player_Anims.gd" id="2_npmmh"]
 [ext_resource type="Texture2D" uid="uid://to4tdcv2w7d5" path="res://art/Idle/TestPantsIdle_FullHD.png" id="3_0w3ce"]
 [ext_resource type="Texture2D" uid="uid://cv4xgg1exucmj" path="res://art/FullTestSprites/PlayerSpriteTest1_FullHD.png" id="3_5mkge"]
 [ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="3_qdyt2"]
@@ -912,7 +911,6 @@ mantle_detector = NodePath("MantleDetector")
 feet_point = NodePath("FeetPoint")
 
 [node name="PlayerVisuals" type="Node3D" parent="." unique_id=229281811]
-script = ExtResource("2_npmmh")
 
 [node name="ROOT_P" type="Node3D" parent="PlayerVisuals" unique_id=955164199]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6582274, 0)
@@ -935,6 +933,7 @@ transform = Transform3D(0.305, 0, 0, 0, 0.305, 0, 0, 0, 0.305, 0.050334454, -0.7
 sprite_frames = SubResource("SpriteFrames_isqki")
 animation = &"Run"
 autoplay = "Idle"
+frame = 3
 
 [node name="GUN_P" type="Node3D" parent="PlayerVisuals/ROOT_P/TORSO_P" unique_id=462291408]
 transform = Transform3D(0.99977195, 0.021361262, 0, -0.021361262, 0.99977195, 0, 0, 0, 1, 0.23544371, 0.20042482, 0)
@@ -951,6 +950,7 @@ transform = Transform3D(0.34, 0, 0, 0, 0.34, 0, 0, 0, 0.34, -0.1, 0.374, 0)
 sprite_frames = SubResource("SpriteFrames_hbsp3")
 animation = &"Run"
 autoplay = "Run"
+frame = 10
 
 [node name="GuideSprite" type="AnimatedSprite3D" parent="PlayerVisuals" unique_id=541628882]
 transform = Transform3D(0.34, 0, 0, 0, 0.34, 0, 0, 0, 0.34, 0, -0.22263825, 0)
