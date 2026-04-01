@@ -1,36 +1,31 @@
 extends State
 class_name EnemyMove
 
-var direction: int = 1
-var speed: float = 3.0
-var move_distance: float = 5.0
+@export var move_speed: float = 3.0
+@export var anim: Animation
+
+var destination: Vector3
+var threshold: float
 
 var target_x: float
 
+var body: CharacterBody3D
+
 func enter() -> void:
-	# flip patrol direction
-	direction *= -1
-	
-	# flips sprite visual
-	var actor: CharacterBody3D = blackboard["actor"]
-	actor.scale *= -1
-	
-	# set target position
-	
-	
+	# PLay Animation
+	# Set Body to Enemy
+	body = blackboard["actor"]
 	pass
-
-
-func exit() -> void:
-	pass
-
 
 func update(_delta: float) -> void:
-	# check if target threshold is reached
-	# set state isComplete to true
+	# Checks if actor is in threshold range of destination
+	if body.global_position.distance_to(destination) <= threshold:
+		is_complete = true
 	pass
 
 
 func physics_update(_delta: float) -> void:
 	# move enemy toward target
+	var dir = (destination - body.global_position).normalized()
+	body.velocity = dir * move_speed
 	pass

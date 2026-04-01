@@ -6,7 +6,6 @@ class_name EnemyIdle
 var idle_duration: float
 var idle_timer: float
 
-
 # On Enter, sets a random duration to pause for and sets timer to 0. Sets actor velocity to 0
 func enter() -> void:
 	idle_duration = randf_range(idle_min_time, idle_max_time)
@@ -16,10 +15,6 @@ func enter() -> void:
 	body.velocity = Vector3.ZERO
 	pass
 
-
-func exit() -> void:
-	pass
-
 # Ticks up timer, and transitions to move when time expires
 func update(_delta: float) -> void:
 	
@@ -27,9 +22,5 @@ func update(_delta: float) -> void:
 
 	# Wait until the random duration passes
 	if idle_timer >= idle_duration:
-		isComplete = true
-	pass
-
-
-func physics_update(_delta: float) -> void:
+		is_complete = true
 	pass
