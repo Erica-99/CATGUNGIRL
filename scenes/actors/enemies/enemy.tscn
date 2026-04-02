@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c6wep4oftfyke" path="res://scenes/components/state_machine/state_machine.tscn" id="4_m8jit"]
 [ext_resource type="Script" uid="uid://dyr3mhryox7qn" path="res://scenes/components/state_machine/states/enemy/enemy_idle.gd" id="6_lwpd1"]
 [ext_resource type="Script" uid="uid://c1a7osbqykg2" path="res://scenes/components/state_machine/states/enemy/enemy_move.gd" id="7_87lvi"]
+[ext_resource type="Script" uid="uid://b5fkogjcbrhmo" path="res://scenes/components/state_machine/states/enemy/enemy_patrol.gd" id="9_jylix"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_md0e3"]
 animations = [{
@@ -26,11 +27,12 @@ size = Vector3(1.285553, 3.2021484, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_54fah"]
 size = Vector3(1.294342, 3.2011719, 1)
 
-[node name="Enemy" type="CharacterBody3D" unique_id=1506947017]
+[node name="Enemy" type="CharacterBody3D" unique_id=1506947017 node_paths=PackedStringArray("patrol")]
 collision_layer = 4
 floor_constant_speed = true
 platform_floor_layers = 1
 script = ExtResource("1_87lvi")
+patrol = NodePath("StateMachine/EnemyPatrol")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1465648794]
 transform = Transform3D(1, 0, 0, 0, 2.5, 0, 0, 0, 1, 0, 0, 0)
@@ -62,3 +64,8 @@ idle_max_time = 5.0
 
 [node name="EnemyMove" type="Node" parent="StateMachine" unique_id=1477977903]
 script = ExtResource("7_87lvi")
+
+[node name="EnemyPatrol" type="Node" parent="StateMachine" unique_id=457545891 node_paths=PackedStringArray("move", "idle")]
+script = ExtResource("9_jylix")
+move = NodePath("../EnemyMove")
+idle = NodePath("../EnemyIdle")

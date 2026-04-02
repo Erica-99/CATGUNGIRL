@@ -10,7 +10,7 @@ var blackboard : Dictionary
 var is_complete: bool
 
 # states can use a state machine to manage child states
-var machine: AltStateMachine
+var machine: AltStateMachine = AltStateMachine.new()
 #Property to access machine.current_state with state
 var child_state:
 	get:

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://ians4smu82py"]
+
+[ext_resource type="PackedScene" uid="uid://d0r6ci6vp37e" path="res://scenes/actors/enemies/enemy.tscn" id="1_ad7n4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3p835"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2venv"]
+
+[node name="TestLevel" type="Node3D" unique_id=1708525088]
+
+[node name="World" type="Node3D" parent="." unique_id=1103637946]
+
+[node name="Ground" type="MeshInstance3D" parent="World" unique_id=40440884]
+transform = Transform3D(34.28714, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_3p835")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Ground" unique_id=1229135204]
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground/StaticBody3D" unique_id=889545518]
+shape = SubResource("BoxShape3D_2venv")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1476303813]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.556258, 11.460891)
+projection = 1
+size = 20.0
+
+[node name="Enemy" parent="." unique_id=1506947017 instance=ExtResource("1_ad7n4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+
+[node name="EnemyPatrol" parent="Enemy/StateMachine" parent_id_path=PackedInt32Array(1506947017, 1499026333) index="2" unique_id=457545891 node_paths=PackedStringArray("left_anchor", "right_anchor")]
+left_anchor = NodePath("../../../Left Anchor")
+right_anchor = NodePath("../../../Right Anchor")
+
+[node name="Left Anchor" type="Node3D" parent="." unique_id=450220287]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 0)
+
+[node name="Right Anchor" type="Node3D" parent="." unique_id=1258578833]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 0)
+
+[editable path="Enemy"]
