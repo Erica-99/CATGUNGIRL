@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://crng4f3f2avnf" path="res://icon.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://cabb16sxnh4bu" path="res://scenes/actors/player/player.gd" id="1_qdyt2"]
+[ext_resource type="Script" uid="uid://bjypb0bixh3rp" path="res://scenes/actors/player/player_visuals.gd" id="2_0w3ce"]
 [ext_resource type="Script" uid="uid://c71argnkra1em" path="res://scenes/actors/player/debug_state_display.gd" id="2_inh5e"]
 [ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="2_mpktj"]
 [ext_resource type="Texture2D" uid="uid://to4tdcv2w7d5" path="res://art/Idle/TestPantsIdle_FullHD.png" id="3_0w3ce"]
@@ -108,10 +109,22 @@ tracks/6/path = NodePath("BODY_P/TORSO_P:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 0,
-"values": [Vector3(-0.28, 0.045, 0), Vector3(-0.28, 0.085, 0), Vector3(-0.28, 0.045, 0)]
+"values": []
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BODY_P/TORSO_P/TORSO_SPRITE:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.371, 0.374, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_ffoq6"]
@@ -200,6 +213,18 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BODY_P/TORSO_P/TORSO_SPRITE:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.37099403, 0.374, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_cat03"]
 resource_name = "Running"
@@ -224,10 +249,10 @@ tracks/1/path = NodePath("BODY_P/TORSO_P:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.26666668, 0.5, 0.93333334, 1.3, 1.6, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.02, 0.17, 0), Vector3(-0.02, 0.115, 0), Vector3(-0.02, 0.17, 0), Vector3(-0.02, 0.17, 0), Vector3(-0.02, 0.185, 0), Vector3(-0.02, 0.17, 0), Vector3(-0.02, 0.17, 0)]
+"values": [Vector3(0.08, 0.17, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -288,6 +313,18 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [2.445]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BODY_P/TORSO_P/TORSO_SPRITE:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.215, 0.265, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7i6t6"]
@@ -629,6 +666,7 @@ mantle_detector = NodePath("MantleDetector")
 feet_point = NodePath("FeetPoint")
 
 [node name="PlayerVisuals" type="Node3D" parent="." unique_id=229281811]
+script = ExtResource("2_0w3ce")
 
 [node name="ROOT_P" type="Node3D" parent="PlayerVisuals" unique_id=955164199]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6582274, 0)
@@ -652,6 +690,7 @@ vframes = 5
 frame = 3
 
 [node name="TORSO_P" type="Node3D" parent="PlayerVisuals/ROOT_P/BODY_P" unique_id=376914641]
+transform = Transform3D(1, 0, 0, 0, 1, -8.742278e-08, 0, 8.742278e-08, 1, 0, 0, 0)
 
 [node name="GUN_P" type="Node3D" parent="PlayerVisuals/ROOT_P/BODY_P/TORSO_P" unique_id=462291408]
 transform = Transform3D(0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 0, 0, 1, 0.23544371, 0.20042482, 0)
@@ -665,7 +704,7 @@ sprite_frames = SubResource("SpriteFrames_0lsi7")
 frame_progress = 0.5361798
 
 [node name="TORSO_SPRITE" type="Sprite3D" parent="PlayerVisuals/ROOT_P/BODY_P/TORSO_P" unique_id=74113975]
-transform = Transform3D(0.34, 0, 0, 0, 0.34, 0, 0, 0, 0.34, -0.1, 0.374, 0)
+transform = Transform3D(0.34, 0, 0, 0, 0.34, 0, 0, 0, 0.34, -0.37099403, 0.374, 0)
 texture = ExtResource("7_e5w6i")
 hframes = 5
 vframes = 4
@@ -762,6 +801,7 @@ metadata/_custom_type_script = "uid://dropwvjh2s43u"
 script = ExtResource("15_068wj")
 metadata/_custom_type_script = "uid://dropwvjh2s43u"
 
+[connection signal="facing_changed" from="." to="PlayerVisuals" method="_on_player_facing_changed"]
 [connection signal="facing_changed" from="." to="MantleDetector" method="_on_player_facing_changed"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="health_changed" from="HealthComponent" to="InsanityComponent" method="_on_health_component_health_changed"]
@@ -771,4 +811,5 @@ metadata/_custom_type_script = "uid://dropwvjh2s43u"
 [connection signal="insanity_gained" from="InsanityComponent" to="." method="_on_insanity_component_insanity_gained"]
 [connection signal="insanity_gained" from="InsanityComponent" to="HealthComponent" method="_on_insanity_component_insanity_gained"]
 [connection signal="interest_rank_changed" from="InsanityComponent" to="." method="_on_insanity_component_interest_rank_changed"]
+[connection signal="state_changed" from="MovementStateMachine" to="PlayerVisuals" method="_on_movement_state_machine_state_changed"]
 [connection signal="state_changed" from="MovementStateMachine" to="DebugStateDisplay" method="_on_movement_state_machine_state_changed"]
