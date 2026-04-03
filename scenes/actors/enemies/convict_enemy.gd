@@ -48,3 +48,5 @@ func get_all_descendants(node: Node) -> Array:
 		result.append(child)
 		result.append_array(get_all_descendants(child))
 	return result
+	
+#
