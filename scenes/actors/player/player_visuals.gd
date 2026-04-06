@@ -16,7 +16,6 @@ func _on_movement_state_machine_state_changed(_prev: String, new: String) -> voi
 
 
 func _on_player_facing_changed(new_facing: float) -> void:
-	print(new_facing)
 	if new_facing == -1.0:
 		legs_sprite.flip_h = true
 		torso_pivot.scale.x = -1
