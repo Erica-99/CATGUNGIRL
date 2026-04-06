@@ -57,25 +57,22 @@ var _charge_timer: float = 0.0	# how long (seconds) player has been charging
 
 
 func _process(delta: float) -> void:
-	_update_aim(delta)			# updates gun rotation to follow mouse
+	var current_input_state = input_component.get_input_state()
+	
+	_update_aim(current_input_state.get("mouse_world_pos"), delta)			# updates gun rotation to follow mouse
 	_fire_cooldown = maxf(_fire_cooldown - delta, 0.0) # keeps fire cooldown above 0
 
 	# normal fire - left click
-	var fire_held = false
-	if input_component != null:
-		fire_held = input_component.get_input_state().get("fire_held", false)
-	else:
-		fire_held = Input.is_action_pressed("fire")
+	var fire_held = current_input_state.get("fire_held", false)
 
 	if fire_held:
 		_try_fire()
 
 	# charged shot input handling
-	_handle_charge_input(delta)
+	_handle_charge_input(current_input_state, delta)
 
 
-func _update_aim(delta: float) -> void:
-	var mouse_world = _get_mouse_world_position()	# mouse pos in 3d world
+func _update_aim(mouse_world: Vector3, delta: float) -> void:
 	if mouse_world == null:
 		return
 
@@ -109,10 +106,12 @@ func _update_aim(delta: float) -> void:
 	scale = Vector3(1.0, 1.0, 1.0)
 
 
-func _handle_charge_input(delta: float) -> void:
+func _handle_charge_input(input_state, delta: float) -> void:
+	var charge_fire_held = input_state.get("charge_fire_held", false)
+	
 	if charge_mode == Enums.ChargeMode.AUTO_FIRE:
 		# right click pressed -> begin charge, ignore if already charging
-		if Input.is_action_just_pressed("shoot_charged") and not _is_charging:
+		if charge_fire_held and not _is_charging:
 			_is_charging = true
 			_charge_timer = 0.0
 
@@ -127,7 +126,7 @@ func _handle_charge_input(delta: float) -> void:
 
 	elif charge_mode == Enums.ChargeMode.HOLD_TO_FIRE:
 		# begin charging while held (RMB)
-		if Input.is_action_pressed("shoot_charged"):
+		if charge_fire_held:
 			if not _is_charging:
 				_is_charging = true
 				_charge_timer = 0.0
@@ -143,7 +142,7 @@ func _handle_charge_input(delta: float) -> void:
 			_charge_timer = minf(_charge_timer, hold_charge_max)
 
 		# release -> fire if charged enough, otherwise cancel
-		if Input.is_action_just_released("shoot_charged") and _is_charging:
+		if not charge_fire_held and _is_charging:
 			if _charge_timer >= hold_charge_min:
 				# calcs charge progress and fires
 				var progress = clampf(
@@ -213,19 +212,3 @@ func _spawn_bullet(damage: float, size: float) -> void:
 	bullet.initialize(aim_dir, damage_instance, team_component, size)
 	var hb = bullet.get_node("HitboxComponent") 
 	hb.hurtbox_hit.connect(func(hurtbox): enemy_hit.emit(hurtbox))
-
-## projects 2D mouse position onto 3D world
-func _get_mouse_world_position() -> Variant:
-	var camera = get_viewport().get_camera_3d()
-	if camera == null:
-		return null
-	# current mouse posiiton in pixels
-	var mouse_pos = get_viewport().get_mouse_position()
-	# 3D point where ray starts (at camera)
-	var ray_origin = camera.project_ray_origin(mouse_pos)
-	# direction ray travels from camera
-	var ray_dir = camera.project_ray_normal(mouse_pos)
-	# flat plane at players z position/gameplay plane
-	var plane = Plane(Vector3(0.0, 0.0, 1.0), global_position.z)
-	# find where ray intersects plane (mouse position)
-	return plane.intersects_ray(ray_origin, ray_dir)
