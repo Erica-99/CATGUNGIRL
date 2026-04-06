@@ -8,6 +8,7 @@ extends Node3D
 @export var muzzle: Marker3D			# bullet spawn at muzzle tip
 @export var sprite: AnimatedSprite3D	# player sprite reference, for flipping left/right
 @export var team_component: Node		# player TeamComponent reference, passed to bullets
+@export var input_component: Node
 
 @export_group("Aim")
 @export var aim_speed: float = 8.0		# gun rotation speed towards mouse (lower = more delay)
@@ -44,6 +45,7 @@ signal charge_progress_changed(progress: float)
 
 ## Signal emitted when charging stops (fired or cancelled)
 signal charge_ended()
+signal enemy_hit(hurtbox: Area3D)
 
 var _current_angle: float = 0.0		# gun current rotation angle
 var _facing_right: bool = true		# tracks which direction player is facing)
@@ -59,7 +61,13 @@ func _process(delta: float) -> void:
 	_fire_cooldown = maxf(_fire_cooldown - delta, 0.0) # keeps fire cooldown above 0
 
 	# normal fire - left click
-	if Input.is_action_pressed("shoot"):
+	var fire_held = false
+	if input_component != null:
+		fire_held = input_component.get_input_state().get("fire_held", false)
+	else:
+		fire_held = Input.is_action_pressed("fire")
+
+	if fire_held:
 		_try_fire()
 
 	# charged shot input handling
@@ -202,6 +210,8 @@ func _spawn_bullet(damage: float, size: float) -> void:
 	damage_instance.source = get_path()
 
 	bullet.initialize(aim_dir, damage_instance, team_component, size)
+	var hb = bullet.get_node("HitboxComponent") 
+	hb.hurtbox_hit.connect(func(hurtbox): enemy_hit.emit(hurtbox))
 
 ## projects 2D mouse position onto 3D world
 func _get_mouse_world_position() -> Variant:

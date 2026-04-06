@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-## charge bar UI (connect to GunComponent's signals to display charge progress)
+## charge bar UI (connect to GunComponent's signals to show charge progress)
 
 @onready var bar_container = $ChargeBarContainer
 @onready var fill = $ChargeBarContainer/Fill

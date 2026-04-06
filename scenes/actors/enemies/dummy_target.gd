@@ -20,7 +20,7 @@ func _on_health_changed(old_health: float, new_health: float, _instance: DamageH
 		sprite.modulate = Color.WHITE
 
 
-func _on_killed(_instance: DamageHealInstance) -> void:
+func _on_killed(_instance: DamageHealInstance, _health_before_death: float) -> void:
 	print("Dummy destroyed!")
 	# respawn after short delay 
 	if sprite != null:
