@@ -46,20 +46,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5454574, 0)
 floor_constant_speed = true
 platform_wall_layers = 1
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1476303813]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.219055, 11.460891)
-size = 20.0
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D" unique_id=1635925437]
-transform = Transform3D(0.9396926, 0, -0.34202012, 0, 1, 0, 0.34202012, 0, 0.9396926, -3, 0, 4.2580004)
-light_energy = 0.3
-directional_shadow_mode = 1
-
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Camera3D" unique_id=1501453741]
-transform = Transform3D(0.9396926, 0, 0.34202012, 0, 1, 0, -0.34202012, 0, 0.9396926, 3, 0, 4.258)
-light_energy = 0.3
-directional_shadow_mode = 1
-
 [node name="InterestBar" parent="." unique_id=2086963886 instance=ExtResource("2_yautc")]
 
 [connection signal="player_health_changed" from="Player" to="InterestBar" method="_on_player_health_changed"]
