@@ -26,6 +26,7 @@
 [ext_resource type="Script" uid="uid://cs2vma24rddcy" path="res://scenes/components/state_machine/states/player/player_fall.gd" id="13_hcvpp"]
 [ext_resource type="Script" uid="uid://bpl2nhpm4ebce" path="res://scenes/components/state_machine/states/player/player_mantle.gd" id="15_068wj"]
 [ext_resource type="PackedScene" uid="uid://cmq1v8ob4m0w4" path="res://scenes/components/camera_component/camera_component.tscn" id="18_ffoq6"]
+[ext_resource type="PackedScene" uid="uid://ifqobphukq76" path="res://scenes/components/gun_component/gun_component.tscn" id="16_qdyt2"]
 
 [sub_resource type="Animation" id="Animation_0w3ce"]
 resource_name = "Idle"
@@ -805,6 +806,12 @@ metadata/_custom_type_script = "uid://dropwvjh2s43u"
 [node name="PlayerMantle" type="Node" parent="MovementStateMachine" unique_id=1914648426]
 script = ExtResource("15_068wj")
 metadata/_custom_type_script = "uid://dropwvjh2s43u"
+
+[node name="GunComponent" parent="." unique_id=52176648 node_paths=PackedStringArray("sprite", "team_component", "input_component") instance=ExtResource("16_qdyt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+sprite = NodePath("../AnimatedSprite3D")
+team_component = NodePath("../TeamComponent")
+input_component = NodePath("../PlayerInput")
 
 [connection signal="facing_changed" from="." to="PlayerVisuals" method="_on_player_facing_changed"]
 [connection signal="facing_changed" from="." to="MantleDetector" method="_on_player_facing_changed"]
