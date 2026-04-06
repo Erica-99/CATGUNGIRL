@@ -173,6 +173,7 @@ func _fire_charged(progress: float) -> void:
 	# reset charge state
 	_is_charging = false
 	_charge_timer = 0.0
+	print("firing charge_ended signal")
 	# tell chargebar ui charging ended
 	charge_ended.emit()
 
