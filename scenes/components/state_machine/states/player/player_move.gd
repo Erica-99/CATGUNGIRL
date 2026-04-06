@@ -4,6 +4,8 @@ class_name PlayerMove
 var actor: CharacterBody3D
 var input_component: InputComponent
 
+var direction_last_frame: Vector3
+
 func init(blackboard_dict : Dictionary) -> void:
 	super(blackboard_dict)
 	actor = blackboard['actor']
@@ -42,9 +44,12 @@ func physics_update(_delta: float) -> void:
 	var direction := (actor.transform.basis * Vector3(input_dir, 0, 0)).normalized()
 	var speed = actor.speed
 	var accel = actor.acceleration
-	if direction:
+	
+	if direction and direction == direction_last_frame:
 		actor.velocity.x = clampf(actor.velocity.x + direction.x * accel * _delta, -speed, speed)
 	else:
 		actor.velocity.x = move_toward(actor.velocity.x, 0, speed)
-
+	
+	direction_last_frame = direction
+	
 	actor.move_and_slide()
