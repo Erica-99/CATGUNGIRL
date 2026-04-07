@@ -7,13 +7,13 @@ func _ready() -> void:
 	visible = false
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("gigi_show")
+	if Input.is_action_just_pressed("gigi_show"):
 	## Toggle the UI using 'G' key
 		_onDate = !_onDate
 		if _onDate:
 			_date_begin()
 		else:
-			_date_end()
+			_date_close()
 
 ## Make UI visible and show mouse
 func _date_begin():
