@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://4k00bvwggjpj"]
 
+[ext_resource type="PackedScene" uid="uid://c4osos6i6rkf2" path="res://art/3D_Env/3D_Test.tscn" id="1_fr1um"]
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="1_jbqir"]
 [ext_resource type="PackedScene" uid="uid://3ukueorlwt6y" path="res://scenes/ui/health_bar.tscn" id="2_yautc"]
 [ext_resource type="PackedScene" uid="uid://cmaouisrg2kmt" path="res://scenes/ui/dating/gigi_interaction.tscn" id="3_fr1um"]
@@ -15,33 +16,37 @@
 
 [node name="Ground" type="MeshInstance3D" parent="World" unique_id=40440884]
 transform = Transform3D(34.28714, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
 mesh = SubResource("BoxMesh_3p835")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="World/Ground" unique_id=1229135204]
+visible = false
 collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground/StaticBody3D" unique_id=889545518]
+visible = false
 shape = SubResource("BoxShape3D_2venv")
 
 [node name="Platform" type="MeshInstance3D" parent="World" unique_id=753629130]
 transform = Transform3D(34.28714, 0, 0, 0, 1, 0, 0, 0, 1, 25.006725, 6.716451, 0)
+visible = false
 mesh = SubResource("BoxMesh_3p835")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="World/Platform" unique_id=1810313223]
+visible = false
 collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Platform/StaticBody3D" unique_id=1070833298]
+visible = false
 shape = SubResource("BoxShape3D_2venv")
+
+[node name="Level" parent="World" unique_id=1829183850 instance=ExtResource("1_fr1um")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 0.6001549, -1.7041183, 0)
 
 [node name="Player" parent="." unique_id=1349193765 instance=ExtResource("1_jbqir")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5454574, 0)
 floor_constant_speed = true
 platform_wall_layers = 1
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1476303813]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.556258, 11.460891)
-projection = 1
-size = 20.0
 
 [node name="InterestBar" parent="." unique_id=2086963886 instance=ExtResource("2_yautc")]
 
