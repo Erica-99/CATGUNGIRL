@@ -1,6 +1,6 @@
 extends Node
 
-@onready var timer: Timer = $Timer
+@onready var timer: Timer = $"../Timer"
 @onready var mesh_instance_3d: Sprite3D = $"../.."
 
 @export var min_dialogue_elapsed_time: float = 1.0
@@ -47,6 +47,7 @@ func _on_timer_timeout() -> void:
 	bubble._set_text(dialogue)
 	bubble.is_transparent.connect(_remove_bubble)
 	_update_bubble_positions()
+	print("my starting position is: " + str(bubble.position))
 	
 	timer.start(randf_range(min_dialogue_elapsed_time, max_dialogue_elapsed_time))
 
@@ -55,16 +56,20 @@ func _remove_bubble(child):
 	_update_bubble_positions()
 
 # WHY THE FUCK DOES THIS MAKE A PARTICLE ACCELERATOR
+# IT WAS THE FUCKING INDEX ARRGGGGG
+# IF ANYONE TOUCHES THIS SHIT ILL RIP OFF BOTH YOUUR ARMS
 func _update_bubble_positions():
 	var children = get_children()
 	print(children.size())
 	if children.size() > 1:
 		var index = 0
 		for child in children:
-			child._set_position_off_index(children.size() - index)
+			print("prior to change, my (index " + str(index) + ") position was: " + str(child.position))
+			child._set_position_off_index((children.size() - 1) - index)
+			print("my new position (index " + str(index) + ") is: " + str(child.position))
 			index += 1
 	else:
-		children[0]._set_position_off_index()
+		children[0]._set_position_off_index(0)
 
 # chucking this stuff here so its out of the way lol
 func _debug_tests_for_linking() -> void:

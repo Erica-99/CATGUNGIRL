@@ -11,7 +11,7 @@ signal is_transparent
 
 func _ready() -> void:
 	var viewport: Vector2 = Vector2(get_viewport().size)
-	position = Vector2(viewport.x / 2, viewport.y - 100)
+	position = Vector2(viewport.x / 2, viewport.y - 40)
 	centred_position = _get_position_around_origin()
 
 
@@ -33,5 +33,5 @@ func _get_position_around_origin() -> Vector2:
 
 
 func _set_position_off_index(index: int = 0) -> void:
-	centred_position.y -= (10 * index)
+	centred_position.y -= (50 * index)
 	position = centred_position
