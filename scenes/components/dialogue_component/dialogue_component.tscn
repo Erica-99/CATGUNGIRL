@@ -2,5 +2,18 @@
 
 [ext_resource type="Script" uid="uid://cbcagbl3c4lal" path="res://scenes/components/dialogue_component/dialogue_component.gd" id="1_iigvq"]
 
-[node name="DialogueComponent" type="Node" unique_id=1775697624]
+[sub_resource type="ViewportTexture" id="ViewportTexture_iigvq"]
+viewport_path = NodePath("SubViewport")
+
+[node name="MeshInstance3D" type="Sprite3D" unique_id=780065543]
+texture = SubResource("ViewportTexture_iigvq")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1628982344]
+size = Vector2i(200, 200)
+
+[node name="Timer" type="Timer" parent="SubViewport" unique_id=2115915199]
+
+[node name="DialogueComponent" type="Node" parent="SubViewport" unique_id=1775697624]
 script = ExtResource("1_iigvq")
+
+[connection signal="timeout" from="SubViewport/Timer" to="SubViewport/DialogueComponent" method="_on_timer_timeout"]
