@@ -11,9 +11,12 @@ var flat_dest: Vector3
 var target_x: float
 
 var body: CharacterBody3D
+var animator: AnimatedSprite3D
 
 func enter() -> void:
 	# PLay Animation
+	animator = blackboard["anim"]
+	animator.modulate = Color(0.0, 0.5, 0.0, 1.0)
 	# Set Body to Enemy
 	body = blackboard["actor"]
 	flat_dest = destination

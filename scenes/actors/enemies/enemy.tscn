@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://dyr3mhryox7qn" path="res://scenes/components/state_machine/states/enemy/enemy_idle.gd" id="6_lwpd1"]
 [ext_resource type="Script" uid="uid://c1a7osbqykg2" path="res://scenes/components/state_machine/states/enemy/enemy_move.gd" id="7_87lvi"]
 [ext_resource type="Script" uid="uid://b5fkogjcbrhmo" path="res://scenes/components/state_machine/states/enemy/enemy_patrol.gd" id="9_jylix"]
+[ext_resource type="Script" uid="uid://c8tp1cvog1wsi" path="res://scenes/components/state_machine/states/enemy/enemy_alert.gd" id="10_qdxnr"]
+[ext_resource type="Script" uid="uid://c8k3fk780we2f" path="res://scenes/components/state_machine/states/enemy/enemy_chase.gd" id="11_8oeht"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_md0e3"]
 animations = [{
@@ -27,12 +29,15 @@ size = Vector3(1.285553, 3.2021484, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_54fah"]
 size = Vector3(1.294342, 3.2011719, 1)
 
-[node name="Enemy" type="CharacterBody3D" unique_id=1506947017 node_paths=PackedStringArray("patrol")]
+[node name="Enemy" type="CharacterBody3D" unique_id=1506947017 node_paths=PackedStringArray("animator", "health_comp", "patrol", "chase")]
 collision_layer = 4
 floor_constant_speed = true
 platform_floor_layers = 1
 script = ExtResource("1_87lvi")
+animator = NodePath("AnimatedSprite3D")
+health_comp = NodePath("HealthComponent")
 patrol = NodePath("Behaviours/EnemyPatrol")
+chase = NodePath("Behaviours/EnemyChase")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1465648794]
 transform = Transform3D(1, 0, 0, 0, 2.5, 0, 0, 0, 1, 0, 0, 0)
@@ -70,3 +75,11 @@ script = ExtResource("7_87lvi")
 script = ExtResource("9_jylix")
 move = NodePath("../EnemyMove")
 idle = NodePath("../EnemyIdle")
+
+[node name="EnemyAlert" type="Node" parent="Behaviours" unique_id=509136342]
+script = ExtResource("10_qdxnr")
+metadata/_custom_type_script = "uid://c8tp1cvog1wsi"
+
+[node name="EnemyChase" type="Node" parent="Behaviours" unique_id=2105542891]
+script = ExtResource("11_8oeht")
+metadata/_custom_type_script = "uid://c8k3fk780we2f"

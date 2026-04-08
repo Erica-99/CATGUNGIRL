@@ -1,29 +1,43 @@
 extends CharacterBody3D
+class_name ConvictEnemy
 
 @export var animator: AnimatedSprite3D
+@export var health_comp: Node
 
 # Child States
 @export var patrol: EnemyPatrol
+@export var chase: EnemyChase
+@export var attack: EnemyAttack
+@export var death: EnemyDeath
 
 var machine: AltStateMachine = AltStateMachine.new()
 var state:
 	get:
 		return machine.current_state
 
-var blackboard : Dictionary = {
-	"actor": self,
-	"animator": animator
-	}
+var blackboard : Dictionary 
 
 func _ready() -> void:
+	blackboard = {"actor": self, "anim": animator}
+
 	set_up_instances()
 	set_state(patrol)
 
 func _process(delta: float) -> void:
 	#add logic here to change child states
 	
-	
-	
+	if health_comp._current_health <= 0:
+		set_state(death)
+	elif attack.attack_opp():
+		set_state(attack)
+	elif chase.player_spotted():
+		set_state(chase)
+	elif state.is_complete():
+		if state is EnemyChase:
+			set_state(patrol)
+	# 
+	#
+	#
 	
 	state.update_branch(delta)
 	
