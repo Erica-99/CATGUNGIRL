@@ -1,9 +1,9 @@
 class_name AltStateMachine
 
-#current state
+# Current state
 var current_state: State
 
-#sets a new state if target state is different from current state, or if force_reset  is true
+# Sets a new state if target state is different from current state, or if force_reset  is true
 func set_state(new_state: State, force_reset: bool = false) -> void:
 	if current_state != new_state or force_reset:
 		if current_state:

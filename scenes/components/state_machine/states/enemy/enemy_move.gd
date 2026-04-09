@@ -19,18 +19,17 @@ func enter() -> void:
 	animator.modulate = Color(0.0, 0.5, 0.0, 1.0)
 	# Set Body to Enemy
 	body = blackboard["actor"]
+	# Target destination adjusted to y of enemy 
 	flat_dest = destination
 	flat_dest.y = body.global_position.y
-
 
 func update(_delta: float) -> void:
 	# Checks if actor is in threshold range of destination
 	if body.global_position.distance_to(flat_dest) <= threshold:
 		is_complete = true
 
-
 func physics_update(_delta: float) -> void:
-	# move enemy toward target
+	# Move enemy toward target
 	var dir = (flat_dest - body.global_position).normalized()
 	body.velocity.x = dir.x * move_speed
 	body.velocity.z = dir.z * move_speed

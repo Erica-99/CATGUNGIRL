@@ -14,7 +14,6 @@ func enter() -> void:
 	abandon_timer = 0
 	
 	move.threshold = 0.1
-	move.destination = sight_area.target_pos
 	set_state(move)
 	
 	# If not aggro (i.e. not already targeting player upon entering chase) activate alert state
@@ -22,24 +21,23 @@ func enter() -> void:
 		aggro = true
 		set_state(alert)
 	
-
 func update(_delta: float) -> void:
-	
-	#Tick up abandon_timer
+	# Tick up abandon_timer
 	abandon_timer += _delta
 	
-	if player_spotted(): # Resets timer if player_spotted
+	# Resets timer if player_spotted
+	if player_spotted(): 
 		abandon_timer = 0
+	
+	move.destination = sight_area.target_pos # Adjusts destination if player has moved
 	
 	if child_state is EnemyAlert and child_state.is_complete: # Switch to move after Alert state has finished
 		set_state(move)
 	elif abandon_timer >= abandon_time: # If player out of sight for abandon_time, give up chase
 		aggro = false
 		is_complete = true
-	pass
-	
 
-# used by parent to determine when to enter, and reset abandon_timer if player is still in sight
+# Used by parent to determine when to enter, and reset abandon_timer if player is still in sight
 func player_spotted() -> bool:
 	if sight_area.player_detected:
 		return true
