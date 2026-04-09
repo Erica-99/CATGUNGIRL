@@ -24,10 +24,9 @@ func _ready() -> void:
 	set_state(patrol)
 
 func _process(delta: float) -> void:
-	#add logic here to change child states
 	
 	if health_comp._current_health <= 0:
-		#set_state(death)
+		set_state(death)
 		pass
 	elif attack.attack_opp():
 		#set_state(attack)

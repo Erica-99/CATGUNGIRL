@@ -71,32 +71,37 @@ shape = SubResource("BoxShape3D_54fah")
 [node name="Behaviours" parent="." unique_id=1499026333 instance=ExtResource("4_m8jit")]
 script = null
 
-[node name="EnemyIdle" type="Node" parent="Behaviours" unique_id=168144029]
+[node name="EnemyPatrol" type="Node" parent="Behaviours" unique_id=457545891 node_paths=PackedStringArray("move", "idle")]
+script = ExtResource("9_jylix")
+move = NodePath("EnemyMove (Patrol)")
+idle = NodePath("EnemyIdle")
+threshold_limit = 1.0
+
+[node name="EnemyIdle" type="Node" parent="Behaviours/EnemyPatrol" unique_id=168144029]
 script = ExtResource("6_lwpd1")
 idle_min_time = 2.0
 idle_max_time = 5.0
 
-[node name="EnemyMove (Patrol)" type="Node" parent="Behaviours" unique_id=1477977903]
+[node name="EnemyMove (Patrol)" type="Node" parent="Behaviours/EnemyPatrol" unique_id=1477977903]
 script = ExtResource("7_87lvi")
 
-[node name="EnemyPatrol" type="Node" parent="Behaviours" unique_id=457545891 node_paths=PackedStringArray("move", "idle")]
-script = ExtResource("9_jylix")
-move = NodePath("../EnemyMove (Patrol)")
-idle = NodePath("../EnemyIdle")
-threshold_limit = 1.0
+[node name="EnemyChase" type="Node" parent="Behaviours" unique_id=2105542891 node_paths=PackedStringArray("alert", "move", "sight_area")]
+script = ExtResource("11_8oeht")
+alert = NodePath("EnemyAlert")
+move = NodePath("EnemyMove (Chase)")
+abandon_time = 5.0
+sight_area = NodePath("../../Sight_Area")
+metadata/_custom_type_script = "uid://c8k3fk780we2f"
 
-[node name="EnemyAlert" type="Node" parent="Behaviours" unique_id=509136342]
+[node name="EnemyAlert" type="Node" parent="Behaviours/EnemyChase" unique_id=509136342]
 script = ExtResource("10_qdxnr")
 alert_duration = 1.0
 metadata/_custom_type_script = "uid://c8tp1cvog1wsi"
 
-[node name="EnemyChase" type="Node" parent="Behaviours" unique_id=2105542891 node_paths=PackedStringArray("alert", "move", "sight_area")]
-script = ExtResource("11_8oeht")
-alert = NodePath("../EnemyAlert")
-move = NodePath("../EnemyMove (Chase)")
-abandon_time = 5.0
-sight_area = NodePath("../../Sight_Area")
-metadata/_custom_type_script = "uid://c8k3fk780we2f"
+[node name="EnemyMove (Chase)" type="Node" parent="Behaviours/EnemyChase" unique_id=2048380530]
+script = ExtResource("7_87lvi")
+move_speed = 5.0
+metadata/_custom_type_script = "uid://c1a7osbqykg2"
 
 [node name="EnemyAttack" type="Node" parent="Behaviours" unique_id=637585415]
 script = ExtResource("12_0eh5a")
@@ -105,11 +110,6 @@ metadata/_custom_type_script = "uid://c3u5n48puvigd"
 [node name="EnemyDeath" type="Node" parent="Behaviours" unique_id=352302151]
 script = ExtResource("13_ioi8i")
 metadata/_custom_type_script = "uid://cnchn1hd27t4h"
-
-[node name="EnemyMove (Chase)" type="Node" parent="Behaviours" unique_id=2048380530]
-script = ExtResource("7_87lvi")
-move_speed = 5.0
-metadata/_custom_type_script = "uid://c1a7osbqykg2"
 
 [node name="Sight_Area" type="Area3D" parent="." unique_id=2091457129]
 script = ExtResource("14_ioi8i")
