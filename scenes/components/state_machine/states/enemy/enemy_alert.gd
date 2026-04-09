@@ -16,13 +16,10 @@ func enter() -> void:
 	# Stop Movement
 	body = blackboard["actor"]
 	body.velocity = Vector3.ZERO
-	pass
+	body.move_and_slide()
 	
 func update(_delta: float) -> void:
 	alert_timer += _delta
 	if alert_timer >= alert_duration:
 		is_complete = true
-	pass
-	
-func physics_update(_delta: float) -> void:
 	pass

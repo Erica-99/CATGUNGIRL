@@ -27,12 +27,14 @@ func _process(delta: float) -> void:
 	#add logic here to change child states
 	
 	if health_comp._current_health <= 0:
-		set_state(death)
+		#set_state(death)
+		pass
 	elif attack.attack_opp():
-		set_state(attack)
+		#set_state(attack)
+		pass
 	elif chase.player_spotted():
 		set_state(chase)
-	elif state.is_complete():
+	elif state.is_complete:
 		if state is EnemyChase:
 			set_state(patrol)
 	# 

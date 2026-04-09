@@ -4,7 +4,7 @@ class_name EnemyAttack
 @export var attack_cooldown: float
 
 var cooldown_timer: float
-var player_in_range: bool
+var player_in_range: bool = false
 
 func attack_opp() -> bool:
 	#if player in range and 
