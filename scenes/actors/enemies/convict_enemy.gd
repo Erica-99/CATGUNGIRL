@@ -27,10 +27,8 @@ func _process(delta: float) -> void:
 	
 	if health_comp._current_health <= 0:
 		set_state(death)
-		pass
 	elif attack.attack_opp():
-		#set_state(attack)
-		pass
+		set_state(attack)
 	elif chase.player_spotted():
 		set_state(chase)
 	elif state.is_complete:
