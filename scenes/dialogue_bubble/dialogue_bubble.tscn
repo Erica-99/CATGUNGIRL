@@ -5,23 +5,30 @@
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cuagg"]
 texture = ExtResource("1_456da")
-texture_margin_left = 25.0
-texture_margin_top = 15.0
-texture_margin_right = 25.0
-texture_margin_bottom = 15.0
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
 
 [node name="PanelContainer" type="PanelContainer" unique_id=1148095700]
 texture_filter = 1
 custom_minimum_size = Vector2(100, 20)
-offset_right = 121.0
-offset_bottom = 44.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_cuagg")
 script = ExtResource("2_y14hn")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1241823225]
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "HELLO WORLD"
 fit_content = true

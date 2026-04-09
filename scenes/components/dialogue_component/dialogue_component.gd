@@ -28,7 +28,8 @@ func _ready() -> void:
 	#entity = get_parent().{insert variable which identified parent like ID or name IDK}
 	entity = "player"
 	raw_dialogue = DialogueProcessor._load_file(CustomResourceLoader.dialogue_path + entity + ".json")
-	timer.start(randf_range(min_dialogue_elapsed_time, max_dialogue_elapsed_time))
+	if can_speak:
+		timer.start(randf_range(min_dialogue_elapsed_time, max_dialogue_elapsed_time))
 	
 	if debug_mode:
 		_debug_tests_for_linking()
@@ -40,16 +41,16 @@ func _process(delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
-	var dialogue = DialogueProcessor._get_runtime_dialogue(raw_dialogue, trigger, player_conditions)
-	var bubble = dialogue_bubble_prefab.instantiate()
-	add_child(bubble)
-	bubble.owner = self
-	bubble._set_text(dialogue)
-	bubble.is_transparent.connect(_remove_bubble)
-	_update_bubble_positions()
-	print("my starting position is: " + str(bubble.position))
-	
-	timer.start(randf_range(min_dialogue_elapsed_time, max_dialogue_elapsed_time))
+	if can_speak:
+		var dialogue = DialogueProcessor._get_runtime_dialogue(raw_dialogue, trigger, player_conditions)
+		var bubble = dialogue_bubble_prefab.instantiate()
+		add_child(bubble)
+		bubble.owner = self
+		bubble._set_text(dialogue)
+		bubble.is_transparent.connect(_remove_bubble)
+		_update_bubble_positions()
+		
+		timer.start(randf_range(min_dialogue_elapsed_time, max_dialogue_elapsed_time))
 
 func _remove_bubble(child):
 	child.queue_free()
@@ -60,13 +61,10 @@ func _remove_bubble(child):
 # IF ANYONE TOUCHES THIS SHIT ILL RIP OFF BOTH YOUUR ARMS
 func _update_bubble_positions():
 	var children = get_children()
-	print(children.size())
 	if children.size() > 1:
 		var index = 0
 		for child in children:
-			print("prior to change, my (index " + str(index) + ") position was: " + str(child.position))
 			child._set_position_off_index((children.size() - 1) - index)
-			print("my new position (index " + str(index) + ") is: " + str(child.position))
 			index += 1
 	else:
 		children[0]._set_position_off_index(0)

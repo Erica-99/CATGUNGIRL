@@ -2,22 +2,22 @@ extends PanelContainer
 
 @onready var rich_text_label: RichTextLabel = $RichTextLabel
 
-@export var transparency_rate: float = 0.01
+@export var time_till_transparent: float = 4
 
-var centred_position = Vector2.ZERO
-
+var centred_position: Vector2 = Vector2.ZERO
+var viewport: Vector2 = Vector2.ZERO
+var rate_of_transparency: float = 0
 
 signal is_transparent
 
 func _ready() -> void:
-	var viewport: Vector2 = Vector2(get_viewport().size)
-	position = Vector2(viewport.x / 2, viewport.y - 40)
+	viewport = Vector2(get_viewport().size)
 	centred_position = _get_position_around_origin()
-
+	rate_of_transparency = modulate.a / (time_till_transparent * 60)
 
 func _process(delta: float) -> void:
-	self_modulate.a -= transparency_rate
-	if self_modulate.a < 0:
+	modulate.a -= rate_of_transparency
+	if modulate.a < 0:
 		emit_signal("is_transparent", self)
 
 
@@ -33,5 +33,4 @@ func _get_position_around_origin() -> Vector2:
 
 
 func _set_position_off_index(index: int = 0) -> void:
-	centred_position.y -= (50 * index)
-	position = centred_position
+	position.y = centred_position.y - (50 * index)
