@@ -1,95 +1,89 @@
 extends Node
 
-## Check health to keep track of Insanity Rank and Level.
-## Rank updates with health changes, Level with deaths
+## Check health to keep track of Interest and Insanity
 
-signal rank_changed(old_rank: Enums.InsanityRank, new_rank: Enums.InsanityRank)
-signal ilevel_changed(new_ilevel: int)
+## Interest: "Shield Health" and Style Ranking, doing damage,
+## etc. will raise Interest, taking damage lowers it.
+## Interest uses the Health Component as it's basis
 
-## Checking rank
-var _health_check: float
-var _rank: Enums.InsanityRank
-## Insanity Level
-var _ilevel: int
-## Decay variables
-var _decay_cd: float
-var _decay_tick: float
-var _decay_timer: float
-var _decay_tick_timer: float
-var _decay_damage: DamageHealInstance
-var _decay_target: Node
+## Insanity: "Real Health", starts at 0 and game over at 100.
+## When taking damage without having the Interest shield, the Insanity
+## value raises. The Insanity value determines the minimum Interest
+## "health". This means high Insanity locks you into a high Style, but
+## also brings you closer and closer to death.
 
-@export_category("Decay Values")
-@export var decay_cd: float:
-	get:
-		return _decay_cd
-	set(value):
-		set_decay_cd(value)
+signal insanity_gained(amount: float, buffer: float)
+signal insanity_death()
 
-@export var decay_tick: float:
-	get:
-		return _decay_tick
-	set(value):
-		set_decay_tick(value)
+signal interest_rank_changed(new_rank: Enums.InterestRank)
 
-# Called when the node enters the scene tree for the first time.
+@export_category("Interest")
+## Interest value is equal to Health in Health Component
+@export var interest_rank: Enums.InterestRank ## Will be based on health
+@export var interest_buffer: float = 10
+## Variables for Interest decay ticks
+@export var intdecay_damage: DamageHealInstance
+@export var intdecay_timer: float = 0
+@export var intdecay_cd: float = 1
+@export var int_target: Node
+
+@export_category("Insanity")
+@export var insanity: float
+@export var min_insanity_damage: float
+@export var max_insanity: float = 100
+
 func _ready():
-	## Default rank and level
-	_rank = Enums.InsanityRank.MEDIUM
-	_ilevel = 0
+	insanity = 0
+	## Setting up interest decay
+	## TODO: change this to be more easily editable
+	intdecay_damage = DamageHealInstance.new()
+	intdecay_damage.amount = 1
+	intdecay_damage.is_heal = false
+	intdecay_damage.knockback = 0
+	intdecay_damage.type = Enums.DamageType.DECAY
+	intdecay_damage.source = ^"."
+	int_target = $"../HealthComponent"
 	
-	## Setup for decay damage
-	_decay_damage = DamageHealInstance.new()
-	_decay_damage.amount = 1
-	_decay_damage.is_heal = false
-	_decay_damage.type = Enums.DamageType.DECAY
-	_decay_damage.knockback = 0
-	_decay_damage.source = ^"."
-	## Set target for decay, Player's Health Component
-	_decay_target = $"../HealthComponent"
 
-## Set the cooldown until health starts to decay. In seconds.
-func set_decay_cd(value: float) -> void:
-	_decay_cd = value
-	
-## Set how quickly health ticks down in decay.
-func set_decay_tick(value: float) -> void:
-	_decay_tick = value
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	_decay_timer += delta
-	if _decay_timer > _decay_cd:
-		_decay_tick_timer += delta
-		if _decay_tick_timer > _decay_tick:
-			_decay_tick_timer = 0
-			_decay_target.take_damage_or_heal(_decay_damage)
-			print("Decay. Health: " + str(_decay_target.current_health))
-	pass
+	## Decay over time
+	intdecay_timer += delta
+	if intdecay_timer > intdecay_cd:
+		intdecay_timer = 0
+		int_target.take_damage_or_heal(intdecay_damage)
+	
+	## When reaching Max Insanity, die
+	if insanity >= max_insanity:
+		insanity_death.emit()
 
-## When the player's health changes, check if it would change the rank,
-## and emit a signal if it does.
+## The player reacts to being killed differently, the overflow damage
+## done by the killing blow is added to Insanity.
+## Player death will be handled by Insanity reaching 100
+func _on_health_component_killed(killing_blow, health_before_death):
+	## Determine how much damage overflow from Interest Damage
+	var overflow = killing_blow.amount - health_before_death
+	## Set a minumum amount of Insanity damage that can be taken
+	if overflow < min_insanity_damage:
+		overflow = min_insanity_damage
+	
+	## After Interest is "killed", add Insanity, making min_health
+	## higher, and add a buffer to Interest so you it doesn't break
+	## immediately
+	insanity += overflow
+	insanity_gained.emit(overflow, interest_buffer)
+
 func _on_health_component_health_changed(old_health, new_health, damage_or_heal_instance):
-	_health_check = new_health
-	var old_rank = _rank
-	if (0 <= _health_check and _health_check < 33):
-		_rank = Enums.InsanityRank.LOW
-	elif (33 <= _health_check and _health_check < 66):
-		_rank = Enums.InsanityRank.MEDIUM
+	var old_rank = interest_rank
+	## Ranks in quarters of health
+	if (0 <= new_health and new_health < 25):
+		interest_rank = Enums.InterestRank.LOW
+	elif (25 <= new_health and new_health < 50):
+		interest_rank = Enums.InterestRank.MEDLOW
+	elif (50 <= new_health and new_health < 75):
+		interest_rank = Enums.InterestRank.MEDHIGH
 	else:
-		_rank = Enums.InsanityRank.HIGH
+		interest_rank = Enums.InterestRank.HIGH
 	
-	## When healed reset decay timer
-	if (damage_or_heal_instance.is_heal):
-		_decay_timer = 0
-		_decay_tick_timer = 0
-	
-	if _rank != old_rank:
-		rank_changed.emit(old_rank, _rank)
-		print("Rank Changed: " + str(_rank))
-
-## When killed, increase Insanity Level and emit a signal for it
-func _on_health_component_killed(killing_blow):
-	_ilevel += 1
-	ilevel_changed.emit(_ilevel)
-	print("Died - Insanity Level: " + str(_ilevel))
+	## If rank has changed emit signal
+	if old_rank != interest_rank:
+		interest_rank_changed.emit(interest_rank)

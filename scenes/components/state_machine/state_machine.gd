@@ -1,5 +1,11 @@
+## StateMachine
+## Generic state machine class to be used anywhere a state machine is needed.
+## States are added as nodes which inherit from the State class.
+
 extends Node
 class_name StateMachine
+
+signal state_changed(prev: String, new: String)
 
 @export var initial_state: State
 
@@ -31,7 +37,7 @@ func _physics_process(delta: float) -> void:
 	pass
 
 
-func on_child_transition(state : State, new_state_name : String):
+func on_child_transition(state: State, new_state_name: String):
 	if state != current_state:
 		return
 	
@@ -44,3 +50,5 @@ func on_child_transition(state : State, new_state_name : String):
 	
 	new_state.enter()
 	current_state = new_state
+	
+	state_changed.emit(state.name.to_lower(), new_state_name)

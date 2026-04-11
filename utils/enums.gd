@@ -16,8 +16,15 @@ enum DamageType {
 
 ## Based off of the health bar, rank would affect access to moves
 ## and appearance of the UI (e.g. Low Health Indicator)
-enum InsanityRank {
+enum InterestRank {
 	LOW, ## Names could change (e.g. HEART_BREAK)
-	MEDIUM,
-	HIGH,
+	MEDLOW,
+	MEDHIGH,
+	HIGH, ##MADLY_IN_LOVE
+}
+
+## Added for gun component
+enum ChargeMode {
+	AUTO_FIRE,   ## right click -> charges for a fixed duration -> auto fires
+	HOLD_TO_FIRE, ## hold right click -> charge builds up -> release to fire
 }

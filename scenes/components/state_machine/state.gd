@@ -1,3 +1,6 @@
+## State
+## Base class for all states in state machines.
+
 extends Node
 class_name State
 

@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://4k00bvwggjpj"]
+
+[ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="1_jbqir"]
+[ext_resource type="PackedScene" uid="uid://3ukueorlwt6y" path="res://scenes/ui/health_bar.tscn" id="2_yautc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3p835"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2venv"]
+
+[node name="TestLevel" type="Node3D" unique_id=1708525088]
+
+[node name="World" type="Node3D" parent="." unique_id=1103637946]
+
+[node name="Ground" type="MeshInstance3D" parent="World" unique_id=40440884]
+transform = Transform3D(34.28714, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_3p835")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Ground" unique_id=1229135204]
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground/StaticBody3D" unique_id=889545518]
+shape = SubResource("BoxShape3D_2venv")
+
+[node name="Player" parent="." unique_id=1349193765 instance=ExtResource("1_jbqir")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6225271, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1476303813]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.556258, 11.460891)
+projection = 1
+size = 20.0
+
+[node name="TextureProgressBar" parent="." unique_id=2086963886 instance=ExtResource("2_yautc")]
+
+[connection signal="player_health_changed" from="Player" to="TextureProgressBar" method="_on_player_health_changed"]
+[connection signal="player_health_initialiased" from="Player" to="TextureProgressBar" method="_on_player_health_initialiased"]
