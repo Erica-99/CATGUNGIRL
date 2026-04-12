@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cliihrkrdkm0i"]
+
+[ext_resource type="ArrayMesh" uid="uid://dtsmu1tre8v0s" path="res://art/3D_Env/3D_Assets/3D_Models/Crate.obj" id="1_sxhxm"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vgorc"]
+points = PackedVector3Array(0.9381362, 1, 0.9381362, 0.9381362, 0.9381362, 1, 1, 0.9381362, 0.9381362, 0.9381362, 1, -0.938332, -0.938332, 1, 0.9381362, 0.9381362, -0.938332, 1, -0.938332, 0.9381362, 1, 1, -0.938332, 0.9381362, 1, 0.9381362, -0.938332, 0.9381362, 0.9381362, -1, -0.938332, 1, -0.938332, -1, 0.9381362, 0.9381362, 0.9381362, -1, 0.9381362, -0.938332, -0.938332, 1, 1, -0.938332, -0.938332, 0.9381362, -0.938332, -1, -0.938332, 0.9381362, -1, -1, 0.9381362, -0.938332, -1, -0.938332, 0.9381362, 0.9381362, -1, -0.938332, -0.938332, -1, 0.9381362, -0.938332, -0.938332, -1, -1, -0.938332, -0.938332, -0.938332, -1, -0.938332)
+
+[node name="Crate" type="StaticBody3D" unique_id=1872359213]
+
+[node name="Crate_Mesh" type="MeshInstance3D" parent="." unique_id=1777250652]
+mesh = ExtResource("1_sxhxm")
+
+[node name="Crate_Collision" type="CollisionShape3D" parent="." unique_id=1447137829]
+shape = SubResource("ConvexPolygonShape3D_vgorc")
