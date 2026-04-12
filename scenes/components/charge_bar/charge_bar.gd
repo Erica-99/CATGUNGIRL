@@ -11,18 +11,14 @@ func _ready() -> void:
 	bar_container.visible = false
 
 
-## connect GunComponent.charge_progress_changed to this
 func on_charge_progress(progress: float) -> void:
+	print("charge bar received progress: ", progress)
 	bar_container.visible = true
 	# scale the fill bar width based on progress
 	fill.scale.x = progress
 	label.text = "CHARGING... %d%%" % int(progress * 100)
 
 
-## connect GunComponent.charge_ended to this
 func on_charge_ended() -> void:
+	print("charge bar received ended")
 	bar_container.visible = false
-
-
-func _on_gun_component_charge_ended() -> void:
-	pass # replace later
