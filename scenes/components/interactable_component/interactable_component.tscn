@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ou3g778y2q8g"]
+
+[ext_resource type="Script" uid="uid://i7btqfyk8nbs" path="res://scenes/components/interactable_component/interactable_component.gd" id="1_fodkk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fodkk"]
+
+[node name="InteractableComponent" type="Node3D" unique_id=2140039813]
+script = ExtResource("1_fodkk")
+
+[node name="Interaction Range" type="Area3D" parent="." unique_id=2119076624]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interaction Range" unique_id=432305174]
+shape = SubResource("BoxShape3D_fodkk")
+
+[connection signal="body_entered" from="Interaction Range" to="." method="_on_interaction_range_body_entered"]
