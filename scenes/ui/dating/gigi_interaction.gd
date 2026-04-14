@@ -57,8 +57,14 @@ func _set_gigi():
 	print("Interact is:", interact)
 	_gigi_text.text = interact.get("dialogue")
 	_load_image(interact)
+	_set_btn_text(interact)
 	
 func _load_image(dict):
 	var path = dict.get("image")
 	var image = load(path)
 	_gigi_image.texture = image
+
+func _set_btn_text(dict):
+	var options = dict.get("options", [])
+	_gigi_opt1.text = options[0]["option1"]
+	_gigi_opt2.text = options[1]["option2"]
