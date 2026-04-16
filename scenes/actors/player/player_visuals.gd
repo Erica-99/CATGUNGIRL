@@ -11,12 +11,24 @@ extends Node3D
 @onready var gun_pivot = $ROOT_P/BODY_P/TORSO_P/GUN_P/GUN_AIM
 @onready var gun_component = $"../GunComponent"
 
+@onready var Playeroot = $".."
+var current_action 
+
 func _process(delta: float) -> void:
+	
 	gun_pivot.rotation.z = gun_component.rotation.z
 	if gun_pivot.rotation.z >= 90 or gun_pivot.rotation.z <= -90:
 		pass
+		
+	if current_action == 'playercrouch':
+		if Input.is_action_pressed("move_left") == true or Input.is_action_pressed("move_right") == true:
+			spriteanimator.play("Walk_Crouching")
+		else:
+			spriteanimator.play("Idle_Crouch")
+		pass
 
 func _on_movement_state_machine_state_changed(_prev: String, new: String) -> void:
+	current_action = new
 	print(new)
 	spriteanimator.play("RESET")
 	if new == 'playermove':
@@ -26,11 +38,13 @@ func _on_movement_state_machine_state_changed(_prev: String, new: String) -> voi
 		spriteanimator.play("Idle_Standing")
 		pass
 	elif new == 'playerjump':
+		spriteanimator.play("Jump")
 		pass
 	elif new == 'playerfall':
+		spriteanimator.play("Fall")
 		pass
 	elif new == 'playercrouch':
-		spriteanimator.play("Idle_Crouch")
+		
 		pass
 
 

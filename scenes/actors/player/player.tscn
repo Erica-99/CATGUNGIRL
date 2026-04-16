@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bwl0xbjx4446x" path="res://art/Idle/TestGunIdle_FullHD.png" id="5_cat03"]
 [ext_resource type="Script" uid="uid://8h705llnu2ce" path="res://scenes/actors/player/player_input.gd" id="6_5bhx7"]
 [ext_resource type="PackedScene" uid="uid://w5w2v43x13xk" path="res://scenes/components/dialogue_component/dialogue_component.tscn" id="6_qdyt2"]
+[ext_resource type="Texture2D" uid="uid://ckiyi0fdwuddq" path="res://art/FullTestSprites/Jump_FullHD.png" id="7_0e3lr"]
 [ext_resource type="Texture2D" uid="uid://rq3dg2dwh2x5" path="res://art/Running/TestTorsoRun_FullHD.png" id="7_e5w6i"]
 [ext_resource type="Script" uid="uid://v055xcit8y78" path="res://scenes/components/state_machine/states/player/player_idle.gd" id="7_fp13k"]
 [ext_resource type="Script" uid="uid://cio1svqx3j5hj" path="res://scenes/components/state_machine/states/player/player_move.gd" id="8_5bhx7"]
@@ -30,6 +31,33 @@
 [ext_resource type="Script" uid="uid://bpl2nhpm4ebce" path="res://scenes/components/state_machine/states/player/player_mantle.gd" id="15_068wj"]
 [ext_resource type="PackedScene" uid="uid://ifqobphukq76" path="res://scenes/components/gun_component/gun_component.tscn" id="16_qdyt2"]
 [ext_resource type="PackedScene" uid="uid://cmq1v8ob4m0w4" path="res://scenes/components/camera_component/camera_component.tscn" id="18_ffoq6"]
+
+[sub_resource type="Animation" id="Animation_u0jtt"]
+resource_name = "Fall"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BODY_P/TORSO_P/Torso_Anims:current_animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"IdleStand"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BODY_P/LEG_P/Leg_Anims:current_animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Fall"]
+}
 
 [sub_resource type="Animation" id="Animation_3f3m1"]
 resource_name = "Idle_Crouch"
@@ -84,6 +112,33 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"IdleStand"]
+}
+
+[sub_resource type="Animation" id="Animation_shibf"]
+resource_name = "Jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BODY_P/TORSO_P/Torso_Anims:current_animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"IdleStand"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BODY_P/LEG_P/Leg_Anims:current_animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Jump"]
 }
 
 [sub_resource type="Animation" id="Animation_haoly"]
@@ -170,8 +225,10 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7i6t6"]
 _data = {
+&"Fall": SubResource("Animation_u0jtt"),
 &"Idle_Crouch": SubResource("Animation_3f3m1"),
 &"Idle_Standing": SubResource("Animation_cat03"),
+&"Jump": SubResource("Animation_shibf"),
 &"RESET": SubResource("Animation_haoly"),
 &"Running_Standing": SubResource("Animation_gisjq"),
 &"Walk_Crouching": SubResource("Animation_sn63g")
@@ -239,6 +296,69 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0.275, -1.045, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_eltio"]
+resource_name = "Fall"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LEGS_SPRITE:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_0e3lr")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LEGS_SPRITE:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LEGS_SPRITE:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LEGS_SPRITE:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1, 7]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LEGS_SPRITE:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.085, -0.595, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_xsnmo"]
@@ -378,6 +498,72 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0.035, -0.745, 0)]
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0e3lr"]
+load_path = "res://.godot/imported/Jump_FullHD.png-c59501e60f0fb7abf4c2fbf4f054db83.s3tc.ctex"
+
+[sub_resource type="Animation" id="Animation_jk84i"]
+resource_name = "Jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LEGS_SPRITE:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_0e3lr")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LEGS_SPRITE:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LEGS_SPRITE:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LEGS_SPRITE:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LEGS_SPRITE:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.085, -0.595, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_llrf1"]
@@ -534,8 +720,10 @@ tracks/5/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_owjsm"]
 _data = {
 &"Crouch_Walk": SubResource("Animation_eh6yv"),
+&"Fall": SubResource("Animation_eltio"),
 &"IdleCrouch": SubResource("Animation_xsnmo"),
 &"IdleStand": SubResource("Animation_0e3lr"),
+&"Jump": SubResource("Animation_jk84i"),
 &"RESET": SubResource("Animation_llrf1"),
 &"Running": SubResource("Animation_t1vny")
 }
