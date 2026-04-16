@@ -34,6 +34,7 @@ var blackboard: Dictionary
 @onready var health_component = $HealthComponent
 
 func _ready() -> void:
+	Engine.max_fps = 60
 	blackboard = {
 	"actor": self,
 	"input_component": input_component,

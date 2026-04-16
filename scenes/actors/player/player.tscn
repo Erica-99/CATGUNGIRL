@@ -5,21 +5,24 @@
 [ext_resource type="Script" uid="uid://bjypb0bixh3rp" path="res://scenes/actors/player/player_visuals.gd" id="2_0w3ce"]
 [ext_resource type="Script" uid="uid://c71argnkra1em" path="res://scenes/actors/player/debug_state_display.gd" id="2_inh5e"]
 [ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="2_mpktj"]
-[ext_resource type="Texture2D" uid="uid://to4tdcv2w7d5" path="res://art/Idle/TestPantsIdle_FullHD.png" id="3_0w3ce"]
 [ext_resource type="Texture2D" uid="uid://cv4xgg1exucmj" path="res://art/FullTestSprites/PlayerSpriteTest1_FullHD.png" id="3_5mkge"]
+[ext_resource type="Texture2D" uid="uid://dp8grt3swvqtc" path="res://art/FullTestSprites/IdleTorso.png" id="3_cat03"]
 [ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="3_qdyt2"]
 [ext_resource type="Texture2D" uid="uid://d0frq8tdj8uxp" path="res://art/FullTestSprites/PlayerSpriteIdleTest1_FullHD.png" id="3_qxscg"]
 [ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="3_yg5k4"]
+[ext_resource type="Texture2D" uid="uid://dgi1xdr2sev85" path="res://art/FullTestSprites/LegsStandIdle_FullHD.png" id="4_cat03"]
+[ext_resource type="Texture2D" uid="uid://djlhyhr3ly78d" path="res://art/FullTestSprites/IdleCrouch_FullHD.png" id="4_e5w6i"]
 [ext_resource type="Texture2D" uid="uid://bqm8lf1ftxm2" path="res://art/Running/TestLegRun_FullHD.png" id="4_ffoq6"]
 [ext_resource type="PackedScene" uid="uid://c6wep4oftfyke" path="res://scenes/components/state_machine/state_machine.tscn" id="4_qdyt2"]
+[ext_resource type="Texture2D" uid="uid://dul0p7aflt05j" path="res://art/FullTestSprites/CrouchWalk_FullHD.png" id="4_t1vny"]
 [ext_resource type="PackedScene" uid="uid://bhbvwfn31wib0" path="res://scenes/components/insanity_component/insanity_component.tscn" id="5_5bhx7"]
 [ext_resource type="Texture2D" uid="uid://bwl0xbjx4446x" path="res://art/Idle/TestGunIdle_FullHD.png" id="5_cat03"]
 [ext_resource type="Script" uid="uid://8h705llnu2ce" path="res://scenes/actors/player/player_input.gd" id="6_5bhx7"]
-[ext_resource type="Texture2D" uid="uid://qoa7nxhgapkx" path="res://art/Idle/TestTorsoIdle_FullHD.png" id="6_7i6t6"]
 [ext_resource type="PackedScene" uid="uid://w5w2v43x13xk" path="res://scenes/components/dialogue_component/dialogue_component.tscn" id="6_qdyt2"]
 [ext_resource type="Texture2D" uid="uid://rq3dg2dwh2x5" path="res://art/Running/TestTorsoRun_FullHD.png" id="7_e5w6i"]
 [ext_resource type="Script" uid="uid://v055xcit8y78" path="res://scenes/components/state_machine/states/player/player_idle.gd" id="7_fp13k"]
 [ext_resource type="Script" uid="uid://cio1svqx3j5hj" path="res://scenes/components/state_machine/states/player/player_move.gd" id="8_5bhx7"]
+[ext_resource type="Texture2D" uid="uid://chqbxsitmc5vj" path="res://art/FullTestSprites/TorsoBehindRunning_FullHD.png" id="8_7i6t6"]
 [ext_resource type="Script" uid="uid://bep3raq0oatlk" path="res://scenes/actors/player/mantle_detector.gd" id="8_068wj"]
 [ext_resource type="Script" uid="uid://cphc3yxpolyei" path="res://scenes/components/state_machine/states/player/player_crouch.gd" id="10_i174x"]
 [ext_resource type="Script" uid="uid://vahtf825b586" path="res://scenes/components/state_machine/states/player/player_jump.gd" id="11_8bj4u"]
@@ -28,62 +31,334 @@
 [ext_resource type="PackedScene" uid="uid://ifqobphukq76" path="res://scenes/components/gun_component/gun_component.tscn" id="16_qdyt2"]
 [ext_resource type="PackedScene" uid="uid://cmq1v8ob4m0w4" path="res://scenes/components/camera_component/camera_component.tscn" id="18_ffoq6"]
 
-[sub_resource type="Animation" id="Animation_0w3ce"]
-resource_name = "Idle"
-length = 2.0
+[sub_resource type="Animation" id="Animation_3f3m1"]
+resource_name = "Idle_Crouch"
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BODY_P/TORSO_P/TORSO_SPRITE:frame")
+tracks/0/path = NodePath("BODY_P/TORSO_P/Torso_Anims:current_animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [10]
+"values": [&"IdleCrouch"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("BODY_P/LEG_P/LEGS_SPRITE:frame")
+tracks/1/path = NodePath("BODY_P/LEG_P/Leg_Anims:current_animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [10]
+"values": [&"IdleCrouch"]
+}
+
+[sub_resource type="Animation" id="Animation_cat03"]
+resource_name = "Idle_Standing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BODY_P/LEG_P/Leg_Anims:current_animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"IdleStand"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BODY_P/TORSO_P/Torso_Anims:current_animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"IdleStand"]
+}
+
+[sub_resource type="Animation" id="Animation_haoly"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BODY_P/LEG_P/Leg_Anims:current_animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"IdleStand"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BODY_P/TORSO_P/Torso_Anims:current_animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"IdleStand"]
+}
+
+[sub_resource type="Animation" id="Animation_gisjq"]
+resource_name = "Running_Standing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BODY_P/LEG_P/Leg_Anims:current_animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Running"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BODY_P/TORSO_P/Torso_Anims:current_animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"RunStand"]
+}
+
+[sub_resource type="Animation" id="Animation_sn63g"]
+resource_name = "Walk_Crouching"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BODY_P/LEG_P/Leg_Anims:current_animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Crouch_Walk"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BODY_P/TORSO_P/Torso_Anims:current_animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"IdleCrouch"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7i6t6"]
+_data = {
+&"Idle_Crouch": SubResource("Animation_3f3m1"),
+&"Idle_Standing": SubResource("Animation_cat03"),
+&"RESET": SubResource("Animation_haoly"),
+&"Running_Standing": SubResource("Animation_gisjq"),
+&"Walk_Crouching": SubResource("Animation_sn63g")
+}
+
+[sub_resource type="Animation" id="Animation_eh6yv"]
+resource_name = "Crouch_Walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LEGS_SPRITE:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_t1vny")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LEGS_SPRITE:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("BODY_P/TORSO_P/TORSO_SPRITE:texture")
+tracks/2/path = NodePath("LEGS_SPRITE:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_7i6t6")]
+"values": [8]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("BODY_P/LEG_P/LEGS_SPRITE:texture")
+tracks/3/path = NodePath("LEGS_SPRITE:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_0w3ce")]
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 29]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("FULLBODY_ANIMS:speed_scale")
+tracks/4/path = NodePath("LEGS_SPRITE:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.275, -1.045, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xsnmo"]
+resource_name = "IdleCrouch"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LEGS_SPRITE:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_e5w6i")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LEGS_SPRITE:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LEGS_SPRITE:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LEGS_SPRITE:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 29]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LEGS_SPRITE:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.035, -1.095, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0e3lr"]
+resource_name = "IdleStand"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LEGS_SPRITE:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_cat03")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LEGS_SPRITE:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LEGS_SPRITE:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LEGS_SPRITE:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 19]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Leg_Anims:speed_scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -95,245 +370,174 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("BODY_P/TORSO_P/GUN_P:position")
+tracks/5/path = NodePath("LEGS_SPRITE:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.235, 0.335, 0)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("BODY_P/TORSO_P:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("BODY_P/TORSO_P/TORSO_SPRITE:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.371, 0.374, 0)]
+"values": [Vector3(0.035, -0.745, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_ffoq6"]
+[sub_resource type="Animation" id="Animation_llrf1"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BODY_P/TORSO_P/TORSO_SPRITE:frame")
+tracks/0/path = NodePath("LEGS_SPRITE:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [10]
+"values": [ExtResource("4_ffoq6")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("BODY_P/LEG_P/LEGS_SPRITE:frame")
+tracks/1/path = NodePath("LEGS_SPRITE:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [3]
+"values": [4]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("BODY_P/TORSO_P/GUN_P:position")
+tracks/2/path = NodePath("LEGS_SPRITE:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.23544371, 0.20042482, 0)]
+"update": 1,
+"values": [5]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("BODY_P/TORSO_P/TORSO_SPRITE:texture")
+tracks/3/path = NodePath("LEGS_SPRITE:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("7_e5w6i")]
+"values": [0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("BODY_P/LEG_P/LEGS_SPRITE:texture")
+tracks/4/path = NodePath("Leg_Anims:speed_scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("4_ffoq6")]
+"update": 0,
+"values": [1.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("FULLBODY_ANIMS:speed_scale")
+tracks/5/path = NodePath("LEGS_SPRITE:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [2.445]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("BODY_P/TORSO_P:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
 "values": [Vector3(0, 0, 0)]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("BODY_P/TORSO_P/TORSO_SPRITE:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.37099403, 0.374, 0)]
-}
 
-[sub_resource type="Animation" id="Animation_cat03"]
+[sub_resource type="Animation" id="Animation_t1vny"]
 resource_name = "Running"
-length = 2.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BODY_P/LEG_P/LEGS_SPRITE:frame")
+tracks/0/path = NodePath("LEGS_SPRITE:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BODY_P/TORSO_P:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.08, 0.17, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("BODY_P/TORSO_P/TORSO_SPRITE:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("BODY_P/TORSO_P/TORSO_SPRITE:texture")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("7_e5w6i")]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("BODY_P/LEG_P/LEGS_SPRITE:texture")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("4_ffoq6")]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LEGS_SPRITE:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LEGS_SPRITE:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LEGS_SPRITE:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 19]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Leg_Anims:speed_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5]
+}
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("BODY_P/TORSO_P/GUN_P:position")
-tracks/5/interp = 0
+tracks/5/path = NodePath("LEGS_SPRITE:position")
+tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1, 1.3, 1.6, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0.235, 0.32, 0), Vector3(0.235, 0.13, 0), Vector3(0.235, 0.13, 0), Vector3(0.03, 0.08, 0), Vector3(0.03, 0.08, 0), Vector3(-0.12, 0.29, 0), Vector3(-0.120000005, 0.29, 0), Vector3(-0.120000005, 0.29, 0), Vector3(-0.06, 0.205, 0), Vector3(0.154, 0.157, 0), Vector3(0.235, 0.28, 0), Vector3(0.235, 0.28, 0)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("FULLBODY_ANIMS:speed_scale")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [2.445]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("BODY_P/TORSO_P/TORSO_SPRITE:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.215, 0.265, 0)]
+"values": [Vector3(0.035, -0.595, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_7i6t6"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_owjsm"]
 _data = {
-&"Idle": SubResource("Animation_0w3ce"),
-&"RESET": SubResource("Animation_ffoq6"),
-&"Running": SubResource("Animation_cat03")
+&"Crouch_Walk": SubResource("Animation_eh6yv"),
+&"IdleCrouch": SubResource("Animation_xsnmo"),
+&"IdleStand": SubResource("Animation_0e3lr"),
+&"RESET": SubResource("Animation_llrf1"),
+&"Running": SubResource("Animation_t1vny")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vp2uo"]
@@ -350,6 +554,341 @@ animations = [{
 "name": &"default",
 "speed": 30.0
 }]
+
+[sub_resource type="Animation" id="Animation_msxka"]
+resource_name = "IdleCrouch"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TORSOFORWARD_SPRITE:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.215, -0.305, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TORSOFORWARD_SPRITE:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 29]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TORSOFORWARD_SPRITE:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_cat03")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TORSOFORWARD_SPRITE:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TORSOFORWARD_SPRITE:hframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GUN_P:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.25, -0.37, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7i6t6"]
+resource_name = "IdleStand"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TORSOFORWARD_SPRITE:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_cat03")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TORSOFORWARD_SPRITE:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TORSOFORWARD_SPRITE:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TORSOFORWARD_SPRITE:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 29]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TORSOFORWARD_SPRITE:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.47, 0.32, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Torso_Anims:speed_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GUN_P:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.25, 0.27, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_e5w6i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TORSOFORWARD_SPRITE:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_e5w6i")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TORSOFORWARD_SPRITE:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TORSOFORWARD_SPRITE:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TORSOFORWARD_SPRITE:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TORSOFORWARD_SPRITE:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.11, 0.265, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Torso_Anims:speed_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GUN_P:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.25, 0.27, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_owjsm"]
+resource_name = "RunStand"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TORSOFORWARD_SPRITE:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_e5w6i")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TORSOFORWARD_SPRITE:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TORSOFORWARD_SPRITE:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TORSOFORWARD_SPRITE:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 19]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Torso_Anims:speed_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TORSOFORWARD_SPRITE:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.12, 0.385, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t1vny"]
+_data = {
+&"IdleCrouch": SubResource("Animation_msxka"),
+&"IdleStand": SubResource("Animation_7i6t6"),
+&"RESET": SubResource("Animation_e5w6i"),
+&"RunStand": SubResource("Animation_owjsm")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sn63g"]
 atlas = ExtResource("3_qxscg")
@@ -658,7 +1197,7 @@ size = Vector3(1.2752914, 3.192688, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_g2g7f"]
 size = Vector3(1.2752686, 3.1870117, 1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_cat03"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_7i6t6"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Player" type="CharacterBody3D" unique_id=1349193765 node_paths=PackedStringArray("movement_state_machine", "input_component", "mantle_detector", "feet_point")]
@@ -677,10 +1216,10 @@ script = ExtResource("2_0w3ce")
 [node name="ROOT_P" type="Node3D" parent="PlayerVisuals" unique_id=955164199]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6582274, 0)
 
-[node name="FULLBODY_ANIMS" type="AnimationPlayer" parent="PlayerVisuals/ROOT_P" unique_id=785074119]
+[node name="FullBody_Anims" type="AnimationPlayer" parent="PlayerVisuals/ROOT_P" unique_id=785074119]
 libraries/ = SubResource("AnimationLibrary_7i6t6")
-autoplay = &"Idle"
-speed_scale = 2.445
+autoplay = &"Idle_Standing"
+speed_scale = 3.0
 
 [node name="BODY_P" type="Node3D" parent="PlayerVisuals/ROOT_P" unique_id=505710075]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7436445, 0)
@@ -689,32 +1228,43 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7436445, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.101923466, 0)
 
 [node name="LEGS_SPRITE" type="Sprite3D" parent="PlayerVisuals/ROOT_P/BODY_P/LEG_P" unique_id=659750729]
-transform = Transform3D(0.305, 0, 0, 0, 0.305, 0, 0, 0, 0.305, 0.050334454, -0.75502634, 0)
+transform = Transform3D(0.305, 0, 0, 0, 0.305, 0, 0, 0, 0.305, 0, 0, 0)
 texture = ExtResource("4_ffoq6")
 hframes = 4
 vframes = 5
-frame = 3
+
+[node name="Leg_Anims" type="AnimationPlayer" parent="PlayerVisuals/ROOT_P/BODY_P/LEG_P" unique_id=894163017]
+libraries/ = SubResource("AnimationLibrary_owjsm")
 
 [node name="TORSO_P" type="Node3D" parent="PlayerVisuals/ROOT_P/BODY_P" unique_id=376914641]
-transform = Transform3D(1, 0, 0, 0, 1, -8.742278e-08, 0, 8.742278e-08, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, -8.742278e-08, 0, 8.742278e-08, 1, -0.003850758, 0.17000002, 0)
 
 [node name="GUN_P" type="Node3D" parent="PlayerVisuals/ROOT_P/BODY_P/TORSO_P" unique_id=462291408]
-transform = Transform3D(0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 0, 0, 1, 0.23544371, 0.20042482, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.27, 0)
 
 [node name="GUN_AIM" type="Node3D" parent="PlayerVisuals/ROOT_P/BODY_P/TORSO_P/GUN_P" unique_id=897534301]
-transform = Transform3D(0.71822345, -0.6958125, 0, 0.6958125, 0.71822345, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="GUN_SPRITE" type="AnimatedSprite3D" parent="PlayerVisuals/ROOT_P/BODY_P/TORSO_P/GUN_P/GUN_AIM" unique_id=834675638]
 transform = Transform3D(0.295, 0, 0, 0, 0.295, 0, 0, 0, 0.295, 0.90603113, 0.10067028, 0)
 sprite_frames = SubResource("SpriteFrames_0lsi7")
 frame_progress = 0.5361798
 
-[node name="TORSO_SPRITE" type="Sprite3D" parent="PlayerVisuals/ROOT_P/BODY_P/TORSO_P" unique_id=74113975]
-transform = Transform3D(0.34, 0, 0, 0, 0.34, 0, 0, 0, 0.34, -0.37099403, 0.374, 0)
+[node name="Torso_Anims" type="AnimationPlayer" parent="PlayerVisuals/ROOT_P/BODY_P/TORSO_P" unique_id=388747849]
+libraries/ = SubResource("AnimationLibrary_t1vny")
+
+[node name="TORSOFORWARD_SPRITE" type="Sprite3D" parent="PlayerVisuals/ROOT_P/BODY_P/TORSO_P" unique_id=74113975]
+transform = Transform3D(0.34, 0, 0, 0, 0.34, 0, 0, 0, 0.34, -0.11, 0.265, 0)
 texture = ExtResource("7_e5w6i")
 hframes = 5
 vframes = 4
-frame = 10
+frame = 1
+
+[node name="TORSOBEHIND_SPRITE" type="Sprite3D" parent="PlayerVisuals/ROOT_P/BODY_P/TORSO_P" unique_id=758854889]
+transform = Transform3D(0.34, 0, 0, 0, 0.34, 0, 0, 0, 0.34, 0.44809753, 0.1480149, 1.0227158e-08)
+visible = false
+texture = ExtResource("8_7i6t6")
+hframes = 6
+vframes = 5
 
 [node name="NECK_P" type="Node3D" parent="PlayerVisuals/ROOT_P/BODY_P/TORSO_P" unique_id=73984414]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21824265, 0.50923264, 0)
@@ -783,7 +1333,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 10)
 
 [node name="DialogueComponent" parent="." unique_id=1775697624 instance=ExtResource("6_qdyt2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4807317, 3.9423862, 0.09934664)
-texture = SubResource("ViewportTexture_cat03")
+texture = SubResource("ViewportTexture_7i6t6")
 
 [node name="MovementStateMachine" parent="." unique_id=1499026333 node_paths=PackedStringArray("initial_state") instance=ExtResource("4_qdyt2")]
 initial_state = NodePath("PlayerIdle")
@@ -813,7 +1363,7 @@ script = ExtResource("15_068wj")
 metadata/_custom_type_script = "uid://dropwvjh2s43u"
 
 [node name="GunComponent" parent="." unique_id=52176648 node_paths=PackedStringArray("team_component", "input_component") instance=ExtResource("16_qdyt2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2033757, 0.5754532, 0)
 team_component = NodePath("../TeamComponent")
 input_component = NodePath("../PlayerInput")
 aim_speed = 4.0
