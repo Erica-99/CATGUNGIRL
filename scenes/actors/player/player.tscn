@@ -1385,7 +1385,7 @@ size = Vector3(1.2752914, 3.192688, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_g2g7f"]
 size = Vector3(1.2752686, 3.1870117, 1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_7i6t6"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_0e3lr"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Player" type="CharacterBody3D" unique_id=1349193765 node_paths=PackedStringArray("movement_state_machine", "input_component", "mantle_detector", "feet_point")]
@@ -1517,11 +1517,12 @@ target_position = Vector3(0, -2, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6085612, 0)
 
 [node name="CameraComponent" parent="." unique_id=974394070 instance=ExtResource("18_ffoq6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 55.812668)
+fov = 26.8
 
 [node name="DialogueComponent" parent="." unique_id=1775697624 instance=ExtResource("6_qdyt2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4807317, 3.9423862, 0.09934664)
-texture = SubResource("ViewportTexture_7i6t6")
+texture = SubResource("ViewportTexture_0e3lr")
 
 [node name="MovementStateMachine" parent="." unique_id=1499026333 node_paths=PackedStringArray("initial_state") instance=ExtResource("4_qdyt2")]
 initial_state = NodePath("PlayerIdle")
