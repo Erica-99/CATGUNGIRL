@@ -17,6 +17,8 @@ extends Node3D
 @export var bullet_damage: float = 10.0		# bullet damage
 @export var bullet_knockback: float = 5.0	# knockback force (can remove)
 @export var bullet_scale: float = 1.0	# visual size of bullet 
+@export var recoil_amount: float = 0.15   # higher = more
+@export var recoil_recovery: float = 10.0 # higher = faster
 
 @export_group("Charged Shot")
 @export var charge_mode: Enums.ChargeMode = Enums.ChargeMode.AUTO_FIRE	# which charge mode is active (switch in inspector)
@@ -33,6 +35,7 @@ extends Node3D
 @export var charged_damage_max: float = 60.0
 @export var charged_bullet_scale_min: float = 1.5
 @export var charged_bullet_scale_max: float = 3.0
+@export var charged_recoil_multiplier: float = 2.0  # higher recoil for charged shot
 
 ## emitted every frame while charging, value is 0.0 to 1.0
 signal charge_progress_changed(progress: float)
@@ -42,6 +45,7 @@ signal charge_ended()
 signal enemy_hit(hurtbox: Area3D)
 
 var _fire_cooldown: float = 0.0	# counts down each frame, gun can't fire until it hits 0
+var _recoil_offset: float = 0.0	# current recoil 
 var _is_charging: bool = false	# is a charged shot being charged?
 var _charge_timer: float = 0.0	# how long (seconds) player has been charging
 
@@ -65,7 +69,8 @@ func _update_aim(mouse_world: Vector3, delta: float) -> void:
 	var direction = mouse_world - global_position
 	direction.z = 0.0
 	var target_angle = Vector2(direction.x, direction.y).angle()
-	rotation.z = lerp_angle(rotation.z, target_angle, aim_speed * delta)
+	rotation.z = lerp_angle(rotation.z, target_angle + _recoil_offset, aim_speed * delta)
+	_recoil_offset = lerpf(_recoil_offset, 0.0, recoil_recovery * delta)
 	scale = Vector3(1.0, 1.0, 1.0)
 
 
@@ -125,6 +130,7 @@ func _try_fire() -> void:
 	# resets firing cooldown
 	_fire_cooldown = fire_rate
 	_spawn_bullet(bullet_damage, bullet_scale)
+	_recoil_offset += recoil_amount * sign(global_transform.basis.x.x)
 
 
 func _fire_charged(progress: float) -> void:
@@ -140,6 +146,7 @@ func _fire_charged(progress: float) -> void:
 	var damage = lerpf(charged_damage_min, charged_damage_max, progress)
 	var size = lerpf(charged_bullet_scale_min, charged_bullet_scale_max, progress)
 	_spawn_bullet(damage, size)
+	_recoil_offset += recoil_amount * charged_recoil_multiplier * progress * sign(global_transform.basis.x.x)
 
 
 func _spawn_bullet(damage: float, size: float) -> void:
