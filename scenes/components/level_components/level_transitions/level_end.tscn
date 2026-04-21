@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://11pckncgaxu4"]
+
+[ext_resource type="Script" uid="uid://cat2qgl3rgip4" path="res://scenes/components/level_components/level_transitions/level_end.gd" id="1_2uejt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_55n08"]
+
+[node name="LevelEnd" type="Area3D" unique_id=914563996]
+editor_description = "An area that loads a new scene when the player enters it. To be used at the end of each level."
+collision_layer = 64
+collision_mask = 2
+script = ExtResource("1_2uejt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=380816701]
+shape = SubResource("BoxShape3D_55n08")
+debug_color = Color(0.8665271, 0.00056524755, 0.86055505, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

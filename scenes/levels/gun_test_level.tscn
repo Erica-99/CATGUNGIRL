@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://d0r6ci6vp37e" path="res://scenes/actors/enemies/enemy.tscn" id="2_ns2n8"]
 [ext_resource type="Script" uid="uid://crgmsaelptmly" path="res://scenes/actors/enemies/dummy_target.gd" id="3_c3h4u"]
 [ext_resource type="PackedScene" uid="uid://c5wd5lkkbbj7y" path="res://scenes/components/charge_bar/charge_bar.tscn" id="4_ns2n8"]
+[ext_resource type="PackedScene" uid="uid://11pckncgaxu4" path="res://scenes/components/level_components/level_transitions/level_end.tscn" id="5_c3h4u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l1vaq"]
 size = Vector3(40, 0.5, 2)
@@ -34,6 +35,10 @@ projection = 1
 size = 10.0
 
 [node name="ChargeBar" parent="." unique_id=783555859 instance=ExtResource("4_ns2n8")]
+
+[node name="LevelEnd" parent="." unique_id=914563996 instance=ExtResource("5_c3h4u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.584562, 0, 0)
+level_name = "test1"
 
 [connection signal="player_charge_ended" from="Player" to="ChargeBar" method="on_charge_ended "]
 [connection signal="player_charge_progress" from="Player" to="ChargeBar" method="on_charge_progress"]
