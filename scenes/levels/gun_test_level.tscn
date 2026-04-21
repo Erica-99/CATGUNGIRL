@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://d0r6ci6vp37e" path="res://scenes/actors/enemies/enemy.tscn" id="2_ns2n8"]
 [ext_resource type="Script" uid="uid://crgmsaelptmly" path="res://scenes/actors/enemies/dummy_target.gd" id="3_c3h4u"]
 [ext_resource type="PackedScene" uid="uid://c5wd5lkkbbj7y" path="res://scenes/components/charge_bar/charge_bar.tscn" id="4_ns2n8"]
+[ext_resource type="PackedScene" uid="uid://11pckncgaxu4" path="res://scenes/components/level_components/level_transitions/level_end.tscn" id="5_c3h4u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l1vaq"]
 size = Vector3(40, 0.5, 2)
@@ -24,7 +25,7 @@ mesh = SubResource("BoxMesh_vcw55")
 
 [node name="Player" parent="." unique_id=1349193765 instance=ExtResource("1_vcef3")]
 
-[node name="GunComponent" parent="Player" index="12" unique_id=52176648]
+[node name="GunComponent" parent="Player" index="13" unique_id=52176648]
 charge_mode = 1
 
 [node name="DummyTarget" parent="." unique_id=1506947017 instance=ExtResource("2_ns2n8")]
@@ -37,6 +38,10 @@ projection = 1
 size = 10.0
 
 [node name="ChargeBar" parent="." unique_id=783555859 instance=ExtResource("4_ns2n8")]
+
+[node name="LevelEnd" parent="." unique_id=914563996 instance=ExtResource("5_c3h4u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.584562, 0, 0)
+level_name = "test1"
 
 [connection signal="charge_ended" from="Player/GunComponent" to="ChargeBar" method="_on_gun_component_charge_ended"]
 [connection signal="charge_ended" from="Player/GunComponent" to="ChargeBar" method="on_charge_ended"]
