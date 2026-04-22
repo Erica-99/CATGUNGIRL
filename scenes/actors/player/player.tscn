@@ -32,6 +32,21 @@
 [ext_resource type="PackedScene" uid="uid://ifqobphukq76" path="res://scenes/components/gun_component/gun_component.tscn" id="16_qdyt2"]
 [ext_resource type="PackedScene" uid="uid://cmq1v8ob4m0w4" path="res://scenes/components/camera_component/camera_component.tscn" id="18_ffoq6"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vp2uo"]
+atlas = ExtResource("5_cat03")
+region = Rect2(0, 0, 770, 280)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0lsi7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vp2uo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+
 [sub_resource type="Animation" id="Animation_u0jtt"]
 resource_name = "Fall"
 tracks/0/type = "value"
@@ -295,7 +310,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.275, -1.045, 0)]
+"values": [Vector3(0.005, -1.045, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_eltio"]
@@ -421,7 +436,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.035, -1.095, 0)]
+"values": [Vector3(-0.145, -1.095, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_0e3lr"]
@@ -728,21 +743,6 @@ _data = {
 &"Running": SubResource("Animation_t1vny")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vp2uo"]
-atlas = ExtResource("5_cat03")
-region = Rect2(0, 0, 770, 280)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_0lsi7"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vp2uo")
-}],
-"loop": true,
-"name": &"default",
-"speed": 30.0
-}]
-
 [sub_resource type="Animation" id="Animation_msxka"]
 resource_name = "IdleCrouch"
 loop_mode = 1
@@ -756,7 +756,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.215, -0.305, 0)]
+"values": [Vector3(-0.485, -0.305, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -809,14 +809,26 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("GUN_P:position")
+tracks/5/path = NodePath("../../GUN_P:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.25, -0.37, 0)]
+"values": [Vector3(-0.135, 1.54, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../../../GunComponent:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.203, -0.02, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_7i6t6"]
@@ -897,14 +909,26 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("GUN_P:position")
+tracks/6/path = NodePath("../../GUN_P:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.25, 0.27, 0)]
+"values": [Vector3(-0.005, 2.265, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../../../../GunComponent:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.2033757, 0.5754532, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_e5w6i"]
@@ -984,7 +1008,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("GUN_P:position")
+tracks/6/path = NodePath("../../GUN_P:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -992,6 +1016,18 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0.25, 0.27, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../../../../GunComponent:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.2033757, 0.5754532, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_owjsm"]
@@ -1072,10 +1108,22 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("GUN_P:position")
+tracks/6/path = NodePath("../../GUN_P:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.005, 2.265, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../../../../GunComponent:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(),
 "transitions": PackedFloat32Array(),
 "update": 0,
@@ -1416,6 +1464,16 @@ script = ExtResource("2_0w3ce")
 [node name="ROOT_P" type="Node3D" parent="PlayerVisuals" unique_id=955164199]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6582274, 0)
 
+[node name="GUN_P" type="Node3D" parent="PlayerVisuals/ROOT_P" unique_id=462291408]
+transform = Transform3D(1, 0, 0, 0, 1, -8.742278e-08, 0, 8.742278e-08, 1, 0.25, 0.27, 0)
+
+[node name="GUN_AIM" type="Node3D" parent="PlayerVisuals/ROOT_P/GUN_P" unique_id=897534301]
+
+[node name="GUN_SPRITE" type="AnimatedSprite3D" parent="PlayerVisuals/ROOT_P/GUN_P/GUN_AIM" unique_id=834675638]
+transform = Transform3D(0.295, 0, 0, 0, 0.295, 0, 0, 0, 0.295, 0.90603113, 0.10067028, 0)
+sprite_frames = SubResource("SpriteFrames_0lsi7")
+frame_progress = 0.5361798
+
 [node name="FullBody_Anims" type="AnimationPlayer" parent="PlayerVisuals/ROOT_P" unique_id=785074119]
 libraries/ = SubResource("AnimationLibrary_7i6t6")
 autoplay = &"Idle_Standing"
@@ -1438,16 +1496,6 @@ libraries/ = SubResource("AnimationLibrary_owjsm")
 
 [node name="TORSO_P" type="Node3D" parent="PlayerVisuals/ROOT_P/BODY_P" unique_id=376914641]
 transform = Transform3D(1, 0, 0, 0, 1, -8.742278e-08, 0, 8.742278e-08, 1, -0.003850758, 0.17000002, 0)
-
-[node name="GUN_P" type="Node3D" parent="PlayerVisuals/ROOT_P/BODY_P/TORSO_P" unique_id=462291408]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.27, 0)
-
-[node name="GUN_AIM" type="Node3D" parent="PlayerVisuals/ROOT_P/BODY_P/TORSO_P/GUN_P" unique_id=897534301]
-
-[node name="GUN_SPRITE" type="AnimatedSprite3D" parent="PlayerVisuals/ROOT_P/BODY_P/TORSO_P/GUN_P/GUN_AIM" unique_id=834675638]
-transform = Transform3D(0.295, 0, 0, 0, 0.295, 0, 0, 0, 0.295, 0.90603113, 0.10067028, 0)
-sprite_frames = SubResource("SpriteFrames_0lsi7")
-frame_progress = 0.5361798
 
 [node name="Torso_Anims" type="AnimationPlayer" parent="PlayerVisuals/ROOT_P/BODY_P/TORSO_P" unique_id=388747849]
 libraries/ = SubResource("AnimationLibrary_t1vny")
