@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="2_mpktj"]
 [ext_resource type="Texture2D" uid="uid://cv4xgg1exucmj" path="res://art/FullTestSprites/PlayerSpriteTest1_FullHD.png" id="3_5mkge"]
 [ext_resource type="Texture2D" uid="uid://dp8grt3swvqtc" path="res://art/FullTestSprites/IdleTorso.png" id="3_cat03"]
+[ext_resource type="Texture2D" uid="uid://y3vda2cs50if" path="res://art/FullTestSprites/GunArm_FullHD.png" id="3_llrf1"]
 [ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="3_qdyt2"]
 [ext_resource type="Texture2D" uid="uid://d0frq8tdj8uxp" path="res://art/FullTestSprites/PlayerSpriteIdleTest1_FullHD.png" id="3_qxscg"]
 [ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="3_yg5k4"]
@@ -16,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://c6wep4oftfyke" path="res://scenes/components/state_machine/state_machine.tscn" id="4_qdyt2"]
 [ext_resource type="Texture2D" uid="uid://dul0p7aflt05j" path="res://art/FullTestSprites/CrouchWalk_FullHD.png" id="4_t1vny"]
 [ext_resource type="PackedScene" uid="uid://bhbvwfn31wib0" path="res://scenes/components/insanity_component/insanity_component.tscn" id="5_5bhx7"]
-[ext_resource type="Texture2D" uid="uid://bwl0xbjx4446x" path="res://art/Idle/TestGunIdle_FullHD.png" id="5_cat03"]
 [ext_resource type="Script" uid="uid://8h705llnu2ce" path="res://scenes/actors/player/player_input.gd" id="6_5bhx7"]
 [ext_resource type="PackedScene" uid="uid://w5w2v43x13xk" path="res://scenes/components/dialogue_component/dialogue_component.tscn" id="6_qdyt2"]
 [ext_resource type="Texture2D" uid="uid://ckiyi0fdwuddq" path="res://art/FullTestSprites/Jump_FullHD.png" id="7_0e3lr"]
@@ -32,20 +32,59 @@
 [ext_resource type="PackedScene" uid="uid://ifqobphukq76" path="res://scenes/components/gun_component/gun_component.tscn" id="16_qdyt2"]
 [ext_resource type="PackedScene" uid="uid://cmq1v8ob4m0w4" path="res://scenes/components/camera_component/camera_component.tscn" id="18_ffoq6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vp2uo"]
-atlas = ExtResource("5_cat03")
-region = Rect2(0, 0, 770, 280)
+[sub_resource type="Animation" id="Animation_75awx"]
+resource_name = "Fire"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GUN_SPRITE:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3, 9]
+}
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_0lsi7"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vp2uo")
-}],
-"loop": true,
-"name": &"default",
-"speed": 30.0
-}]
+[sub_resource type="Animation" id="Animation_kn7dg"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GUN_SPRITE:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+
+[sub_resource type="Animation" id="Animation_fqgpy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GUN_SPRITE:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_75awx"]
+_data = {
+&"Fire": SubResource("Animation_75awx"),
+&"Idle": SubResource("Animation_kn7dg"),
+&"RESET": SubResource("Animation_fqgpy")
+}
 
 [sub_resource type="Animation" id="Animation_u0jtt"]
 resource_name = "Fall"
@@ -1469,10 +1508,16 @@ transform = Transform3D(1, 0, 0, 0, 1, -8.742278e-08, 0, 8.742278e-08, 1, 0.25, 
 
 [node name="GUN_AIM" type="Node3D" parent="PlayerVisuals/ROOT_P/GUN_P" unique_id=897534301]
 
-[node name="GUN_SPRITE" type="AnimatedSprite3D" parent="PlayerVisuals/ROOT_P/GUN_P/GUN_AIM" unique_id=834675638]
-transform = Transform3D(0.295, 0, 0, 0, 0.295, 0, 0, 0, 0.295, 0.90603113, 0.10067028, 0)
-sprite_frames = SubResource("SpriteFrames_0lsi7")
-frame_progress = 0.5361798
+[node name="GUN_SPRITE" type="Sprite3D" parent="PlayerVisuals/ROOT_P/GUN_P/GUN_AIM" unique_id=1432500221]
+transform = Transform3D(0.295, 0, 0, 0, 0.295, 0, 0, 0, 0.295, 0.2298541, 0.02736634, 6.408431e-09)
+offset = Vector2(249.715, 126.61)
+texture = ExtResource("3_llrf1")
+hframes = 5
+vframes = 6
+frame = 15
+
+[node name="Hand_Anims" type="AnimationPlayer" parent="PlayerVisuals/ROOT_P/GUN_P/GUN_AIM" unique_id=1099920691]
+libraries/ = SubResource("AnimationLibrary_75awx")
 
 [node name="FullBody_Anims" type="AnimationPlayer" parent="PlayerVisuals/ROOT_P" unique_id=785074119]
 libraries/ = SubResource("AnimationLibrary_7i6t6")

@@ -54,10 +54,10 @@ func _on_player_facing_changed(new_facing: float) -> void:
 		leg_pivot.scale.x = -1
 		torso_pivot.scale.x = -1
 		gun_pivot.scale.x = 1
-		hand_sprite.flip_v = true
+		gun_pivot.scale.y = -1
 	else:
 		leg_pivot.scale.x = 1
 		torso_pivot.scale.x = 1
 		gun_pivot.scale.x = 1
-		hand_sprite.flip_v = false
+		gun_pivot.scale.y = 1
 	pass # Replace with function body.
