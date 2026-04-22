@@ -9,10 +9,12 @@
 script = ExtResource("1_4r8id")
 
 [node name="HurtboxComponent" parent="." unique_id=338394069 node_paths=PackedStringArray("team_component", "health_component") instance=ExtResource("1_04ohv")]
+priority = 1
 team_component = NodePath("../TeamComponent")
 health_component = NodePath("../HealthComponent")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtboxComponent" unique_id=1550539101]
+[node name="HurtboxCollision" type="CollisionShape3D" parent="HurtboxComponent" unique_id=1550539101]
+debug_color = Color(0.87424856, 0.2815346, 0.52235734, 0.41960785)
 
 [node name="TeamComponent" parent="." unique_id=2076917082 instance=ExtResource("3_xjbuv")]
 
@@ -20,6 +22,11 @@ health_component = NodePath("../HealthComponent")
 starting_health = 20.0
 max_health = 20.0
 healable = false
+
+[node name="InternalArea" type="Area3D" parent="." unique_id=389054118]
+
+[node name="InternalCollision" type="CollisionShape3D" parent="InternalArea" unique_id=1191784923]
+debug_color = Color(0.4184591, 0.60477525, 0, 0.41960785)
 
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]
