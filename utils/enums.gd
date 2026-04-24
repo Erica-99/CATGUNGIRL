@@ -28,3 +28,8 @@ enum ChargeMode {
 	AUTO_FIRE,   ## right click -> charges for a fixed duration -> auto fires
 	HOLD_TO_FIRE, ## hold right click -> charge builds up -> release to fire
 }
+
+enum InteractableType {
+	DOOR,
+	CONSOLE,
+}

@@ -3,8 +3,6 @@
 [ext_resource type="Script" uid="uid://i7btqfyk8nbs" path="res://scenes/components/interactable_component/interactable_component.gd" id="1_fodkk"]
 [ext_resource type="PackedScene" uid="uid://w5w2v43x13xk" path="res://scenes/components/dialogue_component/dialogue_component.tscn" id="2_eyvim"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_fodkk"]
-
 [sub_resource type="ViewportTexture" id="ViewportTexture_eyvim"]
 viewport_path = NodePath("SubViewport")
 
@@ -14,10 +12,7 @@ script = ExtResource("1_fodkk")
 [node name="Interaction Range" type="Area3D" parent="." unique_id=2119076624]
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interaction Range" unique_id=432305174]
-shape = SubResource("BoxShape3D_fodkk")
-
-[node name="DialogueRenderer" parent="Interaction Range/CollisionShape3D" unique_id=780065543 instance=ExtResource("2_eyvim")]
+[node name="DialogueRenderer" parent="Interaction Range" unique_id=780065543 instance=ExtResource("2_eyvim")]
 texture = SubResource("ViewportTexture_eyvim")
 size_of_viewport = Vector2(200, 200)
 base_transparency_speed = 1.0

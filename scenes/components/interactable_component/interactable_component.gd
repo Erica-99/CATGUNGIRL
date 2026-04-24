@@ -1,11 +1,9 @@
 extends Node3D
 @onready var interaction_range: Area3D = $"Interaction Range"
-@onready var collision: CollisionShape3D = $"Interaction Range/CollisionShape3D"
 @onready var dialogue_renderer: Sprite3D = $"Interaction Range/CollisionShape3D/DialogueRenderer"
 
-@export var offset_x_amount: float = 0.0
-@export var offset_y_amount: float = 0.0
-@export var offset_z_amount: float = 0.0
+@export var interactable_type: Enums.InteractableType = Enums.InteractableType.DOOR
+@export var interaction_distance: float = 3.0
 
 var parent_reference
 var player_reference
@@ -16,25 +14,38 @@ func _ready() -> void:
 	parent_reference = get_parent()
 	var parent_mesh_children = parent_reference.find_children("*", "MeshInstance3D", false)
 	if parent_mesh_children.size() > 0:
-		_calculate_interaction_zone(parent_mesh_children[0])
+		_calculate_interaction_zone(parent_mesh_children[0], false)
 
-func _calculate_interaction_zone(child):
-	# ts gave me an aneurism
+func _calculate_interaction_zone(child, is_centred):
+	#https://forum.godotengine.org/t/is-there-a-way-to-get-the-size-of-a-3d-mesh/23154/3
 	var mesh_box = child.get_aabb().size
-	mesh_size = mesh_box
+	print(mesh_box)
 	
-	var start_interaction_range: Vector3 = Vector3(child.global_position.x, child.global_position.y, 0)
+	var collision = CollisionShape3D.new()
+	collision.shape = BoxShape3D.new()
+	interaction_range.add_child(collision)
+	#collision.shape.size = mesh_box
 	
-	var distance_between: float = start_interaction_range.distance_to(child.global_position)
+	if interactable_type == Enums.InteractableType.CONSOLE:
+		# old shit remove later
+		#var start_interaction_range: Vector3 = Vector3(child.global_position.x, child.global_position.y, child.global_position.z)
+		#var distance_between: float = start_interaction_range.distance_to(child.global_position)
+		#mesh_box.x += distance_between
+		#mesh_box.y += offset_y_amount
+		#mesh_box.z += offset_z_amount
+		#var offsets = Vector3(offset_x_amount, offset_y_amount, distance_between)
+		#collision.shape.size += offsets
+		
+		collision.shape.size = Vector3(mesh_box.z, mesh_box.y, interaction_distance)
+		collision.position = Vector3(0, 0, interaction_distance/2)
+	else:
+		collision.shape.size = Vector3(mesh_box.x, mesh_box.y, interaction_distance)
+		#collision.position = Vector3(0, 0, interaction_distance/2)
+		#var offsets = Vector3(1, 1, 1)
+		#collision.shape.size = offsets
 	
-	mesh_box.x += distance_between
-	mesh_box.y += offset_y_amount
-	mesh_box.z += offset_z_amount
-	
-	collision.global_position = start_interaction_range
-	
-	collision.shape.size = mesh_box
-	collision.rotation = child.rotation
+	#collision.rotation = child.rotation
+	print(collision.shape.size)
 
 
 func _process(delta: float) -> void:
@@ -48,10 +59,10 @@ func _on_interaction_range_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		player_in_range = true
 		player_reference = body
-		dialogue_renderer._add_interact_bubble()
+		#dialogue_renderer._add_interact_bubble()
 
 
 func _on_interaction_range_body_exited(body: Node3D) -> void:
 	if body.name == "Player":
 		player_in_range = false
-		dialogue_renderer._remove_bubbles()
+		#dialogue_renderer._remove_bubbles()
