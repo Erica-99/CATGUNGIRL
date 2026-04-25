@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://crng4f3f2avnf" path="res://icon.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://cabb16sxnh4bu" path="res://scenes/actors/player/player.gd" id="1_qdyt2"]
-[ext_resource type="Script" uid="uid://bjypb0bixh3rp" path="res://scenes/actors/player/player_visuals.gd" id="2_0w3ce"]
-[ext_resource type="Script" uid="uid://c71argnkra1em" path="res://scenes/actors/player/debug_state_display.gd" id="2_inh5e"]
+[ext_resource type="Script" path="res://scenes/actors/player/player_visuals.gd" id="2_0w3ce"]
+[ext_resource type="Script" path="res://scenes/actors/player/debug_state_display.gd" id="2_inh5e"]
 [ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="2_mpktj"]
 [ext_resource type="Texture2D" uid="uid://to4tdcv2w7d5" path="res://art/Idle/TestPantsIdle_FullHD.png" id="3_0w3ce"]
 [ext_resource type="Texture2D" uid="uid://cv4xgg1exucmj" path="res://art/FullTestSprites/PlayerSpriteTest1_FullHD.png" id="3_5mkge"]
@@ -20,11 +20,11 @@
 [ext_resource type="Texture2D" uid="uid://rq3dg2dwh2x5" path="res://art/Running/TestTorsoRun_FullHD.png" id="7_e5w6i"]
 [ext_resource type="Script" uid="uid://v055xcit8y78" path="res://scenes/components/state_machine/states/player/player_idle.gd" id="7_fp13k"]
 [ext_resource type="Script" uid="uid://cio1svqx3j5hj" path="res://scenes/components/state_machine/states/player/player_move.gd" id="8_5bhx7"]
-[ext_resource type="Script" uid="uid://bep3raq0oatlk" path="res://scenes/actors/player/mantle_detector.gd" id="8_068wj"]
-[ext_resource type="Script" uid="uid://cphc3yxpolyei" path="res://scenes/components/state_machine/states/player/player_crouch.gd" id="10_i174x"]
-[ext_resource type="Script" uid="uid://vahtf825b586" path="res://scenes/components/state_machine/states/player/player_jump.gd" id="11_8bj4u"]
-[ext_resource type="Script" uid="uid://cs2vma24rddcy" path="res://scenes/components/state_machine/states/player/player_fall.gd" id="13_hcvpp"]
-[ext_resource type="Script" uid="uid://bpl2nhpm4ebce" path="res://scenes/components/state_machine/states/player/player_mantle.gd" id="15_068wj"]
+[ext_resource type="Script" path="res://scenes/actors/player/mantle_detector.gd" id="8_068wj"]
+[ext_resource type="Script" path="res://scenes/components/state_machine/states/player/player_crouch.gd" id="10_i174x"]
+[ext_resource type="Script" path="res://scenes/components/state_machine/states/player/player_jump.gd" id="11_8bj4u"]
+[ext_resource type="Script" path="res://scenes/components/state_machine/states/player/player_fall.gd" id="13_hcvpp"]
+[ext_resource type="Script" path="res://scenes/components/state_machine/states/player/player_mantle.gd" id="15_068wj"]
 [ext_resource type="PackedScene" uid="uid://ifqobphukq76" path="res://scenes/components/gun_component/gun_component.tscn" id="16_qdyt2"]
 [ext_resource type="PackedScene" uid="uid://cmq1v8ob4m0w4" path="res://scenes/components/camera_component/camera_component.tscn" id="18_ffoq6"]
 
@@ -661,7 +661,7 @@ size = Vector3(1.2752686, 3.1870117, 1)
 [sub_resource type="ViewportTexture" id="ViewportTexture_cat03"]
 viewport_path = NodePath("SubViewport")
 
-[node name="Player" type="CharacterBody3D" unique_id=1349193765 node_paths=PackedStringArray("movement_state_machine", "input_component", "mantle_detector", "feet_point")]
+[node name="Player" type="CharacterBody3D" unique_id=1349193765 node_paths=PackedStringArray("movement_state_machine", "input_component", "mantle_detector", "feet_point") groups=["player"]]
 collision_layer = 2
 axis_lock_linear_z = true
 platform_floor_layers = 1
