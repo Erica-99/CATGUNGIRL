@@ -14,6 +14,7 @@ var centred_position: Vector2 = Vector2.ZERO
 var rate_of_transparency: float = 0
 var can_disappear: bool = false
 var base_transparency_speed: float = 4.0
+var type = Enums.BubbleType.RUNTIME
 
 # signals
 signal is_transparent
@@ -34,6 +35,11 @@ func _process(delta: float) -> void:
 # set text lmao
 func _set_text(text: String) -> void:
 	rich_text_label.text = text
+
+func _set_type(type: Enums.BubbleType) -> void:
+	type = type
+	#if type == Enums.BubbleType.SYSTEM:
+		#set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
 
 # god i hate the name of this function - pls rename it if you think of smth better
 # all this does is get the offset coordinates so to centre the bubble around its original position

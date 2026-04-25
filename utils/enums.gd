@@ -33,3 +33,8 @@ enum InteractableType {
 	DOOR,
 	CONSOLE,
 }
+
+enum BubbleType {
+	RUNTIME,
+	SYSTEM,
+}

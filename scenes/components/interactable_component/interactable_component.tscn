@@ -12,9 +12,9 @@ script = ExtResource("1_fodkk")
 [node name="Interaction Range" type="Area3D" parent="." unique_id=2119076624]
 collision_mask = 2
 
-[node name="DialogueRenderer" parent="Interaction Range" unique_id=780065543 instance=ExtResource("2_eyvim")]
+[node name="DialogueComponent" parent="." unique_id=780065543 instance=ExtResource("2_eyvim")]
 texture = SubResource("ViewportTexture_eyvim")
-size_of_viewport = Vector2(200, 200)
+size_of_viewport = Vector2(200, 100)
 base_transparency_speed = 1.0
 
 [connection signal="body_entered" from="Interaction Range" to="." method="_on_interaction_range_body_entered"]

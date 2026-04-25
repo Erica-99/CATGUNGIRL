@@ -53,6 +53,11 @@ func _on_timer_timeout() -> void:
 		# restart timer
 		timer.start(randf_range(dialogue_renderer.min_dialogue_elapsed_time, dialogue_renderer.max_dialogue_elapsed_time))
 
+
+func _clear_all_bubbles():
+	for child in get_children():
+		_remove_bubble(child)
+
 # remove bubble once transparency is complete
 # ive added this to run in this component rather than the child because I use this as my trigger
 # to update all dialogue bubble positions (rather than the inefficiencies of using process())
@@ -60,9 +65,14 @@ func _remove_bubble(child):
 	child.queue_free()
 	_update_bubble_positions()
 
-func _add_bubble(dialogue: String):
+func _add_bubble(dialogue: String, is_system_popup: bool = false):
 	var bubble = dialogue_bubble_prefab.instantiate()
 	bubble.base_transparency_speed = dialogue_renderer.base_transparency_speed
+	
+	if is_system_popup:
+		_clear_all_bubbles()
+		bubble._set_type(Enums.BubbleType.SYSTEM)
+	
 	add_child(bubble)
 	bubble._set_text(dialogue)
 	if dialogue_renderer._is_attached_to_entity():
