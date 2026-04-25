@@ -5,7 +5,8 @@ var _onDate = false
 var _dialogue_loaded
 var _options
 var _dialogue_id = "001"
-var _delay = 3
+## You can change this to however long you want before the popup closes
+var _delay = 2
 
 ## Gigi's variables that will be changed
 @onready var _gigi_text = $GigiDialogue/gigi_txt_bgd/gigi_txt
@@ -21,7 +22,7 @@ func _ready() -> void:
 	## Allow the button presses to be read
 	_gigi_opt1.connect("pressed", _option1_pressed, CONNECT_PERSIST)
 	_gigi_opt2.connect("pressed", _option2_pressed, CONNECT_PERSIST)
-	
+
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("gigi_show"):
@@ -30,9 +31,7 @@ func _process(delta: float) -> void:
 		_onDate = !_onDate
 		if _onDate:
 			_date_begin()
-		else:
-			_date_close()
-	
+
 
 ## Make UI visible and show mouse
 func _date_begin():
@@ -42,6 +41,7 @@ func _date_begin():
 
 ## Hide UI and hide mouse (position can still be tracked)
 func  _date_close():
+	await get_tree().create_timer(_delay).timeout
 	visible = false
 	_onDate = false
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
@@ -61,17 +61,30 @@ func _fetch_dialogue_by_id(id):
 			print(id, " has been called")
 			return line
 	return null
-	
+
+
 func _set_gigi():
 	## Sets the UI to displayed the loaded interaction
 	var interact = _fetch_dialogue_by_id(_dialogue_id)
-	_options = interact.get("options", [])
-	_gigi_text.text = interact.get("dialogue")
-	_load_image(interact)
-	_set_btn_text(interact)
-	_gigi_opt1.visible = true
-	_gigi_opt2.visible = true
-	
+	print(interact)
+	## Checks to see if the interaction has multiple lines of dialogue
+	if (interact.get("has_multiple") == "true"):
+		print("Multiple lines detected")
+		var _dialogue = interact.get("interaction", [])
+		for i in interact.get("interaction"):
+			print("THIS WOULD BE A LINE PRINT")
+			_load_image(i)
+			_gigi_text.text = i["dialogue"]
+			await get_tree().create_timer(_delay).timeout
+		_dialogue_id = interact.get("next_id")
+		_date_close()
+	else:
+		_option_check(interact)
+		_gigi_text.text = interact.get("dialogue")
+		_load_image(interact)
+		_set_btn_text(interact)
+		_dialogue_id = interact.get("next_id")
+
 func _load_image(dict):
 	##Gets the file path of the image and displays
 	var path = dict.get("image")
@@ -83,6 +96,12 @@ func _set_btn_text(dict):
 	_gigi_opt1.text = _options[0]["dialogue"]
 	_gigi_opt2.text = _options[1]["dialogue"]
 
+func _option_check(dict):
+	if dict.get("has_options") == "true":
+		_options = dict.get("options", [])
+		_gigi_opt1.visible = true
+		_gigi_opt2.visible = true
+
 func _option1_pressed():
 	## Set the image and the text for the specific option chosen
 	_gigi_opt1.visible = false
@@ -90,8 +109,6 @@ func _option1_pressed():
 	_gigi_text.text = _options[0]["response"]
 	_load_image(_options[0])
 	_dialogue_id = _options[0]["next_id"]
-	## Wait 3 seconds, then UI disappears
-	await get_tree().create_timer(_delay).timeout
 	_date_close()
 
 func _option2_pressed():
@@ -101,6 +118,4 @@ func _option2_pressed():
 	_gigi_text.text = _options[1]["response"]
 	_load_image(_options[1])
 	_dialogue_id = _options[1]["next_id"]
-	## Wait 3 seconds, then UI disappears
-	await get_tree().create_timer(_delay).timeout
 	_date_close()

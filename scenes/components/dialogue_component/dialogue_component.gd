@@ -66,8 +66,8 @@ func _ready() -> void:
 			# this won't work because dialogue 3 wants an option to be specified in order to set a next_id
 			# uncomment the below code if you want to test this
 			# this code will return an error, but Output will log details on the actual error etc.
-		# next_dating_dialogue = DialogueProcessor._get_next_dating_dialogue(current_dating_scene, next_dating_dialogue)
-		# print(next_dating_dialogue["dialogue"])
+		#next_dating_dialogue = DialogueProcessor._get_next_dating_dialogue(current_dating_scene, next_dating_dialogue)
+		#print(next_dating_dialogue["dialogue"])
 		
 		# dialogue 4 (option 2 from dialogue 3)
 		option = next_dating_dialogue["options"][1]
