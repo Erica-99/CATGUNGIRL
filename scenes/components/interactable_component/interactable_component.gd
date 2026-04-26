@@ -13,7 +13,7 @@ var tween: Tween
 var initial_position: Vector3
 
 # temp var
-var door_must_be_interacted_with: bool = true
+@export var require_interaction: bool = true
 
 func _ready() -> void:
 	parent_reference = get_parent()
@@ -59,7 +59,7 @@ func _process(delta: float) -> void:
 		var current_player_status = player_reference.input_component.get_input_state()
 		
 		if interactable_type == Enums.InteractableType.DOOR:
-			if door_must_be_interacted_with && current_player_status["interacting"]:
+			if require_interaction && current_player_status["interacting"]:
 				_play_interact_animation("open")
 		else:
 			if current_player_status["interacting"]:
@@ -91,7 +91,7 @@ func _on_interaction_range_body_entered(body: Node3D) -> void:
 		player_in_range = true
 		player_reference = body
 		if interactable_type == Enums.InteractableType.DOOR:
-			if door_must_be_interacted_with:
+			if require_interaction:
 				dialogue_renderer._add_interact_bubble()
 			
 			else:
