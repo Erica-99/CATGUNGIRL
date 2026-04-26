@@ -1,12 +1,14 @@
 extends Control
 
-var isDating
+var isDating: bool
 var date: Array
 var line
 var file
 var dialogueID = "000001"
 ## This is for when there are 3 options instead of 2
 var extraButton: Button
+
+var permit_next := true
 
 @onready var buttonContainer = $ButtonContainer
 @onready var gigiImage = $gigi_pose
@@ -24,20 +26,21 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-	
-	if isDating && Input.is_action_just_pressed("next"):
-		dialogueID = line["next_id"]
-		_set_ui()
 
-func _input(event):
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("date_show"):
-		_date_start()
-	if event.is_action_pressed("next"):
+		if not isDating:
+			_date_start()
+	if isDating && permit_next && event.is_action_pressed("next"):
 		dialogueID = line["next_id"]
-		_set_ui()
+		if _check_dialogue_end():
+			_close_date()
+		else:
+			_set_ui()
 
 func _date_start():
 	visible = true
+	isDating = true
 	_set_ui()
 
 func _load_dialogue():
@@ -45,7 +48,6 @@ func _load_dialogue():
 	var json = JSON.new()
 	json.parse(file)
 	date = json.data["date_1"]
-	print("DATE HAS BEEN LOADED")
 
 func _get_dialogue_by_id(id):
 	for line in date:
@@ -59,28 +61,32 @@ func _set_ui():
 	_load_image()
 	_set_dialogue()
 
-func _check_next_id(index):
-	if dialogueID == "000017" || dialogueID == "000018":
-		await get_tree().create_timer(3.0).timeout
-		visible = false
+func _check_dialogue_end() -> bool:
+	if dialogueID == "":
+		return true
 	else:
-		return
+		return false
+
+func _close_date():
+	isDating = false
+	dialogueID = "000001"
+	permit_next = false
+	await get_tree().create_timer(1.0).timeout
+	visible = false
 
 func _check_has_options():
 	if line["has_options"] == true:
+		permit_next = false
 		buttonContainer.visible = true
 		var buttons = buttonContainer.get_children()
-		print(line["options"])
 		for i in range(line["options"].size()):
 			var button = Button.new()
 			button.text = line["options"][i]["option"]
 			button.custom_minimum_size = Vector2(300.0, 100.0)
 			button.pressed.connect(_option_selected.bind(i))
 			buttonContainer.add_child(button)
-			print("BUTTON CREATED")
-			if buttons.size() == 2:
-				return
-	return null
+	else:
+		permit_next = true
 
 func _load_image():
 	var path = line["icon"]
@@ -93,11 +99,9 @@ func _set_dialogue():
 func _option_selected(index):
 	buttonContainer.visible = false
 	dialogueID = line["options"][index]["next_id"]
-	if dialogueID == "000017" || dialogueID == "000018":
-		dialogueID = "000001"
-		await get_tree().create_timer(1.5).timeout
-		visible = false
+	for i in buttonContainer.get_children():
+			i.queue_free()
+	if _check_dialogue_end():
+		_close_date()
 	else:
 		_set_ui()
-		for i in buttonContainer.get_children():
-			i.queue_free()
