@@ -3,8 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://c4osos6i6rkf2" path="res://art/3D_Env/3D_Test.tscn" id="1_fr1um"]
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="1_jbqir"]
 [ext_resource type="PackedScene" uid="uid://3ukueorlwt6y" path="res://scenes/ui/health_bar.tscn" id="2_yautc"]
-[ext_resource type="PackedScene" uid="uid://cmaouisrg2kmt" path="res://scenes/ui/dating/gigi_interaction.tscn" id="3_fr1um"]
+[ext_resource type="PackedScene" uid="uid://cjku3tspjt4ep" path="res://scenes/ui/dating/gigi_date.tscn" id="4_7x1jh"]
 [ext_resource type="Script" uid="uid://uoj3dim4046g" path="res://scenes/ui/dating/gigi_interaction.gd" id="4_v45ci"]
+[ext_resource type="PackedScene" uid="uid://c882jam6s41d6" path="res://scenes/ui/dating/gigi_image.tscn" id="5_6xh4u"]
+[ext_resource type="PackedScene" uid="uid://duq7sehyl5jh1" path="res://scenes/ui/dating/gigi_dialogue.tscn" id="6_cyt5c"]
 [ext_resource type="PackedScene" uid="uid://11pckncgaxu4" path="res://scenes/components/level_components/level_transitions/level_end.tscn" id="6_6xh4u"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_3p835"]
@@ -51,8 +53,30 @@ platform_wall_layers = 1
 
 [node name="InterestBar" parent="." unique_id=2086963886 instance=ExtResource("2_yautc")]
 
-[node name="GigiInteraction" parent="." unique_id=1180502817 instance=ExtResource("3_fr1um")]
+[node name="GigiDate" parent="." unique_id=2015194836 instance=ExtResource("4_7x1jh")]
+pivot_offset = Vector2(-11, -529)
+
+[node name="GigiInteraction" type="Control" parent="." unique_id=204747011]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 166.0
+offset_top = 226.0
+offset_right = 666.0
+offset_bottom = 628.0
 script = ExtResource("4_v45ci")
+
+[node name="GigiImage" parent="GigiInteraction" unique_id=1591360527 instance=ExtResource("5_6xh4u")]
+layout_mode = 0
+offset_left = 96.0
+offset_top = -45.0
+offset_right = 406.0
+offset_bottom = 355.0
+
+[node name="GigiDialogue" parent="GigiInteraction" unique_id=2090313951 instance=ExtResource("6_cyt5c")]
+layout_mode = 1
+offset_top = 309.0
+offset_right = -500.0
+offset_bottom = -93.0
 
 [node name="LevelEnd" parent="." unique_id=914563996 instance=ExtResource("6_6xh4u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.827894, 2.6020656, 0)
