@@ -1,16 +1,19 @@
 [gd_scene format=3 uid="uid://w5w2v43x13xk"]
 
+[ext_resource type="Script" uid="uid://sqtqbdf5yng3" path="res://scenes/components/dialogue_component/dialogue_renderer.gd" id="1_2bkhk"]
 [ext_resource type="Script" uid="uid://cbcagbl3c4lal" path="res://scenes/components/dialogue_component/dialogue_component.gd" id="1_iigvq"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_iigvq"]
 viewport_path = NodePath("SubViewport")
 
 [node name="DialogueRenderer" type="Sprite3D" unique_id=780065543]
+billboard = 2
 texture = SubResource("ViewportTexture_iigvq")
+script = ExtResource("1_2bkhk")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1628982344]
 transparent_bg = true
-size = Vector2i(500, 600)
+size = Vector2i(20, 20)
 
 [node name="Timer" type="Timer" parent="SubViewport" unique_id=2115915199]
 
