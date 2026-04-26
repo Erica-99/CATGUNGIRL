@@ -25,8 +25,8 @@
 [ext_resource type="Script" uid="uid://vahtf825b586" path="res://scenes/components/state_machine/states/player/player_jump.gd" id="11_8bj4u"]
 [ext_resource type="Script" uid="uid://cs2vma24rddcy" path="res://scenes/components/state_machine/states/player/player_fall.gd" id="13_hcvpp"]
 [ext_resource type="Script" uid="uid://bpl2nhpm4ebce" path="res://scenes/components/state_machine/states/player/player_mantle.gd" id="15_068wj"]
-[ext_resource type="PackedScene" uid="uid://cmq1v8ob4m0w4" path="res://scenes/components/camera_component/camera_component.tscn" id="18_ffoq6"]
 [ext_resource type="PackedScene" uid="uid://ifqobphukq76" path="res://scenes/components/gun_component/gun_component.tscn" id="16_qdyt2"]
+[ext_resource type="PackedScene" uid="uid://cmq1v8ob4m0w4" path="res://scenes/components/camera_component/camera_component.tscn" id="18_ffoq6"]
 
 [sub_resource type="Animation" id="Animation_0w3ce"]
 resource_name = "Idle"
@@ -658,8 +658,12 @@ size = Vector3(1.2752914, 3.192688, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_g2g7f"]
 size = Vector3(1.2752686, 3.1870117, 1)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_cat03"]
+viewport_path = NodePath("SubViewport")
+
 [node name="Player" type="CharacterBody3D" unique_id=1349193765 node_paths=PackedStringArray("movement_state_machine", "input_component", "mantle_detector", "feet_point")]
 collision_layer = 2
+axis_lock_linear_z = true
 platform_floor_layers = 1
 script = ExtResource("1_qdyt2")
 movement_state_machine = NodePath("MovementStateMachine")
@@ -778,7 +782,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6085612, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 10)
 
 [node name="DialogueComponent" parent="." unique_id=1775697624 instance=ExtResource("6_qdyt2")]
-dialogue_file = "res://resources/dialogue/player_dialogue.json"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4807317, 3.9423862, 0.09934664)
+texture = SubResource("ViewportTexture_cat03")
+size_of_viewport = Vector2(500, 600)
 
 [node name="MovementStateMachine" parent="." unique_id=1499026333 node_paths=PackedStringArray("initial_state") instance=ExtResource("4_qdyt2")]
 initial_state = NodePath("PlayerIdle")
@@ -807,11 +813,11 @@ metadata/_custom_type_script = "uid://dropwvjh2s43u"
 script = ExtResource("15_068wj")
 metadata/_custom_type_script = "uid://dropwvjh2s43u"
 
-[node name="GunComponent" parent="." unique_id=52176648 node_paths=PackedStringArray("sprite", "team_component", "input_component") instance=ExtResource("16_qdyt2")]
+[node name="GunComponent" parent="." unique_id=52176648 node_paths=PackedStringArray("team_component", "input_component") instance=ExtResource("16_qdyt2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
-sprite = NodePath("../AnimatedSprite3D")
 team_component = NodePath("../TeamComponent")
 input_component = NodePath("../PlayerInput")
+aim_speed = 4.0
 
 [connection signal="facing_changed" from="." to="PlayerVisuals" method="_on_player_facing_changed"]
 [connection signal="facing_changed" from="." to="MantleDetector" method="_on_player_facing_changed"]

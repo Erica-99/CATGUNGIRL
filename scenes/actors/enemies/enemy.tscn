@@ -1,10 +1,19 @@
 [gd_scene format=3 uid="uid://d0r6ci6vp37e"]
 
 [ext_resource type="Texture2D" uid="uid://crng4f3f2avnf" path="res://icon.svg" id="1_6sec6"]
+[ext_resource type="Script" uid="uid://be1qgj2hdjbox" path="res://scenes/actors/enemies/convict_enemy.gd" id="1_87lvi"]
 [ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="2_m8jit"]
 [ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="3_54fah"]
 [ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="3_jkm84"]
 [ext_resource type="PackedScene" uid="uid://c6wep4oftfyke" path="res://scenes/components/state_machine/state_machine.tscn" id="4_m8jit"]
+[ext_resource type="Script" uid="uid://dyr3mhryox7qn" path="res://scenes/components/state_machine/states/enemy/enemy_idle.gd" id="6_lwpd1"]
+[ext_resource type="Script" uid="uid://c1a7osbqykg2" path="res://scenes/components/state_machine/states/enemy/enemy_move.gd" id="7_87lvi"]
+[ext_resource type="Script" uid="uid://b5fkogjcbrhmo" path="res://scenes/components/state_machine/states/enemy/enemy_patrol.gd" id="9_jylix"]
+[ext_resource type="Script" uid="uid://c8tp1cvog1wsi" path="res://scenes/components/state_machine/states/enemy/enemy_alert.gd" id="10_qdxnr"]
+[ext_resource type="Script" uid="uid://c8k3fk780we2f" path="res://scenes/components/state_machine/states/enemy/enemy_chase.gd" id="11_8oeht"]
+[ext_resource type="Script" uid="uid://c3u5n48puvigd" path="res://scenes/components/state_machine/states/enemy/enemy_attack.gd" id="12_0eh5a"]
+[ext_resource type="Script" uid="uid://cnchn1hd27t4h" path="res://scenes/components/state_machine/states/enemy/enemy_death.gd" id="13_ioi8i"]
+[ext_resource type="Script" uid="uid://b4ldv0fbrkdf" path="res://scenes/actors/enemies/player_detection.gd" id="14_ioi8i"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_md0e3"]
 animations = [{
@@ -23,10 +32,23 @@ size = Vector3(1.285553, 3.2021484, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_54fah"]
 size = Vector3(1.294342, 3.2011719, 1)
 
-[node name="Enemy" type="CharacterBody3D" unique_id=1506947017]
+[sub_resource type="BoxShape3D" id="BoxShape3D_qdxnr"]
+size = Vector3(7, 4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ioi8i"]
+size = Vector3(0.8427429, 3.9956665, 1)
+
+[node name="Enemy" type="CharacterBody3D" unique_id=1506947017 node_paths=PackedStringArray("animator", "health_comp", "patrol", "chase", "attack", "death")]
 collision_layer = 4
 floor_constant_speed = true
 platform_floor_layers = 1
+script = ExtResource("1_87lvi")
+animator = NodePath("AnimatedSprite3D")
+health_comp = NodePath("HealthComponent")
+patrol = NodePath("Behaviours/EnemyPatrol")
+chase = NodePath("Behaviours/EnemyChase")
+attack = NodePath("Behaviours/EnemyAttack")
+death = NodePath("Behaviours/EnemyDeath")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1465648794]
 transform = Transform3D(1, 0, 0, 0, 2.5, 0, 0, 0, 1, 0, 0, 0)
@@ -49,4 +71,62 @@ health_component = NodePath("../HealthComponent")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005874634, 0.0009765625, 0)
 shape = SubResource("BoxShape3D_54fah")
 
-[node name="StateMachine" parent="." unique_id=1499026333 instance=ExtResource("4_m8jit")]
+[node name="Behaviours" parent="." unique_id=1499026333 instance=ExtResource("4_m8jit")]
+script = null
+
+[node name="EnemyPatrol" type="Node" parent="Behaviours" unique_id=457545891 node_paths=PackedStringArray("move", "idle")]
+script = ExtResource("9_jylix")
+move = NodePath("EnemyMove (Patrol)")
+idle = NodePath("EnemyIdle")
+threshold_limit = 1.0
+
+[node name="EnemyIdle" type="Node" parent="Behaviours/EnemyPatrol" unique_id=168144029]
+script = ExtResource("6_lwpd1")
+idle_min_time = 2.0
+idle_max_time = 5.0
+
+[node name="EnemyMove (Patrol)" type="Node" parent="Behaviours/EnemyPatrol" unique_id=1477977903]
+script = ExtResource("7_87lvi")
+
+[node name="EnemyChase" type="Node" parent="Behaviours" unique_id=2105542891 node_paths=PackedStringArray("alert", "move", "sight_area")]
+script = ExtResource("11_8oeht")
+alert = NodePath("EnemyAlert")
+move = NodePath("EnemyMove (Chase)")
+abandon_time = 5.0
+sight_area = NodePath("../../Sight_Check")
+metadata/_custom_type_script = "uid://c8k3fk780we2f"
+
+[node name="EnemyAlert" type="Node" parent="Behaviours/EnemyChase" unique_id=509136342]
+script = ExtResource("10_qdxnr")
+alert_duration = 1.0
+metadata/_custom_type_script = "uid://c8tp1cvog1wsi"
+
+[node name="EnemyMove (Chase)" type="Node" parent="Behaviours/EnemyChase" unique_id=2048380530]
+script = ExtResource("7_87lvi")
+move_speed = 5.0
+metadata/_custom_type_script = "uid://c1a7osbqykg2"
+
+[node name="EnemyAttack" type="Node" parent="Behaviours" unique_id=637585415 node_paths=PackedStringArray("attack_check")]
+script = ExtResource("12_0eh5a")
+attack_cooldown = 3.0
+attack_check = NodePath("../../Attack_Check")
+metadata/_custom_type_script = "uid://c3u5n48puvigd"
+
+[node name="EnemyDeath" type="Node" parent="Behaviours" unique_id=352302151]
+script = ExtResource("13_ioi8i")
+metadata/_custom_type_script = "uid://cnchn1hd27t4h"
+
+[node name="Sight_Check" type="Area3D" parent="." unique_id=2091457129]
+script = ExtResource("14_ioi8i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sight_Check" unique_id=314095193]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.392309, 0.50878906, 0)
+shape = SubResource("BoxShape3D_qdxnr")
+
+[node name="Attack_Check" type="Area3D" parent="." unique_id=101582540]
+script = ExtResource("14_ioi8i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Attack_Check" unique_id=2044158123]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.331707, 0.5110779, 0)
+shape = SubResource("BoxShape3D_ioi8i")
+debug_color = Color(0.90929997, 0.27645475, 0.30361998, 0.41960785)
