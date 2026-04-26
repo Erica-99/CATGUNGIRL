@@ -50,9 +50,9 @@ func _load_dialogue():
 	date = json.data["date_1"]
 
 func _get_dialogue_by_id(id):
-	for line in date:
-		if line["id"] == id:
-			return line
+	for dialogue_line in date:
+		if dialogue_line["id"] == id:
+			return dialogue_line
 	return null
 
 func _set_ui():
