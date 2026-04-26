@@ -28,7 +28,8 @@ func _process(delta: float) -> void:
 		
 		
 func _add_interact_bubble() -> void:
-	dialogue_component._add_bubble("Press E to interact.")
+	dialogue_component._add_bubble("Press E to interact.", true)
+	print(sub_viewport.size)
 	
-func _remove_bubbles() -> void:
+func _fade_bubbles() -> void:
 	dialogue_component._make_all_bubbles_transparent()
