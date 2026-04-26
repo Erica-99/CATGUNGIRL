@@ -1,6 +1,9 @@
 extends State
 class_name EnemyPatrol
 
+#Sprite Controller
+@onready var sprite_anims = $"../../Visuals/AnimationPlayer"
+
 # Child States
 @export var move: EnemyMove
 @export var idle: EnemyIdle
