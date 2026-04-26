@@ -2,15 +2,64 @@
 
 [ext_resource type="ArrayMesh" uid="uid://bt5k5yeg02k25" path="res://art/3D_Env/3D_Assets/3D_Models/BarrelGoo.obj" id="1_bteb6"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_x15ns"]
-points = PackedVector3Array(0.31373617, 0.4991664, 0.21506342, -0.44021744, 0.44337574, -0.13693349, -0.10802179, -0.48640382, 0.37558922, 0.12587935, -0.48759764, -0.3652704, 0.22160749, 0.5431696, -0.36215034, 0.37862626, -0.48597026, 0.102765955, -0.20367467, 0.5425992, 0.37249827, -0.37469536, -0.4766734, -0.10956869, -0.11328473, 0.7908174, -0.075616725, 0.23411891, 0.27989638, 0.39424443, -0.44021744, 0.44337574, 0.12853846, -0.21538131, 0.27989638, -0.40271747, 0.4096963, 0.5379, -0.032740258, 0.37445265, -0.47912005, -0.10998871, -0.2794482, -0.4780668, 0.2744015, 0.090994455, 0.7908174, 0.108099535, -0.28348628, -0.48698077, -0.26741332, -0.22282343, 0.5423732, -0.3614487, -0.36943647, 0.6748571, 0.12524727, 0.10646075, -0.48788407, 0.37649125, 0.25450385, 0.27989638, -0.38227856, 0.22548385, 0.5502484, 0.35991353, 0.07060955, 0.7908174, -0.116494566, -0.37886912, -0.48352385, 0.10234569, -0.12738848, -0.48608923, -0.36439836, -0.3545002, 0.6530564, -0.1284, 0.27881336, -0.4804916, 0.27550015, 0.26201686, -0.48629916, -0.28660455, 0.4096963, 0.5379, 0.024340117, -0.03148704, 0.7908174, 0.12853846, 0.21364798, 0.27989638, -0.40271747, -0.24450515, 0.52676123, 0.35643786)
+[sub_resource type="Animation" id="Animation_x15ns"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BarrelGoo_Mesh:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_00qge"]
+resource_name = "on_damaged"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BarrelGoo_Mesh:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.1, 1.1, 1.1), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ilu68"]
+resource_name = "on_destroy"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BarrelGoo_Mesh:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.5, 1.5, 1.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_00qge"]
+_data = {
+&"RESET": SubResource("Animation_x15ns"),
+&"on_damaged": SubResource("Animation_00qge"),
+&"on_destroy": SubResource("Animation_ilu68")
+}
 
 [node name="BarrelGoo" type="StaticBody3D" unique_id=1026203888]
 
 [node name="BarrelGoo_Mesh" type="MeshInstance3D" parent="." unique_id=397352153]
 mesh = ExtResource("1_bteb6")
 
-[node name="BarrelGoo_Collision" type="CollisionShape3D" parent="." unique_id=215947978]
-shape = SubResource("ConvexPolygonShape3D_x15ns")
-disabled = true
-debug_color = Color(0.6503764, 0.5200714, 0, 0.41960785)
+[node name="ShootableComponent" parent="." unique_id=1802469167 instance=ExtResource("2_x15ns")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1163018924]
+libraries/ = SubResource("AnimationLibrary_00qge")
