@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://r3tt6uge7h1v"]
+
+[ext_resource type="PackedScene" uid="uid://d0upyu8746uou" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/12mFloor.tscn" id="1_xppgi"]
+[ext_resource type="PackedScene" uid="uid://uwh12e7ut10s" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/PlainWall.tscn" id="2_e7o7m"]
+[ext_resource type="PackedScene" uid="uid://c83lj2dpuqla8" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/PlainRearWall.tscn" id="3_xjyu7"]
+[ext_resource type="PackedScene" uid="uid://b767eoe4ibts2" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/12mRoof.tscn" id="4_rlpto"]
+
+[node name="TestChamber" type="Node3D" unique_id=1064819444]
+
+[node name="12mFloor" parent="." unique_id=311254210 instance=ExtResource("1_xppgi")]
+
+[node name="PlainWall" parent="." unique_id=375176154 instance=ExtResource("2_e7o7m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1, 2.3, 0)
+
+[node name="PlainRearWall" parent="." unique_id=818126411 instance=ExtResource("3_xjyu7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, -2.4969)
+
+[node name="12mRoof" parent="." unique_id=16917313 instance=ExtResource("4_rlpto")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2, 0)

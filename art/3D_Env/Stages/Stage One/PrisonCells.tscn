@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dxst35tommo3b"]
+
+[ext_resource type="PackedScene" uid="uid://deb204atds3bl" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/MultiLevelRearWall.tscn" id="1_05ful"]
+[ext_resource type="PackedScene" uid="uid://d0upyu8746uou" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/12mFloor.tscn" id="2_cjhno"]
+[ext_resource type="PackedScene" uid="uid://b767eoe4ibts2" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/12mRoof.tscn" id="4_05ful"]
+[ext_resource type="PackedScene" uid="uid://cmt0ssadq4oec" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/MultiLevelDoorway.tscn" id="4_oqu6p"]
+
+[node name="PrisonCells" type="Node3D" unique_id=919839218]
+
+[node name="MultiLevelRearWall" parent="." unique_id=642717159 instance=ExtResource("1_05ful")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2, -2.917)
+
+[node name="12mFloor" parent="." unique_id=311254210 instance=ExtResource("2_cjhno")]
+
+[node name="MultiLevelDoorway" parent="." unique_id=1193796567 instance=ExtResource("4_oqu6p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1, 3.652, 0)
+
+[node name="MultiLevelDoorway2" parent="." unique_id=1642730282 instance=ExtResource("4_oqu6p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 3.652, 0)
+
+[node name="12mRoof" parent="." unique_id=16917313 instance=ExtResource("4_05ful")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.402, 0)

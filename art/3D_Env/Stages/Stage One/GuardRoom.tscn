@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cv2nky1gsci8r"]
+
+[ext_resource type="ArrayMesh" uid="uid://bqfyo8ajr2bff" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/12mFloor.obj" id="1_lsyrl"]
+[ext_resource type="ArrayMesh" uid="uid://b84hyy6t8wwao" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/12mRoof.obj" id="2_vrkdi"]
+[ext_resource type="ArrayMesh" uid="uid://bp4fcb73yof4e" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/SingleDoorway.obj" id="3_lhtmy"]
+[ext_resource type="ArrayMesh" uid="uid://c3ure3m1hxrrf" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/12mRearWall.obj" id="4_vrkdi"]
+
+[node name="GuardRoom" type="Node3D" unique_id=1746551938]
+
+[node name="12mFloor" type="MeshInstance3D" parent="." unique_id=1553612407]
+mesh = ExtResource("1_lsyrl")
+
+[node name="12mRoof" type="MeshInstance3D" parent="." unique_id=1940208926]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2, 0)
+mesh = ExtResource("2_vrkdi")
+
+[node name="SingleDoorway" type="MeshInstance3D" parent="." unique_id=128669447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 1.655, 0)
+mesh = ExtResource("3_lhtmy")
+
+[node name="12mRearWall" type="MeshInstance3D" parent="." unique_id=470582217]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, -2.917)
+mesh = ExtResource("4_vrkdi")
