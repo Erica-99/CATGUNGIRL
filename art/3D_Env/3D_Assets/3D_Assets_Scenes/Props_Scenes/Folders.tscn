@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://qmb01fn4g6i"]
+
+[ext_resource type="ArrayMesh" uid="uid://4lefpftopwyn" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/Folders.obj" id="1_r1tyg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jg8x6"]
+size = Vector3(1.2, 1.4, 1.080001)
+
+[node name="Folders" type="StaticBody3D" unique_id=1146875503]
+
+[node name="Folders_Mesh" type="MeshInstance3D" parent="." unique_id=1084519770]
+mesh = ExtResource("1_r1tyg")
+
+[node name="Folders_Collision" type="CollisionShape3D" parent="." unique_id=1176294660]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0.005000472)
+shape = SubResource("BoxShape3D_jg8x6")

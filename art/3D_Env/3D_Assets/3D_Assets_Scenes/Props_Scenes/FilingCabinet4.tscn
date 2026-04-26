@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bncqrcy5rw3pp"]
+
+[ext_resource type="ArrayMesh" uid="uid://ykjudri5hvgw" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/FilingCabinet4.obj" id="1_wrl1s"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_k04if"]
+points = PackedVector3Array(-2.317658, 0.90602976, -0.21092635, -2.317658, 0.90602976, 0.21291852, -2.317658, 1.0407205, -0.21092635, -2.2631824, 0.19968677, -0.89906263, -2.317658, 1.0407205, 0.21291852, -2.2631824, 0.19968677, 0.90105486, -2.2631824, 1.3790133, -0.89906263, -1.1131426, 0, -0.998906, -2.2631824, 1.3790133, 0.90105486, -1.1131426, 0, 1.001094, -1.1131426, 4, -0.998906, 0.93685913, 0, -0.998906, -1.1131426, 4, 1.001094, 0.93685913, 0, 1.001094, 0.93685913, 4, -0.998906, 0.93685913, 4, 1.001094)
+
+[node name="FilingCabinet4" type="StaticBody3D" unique_id=382330]
+
+[node name="FilingCabinet4_Mesh" type="MeshInstance3D" parent="." unique_id=685208652]
+mesh = ExtResource("1_wrl1s")
+
+[node name="FilingCabinet4_Collision" type="CollisionShape3D" parent="." unique_id=618999535]
+shape = SubResource("ConvexPolygonShape3D_k04if")

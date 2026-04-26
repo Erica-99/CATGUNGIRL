@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bvolfs8exkrw1"]
+
+[ext_resource type="ArrayMesh" uid="uid://cvpcn8jrlvm3a" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/FireAlarm.obj" id="1_2e7jd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2e7jd"]
+size = Vector3(0.142486, 0.4, 0.28)
+
+[node name="FireAlarm" type="StaticBody3D" unique_id=306728926]
+
+[node name="FireAlarm_Mesh" type="MeshInstance3D" parent="." unique_id=942662271]
+mesh = ExtResource("1_2e7jd")
+
+[node name="FireAlarm_Collision" type="CollisionShape3D" parent="." unique_id=1909537129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011243001, 0.2, 0)
+shape = SubResource("BoxShape3D_2e7jd")
