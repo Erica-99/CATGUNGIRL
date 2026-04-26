@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://dvq0qrn20mwvt"]
+
+[ext_resource type="Script" uid="uid://dtxlwrmatnv5x" path="res://scenes/actors/enemies/convict_enemy.gd" id="1_awmif"]
+[ext_resource type="Texture2D" uid="uid://crng4f3f2avnf" path="res://icon.svg" id="2_7v6mw"]
+[ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="3_pee7w"]
+[ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="4_4p71r"]
+[ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="5_xi3ex"]
+[ext_resource type="PackedScene" uid="uid://c6wep4oftfyke" path="res://scenes/components/state_machine/state_machine.tscn" id="6_ob8hf"]
+[ext_resource type="Script" uid="uid://b5fkogjcbrhmo" path="res://scenes/components/state_machine/states/enemy/enemy_patrol.gd" id="7_gi3f3"]
+[ext_resource type="Script" uid="uid://dyr3mhryox7qn" path="res://scenes/components/state_machine/states/enemy/enemy_idle.gd" id="8_mjfjc"]
+[ext_resource type="Script" uid="uid://c1a7osbqykg2" path="res://scenes/components/state_machine/states/enemy/enemy_move.gd" id="9_i37ss"]
+[ext_resource type="Script" uid="uid://c8tp1cvog1wsi" path="res://scenes/components/state_machine/states/enemy/enemy_alert.gd" id="11_4tu27"]
+[ext_resource type="Script" uid="uid://c3u5n48puvigd" path="res://scenes/components/state_machine/states/enemy/enemy_attack.gd" id="12_e4ube"]
+[ext_resource type="Script" uid="uid://cnchn1hd27t4h" path="res://scenes/components/state_machine/states/enemy/enemy_death.gd" id="13_43il1"]
+[ext_resource type="Script" uid="uid://cmtbt2a3h50kq" path="res://scenes/components/state_machine/states/enemy/convict_engage.gd" id="14_7v6mw"]
+[ext_resource type="Script" uid="uid://b4ldv0fbrkdf" path="res://scenes/actors/enemies/player_detection.gd" id="14_ijjht"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_md0e3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7v6mw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4ra3w"]
+size = Vector3(1.285553, 3.2021484, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_54fah"]
+size = Vector3(1.294342, 3.2011719, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qdxnr"]
+size = Vector3(7, 4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ioi8i"]
+size = Vector3(0.8427429, 3.9956665, 1)
+
+[node name="Convict" type="CharacterBody3D" unique_id=1506947017 node_paths=PackedStringArray("animator", "health_comp", "patrol", "engage", "death")]
+collision_layer = 4
+floor_constant_speed = true
+platform_floor_layers = 1
+script = ExtResource("1_awmif")
+animator = NodePath("AnimatedSprite3D")
+health_comp = NodePath("HealthComponent")
+patrol = NodePath("Behaviours/EnemyPatrol")
+engage = NodePath("Behaviours/ConvictEngage")
+death = NodePath("Behaviours/EnemyDeath")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1465648794]
+transform = Transform3D(1, 0, 0, 0, 2.5, 0, 0, 0, 1, 0, 0, 0)
+sprite_frames = SubResource("SpriteFrames_md0e3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1334864593]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.008743286, 0.0034179688, 0)
+shape = SubResource("BoxShape3D_4ra3w")
+
+[node name="TeamComponent" parent="." unique_id=2076917082 instance=ExtResource("3_pee7w")]
+team = 2
+
+[node name="HealthComponent" parent="." unique_id=236252344 instance=ExtResource("4_4p71r")]
+starting_health = 20.0
+
+[node name="HurtboxComponent" parent="." unique_id=338394069 node_paths=PackedStringArray("team_component", "health_component") instance=ExtResource("5_xi3ex")]
+team_component = NodePath("../TeamComponent")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtboxComponent" unique_id=1766554893]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005874634, 0.0009765625, 0)
+shape = SubResource("BoxShape3D_54fah")
+
+[node name="Behaviours" parent="." unique_id=1499026333 instance=ExtResource("6_ob8hf")]
+script = null
+
+[node name="EnemyPatrol" type="Node" parent="Behaviours" unique_id=457545891 node_paths=PackedStringArray("move", "idle")]
+script = ExtResource("7_gi3f3")
+move = NodePath("EnemyMove (Patrol)")
+idle = NodePath("EnemyIdle")
+threshold_limit = 1.0
+
+[node name="EnemyIdle" type="Node" parent="Behaviours/EnemyPatrol" unique_id=168144029]
+script = ExtResource("8_mjfjc")
+idle_min_time = 2.0
+idle_max_time = 3.0
+
+[node name="EnemyMove (Patrol)" type="Node" parent="Behaviours/EnemyPatrol" unique_id=1477977903]
+script = ExtResource("9_i37ss")
+
+[node name="EnemyDeath" type="Node" parent="Behaviours" unique_id=352302151]
+script = ExtResource("13_43il1")
+metadata/_custom_type_script = "uid://cnchn1hd27t4h"
+
+[node name="ConvictEngage" type="Node" parent="Behaviours" unique_id=1551046704 node_paths=PackedStringArray("alert", "move", "attack", "sight_area")]
+script = ExtResource("14_7v6mw")
+alert = NodePath("EnemyAlert")
+move = NodePath("EnemyMove (Chase)")
+attack = NodePath("EnemyAttack")
+sight_area = NodePath("../../Sight_Check")
+abandon_time = 3.0
+
+[node name="EnemyAlert" type="Node" parent="Behaviours/ConvictEngage" unique_id=509136342]
+script = ExtResource("11_4tu27")
+alert_duration = 1.0
+metadata/_custom_type_script = "uid://c8tp1cvog1wsi"
+
+[node name="EnemyMove (Chase)" type="Node" parent="Behaviours/ConvictEngage" unique_id=2048380530]
+script = ExtResource("9_i37ss")
+move_speed = 5.0
+metadata/_custom_type_script = "uid://c1a7osbqykg2"
+
+[node name="EnemyAttack" type="Node" parent="Behaviours/ConvictEngage" unique_id=637585415 node_paths=PackedStringArray("attack_check")]
+script = ExtResource("12_e4ube")
+attack_cooldown = 3.0
+attack_check = NodePath("../../../Attack_Check")
+attack_duration = 1.0
+metadata/_custom_type_script = "uid://c3u5n48puvigd"
+
+[node name="Sight_Check" type="Area3D" parent="." unique_id=2091457129]
+collision_mask = 3
+script = ExtResource("14_ijjht")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sight_Check" unique_id=314095193]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.392309, 0.50878906, 0)
+shape = SubResource("BoxShape3D_qdxnr")
+
+[node name="Attack_Check" type="Area3D" parent="." unique_id=101582540]
+collision_mask = 3
+script = ExtResource("14_ijjht")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Attack_Check" unique_id=2044158123]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.331707, 0.5110779, 0)
+shape = SubResource("BoxShape3D_ioi8i")
+debug_color = Color(0.90929997, 0.27645475, 0.30361998, 0.41960785)

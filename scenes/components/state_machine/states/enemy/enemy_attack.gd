@@ -9,6 +9,11 @@ var player_in_range: bool = false
 
 var animator: AnimatedSprite3D
 
+@export var attack_duration: float
+
+var attack_timer: float
+
+
 func enter() -> void:
 	# Play animation (changes color for test)
 	animator = blackboard["anim"]
@@ -16,6 +21,11 @@ func enter() -> void:
 
 func _process(delta: float) -> void:
 	cooldown_timer += delta
+	
+func update(_delta: float) -> void:
+	attack_timer += _delta
+	if attack_timer >= attack_duration:
+		is_complete = true
 
 func attack_opp() -> bool:
 	#if player in range and 

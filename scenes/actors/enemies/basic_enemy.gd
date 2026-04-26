@@ -1,5 +1,5 @@
 extends CharacterBody3D
-class_name ConvictEnemy
+class_name BasicEnemy
 
 # Node References
 @export var animator: AnimatedSprite3D
@@ -7,7 +7,8 @@ class_name ConvictEnemy
 
 # Child States
 @export var patrol: EnemyPatrol
-@export var engage: ConvictEngage
+@export var chase: EnemyChase
+@export var attack: EnemyAttack
 @export var death: EnemyDeath
 
 # State Machine Instance
@@ -29,20 +30,16 @@ func _process(delta: float) -> void:
 	# Decision tree for switching states
 	if health_comp._current_health <= 0:
 		set_state(death)
-	elif engage.player_spotted():
-		set_state(engage)
+	elif attack.attack_opp():
+		set_state(attack)
+	elif chase.player_spotted():
+		set_state(chase)
 	elif state.is_complete:
-		if state is ConvictEngage:
+		if state is EnemyChase:
 			set_state(patrol)
 	
 	# Runs logic for current_state branch
 	state.update_branch(delta)
-	
-	if velocity.x < 0:
-		scale.x = -1
-	elif velocity.x > 0:
-		scale.x = 1
-	
 	
 func _physics_process(delta: float) -> void:
 	# Runs physics logic for current_state branch
