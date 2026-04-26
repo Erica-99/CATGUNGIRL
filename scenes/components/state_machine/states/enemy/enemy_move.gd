@@ -1,8 +1,12 @@
 extends State
 class_name EnemyMove
 
+@onready var sprite_anims = $"../../../Visuals/AnimationPlayer"
+
 @export var move_speed: float = 3.0
 @export var anim: Animation
+
+@export var animation = ''
 
 var destination: Vector3
 var threshold: float
@@ -15,6 +19,7 @@ var animator: AnimatedSprite3D
 
 func enter() -> void:
 	# PLay Animation
+	sprite_anims.play(animation)
 	animator = blackboard["anim"]
 	animator.modulate = Color(0.0, 0.5, 0.0, 1.0)
 	# Set Body to Enemy

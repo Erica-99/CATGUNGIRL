@@ -1,8 +1,14 @@
 extends State
 class_name EnemyIdle
 
+#sprite controller
+@onready var sprite_anims = $"../../../Visuals/AnimationPlayer"
+
+
 @export var idle_min_time: float
 @export var idle_max_time: float
+@export var animation = ''
+
 var idle_duration: float
 var idle_timer: float
 
@@ -11,6 +17,7 @@ var animator: AnimatedSprite3D
 # On Enter, sets a random duration to pause for and sets timer to 0. Sets actor velocity to 0
 func enter() -> void:
 	# Play animation (changes color for test)
+	sprite_anims.play(animation)
 	animator = blackboard["anim"]
 	animator.modulate = Color(0.0, 0.0, 0.7, 1.0)
 	
