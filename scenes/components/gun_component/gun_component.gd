@@ -42,6 +42,7 @@ signal charge_progress_changed(progress: float)
 
 ## Signal emitted when charging stops (fired or cancelled)
 signal charge_ended()
+signal charge_started()
 signal enemy_hit(hurtbox: Area3D)
 
 var _fire_cooldown: float = 0.0	# counts down each frame, gun can't fire until it hits 0
@@ -82,6 +83,7 @@ func _handle_charge_input(input_state: Dictionary, delta: float) -> void:
 		if charge_fire_held and not _is_charging:
 			_is_charging = true
 			_charge_timer = 0.0
+			charge_started.emit()
 		if _is_charging:
 			_charge_timer += delta
 			var progress = clampf(_charge_timer / auto_charge_duration, 0.0, 1.0)
@@ -95,6 +97,7 @@ func _handle_charge_input(input_state: Dictionary, delta: float) -> void:
 			if not _is_charging:
 				_is_charging = true
 				_charge_timer = 0.0
+				charge_started.emit()
 			_charge_timer += delta
 			var progress = clampf(
 				# charge progress starts at 0 ONLY after min hold time
