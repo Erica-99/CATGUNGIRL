@@ -4,7 +4,7 @@ extends Control
 var _onDate = false
 var _dialogue_loaded
 var _options
-var _dialogue_id = "001"
+@export var _dialogue_id = "001"
 ## You can change this to however long you want before the popup closes
 var _delay = 2
 
@@ -25,9 +25,10 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("gigi_show"):
-	## Toggle the UI using 'G' key
-		print("G has been pressed!")
+	pass
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("gigi_show"):
 		_onDate = !_onDate
 		if _onDate:
 			_date_begin()
@@ -37,14 +38,14 @@ func _process(delta: float) -> void:
 func _date_begin():
 	visible = true
 	_set_gigi()
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 ## Hide UI and hide mouse (position can still be tracked)
 func  _date_close():
 	await get_tree().create_timer(_delay).timeout
 	visible = false
 	_onDate = false
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	#Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 func _load_dialogue():
 	## Load the .json file into an array
