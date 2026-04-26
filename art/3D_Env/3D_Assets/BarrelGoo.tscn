@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c75ejblrkcuvs"]
 
 [ext_resource type="ArrayMesh" uid="uid://bt5k5yeg02k25" path="res://art/3D_Env/3D_Assets/3D_Models/BarrelGoo.obj" id="1_bteb6"]
+[ext_resource type="PackedScene" uid="uid://bfefdgsv8qixt" path="res://scenes/components/shootable_component/shootable_component.tscn" id="2_x15ns"]
 
 [sub_resource type="Animation" id="Animation_x15ns"]
 length = 0.001
@@ -61,3 +62,5 @@ mesh = ExtResource("1_bteb6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1163018924]
 libraries/ = SubResource("AnimationLibrary_00qge")
+
+[node name="ShootableComponent" parent="." unique_id=300859436 instance=ExtResource("2_x15ns")]
