@@ -22,3 +22,19 @@ enum InterestRank {
 	MEDHIGH,
 	HIGH, ##MADLY_IN_LOVE
 }
+
+## Added for gun component
+enum ChargeMode {
+	AUTO_FIRE,   ## right click -> charges for a fixed duration -> auto fires
+	HOLD_TO_FIRE, ## hold right click -> charge builds up -> release to fire
+}
+
+enum InteractableType {
+	DOOR,
+	CONSOLE,
+}
+
+enum BubbleType {
+	RUNTIME,
+	SYSTEM,
+}

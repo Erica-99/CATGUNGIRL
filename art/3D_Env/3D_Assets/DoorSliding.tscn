@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://hyqr201e2ddg"]
+
+[ext_resource type="ArrayMesh" uid="uid://crf802tmnggq7" path="res://art/3D_Env/3D_Assets/3D_Models/DoorSliding.obj" id="1_4h4ey"]
+[ext_resource type="PackedScene" uid="uid://ou3g778y2q8g" path="res://scenes/components/interactable_component/interactable_component.tscn" id="2_bbow1"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4h4ey"]
+points = PackedVector3Array(0.40263447, -0.20240024, 0.096286505, -0.5361897, -1.2705897, -0.033199254, -0.5361897, -1.2705897, 0.0315151, -0.5361897, 0.80168974, -0.033199254, 0.40263447, -0.20240024, -0.09798968, 0.53232944, -1.2705897, -0.033199254, 0.53232944, 0.80168974, -0.033199254, -0.5361897, 0.80168974, 0.0315151, -0.40659928, -0.20240024, -0.09798968, -0.40659928, -0.20240024, 0.096286505, 0.53232944, -1.2705897, 0.0315151, 0.53232944, 0.80168974, 0.0315151)
+
+[node name="DoorSliding" type="StaticBody3D" unique_id=1683466215]
+
+[node name="DoorSliding_Mesh" type="MeshInstance3D" parent="." unique_id=1080977232]
+mesh = ExtResource("1_4h4ey")
+
+[node name="DoorSliding_Collision" type="CollisionShape3D" parent="." unique_id=928496529]
+shape = SubResource("ConvexPolygonShape3D_4h4ey")
+
+[node name="InteractableComponent" parent="." unique_id=2140039813 instance=ExtResource("2_bbow1")]
+interaction_distance = 2.0
+require_interaction = false

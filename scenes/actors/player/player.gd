@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 signal facing_changed(new_facing: float)
+@export var hit_heal_amount: float = 5.0 
 
 
 ## Extending signals for ui and other components
@@ -8,6 +9,8 @@ signal player_health_initialiased(init_current_health: float, init_max_health: f
 signal player_health_changed(old_health, new_health, damage_or_heal_instance)
 signal player_insanity_gained(amount, buffer)
 signal player_interest_rank_changed(new_rank)
+signal player_charge_progress(progress: float)
+signal player_charge_ended()
 
 @export var movement_state_machine: StateMachine
 
@@ -27,6 +30,8 @@ var facing: float
 @export var feet_point: Marker3D
 
 var blackboard: Dictionary
+@onready var gun_component = $GunComponent  
+@onready var health_component = $HealthComponent
 
 func _ready() -> void:
 	blackboard = {
@@ -38,6 +43,10 @@ func _ready() -> void:
 	}
 	
 	movement_state_machine.init(blackboard)
+	gun_component.enemy_hit.connect(_on_gun_enemy_hit)
+	gun_component.charge_progress_changed.connect(_on_gun_charge_progress)
+	gun_component.charge_ended.connect(_on_gun_charge_ended)
+	print("player ready, gun_component: ", gun_component)
 
 func _process(_delta: float) -> void:
 	var current_state = input_component.get_input_state()
@@ -64,3 +73,20 @@ func _on_insanity_component_insanity_death():
 
 func _on_insanity_component_interest_rank_changed(new_rank):
 	player_interest_rank_changed.emit(new_rank)
+	
+func _on_gun_enemy_hit(_hurtbox: Area3D) -> void:
+	print("Enemy hit! Healing player by ", hit_heal_amount)
+	var heal = DamageHealInstance.new()
+	heal.amount = hit_heal_amount
+	heal.is_heal = true
+	heal.type = Enums.DamageType.NORMAL
+	heal.knockback = 0.0
+	heal.source = get_path()
+	health_component.take_damage_or_heal(heal)
+	print("Player health after heal: ", health_component.current_health)
+
+func _on_gun_charge_progress(progress: float) -> void:
+	player_charge_progress.emit(progress)
+
+func _on_gun_charge_ended() -> void:
+	player_charge_ended.emit()
