@@ -8,6 +8,7 @@ var _jump_held := false
 var _fire_held := false
 var _mouse_world_pos
 var _charge_fire_held := false
+var _interacting := false
 
 func _process(_delta: float) -> void:
 	_horizontal_movement = Input.get_axis("move_left", "move_right")
@@ -23,6 +24,7 @@ func get_input_state() -> Dictionary:
 		"fire_held": _fire_held,
 		"mouse_world_pos": _mouse_world_pos,
 		"charge_fire_held": _charge_fire_held,
+		"interacting": _interacting,
 	}
 	return input_state
 
@@ -59,6 +61,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			_crouching = true
 	
+	if event.is_action_pressed("interact"):
+		_interacting = true
+	
 	# -- Actions released --
 	
 	if event.is_action_released("fire"):
@@ -74,3 +79,5 @@ func _unhandled_input(event: InputEvent) -> void:
 		if not toggle_crouch:
 			_crouching = false
 	
+	if event.is_action_released("interact"):
+		_interacting = false
