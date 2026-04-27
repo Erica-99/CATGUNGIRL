@@ -49,17 +49,15 @@ func  _date_close():
 
 func _load_dialogue():
 	## Load the .json file into an array
-	var file = FileAccess.get_file_as_string("res://resources/dialogue/gigi_popup.json")
+	var file = FileAccess.get_file_as_string("res://resources/dialogue/popups/popup_2.json")
 	var json = JSON.new()
 	json.parse(file)
 	_dialogue_loaded = json.data["interactions"]
-	print("DIALOGUE LOADED")
 
 func _fetch_dialogue_by_id(id):
 	## Finds the dialogue sequence by id
 	for line in _dialogue_loaded:
 		if line["id"] == id:
-			print(id, " has been called")
 			return line
 	return null
 
@@ -67,18 +65,18 @@ func _fetch_dialogue_by_id(id):
 func _set_gigi():
 	## Sets the UI to displayed the loaded interaction
 	var interact = _fetch_dialogue_by_id(_dialogue_id)
-	print(interact)
 	## Checks to see if the interaction has multiple lines of dialogue
 	if (interact.get("has_multiple") == "true"):
-		print("Multiple lines detected")
 		var _dialogue = interact.get("interaction", [])
 		for i in interact.get("interaction"):
-			print("THIS WOULD BE A LINE PRINT")
 			_load_image(i)
 			_gigi_text.text = i["dialogue"]
 			await get_tree().create_timer(_delay).timeout
+		_option_check(interact)
+		_set_btn_text(interact)
 		_dialogue_id = interact.get("next_id")
-		_date_close()
+		if _dialogue_id == "":
+			_date_close()
 	else:
 		_option_check(interact)
 		_gigi_text.text = interact.get("dialogue")
