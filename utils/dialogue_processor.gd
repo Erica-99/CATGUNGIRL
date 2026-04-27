@@ -64,7 +64,7 @@ static func _get_dating_scene(filename: String, scene_name: String) -> Array:
 	#var dialogue_file = _load_file("res://resources/dialogue/dating_dialogue.json")
 	#return dialogue_file[scene_name]
 	
-	var dialogue_file = _load_file(CustomResourceLoader.dating_dialogue_path + filename + ".json")
+	var dialogue_file = _load_file(filename + ".json")
 	return dialogue_file[scene_name]
 	
 # gets next dating dialogue from JSON

@@ -41,7 +41,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _date_start():
 	visible = true
 	dating_active = true
-	current_dating_scene = DialogueProcessor._get_dating_scene("date_" + str(date_id), "date_" + str(date_id))
+	current_dating_scene = DialogueProcessor._get_dating_scene(CustomResourceLoader.dating_dialogue_path + "date_" + str(date_id), "date_" + str(date_id))
 	dating_dialogue = DialogueProcessor._get_next_dating_dialogue(current_dating_scene)
 	_display()
 

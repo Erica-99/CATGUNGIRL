@@ -37,4 +37,5 @@ enum InteractableType {
 enum BubbleType {
 	RUNTIME,
 	SYSTEM,
+	POPUP,
 }
