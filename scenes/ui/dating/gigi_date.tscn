@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://cjku3tspjt4ep"]
+
+[ext_resource type="Script" uid="uid://d17afds68ndej" path="res://scenes/ui/dating/gigi_date.gd" id="1_3dw5p"]
+[ext_resource type="Texture2D" uid="uid://c2klyoe8f8smd" path="res://art/GG/placeholder sketches/celebratory action/yay.png" id="1_24jh3"]
+
+[node name="GigiDate" type="Control" unique_id=2015194836]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3dw5p")
+
+[node name="date_background" type="TextureRect" parent="." unique_id=2122435862]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = -327.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="gigi_pose" type="TextureRect" parent="." unique_id=1217383620]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -199.0
+offset_top = -894.0
+offset_right = 199.0
+offset_bottom = -325.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_24jh3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="date_txt_bgd" type="ColorRect" parent="." unique_id=1072532944]
+layout_mode = 0
+offset_top = 752.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.0056611504, 0.0056611514, 0.00566115, 1)
+
+[node name="date_txt" type="RichTextLabel" parent="date_txt_bgd" unique_id=866509033]
+layout_mode = 0
+offset_left = 346.0
+offset_right = 1574.0
+offset_bottom = 102.0
+text = "THIS IS PLACEHOLDER TEXT. IF YOU SEE THIS SOMETHING IS WRONG!!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonContainer" type="HBoxContainer" parent="." unique_id=1992419473]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 852.0
+offset_right = 1416.0
+offset_bottom = 952.0
+alignment = 1
