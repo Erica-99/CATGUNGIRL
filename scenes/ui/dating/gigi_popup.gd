@@ -1,5 +1,6 @@
 extends BoxContainer
 
+# references
 @onready var gigi_image: TextureRect = $VBoxContainer/gigi_image
 @onready var gigi_dialogue: PanelContainer = $VBoxContainer/DialogueBubble
 @onready var grid_container: GridContainer = $VBoxContainer/GridContainer
@@ -7,14 +8,22 @@ extends BoxContainer
 ## You can change this to however long you want before the popup closes
 var _delay = 2
 
+# runtime vars
 var popup_active = false
 var current_popup_scene = []
 var popup_dialogue = {}
 var requires_option_selection = false
 
+# consts
+const SECONDS_PER_CHARACTER = 0.05
+# I HATE NAMING VARIABLES IDK WHGAT TO CALL THIS FUCKASS CONSTANT!?!??!
+const LEEWAY_OF_TYPEWRITER = 0.8
+
+# connect popup to event handler
 func _ready() -> void:
 	EventManager.connect("activate_popup", _on_activate_popup)
 
+# get values from JSON file via DialogueProcessor
 func _popup_start(popup_id: int):
 	visible = true
 	popup_active = true
@@ -22,9 +31,12 @@ func _popup_start(popup_id: int):
 	popup_dialogue = DialogueProcessor._get_next_dating_dialogue(current_popup_scene)
 	_display()
 
+# displays dialogue on screen
 func _display():
-	# set text and images
-	gigi_dialogue._set_text(popup_dialogue["dialogue"])
+	# get delay via popup char count
+	_delay = SECONDS_PER_CHARACTER * popup_dialogue["dialogue"].length()
+	# set text - additional params determine how it should display (as typewriter)
+	gigi_dialogue._set_text(popup_dialogue["dialogue"], true, _delay * LEEWAY_OF_TYPEWRITER)
 	gigi_image.texture = load(popup_dialogue["icon"])
 	
 	# generate buttons

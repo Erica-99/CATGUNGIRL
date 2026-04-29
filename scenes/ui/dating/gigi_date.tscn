@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://d17afds68ndej" path="res://scenes/ui/dating/gigi_date.gd" id="1_3dw5p"]
 [ext_resource type="Texture2D" uid="uid://c2klyoe8f8smd" path="res://art/GG/placeholder sketches/celebratory action/yay.png" id="1_24jh3"]
+[ext_resource type="PackedScene" uid="uid://divl5j2iem0hi" path="res://scenes/dialogue_bubble/dialogue_bubble.tscn" id="3_vukmv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vukmv"]
 
 [node name="GigiDate" type="Control" unique_id=2015194836]
 visible = false
@@ -50,6 +53,7 @@ offset_bottom = 1080.0
 color = Color(0.0056611504, 0.0056611514, 0.00566115, 1)
 
 [node name="date_txt" type="RichTextLabel" parent="date_txt_bgd" unique_id=866509033]
+visible = false
 layout_mode = 0
 offset_left = 346.0
 offset_right = 1574.0
@@ -58,10 +62,34 @@ text = "THIS IS PLACEHOLDER TEXT. IF YOU SEE THIS SOMETHING IS WRONG!!!!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ButtonContainer" type="HBoxContainer" parent="." unique_id=1992419473]
+[node name="DialogueBubble" parent="date_txt_bgd" unique_id=1148095700 instance=ExtResource("3_vukmv")]
+layout_mode = 1
+offset_left = -1574.0
+offset_top = -293.0
+offset_right = -346.0
+offset_bottom = -191.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vukmv")
+textbox_colour = Color(1, 1, 1, 1)
+type = 2
+
+[node name="Press Button Info" type="RichTextLabel" parent="date_txt_bgd" unique_id=1782990518]
+visible = false
+layout_mode = 0
+offset_left = 1620.0
+offset_top = 191.0
+offset_right = 1889.0
+offset_bottom = 268.0
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[b]Press 'V' to continue[/b]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonContainer" type="HBoxContainer" parent="date_txt_bgd" unique_id=1992419473]
 layout_mode = 0
 offset_left = 510.0
-offset_top = 852.0
+offset_top = 140.0
 offset_right = 1416.0
-offset_bottom = 952.0
+offset_bottom = 240.0
+theme_override_constants/separation = 20
 alignment = 1
