@@ -14,7 +14,7 @@ var centred_position: Vector2 = Vector2.ZERO
 var rate_of_transparency: float = 0
 var can_disappear: bool = false
 var base_transparency_speed: float = 4.0
-var type = Enums.BubbleType.RUNTIME
+@export var type = Enums.BubbleType.RUNTIME
 
 # signals
 signal is_transparent
@@ -23,6 +23,10 @@ func _ready() -> void:
 	# set initial values for runtime vars
 	centred_position = _get_position_around_origin()
 	rate_of_transparency = max_opacity / (base_transparency_speed * 60)
+	
+	if type == Enums.BubbleType.POPUP:
+		rich_text_label.autowrap_mode = TextServer.AUTOWRAP_WORD
+		rich_text_label.size_flags_vertical = Control.SIZE_EXPAND
 
 func _process(delta: float) -> void:
 	if can_disappear:

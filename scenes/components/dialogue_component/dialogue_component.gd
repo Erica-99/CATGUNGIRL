@@ -129,7 +129,7 @@ func _debug_tests_for_linking() -> void:
 	
 	# first load the scene - in this case the only scene is "first_interaction"
 		# it would be great to have the scenes be held in a global Enum or smth to log each dating 'scene'
-	current_dating_scene = DialogueProcessor._get_dating_scene("first_interaction")
+	current_dating_scene = DialogueProcessor._get_dating_scene("possible_dating_dialogue", "first_interaction")
 	
 	# then load up your dating dialogue!
 	# below are some examples of loading entries off dating_dialogue.json

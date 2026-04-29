@@ -49,7 +49,7 @@ func  _date_close():
 
 func _load_dialogue():
 	## Load the .json file into an array
-	var file = FileAccess.get_file_as_string("res://resources/dialogue/popups/popup_2.json")
+	var file = FileAccess.get_file_as_string("res://resources/dialogue/older_popups/popup_2.json")
 	var json = JSON.new()
 	json.parse(file)
 	_dialogue_loaded = json.data["interactions"]
