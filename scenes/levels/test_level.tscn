@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c4osos6i6rkf2" path="res://art/3D_Env/3D_Test.tscn" id="1_fr1um"]
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="1_jbqir"]
+[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/world/event_trigger/event_trigger.tscn" id="2_cyt5c"]
 [ext_resource type="PackedScene" uid="uid://3ukueorlwt6y" path="res://scenes/ui/health_bar.tscn" id="2_yautc"]
 [ext_resource type="PackedScene" uid="uid://cjku3tspjt4ep" path="res://scenes/ui/dating/gigi_date.tscn" id="4_7x1jh"]
 [ext_resource type="PackedScene" uid="uid://11pckncgaxu4" path="res://scenes/components/level_components/level_transitions/level_end.tscn" id="6_6xh4u"]
@@ -10,6 +11,9 @@
 [sub_resource type="BoxMesh" id="BoxMesh_3p835"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2venv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7x1jh"]
+size = Vector3(4.6031494, 6.1855774, 4.163025)
 
 [node name="TestLevel" type="Node3D" unique_id=1708525088]
 
@@ -43,6 +47,15 @@ shape = SubResource("BoxShape3D_2venv")
 
 [node name="Level" parent="World" unique_id=1829183850 instance=ExtResource("1_fr1um")]
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 0.6001549, -1.7041183, 0)
+
+[node name="EventTrigger" parent="World" unique_id=1311781014 instance=ExtResource("2_cyt5c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.8396225, 9.929406, 0)
+signal_name = "activate_popup"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/EventTrigger" unique_id=776663417]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.43963623, 1.6656036, 0.29238892)
+shape = SubResource("BoxShape3D_7x1jh")
+debug_color = Color(0.8542519, 0.084620945, 0.86362904, 0.41960785)
 
 [node name="Player" parent="." unique_id=1349193765 instance=ExtResource("1_jbqir")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5454574, 0)

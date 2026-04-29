@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dyuymcwkbnmrh"]
+
+[ext_resource type="Script" uid="uid://cfi782wvlaqxd" path="res://scenes/world/event_trigger/event_trigger.gd" id="1_cgdqg"]
+
+[node name="EventTrigger" type="Area3D" unique_id=1311781014]
+collision_layer = 64
+collision_mask = 2
+script = ExtResource("1_cgdqg")
+_signal_parameters = [0]
+signal_name = ""
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

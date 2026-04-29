@@ -4,27 +4,21 @@ extends BoxContainer
 @onready var gigi_dialogue: PanelContainer = $VBoxContainer/DialogueBubble
 @onready var grid_container: GridContainer = $VBoxContainer/GridContainer
 
-## Variables for loading different dialogue options
-var _onDate = false
-var _dialogue_loaded
-var _options
 ## You can change this to however long you want before the popup closes
 var _delay = 2
 
-
-var popup_sequence_id: int = 0
 var popup_active = false
 var current_popup_scene = []
 var popup_dialogue = {}
 var requires_option_selection = false
 
 func _ready() -> void:
-	pass
+	EventManager.connect("activate_popup", _on_activate_popup)
 
-func _popup_start():
+func _popup_start(popup_id: int):
 	visible = true
 	popup_active = true
-	current_popup_scene = DialogueProcessor._get_dating_scene(CustomResourceLoader.popup_dialogue_path + "gigi_popups", "sequence_" + str(popup_sequence_id))
+	current_popup_scene = DialogueProcessor._get_dating_scene(CustomResourceLoader.popup_dialogue_path + "gigi_popups", "sequence_" + str(popup_id))
 	popup_dialogue = DialogueProcessor._get_next_dating_dialogue(current_popup_scene)
 	_display()
 
@@ -69,17 +63,13 @@ func _increment_date_stage(value: Dictionary):
 
 func _end_popup():
 	popup_active = false
-	# DATE ID WOULD BE INCREMENTED - but for testing sake it has not been...
-	# TODO: create additional date dialogues then increment here
-	popup_sequence_id += 1
-	
-	if popup_sequence_id == 3:
-		popup_sequence_id = 0
-		
 	visible = false
 
-
-func _input(event: InputEvent) -> void:
+# Debug input
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("gigi_show"):
 		if not popup_active:
-			_popup_start()
+			_popup_start(0)
+
+func _on_activate_popup(popup_id: int) -> void:
+	_popup_start(popup_id)
