@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c4osos6i6rkf2" path="res://art/3D_Env/3D_Test.tscn" id="1_fr1um"]
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="1_jbqir"]
+[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="2_cyt5c"]
 [ext_resource type="PackedScene" uid="uid://3ukueorlwt6y" path="res://scenes/ui/health_bar.tscn" id="2_yautc"]
 [ext_resource type="PackedScene" uid="uid://cjku3tspjt4ep" path="res://scenes/ui/dating/gigi_date.tscn" id="4_7x1jh"]
 [ext_resource type="PackedScene" uid="uid://11pckncgaxu4" path="res://scenes/components/level_components/level_transitions/level_end.tscn" id="6_6xh4u"]
@@ -10,6 +11,12 @@
 [sub_resource type="BoxMesh" id="BoxMesh_3p835"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2venv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7x1jh"]
+size = Vector3(4.6031494, 6.1855774, 4.163025)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cyt5c"]
+size = Vector3(1, 5.180786, 3.803955)
 
 [node name="TestLevel" type="Node3D" unique_id=1708525088]
 
@@ -44,6 +51,26 @@ shape = SubResource("BoxShape3D_2venv")
 [node name="Level" parent="World" unique_id=1829183850 instance=ExtResource("1_fr1um")]
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 0.6001549, -1.7041183, 0)
 
+[node name="PopupDateTestTrigger" parent="World" unique_id=1311781014 instance=ExtResource("2_cyt5c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.8396225, 9.929406, 0)
+_signal_parameters = [0]
+signal_name = "activate_popup"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/PopupDateTestTrigger" unique_id=776663417]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.43963623, 1.6656036, 0.29238892)
+shape = SubResource("BoxShape3D_7x1jh")
+debug_color = Color(0.8542519, 0.084620945, 0.86362904, 0.41960785)
+
+[node name="VNDateTestTrigger" parent="World" unique_id=603408934 instance=ExtResource("2_cyt5c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7837305, 11.909763, 0)
+_signal_parameters = [0]
+signal_name = "activate_date"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/VNDateTestTrigger" unique_id=1953554164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.035095215, -0.08117676)
+shape = SubResource("BoxShape3D_cyt5c")
+debug_color = Color(0.74265206, 0.331497, 0.8242094, 0.41960785)
+
 [node name="Player" parent="." unique_id=1349193765 instance=ExtResource("1_jbqir")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5454574, 0)
 floor_constant_speed = true
@@ -60,10 +87,10 @@ level_name = "test2"
 
 [node name="GiGiPopup" parent="." unique_id=134709764 instance=ExtResource("6_cyt5c")]
 visible = false
-offset_left = 35.0
-offset_top = 345.0
-offset_right = 345.0
-offset_bottom = 927.0
+offset_left = 240.0
+offset_top = 232.0
+offset_right = 740.0
+offset_bottom = 814.0
 
 [connection signal="player_health_changed" from="Player" to="InterestBar" method="_on_player_health_changed"]
 [connection signal="player_health_initialiased" from="Player" to="InterestBar" method="_on_player_health_initialiased"]

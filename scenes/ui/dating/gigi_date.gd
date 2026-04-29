@@ -11,9 +11,6 @@ var dating_active: bool = false
 # determines if button must be clicked to proceed
 var requires_option_selection: bool = false
 
-# holds reference to current dating progression (each index is one whole dating scene)
-var date_id: int = 0
-
 # current whole dating scene
 var current_dating_scene: Array = []
 
@@ -21,11 +18,10 @@ var current_dating_scene: Array = []
 var dating_dialogue: Dictionary = {}
 
 
-# ready unused (values which were initialised here have been moved elsewhere)
 func _ready() -> void:
-	pass
+	EventManager.connect("activate_date", _on_activate_date)
 
-# handle date show event
+# debug show dating
 # TODO: move to player input component as an input state?
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("date_show"):
@@ -33,12 +29,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			if not requires_option_selection:
 				_increment_date_stage(dating_dialogue)
 		else:
-			_date_start()
+			_date_start(0)
 
 # set values for started date and retrieve scene and dialogue
 # TODO: im just thinking but we could probably remove dating_active and favour 'visibility' as
 	# our conditional var. this will sacrifice a bit of readability though lmfao idk
-func _date_start():
+func _date_start(date_id: int):
 	visible = true
 	dating_active = true
 	current_dating_scene = DialogueProcessor._get_dating_scene(CustomResourceLoader.dating_dialogue_path + "date_" + str(date_id), "date_" + str(date_id))
@@ -67,9 +63,6 @@ func _display():
 # ends the current date (returns player to active world)
 func _end_date():
 	dating_active = false
-	# DATE ID WOULD BE INCREMENTED - but for testing sake it has not been...
-	# TODO: create additional date dialogues then increment here
-	date_id = 0
 	await get_tree().create_timer(0.5).timeout
 	visible = false
 
@@ -90,3 +83,6 @@ func _increment_date_stage(value: Dictionary):
 		# continue dating loop
 		dating_dialogue = DialogueProcessor._get_next_dating_dialogue(current_dating_scene, value)
 		_display()
+
+func _on_activate_date(date_id: int) -> void:
+	_date_start(date_id)
