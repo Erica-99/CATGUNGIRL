@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bx3yqkplme1o"]
+
+[ext_resource type="Script" uid="uid://bgsxy7x62gxql" path="res://scenes/bullet/bullet.gd" id="1_7c8un"]
+[ext_resource type="PackedScene" uid="uid://csd06hicr5wny" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="2_83itf"]
+[ext_resource type="AudioStream" uid="uid://bqvmwidrwriww" path="res://resources/sound/Laser_Perfect.mp3" id="3_c6pnf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_c6pnf"]
+radius = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0vdx3"]
+radius = 0.1
+
+[sub_resource type="SphereMesh" id="SphereMesh_83itf"]
+radius = 0.1
+height = 0.2
+
+[node name="bullet" type="CharacterBody3D" unique_id=1342868883]
+collision_layer = 32
+script = ExtResource("1_7c8un")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=244744939]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0020717382, -0.005582571, 0.0029153824)
+shape = SubResource("SphereShape3D_c6pnf")
+
+[node name="HitboxComponent" parent="." unique_id=1965125698 instance=ExtResource("2_83itf")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxComponent" unique_id=1075273365]
+shape = SubResource("SphereShape3D_0vdx3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1545757818]
+mesh = SubResource("SphereMesh_83itf")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=232001652]
+stream = ExtResource("3_c6pnf")
+autoplay = true
