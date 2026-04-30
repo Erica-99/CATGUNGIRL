@@ -46,11 +46,10 @@ func _set_text(text: String, display_as_typewriter: bool = false, typewriter_dur
 	rich_text_label.text = text
 	if display_as_typewriter:
 		# attach shake flags - depending on other people's opinions, might change this up to use param calls or constants?
-		rich_text_label.text = "[shake rate=10 level=2 connected=1]" + text + "[/shake]"
+		rich_text_label.text = text
 		rich_text_label.visible_ratio = 0.0
 		typewriter_tween = create_tween()
 		typewriter_tween.tween_property(rich_text_label, "visible_ratio", 1.0, typewriter_duration)
-		typewriter_tween.tween_callback(self._set_text.bind(text))
 
 # kills active tween and sets visibility back to 1
 func _kill_tween() -> void:
