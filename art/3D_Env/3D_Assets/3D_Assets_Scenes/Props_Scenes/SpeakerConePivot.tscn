@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dcpva7aa78k11"]
+
+[ext_resource type="ArrayMesh" uid="uid://b4mlstf60ff57" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/SpeakerConePivot.obj" id="1_lw54t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lw54t"]
+size = Vector3(0.467716, 0.663372, 0.438263)
+
+[node name="SpeakerConePivot" type="StaticBody3D" unique_id=1658947484]
+
+[node name="SpeakerConePivot_Mesh" type="MeshInstance3D" parent="." unique_id=1757958770]
+mesh = ExtResource("1_lw54t")
+
+[node name="SpeakerConePivot_Collision" type="CollisionShape3D" parent="." unique_id=1883961240]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.234163, 0, 0.00021450222)
+shape = SubResource("BoxShape3D_lw54t")

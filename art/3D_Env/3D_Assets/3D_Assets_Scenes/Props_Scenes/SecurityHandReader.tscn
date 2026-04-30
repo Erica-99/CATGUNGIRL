@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b8mgks4mhehhj"]
+
+[ext_resource type="ArrayMesh" uid="uid://bwok4wwij1627" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/SecurityHandReader.obj" id="1_tutbe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8do3d"]
+size = Vector3(0.1, 1, 0.6)
+
+[node name="SecurityHandReader" type="StaticBody3D" unique_id=2050039903]
+
+[node name="SecurityHandReader_Mesh" type="MeshInstance3D" parent="." unique_id=1504327954]
+mesh = ExtResource("1_tutbe")
+
+[node name="SecurityHandReader_Collision" type="CollisionShape3D" parent="." unique_id=160258581]
+shape = SubResource("BoxShape3D_8do3d")

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://h3c4we0xedeh"]
+
+[ext_resource type="ArrayMesh" uid="uid://bqfyo8ajr2bff" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/12mFloor.obj" id="1_7vx7i"]
+[ext_resource type="ArrayMesh" uid="uid://c3ure3m1hxrrf" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/12mRearWall.obj" id="2_3hrbp"]
+[ext_resource type="ArrayMesh" uid="uid://csm3gv3tjyeuo" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/12mRoofVent.obj" id="3_w4rnp"]
+[ext_resource type="ArrayMesh" uid="uid://bsrfrecij404p" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/SingleDoorwayVent.obj" id="4_bdnd2"]
+[ext_resource type="ArrayMesh" uid="uid://dekaes1qn80tm" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/LargeDoorwayVent.obj" id="5_3hrbp"]
+
+[node name="MaintenanceRoom" type="Node3D" unique_id=346632071]
+
+[node name="12mFloor" type="MeshInstance3D" parent="." unique_id=979468934]
+mesh = ExtResource("1_7vx7i")
+
+[node name="12mRearWall" type="MeshInstance3D" parent="." unique_id=1334880031]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, -2.917)
+mesh = ExtResource("2_3hrbp")
+
+[node name="12mRoofVent" type="MeshInstance3D" parent="." unique_id=355921502]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2, 0)
+mesh = ExtResource("3_w4rnp")
+
+[node name="SingleDoorwayVent" type="MeshInstance3D" parent="." unique_id=1712025770]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 2.02, 0)
+mesh = ExtResource("4_bdnd2")
+
+[node name="LargeDoorwayVent" type="MeshInstance3D" parent="." unique_id=202007564]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1, 1.657, 0)
+mesh = ExtResource("5_3hrbp")

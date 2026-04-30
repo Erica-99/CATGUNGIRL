@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b767eoe4ibts2"]
+
+[ext_resource type="ArrayMesh" uid="uid://b84hyy6t8wwao" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/12mRoof.obj" id="1_6wdrg"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7osqu"]
+points = PackedVector3Array(-6, -0.100005, -2.500249, -6, 0.100004986, -2.4968228, 6, -0.100005, -2.500249, -6, -0.100005, 2.499751, -6, 0.100004986, 2.499751, 6, 0.100004986, -2.4968228, 6, -0.100005, 2.499751, 6, 0.100004986, 2.499751)
+
+[node name="12mRoof" type="StaticBody3D" unique_id=16917313]
+
+[node name="12mRoof_Mesh" type="MeshInstance3D" parent="." unique_id=1869496252]
+mesh = ExtResource("1_6wdrg")
+
+[node name="12mRoof_Collision" type="CollisionShape3D" parent="." unique_id=5267786]
+shape = SubResource("ConvexPolygonShape3D_7osqu")
