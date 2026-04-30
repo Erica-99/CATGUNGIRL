@@ -19,6 +19,8 @@ extends Node3D
 @export var bullet_scale: float = 1.0	# visual size of bullet 
 @export var recoil_amount: float = 0.15   # higher = more
 @export var recoil_recovery: float = 10.0 # higher = faster
+@export var wobble_amount: float = 0.2	# higher = more
+@export var wobble_speed: float = 9.0	# higher = faster
 
 @export_group("Charged Shot")
 @export var charge_mode: Enums.ChargeMode = Enums.ChargeMode.AUTO_FIRE	# which charge mode is active (switch in inspector)
@@ -49,11 +51,12 @@ var _fire_cooldown: float = 0.0	# counts down each frame, gun can't fire until i
 var _recoil_offset: float = 0.0	# current recoil 
 var _is_charging: bool = false	# is a charged shot being charged?
 var _charge_timer: float = 0.0	# how long (seconds) player has been charging
+var _wobble_time: float = 0.0
 
 
 func _process(delta: float) -> void:
 	var current_input_state = input_component.get_input_state()
-	_update_aim(current_input_state.get("mouse_world_pos"), delta)
+	_update_aim(current_input_state.get("mouse_world_pos"), current_input_state, delta)
 	_fire_cooldown = maxf(_fire_cooldown - delta, 0.0)
 	# normal fire (left click) read from input component
 	if current_input_state.get("fire_held", false):
@@ -63,14 +66,21 @@ func _process(delta: float) -> void:
 
 ## rotates gun for 360 degree aiming
 ## uses lerp_angle for smooth delayed aiming
-func _update_aim(mouse_world: Vector3, delta: float) -> void:
+func _update_aim(mouse_world: Vector3, input_state: Dictionary, delta: float) -> void:
 	if mouse_world == null:
 		return
 	# direction vector from gun to mouse
 	var direction = mouse_world - global_position
 	direction.z = 0.0
 	var target_angle = Vector2(direction.x, direction.y).angle()
-	rotation.z = lerp_angle(rotation.z, target_angle + _recoil_offset, aim_speed * delta)
+	var is_moving = input_state.get("movement", 0.0) != 0.0 or input_state.get("jumping", false)
+	var wobble: float = 0.0
+	if is_moving:
+		_wobble_time += delta
+		wobble = sin(_wobble_time * wobble_speed) * wobble_amount
+	else:
+		_wobble_time = 0.0
+	rotation.z = lerp_angle(rotation.z, target_angle + _recoil_offset + wobble, aim_speed * delta)
 	_recoil_offset = lerpf(_recoil_offset, 0.0, recoil_recovery * delta)
 	scale = Vector3(1.0, 1.0, 1.0)
 
