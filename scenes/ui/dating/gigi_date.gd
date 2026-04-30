@@ -1,9 +1,11 @@
 extends Control
 
 # references
-@onready var button_container = $ButtonContainer
+@onready var button_container: HBoxContainer = $date_txt_bgd/ButtonContainer
 @onready var gigi_image = $gigi_pose
 @onready var dialogue = $date_txt_bgd/date_txt
+@onready var dialogue_bubble: PanelContainer = $date_txt_bgd/DialogueBubble
+@onready var press_button_info: RichTextLabel = $"date_txt_bgd/Press Button Info"
 
 # determines whether dating screen should be visible or not
 var dating_active: bool = false
@@ -17,17 +19,40 @@ var current_dating_scene: Array = []
 # current dialogue section of scene
 var dating_dialogue: Dictionary = {}
 
+# amount of seconds till typewriter finished 
+# (on finish then buttons + text appears to inform player to press to go to next screen)
+var typewriter_delay: float = 0
+
+# holds info on whether typewriter is writing out or not
+var currently_writing = false
+
+var writing_timer: Timer = Timer.new()
+
+const SECONDS_PER_CHARACTER = 0.05
 
 func _ready() -> void:
 	EventManager.connect("activate_date", _on_activate_date)
+	writing_timer.one_shot = true
+	writing_timer.timeout.connect(_display_button_press_info)
+	add_child(writing_timer)
 
 # debug show dating
 # TODO: move to player input component as an input state?
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("date_show"):
 		if dating_active:
-			if not requires_option_selection:
+			if not requires_option_selection && not currently_writing:
 				_increment_date_stage(dating_dialogue)
+				return
+				
+			# end dialogue display early
+			if currently_writing:
+				currently_writing = false
+				dialogue_bubble._kill_tween()
+				# reset text (done to stop the shaking)
+				dialogue_bubble._set_text(dating_dialogue["dialogue"])
+				writing_timer.stop()
+				_display_button_press_info()
 		else:
 			_date_start(0)
 
@@ -43,8 +68,19 @@ func _date_start(date_id: int):
 
 # display scene (fill out with info from current dating_dialogue)
 func _display():
-	# set text and images
-	dialogue.text = dating_dialogue["dialogue"]
+	press_button_info.visible = false
+	button_container.visible = false
+	# get delay via popup char count
+	typewriter_delay = SECONDS_PER_CHARACTER * dating_dialogue["dialogue"].length()
+	# set text - additional params determine how it should display (as typewriter)
+	dialogue_bubble._set_text(dating_dialogue["dialogue"], true, typewriter_delay)
+	currently_writing = true
+	
+	# temp timer
+	writing_timer.wait_time = typewriter_delay + 0.5
+	writing_timer.start()
+	
+	# set texture
 	gigi_image.texture = load(dating_dialogue["icon"])
 	
 	# generate buttons
@@ -59,6 +95,15 @@ func _display():
 			# connect to handler
 			button.pressed.connect(_option_selected.bind(option))
 			button_container.add_child(button)
+
+func _display_button_press_info():
+	currently_writing = false
+	if dating_dialogue["options"].size() == 0:
+		var tween = create_tween()
+		tween.tween_property(press_button_info, "visible", true, 1)
+	button_container.visible = true
+	pass
+
 
 # ends the current date (returns player to active world)
 func _end_date():
