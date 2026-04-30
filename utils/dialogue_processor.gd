@@ -59,10 +59,12 @@ static func _get_runtime_dialogue(dialogue_dict, trigger, conditions, room = "an
 # gets the dating scene
 # passes in scene_name
 	# scene_name = identifier for a certain scene
-static func _get_dating_scene(scene_name: String) -> Array:
-	# TODO: the filepath for dating_dialogue.json should be stored as a global var somewhere
-		# this is at least better than hardcoding it here
-	var dialogue_file = _load_file("res://resources/dialogue/dating_dialogue.json")
+static func _get_dating_scene(filename: String, scene_name: String) -> Array:
+	# below are the old calls - this was replaced as the length of dates are longer than i expected lol
+	#var dialogue_file = _load_file("res://resources/dialogue/dating_dialogue.json")
+	#return dialogue_file[scene_name]
+	
+	var dialogue_file = _load_file(filename + ".json")
 	return dialogue_file[scene_name]
 	
 # gets next dating dialogue from JSON

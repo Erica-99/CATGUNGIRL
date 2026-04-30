@@ -7,6 +7,6 @@ var current_level: String
 # Dictionary of Levels and their uid, to be used
 # by SceneLoader in menus, level transition points, etc.
 const LEVEL_PATHS: Dictionary = {
-	"test1": "uid://4k00bvwggjpj",
-	"test2": "uid://de2a1oe0l8k31",
+	"test1": "res://scenes/levels/test_level.tscn",
+	"test2": "res://scenes/levels/gun_test_level.tscn",
 }

@@ -3,14 +3,7 @@ extends Node
 # references
 @onready var timer: Timer = $"../Timer"
 @onready var mesh_instance_3d: Sprite3D = $"../.."
-
-# export vars
-	# the elapsed time here will be removed to instead favor signals perchance
-	# TODO: at a later stage
-@export var min_dialogue_elapsed_time: float = 2.0
-@export var max_dialogue_elapsed_time: float = 10.0
-@export var can_speak: bool = true
-@export var debug_mode: bool = false
+@onready var dialogue_renderer: Sprite3D = $"../.."
 
 # set variables to change on initialisation
 	# entity can be: player, gun, enemy (including enemy types ie: convict, trunk, scrub and boss)
@@ -30,19 +23,21 @@ var trigger = "idle"
 
 func _ready() -> void:
 	randomize()
-	# here you would get the parent node's ID but I'm not sure if we will do it this way so I'll hardcode for now
-	#entity = get_parent().{insert variable which identified parent like ID or name IDK}
-	# TODO: do at a later stage
-	entity = "player"
-	# load dialogue and begin timer
-	raw_dialogue = DialogueProcessor._load_file(CustomResourceLoader.dialogue_path + entity + ".json")
-	if can_speak:
-		timer.start(randf_range(min_dialogue_elapsed_time, max_dialogue_elapsed_time))
 	
-	# this debug mode is only for if u want to see how the calls work
-	# for like implementing dialogue calls elsewhere
-	if debug_mode:
-		_debug_tests_for_linking()
+	if dialogue_renderer._is_attached_to_entity():
+		# here you would get the parent node's ID but I'm not sure if we will do it this way so I'll hardcode for now
+		#entity = get_parent().{insert variable which identified parent like ID or name IDK}
+		# TODO: do at a later stage
+		entity = "player"
+		# load dialogue and begin timer
+		raw_dialogue = DialogueProcessor._load_file(CustomResourceLoader.dialogue_path + entity + ".json")
+		if dialogue_renderer.can_speak:
+			timer.start(randf_range(dialogue_renderer.min_dialogue_elapsed_time, dialogue_renderer.max_dialogue_elapsed_time))
+		
+		# this debug mode is only for if u want to see how the calls work
+		# for like implementing dialogue calls elsewhere
+		if dialogue_renderer.debug_mode:
+			_debug_tests_for_linking()
 
 func _process(delta: float) -> void:
 	pass
@@ -51,19 +46,17 @@ func _process(delta: float) -> void:
 # once i do signals, i'll move the code into a more general method
 # for now this is fine though
 func _on_timer_timeout() -> void:
-	if can_speak:
+	if dialogue_renderer.can_speak:
 		# get dialogue and initialise bubble
 		var dialogue = DialogueProcessor._get_runtime_dialogue(raw_dialogue, trigger, player_conditions)
-		var bubble = dialogue_bubble_prefab.instantiate()
-		add_child(bubble)
-		bubble._set_text(dialogue)
-		# make component listen to the child transparency calls
-		bubble.is_transparent.connect(_remove_bubble)
-		# set initial position
-		_update_bubble_positions()
-		
+		_add_bubble(dialogue)
 		# restart timer
-		timer.start(randf_range(min_dialogue_elapsed_time, max_dialogue_elapsed_time))
+		timer.start(randf_range(dialogue_renderer.min_dialogue_elapsed_time, dialogue_renderer.max_dialogue_elapsed_time))
+
+
+func _clear_all_bubbles():
+	for child in get_children():
+		_remove_bubble(child)
 
 # remove bubble once transparency is complete
 # ive added this to run in this component rather than the child because I use this as my trigger
@@ -72,11 +65,27 @@ func _remove_bubble(child):
 	child.queue_free()
 	_update_bubble_positions()
 
+func _add_bubble(dialogue: String, is_system_popup: bool = false):
+	var bubble = dialogue_bubble_prefab.instantiate()
+	bubble.base_transparency_speed = dialogue_renderer.base_transparency_speed
+	
+	if is_system_popup:
+		_clear_all_bubbles()
+		bubble._set_type(Enums.BubbleType.SYSTEM)
+	
+	add_child(bubble)
+	bubble._set_text(dialogue)
+	if dialogue_renderer._is_attached_to_entity():
+		bubble.can_disappear = true
+		# make component listen to the child transparency calls
+		bubble.is_transparent.connect(_remove_bubble)
+	# set initial position
+	_update_bubble_positions()
 
 # notably this section, if you mess with the indexes and be an idiot (like me) you can make the
 # dialogue appear and move similar to how a particle accelerator operates
 # just dont touch this code lmfao
-func _update_bubble_positions():
+func _update_bubble_positions() -> void:
 	var children = get_children()
 	if children.size() > 1:
 		var index = 0
@@ -86,6 +95,13 @@ func _update_bubble_positions():
 	else:
 		children[0]._update_off_index()
 		
+
+func _make_all_bubbles_transparent() -> void:
+	for bubble in get_children():
+		bubble.can_disappear = true
+		bubble.base_transparency_speed = dialogue_renderer.base_transparency_speed
+		# make component listen to the child transparency calls
+		bubble.is_transparent.connect(_remove_bubble)
 
 # chucking this stuff here so its out of the way lol
 # these are just the unit tests for dialogue loading
@@ -113,7 +129,7 @@ func _debug_tests_for_linking() -> void:
 	
 	# first load the scene - in this case the only scene is "first_interaction"
 		# it would be great to have the scenes be held in a global Enum or smth to log each dating 'scene'
-	current_dating_scene = DialogueProcessor._get_dating_scene("first_interaction")
+	current_dating_scene = DialogueProcessor._get_dating_scene("possible_dating_dialogue", "first_interaction")
 	
 	# then load up your dating dialogue!
 	# below are some examples of loading entries off dating_dialogue.json

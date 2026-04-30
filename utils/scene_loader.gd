@@ -7,7 +7,7 @@ signal progress_changed(progress)
 # Emit when the load has finished
 signal load_finished
 
-var loading_screen: PackedScene = preload("uid://cpeyne8plj8s3")
+var loading_screen: PackedScene = preload("res://scenes/ui/menu_screens/loading_screen/loading_screen.tscn")
 var loaded_resource: PackedScene
 var scene_path: String
 var progress: Array = []
