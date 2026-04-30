@@ -9,6 +9,7 @@ class_name ConvictEnemy
 @export var patrol: EnemyPatrol
 @export var engage: ConvictEngage
 @export var death: EnemyDeath
+@export var search: EnemySearch
 
 # State Machine Instance
 var machine: AltStateMachine = AltStateMachine.new()
@@ -27,13 +28,17 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	# Decision tree for switching states
-	if health_comp._current_health <= 0:
+	if health_comp._current_health <= 0: # Death Condition
 		set_state(death)
-	elif engage.player_spotted():
+	elif engage.player_spotted(): # Enemy Aggro Condition
 		set_state(engage)
 	elif state.is_complete:
-		if state is ConvictEngage:
+		if state is EnemySearch: # Enemy Patrol Condition
 			set_state(patrol)
+		if state is ConvictEngage: # Enemy Search Condition
+			set_state(search)
+		
+	
 	
 	# Runs logic for current_state branch
 	state.update_branch(delta)

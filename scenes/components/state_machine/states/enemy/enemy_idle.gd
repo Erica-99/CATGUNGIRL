@@ -1,7 +1,7 @@
 extends State
 class_name EnemyIdle
 
-#sprite controller
+# Animation controller
 @onready var sprite_anims = $"../../../Visuals/AnimationPlayer"
 
 
@@ -18,8 +18,6 @@ var animator: AnimatedSprite3D
 func enter() -> void:
 	# Play animation (changes color for test)
 	sprite_anims.play(animation)
-	animator = blackboard["anim"]
-	animator.modulate = Color(0.0, 0.0, 0.7, 1.0)
 	
 	# Select idle duration time
 	idle_duration = randf_range(idle_min_time, idle_max_time)
@@ -36,4 +34,4 @@ func update(_delta: float) -> void:
 
 	# Wait until the random duration passes
 	if idle_timer >= idle_duration:
-		is_complete = true
+		complete("Idle Time Expired")

@@ -41,6 +41,8 @@ func update(_delta: float) -> void:
 		set_state(attack)
 	elif child_state is EnemyAttack and child_state.is_complete:
 		set_state(move)
+	elif child_state is EnemyMove and child_state.is_complete:
+		is_complete = true
 
 
 # Used by parent to determine when to enter, and reset abandon_timer if player is still in sight

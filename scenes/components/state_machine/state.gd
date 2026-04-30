@@ -51,3 +51,7 @@ func set_state(new_state: State, force_reset: bool = false) -> void:
 	
 func reset():
 	is_complete = false
+	
+func complete(reason: String, name: String = self.name):
+	is_complete = true
+	print(name + ": " + reason)
