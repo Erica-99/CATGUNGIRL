@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://b244whnsrte33"]
+
+[ext_resource type="PackedScene" uid="uid://tib45d47euwy" path="res://art/3D_Env/Stages/Stage_One.tscn" id="1_0vxsf"]
+[ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="2_g58ai"]
+[ext_resource type="PackedScene" uid="uid://3ukueorlwt6y" path="res://scenes/ui/health_bar.tscn" id="3_vbfgb"]
+[ext_resource type="PackedScene" uid="uid://cjku3tspjt4ep" path="res://scenes/ui/dating/gigi_date.tscn" id="4_lxfn4"]
+[ext_resource type="PackedScene" uid="uid://1hgtrlupdh8t" path="res://scenes/ui/dating/gigi_popup.tscn" id="5_e2q1c"]
+
+[node name="TestLevel1" type="Node3D" unique_id=589555005]
+
+[node name="World" type="Node3D" parent="." unique_id=319797721]
+
+[node name="StageOne" parent="World" unique_id=530540051 instance=ExtResource("1_0vxsf")]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 145.01062, 0.7386894, 0)
+
+[node name="Player" parent="." unique_id=1349193765 instance=ExtResource("2_g58ai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5454574, 0)
+floor_constant_speed = true
+platform_wall_layers = 1
+
+[node name="InterestBar" parent="." unique_id=2086963886 instance=ExtResource("3_vbfgb")]
+
+[node name="GigiDate" parent="." unique_id=2015194836 instance=ExtResource("4_lxfn4")]
+pivot_offset = Vector2(-11, -529)
+
+[node name="GiGiPopup" parent="." unique_id=134709764 instance=ExtResource("5_e2q1c")]
+visible = false
+offset_left = 240.0
+offset_top = 232.0
+offset_right = 740.0
+offset_bottom = 814.0
