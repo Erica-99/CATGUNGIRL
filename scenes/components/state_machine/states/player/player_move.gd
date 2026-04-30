@@ -42,7 +42,7 @@ func physics_update(_delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir: float = input_state["movement"]
 	var direction := (actor.transform.basis * Vector3(input_dir, 0, 0)).normalized()
-	var speed = actor.speed
+	var speed = actor.speed * actor.speed_multiplier
 	var accel = actor.acceleration
 	
 	if direction and direction == direction_last_frame:
