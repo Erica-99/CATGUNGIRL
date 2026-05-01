@@ -1,48 +1,48 @@
 [gd_scene format=3 uid="uid://bqfu7s1k8edax"]
 
-[ext_resource type="ArrayMesh" uid="uid://be2dqusidbbkj" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/PanopticonWalls.obj" id="1_q2h62"]
-[ext_resource type="ArrayMesh" uid="uid://ddl7sjyuufdy2" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/PanopticonBridge.obj" id="2_6awmq"]
-[ext_resource type="ArrayMesh" uid="uid://cqdtr16b4rw7l" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/6mRearWallLong.obj" id="3_b0vrg"]
-[ext_resource type="ArrayMesh" uid="uid://dgumbwuk7ky0a" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/6mFloorLong.obj" id="4_i1iy3"]
-[ext_resource type="ArrayMesh" uid="uid://dv7gi2es7l0ka" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/6mRoofLong.obj" id="5_y6hoj"]
-[ext_resource type="ArrayMesh" uid="uid://falct3doiiab" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/LargeDoorway.obj" id="6_lny5l"]
+[ext_resource type="PackedScene" uid="uid://bt342tsy3excl" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/ElevatorPanopticon.tscn" id="1_mu7dh"]
+[ext_resource type="PackedScene" uid="uid://cvybenralblx6" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/PanopticonBridge.tscn" id="2_b0vrg"]
+[ext_resource type="PackedScene" uid="uid://b17cpk4q25npy" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/PanopticonWalls.tscn" id="3_i1iy3"]
+[ext_resource type="PackedScene" uid="uid://byxctjnvt02u3" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/FloorLong.tscn" id="4_y6hoj"]
+[ext_resource type="PackedScene" uid="uid://dbngf48l88aym" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/DoorwayLarge.tscn" id="5_lny5l"]
+[ext_resource type="PackedScene" uid="uid://cao0d81ad8hbv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/DoorwaySingle.tscn" id="6_i1iy3"]
+[ext_resource type="PackedScene" uid="uid://dmxnw55h2bvpj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/RoofLong.tscn" id="7_y6hoj"]
+[ext_resource type="PackedScene" uid="uid://bvy4e6vgrkikp" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/WallRearLong.tscn" id="8_y6hoj"]
 
 [node name="Panopticon" type="Node3D" unique_id=439182006]
 
-[node name="PanopticonWalls" type="MeshInstance3D" parent="." unique_id=114656205]
-mesh = ExtResource("1_q2h62")
+[node name="ElevatorPanopticon" parent="." unique_id=429222877 instance=ExtResource("1_mu7dh")]
 
-[node name="PanopticonBridge" type="MeshInstance3D" parent="." unique_id=1994097531]
-mesh = ExtResource("2_6awmq")
+[node name="PanopticonBridge" parent="." unique_id=1484711535 instance=ExtResource("2_b0vrg")]
 
-[node name="6mRearWallLong" type="MeshInstance3D" parent="." unique_id=1760651320]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.714, 2.2, -6.135)
-mesh = ExtResource("3_b0vrg")
+[node name="PanopticonWalls" parent="." unique_id=842184407 instance=ExtResource("3_i1iy3")]
 
-[node name="6mFloorLong" type="MeshInstance3D" parent="." unique_id=1661857732]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.714, 0, -2.518)
-mesh = ExtResource("4_i1iy3")
+[node name="FloorLong" parent="." unique_id=1847350484 instance=ExtResource("4_y6hoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.696, 0, 0)
 
-[node name="6mRoofLong" type="MeshInstance3D" parent="." unique_id=869074419]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.714, 4.2, -2.518)
-mesh = ExtResource("5_y6hoj")
+[node name="DoorwayLarge" parent="." unique_id=1093577184 instance=ExtResource("5_lny5l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.631588, 0, 0)
 
-[node name="LargeDoorway" type="MeshInstance3D" parent="." unique_id=541829526]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.612, 1.656, 0)
-mesh = ExtResource("6_lny5l")
+[node name="DoorwaySingle" parent="." unique_id=1936140797 instance=ExtResource("6_i1iy3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.79775, 0, 0)
 
-[node name="6mRearWallLong2" type="MeshInstance3D" parent="." unique_id=539678001]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.714, 2.2, -6.135)
-mesh = ExtResource("3_b0vrg")
+[node name="RoofLong" parent="." unique_id=644393952 instance=ExtResource("7_y6hoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.696, 4.2, 0)
 
-[node name="6mFloorLong2" type="MeshInstance3D" parent="." unique_id=2017278535]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.714, 0, -2.518)
-mesh = ExtResource("4_i1iy3")
+[node name="WallRearLong" parent="." unique_id=1127808325 instance=ExtResource("8_y6hoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.696, 2.2, -6.136)
 
-[node name="6mRoofLong2" type="MeshInstance3D" parent="." unique_id=1394835808]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.714, 4.2, -2.518)
-mesh = ExtResource("5_y6hoj")
+[node name="FloorLong2" parent="." unique_id=1964535993 instance=ExtResource("4_y6hoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.696, 0, 0)
 
-[node name="LargeDoorway2" type="MeshInstance3D" parent="." unique_id=295889957]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.612, 1.656, 0)
-mesh = ExtResource("6_lny5l")
+[node name="DoorwayLarge2" parent="." unique_id=1280559092 instance=ExtResource("5_lny5l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.632, 0, 0)
+
+[node name="DoorwaySingle2" parent="." unique_id=1791852012 instance=ExtResource("6_i1iy3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.798, 0, 0)
+
+[node name="RoofLong2" parent="." unique_id=1842762385 instance=ExtResource("7_y6hoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.696, 4.2, 0)
+
+[node name="WallRearLong2" parent="." unique_id=17770018 instance=ExtResource("8_y6hoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.696, 2.2, -6.136)

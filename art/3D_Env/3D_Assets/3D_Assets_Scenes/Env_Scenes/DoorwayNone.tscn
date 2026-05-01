@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dehnrair78ydx"]
+
+[ext_resource type="ArrayMesh" uid="uid://cfm3bfg7tvbe6" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/DoorwayNone.obj" id="1_t28eg"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bx7id"]
+points = PackedVector3Array(-0.099878, -0.100005, -2.500938, 0.09987801, -0.100005, -2.500938, -0.099878, -0.100005, 2.4997582, -0.099878, 4.301661, -2.500938, 0.09987801, 4.301661, -2.500938, 0.09987801, -0.100005, 2.4997582, -0.099878, 4.301661, 2.4997582, 0.09987801, 4.301661, 2.4997582)
+
+[node name="DoorwayNone" type="StaticBody3D" unique_id=974643408]
+
+[node name="DoorwayNone_Mesh" type="MeshInstance3D" parent="." unique_id=880903700]
+mesh = ExtResource("1_t28eg")
+
+[node name="DoorwayNone_Collision" type="CollisionShape3D" parent="." unique_id=1602871354]
+shape = SubResource("ConvexPolygonShape3D_bx7id")
