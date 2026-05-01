@@ -3,16 +3,20 @@ class_name  ConvictEngage
 
 @export var alert: EnemyAlert
 @export var move: EnemyMove
-@export var attack: EnemyAttack
+@export var fwd_attack: EnemyMeleeAtk
+@export var idle: EnemyIdle
 
 @export var sight_area: Area3D
 @export var abandon_time: float
+@export var attack_cooldown: float
 
 var abandon_timer: float
+var cooldown_timer: float
 
 func enter() -> void:
 	# Reset abanddon timer
 	abandon_timer = 0
+	cooldown_timer = attack_cooldown
 
 	# Enter alert by default
 	set_state(alert)
@@ -20,6 +24,9 @@ func enter() -> void:
 func update(_delta: float) -> void:
 	# Tick up abandon_timer
 	abandon_timer += _delta
+	
+	if child_state is EnemyMeleeAtk == false:
+		cooldown_timer += _delta
 	
 	# Resets timer if player_spotted
 	if player_spotted(): 
@@ -33,13 +40,16 @@ func update(_delta: float) -> void:
 	
 	if child_state is EnemyAlert:
 		if child_state.is_complete:
-			if attack.attack_opp():
-				set_state(attack)
+			if fwd_attack.attack_opp():
+				set_state(fwd_attack)
 			else:
 				set_state(move)
-	elif attack.attack_opp():
-		set_state(attack)
-	elif child_state is EnemyAttack and child_state.is_complete:
+	elif fwd_attack.attack_opp() and cooldown_timer >= attack_cooldown:
+		cooldown_timer = 0
+		set_state(fwd_attack)
+	elif child_state is EnemyMeleeAtk and child_state.is_complete:
+		set_state(idle)
+	elif child_state is EnemyIdle and child_state.is_complete:
 		set_state(move)
 	elif child_state is EnemyMove and child_state.is_complete:
 		is_complete = true

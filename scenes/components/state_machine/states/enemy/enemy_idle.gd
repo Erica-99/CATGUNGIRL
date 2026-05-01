@@ -12,7 +12,7 @@ class_name EnemyIdle
 var idle_duration: float
 var idle_timer: float
 
-var animator: AnimatedSprite3D
+# var animator: AnimatedSprite3D
 
 # On Enter, sets a random duration to pause for and sets timer to 0. Sets actor velocity to 0
 func enter() -> void:

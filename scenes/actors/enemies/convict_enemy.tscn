@@ -13,11 +13,12 @@
 [ext_resource type="Script" uid="uid://dyr3mhryox7qn" path="res://scenes/components/state_machine/states/enemy/enemy_idle.gd" id="8_mjfjc"]
 [ext_resource type="Script" uid="uid://c1a7osbqykg2" path="res://scenes/components/state_machine/states/enemy/enemy_move.gd" id="9_i37ss"]
 [ext_resource type="Script" uid="uid://c8tp1cvog1wsi" path="res://scenes/components/state_machine/states/enemy/enemy_alert.gd" id="11_4tu27"]
-[ext_resource type="Script" uid="uid://c3u5n48puvigd" path="res://scenes/components/state_machine/states/enemy/enemy_attack.gd" id="12_e4ube"]
 [ext_resource type="Script" uid="uid://cnchn1hd27t4h" path="res://scenes/components/state_machine/states/enemy/enemy_death.gd" id="13_43il1"]
 [ext_resource type="Script" uid="uid://cmtbt2a3h50kq" path="res://scenes/components/state_machine/states/enemy/convict_engage.gd" id="14_7v6mw"]
 [ext_resource type="Script" uid="uid://b4ldv0fbrkdf" path="res://scenes/actors/enemies/player_detection.gd" id="14_ijjht"]
+[ext_resource type="Script" uid="uid://bwef6jdxguc2v" path="res://scenes/components/state_machine/states/enemy/enemy_melee_atk.gd" id="16_ob8hf"]
 [ext_resource type="Script" uid="uid://c0rs86cs1stq8" path="res://scenes/components/state_machine/states/enemy/enemy_search.gd" id="17_xi3ex"]
+[ext_resource type="Script" uid="uid://dkdpeb17n46vh" path="res://scenes/components/hitbox_component/hitbox_component.gd" id="19_ob8hf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xi3ex"]
 atlas = ExtResource("2_pee7w")
@@ -423,6 +424,38 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_gi3f3"]
+resource_name = "Attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Behaviours/ConvictEngage/ForwardMelee")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 0.73333335),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"enable_hitbox"
+}, {
+"args": [],
+"method": &"disable_hitbox"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_4p71r"]
 resource_name = "Idle"
 loop_mode = 1
@@ -536,6 +569,7 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xi3ex"]
 _data = {
+&"Attack": SubResource("Animation_gi3f3"),
 &"Idle": SubResource("Animation_4p71r"),
 &"RESET": SubResource("Animation_xi3ex"),
 &"Run": SubResource("Animation_mjfjc"),
@@ -618,13 +652,15 @@ animation = "Walk"
 script = ExtResource("13_43il1")
 metadata/_custom_type_script = "uid://cnchn1hd27t4h"
 
-[node name="ConvictEngage" type="Node" parent="Behaviours" unique_id=1551046704 node_paths=PackedStringArray("alert", "move", "attack", "sight_area")]
+[node name="ConvictEngage" type="Node" parent="Behaviours" unique_id=1551046704 node_paths=PackedStringArray("alert", "move", "fwd_attack", "idle", "sight_area")]
 script = ExtResource("14_7v6mw")
 alert = NodePath("EnemyAlert")
 move = NodePath("EnemyMove (Chase)")
-attack = NodePath("EnemyAttack")
+fwd_attack = NodePath("ForwardMelee")
+idle = NodePath("EnemyIdle")
 sight_area = NodePath("../../Sight_Check")
 abandon_time = 3.0
+attack_cooldown = 2.0
 
 [node name="EnemyAlert" type="Node" parent="Behaviours/ConvictEngage" unique_id=509136342]
 script = ExtResource("11_4tu27")
@@ -638,12 +674,19 @@ move_speed = 5.0
 animation = "Run"
 metadata/_custom_type_script = "uid://c1a7osbqykg2"
 
-[node name="EnemyAttack" type="Node" parent="Behaviours/ConvictEngage" unique_id=637585415 node_paths=PackedStringArray("attack_check")]
-script = ExtResource("12_e4ube")
-attack_cooldown = 3.0
-attack_check = NodePath("../../../Attack_Check")
-attack_duration = 1.0
+[node name="ForwardMelee" type="Node" parent="Behaviours/ConvictEngage" unique_id=637585415 node_paths=PackedStringArray("hitbox", "atk_check")]
+script = ExtResource("16_ob8hf")
+hitbox = NodePath("../../../Forward_Atk_Area")
+atk_check = NodePath("../../../Attack_Check")
+animation = "Attack"
 metadata/_custom_type_script = "uid://c3u5n48puvigd"
+
+[node name="EnemyIdle" type="Node" parent="Behaviours/ConvictEngage" unique_id=512633357]
+script = ExtResource("8_mjfjc")
+idle_min_time = 1.0
+idle_max_time = 1.0
+animation = "Idle"
+metadata/_custom_type_script = "uid://dyr3mhryox7qn"
 
 [node name="EnemySearch" type="Node" parent="Behaviours" unique_id=456804002]
 script = ExtResource("17_xi3ex")
@@ -669,6 +712,7 @@ debug_color = Color(0.90929997, 0.27645475, 0.30361998, 0.41960785)
 
 [node name="Forward_Atk_Area" type="Area3D" parent="." unique_id=1411710539]
 collision_mask = 2
+script = ExtResource("19_ob8hf")
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Forward_Atk_Area" unique_id=1017743747]
 polygon = PackedVector2Array(1.3269831, -0.070039034, 1.0179421, 2.777554, 2.9384112, 2.3360667, 3.4019732, 0.5480435, 2.342403, -1.5269473)
