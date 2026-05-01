@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cjku3tspjt4ep" path="res://scenes/ui/dating/gigi_date.tscn" id="4_7x1jh"]
 [ext_resource type="PackedScene" uid="uid://11pckncgaxu4" path="res://scenes/components/level_components/level_transitions/level_end.tscn" id="6_6xh4u"]
 [ext_resource type="PackedScene" uid="uid://1hgtrlupdh8t" path="res://scenes/ui/dating/gigi_popup.tscn" id="6_cyt5c"]
+[ext_resource type="PackedScene" uid="uid://cf6ynerow4o6q" path="res://scenes/components/dialogue_component/dialogue_component.tscn" id="8_7x1jh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_3p835"]
 
@@ -91,6 +92,15 @@ offset_left = 240.0
 offset_top = 232.0
 offset_right = 740.0
 offset_bottom = 814.0
+
+[node name="DialogueComponent" parent="." unique_id=818863205 instance=ExtResource("8_7x1jh")]
+offset_left = 58.0
+offset_top = 158.0
+offset_right = 158.0
+offset_bottom = 458.0
+attached_to_team = 1
+min_dialogue_elapsed_time = 5.0
+max_dialogue_elapsed_time = 15.0
 
 [connection signal="player_health_changed" from="Player" to="InterestBar" method="_on_player_health_changed"]
 [connection signal="player_health_initialiased" from="Player" to="InterestBar" method="_on_player_health_initialiased"]

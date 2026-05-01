@@ -8,7 +8,6 @@ extends PanelContainer
 @export var textbox_colour: Color = Color.BLACK
 
 # runtime vars
-var centred_position: Vector2 = Vector2.ZERO
 var rate_of_transparency: float = 0
 var can_disappear: bool = false
 var base_transparency_speed: float = 4.0
@@ -16,21 +15,25 @@ var base_transparency_speed: float = 4.0
 var typewriter_tween: Tween
 
 # consts
-const max_opacity: int = 1.0
+const MAX_OPACITY: float = 1.0
+const VERT_OFFSET_RUNTIME: float = 55
 
 # signals
 signal is_transparent
 
 func _ready() -> void:
 	rich_text_label.add_theme_color_override("default_color", textbox_colour)
-	
-	# set initial values for runtime vars
-	centred_position = _get_position_around_origin()
-	rate_of_transparency = max_opacity / (base_transparency_speed * 60)
+
+	rate_of_transparency = MAX_OPACITY / (base_transparency_speed * 60)
 	
 	if type == Enums.BubbleType.POPUP:
 		rich_text_label.autowrap_mode = TextServer.AUTOWRAP_WORD
 		rich_text_label.size_flags_vertical = Control.SIZE_EXPAND
+		
+	#elif type == Enums.BubbleType.RUNTIME:
+		#var new_background = StyleBoxTexture.new()
+		#new_background.texture = load("res://resources/dialogue/slanted_dialogue.png")
+		#add_theme_stylebox_override("panel", new_background)
 
 func _process(delta: float) -> void:
 	if can_disappear:
@@ -61,23 +64,11 @@ func _set_type(type: Enums.BubbleType) -> void:
 	type = type
 	#if type == Enums.BubbleType.SYSTEM:
 		#set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
-
-# god i hate the name of this function - pls rename it if you think of smth better
-# all this does is get the offset coordinates so to centre the bubble around its original position
-func _get_position_around_origin() -> Vector2:
-	var origin_position = position
-	origin_position.x -= size.x / 2
-	origin_position.y -= size.y / 2
-	return origin_position
-
-# update position and transparency based off index of child
-# the index which is passed in is the reverse of the child list!
-func _update_off_index(index: int = 0) -> void:
-	# get transparency speed
+		
+		
+func _update_bubble_transparency_speed(index: int) -> void:
 	var new_speed = base_transparency_speed - (index * linear_transparency_decrease)
 	if new_speed < 0.0:
 		new_speed = 0.0
 	# update rate
-	rate_of_transparency = max_opacity / (new_speed * 60)
-	# update ycoord
-	position.y = centred_position.y - (50 * index)
+	rate_of_transparency = MAX_OPACITY / (new_speed * 60)
