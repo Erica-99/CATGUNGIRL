@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://d1ltmu1260jfx"]
+
+[ext_resource type="ArrayMesh" uid="uid://dwienle0napti" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/FloorWarden.obj" id="1_6o2vw"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7u7xi"]
+points = PackedVector3Array(-14.975647, -0.100005, -12.529736, -14.975647, 0.100004986, -12.529736, 14.975647, -0.100005, -12.529736, -14.975647, -0.100005, 2.4990616, -14.975647, 0.100004986, 2.4990616, 14.975647, 0.100004986, -12.529736, 14.975647, -0.100005, 2.4990616, 14.975647, 0.100004986, 2.4990616)
+
+[node name="FloorWarden" type="StaticBody3D" unique_id=560447800]
+
+[node name="FloorWarden_Mesh" type="MeshInstance3D" parent="." unique_id=1596139450]
+mesh = ExtResource("1_6o2vw")
+
+[node name="FloorWarden_Collision" type="CollisionShape3D" parent="." unique_id=1274896931]
+shape = SubResource("ConvexPolygonShape3D_7u7xi")
