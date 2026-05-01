@@ -3,13 +3,18 @@ class_name EnemySearch
 
 var actor: CharacterBody3D
 
+@export var animator: AnimationPlayer
+
 @export var look_time: float
 @export var look_count: int
+@export var animation = ''
 
 var look_timer: float
 var look_counter: int
 
 func enter() -> void:
+	animator.play(animation)
+	
 	look_timer = 0
 	look_counter = 0
 	actor = blackboard["actor"]
@@ -23,9 +28,8 @@ func update(_delta: float) -> void:
 	
 	if look_timer >= look_time:
 		actor.scale.x *= -1
-		look_time = 0
+		look_timer = 0
 		look_counter += 1
-		print("search turn")
 		
 	
 	if look_counter >= look_count:

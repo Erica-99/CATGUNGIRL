@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://bwef6jdxguc2v" path="res://scenes/components/state_machine/states/enemy/enemy_melee_atk.gd" id="16_ob8hf"]
 [ext_resource type="Script" uid="uid://c0rs86cs1stq8" path="res://scenes/components/state_machine/states/enemy/enemy_search.gd" id="17_xi3ex"]
 [ext_resource type="Script" uid="uid://dkdpeb17n46vh" path="res://scenes/components/hitbox_component/hitbox_component.gd" id="19_ob8hf"]
+[ext_resource type="Script" uid="uid://y2ix2xo5owxw" path="res://resources/damage_heal_instance/damage_heal_instance.gd" id="20_gi3f3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xi3ex"]
 atlas = ExtResource("2_pee7w")
@@ -588,6 +589,10 @@ size = Vector3(7, 4, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ioi8i"]
 size = Vector3(0.8427429, 3.9956665, 1)
 
+[sub_resource type="Resource" id="Resource_mjfjc"]
+script = ExtResource("20_gi3f3")
+metadata/_custom_type_script = "uid://y2ix2xo5owxw"
+
 [node name="Convict" type="CharacterBody3D" unique_id=1506947017 node_paths=PackedStringArray("animator", "health_comp", "patrol", "engage", "death", "search")]
 collision_layer = 4
 floor_constant_speed = true
@@ -688,10 +693,12 @@ idle_max_time = 1.0
 animation = "Idle"
 metadata/_custom_type_script = "uid://dyr3mhryox7qn"
 
-[node name="EnemySearch" type="Node" parent="Behaviours" unique_id=456804002]
+[node name="EnemySearch" type="Node" parent="Behaviours" unique_id=456804002 node_paths=PackedStringArray("animator")]
 script = ExtResource("17_xi3ex")
+animator = NodePath("../../Visuals/AnimationPlayer")
 look_time = 0.5
 look_count = 4
+animation = "Idle"
 
 [node name="Sight_Check" type="Area3D" parent="." unique_id=2091457129]
 collision_mask = 2
@@ -713,6 +720,7 @@ debug_color = Color(0.90929997, 0.27645475, 0.30361998, 0.41960785)
 [node name="Forward_Atk_Area" type="Area3D" parent="." unique_id=1411710539]
 collision_mask = 2
 script = ExtResource("19_ob8hf")
+damage_or_heal_instance = SubResource("Resource_mjfjc")
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Forward_Atk_Area" unique_id=1017743747]
 polygon = PackedVector2Array(1.3269831, -0.070039034, 1.0179421, 2.777554, 2.9384112, 2.3360667, 3.4019732, 0.5480435, 2.342403, -1.5269473)
