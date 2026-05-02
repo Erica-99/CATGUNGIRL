@@ -1,28 +1,31 @@
 [gd_scene format=3 uid="uid://divl5j2iem0hi"]
 
-[ext_resource type="Texture2D" uid="uid://bnor1oytd1oky" path="res://resources/dialogue/dialogue box.png" id="1_456da"]
 [ext_resource type="Script" uid="uid://cf7km8yhkt4s7" path="res://scenes/dialogue_bubble/dialogue_bubble.gd" id="2_y14hn"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cuagg"]
-texture = ExtResource("1_456da")
-texture_margin_left = 10.0
-texture_margin_top = 10.0
-texture_margin_right = 10.0
-texture_margin_bottom = 10.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qv3ax"]
+bg_color = Color(0.30588236, 0.627451, 0.98039216, 1)
+skew = Vector2(0.4, 0)
+corner_radius_top_left = 5
+corner_radius_bottom_right = 5
+expand_margin_left = 10.0
+expand_margin_right = 10.0
 
-[node name="DialogueBubble" type="PanelContainer" unique_id=1148095700]
+[node name="DialogueBubble" type="PanelContainer" unique_id=1013339003]
 texture_filter = 1
 custom_minimum_size = Vector2(150, 50)
-anchors_preset = 3
+anchors_preset = -1
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -148.0
-offset_top = -46.0
+offset_left = -180.0
+offset_top = -50.0
+offset_right = -30.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxTexture_cuagg")
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_qv3ax")
 script = ExtResource("2_y14hn")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1241823225]

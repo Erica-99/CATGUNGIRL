@@ -1,6 +1,6 @@
 extends Sprite3D
 @onready var sub_viewport: SubViewport = $SubViewport
-@onready var dialogue_component: Node = $SubViewport/DialogueComponent
+@onready var dialogue_component: Control = $DialogueComponent
 
 # export vars
 	# the elapsed time here will be removed to instead favor signals perchance

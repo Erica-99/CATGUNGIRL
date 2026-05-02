@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dul0p7aflt05j" path="res://art/FullTestSprites/CrouchWalk_FullHD.png" id="4_t1vny"]
 [ext_resource type="PackedScene" uid="uid://bhbvwfn31wib0" path="res://scenes/components/insanity_component/insanity_component.tscn" id="5_5bhx7"]
 [ext_resource type="Script" uid="uid://8h705llnu2ce" path="res://scenes/actors/player/player_input.gd" id="6_5bhx7"]
-[ext_resource type="PackedScene" uid="uid://w5w2v43x13xk" path="res://scenes/components/dialogue_component/dialogue_component.tscn" id="6_qdyt2"]
+[ext_resource type="PackedScene" uid="uid://w5w2v43x13xk" path="res://scenes/components/dialogue_component/dialogue_renderer.tscn" id="6_qdyt2"]
 [ext_resource type="Texture2D" uid="uid://ckiyi0fdwuddq" path="res://art/FullTestSprites/Jump_FullHD.png" id="7_0e3lr"]
 [ext_resource type="Texture2D" uid="uid://rq3dg2dwh2x5" path="res://art/Running/TestTorsoRun_FullHD.png" id="7_e5w6i"]
 [ext_resource type="Script" uid="uid://v055xcit8y78" path="res://scenes/components/state_machine/states/player/player_idle.gd" id="7_fp13k"]
@@ -1627,7 +1627,10 @@ fov = 26.8
 
 [node name="DialogueComponent" parent="." unique_id=1775697624 instance=ExtResource("6_qdyt2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4807317, 3.9423862, 0.09934664)
+visible = false
 texture = SubResource("ViewportTexture_0e3lr")
+min_dialogue_elapsed_time = 0.0
+max_dialogue_elapsed_time = 1.0
 size_of_viewport = Vector2(500, 600)
 
 [node name="MovementStateMachine" parent="." unique_id=1499026333 node_paths=PackedStringArray("initial_state") instance=ExtResource("4_qdyt2")]
