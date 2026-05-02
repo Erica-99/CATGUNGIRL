@@ -1,11 +1,14 @@
 extends Control
 
 # references
-@onready var button_container: HBoxContainer = $date_txt_bgd/ButtonContainer
+@onready var button_container: HBoxContainer = $date_txt_bgd/Panel/MarginContainer/VBoxContainer/ButtonContainer
 @onready var gigi_image = $gigi_pose
-@onready var dialogue = $date_txt_bgd/date_txt
-@onready var dialogue_bubble: PanelContainer = $date_txt_bgd/DialogueBubble
-@onready var press_button_info: RichTextLabel = $"date_txt_bgd/Press Button Info"
+@onready var dialogue = $date_txt_bgd/Panel/MarginContainer/date_txt
+@onready var dialogue_bubble: PanelContainer = $date_txt_bgd/Panel/MarginContainer/VBoxContainer/DialogueBubble
+@onready var press_button_info: RichTextLabel = $"date_txt_bgd/Panel/MarginContainer/Press Button Info"
+
+var dating_stylebox = preload("res://art/StyleBoxes/StyleBox_Pink.tres")
+var button_stylebox = preload("res://art/StyleBoxes/StyleBox_Pink2.tres")
 
 # determines whether dating screen should be visible or not
 var dating_active: bool = false
@@ -92,7 +95,14 @@ func _display():
 			var button = Button.new()
 			# set button values
 			button.text = option["option"]
-			button.custom_minimum_size = Vector2(300.0, 100.0)
+			button.custom_minimum_size = Vector2(300.0, 100.0) 
+			button.add_theme_stylebox_override('panel',button_stylebox)
+			button.add_theme_stylebox_override('normal',dating_stylebox)
+			button.add_theme_stylebox_override('hover',dating_stylebox)
+			button.add_theme_stylebox_override('pressed',dating_stylebox)
+			button.add_theme_color_override('font_color',Color(0.482, 0.443, 0.867, 1.0))
+			button.add_theme_color_override('font_pressed_color',Color(0.318, 0.365, 0.751, 1.0))
+			button.add_theme_color_override('font_hover_color',Color(0.357, 0.425, 0.731, 1.0))
 			# connect to handler
 			button.pressed.connect(_option_selected.bind(option))
 			button_container.add_child(button)
