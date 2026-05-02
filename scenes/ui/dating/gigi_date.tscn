@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c2klyoe8f8smd" path="res://art/GG/placeholder sketches/celebratory action/yay.png" id="1_24jh3"]
 [ext_resource type="Texture2D" uid="uid://6tnq52ln3pra" path="res://art/Date locations/cottage - tutorial date.png" id="2_w0gwh"]
 [ext_resource type="PackedScene" uid="uid://divl5j2iem0hi" path="res://scenes/dialogue_bubble/dialogue_bubble.tscn" id="3_vukmv"]
+[ext_resource type="StyleBox" uid="uid://dg2k8dp8q0oke" path="res://art/StyleBoxes/StyleBox_Pink2.tres" id="4_f1ujk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vukmv"]
 
@@ -46,52 +47,76 @@ texture = ExtResource("1_24jh3")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="date_txt_bgd" type="ColorRect" parent="." unique_id=1072532944]
-layout_mode = 0
-offset_top = 752.0
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.0056611504, 0.0056611514, 0.00566115, 1)
+[node name="date_txt_bgd" type="MarginContainer" parent="." unique_id=1292490924]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -328.0
+offset_right = 960.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
 
-[node name="date_txt" type="RichTextLabel" parent="date_txt_bgd" unique_id=866509033]
-visible = false
-layout_mode = 0
-offset_left = 346.0
-offset_right = 1574.0
-offset_bottom = 102.0
+[node name="Panel" type="Panel" parent="date_txt_bgd" unique_id=2062446538]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_f1ujk")
+
+[node name="MarginContainer" type="MarginContainer" parent="date_txt_bgd/Panel" unique_id=1737909928]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="date_txt_bgd/Panel/MarginContainer" unique_id=930189924]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="DialogueBubble" parent="date_txt_bgd/Panel/MarginContainer/VBoxContainer" unique_id=1148095700 instance=ExtResource("3_vukmv")]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vukmv")
+textbox_colour = Color(0.482, 0.443, 0.867, 1)
+type = 2
+
+[node name="ButtonContainer" type="HBoxContainer" parent="date_txt_bgd/Panel/MarginContainer/VBoxContainer" unique_id=1992419473]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="date_txt" type="RichTextLabel" parent="date_txt_bgd/Panel/MarginContainer" unique_id=866509033]
+layout_mode = 2
+size_flags_vertical = 8
 text = "THIS IS PLACEHOLDER TEXT. IF YOU SEE THIS SOMETHING IS WRONG!!!!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DialogueBubble" parent="date_txt_bgd" unique_id=1148095700 instance=ExtResource("3_vukmv")]
-layout_mode = 1
-anchors_preset = 3
-offset_left = -1574.0
-offset_top = -293.0
-offset_right = -346.0
-offset_bottom = -191.0
-theme_override_styles/panel = SubResource("StyleBoxEmpty_vukmv")
-textbox_colour = Color(1, 1, 1, 1)
-type = 2
-
-[node name="Press Button Info" type="RichTextLabel" parent="date_txt_bgd" unique_id=1782990518]
-visible = false
-layout_mode = 0
-offset_left = 1620.0
-offset_top = 191.0
-offset_right = 1889.0
-offset_bottom = 268.0
+[node name="Press Button Info" type="RichTextLabel" parent="date_txt_bgd/Panel/MarginContainer" unique_id=1782990518]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[b]Press 'V' to continue[/b]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ButtonContainer" type="HBoxContainer" parent="date_txt_bgd" unique_id=1992419473]
+[node name="Button" type="Button" parent="." unique_id=1395027491]
 layout_mode = 0
-offset_left = 510.0
-offset_top = 140.0
-offset_right = 1416.0
-offset_bottom = 240.0
-theme_override_constants/separation = 20
-alignment = 1
+offset_right = 8.0
+offset_bottom = 8.0
