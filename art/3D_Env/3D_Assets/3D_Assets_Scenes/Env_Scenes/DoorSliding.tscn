@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://mofr7wm20kyn"]
+
+[ext_resource type="ArrayMesh" uid="uid://utkdeu4svefi" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/DoorSliding.obj" id="1_58cdj"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ql58p"]
+points = PackedVector3Array(0.09605077, 2.5842788, 0.521577, 0.09605077, 2.5842788, -0.521273, -0.09606812, 2.5842788, 0.521577, 0.165189, 0.23035946, 0.521577, -0.09606812, 2.5842788, -0.521273, 0.165189, 0.23035946, -0.521273, -0.165174, 0.23035946, 0.521577, 0.165189, 0.100005, 0.521577, -0.165174, 0.23035946, -0.521273, 0.165189, 0.100005, -0.521273, -0.165174, 0.100005, 0.521577, -0.165174, 0.100005, -0.521273)
+
+[node name="DoorSliding" type="StaticBody3D" unique_id=1944152467]
+
+[node name="DoorSliding_Mesh" type="MeshInstance3D" parent="." unique_id=1910426158]
+mesh = ExtResource("1_58cdj")
+
+[node name="DoorSliding_Collision" type="CollisionShape3D" parent="." unique_id=1130182110]
+shape = SubResource("ConvexPolygonShape3D_ql58p")
