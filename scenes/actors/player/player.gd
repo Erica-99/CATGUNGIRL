@@ -21,8 +21,10 @@ signal player_charge_ended()
 @export var jump_velocity: float = 25.0
 @export var air_speed: float = 15.0
 @export var air_acceleration: float = 20.0
+@export var charge_speed_multiplier: float = 0.35
 
 var facing: float
+var speed_multiplier: float = 1.0
 
 @export_category("Movement Dependencies")
 @export var input_component: InputComponent
@@ -47,6 +49,7 @@ func _ready() -> void:
 	gun_component.enemy_hit.connect(_on_gun_enemy_hit)
 	gun_component.charge_progress_changed.connect(_on_gun_charge_progress)
 	gun_component.charge_ended.connect(_on_gun_charge_ended)
+	gun_component.charge_started.connect(_on_gun_charge_started)
 	print("player ready, gun_component: ", gun_component)
 
 func _process(_delta: float) -> void:
@@ -91,3 +94,7 @@ func _on_gun_charge_progress(progress: float) -> void:
 
 func _on_gun_charge_ended() -> void:
 	player_charge_ended.emit()
+	speed_multiplier = 1.0
+
+func _on_gun_charge_started() -> void:
+	speed_multiplier = charge_speed_multiplier

@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://cv2nky1gsci8r"]
+
+[ext_resource type="PackedScene" uid="uid://mofr7wm20kyn" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/DoorSliding.tscn" id="1_s46kj"]
+[ext_resource type="PackedScene" uid="uid://bcxgyj6fq1doy" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/DoorwayMultiLevel.tscn" id="2_xs60r"]
+[ext_resource type="PackedScene" uid="uid://c5r0mmflndijx" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/DoorFrameSliding.tscn" id="3_w6fua"]
+[ext_resource type="PackedScene" uid="uid://c1ssohbgds6hd" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Floor.tscn" id="4_q2anc"]
+[ext_resource type="PackedScene" uid="uid://dfg3qj6dl3f8d" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Roof.tscn" id="5_ppro5"]
+[ext_resource type="PackedScene" uid="uid://cchkjk2lolyo0" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/FloorShooting.tscn" id="6_w5oxl"]
+[ext_resource type="PackedScene" uid="uid://c25xy8q7gjfmi" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/WallMultiLevelRear.tscn" id="7_bl0ay"]
+
+[node name="GuardRoom" type="Node3D" unique_id=1746551938]
+
+[node name="DoorwayMultiLevel" parent="." unique_id=2143558151 instance=ExtResource("2_xs60r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+
+[node name="DoorwayMultiLevel2" parent="." unique_id=1485572095 instance=ExtResource("2_xs60r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
+
+[node name="DoorSliding3" parent="." unique_id=955180948 instance=ExtResource("1_s46kj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 4.2, 0)
+
+[node name="DoorFrameSliding3" parent="." unique_id=1863855599 instance=ExtResource("3_w6fua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 4.2, 0)
+
+[node name="DoorSliding4" parent="." unique_id=1222272253 instance=ExtResource("1_s46kj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 4.2, 0)
+
+[node name="DoorFrameSliding4" parent="." unique_id=1594934673 instance=ExtResource("3_w6fua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 4.2, 0)
+
+[node name="Floor5" parent="." unique_id=2022107086 instance=ExtResource("4_q2anc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+
+[node name="Floor3" parent="." unique_id=1563866043 instance=ExtResource("4_q2anc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+
+[node name="Roof" parent="." unique_id=1959605650 instance=ExtResource("5_ppro5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 8.4, 0)
+
+[node name="Roof5" parent="." unique_id=1010829007 instance=ExtResource("5_ppro5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 8.4, 0)
+
+[node name="FloorShooting" parent="." unique_id=1396051659 instance=ExtResource("6_w5oxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9, 4.2, 0)
+
+[node name="FloorShooting2" parent="." unique_id=91764983 instance=ExtResource("6_w5oxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9, 4.2, 0)
+
+[node name="WallMultiLevelRear" parent="." unique_id=2111039454 instance=ExtResource("7_bl0ay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 4.2, -2.92)
+
+[node name="WallMultiLevelRear2" parent="." unique_id=2146578116 instance=ExtResource("7_bl0ay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 4.2, -2.92)
+
+[node name="Floor4" parent="." unique_id=1493491775 instance=ExtResource("4_q2anc")]
+
+[node name="Roof2" parent="." unique_id=1989683430 instance=ExtResource("5_ppro5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.4, 0)
+
+[node name="WallMultiLevelRear3" parent="." unique_id=1300242099 instance=ExtResource("7_bl0ay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2, -2.92)

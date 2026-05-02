@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dfg3qj6dl3f8d"]
+
+[ext_resource type="ArrayMesh" uid="uid://dcjalkxu5wqkn" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/Roof.obj" id="1_3roov"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jl1ik"]
+points = PackedVector3Array(-3.001934, -0.100005, -2.500938, -3.001934, 0.100004986, -2.500938, 3.001934, -0.100005, -2.500938, -3.001934, -0.100005, 2.499062, -3.001934, 0.100004986, 2.499062, 3.001934, 0.100004986, -2.500938, 3.001934, -0.100005, 2.499062, 3.001934, 0.100004986, 2.499062)
+
+[node name="Roof" type="StaticBody3D" unique_id=1959605650]
+
+[node name="Roof_Mesh" type="MeshInstance3D" parent="." unique_id=1811277375]
+mesh = ExtResource("1_3roov")
+
+[node name="Roof_Collision" type="CollisionShape3D" parent="." unique_id=1992290985]
+shape = SubResource("ConvexPolygonShape3D_jl1ik")

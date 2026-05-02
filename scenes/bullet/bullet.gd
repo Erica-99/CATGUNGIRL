@@ -40,6 +40,5 @@ func _physics_process(delta: float) -> void:
 	if collision != null or _distance_traveled >= max_range:
 		queue_free()	# destroys bullet if hitting geometry OR reaches max range
 
-# replace later when connecting health/insanity
 func _on_hit(_hurtbox: Area3D) -> void:
 	queue_free()

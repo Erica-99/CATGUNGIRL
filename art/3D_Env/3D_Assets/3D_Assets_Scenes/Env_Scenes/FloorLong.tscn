@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://byxctjnvt02u3"]
+
+[ext_resource type="ArrayMesh" uid="uid://bfrlydcdhkstm" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/FloorLong.obj" id="1_2252m"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2252m"]
+points = PackedVector3Array(3.001934, 0.100004986, 2.499062, 3.001934, -0.100005, 2.499062, 3.001934, 0.100004986, -7.533111, -3.001934, 0.100004986, 2.499062, -3.001934, -0.100005, 2.499062, 3.001934, -0.100005, -7.533111, -3.001934, 0.100004986, -7.533111, -3.001934, -0.100005, -7.533111)
+
+[node name="FloorLong" type="StaticBody3D" unique_id=1847350484]
+
+[node name="FloorLong_Mesh" type="MeshInstance3D" parent="." unique_id=368064687]
+mesh = ExtResource("1_2252m")
+
+[node name="FloorLong_Collision" type="CollisionShape3D" parent="." unique_id=903435130]
+shape = SubResource("ConvexPolygonShape3D_2252m")

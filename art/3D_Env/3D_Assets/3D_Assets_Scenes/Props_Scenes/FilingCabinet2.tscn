@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cqxuvhdp4abct"]
+
+[ext_resource type="ArrayMesh" uid="uid://dlcbcph1xbur3" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/FilingCabinet2.obj" id="1_cmuj7"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cmuj7"]
+points = PackedVector3Array(-1.731843, 0.9173845, -0.21202034, -1.6775076, 0.21104151, -0.9001566, -1.731843, 0.9173845, 0.21182454, -1.731843, 1.0520751, -0.21202034, -1.1132559, 0, -1, -1.6775076, 0.21104151, 0.8999609, -1.6775076, 1.3903681, -0.9001566, -1.731843, 1.0520751, 0.21182454, 0.93685913, 0, -1, -1.1132559, 0, 1, -1.1132559, 4, -1, -1.6775076, 1.3903681, 0.8999609, 0.93685913, 0, 1, 0.93685913, 4, -1, -1.1132559, 4, 1, 0.93685913, 4, 1)
+
+[node name="FilingCabinet2" type="StaticBody3D" unique_id=399022806]
+
+[node name="FilingCabinet2_Mesh" type="MeshInstance3D" parent="." unique_id=265571242]
+mesh = ExtResource("1_cmuj7")
+
+[node name="FilingCabinet2_Collision" type="CollisionShape3D" parent="." unique_id=1869606739]
+shape = SubResource("ConvexPolygonShape3D_cmuj7")

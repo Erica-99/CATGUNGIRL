@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://exdqryhd2x6v"]
+
+[ext_resource type="ArrayMesh" uid="uid://du2vclfbey7mm" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/FilingCabinet1.obj" id="1_xomfr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h03mq"]
+size = Vector3(2.054517, 4, 2)
+
+[node name="FilingCabinet1" type="StaticBody3D" unique_id=832642569]
+
+[node name="FilingCabinet1_Mesh" type="MeshInstance3D" parent="." unique_id=956664324]
+mesh = ExtResource("1_xomfr")
+
+[node name="FilingCabinet1_Colission" type="CollisionShape3D" parent="." unique_id=2087811890]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0903995, 2, 0)
+shape = SubResource("BoxShape3D_h03mq")

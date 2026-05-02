@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://1hgtrlupdh8t"]
+
+[ext_resource type="Script" uid="uid://c16unwcucqelk" path="res://scenes/ui/dating/gigi_popup.gd" id="1_rc63n"]
+[ext_resource type="Texture2D" uid="uid://crng4f3f2avnf" path="res://icon.svg" id="1_rfouv"]
+[ext_resource type="PackedScene" uid="uid://divl5j2iem0hi" path="res://scenes/dialogue_bubble/dialogue_bubble.tscn" id="2_4b0uy"]
+
+[node name="GiGiPopup" type="BoxContainer" unique_id=134709764]
+offset_right = 310.0
+offset_bottom = 488.0
+vertical = true
+script = ExtResource("1_rc63n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1920164913]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 11
+
+[node name="gigi_image" type="TextureRect" parent="VBoxContainer" unique_id=32520337]
+custom_minimum_size = Vector2(310, 400)
+layout_mode = 2
+texture = ExtResource("1_rfouv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DialogueBubble" parent="VBoxContainer" unique_id=1148095700 instance=ExtResource("2_4b0uy")]
+custom_minimum_size = Vector2(400, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+type = 2
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer" unique_id=1983819392]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2

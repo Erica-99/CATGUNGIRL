@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cchkjk2lolyo0"]
+
+[ext_resource type="ArrayMesh" uid="uid://85dfa4dlvixw" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/FloorShooting.obj" id="1_jf3uo"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_aok77"]
+points = PackedVector3Array(2.0016143, 0.100005, 2.499758, 2.0016143, -0.100006, 2.499758, 2.0016143, 0.100005, -2.500242, -2.00163, 0.100005, 2.499758, -2.00163, -0.100006, 2.499758, 2.0016143, -0.100006, -2.500242, -2.00163, 0.100005, -2.500242, -2.00163, -0.100006, -2.500242)
+
+[node name="FloorShooting" type="StaticBody3D" unique_id=1396051659]
+
+[node name="FloorShooting_Mesh" type="MeshInstance3D" parent="." unique_id=2146584729]
+mesh = ExtResource("1_jf3uo")
+
+[node name="FloorShooting_Collision" type="CollisionShape3D" parent="." unique_id=1291697742]
+shape = SubResource("ConvexPolygonShape3D_aok77")
