@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="1_jbqir"]
 [ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="2_cyt5c"]
 [ext_resource type="PackedScene" uid="uid://3ukueorlwt6y" path="res://scenes/ui/health_bar.tscn" id="2_yautc"]
+[ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict_enemy.tscn" id="6_6xh4u"]
 [ext_resource type="PackedScene" uid="uid://cjku3tspjt4ep" path="res://scenes/ui/dating/gigi_date.tscn" id="4_7x1jh"]
 [ext_resource type="PackedScene" uid="uid://11pckncgaxu4" path="res://scenes/components/level_components/level_transitions/level_end.tscn" id="6_6xh4u"]
 [ext_resource type="PackedScene" uid="uid://1hgtrlupdh8t" path="res://scenes/ui/dating/gigi_popup.tscn" id="6_cyt5c"]
@@ -20,6 +21,7 @@ size = Vector3(4.6031494, 6.1855774, 4.163025)
 size = Vector3(1, 5.180786, 3.803955)
 
 [node name="TestLevel" type="Node3D" unique_id=1708525088]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.026703, 0.16869712, 0)
 
 [node name="World" type="Node3D" parent="." unique_id=1103637946]
 
@@ -73,7 +75,7 @@ shape = SubResource("BoxShape3D_cyt5c")
 debug_color = Color(0.74265206, 0.331497, 0.8242094, 0.41960785)
 
 [node name="Player" parent="." unique_id=1349193765 instance=ExtResource("1_jbqir")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5454574, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.949211, 9.938326, 0)
 floor_constant_speed = true
 platform_wall_layers = 1
 
@@ -102,6 +104,19 @@ offset_left = 240.0
 offset_top = 232.0
 offset_right = 740.0
 offset_bottom = 814.0
+
+[node name="Patrol Anchors" type="Node" parent="." unique_id=477156761]
+
+[node name="Anchor_1" type="Node3D" parent="Patrol Anchors" unique_id=1318550056]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.5, 0)
+
+[node name="Anchor_2" type="Node3D" parent="Patrol Anchors" unique_id=155350235]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Convict" parent="." unique_id=1506947017 node_paths=PackedStringArray("anchor_1", "anchor_2") instance=ExtResource("6_6xh4u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2600694, 0)
+anchor_1 = NodePath("../Patrol Anchors/Anchor_1")
+anchor_2 = NodePath("../Patrol Anchors/Anchor_2")
 
 [connection signal="player_health_changed" from="Player" to="InterestBar" method="_on_player_health_changed"]
 [connection signal="player_health_initialiased" from="Player" to="InterestBar" method="_on_player_health_initialiased"]

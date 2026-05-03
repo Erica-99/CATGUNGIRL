@@ -1,6 +1,9 @@
 extends State
 class_name EnemyPatrol
 
+#Sprite Controller
+@onready var sprite_anims = $"../../Visuals/AnimationPlayer"
+
 # Child States
 @export var move: EnemyMove
 @export var idle: EnemyIdle
@@ -13,6 +16,10 @@ class_name EnemyPatrol
 @export var threshold_limit: float
 
 func enter() -> void:
+	var actor = blackboard.get("actor")
+	left_anchor = blackboard.get("anchor_1", actor)
+	right_anchor = blackboard.get("anchor_2", actor)
+	
 	go_to_next_destination()
 
 func update(_delta: float) -> void:

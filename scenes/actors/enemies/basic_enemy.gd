@@ -1,5 +1,5 @@
 extends CharacterBody3D
-class_name ConvictEnemy
+class_name BasicEnemy
 
 # Node References
 @export var animator: AnimatedSprite3D
@@ -7,13 +7,9 @@ class_name ConvictEnemy
 
 # Child States
 @export var patrol: EnemyPatrol
-@export var engage: ConvictEngage
+@export var chase: EnemyChase
+@export var attack: EnemyAttack
 @export var death: EnemyDeath
-@export var search: EnemySearch
-
-@export_category("Anchors")
-@export var anchor_1: Node3D
-@export var anchor_2: Node3D
 
 # State Machine Instance
 var machine: AltStateMachine = AltStateMachine.new()
@@ -26,32 +22,24 @@ var blackboard : Dictionary
 
 func _ready() -> void:
 	# Populates blackboard and distributes it to all states
-	blackboard = {"actor": self, "anim": animator, "anchor_1": anchor_1, "anchor_2": anchor_2}
+	blackboard = {"actor": self, "anim": animator}
 	set_up_states()
 	set_state(patrol)
 
 func _process(delta: float) -> void:
 	# Decision tree for switching states
-	if health_comp._current_health <= 0: # Death Condition
+	if health_comp._current_health <= 0:
 		set_state(death)
-	elif engage.player_spotted(): # Enemy Aggro Condition
-		set_state(engage)
+	elif attack.attack_opp():
+		set_state(attack)
+	elif chase.player_spotted():
+		set_state(chase)
 	elif state.is_complete:
-		if state is EnemySearch: # Enemy Patrol Condition
+		if state is EnemyChase:
 			set_state(patrol)
-		if state is ConvictEngage: # Enemy Search Condition
-			set_state(search)
-		
-	
 	
 	# Runs logic for current_state branch
 	state.update_branch(delta)
-	
-	if velocity.x < 0:
-		scale.x = -1
-	elif velocity.x > 0:
-		scale.x = 1
-	
 	
 func _physics_process(delta: float) -> void:
 	# Runs physics logic for current_state branch

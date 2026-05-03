@@ -1,11 +1,16 @@
 extends State
 class_name EnemyMove
 
+# Animation controller
+@onready var sprite_anims = $"../../../Visuals/AnimationPlayer"
+
 @export var move_speed: float = 3.0
-@export var anim: Animation
+#@export var anim: Animation
+
+@export var animation = ''
 
 var destination: Vector3
-var threshold: float
+var threshold: float = 0.1
 var flat_dest: Vector3
 
 var target_x: float
@@ -15,8 +20,10 @@ var animator: AnimatedSprite3D
 
 func enter() -> void:
 	# PLay Animation
-	animator = blackboard["anim"]
-	animator.modulate = Color(0.0, 0.5, 0.0, 1.0)
+	sprite_anims.play(animation)
+	#animator = blackboard["anim"]
+	#animator.play(animation)
+	
 	# Set Body to Enemy
 	body = blackboard["actor"]
 	# Target destination adjusted to y of enemy 
@@ -26,7 +33,7 @@ func enter() -> void:
 func update(_delta: float) -> void:
 	# Checks if actor is in threshold range of destination
 	if body.global_position.distance_to(flat_dest) <= threshold:
-		is_complete = true
+		complete("Destination Reached")
 
 func physics_update(_delta: float) -> void:
 	# Move enemy toward target
