@@ -1573,6 +1573,7 @@ frame_progress = 0.24679233
 
 [node name="DebugStateDisplay" type="Label3D" parent="." unique_id=1950289760]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8428236, 0)
+visible = false
 text = "PlayerState"
 font_size = 64
 script = ExtResource("2_inh5e")
@@ -1665,6 +1666,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2033757, 0.5754532, 0)
 team_component = NodePath("../TeamComponent")
 input_component = NodePath("../PlayerInput")
 aim_speed = 4.0
+fire_rate = 0.4
 
 [connection signal="facing_changed" from="." to="PlayerVisuals" method="_on_player_facing_changed"]
 [connection signal="facing_changed" from="." to="MantleDetector" method="_on_player_facing_changed"]

@@ -26,7 +26,11 @@ var blackboard : Dictionary
 
 func _ready() -> void:
 	# Populates blackboard and distributes it to all states
-	blackboard = {"actor": self, "anim": animator, "anchor_1": anchor_1, "anchor_2": anchor_2}
+	blackboard = {"actor": self, "anim": animator}
+	if anchor_1 != null:
+		blackboard["anchor_1"] = anchor_1
+	if anchor_2 != null:
+		blackboard["anchor_2"] = anchor_2
 	set_up_states()
 	set_state(patrol)
 
