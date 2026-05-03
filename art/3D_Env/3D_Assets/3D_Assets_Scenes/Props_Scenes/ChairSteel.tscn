@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c5vncayclpa5t"]
+
+[ext_resource type="ArrayMesh" uid="uid://dfp31v0xojxo1" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/ChairSteel.obj" id="1_66pug"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_66pug"]
+size = Vector3(2.0922651, 4.283148, 2.121054)
+
+[node name="ChairSteel" type="StaticBody3D" unique_id=1752158957]
+
+[node name="ChairSteel_Mesh" type="MeshInstance3D" parent="." unique_id=695165550]
+mesh = ExtResource("1_66pug")
+
+[node name="ChairSteel_Collision" type="CollisionShape3D" parent="." unique_id=1393130947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0143944025, 2.141574, 0)
+shape = SubResource("BoxShape3D_66pug")

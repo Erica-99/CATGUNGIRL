@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://0dk4iqdd0lfh"]
+
+[ext_resource type="ArrayMesh" uid="uid://c74lsuu3jb4ju" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/BrainJarPart.obj" id="1_x1sgc"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_x1sgc"]
+points = PackedVector3Array(1.4157465, 12.690966, 0.68255347, -1.4972372, 11.798553, -0.67073524, -0.5776334, 8.445087, 1.3378999, 1.3378999, 8.445087, -0.57791144, 0.6719592, 12.657817, -1.4263406, -0.70482576, 12.657817, 1.3934741, 0.60175306, 8.477017, 1.3174468, -1.307045, 8.44104, 0.61215484, -0.6491896, 12.691707, -1.4491103, -1.4265261, 12.6580925, 0.6717738, 0.6123422, 8.441348, -1.3068577, 0.68274176, 12.690686, 1.4155581, 1.4643707, 11.798553, -0.7394413, 1.317634, 8.476725, 0.6015659, -1.284759, 8.477619, -0.63444084, -0.73944134, 11.798553, 1.4643707, -0.6704454, 11.798553, -1.4972372, 0.70657474, 11.798553, 1.4643707, -1.4489157, 12.691417, -0.64938414, 0.70657474, 11.798553, -1.4972372, -1.4972372, 11.798553, 0.70628494, 1.4643707, 11.798553, 0.70628494, 1.3934741, 12.657817, -0.70482576, -0.6342568, 8.477317, -1.2849431, -0.8435641, 8.441348, 1.0756358)
+
+[node name="BrainJarPart" type="StaticBody3D" unique_id=1121229116]
+
+[node name="BrainJarPart_Mesh" type="MeshInstance3D" parent="." unique_id=789114020]
+mesh = ExtResource("1_x1sgc")
+
+[node name="BrainJarPart_Collision" type="CollisionShape3D" parent="." unique_id=1727988143]
+shape = SubResource("ConvexPolygonShape3D_x1sgc")

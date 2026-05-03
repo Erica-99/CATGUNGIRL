@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cxhp6oa467yw"]
+
+[ext_resource type="ArrayMesh" uid="uid://cwyvibxth4ouv" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/DoorLarge.obj" id="1_nr07x"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mlsw7"]
+points = PackedVector3Array(-0.173392, -1.801204, -2.001573, 0.173392, -1.801204, -2.001573, -0.173392, -1.801204, 2.001573, -0.173392, 1.801204, -2.001573, 0.173392, 1.801204, -2.001573, 0.173392, -1.801204, 2.001573, -0.173392, 1.801204, 2.001573, 0.173392, 1.801204, 2.001573)
+
+[node name="DoorLarge" type="StaticBody3D" unique_id=40484361]
+
+[node name="DoorLarge_Mesh" type="MeshInstance3D" parent="." unique_id=1174040143]
+mesh = ExtResource("1_nr07x")
+
+[node name="DoorLarge_Collision" type="CollisionShape3D" parent="." unique_id=1454482051]
+shape = SubResource("ConvexPolygonShape3D_mlsw7")

@@ -1,20 +1,16 @@
-[gd_scene format=3 uid="uid://w5w2v43x13xk"]
+[gd_scene format=3 uid="uid://cf6ynerow4o6q"]
 
 [ext_resource type="Script" uid="uid://cbcagbl3c4lal" path="res://scenes/components/dialogue_component/dialogue_component.gd" id="1_iigvq"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_iigvq"]
-viewport_path = NodePath("SubViewport")
-
-[node name="DialogueRenderer" type="Sprite3D" unique_id=780065543]
-texture = SubResource("ViewportTexture_iigvq")
-
-[node name="SubViewport" type="SubViewport" parent="." unique_id=1628982344]
-transparent_bg = true
-size = Vector2i(500, 600)
-
-[node name="Timer" type="Timer" parent="SubViewport" unique_id=2115915199]
-
-[node name="DialogueComponent" type="Node" parent="SubViewport" unique_id=1775697624]
+[node name="DialogueComponent" type="VBoxContainer" unique_id=277394654]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_constants/separation = 2
+alignment = 2
 script = ExtResource("1_iigvq")
-
-[connection signal="timeout" from="SubViewport/Timer" to="SubViewport/DialogueComponent" method="_on_timer_timeout"]
+min_dialogue_elapsed_time = 0.0
+max_dialogue_elapsed_time = 0.5

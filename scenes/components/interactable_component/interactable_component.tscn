@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://ou3g778y2q8g"]
+
+[ext_resource type="Script" uid="uid://dao5dpromecek" path="res://scenes/components/interactable_component/interactable_component.gd" id="1_fodkk"]
+[ext_resource type="PackedScene" uid="uid://w5w2v43x13xk" path="res://scenes/components/dialogue_component/dialogue_renderer.tscn" id="2_eyvim"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_eyvim"]
+viewport_path = NodePath("SubViewport")
+
+[node name="InteractableComponent" type="Node3D" unique_id=2140039813]
+script = ExtResource("1_fodkk")
+
+[node name="Interaction Range" type="Area3D" parent="." unique_id=2119076624]
+collision_mask = 2
+
+[node name="DialogueComponent" parent="." unique_id=780065543 instance=ExtResource("2_eyvim")]
+visible = false
+texture = SubResource("ViewportTexture_eyvim")
+can_speak = false
+size_of_viewport = Vector2(200, 100)
+base_transparency_speed = 1.0
+
+[connection signal="body_entered" from="Interaction Range" to="." method="_on_interaction_range_body_entered"]
+[connection signal="body_exited" from="Interaction Range" to="." method="_on_interaction_range_body_exited"]

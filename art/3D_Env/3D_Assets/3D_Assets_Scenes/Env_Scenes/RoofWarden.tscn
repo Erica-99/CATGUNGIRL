@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cotf5n34ywrci"]
+
+[ext_resource type="ArrayMesh" uid="uid://b8tircf8xh5xq" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/RoofWarden.obj" id="1_y7iog"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_y7iog"]
+points = PackedVector3Array(-14.975647, 12.703327, -12.529736, -14.975647, 12.903337, -12.529736, 14.975647, 12.703327, -12.529736, -14.975647, 12.703327, 2.4990616, -14.975647, 12.903337, 2.4990616, 14.975647, 12.903337, -12.529736, 14.975647, 12.703327, 2.4990616, 14.975647, 12.903337, 2.4990616)
+
+[node name="RoofWarden" type="StaticBody3D" unique_id=891651142]
+
+[node name="RoofWarden_Mesh" type="MeshInstance3D" parent="." unique_id=1580929257]
+mesh = ExtResource("1_y7iog")
+
+[node name="RoofWarden_Collision" type="CollisionShape3D" parent="." unique_id=272340072]
+shape = SubResource("ConvexPolygonShape3D_y7iog")

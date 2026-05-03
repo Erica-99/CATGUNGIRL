@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bj864mme28vmc"]
+
+[ext_resource type="ArrayMesh" uid="uid://b0isjua74afk8" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/PrisonCell.obj" id="1_j0y3c"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kr4cv"]
+points = PackedVector3Array(1.1195221, 0.56802887, 0.71059996, -1, -0.99113846, -0.98965675, -1, -0.99113846, 0.97453755, -1.1408, 0.9357905, -0.7379419, 1, -0.99113846, -0.98965675, 1, 0.973367, -0.98965675, -1, 0.973367, 0.97453755, 1, -0.99113846, 0.9747403, 1, 0.973367, 0.9747403, -1, 0.973367, -0.98965675, -0.18351093, 0.8903078, 1.110498, 1.1290896, -0.5907307, -0.80039996, -1.1195221, -0.58580035, 0.71059996, -1.1290896, -0.5907307, -0.80039996, -1.1408, 0.9357905, 0.47389996, -0.7340437, -0.17390257, 1.0738224, 1.1290896, 0.57295924, -0.80039996, 1.1195221, -0.58580035, 0.71059996, 0.18351093, 0.8903078, 1.110498, 0.36034873, -1, 0.9831184, -1.1195221, 0.56802887, 0.71059996, -0.9737, -0.06075109, 1.0198128, -1.1290896, 0.57295924, -0.80039996, 0.14671676, 0.8537471, 1.110498, -0.9737, 0.112819955, 1.0198128)
+
+[node name="PrisonCell" type="StaticBody3D" unique_id=1430763070]
+
+[node name="PrisonCell_Mesh" type="MeshInstance3D" parent="." unique_id=286901540]
+mesh = ExtResource("1_j0y3c")
+
+[node name="PrisonCell_Collision" type="CollisionShape3D" parent="." unique_id=519197560]
+shape = SubResource("ConvexPolygonShape3D_kr4cv")

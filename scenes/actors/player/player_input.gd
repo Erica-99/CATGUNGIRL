@@ -8,10 +8,20 @@ var _jump_held := false
 var _fire_held := false
 var _mouse_world_pos
 var _charge_fire_held := false
+var _interacting := false
+
+var _input_locked := false
+
+func _ready() -> void:
+	EventManager.connect("lockout_player_input", _lock_input)
+	EventManager.connect("resume_player_input", _resume_input)
 
 func _process(_delta: float) -> void:
-	_horizontal_movement = Input.get_axis("move_left", "move_right")
-	_mouse_world_pos = _get_mouse_world_position()
+	if not _input_locked:
+		_horizontal_movement = Input.get_axis("move_left", "move_right")
+		_mouse_world_pos = _get_mouse_world_position()
+	else:
+		_horizontal_movement = 0
 
 ## Return a comprehensive list of the current input state regardless of whether everything will actually be used.
 ## Avoid running any actual input state retrieval in here.
@@ -23,6 +33,7 @@ func get_input_state() -> Dictionary:
 		"fire_held": _fire_held,
 		"mouse_world_pos": _mouse_world_pos,
 		"charge_fire_held": _charge_fire_held,
+		"interacting": _interacting,
 	}
 	return input_state
 
@@ -39,8 +50,17 @@ func _get_mouse_world_position() -> Variant:
 	
 	return plane.intersects_ray(ray_origin, ray_dir)
 
+func _lock_input() -> void:
+	_input_locked = true
+
+func _resume_input() -> void:
+	_input_locked = false
+
+
 # Use this for things that are non-continuous.
 func _unhandled_input(event: InputEvent) -> void:
+	if _input_locked:
+		return
 	
 	# -- Actions pressed --
 	
@@ -59,6 +79,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			_crouching = true
 	
+	if event.is_action_pressed("interact"):
+		_interacting = true
+	
 	# -- Actions released --
 	
 	if event.is_action_released("fire"):
@@ -74,3 +97,5 @@ func _unhandled_input(event: InputEvent) -> void:
 		if not toggle_crouch:
 			_crouching = false
 	
+	if event.is_action_released("interact"):
+		_interacting = false

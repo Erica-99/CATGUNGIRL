@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bq0vv22b17ycq"]
+
+[ext_resource type="ArrayMesh" uid="uid://jfabxwtgchn5" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/PipeSizeMedium.obj" id="1_eln55"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_q82iq"]
+height = 4.0
+radius = 0.55
+
+[node name="PipeSizeMedium" type="StaticBody3D" unique_id=1398813642]
+
+[node name="PipeSizeMedium_Mesh" type="MeshInstance3D" parent="." unique_id=351861640]
+mesh = ExtResource("1_eln55")
+
+[node name="PipeSizeMedium_Collision" type="CollisionShape3D" parent="." unique_id=2049717878]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("CylinderShape3D_q82iq")

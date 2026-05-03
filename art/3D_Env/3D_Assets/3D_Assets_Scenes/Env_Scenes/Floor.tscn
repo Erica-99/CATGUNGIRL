@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c1ssohbgds6hd"]
+
+[ext_resource type="ArrayMesh" uid="uid://bub2epno1puhg" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/Floor.obj" id="1_wjysx"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sisyk"]
+points = PackedVector3Array(-3.001934, -0.100005, -2.500938, -3.001934, 0.100004986, -2.500938, 3.001934, -0.100005, -2.500938, -3.001934, -0.100005, 2.499062, -3.001934, 0.100004986, 2.499062, 3.001934, 0.100004986, -2.500938, 3.001934, -0.100005, 2.499062, 3.001934, 0.100004986, 2.499062)
+
+[node name="Floor" type="StaticBody3D" unique_id=2022107086]
+
+[node name="Floor_Mesh" type="MeshInstance3D" parent="." unique_id=1266930411]
+mesh = ExtResource("1_wjysx")
+
+[node name="Floor_Collision" type="CollisionShape3D" parent="." unique_id=322746759]
+shape = SubResource("ConvexPolygonShape3D_sisyk")
