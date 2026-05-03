@@ -11,6 +11,10 @@ class_name ConvictEnemy
 @export var death: EnemyDeath
 @export var search: EnemySearch
 
+@export_category("Anchors")
+@export var anchor_1: Node3D
+@export var anchor_2: Node3D
+
 # State Machine Instance
 var machine: AltStateMachine = AltStateMachine.new()
 # State property to interface easier with machine state
@@ -22,7 +26,7 @@ var blackboard : Dictionary
 
 func _ready() -> void:
 	# Populates blackboard and distributes it to all states
-	blackboard = {"actor": self, "anim": animator}
+	blackboard = {"actor": self, "anim": animator, "anchor_1": anchor_1, "anchor_2": anchor_2}
 	set_up_states()
 	set_state(patrol)
 

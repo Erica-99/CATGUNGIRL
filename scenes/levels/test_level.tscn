@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="1_jbqir"]
 [ext_resource type="PackedScene" uid="uid://3ukueorlwt6y" path="res://scenes/ui/health_bar.tscn" id="2_yautc"]
 [ext_resource type="PackedScene" uid="uid://cmaouisrg2kmt" path="res://scenes/ui/dating/gigi_interaction.tscn" id="3_fr1um"]
-[ext_resource type="Script" path="res://scenes/ui/dating/gigi_interaction.gd" id="4_v45ci"]
+[ext_resource type="Script" uid="uid://uoj3dim4046g" path="res://scenes/ui/dating/gigi_interaction.gd" id="4_v45ci"]
 [ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict_enemy.tscn" id="6_6xh4u"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_3p835"]
@@ -63,20 +63,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.5, 0)
 [node name="Anchor_2" type="Node3D" parent="Patrol Anchors" unique_id=155350235]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="Convict" parent="." unique_id=1506947017 instance=ExtResource("6_6xh4u")]
+[node name="Convict" parent="." unique_id=1506947017 node_paths=PackedStringArray("anchor_1", "anchor_2") instance=ExtResource("6_6xh4u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2600694, 0)
-
-[node name="EnemyPatrol" parent="Convict/Behaviours" parent_id_path=PackedInt32Array(1506947017, 1499026333) index="0" unique_id=457545891 node_paths=PackedStringArray("left_anchor", "right_anchor")]
-left_anchor = NodePath("../../../Patrol Anchors/Anchor_1")
-right_anchor = NodePath("../../../Patrol Anchors/Anchor_2")
-
-[node name="EnemyIdle" parent="Convict/Behaviours/ConvictEngage" parent_id_path=PackedInt32Array(1506947017, 1551046704) index="3" unique_id=512633357]
-idle_min_time = 2.1
-idle_max_time = 2.1
+anchor_1 = NodePath("../Patrol Anchors/Anchor_1")
+anchor_2 = NodePath("../Patrol Anchors/Anchor_2")
 
 [connection signal="player_health_changed" from="Player" to="InterestBar" method="_on_player_health_changed"]
 [connection signal="player_health_initialiased" from="Player" to="InterestBar" method="_on_player_health_initialiased"]
 [connection signal="player_insanity_gained" from="Player" to="InterestBar" method="_on_player_insanity_gained"]
 [connection signal="player_interest_rank_changed" from="Player" to="InterestBar" method="_on_player_interest_rank_changed"]
-
-[editable path="Convict"]
