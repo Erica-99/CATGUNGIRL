@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://w5w2v43x13xk"]
+
+[ext_resource type="Script" uid="uid://sqtqbdf5yng3" path="res://scenes/components/dialogue_component/dialogue_renderer.gd" id="1_ornic"]
+[ext_resource type="PackedScene" uid="uid://cf6ynerow4o6q" path="res://scenes/components/dialogue_component/dialogue_component.tscn" id="2_ornic"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_iigvq"]
+viewport_path = NodePath("SubViewport")
+
+[node name="DialogueRenderer" type="Sprite3D" unique_id=780065543]
+billboard = 2
+texture = SubResource("ViewportTexture_iigvq")
+script = ExtResource("1_ornic")
+size_of_viewport = Vector2(20, 20)
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1628982344]
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(20, 20)
+
+[node name="Timer" type="Timer" parent="SubViewport" unique_id=2115915199]
+
+[node name="DialogueComponent" parent="." unique_id=818863205 instance=ExtResource("2_ornic")]

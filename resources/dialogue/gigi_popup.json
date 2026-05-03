@@ -1,0 +1,71 @@
+{
+	"interactions":
+	[
+		{
+			"id": "001",
+			"has_multiple": "false",
+			"image": "res://art/GG/nervous/uwu.png",
+			"dialogue": "Do you like the way I did my hair today? ^.^",
+			"has_options": "true",
+			"options": [
+				{
+					"dialogue": "Beautiful as always, baby!",
+					"image": "res://art/GG/celebratory action/yay.png",
+					"response": "I knew you would like it! uwu",
+					"consequence": "interest_up",
+					"next_id": "002"
+				},
+				{
+					"dialogue": "Yeah, it's alright...",
+					"image": "res://art/GG/angry/angy.png",
+					"response": "This is the last time that I show you ANYTHING!! >:(",
+					"consequence": "sanity_up",
+					"next_id": "002"
+				}
+			]
+		},
+		{
+			"id": "002",
+			"has_multiple": "true",
+			"interaction": [
+				{
+					"image": "res://art/GG/surprised/AHHH.png",
+					"dialogue": "AHHH!! One of my exes has come back!!"
+				},
+				{
+					"image": "res://art/GG/coy/face 2.png",
+					"dialogue": "Do you think you can take care of him for me??"
+				},
+				{
+					"image": "res://art/GG/flirty/obsessed.png",
+					"dialogue": "I promise I will make it worth it for you baby ^3^"
+				}
+			],
+			"has_options": "false",
+			"next_id": "003"
+		},
+		{
+			"id": "003",
+			"has_multiple": "false",
+			"image": "res://art/GG/idle/bbaka.png",
+			"dialogue": "Why haven't you told your parents about us yet? Do you hate me? :'(",
+			"has_options": "true",
+			"options": [
+				{
+					"dialogue": "'Cause I don't want them to think I'm a gun fucker?",
+					"image": "res://art/GG/angry/disbelief.png",
+					"response": "IS THAT ALL I AM TO!? >:(",
+					"consequence": "sanity_up",
+					"next_id": "001"
+				},
+				{
+					"dialogue": "I'll call them right now pookie, don't you worry!",
+					"image": "res://art/GG/coy/face 1.png",
+					"response": "Aww babe, I knew you really loved me :')",
+					"consequence": "interest_up",
+					"next_id": "001"
+				}
+			]
+		}
+	]
+}

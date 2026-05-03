@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://3ukueorlwt6y"]
+
+[ext_resource type="Script" uid="uid://xy2lxy1q6xkq" path="res://scenes/ui/health_bar.gd" id="1_1vcc2"]
+
+[sub_resource type="Gradient" id="Gradient_wsxx7"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1vcc2"]
+gradient = SubResource("Gradient_wsxx7")
+width = 512
+height = 32
+fill_from = Vector2(0, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_qi2ti"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4rf34"]
+gradient = SubResource("Gradient_qi2ti")
+width = 512
+height = 32
+fill = 1
+fill_from = Vector2(0, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="InterestBar" type="TextureProgressBar" unique_id=2086963886 node_paths=PackedStringArray("insanity_bar")]
+offset_right = 548.0
+offset_bottom = 243.0
+value = 50.0
+texture_under = SubResource("GradientTexture2D_1vcc2")
+texture_progress = SubResource("GradientTexture2D_4rf34")
+tint_under = Color(0.2, 0.06666667, 0.06666667, 1)
+tint_progress = Color(0, 1, 0, 1)
+script = ExtResource("1_1vcc2")
+insanity_bar = NodePath("InsanityBar")
+
+[node name="InsanityBar" type="TextureProgressBar" parent="." unique_id=1805894244]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_progress = SubResource("GradientTexture2D_4rf34")
+tint_progress = Color(1, 0, 0, 1)

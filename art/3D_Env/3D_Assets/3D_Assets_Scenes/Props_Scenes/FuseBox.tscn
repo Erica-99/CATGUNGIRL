@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://co6ykbcwegkyg"]
+
+[ext_resource type="ArrayMesh" uid="uid://d2j4uj22djro4" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/FuseBox.obj" id="1_xh3fr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xh3fr"]
+size = Vector3(0.240587, 1.34695, 1.719286)
+
+[node name="FuseBox" type="StaticBody3D" unique_id=436417353]
+
+[node name="FuseBox_Mesh" type="MeshInstance3D" parent="." unique_id=1936789602]
+mesh = ExtResource("1_xh3fr")
+
+[node name="FuseBox_Collision" type="CollisionShape3D" parent="." unique_id=1896565043]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025769502, 0.013526022, -0.26969397)
+shape = SubResource("BoxShape3D_xh3fr")

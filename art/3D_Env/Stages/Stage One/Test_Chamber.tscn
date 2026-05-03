@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://r3tt6uge7h1v"]
+
+[ext_resource type="PackedScene" uid="uid://c1ssohbgds6hd" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Floor.tscn" id="1_e7o7m"]
+[ext_resource type="PackedScene" uid="uid://dehnrair78ydx" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/DoorwayNone.tscn" id="2_xjyu7"]
+[ext_resource type="PackedScene" uid="uid://cao0d81ad8hbv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/DoorwaySingle.tscn" id="3_rlpto"]
+[ext_resource type="PackedScene" uid="uid://n6gwkimpd6oj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/WallPlainRear.tscn" id="4_yfpk2"]
+[ext_resource type="PackedScene" uid="uid://dfg3qj6dl3f8d" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Roof.tscn" id="5_k8tsm"]
+
+[node name="TestChamber" type="Node3D" unique_id=1064819444]
+
+[node name="Floor" parent="." unique_id=2022107086 instance=ExtResource("1_e7o7m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="Floor2" parent="." unique_id=2117714219 instance=ExtResource("1_e7o7m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="DoorwayNone" parent="." unique_id=974643408 instance=ExtResource("2_xjyu7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1, 0, 0)
+
+[node name="DoorwaySingle" parent="." unique_id=1936140797 instance=ExtResource("3_rlpto")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 0, 0)
+
+[node name="WallPlainRear" parent="." unique_id=1669431150 instance=ExtResource("4_yfpk2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2.1, -2.5)
+
+[node name="WallPlainRear2" parent="." unique_id=1121848736 instance=ExtResource("4_yfpk2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2.1, -2.5)
+
+[node name="Roof" parent="." unique_id=1959605650 instance=ExtResource("5_k8tsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4.2, 0)
+
+[node name="Roof2" parent="." unique_id=1218746707 instance=ExtResource("5_k8tsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 4.2, 0)

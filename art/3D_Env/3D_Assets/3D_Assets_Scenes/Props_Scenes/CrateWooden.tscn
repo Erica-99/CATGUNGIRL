@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://67xdbiihshsl"]
+
+[ext_resource type="ArrayMesh" uid="uid://bnsf63v84ly00" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/CrateWooden.obj" id="1_kcy6j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kcy6j"]
+size = Vector3(2, 2, 2)
+
+[node name="CrateWooden" type="StaticBody3D" unique_id=191543128]
+
+[node name="CrateWooden_Mesh" type="MeshInstance3D" parent="." unique_id=665760374]
+mesh = ExtResource("1_kcy6j")
+
+[node name="CrateWooden_Collision" type="CollisionShape3D" parent="." unique_id=1508480804]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_kcy6j")

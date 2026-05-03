@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dd83i4amhjoty"]
+
+[ext_resource type="ArrayMesh" uid="uid://bgldcn7qsjsyt" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/Pillow.obj" id="1_dfrep"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jetqo"]
+radius = 0.2
+height = 1.945164
+
+[node name="Pillow" type="StaticBody3D" unique_id=1093921883]
+
+[node name="Pillow_Mesh" type="MeshInstance3D" parent="." unique_id=1806445132]
+mesh = ExtResource("1_dfrep")
+
+[node name="Pillow_Collision" type="CollisionShape3D" parent="." unique_id=1462129969]
+transform = Transform3D(-4.5009177e-08, -1, 0, 1.0296899, -4.371139e-08, 0, 0, 0, 2.7506132, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_jetqo")

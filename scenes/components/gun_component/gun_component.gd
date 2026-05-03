@@ -1,0 +1,183 @@
+extends Node3D
+
+## gun component - handles aiming, normal fire, and charged shots
+## attach as a child of player node
+
+## exported variables
+@export var bullet_scene: PackedScene	# bullet.tscn file to spawn when firing
+@export var muzzle: Marker3D			# bullet spawn at muzzle tip
+@export var team_component: Node		# player TeamComponent reference, passed to bullets
+@export var input_component: Node
+
+@export_group("Aim")
+@export var aim_speed: float = 8.0		# gun rotation speed towards mouse (lower = more delay)
+
+@export_group("Normal Fire")
+@export var fire_rate: float = 0.15		# min time (seconds) between shots
+@export var bullet_damage: float = 10.0		# bullet damage
+@export var bullet_knockback: float = 5.0	# knockback force (can remove)
+@export var bullet_scale: float = 1.0	# visual size of bullet 
+@export var recoil_amount: float = 0.15   # higher = more
+@export var recoil_recovery: float = 10.0 # higher = faster
+@export var wobble_amount: float = 0.2	# higher = more
+@export var wobble_speed: float = 9.0	# higher = faster
+
+@export_group("Charged Shot")
+@export var charge_mode: Enums.ChargeMode = Enums.ChargeMode.AUTO_FIRE	# which charge mode is active (switch in inspector)
+
+## AUTO_FIRE
+@export var auto_charge_duration: float = 0.5 # time (seconds) before auto fire from right click
+
+## HOLD_TO_FIRE
+@export var hold_charge_min: float = 0.2	# time (seconds) to hold for charged shot otherwise it cancels
+@export var hold_charge_max: float = 2.0	# time (seconds) to reach max charge, longer hold does nothing
+
+## charged bullet stats at min and max charge
+@export var charged_damage_min: float = 20.0
+@export var charged_damage_max: float = 60.0
+@export var charged_bullet_scale_min: float = 1.5
+@export var charged_bullet_scale_max: float = 3.0
+@export var charged_recoil_multiplier: float = 2.0  # higher recoil for charged shot
+
+## emitted every frame while charging, value is 0.0 to 1.0
+signal charge_progress_changed(progress: float)
+
+## Signal emitted when charging stops (fired or cancelled)
+signal charge_ended()
+signal charge_started()
+signal enemy_hit(hurtbox: Area3D)
+
+var _fire_cooldown: float = 0.0	# counts down each frame, gun can't fire until it hits 0
+var _recoil_offset: float = 0.0	# current recoil 
+var _is_charging: bool = false	# is a charged shot being charged?
+var _charge_timer: float = 0.0	# how long (seconds) player has been charging
+var _wobble_time: float = 0.0
+
+
+func _process(delta: float) -> void:
+	var current_input_state = input_component.get_input_state()
+	_update_aim(current_input_state.get("mouse_world_pos"), current_input_state, delta)
+	_fire_cooldown = maxf(_fire_cooldown - delta, 0.0)
+	# normal fire (left click) read from input component
+	if current_input_state.get("fire_held", false):
+		_try_fire()
+	# charged shot input handling
+	_handle_charge_input(current_input_state, delta)
+
+## rotates gun for 360 degree aiming
+## uses lerp_angle for smooth delayed aiming
+func _update_aim(mouse_world: Vector3, input_state: Dictionary, delta: float) -> void:
+	if mouse_world == null:
+		return
+	# direction vector from gun to mouse
+	var direction = mouse_world - global_position
+	direction.z = 0.0
+	var target_angle = Vector2(direction.x, direction.y).angle()
+	var is_moving = input_state.get("movement", 0.0) != 0.0 or input_state.get("jumping", false)
+	var wobble: float = 0.0
+	if is_moving:
+		_wobble_time += delta
+		wobble = sin(_wobble_time * wobble_speed) * wobble_amount
+	else:
+		_wobble_time = 0.0
+	rotation.z = lerp_angle(rotation.z, target_angle + _recoil_offset + wobble, aim_speed * delta)
+	_recoil_offset = lerpf(_recoil_offset, 0.0, recoil_recovery * delta)
+	scale = Vector3(1.0, 1.0, 1.0)
+
+
+func _handle_charge_input(input_state: Dictionary, delta: float) -> void:
+	var charge_fire_held = input_state.get("charge_fire_held", false)
+	
+	if charge_mode == Enums.ChargeMode.AUTO_FIRE:
+		# right click pressed -> begin charge, ignore if already charging
+		if charge_fire_held and not _is_charging:
+			_is_charging = true
+			_charge_timer = 0.0
+			charge_started.emit()
+		if _is_charging:
+			_charge_timer += delta
+			var progress = clampf(_charge_timer / auto_charge_duration, 0.0, 1.0)
+			charge_progress_changed.emit(progress)
+			# auto fire once fully charged
+			if _charge_timer >= auto_charge_duration:
+				_fire_charged(1.0)
+	
+	elif charge_mode == Enums.ChargeMode.HOLD_TO_FIRE:
+		if charge_fire_held:
+			if not _is_charging:
+				_is_charging = true
+				_charge_timer = 0.0
+				charge_started.emit()
+			_charge_timer += delta
+			var progress = clampf(
+				# charge progress starts at 0 ONLY after min hold time
+				(_charge_timer - hold_charge_min) / (hold_charge_max - hold_charge_min),
+				0.0, 1.0
+			)
+			charge_progress_changed.emit(progress)
+			# caps charge timer so it doesn't go past max
+			_charge_timer = minf(_charge_timer, hold_charge_max)
+
+		# release -> fire if charged enough, otherwise cancel
+		if not charge_fire_held and _is_charging:
+			if _charge_timer >= hold_charge_min:
+				var progress = clampf(
+					(_charge_timer - hold_charge_min) / (hold_charge_max - hold_charge_min),
+					0.0, 1.0
+				)
+				_fire_charged(progress)
+			else:
+				# released too early, cancel
+				_is_charging = false
+				_charge_timer = 0.0
+				charge_ended.emit()
+
+
+func _try_fire() -> void:
+	# won't fire if cooldown not expired
+	if _fire_cooldown > 0.0:
+		return
+	if bullet_scene == null or muzzle == null:
+		return
+		
+	# resets firing cooldown
+	_fire_cooldown = fire_rate
+	_spawn_bullet(bullet_damage, bullet_scale)
+	_recoil_offset += recoil_amount * sign(global_transform.basis.x.x)
+
+
+func _fire_charged(progress: float) -> void:
+	# reset charge state
+	_is_charging = false
+	_charge_timer = 0.0
+	print("firing charge_ended signal")
+	# tell chargebar ui charging ended
+	charge_ended.emit()
+	if bullet_scene == null or muzzle == null:
+		return
+	# lerp damage and size based on charge progress
+	var damage = lerpf(charged_damage_min, charged_damage_max, progress)
+	var size = lerpf(charged_bullet_scale_min, charged_bullet_scale_max, progress)
+	_spawn_bullet(damage, size)
+	_recoil_offset += recoil_amount * charged_recoil_multiplier * progress * sign(global_transform.basis.x.x)
+
+
+func _spawn_bullet(damage: float, size: float) -> void:
+	var bullet = bullet_scene.instantiate()
+	get_tree().root.add_child(bullet)
+	bullet.global_transform = muzzle.global_transform
+	
+	var aim_dir = Vector3(cos(rotation.z), sin(rotation.z), 0.0).normalized()
+	
+	# each bullet gets its own DamageHealInstance no sharing/overwriting other bullet data
+	var damage_instance = DamageHealInstance.new()
+	damage_instance.amount = damage
+	damage_instance.is_heal = false					# false = damage, not healing
+	damage_instance.type = Enums.DamageType.NORMAL
+	damage_instance.knockback = bullet_knockback
+	damage_instance.source = get_path()
+	
+	bullet.initialize(aim_dir, damage_instance, team_component, size)
+	var hb = bullet.get_node("HitboxComponent") 
+	hb.hurtbox_hit.connect(func(hurtbox): enemy_hit.emit(hurtbox))
+	

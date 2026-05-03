@@ -1,33 +1,122 @@
 [gd_scene format=3 uid="uid://4k00bvwggjpj"]
 
+[ext_resource type="PackedScene" uid="uid://c4osos6i6rkf2" path="res://art/3D_Env/3D_Test.tscn" id="1_fr1um"]
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="1_jbqir"]
+[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="2_cyt5c"]
+[ext_resource type="PackedScene" uid="uid://3ukueorlwt6y" path="res://scenes/ui/health_bar.tscn" id="2_yautc"]
+[ext_resource type="PackedScene" uid="uid://cjku3tspjt4ep" path="res://scenes/ui/dating/gigi_date.tscn" id="4_7x1jh"]
+[ext_resource type="PackedScene" uid="uid://11pckncgaxu4" path="res://scenes/components/level_components/level_transitions/level_end.tscn" id="6_6xh4u"]
+[ext_resource type="PackedScene" uid="uid://1hgtrlupdh8t" path="res://scenes/ui/dating/gigi_popup.tscn" id="6_cyt5c"]
+[ext_resource type="PackedScene" uid="uid://cf6ynerow4o6q" path="res://scenes/components/dialogue_component/dialogue_component.tscn" id="8_7x1jh"]
+[ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict_enemy.tscn" id="9_hfwtw"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_3p835"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2venv"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_7x1jh"]
+size = Vector3(4.6031494, 6.1855774, 4.163025)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cyt5c"]
+size = Vector3(1, 5.180786, 3.803955)
+
 [node name="TestLevel" type="Node3D" unique_id=1708525088]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.026703, 0.16869712, 0)
 
 [node name="World" type="Node3D" parent="." unique_id=1103637946]
 
 [node name="Ground" type="MeshInstance3D" parent="World" unique_id=40440884]
 transform = Transform3D(34.28714, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
 mesh = SubResource("BoxMesh_3p835")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="World/Ground" unique_id=1229135204]
+visible = false
 collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground/StaticBody3D" unique_id=889545518]
+visible = false
 shape = SubResource("BoxShape3D_2venv")
 
+[node name="Platform" type="MeshInstance3D" parent="World" unique_id=753629130]
+transform = Transform3D(34.28714, 0, 0, 0, 1, 0, 0, 0, 1, 25.006725, 6.716451, 0)
+visible = false
+mesh = SubResource("BoxMesh_3p835")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Platform" unique_id=1810313223]
+visible = false
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Platform/StaticBody3D" unique_id=1070833298]
+visible = false
+shape = SubResource("BoxShape3D_2venv")
+
+[node name="Level" parent="World" unique_id=1829183850 instance=ExtResource("1_fr1um")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 0.6001549, -1.7041183, 0)
+
+[node name="PopupDateTestTrigger" parent="World" unique_id=1311781014 instance=ExtResource("2_cyt5c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.8396225, 9.929406, 0)
+_signal_parameters = [0]
+signal_name = "activate_popup"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/PopupDateTestTrigger" unique_id=776663417]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.43963623, 1.6656036, 0.29238892)
+shape = SubResource("BoxShape3D_7x1jh")
+debug_color = Color(0.8542519, 0.084620945, 0.86362904, 0.41960785)
+
+[node name="VNDateTestTrigger" parent="World" unique_id=603408934 instance=ExtResource("2_cyt5c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7837305, 11.909763, 0)
+_signal_parameters = [0]
+signal_name = "activate_date"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/VNDateTestTrigger" unique_id=1953554164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.035095215, -0.08117676)
+shape = SubResource("BoxShape3D_cyt5c")
+debug_color = Color(0.74265206, 0.331497, 0.8242094, 0.41960785)
+
 [node name="Player" parent="." unique_id=1349193765 instance=ExtResource("1_jbqir")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5454574, 0)
-collision_layer = 2
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7657423, 2.5489483, 0)
 floor_constant_speed = true
-platform_floor_layers = 1
 platform_wall_layers = 1
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1476303813]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.556258, 11.460891)
-projection = 1
-size = 20.0
+[node name="DialogueComponent" parent="." unique_id=818863205 instance=ExtResource("8_7x1jh")]
+anchors_preset = 4
+offset_left = 58.0
+offset_top = 158.0
+offset_right = 158.0
+offset_bottom = 458.0
+attached_to_team = 1
+min_dialogue_elapsed_time = 5.0
+max_dialogue_elapsed_time = 15.0
+
+[node name="InterestBar" parent="." unique_id=2086963886 instance=ExtResource("2_yautc")]
+
+[node name="GigiDate" parent="." unique_id=2015194836 instance=ExtResource("4_7x1jh")]
+pivot_offset = Vector2(-11, -529)
+
+[node name="LevelEnd" parent="." unique_id=914563996 instance=ExtResource("6_6xh4u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.827894, 2.6020656, 0)
+level_name = "test2"
+
+[node name="GiGiPopup" parent="." unique_id=134709764 instance=ExtResource("6_cyt5c")]
+visible = false
+offset_left = 240.0
+offset_top = 232.0
+offset_right = 740.0
+offset_bottom = 814.0
+
+[node name="Patrol Anchors" type="Node" parent="." unique_id=477156761]
+
+[node name="Anchor_1" type="Node3D" parent="Patrol Anchors" unique_id=1318550056]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.5, 0)
+
+[node name="Anchor_2" type="Node3D" parent="Patrol Anchors" unique_id=155350235]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Convict" parent="." unique_id=1506947017 instance=ExtResource("9_hfwtw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.683288, 2.293902, 0)
+
+[connection signal="player_health_changed" from="Player" to="InterestBar" method="_on_player_health_changed"]
+[connection signal="player_health_initialiased" from="Player" to="InterestBar" method="_on_player_health_initialiased"]
+[connection signal="player_insanity_gained" from="Player" to="InterestBar" method="_on_player_insanity_gained"]
+[connection signal="player_interest_rank_changed" from="Player" to="InterestBar" method="_on_player_interest_rank_changed"]
