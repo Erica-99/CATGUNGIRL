@@ -758,10 +758,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.504261, 0.2811432, 0)
 shape = SubResource("BoxShape3D_ioi8i")
 debug_color = Color(0.90929997, 0.27645475, 0.30361998, 0.41960785)
 
-[node name="Forward_Atk_Area" type="Area3D" parent="." unique_id=1411710539]
+[node name="Forward_Atk_Area" type="Area3D" parent="." unique_id=1411710539 node_paths=PackedStringArray("team_component")]
 collision_layer = 16
 collision_mask = 8
 script = ExtResource("19_ob8hf")
+team_component = NodePath("../TeamComponent")
 damage_or_heal_instance = SubResource("Resource_mjfjc")
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Forward_Atk_Area" unique_id=1017743747]
