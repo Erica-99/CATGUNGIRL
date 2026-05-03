@@ -475,7 +475,7 @@ tracks/1/path = NodePath("../Behaviours/ConvictEngage/ForwardMelee")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.4, 0.73333335),
+"times": PackedFloat32Array(0.4, 0.8333333),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -492,10 +492,10 @@ tracks/2/path = NodePath("AnimatedSprite3D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 2]
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
 }
 
 [sub_resource type="Animation" id="Animation_4p71r"]
@@ -759,7 +759,8 @@ shape = SubResource("BoxShape3D_ioi8i")
 debug_color = Color(0.90929997, 0.27645475, 0.30361998, 0.41960785)
 
 [node name="Forward_Atk_Area" type="Area3D" parent="." unique_id=1411710539]
-collision_mask = 2
+collision_layer = 16
+collision_mask = 8
 script = ExtResource("19_ob8hf")
 damage_or_heal_instance = SubResource("Resource_mjfjc")
 
