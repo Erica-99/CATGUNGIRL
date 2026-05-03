@@ -2,11 +2,14 @@
 
 [ext_resource type="Script" uid="uid://dtxlwrmatnv5x" path="res://scenes/actors/enemies/convict_enemy.gd" id="1_awmif"]
 [ext_resource type="Texture2D" uid="uid://crng4f3f2avnf" path="res://icon.svg" id="2_7v6mw"]
+[ext_resource type="Texture2D" uid="uid://bjtod0tslqmsl" path="res://art/Convict/FwdAttack1.png" id="2_lgmct"]
 [ext_resource type="Texture2D" uid="uid://jtcj8h4eaqla" path="res://art/Convict/ConvictIdle_FullHD.png" id="2_pee7w"]
 [ext_resource type="Texture2D" uid="uid://cttv1akmt3wb3" path="res://art/Convict/ConvictWalk_FullHD.png" id="3_4p71r"]
+[ext_resource type="Texture2D" uid="uid://bwqcu6eoa8mp8" path="res://art/Convict/FwdAttack2.png" id="3_4tu27"]
 [ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="3_pee7w"]
 [ext_resource type="Texture2D" uid="uid://b57buq7tujbgy" path="res://art/Convict/ConvictRun_FullHD.png" id="3_xi3ex"]
 [ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="4_4p71r"]
+[ext_resource type="Texture2D" uid="uid://dyy0r3m2p2jrc" path="res://art/Convict/FwdAttack3.png" id="4_e4ube"]
 [ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="5_xi3ex"]
 [ext_resource type="PackedScene" uid="uid://c6wep4oftfyke" path="res://scenes/components/state_machine/state_machine.tscn" id="6_ob8hf"]
 [ext_resource type="Script" uid="uid://b5fkogjcbrhmo" path="res://scenes/components/state_machine/states/enemy/enemy_patrol.gd" id="7_gi3f3"]
@@ -20,6 +23,18 @@
 [ext_resource type="Script" uid="uid://c0rs86cs1stq8" path="res://scenes/components/state_machine/states/enemy/enemy_search.gd" id="17_xi3ex"]
 [ext_resource type="Script" uid="uid://dkdpeb17n46vh" path="res://scenes/components/hitbox_component/hitbox_component.gd" id="19_ob8hf"]
 [ext_resource type="Script" uid="uid://y2ix2xo5owxw" path="res://resources/damage_heal_instance/damage_heal_instance.gd" id="20_gi3f3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7kog"]
+atlas = ExtResource("2_lgmct")
+region = Rect2(0, 0, 1517, 850)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tflgm"]
+atlas = ExtResource("3_4tu27")
+region = Rect2(0, 0, 1517, 850)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7h80"]
+atlas = ExtResource("4_e4ube")
+region = Rect2(0, 0, 1517, 850)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xi3ex"]
 atlas = ExtResource("2_pee7w")
@@ -241,6 +256,20 @@ region = Rect2(4185, 2691, 837, 897)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_a7kog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tflgm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7h80")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_xi3ex")
 }, {
 "duration": 1.0,
@@ -437,7 +466,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"default"]
+"values": [&"Attack"]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -455,6 +484,18 @@ tracks/1/keys = {
 "args": [],
 "method": &"disable_hitbox"
 }]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite3D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 2]
 }
 
 [sub_resource type="Animation" id="Animation_4p71r"]
@@ -587,7 +628,7 @@ size = Vector3(1.294342, 3.2011719, 1)
 size = Vector3(7, 4, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ioi8i"]
-size = Vector3(0.8427429, 3.9956665, 1)
+size = Vector3(1.187851, 3.535797, 1)
 
 [sub_resource type="Resource" id="Resource_mjfjc"]
 script = ExtResource("20_gi3f3")
@@ -713,7 +754,7 @@ collision_mask = 2
 script = ExtResource("14_ijjht")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Attack_Check" unique_id=2044158123]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.331707, 0.5110779, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.504261, 0.2811432, 0)
 shape = SubResource("BoxShape3D_ioi8i")
 debug_color = Color(0.90929997, 0.27645475, 0.30361998, 0.41960785)
 
@@ -723,5 +764,5 @@ script = ExtResource("19_ob8hf")
 damage_or_heal_instance = SubResource("Resource_mjfjc")
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Forward_Atk_Area" unique_id=1017743747]
-polygon = PackedVector2Array(1.3269831, -0.070039034, 1.0179421, 2.777554, 2.9384112, 2.3360667, 3.4019732, 0.5480435, 2.342403, -1.5269473)
+polygon = PackedVector2Array(1.3269831, -0.070039034, 1.1288724, 1.9791545, 2.6379056, 1.4277772, 2.678533, 0.116079375, 1.4829149, -1.2014222)
 debug_color = Color(0.29803923, 0.6117647, 0.4392157, 0.7137255)
