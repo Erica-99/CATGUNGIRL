@@ -7,11 +7,16 @@ class_name EnemyMeleeAtk
 @export var atk_check: Area3D
 @export var animation = ''
 
+func _ready() -> void:
+	hitbox.monitoring = false
+	hitbox.monitorable = false
+
 func enter() -> void:
 	
 	
 	# Diable monitoring
 	hitbox.monitoring = false
+	hitbox.monitorable = false
 	
 	# Play Attack Animation
 	sprite_anims.play(animation)
@@ -27,9 +32,11 @@ func update(_delta: float) -> void:
 
 func enable_hitbox():
 	hitbox.monitoring = true
+	hitbox.monitorable = true
 
 func disable_hitbox():
 	hitbox.monitoring = false
+	hitbox.monitorable = false
 	print("Enemy Swung")
 
 func attack_opp() -> bool:

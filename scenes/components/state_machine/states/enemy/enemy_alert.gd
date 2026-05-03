@@ -27,5 +27,5 @@ func enter() -> void:
 func update(_delta: float) -> void:
 	alert_timer += _delta
 	if alert_timer >= alert_duration:
-		is_complete = true
+		complete("Alert time expired")
 	pass

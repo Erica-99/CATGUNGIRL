@@ -4,15 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="1_jbqir"]
 [ext_resource type="PackedScene" uid="uid://3ukueorlwt6y" path="res://scenes/ui/health_bar.tscn" id="2_yautc"]
 [ext_resource type="PackedScene" uid="uid://cmaouisrg2kmt" path="res://scenes/ui/dating/gigi_interaction.tscn" id="3_fr1um"]
-[ext_resource type="Script" uid="uid://uoj3dim4046g" path="res://scenes/ui/dating/gigi_interaction.gd" id="4_v45ci"]
+[ext_resource type="Script" path="res://scenes/ui/dating/gigi_interaction.gd" id="4_v45ci"]
 [ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict_enemy.tscn" id="6_6xh4u"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_3p835"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2venv"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_6xh4u"]
-viewport_path = NodePath("SubViewport")
 
 [node name="TestLevel" type="Node3D" unique_id=1708525088]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.026703, 0.16869712, 0)
@@ -53,13 +50,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.949211, 9.938326, 0)
 floor_constant_speed = true
 platform_wall_layers = 1
 
-[node name="CollisionShape3D" parent="Player" index="2" unique_id=1618314844 groups=["player"]]
-
-[node name="CollisionShape3D" parent="Player/HurtboxComponent" parent_id_path=PackedInt32Array(1349193765, 338394069) index="0" unique_id=824073931 groups=["player"]]
-
-[node name="DialogueComponent" parent="Player" index="11" unique_id=1775697624]
-texture = SubResource("ViewportTexture_6xh4u")
-
 [node name="InterestBar" parent="." unique_id=2086963886 instance=ExtResource("2_yautc")]
 
 [node name="GigiInteraction" parent="." unique_id=1180502817 instance=ExtResource("3_fr1um")]
@@ -80,10 +70,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2600694, 0)
 left_anchor = NodePath("../../../Patrol Anchors/Anchor_1")
 right_anchor = NodePath("../../../Patrol Anchors/Anchor_2")
 
+[node name="EnemyIdle" parent="Convict/Behaviours/ConvictEngage" parent_id_path=PackedInt32Array(1506947017, 1551046704) index="3" unique_id=512633357]
+idle_min_time = 2.1
+idle_max_time = 2.1
+
 [connection signal="player_health_changed" from="Player" to="InterestBar" method="_on_player_health_changed"]
 [connection signal="player_health_initialiased" from="Player" to="InterestBar" method="_on_player_health_initialiased"]
 [connection signal="player_insanity_gained" from="Player" to="InterestBar" method="_on_player_insanity_gained"]
 [connection signal="player_interest_rank_changed" from="Player" to="InterestBar" method="_on_player_interest_rank_changed"]
 
-[editable path="Player"]
 [editable path="Convict"]

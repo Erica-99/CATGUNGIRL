@@ -36,7 +36,7 @@ func update(_delta: float) -> void:
 	
 	
 	if abandon_timer >= abandon_time: # If player out of sight for abandon_time, give up chase
-		is_complete = true
+		complete("Player Lost")
 	
 	if child_state is EnemyAlert:
 		if child_state.is_complete:
@@ -49,10 +49,10 @@ func update(_delta: float) -> void:
 		set_state(fwd_attack)
 	elif child_state is EnemyMeleeAtk and child_state.is_complete:
 		set_state(idle)
-	elif child_state is EnemyIdle and child_state.is_complete:
+	elif child_state is EnemyIdle and child_state.is_complete and fwd_attack.attack_opp() == false:
 		set_state(move)
 	elif child_state is EnemyMove and child_state.is_complete:
-		is_complete = true
+		complete("Reached player's last known location")
 
 
 # Used by parent to determine when to enter, and reset abandon_timer if player is still in sight
