@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c8mjga1kreqfr"]
+
+[ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="1_rcjfd"]
+[ext_resource type="PackedScene" uid="uid://bls076phgmcus" path="res://scenes/actors/enemies/scrub/scrub.tscn" id="2_h2jup"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hwlmk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lrixx"]
+
+[node name="ScrubTestLevel" type="Node3D" unique_id=922912552]
+
+[node name="World" type="Node3D" parent="." unique_id=1704519241]
+
+[node name="Ground" type="MeshInstance3D" parent="World" unique_id=120316635]
+transform = Transform3D(75.164734, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_hwlmk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Ground" unique_id=631170646]
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground/StaticBody3D" unique_id=1705242629]
+shape = SubResource("BoxShape3D_lrixx")
+
+[node name="Player" parent="." unique_id=1349193765 groups=["Player"] instance=ExtResource("1_rcjfd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4815655, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=89618215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.0746927, 11.460891)
+projection = 1
+size = 20.0
+
+[node name="Scrub" parent="." unique_id=1090872008 instance=ExtResource("2_h2jup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.705257, 2.0834074, 0)

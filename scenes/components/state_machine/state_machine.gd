@@ -10,6 +10,7 @@ signal state_changed(prev: String, new: String)
 @export var initial_state: State
 
 var current_state : State
+var current_state_name: String
 var states : Dictionary = {}
 
 
@@ -28,14 +29,10 @@ func init(blackboard: Dictionary = {}) -> void:
 func _process(delta: float) -> void:
 	if current_state:
 		current_state.update(delta)
-	pass
-
 
 func _physics_process(delta: float) -> void:
 	if current_state:
 		current_state.physics_update(delta)
-	pass
-
 
 func on_child_transition(state: State, new_state_name: String):
 	if state != current_state:
