@@ -1,3 +1,21 @@
 [gd_scene format=3 uid="uid://bb6sghw3w0sxm"]
 
-[node name="ScrubGun" type="Node3D" unique_id=649943052]
+[ext_resource type="Script" uid="uid://c4xpeu2dx61nr" path="res://scenes/components/enemy_components/scrub_components/scrub_gun/scrub_gun.gd" id="1_a1dpb"]
+[ext_resource type="PackedScene" uid="uid://bx3yqkplme1o" path="res://scenes/bullet/bullet.tscn" id="2_jptwt"]
+
+[sub_resource type="Gradient" id="Gradient_jptwt"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w7y2y"]
+gradient = SubResource("Gradient_jptwt")
+
+[node name="ScrubGun" type="Node3D" unique_id=649943052 node_paths=PackedStringArray("muzzle")]
+script = ExtResource("1_a1dpb")
+bullet_scene = ExtResource("2_jptwt")
+muzzle = NodePath("Muzzle")
+
+[node name="Muzzle" type="Marker3D" parent="." unique_id=1101479183]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=353744218]
+transform = Transform3D(1.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.4, 0, 0)
+texture = SubResource("GradientTexture2D_w7y2y")

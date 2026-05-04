@@ -1,16 +1,11 @@
-# Idle State: Scrub stands still, ready to detect player
-#   In future: Play idle dialogue
+# Chase State: Scrub moves toward detected player that is outside
+#   attack range.
 
-# Before being alerted to the player, the Scrub will either:
-#   - Stand in place
-#   - Patrol a select area
-# (Dependent on level design)
+# From Chase State the Scrub can transition into:
+#   - Attack, when in Attack range
 
-# From Idle State the Scrub can transition into:
-#   - Patrol, move a short distance
-#   - Alert, when player detected play a short Alert animation and move
-#       to alert phase.
-
+# TODO: more intricate pathing, currently only moves left and right
+#   towards player
 extends State
 class_name ScrubChase
 

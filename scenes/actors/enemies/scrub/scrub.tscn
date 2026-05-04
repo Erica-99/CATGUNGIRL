@@ -20,14 +20,20 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_bdg8o"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ly0j2"]
-radius = 5.0
+radius = 10.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bdg8o"]
-radius = 12.0
+radius = 20.0
 
-[node name="Scrub" type="CharacterBody3D" unique_id=1090872008 node_paths=PackedStringArray("state_machine")]
+[sub_resource type="SphereShape3D" id="SphereShape3D_05tr2"]
+radius = 5.0
+
+[node name="Scrub" type="CharacterBody3D" unique_id=1090872008 node_paths=PackedStringArray("state_machine", "gun_component")]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_2i5hx")
 state_machine = NodePath("StateMachine")
+gun_component = NodePath("ScrubGun")
 grenade = ExtResource("2_tpnop")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1549018224]
@@ -45,7 +51,8 @@ health_component = NodePath("../HealthComponent")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtboxComponent" unique_id=657563758]
 shape = SubResource("BoxShape3D_bdg8o")
 
-[node name="ScrubGun" parent="." unique_id=649943052 instance=ExtResource("5_ew88m")]
+[node name="ScrubGun" parent="." unique_id=649943052 node_paths=PackedStringArray("team_component") instance=ExtResource("5_ew88m")]
+team_component = NodePath("../TeamComponent")
 
 [node name="StateMachine" parent="." unique_id=1499026333 node_paths=PackedStringArray("initial_state") instance=ExtResource("4_apte0")]
 initial_state = NodePath("ScrubIdle")
@@ -78,14 +85,30 @@ script = ExtResource("9_apte0")
 metadata/_custom_type_script = "uid://c18mlpgd4umeh"
 
 [node name="DetectionArea3D" type="Area3D" parent="." unique_id=1101772605]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea3D" unique_id=1832397300]
 shape = SubResource("SphereShape3D_ly0j2")
 
 [node name="AttRangeArea3D" type="Area3D" parent="." unique_id=244478602]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttRangeArea3D" unique_id=1960040429]
 shape = SubResource("SphereShape3D_bdg8o")
 debug_color = Color(0.9843137, 0, 0.35686275, 0.33333334)
 
+[node name="FleeArea3D" type="Area3D" parent="." unique_id=592994474]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FleeArea3D" unique_id=1408846072]
+shape = SubResource("SphereShape3D_05tr2")
+debug_color = Color(0.77217674, 0.44468626, 0, 0.33333334)
+
 [connection signal="body_entered" from="DetectionArea3D" to="." method="_on_detection_area_3d_body_entered"]
+[connection signal="body_entered" from="AttRangeArea3D" to="." method="_on_att_range_area_3d_body_entered"]
+[connection signal="body_exited" from="AttRangeArea3D" to="." method="_on_att_range_area_3d_body_exited"]
+[connection signal="body_entered" from="FleeArea3D" to="." method="_on_flee_area_3d_body_entered"]
+[connection signal="body_exited" from="FleeArea3D" to="." method="_on_flee_area_3d_body_exited"]
