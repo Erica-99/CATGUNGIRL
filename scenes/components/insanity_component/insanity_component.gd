@@ -87,3 +87,7 @@ func _on_health_component_health_changed(old_health, new_health, damage_or_heal_
 	## If rank has changed emit signal
 	if old_rank != interest_rank:
 		interest_rank_changed.emit(interest_rank)
+
+
+func _on_player_player_dead() -> void:
+	insanity = 0
