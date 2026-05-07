@@ -1667,6 +1667,7 @@ team_component = NodePath("../TeamComponent")
 input_component = NodePath("../PlayerInput")
 aim_speed = 4.0
 fire_rate = 0.4
+aim_settled_threshold = 2.0
 
 [connection signal="facing_changed" from="." to="PlayerVisuals" method="_on_player_facing_changed"]
 [connection signal="facing_changed" from="." to="MantleDetector" method="_on_player_facing_changed"]

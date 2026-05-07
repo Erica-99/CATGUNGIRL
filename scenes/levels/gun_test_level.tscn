@@ -12,7 +12,7 @@ size = Vector3(40, 0.5, 2)
 [sub_resource type="BoxMesh" id="BoxMesh_vcw55"]
 size = Vector3(40, 0.5, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ns2n8"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_c3h4u"]
 viewport_path = NodePath("SubViewport")
 
 [node name="GunTestLevel" type="Node3D" unique_id=2035735623]
@@ -29,7 +29,10 @@ mesh = SubResource("BoxMesh_vcw55")
 [node name="Player" parent="." unique_id=1349193765 instance=ExtResource("1_vcef3")]
 
 [node name="DialogueComponent" parent="Player" index="11" unique_id=1775697624]
-texture = SubResource("ViewportTexture_ns2n8")
+texture = SubResource("ViewportTexture_c3h4u")
+
+[node name="GunComponent" parent="Player" index="13" unique_id=52176648]
+aim_settled_threshold = 1.0
 
 [node name="DummyTarget" parent="." unique_id=1506947017 instance=ExtResource("2_ns2n8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)

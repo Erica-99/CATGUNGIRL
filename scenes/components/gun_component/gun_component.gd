@@ -13,14 +13,23 @@ extends Node3D
 @export var aim_speed: float = 8.0		# gun rotation speed towards mouse (lower = more delay)
 
 @export_group("Normal Fire")
-@export var fire_rate: float = 0.15		# min time (seconds) between shots
-@export var bullet_damage: float = 10.0		# bullet damage
+@export var fire_rate: float = 0.15			# min time (seconds) between shots
+@export var bullet_damage: float = 10.0
 @export var bullet_knockback: float = 5.0	# knockback force (can remove)
-@export var bullet_scale: float = 1.0	# visual size of bullet 
-@export var recoil_amount: float = 0.15   # higher = more
-@export var recoil_recovery: float = 10.0 # higher = faster
-@export var wobble_amount: float = 0.2	# higher = more
-@export var wobble_speed: float = 9.0	# higher = faster
+@export var bullet_scale: float = 1.0
+@export var recoil_amount: float = 0.35		# higher = more
+@export var recoil_recovery: float = 5.0 	# higher = faster
+@export var wobble_amount: float = 0.1		# higher = more
+@export var wobble_speed: float = 7.0		# higher = faster
+
+@export_group("Spam Fire")
+@export var spam_damage_multiplier: float = 0.6		# damage multiplier for spam shots
+@export var spam_aim_multiplier: float = 0.4		# lower = slower
+@export var spam_threshold: float = 0.95			# current recoil amount 1.0-0 
+
+@export_group("Perfect Shot")
+@export var aim_settled_threshold: float = 1.0		# how many degrees away from mouse pos
+@export var perfect_damage_multiplier: float = 1.5	# damage bonus for perfect shot
 
 @export_group("Charged Shot")
 @export var charge_mode: Enums.ChargeMode = Enums.ChargeMode.AUTO_FIRE	# which charge mode is active (switch in inspector)
@@ -47,11 +56,27 @@ signal charge_ended()
 signal charge_started()
 signal enemy_hit(hurtbox: Area3D)
 
-var _fire_cooldown: float = 0.0	# counts down each frame, gun can't fire until it hits 0
-var _recoil_offset: float = 0.0	# current recoil 
-var _is_charging: bool = false	# is a charged shot being charged?
-var _charge_timer: float = 0.0	# how long (seconds) player has been charging
+## perfect shot signal, connect later for visual indicator
+signal perfect_shot_fired()
+
+var _fire_cooldown: float = 0.0
+var _recoil_offset: float = 0.0 
+var _is_charging: bool = false
+var _charge_timer: float = 0.0		# how long (seconds) player has been charging
 var _wobble_time: float = 0.0
+var _current_target_angle: float = 0.0	# stores current target angle for perfect shot detection
+
+# check if aim within threshold
+func _is_aim_settled() -> bool:
+	var angle_diff = abs(angle_difference(rotation.z, _current_target_angle))
+	return angle_diff < deg_to_rad(aim_settled_threshold)
+
+## returns recoil recovery progress as 0.0 (just fired) to 1.0 (fully recovered)
+## used to determine spam fire zone
+func _get_recovery_progress() -> float:
+	if abs(recoil_amount) < 0.001:
+		return 1.0
+	return 1.0 - clampf(abs(_recoil_offset) / recoil_amount, 0.0, 1.0)
 
 
 func _process(delta: float) -> void:
@@ -64,8 +89,7 @@ func _process(delta: float) -> void:
 	# charged shot input handling
 	_handle_charge_input(current_input_state, delta)
 
-## rotates gun for 360 degree aiming
-## uses lerp_angle for smooth delayed aiming
+
 func _update_aim(mouse_world: Vector3, input_state: Dictionary, delta: float) -> void:
 	if mouse_world == null:
 		return
@@ -73,6 +97,8 @@ func _update_aim(mouse_world: Vector3, input_state: Dictionary, delta: float) ->
 	var direction = mouse_world - global_position
 	direction.z = 0.0
 	var target_angle = Vector2(direction.x, direction.y).angle()
+	_current_target_angle = target_angle
+	
 	var is_moving = input_state.get("movement", 0.0) != 0.0 or input_state.get("jumping", false)
 	var wobble: float = 0.0
 	if is_moving:
@@ -80,10 +106,17 @@ func _update_aim(mouse_world: Vector3, input_state: Dictionary, delta: float) ->
 		wobble = sin(_wobble_time * wobble_speed) * wobble_amount
 	else:
 		_wobble_time = 0.0
-	rotation.z = lerp_angle(rotation.z, target_angle + _recoil_offset + wobble, aim_speed * delta)
+		
+	var recovery = _get_recovery_progress()
+	var current_aim_speed = aim_speed
+	if recovery < spam_threshold:
+		current_aim_speed = aim_speed * spam_aim_multiplier
+		
+	rotation.z = lerp_angle(rotation.z, target_angle + _recoil_offset + wobble, current_aim_speed * delta)
 	_recoil_offset = lerpf(_recoil_offset, 0.0, recoil_recovery * delta)
+	if abs(_recoil_offset) < 0.001:
+		_recoil_offset = 0.0
 	scale = Vector3(1.0, 1.0, 1.0)
-
 
 func _handle_charge_input(input_state: Dictionary, delta: float) -> void:
 	var charge_fire_held = input_state.get("charge_fire_held", false)
@@ -117,7 +150,7 @@ func _handle_charge_input(input_state: Dictionary, delta: float) -> void:
 			charge_progress_changed.emit(progress)
 			# caps charge timer so it doesn't go past max
 			_charge_timer = minf(_charge_timer, hold_charge_max)
-
+			
 		# release -> fire if charged enough, otherwise cancel
 		if not charge_fire_held and _is_charging:
 			if _charge_timer >= hold_charge_min:
@@ -139,10 +172,24 @@ func _try_fire() -> void:
 		return
 	if bullet_scene == null or muzzle == null:
 		return
+	print("recovery: ", _get_recovery_progress(), " recoil_offset: ", _recoil_offset)
+	var damage = bullet_damage
+	
+	## aim caught up to mouse?
+	if _is_aim_settled():
+		print("Perfect Shot fired, damage: ", bullet_damage * perfect_damage_multiplier)
+		rotation.z = _current_target_angle
+		damage = bullet_damage * perfect_damage_multiplier
+		perfect_shot_fired.emit()
+	elif _get_recovery_progress() < spam_threshold:
+		print("spam shot, damage: ", bullet_damage * spam_damage_multiplier)
+		damage = bullet_damage * spam_damage_multiplier
+	else: 
+		print("normal shot, damage: ", bullet_damage)
 		
 	# resets firing cooldown
 	_fire_cooldown = fire_rate
-	_spawn_bullet(bullet_damage, bullet_scale)
+	_spawn_bullet(damage, bullet_scale)
 	_recoil_offset += recoil_amount * sign(global_transform.basis.x.x)
 
 
@@ -150,7 +197,6 @@ func _fire_charged(progress: float) -> void:
 	# reset charge state
 	_is_charging = false
 	_charge_timer = 0.0
-	print("firing charge_ended signal")
 	# tell chargebar ui charging ended
 	charge_ended.emit()
 	if bullet_scene == null or muzzle == null:
