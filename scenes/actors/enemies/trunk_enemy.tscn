@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://cktf8q7u6kp0s"]
+
+[ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="1_licla"]
+[ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="2_dbr8j"]
+[ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="3_ibdwt"]
+[ext_resource type="Script" uid="uid://b5fkogjcbrhmo" path="res://scenes/components/state_machine/states/enemy/enemy_patrol.gd" id="4_eh2do"]
+[ext_resource type="Script" uid="uid://c1a7osbqykg2" path="res://scenes/components/state_machine/states/enemy/enemy_move.gd" id="5_urbjv"]
+[ext_resource type="Script" uid="uid://dyr3mhryox7qn" path="res://scenes/components/state_machine/states/enemy/enemy_idle.gd" id="6_d34jc"]
+[ext_resource type="Script" uid="uid://chnh8k07o185p" path="res://scenes/actors/enemies/trunk_engage.gd" id="7_urbjv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mq0va"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eh2do"]
+
+[node name="Trunk" type="CharacterBody3D" unique_id=362479373]
+
+[node name="Visuals" type="Node3D" parent="." unique_id=421733861]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Visuals" unique_id=856052660]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals" unique_id=866788375]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1913740191]
+shape = SubResource("BoxShape3D_mq0va")
+
+[node name="HealthComponent" parent="." unique_id=236252344 instance=ExtResource("1_licla")]
+
+[node name="TeamComponent" parent="." unique_id=2076917082 instance=ExtResource("2_dbr8j")]
+
+[node name="HurtboxComponent" parent="." unique_id=338394069 instance=ExtResource("3_ibdwt")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtboxComponent" unique_id=1154031432]
+shape = SubResource("BoxShape3D_eh2do")
+
+[node name="Behaviours" type="Node" parent="." unique_id=1635485774]
+
+[node name="EnemyPatrol" type="Node" parent="Behaviours" unique_id=1536909539]
+script = ExtResource("4_eh2do")
+metadata/_custom_type_script = "uid://b5fkogjcbrhmo"
+
+[node name="EnemyMove" type="Node" parent="Behaviours/EnemyPatrol" unique_id=172147039]
+script = ExtResource("5_urbjv")
+metadata/_custom_type_script = "uid://c1a7osbqykg2"
+
+[node name="EnemyIdle" type="Node" parent="Behaviours/EnemyPatrol" unique_id=40281579]
+script = ExtResource("6_d34jc")
+metadata/_custom_type_script = "uid://dyr3mhryox7qn"
+
+[node name="TrunkEngage" type="Node" parent="Behaviours" unique_id=698043176]
+script = ExtResource("7_urbjv")
+
+[node name="SightCheck" type="Area3D" parent="." unique_id=1648523340]
+
+[node name="FwdAttackCheck" type="Area3D" parent="." unique_id=609036738]
+
+[node name="FwdAttackArea" type="Area3D" parent="." unique_id=314908178]
