@@ -13,7 +13,7 @@ var _interacting := false
 var _input_locked := false
 
 func _ready() -> void:
-	EventManager.connect("lockout_player_input", _lock_input)
+d	EventManager.connect("lockout_player_input", _lock_input)
 	EventManager.connect("resume_player_input", _resume_input)
 
 func _process(_delta: float) -> void:

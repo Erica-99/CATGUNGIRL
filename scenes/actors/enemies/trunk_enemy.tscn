@@ -1,18 +1,31 @@
 [gd_scene format=3 uid="uid://cktf8q7u6kp0s"]
 
+[ext_resource type="Script" uid="uid://6oldlb7mdsvl" path="res://scenes/actors/enemies/trunk_enemy.gd" id="1_htwv2"]
 [ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="1_licla"]
 [ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="2_dbr8j"]
 [ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="3_ibdwt"]
 [ext_resource type="Script" uid="uid://b5fkogjcbrhmo" path="res://scenes/components/state_machine/states/enemy/enemy_patrol.gd" id="4_eh2do"]
 [ext_resource type="Script" uid="uid://c1a7osbqykg2" path="res://scenes/components/state_machine/states/enemy/enemy_move.gd" id="5_urbjv"]
 [ext_resource type="Script" uid="uid://dyr3mhryox7qn" path="res://scenes/components/state_machine/states/enemy/enemy_idle.gd" id="6_d34jc"]
-[ext_resource type="Script" uid="uid://chnh8k07o185p" path="res://scenes/actors/enemies/trunk_engage.gd" id="7_urbjv"]
+[ext_resource type="Script" uid="uid://chnh8k07o185p" path="res://scenes/components/state_machine/states/enemy/trunk_engage.gd" id="7_urbjv"]
+[ext_resource type="Script" uid="uid://c8tp1cvog1wsi" path="res://scenes/components/state_machine/states/enemy/enemy_alert.gd" id="8_uyysc"]
+[ext_resource type="Script" path="res://scenes/components/state_machine/states/enemy/enemy_melee_atk.gd" id="9_6j5le"]
+[ext_resource type="Script" path="res://scenes/components/state_machine/states/enemy/enemy_search.gd" id="10_htwv2"]
+[ext_resource type="Script" uid="uid://cnchn1hd27t4h" path="res://scenes/components/state_machine/states/enemy/enemy_death.gd" id="11_6j5le"]
+[ext_resource type="Script" uid="uid://otyq8vvc3w1g" path="res://scenes/components/state_machine/states/enemy/trunk_flame_atk.gd" id="13_mb465"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mq0va"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eh2do"]
 
-[node name="Trunk" type="CharacterBody3D" unique_id=362479373]
+[node name="Trunk" type="CharacterBody3D" unique_id=362479373 node_paths=PackedStringArray("animator", "health_comp", "patrol", "engage", "death", "search")]
+script = ExtResource("1_htwv2")
+animator = NodePath("Visuals/AnimatedSprite3D")
+health_comp = NodePath("HealthComponent")
+patrol = NodePath("Behaviours/EnemyPatrol")
+engage = NodePath("Behaviours/TrunkEngage")
+death = NodePath("Behaviours/EnemyDeath")
+search = NodePath("Behaviours/EnemySearch")
 
 [node name="Visuals" type="Node3D" parent="." unique_id=421733861]
 
@@ -34,20 +47,60 @@ shape = SubResource("BoxShape3D_eh2do")
 
 [node name="Behaviours" type="Node" parent="." unique_id=1635485774]
 
-[node name="EnemyPatrol" type="Node" parent="Behaviours" unique_id=1536909539]
+[node name="EnemyPatrol" type="Node" parent="Behaviours" unique_id=1536909539 node_paths=PackedStringArray("move", "idle")]
 script = ExtResource("4_eh2do")
+move = NodePath("EnemyMove")
+idle = NodePath("EnemyIdle")
 metadata/_custom_type_script = "uid://b5fkogjcbrhmo"
 
 [node name="EnemyMove" type="Node" parent="Behaviours/EnemyPatrol" unique_id=172147039]
 script = ExtResource("5_urbjv")
+move_speed = 2.0
 metadata/_custom_type_script = "uid://c1a7osbqykg2"
 
 [node name="EnemyIdle" type="Node" parent="Behaviours/EnemyPatrol" unique_id=40281579]
 script = ExtResource("6_d34jc")
+idle_min_time = 2.0
+idle_max_time = 3.0
 metadata/_custom_type_script = "uid://dyr3mhryox7qn"
 
-[node name="TrunkEngage" type="Node" parent="Behaviours" unique_id=698043176]
+[node name="TrunkEngage" type="Node" parent="Behaviours" unique_id=698043176 node_paths=PackedStringArray("alert", "move")]
 script = ExtResource("7_urbjv")
+alert = NodePath("EnemyAlert")
+move = NodePath("EnemyMove")
+
+[node name="EnemyAlert" type="Node" parent="Behaviours/TrunkEngage" unique_id=767060021]
+script = ExtResource("8_uyysc")
+alert_duration = 1.0
+metadata/_custom_type_script = "uid://c8tp1cvog1wsi"
+
+[node name="EnemyMove" type="Node" parent="Behaviours/TrunkEngage" unique_id=487894351]
+script = ExtResource("5_urbjv")
+move_speed = 2.0
+metadata/_custom_type_script = "uid://c1a7osbqykg2"
+
+[node name="EnemyMeleeAtk" type="Node" parent="Behaviours/TrunkEngage" unique_id=172978346 node_paths=PackedStringArray("hitbox", "atk_check")]
+script = ExtResource("9_6j5le")
+hitbox = NodePath("../../../FwdAttackArea")
+atk_check = NodePath("../../../FwdAttackCheck")
+
+[node name="TrunkFlameAtk" type="Node" parent="Behaviours/TrunkEngage" unique_id=1244257542]
+script = ExtResource("13_mb465")
+metadata/_custom_type_script = "uid://otyq8vvc3w1g"
+
+[node name="EnemyIdle" type="Node" parent="Behaviours/TrunkEngage" unique_id=1939362776]
+script = ExtResource("6_d34jc")
+metadata/_custom_type_script = "uid://dyr3mhryox7qn"
+
+[node name="EnemySearch" type="Node" parent="Behaviours" unique_id=1635331394 node_paths=PackedStringArray("animator")]
+script = ExtResource("10_htwv2")
+animator = NodePath("../../Visuals/AnimationPlayer")
+look_time = 0.5
+look_count = 4
+
+[node name="EnemyDeath" type="Node" parent="Behaviours" unique_id=708280841]
+script = ExtResource("11_6j5le")
+metadata/_custom_type_script = "uid://cnchn1hd27t4h"
 
 [node name="SightCheck" type="Area3D" parent="." unique_id=1648523340]
 
