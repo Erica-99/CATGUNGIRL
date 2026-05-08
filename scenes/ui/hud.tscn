@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://ckp576f04778f"]
+
+[ext_resource type="PackedScene" uid="uid://cf6ynerow4o6q" path="res://scenes/components/dialogue_component/dialogue_component.tscn" id="1_0mwgc"]
+[ext_resource type="Script" uid="uid://boilkxk181vi5" path="res://scenes/ui/killstreak_display/killstreak_handler.gd" id="2_hqnrr"]
+[ext_resource type="Texture2D" uid="uid://b0grt2qyst7gu" path="res://resources/killstreak/unfilled.png" id="3_8qguk"]
+[ext_resource type="Texture2D" uid="uid://dscdygp436wi2" path="res://resources/killstreak/filled.png" id="4_136eg"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0mwgc"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mwgc"]
+bg_color = Color(0.4862745, 0.5529412, 1, 0.29411766)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.23200789, 0.3540163, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqnrr"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="HUD" type="Sprite3D" unique_id=931475153]
+texture = SubResource("ViewportTexture_0mwgc")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=867061255]
+mouse_filter = 2
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1690512817]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="BorderExample" type="PanelContainer" parent="SubViewport" unique_id=1787759770]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0mwgc")
+
+[node name="DialogueComponent" parent="SubViewport" unique_id=277394654 instance=ExtResource("1_0mwgc")]
+offset_top = -120.0
+offset_bottom = -20.0
+attached_to_team = 1
+min_dialogue_elapsed_time = 5.0
+max_dialogue_elapsed_time = 10.0
+
+[node name="KillstreakHandler" type="Control" parent="SubViewport" unique_id=1157771465]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+script = ExtResource("2_hqnrr")
+
+[node name="KillstreakDisplay" type="RichTextLabel" parent="SubViewport/KillstreakHandler" unique_id=334713342]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -126.0
+offset_top = 50.0
+offset_right = 126.0
+offset_bottom = 105.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.8572629, 2.1658839e-06, 0.39528286, 1)
+theme_override_font_sizes/normal_font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_hqnrr")
+bbcode_enabled = true
+text = "x 0"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KillstreakProgression" type="TextureProgressBar" parent="SubViewport/KillstreakHandler" unique_id=971333904]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 100.0
+offset_right = 200.0
+offset_bottom = 120.0
+grow_horizontal = 2
+max_value = 10.0
+step = 0.01
+nine_patch_stretch = true
+texture_under = ExtResource("3_8qguk")
+texture_progress = ExtResource("4_136eg")
