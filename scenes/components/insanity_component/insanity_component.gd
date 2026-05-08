@@ -20,37 +20,26 @@ signal interest_rank_changed(new_rank: Enums.InterestRank)
 @export_category("Interest")
 ## Interest value is equal to Health in Health Component
 @export var interest_rank: Enums.InterestRank ## Will be based on health
-@export var interest_buffer: float = 10
 ## Variables for Interest decay ticks
-@export var intdecay_damage: DamageHealInstance
+@export var decay_damage_instance: DamageHealInstance
 @export var intdecay_timer: float = 0
 @export var intdecay_cd: float = 1
-@export var int_target: Node
+@export var min_decayable_health: int = 1
+@export var health_component: Node
 
 @export_category("Insanity")
 @export var insanity: float
-@export var min_insanity_damage: float
-@export var max_insanity: float = 100
+@export var max_insanity: float = 5
 
 func _ready():
 	insanity = 0
-	## Setting up interest decay
-	## TODO: change this to be more easily editable
-	intdecay_damage = DamageHealInstance.new()
-	intdecay_damage.amount = 1
-	intdecay_damage.is_heal = false
-	intdecay_damage.knockback = 0
-	intdecay_damage.type = Enums.DamageType.DECAY
-	intdecay_damage.source = ^"."
-	int_target = $"../HealthComponent"
-	
 
 func _process(delta):
 	## Decay over time
 	intdecay_timer += delta
 	if intdecay_timer > intdecay_cd:
 		intdecay_timer = 0
-		int_target.take_damage_or_heal(intdecay_damage)
+		health_component.take_damage_or_heal(decay_damage_instance)
 	
 	## When reaching Max Insanity, die
 	if insanity >= max_insanity:
@@ -60,17 +49,11 @@ func _process(delta):
 ## done by the killing blow is added to Insanity.
 ## Player death will be handled by Insanity reaching 100
 func _on_health_component_killed(killing_blow, health_before_death):
-	## Determine how much damage overflow from Interest Damage
-	var overflow = killing_blow.amount - health_before_death
-	## Set a minumum amount of Insanity damage that can be taken
-	if overflow < min_insanity_damage:
-		overflow = min_insanity_damage
-	
-	## After Interest is "killed", add Insanity, making min_health
-	## higher, and add a buffer to Interest so you it doesn't break
-	## immediately
-	insanity += overflow
-	insanity_gained.emit(overflow, interest_buffer)
+	## If not already at 0hp, set to 0hp. Otherwise kill them fr.
+	if health_before_death != 0:
+		health_component.set_health_to_min()
+	else:
+		insanity_death.emit()
 
 func _on_health_component_health_changed(old_health, new_health, damage_or_heal_instance):
 	var old_rank = interest_rank

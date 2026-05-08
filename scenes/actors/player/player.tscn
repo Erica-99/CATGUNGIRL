@@ -31,6 +31,7 @@
 [ext_resource type="Script" uid="uid://bpl2nhpm4ebce" path="res://scenes/components/state_machine/states/player/player_mantle.gd" id="15_068wj"]
 [ext_resource type="PackedScene" uid="uid://ifqobphukq76" path="res://scenes/components/gun_component/gun_component.tscn" id="16_qdyt2"]
 [ext_resource type="PackedScene" uid="uid://cmq1v8ob4m0w4" path="res://scenes/components/camera_component/camera_component.tscn" id="18_ffoq6"]
+[ext_resource type="Script" uid="uid://y2ix2xo5owxw" path="res://resources/damage_heal_instance/damage_heal_instance.gd" id="19_llrf1"]
 
 [sub_resource type="Animation" id="Animation_75awx"]
 resource_name = "Fire"
@@ -1481,6 +1482,13 @@ animations = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_g2els"]
 size = Vector3(1.2752914, 3.192688, 1)
 
+[sub_resource type="Resource" id="Resource_llrf1"]
+script = ExtResource("19_llrf1")
+amount = 1.0
+type = 1
+source = NodePath(".")
+metadata/_custom_type_script = "uid://y2ix2xo5owxw"
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_g2g7f"]
 size = Vector3(1.2752686, 3.1870117, 1)
 
@@ -1587,8 +1595,9 @@ team = 1
 
 [node name="HealthComponent" parent="." unique_id=236252344 instance=ExtResource("2_mpktj")]
 
-[node name="InsanityComponent" parent="." unique_id=1673641464 instance=ExtResource("5_5bhx7")]
-min_insanity_damage = 5.0
+[node name="InsanityComponent" parent="." unique_id=1673641464 node_paths=PackedStringArray("health_component") instance=ExtResource("5_5bhx7")]
+decay_damage_instance = SubResource("Resource_llrf1")
+health_component = NodePath("../HealthComponent")
 
 [node name="HurtboxComponent" parent="." unique_id=338394069 node_paths=PackedStringArray("team_component", "health_component") instance=ExtResource("3_yg5k4")]
 team_component = NodePath("../TeamComponent")
