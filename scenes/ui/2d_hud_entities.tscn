@@ -16,6 +16,18 @@ border_color = Color(0.23200789, 0.3540163, 1, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p31j5"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qwqhv"]
+size = Vector2(1920, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwr8f"]
+size = Vector2(1920, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00o42"]
+size = Vector2(20, 1080)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wvca"]
+size = Vector2(20, 1080)
+
 [node name="2DHudEntities" type="Control" unique_id=1605915058]
 layout_mode = 3
 anchors_preset = 0
@@ -87,3 +99,27 @@ step = 0.01
 nine_patch_stretch = true
 texture_under = ExtResource("3_00o42")
 texture_progress = ExtResource("4_0wvca")
+
+[node name="TopStaticBox" type="StaticBody2D" parent="." unique_id=1072806553]
+position = Vector2(960, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopStaticBox" unique_id=805041945]
+shape = SubResource("RectangleShape2D_qwqhv")
+
+[node name="BottomStaticBox" type="StaticBody2D" parent="." unique_id=1813640512]
+position = Vector2(960, 1090)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomStaticBox" unique_id=1721432988]
+shape = SubResource("RectangleShape2D_nwr8f")
+
+[node name="RightStaticBox" type="StaticBody2D" parent="." unique_id=435633814]
+position = Vector2(1930, 540)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightStaticBox" unique_id=569765684]
+shape = SubResource("RectangleShape2D_00o42")
+
+[node name="LeftStaticBox" type="StaticBody2D" parent="." unique_id=1749239857]
+position = Vector2(-10, 540)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftStaticBox" unique_id=1808589435]
+shape = SubResource("RectangleShape2D_0wvca")
