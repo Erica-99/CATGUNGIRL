@@ -88,28 +88,7 @@ func take_damage_or_heal(damage_or_heal_instance: DamageHealInstance) -> void:
 
 ## _process(delta) allows for updates independent of actual framerate.
 func _process(delta):
-	## Basic debug to test healing and resetting decay
-	if Input.is_action_just_pressed("debug_heal"):
-		var debug_heal = DamageHealInstance.new()
-		debug_heal.amount = 10
-		debug_heal.is_heal = true
-		debug_heal.type = Enums.DamageType.NORMAL
-		debug_heal.knockback = 0
-		debug_heal.source = ^"."
-		
-		take_damage_or_heal(debug_heal)
-		print("Healed. Health: " + str(_current_health))
-	
-	if Input.is_action_just_pressed("debug_damage"):
-		var debug_damage = DamageHealInstance.new()
-		debug_damage.amount = 20
-		debug_damage.is_heal = false
-		debug_damage.type = Enums.DamageType.NORMAL
-		debug_damage.knockback = 0
-		debug_damage.source = ^"."
-		
-		take_damage_or_heal(debug_damage)
-		print("Damaged. Health: " + str(_current_health))
+	pass
 
 func _on_insanity_component_insanity_gained(amount, buffer):
 	min_health += amount
