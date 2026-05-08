@@ -28,9 +28,56 @@ collision_mask = 7
 visible = false
 shape = SubResource("BoxShape3D_birtj")
 
-[node name="Player" parent="." unique_id=1349193765 node_paths=PackedStringArray("player_respawn") instance=ExtResource("2_4036w")]
+[node name="Ground2" type="MeshInstance3D" parent="." unique_id=839433939]
+transform = Transform3D(34.28714, 0, 0, 0, 1, 0, 0, 0, 1, 20, 4, 0)
+mesh = SubResource("BoxMesh_vvhd2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground2" unique_id=1870536569]
+visible = false
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground2/StaticBody3D" unique_id=1514718397]
+visible = false
+shape = SubResource("BoxShape3D_birtj")
+
+[node name="Ground3" type="MeshInstance3D" parent="." unique_id=1491419926]
+transform = Transform3D(34.28714, 0, 0, 0, 1, 0, 0, 0, 1, -21, 11, 0)
+mesh = SubResource("BoxMesh_vvhd2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground3" unique_id=419464886]
+visible = false
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground3/StaticBody3D" unique_id=1242149412]
+visible = false
+shape = SubResource("BoxShape3D_birtj")
+
+[node name="Ground4" type="MeshInstance3D" parent="." unique_id=1743838848]
+transform = Transform3D(34.28714, 0, 0, 0, 1, 0, 0, 0, 1, 23.449142, 13.17345, 0)
+mesh = SubResource("BoxMesh_vvhd2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground4" unique_id=1359239985]
+visible = false
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground4/StaticBody3D" unique_id=540172461]
+visible = false
+shape = SubResource("BoxShape3D_birtj")
+
+[node name="Ground5" type="MeshInstance3D" parent="." unique_id=1204938161]
+transform = Transform3D(20.572285, 0, 0, 0, 1, 0, 0, 0, 1, -17.550858, 23.17345, 0)
+mesh = SubResource("BoxMesh_vvhd2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground5" unique_id=68950225]
+visible = false
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground5/StaticBody3D" unique_id=246829512]
+visible = false
+shape = SubResource("BoxShape3D_birtj")
+
+[node name="Player" parent="." unique_id=1349193765 instance=ExtResource("2_4036w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.073, 2, 0.5)
-player_respawn = NodePath("../PlayerRespawn")
 
 [node name="OutOfBounds" type="Area3D" parent="." unique_id=1044729036]
 transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, -26.788034, 0)
@@ -45,3 +92,13 @@ shape = SubResource("BoxShape3D_vvhd2")
 
 [node name="PlayerRespawn" type="Node3D" parent="." unique_id=139962297]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.415524, 2, 0.5)
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1983443373]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, 0)
+text = "DISTANCE IS 4M"
+font_size = 100
+
+[node name="Label3D2" type="Label3D" parent="." unique_id=1890488849]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 4, 0)
+text = "DISTANCE IS 7M"
+font_size = 100

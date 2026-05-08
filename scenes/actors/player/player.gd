@@ -14,17 +14,15 @@ signal player_charge_ended()
 ## Signal for when the player is D E D
 signal player_dead()
 
-@export var player_respawn: Node3D
-
 @export var movement_state_machine: StateMachine
 
 @export_category("Movement Variables")
-@export var speed: float = 15.0
+@export var speed: float = 22.5
 @export var acceleration: float = 30.0
 @export var crouch_speed: float = 10.0
 @export var jump_velocity: float = 25.0
-@export var air_speed: float = 15.0
-@export var air_acceleration: float = 20.0
+@export var air_speed: float = 20.0
+@export var air_acceleration: float = 35.0
 @export var charge_speed_multiplier: float = 0.35
 
 var facing: float
