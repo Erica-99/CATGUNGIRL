@@ -11,6 +11,7 @@ func enter() -> void:
 	animator = blackboard["anim"]
 	animator.modulate = Color(0.0, 0.0, 0.0, 1.0)
 	
+	EventManager.enemy_killed.emit()
 	var timer := Timer.new()
 	timer.wait_time = 1.5
 	timer.one_shot = true
