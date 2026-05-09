@@ -17,6 +17,7 @@ var typewriter_tween: Tween
 # consts
 const MAX_OPACITY: float = 1.0
 const VERT_OFFSET_RUNTIME: float = 55
+const MAX_TEXT_WIDTH: float = 400
 
 # signals
 signal is_transparent

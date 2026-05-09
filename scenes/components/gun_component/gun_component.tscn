@@ -8,10 +8,7 @@
 script = ExtResource("1_ruxrr")
 bullet_scene = ExtResource("2_ygud4")
 muzzle = NodePath("Muzzle")
-recoil_amount = 0.25
-recoil_recovery = 8.0
-wobble_amount = 0.1
-wobble_speed = 7.0
+aim_speed = 9.5
 charge_mode = 1
 charged_recoil_multiplier = 3.0
 
@@ -20,8 +17,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
 [node name="Laser" type="Node3D" parent="Muzzle" unique_id=879709795]
 script = ExtResource("3_767gk")
+spread_color = Color(1, 1, 0, 0.30588236)
+max_spread = 1.5
+side_laser_length = 3.0
 
 [node name="RayCast3D" type="RayCast3D" parent="Muzzle/Laser" unique_id=1668473088]
 collision_mask = 5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Muzzle/Laser" unique_id=1081876930]
+
+[connection signal="spread_changed" from="." to="Muzzle/Laser" method="on_spread_changed"]
