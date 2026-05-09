@@ -24,22 +24,27 @@ signal interest_rank_changed(new_rank: Enums.InterestRank)
 @export var decay_damage_instance: DamageHealInstance
 @export var intdecay_timer: float = 0
 @export var intdecay_cd: float = 1
-@export var min_decayable_health: int = 1
 @export var health_component: Node
 
 @export_category("Insanity")
 @export var insanity: float
 @export var max_insanity: float = 5
 
+var _do_interest_tick := true
+
 func _ready():
 	insanity = 0
+	
+	EventManager.connect("begin_date_scene_lock", _on_date_scene_lock)
+	EventManager.connect("end_date_scene_lock", _on_end_date_scene_lock)
 
 func _process(delta):
 	## Decay over time
-	intdecay_timer += delta
-	if intdecay_timer > intdecay_cd:
-		intdecay_timer = 0
-		health_component.take_damage_or_heal(decay_damage_instance)
+	if _do_interest_tick:
+		intdecay_timer += delta
+		if intdecay_timer > intdecay_cd:
+			intdecay_timer = 0
+			health_component.take_damage_or_heal(decay_damage_instance)
 	
 	## When reaching Max Insanity, die
 	if insanity >= max_insanity:
@@ -70,3 +75,9 @@ func _on_health_component_health_changed(old_health, new_health, damage_or_heal_
 	## If rank has changed emit signal
 	if old_rank != interest_rank:
 		interest_rank_changed.emit(interest_rank)
+
+func _on_date_scene_lock() -> void:
+	_do_interest_tick = false
+
+func _on_end_date_scene_lock() -> void:
+	_do_interest_tick = true

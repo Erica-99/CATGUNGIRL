@@ -63,7 +63,7 @@ func _unhandled_input(event: InputEvent) -> void:
 # TODO: im just thinking but we could probably remove dating_active and favour 'visibility' as
 	# our conditional var. this will sacrifice a bit of readability though lmfao idk
 func _date_start(date_id: int):
-	EventManager.lockout_player_input.emit()
+	EventManager.begin_date_scene_lock.emit()
 	visible = true
 	dating_active = true
 	current_dating_scene = DialogueProcessor._get_dating_scene(CustomResourceLoader.dating_dialogue_path + "date_" + str(date_id), "date_" + str(date_id))
@@ -121,7 +121,7 @@ func _end_date():
 	dating_active = false
 	await get_tree().create_timer(0.5).timeout
 	visible = false
-	EventManager.resume_player_input.emit()
+	EventManager.end_date_scene_lock.emit()
 
 # option click handler event
 func _option_selected(value: Dictionary):
