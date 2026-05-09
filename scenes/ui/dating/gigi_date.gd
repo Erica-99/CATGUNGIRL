@@ -87,6 +87,9 @@ func _display():
 	# set texture
 	gigi_image.texture = load(dating_dialogue["icon"])
 	
+	# trigger event
+	DialogueProcessor._check_and_trigger_dialogue_event(dating_dialogue)
+	
 	# generate buttons
 	var options = dating_dialogue["options"]
 	if options.size() > 0:
