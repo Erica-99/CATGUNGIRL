@@ -4,11 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="2_g58ai"]
 [ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="2_vbfgb"]
 [ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict_enemy.tscn" id="3_e2q1c"]
-[ext_resource type="PackedScene" uid="uid://3ukueorlwt6y" path="res://scenes/ui/health_bar.tscn" id="3_vbfgb"]
-[ext_resource type="PackedScene" uid="uid://cjku3tspjt4ep" path="res://scenes/ui/dating/gigi_date.tscn" id="4_lxfn4"]
-[ext_resource type="PackedScene" uid="uid://1hgtrlupdh8t" path="res://scenes/ui/dating/gigi_popup.tscn" id="5_e2q1c"]
 [ext_resource type="PackedScene" uid="uid://b3n63ra231jtb" path="res://scenes/levels/world_boundary/world_boundary.tscn" id="7_vbfgb"]
-[ext_resource type="PackedScene" uid="uid://cf6ynerow4o6q" path="res://scenes/components/dialogue_component/dialogue_component.tscn" id="8_lxfn4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lxfn4"]
 size = Vector3(2.9838867, 7.0893555, 8.309082)
@@ -242,28 +238,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.319626, 2.5454574, 0)
 floor_constant_speed = true
 platform_wall_layers = 1
 
-[node name="DialogueComponent" parent="." unique_id=277394654 instance=ExtResource("8_lxfn4")]
-anchors_preset = 4
-offset_left = 58.0
-offset_top = 158.0
-offset_right = 158.0
-offset_bottom = 458.0
-attached_to_team = 1
-min_dialogue_elapsed_time = 5.0
-max_dialogue_elapsed_time = 15.0
-
-[node name="GiGiPopup" parent="." unique_id=134709764 instance=ExtResource("5_e2q1c")]
-visible = false
-offset_left = 240.0
-offset_top = 232.0
-offset_right = 740.0
-offset_bottom = 814.0
-
-[node name="GigiDate" parent="." unique_id=2015194836 instance=ExtResource("4_lxfn4")]
-pivot_offset = Vector2(-11, -529)
-
-[node name="InterestBar" parent="." unique_id=2086963886 instance=ExtResource("3_vbfgb")]
-
 [node name="WorldBoundary - room1" parent="." unique_id=1321944712 instance=ExtResource("7_vbfgb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.434359, 2.6423545, -0.07679036)
 collision_layer = 0
@@ -278,8 +252,3 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 220.15042, 2.6423545, -0.07679036)
 collision_layer = 0
 collision_mask = 0
-
-[connection signal="player_health_changed" from="Player" to="InterestBar" method="_on_player_health_changed"]
-[connection signal="player_health_initialiased" from="Player" to="InterestBar" method="_on_player_health_initialiased"]
-[connection signal="player_insanity_gained" from="Player" to="InterestBar" method="_on_player_insanity_gained"]
-[connection signal="player_interest_rank_changed" from="Player" to="InterestBar" method="_on_player_interest_rank_changed"]
