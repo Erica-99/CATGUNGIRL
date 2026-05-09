@@ -1681,6 +1681,8 @@ perfect_shot_max_interval = 0.9
 
 [connection signal="facing_changed" from="." to="PlayerVisuals" method="_on_player_facing_changed"]
 [connection signal="facing_changed" from="." to="MantleDetector" method="_on_player_facing_changed"]
+[connection signal="player_health_changed" from="." to="." method="_on_player_health_changed"]
+[connection signal="player_health_initialiased" from="." to="." method="_on_player_health_initialiased"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="health_changed" from="HealthComponent" to="InsanityComponent" method="_on_health_component_health_changed"]
 [connection signal="health_initialised" from="HealthComponent" to="." method="_on_health_component_health_initialised"]

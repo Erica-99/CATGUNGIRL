@@ -4,6 +4,10 @@ extends TextureProgressBar
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	EventManager.player_health_initialised.connect(_on_player_health_initialiased)
+	EventManager.player_health_changed.connect(_on_player_health_changed)
+	EventManager.player_insanity_gained.connect(_on_player_insanity_gained)
+	EventManager.player_interest_rank_changed.connect(_on_player_interest_rank_changed)
 	insanity_bar.value = 0
 	pass
 

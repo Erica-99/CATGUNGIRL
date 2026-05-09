@@ -86,13 +86,13 @@ func _process(_delta: float) -> void:
 		print("Healed. Health: " + str(health_component.current_health))
 
 func _on_health_component_health_initialised(init_current_health, init_max_health):
-	player_health_initialiased.emit(init_current_health, init_max_health)
+	EventManager.player_health_initialised.emit(init_current_health, init_max_health)
 
 func _on_health_component_health_changed(old_health, new_health, damage_or_heal_instance):
-	player_health_changed.emit(old_health, new_health, damage_or_heal_instance)
+	EventManager.player_health_changed.emit(old_health, new_health, damage_or_heal_instance)
 
 func _on_insanity_component_insanity_gained(amount, buffer):
-	player_insanity_gained.emit(amount, buffer)
+	EventManager.player_insanity_gained.emit(amount, buffer)
 
 ## When Insanity reaches max, game over
 func _on_insanity_component_insanity_death():
@@ -100,7 +100,7 @@ func _on_insanity_component_insanity_death():
 	print("Oof ouch owie I'm dead")
 
 func _on_insanity_component_interest_rank_changed(new_rank):
-	player_interest_rank_changed.emit(new_rank)
+	EventManager.player_interest_rank_changed.emit(new_rank)
 	
 func _on_gun_enemy_hit(_hurtbox: Area3D) -> void:
 	print("Enemy hit! Healing player by ", hit_heal_amount)
