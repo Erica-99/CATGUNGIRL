@@ -54,4 +54,3 @@ func reset():
 	
 func complete(reason: String, name: String = self.name):
 	is_complete = true
-	print(name + ": " + reason)

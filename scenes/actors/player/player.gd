@@ -60,6 +60,30 @@ func _process(_delta: float) -> void:
 		if new_direction != facing:
 			facing = new_direction
 			facing_changed.emit(facing)
+	
+	# Debug damage input
+	if Input.is_action_just_pressed("debug_damage"):
+		var debug_damage = DamageHealInstance.new()
+		debug_damage.amount = 20
+		debug_damage.is_heal = false
+		debug_damage.type = Enums.DamageType.NORMAL
+		debug_damage.knockback = 0
+		debug_damage.source = ^"."
+		
+		health_component.take_damage_or_heal(debug_damage)
+		print("Damaged. Health: " + str(health_component.current_health))
+	
+	# Debug heal input
+	if Input.is_action_just_pressed("debug_heal"):
+		var debug_heal = DamageHealInstance.new()
+		debug_heal.amount = 10
+		debug_heal.is_heal = true
+		debug_heal.type = Enums.DamageType.NORMAL
+		debug_heal.knockback = 0
+		debug_heal.source = ^"."
+		
+		health_component.take_damage_or_heal(debug_heal)
+		print("Healed. Health: " + str(health_component.current_health))
 
 func _on_health_component_health_initialised(init_current_health, init_max_health):
 	player_health_initialiased.emit(init_current_health, init_max_health)
