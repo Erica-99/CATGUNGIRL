@@ -30,7 +30,8 @@ extends Node3D
 @export_group("Perfect Shot")
 @export var aim_settled_threshold: float = 98.0		# % of recoil recovered
 @export var perfect_damage_multiplier: float = 1.5	# damage bonus for perfect shot
-@export var perfect_shot_max_interval: float = 1.2	# max seconds between shots for perfect shot to trigger
+@export var perfect_shot_max_interval: float = 1.0	# max seconds between shots for perfect shot to trigger
+@export var laser_convergence_speed: float = 0.73	# time to converge
 
 @export_group("Charged Shot")
 @export var charge_mode: Enums.ChargeMode = Enums.ChargeMode.AUTO_FIRE	# which charge mode is active (switch in inspector)
@@ -87,7 +88,7 @@ func _process(delta: float) -> void:
 		_try_fire()
 	# charged shot input handling
 	_handle_charge_input(current_input_state, delta)
-	var spread = clampf(abs(_recoil_offset) / recoil_amount, 0.0, 1.0)
+	var spread = 1.0 - clampf(_time_since_last_shot / laser_convergence_speed, 0.0, 1.0)
 	spread_changed.emit(spread)
 
 
