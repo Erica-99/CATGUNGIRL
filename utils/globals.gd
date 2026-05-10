@@ -5,6 +5,7 @@ var current_level: String
 # Whatever else we need here i guess
 
 var global_insanity_level: int = 0
+var health_percent_lost_per_insanity: float = 5
 
 func _ready() -> void:
 	EventManager.connect("increase_insanity_rank", _add_one_to_insanity)
