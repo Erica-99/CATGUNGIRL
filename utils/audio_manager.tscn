@@ -1,6 +1,20 @@
 [gd_scene format=3 uid="uid://bc36qq6q0l70r"]
 
 [ext_resource type="Script" uid="uid://5ky2v6harlhg" path="res://utils/audio_manager.gd" id="1_yvh18"]
+[ext_resource type="Script" uid="uid://2ta5femv5hqt" path="res://resources/music_track/music_track.gd" id="2_6ji2x"]
+[ext_resource type="AudioStream" uid="uid://cxalhp5do2cr8" path="res://audio/music/test_music_track.mp3" id="3_0euqh"]
 
-[node name="AudioManager" type="Node" unique_id=850583180]
+[sub_resource type="Resource" id="Resource_0euqh"]
+resource_name = "test_music"
+script = ExtResource("2_6ji2x")
+track_ref = "test_music"
+music_track = ExtResource("3_0euqh")
+metadata/_custom_type_script = "uid://2ta5femv5hqt"
+
+[node name="AudioManager" type="Node" unique_id=850583180 node_paths=PackedStringArray("music_player")]
 script = ExtResource("1_yvh18")
+music_player = NodePath("MusicPlayer")
+music_tracks = Array[ExtResource("2_6ji2x")]([SubResource("Resource_0euqh")])
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1228295571]
+bus = &"Music"
