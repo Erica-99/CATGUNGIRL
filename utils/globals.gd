@@ -17,5 +17,7 @@ const LEVEL_PATHS: Dictionary = {
 }
 
 func _add_one_to_insanity() -> void:
+	var prev_insanity = global_insanity_level
 	global_insanity_level += 1
+	EventManager.insanity_changed.emit(prev_insanity, global_insanity_level)
 	print("Insanity Level: " + str(global_insanity_level))
