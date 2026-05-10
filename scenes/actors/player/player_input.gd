@@ -12,6 +12,9 @@ var _interacting := false
 
 var _input_locked := false
 
+signal superJump
+signal hasLanded
+
 func _ready() -> void:
 	EventManager.connect("begin_date_scene_lock", _lock_input)
 	EventManager.connect("end_date_scene_lock", _resume_input)
@@ -62,6 +65,13 @@ func _lock_input() -> void:
 func _resume_input() -> void:
 	_input_locked = false
 
+func _physics_process(delta: float) -> void:
+	if Input.is_action_pressed("move_down"):
+		_crouching = true
+		if Input.is_action_just_pressed("jump"):
+			_jump_held = true
+			superJump.emit()
+			print("EMIT HAS BEEN EMITTED!")
 
 # Use this for things that are non-continuous.
 func _unhandled_input(event: InputEvent) -> void:
@@ -79,11 +89,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
 		_jump_held = true
 	
-	if event.is_action_pressed("move_down"):
-		if toggle_crouch:
-			_crouching = !_crouching
-		else:
-			_crouching = true
+	
+	if event.is_action_pressed("move_down") and event.is_action_pressed("jump"):
+		_jump_held = true
+		superJump.emit()
 	
 	if event.is_action_pressed("interact"):
 		_interacting = true
@@ -98,6 +107,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_released("jump"):
 		_jump_held = false
+		hasLanded.emit()
 	
 	if event.is_action_released("move_down"):
 		if not toggle_crouch:

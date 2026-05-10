@@ -11,16 +11,18 @@ signal player_insanity_gained(amount, buffer)
 signal player_interest_rank_changed(new_rank)
 signal player_charge_progress(progress: float)
 signal player_charge_ended()
+## Signal for when the player is D E D
+signal player_dead()
 
 @export var movement_state_machine: StateMachine
 
 @export_category("Movement Variables")
-@export var speed: float = 15.0
+@export var speed: float = 22.5
 @export var acceleration: float = 30.0
 @export var crouch_speed: float = 10.0
 @export var jump_velocity: float = 25.0
-@export var air_speed: float = 15.0
-@export var air_acceleration: float = 20.0
+@export var air_speed: float = 20.0
+@export var air_acceleration: float = 35.0
 @export var charge_speed_multiplier: float = 0.35
 
 var facing: float
@@ -34,6 +36,9 @@ var speed_multiplier: float = 1.0
 var blackboard: Dictionary
 @onready var gun_component = $GunComponent  
 @onready var health_component = $HealthComponent
+
+## This is to know what scene to reload when the player dies
+var currentScene
 
 func _ready() -> void:
 	Engine.max_fps = 60
@@ -97,7 +102,9 @@ func _on_insanity_component_insanity_gained(amount, buffer):
 ## When Insanity reaches max, game over
 func _on_insanity_component_insanity_death():
 	## TODO: Death stuff
-	print("Oof ouch owie I'm dead")
+	player_dead.emit()
+	print("PLAYER IS DEAD")
+	SceneLoader._load_scene(get_tree().current_scene.scene_file_path)
 
 func _on_insanity_component_interest_rank_changed(new_rank):
 	EventManager.player_interest_rank_changed.emit(new_rank)

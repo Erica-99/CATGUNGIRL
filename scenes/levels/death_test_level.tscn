@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://cufuegvri6eo5"]
+
+[ext_resource type="Script" uid="uid://nj7vef14i3k2" path="res://scenes/levels/death_test_level.gd" id="1_birtj"]
+[ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="2_4036w"]
+[ext_resource type="PackedScene" uid="uid://csd06hicr5wny" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="3_4036w"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vvhd2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_birtj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vvhd2"]
+size = Vector3(1.438385, 0.076171875, 1)
+
+[node name="DeathTestLevel" type="Node3D" unique_id=71681453 node_paths=PackedStringArray("player", "respawn")]
+script = ExtResource("1_birtj")
+player = NodePath("Player")
+respawn = NodePath("PlayerRespawn")
+
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=163477196]
+transform = Transform3D(34.28714, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_vvhd2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground" unique_id=1144569454]
+visible = false
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D" unique_id=1180813047]
+visible = false
+shape = SubResource("BoxShape3D_birtj")
+
+[node name="Ground2" type="MeshInstance3D" parent="." unique_id=839433939]
+transform = Transform3D(34.28714, 0, 0, 0, 1, 0, 0, 0, 1, 20, 4, 0)
+mesh = SubResource("BoxMesh_vvhd2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground2" unique_id=1870536569]
+visible = false
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground2/StaticBody3D" unique_id=1514718397]
+visible = false
+shape = SubResource("BoxShape3D_birtj")
+
+[node name="Ground3" type="MeshInstance3D" parent="." unique_id=1491419926]
+transform = Transform3D(34.28714, 0, 0, 0, 1, 0, 0, 0, 1, -21, 11, 0)
+mesh = SubResource("BoxMesh_vvhd2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground3" unique_id=419464886]
+visible = false
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground3/StaticBody3D" unique_id=1242149412]
+visible = false
+shape = SubResource("BoxShape3D_birtj")
+
+[node name="Ground4" type="MeshInstance3D" parent="." unique_id=1743838848]
+transform = Transform3D(34.28714, 0, 0, 0, 1, 0, 0, 0, 1, 23.449142, 13.17345, 0)
+mesh = SubResource("BoxMesh_vvhd2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground4" unique_id=1359239985]
+visible = false
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground4/StaticBody3D" unique_id=540172461]
+visible = false
+shape = SubResource("BoxShape3D_birtj")
+
+[node name="Ground5" type="MeshInstance3D" parent="." unique_id=1204938161]
+transform = Transform3D(20.572285, 0, 0, 0, 1, 0, 0, 0, 1, -17.550858, 23.17345, 0)
+mesh = SubResource("BoxMesh_vvhd2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground5" unique_id=68950225]
+visible = false
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground5/StaticBody3D" unique_id=246829512]
+visible = false
+shape = SubResource("BoxShape3D_birtj")
+
+[node name="Player" parent="." unique_id=1349193765 instance=ExtResource("2_4036w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.073, 2, 0.5)
+
+[node name="OutOfBounds" type="Area3D" parent="." unique_id=1044729036]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, -26.788034, 0)
+collision_layer = 8
+collision_mask = 16
+
+[node name="HitboxComponent" parent="OutOfBounds" unique_id=1965125698 instance=ExtResource("3_4036w")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OutOfBounds" unique_id=1150964590]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02762741, 0.46191406, 0)
+shape = SubResource("BoxShape3D_vvhd2")
+
+[node name="PlayerRespawn" type="Node3D" parent="." unique_id=139962297]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.415524, 2, 0.5)
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1983443373]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, 0)
+text = "DISTANCE IS 4M"
+font_size = 100
+
+[node name="Label3D2" type="Label3D" parent="." unique_id=1890488849]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 4, 0)
+text = "DISTANCE IS 7M"
+font_size = 100
