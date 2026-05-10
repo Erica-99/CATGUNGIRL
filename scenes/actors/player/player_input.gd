@@ -16,15 +16,21 @@ signal superJump
 signal hasLanded
 
 func _ready() -> void:
-	EventManager.connect("lockout_player_input", _lock_input)
-	EventManager.connect("resume_player_input", _resume_input)
+	EventManager.connect("begin_date_scene_lock", _lock_input)
+	EventManager.connect("end_date_scene_lock", _resume_input)
 
 func _process(_delta: float) -> void:
 	if not _input_locked:
 		_horizontal_movement = Input.get_axis("move_left", "move_right")
 		_mouse_world_pos = _get_mouse_world_position()
 	else:
+		# Reset all inputs to off. Stops things like repeatedly shooting if you were holding down shoot when a date started.
 		_horizontal_movement = 0
+		_crouching = false
+		_jump_held = false
+		_fire_held = false
+		_charge_fire_held = false
+		_interacting = false
 
 ## Return a comprehensive list of the current input state regardless of whether everything will actually be used.
 ## Avoid running any actual input state retrieval in here.

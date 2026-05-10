@@ -1,7 +1,11 @@
 extends State
 class_name EnemyAlert
 
+# Animation controller
+@onready var sprite_anims = $"../../../Visuals/AnimationPlayer"
+
 @export var alert_duration: float
+@export var animation = ''
 
 var alert_timer: float
 
@@ -10,8 +14,10 @@ var animator: AnimatedSprite3D
 
 func enter() -> void:
 	# Play Alert Animation
-	animator = blackboard["anim"]
-	animator.modulate = Color(0.5, 0.0, 0.0, 1.0)
+	sprite_anims.play(animation)
+	
+	# Reset Alert Timer
+	alert_timer = 0
 	
 	# Stop Movement
 	body = blackboard["actor"]
@@ -21,5 +27,5 @@ func enter() -> void:
 func update(_delta: float) -> void:
 	alert_timer += _delta
 	if alert_timer >= alert_duration:
-		is_complete = true
+		complete("Alert time expired")
 	pass

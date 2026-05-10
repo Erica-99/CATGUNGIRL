@@ -11,4 +11,3 @@ func set_state(new_state: State, force_reset: bool = false) -> void:
 		current_state = new_state
 		current_state.reset()
 		current_state.enter()
-		print("Set state to", current_state)

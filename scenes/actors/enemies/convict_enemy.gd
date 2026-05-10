@@ -7,9 +7,13 @@ class_name ConvictEnemy
 
 # Child States
 @export var patrol: EnemyPatrol
-@export var chase: EnemyChase
-@export var attack: EnemyAttack
+@export var engage: ConvictEngage
 @export var death: EnemyDeath
+@export var search: EnemySearch
+
+@export_category("Anchors")
+@export var anchor_1: Node3D
+@export var anchor_2: Node3D
 
 # State Machine Instance
 var machine: AltStateMachine = AltStateMachine.new()
@@ -23,23 +27,35 @@ var blackboard : Dictionary
 func _ready() -> void:
 	# Populates blackboard and distributes it to all states
 	blackboard = {"actor": self, "anim": animator}
+	if anchor_1 != null:
+		blackboard["anchor_1"] = anchor_1
+	if anchor_2 != null:
+		blackboard["anchor_2"] = anchor_2
 	set_up_states()
 	set_state(patrol)
 
 func _process(delta: float) -> void:
 	# Decision tree for switching states
-	if health_comp._current_health <= 0:
+	if health_comp._current_health <= 0: # Death Condition
 		set_state(death)
-	elif attack.attack_opp():
-		set_state(attack)
-	elif chase.player_spotted():
-		set_state(chase)
+	elif engage.player_spotted(): # Enemy Aggro Condition
+		set_state(engage)
 	elif state.is_complete:
-		if state is EnemyChase:
+		if state is EnemySearch: # Enemy Patrol Condition
 			set_state(patrol)
+		if state is ConvictEngage: # Enemy Search Condition
+			set_state(search)
+		
+	
 	
 	# Runs logic for current_state branch
 	state.update_branch(delta)
+	
+	if velocity.x < 0:
+		scale.x = -1
+	elif velocity.x > 0:
+		scale.x = 1
+	
 	
 func _physics_process(delta: float) -> void:
 	# Runs physics logic for current_state branch

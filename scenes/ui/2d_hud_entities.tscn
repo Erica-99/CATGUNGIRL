@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://dnbitthls47tp"]
+
+[ext_resource type="PackedScene" uid="uid://cf6ynerow4o6q" path="res://scenes/components/dialogue_component/dialogue_component.tscn" id="1_qwqhv"]
+[ext_resource type="Script" uid="uid://boilkxk181vi5" path="res://scenes/ui/killstreak_display/killstreak_handler.gd" id="2_nwr8f"]
+[ext_resource type="Texture2D" uid="uid://b0grt2qyst7gu" path="res://resources/killstreak/unfilled.png" id="3_00o42"]
+[ext_resource type="Texture2D" uid="uid://dscdygp436wi2" path="res://resources/killstreak/filled.png" id="4_0wvca"]
+[ext_resource type="PackedScene" uid="uid://3ukueorlwt6y" path="res://scenes/ui/health_bar.tscn" id="4_p31j5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hc7wi"]
+bg_color = Color(0.4862745, 0.5529412, 1, 0.29411766)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.23200789, 0.3540163, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p31j5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qwqhv"]
+size = Vector2(1920, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwr8f"]
+size = Vector2(1920, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00o42"]
+size = Vector2(20, 1080)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wvca"]
+size = Vector2(20, 1080)
+
+[node name="2DHudEntities" type="Control" unique_id=1605915058]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="BorderExample" type="PanelContainer" parent="." unique_id=643187252]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hc7wi")
+
+[node name="DialogueComponent" parent="." unique_id=277394654 instance=ExtResource("1_qwqhv")]
+layout_mode = 1
+offset_left = 380.0
+offset_top = 960.0
+offset_right = 480.0
+offset_bottom = 1060.0
+attached_to_team = 1
+min_dialogue_elapsed_time = 5.0
+max_dialogue_elapsed_time = 10.0
+
+[node name="InterestBar" parent="." unique_id=2086963886 instance=ExtResource("4_p31j5")]
+layout_mode = 0
+
+[node name="KillstreakHandler" type="Control" parent="." unique_id=1311237957]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 1678.0
+offset_top = 931.0
+offset_right = 1718.0
+offset_bottom = 971.0
+grow_horizontal = 2
+script = ExtResource("2_nwr8f")
+
+[node name="KillstreakDisplay" type="RichTextLabel" parent="KillstreakHandler" unique_id=1262287277]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -126.0
+offset_top = 50.0
+offset_right = 126.0
+offset_bottom = 105.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.8572629, 2.1658839e-06, 0.39528286, 1)
+theme_override_font_sizes/normal_font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_p31j5")
+bbcode_enabled = true
+text = "x 0"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KillstreakProgression" type="TextureProgressBar" parent="KillstreakHandler" unique_id=380031560]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 100.0
+offset_right = 200.0
+offset_bottom = 120.0
+grow_horizontal = 2
+max_value = 10.0
+step = 0.01
+nine_patch_stretch = true
+texture_under = ExtResource("3_00o42")
+texture_progress = ExtResource("4_0wvca")
+
+[node name="TopStaticBox" type="StaticBody2D" parent="." unique_id=1072806553]
+position = Vector2(960, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopStaticBox" unique_id=805041945]
+shape = SubResource("RectangleShape2D_qwqhv")
+
+[node name="BottomStaticBox" type="StaticBody2D" parent="." unique_id=1813640512]
+position = Vector2(960, 1090)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomStaticBox" unique_id=1721432988]
+shape = SubResource("RectangleShape2D_nwr8f")
+
+[node name="RightStaticBox" type="StaticBody2D" parent="." unique_id=435633814]
+position = Vector2(1930, 540)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightStaticBox" unique_id=569765684]
+shape = SubResource("RectangleShape2D_00o42")
+
+[node name="LeftStaticBox" type="StaticBody2D" parent="." unique_id=1749239857]
+position = Vector2(-10, 540)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftStaticBox" unique_id=1808589435]
+shape = SubResource("RectangleShape2D_0wvca")
