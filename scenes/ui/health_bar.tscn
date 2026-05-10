@@ -12,29 +12,41 @@ fill_from = Vector2(0, 0.5)
 fill_to = Vector2(1, 0.5)
 
 [sub_resource type="Gradient" id="Gradient_qi2ti"]
+colors = PackedColorArray(0.5561661, 0.36502227, 0.9809448, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4rf34"]
 gradient = SubResource("Gradient_qi2ti")
 width = 512
 height = 32
-fill = 1
-fill_from = Vector2(0, 0.5)
-fill_to = Vector2(1, 0.5)
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_1vcc2"]
+offsets = PackedFloat32Array(0.9930556, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qi2ti"]
+gradient = SubResource("Gradient_1vcc2")
+width = 512
+height = 32
+fill_from = Vector2(0, 1)
+fill_to = Vector2(1, 1)
 
 [node name="InterestBar" type="TextureProgressBar" unique_id=2086963886 node_paths=PackedStringArray("insanity_bar")]
 offset_right = 548.0
-offset_bottom = 243.0
+offset_bottom = 35.0
 value = 50.0
 texture_under = SubResource("GradientTexture2D_1vcc2")
 texture_progress = SubResource("GradientTexture2D_4rf34")
 tint_under = Color(0.2, 0.06666667, 0.06666667, 1)
-tint_progress = Color(0, 1, 0, 1)
+tint_progress = Color(1, 0.53333336, 1, 1)
 script = ExtResource("1_1vcc2")
 insanity_bar = NodePath("InsanityBar")
 
 [node name="InsanityBar" type="TextureProgressBar" parent="." unique_id=1805894244]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture_progress = SubResource("GradientTexture2D_4rf34")
-tint_progress = Color(1, 0, 0, 1)
+offset_right = 512.0
+offset_bottom = 32.0
+fill_mode = 1
+texture_progress = SubResource("GradientTexture2D_qi2ti")
+tint_progress = Color(0.6730744, 0.03292911, 0.17691308, 1)
