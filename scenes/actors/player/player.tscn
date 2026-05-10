@@ -1680,6 +1680,7 @@ perfect_shot_max_interval = 0.9
 
 [connection signal="facing_changed" from="." to="PlayerVisuals" method="_on_player_facing_changed"]
 [connection signal="facing_changed" from="." to="MantleDetector" method="_on_player_facing_changed"]
+[connection signal="player_dead" from="." to="HealthComponent" method="_on_player_player_dead"]
 [connection signal="player_health_changed" from="." to="." method="_on_player_health_changed"]
 [connection signal="player_health_initialiased" from="." to="." method="_on_player_health_initialiased"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
@@ -1688,5 +1689,7 @@ perfect_shot_max_interval = 0.9
 [connection signal="killed" from="HealthComponent" to="InsanityComponent" method="_on_health_component_killed"]
 [connection signal="insanity_death" from="InsanityComponent" to="." method="_on_insanity_component_insanity_death"]
 [connection signal="interest_rank_changed" from="InsanityComponent" to="." method="_on_insanity_component_interest_rank_changed"]
+[connection signal="hasLanded" from="PlayerInput" to="MovementStateMachine/PlayerJump" method="_on_player_input_has_landed"]
+[connection signal="superJump" from="PlayerInput" to="MovementStateMachine/PlayerJump" method="_on_player_input_super_jump"]
 [connection signal="state_changed" from="MovementStateMachine" to="PlayerVisuals" method="_on_movement_state_machine_state_changed"]
 [connection signal="state_changed" from="MovementStateMachine" to="DebugStateDisplay" method="_on_movement_state_machine_state_changed"]
