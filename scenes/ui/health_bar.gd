@@ -6,9 +6,9 @@ extends TextureProgressBar
 func _ready():
 	EventManager.player_health_initialised.connect(_on_player_health_initialiased)
 	EventManager.player_health_changed.connect(_on_player_health_changed)
-	EventManager.player_insanity_gained.connect(_on_player_insanity_gained)
+	EventManager.insanity_changed.connect(_on_insanity_changed)
 	EventManager.player_interest_rank_changed.connect(_on_player_interest_rank_changed)
-	insanity_bar.value = 0
+	insanity_bar.value = Globals.health_percent_lost_per_insanity * Globals.global_insanity_level
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,9 +22,8 @@ func _on_player_health_initialiased(init_current_health, init_max_health):
 func _on_player_health_changed(old_health, new_health, damage_or_heal_instance):
 	value = new_health
 
-func _on_player_insanity_gained(amount, buffer):
-	insanity_bar.value += amount
-	value = insanity_bar.value + buffer
+func _on_insanity_changed(prev_rank: int, new_rank: int):
+	insanity_bar.value = Globals.health_percent_lost_per_insanity * new_rank
 
 ## When Interest Rank changes, the appearance of the Interest Bar will change
 ## TODO: Once the actual UI is designed, set up variables that the bar will
@@ -32,10 +31,10 @@ func _on_player_insanity_gained(amount, buffer):
 func _on_player_interest_rank_changed(new_rank):
 	match new_rank:
 		Enums.InterestRank.LOW:
-			tint_progress = Color(0.078, 0.392, 0.697, 1.0)
+			tint_progress = Color(0.698, 0.02, 1.0, 1.0)
 		Enums.InterestRank.MEDLOW:
-			tint_progress = Color(0.384, 0.349, 0.794, 1.0)
+			tint_progress = Color(1.0, 0.529, 1.0, 1.0)
 		Enums.InterestRank.MEDHIGH:
-			tint_progress = Color(0.555, 0.306, 0.634, 1.0)
+			tint_progress = Color(1.0, 0.529, 1.0, 1.0)
 		Enums.InterestRank.HIGH:
-			tint_progress = Color(0.796, 0.0, 0.631, 1.0)
+			tint_progress = Color(1.0, 0.529, 1.0, 1.0)

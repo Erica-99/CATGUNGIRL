@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://orss63q04vwl"]
+
+[ext_resource type="Texture2D" uid="uid://b4lr4xerqxdhf" path="res://art/UI/placeholder/InsanitySquareBroken.png" id="1_klkk6"]
+[ext_resource type="Script" uid="uid://dplmrc82klmer" path="res://scenes/ui/insanity_indicator.gd" id="1_q67ol"]
+[ext_resource type="Texture2D" uid="uid://e88qwucvykws" path="res://art/UI/placeholder/InsanitySquarePink.png" id="2_q67ol"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n3vyw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_klkk6")
+}],
+"loop": true,
+"name": &"broken",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_q67ol")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="InsanityIndicator" type="HBoxContainer" unique_id=526210011 node_paths=PackedStringArray("sprite_list")]
+offset_right = 216.0
+offset_bottom = 40.0
+script = ExtResource("1_q67ol")
+sprite_list = [NodePath("CenterContainer/AnimatedSprite2D"), NodePath("CenterContainer2/AnimatedSprite2D"), NodePath("CenterContainer3/AnimatedSprite2D"), NodePath("CenterContainer4/AnimatedSprite2D"), NodePath("CenterContainer5/AnimatedSprite2D")]
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=106461068]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CenterContainer" unique_id=867014731]
+sprite_frames = SubResource("SpriteFrames_n3vyw")
+
+[node name="CenterContainer2" type="CenterContainer" parent="." unique_id=2114370646]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CenterContainer2" unique_id=1948041522]
+sprite_frames = SubResource("SpriteFrames_n3vyw")
+
+[node name="CenterContainer3" type="CenterContainer" parent="." unique_id=1203583531]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CenterContainer3" unique_id=821720077]
+sprite_frames = SubResource("SpriteFrames_n3vyw")
+
+[node name="CenterContainer4" type="CenterContainer" parent="." unique_id=1144332352]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CenterContainer4" unique_id=1158491069]
+sprite_frames = SubResource("SpriteFrames_n3vyw")
+
+[node name="CenterContainer5" type="CenterContainer" parent="." unique_id=954383408]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CenterContainer5" unique_id=1443304160]
+sprite_frames = SubResource("SpriteFrames_n3vyw")

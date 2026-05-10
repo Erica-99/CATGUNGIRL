@@ -43,6 +43,8 @@ var _max_health: float
 @export var healable: bool = true
 @export var killable: bool = true
 
+@onready var original_max_health = _max_health
+
 func _ready() -> void:
 	initialize_health()
 	health_initialised.emit(current_health, max_health)

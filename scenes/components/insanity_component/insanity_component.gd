@@ -18,6 +18,7 @@ var _interest_decay_timer: float = 0
 func _ready():
 	EventManager.connect("begin_date_scene_lock", _on_date_scene_lock)
 	EventManager.connect("end_date_scene_lock", _on_end_date_scene_lock)
+	EventManager.connect("insanity_changed", _on_insanity_changed)
 
 func _process(delta):
 	## Decay over time
@@ -58,3 +59,9 @@ func _on_date_scene_lock() -> void:
 
 func _on_end_date_scene_lock() -> void:
 	_do_interest_tick = true
+
+func _on_insanity_changed(prev_rank: int, new_rank: int) -> void:
+	var new_max_hp = (health_component.original_max_health - (health_component.original_max_health * 
+	new_rank * Globals.health_percent_lost_per_insanity / 100))
+	
+	health_component.set_max_health(new_max_hp)
