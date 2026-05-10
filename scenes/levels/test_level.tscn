@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="1_jbqir"]
 [ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="2_cyt5c"]
 [ext_resource type="PackedScene" uid="uid://11pckncgaxu4" path="res://scenes/components/level_components/level_transitions/level_end.tscn" id="6_6xh4u"]
+[ext_resource type="PackedScene" uid="uid://cjku3tspjt4ep" path="res://scenes/ui/dating/gigi_date.tscn" id="6_cyt5c"]
+[ext_resource type="PackedScene" uid="uid://1hgtrlupdh8t" path="res://scenes/ui/dating/gigi_popup.tscn" id="7_7x1jh"]
 [ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict_enemy.tscn" id="9_hfwtw"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_3p835"]
@@ -89,3 +91,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Convict" parent="." unique_id=1506947017 instance=ExtResource("9_hfwtw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.683288, 2.293902, 0)
+
+[node name="GigiDate" parent="." unique_id=2015194836 instance=ExtResource("6_cyt5c")]
+
+[node name="GiGiPopup" parent="." unique_id=134709764 instance=ExtResource("7_7x1jh")]
+visible = false
+offset_left = 69.0
+offset_top = 154.0
+offset_right = 569.0
+offset_bottom = 642.0

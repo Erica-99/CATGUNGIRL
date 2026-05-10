@@ -39,3 +39,10 @@ enum BubbleType {
 	SYSTEM,
 	POPUP,
 }
+
+enum Room {
+	ROOM_ONE,
+	ROOM_TWO,
+	ROOM_THREE,
+	ROOM_FOUR,
+}
