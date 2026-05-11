@@ -31,7 +31,8 @@ func physics_update(_delta: float) -> void:
 		direction = -1
 	elif actor.global_position < target.global_position:
 		direction = 1
-	#anim.play("chase")
+	
+	anim.play("Run")
 	
 	# Basic physics implementation
 	#   TODO: better physics, sliding, momentum etc.
@@ -39,3 +40,9 @@ func physics_update(_delta: float) -> void:
 	actor.velocity.x += direction * chase_speed * _delta
 	actor.velocity.x = clamp(actor.velocity.x, -chase_speed, chase_speed)
 	actor.move_and_slide()
+
+func _on_attack_hit_box_3d_body_entered(body: Node3D) -> void:
+	transitioned.emit(self, "convicthitconfirm")
+
+func _on_pounce_range_3d_body_entered(body: Node3D) -> void:
+	transitioned.emit(self, "convictpounce")

@@ -12,9 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://dyy0r3m2p2jrc" path="res://art/Convict/FwdAttack3.png" id="4_e4ube"]
 [ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="5_xi3ex"]
 [ext_resource type="Script" uid="uid://ddjs1cw5jtwqb" path="res://scenes/components/state_machine/state_machine.gd" id="12_resq1"]
-[ext_resource type="Script" uid="uid://drxvsuwj3prjk" path="res://scenes/components/state_machine/states/enemy/convict/convict_idle.gd" id="13_l1l22"]
-[ext_resource type="Script" uid="uid://bngvrrah86suo" path="res://scenes/components/state_machine/states/enemy/convict/convict_patrol.gd" id="14_41wpr"]
-[ext_resource type="Script" uid="uid://b5fy6b2q2tlyp" path="res://scenes/components/state_machine/states/enemy/convict/convict_chase.gd" id="14_purhx"]
+[ext_resource type="Script" uid="uid://drxvsuwj3prjk" path="res://scenes/components/state_machine/states/enemy/convict/idle.gd" id="13_l1l22"]
+[ext_resource type="Script" uid="uid://b5fy6b2q2tlyp" path="res://scenes/components/state_machine/states/enemy/convict/chase.gd" id="14_purhx"]
 [ext_resource type="Script" uid="uid://dfiyo3gtayc2n" path="res://scenes/components/state_machine/states/enemy/convict/convict_pounce.gd" id="15_2quec"]
 [ext_resource type="Script" uid="uid://lenec5y0wbqb" path="res://scenes/components/state_machine/states/enemy/convict/convict_hitconfirm.gd" id="15_resq1"]
 [ext_resource type="Script" uid="uid://briciybelpcwe" path="res://scenes/components/state_machine/states/enemy/convict/death.gd" id="17_583mm"]
@@ -615,7 +614,7 @@ radius = 20.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_resq1"]
 radius = 7.0
 
-[node name="Convict" type="CharacterBody3D" unique_id=1506947017 node_paths=PackedStringArray("animator", "health_comp", "state_machine", "start_idle", "start_patrol", "start_aggro")]
+[node name="Convict" type="CharacterBody3D" unique_id=1506947017 node_paths=PackedStringArray("animator", "health_comp", "state_machine")]
 collision_layer = 4
 floor_constant_speed = true
 platform_floor_layers = 1
@@ -623,14 +622,9 @@ script = ExtResource("1_awmif")
 animator = NodePath("Visuals/AnimatedSprite3D")
 health_comp = NodePath("HealthComponent")
 state_machine = NodePath("StateMachine")
-start_idle = NodePath("StateMachine/ConvictIdle")
-start_patrol = NodePath("StateMachine/ConvictPatrol")
-start_aggro = NodePath("StateMachine/ConvictChase")
 patrol_speed = 25.0
 chase_speed = 50.0
-jump_force = 12.0
 slow_down_speed = 15.0
-hitstun_threshold = 15.0
 
 [node name="Visuals" type="Node3D" parent="." unique_id=1400416479]
 
@@ -661,16 +655,14 @@ health_component = NodePath("../HealthComponent")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005874634, 0.0009765625, 0)
 shape = SubResource("BoxShape3D_54fah")
 
-[node name="StateMachine" type="Node" parent="." unique_id=1781968313 node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node" parent="." unique_id=1781968313]
 script = ExtResource("12_resq1")
-initial_state = NodePath("ConvictIdle")
 metadata/_custom_type_script = "uid://ddjs1cw5jtwqb"
 
 [node name="ConvictIdle" type="Node" parent="StateMachine" unique_id=1811796449]
 script = ExtResource("13_l1l22")
 
 [node name="ConvictPatrol" type="Node" parent="StateMachine" unique_id=584001893]
-script = ExtResource("14_41wpr")
 
 [node name="ConvictChase" type="Node" parent="StateMachine" unique_id=1713418521]
 script = ExtResource("14_purhx")
@@ -708,12 +700,8 @@ collision_mask = 2
 shape = SubResource("SphereShape3D_resq1")
 debug_color = Color(0.9726234, 0, 0.44306478, 0.41960785)
 
-[connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
-[connection signal="health_changed" from="HealthComponent" to="StateMachine/ConvictIdle" method="_on_health_component_health_changed"]
-[connection signal="health_changed" from="HealthComponent" to="StateMachine/ConvictPatrol" method="_on_health_component_health_changed"]
 [connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]
 [connection signal="body_entered" from="AttackHitBox3D" to="StateMachine/ConvictChase" method="_on_attack_hit_box_3d_body_entered"]
 [connection signal="body_entered" from="AttackHitBox3D" to="StateMachine/ConvictPounce" method="_on_attack_hit_box_3d_body_entered"]
-[connection signal="body_entered" from="DetectionArea3D" to="StateMachine/ConvictIdle" method="_on_detection_area_3d_body_entered"]
-[connection signal="body_entered" from="DetectionArea3D" to="StateMachine/ConvictPatrol" method="_on_detection_area_3d_body_entered"]
+[connection signal="body_entered" from="DetectionArea3D" to="." method="_on_detection_area_3d_body_entered"]
 [connection signal="body_entered" from="PounceRange3D" to="StateMachine/ConvictChase" method="_on_pounce_range_3d_body_entered"]

@@ -1,5 +1,7 @@
-# When Convict's attack hitbox collides with the target, they pause,
-# do their attack animation.
+# Idle State: Convict stands still, ready to detect
+#    TODO: add idle dialogue
+
+# Idle moves Chase
 
 extends State
 
@@ -13,15 +15,15 @@ func init(blackboard_dict: Dictionary) -> void:
 	anim = blackboard["anim"]
 	slow_down_speed = blackboard["slow_down_speed"]
 
-func enter() -> void:
-	#Allow for animation interrupts if a target jumps onto them while in their attack anim
-	anim.stop()
-	anim.play("Attack")
-
-# The time that the Convict stops for after an attack is determined by their attack anim
 func physics_update(_delta: float) -> void:
 	actor.velocity.x = move_toward(actor.velocity.x, 0, slow_down_speed * _delta)
+	anim.play("Idle")
 	actor.move_and_slide()
-	await anim.animation_looped
-	# Return to chasing after attack
+
+func _on_detection_area_3d_body_entered(body):
+	if body.is_in_group("player"):
+		transitioned.emit(self, "convictchase")
+
+# If damaged in idle state, go to chase
+func _on_health_component_health_changed(old_health: float, new_health: float, damage_or_heal_instance: DamageHealInstance) -> void:
 	transitioned.emit(self, "convictchase")

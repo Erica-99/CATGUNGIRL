@@ -24,16 +24,13 @@ func init(blackboard: Dictionary = {}) -> void:
 		initial_state.enter()
 		current_state = initial_state
 
-
 func _process(delta: float) -> void:
 	if current_state:
 		current_state.update(delta)
 
-
 func _physics_process(delta: float) -> void:
 	if current_state:
 		current_state.physics_update(delta)
-
 
 func on_child_transition(state: State, new_state_name: String):
 	if state != current_state:
