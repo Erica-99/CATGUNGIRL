@@ -187,12 +187,15 @@ func _try_fire() -> void:
 		rotation.z = _current_target_angle
 		damage = bullet_damage * perfect_damage_multiplier
 		perfect_shot_fired.emit()
+		AudioManager.play_sfx("laser_perfect")
+		
 	elif _time_since_last_shot < spam_window:
 		_is_spamming = true
 		print("spam shot, damage: ", bullet_damage * spam_damage_multiplier)
 		damage = bullet_damage * spam_damage_multiplier
 	else: 
 		print("normal shot, damage: ", bullet_damage)
+		AudioManager.play_sfx("laser_imperfect")
 		
 	# resets firing cooldown
 	_fire_cooldown = fire_rate

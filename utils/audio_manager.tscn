@@ -3,17 +3,40 @@
 [ext_resource type="Script" uid="uid://5ky2v6harlhg" path="res://utils/audio_manager.gd" id="1_yvh18"]
 [ext_resource type="Script" uid="uid://2ta5femv5hqt" path="res://resources/music_track/music_track.gd" id="2_6ji2x"]
 [ext_resource type="AudioStream" uid="uid://cxalhp5do2cr8" path="res://audio/music/test_music_track.mp3" id="3_0euqh"]
+[ext_resource type="Script" uid="uid://cyhl11tjftkqi" path="res://resources/sound_effect/sound_effect.gd" id="4_86fuy"]
+[ext_resource type="AudioStream" uid="uid://ye8oi6m3wthh" path="res://audio/sound_clips/Laser_Imperfect.mp3" id="5_nvrsc"]
+[ext_resource type="AudioStream" uid="uid://bqvmwidrwriww" path="res://audio/sound_clips/Laser_Perfect.mp3" id="6_nvrsc"]
 
 [sub_resource type="Resource" id="Resource_0euqh"]
 resource_name = "test_music"
 script = ExtResource("2_6ji2x")
 track_ref = "test_music"
 music_track = ExtResource("3_0euqh")
+volume = -15.0
 metadata/_custom_type_script = "uid://2ta5femv5hqt"
+
+[sub_resource type="Resource" id="Resource_oaxhr"]
+resource_name = "laser_imperfect"
+script = ExtResource("4_86fuy")
+sfx_ref = "laser_imperfect"
+sound_clip = ExtResource("5_nvrsc")
+limit = 3
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_rl7ob"]
+resource_name = "laser_perfect"
+script = ExtResource("4_86fuy")
+sfx_ref = "laser_perfect"
+sound_clip = ExtResource("6_nvrsc")
+limit = 3
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
 
 [node name="AudioManager" type="Node" unique_id=850583180 node_paths=PackedStringArray("music_player")]
 script = ExtResource("1_yvh18")
 music_player = NodePath("MusicPlayer")
 music_tracks = Array[ExtResource("2_6ji2x")]([SubResource("Resource_0euqh")])
+sfx_global_pool_size = 16
+sfx_positional_pool_size = 16
+sound_effects = Array[ExtResource("4_86fuy")]([SubResource("Resource_oaxhr"), SubResource("Resource_rl7ob")])
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1228295571]
