@@ -6,6 +6,10 @@
 [ext_resource type="Script" uid="uid://cyhl11tjftkqi" path="res://resources/sound_effect/sound_effect.gd" id="4_86fuy"]
 [ext_resource type="AudioStream" uid="uid://ye8oi6m3wthh" path="res://audio/sound_clips/Laser_Imperfect.mp3" id="5_nvrsc"]
 [ext_resource type="AudioStream" uid="uid://bqvmwidrwriww" path="res://audio/sound_clips/Laser_Perfect.mp3" id="6_nvrsc"]
+[ext_resource type="AudioStream" uid="uid://c67v584ib1svm" path="res://audio/sound_clips/Gibbed_Draft.mp3" id="7_oaxhr"]
+[ext_resource type="AudioStream" uid="uid://cy2ybjkqjpdfw" path="res://audio/sound_clips/Metal_Footstep_1.mp3" id="8_dvfw8"]
+[ext_resource type="AudioStream" uid="uid://qw4lbs8ndhrm" path="res://audio/sound_clips/Metal_Footstep_2.mp3" id="9_iuerv"]
+[ext_resource type="AudioStream" uid="uid://cqnp53a41gitb" path="res://audio/sound_clips/Metal_Footstep_3.mp3" id="10_g36qw"]
 
 [sub_resource type="Resource" id="Resource_0euqh"]
 resource_name = "test_music"
@@ -31,12 +35,40 @@ sound_clip = ExtResource("6_nvrsc")
 limit = 3
 metadata/_custom_type_script = "uid://cyhl11tjftkqi"
 
+[sub_resource type="Resource" id="Resource_0nuek"]
+resource_name = "gore_1"
+script = ExtResource("4_86fuy")
+sfx_ref = "gore_1"
+sound_clip = ExtResource("7_oaxhr")
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_dvfw8"]
+resource_name = "footstep_metal_1"
+script = ExtResource("4_86fuy")
+sfx_ref = "footstep_metal_1"
+sound_clip = ExtResource("8_dvfw8")
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_iuerv"]
+resource_name = "footstep_metal_2"
+script = ExtResource("4_86fuy")
+sfx_ref = "footstep_metal_2"
+sound_clip = ExtResource("9_iuerv")
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_g36qw"]
+resource_name = "footstep_metal_3"
+script = ExtResource("4_86fuy")
+sfx_ref = "footstep_metal_3"
+sound_clip = ExtResource("10_g36qw")
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
 [node name="AudioManager" type="Node" unique_id=850583180 node_paths=PackedStringArray("music_player")]
 script = ExtResource("1_yvh18")
 music_player = NodePath("MusicPlayer")
 music_tracks = Array[ExtResource("2_6ji2x")]([SubResource("Resource_0euqh")])
 sfx_global_pool_size = 16
 sfx_positional_pool_size = 16
-sound_effects = Array[ExtResource("4_86fuy")]([SubResource("Resource_oaxhr"), SubResource("Resource_rl7ob")])
+sound_effects = Array[ExtResource("4_86fuy")]([SubResource("Resource_oaxhr"), SubResource("Resource_rl7ob"), SubResource("Resource_0nuek"), SubResource("Resource_dvfw8"), SubResource("Resource_iuerv"), SubResource("Resource_g36qw")])
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1228295571]
