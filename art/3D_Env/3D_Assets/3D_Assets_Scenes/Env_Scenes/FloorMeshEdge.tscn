@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cue2gdrvswqwe"]
+
+[ext_resource type="ArrayMesh" uid="uid://b75gfudlvr2jc" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/FloorMeshEdge.01.obj" id="1_3012g"]
+[ext_resource type="ArrayMesh" uid="uid://brbpi8teo7pqa" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/FloorMeshEdge.02.obj" id="2_ektr5"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3012g"]
+points = PackedVector3Array(-2.860401, 0.010589, -2.359406, -2.860401, 0.040424995, -2.359406, 3.0019343, 0.010589, -2.359406, -2.860401, 0.010589, 2.35753, -2.860401, 0.040424995, 2.35753, 3.0019343, 0.040424995, -2.359406, 3.0019343, 0.010589, 2.35753, 3.0019343, 0.040424995, 2.35753)
+
+[node name="FloorMeshEdge" type="StaticBody3D" unique_id=2123686609]
+
+[node name="FloorMeshEdge_01_Mesh" type="MeshInstance3D" parent="." unique_id=690308751]
+mesh = ExtResource("1_3012g")
+
+[node name="FloorMeshEdge_02_Mesh" type="MeshInstance3D" parent="." unique_id=710764048]
+mesh = ExtResource("2_ektr5")
+
+[node name="FloorMeshEdge_02_Collision" type="CollisionShape3D" parent="." unique_id=917219662]
+shape = SubResource("ConvexPolygonShape3D_3012g")
