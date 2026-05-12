@@ -21,16 +21,16 @@ collision_mask = 7
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground/StaticBody3D" unique_id=889545518]
 shape = SubResource("BoxShape3D_2venv")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1476303813]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.556258, 11.460891)
-projection = 1
-size = 30.0
-
 [node name="Player" parent="." unique_id=1349193765 instance=ExtResource("2_26w2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.351133, 2.3578691, 0)
 
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=1476303813]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.351133, 6.198389, 11.460891)
+projection = 1
+size = 30.0
+
 [node name="Convict" parent="." unique_id=1506947017 instance=ExtResource("2_rqfbp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1511612, 2.2216148, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.285278, 2.2216148, 0)
 patroller = true
 patrol_speed = 5.0
 chase_speed = 25.0

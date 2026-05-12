@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://dfiyo3gtayc2n" path="res://scenes/components/state_machine/states/enemy/convict/convict_pounce.gd" id="15_2quec"]
 [ext_resource type="Script" uid="uid://lenec5y0wbqb" path="res://scenes/components/state_machine/states/enemy/convict/convict_hitconfirm.gd" id="15_resq1"]
 [ext_resource type="Script" uid="uid://briciybelpcwe" path="res://scenes/components/state_machine/states/enemy/convict/death.gd" id="17_583mm"]
+[ext_resource type="Shape3D" uid="uid://c5sya8gsonmd8" path="res://resources/hitboxes/enemies/convict/convict_attack_hb.tres" id="19_a68hs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a7kog"]
 atlas = ExtResource("2_lgmct")
@@ -604,10 +605,7 @@ _data = {
 size = Vector3(1.285553, 3.2021484, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_54fah"]
-size = Vector3(1.294342, 3.2011719, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_j8cl0"]
-size = Vector3(2.75, 3.5, 1)
+size = Vector3(1.75, 3.2, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_l1l22"]
 radius = 20.0
@@ -689,8 +687,8 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackHitBox3D" unique_id=1108140970]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24554443, 0, 0)
-shape = SubResource("BoxShape3D_j8cl0")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0043895245, 0, 0)
+shape = ExtResource("19_a68hs")
 debug_color = Color(0.9882353, 0.050980393, 0.03529412, 0.41960785)
 
 [node name="DetectionArea3D" type="Area3D" parent="." unique_id=443871358]

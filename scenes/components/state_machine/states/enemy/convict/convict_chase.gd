@@ -10,6 +10,7 @@ extends State
 var actor: CharacterBody3D
 var anim: AnimatedSprite3D
 var chase_speed: float
+var direction: int
 
 var target: CharacterBody3D
 
@@ -17,6 +18,7 @@ func init(blackboard_dict: Dictionary) -> void:
 	super(blackboard_dict)
 	actor = blackboard["actor"]
 	anim = blackboard["anim"]
+	direction = blackboard["direction"]
 	chase_speed = blackboard["chase_speed"]
 
 func enter() -> void:
@@ -25,8 +27,6 @@ func enter() -> void:
 	actor.velocity = Vector3.ZERO
 
 func physics_update(_delta: float) -> void:
-	var direction: int
-	
 	if actor.global_position > target.global_position:
 		direction = -1
 	elif actor.global_position < target.global_position:
@@ -35,8 +35,6 @@ func physics_update(_delta: float) -> void:
 	anim.play("Run")
 	
 	# Basic physics implementation
-	#   TODO: better physics, sliding, momentum etc.
-	actor.scale = Vector3(direction, actor.scale.y, actor.scale.z)
 	actor.velocity.x += direction * chase_speed * _delta
 	actor.velocity.x = clamp(actor.velocity.x, -chase_speed, chase_speed)
 	actor.move_and_slide()

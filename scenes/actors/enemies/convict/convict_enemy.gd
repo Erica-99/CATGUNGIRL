@@ -16,6 +16,8 @@ const GRAVITY = 50
 @export var start_aggro: State
 
 @export_category("Stat Variables")
+# Change direction to -1 to start facing the other way
+@export var direction: int = 1
 @export var patrol_speed: float
 @export var chase_speed: float
 @export var jump_force: float
@@ -30,6 +32,7 @@ func _ready() -> void:
 	blackboard = {
 		"actor": self,
 		"anim": animator,
+		"direction": direction,
 		"patrol_speed": patrol_speed,
 		"chase_speed": chase_speed,
 		"jump_force": jump_force,
@@ -47,7 +50,16 @@ func _ready() -> void:
 
 # Basic gravity implementation
 func _physics_process(delta: float) -> void:
-		velocity.y -= GRAVITY * delta
+	velocity.y -= GRAVITY * delta
+	
+	# Direction facing transformation
+	if velocity.x < 0:
+		direction = -1
+		animator.flip_h = true
+	elif velocity.x > 0:
+		direction = 1
+		animator.flip_h = false
+	
 
 # General (or Global I guess) state change conditions, such as damage taken effects, etc.
 # When you don't want to write a state change function in each state.
