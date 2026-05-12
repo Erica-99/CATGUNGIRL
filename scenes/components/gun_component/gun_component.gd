@@ -180,7 +180,7 @@ func _try_fire() -> void:
 		return
 	var damage = bullet_damage
 	
-	## aim caught up to mouse?
+	## Perfect shot
 	if _is_aim_settled() and _time_since_last_shot < perfect_shot_max_interval:
 		_is_spamming = false
 		print("Perfect Shot fired, damage: ", bullet_damage * perfect_damage_multiplier)
@@ -188,12 +188,13 @@ func _try_fire() -> void:
 		damage = bullet_damage * perfect_damage_multiplier
 		perfect_shot_fired.emit()
 		AudioManager.play_sfx("laser_perfect")
-		
+	# Spam shot
 	elif _time_since_last_shot < spam_window:
 		_is_spamming = true
 		print("spam shot, damage: ", bullet_damage * spam_damage_multiplier)
 		damage = bullet_damage * spam_damage_multiplier
-	else: 
+		AudioManager.play_sfx("laser_imperfect")
+	else: # Normal shot
 		print("normal shot, damage: ", bullet_damage)
 		AudioManager.play_sfx("laser_imperfect")
 		
