@@ -1610,6 +1610,7 @@ script = ExtResource("6_5bhx7")
 
 [node name="MantleDetector" type="Node3D" parent="." unique_id=1887156399]
 script = ExtResource("8_068wj")
+toggle = false
 
 [node name="TargetPoint" type="RayCast3D" parent="MantleDetector" unique_id=19041248]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 1.6, 0)
@@ -1687,6 +1688,7 @@ perfect_shot_max_interval = 0.9
 [connection signal="killed" from="HealthComponent" to="InsanityComponent" method="_on_health_component_killed"]
 [connection signal="insanity_death" from="InsanityComponent" to="." method="_on_insanity_component_insanity_death"]
 [connection signal="interest_rank_changed" from="InsanityComponent" to="." method="_on_insanity_component_interest_rank_changed"]
+[connection signal="anti_bhop" from="PlayerInput" to="MovementStateMachine/PlayerJump" method="_on_player_input_anti_bhop"]
 [connection signal="hasLanded" from="PlayerInput" to="MovementStateMachine/PlayerJump" method="_on_player_input_has_landed"]
 [connection signal="superJump" from="PlayerInput" to="MovementStateMachine/PlayerJump" method="_on_player_input_super_jump"]
 [connection signal="state_changed" from="MovementStateMachine" to="PlayerVisuals" method="_on_movement_state_machine_state_changed"]

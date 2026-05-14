@@ -35,7 +35,6 @@ func update(_delta: float) -> void:
 		transitioned.emit(self, "playerfall")
 
 func physics_update(_delta: float) -> void:
-	
 	if not jump_velocity_applied:
 		actor.velocity.y = actor.jump_velocity
 		jump_velocity_applied = true
@@ -69,3 +68,7 @@ func _on_player_input_has_landed() -> void:
 	if superJump:
 		actor.jump_velocity /= 1.5
 		superJump = false
+
+func _on_player_input_anti_bhop() -> void:
+	#actor.jump_velocity *= 0.75
+	pass # Replace with function body.

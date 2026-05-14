@@ -14,6 +14,7 @@ var _input_locked := false
 
 signal superJump
 signal hasLanded
+signal anti_bhop
 
 ##Used to adjust size of player collision and hurtbox while crouching
 var playerCollision
@@ -89,7 +90,6 @@ func _physics_process(delta: float) -> void:
 		playerHurtbox.position = Vector3(shapePos.x, shapePos.y - 0.4, shapePos.z)
 		
 		if Input.is_action_just_pressed("jump"):
-			_jump_held = true
 			superJump.emit()
 			print("EMIT HAS BEEN EMITTED!")
 
@@ -107,7 +107,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		_charge_fire_held = true
 	
 	if event.is_action_pressed("jump"):
-		_jump_held = true	
+		_jump_held = true
 	
 	if event.is_action_pressed("move_down") and event.is_action_pressed("jump"):
 		_jump_held = true
@@ -131,7 +131,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("move_down"):
 		if not toggle_crouch:
 			_crouching = false
-			
 			##Restores Player's Collision to default size and position
 			playerCollision.shape.size = shapeSize
 			playerCollision.position = shapePos
