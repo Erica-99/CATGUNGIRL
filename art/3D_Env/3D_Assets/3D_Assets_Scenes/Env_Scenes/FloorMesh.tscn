@@ -3,16 +3,21 @@
 [ext_resource type="ArrayMesh" uid="uid://8fauhprg5agh" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/FloorMesh.01.obj" id="1_4oia3"]
 [ext_resource type="ArrayMesh" uid="uid://cjk1efwximy3e" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/FloorMesh.02.obj" id="2_8xfr6"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4oia3"]
+albedo_color = Color(0, 0.61960787, 1, 1)
+
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xhna3"]
 points = PackedVector3Array(-2.860401, 0.010589, -2.359406, -2.860401, 0.040424995, -2.359406, 2.860401, 0.010589, -2.359406, -2.860401, 0.010589, 2.35753, -2.860401, 0.040424995, 2.35753, 2.860401, 0.040424995, -2.359406, 2.860401, 0.010589, 2.35753, 2.860401, 0.040424995, 2.35753)
 
 [node name="FloorMesh" type="StaticBody3D" unique_id=1687401712]
+collision_layer = 128
 
 [node name="FloorMesh_01_Mesh" type="MeshInstance3D" parent="." unique_id=49238705]
 mesh = ExtResource("1_4oia3")
 
 [node name="FloorMesh_02_Mesh" type="MeshInstance3D" parent="." unique_id=2059139313]
 mesh = ExtResource("2_8xfr6")
+surface_material_override/0 = SubResource("StandardMaterial3D_4oia3")
 
 [node name="FloorMesh_02_Collision" type="CollisionShape3D" parent="." unique_id=2091977402]
 shape = SubResource("ConvexPolygonShape3D_xhna3")
