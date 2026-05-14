@@ -2,14 +2,10 @@
 
 [ext_resource type="Script" uid="uid://nj7vef14i3k2" path="res://scenes/levels/death_test_level.gd" id="1_birtj"]
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="2_4036w"]
-[ext_resource type="PackedScene" uid="uid://csd06hicr5wny" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="3_4036w"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_vvhd2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_birtj"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_vvhd2"]
-size = Vector3(1.438385, 0.076171875, 1)
 
 [node name="DeathTestLevel" type="Node3D" unique_id=71681453 node_paths=PackedStringArray("player", "respawn")]
 script = ExtResource("1_birtj")
@@ -78,17 +74,6 @@ shape = SubResource("BoxShape3D_birtj")
 
 [node name="Player" parent="." unique_id=1349193765 instance=ExtResource("2_4036w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.073, 2, 0.5)
-
-[node name="OutOfBounds" type="Area3D" parent="." unique_id=1044729036]
-transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, -26.788034, 0)
-collision_layer = 8
-collision_mask = 16
-
-[node name="HitboxComponent" parent="OutOfBounds" unique_id=1965125698 instance=ExtResource("3_4036w")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="OutOfBounds" unique_id=1150964590]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02762741, 0.46191406, 0)
-shape = SubResource("BoxShape3D_vvhd2")
 
 [node name="PlayerRespawn" type="Node3D" parent="." unique_id=139962297]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.415524, 2, 0.5)

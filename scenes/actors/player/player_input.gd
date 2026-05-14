@@ -15,9 +15,22 @@ var _input_locked := false
 signal superJump
 signal hasLanded
 
+##Used to adjust size of player collision and hurtbox while crouching
+var playerCollision
+var playerHurtbox
+var shapeSize
+var shapePos
+
+
+
 func _ready() -> void:
 	EventManager.connect("begin_date_scene_lock", _lock_input)
 	EventManager.connect("end_date_scene_lock", _resume_input)
+
+	playerCollision = $"../PlayerCollision"
+	playerHurtbox = $"../HurtboxComponent/CollisionShape3D"
+	shapeSize = playerCollision.shape.size
+	shapePos = playerCollision.position
 
 func _process(_delta: float) -> void:
 	if not _input_locked:
@@ -68,6 +81,13 @@ func _resume_input() -> void:
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("move_down"):
 		_crouching = true
+		
+		##Scales and moves the Player's Collision and Hurtbox to adjust for crouching
+		playerCollision.shape.size = Vector3(shapeSize.x, 2.4, shapeSize.z)
+		playerCollision.position = Vector3(shapePos.x, shapePos.y - 0.4, shapePos.z)
+		playerHurtbox.shape.size = Vector3(shapeSize.x, 2.4, shapeSize.z)
+		playerHurtbox.position = Vector3(shapePos.x, shapePos.y - 0.4, shapePos.z)
+		
 		if Input.is_action_just_pressed("jump"):
 			_jump_held = true
 			superJump.emit()
@@ -87,8 +107,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		_charge_fire_held = true
 	
 	if event.is_action_pressed("jump"):
-		_jump_held = true
-	
+		_jump_held = true	
 	
 	if event.is_action_pressed("move_down") and event.is_action_pressed("jump"):
 		_jump_held = true
@@ -112,6 +131,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("move_down"):
 		if not toggle_crouch:
 			_crouching = false
+			
+			##Restores Player's Collision to default size and position
+			playerCollision.shape.size = shapeSize
+			playerCollision.position = shapePos
+			playerHurtbox.shape.size = shapeSize
+			playerHurtbox.position = shapePos
 	
 	if event.is_action_released("interact"):
 		_interacting = false
