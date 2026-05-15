@@ -1674,9 +1674,12 @@ metadata/_custom_type_script = "uid://dropwvjh2s43u"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2033757, 0.5754532, 0)
 team_component = NodePath("../TeamComponent")
 input_component = NodePath("../PlayerInput")
-aim_speed = 4.0
+aim_speed = 5.5
 fire_rate = 0.4
-perfect_shot_max_interval = 0.9
+bullet_knockback = 0.0
+spam_spread_angle = 3.0
+spam_spread_increase = 1.5
+spam_max_spread = 12.0
 
 [connection signal="facing_changed" from="." to="PlayerVisuals" method="_on_player_facing_changed"]
 [connection signal="facing_changed" from="." to="MantleDetector" method="_on_player_facing_changed"]
