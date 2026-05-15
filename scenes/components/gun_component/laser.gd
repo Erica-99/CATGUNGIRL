@@ -4,9 +4,11 @@ extends Node3D
 
 @export var max_range: float = 40.0			# max laser length if nothing is hit
 @export var laser_color: Color = Color.RED	# can change in inspector
-@export var spread_color: Color = Color.YELLOW	# spread laser color
+@export var spread_color: Color = Color.RED	# spread laser color
 @export var max_spread: float = 0.5
-@export var side_laser_length: float = 5.0	# side laser max length
+@export var side_laser_length: float = 2.0	# side laser max length
+@export var pie_slices: int = 16			# higher = smoother
+@export var fill_alpha: float = 0.4		# lower = more transparent
 
 @onready var ray_cast: RayCast3D = $RayCast3D
 @onready var mesh_instance: MeshInstance3D = $MeshInstance3D
@@ -19,6 +21,7 @@ func _ready() -> void:
 	var material = StandardMaterial3D.new()
 	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	material.vertex_color_use_as_albedo = true
+	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	mesh_instance.material_override = material
 
 func on_spread_changed(spread: float) -> void:
@@ -57,5 +60,36 @@ func _draw_laser() -> void:
 	immediate_mesh.surface_set_color(spread_color)
 	immediate_mesh.surface_add_vertex(side_end - Vector3(0.0, spread_offset, 0.0))
 	
+	immediate_mesh.surface_end()
+	
+	# pie slice mesh
+	var fill_color = Color(spread_color, fill_alpha)
+	var angle_up = atan2(spread_offset, side_laser_length)
+	var angle_down = -angle_up
+	var radius = sqrt(side_laser_length * side_laser_length + spread_offset * spread_offset)
+	
+	immediate_mesh.surface_begin(Mesh.PRIMITIVE_TRIANGLES)
+	for i in range(pie_slices):
+		var angle_a = lerpf(angle_up, angle_down, float(i) / pie_slices)
+		var angle_b = lerpf(angle_up, angle_down, float(i + 1) / pie_slices)
+		
+		var point_a = Vector3(
+			cos(angle_a) * radius,
+			sin(angle_a) * radius,
+			0.0
+		)
+		var point_b = Vector3(
+			cos(angle_b) * radius,
+			sin(angle_b) * radius,
+			0.0
+		)
+		
+		immediate_mesh.surface_set_color(fill_color)
+		immediate_mesh.surface_add_vertex(Vector3.ZERO)
+		immediate_mesh.surface_set_color(fill_color)
+		immediate_mesh.surface_add_vertex(point_a)
+		immediate_mesh.surface_set_color(fill_color)
+		immediate_mesh.surface_add_vertex(point_b)
+		
 	immediate_mesh.surface_end()
 	
