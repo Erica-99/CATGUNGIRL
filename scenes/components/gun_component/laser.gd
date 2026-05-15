@@ -62,7 +62,7 @@ func _draw_laser() -> void:
 	
 	immediate_mesh.surface_end()
 	
-	## pie slice mesh
+	# pie slice mesh
 	var fill_color = Color(spread_color, fill_alpha)
 	var angle_up = atan2(spread_offset, side_laser_length)
 	var angle_down = -angle_up
