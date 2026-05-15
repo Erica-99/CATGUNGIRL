@@ -8,7 +8,7 @@ extends Node3D
 @export var max_spread: float = 0.5
 @export var side_laser_length: float = 2.0	# side laser max length
 @export var pie_slices: int = 16			# higher = smoother
-@export var fill_alpha: float = 0.15		# lower = more transparent
+@export var fill_alpha: float = 0.4		# lower = more transparent
 
 @onready var ray_cast: RayCast3D = $RayCast3D
 @onready var mesh_instance: MeshInstance3D = $MeshInstance3D
