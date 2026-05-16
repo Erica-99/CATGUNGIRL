@@ -1695,7 +1695,6 @@ shape = SubResource("BoxShape3D_llrf1")
 [connection signal="killed" from="HealthComponent" to="InsanityComponent" method="_on_health_component_killed"]
 [connection signal="insanity_death" from="InsanityComponent" to="." method="_on_insanity_component_insanity_death"]
 [connection signal="interest_rank_changed" from="InsanityComponent" to="." method="_on_insanity_component_interest_rank_changed"]
-[connection signal="anti_bhop" from="PlayerInput" to="MovementStateMachine/PlayerJump" method="_on_player_input_anti_bhop"]
 [connection signal="crouching" from="PlayerInput" to="MovementStateMachine/PlayerCrouch" method="_on_player_input_crouching"]
 [connection signal="hasLanded" from="PlayerInput" to="MovementStateMachine/PlayerJump" method="_on_player_input_has_landed"]
 [connection signal="standing" from="PlayerInput" to="MovementStateMachine/PlayerCrouch" method="_on_player_input_standing"]

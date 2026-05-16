@@ -15,12 +15,8 @@ var _jump_locked := false
 
 signal superJump
 signal hasLanded
-signal anti_bhop
 signal crouching
 signal standing
-
-var total = 0
-
 
 
 func _ready() -> void:
@@ -109,7 +105,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			await get_tree().create_timer(0.5).timeout
 			_jump_locked = true                          ##Jump then gets locked after 0.5 seconds
 			print("TIME START")
-			await get_tree().create_timer(3.0).timeout   ##Jump is locked for this many seconds
+			await get_tree().create_timer(0.5).timeout   ##Jump is locked for this many seconds
 			_jump_locked = false                         ##Player can jump again
 			print("TIME END")
 	
@@ -131,8 +127,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("jump"):
 		_jump_held = false
 		hasLanded.emit()
-
-		
 	
 	if event.is_action_released("move_down"):
 		if not toggle_crouch:
