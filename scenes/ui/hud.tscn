@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ckp576f04778f"]
 
 [ext_resource type="PackedScene" uid="uid://dnbitthls47tp" path="res://scenes/ui/2d_hud_entities.tscn" id="1_0mwgc"]
+[ext_resource type="Script" uid="uid://cy2w45m1576yn" path="res://scenes/ui/hud_effects.gd" id="2_136eg"]
 [ext_resource type="Shader" uid="uid://du6ou5tp5i54r" path="res://scenes/ui/vignette.gdshader" id="2_hqnrr"]
 [ext_resource type="Script" uid="uid://ocg18x2yfoj1" path="res://scenes/ui/vignette_controller.gd" id="3_bo48s"]
 [ext_resource type="Script" uid="uid://cjwsdmgxfwxkm" path="res://resources/shader_presets/vignette_preset.gd" id="4_8qguk"]
@@ -10,11 +11,11 @@ viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bo48s"]
 shader = ExtResource("2_hqnrr")
-shader_parameter/radius = 0.6000000285
-shader_parameter/softness = 0.850000040375
-shader_parameter/intensity = 1.0000000475
-shader_parameter/contrast = 1.80000006175
-shader_parameter/vignette_color = Color(1, 0.27058825, 0.63529414, 0.4627451)
+shader_parameter/radius = 0.0
+shader_parameter/softness = 0.0
+shader_parameter/intensity = 0.0
+shader_parameter/contrast = 0.5
+shader_parameter/vignette_color = Color(0, 0, 0, 0.4627451)
 
 [sub_resource type="Resource" id="Resource_136eg"]
 script = ExtResource("4_8qguk")
@@ -40,7 +41,9 @@ render_target_update_mode = 4
 
 [node name="2DHudEntities" parent="SubViewport" unique_id=1605915058 instance=ExtResource("1_0mwgc")]
 
-[node name="HUD_Effects" type="CanvasLayer" parent="." unique_id=2118612522]
+[node name="HUD_Effects" type="CanvasLayer" parent="." unique_id=2118612522 node_paths=PackedStringArray("vignette")]
+script = ExtResource("2_136eg")
+vignette = NodePath("Vignette")
 
 [node name="Vignette" type="ColorRect" parent="HUD_Effects" unique_id=962364286]
 material = SubResource("ShaderMaterial_bo48s")
