@@ -1495,6 +1495,9 @@ size = Vector3(1.2752686, 3.1870117, 1)
 [sub_resource type="ViewportTexture" id="ViewportTexture_llrf1"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_llrf1"]
+size = Vector3(1.2749939, 3.1889038, 1)
+
 [node name="Player" type="CharacterBody3D" unique_id=1349193765 node_paths=PackedStringArray("movement_state_machine", "input_component", "mantle_detector", "feet_point") groups=["player"]]
 collision_layer = 2
 axis_lock_linear_z = true
@@ -1581,7 +1584,6 @@ frame_progress = 0.24679233
 
 [node name="DebugStateDisplay" type="Label3D" parent="." unique_id=1950289760]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8428236, 0)
-visible = false
 text = "PlayerState"
 font_size = 64
 script = ExtResource("2_inh5e")
@@ -1636,7 +1638,6 @@ fov = 26.8
 
 [node name="DialogueComponent" parent="." unique_id=1775697624 instance=ExtResource("6_qdyt2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4807317, 3.9423862, 0.09934664)
-visible = false
 texture = SubResource("ViewportTexture_llrf1")
 min_dialogue_elapsed_time = 0.0
 max_dialogue_elapsed_time = 1.0
@@ -1677,6 +1678,12 @@ aim_speed = 4.0
 fire_rate = 0.4
 perfect_shot_max_interval = 0.9
 
+[node name="PlayerCrouchCollision" type="Area3D" parent="." unique_id=745467868]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCrouchCollision" unique_id=1628790290]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0013580322, -0.0008239746, 0)
+shape = SubResource("BoxShape3D_llrf1")
+
 [connection signal="facing_changed" from="." to="PlayerVisuals" method="_on_player_facing_changed"]
 [connection signal="facing_changed" from="." to="MantleDetector" method="_on_player_facing_changed"]
 [connection signal="player_dead" from="." to="HealthComponent" method="_on_player_player_dead"]
@@ -1689,7 +1696,11 @@ perfect_shot_max_interval = 0.9
 [connection signal="insanity_death" from="InsanityComponent" to="." method="_on_insanity_component_insanity_death"]
 [connection signal="interest_rank_changed" from="InsanityComponent" to="." method="_on_insanity_component_interest_rank_changed"]
 [connection signal="anti_bhop" from="PlayerInput" to="MovementStateMachine/PlayerJump" method="_on_player_input_anti_bhop"]
+[connection signal="crouching" from="PlayerInput" to="MovementStateMachine/PlayerCrouch" method="_on_player_input_crouching"]
 [connection signal="hasLanded" from="PlayerInput" to="MovementStateMachine/PlayerJump" method="_on_player_input_has_landed"]
+[connection signal="standing" from="PlayerInput" to="MovementStateMachine/PlayerCrouch" method="_on_player_input_standing"]
 [connection signal="superJump" from="PlayerInput" to="MovementStateMachine/PlayerJump" method="_on_player_input_super_jump"]
 [connection signal="state_changed" from="MovementStateMachine" to="PlayerVisuals" method="_on_movement_state_machine_state_changed"]
 [connection signal="state_changed" from="MovementStateMachine" to="DebugStateDisplay" method="_on_movement_state_machine_state_changed"]
+[connection signal="overlap" from="MovementStateMachine/PlayerCrouch" to="MovementStateMachine/PlayerIdle" method="_on_player_crouch_overlap"]
+[connection signal="overlap" from="MovementStateMachine/PlayerCrouch" to="MovementStateMachine/PlayerMove" method="_on_player_crouch_overlap"]

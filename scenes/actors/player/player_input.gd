@@ -15,23 +15,14 @@ var _input_locked := false
 signal superJump
 signal hasLanded
 signal anti_bhop
-
-##Used to adjust size of player collision and hurtbox while crouching
-var playerCollision
-var playerHurtbox
-var shapeSize
-var shapePos
+signal crouching
+signal standing
 
 
 
 func _ready() -> void:
 	EventManager.connect("begin_date_scene_lock", _lock_input)
 	EventManager.connect("end_date_scene_lock", _resume_input)
-
-	playerCollision = $"../PlayerCollision"
-	playerHurtbox = $"../HurtboxComponent/CollisionShape3D"
-	shapeSize = playerCollision.shape.size
-	shapePos = playerCollision.position
 
 func _process(_delta: float) -> void:
 	if not _input_locked:
@@ -82,12 +73,7 @@ func _resume_input() -> void:
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("move_down"):
 		_crouching = true
-		
-		##Scales and moves the Player's Collision and Hurtbox to adjust for crouching
-		playerCollision.shape.size = Vector3(shapeSize.x, 2.4, shapeSize.z)
-		playerCollision.position = Vector3(shapePos.x, shapePos.y - 0.4, shapePos.z)
-		playerHurtbox.shape.size = Vector3(shapeSize.x, 2.4, shapeSize.z)
-		playerHurtbox.position = Vector3(shapePos.x, shapePos.y - 0.4, shapePos.z)
+		crouching.emit()
 		
 		if Input.is_action_just_pressed("jump"):
 			superJump.emit()
@@ -131,11 +117,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("move_down"):
 		if not toggle_crouch:
 			_crouching = false
-			##Restores Player's Collision to default size and position
-			playerCollision.shape.size = shapeSize
-			playerCollision.position = shapePos
-			playerHurtbox.shape.size = shapeSize
-			playerHurtbox.position = shapePos
+			standing.emit()
+			#_on_player_crouch_overlap()
 	
 	if event.is_action_released("interact"):
 		_interacting = false
