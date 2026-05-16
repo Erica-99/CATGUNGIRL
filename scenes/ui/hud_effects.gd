@@ -5,7 +5,6 @@ extends CanvasLayer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_update_hud()
-	EventManager.end_date_scene_lock.connect(_update_hud)
 	EventManager.insanity_changed.connect(_update_hud)
 
 func _update_hud(prev_rank = null, new_rank = null) -> void:
