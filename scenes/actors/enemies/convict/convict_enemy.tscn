@@ -605,7 +605,10 @@ _data = {
 size = Vector3(1.285553, 3.2021484, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_54fah"]
-size = Vector3(1.75, 3.2, 1)
+size = Vector3(1.75, 2.6, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a68hs"]
+size = Vector3(1.75, 0.8, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_l1l22"]
 radius = 20.0
@@ -651,13 +654,24 @@ team = 2
 [node name="HealthComponent" parent="." unique_id=236252344 instance=ExtResource("4_4p71r")]
 max_health = 50.0
 
-[node name="HurtboxComponent" parent="." unique_id=338394069 node_paths=PackedStringArray("team_component", "health_component") instance=ExtResource("5_xi3ex")]
+[node name="BodyHurtbox" parent="." unique_id=338394069 node_paths=PackedStringArray("team_component", "health_component") instance=ExtResource("5_xi3ex")]
 team_component = NodePath("../TeamComponent")
 health_component = NodePath("../HealthComponent")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtboxComponent" unique_id=1766554893]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005874634, 0.0009765625, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyHurtbox" unique_id=1766554893]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.006, -0.4, 0)
 shape = SubResource("BoxShape3D_54fah")
+debug_color = Color(0.75945634, 0.3475156, 1, 0.41960785)
+
+[node name="HeadHurtbox" parent="." unique_id=1318567885 node_paths=PackedStringArray("team_component", "health_component") instance=ExtResource("5_xi3ex")]
+team_component = NodePath("../TeamComponent")
+health_component = NodePath("../HealthComponent")
+damage_multiplier = 1.5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HeadHurtbox" unique_id=440381038]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.006, 1.3, 0)
+shape = SubResource("BoxShape3D_a68hs")
+debug_color = Color(0.9201433, 0.7565305, 1, 0.41960785)
 
 [node name="StateMachine" type="Node" parent="." unique_id=1781968313 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("12_resq1")
