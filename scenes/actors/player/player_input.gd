@@ -11,12 +11,15 @@ var _charge_fire_held := false
 var _interacting := false
 
 var _input_locked := false
+var _jump_locked := false
 
 signal superJump
 signal hasLanded
 signal anti_bhop
 signal crouching
 signal standing
+
+var total = 0
 
 
 
@@ -36,6 +39,10 @@ func _process(_delta: float) -> void:
 		_fire_held = false
 		_charge_fire_held = false
 		_interacting = false
+
+	##This stops the player from holding the jump button and jumping
+	if _jump_locked:
+		_jump_held = false
 
 ## Return a comprehensive list of the current input state regardless of whether everything will actually be used.
 ## Avoid running any actual input state retrieval in here.
@@ -79,6 +86,7 @@ func _physics_process(delta: float) -> void:
 			superJump.emit()
 			print("EMIT HAS BEEN EMITTED!")
 
+
 # Use this for things that are non-continuous.
 func _unhandled_input(event: InputEvent) -> void:
 	if _input_locked:
@@ -93,7 +101,17 @@ func _unhandled_input(event: InputEvent) -> void:
 		_charge_fire_held = true
 	
 	if event.is_action_pressed("jump"):
-		_jump_held = true
+		if _jump_locked:                                 ##Checks to see if jump has been locked
+			print("JUMP IS LOCKED")
+			return
+		else:
+			_jump_held = true                            ##Player jumps
+			await get_tree().create_timer(0.5).timeout
+			_jump_locked = true                          ##Jump then gets locked after 0.5 seconds
+			print("TIME START")
+			await get_tree().create_timer(3.0).timeout   ##Jump is locked for this many seconds
+			_jump_locked = false                         ##Player can jump again
+			print("TIME END")
 	
 	if event.is_action_pressed("move_down") and event.is_action_pressed("jump"):
 		_jump_held = true
@@ -113,6 +131,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("jump"):
 		_jump_held = false
 		hasLanded.emit()
+
+		
 	
 	if event.is_action_released("move_down"):
 		if not toggle_crouch:
