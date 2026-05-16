@@ -29,29 +29,23 @@ extends Node3D
 @export var spam_aim_multiplier: float = 0.4		# lower = slower
 @export var spam_window: float = 0.6				# seconds after firing where next shot counts as spam
 
-
 @export_group("Perfect Shot")
 @export var aim_settled_threshold: float = 98.0		# % of recoil recovered
 @export var perfect_damage_multiplier: float = 1.5	# damage bonus for perfect shot
 @export var perfect_shot_max_interval: float = 1.0	# max seconds between shots for perfect shot to trigger
 @export var laser_convergence_speed: float = 0.73	# time to converge
 
-@export_group("Charged Shot")
-@export var charge_mode: Enums.ChargeMode = Enums.ChargeMode.AUTO_FIRE	# which charge mode is active (switch in inspector)
-
-## AUTO_FIRE
-@export var auto_charge_duration: float = 0.5 # time (seconds) before auto fire from right click
-
-## HOLD_TO_FIRE
+@export_group("Gigi Beam")
 @export var hold_charge_min: float = 0.2	# time (seconds) to hold for charged shot otherwise it cancels
 @export var hold_charge_max: float = 2.0	# time (seconds) to reach max charge, longer hold does nothing
-
-## charged bullet stats at min and max charge
-@export var charged_damage_min: float = 20.0
-@export var charged_damage_max: float = 60.0
-@export var charged_bullet_scale_min: float = 1.5
-@export var charged_bullet_scale_max: float = 3.0
+@export var beam_damage_min: float = 20.0
+@export var beam_damage_max: float = 60.0
 @export var charged_recoil_multiplier: float = 2.0  # higher recoil for charged shot
+@export var beam_range: float = 15.0
+@export var perfect_charge_multiplier: float = 2.5
+
+## bzzt
+signal beam_fired(beam_end: Vector3, charge_progress: float)
 
 ## emitted every frame while charging, value is 0.0 to 1.0
 signal charge_progress_changed(progress: float)
@@ -61,7 +55,7 @@ signal charge_ended()
 signal charge_started()
 signal enemy_hit(hurtbox: Area3D)
 
-## perfect shot signal, connect later for visual indicator
+## perfect shot signal
 signal perfect_shot_fired()
 signal spread_changed(spread: float) # visual indicator 
 
@@ -75,6 +69,8 @@ var _time_since_last_shot: float = 999.0
 var _is_spamming: bool = false
 var _spam_count: int = 0			# track spam count
 # var _has_printed_settle: bool = false
+var _charge_progress: float = 0.0	# beam
+var _is_perfect_charge: bool = false
 
 # check if aim within threshold
 func _is_aim_settled() -> bool:
@@ -93,8 +89,11 @@ func _process(delta: float) -> void:
 		_try_fire()
 	# charged shot input handling
 	_handle_charge_input(current_input_state, delta)
-	var spread = 1.0 - clampf(_time_since_last_shot / laser_convergence_speed, 0.0, 1.0)
-	spread_changed.emit(spread)
+	if _is_charging:
+		spread_changed.emit(_charge_progress)
+	else:
+		var spread = 1.0 - clampf(_time_since_last_shot / laser_convergence_speed, 0.0, 1.0)
+		spread_changed.emit(spread)
 
 
 func _update_aim(mouse_world: Vector3, input_state: Dictionary, delta: float) -> void:
@@ -132,49 +131,33 @@ func _update_aim(mouse_world: Vector3, input_state: Dictionary, delta: float) ->
 func _handle_charge_input(input_state: Dictionary, delta: float) -> void:
 	var charge_fire_held = input_state.get("charge_fire_held", false)
 	
-	if charge_mode == Enums.ChargeMode.AUTO_FIRE:
-		# right click pressed -> begin charge, ignore if already charging
-		if charge_fire_held and not _is_charging:
+	if charge_fire_held:
+		if not _is_charging:
 			_is_charging = true
 			_charge_timer = 0.0
+			_is_perfect_charge = _is_aim_settled() and _time_since_last_shot < perfect_shot_max_interval
 			charge_started.emit()
-		if _is_charging:
-			_charge_timer += delta
-			var progress = clampf(_charge_timer / auto_charge_duration, 0.0, 1.0)
-			charge_progress_changed.emit(progress)
-			# auto fire once fully charged
-			if _charge_timer >= auto_charge_duration:
-				_fire_charged(1.0)
+		var charge_delta = delta
+		if _is_perfect_charge:
+			charge_delta *= perfect_charge_multiplier
+			# print("perfect charge active, charge_delta: ", charge_delta, " progress: ", _charge_progress)
+		_charge_timer += charge_delta
+		_charge_progress = clampf(
+			(_charge_timer - hold_charge_min) / (hold_charge_max - hold_charge_min),
+			0.0, 1.0
+		)
+		charge_progress_changed.emit(_charge_progress)
+		_charge_timer = minf(_charge_timer, hold_charge_max)
 	
-	elif charge_mode == Enums.ChargeMode.HOLD_TO_FIRE:
-		if charge_fire_held:
-			if not _is_charging:
-				_is_charging = true
-				_charge_timer = 0.0
-				charge_started.emit()
-			_charge_timer += delta
-			var progress = clampf(
-				# charge progress starts at 0 ONLY after min hold time
-				(_charge_timer - hold_charge_min) / (hold_charge_max - hold_charge_min),
-				0.0, 1.0
-			)
-			charge_progress_changed.emit(progress)
-			# caps charge timer so it doesn't go past max
-			_charge_timer = minf(_charge_timer, hold_charge_max)
-			
-		# release -> fire if charged enough, otherwise cancel
-		if not charge_fire_held and _is_charging:
-			if _charge_timer >= hold_charge_min:
-				var progress = clampf(
-					(_charge_timer - hold_charge_min) / (hold_charge_max - hold_charge_min),
-					0.0, 1.0
-				)
-				_fire_charged(progress)
-			else:
-				# released too early, cancel
-				_is_charging = false
-				_charge_timer = 0.0
-				charge_ended.emit()
+	if not charge_fire_held and _is_charging:
+		if _charge_timer >= hold_charge_min:
+			_is_perfect_charge = false
+			_fire_beam(_charge_progress)
+		else:
+			_is_charging = false
+			_charge_timer = 0.0
+			_is_perfect_charge = false
+			charge_ended.emit()
 
 
 func _try_fire() -> void:
@@ -212,20 +195,54 @@ func _try_fire() -> void:
 	# _has_printed_settle = false
 
 
-func _fire_charged(progress: float) -> void:
-	# reset charge state
+func _fire_beam(progress: float) -> void:
 	_is_charging = false
 	_charge_timer = 0.0
-	# tell chargebar ui charging ended
+	_charge_progress = 0.0
 	charge_ended.emit()
-	if bullet_scene == null or muzzle == null:
+	if muzzle == null:
 		return
-	# lerp damage and size based on charge progress
-	var damage = lerpf(charged_damage_min, charged_damage_max, progress)
-	var size = lerpf(charged_bullet_scale_min, charged_bullet_scale_max, progress)
-	_spawn_bullet(damage, size)
+		
+	var space_state = get_world_3d().direct_space_state
+	var from = muzzle.global_position
+	var aim_dir = Vector3(cos(rotation.z), sin(rotation.z), 0.0).normalized()
+	var to = from + aim_dir * beam_range
+	
+	var exclusions: Array[RID] = []
+	var beam_end = to
+	var damage = lerpf(beam_damage_min, beam_damage_max, progress)
+	print("beam damage: ", damage, "at charge progress: ", progress)
+	
+	while true:
+		var query = PhysicsRayQueryParameters3D.create(from, to)
+		query.collision_mask = 5
+		query.exclude = exclusions
+		var result = space_state.intersect_ray(query)
+		
+		if result.is_empty():
+			break
+		
+		var collider = result["collider"]
+		
+		if collider.collision_layer == 4:
+			var hurtbox = collider.get_node("HurtboxComponent")
+			if hurtbox.health_component != null:
+				var damage_instance = DamageHealInstance.new()
+				damage_instance.amount = damage
+				damage_instance.is_heal = false
+				damage_instance.type = Enums.DamageType.NORMAL
+				damage_instance.knockback = bullet_knockback
+				damage_instance.source = get_path()
+				hurtbox.health_component.take_damage_or_heal(damage_instance)
+			enemy_hit.emit(hurtbox)
+			exclusions.append(result["rid"])
+		else:
+			beam_end = result["position"]
+			break
+			
+	beam_fired.emit(beam_end, progress)
 	_recoil_offset += recoil_amount * charged_recoil_multiplier * progress * sign(global_transform.basis.x.x)
-
+	# AudioManager.play_sfx("")
 
 func _spawn_bullet(damage: float, size: float) -> void:
 	var bullet = bullet_scene.instantiate()
