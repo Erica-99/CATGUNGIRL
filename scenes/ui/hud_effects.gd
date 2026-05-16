@@ -8,7 +8,7 @@ func _ready() -> void:
 	EventManager.end_date_scene_lock.connect(_update_hud)
 	EventManager.insanity_changed.connect(_update_hud)
 
-func _update_hud() -> void:
+func _update_hud(prev_rank = null, new_rank = null) -> void:
 	match Globals.global_insanity_level:
 		0:
 			pass
