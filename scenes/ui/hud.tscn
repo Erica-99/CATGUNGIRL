@@ -1,16 +1,18 @@
 [gd_scene format=3 uid="uid://ckp576f04778f"]
 
 [ext_resource type="PackedScene" uid="uid://dnbitthls47tp" path="res://scenes/ui/2d_hud_entities.tscn" id="1_0mwgc"]
-[ext_resource type="Shader" path="res://scenes/ui/vignette.gdshader" id="2_hqnrr"]
+[ext_resource type="Shader" uid="uid://du6ou5tp5i54r" path="res://scenes/ui/vignette.gdshader" id="2_hqnrr"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_0mwgc"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bo48s"]
 shader = ExtResource("2_hqnrr")
-shader_parameter/vignette_color = Color(1, 0.39999998, 0.7, 0.4627451)
-shader_parameter/inner_radius = 0.4
-shader_parameter/outer_radius = 2.0
+shader_parameter/radius = 0.6000000285
+shader_parameter/softness = 0.800000038
+shader_parameter/intensity = 0.70000003325
+shader_parameter/contrast = 2.00000007125
+shader_parameter/vignette_color = Color(1, 0.27058825, 0.63529414, 0.4627451)
 
 [node name="HUD" type="Sprite3D" unique_id=931475153]
 texture = SubResource("ViewportTexture_0mwgc")
@@ -23,9 +25,9 @@ render_target_update_mode = 4
 
 [node name="2DHudEntities" parent="SubViewport" unique_id=1605915058 instance=ExtResource("1_0mwgc")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2118612522]
+[node name="HUD_Effects" type="CanvasLayer" parent="." unique_id=2118612522]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=962364286]
+[node name="Vignette" type="ColorRect" parent="HUD_Effects" unique_id=962364286]
 material = SubResource("ShaderMaterial_bo48s")
 anchors_preset = 15
 anchor_right = 1.0

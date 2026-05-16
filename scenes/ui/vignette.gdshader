@@ -1,12 +1,31 @@
 shader_type canvas_item;
 
-uniform vec4 vignette_color : source_color = vec4(1.0, 0.4, 0.7, 1.0); // pink
-uniform float inner_radius = 0.0;
-uniform float outer_radius = 1.0;
+// Stronger defaults
+uniform float radius:    hint_range(0.0, 1.0) = 0.22;  // where darkening starts (smaller = more encroachment)
+uniform float softness:  hint_range(0.0, 1.0) = 0.38;  // feather width toward center
+uniform float intensity: hint_range(0.0, 3.0) = 2.00;  // overall darkness
+uniform float contrast:  hint_range(0.5, 4.0) = 2.20;  // >1.0 sharpens falloff
+uniform vec4 vignette_color: source_color = vec4(0.0, 0.0, 0.0, 1.0);
 
 void fragment() {
-	float x = abs(UV.r-.5)*2.0;
-	float y = abs(UV.g-.5)*2.0;
-	float q = 1.0-(1.0-sqrt(x*x+y*y)/outer_radius)/(1.0-inner_radius);
-	COLOR = vec4(vignette_color.rgb, q*vignette_color.a);
+    vec2 uv = SCREEN_UV;
+    vec2 centered = uv - vec2(0.5);
+
+    // Edge-driven shape (0 at center, 1 at edges):
+    // Chebyshev distance = pushes from ALL edges uniformly
+    float edge_box = max(abs(centered.x) * 2.2, abs(centered.y) * 2.0);
+
+    // Blend a little radial in to avoid a "boxy" look (optional)
+    float edge_radial = length(centered) * 2.0; // 0 center -> ~1 corners
+    float shape = mix(edge_box, edge_radial, 0.6);
+
+    // Darken from radius inward with feather = softness
+    float v = smoothstep(radius, radius + softness, shape);
+    v = pow(v, contrast);
+
+    vec4 overlay = vignette_color;
+    overlay.a = clamp(v * intensity, 0.0, 1.0);
+
+    // Output just the vignette color/alpha (use on a full-screen ColorRect)
+    COLOR = overlay;
 }
