@@ -1498,7 +1498,7 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="BoxShape3D" id="BoxShape3D_llrf1"]
 size = Vector3(0.996727, 2.7352142, 1)
 
-[node name="Player" type="CharacterBody3D" unique_id=1349193765 node_paths=PackedStringArray("movement_state_machine", "input_component", "mantle_detector", "feet_point") groups=["player"]]
+[node name="Player" type="CharacterBody3D" unique_id=1349193765 node_paths=PackedStringArray("movement_state_machine", "input_component", "mantle_detector", "feet_point", "jump_timer") groups=["player"]]
 collision_layer = 2
 axis_lock_linear_z = true
 platform_floor_layers = 1
@@ -1507,6 +1507,7 @@ movement_state_machine = NodePath("MovementStateMachine")
 input_component = NodePath("PlayerInput")
 mantle_detector = NodePath("MantleDetector")
 feet_point = NodePath("FeetPoint")
+jump_timer = NodePath("JumpDelay")
 
 [node name="PlayerVisuals" type="Node3D" parent="." unique_id=229281811]
 script = ExtResource("2_0w3ce")
@@ -1683,6 +1684,10 @@ perfect_shot_max_interval = 0.9
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCrouchCollision" unique_id=1628790290]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010318756, 0.051490784, 0)
 shape = SubResource("BoxShape3D_llrf1")
+
+[node name="JumpDelay" type="Timer" parent="." unique_id=1638060030]
+wait_time = 0.5
+one_shot = true
 
 [connection signal="facing_changed" from="." to="PlayerVisuals" method="_on_player_facing_changed"]
 [connection signal="facing_changed" from="." to="MantleDetector" method="_on_player_facing_changed"]

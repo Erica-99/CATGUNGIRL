@@ -37,8 +37,8 @@ func _process(_delta: float) -> void:
 		_interacting = false
 
 	##This stops the player from holding the jump button and jumping
-	if _jump_locked:
-		_jump_held = false
+	#if _jump_locked:
+		#_jump_held = false
 
 ## Return a comprehensive list of the current input state regardless of whether everything will actually be used.
 ## Avoid running any actual input state retrieval in here.
@@ -97,17 +97,17 @@ func _unhandled_input(event: InputEvent) -> void:
 		_charge_fire_held = true
 	
 	if event.is_action_pressed("jump"):
-		if _jump_locked:                                 ##Checks to see if jump has been locked
-			print("JUMP IS LOCKED")
-			return
-		else:
+		#if _jump_locked:                                 ##Checks to see if jump has been locked
+			#print("JUMP IS LOCKED")
+			#return
+		#else:
 			_jump_held = true                            ##Player jumps
-			await get_tree().create_timer(0.5).timeout
-			_jump_locked = true                          ##Jump then gets locked after 0.5 seconds
-			print("TIME START")
-			await get_tree().create_timer(0.5).timeout   ##Jump is locked for this many seconds
-			_jump_locked = false                         ##Player can jump again
-			print("TIME END")
+			#await get_tree().create_timer(0.5).timeout
+			#_jump_locked = true                          ##Jump then gets locked after 0.5 seconds
+			#print("TIME START")
+			#await get_tree().create_timer(0.5).timeout   ##Jump is locked for this many seconds
+			#_jump_locked = false                         ##Player can jump again
+			#print("TIME END")
 	
 	if event.is_action_pressed("move_down") and event.is_action_pressed("jump"):
 		_jump_held = true
