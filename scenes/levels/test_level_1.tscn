@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://tib45d47euwy" path="res://art/3D_Env/Stages/Stage_One.tscn" id="1_0vxsf"]
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="2_g58ai"]
 [ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="2_vbfgb"]
-[ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict_enemy.tscn" id="3_e2q1c"]
+[ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict/convict_enemy.tscn" id="3_e2q1c"]
 [ext_resource type="PackedScene" uid="uid://dld0qjmojk1t8" path="res://scenes/actors/enemies/enemy_manager/enemy_manager.tscn" id="3_g58ai"]
 [ext_resource type="PackedScene" uid="uid://cjku3tspjt4ep" path="res://scenes/ui/dating/gigi_date.tscn" id="7_lxfn4"]
 [ext_resource type="PackedScene" uid="uid://b3n63ra231jtb" path="res://scenes/levels/world_boundary/world_boundary.tscn" id="7_vbfgb"]
@@ -68,6 +68,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.967888, 2.6971614, -1.907
 
 [node name="Convict" parent="World/Enemies/ROOM ONE ENEMIES/Enemy2" unique_id=795328555 instance=ExtResource("3_e2q1c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8363, 2.5737658, 0)
+patroller = true
 
 [node name="Enemy3" type="Node3D" parent="World/Enemies/ROOM ONE ENEMIES" unique_id=312755998]
 
@@ -77,10 +78,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4615564, 0, 0)
 [node name="Anchor2" type="Marker3D" parent="World/Enemies/ROOM ONE ENEMIES/Enemy3" unique_id=1437054055]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.43194, 0, 0)
 
-[node name="Convict" parent="World/Enemies/ROOM ONE ENEMIES/Enemy3" unique_id=1254097271 node_paths=PackedStringArray("anchor_1", "anchor_2") instance=ExtResource("3_e2q1c")]
+[node name="Convict" parent="World/Enemies/ROOM ONE ENEMIES/Enemy3" unique_id=1254097271 instance=ExtResource("3_e2q1c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39828968, 2.5006719, 0)
-anchor_1 = NodePath("../Anchor1")
-anchor_2 = NodePath("../Anchor2")
 
 [node name="WorldBoundary - room1" parent="World/Enemies/ROOM ONE ENEMIES" unique_id=1321944712 instance=ExtResource("7_vbfgb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.434359, 2.6423545, -0.07679036)
@@ -96,10 +95,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.273487, 0, 0)
 [node name="Anchor2" type="Marker3D" parent="World/Enemies/ROOM TWO ENEMIES/Enemy4" unique_id=404377261]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.813354, 0, 0)
 
-[node name="Convict" parent="World/Enemies/ROOM TWO ENEMIES/Enemy4" unique_id=943682026 node_paths=PackedStringArray("anchor_1", "anchor_2") instance=ExtResource("3_e2q1c")]
+[node name="Convict" parent="World/Enemies/ROOM TWO ENEMIES/Enemy4" unique_id=943682026 instance=ExtResource("3_e2q1c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.938618, 2.8722644, 0)
-anchor_1 = NodePath("../Anchor1")
-anchor_2 = NodePath("../Anchor2")
 
 [node name="Enemy5" type="Node3D" parent="World/Enemies/ROOM TWO ENEMIES" unique_id=471998545]
 
@@ -128,10 +125,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.80593, 0, 0)
 [node name="Anchor2" type="Marker3D" parent="World/Enemies/ROOM THREE ENEMIES/Enemy6" unique_id=465435175]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.004417, 0, 0)
 
-[node name="Convict" parent="World/Enemies/ROOM THREE ENEMIES/Enemy6" unique_id=433399415 node_paths=PackedStringArray("anchor_1", "anchor_2") instance=ExtResource("3_e2q1c")]
+[node name="Convict" parent="World/Enemies/ROOM THREE ENEMIES/Enemy6" unique_id=433399415 instance=ExtResource("3_e2q1c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.74265, 2.5006719, 0)
-anchor_1 = NodePath("../Anchor1")
-anchor_2 = NodePath("../Anchor2")
 
 [node name="Enemy7" type="Node3D" parent="World/Enemies/ROOM THREE ENEMIES" unique_id=1176517785]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 145.53922, 0, 0)
@@ -142,10 +137,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.202606, 0, 0)
 [node name="Anchor2" type="Marker3D" parent="World/Enemies/ROOM THREE ENEMIES/Enemy7" unique_id=1918803043]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.155556, 0, 0)
 
-[node name="Convict" parent="World/Enemies/ROOM THREE ENEMIES/Enemy7" unique_id=1729993360 node_paths=PackedStringArray("anchor_1", "anchor_2") instance=ExtResource("3_e2q1c")]
+[node name="Convict" parent="World/Enemies/ROOM THREE ENEMIES/Enemy7" unique_id=1729993360 instance=ExtResource("3_e2q1c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.388687, 2.5006719, 0)
-anchor_1 = NodePath("../Anchor1")
-anchor_2 = NodePath("../Anchor2")
 
 [node name="Enemy8" type="Node3D" parent="World/Enemies/ROOM THREE ENEMIES" unique_id=1667458819]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 145.53922, 0, 0)
@@ -156,10 +149,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.202606, 0, 0)
 [node name="Anchor2" type="Marker3D" parent="World/Enemies/ROOM THREE ENEMIES/Enemy8" unique_id=1426095013]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.155556, 0, 0)
 
-[node name="Convict" parent="World/Enemies/ROOM THREE ENEMIES/Enemy8" unique_id=1237986606 node_paths=PackedStringArray("anchor_1", "anchor_2") instance=ExtResource("3_e2q1c")]
+[node name="Convict" parent="World/Enemies/ROOM THREE ENEMIES/Enemy8" unique_id=1237986606 instance=ExtResource("3_e2q1c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.629074, 2.5006719, 0)
-anchor_1 = NodePath("../Anchor1")
-anchor_2 = NodePath("../Anchor2")
 
 [node name="Enemy9" type="Node3D" parent="World/Enemies/ROOM THREE ENEMIES" unique_id=373824498]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 145.53922, 0, 0)
@@ -170,10 +161,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.016907, 0, 0)
 [node name="Anchor2" type="Marker3D" parent="World/Enemies/ROOM THREE ENEMIES/Enemy9" unique_id=1856565414]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.048706, 0, 0)
 
-[node name="Convict" parent="World/Enemies/ROOM THREE ENEMIES/Enemy9" unique_id=117154692 node_paths=PackedStringArray("anchor_1", "anchor_2") instance=ExtResource("3_e2q1c")]
+[node name="Convict" parent="World/Enemies/ROOM THREE ENEMIES/Enemy9" unique_id=117154692 instance=ExtResource("3_e2q1c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.218277, 2.5006719, 0)
-anchor_1 = NodePath("../Anchor1")
-anchor_2 = NodePath("../Anchor2")
 
 [node name="Enemy10" type="Node3D" parent="World/Enemies/ROOM THREE ENEMIES" unique_id=497901528]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 145.53922, 0, 0)
@@ -184,10 +173,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.016907, 0, 0)
 [node name="Anchor2" type="Marker3D" parent="World/Enemies/ROOM THREE ENEMIES/Enemy10" unique_id=883515898]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.048706, 0, 0)
 
-[node name="Convict" parent="World/Enemies/ROOM THREE ENEMIES/Enemy10" unique_id=650100842 node_paths=PackedStringArray("anchor_1", "anchor_2") instance=ExtResource("3_e2q1c")]
+[node name="Convict" parent="World/Enemies/ROOM THREE ENEMIES/Enemy10" unique_id=650100842 instance=ExtResource("3_e2q1c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.635605, 2.5006719, 0)
-anchor_1 = NodePath("../Anchor1")
-anchor_2 = NodePath("../Anchor2")
 
 [node name="Enemy11" type="Node3D" parent="World/Enemies/ROOM THREE ENEMIES" unique_id=2072903097]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 145.53922, 0, 0)
@@ -198,10 +185,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.016907, 0, 0)
 [node name="Anchor2" type="Marker3D" parent="World/Enemies/ROOM THREE ENEMIES/Enemy11" unique_id=1454824507]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.048706, 0, 0)
 
-[node name="Convict" parent="World/Enemies/ROOM THREE ENEMIES/Enemy11" unique_id=1404131355 node_paths=PackedStringArray("anchor_1", "anchor_2") instance=ExtResource("3_e2q1c")]
+[node name="Convict" parent="World/Enemies/ROOM THREE ENEMIES/Enemy11" unique_id=1404131355 instance=ExtResource("3_e2q1c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.092606, 2.5006719, 0)
-anchor_1 = NodePath("../Anchor1")
-anchor_2 = NodePath("../Anchor2")
 
 [node name="WorldBoundary - room3" parent="World/Enemies/ROOM THREE ENEMIES" unique_id=2011521168 instance=ExtResource("7_vbfgb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 220.15042, 2.6423545, -0.07679036)
@@ -225,10 +210,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.422653, 0, 0)
 [node name="Anchor2" type="Marker3D" parent="World/Enemies/ROOM FOUR ENEMIES/Enemy13" unique_id=861187747]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.762695, 0, 0)
 
-[node name="Convict" parent="World/Enemies/ROOM FOUR ENEMIES/Enemy13" unique_id=559513814 node_paths=PackedStringArray("anchor_1", "anchor_2") instance=ExtResource("3_e2q1c")]
+[node name="Convict" parent="World/Enemies/ROOM FOUR ENEMIES/Enemy13" unique_id=559513814 instance=ExtResource("3_e2q1c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.206131, 2.5006719, 0)
-anchor_1 = NodePath("../Anchor1")
-anchor_2 = NodePath("../Anchor2")
 
 [node name="Enemy14" type="Node3D" parent="World/Enemies/ROOM FOUR ENEMIES" unique_id=2095792041]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 243.47183, 0, 0)
@@ -239,10 +222,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.422653, 0, 0)
 [node name="Anchor2" type="Marker3D" parent="World/Enemies/ROOM FOUR ENEMIES/Enemy14" unique_id=1412457355]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.762695, 0, 0)
 
-[node name="Convict" parent="World/Enemies/ROOM FOUR ENEMIES/Enemy14" unique_id=2040354456 node_paths=PackedStringArray("anchor_1", "anchor_2") instance=ExtResource("3_e2q1c")]
+[node name="Convict" parent="World/Enemies/ROOM FOUR ENEMIES/Enemy14" unique_id=2040354456 instance=ExtResource("3_e2q1c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0537415, 2.5006719, 0)
-anchor_1 = NodePath("../Anchor1")
-anchor_2 = NodePath("../Anchor2")
 
 [node name="Enemy15" type="Node3D" parent="World/Enemies/ROOM FOUR ENEMIES" unique_id=469512366]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 243.47183, 0, 0)
@@ -253,10 +234,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.422653, 0, 0)
 [node name="Anchor2" type="Marker3D" parent="World/Enemies/ROOM FOUR ENEMIES/Enemy15" unique_id=593855906]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.762695, 0, 0)
 
-[node name="Convict" parent="World/Enemies/ROOM FOUR ENEMIES/Enemy15" unique_id=582071989 node_paths=PackedStringArray("anchor_1", "anchor_2") instance=ExtResource("3_e2q1c")]
+[node name="Convict" parent="World/Enemies/ROOM FOUR ENEMIES/Enemy15" unique_id=582071989 instance=ExtResource("3_e2q1c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.39444, 2.5006719, 0)
-anchor_1 = NodePath("../Anchor1")
-anchor_2 = NodePath("../Anchor2")
 
 [node name="Player" parent="." unique_id=1349193765 instance=ExtResource("2_g58ai")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.319626, 2.5454574, 0)

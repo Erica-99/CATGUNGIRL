@@ -1,5 +1,4 @@
 extends CharacterBody3D
-class_name ConvictEnemy
 
 const GRAVITY = 50
 
@@ -7,6 +6,8 @@ const GRAVITY = 50
 @export var animator: AnimatedSprite3D
 @export var health_comp: Node
 @export var state_machine: StateMachine
+
+var is_dead: bool = false
 
 @export_category("Starting State Variables")
 @export var start_aggroed: bool
@@ -83,6 +84,7 @@ func _physics_process(delta: float) -> void:
 # transitioned(self, "newstate") signal
 func _on_health_component_killed(killing_blow: DamageHealInstance, health_before_death: Variant) -> void:
 	# Possibly implement knockback affects here
+	is_dead = true
 	state_machine.on_child_transition(state_machine.current_state, "convictdeath")
 
 # Hitstun "flinching", can be improved due to some jank with pounce, might not be needed with knockback implemented

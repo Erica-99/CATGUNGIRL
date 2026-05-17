@@ -17,7 +17,7 @@
 [ext_resource type="Script" uid="uid://b5fy6b2q2tlyp" path="res://scenes/components/state_machine/states/enemy/convict/convict_chase.gd" id="14_purhx"]
 [ext_resource type="Script" uid="uid://dfiyo3gtayc2n" path="res://scenes/components/state_machine/states/enemy/convict/convict_pounce.gd" id="15_2quec"]
 [ext_resource type="Script" uid="uid://lenec5y0wbqb" path="res://scenes/components/state_machine/states/enemy/convict/convict_hitconfirm.gd" id="15_resq1"]
-[ext_resource type="Script" uid="uid://briciybelpcwe" path="res://scenes/components/state_machine/states/enemy/convict/death.gd" id="17_583mm"]
+[ext_resource type="Script" uid="uid://briciybelpcwe" path="res://scenes/components/state_machine/states/enemy/enemy_death.gd" id="17_583mm"]
 [ext_resource type="Shape3D" uid="uid://c5sya8gsonmd8" path="res://resources/hitboxes/enemies/convict/convict_attack_hb.tres" id="19_a68hs"]
 [ext_resource type="PackedScene" uid="uid://csd06hicr5wny" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="20_31snm"]
 
@@ -612,7 +612,7 @@ size = Vector3(1.75, 2.6, 1)
 size = Vector3(1.75, 0.8, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_l1l22"]
-radius = 20.0
+radius = 12.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_resq1"]
 radius = 7.0
@@ -628,12 +628,13 @@ state_machine = NodePath("StateMachine")
 start_idle = NodePath("StateMachine/ConvictIdle")
 start_patrol = NodePath("StateMachine/ConvictPatrol")
 start_aggro = NodePath("StateMachine/ConvictChase")
-patrol_speed = 25.0
-chase_speed = 50.0
-jump_force = 12.0
-accel_speed = 30.0
-slow_down_speed = 15.0
-hitstun_threshold = 15.0
+patrol_speed = 5.0
+chase_speed = 20.0
+jump_force = 10.0
+accel_speed = 20.0
+slow_down_speed = 30.0
+hitstun_threshold = 10.0
+attack_damage = 10.0
 attack_hitbox = NodePath("AttackHitbox3D")
 
 [node name="Visuals" type="Node3D" parent="." unique_id=1400416479]
@@ -669,7 +670,7 @@ debug_color = Color(0.75945634, 0.3475156, 1, 0.41960785)
 [node name="HeadHurtbox" parent="." unique_id=1318567885 node_paths=PackedStringArray("team_component", "health_component") instance=ExtResource("5_xi3ex")]
 team_component = NodePath("../TeamComponent")
 health_component = NodePath("../HealthComponent")
-damage_multiplier = 1.5
+damage_multiplier = 2.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HeadHurtbox" unique_id=440381038]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.006, 1.3, 0)
