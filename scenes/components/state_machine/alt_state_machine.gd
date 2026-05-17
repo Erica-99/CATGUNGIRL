@@ -9,6 +9,5 @@ func set_state(new_state: State, force_reset: bool = false) -> void:
 		if current_state:
 			current_state.exit()
 		current_state = new_state
-		print("Set state to " + current_state.name)
 		current_state.reset()
 		current_state.enter()

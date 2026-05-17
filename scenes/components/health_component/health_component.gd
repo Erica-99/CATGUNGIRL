@@ -43,6 +43,8 @@ var _max_health: float
 @export var healable: bool = true
 @export var killable: bool = true
 
+@onready var original_max_health = _max_health
+
 func _ready() -> void:
 	initialize_health()
 	health_initialised.emit(current_health, max_health)
@@ -73,13 +75,18 @@ func set_health(value: float) -> void:
 
 ## Take the specified damage or heal instance
 func take_damage_or_heal(damage_or_heal_instance: DamageHealInstance) -> void:
-	if damageable and not damage_or_heal_instance.is_heal:
+	if damageable and not damage_or_heal_instance.is_heal:		
 		var prev_health = current_health
 		current_health -= damage_or_heal_instance.amount
-		health_changed.emit(prev_health, current_health, damage_or_heal_instance)
 		
-		if killable and current_health <= min_health:
-			killed.emit(damage_or_heal_instance, prev_health - min_health)
+		# Prevent death by decay.
+		if current_health <= min_health and damage_or_heal_instance.type == Enums.DamageType.DECAY:
+			current_health = min_health
+			health_changed.emit(prev_health, current_health, damage_or_heal_instance)
+		else:
+			health_changed.emit(prev_health, current_health, damage_or_heal_instance)
+			if killable and current_health <= min_health:
+				killed.emit(damage_or_heal_instance, prev_health - min_health)
 		
 	elif healable and damage_or_heal_instance.is_heal:
 		var prev_health = current_health
@@ -88,30 +95,12 @@ func take_damage_or_heal(damage_or_heal_instance: DamageHealInstance) -> void:
 
 ## _process(delta) allows for updates independent of actual framerate.
 func _process(delta):
-	## Basic debug to test healing and resetting decay
-	if Input.is_action_just_pressed("debug_heal"):
-		var debug_heal = DamageHealInstance.new()
-		debug_heal.amount = 10
-		debug_heal.is_heal = true
-		debug_heal.type = Enums.DamageType.NORMAL
-		debug_heal.knockback = 0
-		debug_heal.source = ^"."
-		
-		take_damage_or_heal(debug_heal)
-		print("Healed. Health: " + str(_current_health))
-	
-	if Input.is_action_just_pressed("debug_damage"):
-		var debug_damage = DamageHealInstance.new()
-		debug_damage.amount = 20
-		debug_damage.is_heal = false
-		debug_damage.type = Enums.DamageType.NORMAL
-		debug_damage.knockback = 0
-		debug_damage.source = ^"."
-		
-		take_damage_or_heal(debug_damage)
-		print("Damaged. Health: " + str(_current_health))
+	pass
 
 func _on_insanity_component_insanity_gained(amount, buffer):
 	min_health += amount
 	current_health = min_health + buffer
 	print("Insanity Damage Taken - Insanity: " + str(min_health))
+
+func set_health_to_min() -> void:
+	current_health = min_health

@@ -32,3 +32,25 @@ func update(_delta: float) -> void:
 	pass
 func physics_update(_delta: float) -> void:
 	pass
+
+# functions to recursively call states in a branch (allowing for hierarchies)
+func update_branch(_delta: float) -> void:
+	update(_delta)
+	if child_state != null:
+		child_state.update_branch(_delta)
+	
+func physics_update_branch(_delta: float) -> void:
+	physics_update(_delta)
+	if child_state != null:
+		child_state.physics_update_branch(_delta)
+	pass
+
+#pass state transition request to state machine
+func set_state(new_state: State, force_reset: bool = false) -> void:
+	machine.set_state(new_state, force_reset)
+	
+func reset():
+	is_complete = false
+	
+func complete(reason: String, name: String = self.name):
+	is_complete = true

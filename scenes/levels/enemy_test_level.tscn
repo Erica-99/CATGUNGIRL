@@ -7,7 +7,7 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2venv"]
 
-[node name="TestLevel" type="Node3D" unique_id=1708525088]
+[node name="TestLevel2" type="Node3D" unique_id=1708525088]
 
 [node name="World" type="Node3D" parent="." unique_id=1103637946]
 
@@ -34,4 +34,26 @@ attack_damage = 10.0
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1476303813]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.556258, 11.460891)
 projection = 1
-size = 30.0
+size = 20.0
+
+[node name="Enemy" parent="." unique_id=1506947017 instance=ExtResource("1_ad7n4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+
+[node name="EnemyPatrol" parent="Enemy/Behaviours" parent_id_path=PackedInt32Array(1506947017, 1499026333) index="0" unique_id=457545891 node_paths=PackedStringArray("left_anchor", "right_anchor")]
+left_anchor = NodePath("../../../Left Anchor")
+right_anchor = NodePath("../../../Right Anchor")
+threshold_limit = 3.0
+
+[node name="Left Anchor" type="Node3D" parent="." unique_id=450220287]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 0)
+
+[node name="Right Anchor" type="Node3D" parent="." unique_id=1258578833]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 0)
+
+[node name="Player" parent="." unique_id=1349193765 instance=ExtResource("2_26w2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.247931, 2.3578691, 0)
+
+[node name="PlayerRespawn" type="Node3D" parent="." unique_id=954718279]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.247931, 2.3578691, 0)
+
+[editable path="Enemy"]

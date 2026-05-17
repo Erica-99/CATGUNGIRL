@@ -8,6 +8,8 @@ var input_component: InputComponent
 
 var jump_velocity_applied := false
 
+var superJump = false
+
 func init(blackboard_dict : Dictionary) -> void:
 	super(blackboard_dict)
 	actor = blackboard["actor"]
@@ -57,3 +59,13 @@ func physics_update(_delta: float) -> void:
 	if input_state["movement"] != 0 and blackboard["mantle_detector"].can_mantle:
 		blackboard["current_mantle_target"] = blackboard["mantle_detector"].get_target_mantle_point()
 		transitioned.emit(self, "playermantle")
+
+func _on_player_input_super_jump() -> void:
+	if not superJump:
+		superJump = true
+		actor.jump_velocity *= 1.5
+
+func _on_player_input_has_landed() -> void:
+	if superJump:
+		actor.jump_velocity /= 1.5
+		superJump = false

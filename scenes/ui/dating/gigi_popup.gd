@@ -39,6 +39,9 @@ func _display():
 	gigi_dialogue._set_text(popup_dialogue["dialogue"], true, _delay * LEEWAY_OF_TYPEWRITER)
 	gigi_image.texture = load(popup_dialogue["icon"])
 	
+	# Trigger event
+	DialogueProcessor._check_and_trigger_dialogue_event(popup_dialogue)
+	
 	# generate buttons
 	var options = popup_dialogue["options"]
 	if options.size() > 0:
