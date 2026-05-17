@@ -53,3 +53,7 @@ func physics_update(_delta: float) -> void:
 	direction_last_frame = direction
 	
 	actor.move_and_slide()
+
+
+func _on_player_crouch_overlap() -> void:
+	transitioned.emit(self, "playercrouch")

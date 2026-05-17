@@ -1495,7 +1495,10 @@ size = Vector3(1.2752686, 3.1870117, 1)
 [sub_resource type="ViewportTexture" id="ViewportTexture_llrf1"]
 viewport_path = NodePath("SubViewport")
 
-[node name="Player" type="CharacterBody3D" unique_id=1349193765 node_paths=PackedStringArray("movement_state_machine", "input_component", "mantle_detector", "feet_point") groups=["player"]]
+[sub_resource type="BoxShape3D" id="BoxShape3D_llrf1"]
+size = Vector3(0.996727, 2.7352142, 1)
+
+[node name="Player" type="CharacterBody3D" unique_id=1349193765 node_paths=PackedStringArray("movement_state_machine", "input_component", "mantle_detector", "feet_point", "jump_timer") groups=["player"]]
 collision_layer = 2
 axis_lock_linear_z = true
 platform_floor_layers = 1
@@ -1504,6 +1507,7 @@ movement_state_machine = NodePath("MovementStateMachine")
 input_component = NodePath("PlayerInput")
 mantle_detector = NodePath("MantleDetector")
 feet_point = NodePath("FeetPoint")
+jump_timer = NodePath("JumpDelay")
 
 [node name="PlayerVisuals" type="Node3D" parent="." unique_id=229281811]
 script = ExtResource("2_0w3ce")
@@ -1581,13 +1585,11 @@ frame_progress = 0.24679233
 
 [node name="DebugStateDisplay" type="Label3D" parent="." unique_id=1950289760]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8428236, 0)
-visible = false
 text = "PlayerState"
 font_size = 64
 script = ExtResource("2_inh5e")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1618314844]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001, 0.003, 0)
+[node name="PlayerCollision" type="CollisionShape3D" parent="." unique_id=1618314844]
 shape = SubResource("BoxShape3D_g2els")
 
 [node name="TeamComponent" parent="." unique_id=2076917082 instance=ExtResource("3_qdyt2")]
@@ -1604,7 +1606,6 @@ team_component = NodePath("../TeamComponent")
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtboxComponent" unique_id=824073931]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0025024414, 0.0026855469, 0)
 shape = SubResource("BoxShape3D_g2g7f")
 
 [node name="PlayerInput" type="Node" parent="." unique_id=1668622084]
@@ -1612,6 +1613,7 @@ script = ExtResource("6_5bhx7")
 
 [node name="MantleDetector" type="Node3D" parent="." unique_id=1887156399]
 script = ExtResource("8_068wj")
+toggle = false
 
 [node name="TargetPoint" type="RayCast3D" parent="MantleDetector" unique_id=19041248]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 1.6, 0)
@@ -1637,7 +1639,6 @@ fov = 26.8
 
 [node name="DialogueComponent" parent="." unique_id=1775697624 instance=ExtResource("6_qdyt2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4807317, 3.9423862, 0.09934664)
-visible = false
 texture = SubResource("ViewportTexture_llrf1")
 min_dialogue_elapsed_time = 0.0
 max_dialogue_elapsed_time = 1.0
@@ -1684,6 +1685,16 @@ spam_max_spread = 12.0
 spam_aim_multiplier = 0.3
 perfect_damage_multiplier = 2.0
 
+[node name="PlayerCrouchCollision" type="Area3D" parent="." unique_id=745467868]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCrouchCollision" unique_id=1628790290]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010318756, 0.051490784, 0)
+shape = SubResource("BoxShape3D_llrf1")
+
+[node name="JumpDelay" type="Timer" parent="." unique_id=1638060030]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="facing_changed" from="." to="PlayerVisuals" method="_on_player_facing_changed"]
 [connection signal="facing_changed" from="." to="MantleDetector" method="_on_player_facing_changed"]
 [connection signal="player_dead" from="." to="HealthComponent" method="_on_player_player_dead"]
@@ -1695,7 +1706,11 @@ perfect_damage_multiplier = 2.0
 [connection signal="killed" from="HealthComponent" to="InsanityComponent" method="_on_health_component_killed"]
 [connection signal="insanity_death" from="InsanityComponent" to="." method="_on_insanity_component_insanity_death"]
 [connection signal="interest_rank_changed" from="InsanityComponent" to="." method="_on_insanity_component_interest_rank_changed"]
+[connection signal="crouching" from="PlayerInput" to="MovementStateMachine/PlayerCrouch" method="_on_player_input_crouching"]
 [connection signal="hasLanded" from="PlayerInput" to="MovementStateMachine/PlayerJump" method="_on_player_input_has_landed"]
+[connection signal="standing" from="PlayerInput" to="MovementStateMachine/PlayerCrouch" method="_on_player_input_standing"]
 [connection signal="superJump" from="PlayerInput" to="MovementStateMachine/PlayerJump" method="_on_player_input_super_jump"]
 [connection signal="state_changed" from="MovementStateMachine" to="PlayerVisuals" method="_on_movement_state_machine_state_changed"]
 [connection signal="state_changed" from="MovementStateMachine" to="DebugStateDisplay" method="_on_movement_state_machine_state_changed"]
+[connection signal="overlap" from="MovementStateMachine/PlayerCrouch" to="MovementStateMachine/PlayerIdle" method="_on_player_crouch_overlap"]
+[connection signal="overlap" from="MovementStateMachine/PlayerCrouch" to="MovementStateMachine/PlayerMove" method="_on_player_crouch_overlap"]

@@ -29,3 +29,7 @@ func update(_delta: float) -> void:
 
 func physics_update(_delta: float) -> void:
 	pass
+
+
+func _on_player_crouch_overlap() -> void:
+	transitioned.emit(self, "playercrouch")

@@ -16,6 +16,7 @@ func init(blackboard_dict : Dictionary) -> void:
 	input_component = blackboard["input_component"]
 
 func enter() -> void:
+
 	jump_velocity_applied = false
 	if blackboard["mantle_detector"] != null:
 		blackboard["mantle_detector"].set_checking_enabled(true)
@@ -35,11 +36,11 @@ func update(_delta: float) -> void:
 		transitioned.emit(self, "playerfall")
 
 func physics_update(_delta: float) -> void:
-	
-	if not jump_velocity_applied:
-		actor.velocity.y = actor.jump_velocity
-		jump_velocity_applied = true
-	
+	if blackboard["jump_timer"].is_stopped():
+		if not jump_velocity_applied:
+			actor.velocity.y = actor.jump_velocity
+			jump_velocity_applied = true
+		
 	# Add gravity
 	if not actor.is_on_floor():
 		actor.velocity += actor.get_gravity() * _delta * gravity_multiplier
@@ -69,3 +70,7 @@ func _on_player_input_has_landed() -> void:
 	if superJump:
 		actor.jump_velocity /= 1.5
 		superJump = false
+
+func _on_player_input_anti_bhop() -> void:
+	#actor.jump_velocity *= 0.75
+	pass # Replace with function body.
