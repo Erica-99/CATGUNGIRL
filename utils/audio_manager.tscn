@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://qw4lbs8ndhrm" path="res://audio/sound_clips/Metal_Footstep_2.mp3" id="9_iuerv"]
 [ext_resource type="AudioStream" uid="uid://cqnp53a41gitb" path="res://audio/sound_clips/Metal_Footstep_3.mp3" id="10_g36qw"]
 [ext_resource type="AudioStream" uid="uid://pg5buvwyr4yb" path="res://audio/sound_clips/heartbeat.mp3" id="11_iuerv"]
+[ext_resource type="AudioStream" uid="uid://da7x7uhd7wjmj" path="res://audio/sound_clips/Jump_Launch.mp3" id="12_g36qw"]
 
 [sub_resource type="Resource" id="Resource_0euqh"]
 resource_name = "test_music"
@@ -79,12 +80,21 @@ limit = 1
 volume = -10.0
 metadata/_custom_type_script = "uid://cyhl11tjftkqi"
 
+[sub_resource type="Resource" id="Resource_bskdb"]
+resource_local_to_scene = true
+resource_name = "jump_launch"
+script = ExtResource("4_86fuy")
+sfx_ref = "jump_launch"
+sound_clip = ExtResource("12_g36qw")
+limit = 1
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
 [node name="AudioManager" type="Node" unique_id=850583180 node_paths=PackedStringArray("music_player")]
 script = ExtResource("1_yvh18")
 music_player = NodePath("MusicPlayer")
 music_tracks = Array[ExtResource("2_6ji2x")]([SubResource("Resource_0euqh")])
 sfx_global_pool_size = 16
 sfx_positional_pool_size = 16
-sound_effects = Array[ExtResource("4_86fuy")]([SubResource("Resource_oaxhr"), SubResource("Resource_rl7ob"), SubResource("Resource_0nuek"), SubResource("Resource_dvfw8"), SubResource("Resource_iuerv"), SubResource("Resource_g36qw"), SubResource("Resource_jmy51")])
+sound_effects = Array[ExtResource("4_86fuy")]([SubResource("Resource_oaxhr"), SubResource("Resource_rl7ob"), SubResource("Resource_0nuek"), SubResource("Resource_dvfw8"), SubResource("Resource_iuerv"), SubResource("Resource_g36qw"), SubResource("Resource_jmy51"), SubResource("Resource_bskdb")])
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1228295571]
