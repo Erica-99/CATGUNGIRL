@@ -19,7 +19,7 @@ func exit() -> void:
 
 func update(_delta: float) -> void:
 	var input_state = input_component.get_input_state()
-	if input_state["jumping"]:
+	if input_state["jumping"] and blackboard.get("jump_timer").is_stopped():
 		transitioned.emit(self, "playerjump")
 	elif not actor.is_on_floor():
 		transitioned.emit(self, "playerfall")
