@@ -21,13 +21,28 @@ const GRAVITY = 50
 @export var patrol_speed: float
 @export var chase_speed: float
 @export var jump_force: float
+@export var accel_speed: float
 @export var slow_down_speed: float
 # How much damage needs to be taken for hitstun to happen
 @export var hitstun_threshold: float
 
+@export_category("Attack Variables")
+# Convict Attack Damage Stats
+@export var attack_damage: float
+var damage_instance: DamageHealInstance = DamageHealInstance.new()
+@export var attack_hitbox: Area3D
+
 var blackboard : Dictionary 
 
 func _ready() -> void:
+	# Set up Attack
+	damage_instance.amount = attack_damage
+	damage_instance.is_heal = false
+	damage_instance.type = Enums.DamageType.NORMAL
+	damage_instance.knockback = 0 # TODO: change for implementing knockback
+	damage_instance.source = get_path()
+	attack_hitbox.damage_or_heal_instance = damage_instance
+	
 	# Populates blackboard and distributes it to all states
 	blackboard = {
 		"actor": self,
@@ -36,6 +51,7 @@ func _ready() -> void:
 		"patrol_speed": patrol_speed,
 		"chase_speed": chase_speed,
 		"jump_force": jump_force,
+		"accel_speed": accel_speed,
 		"slow_down_speed": slow_down_speed,
 	}
 	# Change initial state based on Inspector values
@@ -53,10 +69,10 @@ func _physics_process(delta: float) -> void:
 	velocity.y -= GRAVITY * delta
 	
 	# Direction facing transformation
-	if velocity.x < 0:
+	if velocity.x < 0: # LEFT
 		direction = -1
 		animator.flip_h = true
-	elif velocity.x > 0:
+	elif velocity.x > 0: # RIGHT
 		direction = 1
 		animator.flip_h = false
 	

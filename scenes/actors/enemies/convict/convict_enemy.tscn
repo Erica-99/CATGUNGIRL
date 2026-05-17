@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://lenec5y0wbqb" path="res://scenes/components/state_machine/states/enemy/convict/convict_hitconfirm.gd" id="15_resq1"]
 [ext_resource type="Script" uid="uid://briciybelpcwe" path="res://scenes/components/state_machine/states/enemy/convict/death.gd" id="17_583mm"]
 [ext_resource type="Shape3D" uid="uid://c5sya8gsonmd8" path="res://resources/hitboxes/enemies/convict/convict_attack_hb.tres" id="19_a68hs"]
+[ext_resource type="PackedScene" uid="uid://csd06hicr5wny" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="20_31snm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a7kog"]
 atlas = ExtResource("2_lgmct")
@@ -613,7 +614,7 @@ radius = 20.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_resq1"]
 radius = 7.0
 
-[node name="Convict" type="CharacterBody3D" unique_id=1506947017 node_paths=PackedStringArray("animator", "health_comp", "state_machine", "start_idle", "start_patrol", "start_aggro")]
+[node name="Convict" type="CharacterBody3D" unique_id=1506947017 node_paths=PackedStringArray("animator", "health_comp", "state_machine", "start_idle", "start_patrol", "start_aggro", "attack_hitbox")]
 collision_layer = 4
 floor_constant_speed = true
 platform_floor_layers = 1
@@ -627,8 +628,10 @@ start_aggro = NodePath("StateMachine/ConvictChase")
 patrol_speed = 25.0
 chase_speed = 50.0
 jump_force = 12.0
+accel_speed = 30.0
 slow_down_speed = 15.0
 hitstun_threshold = 15.0
+attack_hitbox = NodePath("AttackHitbox3D")
 
 [node name="Visuals" type="Node3D" parent="." unique_id=1400416479]
 
@@ -682,11 +685,11 @@ script = ExtResource("15_resq1")
 [node name="ConvictDeath" type="Node" parent="StateMachine" unique_id=23697395]
 script = ExtResource("17_583mm")
 
-[node name="AttackHitBox3D" type="Area3D" parent="." unique_id=264872792]
-collision_layer = 0
-collision_mask = 2
+[node name="AttackHitbox3D" parent="." unique_id=1965125698 node_paths=PackedStringArray("team_component") instance=ExtResource("20_31snm")]
+collision_mask = 10
+team_component = NodePath("../TeamComponent")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackHitBox3D" unique_id=1108140970]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackHitbox3D" unique_id=664976592]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0043895245, 0, 0)
 shape = ExtResource("19_a68hs")
 debug_color = Color(0.9882353, 0.050980393, 0.03529412, 0.41960785)
@@ -710,8 +713,8 @@ debug_color = Color(0.9726234, 0, 0.44306478, 0.41960785)
 [connection signal="health_changed" from="HealthComponent" to="StateMachine/ConvictIdle" method="_on_health_component_health_changed"]
 [connection signal="health_changed" from="HealthComponent" to="StateMachine/ConvictPatrol" method="_on_health_component_health_changed"]
 [connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]
-[connection signal="body_entered" from="AttackHitBox3D" to="StateMachine/ConvictChase" method="_on_attack_hit_box_3d_body_entered"]
-[connection signal="body_entered" from="AttackHitBox3D" to="StateMachine/ConvictPounce" method="_on_attack_hit_box_3d_body_entered"]
+[connection signal="body_entered" from="AttackHitbox3D" to="StateMachine/ConvictChase" method="_on_attack_hitbox_body_entered"]
+[connection signal="body_entered" from="AttackHitbox3D" to="StateMachine/ConvictPounce" method="_on_attack_hitbox_body_entered"]
 [connection signal="body_entered" from="DetectionArea3D" to="StateMachine/ConvictIdle" method="_on_detection_area_3d_body_entered"]
 [connection signal="body_entered" from="DetectionArea3D" to="StateMachine/ConvictPatrol" method="_on_detection_area_3d_body_entered"]
 [connection signal="body_entered" from="PounceRange3D" to="StateMachine/ConvictChase" method="_on_pounce_range_3d_body_entered"]

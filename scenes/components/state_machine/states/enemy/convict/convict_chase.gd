@@ -10,6 +10,7 @@ extends State
 var actor: CharacterBody3D
 var anim: AnimatedSprite3D
 var chase_speed: float
+var accel_speed: float
 var direction: int
 
 var target: CharacterBody3D
@@ -20,6 +21,7 @@ func init(blackboard_dict: Dictionary) -> void:
 	anim = blackboard["anim"]
 	direction = blackboard["direction"]
 	chase_speed = blackboard["chase_speed"]
+	accel_speed = blackboard["accel_speed"]
 
 func enter() -> void:
 	# TODO: update with more intricated targetting
@@ -35,12 +37,12 @@ func physics_update(_delta: float) -> void:
 	anim.play("Run")
 	
 	# Basic physics implementation
-	actor.velocity.x += direction * chase_speed * _delta
+	actor.velocity.x = move_toward(actor.velocity.x, chase_speed * direction, accel_speed * _delta)
 	actor.velocity.x = clamp(actor.velocity.x, -chase_speed, chase_speed)
 	actor.move_and_slide()
 
 func _on_attack_hit_box_3d_body_entered(body: Node3D) -> void:
 	transitioned.emit(self, "convicthitconfirm")
 
-func _on_pounce_range_3d_body_entered(body: Node3D) -> void:
+func _on_attack_hitbox_body_entered(body: Node3D) -> void:
 	transitioned.emit(self, "convictpounce")

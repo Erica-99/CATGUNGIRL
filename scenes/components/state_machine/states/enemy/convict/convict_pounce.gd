@@ -64,5 +64,5 @@ func faceplant():
 	if actor.velocity.x == 0:
 		transitioned.emit(self, "convictchase")
 
-func _on_attack_hit_box_3d_body_entered(body: Node3D) -> void:
+func _on_attack_hitbox_body_entered(body: Node3D) -> void:
 	transitioned.emit(self, "convicthitconfirm")
