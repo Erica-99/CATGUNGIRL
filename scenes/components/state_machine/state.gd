@@ -32,7 +32,7 @@ func update(_delta: float) -> void:
 	pass
 func physics_update(_delta: float) -> void:
 	pass
-	
+
 # functions to recursively call states in a branch (allowing for hierarchies)
 func update_branch(_delta: float) -> void:
 	update(_delta)

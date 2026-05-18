@@ -5,6 +5,7 @@ class_name PlayerFall
 
 var actor: CharacterBody3D
 var input_component: InputComponent
+var blocked_states: Dictionary
 
 func init(blackboard_dict : Dictionary) -> void:
 	super(blackboard_dict)
@@ -16,8 +17,10 @@ func enter() -> void:
 		blackboard["mantle_detector"].set_checking_enabled(true)
 
 func exit() -> void:
+	print("HAS EXITED FALLING")
 	if blackboard["mantle_detector"] != null:
 		blackboard["mantle_detector"].set_checking_enabled(false)
+	blackboard["jump_timer"].start()
 
 func update(_delta: float) -> void:
 	if actor.is_on_floor():
@@ -46,3 +49,14 @@ func physics_update(_delta: float) -> void:
 	if input_state["movement"] != 0 and blackboard["mantle_detector"].can_mantle:
 		blackboard["current_mantle_target"] = blackboard["mantle_detector"].get_target_mantle_point()
 		transitioned.emit(self, "playermantle")
+
+func block_transition(state: String, duration: float):
+	blocked_states[state] = true
+	print(blocked_states)
+	print(state, " has been blocked")
+	await get_tree().create_timer(duration).timeout
+	blocked_states.erase(state)
+	print(state, " has been unblocked")
+
+func can_transition(state: String) -> bool:
+	return not blocked_states.has(state)
