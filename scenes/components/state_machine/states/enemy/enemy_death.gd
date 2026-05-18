@@ -1,26 +1,35 @@
+# Death State: when enemy dies, play death animation, fade out sprite, and queue_free
 extends State
 class_name EnemyDeath
 
-var animator: AnimatedSprite3D
+var actor: CharacterBody3D
+var anim: AnimatedSprite3D
 
-var death_timer: float
+var fade_time: float = 0.0
+# temp timer, would wanna line it up more with death anim
+var basic_timer: float = 0.0
+
+func init(blackboard_dict: Dictionary) -> void:
+	super(blackboard_dict)
+	actor = blackboard["actor"]
+	anim = blackboard["anim"]
 
 func enter() -> void:
-	# Play Death Animation
-	# Play animation (changes color for test)
-	animator = blackboard["anim"]
-	animator.modulate = Color(0.0, 0.0, 0.0, 1.0)
+	#anim.play("Death")
 	
 	# Play death sound
 	AudioManager.play_sfx("gore_1")
-	
 	EventManager.enemy_killed.emit()
-	var timer := Timer.new()
-	timer.wait_time = 1.5
-	timer.one_shot = true
-	add_child(timer)
-	timer.timeout.connect(_on_timeout)
-	timer.start()
+	
+	for child in actor.find_children("*", "Area3D", true):
+		child.collision_layer = 0
+		child.collision_mask = 0
+		child.hide()
+	
 
-func _on_timeout():
-	blackboard["actor"].queue_free()
+func update(_delta: float) -> void:
+	fade_time += _delta
+	anim.modulate = Color(1,1,1,lerp(1, 0, fade_time))
+	basic_timer += _delta
+	if basic_timer > 1:
+		actor.queue_free()
