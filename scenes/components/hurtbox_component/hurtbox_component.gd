@@ -19,8 +19,8 @@ func _on_area_entered(hitbox: Area3D) -> void:
 
 ## Handles taking damage by making callbacks to health component. Alerts the hitbox that a collision has occured.
 func take_hit(hitbox: Area3D) -> void:
-	print("Hit Taken")
-	AudioManager.play_sfx(hit_sfx_ref)
+	if hit_sfx_ref != "":
+		AudioManager.play_sfx(hit_sfx_ref)
 	hitbox.call("register_hit", self)
 	if hitbox.damage_or_heal_instance != null and health_component != null:
 		health_component.take_damage_or_heal(hitbox.damage_or_heal_instance)
