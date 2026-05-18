@@ -8,11 +8,14 @@ extends Node3D
 
 var _currently_enabled: bool = false
 
+@export var toggle: bool = true
+
 ## Use to enable/disable the raycasts.
 func set_checking_enabled(enabled: bool) -> void:
-	for detector in detectors:
-		detector.enabled = enabled
-	_currently_enabled = enabled
+	if toggle:
+		for detector in detectors:
+			detector.enabled = enabled
+		_currently_enabled = enabled
 
 ## Check if it is possible to mantle
 var can_mantle: bool:
