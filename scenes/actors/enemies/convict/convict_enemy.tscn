@@ -730,6 +730,7 @@ debug_color = Color(0.9726234, 0, 0.44306478, 0.41960785)
 [connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]
 [connection signal="body_entered" from="AttackHitbox3D" to="StateMachine/ConvictChase" method="_on_attack_hitbox_body_entered"]
 [connection signal="body_entered" from="AttackHitbox3D" to="StateMachine/ConvictPounce" method="_on_attack_hitbox_body_entered"]
+[connection signal="body_exited" from="AttackHitbox3D" to="." method="_on_attack_hitbox_3d_body_exited"]
 [connection signal="body_entered" from="DetectionArea3D" to="StateMachine/ConvictIdle" method="_on_detection_area_3d_body_entered"]
 [connection signal="body_entered" from="DetectionArea3D" to="StateMachine/ConvictPatrol" method="_on_detection_area_3d_body_entered"]
 [connection signal="body_entered" from="PounceRange3D" to="StateMachine/ConvictChase" method="_on_pounce_range_3d_body_entered"]

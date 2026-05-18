@@ -32,6 +32,9 @@ var is_dead: bool = false
 @export var attack_damage: float
 var damage_instance: DamageHealInstance = DamageHealInstance.new()
 @export var attack_hitbox: Area3D
+# Used to track repeatedly hitting a still target
+var target_in_hitbox: bool = false
+var current_attack_target
 
 var blackboard : Dictionary 
 
@@ -54,6 +57,7 @@ func _ready() -> void:
 		"jump_force": jump_force,
 		"accel_speed": accel_speed,
 		"slow_down_speed": slow_down_speed,
+		"attack_hitbox": attack_hitbox,
 	}
 	# Change initial state based on Inspector values
 	if start_aggroed:
@@ -94,3 +98,7 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 		animator.pause()
 		await get_tree().create_timer(0.2).timeout
 		animator.play()
+
+# When the target leaves the hitbox, change value. Used to let enemy keep attacking a still target
+func _on_attack_hitbox_3d_body_exited(body: Node3D) -> void:
+	target_in_hitbox = false

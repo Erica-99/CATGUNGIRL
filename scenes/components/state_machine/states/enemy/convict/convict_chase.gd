@@ -42,6 +42,8 @@ func physics_update(_delta: float) -> void:
 	actor.move_and_slide()
 
 func _on_attack_hitbox_body_entered(body: Node3D) -> void:
+	# To track if the target remains in hitbox
+	actor.target_in_hitbox = true
 	transitioned.emit(self, "convicthitconfirm")
 
 func _on_pounce_range_3d_body_entered(body: Node3D) -> void:

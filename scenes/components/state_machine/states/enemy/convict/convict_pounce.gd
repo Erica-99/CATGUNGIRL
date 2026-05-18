@@ -65,4 +65,5 @@ func faceplant():
 		transitioned.emit(self, "convictchase")
 
 func _on_attack_hitbox_body_entered(body: Node3D) -> void:
+	actor.target_in_hitbox = true
 	transitioned.emit(self, "convicthitconfirm")

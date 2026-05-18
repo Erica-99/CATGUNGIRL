@@ -17,7 +17,6 @@ func _on_area_entered(hitbox: Area3D) -> void:
 	else:
 		return
 
-
 ## Handles taking damage by making callbacks to health component. Alerts the hitbox that a collision has occured.
 func take_hit(hitbox: Area3D) -> void:
 	print("Hit Taken")
