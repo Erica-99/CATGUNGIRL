@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://1ca03h2i7po8" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/FloorMeshCentreBroken.tscn" id="15_h3kkg"]
 [ext_resource type="PackedScene" uid="uid://cvckts4bqdso3" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/FloorMeshCentre.tscn" id="16_pw0xx"]
 [ext_resource type="PackedScene" uid="uid://dfg3qj6dl3f8d" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Roof.tscn" id="17_vopau"]
+[ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="19_4yttx"]
 [ext_resource type="PackedScene" uid="uid://bcxgyj6fq1doy" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/DoorwayMultiLevel.tscn" id="19_dp8q3"]
 [ext_resource type="PackedScene" uid="uid://cao0d81ad8hbv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/DoorwaySingle.tscn" id="20_4yttx"]
 [ext_resource type="PackedScene" uid="uid://drnrg0vdto3vf" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/RoofHole.tscn" id="21_4otvg"]
@@ -195,3 +196,10 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 84.408, 16.8, 0)
 
 [node name="WallPlainRear2" parent="." unique_id=1862463797 instance=ExtResource("23_f7hie")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 120.816, 0, 0)
+
+[node name="Player" parent="." unique_id=1349193765 instance=ExtResource("19_4yttx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.301899, 2.5489483, 0)
+collision_layer = 130
+floor_constant_speed = true
+platform_floor_layers = 129
+platform_wall_layers = 1

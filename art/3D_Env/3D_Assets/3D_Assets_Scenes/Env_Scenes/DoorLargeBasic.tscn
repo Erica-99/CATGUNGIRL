@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c7wdqebqhqbuu"]
+
+[ext_resource type="ArrayMesh" uid="uid://bok0rpxpwpb1p" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/DoorwayLargeBasic.obj" id="1_fcy0q"]
+[ext_resource type="ArrayMesh" uid="uid://dtc1kkneki67t" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/DoorLargeBasic.obj" id="2_6if0h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fcy0q"]
+size = Vector3(1.1309204, 0.4975586, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_t3qug"]
+points = PackedVector3Array(-0.173392, 0.116572, -1.869592, -0.173392, 3.68383, -1.869592, 0.173392, 0.116572, -1.869592, -0.173392, 0.116572, 1.869591, 0.173392, 3.68383, -1.869592, -0.173392, 3.68383, 1.869591, 0.173392, 0.116572, 1.869591, 0.173392, 3.68383, 1.869591)
+
+[node name="DoorLargeBasic" type="StaticBody3D" unique_id=101148383]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="DoorwayLargeBasic_Mesh" type="MeshInstance3D" parent="." unique_id=946614900]
+mesh = ExtResource("1_fcy0q")
+
+[node name="DoorwayLargeBasic_Collision" type="CollisionShape3D" parent="DoorwayLargeBasic_Mesh" unique_id=340457162]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.1552734e-05, 3.8535066, 0)
+shape = SubResource("BoxShape3D_fcy0q")
+
+[node name="DoorLargeBasic_Mesh" type="MeshInstance3D" parent="." unique_id=600289034]
+mesh = ExtResource("2_6if0h")
+
+[node name="DoorLargeBasic_Collision" type="CollisionShape3D" parent="DoorLargeBasic_Mesh" unique_id=1136142069]
+visible = false
+shape = SubResource("ConvexPolygonShape3D_t3qug")
