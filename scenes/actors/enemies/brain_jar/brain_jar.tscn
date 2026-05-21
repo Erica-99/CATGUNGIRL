@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://crxpi7vrp2sce"]
+
+[ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="1_x5j37"]
+[ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="2_kd81k"]
+[ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="3_w3sch"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xjw4s"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fy0l2"]
+size = Vector3(1.1853027, 1.1625366, 1.2736816)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x5j37"]
+
+[node name="BrainJar" type="Node3D" unique_id=1593347133]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="C U B E" type="MeshInstance3D" parent="." unique_id=119508935]
+mesh = SubResource("BoxMesh_xjw4s")
+
+[node name="Label3D" type="Label3D" parent="C U B E" unique_id=1888487488]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.507401)
+text = "AM BRIAN"
+
+[node name="HurtboxComponent" parent="." unique_id=338394069 node_paths=PackedStringArray("team_component", "health_component") instance=ExtResource("1_x5j37")]
+team_component = NodePath("../TeamComponent")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtboxComponent" unique_id=66282260]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0015869141, -0.00033569336, -0.0072021484)
+shape = SubResource("BoxShape3D_fy0l2")
+
+[node name="TeamComponent" parent="." unique_id=2076917082 instance=ExtResource("2_kd81k")]
+team = 2
+
+[node name="HealthComponent" parent="." unique_id=236252344 instance=ExtResource("3_w3sch")]
+starting_health = 150.0
+max_health = 150.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=552561740]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="Shield" type="CollisionShape3D" parent="." unique_id=424336258]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_x5j37")
