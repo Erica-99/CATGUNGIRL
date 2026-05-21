@@ -32,10 +32,13 @@ var speed_multiplier: float = 1.0
 @export var input_component: InputComponent
 @export var mantle_detector: Node3D
 @export var feet_point: Marker3D
+@export var jump_timer: Timer
 
 var blackboard: Dictionary
 @onready var gun_component = $GunComponent  
 @onready var health_component = $HealthComponent
+
+
 
 ## This is to know what scene to reload when the player dies
 var currentScene
@@ -47,7 +50,8 @@ func _ready() -> void:
 	"input_component": input_component,
 	"mantle_detector": mantle_detector,
 	"feet_point": feet_point,
-	"current_mantle_target": Vector3()
+	"current_mantle_target": Vector3(),
+	"jump_timer": jump_timer
 	}
 	
 	movement_state_machine.init(blackboard)
