@@ -19,12 +19,14 @@ func enter() -> void:
 	#Allow for animation interrupts if a target jumps onto them while in their attack anim
 	anim.stop()
 	anim.play("Attack")
+	attack_hitbox.find_child("*").set_deferred("disabled", true)
 
 # The time that the Convict stops for after an attack is determined by their attack anim
 func physics_update(_delta: float) -> void:
 	actor.velocity.x = move_toward(actor.velocity.x, 0, slow_down_speed * _delta)
 	actor.move_and_slide()
 	await anim.animation_looped
+	attack_hitbox.find_child("*").set_deferred("disabled", false)
 	if actor.target_in_hitbox:
 		transitioned.emit(self, "convicthitconfirm")
 	else:

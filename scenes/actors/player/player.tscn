@@ -1545,6 +1545,9 @@ size = Vector3(1.2752686, 3.1870117, 1)
 [sub_resource type="ViewportTexture" id="ViewportTexture_owjsm"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_llrf1"]
+radius = 1.0
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_llrf1"]
 size = Vector3(0.996727, 2.7352142, 1)
 
@@ -1736,6 +1739,14 @@ spam_spread_increase = 1.5
 spam_max_spread = 12.0
 spam_aim_multiplier = 0.3
 perfect_damage_multiplier = 2.0
+
+[node name="SoftCollider" type="Area3D" parent="." unique_id=892099693]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SoftCollider" unique_id=1533749167]
+shape = SubResource("SphereShape3D_llrf1")
+debug_color = Color(0, 0.61960787, 0.5686275, 0.41960785)
 
 [node name="PlayerCrouchCollision" type="Area3D" parent="." unique_id=745467868]
 

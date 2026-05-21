@@ -6,6 +6,7 @@ const GRAVITY = 50
 @export var animator: AnimatedSprite3D
 @export var health_comp: Node
 @export var state_machine: StateMachine
+@onready var softCollider: Area3D = $SoftCollider
 
 var is_dead: bool = false
 
@@ -34,7 +35,6 @@ var damage_instance: DamageHealInstance = DamageHealInstance.new()
 @export var attack_hitbox: Area3D
 # Used to track repeatedly hitting a still target
 var target_in_hitbox: bool = false
-var current_attack_target
 
 var blackboard : Dictionary 
 
@@ -69,8 +69,8 @@ func _ready() -> void:
 			state_machine.initial_state = start_idle
 	state_machine.init(blackboard)
 
-# Basic gravity implementation
 func _physics_process(delta: float) -> void:
+	# Basic gravity implementation
 	velocity.y -= GRAVITY * delta
 	
 	# Direction facing transformation
@@ -80,7 +80,12 @@ func _physics_process(delta: float) -> void:
 	elif velocity.x > 0: # RIGHT
 		direction = 1
 		animator.flip_h = false
-	
+		
+	# Soft Collision physics effects to avoid overlap.
+	if softCollider.is_colliding():
+		var push_vel = softCollider.get_push_vector() * delta * 10
+		push_vel.z = 0
+		velocity += push_vel
 
 # General (or Global I guess) state change conditions, such as damage taken effects, etc.
 # When you don't want to write a state change function in each state.

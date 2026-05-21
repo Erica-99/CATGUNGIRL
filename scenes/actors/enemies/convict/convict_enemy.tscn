@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://briciybelpcwe" path="res://scenes/components/state_machine/states/enemy/enemy_death.gd" id="17_583mm"]
 [ext_resource type="Shape3D" uid="uid://c5sya8gsonmd8" path="res://resources/hitboxes/enemies/convict/convict_attack_hb.tres" id="19_a68hs"]
 [ext_resource type="PackedScene" uid="uid://csd06hicr5wny" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="20_31snm"]
+[ext_resource type="Script" uid="uid://dpwol7txodmxp" path="res://scenes/components/soft_collision.gd" id="21_leh5i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a7kog"]
 atlas = ExtResource("2_lgmct")
@@ -617,6 +618,8 @@ radius = 12.5
 [sub_resource type="SphereShape3D" id="SphereShape3D_resq1"]
 radius = 7.0
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_leh5i"]
+
 [node name="Convict" type="CharacterBody3D" unique_id=1506947017 node_paths=PackedStringArray("animator", "health_comp", "state_machine", "start_idle", "start_patrol", "start_aggro", "attack_hitbox")]
 collision_layer = 4
 floor_constant_speed = true
@@ -723,6 +726,15 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PounceRange3D" unique_id=1377453533]
 shape = SubResource("SphereShape3D_resq1")
 debug_color = Color(0.9726234, 0, 0.44306478, 0.41960785)
+
+[node name="SoftCollider" type="Area3D" parent="." unique_id=1009652406]
+collision_layer = 128
+collision_mask = 128
+script = ExtResource("21_leh5i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SoftCollider" unique_id=550787868]
+shape = SubResource("SphereShape3D_leh5i")
+debug_color = Color(0, 0.61960787, 0.5686275, 0.41960785)
 
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="health_changed" from="HealthComponent" to="StateMachine/ConvictIdle" method="_on_health_component_health_changed"]
