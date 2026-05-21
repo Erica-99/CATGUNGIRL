@@ -1,5 +1,5 @@
 extends Node3D
-
+const HITBOX_SCENE = preload("res://scenes/components/hitbox_component/hitbox_component.tscn")
 ## gun component - handles aiming, normal fire, and charged shots
 ## attach as a child of player node
 
@@ -209,13 +209,14 @@ func _fire_beam(progress: float) -> void:
 	var to = from + aim_dir * beam_range
 	
 	var exclusions: Array[RID] = []
+	var hit_enemies: Array = []
+	var hit_hurtboxes: Array = []
 	var beam_end = to
-	var damage = lerpf(beam_damage_min, beam_damage_max, progress)
-	print("beam damage: ", damage, "at charge progress: ", progress)
 	
 	while true:
 		var query = PhysicsRayQueryParameters3D.create(from, to)
-		query.collision_mask = 5
+		query.collide_with_areas = true
+		query.collision_mask = 9 # layer 1 (geometry) + layer 4 (hurtboxes)
 		query.exclude = exclusions
 		var result = space_state.intersect_ray(query)
 		
@@ -223,19 +224,14 @@ func _fire_beam(progress: float) -> void:
 			break
 		
 		var collider = result["collider"]
+		exclusions.append(result["rid"])
 		
-		if collider.collision_layer == 4:
-			var hurtbox = collider.get_node("HurtboxComponent")
-			if hurtbox.health_component != null:
-				var damage_instance = DamageHealInstance.new()
-				damage_instance.amount = damage
-				damage_instance.is_heal = false
-				damage_instance.type = Enums.DamageType.NORMAL
-				damage_instance.knockback = bullet_knockback
-				damage_instance.source = get_path()
-				hurtbox.health_component.take_damage_or_heal(damage_instance)
-			enemy_hit.emit(hurtbox)
-			exclusions.append(result["rid"])
+		if collider is Area3D:
+			var enemy_root = collider.get_parent()
+			if enemy_root in hit_enemies:
+				continue
+			hit_enemies.append(enemy_root)
+			hit_hurtboxes.append(collider)
 		else:
 			beam_end = result["position"]
 			break
@@ -243,6 +239,22 @@ func _fire_beam(progress: float) -> void:
 	beam_fired.emit(beam_end, progress)
 	_recoil_offset += recoil_amount * charged_recoil_multiplier * progress * sign(global_transform.basis.x.x)
 	# AudioManager.play_sfx("")
+	
+	var damage = lerpf(beam_damage_min, beam_damage_max, progress)
+
+	for hurtbox in hit_hurtboxes:
+		var temp_hitbox = HITBOX_SCENE.instantiate()
+		var damage_instance = DamageHealInstance.new()
+		damage_instance.amount = damage
+		damage_instance.is_heal = false
+		damage_instance.type = Enums.DamageType.NORMAL
+		damage_instance.knockback = bullet_knockback
+		damage_instance.source = get_path()
+		temp_hitbox.damage_or_heal_instance = damage_instance
+		temp_hitbox.team_component = team_component
+		temp_hitbox.hurtbox_hit.connect(func(hurtbox_hit): enemy_hit.emit(hurtbox_hit))
+		hurtbox.take_hit(temp_hitbox)
+		temp_hitbox.free()
 
 func _spawn_bullet(damage: float, size: float) -> void:
 	var bullet = bullet_scene.instantiate()
