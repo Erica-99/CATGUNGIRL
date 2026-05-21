@@ -9,7 +9,7 @@ func _check_enemies_remaining():
 	var children = find_children("*", "CharacterBody3D", true)
 	var room_cleared = true
 	for child in children:
-		if child.state is not EnemyDeath:
+		if !child.is_dead:
 			room_cleared = false
 	
 	if room_cleared:

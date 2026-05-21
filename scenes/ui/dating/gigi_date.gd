@@ -6,12 +6,15 @@ extends Control
 @onready var dialogue = $date_txt_bgd/Panel/MarginContainer/date_txt
 @onready var dialogue_bubble: PanelContainer = $date_txt_bgd/Panel/MarginContainer/VBoxContainer/DialogueBubble
 @onready var press_button_info: RichTextLabel = $"date_txt_bgd/Panel/MarginContainer/Press Button Info"
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var dating_stylebox = preload("res://art/StyleBoxes/StyleBox_Pink.tres")
 var button_stylebox = preload("res://art/StyleBoxes/StyleBox_Pink2.tres")
 
 # determines whether dating screen should be visible or not
 var dating_active: bool = false
+
+var current_date_id: int = 0
 
 # determines if button must be clicked to proceed
 var requires_option_selection: bool = false
@@ -42,8 +45,8 @@ func _ready() -> void:
 # debug show dating
 # TODO: move to player input component as an input state?
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("date_show"):
-		if dating_active:
+	if dating_active:
+		if event.is_action_pressed("fire"):
 			if not requires_option_selection && not currently_writing:
 				_increment_date_stage(dating_dialogue)
 				return
@@ -56,24 +59,39 @@ func _unhandled_input(event: InputEvent) -> void:
 				dialogue_bubble._set_text(dating_dialogue["dialogue"])
 				writing_timer.stop()
 				_display_button_press_info()
+					
+	if event.is_action_pressed("date_show"):
+		if dating_active:
+			pass
 		else:
-			_date_start(0)
+			_on_activate_date(0)
 
 # set values for started date and retrieve scene and dialogue
 # TODO: im just thinking but we could probably remove dating_active and favour 'visibility' as
 	# our conditional var. this will sacrifice a bit of readability though lmfao idk
-func _date_start(date_id: int):
+func _date_start():
 	EventManager.begin_date_scene_lock.emit()
 	visible = true
-	dating_active = true
-	current_dating_scene = DialogueProcessor._get_dating_scene(CustomResourceLoader.dating_dialogue_path + "date_" + str(date_id), "date_" + str(date_id))
+	current_dating_scene = DialogueProcessor._get_dating_scene(CustomResourceLoader.dating_dialogue_path + "date_" + str(current_date_id), "date_" + str(current_date_id))
 	dating_dialogue = DialogueProcessor._get_next_dating_dialogue(current_dating_scene)
-	_display()
+	
+	_display(true)
 
 # display scene (fill out with info from current dating_dialogue)
-func _display():
+func _display(is_date_just_started: bool = false):
 	press_button_info.visible = false
 	button_container.visible = false
+	
+	# set texture
+	gigi_image.texture = load(dating_dialogue["icon"])
+	dialogue_bubble._set_text("")
+
+	if is_date_just_started:
+		animation_player.play("date_start")
+		await animation_player.animation_finished
+	
+	dating_active = true
+	
 	# get delay via popup char count
 	typewriter_delay = SECONDS_PER_CHARACTER * dating_dialogue["dialogue"].length()
 	# set text - additional params determine how it should display (as typewriter)
@@ -83,9 +101,6 @@ func _display():
 	# temp timer
 	writing_timer.wait_time = typewriter_delay + 0.5
 	writing_timer.start()
-	
-	# set texture
-	gigi_image.texture = load(dating_dialogue["icon"])
 	
 	# trigger event
 	DialogueProcessor._check_and_trigger_dialogue_event(dating_dialogue)
@@ -122,7 +137,8 @@ func _display_button_press_info():
 # ends the current date (returns player to active world)
 func _end_date():
 	dating_active = false
-	await get_tree().create_timer(0.5).timeout
+	animation_player.play("date_end")
+	await animation_player.animation_finished
 	visible = false
 	EventManager.end_date_scene_lock.emit()
 
@@ -145,4 +161,5 @@ func _increment_date_stage(value: Dictionary):
 		_display()
 
 func _on_activate_date(date_id: int) -> void:
-	_date_start(date_id)
+	current_date_id = date_id
+	_date_start()
