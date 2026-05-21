@@ -89,3 +89,14 @@ static func _get_next_dating_dialogue(dialogue_array: Array, current_dialogue: D
 	else:
 		# return the first dialogue entry in scene
 		return dialogue_array[0]
+
+static func _check_and_trigger_dialogue_event(current_dialogue: Dictionary = {}) -> bool:
+	if !current_dialogue.is_empty():
+		var event_to_trigger = current_dialogue.get("event", null)
+		if event_to_trigger != null and EventManager.has_signal(event_to_trigger):
+			EventManager.emit_signal(event_to_trigger)
+			return true
+		else:
+			return false
+	else:
+		return false

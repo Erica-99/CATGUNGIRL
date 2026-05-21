@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://cmq1v8ob4m0w4"]
 
 [ext_resource type="Script" uid="uid://d0v8bhew7e25y" path="res://scenes/components/camera_component/camera_component.gd" id="1_osh5n"]
+[ext_resource type="PackedScene" uid="uid://ckp576f04778f" path="res://scenes/ui/hud.tscn" id="2_qo802"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_qo802"]
+viewport_path = NodePath("SubViewport")
 
 [node name="CameraComponent" type="Camera3D" unique_id=974394070]
 size = 20.0
@@ -15,3 +19,7 @@ directional_shadow_mode = 1
 transform = Transform3D(0.9396926, 0, 0.34202012, 0, 1, 0, -0.34202012, 0, 0.9396926, 3, 0, 4.258)
 light_energy = 0.3
 directional_shadow_mode = 1
+
+[node name="HUD" parent="." unique_id=931475153 instance=ExtResource("2_qo802")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23)
+texture = SubResource("ViewportTexture_qo802")

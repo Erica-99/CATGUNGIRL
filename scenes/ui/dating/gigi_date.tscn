@@ -8,6 +8,94 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vukmv"]
 
+[sub_resource type="Animation" id="Animation_f1ujk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("gigi_pose:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_efxa4"]
+resource_name = "date_end"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("gigi_pose:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7axsu"]
+resource_name = "date_start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("gigi_pose:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_efxa4"]
+_data = {
+&"RESET": SubResource("Animation_f1ujk"),
+&"date_end": SubResource("Animation_efxa4"),
+&"date_start": SubResource("Animation_7axsu")
+}
+
 [node name="GigiDate" type="Control" unique_id=2015194836]
 visible = false
 layout_mode = 3
@@ -16,6 +104,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_3dw5p")
 
 [node name="date_background" type="TextureRect" parent="." unique_id=2122435862]
@@ -59,6 +148,7 @@ offset_top = -328.0
 offset_right = 960.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 40
@@ -66,6 +156,7 @@ theme_override_constants/margin_bottom = 40
 
 [node name="Panel" type="Panel" parent="date_txt_bgd" unique_id=2062446538]
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = ExtResource("4_f1ujk")
 
 [node name="MarginContainer" type="MarginContainer" parent="date_txt_bgd/Panel" unique_id=1737909928]
@@ -106,13 +197,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Press Button Info" type="RichTextLabel" parent="date_txt_bgd/Panel/MarginContainer" unique_id=1782990518]
-custom_minimum_size = Vector2(200, 50)
+custom_minimum_size = Vector2(300, 50)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
-text = "[b]Press 'V' to continue[/b]"
+text = "[b]Click 'Left Mouse Button' to continue[/b]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -120,3 +211,6 @@ vertical_alignment = 1
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=970702818]
+libraries/ = SubResource("AnimationLibrary_efxa4")

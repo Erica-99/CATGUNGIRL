@@ -12,7 +12,6 @@ func _ready() -> void:
 
 
 func on_charge_progress(progress: float) -> void:
-	print("charge bar received progress: ", progress)
 	bar_container.visible = true
 	# scale the fill bar width based on progress
 	fill.scale.x = progress
