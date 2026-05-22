@@ -9,7 +9,7 @@ signal end_date_scene_lock
 signal increase_insanity_rank
 signal insanity_changed(prev_rank: int, new_rank: int)
 
-signal enemy_killed()
+signal enemy_killed(enemy)
 signal player_hit_by_enemy()
 signal current_killstreak(killstreak: int)
 

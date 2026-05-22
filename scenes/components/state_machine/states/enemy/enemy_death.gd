@@ -19,7 +19,7 @@ func enter() -> void:
 	
 	# Play death sound
 	AudioManager.play_sfx("gore_1")
-	EventManager.enemy_killed.emit()
+	EventManager.enemy_killed.emit(self)
 	
 	for child in actor.find_children("*", "Area3D", true):
 		child.collision_layer = 0

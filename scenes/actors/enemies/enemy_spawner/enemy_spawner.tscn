@@ -2,16 +2,8 @@
 
 [ext_resource type="Script" uid="uid://btje133cvblp7" path="res://scenes/actors/enemies/enemy_spawner/enemy_spawner.gd" id="1_df7xo"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_uldov"]
-
 [node name="EnemySpawner" type="Node3D" unique_id=1110059721]
 script = ExtResource("1_df7xo")
-
-[node name="SpawnArea" type="Area3D" parent="." unique_id=479490669]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnArea" unique_id=1608758761]
-shape = SubResource("BoxShape3D_uldov")
-debug_color = Color(0.45869863, 0.59411895, 0, 0.41960785)
 
 [node name="SpawnPoint" type="Marker3D" parent="." unique_id=495828580]
 
