@@ -19,3 +19,5 @@ signal player_interest_rank_changed(new_rank)
 
 signal room_cleared(room_ID: Enums.Room, is_clear: bool)
 signal spawn_enemy(custom_delay: float, spawner_path: NodePath)
+
+signal start_elevator()

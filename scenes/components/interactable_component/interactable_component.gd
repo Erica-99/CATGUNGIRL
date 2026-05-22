@@ -1,6 +1,7 @@
 extends Node3D
 @onready var interaction_range: Area3D = $"Interaction Range"
 @onready var dialogue_component: Sprite3D = $DialogueComponent
+@onready var event_trigger: Area3D = $EventTrigger
 
 @export var interactable_type: Enums.InteractableType = Enums.InteractableType.DOOR
 @export var interaction_distance: float = 3.0
@@ -31,7 +32,10 @@ func _calculate_interaction_zone(child, is_centred):
 	interaction_range.add_child(collision)
 	#collision.shape.size = mesh_box
 	
-	if interactable_type == Enums.InteractableType.CONSOLE:
+	# all of this shit should be redone
+	# could be ez strategy pattern - just need to set up some prefabs and auto assign
+	# TODO: get to work on this fuckign hell
+	if interactable_type == Enums.InteractableType.CONSOLE || interactable_type == Enums.InteractableType.ELEVATOR:
 		# old shit remove later
 		#var start_interaction_range: Vector3 = Vector3(child.global_position.x, child.global_position.y, child.global_position.z)
 		#var distance_between: float = start_interaction_range.distance_to(child.global_position)
@@ -43,14 +47,14 @@ func _calculate_interaction_zone(child, is_centred):
 		
 		collision.shape.size = Vector3(mesh_box.z, mesh_box.y, interaction_distance)
 		collision.position = Vector3(0, 0, interaction_distance / 2)
-	else:
+	elif interactable_type == Enums.InteractableType.DOOR:
 		collision.shape.size = Vector3(mesh_box.x + (interaction_distance / 3), mesh_box.y + (interaction_distance / 3), interaction_distance)
 		#collision.position = Vector3(0, 0, interaction_distance / 2)
 		#var offsets = Vector3(1, 1, 1)
 		#collision.shape.size = offsets
 	
 	#collision.rotation = child.rotation
-	print(collision.shape.size)
+	#print(collision.shape.size)
 	dialogue_component.position = Vector3(collision.shape.size.z / 2, collision.shape.size.y / 2, collision.shape.size.x / 2)
 
 
@@ -63,7 +67,8 @@ func _process(delta: float) -> void:
 				_play_interact_animation("open")
 		else:
 			if current_player_status["interacting"]:
-				print("interacting with console")
+				if event_trigger != null:
+					event_trigger._on_body_entered()
 
 func _play_interact_animation(animation_name: String) -> void:
 	# tried to do this without tweening but its not possible unless we alter the objects :(
@@ -98,7 +103,7 @@ func _on_interaction_range_body_entered(body: Node3D) -> void:
 				_play_interact_animation("open")
 	
 		
-		if interactable_type == Enums.InteractableType.CONSOLE:
+		if interactable_type == Enums.InteractableType.CONSOLE || interactable_type == Enums.InteractableType.ELEVATOR:
 			dialogue_component._add_interact_bubble()
 
 

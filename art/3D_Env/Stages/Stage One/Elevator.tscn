@@ -1,7 +1,47 @@
 [gd_scene format=3 uid="uid://bve0k84wb2mj3"]
 
 [ext_resource type="PackedScene" uid="uid://dek07x5fpqhtf" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/ElevatorWalls.tscn" id="1_tvdym"]
+[ext_resource type="Script" uid="uid://b8370nobsmmuf" path="res://scenes/levels/elevator_platform/elevator_platform.gd" id="2_klubv"]
+[ext_resource type="PackedScene" uid="uid://ou3g778y2q8g" path="res://scenes/components/interactable_component/interactable_component.tscn" id="3_8ymqo"]
+[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="4_jkjcw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tvdym"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_klubv"]
+size = Vector3(5.7, 1, 5.7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8ymqo"]
+size = Vector3(5.7, 1, 5.7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jkjcw"]
 
 [node name="Elevator" type="Node3D" unique_id=2113657604]
 
 [node name="ElevatorWalls" parent="." unique_id=1166580409 instance=ExtResource("1_tvdym")]
+
+[node name="ElevatorStart" type="Marker3D" parent="." unique_id=950937964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.58, 0)
+
+[node name="ElevatorEnd" type="Marker3D" parent="." unique_id=599802300]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.976743, 0)
+
+[node name="ElevatorPlatform" type="AnimatableBody3D" parent="." unique_id=1054429812]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.58, 0)
+physics_material_override = SubResource("PhysicsMaterial_tvdym")
+script = ExtResource("2_klubv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ElevatorPlatform" unique_id=1875894518]
+shape = SubResource("BoxShape3D_klubv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ElevatorPlatform" unique_id=369183010]
+mesh = SubResource("BoxMesh_8ymqo")
+
+[node name="ElevatorConsole" type="MeshInstance3D" parent="ElevatorPlatform" unique_id=301185780]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
+mesh = SubResource("BoxMesh_jkjcw")
+
+[node name="InteractableComponent" parent="ElevatorPlatform/ElevatorConsole" unique_id=2140039813 instance=ExtResource("3_8ymqo")]
+interactable_type = 1
+
+[node name="EventTrigger" parent="ElevatorPlatform/ElevatorConsole/InteractableComponent" unique_id=1311781014 instance=ExtResource("4_jkjcw")]
+signal_name = "start_elevator"
