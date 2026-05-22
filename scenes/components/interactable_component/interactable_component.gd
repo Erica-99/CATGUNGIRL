@@ -22,10 +22,15 @@ func _ready() -> void:
 	var parent_mesh_children = parent_reference.find_children("*", "MeshInstance3D", false)
 	if parent_mesh_children.size() > 0:
 		_calculate_interaction_zone(parent_mesh_children[0], false)
+		
+	if interactable_type == Enums.InteractableType.ELEVATOR:
+		_calculate_interaction_zone(0, false)
 
 func _calculate_interaction_zone(child, is_centred):
 	#https://forum.godotengine.org/t/is-there-a-way-to-get-the-size-of-a-3d-mesh/23154/3
-	var mesh_box = child.get_aabb().size
+	var mesh_box
+	if not interactable_type == Enums.InteractableType.ELEVATOR:
+		mesh_box = child.get_aabb().size
 	
 	var collision = CollisionShape3D.new()
 	collision.shape = BoxShape3D.new()
@@ -35,7 +40,7 @@ func _calculate_interaction_zone(child, is_centred):
 	# all of this shit should be redone
 	# could be ez strategy pattern - just need to set up some prefabs and auto assign
 	# TODO: get to work on this fuckign hell
-	if interactable_type == Enums.InteractableType.CONSOLE || interactable_type == Enums.InteractableType.ELEVATOR:
+	if interactable_type == Enums.InteractableType.CONSOLE:
 		# old shit remove later
 		#var start_interaction_range: Vector3 = Vector3(child.global_position.x, child.global_position.y, child.global_position.z)
 		#var distance_between: float = start_interaction_range.distance_to(child.global_position)
@@ -46,6 +51,10 @@ func _calculate_interaction_zone(child, is_centred):
 		#collision.shape.size += offsets
 		
 		collision.shape.size = Vector3(mesh_box.z, mesh_box.y, interaction_distance)
+		collision.position = Vector3(0, 0, interaction_distance / 2)
+		
+	elif interactable_type == Enums.InteractableType.ELEVATOR:
+		collision.shape.size = Vector3(5, 5, interaction_distance)
 		collision.position = Vector3(0, 0, interaction_distance / 2)
 	elif interactable_type == Enums.InteractableType.DOOR:
 		collision.shape.size = Vector3(mesh_box.x + (interaction_distance / 3), mesh_box.y + (interaction_distance / 3), interaction_distance)
@@ -68,7 +77,7 @@ func _process(delta: float) -> void:
 		else:
 			if current_player_status["interacting"]:
 				if event_trigger != null:
-					event_trigger._on_body_entered()
+					event_trigger._emit_signal()
 
 func _play_interact_animation(animation_name: String) -> void:
 	# tried to do this without tweening but its not possible unless we alter the objects :(
