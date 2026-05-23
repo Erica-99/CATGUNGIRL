@@ -1,6 +1,5 @@
 extends Node
 
-var hurtbox
 var shields
 var health
 
@@ -8,18 +7,10 @@ var health
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	hurtbox = $HurtboxComponent
 	shields = $ShieldCollision
 	shields.body_entered.connect(_on_body_entered)
 	health_bar.init_health(health)
 	disable_shields()
-
-func _init() -> void:
-	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func _on_body_entered(body):
 	if body.collision_layer and (1 << 5) != 0:
