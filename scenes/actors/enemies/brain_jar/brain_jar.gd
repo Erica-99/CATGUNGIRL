@@ -7,10 +7,12 @@ var health
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	EventManager.shield_enabled_status.connect(_disable_shields)
+	
 	shields = $ShieldCollision
 	shields.body_entered.connect(_on_body_entered)
 	health_bar.init_health(health)
-	disable_shields()
+	_disable_shields()
 
 func _on_body_entered(body):
 	if body.collision_layer and (1 << 5) != 0:
@@ -24,10 +26,12 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 	health = new_health
 	print(health)
 	health_bar.health = health
-	enable_shields()
+	_enable_shields()
 
-func disable_shields():
-	shields.monitoring = false
+func _disable_shields(signal_val = false):
+	if !signal_val:
+		shields.monitoring = false
 
-func enable_shields():
+func _enable_shields():
 	shields.monitoring = true
+	EventManager.shield_enabled_status.emit(true)
