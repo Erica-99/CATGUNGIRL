@@ -3,15 +3,14 @@
 [ext_resource type="Script" uid="uid://nj7vef14i3k2" path="res://scenes/levels/death_test_level.gd" id="1_birtj"]
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="2_4036w"]
 [ext_resource type="PackedScene" uid="uid://crxpi7vrp2sce" path="res://scenes/actors/enemies/brain_jar/brain_jar.tscn" id="3_4036w"]
+[ext_resource type="PackedScene" uid="uid://crat6xosq5ywu" path="res://scenes/ui/brain_jar/brain_jar_health.tscn" id="4_ltwrf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_vvhd2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_birtj"]
 
-[node name="DeathTestLevel" type="Node3D" unique_id=71681453 node_paths=PackedStringArray("player", "respawn")]
+[node name="DeathTestLevel" type="Node3D" unique_id=71681453]
 script = ExtResource("1_birtj")
-player = NodePath("Player")
-respawn = NodePath("PlayerRespawn")
 
 [node name="Ground" type="MeshInstance3D" parent="." unique_id=163477196]
 transform = Transform3D(46.879204, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
@@ -53,5 +52,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 4, 0)
 text = "DISTANCE IS 7M"
 font_size = 100
 
-[node name="BrainJar" parent="." unique_id=1593347133 instance=ExtResource("3_4036w")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -12.036552, 8.519438, 0)
+[node name="BrainJar" parent="." unique_id=1593347133 node_paths=PackedStringArray("health_bar") instance=ExtResource("3_4036w")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -12.036552, 13.519438, 0)
+health_bar = NodePath("../BrainJarHealth")
+
+[node name="BrainJarHealth" parent="." unique_id=785711252 instance=ExtResource("4_ltwrf")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -330.5
+offset_right = 330.5
+grow_horizontal = 2
