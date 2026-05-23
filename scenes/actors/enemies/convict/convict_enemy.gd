@@ -27,6 +27,15 @@ var is_dead: bool = false
 @export var slow_down_speed: float
 # How much damage needs to be taken for hitstun to happen
 @export var hitstun_threshold: float
+# horizontal pounce speed
+@export var pounce_speed: float
+# multiplier for slow_down_speed (hitconfirm)
+@export var hit_deceleration: float
+
+@export_category("Convict Superjump")
+@export var windup_duration: float	# pause timer
+@export var superjump_force: float	# upwards force
+@export var superjump_speed: float	# horizontal force
 
 @export_category("Attack Variables")
 # Convict Attack Damage Stats
@@ -58,6 +67,11 @@ func _ready() -> void:
 		"accel_speed": accel_speed,
 		"slow_down_speed": slow_down_speed,
 		"attack_hitbox": attack_hitbox,
+		"pounce_speed": pounce_speed,
+		"hit_deceleration": hit_deceleration,
+		"windup_duration": windup_duration,
+		"superjump_force": superjump_force,
+		"superjump_speed": superjump_speed,
 	}
 	# Change initial state based on Inspector values
 	if start_aggroed:

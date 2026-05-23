@@ -1,0 +1,70 @@
+# Superjump State: short pause, jump towards player position
+# TODO: implement a real trigger when doing advanced pathfinding
+
+extends State
+
+var actor: CharacterBody3D
+var anim: AnimatedSprite3D
+var jump_force: float
+var slow_down_speed: float
+var target: CharacterBody3D
+var direction: int
+var has_jumped: bool = false
+var chase_speed: float
+var windup_duration: float	# how long convict pauses for before jump
+var superjump_force: float	# upwards force
+var superjump_speed: float	# horizontal force
+
+var windup_timer: float = 0.0
+
+func init(blackboard_dict: Dictionary) -> void:
+	super(blackboard_dict)
+	actor = blackboard["actor"]
+	anim = blackboard["anim"]
+	jump_force = blackboard["jump_force"]
+	slow_down_speed = blackboard["slow_down_speed"]
+	chase_speed = blackboard["chase_speed"]
+	windup_duration = blackboard["windup_duration"]
+	superjump_force = blackboard["superjump_force"]
+	superjump_speed = blackboard["superjump_speed"]
+
+func enter() -> void:
+	target = get_tree().get_nodes_in_group("player")[0] as CharacterBody3D
+	actor.velocity = Vector3.ZERO
+	windup_timer = 0.0
+	has_jumped = false
+	# anim.play("ConvictSuperjumpWindup")
+
+func update(_delta: float) -> void:
+	if !has_jumped:
+		windup_timer += _delta
+
+func physics_update(_delta: float) -> void:
+	if actor.is_on_floor():
+		if !has_jumped and windup_timer >= windup_duration:
+			superjump()
+		# start charging jump
+		elif !has_jumped:
+			anim.play("Idle")
+			actor.velocity.x = 0.0
+		# back to chase after jump
+		elif has_jumped:
+			actor.velocity.x = move_toward(actor.velocity.x, 0, slow_down_speed * _delta)
+			transitioned.emit(self, "convictchase")
+	actor.move_and_slide()
+
+func exit() -> void:
+	has_jumped = false
+	windup_timer = 0.0
+
+func superjump() -> void:
+	if actor.global_position.x > target.global_position.x:
+		direction = -1
+	elif actor.global_position.x < target.global_position.x:
+		direction = 1
+		
+	actor.velocity = Vector3.ZERO
+	actor.velocity.y += superjump_force
+	actor.velocity.x += superjump_speed * direction
+	has_jumped = true
+	#anim.play("ConvictSuperjump")
