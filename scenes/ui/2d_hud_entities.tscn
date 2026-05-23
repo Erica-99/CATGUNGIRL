@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dscdygp436wi2" path="res://resources/killstreak/filled.png" id="4_0wvca"]
 [ext_resource type="PackedScene" uid="uid://orss63q04vwl" path="res://scenes/ui/insanity_indicator.tscn" id="4_hc7wi"]
 [ext_resource type="PackedScene" uid="uid://3ukueorlwt6y" path="res://scenes/ui/health_bar.tscn" id="4_p31j5"]
+[ext_resource type="PackedScene" uid="uid://1hgtrlupdh8t" path="res://scenes/ui/dating/gigi_popup.tscn" id="8_p31j5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hc7wi"]
 bg_color = Color(0.4862745, 0.5529412, 1, 0.29411766)
@@ -146,3 +147,11 @@ position = Vector2(-10, 540)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftStaticBox" unique_id=1808589435]
 shape = SubResource("RectangleShape2D_0wvca")
+
+[node name="GiGiPopup" parent="." unique_id=134709764 instance=ExtResource("8_p31j5")]
+visible = false
+layout_mode = 0
+offset_left = 22.0
+offset_top = 295.0
+offset_right = 522.0
+offset_bottom = 783.0
