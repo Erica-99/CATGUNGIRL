@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://comrwprnl6da6"]
+
+[ext_resource type="ArrayMesh" uid="uid://d0kd0hodytyr0" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/ShipmentContainer.obj" id="1_tlrgd"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7bbfr"]
+points = PackedVector3Array(3.778716, 2.790258, 1.060945, 3.778716, -0.001986, 1.060945, 3.778716, 2.790258, -1.060945, -3.778716, 2.790258, 1.060945, 3.778716, -0.001986, -1.060945, -3.778716, -0.001986, 1.060945, -3.778716, 2.790258, -1.060945, -3.778716, -0.001986, -1.060945)
+
+[node name="ShipmentContainer" type="StaticBody3D" unique_id=1687539826]
+
+[node name="ShipmentContainer_Mesh" type="MeshInstance3D" parent="." unique_id=787418289]
+mesh = ExtResource("1_tlrgd")
+
+[node name="ShipmentContainer_Collision" type="CollisionShape3D" parent="." unique_id=1415158622]
+shape = SubResource("ConvexPolygonShape3D_7bbfr")

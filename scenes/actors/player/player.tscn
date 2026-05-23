@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dul0p7aflt05j" path="res://art/FullTestSprites/CrouchWalk_FullHD.png" id="4_t1vny"]
 [ext_resource type="PackedScene" uid="uid://bhbvwfn31wib0" path="res://scenes/components/insanity_component/insanity_component.tscn" id="5_5bhx7"]
 [ext_resource type="Script" uid="uid://8h705llnu2ce" path="res://scenes/actors/player/player_input.gd" id="6_5bhx7"]
-[ext_resource type="PackedScene" uid="uid://w5w2v43x13xk" path="res://scenes/components/dialogue_component/dialogue_renderer.tscn" id="6_qdyt2"]
+[ext_resource type="PackedScene" uid="uid://boy26drjvtxj3" path="res://scenes/components/dialogue_component/dialogue_renderer.tscn" id="6_qdyt2"]
 [ext_resource type="Texture2D" uid="uid://ckiyi0fdwuddq" path="res://art/FullTestSprites/Jump_FullHD.png" id="7_0e3lr"]
 [ext_resource type="Texture2D" uid="uid://rq3dg2dwh2x5" path="res://art/Running/TestTorsoRun_FullHD.png" id="7_e5w6i"]
 [ext_resource type="Script" uid="uid://v055xcit8y78" path="res://scenes/components/state_machine/states/player/player_idle.gd" id="7_fp13k"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://ifqobphukq76" path="res://scenes/components/gun_component/gun_component.tscn" id="16_qdyt2"]
 [ext_resource type="PackedScene" uid="uid://cmq1v8ob4m0w4" path="res://scenes/components/camera_component/camera_component.tscn" id="18_ffoq6"]
 [ext_resource type="Script" uid="uid://y2ix2xo5owxw" path="res://resources/damage_heal_instance/damage_heal_instance.gd" id="19_llrf1"]
+[ext_resource type="Script" uid="uid://da3n34oh0bagw" path="res://scenes/actors/player/audio_caller.gd" id="33_owjsm"]
 
 [sub_resource type="Animation" id="Animation_75awx"]
 resource_name = "Fire"
@@ -352,6 +353,23 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector3(0.005, -1.045, 0)]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../../../AudioCaller")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.2, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["footstep_metal_2"],
+"method": &"play_sfx"
+}, {
+"args": ["footstep_metal_2"],
+"method": &"play_sfx"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_eltio"]
 resource_name = "Fall"
@@ -481,6 +499,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_0e3lr"]
 resource_name = "IdleStand"
+length = 1.5
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -619,6 +638,20 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(-0.085, -0.595, 0)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../../../AudioCaller")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["jump_launch"],
+"method": &"play_sfx"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_llrf1"]
@@ -770,6 +803,23 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0.035, -0.595, 0)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../../../AudioCaller")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.3, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["footstep_metal_1"],
+"method": &"play_sfx"
+}, {
+"args": ["footstep_metal_1"],
+"method": &"play_sfx"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_owjsm"]
@@ -1492,8 +1542,11 @@ metadata/_custom_type_script = "uid://y2ix2xo5owxw"
 [sub_resource type="BoxShape3D" id="BoxShape3D_g2g7f"]
 size = Vector3(1.2752686, 3.1870117, 1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_llrf1"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_owjsm"]
 viewport_path = NodePath("SubViewport")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_llrf1"]
+radius = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_llrf1"]
 size = Vector3(0.996727, 2.7352142, 1)
@@ -1604,6 +1657,7 @@ health_component = NodePath("../HealthComponent")
 [node name="HurtboxComponent" parent="." unique_id=338394069 node_paths=PackedStringArray("team_component", "health_component") instance=ExtResource("3_yg5k4")]
 team_component = NodePath("../TeamComponent")
 health_component = NodePath("../HealthComponent")
+hit_sfx_ref = "dmg_grunt_1"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtboxComponent" unique_id=824073931]
 shape = SubResource("BoxShape3D_g2g7f")
@@ -1639,7 +1693,8 @@ fov = 26.8
 
 [node name="DialogueComponent" parent="." unique_id=1775697624 instance=ExtResource("6_qdyt2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4807317, 3.9423862, 0.09934664)
-texture = SubResource("ViewportTexture_llrf1")
+visible = false
+texture = SubResource("ViewportTexture_owjsm")
 min_dialogue_elapsed_time = 0.0
 max_dialogue_elapsed_time = 1.0
 size_of_viewport = Vector2(500, 600)
@@ -1685,6 +1740,14 @@ spam_max_spread = 12.0
 spam_aim_multiplier = 0.3
 perfect_damage_multiplier = 2.0
 
+[node name="SoftCollider" type="Area3D" parent="." unique_id=892099693]
+collision_layer = 256
+collision_mask = 256
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SoftCollider" unique_id=1533749167]
+shape = SubResource("SphereShape3D_llrf1")
+debug_color = Color(0, 0.61960787, 0.5686275, 0.41960785)
+
 [node name="PlayerCrouchCollision" type="Area3D" parent="." unique_id=745467868]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCrouchCollision" unique_id=1628790290]
@@ -1694,6 +1757,9 @@ shape = SubResource("BoxShape3D_llrf1")
 [node name="JumpDelay" type="Timer" parent="." unique_id=1638060030]
 wait_time = 0.5
 one_shot = true
+
+[node name="AudioCaller" type="Node" parent="." unique_id=1105456719]
+script = ExtResource("33_owjsm")
 
 [connection signal="facing_changed" from="." to="PlayerVisuals" method="_on_player_facing_changed"]
 [connection signal="facing_changed" from="." to="MantleDetector" method="_on_player_facing_changed"]
