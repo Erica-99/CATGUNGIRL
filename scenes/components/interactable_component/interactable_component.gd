@@ -1,10 +1,10 @@
 extends Node3D
 @onready var interaction_range: Area3D = $"Interaction Range"
 @onready var dialogue_component: Sprite3D = $DialogueComponent
-@onready var event_trigger: Area3D = $EventTrigger
 
 @export var interactable_type: Enums.InteractableType = Enums.InteractableType.DOOR
 @export var interaction_distance: float = 3.0
+@export var event_trigger: Node
 
 var parent_reference
 var player_reference
