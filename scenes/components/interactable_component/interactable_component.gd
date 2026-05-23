@@ -3,7 +3,7 @@ extends Node3D
 
 @export var interactable_type: Enums.InteractableType = Enums.InteractableType.DOOR
 @export var interactable_load_type: Enums.InteractableLoadType = Enums.InteractableLoadType.BACKGROUND
-@export var interaction_distance: float = 3.0
+@export var interaction_distance: float = 4.0
 @export var event_trigger: Node
 
 var player_in_range: bool = false
@@ -12,21 +12,20 @@ var tween: Tween
 var initial_position: Vector3
 
 var player_reference
+var ancestor: StaticBody3D
 
 # temp var
 @export var require_interaction: bool = true
 
 func _ready() -> void:
-	if interactable_load_type != Enums.InteractableLoadType.BACKGROUND_MESHINSTANCE:
-		_calculate_interaction_zone(true, get_parent())
-	else:
-		_calculate_interaction_zone(false)
+	_calculate_interaction_zone(interactable_load_type != Enums.InteractableLoadType.BACKGROUND_MESHINSTANCE)
 
-func _calculate_interaction_zone(is_using_obj_asset: bool = true, parent: MeshInstance3D = null):
+
+func _calculate_interaction_zone(is_using_obj_asset: bool = true):
 	#https://forum.godotengine.org/t/is-there-a-way-to-get-the-size-of-a-3d-mesh/23154/3
 	var mesh_box
-	if parent != null:
-		mesh_box = parent.get_aabb().size
+	if get_parent() != null:
+		mesh_box = get_parent().get_aabb().size
 	
 	var collision = CollisionShape3D.new()
 	collision.shape = BoxShape3D.new()
@@ -57,18 +56,15 @@ func _process(delta: float) -> void:
 					event_trigger._emit_signal()
 
 func _play_interact_animation(animation_name: String) -> void:
-	# tried to do this without tweening but its not possible unless we alter the objects :(
-	#https://docs.godotengine.org/en/stable/classes/class_tween.html
 	if tween:
 		tween.kill()
 	tween = create_tween()
 	
 	if animation_name == "open":
-		tween.tween_property(get_parent(), "position", initial_position + Vector3(-1.5, 0, 0), 0.8)
-		pass
+		tween.tween_property(get_parent().get_parent(), "position:x", initial_position.x - 10, 0.8)
 	else:
-		tween.tween_property(get_parent(), "position", initial_position, 0.8)
-		pass
+		tween.tween_property(get_parent().get_parent(), "position:x", initial_position.x, 0.8)
+		
 	
 func _on_interaction_range_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
