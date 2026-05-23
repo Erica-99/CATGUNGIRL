@@ -4,6 +4,7 @@ extends Node3D
 
 @export var interactable_type: Enums.InteractableType = Enums.InteractableType.DOOR
 @export var interaction_distance: float = 3.0
+@export var event_trigger: Node
 
 var parent_reference
 var player_reference
@@ -21,16 +22,24 @@ func _ready() -> void:
 	var parent_mesh_children = parent_reference.find_children("*", "MeshInstance3D", false)
 	if parent_mesh_children.size() > 0:
 		_calculate_interaction_zone(parent_mesh_children[0], false)
+		
+	if interactable_type == Enums.InteractableType.ELEVATOR:
+		_calculate_interaction_zone(0, false)
 
 func _calculate_interaction_zone(child, is_centred):
 	#https://forum.godotengine.org/t/is-there-a-way-to-get-the-size-of-a-3d-mesh/23154/3
-	var mesh_box = child.get_aabb().size
+	var mesh_box
+	if not interactable_type == Enums.InteractableType.ELEVATOR:
+		mesh_box = child.get_aabb().size
 	
 	var collision = CollisionShape3D.new()
 	collision.shape = BoxShape3D.new()
 	interaction_range.add_child(collision)
 	#collision.shape.size = mesh_box
 	
+	# all of this shit should be redone
+	# could be ez strategy pattern - just need to set up some prefabs and auto assign
+	# TODO: get to work on this fuckign hell
 	if interactable_type == Enums.InteractableType.CONSOLE:
 		# old shit remove later
 		#var start_interaction_range: Vector3 = Vector3(child.global_position.x, child.global_position.y, child.global_position.z)
@@ -43,14 +52,18 @@ func _calculate_interaction_zone(child, is_centred):
 		
 		collision.shape.size = Vector3(mesh_box.z, mesh_box.y, interaction_distance)
 		collision.position = Vector3(0, 0, interaction_distance / 2)
-	else:
+		
+	elif interactable_type == Enums.InteractableType.ELEVATOR:
+		collision.shape.size = Vector3(5, 5, interaction_distance)
+		collision.position = Vector3(0, 0, interaction_distance / 2)
+	elif interactable_type == Enums.InteractableType.DOOR:
 		collision.shape.size = Vector3(mesh_box.x + (interaction_distance / 3), mesh_box.y + (interaction_distance / 3), interaction_distance)
 		#collision.position = Vector3(0, 0, interaction_distance / 2)
 		#var offsets = Vector3(1, 1, 1)
 		#collision.shape.size = offsets
 	
 	#collision.rotation = child.rotation
-	print(collision.shape.size)
+	#print(collision.shape.size)
 	dialogue_component.position = Vector3(collision.shape.size.z / 2, collision.shape.size.y / 2, collision.shape.size.x / 2)
 
 
@@ -63,7 +76,8 @@ func _process(delta: float) -> void:
 				_play_interact_animation("open")
 		else:
 			if current_player_status["interacting"]:
-				print("interacting with console")
+				if event_trigger != null:
+					event_trigger._emit_signal()
 
 func _play_interact_animation(animation_name: String) -> void:
 	# tried to do this without tweening but its not possible unless we alter the objects :(
@@ -98,7 +112,7 @@ func _on_interaction_range_body_entered(body: Node3D) -> void:
 				_play_interact_animation("open")
 	
 		
-		if interactable_type == Enums.InteractableType.CONSOLE:
+		if interactable_type == Enums.InteractableType.CONSOLE || interactable_type == Enums.InteractableType.ELEVATOR:
 			dialogue_component._add_interact_bubble()
 
 

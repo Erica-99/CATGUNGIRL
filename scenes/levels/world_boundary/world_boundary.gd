@@ -6,7 +6,7 @@ extends StaticBody3D
 func _ready() -> void:
 	EventManager.room_cleared.connect(_check_door_status)
 
-func _check_door_status(cleared_room_ID: Enums.Room) -> void:
-	print("CLEARED ROOM ID: " + str(cleared_room_ID) + ", OG ROOM ID: " + str(room_ID))
+func _check_door_status(cleared_room_ID: Enums.Room, is_cleared: bool) -> void:
+	#print("CLEARED ROOM ID: " + str(cleared_room_ID) + ", OG ROOM ID: " + str(room_ID))
 	if cleared_room_ID == room_ID:
-		collision_shape_3d.disabled = true
+		collision_shape_3d.disabled = is_cleared
