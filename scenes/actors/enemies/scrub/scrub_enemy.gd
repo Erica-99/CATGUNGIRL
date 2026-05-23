@@ -1,15 +1,20 @@
 extends CharacterBody3D
 
-@export_category("Component Nodes")
+@export_category("Node References")
 @export var animator: AnimatedSprite3D
 @export var state_machine: StateMachine
+
+var is_dead: bool = false
 
 @onready var health_comp = $HealthComponent
 @export var gun_component: Node3D
 @export var grenade: PackedScene
 
-@export_category("Movement Variables")
+@export_category("Stat Variables")
 @export var move_speed: float = 10
+@export var patrol_speed: float
+@export var chase_speed: float
+@export var flee_speed: float
 @export var slow_down_speed: float = 30
 var facing: float
 
@@ -29,7 +34,9 @@ func _ready() -> void:
 		"anim": animator,
 		"gun_component": gun_component,
 		"grenade": grenade,
-		"move_speed": move_speed,
+		"patrol_speed": patrol_speed,
+		"chase_speed": chase_speed,
+		"flee_speed": flee_speed,
 		"slow_down_speed": slow_down_speed,
 	}
 	# Initialise state machine with Scrub information
@@ -38,6 +45,12 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+# health comp killed taken from convict code
+func _on_health_component_killed(killing_blow: DamageHealInstance, health_before_death: Variant) -> void:
+	# Possibly implement knockback affects here
+	is_dead = true
+	state_machine.on_child_transition(state_machine.current_state, "scrubdeath")
 
 # When player enters detection range, move to attack
 # For a possible specific case, if they are in detection but

@@ -8,7 +8,7 @@ class_name ScrubFlee
 
 var actor: CharacterBody3D
 var anim: AnimatedSprite3D
-var move_speed: float
+var flee_speed: float
 
 var player: CharacterBody3D
 
@@ -16,7 +16,7 @@ func init(blackboard_dict : Dictionary) -> void:
 	super(blackboard_dict)
 	actor = blackboard["actor"]
 	anim = blackboard["anim"]
-	move_speed = blackboard["move_speed"]
+	flee_speed = blackboard["flee_speed"]
 
 func enter() -> void:
 	player = get_tree().get_nodes_in_group("Player")[0] as CharacterBody3D
@@ -40,6 +40,6 @@ func physics_update(_delta: float) -> void:
 	#anim.play("flee")
 	
 	# Same logic as chase, just made negative, to move away from player
-	actor.velocity.x += -(direction * move_speed * _delta)
-	actor.velocity.x = clamp(actor.velocity.x, -move_speed, move_speed)
+	actor.velocity.x += -(direction * flee_speed * _delta)
+	actor.velocity.x = clamp(actor.velocity.x, -flee_speed, flee_speed)
 	actor.move_and_slide()
