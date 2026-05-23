@@ -16,7 +16,7 @@ const BASE_TIMEOUT: float = 4.0
 const MAX_KILLSTREAK: int = 20
 const SHAKE_RATE_MULTIPLIER: float = 0.5
 const SHAKE_LEVEL_MULTIPLIER: float = 0.25
-const MINI_GIGI_PREFAB = preload("res://scenes/ui/killstreak_display/mini_gi_gi_emotes.tscn")
+const MINI_GIGI_PREFAB = preload("res://scenes/ui/hud_display/killstreak_display/mini_gi_gi_emotes.tscn")
 
 func _ready() -> void:
 	# make sure randomise is called for random mini gigis
