@@ -30,8 +30,8 @@ func _spawn_enemy(custom_delay: float, spawner_path: NodePath):
 # create enemy
 func _on_spawn_delay_timer_timeout() -> void:
 	var convict = CONVICT_PREFAB.instantiate()
-	convict.global_position = global_position
 	linked_enemy_manager.add_child(convict)
 	# owner must be assigned for enemy manager to recognise an enemy as a child
 	convict.owner = linked_enemy_manager
+	convict.global_position = spawn_point.global_position
 	linked_enemy_manager._check_enemies_remaining(convict)
