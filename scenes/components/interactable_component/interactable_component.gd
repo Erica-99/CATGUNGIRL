@@ -1,6 +1,5 @@
 extends Node3D
 @onready var interaction_range: Area3D = $"Interaction Range"
-@onready var dialogue_component: Sprite3D = $DialogueComponent
 
 @export var interactable_type: Enums.InteractableType = Enums.InteractableType.DOOR
 @export var interaction_distance: float = 3.0
@@ -61,11 +60,6 @@ func _calculate_interaction_zone(child, is_centred):
 		#collision.position = Vector3(0, 0, interaction_distance / 2)
 		#var offsets = Vector3(1, 1, 1)
 		#collision.shape.size = offsets
-	
-	#collision.rotation = child.rotation
-	#print(collision.shape.size)
-	dialogue_component.position = Vector3(collision.shape.size.z / 2, collision.shape.size.y / 2, collision.shape.size.x / 2)
-
 
 func _process(delta: float) -> void:
 	if player_in_range:
@@ -106,14 +100,14 @@ func _on_interaction_range_body_entered(body: Node3D) -> void:
 		player_reference = body
 		if interactable_type == Enums.InteractableType.DOOR:
 			if require_interaction:
-				dialogue_component._add_interact_bubble()
+				EventManager.system_message.emit("Press E to interact.", true)
 			
 			else:
 				_play_interact_animation("open")
 	
 		
 		if interactable_type == Enums.InteractableType.CONSOLE || interactable_type == Enums.InteractableType.ELEVATOR:
-			dialogue_component._add_interact_bubble()
+			EventManager.system_message.emit("Press E to interact.", true)
 
 
 func _on_interaction_range_body_exited(body: Node3D) -> void:
@@ -121,4 +115,4 @@ func _on_interaction_range_body_exited(body: Node3D) -> void:
 		player_in_range = false
 		if interactable_type == Enums.InteractableType.DOOR:
 			_play_interact_animation("close")
-		dialogue_component._fade_bubbles()
+		EventManager.system_message.emit("", false)
