@@ -32,6 +32,7 @@ enum ChargeMode {
 enum InteractableType {
 	DOOR,
 	CONSOLE,
+	ELEVATOR,
 }
 
 enum BubbleType {
