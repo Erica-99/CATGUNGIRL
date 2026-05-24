@@ -117,6 +117,7 @@ func _on_flee_area_3d_body_exited(body):
 
 
 func _on_health_component_health_changed(old_health: float, new_health: float, damage_or_heal_instance: DamageHealInstance) -> void:
-	if !in_attacking_range && !is_dead:
+	if !detected_player && !is_dead:
+		detected_player = true
 		state_machine.on_child_transition(state_machine.current_state, "scrubchase")
 		print("Chasing Player")
