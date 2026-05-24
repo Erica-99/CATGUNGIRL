@@ -7,6 +7,8 @@ var actor: CharacterBody3D
 var anim: AnimatedSprite3D
 var slow_down_speed: float
 var attack_hitbox: Area3D
+var hit_deceleration: float
+
 
 func init(blackboard_dict: Dictionary) -> void:
 	super(blackboard_dict)
@@ -14,6 +16,7 @@ func init(blackboard_dict: Dictionary) -> void:
 	anim = blackboard["anim"]
 	slow_down_speed = blackboard["slow_down_speed"]
 	attack_hitbox = blackboard["attack_hitbox"]
+	hit_deceleration = blackboard["hit_deceleration"]
 
 func enter() -> void:
 	#Allow for animation interrupts if a target jumps onto them while in their attack anim
@@ -23,7 +26,8 @@ func enter() -> void:
 
 # The time that the Convict stops for after an attack is determined by their attack anim
 func physics_update(_delta: float) -> void:
-	actor.velocity.x = move_toward(actor.velocity.x, 0, slow_down_speed * _delta)
+	# hit deceleration makes stopping almost instant
+	actor.velocity.x = move_toward(actor.velocity.x, 0, hit_deceleration * _delta)
 	actor.move_and_slide()
 	await anim.animation_looped
 	attack_hitbox.find_child("*").set_deferred("disabled", false)

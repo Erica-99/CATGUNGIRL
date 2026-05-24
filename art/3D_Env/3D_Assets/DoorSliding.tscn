@@ -11,9 +11,10 @@ points = PackedVector3Array(0.40263447, -0.20240024, 0.096286505, -0.5361897, -1
 [node name="DoorSliding_Mesh" type="MeshInstance3D" parent="." unique_id=1080977232]
 mesh = ExtResource("1_4h4ey")
 
-[node name="DoorSliding_Collision" type="CollisionShape3D" parent="." unique_id=928496529]
-shape = SubResource("ConvexPolygonShape3D_4h4ey")
-
-[node name="InteractableComponent" parent="." unique_id=2140039813 instance=ExtResource("2_bbow1")]
+[node name="InteractableComponent" parent="DoorSliding_Mesh" unique_id=2140039813 instance=ExtResource("2_bbow1")]
+interactable_load_type = 2
 interaction_distance = 2.0
 require_interaction = false
+
+[node name="DoorSliding_Collision" type="CollisionShape3D" parent="." unique_id=928496529]
+shape = SubResource("ConvexPolygonShape3D_4h4ey")

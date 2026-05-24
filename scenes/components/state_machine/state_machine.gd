@@ -10,6 +10,7 @@ signal state_changed(prev: String, new: String)
 @export var initial_state: State
 
 var current_state : State
+var current_state_name: String
 var states : Dictionary = {}
 
 

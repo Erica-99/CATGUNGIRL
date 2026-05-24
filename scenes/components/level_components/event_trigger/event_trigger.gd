@@ -51,6 +51,10 @@ func deactivate():
 	active = false
 
 func _on_body_entered(body: Node3D) -> void:
+	_emit_signal()
+
+# continuation (in different function to allow for body bypass)
+func _emit_signal():
 	if not active:
 		return
 	
