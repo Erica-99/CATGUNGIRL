@@ -11,7 +11,10 @@ extends Node3D
 @export var team_component: Node		# enemy TeamComponent reference, passed to bullets
 
 @export_group("Normal Fire")
-@export var fire_rate: float = 3		# time (seconds) between shots
+@export var fire_rate: float = 0.2		# time (seconds) between shots
+@export var bullets_per_barrage: int = 3
+@export var reload_rate: float = 3
+@export var max_inaccuracy: float = 0.2
 @export var bullet_damage: float = 15.0		# bullet damage
 @export var bullet_knockback: float = 0.0	# knockback force (can remove)
 @export var bullet_scale: float = 1.0	# visual size of bullet 
@@ -21,16 +24,20 @@ var _is_firing: bool
 var _fire_cooldown: float = 0.0	# counts down each frame, gun can't fire until it hits 0
 var _target: CharacterBody3D
 
+# how many bullets fired during barrage - reset on firing switch
+var _bullets_fired: int = 0
+
 # Set target to Player
 # TODO: change to allow for aiming at convicts
 func _ready():
+	randomize()
 	_is_firing = false
 	_target = get_tree().get_nodes_in_group("Player")[0] as CharacterBody3D
 	
 # Active in ScrubAttack state, where player is in attack range.
 # Aim toward Player's current position and fire on a cooldown timer
 func _process(delta: float) -> void:
-	if _is_firing:
+	if _is_firing && _bullets_fired < 3:
 		# Rotate gun towards Player
 		var direction = _target.global_position - global_position
 		direction.z = 0
@@ -42,8 +49,16 @@ func _process(delta: float) -> void:
 		if _fire_cooldown > fire_rate:
 			_fire_cooldown = 0
 			_spawn_bullet(bullet_damage, bullet_scale)
+			_bullets_fired += 1
 	# When not aiming at the player, gun is aimed down
 	# TODO: change for better animation once implemented
+	elif _is_firing && _bullets_fired >= 3:
+		rotation.z = -PI/2
+		_fire_cooldown += delta
+		if _fire_cooldown > reload_rate:
+			_fire_cooldown = 0
+			_bullets_fired = 0
+		pass
 	else:
 		rotation.z = -PI/2
 
@@ -52,7 +67,9 @@ func _spawn_bullet(damage: float, size: float) -> void:
 	get_tree().root.add_child(scrub_bullet)
 	scrub_bullet.global_transform = muzzle.global_transform
 	
-	var aim_dir = Vector3(cos(rotation.z), sin(rotation.z), 0.0).normalized()
+	var calculated_inaccuracy = randf_range(-max_inaccuracy, max_inaccuracy)
+	
+	var aim_dir = Vector3(cos(rotation.z), sin(rotation.z) + calculated_inaccuracy, 0.0).normalized()
 	
 	# each bullet gets its own DamageHealInstance no sharing/overwriting other bullet data
 	var damage_instance = DamageHealInstance.new()

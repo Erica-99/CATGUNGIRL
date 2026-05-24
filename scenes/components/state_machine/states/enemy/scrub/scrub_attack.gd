@@ -25,6 +25,7 @@ func init(blackboard_dict : Dictionary) -> void:
 
 func enter() -> void:
 	gun_component._is_firing = true
+	gun_component._bullets_fired = 0
 
 func exit() -> void:
 	gun_component._is_firing = false
