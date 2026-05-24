@@ -6,11 +6,19 @@ extends CharacterBody3D
 
 var is_dead: bool = false
 
+@export_category("Starting State Variables")
+@export var start_aggroed: bool
+@export var patroller: bool
+@export var start_idle: State
+@export var start_patrol: State
+@export var start_aggro: State
+
 @onready var health_comp = $HealthComponent
 @export var gun_component: Node3D
 @export var grenade: PackedScene
 
 @export_category("Stat Variables")
+@export var direction: int = 1
 @export var move_speed: float = 10
 @export var patrol_speed: float
 @export var chase_speed: float
@@ -32,6 +40,7 @@ func _ready() -> void:
 		# Actor for movement stats
 		"actor": self,
 		"anim": animator,
+		"direction": direction,
 		"gun_component": gun_component,
 		"grenade": grenade,
 		"patrol_speed": patrol_speed,
@@ -39,6 +48,14 @@ func _ready() -> void:
 		"flee_speed": flee_speed,
 		"slow_down_speed": slow_down_speed,
 	}
+	# Change initial state based on Inspector values
+	if start_aggroed:
+		state_machine.initial_state = start_aggro
+	else:
+		if patroller:
+			state_machine.initial_state = start_patrol
+		else:
+			state_machine.initial_state = start_idle
 	# Initialise state machine with Scrub information
 	state_machine.init(blackboard)
 
@@ -57,7 +74,7 @@ func _on_health_component_killed(killing_blow: DamageHealInstance, health_before
 # not attack range move to chase.
 # TODO: Improve by utilising more detection logic than just an area
 func _on_detection_area_3d_body_entered(body: Node3D) -> void:
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") && !is_dead:
 		if detected_player == false:
 			detected_player = true
 			print("Player entered detection area")
@@ -70,7 +87,7 @@ func _on_detection_area_3d_body_entered(body: Node3D) -> void:
 # When player enters attack range, check off that theyre in range
 # If player has been detected, move to attack state
 func _on_att_range_area_3d_body_entered(body):
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") && !is_dead:
 		in_attacking_range = true
 		if detected_player:
 			state_machine.on_child_transition(state_machine.current_state, "scrubattack")
@@ -79,7 +96,7 @@ func _on_att_range_area_3d_body_entered(body):
 # When player leaves attack range, check of that they're out of range
 # If they have been detected, move to chase
 func _on_att_range_area_3d_body_exited(body):
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") && !is_dead:
 		in_attacking_range = true
 		if detected_player:
 			state_machine.on_child_transition(state_machine.current_state, "scrubchase")
@@ -87,7 +104,7 @@ func _on_att_range_area_3d_body_exited(body):
 
 # When player enters flee range, move to flee
 func _on_flee_area_3d_body_entered(body):
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") && !is_dead:
 		state_machine.on_child_transition(state_machine.current_state, "scrubflee")
 		print("Fleeing Player")
 
@@ -95,5 +112,11 @@ func _on_flee_area_3d_body_entered(body):
 # TODO: Improve flee logic so that Scrub tries to make distance/
 #    stops fleeing if they are blocked.
 func _on_flee_area_3d_body_exited(body):
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") && !is_dead:
 		state_machine.on_child_transition(state_machine.current_state, "scrubattack")
+
+
+func _on_health_component_health_changed(old_health: float, new_health: float, damage_or_heal_instance: DamageHealInstance) -> void:
+	if !in_attacking_range && !is_dead:
+		state_machine.on_child_transition(state_machine.current_state, "scrubchase")
+		print("Chasing Player")

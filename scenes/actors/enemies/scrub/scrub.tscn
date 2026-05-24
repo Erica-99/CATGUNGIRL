@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://bp55fp56p8pwx" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_chase.gd" id="10_ly0j2"]
 [ext_resource type="Script" uid="uid://doxqnfsm4wb8g" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_flee.gd" id="11_2i5hx"]
 [ext_resource type="Script" uid="uid://briciybelpcwe" path="res://scenes/components/state_machine/states/enemy/enemy_death.gd" id="21_m88xv"]
+[ext_resource type="Script" uid="uid://rwkg37dkkbs1" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_patrol.gd" id="22_bmk6k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a7kog"]
 atlas = ExtResource("3_m88xv")
@@ -621,12 +622,15 @@ radius = 20.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_05tr2"]
 radius = 5.0
 
-[node name="Scrub" type="CharacterBody3D" unique_id=1090872008 node_paths=PackedStringArray("animator", "state_machine", "gun_component")]
+[node name="Scrub" type="CharacterBody3D" unique_id=1090872008 node_paths=PackedStringArray("animator", "state_machine", "start_idle", "start_patrol", "start_aggro", "gun_component")]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_2i5hx")
 animator = NodePath("Visuals/AnimatedSprite3D")
 state_machine = NodePath("StateMachine")
+start_idle = NodePath("StateMachine/ScrubIdle")
+start_patrol = NodePath("StateMachine/ScrubPatrol")
+start_aggro = NodePath("StateMachine/ScrubChase")
 gun_component = NodePath("ScrubGun")
 grenade = ExtResource("2_tpnop")
 patrol_speed = 5.0
@@ -704,6 +708,9 @@ metadata/_custom_type_script = "uid://doxqnfsm4wb8g"
 script = ExtResource("21_m88xv")
 metadata/_custom_type_script = "uid://c18mlpgd4umeh"
 
+[node name="ScrubPatrol" type="Node" parent="StateMachine" unique_id=1596137402]
+script = ExtResource("22_bmk6k")
+
 [node name="DetectionArea3D" type="Area3D" parent="." unique_id=1101772605]
 collision_layer = 0
 collision_mask = 2
@@ -727,6 +734,7 @@ collision_mask = 2
 shape = SubResource("SphereShape3D_05tr2")
 debug_color = Color(0.77217674, 0.44468626, 0, 0.33333334)
 
+[connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]
 [connection signal="body_entered" from="DetectionArea3D" to="." method="_on_detection_area_3d_body_entered"]
 [connection signal="body_entered" from="AttRangeArea3D" to="." method="_on_att_range_area_3d_body_entered"]
