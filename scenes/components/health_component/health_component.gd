@@ -75,6 +75,7 @@ func set_health(value: float) -> void:
 
 ## Take the specified damage or heal instance
 func take_damage_or_heal(damage_or_heal_instance: DamageHealInstance) -> void:
+	print(current_health)
 	if damageable and not damage_or_heal_instance.is_heal:		
 		var prev_health = current_health
 		current_health -= damage_or_heal_instance.amount
