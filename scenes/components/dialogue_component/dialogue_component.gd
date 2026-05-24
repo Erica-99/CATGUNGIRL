@@ -67,7 +67,6 @@ func _remove_bubble(child):
 	child.queue_free()
 
 func _handle_system_messages(dialogue: String, message_status: bool = false):
-	print(self.get_path())
 	if message_status:
 		_add_bubble(dialogue, message_status)
 	else:
@@ -85,11 +84,13 @@ func _add_bubble(dialogue: String, is_system_popup: bool = false):
 		
 		add_child(bubble)
 		bubble._set_text(dialogue)
+		# make component listen to the child transparency calls
+		bubble.is_transparent.connect(_remove_bubble)
 		if attached_to_team != Enums.Team.WORLD:
 			bubble.can_disappear = true
-			# make component listen to the child transparency calls
-			bubble.is_transparent.connect(_remove_bubble)
 			_update_all_transparency_speed()
+		else:
+			bubble.base_transparency_speed = system_transparency_speed
 
 func _update_all_transparency_speed() -> void:
 	var index = 0
@@ -102,9 +103,6 @@ func _make_all_bubbles_transparent() -> void:
 	for bubble in get_children():
 		if bubble is PanelContainer:
 			bubble.can_disappear = true
-			bubble.base_transparency_speed = system_transparency_speed
-			# make component listen to the child transparency calls
-			bubble.is_transparent.connect(_remove_bubble)
 
 # chucking this stuff here so its out of the way lol
 # these are just the unit tests for dialogue loading

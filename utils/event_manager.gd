@@ -23,3 +23,5 @@ signal spawn_enemy(custom_delay: float, spawner_path: NodePath)
 signal start_elevator()
 
 signal system_message(dialogue: String, message_status: bool)
+
+signal shield_enabled_status(status: bool)
