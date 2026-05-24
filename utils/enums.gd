@@ -29,9 +29,17 @@ enum ChargeMode {
 	HOLD_TO_FIRE, ## hold right click -> charge builds up -> release to fire
 }
 
+enum InteractableLoadType {
+	BACKGROUND,
+	BACKGROUND_MESHINSTANCE, # this one should be applied in cases where assets havent been used yet - instead mesh instances have etc. yaw
+	DOOR,
+}
+
 enum InteractableType {
 	DOOR,
 	CONSOLE,
+	ELEVATOR,
+	BRAIN_TERMINAL,
 }
 
 enum BubbleType {

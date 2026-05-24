@@ -18,6 +18,7 @@ func enter() -> void:
 
 func exit() -> void:
 	print("HAS EXITED FALLING")
+	AudioManager.play_sfx("jump_landing")
 	if blackboard["mantle_detector"] != null:
 		blackboard["mantle_detector"].set_checking_enabled(false)
 	blackboard["jump_timer"].start()
