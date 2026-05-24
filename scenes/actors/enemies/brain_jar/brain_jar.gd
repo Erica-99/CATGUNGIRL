@@ -9,14 +9,9 @@ var health
 func _ready() -> void:
 	EventManager.shield_enabled_status.connect(_disable_shields)
 	
-	shields = $ShieldCollision
-	shields.body_entered.connect(_on_body_entered)
+	shields = $Shields/CollisionShape3D
 	health_bar.init_health(health)
 	_disable_shields()
-
-func _on_body_entered(body):
-	if body.collision_layer and (1 << 5) != 0:
-		body.queue_free()
 
 func _on_health_component_health_initialised(init_current_health: float, init_max_health: float) -> void:
 	health = init_max_health
@@ -30,8 +25,8 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 
 func _disable_shields(signal_val = false):
 	if !signal_val:
-		shields.monitoring = false
+		shields.disabled = true
 
 func _enable_shields():
-	shields.monitoring = true
+	shields.disabled = false
 	EventManager.shield_enabled_status.emit(true)
