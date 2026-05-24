@@ -19,6 +19,10 @@
 
 [node name="StageOne" type="Node3D" unique_id=1668100898]
 
+[node name="Player" parent="." unique_id=1349193765 instance=ExtResource("15_58xmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124, 2.14, 0)
+collision_mask = 129
+
 [node name="Environment" type="Node3D" parent="." unique_id=929020045]
 
 [node name="WallRear" parent="Environment" unique_id=206436331 instance=ExtResource("12_2wemj")]
@@ -48,40 +52,9 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 157.221, 8.4, -10)
 [node name="DoorwaySingle" parent="Environment" unique_id=1936140797 instance=ExtResource("13_ncbjx")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30.203, 0, 0)
 
-[node name="DoorSlidingBasic" parent="Environment" unique_id=1555562335 instance=ExtResource("14_rxfni")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30.203, 0, 0)
-
-[node name="DoorSlidingBasic2" parent="Environment" unique_id=1952065026 instance=ExtResource("14_rxfni")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 54.61, 0, 0)
-
-[node name="DoorSlidingBasic8" parent="Environment" unique_id=866621822 instance=ExtResource("14_rxfni")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 54.61, 8.4, 0)
-
 [node name="DoorSlidingBasic3" parent="Environment" unique_id=1228585808 instance=ExtResource("14_rxfni")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 54.61, 8.4, 0)
 visible = false
-
-[node name="DoorExit" parent="Environment" unique_id=863191425 instance=ExtResource("15_nxh37")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 223.83, 0, 0)
-
-[node name="LevelEnd" parent="Environment/DoorExit" unique_id=914563996 instance=ExtResource("5_58xmu")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.11778259, 1.2896835, 0)
-level_name = "Stage2"
-
-[node name="DoorSlidingBasic4" parent="Environment" unique_id=337872740 instance=ExtResource("14_rxfni")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 163.424, 0, 0)
-
-[node name="DoorSlidingBasic5" parent="Environment" unique_id=104256218 instance=ExtResource("14_rxfni")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 163.424, 8.4, 0)
-
-[node name="DoorSlidingBasic9" parent="Environment" unique_id=499559797 instance=ExtResource("14_rxfni")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 223.83, 8.4, 0)
-
-[node name="DoorSlidingBasic6" parent="Environment" unique_id=846985806 instance=ExtResource("14_rxfni")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 139.018, 8.4, 0)
-
-[node name="DoorSlidingBasic7" parent="Environment" unique_id=1920529607 instance=ExtResource("14_rxfni")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 139.018, 0, 0)
 
 [node name="Floor11" parent="Environment" unique_id=1523988810 instance=ExtResource("1_yyety")]
 
@@ -450,31 +423,47 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 145.221, 8.4, 0)
 [node name="FloorMeshEdge4" parent="Environment" unique_id=1382619847 instance=ExtResource("11_5tcoj")]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 157.221, 8.4, 0)
 
-[node name="Interactable" type="Node3D" parent="." unique_id=1604478648]
+[node name="Interactive" type="Node3D" parent="." unique_id=1604478648]
 
-[node name="PrisonCell2" parent="Interactable" unique_id=1820878786 instance=ExtResource("10_515bo")]
+[node name="PrisonCell2" parent="Interactive" unique_id=1820878786 instance=ExtResource("10_515bo")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 87.782555, 11.514895, -8.703846)
 
-[node name="PrisonCell3" parent="Interactable" unique_id=1192044702 instance=ExtResource("10_515bo")]
+[node name="PrisonCell3" parent="Interactive" unique_id=1192044702 instance=ExtResource("10_515bo")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 93.83821, 11.515, -3.934)
 
-[node name="PrisonCell4" parent="Interactable" unique_id=1451024771 instance=ExtResource("10_515bo")]
+[node name="PrisonCell4" parent="Interactive" unique_id=1451024771 instance=ExtResource("10_515bo")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 99.89586, 11.514895, -8.703846)
 
-[node name="PrisonCell5" parent="Interactable" unique_id=975212452 instance=ExtResource("10_515bo")]
+[node name="PrisonCell5" parent="Interactive" unique_id=975212452 instance=ExtResource("10_515bo")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 105.636215, 11.515, -3.934)
 
-[node name="PrisonCell7" parent="Interactable" unique_id=1858208638 instance=ExtResource("10_515bo")]
+[node name="PrisonCell7" parent="Interactive" unique_id=1858208638 instance=ExtResource("10_515bo")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 81.86137, 5.3458843, -3.933535)
 
-[node name="PrisonCell8" parent="Interactable" unique_id=38387427 instance=ExtResource("10_515bo")]
+[node name="PrisonCell8" parent="Interactive" unique_id=38387427 instance=ExtResource("10_515bo")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 87.78222, 5.346, -3.934)
 
-[node name="PrisonCell9" parent="Interactable" unique_id=261420180 instance=ExtResource("10_515bo")]
+[node name="PrisonCell9" parent="Interactive" unique_id=261420180 instance=ExtResource("10_515bo")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 93.838135, 5.3458843, -8.703846)
 
-[node name="PrisonCell12" parent="Interactable" unique_id=1541792463 instance=ExtResource("10_515bo")]
+[node name="PrisonCell12" parent="Interactive" unique_id=1541792463 instance=ExtResource("10_515bo")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 111.76623, 5.3458843, -8.703846)
 
-[node name="Player" parent="." unique_id=1349193765 instance=ExtResource("15_58xmu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124, 2.14, 0)
+[node name="DoorExit" parent="Interactive" unique_id=863191425 instance=ExtResource("15_nxh37")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 223.83, 0, 0)
+
+[node name="LevelEnd" parent="Interactive/DoorExit" unique_id=914563996 instance=ExtResource("5_58xmu")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.11778259, 1.2896835, 0)
+level_name = "Stage2"
+
+[node name="DoorSlidingBasic" parent="." unique_id=1555562335 instance=ExtResource("14_rxfni")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 163.424, 8.4, 0)
+
+[node name="DoorSlidingBasic3" parent="." unique_id=1859784681 instance=ExtResource("14_rxfni")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 223.83, 8.4, 0)
+
+[node name="DoorSlidingBasic2" parent="." unique_id=297988308 instance=ExtResource("14_rxfni")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 139.018, 8.4, 0)
+
+[node name="DoorSlidingBasic4" parent="." unique_id=551553933 instance=ExtResource("14_rxfni")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 54.61, 8.4, 0)

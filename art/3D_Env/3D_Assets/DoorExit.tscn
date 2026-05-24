@@ -9,6 +9,11 @@ points = PackedVector3Array(-0.14107618, 0.08232379, -0.6177761, 0.14174286, 2.3
 [sub_resource type="BoxShape3D" id="BoxShape3D_kvlv1"]
 size = Vector3(0.8179016, 0.52075195, 1.1655273)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kvlv1"]
+albedo_color = Color(0, 1, 0, 1)
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+
 [node name="DoorExit" type="StaticBody3D" unique_id=863191425]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
@@ -24,3 +29,11 @@ mesh = ExtResource("2_5tbkx")
 [node name="DoorwaySlidingBasic_Collision" type="CollisionShape3D" parent="." unique_id=142326310]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0007171631, 2.5749319, -0.0026855469)
 shape = SubResource("BoxShape3D_kvlv1")
+
+[node name="EXITHERECYLINDER" type="CSGCylinder3D" parent="." unique_id=908169972]
+transform = Transform3D(0.26, 0, 0, 0, -5.289078e-09, -0.26, 0, 0.121, -1.13649605e-08, 0.3085317, 2.4297729, 1.08457115e-07)
+material = SubResource("StandardMaterial3D_kvlv1")
+
+[node name="EXITHERECYLINDER2" type="CSGCylinder3D" parent="." unique_id=495205314]
+transform = Transform3D(0.26, 0, 0, 0, -5.289078e-09, -0.26, 0, 0.121, -1.13649605e-08, -0.3063939, 2.4297729, 1.08457115e-07)
+material = SubResource("StandardMaterial3D_kvlv1")
