@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dbngf48l88aym" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/DoorwayLarge.tscn" id="22_4otvg"]
 [ext_resource type="PackedScene" uid="uid://cchkjk2lolyo0" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/FloorShooting.tscn" id="22_f7hie"]
 [ext_resource type="PackedScene" uid="uid://n6gwkimpd6oj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/WallPlainRear.tscn" id="23_f7hie"]
+[ext_resource type="PackedScene" uid="uid://11pckncgaxu4" path="res://scenes/components/level_components/level_transitions/level_end.tscn" id="24_8s1m1"]
 [ext_resource type="PackedScene" uid="uid://paa0do4ab2fn" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/ShelfWarehouse.tscn" id="24_b12nq"]
 
 [node name="StageThree" type="Node3D" unique_id=535640616]
@@ -1006,6 +1007,10 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 235.42436, 192.895, 0)
 
 [node name="DoorExit" parent="Environment" unique_id=863191425 instance=ExtResource("17_dp8q3")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 235.424, 192.895, 0)
+
+[node name="LevelEnd" parent="Environment/DoorExit" unique_id=914563996 instance=ExtResource("24_8s1m1")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.288002, 1.0524979, 0)
+level_name = "Stage5"
 
 [node name="WallPlainRear4" parent="Environment" unique_id=1669431150 instance=ExtResource("23_f7hie")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 265.628, 150.895, 0)

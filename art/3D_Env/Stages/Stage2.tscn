@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://0jvpofncsmg4" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/FloorShootingPanopticon.tscn" id="15_8pafm"]
 [ext_resource type="PackedScene" uid="uid://c1ssohbgds6hd" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Floor.tscn" id="15_8t5g3"]
 [ext_resource type="PackedScene" uid="uid://bhjyu5ru1eqco" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/PanopticonPillars.tscn" id="16_1ahnt"]
+[ext_resource type="PackedScene" uid="uid://11pckncgaxu4" path="res://scenes/components/level_components/level_transitions/level_end.tscn" id="17_mu5e4"]
 
 [node name="StageTwo" type="Node3D" unique_id=282651265]
 
@@ -164,6 +165,10 @@ transform = Transform3D(0.68180925, 0, -1.8801957, 0, 2, 0, 1.8801957, 0, 0.6818
 
 [node name="DoorExit2" parent="Environment" unique_id=2120129318 instance=ExtResource("9_f12kt")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 169.129, 126.05, 0.668)
+
+[node name="LevelEnd" parent="Environment/DoorExit2" unique_id=914563996 instance=ExtResource("17_mu5e4")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.25334167, 1.1749954, -0.18361843)
+level_name = "Stage3"
 
 [node name="FloorShootingPanopticon" parent="Environment" unique_id=1196948271 instance=ExtResource("15_8pafm")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 81.46, 67.224945, 0)

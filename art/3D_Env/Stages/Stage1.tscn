@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://n6gwkimpd6oj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/WallPlainRear.tscn" id="3_5qtrk"]
 [ext_resource type="PackedScene" uid="uid://dfg3qj6dl3f8d" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Roof.tscn" id="4_f5wh3"]
 [ext_resource type="PackedScene" uid="uid://bcxgyj6fq1doy" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/DoorwayMultiLevel.tscn" id="5_46s4o"]
+[ext_resource type="PackedScene" uid="uid://11pckncgaxu4" path="res://scenes/components/level_components/level_transitions/level_end.tscn" id="5_58xmu"]
 [ext_resource type="PackedScene" uid="uid://38mnvgvhh3rv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/WallCells.tscn" id="8_rv2p2"]
 [ext_resource type="PackedScene" uid="uid://cchkjk2lolyo0" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/FloorShooting.tscn" id="9_ua2r8"]
 [ext_resource type="PackedScene" uid="uid://c25xy8q7gjfmi" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/WallMultiLevelRear.tscn" id="10_6mj4s"]
@@ -13,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cx47o6m7vtnwg" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/WallRear.tscn" id="12_2wemj"]
 [ext_resource type="PackedScene" uid="uid://cao0d81ad8hbv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/DoorwaySingle.tscn" id="13_ncbjx"]
 [ext_resource type="PackedScene" uid="uid://dsp60dlsho3gr" path="res://art/3D_Env/3D_Assets/DoorBasic.tscn" id="14_rxfni"]
+[ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="15_58xmu"]
 [ext_resource type="PackedScene" uid="uid://k4bj1vh7ofsj" path="res://art/3D_Env/3D_Assets/DoorExit.tscn" id="15_nxh37"]
 
 [node name="StageOne" type="Node3D" unique_id=1668100898]
@@ -61,6 +63,10 @@ visible = false
 
 [node name="DoorExit" parent="Environment" unique_id=863191425 instance=ExtResource("15_nxh37")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 223.83, 0, 0)
+
+[node name="LevelEnd" parent="Environment/DoorExit" unique_id=914563996 instance=ExtResource("5_58xmu")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.11778259, 1.2896835, 0)
+level_name = "Stage2"
 
 [node name="DoorSlidingBasic4" parent="Environment" unique_id=337872740 instance=ExtResource("14_rxfni")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 163.424, 0, 0)
@@ -469,3 +475,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 93.838135, 5.3458843, -8.7038
 
 [node name="PrisonCell12" parent="Interactable" unique_id=1541792463 instance=ExtResource("10_515bo")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 111.76623, 5.3458843, -8.703846)
+
+[node name="Player" parent="." unique_id=1349193765 instance=ExtResource("15_58xmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124, 2.14, 0)

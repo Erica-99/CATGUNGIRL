@@ -73,7 +73,7 @@ func _play_interact_animation(animation_name: String) -> void:
 	tween = create_tween()
 	
 	if animation_name == "open":
-		tween.tween_property(get_parent(), "position", initial_position + Vector3(-1.5, 0, 0), 0.8)
+		tween.tween_property(get_parent(), "position", initial_position + Vector3(0, 4.0, 0), 0.15)
 		pass
 	else:
 		tween.tween_property(get_parent(), "position", initial_position, 0.8)

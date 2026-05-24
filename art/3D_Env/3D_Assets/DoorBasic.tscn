@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dsp60dlsho3gr"]
 
+[ext_resource type="PackedScene" uid="uid://ou3g778y2q8g" path="res://scenes/components/interactable_component/interactable_component.tscn" id="1_ohxkl"]
 [ext_resource type="ArrayMesh" uid="uid://bla12lknxolc2" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/DoorSlidingBasic.obj" id="1_rwo67"]
 [ext_resource type="ArrayMesh" uid="uid://dea42rnao7hhc" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/DoorwaySlidingBasic.obj" id="2_ohxkl"]
 
@@ -15,8 +16,11 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 [node name="DoorSlidingBasic_Mesh" type="MeshInstance3D" parent="." unique_id=1339969428]
 mesh = ExtResource("1_rwo67")
 
-[node name="DoorSlidingBasic_Collision" type="CollisionShape3D" parent="." unique_id=1106955015]
+[node name="DoorSlidingBasic_Collision" type="CollisionShape3D" parent="DoorSlidingBasic_Mesh" unique_id=1106955015]
 shape = SubResource("ConvexPolygonShape3D_q7qm1")
+
+[node name="InteractableComponent" parent="DoorSlidingBasic_Mesh" unique_id=2140039813 instance=ExtResource("1_ohxkl")]
+transform = Transform3D(1, 0, 0, 0, 10, 0, 0, 0, 7, 0, 1.1795465, 0)
 
 [node name="DoorwaySlidingBasic_Mesh" type="MeshInstance3D" parent="." unique_id=1315032598]
 mesh = ExtResource("2_ohxkl")
