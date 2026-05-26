@@ -1,29 +1,19 @@
 [gd_scene format=3 uid="uid://ckp576f04778f"]
 
 [ext_resource type="PackedScene" uid="uid://dnbitthls47tp" path="res://scenes/ui/2d_hud_entities.tscn" id="1_0mwgc"]
-[ext_resource type="Shader" uid="uid://c5bmchyae448c" path="res://scenes/ui/chromatic_aberration.gdshader" id="3_gss2c"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0mwgc"]
-shader = ExtResource("3_gss2c")
-shader_parameter/r_displacement = Vector2(3, 0)
-shader_parameter/g_displacement = Vector2(0, 0)
-shader_parameter/b_displacement = Vector2(-3, 0)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_hqnrr"]
-viewport_path = NodePath("TextureRect/SubViewport")
 
 [node name="HUD" type="CanvasLayer" unique_id=1982623268]
+layer = 15
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=2039189174]
-material = SubResource("ShaderMaterial_0mwgc")
-offset_right = 40.0
-offset_bottom = 40.0
-texture = SubResource("ViewportTexture_hqnrr")
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=2032202655]
+offset_right = 1920.0
+offset_bottom = 1080.0
+stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="TextureRect" unique_id=1690512817]
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1690512817]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
-[node name="2DHudEntities" parent="TextureRect/SubViewport" unique_id=1605915058 instance=ExtResource("1_0mwgc")]
+[node name="2DHudEntities" parent="SubViewportContainer/SubViewport" unique_id=1605915058 instance=ExtResource("1_0mwgc")]
