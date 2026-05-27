@@ -127,9 +127,9 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 		detected_player = true
 		state_machine.on_child_transition(state_machine.current_state, "scrubchase")
 		print("Chasing Player")
-	if damage_or_heal_instance.amount >= head_hitstun_threshold:
+	if damage_or_heal_instance.amount > head_hitstun_threshold:
 		_apply_hitstun(head_hitstun_duration)
-	elif damage_or_heal_instance.amount >= body_hitstun_threshold:
+	elif damage_or_heal_instance.amount == body_hitstun_threshold:
 		_apply_hitstun(body_hitstun_duration)
 
 func _apply_hitstun(duration: float) -> void:

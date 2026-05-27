@@ -121,9 +121,9 @@ func _on_health_component_killed(killing_blow: DamageHealInstance, health_before
 
 # Hitstun "flinching", can be improved due to some jank with pounce, might not be needed with knockback implemented
 func _on_health_component_health_changed(old_health: float, new_health: float, damage_or_heal_instance: DamageHealInstance) -> void:
-	if damage_or_heal_instance.amount >= head_hitstun_threshold:
+	if damage_or_heal_instance.amount > head_hitstun_threshold:
 		_apply_hitstun(head_hitstun_duration)
-	elif damage_or_heal_instance.amount >= body_hitstun_threshold:
+	elif damage_or_heal_instance.amount == body_hitstun_threshold:
 		_apply_hitstun(body_hitstun_duration)
 
 func _apply_hitstun(duration: float) -> void:
