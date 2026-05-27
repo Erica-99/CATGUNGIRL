@@ -133,8 +133,8 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 		_apply_hitstun(body_hitstun_duration)
 
 func _apply_hitstun(duration: float) -> void:
-	velocity.x = 0.0
-	velocity.z = 0.0
+	velocity.x = 0.0	# remove velocity.x and velocity.z and replace with
+	velocity.z = 0.0	# velocity = Vector3.ZERO if scrubs should fall on hitstun
 	animator.pause()
 	await get_tree().create_timer(duration).timeout
 	animator.play()
