@@ -26,7 +26,10 @@ var is_dead: bool = false
 @export var accel_speed: float
 @export var slow_down_speed: float
 # How much damage needs to be taken for hitstun to happen
-@export var hitstun_threshold: float
+@export var body_hitstun_threshold: float
+@export var body_hitstun_duration: float
+@export var head_hitstun_threshold: float
+@export var head_hitstun_duration: float
 # horizontal pounce speed
 @export var pounce_speed: float
 # multiplier for slow_down_speed (hitconfirm)
@@ -44,6 +47,10 @@ var damage_instance: DamageHealInstance = DamageHealInstance.new()
 @export var attack_hitbox: Area3D
 # Used to track repeatedly hitting a still target
 var target_in_hitbox: bool = false
+@export var attack_cooldown_min: float
+@export var attack_cooldown_max: float
+
+var action_pending: bool = false
 
 var blackboard : Dictionary 
 
@@ -72,6 +79,8 @@ func _ready() -> void:
 		"windup_duration": windup_duration,
 		"superjump_force": superjump_force,
 		"superjump_speed": superjump_speed,
+		"attack_cooldown_min": attack_cooldown_min,
+		"attack_cooldown_max": attack_cooldown_max,
 	}
 	# Change initial state based on Inspector values
 	if start_aggroed:
@@ -112,11 +121,16 @@ func _on_health_component_killed(killing_blow: DamageHealInstance, health_before
 
 # Hitstun "flinching", can be improved due to some jank with pounce, might not be needed with knockback implemented
 func _on_health_component_health_changed(old_health: float, new_health: float, damage_or_heal_instance: DamageHealInstance) -> void:
-	if (damage_or_heal_instance.amount >= hitstun_threshold):
-		velocity = Vector3.ZERO
-		animator.pause()
-		await get_tree().create_timer(0.2).timeout
-		animator.play()
+	if damage_or_heal_instance.amount >= head_hitstun_threshold:
+		_apply_hitstun(head_hitstun_duration)
+	elif damage_or_heal_instance.amount >= body_hitstun_threshold:
+		_apply_hitstun(body_hitstun_duration)
+
+func _apply_hitstun(duration: float) -> void:
+	velocity = Vector3.ZERO
+	animator.pause()
+	await get_tree().create_timer(duration).timeout
+	animator.play()
 
 # When the target leaves the hitbox, change value. Used to let enemy keep attacking a still target
 func _on_attack_hitbox_3d_body_exited(body: Node3D) -> void:

@@ -26,6 +26,12 @@ var is_dead: bool = false
 @export var slow_down_speed: float = 30
 var facing: float
 
+@export_category("Hitstun Variables")
+@export var body_hitstun_threshold: float
+@export var body_hitstun_duration: float
+@export var head_hitstun_threshold: float
+@export var head_hitstun_duration: float
+
 # Maybe this should move to the Scrub Gun
 @export_category("State Controlling Variables")
 @export var detected_player: bool = false
@@ -121,3 +127,13 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 		detected_player = true
 		state_machine.on_child_transition(state_machine.current_state, "scrubchase")
 		print("Chasing Player")
+	if damage_or_heal_instance.amount >= head_hitstun_threshold:
+		_apply_hitstun(head_hitstun_duration)
+	elif damage_or_heal_instance.amount >= body_hitstun_threshold:
+		_apply_hitstun(body_hitstun_duration)
+
+func _apply_hitstun(duration: float) -> void:
+	velocity = Vector3.ZERO
+	animator.pause()
+	await get_tree().create_timer(duration).timeout
+	animator.play()
