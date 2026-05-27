@@ -3,6 +3,7 @@ class_name InsanityEffect
 
 func _ready() -> void:
 	EventManager.insanity_changed.connect(update_effect)
+	alt_ready()
 
 func update_effect(prev_rank, new_rank) -> void:
 	match new_rank:
@@ -34,4 +35,7 @@ func change_effect_4() -> void:
 	pass
 
 func change_effect_5() -> void:
+	pass
+
+func alt_ready() -> void:
 	pass

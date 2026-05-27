@@ -27,7 +27,7 @@ void fragment() {
     strength *= center_mask;
 
     // OUTWARD bulge using centered vector (NOT normalize)
-    vec2 offset = centered * strength;
+    vec2 offset = -centered * strength;
 
     vec2 warped_uv = uv + offset;
 

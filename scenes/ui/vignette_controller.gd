@@ -1,10 +1,6 @@
 extends ColorRect
 class_name VignetteController
 
-@export var insanity_low: VignettePreset
-@export var insanity_high: VignettePreset
-
-
 func apply_preset(p: VignettePreset) -> void:
 	material.set("shader_parameter/radius", p.radius)
 	material.set("shader_parameter/softness", p.softness)

@@ -3,10 +3,23 @@
 [ext_resource type="Script" uid="uid://d0v8bhew7e25y" path="res://scenes/components/camera_component/camera_component.gd" id="1_osh5n"]
 [ext_resource type="Shader" uid="uid://du6ou5tp5i54r" path="res://scenes/ui/vignette.gdshader" id="2_0h58w"]
 [ext_resource type="Script" uid="uid://ldggnrsi060v" path="res://scenes/ui/insanity_vignette.gd" id="2_xvo5e"]
+[ext_resource type="Script" uid="uid://cjwsdmgxfwxkm" path="res://resources/shader_presets/vignette_preset.gd" id="3_6tqft"]
 [ext_resource type="Shader" uid="uid://c0fwuxb0jcfgo" path="res://scenes/ui/screen_pulse.gdshader" id="3_xubnm"]
 [ext_resource type="Script" uid="uid://ocg18x2yfoj1" path="res://scenes/ui/vignette_controller.gd" id="4_2yc4p"]
 [ext_resource type="PackedScene" uid="uid://ckp576f04778f" path="res://scenes/ui/hud.tscn" id="4_xvo5e"]
 [ext_resource type="Shader" uid="uid://c5bmchyae448c" path="res://scenes/ui/chromatic_aberration.gdshader" id="5_2yc4p"]
+[ext_resource type="Script" uid="uid://3ku3y3xxx36e" path="res://scenes/ui/insanity_screenpulse.gd" id="5_x1u5e"]
+[ext_resource type="Script" uid="uid://b2jdg1jm7trgx" path="res://scenes/ui/screenpulse_controller.gd" id="6_2yc4p"]
+[ext_resource type="Script" uid="uid://ce5u01kufv4f8" path="res://scenes/ui/chromatic_controller.gd" id="9_ieyhn"]
+[ext_resource type="Script" uid="uid://imd5sxticiya" path="res://scenes/ui/insanity_chromatic.gd" id="10_434qr"]
+
+[sub_resource type="Resource" id="Resource_434qr"]
+script = ExtResource("3_6tqft")
+metadata/_custom_type_script = "uid://cjwsdmgxfwxkm"
+
+[sub_resource type="Resource" id="Resource_wyjqh"]
+script = ExtResource("3_6tqft")
+metadata/_custom_type_script = "uid://cjwsdmgxfwxkm"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ieyhn"]
 shader = ExtResource("2_0h58w")
@@ -20,14 +33,14 @@ shader_parameter/vignette_color = Color(0.44, 0.123199984, 0.19184, 1)
 shader = ExtResource("3_xubnm")
 shader_parameter/base_strength = 0.02
 shader_parameter/pulse_strength = 0.05
-shader_parameter/pulse_speed = 6.0
-shader_parameter/focus_radius = 0.8
+shader_parameter/pulse_speed = 3.0
+shader_parameter/focus_radius = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6tqft"]
 shader = ExtResource("5_2yc4p")
-shader_parameter/r_displacement = Vector2(3, 0)
+shader_parameter/r_displacement = Vector2(0, 0)
 shader_parameter/g_displacement = Vector2(0, 0)
-shader_parameter/b_displacement = Vector2(-3, 0)
+shader_parameter/b_displacement = Vector2(0, 0)
 
 [node name="CameraComponent" type="Camera3D" unique_id=974394070]
 size = 20.0
@@ -45,12 +58,14 @@ directional_shadow_mode = 1
 
 [node name="OverlayVisuals" type="Node" parent="." unique_id=842217482]
 
-[node name="Vignette" type="CanvasLayer" parent="OverlayVisuals" unique_id=672450681 node_paths=PackedStringArray("vignette")]
+[node name="VignetteCanvas" type="CanvasLayer" parent="OverlayVisuals" unique_id=672450681 node_paths=PackedStringArray("vignette")]
 layer = 5
 script = ExtResource("2_xvo5e")
-vignette = NodePath("ColorRect")
+vignette = NodePath("Vignette")
+insanity_low = SubResource("Resource_434qr")
+insanity_high = SubResource("Resource_wyjqh")
 
-[node name="ColorRect" type="ColorRect" parent="OverlayVisuals/Vignette" unique_id=1938725573]
+[node name="Vignette" type="ColorRect" parent="OverlayVisuals/VignetteCanvas" unique_id=1938725573]
 material = SubResource("ShaderMaterial_ieyhn")
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,10 +75,13 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("4_2yc4p")
 
-[node name="ScreenPulse" type="CanvasLayer" parent="OverlayVisuals" unique_id=442988470]
+[node name="ScreenPulseCanvas" type="CanvasLayer" parent="OverlayVisuals" unique_id=442988470 node_paths=PackedStringArray("screen_pulse")]
 layer = 10
+visible = false
+script = ExtResource("5_x1u5e")
+screen_pulse = NodePath("ScreenPulse")
 
-[node name="ColorRect" type="ColorRect" parent="OverlayVisuals/ScreenPulse" unique_id=775623035]
+[node name="ScreenPulse" type="ColorRect" parent="OverlayVisuals/ScreenPulseCanvas" unique_id=775623035]
 material = SubResource("ShaderMaterial_x1u5e")
 anchors_preset = 15
 anchor_right = 1.0
@@ -71,13 +89,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("6_2yc4p")
 
 [node name="HUD" parent="OverlayVisuals" unique_id=1982623268 instance=ExtResource("4_xvo5e")]
 
-[node name="Chromatic" type="CanvasLayer" parent="OverlayVisuals" unique_id=569702899]
+[node name="ChromaticCanvas" type="CanvasLayer" parent="OverlayVisuals" unique_id=569702899 node_paths=PackedStringArray("chromatic")]
 layer = 20
+script = ExtResource("10_434qr")
+chromatic = NodePath("Chromatic")
 
-[node name="ColorRect" type="ColorRect" parent="OverlayVisuals/Chromatic" unique_id=105934553]
+[node name="Chromatic" type="ColorRect" parent="OverlayVisuals/ChromaticCanvas" unique_id=105934553]
 material = SubResource("ShaderMaterial_6tqft")
 anchors_preset = 15
 anchor_right = 1.0
@@ -85,3 +106,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("9_ieyhn")
