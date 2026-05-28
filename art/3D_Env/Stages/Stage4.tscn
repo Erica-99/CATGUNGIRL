@@ -789,8 +789,9 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -199.017, 0, 0)
 [node name="Interactive" type="Node3D" parent="." unique_id=1791370291]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
-[node name="DoorExit" parent="Interactive" unique_id=412214692 instance=ExtResource("13_1e5f0")]
+[node name="DoorExit" parent="Interactive" unique_id=412214692 node_paths=PackedStringArray("level_end") instance=ExtResource("13_1e5f0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.5085, 21, 0)
+level_end = NodePath("LevelEnd")
 
 [node name="LevelEnd" parent="Interactive/DoorExit" unique_id=914563996 instance=ExtResource("3_2wc48")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.10725403, 1.198288, 0)
