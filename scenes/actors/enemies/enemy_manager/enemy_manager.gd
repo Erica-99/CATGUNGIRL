@@ -25,6 +25,7 @@ func _check_enemies_remaining(enemy):
 		# calls set up like this to ensure signals only emitted when status of room has changed
 		if room_cleared:
 			is_cleared = true
+			print("Room is cleared")
 			EventManager.room_cleared.emit(room_ID, is_cleared)
 		
 		if !room_cleared && is_cleared:

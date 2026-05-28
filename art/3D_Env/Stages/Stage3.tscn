@@ -24,6 +24,8 @@
 [ext_resource type="PackedScene" uid="uid://n6gwkimpd6oj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/WallPlainRear.tscn" id="23_f7hie"]
 [ext_resource type="PackedScene" uid="uid://11pckncgaxu4" path="res://scenes/components/level_components/level_transitions/level_end.tscn" id="24_8s1m1"]
 [ext_resource type="PackedScene" uid="uid://paa0do4ab2fn" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/ShelfWarehouse.tscn" id="24_b12nq"]
+[ext_resource type="PackedScene" uid="uid://dld0qjmojk1t8" path="res://scenes/actors/enemies/enemy_manager/enemy_manager.tscn" id="25_vmsb5"]
+[ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict/convict_enemy.tscn" id="26_kvoti"]
 
 [node name="StageThree" type="Node3D" unique_id=535640616]
 
@@ -1179,3 +1181,14 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 235.424, 192.895, 0)
 [node name="LevelEnd" parent="Interactive/DoorExit" unique_id=914563996 instance=ExtResource("24_8s1m1")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.288002, 1.0524979, 0)
 level_name = "Stage4"
+
+[node name="EnemyManager" parent="." unique_id=18369620 instance=ExtResource("25_vmsb5")]
+
+[node name="Convict" parent="EnemyManager" unique_id=1506947017 instance=ExtResource("26_kvoti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, 144, 0)
+
+[node name="Convict2" parent="EnemyManager" unique_id=42159830 instance=ExtResource("26_kvoti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73, 144, 0)
+
+[node name="Convict3" parent="EnemyManager" unique_id=618630284 instance=ExtResource("26_kvoti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 270, 182, 0)

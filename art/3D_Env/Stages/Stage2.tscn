@@ -19,8 +19,14 @@
 [ext_resource type="PackedScene" uid="uid://bhjyu5ru1eqco" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/PanopticonPillars.tscn" id="16_1ahnt"]
 [ext_resource type="PackedScene" uid="uid://11pckncgaxu4" path="res://scenes/components/level_components/level_transitions/level_end.tscn" id="17_mu5e4"]
 [ext_resource type="PackedScene" uid="uid://byw22jxx2g5hs" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/PanopticonBridgeConnector.tscn" id="18_mu5e4"]
+[ext_resource type="PackedScene" uid="uid://dld0qjmojk1t8" path="res://scenes/actors/enemies/enemy_manager/enemy_manager.tscn" id="20_q7nox"]
+[ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict/convict_enemy.tscn" id="21_n434r"]
 
 [node name="StageTwo" type="Node3D" unique_id=282651265]
+
+[node name="Player" parent="." unique_id=1349193765 instance=ExtResource("12_4vd0f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124, 2.14, 0)
+collision_mask = 129
 
 [node name="Environment" type="Node3D" parent="." unique_id=2084935905]
 
@@ -212,6 +218,28 @@ transform = Transform3D(0.30838597, 0, -1.9760816, 0, 2, 0, 1.9760816, 0, 0.3083
 [node name="PrisonCell9" parent="Interactive" unique_id=1600229948 instance=ExtResource("11_laqeg")]
 transform = Transform3D(0.27156967, 0, -1.9814768, 0, 2, 0, 1.9814768, 0, 0.27156967, 132.72539, 37.656742, 0)
 
-[node name="Player" parent="." unique_id=1349193765 instance=ExtResource("12_4vd0f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124, 2.14, 0)
-collision_mask = 129
+[node name="EnemyManager" parent="." unique_id=18369620 instance=ExtResource("20_q7nox")]
+
+[node name="Convict" parent="EnemyManager" unique_id=1506947017 instance=ExtResource("21_n434r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 23, 0)
+
+[node name="Convict2" parent="EnemyManager" unique_id=1973177145 instance=ExtResource("21_n434r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 2, 0)
+
+[node name="Convict3" parent="EnemyManager" unique_id=1393898731 instance=ExtResource("21_n434r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 2, 0)
+
+[node name="Convict4" parent="EnemyManager" unique_id=1067664934 instance=ExtResource("21_n434r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 24, 0)
+
+[node name="Convict5" parent="EnemyManager" unique_id=895222274 instance=ExtResource("21_n434r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139, 2, 0)
+
+[node name="Convict6" parent="EnemyManager" unique_id=1448404921 instance=ExtResource("21_n434r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 69, 0)
+
+[node name="Convict7" parent="EnemyManager" unique_id=1324851340 instance=ExtResource("21_n434r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69, 69, 0)
+
+[node name="Convict8" parent="EnemyManager" unique_id=493179861 instance=ExtResource("21_n434r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113, 128, 0)
