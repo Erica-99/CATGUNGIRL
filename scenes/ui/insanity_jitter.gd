@@ -19,10 +19,10 @@ func change_effect_3() -> void:
 	max_offset = 3
 
 func change_effect_4() -> void:
-	max_offset = 4
+	max_offset = 5
 
 func change_effect_5() -> void:
-	max_offset = 5
+	max_offset = 7
 
 func _process(_delta: float) -> void:
 	
