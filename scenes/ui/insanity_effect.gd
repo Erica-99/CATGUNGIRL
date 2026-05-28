@@ -3,6 +3,7 @@ class_name InsanityEffect
 
 func _ready() -> void:
 	EventManager.insanity_changed.connect(update_effect)
+	update_effect(null, Globals.global_insanity_level)
 	alt_ready()
 
 func update_effect(prev_rank, new_rank) -> void:
