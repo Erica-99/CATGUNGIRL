@@ -609,10 +609,10 @@ _data = {
 size = Vector3(1.285553, 3.2021484, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_54fah"]
-size = Vector3(1.75, 2.6, 1)
+size = Vector3(2.057785, 2.5826058, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a68hs"]
-size = Vector3(1.75, 0.8, 1)
+size = Vector3(1.1131985, 0.6671974, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_l1l22"]
 radius = 12.5
@@ -638,7 +638,10 @@ chase_speed = 20.0
 jump_force = 10.0
 accel_speed = 35.0
 slow_down_speed = 30.0
-hitstun_threshold = 10.0
+body_hitstun_threshold = 10.0
+body_hitstun_duration = 0.15
+head_hitstun_threshold = 10.0
+head_hitstun_duration = 0.3
 pounce_speed = 18.0
 hit_deceleration = 200.0
 windup_duration = 1.5
@@ -646,6 +649,8 @@ superjump_force = 25.0
 superjump_speed = 10.0
 attack_damage = 10.0
 attack_hitbox = NodePath("AttackHitbox3D")
+attack_cooldown_min = 1.0
+attack_cooldown_max = 1.5
 
 [node name="Visuals" type="Node3D" parent="." unique_id=1400416479]
 
@@ -673,7 +678,7 @@ team_component = NodePath("../TeamComponent")
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BodyHurtbox" unique_id=1766554893]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.006, -0.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17757086, -0.33957568, 0)
 shape = SubResource("BoxShape3D_54fah")
 debug_color = Color(0.75945634, 0.3475156, 1, 0.41960785)
 
@@ -683,7 +688,7 @@ health_component = NodePath("../HealthComponent")
 damage_multiplier = 2.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HeadHurtbox" unique_id=440381038]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.006, 1.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025838926, 1.2894114, 0)
 shape = SubResource("BoxShape3D_a68hs")
 debug_color = Color(0.9201433, 0.7565305, 1, 0.41960785)
 
