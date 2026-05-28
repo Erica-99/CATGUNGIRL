@@ -10,6 +10,7 @@
 [ext_resource type="Shader" uid="uid://c5bmchyae448c" path="res://scenes/ui/chromatic_aberration.gdshader" id="5_2yc4p"]
 [ext_resource type="Script" uid="uid://3ku3y3xxx36e" path="res://scenes/ui/insanity_screenpulse.gd" id="5_x1u5e"]
 [ext_resource type="Script" uid="uid://b2jdg1jm7trgx" path="res://scenes/ui/screenpulse_controller.gd" id="6_2yc4p"]
+[ext_resource type="Script" uid="uid://c310gedyol51j" path="res://resources/shader_presets/screenpulse_preset.gd" id="7_wyjqh"]
 [ext_resource type="Script" uid="uid://ce5u01kufv4f8" path="res://scenes/ui/chromatic_controller.gd" id="9_ieyhn"]
 [ext_resource type="Script" uid="uid://imd5sxticiya" path="res://scenes/ui/insanity_chromatic.gd" id="10_434qr"]
 
@@ -34,12 +35,27 @@ shader_parameter/intensity = 0.0
 shader_parameter/contrast = 0.5
 shader_parameter/vignette_color = Color(0.44, 0.123199984, 0.19184, 1)
 
+[sub_resource type="Resource" id="Resource_ioa2x"]
+script = ExtResource("7_wyjqh")
+base_strength = 0.0
+pulse_strength = 0.05
+pulse_speed = 2.5
+focus_radius = 0.7
+metadata/_custom_type_script = "uid://c310gedyol51j"
+
+[sub_resource type="Resource" id="Resource_bvmuw"]
+script = ExtResource("7_wyjqh")
+pulse_strength = 0.08
+pulse_speed = 5.0
+focus_radius = 0.7
+metadata/_custom_type_script = "uid://c310gedyol51j"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x1u5e"]
 shader = ExtResource("3_xubnm")
-shader_parameter/base_strength = 0.02
-shader_parameter/pulse_strength = 0.05
-shader_parameter/pulse_speed = 3.0
-shader_parameter/focus_radius = 1.0
+shader_parameter/base_strength = 0.0
+shader_parameter/pulse_strength = 0.0
+shader_parameter/pulse_speed = 0.0
+shader_parameter/focus_radius = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6tqft"]
 shader = ExtResource("5_2yc4p")
@@ -84,6 +100,8 @@ script = ExtResource("4_2yc4p")
 layer = 10
 script = ExtResource("5_x1u5e")
 screen_pulse = NodePath("ScreenPulse")
+insanity_low = SubResource("Resource_ioa2x")
+insanity_high = SubResource("Resource_bvmuw")
 
 [node name="ScreenPulse" type="ColorRect" parent="OverlayVisuals/ScreenPulseCanvas" unique_id=775623035]
 material = SubResource("ShaderMaterial_x1u5e")
