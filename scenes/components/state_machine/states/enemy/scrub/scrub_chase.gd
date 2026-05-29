@@ -23,7 +23,7 @@ func init(blackboard_dict : Dictionary) -> void:
 	chase_speed = blackboard["chase_speed"]
 
 func enter() -> void:
-	player = get_tree().get_nodes_in_group("Player")[0] as CharacterBody3D
+	player = get_tree().get_nodes_in_group("player")[0] as CharacterBody3D
 
 func exit() -> void:
 	pass
@@ -31,7 +31,7 @@ func exit() -> void:
 func update(_delta: float) -> void:
 	pass
 
-func physics_update(_delta: float) -> void:
+func physics_update(delta: float) -> void:
 	var direction: int
 	
 	if actor.global_position > player.global_position:
@@ -43,7 +43,11 @@ func physics_update(_delta: float) -> void:
 	
 	#anim.play("chase")
 	
-	actor.velocity.x += direction * chase_speed * _delta
+	actor.velocity.x += direction * chase_speed * delta
 	actor.velocity.x = clamp(actor.velocity.x, -chase_speed, chase_speed)
+	
+	actor.time += delta
+	actor.velocity.y = cos(actor.time * actor.frequency) * actor.amplitude
+	
 	actor.move_and_slide()
 	

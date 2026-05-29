@@ -1,6 +1,7 @@
 # Patrol moves to Chase
 
 extends State
+class_name ScrubPatrol
 
 var actor: CharacterBody3D
 var anim: AnimatedSprite3D
@@ -24,9 +25,13 @@ func update(_delta: float) -> void:
 		direction *= -1
 		patrol_track = 0
 
-func physics_update(_delta: float) -> void:
-	actor.velocity.x += direction * patrol_speed * _delta
+func physics_update(delta: float) -> void:
+	actor.velocity.x += direction * patrol_speed * delta
 	actor.velocity.x = clamp(actor.velocity.x, -patrol_speed, patrol_speed)
+	
+	actor.time += delta
+	actor.velocity.y = cos(actor.time * actor.frequency) * actor.amplitude
+	
 	actor.move_and_slide()
 
 func _on_detection_area_3d_body_entered(body):

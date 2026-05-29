@@ -33,7 +33,9 @@ func exit() -> void:
 func update(_delta: float) -> void:
 	pass
 
-func physics_update(_delta: float) -> void:
-	actor.velocity.x = move_toward(actor.velocity.x, 0, slow_down_speed * _delta)
+func physics_update(delta: float) -> void:
+	actor.velocity.x = move_toward(actor.velocity.x, 0, slow_down_speed * delta)
 	#anim.play("idle")
+	actor.time += delta
+	actor.velocity.y = cos(actor.time * actor.frequency) * actor.amplitude
 	actor.move_and_slide()

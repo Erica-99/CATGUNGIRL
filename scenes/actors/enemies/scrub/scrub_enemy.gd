@@ -37,6 +37,10 @@ var facing: float
 @export var detected_player: bool = false
 var in_attacking_range: bool
 
+var time: float = 0.0
+@export var frequency: float = 2.0
+@export var amplitude: float = 5.0
+
 var blackboard: Dictionary
 
 # Called when the node enters the scene tree for the first time.
@@ -67,7 +71,18 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	print(state_machine.current_state.name)
 	pass
+
+func _physics_process(delta: float) -> void:
+	# Direction facing transformation
+	if velocity.x < 0: # LEFT
+		direction = -1
+		animator.flip_h = true
+	elif velocity.x > 0: # RIGHT
+		direction = 1
+		animator.flip_h = false
+
 
 # health comp killed taken from convict code
 func _on_health_component_killed(killing_blow: DamageHealInstance, health_before_death: Variant) -> void:
@@ -80,7 +95,7 @@ func _on_health_component_killed(killing_blow: DamageHealInstance, health_before
 # not attack range move to chase.
 # TODO: Improve by utilising more detection logic than just an area
 func _on_detection_area_3d_body_entered(body: Node3D) -> void:
-	if body.is_in_group("Player") && !is_dead:
+	if body.is_in_group("player") && !is_dead:
 		if detected_player == false:
 			detected_player = true
 			print("Player entered detection area")
@@ -93,7 +108,7 @@ func _on_detection_area_3d_body_entered(body: Node3D) -> void:
 # When player enters attack range, check off that theyre in range
 # If player has been detected, move to attack state
 func _on_att_range_area_3d_body_entered(body):
-	if body.is_in_group("Player") && !is_dead:
+	if body.is_in_group("player") && !is_dead:
 		in_attacking_range = true
 		if detected_player:
 			state_machine.on_child_transition(state_machine.current_state, "scrubattack")
@@ -102,7 +117,7 @@ func _on_att_range_area_3d_body_entered(body):
 # When player leaves attack range, check of that they're out of range
 # If they have been detected, move to chase
 func _on_att_range_area_3d_body_exited(body):
-	if body.is_in_group("Player") && !is_dead:
+	if body.is_in_group("player") && !is_dead:
 		in_attacking_range = true
 		if detected_player:
 			state_machine.on_child_transition(state_machine.current_state, "scrubchase")
@@ -110,7 +125,7 @@ func _on_att_range_area_3d_body_exited(body):
 
 # When player enters flee range, move to flee
 func _on_flee_area_3d_body_entered(body):
-	if body.is_in_group("Player") && !is_dead:
+	if body.is_in_group("player") && !is_dead:
 		state_machine.on_child_transition(state_machine.current_state, "scrubflee")
 		print("Fleeing Player")
 
@@ -118,7 +133,7 @@ func _on_flee_area_3d_body_entered(body):
 # TODO: Improve flee logic so that Scrub tries to make distance/
 #    stops fleeing if they are blocked.
 func _on_flee_area_3d_body_exited(body):
-	if body.is_in_group("Player") && !is_dead:
+	if body.is_in_group("player") && !is_dead:
 		state_machine.on_child_transition(state_machine.current_state, "scrubattack")
 
 

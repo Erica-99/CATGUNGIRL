@@ -623,11 +623,11 @@ radius = 20.0
 radius = 5.0
 
 [node name="Scrub" type="CharacterBody3D" unique_id=1090872008 node_paths=PackedStringArray("animator", "state_machine", "start_idle", "start_patrol", "start_aggro", "gun_component")]
-collision_layer = 0
-collision_mask = 0
+collision_layer = 4
 script = ExtResource("1_2i5hx")
 animator = NodePath("Visuals/AnimatedSprite3D")
 state_machine = NodePath("StateMachine")
+patroller = true
 start_idle = NodePath("StateMachine/ScrubIdle")
 start_patrol = NodePath("StateMachine/ScrubPatrol")
 start_aggro = NodePath("StateMachine/ScrubChase")
@@ -693,12 +693,13 @@ metadata/_custom_type_script = "uid://bniqs510pmxtt"
 script = ExtResource("8_in183")
 metadata/_custom_type_script = "uid://dwu8ceiw2k1hg"
 
-[node name="ScrubChase" type="Node" parent="StateMachine" unique_id=1690864934]
-script = ExtResource("10_ly0j2")
-
 [node name="ScrubAttack" type="Node" parent="StateMachine" unique_id=1731473242]
 script = ExtResource("9_uw3am")
 metadata/_custom_type_script = "uid://dilpn6f8cm6aw"
+
+[node name="ScrubChase" type="Node" parent="StateMachine" unique_id=241851577]
+script = ExtResource("10_ly0j2")
+metadata/_custom_type_script = "uid://bp55fp56p8pwx"
 
 [node name="ScrubGrenade" type="Node" parent="StateMachine" unique_id=2024638174]
 script = ExtResource("10_apte0")
@@ -712,8 +713,9 @@ metadata/_custom_type_script = "uid://doxqnfsm4wb8g"
 script = ExtResource("21_m88xv")
 metadata/_custom_type_script = "uid://c18mlpgd4umeh"
 
-[node name="ScrubPatrol" type="Node" parent="StateMachine" unique_id=1596137402]
+[node name="ScrubPatrol" type="Node" parent="StateMachine" unique_id=1628027955]
 script = ExtResource("22_bmk6k")
+metadata/_custom_type_script = "uid://rwkg37dkkbs1"
 
 [node name="DetectionArea3D" type="Area3D" parent="." unique_id=1101772605]
 collision_layer = 0

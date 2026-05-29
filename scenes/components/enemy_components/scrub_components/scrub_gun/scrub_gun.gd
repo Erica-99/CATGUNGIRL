@@ -32,7 +32,8 @@ var _bullets_fired: int = 0
 func _ready():
 	randomize()
 	_is_firing = false
-	_target = get_tree().get_nodes_in_group("Player")[0] as CharacterBody3D
+	_target = get_tree().get_nodes_in_group("player")[0] as CharacterBody3D
+	print(_target)
 	
 # Active in ScrubAttack state, where player is in attack range.
 # Aim toward Player's current position and fire on a cooldown timer

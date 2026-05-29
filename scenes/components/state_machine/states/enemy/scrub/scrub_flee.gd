@@ -19,7 +19,7 @@ func init(blackboard_dict : Dictionary) -> void:
 	flee_speed = blackboard["flee_speed"]
 
 func enter() -> void:
-	player = get_tree().get_nodes_in_group("Player")[0] as CharacterBody3D
+	player = get_tree().get_nodes_in_group("player")[0] as CharacterBody3D
 
 func exit() -> void:
 	pass
@@ -27,7 +27,7 @@ func exit() -> void:
 func update(_delta: float) -> void:
 	pass
 
-func physics_update(_delta: float) -> void:
+func physics_update(delta: float) -> void:
 	var direction: int
 	
 	if actor.global_position > player.global_position:
@@ -40,6 +40,10 @@ func physics_update(_delta: float) -> void:
 	#anim.play("flee")
 	
 	# Same logic as chase, just made negative, to move away from player
-	actor.velocity.x += -(direction * flee_speed * _delta)
+	actor.velocity.x += -(direction * flee_speed * delta)
 	actor.velocity.x = clamp(actor.velocity.x, -flee_speed, flee_speed)
+	
+	actor.time += delta
+	actor.velocity.y = cos(actor.time * actor.frequency) * actor.amplitude
+	
 	actor.move_and_slide()
