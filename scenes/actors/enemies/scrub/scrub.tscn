@@ -20,6 +20,8 @@
 [ext_resource type="Script" uid="uid://briciybelpcwe" path="res://scenes/components/state_machine/states/enemy/enemy_death.gd" id="21_m88xv"]
 [ext_resource type="Script" uid="uid://rwkg37dkkbs1" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_patrol.gd" id="22_bmk6k"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_odo4p"]
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_hw6pp"]
 animations = [{
 "frames": [{
@@ -85,7 +87,7 @@ radius = 5.0
 [node name="Scrub" type="CharacterBody3D" unique_id=1090872008 node_paths=PackedStringArray("animator", "state_machine", "start_idle", "start_patrol", "start_aggro", "gun_component")]
 collision_layer = 4
 script = ExtResource("1_2i5hx")
-animator = NodePath("")
+animator = NodePath("Delete me when the New Scrub Mesh works")
 state_machine = NodePath("StateMachine")
 patroller = true
 start_idle = NodePath("StateMachine/ScrubIdle")
@@ -100,6 +102,9 @@ body_hitstun_threshold = 10.0
 body_hitstun_duration = 0.15
 head_hitstun_threshold = 10.0
 head_hitstun_duration = 0.3
+
+[node name="Delete me when the New Scrub Mesh works" type="AnimatedSprite3D" parent="." unique_id=912322876]
+sprite_frames = SubResource("SpriteFrames_odo4p")
 
 [node name="Scrub_Mesh" type="Node3D" parent="." unique_id=326229984]
 
