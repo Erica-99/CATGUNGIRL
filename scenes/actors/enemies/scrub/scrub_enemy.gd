@@ -24,7 +24,11 @@ var is_dead: bool = false
 @export var chase_speed: float
 @export var flee_speed: float
 @export var slow_down_speed: float = 30
-var facing: float
+var facing: float = 1.0:
+	set(value):
+		if value != facing:
+			facing = value
+			facing_changed.emit(self)
 
 @export_category("Hitstun Variables")
 @export var body_hitstun_threshold: float
@@ -41,7 +45,7 @@ var time: float = 0.0
 @export var frequency: float = 2.0
 @export var amplitude: float = 5.0
 
-signal facing_changed(new_facing: float)
+signal facing_changed(scrub: CharacterBody3D)
 
 var blackboard: Dictionary
 
@@ -78,6 +82,7 @@ func _process(delta):
 	pass
 
 func _physics_process(delta: float) -> void:
+	pass
 	# Direction facing transformation
 	#if velocity.x < 0: # LEFT
 		#direction = -1
@@ -86,9 +91,9 @@ func _physics_process(delta: float) -> void:
 		#direction = 1
 		#animator.flip_h = false
 	
-	direction = sign(velocity.x)
-	if direction != facing:
-		facing_changed.emit(direction)
+	#direction = sign(velocity.x)
+	#if direction != facing && direction != 0.0:
+		#facing_changed.emit(direction)
 
 
 # health comp killed taken from convict code

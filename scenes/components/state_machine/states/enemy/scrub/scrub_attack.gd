@@ -34,8 +34,7 @@ func exit() -> void:
 
 func update(_delta: float) -> void:
 	var direction = sign(target.global_position.x - actor.global_position.x)
-	if direction != actor.facing:
-		actor.facing_changed.emit(direction)
+	actor.facing = direction
 
 func physics_update(delta: float) -> void:
 	actor.velocity.x = move_toward(actor.velocity.x, 0, slow_down_speed * delta)

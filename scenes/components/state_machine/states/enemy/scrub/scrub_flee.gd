@@ -40,8 +40,7 @@ func physics_update(delta: float) -> void:
 		#anim.flip_h = true;
 		direction = 1
 	
-	if direction != actor.facing:
-		actor.facing_changed.emit(direction)
+	actor.facing = direction
 		
 	# Same logic as chase, just made negative, to move away from player
 	actor.velocity.x += -(direction * flee_speed * delta)

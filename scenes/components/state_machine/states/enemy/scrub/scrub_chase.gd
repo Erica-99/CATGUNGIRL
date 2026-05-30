@@ -33,8 +33,7 @@ func update(_delta: float) -> void:
 
 func physics_update(delta: float) -> void:
 	var direction = sign(target.global_position.x - actor.global_position.x)
-	if direction != actor.facing:
-		actor.facing_changed.emit(direction)
+	actor.facing = direction
 	#anim.play("chase")
 	
 	actor.velocity.x += direction * chase_speed * delta
