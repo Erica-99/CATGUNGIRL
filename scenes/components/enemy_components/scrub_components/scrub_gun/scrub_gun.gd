@@ -32,33 +32,36 @@ var _bullets_fired: int = 0
 func _ready():
 	randomize()
 	_is_firing = false
-	_target = get_tree().get_nodes_in_group("Player")[0] as CharacterBody3D
+	_target = get_tree().get_first_node_in_group("player") as CharacterBody3D
+	#print(_target)
 	
 # Active in ScrubAttack state, where player is in attack range.
 # Aim toward Player's current position and fire on a cooldown timer
 func _process(delta: float) -> void:
-	if _is_firing && _bullets_fired < 3:
-		# Rotate gun towards Player
+	if _is_firing:
+	# Rotate gun towards Player
+	# Fire on cooldown
+	# TODO: check if Scrub has LoS on Player and affect cooldown then
 		var direction = _target.global_position - global_position
-		direction.z = 0
+		direction.z = 0.0
 		var target_angle = Vector2(direction.x, direction.y).angle()
 		rotation.z = target_angle
-		# Fire on cooldown
-		# TODO: check if Scrub has LoS on Player and affect cooldown then
-		_fire_cooldown += delta
-		if _fire_cooldown > fire_rate:
-			_fire_cooldown = 0
-			_spawn_bullet(bullet_damage, bullet_scale)
-			_bullets_fired += 1
-	# When not aiming at the player, gun is aimed down
-	# TODO: change for better animation once implemented
-	elif _is_firing && _bullets_fired >= 3:
-		rotation.z = -PI/2
-		_fire_cooldown += delta
-		if _fire_cooldown > reload_rate:
-			_fire_cooldown = 0
-			_bullets_fired = 0
-		pass
+		
+		if _bullets_fired < 3:
+			_fire_cooldown += delta
+			if _fire_cooldown > fire_rate:
+				_fire_cooldown = 0
+				_spawn_bullet(bullet_damage, bullet_scale)
+				_bullets_fired += 1
+		else:
+			#rotation.z = -PI/2
+			_fire_cooldown += delta
+			if _fire_cooldown > reload_rate:
+				_fire_cooldown = 0
+				_bullets_fired = 0
+			rotation.z = -PI/2
+			
+
 	else:
 		rotation.z = -PI/2
 
@@ -68,7 +71,6 @@ func _spawn_bullet(damage: float, size: float) -> void:
 	scrub_bullet.global_transform = muzzle.global_transform
 	
 	var calculated_inaccuracy = randf_range(-max_inaccuracy, max_inaccuracy)
-	
 	var aim_dir = Vector3(cos(rotation.z), sin(rotation.z) + calculated_inaccuracy, 0.0).normalized()
 	
 	# each bullet gets its own DamageHealInstance no sharing/overwriting other bullet data
