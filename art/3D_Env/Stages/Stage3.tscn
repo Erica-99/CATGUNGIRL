@@ -1193,3 +1193,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73, 144, 0)
 
 [node name="Convict3" parent="EnemyManager" unique_id=618630284 instance=ExtResource("26_kvoti")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 270, 182, 0)
+
+[connection signal="stage_cleared" from="EnemyManager" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]

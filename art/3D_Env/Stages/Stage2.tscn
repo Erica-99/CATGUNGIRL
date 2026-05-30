@@ -99,7 +99,7 @@ transform = Transform3D(0.21436986, -1.2278264, -1.5641252, 0.1667202, 1.5787468
 [node name="PrisonCell3" parent="Environment" unique_id=43503935 instance=ExtResource("11_laqeg")]
 transform = Transform3D(-0.17130497, -1.7724557, 0.91052485, -0.327718, 0.9264993, 1.7418956, -1.9655166, 0, -0.36978975, 32.360737, 18.801678, 0)
 
-[node name="DoorExit" parent="Environment" unique_id=863191425 instance=ExtResource("9_f12kt")]
+[node name="DoorExit2" parent="Environment" unique_id=863191425 instance=ExtResource("9_f12kt")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.204, 0, 0)
 
 [node name="FloorShooting" parent="Environment" unique_id=1396051659 instance=ExtResource("12_f7aui")]
@@ -202,11 +202,11 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.204, 126.05, 0)
 
 [node name="Interactive" type="Node3D" parent="." unique_id=546830450]
 
-[node name="DoorExit2" parent="Interactive" unique_id=2120129318 node_paths=PackedStringArray("level_end") instance=ExtResource("9_f12kt")]
+[node name="DoorExit" parent="Interactive" unique_id=2120129318 node_paths=PackedStringArray("level_end") instance=ExtResource("9_f12kt")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 169.129, 126.05, 0.668)
 level_end = NodePath("LevelEnd")
 
-[node name="LevelEnd" parent="Interactive/DoorExit2" unique_id=914563996 instance=ExtResource("17_mu5e4")]
+[node name="LevelEnd" parent="Interactive/DoorExit" unique_id=914563996 instance=ExtResource("17_mu5e4")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.25334167, 1.1749954, -0.18361843)
 level_name = "Stage3"
 
@@ -244,3 +244,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69, 69, 0)
 
 [node name="Convict8" parent="EnemyManager" unique_id=493179861 instance=ExtResource("21_n434r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113, 128, 0)
+
+[connection signal="stage_cleared" from="EnemyManager" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]
