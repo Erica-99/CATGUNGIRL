@@ -3,6 +3,7 @@ extends CharacterBody3D
 @export_category("Node References")
 @export var animator: AnimatedSprite3D
 @export var state_machine: StateMachine
+@onready var can_shoot: RayCast3D = $CanShoot
 
 var is_dead: bool = false
 
@@ -79,7 +80,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if in_attacking_range:
+		can_shoot.target_position = can_shoot.to_local(get_tree().get_first_node_in_group("player").global_position)
 
 func _physics_process(delta: float) -> void:
 	pass
