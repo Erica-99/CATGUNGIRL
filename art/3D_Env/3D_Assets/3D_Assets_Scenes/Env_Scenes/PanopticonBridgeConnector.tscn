@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://byw22jxx2g5hs"]
+
+[ext_resource type="ArrayMesh" uid="uid://dks58e1gso7oq" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/PanopticonBridgeConnector.obj" id="1_81dvs"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tkvfu"]
+points = PackedVector3Array(2.826714, 0.10000503, 3.356354, -2.826714, 0.10000503, 3.356354, 2.826714, -0.504181, 3.356354, 2.826714, 0.10000503, -3.356354, -2.826714, -0.504181, 3.356354, -2.826714, 0.10000503, -3.356354, 2.826714, -0.504181, -3.356354, -2.826714, -0.504181, -3.356354)
+
+[node name="PanopticonBridgeConnector" type="StaticBody3D" unique_id=290387331]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="PanopticonBridgeConnector_Mesh" type="MeshInstance3D" parent="." unique_id=378528162]
+mesh = ExtResource("1_81dvs")
+
+[node name="PanopticonBridgeConnector_Collision" type="CollisionShape3D" parent="." unique_id=866062418]
+shape = SubResource("ConvexPolygonShape3D_tkvfu")

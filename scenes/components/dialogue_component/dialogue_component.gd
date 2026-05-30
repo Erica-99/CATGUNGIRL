@@ -3,6 +3,7 @@ extends Node
 @export var attached_to_team: Enums.Team = Enums.Team.WORLD
 @export var can_speak: bool = true
 @export var base_transparency_speed: float = 4.0
+@export var system_transparency_speed: float = 0.5
 
 # set variables to change on initialisation
 	# entity can be: player, gun, enemy (including enemy types ie: convict, trunk, scrub and boss)
@@ -37,6 +38,8 @@ func _ready() -> void:
 		raw_dialogue = DialogueProcessor._load_file(CustomResourceLoader.dialogue_path + Enums.Team.keys()[attached_to_team].to_lower() + ".json")
 		if can_speak:
 			timer.start(randf_range(min_dialogue_elapsed_time, max_dialogue_elapsed_time))
+	elif attached_to_team == Enums.Team.WORLD:
+		EventManager.system_message.connect(_handle_system_messages)
 
 func _process(delta: float) -> void:
 	pass
@@ -63,6 +66,13 @@ func _clear_all_bubbles():
 func _remove_bubble(child):
 	child.queue_free()
 
+func _handle_system_messages(dialogue: String, message_status: bool = false):
+	if message_status:
+		_add_bubble(dialogue, message_status)
+	else:
+		_make_all_bubbles_transparent()
+		_update_all_transparency_speed()
+
 func _add_bubble(dialogue: String, is_system_popup: bool = false):
 	if can_speak:
 		var bubble = dialogue_bubble_prefab.instantiate()
@@ -74,27 +84,25 @@ func _add_bubble(dialogue: String, is_system_popup: bool = false):
 		
 		add_child(bubble)
 		bubble._set_text(dialogue)
+		# make component listen to the child transparency calls
+		bubble.is_transparent.connect(_remove_bubble)
 		if attached_to_team != Enums.Team.WORLD:
 			bubble.can_disappear = true
-			# make component listen to the child transparency calls
-			bubble.is_transparent.connect(_remove_bubble)
 			_update_all_transparency_speed()
+		else:
+			bubble.base_transparency_speed = system_transparency_speed
 
 func _update_all_transparency_speed() -> void:
-	var children = get_children()
 	var index = 0
-	for child in children:
+	for child in get_children():
 		if child is PanelContainer:
-			child._update_bubble_transparency_speed((children.size() - 1) - index)
+			child._update_bubble_transparency_speed((get_children().size() - 1) - index)
 			index += 1
 
 func _make_all_bubbles_transparent() -> void:
 	for bubble in get_children():
 		if bubble is PanelContainer:
 			bubble.can_disappear = true
-			bubble.base_transparency_speed = base_transparency_speed
-			# make component listen to the child transparency calls
-			bubble.is_transparent.connect(_remove_bubble)
 
 # chucking this stuff here so its out of the way lol
 # these are just the unit tests for dialogue loading

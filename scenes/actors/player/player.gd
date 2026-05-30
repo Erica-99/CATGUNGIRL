@@ -59,7 +59,6 @@ func _ready() -> void:
 	gun_component.charge_progress_changed.connect(_on_gun_charge_progress)
 	gun_component.charge_ended.connect(_on_gun_charge_ended)
 	gun_component.charge_started.connect(_on_gun_charge_started)
-	print("player ready, gun_component: ", gun_component)
 
 func _process(_delta: float) -> void:
 	var current_state = input_component.get_input_state()
@@ -80,7 +79,6 @@ func _process(_delta: float) -> void:
 		debug_damage.source = ^"."
 		
 		health_component.take_damage_or_heal(debug_damage)
-		print("Damaged. Health: " + str(health_component.current_health))
 	
 	# Debug heal input
 	if Input.is_action_just_pressed("debug_heal"):
@@ -92,7 +90,6 @@ func _process(_delta: float) -> void:
 		debug_heal.source = ^"."
 		
 		health_component.take_damage_or_heal(debug_heal)
-		print("Healed. Health: " + str(health_component.current_health))
 
 func _on_health_component_health_initialised(init_current_health, init_max_health):
 	EventManager.player_health_initialised.emit(init_current_health, init_max_health)
@@ -114,7 +111,6 @@ func _on_insanity_component_interest_rank_changed(new_rank):
 	EventManager.player_interest_rank_changed.emit(new_rank)
 	
 func _on_gun_enemy_hit(_hurtbox: Area3D) -> void:
-	print("Enemy hit! Healing player by ", hit_heal_amount)
 	var heal = DamageHealInstance.new()
 	heal.amount = hit_heal_amount
 	heal.is_heal = true
@@ -122,7 +118,6 @@ func _on_gun_enemy_hit(_hurtbox: Area3D) -> void:
 	heal.knockback = 0.0
 	heal.source = get_path()
 	health_component.take_damage_or_heal(heal)
-	print("Player health after heal: ", health_component.current_health)
 
 func _on_gun_charge_progress(progress: float) -> void:
 	player_charge_progress.emit(progress)

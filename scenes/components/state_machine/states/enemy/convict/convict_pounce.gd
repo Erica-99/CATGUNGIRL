@@ -8,6 +8,7 @@ var anim: AnimatedSprite3D
 var jump_force: float
 var chase_speed: float
 var slow_down_speed: float
+var pounce_speed: float
 
 var target: CharacterBody3D
 var direction: int
@@ -21,6 +22,7 @@ func init(blackboard_dict: Dictionary) -> void:
 	jump_force = blackboard["jump_force"]
 	chase_speed = blackboard["chase_speed"]
 	slow_down_speed = blackboard["slow_down_speed"]
+	pounce_speed = blackboard["pounce_speed"]
 
 # When changing to Pounce, lock in target and direction to the target
 func enter() -> void:
@@ -51,7 +53,7 @@ func exit() -> void:
 func pounce():
 	# Set velocity to zero to make pounce consistent
 	actor.velocity = Vector3.ZERO
-	actor.velocity.x += chase_speed * direction
+	actor.velocity.x += pounce_speed * direction
 	actor.velocity.y += jump_force
 	has_jumped = true
 
@@ -66,4 +68,4 @@ func faceplant():
 
 func _on_attack_hitbox_body_entered(body: Node3D) -> void:
 	actor.target_in_hitbox = true
-	transitioned.emit(self, "convicthitconfirm")
+	transitioned.emit(self, "convictpounceattack")

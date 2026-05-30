@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://crat6xosq5ywu"]
+
+[ext_resource type="Script" uid="uid://bxj8fvdw2hiw7" path="res://scenes/ui/brain_jar/brain_jar_ui.gd" id="1_c1srd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c1srd"]
+bg_color = Color(0.121876836, 0.121876836, 0.121876836, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3bcb"]
+bg_color = Color(0.8495599, 3.2969565e-06, 1.540184e-06, 1)
+
+[node name="BrainJarHealth" type="ProgressBar" unique_id=785711252]
+offset_right = 412.0
+offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxFlat_c1srd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_f3bcb")
+max_value = 50.0
+step = 10.0
+show_percentage = false
+script = ExtResource("1_c1srd")
