@@ -41,6 +41,8 @@ var time: float = 0.0
 @export var frequency: float = 2.0
 @export var amplitude: float = 5.0
 
+signal facing_changed(new_facing: float)
+
 var blackboard: Dictionary
 
 # Called when the node enters the scene tree for the first time.
@@ -57,6 +59,7 @@ func _ready() -> void:
 		"chase_speed": chase_speed,
 		"flee_speed": flee_speed,
 		"slow_down_speed": slow_down_speed,
+		"target": get_tree().get_nodes_in_group("player")[0] as CharacterBody3D,
 	}
 	# Change initial state based on Inspector values
 	if start_aggroed:
@@ -68,20 +71,24 @@ func _ready() -> void:
 			state_machine.initial_state = start_idle
 	# Initialise state machine with Scrub information
 	state_machine.init(blackboard)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(state_machine.current_state.name)
 	pass
 
 func _physics_process(delta: float) -> void:
 	# Direction facing transformation
-	if velocity.x < 0: # LEFT
-		direction = -1
-		animator.flip_h = true
-	elif velocity.x > 0: # RIGHT
-		direction = 1
-		animator.flip_h = false
+	#if velocity.x < 0: # LEFT
+		#direction = -1
+		#animator.flip_h = true
+	#elif velocity.x > 0: # RIGHT
+		#direction = 1
+		#animator.flip_h = false
+	
+	direction = sign(velocity.x)
+	if direction != facing:
+		facing_changed.emit(direction)
 
 
 # health comp killed taken from convict code
@@ -135,7 +142,6 @@ func _on_flee_area_3d_body_entered(body):
 func _on_flee_area_3d_body_exited(body):
 	if body.is_in_group("player") && !is_dead:
 		state_machine.on_child_transition(state_machine.current_state, "scrubattack")
-
 
 func _on_health_component_health_changed(old_health: float, new_health: float, damage_or_heal_instance: DamageHealInstance) -> void:
 	if !detected_player && !is_dead:

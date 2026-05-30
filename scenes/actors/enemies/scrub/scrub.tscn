@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="1_jvusm"]
 [ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="2_in183"]
 [ext_resource type="PackedScene" uid="uid://juymw78eyjw2" path="res://scenes/components/enemy_components/scrub_components/scrub_grenade/scrub_grenade.tscn" id="2_tpnop"]
+[ext_resource type="Script" uid="uid://baqngs50hkbgn" path="res://scenes/actors/enemies/scrub/scrub_visuals.gd" id="3_dosxg"]
 [ext_resource type="Texture2D" uid="uid://ia68l48n02j2" path="res://art/2d_assets/Scrubs/ScrubTorso.png" id="3_odo4p"]
 [ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="3_uw3am"]
 [ext_resource type="PackedScene" uid="uid://c6wep4oftfyke" path="res://scenes/components/state_machine/state_machine.tscn" id="4_apte0"]
@@ -82,7 +83,7 @@ radius = 12.0
 radius = 20.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_05tr2"]
-radius = 5.0
+radius = 8.0
 
 [node name="Scrub" type="CharacterBody3D" unique_id=1090872008 node_paths=PackedStringArray("animator", "state_machine", "start_idle", "start_patrol", "start_aggro", "gun_component")]
 collision_layer = 4
@@ -107,6 +108,7 @@ head_hitstun_duration = 0.3
 sprite_frames = SubResource("SpriteFrames_odo4p")
 
 [node name="Scrub_Mesh" type="Node3D" parent="." unique_id=326229984]
+script = ExtResource("3_dosxg")
 
 [node name="Visual_MOVE_P" type="Node3D" parent="Scrub_Mesh" unique_id=655061120]
 
@@ -174,6 +176,7 @@ debug_color = Color(0.9201433, 0.7565305, 1, 0.41960785)
 
 [node name="ScrubGun" parent="." unique_id=649943052 node_paths=PackedStringArray("team_component") instance=ExtResource("5_ew88m")]
 team_component = NodePath("../TeamComponent")
+bullet_damage = 2.0
 
 [node name="StateMachine" parent="." unique_id=1499026333 node_paths=PackedStringArray("initial_state") instance=ExtResource("4_apte0")]
 initial_state = NodePath("ScrubIdle")
@@ -233,6 +236,7 @@ collision_mask = 2
 shape = SubResource("SphereShape3D_05tr2")
 debug_color = Color(0.77217674, 0.44468626, 0, 0.33333334)
 
+[connection signal="facing_changed" from="." to="Scrub_Mesh" method="_on_scrub_facing_changed"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]
 [connection signal="body_entered" from="DetectionArea3D" to="." method="_on_detection_area_3d_body_entered"]
