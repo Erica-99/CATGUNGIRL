@@ -608,11 +608,12 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_4ra3w"]
 size = Vector3(1.285553, 3.2021484, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_54fah"]
-size = Vector3(2.057785, 2.5826058, 1)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q6lyk"]
+radius = 0.89
+height = 2.692
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a68hs"]
-size = Vector3(1.1131985, 0.6671974, 1)
+size = Vector3(1.1131985, 0.6959034, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_l1l22"]
 radius = 12.5
@@ -678,8 +679,8 @@ team_component = NodePath("../TeamComponent")
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BodyHurtbox" unique_id=1766554893]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17757086, -0.33957568, 0)
-shape = SubResource("BoxShape3D_54fah")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.231, -0.289, 0)
+shape = SubResource("CapsuleShape3D_q6lyk")
 debug_color = Color(0.75945634, 0.3475156, 1, 0.41960785)
 
 [node name="HeadHurtbox" parent="." unique_id=1318567885 node_paths=PackedStringArray("team_component", "health_component") instance=ExtResource("5_xi3ex")]
@@ -688,7 +689,7 @@ health_component = NodePath("../HealthComponent")
 damage_multiplier = 2.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HeadHurtbox" unique_id=440381038]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025838926, 1.2894114, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025838926, 1.2750584, 0)
 shape = SubResource("BoxShape3D_a68hs")
 debug_color = Color(0.9201433, 0.7565305, 1, 0.41960785)
 
