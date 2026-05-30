@@ -32,7 +32,7 @@ var _bullets_fired: int = 0
 func _ready():
 	randomize()
 	_is_firing = false
-	_target = get_tree().get_nodes_in_group("player")[0] as CharacterBody3D
+	_target = get_tree().get_first_node_in_group("player") as CharacterBody3D
 	#print(_target)
 	
 # Active in ScrubAttack state, where player is in attack range.
@@ -59,10 +59,11 @@ func _process(delta: float) -> void:
 			if _fire_cooldown > reload_rate:
 				_fire_cooldown = 0
 				_bullets_fired = 0
+			rotation.z = -PI/2
 			
 
-	#else:
-		#rotation.z = -PI/2
+	else:
+		rotation.z = -PI/2
 
 func _spawn_bullet(damage: float, size: float) -> void:
 	var scrub_bullet = bullet_scene.instantiate()

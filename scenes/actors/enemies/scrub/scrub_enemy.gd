@@ -63,7 +63,7 @@ func _ready() -> void:
 		"chase_speed": chase_speed,
 		"flee_speed": flee_speed,
 		"slow_down_speed": slow_down_speed,
-		"target": get_tree().get_nodes_in_group("player")[0] as CharacterBody3D,
+		"target": get_tree().get_first_node_in_group("player") as CharacterBody3D,
 	}
 	# Change initial state based on Inspector values
 	if start_aggroed:
@@ -161,6 +161,6 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 func _apply_hitstun(duration: float) -> void:
 	velocity.x = 0.0	# remove velocity.x and velocity.z and replace with
 	velocity.z = 0.0	# velocity = Vector3.ZERO if scrubs should fall on hitstun
-	animator.pause()
-	await get_tree().create_timer(duration).timeout
-	animator.play()
+	#animator.pause()
+	#await get_tree().create_timer(duration).timeout
+	#animator.play()
