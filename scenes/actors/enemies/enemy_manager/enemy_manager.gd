@@ -8,6 +8,8 @@ class_name EnemyManager
 # runtime vars
 var is_cleared: bool = false
 
+signal stage_cleared
+
 func _ready() -> void:
 	# link up signals
 	EventManager.enemy_killed.connect(_check_enemies_remaining)
@@ -25,6 +27,7 @@ func _check_enemies_remaining(enemy):
 		# calls set up like this to ensure signals only emitted when status of room has changed
 		if room_cleared:
 			is_cleared = true
+			stage_cleared.emit()
 			EventManager.room_cleared.emit(room_ID, is_cleared)
 		
 		if !room_cleared && is_cleared:
