@@ -1,15 +1,15 @@
-extends AnimatableBody3D
+extends StaticBody3D
 
 # set reference vars
-@onready var elevator_start: Marker3D = $"../ElevatorStart"
-@onready var elevator_end: Marker3D = $"../ElevatorEnd"
+@onready var elevator_start: Marker3D = $ElevatorStart
+@onready var elevator_end: Marker3D = $ElevatorEnd
 
 # set runtime vars
 var was_ran: bool = false
 var elevator_tween: Tween
 
 # set constants
-const ELEVATOR_SPEED: float = 3
+const ELEVATOR_SPEED: float = 20
 
 func _ready() -> void:
 	# connect up signals
