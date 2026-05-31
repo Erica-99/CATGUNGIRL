@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://c7wdqebqhqbuu" path="res://art/3D_Env/3D_Assets/DoorLargeBasic.tscn" id="17_25u53"]
 [ext_resource type="PackedScene" uid="uid://b57sm0u8nmkgd" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Laboratory/DoorwaySingleLaboratory.tscn" id="17_t1i12"]
 [ext_resource type="PackedScene" uid="uid://cschs0x82o57w" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Laboratory/WallMultiLevelBaseLaboratory.tscn" id="18_6o3oo"]
-[ext_resource type="PackedScene" uid="uid://bj864mme28vmc" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Multi/PrisonCell.tscn" id="18_ah76u"]
 [ext_resource type="PackedScene" uid="uid://dqba7lkeq2lmh" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Laboratory/FloorLaboratory.tscn" id="18_g3ka0"]
+[ext_resource type="PackedScene" uid="uid://dl1dvclonvae4" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Multi/PrisonCell(Active).tscn" id="19_6o3oo"]
 [ext_resource type="PackedScene" uid="uid://bpub13ubiqu2e" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Laboratory/FloorBrokenSide.tscn" id="19_onliv"]
 [ext_resource type="PackedScene" uid="uid://bitrucit7ifuv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Laboratory/WallPlainMidLaboratory.tscn" id="19_t1i12"]
 [ext_resource type="PackedScene" uid="uid://ukr8s37yqom1" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Laboratory/WallBaseLaboratory.tscn" id="20_ku2sa"]
@@ -85,26 +85,11 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -30.202333, 0, 0)
 [node name="FloorMeshEdge12" parent="Environment" unique_id=1058126010 instance=ExtResource("11_u07pd")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -132.406, 25.2, -10)
 
-[node name="FloorMeshEdge13" parent="Environment" unique_id=1020131240 instance=ExtResource("11_u07pd")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -192.813, 42, -10)
-
 [node name="FloorMeshEdge14" parent="Environment" unique_id=1808161825 instance=ExtResource("11_u07pd")]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, -192.813, 42, 0)
 
-[node name="FloorMeshEdge15" parent="Environment" unique_id=1867695384 instance=ExtResource("11_u07pd")]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, -144.813, 42, -10)
-
 [node name="FloorMeshCentre3" parent="Environment" unique_id=269868546 instance=ExtResource("12_1g2dc")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -120.406, 25.2, -10)
-
-[node name="FloorMeshCentre8" parent="Environment" unique_id=2132049814 instance=ExtResource("12_1g2dc")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -156.813, 42, -10)
-
-[node name="FloorMeshCentre9" parent="Environment" unique_id=98748646 instance=ExtResource("12_1g2dc")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -168.813, 42, -10)
-
-[node name="FloorMeshCentre10" parent="Environment" unique_id=779154669 instance=ExtResource("12_1g2dc")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -180.813, 42, -10)
 
 [node name="FloorMeshCentre4" parent="Environment" unique_id=940989184 instance=ExtResource("12_1g2dc")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -108.406, 25.2, -10)
@@ -136,9 +121,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.5085, 21, 0)
 [node name="LevelEnd" parent="Interactive/DoorExit" unique_id=914563996 instance=ExtResource("3_2wc48")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.10725403, 1.198288, 0)
 level_name = "Stage5"
-
-[node name="PrisonCell" parent="Interactive" unique_id=1430763070 instance=ExtResource("18_ah76u")]
-transform = Transform3D(0.35012132, 0, -1.1999645, 0, 1.25, 0, 1.1999645, 0, 0.35012132, -77.80983, 12.24802, -0.5618706)
 
 [node name="DoorwaySingleLaboratory" parent="." unique_id=1936140797 instance=ExtResource("17_t1i12")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.203, 0, 0)
@@ -857,3 +839,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -132.406, 33.6, -20)
 
 [node name="DoorwayLargeLaboratory" parent="." unique_id=1093577184 instance=ExtResource("20_t1i12")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -199.017, 0, 0)
+
+[node name="PrisonCell" parent="." unique_id=1430763070 instance=ExtResource("19_6o3oo")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -148.2713, 21.40395, 0)
