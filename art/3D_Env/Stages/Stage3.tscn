@@ -26,11 +26,16 @@
 [ext_resource type="PackedScene" uid="uid://paa0do4ab2fn" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/ShelfWarehouse.tscn" id="24_b12nq"]
 [ext_resource type="PackedScene" uid="uid://dld0qjmojk1t8" path="res://scenes/actors/enemies/enemy_manager/enemy_manager.tscn" id="25_vmsb5"]
 [ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict/convict_enemy.tscn" id="26_kvoti"]
+[ext_resource type="Script" uid="uid://b8370nobsmmuf" path="res://scenes/levels/elevator_platform/elevator_platform.gd" id="24_kvoti"]
+[ext_resource type="PackedScene" uid="uid://ou3g778y2q8g" path="res://scenes/components/interactable_component/interactable_component.tscn" id="24_vmsb5"]
+[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="25_kvoti"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_eafu1"]
 
 [node name="StageThree" type="Node3D" unique_id=535640616]
 
 [node name="Player" parent="." unique_id=1349193765 instance=ExtResource("19_4yttx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3895743, 145.66559, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3895743, 10.665588, 0)
 collision_mask = 129
 
 [node name="Environment" type="Node3D" parent="." unique_id=1639754073]
@@ -1174,6 +1179,24 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 155.22, 142.495, 0)
 
 [node name="Elevator" parent="Interactive" unique_id=1510358259 instance=ExtResource("20_4swpl")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -12.701, 8.4, 0)
+script = ExtResource("24_kvoti")
+
+[node name="ElevatorConsole" type="MeshInstance3D" parent="Interactive/Elevator" unique_id=88040260]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58461094, -2)
+mesh = SubResource("BoxMesh_eafu1")
+
+[node name="InteractableComponent" parent="Interactive/Elevator/ElevatorConsole" unique_id=2140039813 node_paths=PackedStringArray("event_trigger") instance=ExtResource("24_vmsb5")]
+interactable_type = 2
+interactable_load_type = 1
+event_trigger = NodePath("EventTrigger")
+
+[node name="EventTrigger" parent="Interactive/Elevator/ElevatorConsole/InteractableComponent" unique_id=1311781014 instance=ExtResource("25_kvoti")]
+signal_name = "start_elevator"
+
+[node name="ElevatorStart" type="Marker3D" parent="Interactive/Elevator" unique_id=602707350]
+
+[node name="ElevatorEnd" type="Marker3D" parent="Interactive/Elevator" unique_id=1039890021]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 67.0475, 0)
 
 [node name="DoorExit" parent="Interactive" unique_id=863191425 instance=ExtResource("17_dp8q3")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 235.424, 192.895, 0)
