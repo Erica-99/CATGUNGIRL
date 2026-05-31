@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dsbvxublfqb3l"]
+
+[ext_resource type="Script" uid="uid://b8370nobsmmuf" path="res://scenes/levels/elevator_platform/elevator_platform.gd" id="1_xy515"]
+[ext_resource type="PackedScene" uid="uid://ou3g778y2q8g" path="res://scenes/components/interactable_component/interactable_component.tscn" id="2_0c1pg"]
+[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="3_paw6v"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tvdym"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_klubv"]
+size = Vector3(5.7, 1, 5.7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8ymqo"]
+size = Vector3(5.7, 1, 5.7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jkjcw"]
+
+[node name="ElevatorPlatform" type="AnimatableBody3D" unique_id=29371812]
+physics_material_override = SubResource("PhysicsMaterial_tvdym")
+script = ExtResource("1_xy515")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1385118382]
+shape = SubResource("BoxShape3D_klubv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=513375420]
+mesh = SubResource("BoxMesh_8ymqo")
+
+[node name="ElevatorConsole" type="MeshInstance3D" parent="." unique_id=1096500337]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
+mesh = SubResource("BoxMesh_jkjcw")
+
+[node name="InteractableComponent" parent="ElevatorConsole" unique_id=2140039813 node_paths=PackedStringArray("event_trigger") instance=ExtResource("2_0c1pg")]
+interactable_type = 2
+interactable_load_type = 1
+event_trigger = NodePath("EventTrigger")
+
+[node name="EventTrigger" parent="ElevatorConsole/InteractableComponent" unique_id=1311781014 instance=ExtResource("3_paw6v")]
+signal_name = "start_elevator"

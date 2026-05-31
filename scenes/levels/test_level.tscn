@@ -93,11 +93,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 [node name="Convict" parent="." unique_id=1506947017 instance=ExtResource("9_hfwtw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.683288, 2.293902, 0)
 
-[node name="GigiDate" parent="." unique_id=2015194836 instance=ExtResource("6_cyt5c")]
+[node name="DateOverlay" type="CanvasLayer" parent="." unique_id=1710957830]
+layer = 30
 
-[node name="GiGiPopup" parent="." unique_id=134709764 instance=ExtResource("7_7x1jh")]
+[node name="GiGiPopup" parent="DateOverlay" unique_id=134709764 instance=ExtResource("7_7x1jh")]
 visible = false
 offset_left = 69.0
 offset_top = 154.0
 offset_right = 569.0
 offset_bottom = 642.0
+
+[node name="GigiDate" parent="DateOverlay" unique_id=2015194836 instance=ExtResource("6_cyt5c")]

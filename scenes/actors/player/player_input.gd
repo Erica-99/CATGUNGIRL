@@ -80,7 +80,6 @@ func _physics_process(delta: float) -> void:
 		
 		if Input.is_action_just_pressed("jump"):
 			superJump.emit()
-			print("EMIT HAS BEEN EMITTED!")
 
 
 # Use this for things that are non-continuous.

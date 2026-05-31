@@ -1,61 +1,54 @@
 extends Node3D
 @onready var interaction_range: Area3D = $"Interaction Range"
-@onready var dialogue_component: Sprite3D = $DialogueComponent
 
 @export var interactable_type: Enums.InteractableType = Enums.InteractableType.DOOR
-@export var interaction_distance: float = 3.0
+@export var interactable_load_type: Enums.InteractableLoadType = Enums.InteractableLoadType.BACKGROUND
+@export var interaction_distance: float = 4.0
+@export var event_trigger: Node
+@export var enabled: bool = true
 
-var parent_reference
-var player_reference
+var previously_triggered: bool = false
+
 var player_in_range: bool = false
 var mesh_size: Vector3
 var tween: Tween
 var initial_position: Vector3
 
+var player_reference
+
 # temp var
 @export var require_interaction: bool = true
 
 func _ready() -> void:
-	parent_reference = get_parent()
-	initial_position = parent_reference.position
-	var parent_mesh_children = parent_reference.find_children("*", "MeshInstance3D", false)
-	if parent_mesh_children.size() > 0:
-		_calculate_interaction_zone(parent_mesh_children[0], false)
+	_calculate_interaction_zone(interactable_load_type != Enums.InteractableLoadType.BACKGROUND_MESHINSTANCE)
+	
+	if interactable_type == Enums.InteractableType.BRAIN_TERMINAL:
+		EventManager.shield_enabled_status.connect(_handle_brain_changes)
 
-func _calculate_interaction_zone(child, is_centred):
+func _calculate_interaction_zone(is_using_obj_asset: bool = true):
 	#https://forum.godotengine.org/t/is-there-a-way-to-get-the-size-of-a-3d-mesh/23154/3
-	var mesh_box = child.get_aabb().size
+	var mesh_box
+	if get_parent() != null:
+		mesh_box = get_parent().get_aabb().size
 	
 	var collision = CollisionShape3D.new()
 	collision.shape = BoxShape3D.new()
 	interaction_range.add_child(collision)
-	#collision.shape.size = mesh_box
 	
-	if interactable_type == Enums.InteractableType.CONSOLE:
-		# old shit remove later
-		#var start_interaction_range: Vector3 = Vector3(child.global_position.x, child.global_position.y, child.global_position.z)
-		#var distance_between: float = start_interaction_range.distance_to(child.global_position)
-		#mesh_box.x += distance_between
-		#mesh_box.y += offset_y_amount
-		#mesh_box.z += offset_z_amount
-		#var offsets = Vector3(offset_x_amount, offset_y_amount, distance_between)
-		#collision.shape.size += offsets
-		
+	if interactable_load_type == Enums.InteractableLoadType.BACKGROUND:
 		collision.shape.size = Vector3(mesh_box.z, mesh_box.y, interaction_distance)
+		collision.position = Vector3(0, mesh_box.y / 2, -interaction_distance / 2)
+		
+	elif interactable_load_type == Enums.InteractableLoadType.BACKGROUND_MESHINSTANCE:
+		collision.shape.size = Vector3(interaction_distance, interaction_distance, interaction_distance)
 		collision.position = Vector3(0, 0, interaction_distance / 2)
-	else:
+		
+	elif interactable_load_type == Enums.InteractableLoadType.DOOR:
 		collision.shape.size = Vector3(mesh_box.x + (interaction_distance / 3), mesh_box.y + (interaction_distance / 3), interaction_distance)
-		#collision.position = Vector3(0, 0, interaction_distance / 2)
-		#var offsets = Vector3(1, 1, 1)
-		#collision.shape.size = offsets
-	
-	#collision.rotation = child.rotation
-	print(collision.shape.size)
-	dialogue_component.position = Vector3(collision.shape.size.z / 2, collision.shape.size.y / 2, collision.shape.size.x / 2)
 
 
 func _process(delta: float) -> void:
-	if player_in_range:
+	if player_in_range && enabled:
 		var current_player_status = player_reference.input_component.get_input_state()
 		
 		if interactable_type == Enums.InteractableType.DOOR:
@@ -63,48 +56,42 @@ func _process(delta: float) -> void:
 				_play_interact_animation("open")
 		else:
 			if current_player_status["interacting"]:
-				print("interacting with console")
+				if event_trigger != null:
+					event_trigger._emit_signal()
+					
+					if event_trigger._one_shot:
+						enabled = false
+						EventManager.system_message.emit("", false)
+
 
 func _play_interact_animation(animation_name: String) -> void:
-	# tried to do this without tweening but its not possible unless we alter the objects :(
-	#https://docs.godotengine.org/en/stable/classes/class_tween.html
 	if tween:
 		tween.kill()
 	tween = create_tween()
 	
 	if animation_name == "open":
-		tween.tween_property(get_parent(), "position", initial_position + Vector3(-1.5, 0, 0), 0.8)
-		pass
+		tween.tween_property(get_parent().get_parent(), "position:x", initial_position.x - 10, 0.8)
 	else:
-		tween.tween_property(get_parent(), "position", initial_position, 0.8)
-		pass
+		tween.tween_property(get_parent().get_parent(), "position:x", initial_position.x, 0.8)
 	
-	# old code
-	#var animation_player = parent_reference.find_child("AnimationPlayer", false)
-	#if animation_player != null:
-	#	if animation_player.has_animation(animation_name):
-	#		animation_player.play(animation_name)
-		
-
 func _on_interaction_range_body_entered(body: Node3D) -> void:
-	if body.name == "Player":
+	if body.name == "Player" && enabled:
 		player_in_range = true
 		player_reference = body
-		if interactable_type == Enums.InteractableType.DOOR:
-			if require_interaction:
-				dialogue_component._add_interact_bubble()
-			
-			else:
+		if require_interaction:
+			EventManager.system_message.emit("Press E to interact.", true)
+		else:
+			if interactable_type == Enums.InteractableType.DOOR:
 				_play_interact_animation("open")
-	
-		
-		if interactable_type == Enums.InteractableType.CONSOLE:
-			dialogue_component._add_interact_bubble()
-
 
 func _on_interaction_range_body_exited(body: Node3D) -> void:
-	if body.name == "Player":
+	if body.name == "Player" && enabled:
 		player_in_range = false
 		if interactable_type == Enums.InteractableType.DOOR:
 			_play_interact_animation("close")
-		dialogue_component._fade_bubbles()
+		EventManager.system_message.emit("", false)
+
+func _handle_brain_changes(status: bool):
+	if status && !previously_triggered:
+		enabled = true
+		previously_triggered = true

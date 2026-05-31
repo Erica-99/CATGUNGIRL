@@ -2,18 +2,18 @@
 
 [ext_resource type="Script" uid="uid://nj7vef14i3k2" path="res://scenes/levels/death_test_level.gd" id="1_birtj"]
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="2_4036w"]
+[ext_resource type="PackedScene" uid="uid://crxpi7vrp2sce" path="res://scenes/actors/enemies/brain_jar/brain_jar.tscn" id="3_4036w"]
+[ext_resource type="PackedScene" uid="uid://dbtlwlyu6425" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/BrainJarTerminal.tscn" id="5_s54ho"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_vvhd2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_birtj"]
 
-[node name="DeathTestLevel" type="Node3D" unique_id=71681453 node_paths=PackedStringArray("player", "respawn")]
+[node name="DeathTestLevel" type="Node3D" unique_id=71681453]
 script = ExtResource("1_birtj")
-player = NodePath("Player")
-respawn = NodePath("PlayerRespawn")
 
 [node name="Ground" type="MeshInstance3D" parent="." unique_id=163477196]
-transform = Transform3D(34.28714, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(46.879204, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
 mesh = SubResource("BoxMesh_vvhd2")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground" unique_id=1144569454]
@@ -36,42 +36,6 @@ collision_mask = 7
 visible = false
 shape = SubResource("BoxShape3D_birtj")
 
-[node name="Ground3" type="MeshInstance3D" parent="." unique_id=1491419926]
-transform = Transform3D(34.28714, 0, 0, 0, 1, 0, 0, 0, 1, -21, 11, 0)
-mesh = SubResource("BoxMesh_vvhd2")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Ground3" unique_id=419464886]
-visible = false
-collision_mask = 7
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground3/StaticBody3D" unique_id=1242149412]
-visible = false
-shape = SubResource("BoxShape3D_birtj")
-
-[node name="Ground4" type="MeshInstance3D" parent="." unique_id=1743838848]
-transform = Transform3D(34.28714, 0, 0, 0, 1, 0, 0, 0, 1, 23.449142, 13.17345, 0)
-mesh = SubResource("BoxMesh_vvhd2")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Ground4" unique_id=1359239985]
-visible = false
-collision_mask = 7
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground4/StaticBody3D" unique_id=540172461]
-visible = false
-shape = SubResource("BoxShape3D_birtj")
-
-[node name="Ground5" type="MeshInstance3D" parent="." unique_id=1204938161]
-transform = Transform3D(20.572285, 0, 0, 0, 1, 0, 0, 0, 1, -17.550858, 23.17345, 0)
-mesh = SubResource("BoxMesh_vvhd2")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Ground5" unique_id=68950225]
-visible = false
-collision_mask = 7
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground5/StaticBody3D" unique_id=246829512]
-visible = false
-shape = SubResource("BoxShape3D_birtj")
-
 [node name="Player" parent="." unique_id=1349193765 instance=ExtResource("2_4036w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.073, 2, 0.5)
 
@@ -87,3 +51,18 @@ font_size = 100
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 4, 0)
 text = "DISTANCE IS 7M"
 font_size = 100
+
+[node name="BrainJar" parent="." unique_id=1593347133 instance=ExtResource("3_4036w")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -12.036552, 13.519438, 0)
+
+[node name="BrainJarTerminal1" parent="." unique_id=366402759 instance=ExtResource("5_s54ho")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -24.691912, 0.5, -2)
+
+[node name="BrainJarTerminal2" parent="." unique_id=1032720702 instance=ExtResource("5_s54ho")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -15.846457, 0.5, -2)
+
+[node name="BrainJarTerminal3" parent="." unique_id=253290272 instance=ExtResource("5_s54ho")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -7.6874895, 0.5, -2)
+
+[node name="BrainJarTerminal4" parent="." unique_id=1369235571 instance=ExtResource("5_s54ho")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.5, -2)
