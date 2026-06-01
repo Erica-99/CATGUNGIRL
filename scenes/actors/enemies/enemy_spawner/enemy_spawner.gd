@@ -9,7 +9,7 @@ class_name EnemySpawner
 # reference vars
 @onready var spawn_delay_timer: Timer = $SpawnDelayTimer
 @onready var spawn_point: Marker3D = $SpawnPoint
-@onready var enemies: Node3D = $"../.."
+@onready var enemies: Node3D = $"./."
 
 # TODO: replace with other enemy types when others are in game
 const CONVICT_PREFAB = preload("res://scenes/actors/enemies/convict/convict_enemy.tscn")

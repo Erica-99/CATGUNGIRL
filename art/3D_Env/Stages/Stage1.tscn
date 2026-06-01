@@ -18,6 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://k4bj1vh7ofsj" path="res://art/3D_Env/3D_Assets/DoorExit.tscn" id="15_nxh37"]
 [ext_resource type="PackedScene" uid="uid://dld0qjmojk1t8" path="res://scenes/actors/enemies/enemy_manager/enemy_manager.tscn" id="17_c4j73"]
 [ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict/convict_enemy.tscn" id="18_vinqk"]
+[ext_resource type="PackedScene" uid="uid://bqxkqmc0c1lue" path="res://scenes/actors/enemies/enemy_spawner/enemy_spawner.tscn" id="19_8iehy"]
+[ext_resource type="PackedScene" uid="uid://bls076phgmcus" path="res://scenes/actors/enemies/scrub/scrub.tscn" id="20_dhmb1"]
 
 [node name="StageOne" type="Node3D" unique_id=1668100898]
 
@@ -471,18 +473,46 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 139.018, 8.4, 0)
 [node name="DoorSlidingBasic4" parent="." unique_id=551553933 instance=ExtResource("14_rxfni")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 54.61, 8.4, 0)
 
-[node name="EnemyManager" parent="." unique_id=18369620 instance=ExtResource("17_c4j73")]
+[node name="Enemies" type="Node3D" parent="." unique_id=1220376811]
 
-[node name="Convict" parent="EnemyManager" unique_id=1506947017 instance=ExtResource("18_vinqk")]
+[node name="EnemyManager" parent="Enemies" unique_id=18369620 instance=ExtResource("17_c4j73")]
+
+[node name="Convict" parent="Enemies/EnemyManager" unique_id=1506947017 instance=ExtResource("18_vinqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, 2, 0)
 
-[node name="Convict2" parent="EnemyManager" unique_id=312111786 instance=ExtResource("18_vinqk")]
+[node name="Convict2" parent="Enemies/EnemyManager" unique_id=312111786 instance=ExtResource("18_vinqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92, 2, 0)
 
-[node name="Convict3" parent="EnemyManager" unique_id=1425916094 instance=ExtResource("18_vinqk")]
+[node name="Convict3" parent="Enemies/EnemyManager" unique_id=1425916094 instance=ExtResource("18_vinqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118, 6, 0)
 
-[node name="Convict4" parent="EnemyManager" unique_id=1115417053 instance=ExtResource("18_vinqk")]
+[node name="Convict4" parent="Enemies/EnemyManager" unique_id=1115417053 instance=ExtResource("18_vinqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135, 2, 0)
 
-[connection signal="stage_cleared" from="EnemyManager" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]
+[node name="ConvictSpawner1" parent="Enemies/EnemyManager" unique_id=1110059721 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("19_8iehy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82, 1, 2)
+linked_enemy_manager = NodePath("..")
+possible_spawns = Array[int]([0])
+
+[node name="ConvistSpawner2" parent="Enemies/EnemyManager" unique_id=708616406 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("19_8iehy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124, 0, 0)
+linked_enemy_manager = NodePath("..")
+possible_spawns = Array[int]([0])
+
+[node name="Scrub" parent="Enemies/EnemyManager" unique_id=1090872008 instance=ExtResource("20_dhmb1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 178, 4, 0)
+
+[node name="Scrub2" parent="Enemies/EnemyManager" unique_id=1142003579 instance=ExtResource("20_dhmb1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 206, 4, 0)
+
+[node name="ScrubSpawner1" parent="Enemies/EnemyManager" unique_id=1423238332 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("19_8iehy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 167, 9, 0)
+linked_enemy_manager = NodePath("..")
+possible_spawns = Array[int]([1])
+
+[node name="ScrubSpawner2" parent="Enemies/EnemyManager" unique_id=393593991 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("19_8iehy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 220, 9, 0)
+linked_enemy_manager = NodePath("..")
+possible_spawns = Array[int]([1])
+
+[connection signal="stage_cleared" from="Enemies/EnemyManager" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]

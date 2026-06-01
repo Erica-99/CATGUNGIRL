@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://k4bj1vh7ofsj" path="res://art/3D_Env/3D_Assets/DoorExit.tscn" id="11_a31f2"]
 [ext_resource type="PackedScene" uid="uid://cx47o6m7vtnwg" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/WallRear.tscn" id="12_o52y0"]
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="13_7yaim"]
+[ext_resource type="PackedScene" uid="uid://dld0qjmojk1t8" path="res://scenes/actors/enemies/enemy_manager/enemy_manager.tscn" id="13_wj6kf"]
+[ext_resource type="PackedScene" uid="uid://bqxkqmc0c1lue" path="res://scenes/actors/enemies/enemy_spawner/enemy_spawner.tscn" id="14_5hpc0"]
 
 [node name="Stage6" type="Node3D" unique_id=1033722064]
 
@@ -485,3 +487,27 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -102.407, -18.927713, -2.982)
 
 [node name="BrainJarPart2" parent="Interactive" unique_id=759219146 instance=ExtResource("9_apna8")]
 transform = Transform3D(-4, 3.496911e-07, 0, -3.496911e-07, -4, 0, 0, 0, 4, -102.407, 82.733, -2.982)
+
+[node name="Enemies" type="Node3D" parent="." unique_id=1951586919]
+
+[node name="EnemyManager" parent="Enemies" unique_id=18369620 instance=ExtResource("13_wj6kf")]
+
+[node name="ConvictSpawner" parent="Enemies/EnemyManager" unique_id=1110059721 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("14_5hpc0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -146, 9, 0)
+linked_enemy_manager = NodePath("..")
+possible_spawns = Array[int]([0])
+
+[node name="ConvictSpawner2" parent="Enemies/EnemyManager" unique_id=1397190677 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("14_5hpc0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61, 9, 0)
+linked_enemy_manager = NodePath("..")
+possible_spawns = Array[int]([0])
+
+[node name="ScrubSpawner" parent="Enemies/EnemyManager" unique_id=919190924 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("14_5hpc0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59, 25, 0)
+linked_enemy_manager = NodePath("..")
+possible_spawns = Array[int]([1])
+
+[node name="ScrubSpawner2" parent="Enemies/EnemyManager" unique_id=2046612724 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("14_5hpc0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -145, 25, 0)
+linked_enemy_manager = NodePath("..")
+possible_spawns = Array[int]([1])
