@@ -28,8 +28,7 @@ func update(_delta: float) -> void:
 		transitioned.emit(self, "playermove")
 
 func physics_update(_delta: float) -> void:
-	pass
-
+	actor.move_and_slide()
 
 func _on_player_crouch_overlap() -> void:
 	transitioned.emit(self, "playercrouch")

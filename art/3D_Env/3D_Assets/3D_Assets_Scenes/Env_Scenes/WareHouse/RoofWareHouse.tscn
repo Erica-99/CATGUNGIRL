@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cv8vmfjhudskh"]
+
+[ext_resource type="ArrayMesh" uid="uid://s2gjwqt5oa1w" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/WareHouse/RoofWareHouse.obj" id="1_4h75b"]
+[ext_resource type="Texture2D" uid="uid://cmebwlg1yldv5" path="res://art/3D_Env/3D_Assets/Images/WareHouse/Roof/TextureTrimSheetRoofW.png" id="2_3rejv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4h75b"]
+albedo_texture = ExtResource("2_3rejv")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jl1ik"]
+points = PackedVector3Array(-3.001934, -0.100005, -2.500938, -3.001934, 0.100004986, -2.500938, 3.001934, -0.100005, -2.500938, -3.001934, -0.100005, 2.499062, -3.001934, 0.100004986, 2.499062, 3.001934, 0.100004986, -2.500938, 3.001934, -0.100005, 2.499062, 3.001934, 0.100004986, 2.499062)
+
+[node name="RoofWareHouse" type="StaticBody3D" unique_id=1959605650]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="RoofWareHouse_Mesh" type="MeshInstance3D" parent="." unique_id=160174624]
+mesh = ExtResource("1_4h75b")
+surface_material_override/0 = SubResource("StandardMaterial3D_4h75b")
+
+[node name="RoofWareHouse_Collision" type="CollisionShape3D" parent="." unique_id=1992290985]
+shape = SubResource("ConvexPolygonShape3D_jl1ik")

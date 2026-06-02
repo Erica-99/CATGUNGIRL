@@ -9,24 +9,29 @@ var _fire_held := false
 var _mouse_world_pos
 var _charge_fire_held := false
 var _interacting := false
+var _superjump_held:= false
 
 var _input_locked := false
 var _jump_locked := false
+var _superjump_enabled: bool = false
 
-signal superJump
 signal hasLanded
-signal crouching
 signal standing
+signal crouching
 
 
 func _ready() -> void:
+	_superjump_enabled = get_parent().has_gun
 	EventManager.connect("begin_date_scene_lock", _lock_input)
 	EventManager.connect("end_date_scene_lock", _resume_input)
+	EventManager.gun_picked_up.connect(_enable_superjump)
 
 func _process(_delta: float) -> void:
 	if not _input_locked:
 		_horizontal_movement = Input.get_axis("move_left", "move_right")
 		_mouse_world_pos = _get_mouse_world_position()
+		_superjump_held = Input.is_action_pressed("super")
+		
 	else:
 		# Reset all inputs to off. Stops things like repeatedly shooting if you were holding down shoot when a date started.
 		_horizontal_movement = 0
@@ -51,6 +56,7 @@ func get_input_state() -> Dictionary:
 		"mouse_world_pos": _mouse_world_pos,
 		"charge_fire_held": _charge_fire_held,
 		"interacting": _interacting,
+		"superjump_held": _superjump_held,
 	}
 	return input_state
 
@@ -74,14 +80,7 @@ func _resume_input() -> void:
 	_input_locked = false
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_pressed("move_down"):
-		_crouching = true
-		crouching.emit()
-		
-		if Input.is_action_just_pressed("jump"):
-			superJump.emit()
-			print("EMIT HAS BEEN EMITTED!")
-
+	pass
 
 # Use this for things that are non-continuous.
 func _unhandled_input(event: InputEvent) -> void:
@@ -99,12 +98,16 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
 		_jump_held = true                            ##Player jumps
 	
-	if event.is_action_pressed("move_down") and event.is_action_pressed("jump"):
+	if event.is_action_pressed("super") and event.is_action_pressed("jump"):
 		_jump_held = true
-		superJump.emit()
+		_superjump_held = true
 	
 	if event.is_action_pressed("interact"):
 		_interacting = true
+		
+	if event.is_action_pressed("move_down"):
+		_crouching = true
+		crouching.emit()
 	
 	# -- Actions released --
 	

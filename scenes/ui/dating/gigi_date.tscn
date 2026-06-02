@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cjku3tspjt4ep"]
 
 [ext_resource type="Script" uid="uid://d17afds68ndej" path="res://scenes/ui/dating/gigi_date.gd" id="1_3dw5p"]
-[ext_resource type="Texture2D" uid="uid://c2klyoe8f8smd" path="res://art/GG/placeholder sketches/celebratory action/yay.png" id="1_24jh3"]
-[ext_resource type="Texture2D" uid="uid://6tnq52ln3pra" path="res://art/Date locations/cottage - tutorial date.png" id="2_w0gwh"]
+[ext_resource type="Texture2D" uid="uid://c2klyoe8f8smd" path="res://art/2d_assets/visual_novel/vn_gigi/archive/placeholder sketches/yay.png" id="1_24jh3"]
+[ext_resource type="Texture2D" uid="uid://6tnq52ln3pra" path="res://art/2d_assets/visual_novel/Date locations/cottage - tutorial date.png" id="2_w0gwh"]
 [ext_resource type="PackedScene" uid="uid://divl5j2iem0hi" path="res://scenes/dialogue_bubble/dialogue_bubble.tscn" id="3_vukmv"]
 [ext_resource type="StyleBox" uid="uid://dg2k8dp8q0oke" path="res://art/StyleBoxes/StyleBox_Pink2.tres" id="4_f1ujk"]
 
@@ -105,6 +105,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+mouse_default_cursor_shape = 2
 script = ExtResource("1_3dw5p")
 
 [node name="date_background" type="TextureRect" parent="." unique_id=2122435862]
@@ -116,6 +117,7 @@ offset_top = 1.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_w0gwh")
 expand_mode = 1
 
@@ -132,6 +134,7 @@ offset_right = 199.0
 offset_bottom = -325.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 texture = ExtResource("1_24jh3")
 expand_mode = 1
 stretch_mode = 5
@@ -148,7 +151,6 @@ offset_top = -328.0
 offset_right = 960.0
 grow_horizontal = 2
 grow_vertical = 0
-mouse_filter = 2
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 40
@@ -156,7 +158,7 @@ theme_override_constants/margin_bottom = 40
 
 [node name="Panel" type="Panel" parent="date_txt_bgd" unique_id=2062446538]
 layout_mode = 2
-mouse_filter = 2
+mouse_filter = 1
 theme_override_styles/panel = ExtResource("4_f1ujk")
 
 [node name="MarginContainer" type="MarginContainer" parent="date_txt_bgd/Panel" unique_id=1737909928]
@@ -179,6 +181,7 @@ theme_override_constants/separation = 5
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 3
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vukmv")
 textbox_colour = Color(0.482, 0.443, 0.867, 1)
 type = 2
@@ -192,6 +195,7 @@ alignment = 1
 [node name="date_txt" type="RichTextLabel" parent="date_txt_bgd/Panel/MarginContainer" unique_id=866509033]
 layout_mode = 2
 size_flags_vertical = 8
+mouse_filter = 2
 text = "THIS IS PLACEHOLDER TEXT. IF YOU SEE THIS SOMETHING IS WRONG!!!!"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -201,16 +205,12 @@ custom_minimum_size = Vector2(300, 50)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[b]Click 'Left Mouse Button' to continue[/b]"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Button" type="Button" parent="." unique_id=1395027491]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=970702818]
 libraries/ = SubResource("AnimationLibrary_efxa4")

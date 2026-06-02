@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bqxkqmc0c1lue"]
+
+[ext_resource type="Script" uid="uid://btje133cvblp7" path="res://scenes/actors/enemies/enemy_spawner/enemy_spawner.gd" id="1_df7xo"]
+
+[node name="EnemySpawner" type="Node3D" unique_id=1110059721]
+script = ExtResource("1_df7xo")
+
+[node name="SpawnPoint" type="Marker3D" parent="." unique_id=495828580]
+
+[node name="SpawnDelayTimer" type="Timer" parent="." unique_id=346830122]
+one_shot = true
+
+[connection signal="timeout" from="SpawnDelayTimer" to="." method="_on_spawn_delay_timer_timeout"]

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://butl22j5b5b2w"]
+
+[ext_resource type="ArrayMesh" uid="uid://gds3rdtgd7no" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/WoodenCrate5.obj" id="1_nywjo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gnvp6"]
+size = Vector3(0.6, 0.682329, 0.6)
+
+[node name="WoodenCrate5" type="StaticBody3D" unique_id=625367743]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 0, 0)
+
+[node name="WoodenCrate5_Mesh" type="MeshInstance3D" parent="." unique_id=1809546740]
+mesh = ExtResource("1_nywjo")
+
+[node name="WoodenCrate5_Collision" type="CollisionShape3D" parent="." unique_id=1731919699]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3421525, 0)
+shape = SubResource("BoxShape3D_gnvp6")
