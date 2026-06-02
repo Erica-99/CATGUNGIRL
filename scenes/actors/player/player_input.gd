@@ -83,7 +83,6 @@ func _physics_process(delta: float) -> void:
 		
 		if Input.is_action_just_pressed("jump") and _superjump_enabled:
 			superJump.emit()
-			print("EMIT HAS BEEN EMITTED!")
 
 func _enable_superjump() -> void:
 	_superjump_enabled = true

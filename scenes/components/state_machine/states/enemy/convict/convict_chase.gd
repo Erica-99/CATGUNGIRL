@@ -18,6 +18,10 @@ var stop_offset: float = 0.9
 # acceptable distance
 var acceptable_distance: float = 0.9
 var target: CharacterBody3D
+# attack cooldown
+var attack_hitbox: Area3D
+var attack_cooldown_min: float
+var attack_cooldown_max: float
 
 
 func init(blackboard_dict: Dictionary) -> void:
@@ -28,14 +32,24 @@ func init(blackboard_dict: Dictionary) -> void:
 	chase_speed = blackboard["chase_speed"]
 	accel_speed = blackboard["accel_speed"]
 	slow_down_speed = blackboard["slow_down_speed"]
+	attack_hitbox = blackboard["attack_hitbox"]
+	attack_cooldown_min = blackboard["attack_cooldown_min"]
+	attack_cooldown_max = blackboard["attack_cooldown_max"]
 
 func enter() -> void:
 	# TODO: update with more intricated targetting
 	target = get_tree().get_nodes_in_group("player")[0] as CharacterBody3D
 	actor.velocity = Vector3.ZERO
+	if actor.action_pending:
+		_start_cooldown()
 
-	# calculates target position in front of player on the convicts side
-	# stop_offset * -direction flips the offset to whichever side convict is coming from 
+func _start_cooldown() -> void:
+	await get_tree().create_timer(randf_range(attack_cooldown_min, attack_cooldown_max)).timeout
+	attack_hitbox.find_child("*").set_deferred("disabled", false)
+	actor.action_pending = false
+
+# calculates target position in front of player on the convicts side
+# stop_offset * -direction flips the offset to whichever side convict is coming from 
 func _get_target_position() -> Vector3:
 	return target.global_position + Vector3(stop_offset * -direction, 0, 0)
 
@@ -89,8 +103,11 @@ func physics_update(_delta: float) -> void:
 func _on_attack_hitbox_body_entered(body: Node3D) -> void:
 	# To track if the target remains in hitbox
 	actor.target_in_hitbox = true
+	if actor.action_pending:
+		return
 	transitioned.emit(self, "convicthitconfirm")
 
 func _on_pounce_range_3d_body_entered(body: Node3D) -> void:
+	if actor.action_pending:
+		return
 	transitioned.emit(self, "convictpounce")
-	

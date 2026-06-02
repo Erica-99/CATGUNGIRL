@@ -55,3 +55,8 @@ enum Room {
 	ROOM_THREE,
 	ROOM_FOUR,
 }
+
+enum EnemyType {
+	CONVICT,
+	SCRUB,
+}

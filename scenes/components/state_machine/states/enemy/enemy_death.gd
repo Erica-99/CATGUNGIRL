@@ -29,7 +29,7 @@ func enter() -> void:
 
 func update(_delta: float) -> void:
 	fade_time += _delta
-	anim.modulate = Color(1,1,1,lerp(1, 0, fade_time))
+	#anim.modulate = Color(1,1,1,lerp(1, 0, fade_time))
 	basic_timer += _delta
 	if basic_timer > 1:
 		actor.queue_free()

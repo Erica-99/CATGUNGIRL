@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="1_jbqir"]
 [ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="2_cyt5c"]
 [ext_resource type="PackedScene" uid="uid://11pckncgaxu4" path="res://scenes/components/level_components/level_transitions/level_end.tscn" id="6_6xh4u"]
+[ext_resource type="PackedScene" uid="uid://cjku3tspjt4ep" path="res://scenes/ui/dating/gigi_date.tscn" id="6_cyt5c"]
 [ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict/convict_enemy.tscn" id="9_hfwtw"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_3p835"]
@@ -73,9 +74,7 @@ debug_color = Color(0.74265206, 0.331497, 0.8242094, 0.41960785)
 
 [node name="Player" parent="." unique_id=1349193765 instance=ExtResource("1_jbqir")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7657423, 2.5489483, 0)
-collision_layer = 130
 floor_constant_speed = true
-platform_floor_layers = 129
 platform_wall_layers = 1
 
 [node name="LevelEnd" parent="." unique_id=914563996 instance=ExtResource("6_6xh4u")]
@@ -92,3 +91,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Convict" parent="." unique_id=1506947017 instance=ExtResource("9_hfwtw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.683288, 2.293902, 0)
+
+[node name="DateOverlay" type="CanvasLayer" parent="." unique_id=1710957830]
+layer = 30
+
+[node name="GigiDate" parent="DateOverlay" unique_id=2015194836 instance=ExtResource("6_cyt5c")]
