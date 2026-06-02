@@ -401,32 +401,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -54.204, 0, 0)
 [node name="DoorBasic2" parent="Interactive" unique_id=582229069 instance=ExtResource("18_1nyol")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -78.611, 0, 0)
 
-[node name="EnemyManager" parent="." unique_id=18369620 instance=ExtResource("19_rmes1")]
-
-[node name="Convict" parent="EnemyManager" unique_id=1506947017 instance=ExtResource("20_dgb42")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101, 2, 0)
-
-[node name="Convict2" parent="EnemyManager" unique_id=1114115341 instance=ExtResource("20_dgb42")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -121, 2, 0)
-
-[node name="Convict3" parent="EnemyManager" unique_id=115792186 instance=ExtResource("20_dgb42")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135, 2, 0)
-
-[node name="Convict4" parent="EnemyManager" unique_id=634646066 instance=ExtResource("20_dgb42")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -143, 27, 0)
-
-[node name="Scrub" parent="EnemyManager" unique_id=1090872008 instance=ExtResource("21_dgb42")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125, 29, 0)
-
-[node name="Scrub2" parent="EnemyManager" unique_id=1887419976 instance=ExtResource("21_dgb42")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83, 12, 0)
-
-[node name="Scrub3" parent="EnemyManager" unique_id=1744272114 instance=ExtResource("21_dgb42")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51, 12, 0)
-
-[node name="Scrub4" parent="EnemyManager" unique_id=1518704493 instance=ExtResource("21_dgb42")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92, 21, 0)
-
 [node name="Lighting" type="Node3D" parent="." unique_id=352165489]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting" unique_id=1388729771]
@@ -502,4 +476,32 @@ shadow_enabled = true
 spot_range = 32.195656
 spot_angle = 47.085472
 
-[connection signal="stage_cleared" from="EnemyManager" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]
+[node name="Enemies" type="Node3D" parent="." unique_id=218442623]
+
+[node name="EnemyManager" parent="Enemies" unique_id=18369620 instance=ExtResource("19_rmes1")]
+
+[node name="Convict" parent="Enemies/EnemyManager" unique_id=1506947017 instance=ExtResource("20_dgb42")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101, 2, 0)
+
+[node name="Convict2" parent="Enemies/EnemyManager" unique_id=1114115341 instance=ExtResource("20_dgb42")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -121, 2, 0)
+
+[node name="Convict3" parent="Enemies/EnemyManager" unique_id=115792186 instance=ExtResource("20_dgb42")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135, 2, 0)
+
+[node name="Convict4" parent="Enemies/EnemyManager" unique_id=634646066 instance=ExtResource("20_dgb42")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -143, 27, 0)
+
+[node name="Scrub" parent="Enemies/EnemyManager" unique_id=1090872008 instance=ExtResource("21_dgb42")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125, 29, 0)
+
+[node name="Scrub2" parent="Enemies/EnemyManager" unique_id=1887419976 instance=ExtResource("21_dgb42")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83, 12, 0)
+
+[node name="Scrub3" parent="Enemies/EnemyManager" unique_id=1744272114 instance=ExtResource("21_dgb42")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51, 12, 0)
+
+[node name="Scrub4" parent="Enemies/EnemyManager" unique_id=1518704493 instance=ExtResource("21_dgb42")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92, 21, 0)
+
+[connection signal="stage_cleared" from="Enemies/EnemyManager" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]
