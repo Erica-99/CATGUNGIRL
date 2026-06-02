@@ -1764,7 +1764,6 @@ script = ExtResource("33_owjsm")
 [connection signal="crouching" from="PlayerInput" to="MovementStateMachine/PlayerCrouch" method="_on_player_input_crouching"]
 [connection signal="hasLanded" from="PlayerInput" to="MovementStateMachine/PlayerJump" method="_on_player_input_has_landed"]
 [connection signal="standing" from="PlayerInput" to="MovementStateMachine/PlayerCrouch" method="_on_player_input_standing"]
-[connection signal="superJump" from="PlayerInput" to="MovementStateMachine/PlayerJump" method="_on_player_input_super_jump"]
 [connection signal="state_changed" from="MovementStateMachine" to="PlayerVisuals" method="_on_movement_state_machine_state_changed"]
 [connection signal="state_changed" from="MovementStateMachine" to="DebugStateDisplay" method="_on_movement_state_machine_state_changed"]
 [connection signal="overlap" from="MovementStateMachine/PlayerCrouch" to="MovementStateMachine/PlayerIdle" method="_on_player_crouch_overlap"]
