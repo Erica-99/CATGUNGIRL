@@ -16,6 +16,7 @@ var _jump_locked := false
 
 signal hasLanded
 signal standing
+signal crouching
 
 
 func _ready() -> void:
@@ -76,9 +77,7 @@ func _resume_input() -> void:
 	_input_locked = false
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_pressed("move_down"):
-		_crouching = true
-
+	pass
 
 # Use this for things that are non-continuous.
 func _unhandled_input(event: InputEvent) -> void:
@@ -102,6 +101,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("interact"):
 		_interacting = true
+		
+	if event.is_action_pressed("move_down"):
+		_crouching = true
+		crouching.emit()
 	
 	# -- Actions released --
 	
