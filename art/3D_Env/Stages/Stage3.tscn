@@ -45,13 +45,17 @@
 [ext_resource type="PackedScene" uid="uid://cuvclg8yah7jk" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/WoodenCrate3.tscn" id="45_x2xyk"]
 [ext_resource type="PackedScene" uid="uid://ocvw5odaevub" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/WoodenCrate4.tscn" id="46_jgakh"]
 [ext_resource type="PackedScene" uid="uid://butl22j5b5b2w" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/WoodenCrate5.tscn" id="47_m7qds"]
+[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="48_6oy54"]
 [ext_resource type="PackedScene" uid="uid://dywiy7oiheh68" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/WoodenCrate6.tscn" id="48_mdqg4"]
 [ext_resource type="PackedScene" uid="uid://x3k5nwycrxwr" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/WoodenPallet.tscn" id="49_bgbox"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bs6b4"]
+size = Vector3(17.088806, 7.2834473, 1)
 
 [node name="StageThree" type="Node3D" unique_id=535640616]
 
 [node name="Player" parent="." unique_id=1349193765 instance=ExtResource("19_4yttx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3895743, 145.66559, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3895743, 2.9593792, 0)
 collision_mask = 129
 
 [node name="Environment" type="Node3D" parent="." unique_id=1639754073]
@@ -1662,3 +1666,41 @@ light_volumetric_fog_energy = 0.1
 shadow_enabled = true
 spot_range = 46.09199
 spot_angle = 31.877684
+
+[node name="DATES_POPUPS" type="Node" parent="." unique_id=697093068]
+
+[node name="SheriffPopup" parent="DATES_POPUPS" unique_id=1311781014 instance=ExtResource("48_6oy54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.839455, 170.82759, 0)
+_signal_parameters = [4]
+signal_name = "activate_popup"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DATES_POPUPS/SheriffPopup" unique_id=595214372]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0794678, 0)
+shape = SubResource("BoxShape3D_bs6b4")
+debug_color = Color(0.919504, 0.13431916, 0.6161928, 0.41960785)
+
+[node name="RememberPopup" parent="DATES_POPUPS" unique_id=124983181 instance=ExtResource("48_6oy54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 242.44943, 145.29713, 0)
+_signal_parameters = [3]
+signal_name = "activate_popup"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DATES_POPUPS/RememberPopup" unique_id=557406143]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0794678, 0)
+shape = SubResource("BoxShape3D_bs6b4")
+debug_color = Color(0.919504, 0.13431916, 0.6161928, 0.41960785)
+
+[node name="ElevatorDate" parent="DATES_POPUPS" unique_id=1099312894 instance=ExtResource("48_6oy54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.149353, 30.406662, 0)
+_signal_parameters = [1]
+signal_name = "activate_date"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DATES_POPUPS/ElevatorDate" unique_id=1210032052]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0384827, 1.0794678, 0)
+shape = SubResource("BoxShape3D_bs6b4")
+debug_color = Color(0.919504, 0.13431916, 0.6161928, 0.41960785)
+
+[node name="TrunkPlaceholder" type="Label3D" parent="." unique_id=237319278]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.81374, 171.7723, -10.845093)
+text = "IMAGINE THERE'S
+A BIG SCARY GUY"
+font_size = 100

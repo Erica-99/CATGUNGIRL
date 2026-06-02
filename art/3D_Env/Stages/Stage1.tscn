@@ -22,6 +22,10 @@
 [ext_resource type="PackedScene" uid="uid://xc4xlrvpu6gv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/GunPodiumGun.tscn" id="20_dhmb1"]
 [ext_resource type="PackedScene" uid="uid://ckjadvesqstsq" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Multi/PrisonCell(Docile).tscn" id="21_kr03x"]
 [ext_resource type="PackedScene" uid="uid://dl1dvclonvae4" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Multi/PrisonCell(Active).tscn" id="22_n30yw"]
+[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="23_n30yw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fxtw2"]
+size = Vector3(1, 7.2834473, 1)
 
 [node name="StageOne" type="Node3D" unique_id=1668100898]
 
@@ -588,3 +592,25 @@ light_volumetric_fog_energy = 0.1
 shadow_enabled = true
 spot_range = 32.195656
 spot_angle = 47.085472
+
+[node name="DATES_POPUPS" type="Node" parent="." unique_id=983173156]
+
+[node name="ConvictPopup" parent="DATES_POPUPS" unique_id=1311781014 instance=ExtResource("23_n30yw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.02658, 2.9467964, 0)
+_signal_parameters = [0]
+signal_name = "activate_popup"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DATES_POPUPS/ConvictPopup" unique_id=496084148]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0794678, 0)
+shape = SubResource("BoxShape3D_fxtw2")
+debug_color = Color(0.919504, 0.13431916, 0.6161928, 0.41960785)
+
+[node name="FirstDate" parent="DATES_POPUPS" unique_id=163748631 instance=ExtResource("23_n30yw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151.39288, 2.9467964, 0)
+_signal_parameters = [0]
+signal_name = "activate_date"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DATES_POPUPS/FirstDate" unique_id=1072636820]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0794678, 0)
+shape = SubResource("BoxShape3D_fxtw2")
+debug_color = Color(0.919504, 0.13431916, 0.6161928, 0.41960785)
