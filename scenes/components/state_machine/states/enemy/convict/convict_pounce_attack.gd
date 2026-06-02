@@ -15,12 +15,16 @@ func init(blackboard_dict: Dictionary) -> void:
 	attack_hitbox = blackboard["attack_hitbox"]
 
 func enter() -> void:
+	actor.action_pending = false
 	anim.stop()
 	# maybe pounce attack seperate anim?
 	anim.play("Attack")
+	attack_hitbox.find_child("*").set_deferred("disabled", false)
 
 func physics_update(_delta: float) -> void:
 	actor.velocity.x = move_toward(actor.velocity.x, 0, slow_down_speed * _delta)
 	actor.move_and_slide()
 	await anim.animation_looped
+	attack_hitbox.find_child("*").set_deferred("disabled", true)
+	actor.action_pending = true
 	transitioned.emit(self, "convictchase")

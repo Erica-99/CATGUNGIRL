@@ -17,12 +17,15 @@
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="15_58xmu"]
 [ext_resource type="PackedScene" uid="uid://k4bj1vh7ofsj" path="res://art/3D_Env/3D_Assets/DoorExit.tscn" id="15_nxh37"]
 [ext_resource type="PackedScene" uid="uid://c24i5tmt2brj2" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/Television.tscn" id="17_c4j73"]
+[ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict/convict_enemy.tscn" id="17_fxtw2"]
+[ext_resource type="PackedScene" uid="uid://bls076phgmcus" path="res://scenes/actors/enemies/scrub/scrub.tscn" id="18_si78y"]
 [ext_resource type="PackedScene" uid="uid://dnuawo7ady5q" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/TestDummy.tscn" id="18_vinqk"]
 [ext_resource type="PackedScene" uid="uid://b5iexscfcb83b" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/GunPodium.tscn" id="19_8iehy"]
 [ext_resource type="PackedScene" uid="uid://xc4xlrvpu6gv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/GunPodiumGun.tscn" id="20_dhmb1"]
 [ext_resource type="PackedScene" uid="uid://ckjadvesqstsq" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Multi/PrisonCell(Docile).tscn" id="21_kr03x"]
 [ext_resource type="PackedScene" uid="uid://dl1dvclonvae4" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Multi/PrisonCell(Active).tscn" id="22_n30yw"]
 [ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="23_n30yw"]
+[ext_resource type="PackedScene" uid="uid://dld0qjmojk1t8" path="res://scenes/actors/enemies/enemy_manager/enemy_manager.tscn" id="23_si78y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fxtw2"]
 size = Vector3(1, 7.2834473, 1)
@@ -30,7 +33,7 @@ size = Vector3(1, 7.2834473, 1)
 [node name="StageOne" type="Node3D" unique_id=1668100898]
 
 [node name="Player" parent="." unique_id=1349193765 instance=ExtResource("15_58xmu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124, 2.14, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.123993, 2.14, 0)
 collision_mask = 129
 has_gun = false
 
@@ -465,6 +468,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 223.83, 0, 0)
 
 [node name="LevelEnd" parent="Interactive/DoorExit" unique_id=914563996 instance=ExtResource("5_58xmu")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.11778259, 1.2896835, 0)
+monitoring = false
 level_name = "Stage2"
 
 [node name="DoorSlidingBasic" parent="Interactive" unique_id=1236263169 instance=ExtResource("14_rxfni")]
@@ -614,3 +618,24 @@ signal_name = "activate_date"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0794678, 0)
 shape = SubResource("BoxShape3D_fxtw2")
 debug_color = Color(0.919504, 0.13431916, 0.6161928, 0.41960785)
+
+[node name="Enemies" type="Node3D" parent="." unique_id=1148700225]
+
+[node name="EnemyManager" parent="Enemies" unique_id=18369620 instance=ExtResource("23_si78y")]
+
+[node name="Convict" parent="Enemies/EnemyManager" unique_id=1506947017 instance=ExtResource("17_fxtw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, 2, 0)
+
+[node name="Convict2" parent="Enemies/EnemyManager" unique_id=454804824 instance=ExtResource("17_fxtw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94, 2, 0)
+
+[node name="Convict3" parent="Enemies/EnemyManager" unique_id=1242754996 instance=ExtResource("17_fxtw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123, 2, 0)
+
+[node name="Scrub" parent="Enemies/EnemyManager" unique_id=1090872008 instance=ExtResource("18_si78y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176, 4, 0)
+
+[node name="Scrub2" parent="Enemies/EnemyManager" unique_id=1918494423 instance=ExtResource("18_si78y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 207, 4, 0)
+
+[connection signal="stage_cleared" from="Enemies/EnemyManager" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]

@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://b244whnsrte33"]
 
 [ext_resource type="PackedScene" uid="uid://dhd47imi6qm6a" path="res://art/3D_Env/Stages/Stage1.tscn" id="1_0vxsf"]
-[ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="2_g58ai"]
 [ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="2_vbfgb"]
 [ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict/convict_enemy.tscn" id="3_e2q1c"]
 [ext_resource type="PackedScene" uid="uid://dld0qjmojk1t8" path="res://scenes/actors/enemies/enemy_manager/enemy_manager.tscn" id="3_g58ai"]
 [ext_resource type="PackedScene" uid="uid://bqxkqmc0c1lue" path="res://scenes/actors/enemies/enemy_spawner/enemy_spawner.tscn" id="4_e2q1c"]
+[ext_resource type="PackedScene" uid="uid://bls076phgmcus" path="res://scenes/actors/enemies/scrub/scrub.tscn" id="7_lxfn4"]
 [ext_resource type="PackedScene" uid="uid://b3n63ra231jtb" path="res://scenes/levels/world_boundary/world_boundary.tscn" id="7_vbfgb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lxfn4"]
@@ -102,6 +102,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39828968, 2.5006719, 0)
 
 [node name="WorldBoundary - room1" parent="World/Enemies/ROOM ONE ENEMIES" unique_id=1321944712 instance=ExtResource("7_vbfgb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.21602, 2.6423545, -0.07679036)
+
+[node name="Scrub" parent="World/Enemies/ROOM ONE ENEMIES" unique_id=1090872008 instance=ExtResource("7_lxfn4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.221462, 13.687267, 0)
 
 [node name="ROOM TWO ENEMIES" parent="World/Enemies" unique_id=862823208 instance=ExtResource("3_g58ai")]
 room_ID = 1
@@ -257,8 +260,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.762695, 0, 0)
 
 [node name="Convict" parent="World/Enemies/ROOM FOUR ENEMIES/Enemy15" unique_id=582071989 instance=ExtResource("3_e2q1c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.39444, 2.5006719, 0)
-
-[node name="Player" parent="." unique_id=1349193765 instance=ExtResource("2_g58ai")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.319626, 2.5454574, 0)
-floor_constant_speed = true
-platform_wall_layers = 1

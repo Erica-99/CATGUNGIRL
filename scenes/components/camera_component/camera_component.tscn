@@ -1,10 +1,67 @@
 [gd_scene format=3 uid="uid://cmq1v8ob4m0w4"]
 
 [ext_resource type="Script" uid="uid://d0v8bhew7e25y" path="res://scenes/components/camera_component/camera_component.gd" id="1_osh5n"]
-[ext_resource type="PackedScene" uid="uid://ckp576f04778f" path="res://scenes/ui/hud_display/hud.tscn" id="2_qo802"]
+[ext_resource type="Shader" uid="uid://du6ou5tp5i54r" path="res://scenes/ui/vignette.gdshader" id="2_0h58w"]
+[ext_resource type="Script" uid="uid://ldggnrsi060v" path="res://scenes/ui/insanity_vignette.gd" id="2_xvo5e"]
+[ext_resource type="Script" uid="uid://cjwsdmgxfwxkm" path="res://resources/shader_presets/vignette_preset.gd" id="3_6tqft"]
+[ext_resource type="Shader" uid="uid://c0fwuxb0jcfgo" path="res://scenes/ui/screen_pulse.gdshader" id="3_xubnm"]
+[ext_resource type="Script" uid="uid://ocg18x2yfoj1" path="res://scenes/ui/vignette_controller.gd" id="4_2yc4p"]
+[ext_resource type="PackedScene" uid="uid://ckp576f04778f" path="res://scenes/ui/hud.tscn" id="4_xvo5e"]
+[ext_resource type="Shader" uid="uid://c5bmchyae448c" path="res://scenes/ui/chromatic_aberration.gdshader" id="5_2yc4p"]
+[ext_resource type="Script" uid="uid://3ku3y3xxx36e" path="res://scenes/ui/insanity_screenpulse.gd" id="5_x1u5e"]
+[ext_resource type="Script" uid="uid://b2jdg1jm7trgx" path="res://scenes/ui/screenpulse_controller.gd" id="6_2yc4p"]
+[ext_resource type="Script" uid="uid://c310gedyol51j" path="res://resources/shader_presets/screenpulse_preset.gd" id="7_wyjqh"]
+[ext_resource type="Script" uid="uid://ce5u01kufv4f8" path="res://scenes/ui/chromatic_controller.gd" id="9_ieyhn"]
+[ext_resource type="Script" uid="uid://imd5sxticiya" path="res://scenes/ui/insanity_chromatic.gd" id="10_434qr"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_qo802"]
-viewport_path = NodePath("SubViewport")
+[sub_resource type="Resource" id="Resource_434qr"]
+script = ExtResource("3_6tqft")
+softness = 0.9
+color = Color(0.66, 0.1716, 0.25300017, 1)
+metadata/_custom_type_script = "uid://cjwsdmgxfwxkm"
+
+[sub_resource type="Resource" id="Resource_wyjqh"]
+script = ExtResource("3_6tqft")
+radius = 0.5
+intensity = 1.0
+color = Color(0.65882355, 0.17254902, 0.25490198, 1)
+metadata/_custom_type_script = "uid://cjwsdmgxfwxkm"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ieyhn"]
+shader = ExtResource("2_0h58w")
+shader_parameter/radius = 0.0
+shader_parameter/softness = 0.0
+shader_parameter/intensity = 0.0
+shader_parameter/contrast = 0.5
+shader_parameter/vignette_color = Color(0.44, 0.123199984, 0.19184, 1)
+
+[sub_resource type="Resource" id="Resource_ioa2x"]
+script = ExtResource("7_wyjqh")
+base_strength = 0.0
+pulse_strength = 0.05
+pulse_speed = 2.5
+focus_radius = 0.7
+metadata/_custom_type_script = "uid://c310gedyol51j"
+
+[sub_resource type="Resource" id="Resource_bvmuw"]
+script = ExtResource("7_wyjqh")
+pulse_strength = 0.08
+pulse_speed = 5.0
+focus_radius = 0.7
+metadata/_custom_type_script = "uid://c310gedyol51j"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x1u5e"]
+shader = ExtResource("3_xubnm")
+shader_parameter/base_strength = 0.0
+shader_parameter/pulse_strength = 0.0
+shader_parameter/pulse_speed = 0.0
+shader_parameter/focus_radius = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6tqft"]
+shader = ExtResource("5_2yc4p")
+shader_parameter/r_displacement = Vector2(0, 0)
+shader_parameter/g_displacement = Vector2(0, 0)
+shader_parameter/b_displacement = Vector2(0, 0)
 
 [node name="CameraComponent" type="Camera3D" unique_id=974394070]
 size = 20.0
@@ -16,12 +73,61 @@ visible = false
 light_energy = 0.3
 directional_shadow_mode = 1
 
-[node name="HUD" parent="." unique_id=931475153 instance=ExtResource("2_qo802")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23)
-texture = SubResource("ViewportTexture_qo802")
-
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=730475587]
 transform = Transform3D(0.9396926, 0, 0.34202012, 0, 1, 0, -0.34202012, 0, 0.9396926, 3, 0, 4.258)
 visible = false
 light_energy = 0.3
 directional_shadow_mode = 1
+
+[node name="OverlayVisuals" type="Node" parent="." unique_id=842217482]
+
+[node name="VignetteCanvas" type="CanvasLayer" parent="OverlayVisuals" unique_id=672450681 node_paths=PackedStringArray("vignette")]
+layer = 5
+script = ExtResource("2_xvo5e")
+vignette = NodePath("Vignette")
+insanity_low = SubResource("Resource_434qr")
+insanity_high = SubResource("Resource_wyjqh")
+
+[node name="Vignette" type="ColorRect" parent="OverlayVisuals/VignetteCanvas" unique_id=1938725573]
+material = SubResource("ShaderMaterial_ieyhn")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_2yc4p")
+
+[node name="ScreenPulseCanvas" type="CanvasLayer" parent="OverlayVisuals" unique_id=442988470 node_paths=PackedStringArray("screen_pulse")]
+layer = 10
+script = ExtResource("5_x1u5e")
+screen_pulse = NodePath("ScreenPulse")
+insanity_low = SubResource("Resource_ioa2x")
+insanity_high = SubResource("Resource_bvmuw")
+
+[node name="ScreenPulse" type="ColorRect" parent="OverlayVisuals/ScreenPulseCanvas" unique_id=775623035]
+material = SubResource("ShaderMaterial_x1u5e")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("6_2yc4p")
+
+[node name="HUD" parent="OverlayVisuals" unique_id=1982623268 instance=ExtResource("4_xvo5e")]
+
+[node name="ChromaticCanvas" type="CanvasLayer" parent="OverlayVisuals" unique_id=569702899 node_paths=PackedStringArray("chromatic")]
+layer = 20
+script = ExtResource("10_434qr")
+chromatic = NodePath("Chromatic")
+
+[node name="Chromatic" type="ColorRect" parent="OverlayVisuals/ChromaticCanvas" unique_id=105934553]
+material = SubResource("ShaderMaterial_6tqft")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("9_ieyhn")

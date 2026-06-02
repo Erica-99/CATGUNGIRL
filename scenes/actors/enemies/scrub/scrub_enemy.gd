@@ -3,6 +3,7 @@ extends CharacterBody3D
 @export_category("Node References")
 @export var animator: AnimatedSprite3D
 @export var state_machine: StateMachine
+@onready var can_shoot: RayCast3D = $CanShoot
 
 var is_dead: bool = false
 
@@ -24,12 +25,28 @@ var is_dead: bool = false
 @export var chase_speed: float
 @export var flee_speed: float
 @export var slow_down_speed: float = 30
-var facing: float
+var facing: float = 1.0:
+	set(value):
+		if value != facing:
+			facing = value
+			facing_changed.emit(self)
+
+@export_category("Hitstun Variables")
+@export var body_hitstun_threshold: float
+@export var body_hitstun_duration: float
+@export var head_hitstun_threshold: float
+@export var head_hitstun_duration: float
 
 # Maybe this should move to the Scrub Gun
 @export_category("State Controlling Variables")
 @export var detected_player: bool = false
 var in_attacking_range: bool
+
+var time: float = 0.0
+@export var frequency: float = 2.0
+@export var amplitude: float = 5.0
+
+signal facing_changed(scrub: CharacterBody3D)
 
 var blackboard: Dictionary
 
@@ -47,6 +64,7 @@ func _ready() -> void:
 		"chase_speed": chase_speed,
 		"flee_speed": flee_speed,
 		"slow_down_speed": slow_down_speed,
+		"target": get_tree().get_first_node_in_group("player") as CharacterBody3D,
 	}
 	# Change initial state based on Inspector values
 	if start_aggroed:
@@ -58,10 +76,27 @@ func _ready() -> void:
 			state_machine.initial_state = start_idle
 	# Initialise state machine with Scrub information
 	state_machine.init(blackboard)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if in_attacking_range:
+		can_shoot.target_position = can_shoot.to_local(get_tree().get_first_node_in_group("player").global_position)
+
+func _physics_process(delta: float) -> void:
 	pass
+	# Direction facing transformation
+	#if velocity.x < 0: # LEFT
+		#direction = -1
+		#animator.flip_h = true
+	#elif velocity.x > 0: # RIGHT
+		#direction = 1
+		#animator.flip_h = false
+	
+	#direction = sign(velocity.x)
+	#if direction != facing && direction != 0.0:
+		#facing_changed.emit(direction)
+
 
 # health comp killed taken from convict code
 func _on_health_component_killed(killing_blow: DamageHealInstance, health_before_death: Variant) -> void:
@@ -74,7 +109,7 @@ func _on_health_component_killed(killing_blow: DamageHealInstance, health_before
 # not attack range move to chase.
 # TODO: Improve by utilising more detection logic than just an area
 func _on_detection_area_3d_body_entered(body: Node3D) -> void:
-	if body.is_in_group("Player") && !is_dead:
+	if body.is_in_group("player") && !is_dead:
 		if detected_player == false:
 			detected_player = true
 			print("Player entered detection area")
@@ -87,7 +122,7 @@ func _on_detection_area_3d_body_entered(body: Node3D) -> void:
 # When player enters attack range, check off that theyre in range
 # If player has been detected, move to attack state
 func _on_att_range_area_3d_body_entered(body):
-	if body.is_in_group("Player") && !is_dead:
+	if body.is_in_group("player") && !is_dead:
 		in_attacking_range = true
 		if detected_player:
 			state_machine.on_child_transition(state_machine.current_state, "scrubattack")
@@ -96,7 +131,7 @@ func _on_att_range_area_3d_body_entered(body):
 # When player leaves attack range, check of that they're out of range
 # If they have been detected, move to chase
 func _on_att_range_area_3d_body_exited(body):
-	if body.is_in_group("Player") && !is_dead:
+	if body.is_in_group("player") && !is_dead:
 		in_attacking_range = true
 		if detected_player:
 			state_machine.on_child_transition(state_machine.current_state, "scrubchase")
@@ -104,7 +139,7 @@ func _on_att_range_area_3d_body_exited(body):
 
 # When player enters flee range, move to flee
 func _on_flee_area_3d_body_entered(body):
-	if body.is_in_group("Player") && !is_dead:
+	if body.is_in_group("player") && !is_dead:
 		state_machine.on_child_transition(state_machine.current_state, "scrubflee")
 		print("Fleeing Player")
 
@@ -112,12 +147,22 @@ func _on_flee_area_3d_body_entered(body):
 # TODO: Improve flee logic so that Scrub tries to make distance/
 #    stops fleeing if they are blocked.
 func _on_flee_area_3d_body_exited(body):
-	if body.is_in_group("Player") && !is_dead:
+	if body.is_in_group("player") && !is_dead:
 		state_machine.on_child_transition(state_machine.current_state, "scrubattack")
-
 
 func _on_health_component_health_changed(old_health: float, new_health: float, damage_or_heal_instance: DamageHealInstance) -> void:
 	if !detected_player && !is_dead:
 		detected_player = true
 		state_machine.on_child_transition(state_machine.current_state, "scrubchase")
 		print("Chasing Player")
+	if damage_or_heal_instance.amount > head_hitstun_threshold:
+		_apply_hitstun(head_hitstun_duration)
+	elif damage_or_heal_instance.amount == body_hitstun_threshold:
+		_apply_hitstun(body_hitstun_duration)
+
+func _apply_hitstun(duration: float) -> void:
+	velocity.x = 0.0	# remove velocity.x and velocity.z and replace with
+	velocity.z = 0.0	# velocity = Vector3.ZERO if scrubs should fall on hitstun
+	#animator.pause()
+	#await get_tree().create_timer(duration).timeout
+	#animator.play()
