@@ -40,6 +40,7 @@ enum InteractableType {
 	CONSOLE,
 	ELEVATOR,
 	BRAIN_TERMINAL,
+	PICKUP,
 }
 
 enum BubbleType {

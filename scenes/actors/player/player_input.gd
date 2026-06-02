@@ -12,6 +12,7 @@ var _interacting := false
 
 var _input_locked := false
 var _jump_locked := false
+var _superjump_enabled: bool = false
 
 signal superJump
 signal hasLanded
@@ -20,8 +21,10 @@ signal standing
 
 
 func _ready() -> void:
+	_superjump_enabled = get_parent().has_gun
 	EventManager.connect("begin_date_scene_lock", _lock_input)
 	EventManager.connect("end_date_scene_lock", _resume_input)
+	EventManager.gun_picked_up.connect(_enable_superjump)
 
 func _process(_delta: float) -> void:
 	if not _input_locked:
@@ -78,9 +81,11 @@ func _physics_process(delta: float) -> void:
 		_crouching = true
 		crouching.emit()
 		
-		if Input.is_action_just_pressed("jump"):
+		if Input.is_action_just_pressed("jump") and _superjump_enabled:
 			superJump.emit()
 
+func _enable_superjump() -> void:
+	_superjump_enabled = true
 
 # Use this for things that are non-continuous.
 func _unhandled_input(event: InputEvent) -> void:
@@ -98,7 +103,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
 		_jump_held = true                            ##Player jumps
 	
-	if event.is_action_pressed("move_down") and event.is_action_pressed("jump"):
+	if event.is_action_pressed("move_down") and event.is_action_pressed("jump") and _superjump_enabled:
 		_jump_held = true
 		superJump.emit()
 	
