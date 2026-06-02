@@ -22,12 +22,12 @@
 [ext_resource type="PackedScene" uid="uid://b16p1gdgu6tff" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/WareHouse/FloorWareHouse.tscn" id="23_2li8q"]
 [ext_resource type="PackedScene" uid="uid://cv8vmfjhudskh" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/WareHouse/RoofWareHouse.tscn" id="24_6agv3"]
 [ext_resource type="PackedScene" uid="uid://11pckncgaxu4" path="res://scenes/components/level_components/level_transitions/level_end.tscn" id="24_8s1m1"]
-[ext_resource type="PackedScene" uid="uid://dld0qjmojk1t8" path="res://scenes/actors/enemies/enemy_manager/enemy_manager.tscn" id="25_vmsb5"]
-[ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict/convict_enemy.tscn" id="26_kvoti"]
 [ext_resource type="Script" uid="uid://b8370nobsmmuf" path="res://scenes/levels/elevator_platform/elevator_platform.gd" id="24_kvoti"]
 [ext_resource type="PackedScene" uid="uid://ou3g778y2q8g" path="res://scenes/components/interactable_component/interactable_component.tscn" id="24_vmsb5"]
-[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="25_kvoti"]
 [ext_resource type="PackedScene" uid="uid://c4w6eac8jl84" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/DoorBig.tscn" id="25_8s1m1"]
+[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="25_kvoti"]
+[ext_resource type="PackedScene" uid="uid://dld0qjmojk1t8" path="res://scenes/actors/enemies/enemy_manager/enemy_manager.tscn" id="25_vmsb5"]
+[ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict/convict_enemy.tscn" id="26_kvoti"]
 [ext_resource type="PackedScene" uid="uid://c4l4a1vw256dp" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/WareHouse/DoorwayLargeWareHouse.tscn" id="28_ukt4s"]
 [ext_resource type="PackedScene" uid="uid://cwj4k8rhnbo44" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/WareHouse/DoorwayNoneBaseWareHouse.tscn" id="29_qo5l4"]
 [ext_resource type="PackedScene" uid="uid://cngu3je7rp286" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/WareHouse/DoorwayNoneMidWareHouse.tscn" id="30_843np"]
@@ -52,6 +52,7 @@
 [ext_resource type="PackedScene" uid="uid://butl22j5b5b2w" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/WoodenCrate5.tscn" id="47_m7qds"]
 [ext_resource type="PackedScene" uid="uid://dywiy7oiheh68" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/WoodenCrate6.tscn" id="48_mdqg4"]
 [ext_resource type="PackedScene" uid="uid://x3k5nwycrxwr" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/WoodenPallet.tscn" id="49_bgbox"]
+[ext_resource type="PackedScene" uid="uid://bls076phgmcus" path="res://scenes/actors/enemies/scrub/scrub.tscn" id="53_48mh3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_eafu1"]
 
@@ -249,9 +250,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 114.609, 142.495, 0)
 
 [node name="DoorLargeBasic6" parent="Environment" unique_id=31124478 instance=ExtResource("19_dp8q3")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 151.017, 142.495, 0)
-
-[node name="DoorLargeBasic13" parent="Environment" unique_id=1580679164 instance=ExtResource("19_dp8q3")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.203, 142.495, 0)
 
 [node name="DoorLargeBasic7" parent="Environment" unique_id=282236708 instance=ExtResource("19_dp8q3")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30.203, 167.695, 0)
@@ -1502,22 +1500,44 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.288002, 1.0524979, 0)
 monitoring = false
 level_name = "Stage4"
 
-[node name="EnemyManager" parent="." unique_id=18369620 instance=ExtResource("25_vmsb5")]
-
-[node name="Convict" parent="EnemyManager" unique_id=1506947017 instance=ExtResource("26_kvoti")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, 144, 0)
-
-[node name="Convict2" parent="EnemyManager" unique_id=42159830 instance=ExtResource("26_kvoti")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73, 144, 0)
-
-[node name="Convict3" parent="EnemyManager" unique_id=618630284 instance=ExtResource("26_kvoti")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 270, 182, 0)
-
-[connection signal="stage_cleared" from="EnemyManager" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]
-
 [node name="DoorBig" parent="Interactive" unique_id=1964791173 instance=ExtResource("25_8s1m1")]
 transform = Transform3D(0.8384943, 0, 0, 0, 10.463272, 0, 0, 0, 22.610426, 114.609, 173.16951, 0)
 visible = false
+
+[node name="EnemyManager" parent="." unique_id=18369620 instance=ExtResource("25_vmsb5")]
+
+[node name="Convict" parent="EnemyManager" unique_id=1506947017 instance=ExtResource("26_kvoti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 144, 0)
+
+[node name="Convict2" parent="EnemyManager" unique_id=42159830 instance=ExtResource("26_kvoti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81, 144, 0)
+
+[node name="Convict3" parent="EnemyManager" unique_id=618630284 instance=ExtResource("26_kvoti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 270, 183, 0)
+
+[node name="Scrub" parent="EnemyManager" unique_id=1090872008 instance=ExtResource("53_48mh3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 171, 0)
+
+[node name="Scrub2" parent="EnemyManager" unique_id=1154805522 instance=ExtResource("53_48mh3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96, 171, 0)
+
+[node name="Scrub3" parent="EnemyManager" unique_id=919328018 instance=ExtResource("53_48mh3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 171, 0)
+
+[node name="Scrub4" parent="EnemyManager" unique_id=1062535484 instance=ExtResource("53_48mh3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156, 146, 0)
+
+[node name="Scrub5" parent="EnemyManager" unique_id=1771489288 instance=ExtResource("53_48mh3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176, 129, 0)
+
+[node name="Scrub6" parent="EnemyManager" unique_id=1345786156 instance=ExtResource("53_48mh3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205, 129, 0)
+
+[node name="Scrub7" parent="EnemyManager" unique_id=1555417855 instance=ExtResource("53_48mh3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 213, 129, 0)
+
+[node name="Scrub8" parent="EnemyManager" unique_id=995124295 instance=ExtResource("53_48mh3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 230, 146, 0)
 
 [node name="Lighting" type="Node3D" parent="." unique_id=1172114958]
 
@@ -1701,3 +1721,5 @@ light_volumetric_fog_energy = 0.1
 shadow_enabled = true
 spot_range = 46.09199
 spot_angle = 31.877684
+
+[connection signal="stage_cleared" from="EnemyManager" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]
