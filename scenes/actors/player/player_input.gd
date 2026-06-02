@@ -13,6 +13,7 @@ var _superjump_held:= false
 
 var _input_locked := false
 var _jump_locked := false
+var _superjump_enabled: bool = false
 
 signal hasLanded
 signal standing
@@ -20,8 +21,10 @@ signal crouching
 
 
 func _ready() -> void:
+	_superjump_enabled = get_parent().has_gun
 	EventManager.connect("begin_date_scene_lock", _lock_input)
 	EventManager.connect("end_date_scene_lock", _resume_input)
+	EventManager.gun_picked_up.connect(_enable_superjump)
 
 func _process(_delta: float) -> void:
 	if not _input_locked:

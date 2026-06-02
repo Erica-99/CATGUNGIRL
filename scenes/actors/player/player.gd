@@ -27,6 +27,8 @@ signal player_dead()
 
 var facing: float
 var speed_multiplier: float = 1.0
+# gun enabled by default
+@export var has_gun: bool = true
 
 @export_category("Movement Dependencies")
 @export var input_component: InputComponent
@@ -59,6 +61,9 @@ func _ready() -> void:
 	gun_component.charge_progress_changed.connect(_on_gun_charge_progress)
 	gun_component.charge_ended.connect(_on_gun_charge_ended)
 	gun_component.charge_started.connect(_on_gun_charge_started)
+	
+	EventManager.gun_picked_up.connect(_equip_gun)
+	_set_gun_enabled(has_gun)
 
 func _process(_delta: float) -> void:
 	var current_state = input_component.get_input_state()
@@ -128,3 +133,11 @@ func _on_gun_charge_ended() -> void:
 
 func _on_gun_charge_started() -> void:
 	speed_multiplier = charge_speed_multiplier
+
+func _equip_gun() -> void:
+	has_gun = true
+	_set_gun_enabled(true)
+
+func _set_gun_enabled(enabled: bool) -> void:
+	gun_component.process_mode = Node.PROCESS_MODE_INHERIT if enabled else Node.PROCESS_MODE_DISABLED
+	gun_component.visible = enabled
