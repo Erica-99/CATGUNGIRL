@@ -18,6 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://k4bj1vh7ofsj" path="res://art/3D_Env/3D_Assets/DoorExit.tscn" id="17_1nyol"]
 [ext_resource type="PackedScene" uid="uid://cchkjk2lolyo0" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/FloorShooting.tscn" id="17_3h5io"]
 [ext_resource type="PackedScene" uid="uid://dsp60dlsho3gr" path="res://art/3D_Env/3D_Assets/DoorBasic.tscn" id="18_1nyol"]
+[ext_resource type="PackedScene" uid="uid://dld0qjmojk1t8" path="res://scenes/actors/enemies/enemy_manager/enemy_manager.tscn" id="19_rmes1"]
+[ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict/convict_enemy.tscn" id="20_dgb42"]
 
 [node name="Stage5" type="Node3D" unique_id=1996110792]
 
@@ -467,4 +469,21 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -151.03238, 25.2, 0)
 
 [node name="LevelEnd" parent="Interactive/DoorExit" unique_id=914563996 instance=ExtResource("16_3h5io")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.5, 0)
+monitoring = false
 level_name = "Stage6"
+
+[node name="EnemyManager" parent="." unique_id=18369620 instance=ExtResource("19_rmes1")]
+
+[node name="Convict" parent="EnemyManager" unique_id=1506947017 instance=ExtResource("20_dgb42")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101, 2, 0)
+
+[node name="Convict2" parent="EnemyManager" unique_id=1114115341 instance=ExtResource("20_dgb42")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -121, 2, 0)
+
+[node name="Convict3" parent="EnemyManager" unique_id=115792186 instance=ExtResource("20_dgb42")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135, 2, 0)
+
+[node name="Convict4" parent="EnemyManager" unique_id=634646066 instance=ExtResource("20_dgb42")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -131, 27, 0)
+
+[connection signal="stage_cleared" from="EnemyManager" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]
