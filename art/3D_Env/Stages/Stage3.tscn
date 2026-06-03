@@ -25,7 +25,6 @@
 [ext_resource type="Script" uid="uid://b8370nobsmmuf" path="res://scenes/levels/elevator_platform/elevator_platform.gd" id="24_kvoti"]
 [ext_resource type="PackedScene" uid="uid://ou3g778y2q8g" path="res://scenes/components/interactable_component/interactable_component.tscn" id="24_vmsb5"]
 [ext_resource type="PackedScene" uid="uid://c4w6eac8jl84" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/DoorBig.tscn" id="25_8s1m1"]
-[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="25_kvoti"]
 [ext_resource type="PackedScene" uid="uid://dld0qjmojk1t8" path="res://scenes/actors/enemies/enemy_manager/enemy_manager.tscn" id="25_vmsb5"]
 [ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict/convict_enemy.tscn" id="26_kvoti"]
 [ext_resource type="PackedScene" uid="uid://c4l4a1vw256dp" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/WareHouse/DoorwayLargeWareHouse.tscn" id="28_ukt4s"]
@@ -63,7 +62,7 @@ size = Vector3(17.088806, 7.2834473, 1)
 [node name="StageThree" type="Node3D" unique_id=535640616]
 
 [node name="Player" parent="." unique_id=1349193765 instance=ExtResource("19_4yttx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3895743, 10.665588, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3895743, 1.9932861, 0)
 collision_mask = 129
 
 [node name="Environment" type="Node3D" parent="." unique_id=1639754073]
@@ -1488,7 +1487,7 @@ interactable_type = 2
 interactable_load_type = 1
 event_trigger = NodePath("EventTrigger")
 
-[node name="EventTrigger" parent="Interactive/Elevator/ElevatorConsole/InteractableComponent" unique_id=1311781014 instance=ExtResource("25_kvoti")]
+[node name="EventTrigger" parent="Interactive/Elevator/ElevatorConsole/InteractableComponent" unique_id=1311781014 instance=ExtResource("48_6oy54")]
 signal_name = "start_elevator"
 
 [node name="ElevatorStart" type="Marker3D" parent="Interactive/Elevator" unique_id=602707350]
@@ -1693,7 +1692,7 @@ spot_angle = 31.877684
 
 [node name="DATES_POPUPS" type="Node" parent="." unique_id=697093068]
 
-[node name="SheriffPopup" parent="DATES_POPUPS" unique_id=1311781014 instance=ExtResource("48_6oy54")]
+[node name="SheriffPopup" parent="DATES_POPUPS" unique_id=788031286 instance=ExtResource("48_6oy54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.839455, 170.82759, 0)
 _signal_parameters = [4]
 signal_name = "activate_popup"
