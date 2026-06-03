@@ -79,6 +79,9 @@ func _lock_input() -> void:
 func _resume_input() -> void:
 	_input_locked = false
 
+func _enable_superjump() -> void:
+	_superjump_enabled = true
+
 func _physics_process(delta: float) -> void:
 	pass
 
