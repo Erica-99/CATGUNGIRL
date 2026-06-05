@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://dsp60dlsho3gr"]
+[gd_scene format=3 uid="uid://bojsmqie6xi4c"]
 
-[ext_resource type="Script" uid="uid://q08q3q603fga" path="res://art/3D_Env/3D_Assets/door_basic.gd" id="1_7yb8l"]
-[ext_resource type="ArrayMesh" uid="uid://bla12lknxolc2" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/DoorSlidingBasic.obj" id="1_rwo67"]
-[ext_resource type="ArrayMesh" uid="uid://dea42rnao7hhc" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/DoorwaySlidingBasic.obj" id="2_ohxkl"]
+[ext_resource type="Script" uid="uid://q08q3q603fga" path="res://art/3D_Env/3D_Assets/door_basic.gd" id="1_vva34"]
+[ext_resource type="ArrayMesh" uid="uid://bla12lknxolc2" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/DoorSlidingBasic.obj" id="2_iuq82"]
+[ext_resource type="ArrayMesh" uid="uid://dea42rnao7hhc" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/DoorwaySlidingBasic.obj" id="3_lo052"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_q7qm1"]
 points = PackedVector3Array(0.123398, 2.327184, 0.63912606, 0.123398, 2.327184, -0.600075, -0.123398, 2.327184, 0.63912606, 0.123398, 0.100005, 0.63912606, -0.123398, 2.327184, -0.600075, 0.123398, 0.100005, -0.600075, -0.123398, 0.100005, 0.63912606, -0.123398, 0.100005, -0.600075)
@@ -94,23 +94,20 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_rwo67"]
 size = Vector3(0.8179016, 0.52075195, 1.1655273)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_l1m5j"]
-size = Vector3(7, 2.5, 1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ohxkl"]
-albedo_color = Color(0, 1, 0, 1)
+albedo_color = Color(1, 0, 0, 1)
 emission_enabled = true
-emission = Color(0, 1, 0, 1)
+emission = Color(1, 0, 0, 1)
 
-[node name="DoorBasic" type="StaticBody3D" unique_id=1555562335 node_paths=PackedStringArray("animation_player")]
+[node name="DoorBasicLocked" type="StaticBody3D" unique_id=1555562335 node_paths=PackedStringArray("animation_player")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-script = ExtResource("1_7yb8l")
+script = ExtResource("1_vva34")
 animation_player = NodePath("DoorSlidingBasic/DoorBasic_AnimationPlayer")
 
 [node name="DoorSlidingBasic" type="StaticBody3D" parent="." unique_id=1404790232]
 
 [node name="DoorSlidingBasic_Mesh" type="MeshInstance3D" parent="DoorSlidingBasic" unique_id=1339969428]
-mesh = ExtResource("1_rwo67")
+mesh = ExtResource("2_iuq82")
 
 [node name="DoorSlidingBasic_Collision" type="CollisionShape3D" parent="DoorSlidingBasic" unique_id=1106955015]
 shape = SubResource("ConvexPolygonShape3D_q7qm1")
@@ -120,20 +117,11 @@ root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_ksalm")
 
 [node name="DoorwaySlidingBasic_Mesh" type="MeshInstance3D" parent="." unique_id=1315032598]
-mesh = ExtResource("2_ohxkl")
+mesh = ExtResource("3_lo052")
 
 [node name="DoorwaySlidingBasic_Collision" type="CollisionShape3D" parent="." unique_id=1978679842]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0007171631, 2.5749319, -0.0026855469)
 shape = SubResource("BoxShape3D_rwo67")
-
-[node name="DoorOpenArea" type="Area3D" parent="." unique_id=162732424]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5933199, 0)
-collision_layer = 0
-collision_mask = 6
-
-[node name="DoorOpenerCollider" type="CollisionShape3D" parent="DoorOpenArea" unique_id=694209396]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
-shape = SubResource("BoxShape3D_l1m5j")
 
 [node name="EXITHERECYLINDER" type="CSGCylinder3D" parent="." unique_id=940566721]
 transform = Transform3D(0.26, 0, 0, 0, -5.289078e-09, -0.26, 0, 0.121, -1.13649605e-08, 0.3085317, 2.4297729, 1.08457115e-07)
@@ -144,5 +132,3 @@ transform = Transform3D(0.26, 0, 0, 0, -5.289078e-09, -0.26, 0, 0.121, -1.136496
 material = SubResource("StandardMaterial3D_ohxkl")
 
 [connection signal="animation_finished" from="DoorSlidingBasic/DoorBasic_AnimationPlayer" to="." method="_on_door_basic_animation_player_animation_finished"]
-[connection signal="body_entered" from="DoorOpenArea" to="." method="open"]
-[connection signal="body_exited" from="DoorOpenArea" to="." method="close"]

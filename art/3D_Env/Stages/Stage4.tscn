@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cschs0x82o57w" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Laboratory/WallMultiLevelBaseLaboratory.tscn" id="18_6o3oo"]
 [ext_resource type="PackedScene" uid="uid://dqba7lkeq2lmh" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Laboratory/FloorLaboratory.tscn" id="18_g3ka0"]
 [ext_resource type="PackedScene" uid="uid://dl1dvclonvae4" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Multi/PrisonCell(Active).tscn" id="19_6o3oo"]
-[ext_resource type="PackedScene" uid="uid://bpub13ubiqu2e" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Laboratory/FloorBrokenSide.tscn" id="19_onliv"]
+[ext_resource type="PackedScene" uid="uid://bpub13ubiqu2e" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Laboratory/FloorBrokenSideLaboratory.tscn" id="19_onliv"]
 [ext_resource type="PackedScene" uid="uid://bitrucit7ifuv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Laboratory/WallPlainMidLaboratory.tscn" id="19_t1i12"]
 [ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict/convict_enemy.tscn" id="20_g3ka0"]
 [ext_resource type="PackedScene" uid="uid://ukr8s37yqom1" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Laboratory/WallBaseLaboratory.tscn" id="20_ku2sa"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://bls076phgmcus" path="res://scenes/actors/enemies/scrub/scrub.tscn" id="21_g3ka0"]
 [ext_resource type="PackedScene" uid="uid://c5xx8wdnj5ww3" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Laboratory/DoorwayNoneMidLaboratory.tscn" id="21_ku2sa"]
 [ext_resource type="PackedScene" uid="uid://2dumj6fip3b1" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Laboratory/WallPlainBaseLaboratory.tscn" id="22_bvj3a"]
+[ext_resource type="PackedScene" uid="uid://bojsmqie6xi4c" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Multi/DoorBasicLocked.tscn" id="23_ku2sa"]
 [ext_resource type="PackedScene" uid="uid://bihvrgq70v1mq" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Laboratory/RoofLaboratory.tscn" id="23_oqy74"]
 
 [node name="Stage4" type="Node3D" unique_id=1167791451]
@@ -82,17 +83,11 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -120.406, 8.4, 0)
 [node name="DoorExit" parent="Environment" unique_id=863191425 instance=ExtResource("13_1e5f0")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.203, 0, 0)
 
-[node name="DoorSlidingBasic" parent="Environment" unique_id=1555562335 instance=ExtResource("14_jwkd4")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -30.202333, 0, 0)
-
 [node name="DoorSlidingBasic2" parent="Environment" unique_id=1448440225 instance=ExtResource("14_jwkd4")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -30.202, 8.4, 0)
 
 [node name="DoorSlidingBasic3" parent="Environment" unique_id=898801646 instance=ExtResource("14_jwkd4")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -138.609, 0, 0)
-
-[node name="DoorSlidingBasic4" parent="Environment" unique_id=1217759228 instance=ExtResource("14_jwkd4")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -138.609, 8.4, 0)
 
 [node name="FloorMeshEdge12" parent="Environment" unique_id=1058126010 instance=ExtResource("11_u07pd")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -132.406, 25.2, -10)
@@ -1021,5 +1016,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -168, 21, 0)
 
 [node name="Scrub6" parent="Enemies/EnemyManager" unique_id=1366744176 instance=ExtResource("21_g3ka0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -179, 37, 0)
+
+[node name="DoorBasicLocked" parent="." unique_id=1555562335 instance=ExtResource("23_ku2sa")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -30.202, 0, 0)
+
+[node name="DoorBasicLocked2" parent="." unique_id=758774507 instance=ExtResource("23_ku2sa")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -138.609, 8.4, 0)
 
 [connection signal="stage_cleared" from="Enemies/EnemyManager" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]
