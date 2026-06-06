@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bogn5483ajt7k"]
+
+[ext_resource type="ArrayMesh" uid="uid://kt1vu5ev8ggy" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/Laboratory/LabPetriDish.obj" id="1_cnscb"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bcfw6"]
+points = PackedVector3Array(0, 0, -0.036269, -0.025646757, 0, -0.025646757, 0, 0.008707148, -0.036269, 0.025639657, 0, -0.025646757, -0.025646757, 0.008707148, -0.025646757, -0.036269, 0, 0, 0.025639657, 0.008707148, -0.025646757, 0.036269, 0, 0, -0.036269, 0.008707148, 0, -0.025646757, 0, 0.025639657, 0.036269, 0.008707148, 0, 0.025639657, 0, 0.025639657, -0.025646757, 0.008707148, 0.025639657, 0, 0, 0.036269, 0.025639657, 0.008707148, 0.025639657, 0, 0.008707148, 0.036269)
+
+[node name="LabPetriDish" type="StaticBody3D" unique_id=1186725690]
+
+[node name="LabPetriDish_Mesh" type="MeshInstance3D" parent="." unique_id=1852222597]
+mesh = ExtResource("1_cnscb")
+
+[node name="LabPetriDish_Collision" type="CollisionShape3D" parent="." unique_id=1502356473]
+shape = SubResource("ConvexPolygonShape3D_bcfw6")
