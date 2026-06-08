@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://dfg3qj6dl3f8d" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Roof.tscn" id="17_vopau"]
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="19_4yttx"]
 [ext_resource type="PackedScene" uid="uid://c7wdqebqhqbuu" path="res://art/3D_Env/3D_Assets/DoorLargeBasic.tscn" id="19_dp8q3"]
-[ext_resource type="PackedScene" uid="uid://dsp60dlsho3gr" path="res://art/3D_Env/3D_Assets/DoorBasic.tscn" id="20_4otvg"]
 [ext_resource type="PackedScene" uid="uid://cxge5m5sp5n26" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Elevator.tscn" id="20_4swpl"]
 [ext_resource type="PackedScene" uid="uid://cao0d81ad8hbv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/DoorwaySingle.tscn" id="20_4yttx"]
 [ext_resource type="PackedScene" uid="uid://ddk1ekr7wnuj1" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/VentAirIntake.tscn" id="21_4swpl"]
@@ -53,6 +52,9 @@
 [ext_resource type="PackedScene" uid="uid://dywiy7oiheh68" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/WoodenCrate6.tscn" id="48_mdqg4"]
 [ext_resource type="PackedScene" uid="uid://x3k5nwycrxwr" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/WoodenPallet.tscn" id="49_bgbox"]
 [ext_resource type="PackedScene" uid="uid://bls076phgmcus" path="res://scenes/actors/enemies/scrub/scrub.tscn" id="53_48mh3"]
+[ext_resource type="PackedScene" uid="uid://duhd2obxk5mwq" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/WareHouse/WallWindowWareHouse.tscn" id="54_odnwa"]
+[ext_resource type="PackedScene" uid="uid://bojsmqie6xi4c" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Multi/DoorBasicLocked.tscn" id="54_x2xyk"]
+[ext_resource type="PackedScene" uid="uid://dbm4o7gs6g22" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Multi/DoorLargeBasic(Locked).tscn" id="55_x2xyk"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_eafu1"]
 
@@ -230,9 +232,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 241.628, 150.895, 0)
 [node name="DoorLargeBasic" parent="Environment" unique_id=101148383 instance=ExtResource("19_dp8q3")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 271.832, 142.495, 0)
 
-[node name="DoorLargeBasic2" parent="Environment" unique_id=333550831 instance=ExtResource("19_dp8q3")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 235.424, 167.695, 0)
-
 [node name="DoorLargeBasic3" parent="Environment" unique_id=1895054783 instance=ExtResource("19_dp8q3")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 235.424, 167.695, -20)
 
@@ -245,27 +244,8 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 115.017, 167.695, -20)
 [node name="DoorLargeBasic4" parent="Environment" unique_id=347394711 instance=ExtResource("19_dp8q3")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 235.424, 125.695, 0)
 
-[node name="DoorLargeBasic5" parent="Environment" unique_id=1861217087 instance=ExtResource("19_dp8q3")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 114.609, 125.695, 0)
-
-[node name="DoorLargeBasic10" parent="Environment" unique_id=1636539994 instance=ExtResource("19_dp8q3")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 114.609, 142.495, 0)
-
-[node name="DoorLargeBasic6" parent="Environment" unique_id=31124478 instance=ExtResource("19_dp8q3")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 151.017, 142.495, 0)
-
-[node name="DoorLargeBasic7" parent="Environment" unique_id=282236708 instance=ExtResource("19_dp8q3")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30.203, 167.695, 0)
-
 [node name="DoorLargeBasic9" parent="Environment" unique_id=388624098 instance=ExtResource("19_dp8q3")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30.203, 167.695, -20)
-
-[node name="DoorLargeBasic8" parent="Environment" unique_id=1012816105 instance=ExtResource("19_dp8q3")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30.203, 8.4, 0)
-
-[node name="DoorSlidingBasic" parent="Environment" unique_id=1555562335 instance=ExtResource("20_4otvg")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30.203, 0, 0)
-openable = false
 
 [node name="DoorExit2" parent="Environment" unique_id=1507794638 instance=ExtResource("17_dp8q3")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.203488, 0, 0)
@@ -644,6 +624,15 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 132.813, 176.095, -20)
 
 [node name="FloorWareHouse30" parent="Environment" unique_id=1940368051 instance=ExtResource("23_2li8q")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 144.813, 167.695, -20)
+
+[node name="FloorWareHouse65" parent="Environment" unique_id=1565822461 instance=ExtResource("23_2li8q")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 120.813, 167.695, -10)
+
+[node name="FloorWareHouse66" parent="Environment" unique_id=743429392 instance=ExtResource("23_2li8q")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 132.813, 167.695, -10)
+
+[node name="FloorWareHouse67" parent="Environment" unique_id=985360395 instance=ExtResource("23_2li8q")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 144.813, 167.695, -10)
 
 [node name="RoofWareHouse30" parent="Environment" unique_id=1472468464 instance=ExtResource("24_6agv3")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 144.813, 176.095, -20)
@@ -1538,6 +1527,24 @@ shadow_enabled = true
 spot_range = 32.195656
 spot_angle = 47.085472
 
+[node name="SpotLight3D26" type="SpotLight3D" parent="Lighting" unique_id=80089264]
+transform = Transform3D(1, 0, 0, 0, 0.874425, 0.48516074, 0, -0.48516074, 0.874425, 3.7516422, 12.980158, 16.815374)
+light_energy = 6.386
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+shadow_enabled = true
+spot_range = 32.195656
+spot_angle = 47.085472
+
+[node name="SpotLight3D27" type="SpotLight3D" parent="Lighting" unique_id=988865390]
+transform = Transform3D(1, 0, 0, 0, 0.874425, 0.48516074, 0, -0.48516074, 0.874425, 22.571371, 12.980158, 16.815374)
+light_energy = 6.386
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+shadow_enabled = true
+spot_range = 32.195656
+spot_angle = 47.085472
+
 [node name="SpotLight3D12" type="SpotLight3D" parent="Lighting" unique_id=1185657637]
 transform = Transform3D(1, 0, 0, 0, 0.874425, 0.48516074, 0, -0.48516074, 0.874425, 124.15298, 173.15987, 13.244465)
 light_energy = 6.386
@@ -1765,5 +1772,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 213, 129, 0)
 
 [node name="Scrub8" parent="Enemies/EnemyManager" unique_id=995124295 instance=ExtResource("53_48mh3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 230, 146, 0)
+
+[node name="WallWindowWareHouse" parent="." unique_id=719152104 instance=ExtResource("54_odnwa")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 132.813, 167.695, 0)
+
+[node name="DoorBasicLocked" parent="." unique_id=1555562335 instance=ExtResource("54_x2xyk")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30.203, 0, 0)
+
+[node name="DoorLargeBasic" parent="." unique_id=1052281145 instance=ExtResource("55_x2xyk")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30.203, 8.4, 0)
+
+[node name="DoorLargeBasic2" parent="." unique_id=617744363 instance=ExtResource("55_x2xyk")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30.203, 167.695, 0)
+
+[node name="DoorLargeBasic3" parent="." unique_id=23245458 instance=ExtResource("55_x2xyk")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 235.424, 167.695, 0)
+
+[node name="DoorLargeBasic4" parent="." unique_id=111175640 instance=ExtResource("55_x2xyk")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 114.609, 125.695, 0)
+
+[node name="DoorLargeBasic5" parent="." unique_id=4977010 instance=ExtResource("55_x2xyk")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 114.609, 142.495, 0)
+
+[node name="DoorLargeBasic6" parent="." unique_id=757368641 instance=ExtResource("55_x2xyk")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 151.017, 142.495, 0)
 
 [connection signal="stage_cleared" from="Enemies/EnemyManager" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]

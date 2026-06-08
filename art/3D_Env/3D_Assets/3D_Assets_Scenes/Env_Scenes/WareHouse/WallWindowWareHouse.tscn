@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://duhd2obxk5mwq"]
+
+[ext_resource type="ArrayMesh" uid="uid://d2kv6la6jcv2w" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/WareHouse/WallWareHouseWindowFrame.obj" id="1_t48ik"]
+[ext_resource type="ArrayMesh" uid="uid://b81nxfv007xdl" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/WareHouse/WallBaseWindowWareHouse.obj" id="2_8k80n"]
+[ext_resource type="Texture2D" uid="uid://qbf1xmo1wrde" path="res://art/3D_Env/3D_Assets/Images/Mesh/Floor/TextureTrimSheetMesh.png" id="2_hrapc"]
+[ext_resource type="Texture2D" uid="uid://dgey57obwj80x" path="res://art/3D_Env/3D_Assets/Images/WareHouse/Walls/TextureTrimSheetWallW.png" id="4_6dk44"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_67yxf"]
+albedo_texture = ExtResource("2_hrapc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rwloa"]
+albedo_texture = ExtResource("4_6dk44")
+
+[node name="WallWindowWareHouse" type="StaticBody3D" unique_id=719152104]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="WallWareHouseWindowFrame_Mesh" type="MeshInstance3D" parent="." unique_id=1829848173]
+mesh = ExtResource("1_t48ik")
+surface_material_override/0 = SubResource("StandardMaterial3D_67yxf")
+
+[node name="WallBaseWindowWareHouse_Mesh" type="MeshInstance3D" parent="." unique_id=1137860267]
+mesh = ExtResource("2_8k80n")
+surface_material_override/0 = SubResource("StandardMaterial3D_rwloa")
