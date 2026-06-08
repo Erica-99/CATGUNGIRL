@@ -1,4 +1,6 @@
 extends CharacterBody3D
+@onready var too_far_floor_detection: RayCast3D = $TooFarFloorDetection
+@onready var environment_too_close: Area3D = $EnvironmentTooClose
 
 @export_category("Node References")
 @export var animator: AnimatedSprite3D
@@ -43,8 +45,8 @@ var facing: float = 1.0:
 var in_attacking_range: bool
 
 var time: float = 0.0
-@export var frequency: float = 2.0
-@export var amplitude: float = 5.0
+@export var frequency: float = 3.0
+@export var amplitude: float = 2.0
 
 signal facing_changed(scrub: CharacterBody3D)
 
@@ -84,6 +86,19 @@ func _process(delta):
 		can_shoot.target_position = can_shoot.to_local(get_tree().get_first_node_in_group("player").global_position)
 
 func _physics_process(delta: float) -> void:
+	var added_velo = 0
+	if !too_far_floor_detection.is_colliding():
+		added_velo += -1
+	else:
+		if environment_too_close.get_overlapping_bodies():
+			added_velo += 1
+	
+	time += delta
+	velocity.y = cos(time * frequency) * amplitude + added_velo
+	print("velo y calced is : " + str(velocity.y))
+	
+	
+	move_and_slide()
 	pass
 	# Direction facing transformation
 	#if velocity.x < 0: # LEFT
