@@ -58,6 +58,7 @@ signal enemy_hit(hurtbox: Area3D)
 ## perfect shot signal
 signal perfect_shot_fired()
 signal spread_changed(spread: float) # visual indicator 
+signal perfect_window_changed(active: bool) # for indicator flash
 
 var _fire_cooldown: float = 0.0
 var _recoil_offset: float = 0.0 
@@ -94,6 +95,8 @@ func _process(delta: float) -> void:
 	else:
 		var spread = 1.0 - clampf(_time_since_last_shot / laser_convergence_speed, 0.0, 1.0)
 		spread_changed.emit(spread)
+	var in_window = not _is_charging and _is_aim_settled() and _time_since_last_shot < perfect_shot_max_interval
+	perfect_window_changed.emit(in_window)
 
 
 func _update_aim(mouse_world: Vector3, input_state: Dictionary, delta: float) -> void:
