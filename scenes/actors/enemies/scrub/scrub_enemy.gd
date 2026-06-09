@@ -95,7 +95,7 @@ func _physics_process(delta: float) -> void:
 	
 	time += delta
 	velocity.y = cos(time * frequency) * amplitude + added_velo
-	print("velo y calced is : " + str(velocity.y))
+	#print("velo y calced is : " + str(velocity.y))
 	
 	
 	move_and_slide()
