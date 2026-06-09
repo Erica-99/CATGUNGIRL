@@ -1731,39 +1731,42 @@ font_size = 100
 
 [node name="Enemies" type="Node3D" parent="." unique_id=509501204]
 
-[node name="EnemyManager" parent="Enemies" unique_id=18369620 instance=ExtResource("25_vmsb5")]
+[node name="Room One" parent="Enemies" unique_id=18369620 instance=ExtResource("25_vmsb5")]
 
-[node name="Convict" parent="Enemies/EnemyManager" unique_id=1506947017 instance=ExtResource("26_kvoti")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 144, 0)
-
-[node name="Convict2" parent="Enemies/EnemyManager" unique_id=42159830 instance=ExtResource("26_kvoti")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81, 144, 0)
-
-[node name="Convict3" parent="Enemies/EnemyManager" unique_id=618630284 instance=ExtResource("26_kvoti")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 270, 183, 0)
-
-[node name="Scrub" parent="Enemies/EnemyManager" unique_id=1090872008 instance=ExtResource("53_48mh3")]
+[node name="Scrub" parent="Enemies/Room One" unique_id=1090872008 instance=ExtResource("53_48mh3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 171, 0)
 
-[node name="Scrub2" parent="Enemies/EnemyManager" unique_id=1154805522 instance=ExtResource("53_48mh3")]
+[node name="Scrub2" parent="Enemies/Room One" unique_id=1154805522 instance=ExtResource("53_48mh3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96, 171, 0)
 
-[node name="Scrub3" parent="Enemies/EnemyManager" unique_id=919328018 instance=ExtResource("53_48mh3")]
+[node name="Scrub3" parent="Enemies/Room One" unique_id=919328018 instance=ExtResource("53_48mh3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 171, 0)
 
-[node name="Scrub4" parent="Enemies/EnemyManager" unique_id=1062535484 instance=ExtResource("53_48mh3")]
+[node name="Room Two" parent="Enemies" unique_id=1961159401 instance=ExtResource("25_vmsb5")]
+room_ID = 1
+
+[node name="Scrub4" parent="Enemies/Room Two" unique_id=1062535484 instance=ExtResource("53_48mh3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156, 146, 0)
 
-[node name="Scrub5" parent="Enemies/EnemyManager" unique_id=1771489288 instance=ExtResource("53_48mh3")]
+[node name="Scrub5" parent="Enemies/Room Two" unique_id=1771489288 instance=ExtResource("53_48mh3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176, 129, 0)
 
-[node name="Scrub6" parent="Enemies/EnemyManager" unique_id=1345786156 instance=ExtResource("53_48mh3")]
+[node name="Scrub6" parent="Enemies/Room Two" unique_id=1345786156 instance=ExtResource("53_48mh3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205, 129, 0)
 
-[node name="Scrub7" parent="Enemies/EnemyManager" unique_id=1555417855 instance=ExtResource("53_48mh3")]
+[node name="Scrub7" parent="Enemies/Room Two" unique_id=1555417855 instance=ExtResource("53_48mh3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 213, 129, 0)
 
-[node name="Scrub8" parent="Enemies/EnemyManager" unique_id=995124295 instance=ExtResource("53_48mh3")]
+[node name="Scrub8" parent="Enemies/Room Two" unique_id=995124295 instance=ExtResource("53_48mh3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 230, 146, 0)
 
-[connection signal="stage_cleared" from="Enemies/EnemyManager" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]
+[node name="Convict" parent="Enemies" unique_id=1506947017 instance=ExtResource("26_kvoti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 144, 0)
+
+[node name="Convict2" parent="Enemies" unique_id=42159830 instance=ExtResource("26_kvoti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81, 144, 0)
+
+[node name="Convict3" parent="Enemies" unique_id=618630284 instance=ExtResource("26_kvoti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 270, 183, 0)
+
+[connection signal="stage_cleared" from="Enemies/Room One" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]
