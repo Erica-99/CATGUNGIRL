@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b5iexscfcb83b"]
 
 [ext_resource type="ArrayMesh" uid="uid://dg65nb8bjdq8e" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/GunPodium.obj" id="1_mephn"]
+[ext_resource type="Script" uid="uid://cvqiylgsamgah" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/gun_podium.gd" id="1_rcle8"]
 [ext_resource type="PackedScene" uid="uid://ou3g778y2q8g" path="res://scenes/components/interactable_component/interactable_component.tscn" id="2_1ula5"]
 [ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="3_rcle8"]
 
@@ -9,6 +10,7 @@ height = 1.351631
 radius = 0.229815
 
 [node name="GunPodium" type="StaticBody3D" unique_id=786548764]
+script = ExtResource("1_rcle8")
 
 [node name="GunPodium_Mesh" type="MeshInstance3D" parent="." unique_id=1164015310]
 mesh = ExtResource("1_mephn")
