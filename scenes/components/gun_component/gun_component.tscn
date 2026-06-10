@@ -12,8 +12,8 @@ emission_energy_multiplier = 2.5
 
 [sub_resource type="SphereMesh" id="SphereMesh_767gk"]
 material = SubResource("StandardMaterial3D_767gk")
-radius = 0.04
-height = 0.05
+radius = 0.06
+height = 0.09
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhhhv"]
 albedo_color = Color(0, 0, 0, 1)
@@ -23,8 +23,8 @@ emission_energy_multiplier = 3.8
 
 [sub_resource type="SphereMesh" id="SphereMesh_qhhhv"]
 material = SubResource("StandardMaterial3D_qhhhv")
-radius = 0.05
-height = 0.07
+radius = 0.07
+height = 0.1
 
 [node name="GunComponent" type="Node3D" unique_id=52176648 node_paths=PackedStringArray("muzzle")]
 script = ExtResource("1_ruxrr")
@@ -53,27 +53,27 @@ collision_mask = 5
 
 [node name="NormalMuzzleFlash" type="CPUParticles3D" parent="Muzzle" unique_id=1878439172]
 emitting = false
-amount = 10
+amount = 14
 lifetime = 0.15000000000000002
 one_shot = true
 speed_scale = 1.2
 explosiveness = 1.0
 mesh = SubResource("SphereMesh_767gk")
 gravity = Vector3(0, -0.5, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 4.0
+initial_velocity_min = 5.0
+initial_velocity_max = 9.0
 
 [node name="PerfectMuzzleFlash" type="CPUParticles3D" parent="Muzzle" unique_id=530863386]
 emitting = false
-amount = 12
+amount = 16
 lifetime = 0.15000000000000002
 one_shot = true
 speed_scale = 1.2
 explosiveness = 1.0
 mesh = SubResource("SphereMesh_qhhhv")
 gravity = Vector3(0, -1, 0)
-initial_velocity_min = 3.0
-initial_velocity_max = 6.0
+initial_velocity_min = 6.0
+initial_velocity_max = 10.0
 color = Color(0.43669105, 0.99999994, 0.96197826, 1)
 
 [connection signal="beam_fired" from="." to="Muzzle/Laser" method="on_beam_fired"]
