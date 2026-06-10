@@ -95,6 +95,7 @@ func _physics_process(delta: float) -> void:
 	
 	time += delta
 	velocity.y = cos(time * frequency) * amplitude + added_velo
+	global_position.z = 0
 	#print("velo y calced is : " + str(velocity.y))
 	
 	
