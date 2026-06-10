@@ -60,6 +60,9 @@ signal perfect_shot_fired()
 signal spread_changed(spread: float) # visual indicator 
 signal perfect_window_changed(active: bool) # for indicator flash
 
+@onready var _normal_flash: CPUParticles3D = $Muzzle/NormalMuzzleFlash
+@onready var _perfect_flash: CPUParticles3D = $Muzzle/PerfectMuzzleFlash
+
 var _fire_cooldown: float = 0.0
 var _recoil_offset: float = 0.0 
 var _is_charging: bool = false
@@ -180,15 +183,18 @@ func _try_fire() -> void:
 		damage = bullet_damage * perfect_damage_multiplier
 		perfect_shot_fired.emit()
 		AudioManager.play_sfx("laser_perfect")
+		_perfect_flash.restart()
 	# Spam shot 
 	elif _time_since_last_shot < spam_window:
 		_is_spamming = true
 		_spam_count += 1
 		# print("spam shot, count: ", _spam_count)
 		AudioManager.play_sfx("laser_imperfect")
+		_normal_flash.restart()
 	else: # Normal shot
 		# print("normal shot, damage: ", bullet_damage)
 		AudioManager.play_sfx("laser_imperfect")
+		_normal_flash.restart()
 		
 	# resets firing cooldown
 	_fire_cooldown = fire_rate
