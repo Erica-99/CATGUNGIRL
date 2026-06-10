@@ -600,6 +600,23 @@ shape = SubResource("ConvexPolygonShape3D_3awxa")
 [node name="PanopticonBridgeConnector4" parent="Environment" unique_id=1768520757 instance=ExtResource("18_mu5e4")]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 153.286, 126.05, 0)
 
+[node name="PanopticonAccessShaft1" parent="Environment" unique_id=819756897 instance=ExtResource("41_b4ysr")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 81.051, 0, 0)
+
+[node name="PanopticonAccessShaft2" parent="Environment" unique_id=313117362 instance=ExtResource("41_b4ysr")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 81.051, 126.05, 0)
+
+[node name="ConvictVentEntrance1" parent="Environment" unique_id=392746343 instance=ExtResource("42_6wva2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 60.42727, 4.711749, 0)
+
+[node name="ConvictVentEntrance2" parent="Environment" unique_id=2100653679 instance=ExtResource("42_6wva2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 63.34708, 68.826, 0)
+
+[node name="ConvictVentEntrance3" parent="Environment" unique_id=598406993 instance=ExtResource("42_6wva2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 60.427, 130.771, 0)
+
+[node name="Props" type="Node3D" parent="." unique_id=1920549022]
+
 [node name="Interactive" type="Node3D" parent="." unique_id=546830450]
 
 [node name="DoorExit" parent="Interactive" unique_id=2120129318 instance=ExtResource("9_f12kt")]
@@ -850,20 +867,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 130, 0)
 
 [node name="Scrub8" parent="Enemies/EnemyManager" unique_id=1987250186 instance=ExtResource("31_yfq6p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136, 130, 0)
-
-[node name="PanopticonAccessShaft1" parent="." unique_id=819756897 instance=ExtResource("41_b4ysr")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 81.051, 0, 0)
-
-[node name="PanopticonAccessShaft2" parent="." unique_id=313117362 instance=ExtResource("41_b4ysr")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 81.051, 126.05, 0)
-
-[node name="ConvictVentEntrance1" parent="." unique_id=392746343 instance=ExtResource("42_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 60.42727, 4.711749, 0)
-
-[node name="ConvictVentEntrance2" parent="." unique_id=2100653679 instance=ExtResource("42_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 63.34708, 68.826, 0)
-
-[node name="ConvictVentEntrance3" parent="." unique_id=598406993 instance=ExtResource("42_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 60.427, 130.771, 0)
 
 [connection signal="stage_cleared" from="Enemies/EnemyManager" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]
