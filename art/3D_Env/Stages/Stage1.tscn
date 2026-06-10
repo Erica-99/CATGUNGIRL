@@ -427,6 +427,7 @@ transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 15
 
 [node name="DoorBasic" parent="Environment" unique_id=1555562335 instance=ExtResource("14_rxfni")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30.203, 0, 0)
+openable = false
 
 [node name="DoorBasic2" parent="Environment" unique_id=1217171111 instance=ExtResource("14_rxfni")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 54.61, 0, 0)
@@ -502,9 +503,10 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 24, 8.6, 0)
 [node name="Television" parent="Interactive" unique_id=1230489901 instance=ExtResource("17_c4j73")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 11.918702, 5.995277, -4.297233)
 
-[node name="GunPodium" parent="Interactive" unique_id=786548764 instance=ExtResource("19_8iehy")]
+[node name="GunPodium" parent="Interactive" unique_id=786548764 node_paths=PackedStringArray("door_to_unlock") instance=ExtResource("19_8iehy")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 12, 0.2, -1)
 collision_layer = 0
+door_to_unlock = NodePath("../../Environment/DoorBasic")
 
 [node name="PrisonCell" parent="Interactive" unique_id=1282669733 instance=ExtResource("10_515bo")]
 transform = Transform3D(1.3059162, 1.514788, 0, -1.514788, 1.305916, 0, 0, 0, 1.9999998, -2.796625, 13.284124, 0)

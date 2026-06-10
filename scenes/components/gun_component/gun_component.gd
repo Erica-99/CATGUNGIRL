@@ -44,6 +44,9 @@ const HITBOX_SCENE = preload("res://scenes/components/hitbox_component/hitbox_co
 @export var beam_range: float = 15.0
 @export var perfect_charge_multiplier: float = 2.5
 
+##Gun Animation Handler
+@onready var Gun_Animation = $"../PlayerVisuals/ROOT_P/GUN_P/GUN_AIM/Hand_Anims"
+
 ## bzzt
 signal beam_fired(beam_end: Vector3, charge_progress: float)
 
@@ -167,6 +170,10 @@ func _try_fire() -> void:
 	if bullet_scene == null or muzzle == null:
 		return
 	var damage = bullet_damage
+	
+	#Play Gun Animation
+	Gun_Animation.stop()
+	Gun_Animation.play("Fire")
 	
 	## Perfect shot
 	if _is_aim_settled() and _time_since_last_shot < perfect_shot_max_interval:

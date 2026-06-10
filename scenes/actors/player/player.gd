@@ -16,6 +16,8 @@ signal player_dead()
 
 @export var movement_state_machine: StateMachine
 
+@export var gun_arm_node: Node3D
+
 @export_category("Movement Variables")
 @export var speed: float = 22.5
 @export var acceleration: float = 30.0
@@ -141,3 +143,4 @@ func _equip_gun() -> void:
 func _set_gun_enabled(enabled: bool) -> void:
 	gun_component.process_mode = Node.PROCESS_MODE_INHERIT if enabled else Node.PROCESS_MODE_DISABLED
 	gun_component.visible = enabled
+	gun_arm_node.visible = enabled
