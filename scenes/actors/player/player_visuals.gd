@@ -2,13 +2,13 @@ extends Node3D
 
 @onready var RosAnims = $ROOT_P/BODY_P/TORSO_P/Torso_Anims
 
-@onready var legs_sprite = $ROOT_P/BODY_P/LEG_P/LEGS_SPRITE
+#@onready var legs_sprite = $ROOT_P/BODY_P/LEG_P/LEGS_SPRITE
 #@onready var torso_sprite = $ROOT_P/BODY_P/TORSO_P/TORSO_SPRITE
 @onready var hand_sprite = $ROOT_P/GUN_P/GUN_AIM/Ros_Gun_Sprite
 @onready var gun_anims = $ROOT_P/GUN_P/GUN_AIM/Hand_Anims
 
 @onready var torso_pivot = $ROOT_P/BODY_P/TORSO_P
-@onready var leg_pivot = $ROOT_P/BODY_P/LEG_P
+#@onready var leg_pivot = $ROOT_P/BODY_P/LEG_P
 
 @onready var hand_pivot = $ROOT_P/GUN_P
 @onready var gun_pivot = $ROOT_P/GUN_P/GUN_AIM
