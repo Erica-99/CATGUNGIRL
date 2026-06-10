@@ -5,6 +5,9 @@ extends StaticBody3D
 
 var opened = false
 
+func _ready() -> void:
+	EventManager.set_door_openable_state.connect(_set_openable_state)
+
 func open(body: Node3D):
 	if openable and not opened:
 		opened = true
@@ -20,3 +23,7 @@ func _on_door_basic_animation_player_animation_finished(anim_name: StringName) -
 		animation_player.play("DoorBasic_IdleOpen")
 	else:
 		animation_player.play("DoorBasic_IdleClosed")
+
+func _set_openable_state(object_check: Node3D, new_state: bool):
+	if object_check == self:
+		openable = new_state
