@@ -75,17 +75,14 @@ transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, -1
 [node name="FloorMeshCentre2" parent="Environment" unique_id=1432870704 instance=ExtResource("8_a31f2")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -132.407, 8.4, 0)
 
-[node name="DoorSlidingBasic" parent="Environment" unique_id=1555562335 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("10_w3i34")]
+[node name="DoorSlidingBasic" parent="Environment" unique_id=1555562335 instance=ExtResource("10_w3i34")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -54.204, 16.8, 0)
-enemy_manager = NodePath("../../Enemies/EmptyManager")
 
-[node name="DoorSlidingBasic2" parent="Environment" unique_id=1405335299 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("10_w3i34")]
+[node name="DoorSlidingBasic2" parent="Environment" unique_id=1405335299 instance=ExtResource("10_w3i34")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -150.611, 16.8, 0)
-enemy_manager = NodePath("../../Enemies/EmptyManager")
 
-[node name="DoorSlidingBasic3" parent="Environment" unique_id=831403881 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("10_w3i34")]
+[node name="DoorSlidingBasic3" parent="Environment" unique_id=831403881 instance=ExtResource("10_w3i34")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -150.611, 0, 0)
-enemy_manager = NodePath("../../Enemies/EmptyManager")
 
 [node name="DoorExit" parent="Environment" unique_id=863191425 instance=ExtResource("11_a31f2")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.203564, 0, 0)
@@ -423,9 +420,8 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -102.407, -18.927713, -2.982)
 [node name="BrainJarPart2" parent="Interactive" unique_id=759219146 instance=ExtResource("9_apna8")]
 transform = Transform3D(-4, 3.496911e-07, 0, -3.496911e-07, -4, 0, 0, 0, 4, -102.407, 82.733, -2.982)
 
-[node name="DoorBasic" parent="Interactive" unique_id=1555103701 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("10_w3i34")]
+[node name="DoorBasic" parent="Interactive" unique_id=1555103701 instance=ExtResource("10_w3i34")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -54.204, 0, 0)
-enemy_manager = NodePath("../../Enemies/EmptyManager")
 
 [node name="BrainJarConsole" parent="Interactive" unique_id=578323982 instance=ExtResource("14_5hpc0")]
 transform = Transform3D(2.4948392, 0, 0, 0, 2.4948392, 0, 0, 0, 2.4948392, -60.053864, 26.890665, -2.9068742)
@@ -524,10 +520,13 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -102.428024, 13.711103, 0)
 [node name="EnemySpawner" parent="Enemies/EnemyManager" unique_id=1110059721 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("17_nqip8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.663406, 19.918274, 0)
 linked_enemy_manager = NodePath("..")
+possible_spawns = Array[int]([0])
 
 [node name="EnemySpawner2" parent="Enemies/EnemyManager" unique_id=1869594267 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("17_nqip8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -146.79495, 19.918274, 0)
 linked_enemy_manager = NodePath("..")
+possible_spawns = Array[int]([1])
+wave_spawner = true
 
 [node name="Convict" parent="Enemies/EnemyManager" unique_id=1506947017 instance=ExtResource("18_k88h2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -121.8289, 1.9099693, 0)

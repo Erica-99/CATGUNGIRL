@@ -25,6 +25,8 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 	health_bar.health = health
 	if health > 0:
 		_enable_shields()
+		EventManager.spawn_enemy.emit(0.1, get_path_to($"../EnemyManager/EnemySpawner"))
+		EventManager.spawn_enemy.emit(0.1, get_path_to($"../EnemyManager/EnemySpawner2"))
 	else:
 		# Play out death sequence (e.g. animations, cutscene)
 		queue_free()
