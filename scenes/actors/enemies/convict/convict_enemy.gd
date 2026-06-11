@@ -55,6 +55,8 @@ var action_pending: bool = false
 
 var blackboard : Dictionary 
 
+@onready var Convict_Piv = $Visuals
+
 func _ready() -> void:
 	# Set up Attack
 	damage_instance.amount = attack_damage
@@ -100,11 +102,12 @@ func _physics_process(delta: float) -> void:
 	# Direction facing transformation
 	if velocity.x < 0: # LEFT
 		direction = -1
-		sprite.flip_h = true
+		#sprite.flip_h = true
+		Convict_Piv.scale.x = -1
 	elif velocity.x > 0: # RIGHT
 		direction = 1
-		sprite.flip_h = false
-		
+		#sprite.flip_h = false
+		Convict_Piv.scale.x = 1
 	# Soft Collision physics effects to avoid overlap.
 	if softCollider.is_colliding():
 		var push_vel = softCollider.get_push_vector() * delta * 10
