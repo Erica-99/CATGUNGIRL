@@ -3,7 +3,8 @@ extends CharacterBody3D
 const GRAVITY = 50
 
 @export_category("Node References")
-@export var animator: AnimatedSprite3D
+@export var animator: AnimationPlayer
+@export var sprite: AnimatedSprite3D
 @export var health_comp: Node
 @export var state_machine: StateMachine
 @onready var softCollider: Area3D = $SoftCollider
@@ -55,6 +56,8 @@ var action_pending: bool = false
 
 var blackboard : Dictionary 
 
+@onready var Convict_Piv = $Visuals
+
 func _ready() -> void:
 	# Set up Attack
 	damage_instance.amount = attack_damage
@@ -103,11 +106,12 @@ func _physics_process(delta: float) -> void:
 	# Direction facing transformation
 	if velocity.x < 0: # LEFT
 		direction = -1
-		animator.flip_h = true
+		#sprite.flip_h = true
+		Convict_Piv.scale.x = -1
 	elif velocity.x > 0: # RIGHT
 		direction = 1
-		animator.flip_h = false
-		
+		#sprite.flip_h = false
+		Convict_Piv.scale.x = 1
 	# Soft Collision physics effects to avoid overlap.
 	if softCollider.is_colliding():
 		var push_vel = softCollider.get_push_vector() * delta * 10

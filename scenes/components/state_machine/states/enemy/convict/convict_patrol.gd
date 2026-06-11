@@ -6,7 +6,7 @@
 extends State
 
 var actor: CharacterBody3D
-var anim: AnimatedSprite3D
+var anim: AnimationPlayer
 var patrol_speed: float
 var direction: int
 
