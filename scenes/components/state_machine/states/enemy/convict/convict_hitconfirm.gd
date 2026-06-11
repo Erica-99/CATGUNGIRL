@@ -31,7 +31,7 @@ func physics_update(_delta: float) -> void:
 	# hit deceleration makes stopping almost instant
 	actor.velocity.x = move_toward(actor.velocity.x, 0, hit_deceleration * _delta)
 	actor.move_and_slide()
-	await anim.animation_looped
+	await anim.animation_finished
 	if is_on_cooldown:
 		return
 	is_on_cooldown = true

@@ -24,7 +24,7 @@ func enter() -> void:
 func physics_update(_delta: float) -> void:
 	actor.velocity.x = move_toward(actor.velocity.x, 0, slow_down_speed * _delta)
 	actor.move_and_slide()
-	await anim.animation_looped
+	await anim.animation_finished
 	attack_hitbox.find_child("*").set_deferred("disabled", true)
 	actor.action_pending = true
 	transitioned.emit(self, "convictchase")
