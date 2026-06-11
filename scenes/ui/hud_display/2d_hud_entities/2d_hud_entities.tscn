@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://b0grt2qyst7gu" path="res://resources/killstreak/unfilled.png" id="5_vm65q"]
 [ext_resource type="Texture2D" uid="uid://dscdygp436wi2" path="res://resources/killstreak/filled.png" id="6_bws33"]
 [ext_resource type="PackedScene" uid="uid://1hgtrlupdh8t" path="res://scenes/ui/dating/gigi_popup.tscn" id="7_wg2f8"]
-[ext_resource type="PackedScene" uid="uid://cjku3tspjt4ep" path="res://scenes/ui/dating/gigi_date.tscn" id="8_vo6fg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hc7wi"]
 bg_color = Color(0.4862745, 0.5529412, 1, 0.29411766)
@@ -35,6 +34,8 @@ size = Vector2(20, 1080)
 [node name="2DHudEntities" type="Control" unique_id=1605915058]
 layout_mode = 3
 anchors_preset = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 mouse_filter = 1
 
 [node name="BorderExample" type="PanelContainer" parent="." unique_id=643187252]
@@ -172,13 +173,3 @@ offset_left = 20.0
 offset_top = 800.0
 offset_right = 120.0
 offset_bottom = 900.0
-
-[node name="GigiDate" parent="." unique_id=2015194836 instance=ExtResource("8_vo6fg")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 1916.0
-offset_bottom = 1076.0

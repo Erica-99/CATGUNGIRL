@@ -7,6 +7,7 @@ extends Control
 @onready var dialogue_bubble: PanelContainer = $date_txt_bgd/Panel/MarginContainer/VBoxContainer/DialogueBubble
 @onready var press_button_info: RichTextLabel = $"date_txt_bgd/Panel/MarginContainer/Press Button Info"
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var video_player: VideoStreamPlayer = $VideoStreamPlayer
 
 var dating_stylebox = preload("res://art/StyleBoxes/StyleBox_Pink.tres")
 var button_stylebox = preload("res://art/StyleBoxes/StyleBox_Pink2.tres")
@@ -72,6 +73,10 @@ func _unhandled_input(event: InputEvent) -> void:
 func _date_start():
 	EventManager.begin_date_scene_lock.emit()
 	visible = true
+	video_player.play()
+	video_player.visible = true
+	await video_player.finished
+	video_player.visible = false
 	current_dating_scene = DialogueProcessor._get_dating_scene(CustomResourceLoader.dating_dialogue_path + "date_" + str(current_date_id), "date_" + str(current_date_id))
 	dating_dialogue = DialogueProcessor._get_next_dating_dialogue(current_dating_scene)
 	
