@@ -34,9 +34,6 @@ func physics_update(delta: float) -> void:
 	actor.velocity.x += direction * patrol_speed * delta
 	actor.velocity.x = clamp(actor.velocity.x, -patrol_speed, patrol_speed)
 	
-	actor.time += delta
-	actor.velocity.y = cos(actor.time * actor.frequency) * actor.amplitude
-	
 	actor.move_and_slide()
 
 func _on_detection_area_3d_body_entered(body):
