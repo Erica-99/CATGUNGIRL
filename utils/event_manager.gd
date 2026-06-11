@@ -1,6 +1,7 @@
 extends Node
 
 signal activate_popup(popup_id: int)
+signal pre_date_sequence(date_id: int)
 signal activate_date(date_id: int)
 
 signal begin_date_scene_lock
