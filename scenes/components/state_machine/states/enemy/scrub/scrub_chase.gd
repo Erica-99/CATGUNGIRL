@@ -39,8 +39,5 @@ func physics_update(delta: float) -> void:
 	actor.velocity.x += direction * chase_speed * delta
 	actor.velocity.x = clamp(actor.velocity.x, -chase_speed, chase_speed)
 	
-	actor.time += delta
-	actor.velocity.y = cos(actor.time * actor.frequency) * actor.amplitude
-	
 	actor.move_and_slide()
 	
