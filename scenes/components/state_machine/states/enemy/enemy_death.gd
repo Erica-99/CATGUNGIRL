@@ -3,7 +3,7 @@ extends State
 class_name EnemyDeath
 
 var actor: CharacterBody3D
-var anim: AnimatedSprite3D
+var anim: AnimationPlayer
 
 var fade_time: float = 0.0
 # temp timer, would wanna line it up more with death anim

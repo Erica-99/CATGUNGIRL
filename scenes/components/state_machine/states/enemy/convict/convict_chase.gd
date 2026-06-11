@@ -8,7 +8,7 @@
 extends State
 
 var actor: CharacterBody3D
-var anim: AnimatedSprite3D
+var anim: AnimationPlayer
 var chase_speed: float
 var accel_speed: float
 var slow_down_speed: float
@@ -22,6 +22,9 @@ var target: CharacterBody3D
 var attack_hitbox: Area3D
 var attack_cooldown_min: float
 var attack_cooldown_max: float
+# big jump transition time
+var super_jump_cd: float
+var super_jump_timer: float = 0
 
 
 func init(blackboard_dict: Dictionary) -> void:
@@ -35,6 +38,7 @@ func init(blackboard_dict: Dictionary) -> void:
 	attack_hitbox = blackboard["attack_hitbox"]
 	attack_cooldown_min = blackboard["attack_cooldown_min"]
 	attack_cooldown_max = blackboard["attack_cooldown_max"]
+	super_jump_cd = blackboard["super_jump_cd"]
 
 func enter() -> void:
 	# TODO: update with more intricated targetting
@@ -42,6 +46,8 @@ func enter() -> void:
 	actor.velocity = Vector3.ZERO
 	if actor.action_pending:
 		_start_cooldown()
+	
+	super_jump_timer = 0
 
 func _start_cooldown() -> void:
 	await get_tree().create_timer(randf_range(attack_cooldown_min, attack_cooldown_max)).timeout
@@ -58,6 +64,16 @@ func physics_update(_delta: float) -> void:
 		direction = -1
 	elif actor.global_position.x < target.global_position.x:
 		direction = 1
+	
+	# While beneath target, add to super jump cooldown
+	if actor.global_position.y < target.global_position.y:
+		super_jump_timer += _delta
+	else:
+		super_jump_timer = 0
+	
+	# When below target for long enough, move to superjump state
+	if super_jump_timer > super_jump_cd:
+		transitioned.emit(self, "convictsuperjump")
 	
 	# offset target position
 	var target_position = _get_target_position()
