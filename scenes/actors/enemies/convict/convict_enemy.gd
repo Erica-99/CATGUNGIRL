@@ -96,6 +96,8 @@ func _physics_process(delta: float) -> void:
 	# Basic gravity implementation
 	velocity.y -= GRAVITY * delta
 	
+	position.z = 0
+	
 	# Direction facing transformation
 	if velocity.x < 0: # LEFT
 		direction = -1
