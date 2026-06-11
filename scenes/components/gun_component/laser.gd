@@ -12,6 +12,9 @@ extends Node3D
 @export var pie_slices: int = 16			# higher = smoother
 @export var fill_alpha: float = 0.4			# lower = more transparent
 
+@export_group("Perfect Window")
+@export var perfect_color: Color = Color.YELLOW
+
 @export_group("Beam")
 @export var beam_color: Color = Color.SKY_BLUE
 @export var beam_duration: float = 0.2
@@ -27,6 +30,10 @@ var _beam_active: bool = false
 var _beam_end: Vector3 = Vector3.ZERO
 var _beam_timer: float = 0.0
 var _beam_width: float = 0.0
+var _in_perfect_window: bool = false
+
+func on_perfect_window_changed(active: bool) -> void:
+	_in_perfect_window = active
 
 func _ready() -> void:
 	ray_cast.target_position = Vector3(max_range, 0.0, 0.0)
@@ -72,6 +79,9 @@ func _draw_laser() -> void:
 		laser_end = Vector3(max_range, 0.0, 0.0)
 		
 	var spread_offset = _current_spread * max_spread
+	var active_spread_color = spread_color
+	if _in_perfect_window:
+		active_spread_color = perfect_color
 	# draws line from muzzle to laser endpoint
 	immediate_mesh.surface_begin(Mesh.PRIMITIVE_LINES)
 	# main laser
@@ -80,21 +90,21 @@ func _draw_laser() -> void:
 	immediate_mesh.surface_set_color(laser_color)
 	immediate_mesh.surface_add_vertex(laser_end)		# collision point or max range
 	# converging laser top side
-	immediate_mesh.surface_set_color(spread_color)
+	immediate_mesh.surface_set_color(active_spread_color)
 	immediate_mesh.surface_add_vertex(Vector3.ZERO)
-	immediate_mesh.surface_set_color(spread_color)
+	immediate_mesh.surface_set_color(active_spread_color)
 	var side_end = Vector3(minf(laser_end.x, side_laser_length), 0.0, 0.0)
 	immediate_mesh.surface_add_vertex(side_end + Vector3(0.0, spread_offset, 0.0))
 	#converging laser bottom side
-	immediate_mesh.surface_set_color(spread_color)
+	immediate_mesh.surface_set_color(active_spread_color)
 	immediate_mesh.surface_add_vertex(Vector3.ZERO)
-	immediate_mesh.surface_set_color(spread_color)
+	immediate_mesh.surface_set_color(active_spread_color)
 	immediate_mesh.surface_add_vertex(side_end - Vector3(0.0, spread_offset, 0.0))
 	
 	immediate_mesh.surface_end()
 	
 	# pie slice mesh
-	var fill_color = Color(spread_color, fill_alpha)
+	var fill_color = Color(active_spread_color, fill_alpha)
 	var angle_up = atan2(spread_offset, side_laser_length)
 	var angle_down = -angle_up
 	var radius = sqrt(side_laser_length * side_laser_length + spread_offset * spread_offset)
