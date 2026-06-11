@@ -8,7 +8,7 @@
 extends State
 
 var actor: CharacterBody3D
-var anim: AnimatedSprite3D
+var anim: AnimationPlayer
 var chase_speed: float
 var accel_speed: float
 var slow_down_speed: float

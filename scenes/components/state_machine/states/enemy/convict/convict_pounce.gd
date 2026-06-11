@@ -4,7 +4,7 @@
 extends State
 
 var actor: CharacterBody3D
-var anim: AnimatedSprite3D
+var anim: AnimationPlayer
 var jump_force: float
 var chase_speed: float
 var slow_down_speed: float
