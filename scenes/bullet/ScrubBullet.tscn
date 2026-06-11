@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://cfbc0t7g6kjfc"]
+
+[ext_resource type="Script" uid="uid://bgsxy7x62gxql" path="res://scenes/bullet/bullet.gd" id="1_10378"]
+[ext_resource type="PackedScene" uid="uid://csd06hicr5wny" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="2_so0gv"]
+[ext_resource type="Texture2D" path="res://art/2d_assets/real_world/vfx/ScrubBullet.png" id="3_10378"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_c6pnf"]
+radius = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0vdx3"]
+radius = 0.1
+
+[sub_resource type="SphereMesh" id="SphereMesh_83itf"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_so0gv"]
+atlas = ExtResource("3_10378")
+region = Rect2(0, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0wwk"]
+atlas = ExtResource("3_10378")
+region = Rect2(1000, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtw72"]
+atlas = ExtResource("3_10378")
+region = Rect2(2000, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_garyd"]
+atlas = ExtResource("3_10378")
+region = Rect2(3000, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1m27a"]
+atlas = ExtResource("3_10378")
+region = Rect2(0, 1000, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8r22"]
+atlas = ExtResource("3_10378")
+region = Rect2(1000, 1000, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_telum"]
+atlas = ExtResource("3_10378")
+region = Rect2(2000, 1000, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5f76n"]
+atlas = ExtResource("3_10378")
+region = Rect2(3000, 1000, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xraih"]
+atlas = ExtResource("3_10378")
+region = Rect2(0, 2000, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xaay"]
+atlas = ExtResource("3_10378")
+region = Rect2(1000, 2000, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l07oh"]
+atlas = ExtResource("3_10378")
+region = Rect2(2000, 2000, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8633"]
+atlas = ExtResource("3_10378")
+region = Rect2(3000, 2000, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7jo7"]
+atlas = ExtResource("3_10378")
+region = Rect2(0, 3000, 1000, 1000)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j746h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_so0gv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0wwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtw72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_garyd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1m27a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8r22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_telum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5f76n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xraih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xaay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l07oh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8633")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7jo7")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 23.0
+}]
+
+[node name="bullet" type="CharacterBody3D" unique_id=1342868883]
+collision_layer = 32
+script = ExtResource("1_10378")
+speed = 50.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=244744939]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0020717382, -0.005582571, 0.0029153824)
+shape = SubResource("SphereShape3D_c6pnf")
+
+[node name="HitboxComponent" parent="." unique_id=1965125698 instance=ExtResource("2_so0gv")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxComponent" unique_id=1075273365]
+shape = SubResource("SphereShape3D_0vdx3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1545757818]
+visible = false
+mesh = SubResource("SphereMesh_83itf")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=801283218]
+transform = Transform3D(0.23714378, 0, 0, 0, 0.23714378, 0, 0, 0, 0.23714378, -0.10581371, -0.06666792, 0)
+sprite_frames = SubResource("SpriteFrames_j746h")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.5158415
+
+[node name="OmniLight3D" type="OmniLight3D" parent="AnimatedSprite3D" unique_id=428668439]
+light_color = Color(0.96048695, 0.0007564229, 0.9604804, 1)

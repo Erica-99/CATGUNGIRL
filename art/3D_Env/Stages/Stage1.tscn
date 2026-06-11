@@ -646,8 +646,9 @@ debug_color = Color(0, 1, 0, 0.41960785)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=1148700225]
 
-[node name="Convict4" parent="Enemies" unique_id=660825129 instance=ExtResource("17_fxtw2")]
+[node name="Convict4" parent="Enemies" unique_id=660825129 node_paths=PackedStringArray("animator") instance=ExtResource("17_fxtw2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82, 3, 0)
+animator = NodePath("Visuals/AnimationPlayer")
 
 [node name="RoomOne" parent="Enemies" unique_id=1450252011 instance=ExtResource("23_si78y")]
 
@@ -664,14 +665,17 @@ possible_spawns = [0]
 wave_spawner = true
 wave_enemies = Array[int]([0, 0])
 
-[node name="Convict" parent="Enemies/RoomThree" unique_id=1506947017 instance=ExtResource("17_fxtw2")]
+[node name="Convict" parent="Enemies/RoomThree" unique_id=1506947017 node_paths=PackedStringArray("animator") instance=ExtResource("17_fxtw2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, 2, 0)
+animator = NodePath("Visuals/AnimationPlayer")
 
-[node name="Convict2" parent="Enemies/RoomThree" unique_id=454804824 instance=ExtResource("17_fxtw2")]
+[node name="Convict2" parent="Enemies/RoomThree" unique_id=454804824 node_paths=PackedStringArray("animator") instance=ExtResource("17_fxtw2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92, 16, 0)
+animator = NodePath("Visuals/AnimationPlayer")
 
-[node name="Convict3" parent="Enemies/RoomThree" unique_id=1741826564 instance=ExtResource("17_fxtw2")]
+[node name="Convict3" parent="Enemies/RoomThree" unique_id=1741826564 node_paths=PackedStringArray("animator") instance=ExtResource("17_fxtw2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125, 2, 0)
+animator = NodePath("Visuals/AnimationPlayer")
 
 [node name="RoomFour" parent="Enemies" unique_id=1372172768 instance=ExtResource("23_si78y")]
 room_ID = 3

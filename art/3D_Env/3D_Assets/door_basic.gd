@@ -11,7 +11,11 @@ func _ready() -> void:
 
 func open(body: Node3D):
 	if openable and not opened:
-		if enemy_manager.is_cleared or enemy_manager.get_child_count() == 0:
+		if enemy_manager != null:
+			if enemy_manager.is_cleared or enemy_manager.get_child_count() == 0:
+				opened = true
+				animation_player.play("DoorBasic_Opening")
+		else:
 			opened = true
 			animation_player.play("DoorBasic_Opening")
 
