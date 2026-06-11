@@ -37,6 +37,7 @@ var is_dead: bool = false
 
 @export_category("Convict Superjump")
 @export var windup_duration: float	# pause timer
+@export var super_jump_cd: float # time before transitioning to superjump
 @export var superjump_force: float	# upwards force
 @export var superjump_speed: float	# horizontal force
 
@@ -77,6 +78,7 @@ func _ready() -> void:
 		"pounce_speed": pounce_speed,
 		"hit_deceleration": hit_deceleration,
 		"windup_duration": windup_duration,
+		"super_jump_cd": super_jump_cd,
 		"superjump_force": superjump_force,
 		"superjump_speed": superjump_speed,
 		"attack_cooldown_min": attack_cooldown_min,
