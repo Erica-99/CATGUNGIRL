@@ -3,7 +3,8 @@ extends CharacterBody3D
 const GRAVITY = 50
 
 @export_category("Node References")
-@export var animator: AnimatedSprite3D
+@export var animator: AnimationPlayer
+@export var sprite: AnimatedSprite3D
 @export var health_comp: Node
 @export var state_machine: StateMachine
 @onready var softCollider: Area3D = $SoftCollider
@@ -37,6 +38,7 @@ var is_dead: bool = false
 
 @export_category("Convict Superjump")
 @export var windup_duration: float	# pause timer
+@export var super_jump_cd: float # time before transitioning to superjump
 @export var superjump_force: float	# upwards force
 @export var superjump_speed: float	# horizontal force
 
@@ -53,6 +55,8 @@ var target_in_hitbox: bool = false
 var action_pending: bool = false
 
 var blackboard : Dictionary 
+
+@onready var Convict_Piv = $Visuals
 
 func _ready() -> void:
 	# Set up Attack
@@ -77,6 +81,7 @@ func _ready() -> void:
 		"pounce_speed": pounce_speed,
 		"hit_deceleration": hit_deceleration,
 		"windup_duration": windup_duration,
+		"super_jump_cd": super_jump_cd,
 		"superjump_force": superjump_force,
 		"superjump_speed": superjump_speed,
 		"attack_cooldown_min": attack_cooldown_min,
@@ -101,11 +106,12 @@ func _physics_process(delta: float) -> void:
 	# Direction facing transformation
 	if velocity.x < 0: # LEFT
 		direction = -1
-		animator.flip_h = true
+		#sprite.flip_h = true
+		Convict_Piv.scale.x = -1
 	elif velocity.x > 0: # RIGHT
 		direction = 1
-		animator.flip_h = false
-		
+		#sprite.flip_h = false
+		Convict_Piv.scale.x = 1
 	# Soft Collision physics effects to avoid overlap.
 	if softCollider.is_colliding():
 		var push_vel = softCollider.get_push_vector() * delta * 10

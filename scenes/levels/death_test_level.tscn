@@ -4,10 +4,16 @@
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="2_4036w"]
 [ext_resource type="PackedScene" uid="uid://crxpi7vrp2sce" path="res://scenes/actors/enemies/brain_jar/brain_jar.tscn" id="3_4036w"]
 [ext_resource type="PackedScene" uid="uid://dbtlwlyu6425" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/BrainJarTerminal.tscn" id="5_s54ho"]
+[ext_resource type="PackedScene" uid="uid://dld0qjmojk1t8" path="res://scenes/actors/enemies/enemy_manager/enemy_manager.tscn" id="5_x31qf"]
+[ext_resource type="PackedScene" uid="uid://bqxkqmc0c1lue" path="res://scenes/actors/enemies/enemy_spawner/enemy_spawner.tscn" id="6_4gk6r"]
+[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="7_4gk6r"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_vvhd2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_birtj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lh1xp"]
+size = Vector3(3, 6, 6)
 
 [node name="DeathTestLevel" type="Node3D" unique_id=71681453]
 script = ExtResource("1_birtj")
@@ -66,3 +72,21 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -7.6874895, 0.5, -2)
 
 [node name="BrainJarTerminal4" parent="." unique_id=1369235571 instance=ExtResource("5_s54ho")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.5, -2)
+
+[node name="EventTrigger" parent="." unique_id=1311781014 instance=ExtResource("7_4gk6r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, 0)
+_one_shot = false
+_signal_parameters = [1.2, NodePath("../Enemies/EnemyManager/EnemySpawner")]
+signal_name = "spawn_enemy"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EventTrigger" unique_id=237428808]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.5, 0.5)
+shape = SubResource("BoxShape3D_lh1xp")
+
+[node name="Enemies" type="Node3D" parent="." unique_id=977654292]
+
+[node name="EnemyManager" parent="Enemies" unique_id=18369620 instance=ExtResource("5_x31qf")]
+
+[node name="EnemySpawner" parent="Enemies/EnemyManager" unique_id=1110059721 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("6_4gk6r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 5, 0)
+linked_enemy_manager = NodePath("..")
