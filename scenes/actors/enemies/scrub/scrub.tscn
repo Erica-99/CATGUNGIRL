@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://ceil7gp5xrgc5" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_grenade.gd" id="10_apte0"]
 [ext_resource type="Script" uid="uid://bp55fp56p8pwx" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_chase.gd" id="10_ly0j2"]
 [ext_resource type="Script" uid="uid://doxqnfsm4wb8g" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_flee.gd" id="11_2i5hx"]
+[ext_resource type="PackedScene" uid="uid://cfbc0t7g6kjfc" path="res://scenes/bullet/ScrubBullet.tscn" id="11_m88xv"]
 [ext_resource type="Script" uid="uid://briciybelpcwe" path="res://scenes/components/state_machine/states/enemy/enemy_death.gd" id="21_m88xv"]
 [ext_resource type="Script" uid="uid://rwkg37dkkbs1" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_patrol.gd" id="22_bmk6k"]
 
@@ -156,6 +157,7 @@ team = 2
 [node name="ScrubGun" parent="." unique_id=649943052 node_paths=PackedStringArray("team_component") instance=ExtResource("5_ew88m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3521698, 0.581293, 0)
 visible = false
+bullet_scene = ExtResource("11_m88xv")
 team_component = NodePath("../TeamComponent")
 bullet_damage = 2.0
 
