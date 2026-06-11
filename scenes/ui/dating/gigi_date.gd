@@ -73,10 +73,6 @@ func _unhandled_input(event: InputEvent) -> void:
 func _date_start():
 	EventManager.begin_date_scene_lock.emit()
 	visible = true
-	video_player.play()
-	video_player.visible = true
-	await video_player.finished
-	video_player.visible = false
 	current_dating_scene = DialogueProcessor._get_dating_scene(CustomResourceLoader.dating_dialogue_path + "date_" + str(current_date_id), "date_" + str(current_date_id))
 	dating_dialogue = DialogueProcessor._get_next_dating_dialogue(current_dating_scene)
 	
@@ -92,8 +88,12 @@ func _display(is_date_just_started: bool = false):
 	dialogue_bubble._set_text("")
 
 	if is_date_just_started:
+		video_player.play()
+		video_player.visible = true
+		await video_player.finished
 		animation_player.play("date_start")
 		await animation_player.animation_finished
+		video_player.visible = false
 	
 	dating_active = true
 	
@@ -137,7 +137,6 @@ func _display_button_press_info():
 		tween.tween_property(press_button_info, "visible", true, 1)
 	button_container.visible = true
 	pass
-
 
 # ends the current date (returns player to active world)
 func _end_date():
