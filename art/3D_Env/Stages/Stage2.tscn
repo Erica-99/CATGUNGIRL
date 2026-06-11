@@ -396,8 +396,9 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.25334167, 1.1749954,
 monitoring = false
 level_name = "Stage3"
 
-[node name="DoorSlidingBasic" parent="Interactive" unique_id=1555562335 instance=ExtResource("22_n434r")]
+[node name="DoorSlidingBasic" parent="Interactive" unique_id=1555562335 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("22_n434r")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 7.255, 67.027, 0)
+enemy_manager = NodePath("../../Enemies/EmptyManager")
 
 [node name="PrisonCell" parent="Interactive" unique_id=832090815 instance=ExtResource("20_0yyri")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 119.869995, 3.013, 0)
@@ -590,11 +591,13 @@ debug_color = Color(0.919504, 0.13431916, 0.6161928, 0.41960785)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=732558009]
 
+[node name="EmptyManager" parent="Enemies" unique_id=1088774491 instance=ExtResource("20_q7nox")]
+
 [node name="Convict5" parent="Enemies" unique_id=895222274 instance=ExtResource("21_n434r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139, 2, 0)
 
 [node name="Scrub2" parent="Enemies" unique_id=321714991 instance=ExtResource("31_yfq6p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 13, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 8.612963, 0)
 
 [node name="Scrub8" parent="Enemies" unique_id=1987250186 instance=ExtResource("31_yfq6p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136, 130, 0)
