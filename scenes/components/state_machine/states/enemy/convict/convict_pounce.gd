@@ -61,7 +61,7 @@ func pounce():
 # TODO: change to anim.animation_finished when non-looping animation is implemented
 func faceplant():
 	#anim.play("Faceplant")
-	await anim.animation_looped
+	await anim.animation_finished
 	# Basic implementation to see if enemy has come to a complete stop
 	if actor.velocity.x == 0:
 		transitioned.emit(self, "convictchase")
