@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dh1ouxldd8xy5"]
+
+[ext_resource type="ArrayMesh" uid="uid://bf7a3bh8iwjky" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/Prison/DoorwayNonePrison.obj" id="1_7akxp"]
+[ext_resource type="Texture2D" uid="uid://doriadyi6ch0l" path="res://art/3D_Env/3D_Assets/Images/Prison/Walls/TextureTrimSheetWallP.png" id="2_ghslx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pexg0"]
+albedo_texture = ExtResource("2_ghslx")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5nx7i"]
+points = PackedVector3Array(-0.099878, 0.100005, -2.500938, 0.09987801, 0.100005, -2.500938, -0.099878, 0.100005, 2.4997582, -0.099878, 4.301661, -2.500938, 0.09987801, 4.301661, -2.500938, 0.09987801, 0.100005, 2.4997582, -0.099878, 4.301661, 2.4997582, 0.09987801, 4.301661, 2.4997582)
+
+[node name="DoorwayNonePrison" type="StaticBody3D" unique_id=974643408]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="DoorwayNonePrison_Mesh" type="MeshInstance3D" parent="." unique_id=1232799560]
+mesh = ExtResource("1_7akxp")
+surface_material_override/0 = SubResource("StandardMaterial3D_pexg0")
+
+[node name="DoorwayNonePrison_Collision" type="CollisionShape3D" parent="." unique_id=1433973924]
+shape = SubResource("ConvexPolygonShape3D_5nx7i")
