@@ -412,30 +412,32 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -144.407, 25.2, 0)
 [node name="WallPlainMidLaboratory32" parent="Environment" unique_id=262711463 instance=ExtResource("13_k88h2")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -144.407, 33.6, 0)
 
-[node name="Props" type="Node3D" parent="." unique_id=1376791517]
-
 [node name="Interactive" type="Node3D" parent="." unique_id=468008420]
 
 [node name="BrainJarPart" parent="Interactive" unique_id=1121229116 instance=ExtResource("9_apna8")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -102.407, -22.304821, -10.883524)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -102.407, -18.927713, -2.982)
 
 [node name="BrainJarPart2" parent="Interactive" unique_id=759219146 instance=ExtResource("9_apna8")]
-transform = Transform3D(-4, 3.496911e-07, 0, -3.496911e-07, -4, 0, 0, 0, 4, -102.407, 75.40419, -10.883524)
+transform = Transform3D(-4, 3.496911e-07, 0, -3.496911e-07, -4, 0, 0, 0, 4, -102.407, 82.733, -2.982)
 
 [node name="DoorBasic" parent="Interactive" unique_id=1555103701 instance=ExtResource("10_w3i34")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -54.204, 0, 0)
 
-[node name="BrainJarConsole" parent="Interactive" unique_id=578323982 instance=ExtResource("14_5hpc0")]
+[node name="BrainJarConsole" parent="Interactive" unique_id=578323982 node_paths=PackedStringArray("brain_jar") instance=ExtResource("14_5hpc0")]
 transform = Transform3D(2.4948392, 0, 0, 0, 2.4948392, 0, 0, 0, 2.4948392, -60.053864, 26.890665, -2.9068742)
+brain_jar = NodePath("../../Enemies/BrainJar")
 
-[node name="BrainJarConsole2" parent="Interactive" unique_id=233754283 instance=ExtResource("14_5hpc0")]
+[node name="BrainJarConsole2" parent="Interactive" unique_id=233754283 node_paths=PackedStringArray("brain_jar") instance=ExtResource("14_5hpc0")]
 transform = Transform3D(2.4948392, 0, 0, 0, 2.4948392, 0, 0, 0, 2.4948392, -60.053864, 10.165483, -2.9068742)
+brain_jar = NodePath("../../Enemies/BrainJar")
 
-[node name="BrainJarConsole3" parent="Interactive" unique_id=1729058869 instance=ExtResource("14_5hpc0")]
+[node name="BrainJarConsole3" parent="Interactive" unique_id=1729058869 node_paths=PackedStringArray("brain_jar") instance=ExtResource("14_5hpc0")]
 transform = Transform3D(2.4948392, 0, 0, 0, 2.4948392, 0, 0, 0, 2.4948392, -144.91116, 26.890665, -2.9068742)
+brain_jar = NodePath("../../Enemies/BrainJar")
 
-[node name="BrainJarConsole4" parent="Interactive" unique_id=2078851436 instance=ExtResource("14_5hpc0")]
+[node name="BrainJarConsole4" parent="Interactive" unique_id=2078851436 node_paths=PackedStringArray("brain_jar") instance=ExtResource("14_5hpc0")]
 transform = Transform3D(2.4948392, 0, 0, 0, 2.4948392, 0, 0, 0, 2.4948392, -144.91116, 10.165483, -2.9068742)
+brain_jar = NodePath("../../Enemies/BrainJar")
 
 [node name="Lighting" type="Node3D" parent="." unique_id=786967274]
 
@@ -522,14 +524,10 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -102.428024, 13.711103, 0)
 [node name="EnemySpawner" parent="Enemies/EnemyManager" unique_id=1110059721 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("17_nqip8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.663406, 19.918274, 0)
 linked_enemy_manager = NodePath("..")
-possible_spawns = Array[int]([0])
-wave_spawner = true
 
 [node name="EnemySpawner2" parent="Enemies/EnemyManager" unique_id=1869594267 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("17_nqip8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -146.79495, 19.918274, 0)
 linked_enemy_manager = NodePath("..")
-possible_spawns = Array[int]([1])
-wave_spawner = true
 
 [node name="Convict" parent="Enemies/EnemyManager" unique_id=1506947017 instance=ExtResource("18_k88h2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -121.8289, 1.9099693, 0)
