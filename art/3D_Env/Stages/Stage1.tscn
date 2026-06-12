@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dl1dvclonvae4" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Multi/PrisonCell(Active).tscn" id="22_n30yw"]
 [ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="23_n30yw"]
 [ext_resource type="PackedScene" uid="uid://dld0qjmojk1t8" path="res://scenes/actors/enemies/enemy_manager/enemy_manager.tscn" id="23_si78y"]
+[ext_resource type="PackedScene" uid="uid://bqxkqmc0c1lue" path="res://scenes/actors/enemies/enemy_spawner/enemy_spawner.tscn" id="25_m1byu"]
 [ext_resource type="PackedScene" uid="uid://coirj7uqclsre" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Prison/FloorPrison.tscn" id="26_3qrbx"]
 [ext_resource type="PackedScene" uid="uid://bojsmqie6xi4c" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Multi/DoorBasicLocked.tscn" id="26_rnw37"]
 [ext_resource type="PackedScene" uid="uid://dsux5aknnciia" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Prison/WallPlainBasePrison.tscn" id="27_1v7kv"]
@@ -26,7 +27,6 @@
 [ext_resource type="PackedScene" uid="uid://bjgcp621b7xqm" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Prison/RoofPrison.tscn" id="29_yxtek"]
 [ext_resource type="PackedScene" uid="uid://c08wu3qjtxvd" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Prison/WallCellsBasePrison.tscn" id="30_x5d1q"]
 [ext_resource type="PackedScene" uid="uid://ms7yhmwowtnu" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Prison/FloorShootingPrison.tscn" id="31_yxtek"]
-[ext_resource type="PackedScene" uid="uid://bqxkqmc0c1lue" path="res://scenes/actors/enemies/enemy_spawner/enemy_spawner.tscn" id="25_m1byu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fxtw2"]
 size = Vector3(1, 7.2834473, 1)
@@ -74,7 +74,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 162, 0, 0)
 [node name="PrisonCell3" parent="Environment" unique_id=1430763070 instance=ExtResource("21_kr03x")]
 transform = Transform3D(-9.8350625e-08, 0, -2.25, 0, 2.25, 0, 2.25, 0, -9.8350625e-08, 86.99979, 5.3626533, -6.6145744)
 
-[node name="DoorSlidingBasic3" parent="Environment" unique_id=1228585808 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("14_rxfni")]
+[node name="DoorSlidingBasic4" parent="Environment" unique_id=1077477008 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("14_rxfni")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 54.61, 8.4, 0)
 visible = false
 enemy_manager = NodePath("../../Enemies/RoomOne")
@@ -446,20 +446,20 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 144, 8.4, -10)
 [node name="WallBasePrison8" parent="Environment" unique_id=747335614 instance=ExtResource("28_3qrbx")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 156, 8.4, -10)
 
-[node name="DoorBasic" parent="Environment" unique_id=1555562335 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("14_rxfni")]
+[node name="DoorBasic5" parent="Environment" unique_id=142184496 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("14_rxfni")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30.203, 0, 0)
 openable = false
 enemy_manager = NodePath("../../Enemies/RoomOne")
 
-[node name="DoorBasic2" parent="Environment" unique_id=1217171111 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("14_rxfni")]
+[node name="DoorBasic6" parent="Environment" unique_id=1776080105 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("14_rxfni")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 54.61, 0, 0)
 enemy_manager = NodePath("../../Enemies/RoomTwo")
 
-[node name="DoorBasic3" parent="Environment" unique_id=1538546167 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("14_rxfni")]
+[node name="DoorBasic7" parent="Environment" unique_id=1437235175 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("14_rxfni")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 139.018, 0, 0)
 enemy_manager = NodePath("../../Enemies/RoomThree")
 
-[node name="DoorBasic4" parent="Environment" unique_id=1502657736 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("14_rxfni")]
+[node name="DoorBasic8" parent="Environment" unique_id=252988842 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("14_rxfni")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 163.424, 0, 0)
 enemy_manager = NodePath("../../Enemies/RoomFour")
 
@@ -484,13 +484,13 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 166.203, 8.4, 0)
 [node name="FloorShootingPrison4" parent="Environment" unique_id=549623190 instance=ExtResource("31_yxtek")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 217.797, 8.4, 0)
 
-[node name="DoorBasic5" parent="Environment" unique_id=1589674965 instance=ExtResource("26_rnw37")]
+[node name="DoorBasic9" parent="Environment" unique_id=1589674965 instance=ExtResource("26_rnw37")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 222, 8.4, 0)
 
-[node name="DoorBasic6" parent="Environment" unique_id=1963614819 instance=ExtResource("26_rnw37")]
+[node name="DoorBasic10" parent="Environment" unique_id=1963614819 instance=ExtResource("26_rnw37")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 162, 8.4, 0)
 
-[node name="DoorBasic7" parent="Environment" unique_id=681596247 instance=ExtResource("26_rnw37")]
+[node name="DoorBasic11" parent="Environment" unique_id=681596247 instance=ExtResource("26_rnw37")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 138, 8.4, 0)
 
 [node name="FloorShootingPrison5" parent="Environment" unique_id=171737972 instance=ExtResource("31_yxtek")]
@@ -680,9 +680,8 @@ debug_color = Color(0, 1, 0, 0.41960785)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=1148700225]
 
-[node name="Convict4" parent="Enemies" unique_id=660825129 node_paths=PackedStringArray("animator") instance=ExtResource("17_fxtw2")]
+[node name="Convict4" parent="Enemies" unique_id=660825129 instance=ExtResource("17_fxtw2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82, 3, 0)
-animator = NodePath("Visuals/AnimationPlayer")
 
 [node name="RoomOne" parent="Enemies" unique_id=1450252011 instance=ExtResource("23_si78y")]
 
@@ -699,17 +698,14 @@ possible_spawns = [0]
 wave_spawner = true
 wave_enemies = Array[int]([0, 0])
 
-[node name="Convict" parent="Enemies/RoomThree" unique_id=1506947017 node_paths=PackedStringArray("animator") instance=ExtResource("17_fxtw2")]
+[node name="Convict" parent="Enemies/RoomThree" unique_id=1506947017 instance=ExtResource("17_fxtw2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, 2, 0)
-animator = NodePath("Visuals/AnimationPlayer")
 
-[node name="Convict2" parent="Enemies/RoomThree" unique_id=454804824 node_paths=PackedStringArray("animator") instance=ExtResource("17_fxtw2")]
+[node name="Convict2" parent="Enemies/RoomThree" unique_id=454804824 instance=ExtResource("17_fxtw2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92, 16, 0)
-animator = NodePath("Visuals/AnimationPlayer")
 
-[node name="Convict3" parent="Enemies/RoomThree" unique_id=1741826564 node_paths=PackedStringArray("animator") instance=ExtResource("17_fxtw2")]
+[node name="Convict3" parent="Enemies/RoomThree" unique_id=1741826564 instance=ExtResource("17_fxtw2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125, 2, 0)
-animator = NodePath("Visuals/AnimationPlayer")
 
 [node name="RoomFour" parent="Enemies" unique_id=1372172768 instance=ExtResource("23_si78y")]
 room_ID = 3

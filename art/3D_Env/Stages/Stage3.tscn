@@ -52,9 +52,9 @@
 [ext_resource type="PackedScene" uid="uid://dywiy7oiheh68" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/WoodenCrate6.tscn" id="48_mdqg4"]
 [ext_resource type="PackedScene" uid="uid://x3k5nwycrxwr" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/WoodenPallet.tscn" id="49_bgbox"]
 [ext_resource type="PackedScene" uid="uid://bls076phgmcus" path="res://scenes/actors/enemies/scrub/scrub.tscn" id="53_48mh3"]
+[ext_resource type="PackedScene" uid="uid://bqxkqmc0c1lue" path="res://scenes/actors/enemies/enemy_spawner/enemy_spawner.tscn" id="54_odnwa"]
 [ext_resource type="PackedScene" uid="uid://bojsmqie6xi4c" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Multi/DoorBasicLocked.tscn" id="54_x2xyk"]
 [ext_resource type="PackedScene" uid="uid://dbm4o7gs6g22" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Multi/DoorLargeBasic(Locked).tscn" id="55_x2xyk"]
-[ext_resource type="PackedScene" uid="uid://bqxkqmc0c1lue" path="res://scenes/actors/enemies/enemy_spawner/enemy_spawner.tscn" id="54_odnwa"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_eafu1"]
 
@@ -252,11 +252,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30.203, 167.695, -20)
 
 [node name="DoorLargeBasic8" parent="Environment" unique_id=1012816105 instance=ExtResource("19_dp8q3")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30.203, 8.4, 0)
-
-[node name="DoorSlidingBasic" parent="Environment" unique_id=1555562335 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("20_4otvg")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30.203, 0, 0)
-openable = false
-enemy_manager = NodePath("../../Enemies/EmptyManager")
 
 [node name="DoorExit2" parent="Environment" unique_id=1507794638 instance=ExtResource("17_dp8q3")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.203488, 0, 0)
@@ -1284,10 +1279,10 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 235.424, 167.695, 0)
 [node name="DoorLargeBasic7" parent="Environment" unique_id=111175640 instance=ExtResource("55_x2xyk")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 114.609, 125.695, 0)
 
-[node name="DoorLargeBasic8" parent="Environment" unique_id=4977010 instance=ExtResource("55_x2xyk")]
+[node name="DoorLargeBasic10" parent="Environment" unique_id=4977010 instance=ExtResource("55_x2xyk")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 114.609, 142.495, 0)
 
-[node name="DoorLargeBasic10" parent="Environment" unique_id=757368641 instance=ExtResource("55_x2xyk")]
+[node name="DoorLargeBasic13" parent="Environment" unique_id=757368641 instance=ExtResource("55_x2xyk")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 151.017, 142.495, 0)
 
 [node name="Props" type="Node3D" parent="." unique_id=348907942]
