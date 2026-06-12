@@ -54,6 +54,7 @@ enum Room {
 	ROOM_TWO,
 	ROOM_THREE,
 	ROOM_FOUR,
+	ROOM_FIVE,
 }
 
 enum EnemyType {

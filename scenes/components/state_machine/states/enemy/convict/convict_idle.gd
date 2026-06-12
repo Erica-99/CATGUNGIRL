@@ -6,7 +6,7 @@
 extends State
 
 var actor: CharacterBody3D
-var anim: AnimatedSprite3D
+var anim: AnimationPlayer
 var slow_down_speed: float
 
 func init(blackboard_dict: Dictionary) -> void:

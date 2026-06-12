@@ -1,0 +1,15 @@
+
+- Homing dash in the air towards an enemy.
+- Time slow while aiming mid-air.
+- Springboard off a mantle. i.e. If you mantle and keep holding jump it can launch you higher. 
+- Kick mechanic
+- Lock-on execution on low-health enemies (Like Destiny 2 executions sort of thing)
+	- What if Gigi pops out and does it for you?
+- Gigi demands your attention in some way mid-combat like asking you to do a QTE all of a sudden or you lose a bunch of interest
+- Some sort of install mechanic where combat become semi-automated in some way:
+	- Auto-aim?
+	- Dash directly to enemies?
+	- Autofire?
+	- Just multiply your abilities like crazy?
+- Grenade
+- Parry gunshots by shooting them with your own gun

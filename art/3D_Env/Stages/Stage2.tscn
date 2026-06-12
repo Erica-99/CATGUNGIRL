@@ -13,17 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://11pckncgaxu4" path="res://scenes/components/level_components/level_transitions/level_end.tscn" id="17_mu5e4"]
 [ext_resource type="PackedScene" uid="uid://byw22jxx2g5hs" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Panopticon/PanopticonBridgeConnector.tscn" id="18_mu5e4"]
 [ext_resource type="PackedScene" uid="uid://b6levdtv4ncso" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/PanopticonElevatorPlatform.tscn" id="18_of7yi"]
-[ext_resource type="ArrayMesh" uid="uid://dikqwffu8mil4" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/Panopticon/CellCranePrt.01.obj" id="19_bel3r"]
 [ext_resource type="PackedScene" uid="uid://jdesv2xhdtvx" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/PanopticonAccessBridge.tscn" id="19_q7nox"]
 [ext_resource type="PackedScene" uid="uid://dl1dvclonvae4" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Multi/PrisonCell(Active).tscn" id="20_0yyri"]
 [ext_resource type="PackedScene" uid="uid://dld0qjmojk1t8" path="res://scenes/actors/enemies/enemy_manager/enemy_manager.tscn" id="20_q7nox"]
-[ext_resource type="ArrayMesh" uid="uid://luh7yhrcpf21" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/Panopticon/CellCranePrt.02.obj" id="20_r7q7y"]
-[ext_resource type="ArrayMesh" uid="uid://c3u4dbgkvedu3" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/Panopticon/CellCranePrt.03.obj" id="21_aiqfw"]
 [ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict/convict_enemy.tscn" id="21_n434r"]
 [ext_resource type="PackedScene" uid="uid://dsp60dlsho3gr" path="res://art/3D_Env/3D_Assets/DoorBasic.tscn" id="22_n434r"]
-[ext_resource type="ArrayMesh" uid="uid://c1cfawtirm2m" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/Panopticon/CellCranePrt.04.obj" id="22_yfq6p"]
 [ext_resource type="PackedScene" uid="uid://xnrufhd38t56" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Panopticon/PanopticonCraneRail.tscn" id="23_0yyri"]
-[ext_resource type="ArrayMesh" uid="uid://cd1pnys8uchkm" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/Panopticon/CellCrane_Scoop.obj" id="23_ns416"]
 [ext_resource type="PackedScene" uid="uid://ckjadvesqstsq" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Multi/PrisonCell(Docile).tscn" id="28_bel3r"]
 [ext_resource type="ArrayMesh" uid="uid://bdp82pp0mkie2" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/Panopticon/PanopticonConnectorBase.obj" id="29_maeby"]
 [ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="29_r7q7y"]
@@ -341,7 +336,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 168.127, 134.45, 0)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 153.03035, 15.22102, 10.469608)
 
 [node name="CellCranePrt_01_Mesh" type="MeshInstance3D" parent="Environment/Cranes/PanopticonCrane" unique_id=1630619128]
-mesh = ExtResource("19_bel3r")
 
 [node name="CellCranePrt_01_Collision" type="CollisionShape3D" parent="Environment/Cranes/PanopticonCrane" unique_id=2054079656]
 shape = SubResource("ConcavePolygonShape3D_l77d3")
@@ -350,7 +344,6 @@ shape = SubResource("ConcavePolygonShape3D_l77d3")
 transform = Transform3D(0.6286828, 0, -0.7776618, 0, 1, 0, 0.7776618, 0, 0.6286828, -5.8589706, 0, 0.9917402)
 
 [node name="CellCranePrt_02_Mesh" type="MeshInstance3D" parent="Environment/Cranes/PanopticonCrane/CellCranePrt_02" unique_id=2072363574]
-mesh = ExtResource("20_r7q7y")
 
 [node name="CellCranePrt_02_Collision" type="CollisionShape3D" parent="Environment/Cranes/PanopticonCrane/CellCranePrt_02" unique_id=2090679224]
 shape = SubResource("ConcavePolygonShape3D_rsbjq")
@@ -359,7 +352,6 @@ shape = SubResource("ConcavePolygonShape3D_rsbjq")
 transform = Transform3D(0.98298347, 0, -0.18369421, 0, 1, 0, 0.18369421, 0, 0.98298347, -7.665989, 1.2034645, 0.00024414063)
 
 [node name="CellCranePrt_03_Mesh" type="MeshInstance3D" parent="Environment/Cranes/PanopticonCrane/CellCranePrt_02/CellCranePrt_03" unique_id=739431323]
-mesh = ExtResource("21_aiqfw")
 
 [node name="CellCranePrt_03_Collision" type="CollisionShape3D" parent="Environment/Cranes/PanopticonCrane/CellCranePrt_02/CellCranePrt_03" unique_id=1869531713]
 shape = SubResource("ConcavePolygonShape3D_n8o6q")
@@ -371,7 +363,6 @@ transform = Transform3D(-0.7114132, 0, 0.70277417, 0, 1, 0, -0.70277417, 0, -0.7
 shape = SubResource("ConcavePolygonShape3D_eyre3")
 
 [node name="CellCranePrt_04_Mesh" type="MeshInstance3D" parent="Environment/Cranes/PanopticonCrane/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04" unique_id=651539055]
-mesh = ExtResource("22_yfq6p")
 
 [node name="CellCraneScoop" type="StaticBody3D" parent="Environment/Cranes/PanopticonCrane/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04" unique_id=1106637968]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.792175, -2.6761813, 0)
@@ -380,7 +371,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.792175, -2.6761813, 0)
 shape = SubResource("ConcavePolygonShape3D_byrgy")
 
 [node name="CellCraneScoop_Mesh" type="MeshInstance3D" parent="Environment/Cranes/PanopticonCrane/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop" unique_id=1852800874]
-mesh = ExtResource("23_ns416")
 
 [node name="PrisonCell" parent="Environment/Cranes/PanopticonCrane/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop" unique_id=1076492931 instance=ExtResource("20_0yyri")]
 transform = Transform3D(1.125, 0, 0, 0, 1.125, 0, 0, 0, 1.125, -1.4952316, -0.13355446, -0.027932644)
@@ -389,7 +379,6 @@ transform = Transform3D(1.125, 0, 0, 0, 1.125, 0, 0, 0, 1.125, -1.4952316, -0.13
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 153.03033, 45.303493, -10.2479925)
 
 [node name="CellCranePrt_01_Mesh" type="MeshInstance3D" parent="Environment/Cranes/PanopticonCrane2" unique_id=600345494]
-mesh = ExtResource("19_bel3r")
 
 [node name="CellCranePrt_01_Collision" type="CollisionShape3D" parent="Environment/Cranes/PanopticonCrane2" unique_id=1091050940]
 shape = SubResource("ConcavePolygonShape3D_l77d3")
@@ -398,7 +387,6 @@ shape = SubResource("ConcavePolygonShape3D_l77d3")
 transform = Transform3D(0.89776635, 0, -0.44047198, 0, 1, 0, 0.44047198, 0, 0.89776635, -5.8589783, 0, 0.9917402)
 
 [node name="CellCranePrt_02_Mesh" type="MeshInstance3D" parent="Environment/Cranes/PanopticonCrane2/CellCranePrt_02" unique_id=1513257482]
-mesh = ExtResource("20_r7q7y")
 
 [node name="CellCranePrt_02_Collision" type="CollisionShape3D" parent="Environment/Cranes/PanopticonCrane2/CellCranePrt_02" unique_id=1868315072]
 shape = SubResource("ConcavePolygonShape3D_rsbjq")
@@ -407,7 +395,6 @@ shape = SubResource("ConcavePolygonShape3D_rsbjq")
 transform = Transform3D(0.5506265, 0, 0.83475167, 0, 1, 0, -0.83475167, 0, 0.5506265, -7.666012, 1.2034645, 0.0002746582)
 
 [node name="CellCranePrt_03_Mesh" type="MeshInstance3D" parent="Environment/Cranes/PanopticonCrane2/CellCranePrt_02/CellCranePrt_03" unique_id=1906994643]
-mesh = ExtResource("21_aiqfw")
 
 [node name="CellCranePrt_03_Collision" type="CollisionShape3D" parent="Environment/Cranes/PanopticonCrane2/CellCranePrt_02/CellCranePrt_03" unique_id=811619492]
 shape = SubResource("ConcavePolygonShape3D_ptwqc")
@@ -419,7 +406,6 @@ transform = Transform3D(-0.8634393, 0, 0.5044524, 0, 1, 0, -0.5044524, 0, -0.863
 shape = SubResource("ConcavePolygonShape3D_eyre3")
 
 [node name="CellCranePrt_04_Mesh" type="MeshInstance3D" parent="Environment/Cranes/PanopticonCrane2/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04" unique_id=415580237]
-mesh = ExtResource("22_yfq6p")
 
 [node name="CellCraneScoop" type="StaticBody3D" parent="Environment/Cranes/PanopticonCrane2/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04" unique_id=925163502]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.792175, -2.6761813, 0)
@@ -428,13 +414,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.792175, -2.6761813, 0)
 shape = SubResource("ConcavePolygonShape3D_byrgy")
 
 [node name="CellCraneScoop_Mesh" type="MeshInstance3D" parent="Environment/Cranes/PanopticonCrane2/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop" unique_id=1911896277]
-mesh = ExtResource("23_ns416")
 
 [node name="PanopticonCrane3" type="StaticBody3D" parent="Environment/Cranes" unique_id=357730873]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 9.100749, 76.5027, 10.275739)
 
 [node name="CellCranePrt_01_Mesh" type="MeshInstance3D" parent="Environment/Cranes/PanopticonCrane3" unique_id=1822731108]
-mesh = ExtResource("19_bel3r")
 
 [node name="CellCranePrt_01_Collision" type="CollisionShape3D" parent="Environment/Cranes/PanopticonCrane3" unique_id=1353963298]
 shape = SubResource("ConcavePolygonShape3D_l77d3")
@@ -443,7 +427,6 @@ shape = SubResource("ConcavePolygonShape3D_l77d3")
 transform = Transform3D(0.84685284, 0, 0.53182733, 0, 1, 0, -0.53182733, 0, 0.84685284, -5.8589754, 0, 0.9917402)
 
 [node name="CellCranePrt_02_Mesh" type="MeshInstance3D" parent="Environment/Cranes/PanopticonCrane3/CellCranePrt_02" unique_id=1887620771]
-mesh = ExtResource("20_r7q7y")
 
 [node name="CellCranePrt_02_Collision" type="CollisionShape3D" parent="Environment/Cranes/PanopticonCrane3/CellCranePrt_02" unique_id=668499247]
 shape = SubResource("ConcavePolygonShape3D_rsbjq")
@@ -452,7 +435,6 @@ shape = SubResource("ConcavePolygonShape3D_rsbjq")
 transform = Transform3D(0.8641343, 0, 0.50326127, 0, 1, 0, -0.50326127, 0, 0.8641343, -7.6659956, 1.2034645, 0.00026130676)
 
 [node name="CellCranePrt_03_Mesh" type="MeshInstance3D" parent="Environment/Cranes/PanopticonCrane3/CellCranePrt_02/CellCranePrt_03" unique_id=1507511642]
-mesh = ExtResource("21_aiqfw")
 
 [node name="CellCranePrt_03_Collision" type="CollisionShape3D" parent="Environment/Cranes/PanopticonCrane3/CellCranePrt_02/CellCranePrt_03" unique_id=2126196941]
 shape = SubResource("ConcavePolygonShape3D_maeby")
@@ -464,7 +446,6 @@ transform = Transform3D(-0.77062446, 0, -0.63728946, 0, 1, 0, 0.63728946, 0, -0.
 shape = SubResource("ConcavePolygonShape3D_eyre3")
 
 [node name="CellCranePrt_04_Mesh" type="MeshInstance3D" parent="Environment/Cranes/PanopticonCrane3/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04" unique_id=1416628082]
-mesh = ExtResource("22_yfq6p")
 
 [node name="CellCraneScoop" type="StaticBody3D" parent="Environment/Cranes/PanopticonCrane3/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04" unique_id=2077554290]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.792175, -2.6761813, 0)
@@ -473,7 +454,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.792175, -2.6761813, 0)
 shape = SubResource("ConcavePolygonShape3D_byrgy")
 
 [node name="CellCraneScoop_Mesh" type="MeshInstance3D" parent="Environment/Cranes/PanopticonCrane3/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop" unique_id=2045835932]
-mesh = ExtResource("23_ns416")
 
 [node name="PrisonCell" parent="Environment/Cranes/PanopticonCrane3/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop" unique_id=1030322063 instance=ExtResource("20_0yyri")]
 transform = Transform3D(-1.125, 0, 0.00015714765, 0, 1.125, 0, -0.00015714765, 0, -1.125, -0.9610224, 0.0410614, -0.047639847)
@@ -482,7 +462,6 @@ transform = Transform3D(-1.125, 0, 0.00015714765, 0, 1.125, 0, -0.00015714765, 0
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 9.098897, 103.76495, -10.462593)
 
 [node name="CellCranePrt_01_Mesh" type="MeshInstance3D" parent="Environment/Cranes/PanopticonCrane4" unique_id=1335265662]
-mesh = ExtResource("19_bel3r")
 
 [node name="CellCranePrt_01_Collision" type="CollisionShape3D" parent="Environment/Cranes/PanopticonCrane4" unique_id=38499612]
 shape = SubResource("ConcavePolygonShape3D_l77d3")
@@ -491,7 +470,6 @@ shape = SubResource("ConcavePolygonShape3D_l77d3")
 transform = Transform3D(0.0668661, 0, 0.997762, 0, 1, 0, -0.997762, 0, 0.0668661, -5.8589735, 0, 0.9917402)
 
 [node name="CellCranePrt_02_Mesh" type="MeshInstance3D" parent="Environment/Cranes/PanopticonCrane4/CellCranePrt_02" unique_id=1491044042]
-mesh = ExtResource("20_r7q7y")
 
 [node name="CellCranePrt_02_Collision" type="CollisionShape3D" parent="Environment/Cranes/PanopticonCrane4/CellCranePrt_02" unique_id=1078502677]
 shape = SubResource("ConcavePolygonShape3D_rsbjq")
@@ -500,7 +478,6 @@ shape = SubResource("ConcavePolygonShape3D_rsbjq")
 transform = Transform3D(-0.3437907, 0, -0.9390464, 0, 1, 0, 0.9390464, 0, -0.3437907, -7.6659966, 1.2034645, 0.0002565384)
 
 [node name="CellCranePrt_03_Mesh" type="MeshInstance3D" parent="Environment/Cranes/PanopticonCrane4/CellCranePrt_02/CellCranePrt_03" unique_id=1949251858]
-mesh = ExtResource("21_aiqfw")
 
 [node name="CellCranePrt_03_Collision" type="CollisionShape3D" parent="Environment/Cranes/PanopticonCrane4/CellCranePrt_02/CellCranePrt_03" unique_id=216909356]
 shape = SubResource("ConcavePolygonShape3D_b4ysr")
@@ -512,7 +489,6 @@ transform = Transform3D(-0.5005444, 0, -0.8657104, 0, 1, 0, 0.8657104, 0, -0.500
 shape = SubResource("ConcavePolygonShape3D_eyre3")
 
 [node name="CellCranePrt_04_Mesh" type="MeshInstance3D" parent="Environment/Cranes/PanopticonCrane4/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04" unique_id=1623244898]
-mesh = ExtResource("22_yfq6p")
 
 [node name="CellCraneScoop" type="StaticBody3D" parent="Environment/Cranes/PanopticonCrane4/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04" unique_id=608391113]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.792175, -2.6761813, 0)
@@ -521,7 +497,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.792175, -2.6761813, 0)
 shape = SubResource("ConcavePolygonShape3D_byrgy")
 
 [node name="CellCraneScoop_Mesh" type="MeshInstance3D" parent="Environment/Cranes/PanopticonCrane4/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop" unique_id=499604553]
-mesh = ExtResource("23_ns416")
 
 [node name="PrisonCell" parent="Environment/Cranes/PanopticonCrane4/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop" unique_id=1430763070 instance=ExtResource("20_0yyri")]
 transform = Transform3D(-1.1248834, 0, -0.016198814, 0, 1.125, 0, 0.016198814, 0, -1.1248834, -0.8479004, 0.01492691, 0.026231766)
@@ -627,8 +602,9 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.25334167, 1.1749954,
 monitoring = false
 level_name = "Stage3"
 
-[node name="DoorSlidingBasic" parent="Interactive" unique_id=1555562335 instance=ExtResource("22_n434r")]
+[node name="DoorSlidingBasic" parent="Interactive" unique_id=1555562335 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("22_n434r")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 7.255, 67.027, 0)
+enemy_manager = NodePath("../../Enemies/EmptyManager")
 
 [node name="PrisonCell" parent="Interactive" unique_id=832090815 instance=ExtResource("20_0yyri")]
 transform = Transform3D(-2.4999995, 0, -2.185569e-07, 0, 2.5, 0, 2.185569e-07, 0, -2.4999995, 119.869995, 3.013, 0)
@@ -821,37 +797,36 @@ debug_color = Color(0.919504, 0.13431916, 0.6161928, 0.41960785)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=732558009]
 
+[node name="EmptyManager" parent="Enemies" unique_id=1088774491 instance=ExtResource("20_q7nox")]
+
+[node name="Convict5" parent="Enemies" unique_id=895222274 instance=ExtResource("21_n434r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139, 2, 0)
+
+[node name="Scrub2" parent="Enemies" unique_id=321714991 instance=ExtResource("31_yfq6p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 8.612963, 0)
+
+[node name="Scrub8" parent="Enemies" unique_id=1987250186 instance=ExtResource("31_yfq6p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136, 130, 0)
+
+[node name="Convict3" parent="Enemies" unique_id=922981550 instance=ExtResource("21_n434r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99, 69, 0)
+
 [node name="EnemyManager" parent="Enemies" unique_id=18369620 instance=ExtResource("20_q7nox")]
 
 [node name="Convict" parent="Enemies/EnemyManager" unique_id=1506947017 instance=ExtResource("21_n434r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 2, 0)
 
-[node name="Convict2" parent="Enemies/EnemyManager" unique_id=1973177145 instance=ExtResource("21_n434r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 2, 0)
-
-[node name="Convict3" parent="Enemies/EnemyManager" unique_id=1393898731 instance=ExtResource("21_n434r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 2, 0)
-
-[node name="Convict4" parent="Enemies/EnemyManager" unique_id=1067664934 instance=ExtResource("21_n434r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 24, 0)
-
-[node name="Convict5" parent="Enemies/EnemyManager" unique_id=895222274 instance=ExtResource("21_n434r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.79599, 2, 0)
+[node name="Convict2" parent="Enemies/EnemyManager" unique_id=812056497 instance=ExtResource("21_n434r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83, 2, 0)
 
 [node name="Convict6" parent="Enemies/EnemyManager" unique_id=1448404921 instance=ExtResource("21_n434r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 69, 0)
-
-[node name="Convict7" parent="Enemies/EnemyManager" unique_id=1324851340 instance=ExtResource("21_n434r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69, 69, 0)
 
 [node name="Convict8" parent="Enemies/EnemyManager" unique_id=493179861 instance=ExtResource("21_n434r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113, 128, 0)
 
 [node name="Scrub" parent="Enemies/EnemyManager" unique_id=1090872008 instance=ExtResource("31_yfq6p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 4, 0)
-
-[node name="Scrub2" parent="Enemies/EnemyManager" unique_id=321714991 instance=ExtResource("31_yfq6p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 14, 0)
 
 [node name="Scrub3" parent="Enemies/EnemyManager" unique_id=1923701444 instance=ExtResource("31_yfq6p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108, 4, 0)
@@ -859,13 +834,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108, 4, 0)
 [node name="Scrub4" parent="Enemies/EnemyManager" unique_id=74897804 instance=ExtResource("31_yfq6p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93, 71, 0)
 
-[node name="Scrub5" parent="Enemies/EnemyManager" unique_id=2141719469 instance=ExtResource("31_yfq6p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 71, 0)
-
 [node name="Scrub7" parent="Enemies/EnemyManager" unique_id=330088300 instance=ExtResource("31_yfq6p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 130, 0)
-
-[node name="Scrub8" parent="Enemies/EnemyManager" unique_id=1987250186 instance=ExtResource("31_yfq6p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136, 130, 0)
 
 [connection signal="stage_cleared" from="Enemies/EnemyManager" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]

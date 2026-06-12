@@ -4,11 +4,14 @@
 extends State
 
 var actor: CharacterBody3D
-var anim: AnimatedSprite3D
+var anim: AnimationPlayer
 var jump_force: float
 var chase_speed: float
 var slow_down_speed: float
 var pounce_speed: float
+# How long in seconds the convict stays down for
+@export var faceplant_duration = 1
+var faceplant_timer = 0
 
 var target: CharacterBody3D
 var direction: int
@@ -42,7 +45,7 @@ func physics_update(_delta: float) -> void:
 		# If they are on the floor after their jump go into a faceplant slide
 		else:
 			actor.velocity.x = move_toward(actor.velocity.x, 0, slow_down_speed * _delta)
-			faceplant()
+			faceplant(_delta)
 	
 	actor.move_and_slide()
 
@@ -57,14 +60,16 @@ func pounce():
 	actor.velocity.y += jump_force
 	has_jumped = true
 
-# Similar to HitConfirm, the cooldown time is connected to a faceplanting animation
+# Similar to HitConfirm, the cooldown time is based on delta time
 # TODO: change to anim.animation_finished when non-looping animation is implemented
-func faceplant():
+func faceplant(delta):
 	#anim.play("Faceplant")
-	await anim.animation_looped
 	# Basic implementation to see if enemy has come to a complete stop
 	if actor.velocity.x == 0:
-		transitioned.emit(self, "convictchase")
+		faceplant_timer += delta
+		if faceplant_timer > faceplant_duration:
+			faceplant_timer = 0
+			transitioned.emit(self, "convictchase")
 
 func _on_attack_hitbox_body_entered(body: Node3D) -> void:
 	actor.target_in_hitbox = true

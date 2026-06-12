@@ -44,6 +44,9 @@ const HITBOX_SCENE = preload("res://scenes/components/hitbox_component/hitbox_co
 @export var beam_range: float = 15.0
 @export var perfect_charge_multiplier: float = 2.5
 
+##Gun Animation Handler
+@onready var Gun_Animation = $"../PlayerVisuals/ROOT_P/GUN_P/GUN_AIM/Hand_Anims"
+
 ## bzzt
 signal beam_fired(beam_end: Vector3, charge_progress: float)
 
@@ -58,6 +61,10 @@ signal enemy_hit(hurtbox: Area3D)
 ## perfect shot signal
 signal perfect_shot_fired()
 signal spread_changed(spread: float) # visual indicator 
+signal perfect_window_changed(active: bool) # for indicator flash
+
+@onready var _normal_flash: CPUParticles3D = $Muzzle/NormalMuzzleFlash
+@onready var _perfect_flash: CPUParticles3D = $Muzzle/PerfectMuzzleFlash
 
 var _fire_cooldown: float = 0.0
 var _recoil_offset: float = 0.0 
@@ -94,6 +101,8 @@ func _process(delta: float) -> void:
 	else:
 		var spread = 1.0 - clampf(_time_since_last_shot / laser_convergence_speed, 0.0, 1.0)
 		spread_changed.emit(spread)
+	var in_window = not _is_charging and _is_aim_settled() and _time_since_last_shot < perfect_shot_max_interval
+	perfect_window_changed.emit(in_window)
 
 
 func _update_aim(mouse_world: Vector3, input_state: Dictionary, delta: float) -> void:
@@ -168,6 +177,10 @@ func _try_fire() -> void:
 		return
 	var damage = bullet_damage
 	
+	#Play Gun Animation
+	Gun_Animation.stop()
+	Gun_Animation.play("Fire")
+	
 	## Perfect shot
 	if _is_aim_settled() and _time_since_last_shot < perfect_shot_max_interval:
 		_is_spamming = false
@@ -177,15 +190,18 @@ func _try_fire() -> void:
 		damage = bullet_damage * perfect_damage_multiplier
 		perfect_shot_fired.emit()
 		AudioManager.play_sfx("laser_perfect")
+		_perfect_flash.restart()
 	# Spam shot 
 	elif _time_since_last_shot < spam_window:
 		_is_spamming = true
 		_spam_count += 1
 		# print("spam shot, count: ", _spam_count)
 		AudioManager.play_sfx("laser_imperfect")
+		_normal_flash.restart()
 	else: # Normal shot
 		# print("normal shot, damage: ", bullet_damage)
 		AudioManager.play_sfx("laser_imperfect")
+		_normal_flash.restart()
 		
 	# resets firing cooldown
 	_fire_cooldown = fire_rate
