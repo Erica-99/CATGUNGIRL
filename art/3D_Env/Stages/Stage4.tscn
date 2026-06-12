@@ -89,10 +89,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -120.406, 8.4, 0)
 [node name="DoorExit" parent="Environment" unique_id=863191425 instance=ExtResource("13_1e5f0")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.203, 0, 0)
 
-[node name="DoorSlidingBasic" parent="Environment" unique_id=1555562335 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("14_jwkd4")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -30.202333, 0, 0)
-enemy_manager = NodePath("../../Enemies/Room One")
-
 [node name="DoorSlidingBasic2" parent="Environment" unique_id=1448440225 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("14_jwkd4")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -30.202, 8.4, 0)
 enemy_manager = NodePath("../../Enemies/Room One")
@@ -826,8 +822,8 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -132.406, 33.6, -20)
 [node name="DoorwayLargeLaboratory" parent="Environment" unique_id=1093577184 instance=ExtResource("20_t1i12")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -199.017, 0, 0)
 
-[node name="DoorBasicLocked" parent="Environment" unique_id=1555562335 instance=ExtResource("23_ku2sa")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -30.202, 0, 0)
+[node name="DoorBasicLocked" parent="Environment" unique_id=1074070208 instance=ExtResource("23_ku2sa")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -30.263798, 0, 0)
 
 [node name="DoorBasicLocked2" parent="Environment" unique_id=758774507 instance=ExtResource("23_ku2sa")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -138.609, 8.4, 0)
@@ -1053,12 +1049,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -168, 21, 0)
 [node name="Scrub6" parent="Enemies/Room Three" unique_id=1366744176 instance=ExtResource("21_g3ka0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -179, 37, 0)
 
-[node name="PrisonCell" parent="." unique_id=1694131926 instance=ExtResource("29_mwgbg")]
-transform = Transform3D(0.8576987, 0, -2.080109, 0, 2.25, 0, 2.080109, 0, 0.8576987, -187.63136, 2.7317371, -12.909765)
-
-[node name="PrisonCell2" parent="." unique_id=1718831882 instance=ExtResource("29_mwgbg")]
-transform = Transform3D(-2.1917126, 0, -0.5088179, 0, 2.25, 0, 0.5088179, 0, -2.1917126, -176.43152, 2.7317371, -14.622516)
-
 [node name="Scrub" parent="Enemies/Room Three" unique_id=611166544 instance=ExtResource("21_g3ka0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184, 21, 0)
 
@@ -1070,5 +1060,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -192, 36, 0)
 
 [node name="Convict3" parent="Enemies/Room Three" unique_id=701227813 instance=ExtResource("20_g3ka0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -151, 10, 0)
+
+[node name="PrisonCell" parent="." unique_id=1694131926 instance=ExtResource("29_mwgbg")]
+transform = Transform3D(0.8576987, 0, -2.080109, 0, 2.25, 0, 2.080109, 0, 0.8576987, -187.63136, 2.7317371, -12.909765)
+
+[node name="PrisonCell2" parent="." unique_id=1718831882 instance=ExtResource("29_mwgbg")]
+transform = Transform3D(-2.1917126, 0, -0.5088179, 0, 2.25, 0, 0.5088179, 0, -2.1917126, -176.43152, 2.7317371, -14.622516)
 
 [connection signal="stage_cleared" from="Enemies/Room Three" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]

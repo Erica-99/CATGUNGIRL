@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://dl1dvclonvae4" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Multi/PrisonCell(Active).tscn" id="22_n30yw"]
 [ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="23_n30yw"]
 [ext_resource type="PackedScene" uid="uid://dld0qjmojk1t8" path="res://scenes/actors/enemies/enemy_manager/enemy_manager.tscn" id="23_si78y"]
-[ext_resource type="PackedScene" uid="uid://bqxkqmc0c1lue" path="res://scenes/actors/enemies/enemy_spawner/enemy_spawner.tscn" id="25_m1byu"]
 [ext_resource type="PackedScene" uid="uid://coirj7uqclsre" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Prison/FloorPrison.tscn" id="26_3qrbx"]
 [ext_resource type="PackedScene" uid="uid://bojsmqie6xi4c" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Multi/DoorBasicLocked.tscn" id="26_rnw37"]
 [ext_resource type="PackedScene" uid="uid://dsux5aknnciia" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Prison/WallPlainBasePrison.tscn" id="27_1v7kv"]
@@ -30,9 +29,6 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fxtw2"]
 size = Vector3(1, 7.2834473, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_m1byu"]
-size = Vector3(1, 5, 7)
 
 [node name="StageOne" type="Node3D" unique_id=1668100898]
 
@@ -652,16 +648,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0794678, 0)
 shape = SubResource("BoxShape3D_fxtw2")
 debug_color = Color(0.919504, 0.13431916, 0.6161928, 0.41960785)
 
-[node name="RoomOneSpawnTrigger" parent="." unique_id=1919603962 instance=ExtResource("23_n30yw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 3, 0)
-_signal_parameters = [1, NodePath("../Enemies/RoomThree/ConvictSpawner")]
-signal_name = "spawn_enemy"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomOneSpawnTrigger" unique_id=1864227407]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_m1byu")
-debug_color = Color(0, 1, 0, 0.41960785)
-
 [node name="Enemies" type="Node3D" parent="." unique_id=1148700225]
 
 [node name="Convict4" parent="Enemies" unique_id=660825129 instance=ExtResource("17_fxtw2")]
@@ -674,13 +660,6 @@ room_ID = 1
 
 [node name="RoomThree" parent="Enemies" unique_id=1942243816 instance=ExtResource("23_si78y")]
 room_ID = 2
-
-[node name="ConvictSpawner" parent="Enemies/RoomThree" unique_id=1110059721 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("25_m1byu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 10, 0)
-linked_enemy_manager = NodePath("..")
-possible_spawns = [0]
-wave_spawner = true
-wave_enemies = Array[int]([0, 0])
 
 [node name="Convict" parent="Enemies/RoomThree" unique_id=1506947017 instance=ExtResource("17_fxtw2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, 2, 0)

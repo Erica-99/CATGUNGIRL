@@ -147,7 +147,8 @@ func _end_date():
 	await animation_player.animation_finished
 	visible = false
 	EventManager.end_date_scene_lock.emit()
-	tutorialbox_anim.play("Fade in")
+	if Globals.global_insanity_level == 1:
+		tutorialbox_anim.play("Fade in")
 
 
 # option click handler event
