@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://resources/shader_presets/screenpulse_preset.gd" id="7_wyjqh"]
 [ext_resource type="Script" path="res://scenes/ui/chromatic_controller.gd" id="9_ieyhn"]
 [ext_resource type="Script" path="res://scenes/ui/insanity_chromatic.gd" id="10_434qr"]
+[ext_resource type="PackedScene" uid="uid://cjku3tspjt4ep" path="res://scenes/ui/dating/gigi_date.tscn" id="14_ioa2x"]
 
 [sub_resource type="Resource" id="Resource_434qr"]
 script = ExtResource("3_6tqft")
@@ -131,3 +132,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("9_ieyhn")
+
+[node name="DateVisuals" type="CanvasLayer" parent="OverlayVisuals" unique_id=1434143778]
+layer = 100
+
+[node name="GigiDate" parent="OverlayVisuals/DateVisuals" unique_id=2015194836 instance=ExtResource("14_ioa2x")]

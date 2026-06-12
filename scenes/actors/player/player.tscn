@@ -24,6 +24,8 @@
 [ext_resource type="Texture2D" uid="uid://dhuat37cviek4" path="res://art/2d_assets/real_world/player_rosington/Ros_GunArm_SPR.png" id="16_shibf"]
 [ext_resource type="PackedScene" uid="uid://cmq1v8ob4m0w4" path="res://scenes/components/camera_component/camera_component.tscn" id="18_ffoq6"]
 [ext_resource type="Script" uid="uid://y2ix2xo5owxw" path="res://resources/damage_heal_instance/damage_heal_instance.gd" id="19_llrf1"]
+[ext_resource type="Texture2D" uid="uid://bx0fammwess53" path="res://art/UI/placeholder/sprite_sheet.png" id="26_ffoq6"]
+[ext_resource type="Script" uid="uid://cei5rp5pteo06" path="res://scenes/actors/player/gigi_bubble.gd" id="27_cat03"]
 [ext_resource type="Script" uid="uid://da3n34oh0bagw" path="res://scenes/actors/player/audio_caller.gd" id="33_owjsm"]
 
 [sub_resource type="Animation" id="Animation_lguxi"]
@@ -1159,6 +1161,49 @@ radius = 1.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_llrf1"]
 size = Vector3(0.996727, 2.7352142, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_eh6yv"]
+atlas = ExtResource("26_ffoq6")
+region = Rect2(0, 0, 1428, 1312)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shibf"]
+atlas = ExtResource("26_ffoq6")
+region = Rect2(1428, 0, 1428, 1312)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jk84i"]
+atlas = ExtResource("26_ffoq6")
+region = Rect2(2856, 0, 1428, 1312)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0jtt"]
+atlas = ExtResource("26_ffoq6")
+region = Rect2(0, 1312, 1428, 1312)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eltio"]
+atlas = ExtResource("26_ffoq6")
+region = Rect2(1428, 1312, 1428, 1312)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kn7dg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eh6yv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shibf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jk84i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0jtt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eltio")
+}],
+"loop": true,
+"name": &"Bubble",
+"speed": 8.0
+}]
+
 [node name="Player" type="CharacterBody3D" unique_id=1349193765 node_paths=PackedStringArray("movement_state_machine", "gun_arm_node", "input_component", "mantle_detector", "feet_point", "jump_timer") groups=["player"]]
 collision_layer = 2
 axis_lock_linear_z = true
@@ -1339,6 +1384,14 @@ one_shot = true
 
 [node name="AudioCaller" type="Node" parent="." unique_id=1105456719]
 script = ExtResource("33_owjsm")
+
+[node name="GigiBubble" type="AnimatedSprite3D" parent="." unique_id=1255150123]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.935, 2.302702, 1.1927793, 0)
+sprite_frames = SubResource("SpriteFrames_kn7dg")
+animation = &"Bubble"
+frame = 1
+frame_progress = 0.037387703
+script = ExtResource("27_cat03")
 
 [connection signal="facing_changed" from="." to="PlayerVisuals" method="_on_player_facing_changed"]
 [connection signal="facing_changed" from="." to="MantleDetector" method="_on_player_facing_changed"]

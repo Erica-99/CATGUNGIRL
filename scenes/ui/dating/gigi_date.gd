@@ -7,6 +7,7 @@ extends Control
 @onready var dialogue_bubble: PanelContainer = $date_txt_bgd/Panel/MarginContainer/VBoxContainer/DialogueBubble
 @onready var press_button_info: RichTextLabel = $"date_txt_bgd/Panel/MarginContainer/Press Button Info"
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var video_player: VideoStreamPlayer = $VideoStreamPlayer
 
 var dating_stylebox = preload("res://art/StyleBoxes/StyleBox_Pink.tres")
 var button_stylebox = preload("res://art/StyleBoxes/StyleBox_Pink2.tres")
@@ -87,8 +88,12 @@ func _display(is_date_just_started: bool = false):
 	dialogue_bubble._set_text("")
 
 	if is_date_just_started:
+		video_player.play()
+		video_player.visible = true
+		await video_player.finished
 		animation_player.play("date_start")
 		await animation_player.animation_finished
+		video_player.visible = false
 	
 	dating_active = true
 	
@@ -132,7 +137,6 @@ func _display_button_press_info():
 		tween.tween_property(press_button_info, "visible", true, 1)
 	button_container.visible = true
 	pass
-
 
 # ends the current date (returns player to active world)
 func _end_date():
