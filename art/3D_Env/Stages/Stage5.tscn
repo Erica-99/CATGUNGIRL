@@ -9,11 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="15_qpjh2"]
 [ext_resource type="PackedScene" uid="uid://11pckncgaxu4" path="res://scenes/components/level_components/level_transitions/level_end.tscn" id="16_3h5io"]
 [ext_resource type="PackedScene" uid="uid://ukr8s37yqom1" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Laboratory/WallBaseLaboratory.tscn" id="16_kk8yj"]
+[ext_resource type="PackedScene" uid="uid://ce0yru5inlhhq" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Laboratory/DoorwayPrisonRailLaboratory.tscn" id="16_kuog2"]
 [ext_resource type="PackedScene" uid="uid://k4bj1vh7ofsj" path="res://art/3D_Env/3D_Assets/DoorExit.tscn" id="17_1nyol"]
+[ext_resource type="ArrayMesh" uid="uid://vwoh52gaint3" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/Multi/PrisonRailCranePrt01.obj" id="17_mnn55"]
 [ext_resource type="PackedScene" uid="uid://bitrucit7ifuv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Laboratory/WallPlainMidLaboratory.tscn" id="17_rmes1"]
 [ext_resource type="PackedScene" uid="uid://dsp60dlsho3gr" path="res://art/3D_Env/3D_Assets/DoorBasic.tscn" id="18_1nyol"]
+[ext_resource type="ArrayMesh" uid="uid://bn0y7klu6axly" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/Multi/PrisonRailCranePrt02.obj" id="18_6hxm8"]
 [ext_resource type="PackedScene" uid="uid://bfuw8eedjeq5m" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Laboratory/WallCellsLaboratory.tscn" id="18_kk8yj"]
+[ext_resource type="PackedScene" uid="uid://c8fwk5km02euh" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Multi/PrisonCraneRail.tscn" id="18_mnn55"]
 [ext_resource type="PackedScene" uid="uid://cschs0x82o57w" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Laboratory/WallMultiLevelBaseLaboratory.tscn" id="19_pby5m"]
+[ext_resource type="ArrayMesh" uid="uid://dkpon4gwwcus5" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/Multi/PrisonRailCranePrt03.obj" id="19_qj1kj"]
 [ext_resource type="PackedScene" uid="uid://dld0qjmojk1t8" path="res://scenes/actors/enemies/enemy_manager/enemy_manager.tscn" id="19_rmes1"]
 [ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict/convict_enemy.tscn" id="20_dgb42"]
 [ext_resource type="PackedScene" uid="uid://dqba7lkeq2lmh" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Laboratory/FloorLaboratory.tscn" id="20_kuog2"]
@@ -21,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://bls076phgmcus" path="res://scenes/actors/enemies/scrub/scrub.tscn" id="21_dgb42"]
 [ext_resource type="PackedScene" uid="uid://b57sm0u8nmkgd" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Laboratory/DoorwaySingleLaboratory.tscn" id="22_mnn55"]
 [ext_resource type="PackedScene" uid="uid://2t0fwb2gvhs3" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Laboratory/DoorwayNoneBaseLaboratory.tscn" id="23_6hxm8"]
+[ext_resource type="PackedScene" uid="uid://ckjadvesqstsq" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Multi/PrisonCell(Docile).tscn" id="27_6hxm8"]
 
 [node name="Stage5" type="Node3D" unique_id=1996110792]
 
@@ -184,9 +190,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -78.611, 8.4, -20)
 [node name="DoorwayNoneBaseLaboratory15" parent="Environment" unique_id=8977705 instance=ExtResource("23_6hxm8")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -78.611, 8.4, 0)
 
-[node name="DoorwayNoneBaseLaboratory17" parent="Environment" unique_id=694123298 instance=ExtResource("23_6hxm8")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -78.611, 16.8, 0)
-
 [node name="DoorwayNoneBaseLaboratory19" parent="Environment" unique_id=1882674495 instance=ExtResource("23_6hxm8")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -78.611, 25.2, 0)
 
@@ -210,9 +213,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -151.032, 8.4, -20)
 
 [node name="DoorwayNoneBaseLaboratory26" parent="Environment" unique_id=1462128058 instance=ExtResource("23_6hxm8")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -151.032, 8.4, 0)
-
-[node name="DoorwayNoneBaseLaboratory28" parent="Environment" unique_id=1717834632 instance=ExtResource("23_6hxm8")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -151.032, 16.8, 0)
 
 [node name="DoorwayNoneBaseLaboratory32" parent="Environment" unique_id=335454511 instance=ExtResource("23_6hxm8")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -151.032, 33.6, 0)
@@ -382,6 +382,96 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -132.814, 33.6, 0)
 [node name="WallPlainMidLaboratory18" parent="Environment" unique_id=1529404920 instance=ExtResource("17_rmes1")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -144.814, 33.6, 0)
 
+[node name="DoorwayPrisonRailLaboratory" parent="Environment" unique_id=1885050614 instance=ExtResource("16_kuog2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -151.032, 16.8, 0)
+
+[node name="DoorwayPrisonRailLaboratory2" parent="Environment" unique_id=210572939 instance=ExtResource("16_kuog2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -78.611, 16.8, 0)
+
+[node name="PrisonCrane" type="StaticBody3D" parent="Environment" unique_id=655778044]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -113.035286, 16.8, 0)
+
+[node name="PrisonRailCranePrt01" type="MeshInstance3D" parent="Environment/PrisonCrane" unique_id=2042612978]
+mesh = ExtResource("17_mnn55")
+
+[node name="PrisonRailCranePrt02" type="MeshInstance3D" parent="Environment/PrisonCrane" unique_id=1987740934]
+mesh = ExtResource("18_6hxm8")
+
+[node name="PrisonRailCranePrt03" type="MeshInstance3D" parent="Environment/PrisonCrane/PrisonRailCranePrt02" unique_id=1653983456]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4377823, 0, 0)
+mesh = ExtResource("19_qj1kj")
+
+[node name="PrisonRailCranePrt04" type="MeshInstance3D" parent="Environment/PrisonCrane/PrisonRailCranePrt02" unique_id=163761096]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.52853775, 0, 0)
+mesh = ExtResource("19_qj1kj")
+
+[node name="PrisonCell" parent="Environment/PrisonCrane" unique_id=1430763070 instance=ExtResource("7_kk8yj")]
+transform = Transform3D(1.125, 0, 0, 0, 1.125, 0, 0, 0, 1.125, -0.01184845, 1.6291676, 0.0013586283)
+
+[node name="PrisonCrane2" type="StaticBody3D" parent="Environment" unique_id=1004838364]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -78.71385, 16.8, 0)
+
+[node name="PrisonRailCranePrt01" type="MeshInstance3D" parent="Environment/PrisonCrane2" unique_id=1976606316]
+mesh = ExtResource("17_mnn55")
+
+[node name="PrisonRailCranePrt02" type="MeshInstance3D" parent="Environment/PrisonCrane2" unique_id=665889206]
+mesh = ExtResource("18_6hxm8")
+
+[node name="PrisonRailCranePrt03" type="MeshInstance3D" parent="Environment/PrisonCrane2/PrisonRailCranePrt02" unique_id=1914652780]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4377823, 0, 0)
+mesh = ExtResource("19_qj1kj")
+
+[node name="PrisonRailCranePrt04" type="MeshInstance3D" parent="Environment/PrisonCrane2/PrisonRailCranePrt02" unique_id=279554950]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.52853775, 0, 0)
+mesh = ExtResource("19_qj1kj")
+
+[node name="PrisonCell" parent="Environment/PrisonCrane2" unique_id=161586493 instance=ExtResource("7_kk8yj")]
+transform = Transform3D(-1.125, 0, -9.8350625e-08, 0, 1.125, 0, 9.8350625e-08, 0, -1.125, -0.01184845, 1.6291676, 0.0013586283)
+
+[node name="PrisonCraneRail" parent="Environment" unique_id=722171053 instance=ExtResource("18_mnn55")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144.814, 16.8, 0)
+
+[node name="PrisonCraneRail2" parent="Environment" unique_id=483003648 instance=ExtResource("18_mnn55")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -156.814, 16.8, 0)
+
+[node name="PrisonCraneRail3" parent="Environment" unique_id=279155394 instance=ExtResource("18_mnn55")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -132.814, 16.8, 0)
+
+[node name="PrisonCraneRail4" parent="Environment" unique_id=461348239 instance=ExtResource("18_mnn55")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.814, 16.8, 0)
+
+[node name="PrisonCraneRail5" parent="Environment" unique_id=535650809 instance=ExtResource("18_mnn55")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -108.814, 16.8, 0)
+
+[node name="PrisonCraneRail6" parent="Environment" unique_id=1025058633 instance=ExtResource("18_mnn55")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.814, 16.8, 0)
+
+[node name="PrisonCraneRail7" parent="Environment" unique_id=545636694 instance=ExtResource("18_mnn55")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.814, 16.8, 0)
+
+[node name="PrisonCraneRail8" parent="Environment" unique_id=631205384 instance=ExtResource("18_mnn55")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.814, 16.8, 0)
+
+[node name="PrisonCell" parent="Environment" unique_id=2096215222 instance=ExtResource("27_6hxm8")]
+transform = Transform3D(1.3739775, 0, -1.7817647, 0, 2.25, 0, 1.7817647, 0, 1.3739775, -134.94734, 2.7317371, -7.8350735)
+
+[node name="PrisonCell2" parent="Environment" unique_id=438089111 instance=ExtResource("27_6hxm8")]
+transform = Transform3D(-9.8350625e-08, 0, -2.25, 0, 2.25, 0, 2.25, 0, -9.8350625e-08, -123.827515, 5.3754506, -19.301311)
+
+[node name="PrisonCell3" parent="Environment" unique_id=2087563695 instance=ExtResource("27_6hxm8")]
+transform = Transform3D(-9.8350625e-08, 0, -2.25, 0, 2.25, 0, 2.25, 0, -9.8350625e-08, -117.820274, 5.3754506, -19.301311)
+
+[node name="PrisonCell4" parent="Environment" unique_id=822604429 instance=ExtResource("27_6hxm8")]
+transform = Transform3D(-9.8350625e-08, 0, -2.25, 0, 2.25, 0, 2.25, 0, -9.8350625e-08, -123.827515, 11.465803, -19.301311)
+
+[node name="PrisonCell6" parent="Environment" unique_id=1055354628 instance=ExtResource("27_6hxm8")]
+transform = Transform3D(-9.8350625e-08, 0, -2.25, 0, 2.25, 0, 2.25, 0, -9.8350625e-08, -135.84485, 11.465803, -19.301311)
+
+[node name="PrisonCell5" parent="Environment" unique_id=1523387337 instance=ExtResource("27_6hxm8")]
+transform = Transform3D(-9.8350625e-08, 0, -2.25, 0, 2.25, 0, 2.25, 0, -9.8350625e-08, -117.820274, 11.465803, -17.49708)
+
+[node name="Props" type="Node3D" parent="." unique_id=1981854926]
+
 [node name="Interactive" type="Node3D" parent="." unique_id=212887502]
 
 [node name="DoorExit" parent="Interactive" unique_id=863191425 instance=ExtResource("17_1nyol")]
@@ -392,8 +482,8 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.5, 0)
 monitoring = false
 level_name = "Stage6"
 
-[node name="PrisonCell" parent="Interactive" unique_id=1430763070 instance=ExtResource("7_kk8yj")]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -117.654, 3.013, 0)
+[node name="PrisonCell" parent="Interactive" unique_id=1449443355 instance=ExtResource("7_kk8yj")]
+transform = Transform3D(2.25, 0, 0, 0, 2.25, 0, 0, 0, 2.25, -108.90675, 2.7401824, 0)
 
 [node name="DoorBasic" parent="Interactive" unique_id=1555562335 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("18_1nyol")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -54.204, 0, 0)

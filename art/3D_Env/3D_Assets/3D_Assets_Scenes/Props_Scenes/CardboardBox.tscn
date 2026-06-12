@@ -1,15 +1,29 @@
 [gd_scene format=3 uid="uid://cc0gqiu6epwfo"]
 
+[ext_resource type="Texture2D" uid="uid://bevyeu8dqf85q" path="res://art/3D_Env/3D_Assets/3D_Textures/placeholder textures/cardbox/cardboard_box_Base_color_1001.png" id="1_3nv8i"]
 [ext_resource type="ArrayMesh" uid="uid://c1m7yo1403oc" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/CardboardBox.obj" id="1_k7fo2"]
+[ext_resource type="Texture2D" uid="uid://ct8y4mpn5s4tj" path="res://art/3D_Env/3D_Assets/3D_Textures/placeholder textures/cardbox/cardboard_box_Metallic_1001.png" id="2_yo33u"]
+[ext_resource type="Texture2D" uid="uid://ctvgs1urvwo31" path="res://art/3D_Env/3D_Assets/3D_Textures/placeholder textures/cardbox/cardboard_box_Normal_1001.png" id="3_joww0"]
+[ext_resource type="Texture2D" uid="uid://bjwaxhedtfglq" path="res://art/3D_Env/3D_Assets/3D_Textures/placeholder textures/cardbox/cardboard_box_Roughness_1001.png" id="4_h6fhw"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_dbb0y"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j52e6"]
+albedo_texture = ExtResource("1_3nv8i")
+metallic = 1.0
+metallic_texture = ExtResource("2_yo33u")
+roughness_texture = ExtResource("4_h6fhw")
+normal_enabled = true
+normal_texture = ExtResource("3_joww0")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3nv8i"]
 size = Vector3(0.4, 0.234291, 0.305764)
 
 [node name="CardboardBox" type="StaticBody3D" unique_id=1296518487]
 
 [node name="CardboardBox_Mesh" type="MeshInstance3D" parent="." unique_id=972944508]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_j52e6")
 mesh = ExtResource("1_k7fo2")
 
-[node name="CardboardBox_Collision" type="CollisionShape3D" parent="." unique_id=637568611]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1171455, 0)
-shape = SubResource("BoxShape3D_dbb0y")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1455661549]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.234291, 0)
+shape = SubResource("BoxShape3D_3nv8i")

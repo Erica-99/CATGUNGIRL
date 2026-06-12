@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dablnp31mjysx"]
+
+[ext_resource type="ArrayMesh" uid="uid://cemhxgaxxrfpt" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/Laboratory/LabDrawersCorner.obj" id="1_xfslq"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vqp8x"]
+points = PackedVector3Array(-0.660011, 0.019306764, -0.700005, -0.660011, -0.001263, -0.67718744, -0.660011, 0.577637, -0.700005, 0.24000502, 0.019306764, -0.700005, 0.22855216, -0.001263, -0.68864024, -0.660011, -0.001263, -0.242861, -0.660011, 0.577637, -0.2022475, 0.24000502, 0.577637, -0.700005, 0.23991692, 0.019306764, 0.20001101, 0.21709937, -0.001263, 0.20001101, -0.660011, 0.019306764, -0.22004345, -0.21722707, -0.001263, 0.20001101, -0.24004462, 0.019306764, 0.20001101, -0.660011, 0.5624505, -0.2022475, -0.25784057, 0.577637, 0.20001101, 0.23991692, 0.577637, 0.20001101, -0.25784057, 0.5624505, 0.20001101)
+
+[node name="LabDrawersCorner" type="StaticBody3D" unique_id=702211767]
+
+[node name="LabDrawersCorner_Mesh" type="MeshInstance3D" parent="." unique_id=1201409212]
+mesh = ExtResource("1_xfslq")
+
+[node name="LabDrawersCorner_Collision" type="CollisionShape3D" parent="." unique_id=963196793]
+shape = SubResource("ConvexPolygonShape3D_vqp8x")

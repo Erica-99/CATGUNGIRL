@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dek1idjvaqpdl"]
+
+[ext_resource type="ArrayMesh" uid="uid://bfj50wdjvl6ge" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/Prison/FloorBrokenSidePrison.obj" id="1_i1bhl"]
+[ext_resource type="Texture2D" uid="uid://db76j10ognk01" path="res://art/3D_Env/3D_Assets/Images/Prison/Floor/TextureTrimSheetFloorP.png" id="2_x5wte"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_byj3a"]
+albedo_texture = ExtResource("2_x5wte")
+
+[node name="FloorBrokenSidePrison" type="StaticBody3D" unique_id=182992622]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="FloorBrokenSidePrison" type="MeshInstance3D" parent="." unique_id=1388799136]
+mesh = ExtResource("1_i1bhl")
+surface_material_override/0 = SubResource("StandardMaterial3D_byj3a")
