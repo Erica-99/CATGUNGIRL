@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://c24i5tmt2brj2"]
 
 [ext_resource type="ArrayMesh" uid="uid://cxl0jp2u73tn6" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/Television.obj" id="1_xwf68"]
+[ext_resource type="Texture2D" uid="uid://bjmo0cxkf00uk" path="res://art/3D_Env/3D_Assets/3D_Textures/placeholder textures/Television/Television_light_Base_Colour_1001.png" id="2_u0q5s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kt5ar"]
+albedo_texture = ExtResource("2_u0q5s")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u0q5s"]
 points = PackedVector3Array(-5.0517335, -0.100583315, -0.61473334, 5.0517335, 5.2653074, 0.80606663, 5.0517335, 5.2653074, 0.17452271, -5.0517335, 5.2653074, 0.80606663, 5.0517335, 0.057005405, 0.016810581, 5.0517335, 0.68841016, -0.61473334, -5.0517335, 5.2653074, 0.17452271, -5.0517335, 0.057005405, 0.016810581, 5.0517335, 4.791491, 0.80606663, -5.0517335, 0.68841016, -0.61473334, 5.0517335, -0.100583315, -0.61473334, -5.0517335, 4.791491, 0.80606663, 5.0517335, 4.4757886, 0.016810581, 5.0517335, -0.100583315, -0.14104064, -5.0517335, 4.4757886, 0.016810581, -5.0517335, -0.100583315, -0.14104064)
@@ -9,6 +13,7 @@ points = PackedVector3Array(-5.0517335, -0.100583315, -0.61473334, 5.0517335, 5.
 
 [node name="Television_Mesh" type="MeshInstance3D" parent="." unique_id=446709253]
 mesh = ExtResource("1_xwf68")
+surface_material_override/0 = SubResource("StandardMaterial3D_kt5ar")
 
 [node name="Television_Collision" type="CollisionShape3D" parent="." unique_id=1908289494]
 shape = SubResource("ConvexPolygonShape3D_u0q5s")

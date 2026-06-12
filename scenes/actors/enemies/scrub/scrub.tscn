@@ -150,6 +150,8 @@ sprite_frames = SubResource("SpriteFrames_m0g3o")
 shape = SubResource("BoxShape3D_ly0j2")
 
 [node name="HealthComponent" parent="." unique_id=236252344 instance=ExtResource("1_jvusm")]
+starting_health = 40.0
+max_health = 40.0
 
 [node name="TeamComponent" parent="." unique_id=2076917082 instance=ExtResource("2_in183")]
 team = 2
@@ -159,7 +161,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3521698, 0.581293, 0)
 visible = false
 bullet_scene = ExtResource("11_m88xv")
 team_component = NodePath("../TeamComponent")
-bullet_damage = 8.0
+bullet_damage = 5.0
 
 [node name="CanShoot" type="RayCast3D" parent="." unique_id=697706949]
 

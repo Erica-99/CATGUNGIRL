@@ -7,7 +7,9 @@ extends Node3D
 @export var event_trigger: Node
 @export var enabled: bool = true
 
-var previously_triggered: bool = false
+# bools for Brain Console, what needs to happen for consoles to activate
+var shields_up: bool = false
+var enemies_dead: bool = false
 
 var player_in_range: bool = false
 var mesh_size: Vector3
@@ -23,7 +25,9 @@ func _ready() -> void:
 	_calculate_interaction_zone(interactable_load_type != Enums.InteractableLoadType.BACKGROUND_MESHINSTANCE)
 	
 	if interactable_type == Enums.InteractableType.BRAIN_TERMINAL:
-		EventManager.shield_enabled_status.connect(_handle_brain_changes)
+		enabled = false
+		EventManager.shield_enabled_status.connect(_handle_shield_changes)
+		EventManager.room_cleared.connect(_handle_adds_changes)
 
 func _calculate_interaction_zone(is_using_obj_asset: bool = true):
 	#https://forum.godotengine.org/t/is-there-a-way-to-get-the-size-of-a-3d-mesh/23154/3
@@ -91,7 +95,16 @@ func _on_interaction_range_body_exited(body: Node3D) -> void:
 			_play_interact_animation("close")
 		EventManager.system_message.emit("", false)
 
-func _handle_brain_changes(status: bool):
-	if status && !previously_triggered:
+func _handle_shield_changes(status: bool):
+	shields_up = status
+	if shields_up && enemies_dead && $EventTrigger.active:
 		enabled = true
-		previously_triggered = true
+	else:
+		enabled = false
+
+func _handle_adds_changes(_room_id, is_clear: bool):
+	enemies_dead = is_clear
+	if shields_up && enemies_dead && $EventTrigger.active:
+		enabled = true
+	else:
+		enabled = false

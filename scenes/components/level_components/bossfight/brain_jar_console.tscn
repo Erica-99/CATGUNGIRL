@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dh3ij31rc4n7m"]
+
+[ext_resource type="PackedScene" uid="uid://ou3g778y2q8g" path="res://scenes/components/interactable_component/interactable_component.tscn" id="1_rgae0"]
+[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="2_s71h6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_k88h2"]
+
+[node name="BrainJarConsole" type="MeshInstance3D" unique_id=578323982]
+transform = Transform3D(2.4948392, 0, 0, 0, 2.4948392, 0, 0, 0, 2.4948392, 0, 0, 0)
+mesh = SubResource("BoxMesh_k88h2")
+
+[node name="InteractableComponent" parent="." unique_id=2140039813 node_paths=PackedStringArray("event_trigger") instance=ExtResource("1_rgae0")]
+interactable_type = 3
+interactable_load_type = 1
+interaction_distance = 1.0
+event_trigger = NodePath("EventTrigger")
+enabled = null
+require_interaction = null
+
+[node name="EventTrigger" parent="InteractableComponent" unique_id=1311781014 instance=ExtResource("2_s71h6")]
+_signal_parameters = [false]
+signal_name = "shield_enabled_status"
