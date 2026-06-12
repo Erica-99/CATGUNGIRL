@@ -60,7 +60,8 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 144, 8.4, 0)
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 156, 8.4, 0)
 
 [node name="DoorBasic" parent="Environment" unique_id=1555562335 instance=ExtResource("14_rxfni")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30.020061, 0, 0)
+openable = false
 
 [node name="DoorBasic2" parent="Environment" unique_id=1217171111 instance=ExtResource("14_rxfni")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 54, 0, 0)
@@ -445,23 +446,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 144, 8.4, -10)
 
 [node name="WallBasePrison8" parent="Environment" unique_id=747335614 instance=ExtResource("28_3qrbx")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 156, 8.4, -10)
-
-[node name="DoorBasic5" parent="Environment" unique_id=142184496 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("14_rxfni")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30.203, 0, 0)
-openable = false
-enemy_manager = NodePath("../../Enemies/RoomOne")
-
-[node name="DoorBasic6" parent="Environment" unique_id=1776080105 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("14_rxfni")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 54.61, 0, 0)
-enemy_manager = NodePath("../../Enemies/RoomTwo")
-
-[node name="DoorBasic7" parent="Environment" unique_id=1437235175 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("14_rxfni")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 139.018, 0, 0)
-enemy_manager = NodePath("../../Enemies/RoomThree")
-
-[node name="DoorBasic8" parent="Environment" unique_id=252988842 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("14_rxfni")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 163.424, 0, 0)
-enemy_manager = NodePath("../../Enemies/RoomFour")
 
 [node name="WallMultiLevelBasePrison5" parent="Environment" unique_id=1347967464 instance=ExtResource("29_3qrbx")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 168, 0.4, -7.688)
