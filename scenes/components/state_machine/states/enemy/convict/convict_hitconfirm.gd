@@ -4,7 +4,7 @@
 extends State
 
 var actor: CharacterBody3D
-var anim: AnimatedSprite3D
+var anim: AnimationPlayer
 var slow_down_speed: float
 var attack_hitbox: Area3D
 var hit_deceleration: float
@@ -31,7 +31,7 @@ func physics_update(_delta: float) -> void:
 	# hit deceleration makes stopping almost instant
 	actor.velocity.x = move_toward(actor.velocity.x, 0, hit_deceleration * _delta)
 	actor.move_and_slide()
-	await anim.animation_looped
+	await anim.animation_finished
 	if is_on_cooldown:
 		return
 	is_on_cooldown = true

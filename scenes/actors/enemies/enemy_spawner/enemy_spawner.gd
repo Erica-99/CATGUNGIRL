@@ -21,6 +21,12 @@ const COMPARE_SLICE: int = 2
 @export var possible_spawns: Array[Enums.EnemyType] = [Enums.EnemyType.CONVICT, Enums.EnemyType.SCRUB]
 var possible_prefabs: Array = []
 
+#Wave Settings
+@export_category("Wave Settings")
+@export var wave_spawner = false
+@export var wave_enemies: Array[Enums.EnemyType] = [Enums.EnemyType.CONVICT, Enums.EnemyType.SCRUB]
+ 
+
 func _ready() -> void:
 	# link up spawn signal
 	EventManager.spawn_enemy.connect(_spawn_enemy)
@@ -35,18 +41,31 @@ func _ready() -> void:
 
 # actually start spawning timer
 func _spawn_enemy(custom_delay: float, spawner_path: NodePath):
-	if enemies.get_path_to(self) == spawner_path.slice(COMPARE_SLICE):
-		if custom_delay == 0:
-			custom_delay = base_spawn_delay
-		spawn_delay_timer.start(custom_delay)
+	if wave_spawner:
+		print("Spawner set to: WAVE")
+		for wave_enemy in wave_enemies:
+			var enemy
+			if wave_enemy == Enums.EnemyType.CONVICT:
+				enemy = CONVICT_PREFAB
+			else:
+				enemy = SCRUB_PREFAB
+			enemy = enemy.instantiate()
+			_add_to_manager(enemy)
+			print(enemy, " added to Manager")
+	else:
+		if enemies.get_path_to(self) == spawner_path.slice(COMPARE_SLICE):
+			if custom_delay == 0:
+				custom_delay = base_spawn_delay
+			spawn_delay_timer.start(custom_delay)
 
 # create enemy
 func _on_spawn_delay_timer_timeout() -> void:
 	var random_prefab = possible_prefabs[randi_range(0, possible_prefabs.size() - 1)]
 	var enemy = random_prefab.instantiate()
+	_add_to_manager(enemy)
 	
+func _add_to_manager(enemy): # owner must be assigned for enemy manager to recognise an enemy as a child
 	linked_enemy_manager.add_child(enemy)
-	# owner must be assigned for enemy manager to recognise an enemy as a child
 	enemy.owner = linked_enemy_manager
 	enemy.global_position = spawn_point.global_position
 	linked_enemy_manager._check_enemies_remaining(enemy)

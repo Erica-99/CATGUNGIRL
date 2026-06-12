@@ -1,6 +1,7 @@
 extends Node
 
 signal activate_popup(popup_id: int)
+signal pre_date_sequence(date_id: int)
 signal activate_date(date_id: int)
 
 signal begin_date_scene_lock
@@ -26,3 +27,5 @@ signal start_elevator()
 signal system_message(dialogue: String, message_status: bool)
 
 signal shield_enabled_status(status: bool)
+
+signal set_door_openable_state(door: Node3D, openable: bool)
