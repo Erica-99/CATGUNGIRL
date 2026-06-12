@@ -46,8 +46,11 @@ const HITBOX_SCENE = preload("res://scenes/components/hitbox_component/hitbox_co
 
 ##Gun Animation Handler
 @onready var Gun_Animation = $"../PlayerVisuals/ROOT_P/GUN_P/GUN_AIM/Hand_Anims"
+@onready var Muzzle_VFX =  $"../PlayerVisuals/ROOT_P/GUN_P/GUN_AIM/MuzzleFlash_P/AnimationPlayer"
+
 
 ## bzzt
+
 signal beam_fired(beam_end: Vector3, charge_progress: float)
 
 ## emitted every frame while charging, value is 0.0 to 1.0
@@ -191,6 +194,8 @@ func _try_fire() -> void:
 		perfect_shot_fired.emit()
 		AudioManager.play_sfx("laser_perfect")
 		_perfect_flash.restart()
+		Muzzle_VFX.stop()
+		Muzzle_VFX.play("Perfect")
 	# Spam shot 
 	elif _time_since_last_shot < spam_window:
 		_is_spamming = true
@@ -198,11 +203,14 @@ func _try_fire() -> void:
 		# print("spam shot, count: ", _spam_count)
 		AudioManager.play_sfx("laser_imperfect")
 		_normal_flash.restart()
+		Muzzle_VFX.stop()
+		Muzzle_VFX.play("Imperfect")
 	else: # Normal shot
 		# print("normal shot, damage: ", bullet_damage)
 		AudioManager.play_sfx("laser_imperfect")
 		_normal_flash.restart()
-		
+		Muzzle_VFX.stop()
+		Muzzle_VFX.play("Imperfect")
 	# resets firing cooldown
 	_fire_cooldown = fire_rate
 	_spawn_bullet(damage, bullet_scale)

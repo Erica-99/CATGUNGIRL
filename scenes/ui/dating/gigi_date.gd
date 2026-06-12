@@ -9,6 +9,8 @@ extends Control
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var video_player: VideoStreamPlayer = $VideoStreamPlayer
 
+@onready var tutorialbox_anim = $"../../CanvasLayer/AnimationPlayer"
+
 var dating_stylebox = preload("res://art/StyleBoxes/StyleBox_Pink.tres")
 var button_stylebox = preload("res://art/StyleBoxes/StyleBox_Pink2.tres")
 
@@ -145,6 +147,8 @@ func _end_date():
 	await animation_player.animation_finished
 	visible = false
 	EventManager.end_date_scene_lock.emit()
+	tutorialbox_anim.play("Fade in")
+
 
 # option click handler event
 func _option_selected(value: Dictionary):
