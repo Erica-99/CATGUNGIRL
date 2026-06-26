@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b84sa20ecduh4"]
+
+[ext_resource type="ArrayMesh" uid="uid://b08b5ive31bi2" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/6_Laboratory/LabTestTubes.obj" id="1_w7d8o"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lx2kj"]
+points = PackedVector3Array(-0.035387, 0, -0.1125, -0.035387, 0.0066993097, -0.1125, 0.035387, 0, -0.1125, -0.035387, 0, 0.1125, 0.0078075826, 0.141992, -0.09001321, 0.010703389, 0.141992, -0.09701693, 0, 0.09180278, -0.1125, -0.035387, 0.0066993097, 0.1125, 0.035387, 0.09180278, -0.1125, 0.035387, 0, 0.1125, 0.0078075826, 0.141992, 0.08999118, 0.017700426, 0.141992, -0.09990211, 0, 0.09180278, 0.1125, 0.010703389, 0.141992, 0.09699491, 0.024697464, 0.141992, -0.09701693, 0.027593266, 0.141992, -0.09001321, 0.035387, 0.09180278, 0.1125, 0.017700426, 0.141992, 0.099880084, 0.027593266, 0.141992, 0.08999118, 0.024697464, 0.141992, 0.09699491)
+
+[node name="LabTestTubes" type="StaticBody3D" unique_id=1004666564]
+
+[node name="LabTestTubes_Mesh" type="MeshInstance3D" parent="." unique_id=331216226]
+mesh = ExtResource("1_w7d8o")
+
+[node name="LabTestTubes_Collision" type="CollisionShape3D" parent="." unique_id=1724075757]
+shape = SubResource("ConvexPolygonShape3D_lx2kj")

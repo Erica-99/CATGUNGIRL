@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bsfa44fgq7srb"]
+
+[ext_resource type="ArrayMesh" uid="uid://cckdokvntetev" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/6_Laboratory/LabDrawersSingle.obj" id="1_3pvwe"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jxysa"]
+points = PackedVector3Array(-0.257826, 0.5624505, -0.200011, -0.257826, 0.5624505, 0.200011, -0.257826, 0.577637, -0.200011, -0.24003954, 0.019306764, -0.200011, -0.257826, 0.577637, 0.200011, -0.24003954, 0.019306764, 0.200011, 0.23999995, 0.577637, -0.200011, -0.21718515, -0.001263, -0.200011, 0.23999995, 0.577637, 0.200011, -0.21718515, -0.001263, 0.200011, 0.23999995, 0.019306764, -0.200011, 0.21714559, -0.001263, -0.200011, 0.23999995, 0.019306764, 0.200011, 0.21714559, -0.001263, 0.200011)
+
+[node name="LabDrawerSingle" type="StaticBody3D" unique_id=796965419]
+
+[node name="LabDrawersSingle_Mesh" type="MeshInstance3D" parent="." unique_id=1544685402]
+mesh = ExtResource("1_3pvwe")
+
+[node name="LabDrawerSingle_Collision" type="CollisionShape3D" parent="." unique_id=202648418]
+shape = SubResource("ConvexPolygonShape3D_jxysa")

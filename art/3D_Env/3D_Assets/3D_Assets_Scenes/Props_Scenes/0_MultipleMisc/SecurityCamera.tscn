@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dh0mebvlppeee"]
+
+[ext_resource type="ArrayMesh" uid="uid://cerx5dhpw5f38" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/0_MultipleMisc/SecurityCameraPivot.obj" id="1_5bqgr"]
+[ext_resource type="ArrayMesh" uid="uid://do67ldcqxqgxq" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/0_MultipleMisc/SecurityCamera.obj" id="2_jgfoi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dh4cy"]
+size = Vector3(0.189362, 0.069619, 0.054886)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d16q1"]
+size = Vector3(0.366724, 0.165156, 0.115044)
+
+[node name="SecurityCamera" type="StaticBody3D" unique_id=833208586]
+
+[node name="SecurityCameraPivot_Mesh" type="MeshInstance3D" parent="." unique_id=497046933]
+mesh = ExtResource("1_5bqgr")
+
+[node name="SecurityCameraPivot_Collision" type="CollisionShape3D" parent="." unique_id=1069641114]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.082401, -0.0171615, 0)
+shape = SubResource("BoxShape3D_dh4cy")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1226246519]
+
+[node name="SecurityCamera_Mesh" type="MeshInstance3D" parent="Node3D" unique_id=632338366]
+mesh = ExtResource("2_jgfoi")
+
+[node name="SecurityCamera_Collision" type="CollisionShape3D" parent="Node3D" unique_id=1267473603]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.093362, 0.082607, 0)
+shape = SubResource("BoxShape3D_d16q1")

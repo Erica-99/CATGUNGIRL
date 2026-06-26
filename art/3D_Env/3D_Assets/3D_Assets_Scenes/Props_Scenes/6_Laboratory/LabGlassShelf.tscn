@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://xcbdcyui1lnd"]
+
+[ext_resource type="ArrayMesh" uid="uid://bu21bdrf3tqpl" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/6_Laboratory/LabGlassShelf.obj" id="1_yqvjj"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_p7ebb"]
+points = PackedVector3Array(0.115143, 0.558126, 0.192192, 0.115143, 0.558126, -0.192192, -0.115143, 0.558126, 0.192192, 0.115143, 0, 0.192192, -0.115143, 0.558126, -0.192192, 0.115143, 0, -0.192192, -0.115143, 0, 0.192192, -0.115143, 0, -0.192192)
+
+[node name="LabGlassShelf" type="StaticBody3D" unique_id=323875985]
+
+[node name="LabGlassShelf_Mesh" type="MeshInstance3D" parent="." unique_id=1240948804]
+mesh = ExtResource("1_yqvjj")
+
+[node name="LabGlassShelf_Collision" type="CollisionShape3D" parent="." unique_id=13619214]
+shape = SubResource("ConvexPolygonShape3D_p7ebb")

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dc66mdtqwfbgf"]
+
+[ext_resource type="ArrayMesh" uid="uid://mrdldhrsf48d" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/6_Laboratory/LabFridge.obj" id="1_ge5dc"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ge5dc"]
+points = PackedVector3Array(-0.329423, 0.5392688, -0.27368724, -0.329423, 0.5392688, -0.23433557, -0.329423, 0.99052566, -0.27368724, -0.27366418, 0.029979445, -0.3, -0.3000341, 0.056226507, -0.27368724, -0.329423, 0.99064606, -0.23433557, -0.3000341, 0.056226507, 0.27365345, -0.3001573, 0.21900646, 0.27359474, -0.3000341, 1.2036326, -0.27368724, -0.27366418, 1.23, -0.3, 0.29994345, 0.029979445, -0.3, -0.26232755, 0, -0.290074, -0.3000957, 0.9916093, 0.27359474, -0.3000341, 1.2036326, 0.27365345, -0.3001573, 0.24296594, 0.27359474, -0.26232755, 0, 0.29021645, -0.27366418, 0.029979445, 0.29996622, -0.27366418, 1.23, 0.29996622, 0.29994345, 1.23, -0.3, 0.29994345, 0.029979445, 0.29996622, 0.28922296, 0, -0.290074, 0.28922296, 0, 0.29021645, -0.27354094, 0.21840447, 0.300025, 0.29994345, 1.23, 0.29996622, -0.27354094, 0.24236394, 0.300025)
+
+[node name="LabFridge" type="StaticBody3D" unique_id=1218861569]
+
+[node name="LabFridge_Mesh" type="MeshInstance3D" parent="." unique_id=1982496391]
+mesh = ExtResource("1_ge5dc")
+
+[node name="LabFridge_Collision" type="CollisionShape3D" parent="." unique_id=2011478709]
+shape = SubResource("ConvexPolygonShape3D_ge5dc")

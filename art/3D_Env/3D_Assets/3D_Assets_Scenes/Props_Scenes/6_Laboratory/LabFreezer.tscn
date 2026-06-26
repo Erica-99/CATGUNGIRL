@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bh6xjf68ou6uo"]
+
+[ext_resource type="ArrayMesh" uid="uid://d06sl3qq8uh6" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/6_Laboratory/LabFreezer.obj" id="1_x0uys"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_x0uys"]
+points = PackedVector3Array(-0.824731, 0.029979445, 0.50489455, -0.30001432, 0.029979445, -0.3, -0.26236153, 0, -0.29008836, -0.26236153, 0, 0.29025596, -0.816694, 0.029979445, 0.5257432, -0.824731, 1.0232743, 0.50489455, 0.2998979, 0.029979445, -0.3, -0.30001432, 1.23, -0.3, 0.28921854, 0, -0.29008836, 0.28921854, 0, 0.29025596, 0.2998979, 0.029979445, 0.29999673, -0.78421575, 0.49291503, 0.566586, -0.78641766, 0.6904904, 0.572909, -0.816694, 1.0232743, 0.5257432, -0.30001432, 1.23, 0.29999673, 0.2998979, 1.23, -0.3, 0.2998979, 1.23, 0.29999673)
+
+[node name="LabFreezer" type="StaticBody3D" unique_id=1811951468]
+
+[node name="LabFreezer_Mesh" type="MeshInstance3D" parent="." unique_id=1961541560]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2548591, 0, 0.32298517)
+mesh = ExtResource("1_x0uys")
+
+[node name="LabFreezer_Collision" type="CollisionShape3D" parent="." unique_id=744468654]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2548591, 0, 0.32298517)
+shape = SubResource("ConvexPolygonShape3D_x0uys")

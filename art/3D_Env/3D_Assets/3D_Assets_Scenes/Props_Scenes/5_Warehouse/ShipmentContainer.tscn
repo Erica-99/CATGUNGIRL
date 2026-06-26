@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://comrwprnl6da6"]
+
+[ext_resource type="ArrayMesh" uid="uid://d2b80kavjqudd" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/5_Warehouse/ShipmentContainer.obj" id="1_tlrgd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tlrgd"]
+size = Vector3(7.557432, 2.792244, 2.12189)
+
+[node name="ShipmentContainer" type="StaticBody3D" unique_id=1687539826]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="ShipmentContainer_Mesh" type="MeshInstance3D" parent="." unique_id=1385366026]
+transform = Transform3D(0.33333334, 0, 0, 0, 0.33333334, 0, 0, 0, 0.33333334, 0, 0, 0)
+mesh = ExtResource("1_tlrgd")
+
+[node name="ShipmentContainer_Collision" type="CollisionShape3D" parent="." unique_id=1441904050]
+transform = Transform3D(0.33333334, 0, 0, 0, 0.33333334, 0, 0, 0, 0.33333334, 0, 0.464712, 0)
+shape = SubResource("BoxShape3D_tlrgd")
