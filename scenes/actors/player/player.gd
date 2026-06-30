@@ -39,11 +39,9 @@ var speed_multiplier: float = 1.0
 @export var jump_timer: Timer
 
 var blackboard: Dictionary
-@onready var gun_component = $GunComponent  
 @onready var health_component = $HealthComponent
 
-
-
+@onready var gun_holder: Node3D = $GunHolder
 ## This is to know what scene to reload when the player dies
 var currentScene
 
@@ -59,10 +57,10 @@ func _ready() -> void:
 	}
 	
 	movement_state_machine.init(blackboard)
-	gun_component.enemy_hit.connect(_on_gun_enemy_hit)
-	gun_component.charge_progress_changed.connect(_on_gun_charge_progress)
-	gun_component.charge_ended.connect(_on_gun_charge_ended)
-	gun_component.charge_started.connect(_on_gun_charge_started)
+	gun_holder.current_gun.enemy_hit.connect(_on_gun_enemy_hit)
+	gun_holder.current_gun.charge_progress_changed.connect(_on_gun_charge_progress)
+	gun_holder.current_gun.charge_ended.connect(_on_gun_charge_ended)
+	gun_holder.current_gun.charge_started.connect(_on_gun_charge_started)
 	
 	EventManager.gun_picked_up.connect(_equip_gun)
 	_set_gun_enabled(has_gun)
@@ -141,6 +139,6 @@ func _equip_gun() -> void:
 	_set_gun_enabled(true)
 
 func _set_gun_enabled(enabled: bool) -> void:
-	gun_component.process_mode = Node.PROCESS_MODE_INHERIT if enabled else Node.PROCESS_MODE_DISABLED
-	gun_component.visible = enabled
+	current_gun.process_mode = Node.PROCESS_MODE_INHERIT if enabled else Node.PROCESS_MODE_DISABLED
+	current_gun.visible = enabled
 	gun_arm_node.visible = enabled

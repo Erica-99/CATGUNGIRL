@@ -1,4 +1,5 @@
 extends Node3D
+@onready var player: CharacterBody3D = $".."
 
 @onready var RosAnims = $ROOT_P/BODY_P/TORSO_P/Torso_Anims
 
@@ -12,7 +13,7 @@ extends Node3D
 
 @onready var hand_pivot = $ROOT_P/GUN_P
 @onready var gun_pivot = $ROOT_P/GUN_P/GUN_AIM
-@onready var gun_component = $"../GunComponent"
+@onready var gun_component = player.current_gun
 
 @onready var Playeroot = $".."
 var current_action 
