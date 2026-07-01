@@ -2,8 +2,8 @@
 
 [ext_resource type="ArrayMesh" uid="uid://j135wthniuyl" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/0_MultipleMisc/VentGrate.obj" id="1_rny0v"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wofpy"]
-points = PackedVector3Array(0.445862, 0.8471721, 0.033769995, 0.445862, 0.001827, 0.033769995, 0.445862, 0.8471721, -0.014434, -0.445862, 0.8471721, 0.033769995, 0.445862, 0.001827, -0.014434, -0.445862, 0.001827, 0.033769995, -0.445862, 0.8471721, -0.014434, -0.445862, 0.001827, -0.014434)
+[sub_resource type="BoxShape3D" id="BoxShape3D_rny0v"]
+size = Vector3(0.048203997, 0.845345, 0.891724)
 
 [node name="VentGrate" type="StaticBody3D" unique_id=243230628]
 
@@ -11,6 +11,6 @@ points = PackedVector3Array(0.445862, 0.8471721, 0.033769995, 0.445862, 0.001827
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
 mesh = ExtResource("1_rny0v")
 
-[node name="VentGrate_Collision" type="CollisionShape3D" parent="." unique_id=1780286165]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_wofpy")
+[node name="VentGrate_Collision" type="CollisionShape3D" parent="." unique_id=1974530795]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.009668, 0.4244995, 8.452034e-10)
+shape = SubResource("BoxShape3D_rny0v")
