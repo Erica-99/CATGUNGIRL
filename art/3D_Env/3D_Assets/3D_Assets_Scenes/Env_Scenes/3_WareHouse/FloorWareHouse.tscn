@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b16p1gdgu6tff"]
+
+[ext_resource type="ArrayMesh" uid="uid://d4cs7airlotb" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/3_WareHouse/FloorWareHouse.obj" id="1_4f7tx"]
+[ext_resource type="Texture2D" uid="uid://b8ukl81h6bnh3" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/3_WareHouse/Floor/TextureTrimSheetFloorW.png" id="2_c65d6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c65d6"]
+albedo_texture = ExtResource("2_c65d6")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sisyk"]
+points = PackedVector3Array(-3.001934, -0.100005, -2.500938, -3.001934, 0.100004986, -2.500938, 3.001934, -0.100005, -2.500938, -3.001934, -0.100005, 2.499062, -3.001934, 0.100004986, 2.499062, 3.001934, 0.100004986, -2.500938, 3.001934, -0.100005, 2.499062, 3.001934, 0.100004986, 2.499062)
+
+[node name="FloorWareHouse" type="StaticBody3D" unique_id=2022107086]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="FloorWareHouse_Mesh" type="MeshInstance3D" parent="." unique_id=1245788616]
+mesh = ExtResource("1_4f7tx")
+surface_material_override/0 = SubResource("StandardMaterial3D_c65d6")
+
+[node name="FloorWareHouse_Collision" type="CollisionShape3D" parent="." unique_id=322746759]
+shape = SubResource("ConvexPolygonShape3D_sisyk")

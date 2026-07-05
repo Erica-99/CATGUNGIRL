@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bihvrgq70v1mq"]
+
+[ext_resource type="ArrayMesh" uid="uid://bd31si4tquh0m" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/4_Laboratory/RoofLaboratory.obj" id="1_p3c0l"]
+[ext_resource type="Texture2D" uid="uid://byfg526qtn6c6" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Roof/TextureTrimSheetRoofL.png" id="2_2og7l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bikuf"]
+albedo_texture = ExtResource("2_2og7l")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jl1ik"]
+points = PackedVector3Array(-3.001934, -0.100005, -2.500938, -3.001934, 0.100004986, -2.500938, 3.001934, -0.100005, -2.500938, -3.001934, -0.100005, 2.499062, -3.001934, 0.100004986, 2.499062, 3.001934, 0.100004986, -2.500938, 3.001934, -0.100005, 2.499062, 3.001934, 0.100004986, 2.499062)
+
+[node name="RoofLaboratory" type="StaticBody3D" unique_id=1959605650]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="RoofLaboratory_Mesh" type="MeshInstance3D" parent="." unique_id=695086353]
+mesh = ExtResource("1_p3c0l")
+surface_material_override/0 = SubResource("StandardMaterial3D_bikuf")
+
+[node name="RoofLaboratory_Collision" type="CollisionShape3D" parent="." unique_id=1992290985]
+shape = SubResource("ConvexPolygonShape3D_jl1ik")

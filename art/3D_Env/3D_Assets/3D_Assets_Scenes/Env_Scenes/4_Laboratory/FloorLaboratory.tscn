@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dqba7lkeq2lmh"]
+
+[ext_resource type="ArrayMesh" uid="uid://51wh0u4sskjq" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/4_Laboratory/FloorLaboratory.obj" id="1_58cxq"]
+[ext_resource type="Texture2D" uid="uid://b4vdk8nkr21tl" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Floor/TextureTrimSheetFloorL.png" id="2_y11j3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yumla"]
+albedo_texture = ExtResource("2_y11j3")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sisyk"]
+points = PackedVector3Array(-3.001934, -0.100005, -2.500938, -3.001934, 0.100004986, -2.500938, 3.001934, -0.100005, -2.500938, -3.001934, -0.100005, 2.499062, -3.001934, 0.100004986, 2.499062, 3.001934, 0.100004986, -2.500938, 3.001934, -0.100005, 2.499062, 3.001934, 0.100004986, 2.499062)
+
+[node name="FloorLaboratory" type="StaticBody3D" unique_id=2022107086]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="FloorLaboratory_Mesh" type="MeshInstance3D" parent="." unique_id=1219280426]
+mesh = ExtResource("1_58cxq")
+surface_material_override/0 = SubResource("StandardMaterial3D_yumla")
+
+[node name="FloorWareHouse_Collision" type="CollisionShape3D" parent="." unique_id=322746759]
+shape = SubResource("ConvexPolygonShape3D_sisyk")

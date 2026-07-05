@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ms7yhmwowtnu"]
+
+[ext_resource type="ArrayMesh" uid="uid://pvxl20g1g5p4" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/1_Prison/FloorShootingPrison.obj" id="1_v0j6q"]
+[ext_resource type="Texture2D" uid="uid://db76j10ognk01" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Floor/TextureTrimSheetFloorP.png" id="2_bmudj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0j6q"]
+albedo_texture = ExtResource("2_bmudj")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3f7x6"]
+points = PackedVector3Array(2.0016143, 0.100005, 2.499758, 2.0016143, -0.100006, 2.499758, 2.0016143, 0.100005, -2.500242, -2.00163, 0.100005, 2.499758, -2.00163, -0.100006, 2.499758, 2.0016143, -0.100006, -2.500242, -2.00163, 0.100005, -2.500242, -2.00163, -0.100006, -2.500242)
+
+[node name="FloorShootingPrison" type="StaticBody3D" unique_id=1396051659]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="FloorShootingPrison_Mesh" type="MeshInstance3D" parent="." unique_id=1573840495]
+mesh = ExtResource("1_v0j6q")
+surface_material_override/0 = SubResource("StandardMaterial3D_v0j6q")
+
+[node name="FloorShootingPrison_Collision" type="CollisionShape3D" parent="." unique_id=1319942131]
+shape = SubResource("ConvexPolygonShape3D_3f7x6")
