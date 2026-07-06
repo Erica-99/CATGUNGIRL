@@ -61,8 +61,9 @@ func physics_update(_delta: float) -> void:
 	for i in range(actor.get_slide_collision_count()):
 		var collision = actor.get_slide_collision(i)
 		var normal = collision.get_normal()
+		var is_too_steep := normal.angle_to(actor.up_direction) > actor.floor_max_angle
 
-		if input_dir != 0.0 and abs(normal.x) > 0.7 and sign(input_dir) == -sign(normal.x):
+		if input_dir != 0.0 and is_too_steep and sign(input_dir) == -sign(normal.x):
 			blocked_movement_dir = sign(input_dir)
 			actor.velocity.x = 0.0
 			break
