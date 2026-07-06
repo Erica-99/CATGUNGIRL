@@ -1467,27 +1467,17 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Player" type="CharacterBody3D" unique_id=1349193765 node_paths=PackedStringArray("movement_state_machine", "gun_arm_node", "input_component", "mantle_detector", "feet_point", "jump_timer", "current_gun") groups=["player"]]
+[node name="Player" type="CharacterBody3D" unique_id=1349193765 node_paths=PackedStringArray("movement_state_machine", "gun_arm_node", "input_component", "mantle_detector", "feet_point", "jump_timer") groups=["player"]]
 collision_layer = 2
 axis_lock_linear_z = true
 platform_floor_layers = 1
 script = ExtResource("1_qdyt2")
-hit_heal_amount = null
 movement_state_machine = NodePath("MovementStateMachine")
 gun_arm_node = NodePath("PlayerVisuals/ROOT_P/GUN_P")
-speed = null
-acceleration = null
-crouch_speed = null
-jump_velocity = null
-air_speed = null
-air_acceleration = null
-charge_speed_multiplier = null
-has_gun = null
 input_component = NodePath("PlayerInput")
 mantle_detector = NodePath("MantleDetector")
 feet_point = NodePath("FeetPoint")
 jump_timer = NodePath("JumpDelay")
-current_gun = NodePath("")
 
 [node name="PlayerVisuals" type="Node3D" parent="." unique_id=229281811]
 script = ExtResource("2_0w3ce")
@@ -1666,7 +1656,8 @@ frame = 1
 frame_progress = 0.037387703
 script = ExtResource("27_cat03")
 
-[node name="GunHolder" parent="." unique_id=407642416 instance=ExtResource("28_7i6t6")]
+[node name="GunHolder" parent="." unique_id=407642416 node_paths=PackedStringArray("input_component") instance=ExtResource("28_7i6t6")]
+input_component = NodePath("../PlayerInput")
 
 [connection signal="facing_changed" from="." to="PlayerVisuals" method="_on_player_facing_changed"]
 [connection signal="facing_changed" from="." to="MantleDetector" method="_on_player_facing_changed"]

@@ -9,7 +9,6 @@ const HITBOX_SCENE = preload("res://scenes/components/hitbox_component/hitbox_co
 ## exported variables
 @export var bullet_scene: PackedScene	# bullet.tscn file to spawn when firing
 @export var team_component: Node		# player TeamComponent reference, passed to bullets
-@export var input_component: Node
 
 @export_group("Aim")
 @export var aim_speed: float = 8.0		# gun rotation speed towards mouse (lower = more delay)
@@ -49,7 +48,6 @@ const HITBOX_SCENE = preload("res://scenes/components/hitbox_component/hitbox_co
 ##Gun Animation Handler
 @onready var muzzle: Marker3D = $Muzzle
 
-
 ## bzzt
 
 signal beam_fired(beam_end: Vector3, charge_progress: float)
@@ -70,6 +68,16 @@ signal perfect_window_changed(active: bool) # for indicator flash
 @onready var _normal_flash: CPUParticles3D = $Muzzle/NormalMuzzleFlash
 @onready var _perfect_flash: CPUParticles3D = $Muzzle/PerfectMuzzleFlash
 
+
+var Gun_Animation: AnimationPlayer
+var Muzzle_VFX: AnimationPlayer
+
+var input_component: Node
+var active: bool = false:
+	set(value):
+		active = value
+		visible = active
+
 var _fire_cooldown: float = 0.0
 var _recoil_offset: float = 0.0 
 var _is_charging: bool = false
@@ -88,25 +96,26 @@ func _is_aim_settled() -> bool:
 	return abs(_recoil_offset) < recoil_amount * (1.0 - aim_settled_threshold / 100.0)
 
 func _process(delta: float) -> void:
-	var current_input_state = input_component.get_input_state()
-	_update_aim(current_input_state.get("mouse_world_pos"), current_input_state, delta)
-	_fire_cooldown = maxf(_fire_cooldown - delta, 0.0)
-	_time_since_last_shot += delta
-	if _time_since_last_shot >= spam_window:
-		_is_spamming = false
-		_spam_count = 0
-	# normal fire (left click) read from input component
-	if current_input_state.get("fire_held", false):
-		_try_fire()
-	# charged shot input handling
-	_handle_charge_input(current_input_state, delta)
-	if _is_charging:
-		spread_changed.emit(_charge_progress)
-	else:
-		var spread = 1.0 - clampf(_time_since_last_shot / laser_convergence_speed, 0.0, 1.0)
-		spread_changed.emit(spread)
-	var in_window = not _is_charging and _is_aim_settled() and _time_since_last_shot < perfect_shot_max_interval
-	perfect_window_changed.emit(in_window)
+	if active:
+		var current_input_state = input_component.get_input_state()
+		_update_aim(current_input_state.get("mouse_world_pos"), current_input_state, delta)
+		_fire_cooldown = maxf(_fire_cooldown - delta, 0.0)
+		_time_since_last_shot += delta
+		if _time_since_last_shot >= spam_window:
+			_is_spamming = false
+			_spam_count = 0
+		# normal fire (left click) read from input component
+		if current_input_state.get("fire_held", false):
+			_try_fire()
+		# charged shot input handling
+		_handle_charge_input(current_input_state, delta)
+		if _is_charging:
+			spread_changed.emit(_charge_progress)
+		else:
+			var spread = 1.0 - clampf(_time_since_last_shot / laser_convergence_speed, 0.0, 1.0)
+			spread_changed.emit(spread)
+		var in_window = not _is_charging and _is_aim_settled() and _time_since_last_shot < perfect_shot_max_interval
+		perfect_window_changed.emit(in_window)
 
 
 func _update_aim(mouse_world: Vector3, input_state: Dictionary, delta: float) -> void:
@@ -182,8 +191,8 @@ func _try_fire() -> void:
 	var damage = bullet_damage
 	
 	#Play Gun Animation
-	get_parent().Gun_Animation.stop()
-	get_parent().Gun_Animation.play("Fire")
+	Gun_Animation.stop()
+	Gun_Animation.play("Fire")
 	
 	## Perfect shot
 	if _is_aim_settled() and _time_since_last_shot < perfect_shot_max_interval:
@@ -195,8 +204,8 @@ func _try_fire() -> void:
 		perfect_shot_fired.emit()
 		AudioManager.play_sfx("laser_perfect")
 		_perfect_flash.restart()
-		get_parent().Muzzle_VFX.stop()
-		get_parent().Muzzle_VFX.play("Perfect")
+		Muzzle_VFX.stop()
+		Muzzle_VFX.play("Perfect")
 	# Spam shot 
 	elif _time_since_last_shot < spam_window:
 		_is_spamming = true
@@ -204,14 +213,14 @@ func _try_fire() -> void:
 		# print("spam shot, count: ", _spam_count)
 		AudioManager.play_sfx("laser_imperfect")
 		_normal_flash.restart()
-		get_parent().Muzzle_VFX.stop()
-		get_parent().Muzzle_VFX.play("Imperfect")
+		Muzzle_VFX.stop()
+		Muzzle_VFX.play("Imperfect")
 	else: # Normal shot
 		# print("normal shot, damage: ", bullet_damage)
 		AudioManager.play_sfx("laser_imperfect")
 		_normal_flash.restart()
-		get_parent().Muzzle_VFX.stop()
-		get_parent().Muzzle_VFX.play("Imperfect")
+		Muzzle_VFX.stop()
+		Muzzle_VFX.play("Imperfect")
 	# resets firing cooldown
 	_fire_cooldown = fire_rate
 	_spawn_bullet(damage, bullet_scale)

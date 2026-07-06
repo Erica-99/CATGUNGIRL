@@ -139,6 +139,6 @@ func _equip_gun() -> void:
 	_set_gun_enabled(true)
 
 func _set_gun_enabled(enabled: bool) -> void:
-	current_gun.process_mode = Node.PROCESS_MODE_INHERIT if enabled else Node.PROCESS_MODE_DISABLED
-	current_gun.visible = enabled
+	gun_holder.current_gun.process_mode = Node.PROCESS_MODE_INHERIT if enabled else Node.PROCESS_MODE_DISABLED
+	gun_holder.current_gun.visible = enabled
 	gun_arm_node.visible = enabled
