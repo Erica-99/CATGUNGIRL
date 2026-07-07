@@ -6,11 +6,13 @@ var current_gun: Gun
 @onready var Gun_Animation: AnimationPlayer = $"../PlayerVisuals/ROOT_P/GUN_P/GUN_AIM/Hand_Anims"
 @onready var Muzzle_VFX: AnimationPlayer = $"../PlayerVisuals/ROOT_P/GUN_P/GUN_AIM/MuzzleFlash_P/AnimationPlayer"
 
-const PISTOL_PREFAB = preload("res://scenes/components/gun_poc/pistol.tscn")
-const SHOTGUN_PREFAB = preload("res://scenes/components/gun_poc/shotgun.tscn")
+const PISTOL_PREFAB = preload("res://scenes/components/gun_poc/pistol/pistol.tscn")
+const SHOTGUN_PREFAB = preload("res://scenes/components/gun_poc/shotgun/shotgun.tscn")
+const RIFLE_PREFAB = preload("res://scenes/components/gun_poc/rifle/rifle.tscn")
+const SNIPER_PREFAB = preload("res://scenes/components/gun_poc/sniper/sniper.tscn")
 
 # can make this instead an export var for better customisation (for the poc i am being lazy)
-const guns_available = [PISTOL_PREFAB, SHOTGUN_PREFAB]
+const guns_available = [PISTOL_PREFAB, SHOTGUN_PREFAB, RIFLE_PREFAB, SNIPER_PREFAB]
 
 var current_child_count: int = 0
 var current_gun_index: int = 0
@@ -20,28 +22,21 @@ func _ready() -> void:
 		var gun = guns.instantiate()
 		add_child(gun)
 		gun.owner = self
-		var internal_gun = gun.gun
-		internal_gun.input_component = input_component
-		internal_gun.Gun_Animation = Gun_Animation
-		internal_gun.Muzzle_VFX = Muzzle_VFX
+		gun.input_component = input_component
+		gun.Gun_Animation = Gun_Animation
+		gun.Muzzle_VFX = Muzzle_VFX
 	
 	current_child_count = get_child_count()
 	
 	# lazy code - should be changed to consider other child types...
-	current_gun = get_child(current_gun_index).gun
+	current_gun = get_child(current_gun_index)
 	_activate_gun()
 
 func _process(delta: float) -> void:
 	var current_input_state = input_component.get_input_state()
-	if current_input_state.get("fire_held", false):
-		_fire()
-	
 	if current_input_state.get("switch_gun", false):
 		input_component._switch_gun = false
 		_switch_gun()
-
-func _fire() -> void:
-	current_gun._try_fire()
 
 func _switch_gun():
 	current_gun_index += 1
@@ -49,10 +44,11 @@ func _switch_gun():
 		current_gun_index = 0
 		
 	_deactivate_gun()
-	current_gun = get_child(current_gun_index).gun
+	current_gun = get_child(current_gun_index)
 	_activate_gun()
 	print("GUN SWITCHED TO: ")
-	print(current_gun.get_parent())
+	print(current_gun)
+	print(current_gun.active)
 
 func _deactivate_gun():
 	current_gun.active = false
