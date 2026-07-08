@@ -21,12 +21,12 @@
 [ext_resource type="Texture2D" uid="uid://dee1qprd2to8y" path="res://art/2d_assets/real_world/player_rosington/Ros_Torso_SPR.png" id="13_sn63g"]
 [ext_resource type="Texture2D" uid="uid://cui0k86uc5yjb" path="res://art/2d_assets/real_world/player_rosington/Ros_Head_SPR.png" id="14_eh6yv"]
 [ext_resource type="Script" uid="uid://bpl2nhpm4ebce" path="res://scenes/components/state_machine/states/player/player_mantle.gd" id="15_068wj"]
-[ext_resource type="PackedScene" uid="uid://ifqobphukq76" path="res://scenes/components/gun_component/gun_component.tscn" id="16_qdyt2"]
 [ext_resource type="Texture2D" uid="uid://dhuat37cviek4" path="res://art/2d_assets/real_world/player_rosington/Ros_GunArm_SPR.png" id="16_shibf"]
 [ext_resource type="PackedScene" uid="uid://cmq1v8ob4m0w4" path="res://scenes/components/camera_component/camera_component.tscn" id="18_ffoq6"]
 [ext_resource type="Script" uid="uid://y2ix2xo5owxw" path="res://resources/damage_heal_instance/damage_heal_instance.gd" id="19_llrf1"]
 [ext_resource type="Texture2D" uid="uid://bx0fammwess53" path="res://art/UI/placeholder/sprite_sheet.png" id="26_ffoq6"]
 [ext_resource type="Script" uid="uid://cei5rp5pteo06" path="res://scenes/actors/player/gigi_bubble.gd" id="27_cat03"]
+[ext_resource type="PackedScene" uid="uid://dp6f6qebbi8kl" path="res://scenes/components/gun_poc/gun_holder.tscn" id="28_7i6t6"]
 [ext_resource type="Script" uid="uid://da3n34oh0bagw" path="res://scenes/actors/player/audio_caller.gd" id="33_owjsm"]
 
 [sub_resource type="Animation" id="Animation_lguxi"]
@@ -99,7 +99,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../../../../GunComponent:position")
+tracks/1/path = NodePath("../../../../GunHolder:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -140,62 +140,62 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../../../../GunComponent:position")
+tracks/2/path = NodePath("Ros_Torso:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.2033757, 0.5754532, 0)]
+"update": 1,
+"values": [&"Idle"]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Ros_Torso:animation")
+tracks/3/path = NodePath("Ros_Torso:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Idle"]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Ros_Torso:frame")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1, 23]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("HEAD_P:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HEAD_P:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.08695652, 0.2173913, 0.3478261, 0.47826087, 0.65217394, 0.7826087, 0.95652175),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [Vector3(-0.086, 0.627, 0), Vector3(-0.156, 0.547, 0), Vector3(-0.041, 0.604, 0), Vector3(-0.03, 0.659, 0), Vector3(0.04, 0.66, 0), Vector3(0.078, 0.649, 0), Vector3(0.041, 0.671, 0), Vector3(-0.026, 0.686, 0)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HEAD_P/HEAD_AIM/AnimatedSprite3D:sorting_offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("HEAD_P/HEAD_AIM/AnimatedSprite3D:sorting_offset")
+tracks/6/path = NodePath("../../../../GunHolder:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector3(0.2033757, 0.5754532, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_w0i13"]
@@ -267,62 +267,62 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../../../../GunComponent:position")
+tracks/2/path = NodePath("Ros_Torso:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.2033757, 0.5754532, 0)]
+"update": 1,
+"values": [&"Idle"]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Ros_Torso:animation")
+tracks/3/path = NodePath("Ros_Torso:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"Idle"]
+"values": [11]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Ros_Torso:frame")
+tracks/4/path = NodePath("HEAD_P:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [11]
+"update": 0,
+"values": [Vector3(-0.03616512, 0.6665413, -5.82709e-08)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("HEAD_P:position")
+tracks/5/path = NodePath("HEAD_P/HEAD_AIM/AnimatedSprite3D:sorting_offset")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.03616512, 0.6665413, -5.82709e-08)]
+"values": [-5.0]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("HEAD_P/HEAD_AIM/AnimatedSprite3D:sorting_offset")
+tracks/6/path = NodePath("../../../../GunHolder:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-5.0]
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_owjsm"]
@@ -1626,20 +1626,6 @@ metadata/_custom_type_script = "uid://dropwvjh2s43u"
 script = ExtResource("15_068wj")
 metadata/_custom_type_script = "uid://dropwvjh2s43u"
 
-[node name="GunComponent" parent="." unique_id=52176648 node_paths=PackedStringArray("team_component", "input_component") instance=ExtResource("16_qdyt2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2033757, 0.5754532, 0)
-team_component = NodePath("../TeamComponent")
-input_component = NodePath("../PlayerInput")
-aim_speed = 5.5
-fire_rate = 0.4
-bullet_knockback = 0.0
-wobble_amount = 0.08
-spam_spread_angle = 3.0
-spam_spread_increase = 1.5
-spam_max_spread = 12.0
-spam_aim_multiplier = 0.3
-perfect_damage_multiplier = 2.0
-
 [node name="SoftCollider" type="Area3D" parent="." unique_id=892099693]
 collision_layer = 256
 collision_mask = 256
@@ -1669,6 +1655,9 @@ animation = &"Bubble"
 frame = 1
 frame_progress = 0.037387703
 script = ExtResource("27_cat03")
+
+[node name="GunHolder" parent="." unique_id=407642416 node_paths=PackedStringArray("input_component") instance=ExtResource("28_7i6t6")]
+input_component = NodePath("../PlayerInput")
 
 [connection signal="facing_changed" from="." to="PlayerVisuals" method="_on_player_facing_changed"]
 [connection signal="facing_changed" from="." to="MantleDetector" method="_on_player_facing_changed"]

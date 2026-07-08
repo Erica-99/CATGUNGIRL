@@ -1,4 +1,5 @@
 extends Node3D
+@onready var player: CharacterBody3D = $".."
 
 @onready var RosAnims = $ROOT_P/BODY_P/TORSO_P/Torso_Anims
 
@@ -12,14 +13,14 @@ extends Node3D
 
 @onready var hand_pivot = $ROOT_P/GUN_P
 @onready var gun_pivot = $ROOT_P/GUN_P/GUN_AIM
-@onready var gun_component = $"../GunComponent"
+@onready var gun_holder: Node3D = $"../GunHolder"
 
 @onready var Playeroot = $".."
 var current_action 
 
 
 func _process(delta: float) -> void:
-	gun_pivot.rotation.z = gun_component.rotation.z
+	gun_pivot.rotation.z = gun_holder.current_gun.rotation.z
 	if current_action == 'playercrouch':
 		if Input.is_action_pressed("move_left") == true or Input.is_action_pressed("move_right") == true:
 			pass

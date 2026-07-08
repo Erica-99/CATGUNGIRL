@@ -10,6 +10,7 @@ var _mouse_world_pos
 var _charge_fire_held := false
 var _interacting := false
 var _superjump_held:= false
+var _switch_gun := false
 
 var _input_locked := false
 var _jump_locked := false
@@ -40,6 +41,7 @@ func _process(_delta: float) -> void:
 		_fire_held = false
 		_charge_fire_held = false
 		_interacting = false
+		_switch_gun = false
 
 	##This stops the player from holding the jump button and jumping
 	#if _jump_locked:
@@ -57,6 +59,7 @@ func get_input_state() -> Dictionary:
 		"charge_fire_held": _charge_fire_held,
 		"interacting": _interacting,
 		"superjump_held": _superjump_held,
+		"switch_gun": _switch_gun,
 	}
 	return input_state
 
@@ -111,6 +114,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("move_down"):
 		_crouching = true
 		crouching.emit()
+		
+	if event.is_action_pressed("switch_gun") and not event.is_echo():
+		_switch_gun = true
 	
 	# -- Actions released --
 	
