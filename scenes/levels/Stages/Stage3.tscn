@@ -50,8 +50,9 @@
 [ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict/convict_enemy.tscn" id="48_gs35e"]
 [ext_resource type="PackedScene" uid="uid://bqxkqmc0c1lue" path="res://scenes/actors/enemies/enemy_spawner/enemy_spawner.tscn" id="49_r8oqf"]
 [ext_resource type="PackedScene" uid="uid://61tag58erj5t" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/WallBasePrison.tscn" id="50_x60oa"]
-[ext_resource type="PackedScene" uid="uid://rlu4e0ohmycv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwaySinglePrison.tscn" id="51_ei5br"]
+[ext_resource type="PackedScene" uid="uid://rlu4e0ohmycv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwaySingleMidPrison.tscn" id="51_ei5br"]
 [ext_resource type="PackedScene" uid="uid://dh1ouxldd8xy5" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwayNoneBasePrison.tscn" id="52_vyn8v"]
+[ext_resource type="PackedScene" uid="uid://doqjtagulhsfs" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwaySingleBasePrison.tscn" id="53_lk7tg"]
 [ext_resource type="PackedScene" uid="uid://c3y37oxn15ofh" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/3_WareHouse/FloorBrokenSideWareHouse.tscn" id="53_oughf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_eafu1"]
@@ -1762,21 +1763,9 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 12, 0, 0)
 [node name="WallBasePrison3" parent="." unique_id=1062155167 instance=ExtResource("50_x60oa")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 24, 0, 0)
 
-[node name="DoorwaySinglePrison" parent="." unique_id=1936140797 instance=ExtResource("51_ei5br")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, -0.1081171, 0)
-
-[node name="DoorwayNonePrison" parent="." unique_id=974643408 instance=ExtResource("52_vyn8v")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, 0, -10)
-
 [node name="DoorwaySinglePrison2" parent="." unique_id=962551119 instance=ExtResource("51_ei5br")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30, 0, 0)
 visible = false
-
-[node name="DoorwayNonePrison2" parent="." unique_id=2061877924 instance=ExtResource("52_vyn8v")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30, 0, -10)
-
-[node name="DoorwayNonePrison4" parent="." unique_id=1395645972 instance=ExtResource("52_vyn8v")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30, -0.39991808, 0)
 
 [node name="FloorBrokenSideLaboratory" parent="." unique_id=182992622 instance=ExtResource("53_oughf")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 24, 8.4, 0)
@@ -1816,5 +1805,17 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 24, 16.8, 0)
 
 [node name="RoofWareHouse4" parent="." unique_id=1278316468 instance=ExtResource("12_kcm3w")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 36, 16.8, 0)
+
+[node name="DoorwaySingleBasePrison" parent="." unique_id=1441356343 instance=ExtResource("53_lk7tg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+
+[node name="DoorwaySingleBasePrison2" parent="." unique_id=357654563 instance=ExtResource("53_lk7tg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
+
+[node name="DoorwayNoneBasePrison" parent="." unique_id=974643408 instance=ExtResource("52_vyn8v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -10)
+
+[node name="DoorwayNoneBasePrison2" parent="." unique_id=518017876 instance=ExtResource("52_vyn8v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -10)
 
 [connection signal="stage_cleared" from="Enemies/Room Three" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]
