@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://qbf1xmo1wrde" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6_Mesh/Floor/TextureTrimSheetMesh.png" id="30_b4ysr"]
 [ext_resource type="ArrayMesh" uid="uid://cyo0tnrt0p0ug" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/2_Panopticon/PanopticonConnectorBasePrt01.obj" id="31_6wva2"]
 [ext_resource type="PackedScene" uid="uid://bls076phgmcus" path="res://scenes/actors/enemies/scrub/scrub.tscn" id="31_yfq6p"]
+[ext_resource type="PackedScene" uid="uid://dix2bryf50xgx" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwayLargeBasePrison.tscn" id="32_pqvbd"]
 [ext_resource type="ArrayMesh" uid="uid://pxnf8142bgo2" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/2_Panopticon/PanopticonConnectorBasePrt02.obj" id="32_q4g22"]
 [ext_resource type="ArrayMesh" uid="uid://bjh4yg87o22fh" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/2_Panopticon/PanopticonConnectorBasePrt03.obj" id="33_3656t"]
 [ext_resource type="PackedScene" uid="uid://coirj7uqclsre" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/FloorPrison.tscn" id="33_n8o6q"]
@@ -35,10 +36,10 @@
 [ext_resource type="PackedScene" uid="uid://bojsmqie6xi4c" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorBasicLocked.tscn" id="34_4exqf"]
 [ext_resource type="PackedScene" uid="uid://ckrhba4t8exg1" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/WallMultiLevelBasePrison.tscn" id="34_ptwqc"]
 [ext_resource type="PackedScene" uid="uid://bjgcp621b7xqm" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/RoofPrison.tscn" id="35_maeby"]
-[ext_resource type="PackedScene" uid="uid://rlu4e0ohmycv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwaySinglePrison.tscn" id="36_b4ysr"]
 [ext_resource type="PackedScene" uid="uid://dh1ouxldd8xy5" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwayNoneBasePrison.tscn" id="37_6wva2"]
-[ext_resource type="PackedScene" uid="uid://b7uvcjwtwyvn3" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwayLargePrison.tscn" id="38_q4g22"]
+[ext_resource type="PackedScene" uid="uid://doqjtagulhsfs" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwaySingleBasePrison.tscn" id="39_0xqxt"]
 [ext_resource type="PackedScene" uid="uid://k8kl4d2i4ejd" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/PanopticonAccessShaft.tscn" id="41_b4ysr"]
+[ext_resource type="PackedScene" uid="uid://cf56x5mffkcgr" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwayNoneMidPrison.tscn" id="41_ktb7l"]
 [ext_resource type="PackedScene" uid="uid://dcdig5lf7h8ws" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/ConvictVentEntrance.tscn" id="42_6wva2"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_l77d3"]
@@ -215,102 +216,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 16.8, -10)
 
 [node name="RoofPrison3" parent="Environment" unique_id=723751048 instance=ExtResource("35_maeby")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 16.8, -20)
-
-[node name="DoorwaySinglePrison" parent="Environment" unique_id=1936140797 instance=ExtResource("36_b4ysr")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, 0, 0)
-
-[node name="DoorwaySinglePrison3" parent="Environment" unique_id=658541916 instance=ExtResource("36_b4ysr")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 168.127, 126.05, 0)
-
-[node name="DoorwayNonePrison" parent="Environment" unique_id=645413567 instance=ExtResource("37_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, 0, -10)
-
-[node name="DoorwayNonePrison2" parent="Environment" unique_id=839066614 instance=ExtResource("37_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, 0, -20)
-
-[node name="DoorwayNonePrison3" parent="Environment" unique_id=1399277252 instance=ExtResource("37_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, 0, -30)
-
-[node name="DoorwaySinglePrison2" parent="Environment" unique_id=1475091227 instance=ExtResource("36_b4ysr")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, 8.4, 0)
-
-[node name="DoorwayNonePrison4" parent="Environment" unique_id=261699997 instance=ExtResource("37_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, 8.4, -10)
-
-[node name="DoorwayNonePrison5" parent="Environment" unique_id=1228316844 instance=ExtResource("37_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, 8.4, -20)
-
-[node name="DoorwayNonePrison6" parent="Environment" unique_id=1671792838 instance=ExtResource("37_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, 8.4, -30)
-
-[node name="DoorwayNonePrison7" parent="Environment" unique_id=778726763 instance=ExtResource("37_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 0, -10)
-
-[node name="DoorwayNonePrison8" parent="Environment" unique_id=765603206 instance=ExtResource("37_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 0, -20)
-
-[node name="DoorwayNonePrison9" parent="Environment" unique_id=1920083130 instance=ExtResource("37_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 0, -30)
-
-[node name="DoorwayNonePrison10" parent="Environment" unique_id=372481976 instance=ExtResource("37_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 8.4, -10)
-
-[node name="DoorwayNonePrison13" parent="Environment" unique_id=1297871237 instance=ExtResource("37_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 8.4, 0)
-
-[node name="DoorwayNonePrison11" parent="Environment" unique_id=1261008420 instance=ExtResource("37_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 8.4, -20)
-
-[node name="DoorwayNonePrison12" parent="Environment" unique_id=2023984924 instance=ExtResource("37_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 8.4, -30)
-
-[node name="DoorwayLargePrison" parent="Environment" unique_id=1093577184 instance=ExtResource("38_q4g22")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 0, 0)
-
-[node name="DoorwayLargePrison2" parent="Environment" unique_id=2487148 instance=ExtResource("38_q4g22")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 156.127, 126.05, -0.065)
-
-[node name="DoorwayNonePrison14" parent="Environment" unique_id=974643408 instance=ExtResource("37_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 156.127, 126.05, -10)
-
-[node name="DoorwayNonePrison15" parent="Environment" unique_id=418802476 instance=ExtResource("37_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 156.127, 126.05, -20)
-
-[node name="DoorwayNonePrison16" parent="Environment" unique_id=1586353539 instance=ExtResource("37_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 168.127, 126.05, -10)
-
-[node name="DoorwayNonePrison17" parent="Environment" unique_id=966397766 instance=ExtResource("37_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 168.127, 126.05, -20)
-
-[node name="DoorwaySinglePrison4" parent="Environment" unique_id=1369120194 instance=ExtResource("36_b4ysr")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 168.127, 134.45, 0)
-
-[node name="DoorwayNonePrison18" parent="Environment" unique_id=1093381974 instance=ExtResource("37_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 156.127, 134.45, -10)
-
-[node name="DoorwayNonePrison22" parent="Environment" unique_id=949092075 instance=ExtResource("37_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 156.127, 134.45, 0)
-
-[node name="DoorwayNonePrison19" parent="Environment" unique_id=219261931 instance=ExtResource("37_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 156.127, 134.45, -20)
-
-[node name="DoorwayNonePrison20" parent="Environment" unique_id=834597328 instance=ExtResource("37_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 168.127, 134.45, -10)
-
-[node name="DoorwayNonePrison21" parent="Environment" unique_id=903852246 instance=ExtResource("37_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 168.127, 134.45, -20)
-
-[node name="DoorwayNonePrison23" parent="Environment" unique_id=1087825592 instance=ExtResource("37_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 156.127, 126.05, -30)
-
-[node name="DoorwayNonePrison24" parent="Environment" unique_id=1469305549 instance=ExtResource("37_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 168.127, 126.05, -30)
-
-[node name="DoorwayNonePrison25" parent="Environment" unique_id=2112961685 instance=ExtResource("37_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 156.127, 134.45, -30)
-
-[node name="DoorwayNonePrison26" parent="Environment" unique_id=1610896947 instance=ExtResource("37_6wva2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 168.127, 134.45, -30)
 
 [node name="RoofPrison4" parent="Environment" unique_id=1900161994 instance=ExtResource("35_maeby")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 162.127, 142.85, 0)
@@ -603,6 +508,15 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 63.34708, 68.826, 0)
 [node name="ConvictVentEntrance3" parent="Environment" unique_id=598406993 instance=ExtResource("42_6wva2")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 60.427, 130.771, 0)
 
+[node name="DoorwayLargeBasePrison" parent="Environment" unique_id=1409324743 instance=ExtResource("32_pqvbd")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 0, 0)
+
+[node name="DoorwayLargeBasePrison2" parent="Environment" unique_id=853594889 instance=ExtResource("32_pqvbd")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 156.127, 126.05, 0)
+
+[node name="DoorBasicLocked2" parent="Environment" unique_id=1555562335 instance=ExtResource("34_4exqf")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, 8.4, 0)
+
 [node name="Props" type="Node3D" parent="." unique_id=1920549022]
 
 [node name="Interactive" type="Node3D" parent="." unique_id=546830450]
@@ -615,7 +529,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.25334167, 1.1749954,
 monitoring = false
 level_name = "Stage3"
 
-[node name="DoorSlidingBasic" parent="Interactive" unique_id=1555562335 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("22_n434r")]
+[node name="DoorSlidingBasic" parent="Interactive" unique_id=1637926463 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("22_n434r")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 7.255, 67.027, 0)
 enemy_manager = NodePath("../../Enemies/EmptyManager")
 
@@ -849,5 +763,95 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93, 71, 0)
 
 [node name="Scrub7" parent="Enemies/EnemyManager" unique_id=330088300 instance=ExtResource("31_yfq6p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 130, 0)
+
+[node name="DoorwaySingleBasePrison" parent="." unique_id=1441356343 instance=ExtResource("39_0xqxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+
+[node name="DoorwaySingleBasePrison2" parent="." unique_id=545392481 instance=ExtResource("39_0xqxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 8.4, 0)
+
+[node name="DoorwayNoneBasePrison" parent="." unique_id=974643408 instance=ExtResource("37_6wva2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -10)
+
+[node name="DoorwayNoneBasePrison2" parent="." unique_id=2146186569 instance=ExtResource("37_6wva2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -20)
+
+[node name="DoorwayNoneBasePrison3" parent="." unique_id=538696311 instance=ExtResource("37_6wva2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -30)
+
+[node name="DoorwayNoneBasePrison4" parent="." unique_id=472490362 instance=ExtResource("37_6wva2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -10)
+
+[node name="DoorwayNoneBasePrison5" parent="." unique_id=1677804949 instance=ExtResource("37_6wva2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -20)
+
+[node name="DoorwayNoneBasePrison6" parent="." unique_id=2060000965 instance=ExtResource("37_6wva2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -30)
+
+[node name="DoorwayNoneMidPrison" parent="." unique_id=1238568985 instance=ExtResource("41_ktb7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 8.4, -10)
+
+[node name="DoorwayNoneMidPrison2" parent="." unique_id=1215385287 instance=ExtResource("41_ktb7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 8.4, -20)
+
+[node name="DoorwayNoneMidPrison3" parent="." unique_id=677382523 instance=ExtResource("41_ktb7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 8.4, -30)
+
+[node name="DoorwayNoneMidPrison4" parent="." unique_id=896754715 instance=ExtResource("41_ktb7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 8.4, -10)
+
+[node name="DoorwayNoneMidPrison7" parent="." unique_id=768526878 instance=ExtResource("41_ktb7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 8.4, 0)
+
+[node name="DoorwayNoneMidPrison5" parent="." unique_id=1846322042 instance=ExtResource("41_ktb7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 8.4, -20)
+
+[node name="DoorwaySingleBasePrison3" parent="." unique_id=1176117255 instance=ExtResource("39_0xqxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.127, 126.05, 0)
+
+[node name="DoorwaySingleBasePrison4" parent="." unique_id=942731761 instance=ExtResource("39_0xqxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.127, 134.45, 0)
+
+[node name="DoorwayNoneBasePrison10" parent="." unique_id=387413733 instance=ExtResource("37_6wva2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.127, 126.05, -10)
+
+[node name="DoorwayNoneBasePrison11" parent="." unique_id=304807063 instance=ExtResource("37_6wva2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.127, 134.45, -10)
+
+[node name="DoorwayNoneBasePrison13" parent="." unique_id=1306837733 instance=ExtResource("37_6wva2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.127, 126.05, -20)
+
+[node name="DoorwayNoneBasePrison14" parent="." unique_id=823144369 instance=ExtResource("37_6wva2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.127, 134.45, -20)
+
+[node name="DoorwayNoneBasePrison15" parent="." unique_id=596502700 instance=ExtResource("37_6wva2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.127, 126.05, -30)
+
+[node name="DoorwayNoneBasePrison16" parent="." unique_id=1051634541 instance=ExtResource("37_6wva2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.127, 134.45, -30)
+
+[node name="DoorwayNoneBasePrison17" parent="." unique_id=438802070 instance=ExtResource("37_6wva2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.127, 126.05, -10)
+
+[node name="DoorwayNoneBasePrison18" parent="." unique_id=1527768795 instance=ExtResource("37_6wva2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.127, 134.45, -10)
+
+[node name="DoorwayNoneBasePrison19" parent="." unique_id=962244091 instance=ExtResource("37_6wva2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.127, 126.05, -20)
+
+[node name="DoorwayNoneBasePrison20" parent="." unique_id=1630797817 instance=ExtResource("37_6wva2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.127, 134.45, -20)
+
+[node name="DoorwayNoneBasePrison21" parent="." unique_id=1005663007 instance=ExtResource("37_6wva2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.127, 126.05, -30)
+
+[node name="DoorwayNoneBasePrison22" parent="." unique_id=1598028704 instance=ExtResource("37_6wva2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.127, 134.45, -30)
+
+[node name="DoorwayNoneBasePrison12" parent="." unique_id=1793513116 instance=ExtResource("37_6wva2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.127, 134.45, 0)
+
+[node name="DoorwayNoneMidPrison6" parent="." unique_id=1988655925 instance=ExtResource("41_ktb7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 8.4, -30)
 
 [connection signal="stage_cleared" from="Enemies/EnemyManager" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]
