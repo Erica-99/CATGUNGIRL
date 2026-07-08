@@ -5,6 +5,8 @@ var actor: CharacterBody3D
 var input_component: InputComponent
 
 var direction_last_frame: Vector3
+#blocked movement while moving right = 1, while moving left = -1, not blocked = 0
+var blocked_movement_dir: float = 0.0
 
 func init(blackboard_dict : Dictionary) -> void:
 	super(blackboard_dict)
@@ -51,8 +53,22 @@ func physics_update(_delta: float) -> void:
 		actor.velocity.x = move_toward(actor.velocity.x, 0, speed)
 	
 	direction_last_frame = direction
-	
+
 	actor.move_and_slide()
+
+	blocked_movement_dir = 0.0
+
+	for i in range(actor.get_slide_collision_count()):
+		var collision = actor.get_slide_collision(i)
+		var normal = collision.get_normal()
+		var is_too_steep := normal.angle_to(actor.up_direction) > actor.floor_max_angle
+
+		if input_dir != 0.0 and is_too_steep and sign(input_dir) == -sign(normal.x):
+			blocked_movement_dir = sign(input_dir)
+			actor.velocity.x = 0.0
+			break
+
+	blackboard["blocked_movement_dir"] = blocked_movement_dir
 
 
 func _on_player_crouch_overlap() -> void:
