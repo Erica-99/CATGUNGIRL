@@ -70,6 +70,10 @@ initial_velocity_min = 6.0
 initial_velocity_max = 10.0
 color = Color(0.43669105, 0.99999994, 0.96197826, 1)
 
+[node name="ReloadTimer" type="Timer" parent="." unique_id=1791899876]
+one_shot = true
+
 [connection signal="beam_fired" from="." to="Muzzle/Laser" method="on_beam_fired"]
 [connection signal="perfect_window_changed" from="." to="Muzzle/Laser" method="on_perfect_window_changed"]
 [connection signal="spread_changed" from="." to="Muzzle/Laser" method="on_spread_changed"]
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

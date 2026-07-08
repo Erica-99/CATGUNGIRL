@@ -1,5 +1,14 @@
 extends Gun
 
+@export_group("Gigi Beam")
+@export var hold_charge_min: float = 0.2	# time (seconds) to hold for charged shot otherwise it cancels
+@export var hold_charge_max: float = 2.0	# time (seconds) to reach max charge, longer hold does nothing
+@export var beam_damage_min: float = 20.0
+@export var beam_damage_max: float = 60.0
+@export var charged_recoil_multiplier: float = 2.0  # higher recoil for charged shot
+@export var beam_range: float = 15.0
+@export var perfect_charge_multiplier: float = 2.5
+
 func _shoot(damage, bullet_scale):
 	_spawn_bullet(damage, bullet_scale * 1.5)
 

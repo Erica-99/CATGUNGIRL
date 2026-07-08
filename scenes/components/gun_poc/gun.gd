@@ -13,6 +13,10 @@ const HITBOX_SCENE = preload("res://scenes/components/hitbox_component/hitbox_co
 @export_group("Aim")
 @export var aim_speed: float = 8.0		# gun rotation speed towards mouse (lower = more delay)
 
+@export_group("Ammo")
+@export var ammo_max: int = 10
+@export var reload_time: float = 3.0
+
 @export_group("Normal Fire")
 @export var fire_rate: float = 0.15			# min time (seconds) between shots
 @export var bullet_damage: float = 10.0
@@ -36,17 +40,11 @@ const HITBOX_SCENE = preload("res://scenes/components/hitbox_component/hitbox_co
 @export var perfect_shot_max_interval: float = 1.0	# max seconds between shots for perfect shot to trigger
 @export var laser_convergence_speed: float = 0.73	# time to converge
 
-@export_group("Gigi Beam")
-@export var hold_charge_min: float = 0.2	# time (seconds) to hold for charged shot otherwise it cancels
-@export var hold_charge_max: float = 2.0	# time (seconds) to reach max charge, longer hold does nothing
-@export var beam_damage_min: float = 20.0
-@export var beam_damage_max: float = 60.0
-@export var charged_recoil_multiplier: float = 2.0  # higher recoil for charged shot
-@export var beam_range: float = 15.0
-@export var perfect_charge_multiplier: float = 2.5
-
 ##Gun Animation Handler
 @onready var muzzle: Marker3D = $Muzzle
+
+## Reload timer (can be replaced with programmatical timer as needed)
+@onready var reload_timer: Timer = $ReloadTimer
 
 ## bzzt
 
@@ -90,32 +88,40 @@ var _spam_count: int = 0			# track spam count
 # var _has_printed_settle: bool = false
 var _charge_progress: float = 0.0	# beam
 var _is_perfect_charge: bool = false
+var _current_ammo: int = ammo_max
+var _is_reloading: bool = false
 
 # check if aim within threshold
 func _is_aim_settled() -> bool:
 	return abs(_recoil_offset) < recoil_amount * (1.0 - aim_settled_threshold / 100.0)
 
 func _process(delta: float) -> void:
-	if active:
-		var current_input_state = input_component.get_input_state()
-		_update_aim(current_input_state.get("mouse_world_pos"), current_input_state, delta)
-		_fire_cooldown = maxf(_fire_cooldown - delta, 0.0)
-		_time_since_last_shot += delta
-		if _time_since_last_shot >= spam_window:
-			_is_spamming = false
-			_spam_count = 0
+	# in hindsight, the is_reloading should probably have a set of interactions for attempted bulletshots whilst reload but anyways...
+	if !active:
+		return
+	
+	var current_input_state = input_component.get_input_state()
+	_update_aim(current_input_state.get("mouse_world_pos"), current_input_state, delta)
+	_fire_cooldown = maxf(_fire_cooldown - delta, 0.0)
+	_time_since_last_shot += delta
+	if _time_since_last_shot >= spam_window:
+		_is_spamming = false
+		_spam_count = 0
+	
+	if !_is_reloading:
 		# normal fire (left click) read from input component
 		if current_input_state.get("fire_held", false):
 			_try_fire()
 		# input handling for special attack
 		_handle_special(current_input_state, delta)
-		if _is_charging:
-			spread_changed.emit(_charge_progress)
-		else:
-			var spread = 1.0 - clampf(_time_since_last_shot / laser_convergence_speed, 0.0, 1.0)
-			spread_changed.emit(spread)
-		var in_window = not _is_charging and _is_aim_settled() and _time_since_last_shot < perfect_shot_max_interval
-		perfect_window_changed.emit(in_window)
+		
+	if _is_charging:
+		spread_changed.emit(_charge_progress)
+	else:
+		var spread = 1.0 - clampf(_time_since_last_shot / laser_convergence_speed, 0.0, 1.0)
+		spread_changed.emit(spread)
+	var in_window = not _is_charging and _is_aim_settled() and _time_since_last_shot < perfect_shot_max_interval
+	perfect_window_changed.emit(in_window)
 
 
 func _update_aim(mouse_world: Vector3, input_state: Dictionary, delta: float) -> void:
@@ -161,12 +167,21 @@ func _try_fire() -> void:
 	if bullet_scene == null or muzzle == null:
 		print("Bullet scene or muzzle is currently null. Cannot fire.")
 		return
-	var damage = bullet_damage
 	
 	#Play Gun Animation
+	_play_shoot_animation()
+	
+	# handle perfect shots etc - probably needs to be decomposed better, but ok for proof of concept and initial work
+	# override in other children of GUN!!!!
+	_shoot_handler()
+	_handle_ammo()
+
+func _play_shoot_animation():
 	Gun_Animation.stop()
 	Gun_Animation.play("Fire")
 	
+func _shoot_handler():
+	var damage = bullet_damage
 	## Perfect shot
 	if _is_aim_settled() and _time_since_last_shot < perfect_shot_max_interval:
 		_is_spamming = false
@@ -204,6 +219,12 @@ func _try_fire() -> void:
 func _shoot(damage, bullet_scale):
 	_spawn_bullet(damage, bullet_scale)
 
+func _handle_ammo():
+	_current_ammo -= 1
+	if _current_ammo <= 0:
+		_is_reloading = true
+		reload_timer.start(reload_time)
+
 func _spawn_bullet(damage: float, size: float) -> void:
 	var bullet = bullet_scene.instantiate()
 	get_tree().root.add_child(bullet)
@@ -227,4 +248,7 @@ func _spawn_bullet(damage: float, size: float) -> void:
 	bullet.initialize(aim_dir, damage_instance, team_component, size)
 	var hb = bullet.get_node("HitboxComponent") 
 	hb.hurtbox_hit.connect(func(hurtbox): enemy_hit.emit(hurtbox))
-	
+
+func _on_reload_timer_timeout() -> void:
+	_is_reloading = false
+	_current_ammo = ammo_max

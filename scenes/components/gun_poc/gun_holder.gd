@@ -5,6 +5,7 @@ var current_gun: Gun
 
 @onready var Gun_Animation: AnimationPlayer = $"../PlayerVisuals/ROOT_P/GUN_P/GUN_AIM/Hand_Anims"
 @onready var Muzzle_VFX: AnimationPlayer = $"../PlayerVisuals/ROOT_P/GUN_P/GUN_AIM/MuzzleFlash_P/AnimationPlayer"
+@onready var team_component: Node = $"../TeamComponent"
 
 const PISTOL_PREFAB = preload("res://scenes/components/gun_poc/pistol/pistol.tscn")
 const SHOTGUN_PREFAB = preload("res://scenes/components/gun_poc/shotgun/shotgun.tscn")
@@ -25,6 +26,7 @@ func _ready() -> void:
 		gun.input_component = input_component
 		gun.Gun_Animation = Gun_Animation
 		gun.Muzzle_VFX = Muzzle_VFX
+		gun.team_component = team_component
 	
 	current_child_count = get_child_count()
 	
