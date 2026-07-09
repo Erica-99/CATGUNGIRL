@@ -2,18 +2,37 @@ extends State
 class_name GrappleShooting
 
 var current_firing_curve: Curve
+var do_fire_loop: bool = false
+var time_elapsed: float = 0
 
 func enter() -> void:
 	_setup_grapple()
+	time_elapsed = 0
+	do_fire_loop = true
 
 func exit() -> void:
-	pass
-	
+	do_fire_loop = false
+
 func update(_delta: float) -> void:
 	pass
-	
+
 func physics_update(_delta: float) -> void:
-	pass
+	if not do_fire_loop:
+		return
+	
+	if time_elapsed >= blackboard["total_fire_time"]:
+		exit() # Temporary
+		#transitioned.emit(self, "GrappleLatched")
+	
+	var hook_object: Node3D = blackboard["current_grapple_hook"]
+	var start_pos: Vector3 = blackboard["fired_position"]
+	var end_pos: Vector3 = blackboard["target_position"]
+	
+	var move_unit_vector = (end_pos - start_pos).normalized()
+	move_unit_vector = move_unit_vector * _delta * current_firing_curve.sample(time_elapsed) / blackboard["total_fire_time"]
+	
+	hook_object.position += move_unit_vector
+	time_elapsed += _delta
 
 func _setup_grapple() -> void:
 	if not blackboard["grapple_raycast"].is_colliding():
@@ -29,6 +48,9 @@ func _setup_grapple() -> void:
 	blackboard["current_grapple_hook"] = grapple_scene_instance
 	
 	get_tree().root.add_child(grapple_scene_instance)
+	
+	var fire_dist = blackboard["target_position"] - blackboard["fired_position"]
+	current_firing_curve = _rescale_curve_to_integral(blackboard["firing_curve"], fire_dist)
 
 
 func _get_grapple_point() -> Vector3:
