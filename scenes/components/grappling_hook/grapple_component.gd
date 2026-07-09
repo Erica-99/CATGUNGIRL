@@ -6,6 +6,8 @@ extends Node3D
 
 @export_group("Grapple Attributes")
 @export var fire_speed: float = 10
+@export var total_fire_time: float = 1
+@export var firing_curve: Curve
 @export var reel_delay: float = 0.5
 @export var reel_force: float = 10
 
@@ -20,6 +22,8 @@ var blackboard: Dictionary = {
 	"target_position": position,
 	"grapple_raycast": grapple_raycast,
 	"fire_speed": fire_speed,
+	"total_fire_time": total_fire_time,
+	"firing_curve": firing_curve,
 	"reel_delay": reel_delay,
 	"reel_force": reel_force
 }

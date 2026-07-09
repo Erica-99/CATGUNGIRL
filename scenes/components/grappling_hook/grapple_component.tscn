@@ -6,10 +6,15 @@
 [ext_resource type="Script" uid="uid://bitvaweib8l2v" path="res://scenes/components/grappling_hook/grapple_retracted.gd" id="3_mst2j"]
 [ext_resource type="Script" uid="uid://cmt8f4wb6eirf" path="res://scenes/components/grappling_hook/grapple_shooting.gd" id="4_rpvph"]
 
+[sub_resource type="Curve" id="Curve_4u4vp"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.06845237, 1), 0.0, 0.0, 0, 0, Vector2(0.97619045, 0.7774497), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
 [node name="GrappleComponent" type="Node3D" unique_id=875314025 node_paths=PackedStringArray("grapple_raycast")]
 script = ExtResource("1_ly5qd")
 grapple_raycast = NodePath("GrappleRaycast")
 grapple_hook_scene = ExtResource("2_4u4vp")
+firing_curve = SubResource("Curve_4u4vp")
 
 [node name="GrapplingHookSprite" type="AnimatedSprite3D" parent="." unique_id=2098842336]
 
