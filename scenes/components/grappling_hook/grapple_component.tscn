@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://cmt8f4wb6eirf" path="res://scenes/components/grappling_hook/grapple_shooting.gd" id="4_rpvph"]
 
 [sub_resource type="Curve" id="Curve_4u4vp"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.06845237, 1), 0.0, 0.0, 0, 0, Vector2(0.97619045, 0.7774497), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.08035715, 1), 0.0, 0.0, 0, 0, Vector2(0.5029762, 0.6239669), -1.2134178, -1.2134178, 0, 0, Vector2(1, 0.3860684), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8ovlh"]
@@ -26,6 +26,7 @@ animations = [{
 script = ExtResource("1_ly5qd")
 grapple_raycast = NodePath("GrappleRaycast")
 grapple_hook_scene = ExtResource("2_4u4vp")
+total_fire_time = 0.5
 firing_curve = SubResource("Curve_4u4vp")
 
 [node name="GrapplingHookSprite" type="AnimatedSprite3D" parent="." unique_id=2098842336]
@@ -34,7 +35,7 @@ billboard = 1
 sprite_frames = SubResource("SpriteFrames_8ovlh")
 
 [node name="GrappleRaycast" type="RayCast3D" parent="." unique_id=1211203710]
-target_position = Vector3(20, 0, 0)
+target_position = Vector3(40, 0, 0)
 collision_mask = 9
 
 [node name="StateMachine" parent="." unique_id=1499026333 node_paths=PackedStringArray("initial_state") instance=ExtResource("2_mst2j")]

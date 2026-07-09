@@ -28,9 +28,9 @@ func physics_update(_delta: float) -> void:
 	var end_pos: Vector3 = blackboard["target_position"]
 	
 	var move_unit_vector = (end_pos - start_pos).normalized()
-	move_unit_vector = move_unit_vector * _delta * current_firing_curve.sample(time_elapsed) / blackboard["total_fire_time"]
+	move_unit_vector = move_unit_vector * (_delta / blackboard["total_fire_time"]) * current_firing_curve.sample(time_elapsed / blackboard["total_fire_time"])
 	
-	hook_object.position += move_unit_vector
+	hook_object.global_position += move_unit_vector
 	time_elapsed += _delta
 
 func _setup_grapple() -> void:
@@ -50,7 +50,7 @@ func _setup_grapple() -> void:
 	
 	get_tree().root.add_child(grapple_scene_instance)
 	
-	var fire_dist = (blackboard["target_position"] - blackboard["fired_position"]).length()	
+	var fire_dist = (blackboard["target_position"] - blackboard["fired_position"]).length()
 	current_firing_curve = _rescale_curve_to_integral(blackboard["firing_curve"], fire_dist)
 	
 	do_fire_loop = true
@@ -66,6 +66,7 @@ func _get_grapple_point() -> Vector3:
 
 func _rescale_curve_to_integral(curve: Curve, integral: float = 1) -> Curve:
 	var scaled_curve: Curve = curve.duplicate()
+	scaled_curve.max_value = 100
 	
 	var curve_points: PackedVector2Array = []
 	var step_width: float = 1.0 / (curve.bake_resolution - 1)
