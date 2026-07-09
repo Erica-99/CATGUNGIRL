@@ -24,7 +24,9 @@
 [ext_resource type="Texture2D" uid="uid://dhuat37cviek4" path="res://art/2d_assets/real_world/player_rosington/Ros_GunArm_SPR.png" id="16_shibf"]
 [ext_resource type="PackedScene" uid="uid://cmq1v8ob4m0w4" path="res://scenes/components/camera_component/camera_component.tscn" id="18_ffoq6"]
 [ext_resource type="Script" uid="uid://y2ix2xo5owxw" path="res://resources/damage_heal_instance/damage_heal_instance.gd" id="19_llrf1"]
+[ext_resource type="Script" uid="uid://cap87hwk6oo37" path="res://scenes/components/state_machine/states/player/player_wall_slide.gd" id="25_e5w6i"]
 [ext_resource type="Texture2D" uid="uid://bx0fammwess53" path="res://art/UI/placeholder/sprite_sheet.png" id="26_ffoq6"]
+[ext_resource type="Script" uid="uid://dpg6elo6whk1n" path="res://scenes/components/state_machine/states/player/player_wall_jump.gd" id="26_t1vny"]
 [ext_resource type="Script" uid="uid://cei5rp5pteo06" path="res://scenes/actors/player/gigi_bubble.gd" id="27_cat03"]
 [ext_resource type="PackedScene" uid="uid://dp6f6qebbi8kl" path="res://scenes/components/gun_poc/gun_holder.tscn" id="28_7i6t6"]
 [ext_resource type="Script" uid="uid://da3n34oh0bagw" path="res://scenes/actors/player/audio_caller.gd" id="33_owjsm"]
@@ -1625,6 +1627,12 @@ metadata/_custom_type_script = "uid://dropwvjh2s43u"
 [node name="PlayerMantle" type="Node" parent="MovementStateMachine" unique_id=1914648426]
 script = ExtResource("15_068wj")
 metadata/_custom_type_script = "uid://dropwvjh2s43u"
+
+[node name="PlayerWallSlide" type="Node" parent="MovementStateMachine" unique_id=1458489957]
+script = ExtResource("25_e5w6i")
+
+[node name="PlayerWallJump" type="Node" parent="MovementStateMachine" unique_id=330904070]
+script = ExtResource("26_t1vny")
 
 [node name="SoftCollider" type="Area3D" parent="." unique_id=892099693]
 collision_layer = 256
