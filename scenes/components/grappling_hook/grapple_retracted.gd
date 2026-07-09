@@ -7,6 +7,8 @@ func enter() -> void:
 func exit() -> void:
 	pass
 func update(_delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("debug_grapplehook"):
+		transitioned.emit(self, "GrappleShooting")
+	
 func physics_update(_delta: float) -> void:
 	pass

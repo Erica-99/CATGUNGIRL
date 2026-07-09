@@ -13,22 +13,24 @@ extends Node3D
 
 var state_machine: StateMachine
 
-var blackboard: Dictionary = {
-	"actor": actor,
-	"grapple_hook_scene": grapple_hook_scene,
-	"current_grapple_hook": null,
-	"grapplegun_object": self,
-	"fired_position": position,
-	"target_position": position,
-	"grapple_raycast": grapple_raycast,
-	"fire_speed": fire_speed,
-	"total_fire_time": total_fire_time,
-	"firing_curve": firing_curve,
-	"reel_delay": reel_delay,
-	"reel_force": reel_force
-}
+var blackboard: Dictionary = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	blackboard = {
+		"actor": actor,
+		"grapple_hook_scene": grapple_hook_scene,
+		"current_grapple_hook": null,
+		"grapplegun_object": self,
+		"fired_position": position,
+		"target_position": position,
+		"grapple_raycast": grapple_raycast,
+		"fire_speed": fire_speed,
+		"total_fire_time": total_fire_time,
+		"firing_curve": firing_curve,
+		"reel_delay": reel_delay,
+		"reel_force": reel_force
+	}
+	
 	state_machine = $StateMachine
 	state_machine.init(blackboard)

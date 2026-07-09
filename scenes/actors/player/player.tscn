@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://dhuat37cviek4" path="res://art/2d_assets/real_world/player_rosington/Ros_GunArm_SPR.png" id="16_shibf"]
 [ext_resource type="PackedScene" uid="uid://cmq1v8ob4m0w4" path="res://scenes/components/camera_component/camera_component.tscn" id="18_ffoq6"]
 [ext_resource type="Script" uid="uid://y2ix2xo5owxw" path="res://resources/damage_heal_instance/damage_heal_instance.gd" id="19_llrf1"]
+[ext_resource type="PackedScene" uid="uid://l0pt5mcxodxm" path="res://scenes/components/grappling_hook/grapple_component.tscn" id="26_e5w6i"]
 [ext_resource type="Texture2D" uid="uid://bx0fammwess53" path="res://art/UI/placeholder/sprite_sheet.png" id="26_ffoq6"]
 [ext_resource type="Script" uid="uid://cei5rp5pteo06" path="res://scenes/actors/player/gigi_bubble.gd" id="27_cat03"]
 [ext_resource type="Script" uid="uid://da3n34oh0bagw" path="res://scenes/actors/player/audio_caller.gd" id="33_owjsm"]
@@ -1639,6 +1640,8 @@ spam_spread_increase = 1.5
 spam_max_spread = 12.0
 spam_aim_multiplier = 0.3
 perfect_damage_multiplier = 2.0
+
+[node name="GrappleComponent" parent="GunComponent" unique_id=875314025 instance=ExtResource("26_e5w6i")]
 
 [node name="SoftCollider" type="Area3D" parent="." unique_id=892099693]
 collision_layer = 256

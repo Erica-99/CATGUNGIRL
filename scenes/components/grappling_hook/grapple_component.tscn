@@ -3,12 +3,24 @@
 [ext_resource type="Script" uid="uid://ws1rfas63x3n" path="res://scenes/components/grappling_hook/grapple_component.gd" id="1_ly5qd"]
 [ext_resource type="PackedScene" uid="uid://b1xovfmr2jo4s" path="res://scenes/components/grappling_hook/grappling_hook_hook.tscn" id="2_4u4vp"]
 [ext_resource type="PackedScene" uid="uid://c6wep4oftfyke" path="res://scenes/components/state_machine/state_machine.tscn" id="2_mst2j"]
+[ext_resource type="Texture2D" uid="uid://crng4f3f2avnf" path="res://icon.svg" id="3_mb7m4"]
 [ext_resource type="Script" uid="uid://bitvaweib8l2v" path="res://scenes/components/grappling_hook/grapple_retracted.gd" id="3_mst2j"]
 [ext_resource type="Script" uid="uid://cmt8f4wb6eirf" path="res://scenes/components/grappling_hook/grapple_shooting.gd" id="4_rpvph"]
 
 [sub_resource type="Curve" id="Curve_4u4vp"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.06845237, 1), 0.0, 0.0, 0, 0, Vector2(0.97619045, 0.7774497), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ovlh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_mb7m4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="GrappleComponent" type="Node3D" unique_id=875314025 node_paths=PackedStringArray("grapple_raycast")]
 script = ExtResource("1_ly5qd")
@@ -17,12 +29,16 @@ grapple_hook_scene = ExtResource("2_4u4vp")
 firing_curve = SubResource("Curve_4u4vp")
 
 [node name="GrapplingHookSprite" type="AnimatedSprite3D" parent="." unique_id=2098842336]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_8ovlh")
 
 [node name="GrappleRaycast" type="RayCast3D" parent="." unique_id=1211203710]
-target_position = Vector3(0, 0, -10)
+target_position = Vector3(20, 0, 0)
 collision_mask = 9
 
-[node name="StateMachine" parent="." unique_id=1499026333 instance=ExtResource("2_mst2j")]
+[node name="StateMachine" parent="." unique_id=1499026333 node_paths=PackedStringArray("initial_state") instance=ExtResource("2_mst2j")]
+initial_state = NodePath("GrappleRetracted")
 
 [node name="GrappleRetracted" type="Node" parent="StateMachine" unique_id=1337567789]
 script = ExtResource("3_mst2j")

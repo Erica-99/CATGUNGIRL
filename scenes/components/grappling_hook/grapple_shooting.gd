@@ -8,7 +8,6 @@ var time_elapsed: float = 0
 func enter() -> void:
 	_setup_grapple()
 	time_elapsed = 0
-	do_fire_loop = true
 
 func exit() -> void:
 	do_fire_loop = false
@@ -36,10 +35,12 @@ func physics_update(_delta: float) -> void:
 
 func _setup_grapple() -> void:
 	if not blackboard["grapple_raycast"].is_colliding():
+		print("Failed launch")
+		transitioned.emit(self, "GrappleRetracted")
 		return
 	
 	blackboard["target_position"] = _get_grapple_point()
-	blackboard["fired_position"] = blackboard["grapplegun_object"].position
+	blackboard["fired_position"] = blackboard["grapplegun_object"].global_position
 	
 	var grapple_scene_instance = blackboard["grapple_hook_scene"].instantiate()
 	grapple_scene_instance.position = blackboard["fired_position"]
@@ -49,8 +50,10 @@ func _setup_grapple() -> void:
 	
 	get_tree().root.add_child(grapple_scene_instance)
 	
-	var fire_dist = blackboard["target_position"] - blackboard["fired_position"]
+	var fire_dist = (blackboard["target_position"] - blackboard["fired_position"]).length()	
 	current_firing_curve = _rescale_curve_to_integral(blackboard["firing_curve"], fire_dist)
+	
+	do_fire_loop = true
 
 
 func _get_grapple_point() -> Vector3:
@@ -65,7 +68,7 @@ func _rescale_curve_to_integral(curve: Curve, integral: float = 1) -> Curve:
 	var scaled_curve: Curve = curve.duplicate()
 	
 	var curve_points: PackedVector2Array = []
-	var step_width: float = 1 / (curve.bake_resolution - 1)
+	var step_width: float = 1.0 / (curve.bake_resolution - 1)
 	
 	for i in range(curve.bake_resolution):
 		var x: float = i * step_width
