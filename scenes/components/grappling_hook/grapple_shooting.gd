@@ -20,8 +20,7 @@ func physics_update(_delta: float) -> void:
 		return
 	
 	if time_elapsed >= blackboard["total_fire_time"]:
-		exit() # Temporary
-		#transitioned.emit(self, "GrappleLatched")
+		transitioned.emit(self, "GrappleRetracted")
 	
 	var hook_object: Node3D = blackboard["current_grapple_hook"]
 	var start_pos: Vector3 = blackboard["fired_position"]
