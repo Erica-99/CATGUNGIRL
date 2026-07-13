@@ -1,10 +1,25 @@
 [gd_scene format=3 uid="uid://ckrhba4t8exg1"]
 
 [ext_resource type="ArrayMesh" uid="uid://bnay6yocy8hei" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/1_Prison/WallMultiLevelBasePrison.obj" id="1_ljal3"]
-[ext_resource type="Texture2D" uid="uid://doriadyi6ch0l" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/TextureTrimSheetWallP.png" id="2_mf1wu"]
+[ext_resource type="Texture2D" uid="uid://coio8xeekyrxq" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Base_color.png" id="2_iqk60"]
+[ext_resource type="Texture2D" uid="uid://djuu0spniu0gp" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Mixed_AO.png" id="3_hs8bx"]
+[ext_resource type="Texture2D" uid="uid://cvdxlc7lgtoc1" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Height.png" id="4_2h21i"]
+[ext_resource type="Texture2D" uid="uid://0m33qxdqhrfp" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Base_metalness.png" id="5_8y6vl"]
+[ext_resource type="Texture2D" uid="uid://502420uyft1k" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Normal_OpenGL.png" id="6_pq13b"]
+[ext_resource type="Texture2D" uid="uid://ccuxlmt0vkg4f" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Specular_roughness.png" id="7_xupv0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0mbt0"]
-albedo_texture = ExtResource("2_mf1wu")
+albedo_texture = ExtResource("2_iqk60")
+metallic = 1.0
+metallic_texture = ExtResource("5_8y6vl")
+roughness_texture = ExtResource("7_xupv0")
+normal_enabled = true
+normal_texture = ExtResource("6_pq13b")
+ao_enabled = true
+ao_texture = ExtResource("3_hs8bx")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("4_2h21i")
 
 [node name="WallMultiLevelBasePrison" type="StaticBody3D" unique_id=2111039454]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

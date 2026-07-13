@@ -1,14 +1,29 @@
 [gd_scene format=3 uid="uid://dsux5aknnciia"]
 
 [ext_resource type="ArrayMesh" uid="uid://bryk8ng6g3btl" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/1_Prison/WallPlainBasePrison.obj" id="1_5wnsq"]
-[ext_resource type="Texture2D" uid="uid://doriadyi6ch0l" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/TextureTrimSheetWallP.png" id="2_eqttd"]
+[ext_resource type="Texture2D" uid="uid://coio8xeekyrxq" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Base_color.png" id="2_uwng0"]
+[ext_resource type="Texture2D" uid="uid://djuu0spniu0gp" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Mixed_AO.png" id="3_n1457"]
+[ext_resource type="Texture2D" uid="uid://cvdxlc7lgtoc1" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Height.png" id="4_cw1dp"]
+[ext_resource type="Texture2D" uid="uid://0m33qxdqhrfp" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Base_metalness.png" id="5_g3arh"]
+[ext_resource type="Texture2D" uid="uid://502420uyft1k" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Normal_OpenGL.png" id="6_kyx5w"]
+[ext_resource type="Texture2D" uid="uid://ccuxlmt0vkg4f" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Specular_roughness.png" id="7_i5r7k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6gsiw"]
-albedo_texture = ExtResource("2_eqttd")
+albedo_texture = ExtResource("2_uwng0")
+metallic = 1.0
+metallic_texture = ExtResource("5_g3arh")
+roughness_texture = ExtResource("7_i5r7k")
+normal_enabled = true
+normal_texture = ExtResource("6_kyx5w")
+ao_enabled = true
+ao_texture = ExtResource("3_n1457")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("4_cw1dp")
 
 [node name="WallPlainBasePrison" type="StaticBody3D" unique_id=1669431150]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
-[node name="WallPlainBasePrison" type="MeshInstance3D" parent="." unique_id=92179435]
+[node name="WallPlainBasePrison_Mesh" type="MeshInstance3D" parent="." unique_id=92179435]
 mesh = ExtResource("1_5wnsq")
 surface_material_override/0 = SubResource("StandardMaterial3D_6gsiw")

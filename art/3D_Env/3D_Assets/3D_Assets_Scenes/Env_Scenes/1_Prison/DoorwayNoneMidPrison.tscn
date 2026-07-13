@@ -1,10 +1,25 @@
 [gd_scene format=3 uid="uid://cf56x5mffkcgr"]
 
 [ext_resource type="ArrayMesh" uid="uid://ba0h1qhvealt7" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/1_Prison/DoorwayNoneMidPrison.obj" id="1_wl088"]
-[ext_resource type="Texture2D" uid="uid://db76j10ognk01" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Floor/TextureTrimSheetFloorP.png" id="2_bhjrn"]
+[ext_resource type="Texture2D" uid="uid://coio8xeekyrxq" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Base_color.png" id="2_36p8w"]
+[ext_resource type="Texture2D" uid="uid://djuu0spniu0gp" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Mixed_AO.png" id="3_b4mq2"]
+[ext_resource type="Texture2D" uid="uid://cvdxlc7lgtoc1" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Height.png" id="4_v63uq"]
+[ext_resource type="Texture2D" uid="uid://0m33qxdqhrfp" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Base_metalness.png" id="5_ynsmp"]
+[ext_resource type="Texture2D" uid="uid://502420uyft1k" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Normal_OpenGL.png" id="6_nuxv7"]
+[ext_resource type="Texture2D" uid="uid://ccuxlmt0vkg4f" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Specular_roughness.png" id="7_fulv1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhjrn"]
-albedo_texture = ExtResource("2_bhjrn")
+albedo_texture = ExtResource("2_36p8w")
+metallic = 1.0
+metallic_texture = ExtResource("5_ynsmp")
+roughness_texture = ExtResource("7_fulv1")
+normal_enabled = true
+normal_texture = ExtResource("6_nuxv7")
+ao_enabled = true
+ao_texture = ExtResource("3_b4mq2")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("4_v63uq")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wl088"]
 data = PackedVector3Array(-0.0999, -0.099999994, 2.4998, -0.0999, 4.1017, 2.4998, 0.0999, -0.099999994, 2.4998, 0.0999, -0.099999994, 2.4998, -0.0999, 4.1017, 2.4998, 0.0999, 4.1017, 2.4998, 0.0999, -0.099999994, 2.4998, 0.0999, 4.1017, 2.4998, 0.0999, -0.099999994, -2.5009, 0.0999, -0.099999994, -2.5009, 0.0999, 4.1017, 2.4998, 0.0999, 4.1017, -2.5009, 0.0999, -0.099999994, -2.5009, 0.0999, 4.1017, -2.5009, -0.0999, -0.099999994, -2.5009, -0.0999, -0.099999994, -2.5009, 0.0999, 4.1017, -2.5009, -0.0999, 4.1017, -2.5009, 0.0999, 4.1017, 2.4998, -0.0999, 4.1017, 2.4998, 0.0999, 4.1017, -2.5009, 0.0999, 4.1017, -2.5009, -0.0999, 4.1017, 2.4998, -0.0999, 4.1017, -2.5009, 0.0999, -0.099999994, -2.5009, -0.0999, -0.099999994, -2.5009, 0.0999, -0.099999994, 2.4998, 0.0999, -0.099999994, 2.4998, -0.0999, -0.099999994, -2.5009, -0.0999, -0.099999994, 2.4998, -0.0999, -0.099999994, -2.5009, -0.0999, 4.1017, -2.5009, -0.0999, -0.099999994, 2.4998, -0.0999, -0.099999994, 2.4998, -0.0999, 4.1017, -2.5009, -0.0999, 4.1017, 2.4998)
