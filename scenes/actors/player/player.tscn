@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://dhuat37cviek4" path="res://art/2d_assets/real_world/player_rosington/Ros_GunArm_SPR.png" id="16_shibf"]
 [ext_resource type="PackedScene" uid="uid://cmq1v8ob4m0w4" path="res://scenes/components/camera_component/camera_component.tscn" id="18_ffoq6"]
 [ext_resource type="Script" uid="uid://y2ix2xo5owxw" path="res://resources/damage_heal_instance/damage_heal_instance.gd" id="19_llrf1"]
+[ext_resource type="Script" uid="uid://d0ul6wkyanmte" path="res://scenes/actors/player/player_grappling.gd" id="25_t1vny"]
 [ext_resource type="PackedScene" uid="uid://l0pt5mcxodxm" path="res://scenes/components/grappling_hook/grapple_component.tscn" id="26_e5w6i"]
 [ext_resource type="Texture2D" uid="uid://bx0fammwess53" path="res://art/UI/placeholder/sprite_sheet.png" id="26_ffoq6"]
 [ext_resource type="Script" uid="uid://cei5rp5pteo06" path="res://scenes/actors/player/gigi_bubble.gd" id="27_cat03"]
@@ -1627,6 +1628,11 @@ metadata/_custom_type_script = "uid://dropwvjh2s43u"
 script = ExtResource("15_068wj")
 metadata/_custom_type_script = "uid://dropwvjh2s43u"
 
+[node name="PlayerGrappling" type="Node" parent="MovementStateMachine" unique_id=336599975 node_paths=PackedStringArray("grapple_component")]
+script = ExtResource("25_t1vny")
+grapple_component = NodePath("../../GunComponent/GrappleComponent")
+metadata/_custom_type_script = "uid://dropwvjh2s43u"
+
 [node name="GunComponent" parent="." unique_id=52176648 node_paths=PackedStringArray("team_component", "input_component") instance=ExtResource("16_qdyt2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2033757, 0.5754532, 0)
 team_component = NodePath("../TeamComponent")
@@ -1641,7 +1647,8 @@ spam_max_spread = 12.0
 spam_aim_multiplier = 0.3
 perfect_damage_multiplier = 2.0
 
-[node name="GrappleComponent" parent="GunComponent" unique_id=875314025 instance=ExtResource("26_e5w6i")]
+[node name="GrappleComponent" parent="GunComponent" unique_id=875314025 node_paths=PackedStringArray("actor") instance=ExtResource("26_e5w6i")]
+actor = NodePath("../..")
 
 [node name="SoftCollider" type="Area3D" parent="." unique_id=892099693]
 collision_layer = 256

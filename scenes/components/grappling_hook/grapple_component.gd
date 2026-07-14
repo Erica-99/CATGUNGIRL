@@ -1,11 +1,15 @@
 extends Node3D
+class_name GrappleComponent
+
+signal start_grapple
+signal early_release_grapple
+signal grapple_released
 
 @export var grapple_raycast: RayCast3D
 @export var grapple_hook_scene: PackedScene
 @export var actor: CharacterBody3D
 
 @export_group("Grapple Attributes")
-@export var fire_speed: float = 10
 @export var total_fire_time: float = 1
 @export var firing_curve: Curve
 @export var reel_delay: float = 0.5
@@ -25,7 +29,6 @@ func _ready() -> void:
 		"fired_position": position,
 		"target_position": position,
 		"grapple_raycast": grapple_raycast,
-		"fire_speed": fire_speed,
 		"total_fire_time": total_fire_time,
 		"firing_curve": firing_curve,
 		"reel_delay": reel_delay,
