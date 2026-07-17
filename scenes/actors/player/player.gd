@@ -42,7 +42,8 @@ var blackboard: Dictionary
 @onready var gun_component = $GunComponent  
 @onready var health_component = $HealthComponent
 
-
+# Temporary way to access the equipped ability. Should ideally be accessed as some attribute of the gun component.
+@export var equipped_ability: Enums.Ability = Enums.Ability.GRAPPLE
 
 ## This is to know what scene to reload when the player dies
 var currentScene
@@ -55,7 +56,8 @@ func _ready() -> void:
 	"mantle_detector": mantle_detector,
 	"feet_point": feet_point,
 	"current_mantle_target": Vector3(),
-	"jump_timer": jump_timer
+	"jump_timer": jump_timer,
+	"equipped_ability": equipped_ability
 	}
 	
 	movement_state_machine.init(blackboard)

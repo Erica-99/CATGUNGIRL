@@ -10,6 +10,7 @@ var _mouse_world_pos
 var _charge_fire_held := false
 var _interacting := false
 var _superjump_held:= false
+var _ability_held := false
 
 var _input_locked := false
 var _jump_locked := false
@@ -57,6 +58,7 @@ func get_input_state() -> Dictionary:
 		"charge_fire_held": _charge_fire_held,
 		"interacting": _interacting,
 		"superjump_held": _superjump_held,
+		"ability_held": _ability_held
 	}
 	return input_state
 
@@ -112,6 +114,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		_crouching = true
 		crouching.emit()
 	
+	if event.is_action_pressed("use_ability"):
+		_ability_held = true
+	
 	# -- Actions released --
 	
 	if event.is_action_released("fire"):
@@ -132,3 +137,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_released("interact"):
 		_interacting = false
+	
+	if event.is_action_released("use_ability"):
+		_ability_held = false

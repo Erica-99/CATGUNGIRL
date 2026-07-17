@@ -1,5 +1,7 @@
 extends State
-class_name PlayerGrappling
+class_name PlayerAbility
+
+signal end_ability
 
 var actor: CharacterBody3D
 var input_component: InputComponent
@@ -10,8 +12,13 @@ func init(blackboard_dict : Dictionary) -> void:
 	super(blackboard_dict)
 	actor = blackboard["actor"]
 	input_component = blackboard["input_component"]
+	
+	end_ability.connect(_end_ability)
 
 func enter() -> void:
+	var current_ability: Ability = blackboard["equipped_ability"]
+	current_ability.initialise(self, blackboard)
+	
 	pass
 
 func exit() -> void:
@@ -27,3 +34,7 @@ func update(_delta: float) -> void:
 
 func physics_update(_delta: float) -> void:
 	actor.move_and_slide()
+
+
+func _end_ability() -> void:
+	transitioned.emit(self, "PlayerIdle")

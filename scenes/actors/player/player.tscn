@@ -1628,7 +1628,7 @@ metadata/_custom_type_script = "uid://dropwvjh2s43u"
 script = ExtResource("15_068wj")
 metadata/_custom_type_script = "uid://dropwvjh2s43u"
 
-[node name="PlayerGrappling" type="Node" parent="MovementStateMachine" unique_id=336599975 node_paths=PackedStringArray("grapple_component")]
+[node name="PlayerAbility" type="Node" parent="MovementStateMachine" unique_id=336599975 node_paths=PackedStringArray("grapple_component")]
 script = ExtResource("25_t1vny")
 grapple_component = NodePath("../../GunComponent/GrappleComponent")
 metadata/_custom_type_script = "uid://dropwvjh2s43u"
@@ -1647,8 +1647,7 @@ spam_max_spread = 12.0
 spam_aim_multiplier = 0.3
 perfect_damage_multiplier = 2.0
 
-[node name="GrappleComponent" parent="GunComponent" unique_id=875314025 node_paths=PackedStringArray("actor") instance=ExtResource("26_e5w6i")]
-actor = NodePath("../..")
+[node name="GrappleComponent" parent="GunComponent" unique_id=875314025 instance=ExtResource("26_e5w6i")]
 
 [node name="SoftCollider" type="Area3D" parent="." unique_id=892099693]
 collision_layer = 256
