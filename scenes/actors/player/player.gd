@@ -75,7 +75,6 @@ func _ready() -> void:
 	"feet_point": feet_point,
 	"current_mantle_target": Vector3(),
 	"jump_timer": jump_timer,
-	"wall_jump_dir": 0.0
 	"dash_timer": dash_timer,
 	"wall_jump_dir": 0.0,
 	"dash_dir": 0.0,
