@@ -23,7 +23,16 @@ func exit() -> void:
 	blackboard["jump_timer"].start()
 
 func update(_delta: float) -> void:
-	if actor.is_on_floor():
+	var input_state = input_component.get_input_state()
+	if input_state["dashing"] and blackboard["dash_timer"].is_stopped() and blackboard["can_air_dash"]:
+		var input_dir: float = input_state["movement"]
+		if input_dir != 0.0:
+			blackboard["dash_dir"] = sign(input_dir)
+		else:
+			blackboard["dash_dir"] = actor.facing
+		transitioned.emit(self, "playerdash")
+		
+	elif actor.is_on_floor():
 		if actor.velocity.x == 0:
 			transitioned.emit(self, "playeridle")
 		else:

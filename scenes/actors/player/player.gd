@@ -27,6 +27,29 @@ signal player_dead()
 @export var air_acceleration: float = 35.0
 @export var charge_speed_multiplier: float = 0.35
 
+<<<<<<< Updated upstream
+=======
+@export_category("Dash Variables")
+## Distance player travels during dash
+@export var dash_distance: float = 8.0
+## Duration of dash
+@export var dash_duration: float = 0.15
+
+@export_category("Wall Movement Variables")
+##Maximum speed the player falls while sliding down a wall
+@export var wall_slide_fall_speed: float = 6.0
+##Sideways push into wall to help player stay attached
+@export var wall_slide_stick_velocity: float = 2.0
+##Horizontal force applied when the player jumps away from the wall
+@export var wall_jump_horizontal_velocity: float = 20.0
+##Vertical force applied when the player jumps away for the wall
+@export var wall_jump_vertical_velocity: float = 10.0
+##Time where air control is lockek, so the player cannot instantly move back to the wall
+@export var wall_jump_control_lock_time: float = 0.15
+##Maximum angle that a surface can be from a straight wall to allow sliding
+@export var wall_slide_max_angle: float = 20.0
+
+>>>>>>> Stashed changes
 var facing: float
 var speed_multiplier: float = 1.0
 # gun enabled by default
@@ -37,6 +60,7 @@ var speed_multiplier: float = 1.0
 @export var mantle_detector: Node3D
 @export var feet_point: Marker3D
 @export var jump_timer: Timer
+@export var dash_timer: Timer
 
 var blackboard: Dictionary
 @onready var health_component = $HealthComponent
@@ -53,7 +77,15 @@ func _ready() -> void:
 	"mantle_detector": mantle_detector,
 	"feet_point": feet_point,
 	"current_mantle_target": Vector3(),
+<<<<<<< Updated upstream
 	"jump_timer": jump_timer
+=======
+	"jump_timer": jump_timer,
+	"dash_timer": dash_timer,
+	"wall_jump_dir": 0.0,
+	"dash_dir": 0.0,
+	"can_air_dash": true
+>>>>>>> Stashed changes
 	}
 	
 	movement_state_machine.init(blackboard)
