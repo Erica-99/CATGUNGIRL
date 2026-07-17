@@ -32,7 +32,11 @@ func exit() -> void:
 		blackboard["mantle_detector"].set_checking_enabled(false)
 
 func update(_delta: float) -> void:
-	if actor.is_on_floor():
+	var current_input_state = input_component.get_input_state()
+	
+	if current_input_state["ability_held"] and blackboard["equipped_ability"]:
+		transitioned.emit(self, "playerability")
+	elif actor.is_on_floor():
 		if actor.velocity.x == 0:
 			transitioned.emit(self, "playeridle")
 		else:
