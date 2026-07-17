@@ -75,6 +75,7 @@ func _ready() -> void:
 	"feet_point": feet_point,
 	"current_mantle_target": Vector3(),
 	"jump_timer": jump_timer,
+	"wall_jump_dir": 0.0
 	"dash_timer": dash_timer,
 	"wall_jump_dir": 0.0,
 	"dash_dir": 0.0,
@@ -94,10 +95,7 @@ func _process(_delta: float) -> void:
 	var current_state = input_component.get_input_state()
 	
 	if current_state["movement"] != 0:
-		var new_direction = sign(current_state["movement"])
-		if new_direction != facing:
-			facing = new_direction
-			facing_changed.emit(facing)
+		set_facing(sign(current_state["movement"]))
 	
 	# Debug damage input
 	if Input.is_action_just_pressed("debug_damage"):
@@ -167,3 +165,31 @@ func _set_gun_enabled(enabled: bool) -> void:
 	gun_holder.current_gun.process_mode = Node.PROCESS_MODE_INHERIT if enabled else Node.PROCESS_MODE_DISABLED
 	gun_holder.current_gun.visible = enabled
 	gun_arm_node.visible = enabled
+	
+func set_facing(new_facing: float) -> void:
+	if new_facing == 0.0:
+		return
+
+	if new_facing != facing:
+		facing = new_facing
+		facing_changed.emit(facing)
+		
+func get_wall_jump_dir(input_dir: float) -> float:
+	if input_dir == 0.0:
+		return 0.0
+
+	for i in range(get_slide_collision_count()):
+		var collision = get_slide_collision(i)
+		var normal = collision.get_normal()
+
+		if normal.x == 0.0:
+			continue
+		#check if surface is too steep
+		var is_too_steep := normal.angle_to(up_direction) > floor_max_angle
+		#check if surface is a valide wall
+		var side_normal := Vector3(sign(normal.x), 0.0, 0.0)
+		var is_valid_wall_angle := normal.angle_to(side_normal) <= deg_to_rad(wall_slide_max_angle)
+		#return the direction away from that wall if pushing into valid wall
+		if is_too_steep and is_valid_wall_angle and sign(input_dir) == -sign(normal.x):
+			return sign(normal.x)
+	return 0.0

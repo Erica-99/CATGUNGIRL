@@ -55,7 +55,7 @@ func physics_update(_delta: float) -> void:
 	var speed = actor.speed * actor.speed_multiplier
 	var accel = actor.acceleration
 	
-	if direction and direction == direction_last_frame:
+	if direction: #and direction == direction_last_frame:
 		actor.velocity.x = clampf(actor.velocity.x + direction.x * accel * _delta, -speed, speed)
 	else:
 		actor.velocity.x = move_toward(actor.velocity.x, 0, speed)

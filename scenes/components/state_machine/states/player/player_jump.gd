@@ -69,6 +69,13 @@ func physics_update(_delta: float) -> void:
 	
 	actor.move_and_slide()
 	
+	var wall_jump_dir: float = actor.get_wall_jump_dir(input_dir)
+
+	if wall_jump_dir != 0.0:
+		blackboard["wall_jump_dir"] = wall_jump_dir
+		transitioned.emit(self, "playerwallslide")
+		return
+	
 	# Only allow mantle if player is pressing forward and can mantle.
 	if input_state["movement"] != 0 and blackboard["mantle_detector"].can_mantle:
 		blackboard["current_mantle_target"] = blackboard["mantle_detector"].get_target_mantle_point()
