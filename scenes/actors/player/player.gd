@@ -27,6 +27,12 @@ signal player_dead()
 @export var air_acceleration: float = 35.0
 @export var charge_speed_multiplier: float = 0.35
 
+@export_category("Dash Variables")
+## Distance player travels during dash
+@export var dash_distance: float = 8.0
+## Duration of dash
+@export var dash_duration: float = 0.15
+
 @export_category("Wall Movement Variables")
 ##Maximum speed the player falls while sliding down a wall
 @export var wall_slide_fall_speed: float = 6.0
@@ -51,6 +57,7 @@ var speed_multiplier: float = 1.0
 @export var mantle_detector: Node3D
 @export var feet_point: Marker3D
 @export var jump_timer: Timer
+@export var dash_timer: Timer
 
 var blackboard: Dictionary
 @onready var health_component = $HealthComponent
@@ -69,6 +76,10 @@ func _ready() -> void:
 	"current_mantle_target": Vector3(),
 	"jump_timer": jump_timer,
 	"wall_jump_dir": 0.0
+	"dash_timer": dash_timer,
+	"wall_jump_dir": 0.0,
+	"dash_dir": 0.0,
+	"can_air_dash": true
 	}
 	
 	movement_state_machine.init(blackboard)
