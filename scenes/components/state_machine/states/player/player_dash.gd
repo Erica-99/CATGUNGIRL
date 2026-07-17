@@ -24,8 +24,11 @@ func enter() -> void:
 	var duration: float = max(actor.dash_duration, 0.01)
 	dash_speed = actor.dash_distance / duration
 	
-	#override horizontal momentum but keep vertical momentum (can be changed if needed)
+	#override horizontal momentum (edit later)
 	actor.velocity.x = dash_dir * dash_speed
+	if actor.dash_kill_movement:
+		actor.velocity.y = 0.0
+		
 	dash_timer.start()
 	
 	if not actor.is_on_floor():
@@ -39,8 +42,10 @@ func update(_delta: float) -> void:
 
 func physics_update(_delta: float) -> void:
 	dash_time_left -= _delta
-	
-	if not actor.is_on_floor():
+	#(also edit later)
+	if actor.dash_kill_movement:
+		actor.velocity.y = 0.0
+	elif not actor.is_on_floor():
 		actor.velocity += actor.get_gravity() * _delta
 
 	actor.velocity.x = dash_dir * dash_speed

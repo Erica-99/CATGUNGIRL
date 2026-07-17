@@ -32,6 +32,8 @@ signal player_dead()
 @export var dash_distance: float = 8.0
 ## Duration of dash
 @export var dash_duration: float = 0.15
+## If true, dash kills vertical movement
+@export var dash_kill_movement: bool = true
 
 @export_category("Wall Movement Variables")
 ##Maximum speed the player falls while sliding down a wall
