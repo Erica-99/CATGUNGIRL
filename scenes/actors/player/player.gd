@@ -27,8 +27,6 @@ signal player_dead()
 @export var air_acceleration: float = 35.0
 @export var charge_speed_multiplier: float = 0.35
 
-<<<<<<< Updated upstream
-=======
 @export_category("Dash Variables")
 ## Distance player travels during dash
 @export var dash_distance: float = 8.0
@@ -49,7 +47,6 @@ signal player_dead()
 ##Maximum angle that a surface can be from a straight wall to allow sliding
 @export var wall_slide_max_angle: float = 20.0
 
->>>>>>> Stashed changes
 var facing: float
 var speed_multiplier: float = 1.0
 # gun enabled by default
@@ -77,15 +74,11 @@ func _ready() -> void:
 	"mantle_detector": mantle_detector,
 	"feet_point": feet_point,
 	"current_mantle_target": Vector3(),
-<<<<<<< Updated upstream
-	"jump_timer": jump_timer
-=======
 	"jump_timer": jump_timer,
 	"dash_timer": dash_timer,
 	"wall_jump_dir": 0.0,
 	"dash_dir": 0.0,
 	"can_air_dash": true
->>>>>>> Stashed changes
 	}
 	
 	movement_state_machine.init(blackboard)
