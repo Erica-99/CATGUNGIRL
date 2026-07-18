@@ -1469,7 +1469,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Player" type="CharacterBody3D" unique_id=1349193765 node_paths=PackedStringArray("movement_state_machine", "gun_arm_node", "input_component", "mantle_detector", "feet_point", "jump_timer") groups=["player"]]
+[node name="Player" type="CharacterBody3D" unique_id=1349193765 node_paths=PackedStringArray("movement_state_machine", "gun_arm_node", "input_component", "mantle_detector", "feet_point", "jump_timer", "equipped_ability") groups=["player"]]
 collision_layer = 2
 axis_lock_linear_z = true
 platform_floor_layers = 1
@@ -1480,6 +1480,7 @@ input_component = NodePath("PlayerInput")
 mantle_detector = NodePath("MantleDetector")
 feet_point = NodePath("FeetPoint")
 jump_timer = NodePath("JumpDelay")
+equipped_ability = NodePath("GunComponent/GrappleComponent")
 
 [node name="PlayerVisuals" type="Node3D" parent="." unique_id=229281811]
 script = ExtResource("2_0w3ce")

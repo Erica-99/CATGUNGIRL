@@ -43,7 +43,7 @@ var blackboard: Dictionary
 @onready var health_component = $HealthComponent
 
 # Temporary way to access the equipped ability. Should ideally be accessed as some attribute of the gun component.
-@export var equipped_ability: Enums.Ability = Enums.Ability.GRAPPLE
+@export var equipped_ability: Ability
 
 ## This is to know what scene to reload when the player dies
 var currentScene
