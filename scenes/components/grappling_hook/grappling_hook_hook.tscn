@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://crng4f3f2avnf" path="res://icon.svg" id="1_msdca"]
 [ext_resource type="Script" uid="uid://b6247shbr3kkr" path="res://scenes/components/grappling_hook/grappling_hook_hook.gd" id="1_rpau1"]
+[ext_resource type="PackedScene" uid="uid://bkwgnwc4h86gr" path="res://scenes/components/grappling_hook/rope.tscn" id="3_sadby"]
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_sadby"]
 
@@ -12,5 +13,5 @@ script = ExtResource("1_rpau1")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 texture = ExtResource("1_msdca")
 
-[node name="Rope" type="MeshInstance3D" parent="." unique_id=320473357]
+[node name="Rope" parent="." unique_id=1877789551 instance=ExtResource("3_sadby")]
 mesh = SubResource("ImmediateMesh_sadby")

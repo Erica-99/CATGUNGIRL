@@ -3,6 +3,7 @@ class_name GrappleComponent
 
 @export var grapple_raycast: RayCast3D
 @export var grapple_hook_scene: PackedScene
+@export var rope_attach_point: Marker3D
 var actor: CharacterBody3D
 
 @export_group("Grapple Attributes")
@@ -32,7 +33,8 @@ func initialise(ability_state: State, actor_blackboard: Dictionary) -> void:
 		"total_fire_time": total_fire_time,
 		"firing_curve": firing_curve,
 		"reel_delay": reel_delay,
-		"reel_force": reel_force
+		"reel_force": reel_force,
+		"rope_attach_point": rope_attach_point
 	}
 	
 	state_machine = $StateMachine

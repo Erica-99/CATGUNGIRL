@@ -42,6 +42,7 @@ func _setup_grapple() -> void:
 	blackboard["fired_position"] = blackboard["grapplegun_object"].global_position
 	
 	var grapple_scene_instance = blackboard["grapple_hook_scene"].instantiate()
+	grapple_scene_instance.gun_anchor_object = blackboard["rope_attach_point"]
 	grapple_scene_instance.position = blackboard["fired_position"]
 	grapple_scene_instance.rotation = blackboard["grapplegun_object"].rotation
 	

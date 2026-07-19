@@ -23,15 +23,17 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="GrappleComponent" type="Node3D" unique_id=875314025 node_paths=PackedStringArray("grapple_raycast")]
+[node name="GrappleComponent" type="Node3D" unique_id=875314025 node_paths=PackedStringArray("grapple_raycast", "rope_attach_point")]
 script = ExtResource("1_ly5qd")
 grapple_raycast = NodePath("GrappleRaycast")
 grapple_hook_scene = ExtResource("2_4u4vp")
+rope_attach_point = NodePath("RopeAttachPoint")
 total_fire_time = 0.5
 firing_curve = SubResource("Curve_4u4vp")
 
 [node name="GrapplingHookSprite" type="AnimatedSprite3D" parent="." unique_id=2098842336]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+visible = false
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_8ovlh")
 
@@ -53,3 +55,6 @@ metadata/_custom_type_script = "uid://dropwvjh2s43u"
 [node name="GrappleReeling" type="Node" parent="StateMachine" unique_id=1368261832]
 script = ExtResource("7_8ovlh")
 metadata/_custom_type_script = "uid://dropwvjh2s43u"
+
+[node name="RopeAttachPoint" type="Marker3D" parent="." unique_id=104818773]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4800187, 0.21806848, 0)
