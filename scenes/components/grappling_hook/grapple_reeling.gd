@@ -6,6 +6,8 @@ var reeling := false
 var actor: CharacterBody3D
 var hook: Node3D
 
+var initial_dist: float
+
 func init(blackboard_dict : Dictionary) -> void:
 	super(blackboard_dict)
 	
@@ -29,9 +31,9 @@ func physics_update(_delta: float) -> void:
 	
 	var pull_direction = (hook.global_position - blackboard["rope_attach_point"].global_position).normalized()
 	
-	var pull_force = blackboard["reel_force"]
+	var pull_force = blackboard["reel_force"] * sqrt(initial_dist)
 	
-	actor.velocity += pull_direction * pull_force
+	actor.velocity = pull_direction * pull_force
 	
 	var input_state = blackboard["actor_blackboard"]["input_component"].get_input_state()
 	if input_state["jumping"]:
@@ -44,6 +46,8 @@ func physics_update(_delta: float) -> void:
 
 func _enable_reeling_after_delay(delay: float) -> void:
 	await get_tree().create_timer(delay).timeout
+	initial_dist = (hook.global_position - blackboard["rope_attach_point"].global_position).length()
+	actor.velocity = Vector3.ZERO
 	reeling = true
 	
 	
