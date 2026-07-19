@@ -22,6 +22,7 @@ const HITBOX_SCENE = preload("res://scenes/components/hitbox_component/hitbox_co
 @export var bullet_damage: float = 10.0
 @export var bullet_knockback: float = 5.0	# knockback force (can remove)
 @export var bullet_scale: float = 1.0
+@export var bullet_velocity_multiplier: float = 1.0 # higher = faster
 @export var recoil_amount: float = 0.35		# higher = more
 @export var recoil_recovery: float = 5.0 	# higher = faster
 @export var wobble_amount: float = 0.1		# higher = more
@@ -246,6 +247,7 @@ func _spawn_bullet(damage: float, size: float) -> void:
 	damage_instance.source = get_path()
 	
 	bullet.initialize(aim_dir, damage_instance, team_component, size)
+	bullet.speed *= bullet_velocity_multiplier
 	var hb = bullet.get_node("HitboxComponent") 
 	hb.hurtbox_hit.connect(func(hurtbox): enemy_hit.emit(hurtbox))
 
