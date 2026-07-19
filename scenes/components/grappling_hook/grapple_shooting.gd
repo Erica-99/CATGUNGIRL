@@ -34,12 +34,16 @@ func physics_update(_delta: float) -> void:
 	if not do_fire_loop:
 		return
 	
-	if time_elapsed >= blackboard["total_fire_time"]:
-		transitioned.emit(self, "GrappleReeling")
-	
 	var hook_object: Node3D = blackboard["current_grapple_hook"]
 	var start_pos: Vector3 = blackboard["fired_position"]
 	var end_pos: Vector3 = blackboard["target_position"]
+	
+	if hook_object.collided:
+		transitioned.emit(self, "GrappleReeling")
+		return
+	elif time_elapsed >= 3:
+		cancelled = true
+		return
 	
 	var move_unit_vector = (end_pos - start_pos).normalized()
 	move_unit_vector = move_unit_vector * (_delta / blackboard["total_fire_time"]) * current_firing_curve.sample(time_elapsed / blackboard["total_fire_time"])

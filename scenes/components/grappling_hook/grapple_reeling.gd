@@ -17,6 +17,7 @@ func enter() -> void:
 	var delay = blackboard["reel_delay"]
 	reeling = false
 	hook = blackboard["current_grapple_hook"]
+	hook.can_latch = false
 	_enable_reeling_after_delay(delay)
 	
 func exit() -> void:
