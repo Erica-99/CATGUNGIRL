@@ -114,7 +114,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		_crouching = true
 		crouching.emit()
 	
-	if event.is_action_pressed("use_ability"):
+	if event.is_action_pressed("use_ability") and get_parent().has_gun:
 		_ability_held = true
 	
 	# -- Actions released --

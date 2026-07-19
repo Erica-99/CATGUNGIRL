@@ -25,12 +25,7 @@ func exit() -> void:
 	pass
 
 func update(_delta: float) -> void:
-	var current_input_state = input_component.get_input_state()
-	
-	if current_input_state["jumping"]:
-		grapple_component.early_release_grapple.emit()
-		transitioned.emit(self, "playerjump")
-	
+	pass
 
 func physics_update(_delta: float) -> void:
 	actor.move_and_slide()

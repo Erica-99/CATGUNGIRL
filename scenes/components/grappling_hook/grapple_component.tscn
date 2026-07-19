@@ -23,13 +23,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="GrappleComponent" type="Node3D" unique_id=875314025 node_paths=PackedStringArray("grapple_raycast", "rope_attach_point")]
+[node name="GrappleComponent" type="Node3D" unique_id=875314025 node_paths=PackedStringArray("grapple_raycast", "retract_state")]
 script = ExtResource("1_ly5qd")
 grapple_raycast = NodePath("GrappleRaycast")
 grapple_hook_scene = ExtResource("2_4u4vp")
-rope_attach_point = NodePath("")
+retract_state = NodePath("StateMachine/GrappleRetracted")
 total_fire_time = 0.3
 firing_curve = SubResource("Curve_4u4vp")
+reel_delay = 0.2
+reel_force = 2.0
 
 [node name="GrapplingHookSprite" type="AnimatedSprite3D" parent="." unique_id=2098842336]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
@@ -50,6 +52,7 @@ metadata/_custom_type_script = "uid://dropwvjh2s43u"
 
 [node name="GrappleShooting" type="Node" parent="StateMachine" unique_id=1834458622]
 script = ExtResource("4_rpvph")
+gravity_multiplier = 1.4
 metadata/_custom_type_script = "uid://dropwvjh2s43u"
 
 [node name="GrappleReeling" type="Node" parent="StateMachine" unique_id=1368261832]

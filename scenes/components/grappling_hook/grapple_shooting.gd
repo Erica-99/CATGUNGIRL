@@ -1,6 +1,8 @@
 extends State
 class_name GrappleShooting
 
+@export var gravity_multiplier: float = 1.0
+
 var current_firing_curve: Curve
 var do_fire_loop: bool = false
 var time_elapsed: float = 0
@@ -16,6 +18,11 @@ func update(_delta: float) -> void:
 	pass
 
 func physics_update(_delta: float) -> void:
+	var actor = blackboard["actor"]
+	#Gravity
+	if not actor.is_on_floor():
+		actor.velocity += actor.get_gravity() * _delta * gravity_multiplier
+	
 	if not do_fire_loop:
 		return
 	
