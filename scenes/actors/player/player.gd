@@ -65,6 +65,10 @@ var blackboard: Dictionary
 @onready var health_component = $HealthComponent
 
 @onready var gun_holder: Node3D = $GunHolder
+
+# Temporary way to access the equipped ability. Should ideally be accessed as some attribute of the gun component.
+@export var equipped_ability: Ability
+
 ## This is to know what scene to reload when the player dies
 var currentScene
 
@@ -80,7 +84,9 @@ func _ready() -> void:
 	"dash_timer": dash_timer,
 	"wall_jump_dir": 0.0,
 	"dash_dir": 0.0,
-	"can_air_dash": true
+	"can_air_dash": true,
+	"equipped_ability": equipped_ability,
+	"gun_component": gun_component
 	}
 	
 	movement_state_machine.init(blackboard)
