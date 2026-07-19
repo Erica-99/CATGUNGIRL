@@ -49,7 +49,8 @@ func initialise(ability_state: State, actor_blackboard: Dictionary) -> void:
 	retract_state.primed = true
 
 func on_cancel_hook() -> void:
-	blackboard["current_grapple_hook"].queue_free()
-	blackboard["current_grapple_hook"] = null
+	if blackboard["current_grapple_hook"] != null:
+		blackboard["current_grapple_hook"].queue_free()
+		blackboard["current_grapple_hook"] = null
 	
 	_ability_state.end_ability.emit()

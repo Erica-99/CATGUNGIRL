@@ -7,14 +7,22 @@ var current_firing_curve: Curve
 var do_fire_loop: bool = false
 var time_elapsed: float = 0
 
+var cancelled = false
+
 func enter() -> void:
 	_setup_grapple()
 	time_elapsed = 0
 
 func exit() -> void:
 	do_fire_loop = false
+	if cancelled:
+		cancelled = false
+		blackboard["grapplegun_object"].cancel_hook.emit()
 
 func update(_delta: float) -> void:
+	if cancelled:
+		transitioned.emit(self, "grappleretracted")
+	
 	pass
 
 func physics_update(_delta: float) -> void:
@@ -41,8 +49,7 @@ func physics_update(_delta: float) -> void:
 
 func _setup_grapple() -> void:
 	if not blackboard["grapple_raycast"].is_colliding():
-		print("Failed launch")
-		transitioned.emit(self, "GrappleRetracted")
+		cancelled = true
 		return
 	
 	blackboard["target_position"] = _get_grapple_point()

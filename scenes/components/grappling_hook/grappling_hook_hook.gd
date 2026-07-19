@@ -15,5 +15,8 @@ func _process(delta: float) -> void:
 	rope.set_points(hook_anchor, gun_anchor)
 
 func _physics_process(delta: float) -> void:
-	hook_anchor = Vector3.ZERO
-	gun_anchor = gun_anchor_object.global_position - global_position
+	if gun_anchor_object == null:
+		queue_free()
+	else:
+		hook_anchor = Vector3.ZERO
+		gun_anchor = gun_anchor_object.global_position - global_position

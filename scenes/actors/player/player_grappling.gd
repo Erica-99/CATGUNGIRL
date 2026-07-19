@@ -19,7 +19,8 @@ func enter() -> void:
 	var current_ability: Ability = blackboard["equipped_ability"]
 	current_ability.initialise(self, blackboard)
 	
-	pass
+	# I know this is awful I just can't come up with any better way of making it a one-shot input.
+	input_component._ability_held = false
 
 func exit() -> void:
 	pass

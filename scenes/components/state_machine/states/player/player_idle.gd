@@ -20,10 +20,10 @@ func update(_delta: float) -> void:
 	
 	if current_input_state["ability_held"] and blackboard["equipped_ability"]:
 		transitioned.emit(self, "playerability")
-	if current_input_state["jumping"] and blackboard.get("jump_timer").is_stopped():
-		transitioned.emit(self, "playerjump")
 	elif not actor.is_on_floor():
 		transitioned.emit(self, "playerfall")
+	elif current_input_state["jumping"] and blackboard.get("jump_timer").is_stopped():
+		transitioned.emit(self, "playerjump")
 	elif current_input_state["crouching"]:
 		transitioned.emit(self, "playercrouch")
 	elif current_input_state["movement"]:
