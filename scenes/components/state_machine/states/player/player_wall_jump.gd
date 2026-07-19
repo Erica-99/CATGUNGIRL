@@ -24,11 +24,14 @@ func exit() -> void:
 	pass
 	
 func update(_delta: float) -> void:
+	var input_state = input_component.get_input_state()
 	if actor.is_on_floor():
 		if actor.velocity.x == 0:
 			transitioned.emit(self, "playeridle")
 		else:
-			transitioned.emit(self, "playermove")	
+			transitioned.emit(self, "playermove")
+	elif input_state["ability_held"] and blackboard["gun_holder"].current_gun.ability:
+		transitioned.emit(self, "playerability")
 	elif actor.velocity.y < 0:
 		transitioned.emit(self, "playerfall")
 		
