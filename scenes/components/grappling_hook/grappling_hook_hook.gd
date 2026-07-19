@@ -18,14 +18,15 @@ func _process(delta: float) -> void:
 	if latched_body:
 			global_position = latched_body.global_position
 	
-	rope.set_points(hook_anchor, gun_anchor)
-
-func _physics_process(delta: float) -> void:
 	if gun_anchor_object == null:
 		queue_free()
-	else:		
-		hook_anchor = Vector3.ZERO
+	else:
 		gun_anchor = gun_anchor_object.global_position - global_position
+	
+	rope.set_points(Vector3.ZERO, gun_anchor)
+
+func _physics_process(delta: float) -> void:
+	pass
 
 
 func _on_early_collision_body_entered(body: Node3D) -> void:

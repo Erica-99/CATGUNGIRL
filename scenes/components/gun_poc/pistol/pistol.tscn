@@ -5,7 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://l0pt5mcxodxm" path="res://scenes/components/grappling_hook/grapple_component.tscn" id="3_3fqn3"]
 
 [node name="Pistol" unique_id=2005532977 node_paths=PackedStringArray("ability") instance=ExtResource("1_6606j")]
+visible = true
 script = ExtResource("2_qjgw1")
 ability = NodePath("GrappleComponent")
+
+[node name="Muzzle" parent="." index="0" unique_id=1339096906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.591, 0, 0)
 
 [node name="GrappleComponent" parent="." index="2" unique_id=875314025 instance=ExtResource("3_3fqn3")]
