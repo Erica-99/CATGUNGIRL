@@ -25,8 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://cmq1v8ob4m0w4" path="res://scenes/components/camera_component/camera_component.tscn" id="18_ffoq6"]
 [ext_resource type="Script" uid="uid://y2ix2xo5owxw" path="res://resources/damage_heal_instance/damage_heal_instance.gd" id="19_llrf1"]
 [ext_resource type="Script" uid="uid://cap87hwk6oo37" path="res://scenes/components/state_machine/states/player/player_wall_slide.gd" id="25_e5w6i"]
-[ext_resource type="Script" uid="uid://d0ul6wkyanmte" path="res://scenes/actors/player/player_grappling.gd" id="25_t1vny"]
-[ext_resource type="PackedScene" uid="uid://l0pt5mcxodxm" path="res://scenes/components/grappling_hook/grapple_component.tscn" id="26_e5w6i"]
+[ext_resource type="Script" uid="uid://d0ul6wkyanmte" path="res://scenes/actors/player/player_ability.gd" id="25_t1vny"]
 [ext_resource type="Texture2D" uid="uid://bx0fammwess53" path="res://art/UI/placeholder/sprite_sheet.png" id="26_ffoq6"]
 [ext_resource type="Script" uid="uid://dpg6elo6whk1n" path="res://scenes/components/state_machine/states/player/player_wall_jump.gd" id="26_t1vny"]
 [ext_resource type="Script" uid="uid://canhkrs1snvht" path="res://scenes/components/state_machine/states/player/player_dash.gd" id="27_0e3lr"]
@@ -1472,7 +1471,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Player" type="CharacterBody3D" unique_id=1349193765 node_paths=PackedStringArray("movement_state_machine", "gun_arm_node", "input_component", "mantle_detector", "feet_point", "jump_timer", "equipped_ability") groups=["player"]]
+[node name="Player" type="CharacterBody3D" unique_id=1349193765 node_paths=PackedStringArray("movement_state_machine", "gun_arm_node", "input_component", "mantle_detector", "feet_point", "jump_timer") groups=["player"]]
 collision_layer = 2
 axis_lock_linear_z = true
 platform_floor_layers = 1
@@ -1483,8 +1482,6 @@ input_component = NodePath("PlayerInput")
 mantle_detector = NodePath("MantleDetector")
 feet_point = NodePath("FeetPoint")
 jump_timer = NodePath("JumpDelay")
-dash_timer = NodePath("DashDelay")
-equipped_ability = NodePath("GunComponent/GrappleComponent")
 
 [node name="PlayerVisuals" type="Node3D" parent="." unique_id=229281811]
 script = ExtResource("2_0w3ce")
@@ -1640,12 +1637,10 @@ script = ExtResource("26_t1vny")
 
 [node name="PlayerDash" type="Node" parent="MovementStateMachine" unique_id=611734550]
 script = ExtResource("27_0e3lr")
-[node name="PlayerAbility" type="Node" parent="MovementStateMachine" unique_id=336599975 node_paths=PackedStringArray("grapple_component")]
-script = ExtResource("25_t1vny")
-grapple_component = NodePath("../../GunComponent/GrappleComponent")
-metadata/_custom_type_script = "uid://dropwvjh2s43u"
 
-[node name="GrappleComponent" parent="GunComponent" unique_id=875314025 instance=ExtResource("26_e5w6i")]
+[node name="PlayerAbility" type="Node" parent="MovementStateMachine" unique_id=336599975]
+script = ExtResource("25_t1vny")
+metadata/_custom_type_script = "uid://dropwvjh2s43u"
 
 [node name="SoftCollider" type="Area3D" parent="." unique_id=892099693]
 collision_layer = 256
@@ -1684,11 +1679,6 @@ script = ExtResource("27_cat03")
 [node name="GunHolder" parent="." unique_id=407642416 node_paths=PackedStringArray("input_component") instance=ExtResource("28_7i6t6")]
 input_component = NodePath("../PlayerInput")
 
-[connection signal="facing_changed" from="." to="PlayerVisuals" method="_on_player_facing_changed"]
-[connection signal="facing_changed" from="." to="MantleDetector" method="_on_player_facing_changed"]
-[connection signal="player_dead" from="." to="HealthComponent" method="_on_player_player_dead"]
-[connection signal="player_health_changed" from="." to="." method="_on_player_health_changed"]
-[connection signal="player_health_initialiased" from="." to="." method="_on_player_health_initialiased"]
 [connection signal="animation_finished" from="PlayerVisuals/ROOT_P/GUN_P/GUN_AIM/Hand_Anims" to="PlayerVisuals" method="_on_hand_anims_animation_finished"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="health_changed" from="HealthComponent" to="InsanityComponent" method="_on_health_component_health_changed"]

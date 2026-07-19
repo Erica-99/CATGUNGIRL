@@ -9,6 +9,7 @@ const HITBOX_SCENE = preload("res://scenes/components/hitbox_component/hitbox_co
 ## exported variables
 @export var bullet_scene: PackedScene	# bullet.tscn file to spawn when firing
 @export var team_component: Node		# player TeamComponent reference, passed to bullets
+@export var ability: Ability
 
 @export_group("Aim")
 @export var aim_speed: float = 8.0		# gun rotation speed towards mouse (lower = more delay)
@@ -75,6 +76,8 @@ var active: bool = false:
 	set(value):
 		active = value
 		visible = active
+		if ability != null:
+			ability.active = active
 
 var _fire_cooldown: float = 0.0
 var _recoil_offset: float = 0.0 

@@ -27,7 +27,7 @@ func update(_delta: float) -> void:
 		transitioned.emit(self, "playerdash")
 	elif current_input_state["jumping"] and blackboard.get("jump_timer").is_stopped():
 		transitioned.emit(self, "playerjump")
-	elif current_input_state["ability_held"] and blackboard["equipped_ability"]:
+	elif current_input_state["ability_held"] and blackboard["gun_holder"].current_gun.ability:
 		transitioned.emit(self, "playerability")
 	elif not actor.is_on_floor():
 		transitioned.emit(self, "playerfall")

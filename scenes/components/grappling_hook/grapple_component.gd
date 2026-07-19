@@ -41,7 +41,7 @@ func initialise(ability_state: State, actor_blackboard: Dictionary) -> void:
 		"reel_delay": reel_delay,
 		"reel_force": reel_force,
 		"reel_min_dist": reel_minimum_distance,
-		"rope_attach_point": actor_blackboard["gun_component"].muzzle
+		"rope_attach_point": actor_blackboard["gun_holder"].current_gun.muzzle
 	}
 	
 	state_machine = $StateMachine

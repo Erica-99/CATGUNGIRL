@@ -35,7 +35,7 @@ func update(_delta: float) -> void:
 		else:
 			blackboard["dash_dir"] = actor.facing
 		transitioned.emit(self, "playerdash")
-	elif input_state["ability_held"] and blackboard["equipped_ability"]:
+	elif input_state["ability_held"] and blackboard["gun_holder"].current_gun.ability:
 		transitioned.emit(self, "playerability")
 	elif input_state["jumping"] and blackboard.get("jump_timer").is_stopped():
 		transitioned.emit(self, "playerjump")

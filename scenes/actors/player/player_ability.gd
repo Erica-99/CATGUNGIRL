@@ -16,11 +16,17 @@ func init(blackboard_dict : Dictionary) -> void:
 	end_ability.connect(_end_ability)
 
 func enter() -> void:
-	var current_ability: Ability = blackboard["equipped_ability"]
-	current_ability.initialise(self, blackboard)
+	var current_ability: Ability = blackboard["gun_holder"].current_gun.ability
+	if current_ability == null:
+		# I know this is awful I just can't come up with any better way of making it a one-shot input.
+		input_component._ability_held = false
+		
+		_end_ability()
+	else:
+		current_ability.initialise(self, blackboard)
 	
-	# I know this is awful I just can't come up with any better way of making it a one-shot input.
-	input_component._ability_held = false
+		# I know this is awful I just can't come up with any better way of making it a one-shot input.
+		input_component._ability_held = false
 
 func exit() -> void:
 	pass
