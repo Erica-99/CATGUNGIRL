@@ -15,6 +15,12 @@ func init(blackboard_dict : Dictionary) -> void:
 
 func enter() -> void:
 	blackboard["can_air_dash"] = true
+	var input_state = input_component.get_input_state()
+	var input_dir: float = input_state["movement"]
+	direction_last_frame = (actor.transform.basis * Vector3(input_dir, 0, 0)).normalized()
+
+	if input_dir != 0.0 and actor.velocity.x != 0.0 and sign(input_dir) != sign(actor.velocity.x):
+		actor.velocity.x = 0.0
 
 func exit() -> void:
 	pass
