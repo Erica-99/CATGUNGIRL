@@ -8,7 +8,6 @@ var _jump_held := false
 var _dash_held := false
 var _fire_held := false
 var _mouse_world_pos
-var _charge_fire_held := false
 var _interacting := false
 var _superjump_held:= false
 var _switch_gun := false
@@ -42,7 +41,6 @@ func _process(_delta: float) -> void:
 		_jump_held = false
 		_dash_held = false
 		_fire_held = false
-		_charge_fire_held = false
 		_interacting = false
 		_switch_gun = false
 
@@ -60,7 +58,6 @@ func get_input_state() -> Dictionary:
 		"dashing": _dash_held,
 		"fire_held": _fire_held,
 		"mouse_world_pos": _mouse_world_pos,
-		"charge_fire_held": _charge_fire_held,
 		"interacting": _interacting,
 		"superjump_held": _superjump_held,
 		"switch_gun": _switch_gun,
@@ -103,9 +100,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("fire"):
 		_fire_held = true
 	
-	if event.is_action_pressed("shoot_charged"):
-		_charge_fire_held = true
-	
 	if event.is_action_pressed("jump"):
 		_jump_held = true                            ##Player jumps
 	
@@ -133,9 +127,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_released("fire"):
 		_fire_held = false
-	
-	if event.is_action_released("shoot_charged"):
-		_charge_fire_held = false
 	
 	if event.is_action_released("jump"):
 		_jump_held = false
