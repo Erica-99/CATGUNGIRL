@@ -5,6 +5,8 @@ var actor: CharacterBody3D
 var input_component: InputComponent
 
 var direction_last_frame: Vector3
+#blocked movement while moving right = 1, while moving left = -1, not blocked = 0
+var blocked_movement_dir: float = 0.0
 
 func init(blackboard_dict : Dictionary) -> void:
 	super(blackboard_dict)
@@ -12,7 +14,13 @@ func init(blackboard_dict : Dictionary) -> void:
 	input_component = blackboard['input_component']
 
 func enter() -> void:
-	pass
+	blackboard["can_air_dash"] = true
+	var input_state = input_component.get_input_state()
+	var input_dir: float = input_state["movement"]
+	direction_last_frame = (actor.transform.basis * Vector3(input_dir, 0, 0)).normalized()
+
+	if input_dir != 0.0 and actor.velocity.x != 0.0 and sign(input_dir) != sign(actor.velocity.x):
+		actor.velocity.x = 0.0
 
 func exit() -> void:
 	pass
@@ -20,7 +28,14 @@ func exit() -> void:
 func update(_delta: float) -> void:
 	var input_state = input_component.get_input_state()
 	
-	if input_state["ability_held"] and blackboard["equipped_ability"]:
+	if input_state["dashing"] and blackboard["dash_timer"].is_stopped():
+		var input_dir: float = input_state["movement"]
+		if input_dir != 0.0:
+			blackboard["dash_dir"] = sign(input_dir)
+		else:
+			blackboard["dash_dir"] = actor.facing
+		transitioned.emit(self, "playerdash")
+	elif input_state["ability_held"] and blackboard["equipped_ability"]:
 		transitioned.emit(self, "playerability")
 	elif input_state["jumping"] and blackboard.get("jump_timer").is_stopped():
 		transitioned.emit(self, "playerjump")
@@ -54,8 +69,22 @@ func physics_update(_delta: float) -> void:
 		actor.velocity.x = move_toward(actor.velocity.x, 0, speed)
 	
 	direction_last_frame = direction
-	
+
 	actor.move_and_slide()
+
+	blocked_movement_dir = 0.0
+
+	for i in range(actor.get_slide_collision_count()):
+		var collision = actor.get_slide_collision(i)
+		var normal = collision.get_normal()
+		var is_too_steep := normal.angle_to(actor.up_direction) > actor.floor_max_angle
+
+		if input_dir != 0.0 and is_too_steep and sign(input_dir) == -sign(normal.x):
+			blocked_movement_dir = sign(input_dir)
+			actor.velocity.x = 0.0
+			break
+
+	blackboard["blocked_movement_dir"] = blocked_movement_dir
 
 
 func _on_player_crouch_overlap() -> void:

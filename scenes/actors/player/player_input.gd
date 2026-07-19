@@ -5,11 +5,13 @@ extends InputComponent
 var _horizontal_movement: float = 0
 var _crouching := false
 var _jump_held := false
+var _dash_held := false
 var _fire_held := false
 var _mouse_world_pos
 var _charge_fire_held := false
 var _interacting := false
 var _superjump_held:= false
+var _switch_gun := false
 var _ability_held := false
 
 var _input_locked := false
@@ -38,9 +40,11 @@ func _process(_delta: float) -> void:
 		_horizontal_movement = 0
 		_crouching = false
 		_jump_held = false
+		_dash_held = false
 		_fire_held = false
 		_charge_fire_held = false
 		_interacting = false
+		_switch_gun = false
 
 	##This stops the player from holding the jump button and jumping
 	#if _jump_locked:
@@ -53,12 +57,14 @@ func get_input_state() -> Dictionary:
 		"movement": _horizontal_movement,
 		"crouching": _crouching,
 		"jumping": _jump_held,
+		"dashing": _dash_held,
 		"fire_held": _fire_held,
 		"mouse_world_pos": _mouse_world_pos,
 		"charge_fire_held": _charge_fire_held,
 		"interacting": _interacting,
 		"superjump_held": _superjump_held,
-		"ability_held": _ability_held
+		"switch_gun": _switch_gun,
+		"ability_held": _ability_held,
 	}
 	return input_state
 
@@ -113,6 +119,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("move_down"):
 		_crouching = true
 		crouching.emit()
+		
+	if event.is_action_pressed("switch_gun") and not event.is_echo():
+		_switch_gun = true
+		
+	if event.is_action_pressed("dash") and not event.is_echo():
+		_dash_held = true
 	
 	if event.is_action_pressed("use_ability") and get_parent().has_gun:
 		_ability_held = true
@@ -128,6 +140,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("jump"):
 		_jump_held = false
 		hasLanded.emit()
+		
+	if event.is_action_released("dash"):
+		_dash_held = false
 	
 	if event.is_action_released("move_down"):
 		if not toggle_crouch:
