@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cooinj4djp8o"]
+
+[ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="1_0yia5"]
+[ext_resource type="PackedScene" uid="uid://c8g2gv64sagbn" path="res://scenes/missile/missile_launcher.tscn" id="2_0yia5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hwlmk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lrixx"]
+
+[node name="MissileTestLevel" type="Node3D" unique_id=922912552]
+
+[node name="World" type="Node3D" parent="." unique_id=1704519241]
+
+[node name="Ground" type="MeshInstance3D" parent="World" unique_id=120316635]
+transform = Transform3D(75.164734, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_hwlmk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Ground" unique_id=631170646]
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground/StaticBody3D" unique_id=1705242629]
+shape = SubResource("BoxShape3D_lrixx")
+
+[node name="Player" parent="." unique_id=1349193765 groups=["Player"] instance=ExtResource("1_0yia5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.592749, 2.4815655, 0)
+
+[node name="MissileLauncher" parent="." unique_id=967797780 instance=ExtResource("2_0yia5")]
