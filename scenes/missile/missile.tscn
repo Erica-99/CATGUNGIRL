@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bt57arw8qv0ya"]
+
+[ext_resource type="Script" uid="uid://b3tsah1i3cc8x" path="res://scenes/missile/missile.gd" id="1_wyuj3"]
+[ext_resource type="PackedScene" uid="uid://c6wep4oftfyke" path="res://scenes/components/state_machine/state_machine.tscn" id="2_3t0jd"]
+
+[node name="Missile" type="CharacterBody3D" unique_id=1058796648]
+script = ExtResource("1_wyuj3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=798733028]
+
+[node name="StateMachine" parent="." unique_id=1499026333 instance=ExtResource("2_3t0jd")]
