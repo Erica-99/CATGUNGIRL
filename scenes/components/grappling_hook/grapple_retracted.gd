@@ -7,7 +7,8 @@ func enter() -> void:
 func exit() -> void:
 	pass
 func update(_delta: float) -> void:
-	if Input.is_action_just_pressed("debug_grapplehook"):
+	var input_state = blackboard["actor_blackboard"]["input_component"].get_input_state()
+	if input_state["ability_held"]:
 		transitioned.emit(self, "GrappleShooting")
 	
 func physics_update(_delta: float) -> void:
