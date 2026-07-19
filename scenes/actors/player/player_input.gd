@@ -5,6 +5,7 @@ extends InputComponent
 var _horizontal_movement: float = 0
 var _crouching := false
 var _jump_held := false
+var _dash_held := false
 var _fire_held := false
 var _mouse_world_pos
 var _charge_fire_held := false
@@ -38,6 +39,7 @@ func _process(_delta: float) -> void:
 		_horizontal_movement = 0
 		_crouching = false
 		_jump_held = false
+		_dash_held = false
 		_fire_held = false
 		_charge_fire_held = false
 		_interacting = false
@@ -54,6 +56,7 @@ func get_input_state() -> Dictionary:
 		"movement": _horizontal_movement,
 		"crouching": _crouching,
 		"jumping": _jump_held,
+		"dashing": _dash_held,
 		"fire_held": _fire_held,
 		"mouse_world_pos": _mouse_world_pos,
 		"charge_fire_held": _charge_fire_held,
@@ -117,6 +120,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 	if event.is_action_pressed("switch_gun") and not event.is_echo():
 		_switch_gun = true
+		
+	if event.is_action_pressed("dash") and not event.is_echo():
+		_dash_held = true
 	
 	# -- Actions released --
 	
@@ -129,6 +135,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("jump"):
 		_jump_held = false
 		hasLanded.emit()
+		
+	if event.is_action_released("dash"):
+		_dash_held = false
 	
 	if event.is_action_released("move_down"):
 		if not toggle_crouch:
