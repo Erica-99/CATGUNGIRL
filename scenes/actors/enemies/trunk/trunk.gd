@@ -14,10 +14,15 @@ extends CharacterBody3D
 @onready var health_comp = $HealthComponent
 @export var gun_component: Node3D
 
+@export_category("Autoswitch State Variables")
+@export var min_idle_time: float = 1.0
+@export var max_idle_time: float = 3.0
+@export var min_patrol_time: float = 4.0
+@export var max_patrol_time: float = 6.0
+
 @export_category("Stat Variables")
 @export var direction: int = 1
 @export var move_speed: float = 10
-@export var patrol_speed: float
 @export var chase_speed: float
 var facing: float = 1.0:
 	set(value):
@@ -33,12 +38,23 @@ var facing: float = 1.0:
 
 @export_category("State Controlling Variables")
 @export var detected_player: bool = false
+
+@export_category("Patrol State Modifiers")
+@export var patrol_speed: float
+@export var elapsed_direction_switch: float
+
+@export_category("Melee State Modifiers")
+@export var xpos_distance_to_melee: float
+@export var melee_stop_speed: float
+
 var in_attacking_range: bool
 
 signal facing_changed(scrub: CharacterBody3D)
 
 var is_dead: bool = false
 var blackboard: Dictionary
+
+const GRAVITY = 50
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -51,6 +67,13 @@ func _ready() -> void:
 		"gun_component": gun_component,
 		"patrol_speed": patrol_speed,
 		"chase_speed": chase_speed,
+		"min_idle_time": min_idle_time,
+		"max_idle_time": max_idle_time,
+		"min_patrol_time": min_patrol_time,
+		"max_patrol_time": max_patrol_time,
+		"elapsed_direction_switch": elapsed_direction_switch,
+		"xpos_distance_to_melee": xpos_distance_to_melee,
+		"melee_stop_speed": melee_stop_speed,
 		"target": get_tree().get_first_node_in_group("player") as CharacterBody3D,
 	}
 	# Change initial state based on Inspector values
@@ -68,9 +91,15 @@ func _process(delta):
 	pass
 
 func _physics_process(delta: float) -> void:
+	velocity.y -= GRAVITY * delta
 	move_and_slide()
 
 func _on_health_component_killed(killing_blow: DamageHealInstance, health_before_death: Variant) -> void:
 	# Possibly implement knockback affects here
 	is_dead = true
 	state_machine.on_child_transition(state_machine.current_state, "trunkdeath")
+
+func _on_health_component_health_changed(old_health: float, new_health: float, damage_or_heal_instance: DamageHealInstance) -> void:
+	if !detected_player && !is_dead:
+		detected_player = true
+		state_machine.on_child_transition(state_machine.current_state, "trunkchase")

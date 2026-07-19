@@ -366,6 +366,15 @@ size = Vector3(1.8, 3, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_3oahq"]
 size = Vector3(2, 1.5, 1)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_usk1l"]
+radius = 15.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7c8p8"]
+radius = 30.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_31nnk"]
+radius = 4.0
+
 [node name="Trunk" type="CharacterBody3D" unique_id=400593386 node_paths=PackedStringArray("state_machine", "start_idle", "start_patrol", "start_aggro")]
 collision_layer = 4
 script = ExtResource("1_usk1l")
@@ -373,6 +382,11 @@ state_machine = NodePath("StateMachine")
 start_idle = NodePath("StateMachine/TrunkIdle")
 start_patrol = NodePath("StateMachine/TrunkPatrol")
 start_aggro = NodePath("StateMachine/TrunkChase")
+chase_speed = 5.0
+patrol_speed = 2.0
+elapsed_direction_switch = 3.0
+xpos_distance_to_melee = 0.1
+melee_stop_speed = 2.0
 
 [node name="TrunkMesh" type="Node3D" parent="." unique_id=574855283]
 
@@ -433,4 +447,35 @@ damage_multiplier = 1.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04221964, 0)
 shape = SubResource("BoxShape3D_3oahq")
 
+[node name="DetectionRange" type="Area3D" parent="." unique_id=2069542710]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionRange" unique_id=1574059887]
+shape = SubResource("SphereShape3D_usk1l")
+debug_color = Color(0.57556546, 0.3865835, 1, 0.41960785)
+
+[node name="ChaseRange" type="Area3D" parent="." unique_id=2127282752]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ChaseRange" unique_id=1449713509]
+shape = SubResource("SphereShape3D_7c8p8")
+debug_color = Color(0.76874864, 0.67211944, 0, 0.41960785)
+
+[node name="MeleeRange" type="Area3D" parent="." unique_id=1695284878]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeleeRange" unique_id=1973083525]
+shape = SubResource("SphereShape3D_31nnk")
+debug_color = Color(0.9586238, 0, 0.5287736, 0.41960785)
+
+[connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]
+[connection signal="body_entered" from="DetectionRange" to="StateMachine/TrunkIdle" method="_on_detection_range_body_entered"]
+[connection signal="body_entered" from="DetectionRange" to="StateMachine/TrunkPatrol" method="_on_detection_range_body_entered"]
+[connection signal="body_entered" from="ChaseRange" to="StateMachine/TrunkOutranged" method="_on_chase_range_body_entered"]
+[connection signal="body_exited" from="ChaseRange" to="StateMachine/TrunkChase" method="_on_chase_range_body_exited"]
+[connection signal="body_entered" from="MeleeRange" to="StateMachine/TrunkChase" method="_on_melee_range_body_entered"]
+[connection signal="body_exited" from="MeleeRange" to="StateMachine/TrunkMelee" method="_on_melee_range_body_exited"]

@@ -15,6 +15,7 @@ func init(blackboard_dict : Dictionary) -> void:
 	chase_speed = blackboard["chase_speed"]
 
 func enter() -> void:
+	print("Chasing")
 	pass
 
 func exit() -> void:
@@ -32,4 +33,9 @@ func physics_update(delta: float) -> void:
 	actor.velocity.x = clamp(actor.velocity.x, -chase_speed, chase_speed)
 	
 	actor.move_and_slide()
-	
+
+func _on_chase_range_body_exited(body: Node3D) -> void:
+	transitioned.emit(self, "trunkoutranged")
+
+func _on_melee_range_body_entered(body: Node3D) -> void:
+	transitioned.emit(self, "trunkmelee")
