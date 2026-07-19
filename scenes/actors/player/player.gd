@@ -57,7 +57,8 @@ func _ready() -> void:
 	"feet_point": feet_point,
 	"current_mantle_target": Vector3(),
 	"jump_timer": jump_timer,
-	"equipped_ability": equipped_ability
+	"equipped_ability": equipped_ability,
+	"gun_component": gun_component
 	}
 	
 	movement_state_machine.init(blackboard)
