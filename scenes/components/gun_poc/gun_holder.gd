@@ -57,3 +57,5 @@ func _deactivate_gun():
 
 func _activate_gun():
 	current_gun.active = true
+	if current_gun._current_ammo > current_gun.ammo_max:
+		current_gun._current_ammo = current_gun.ammo_max
