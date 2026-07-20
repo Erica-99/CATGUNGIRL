@@ -10,7 +10,7 @@ func init(blackboard_dict : Dictionary) -> void:
 	input_component = blackboard["input_component"]
 
 func enter() -> void:
-	pass
+	blackboard["can_air_dash"] = true
 
 func exit() -> void:
 	pass
@@ -18,10 +18,21 @@ func exit() -> void:
 func update(_delta: float) -> void:
 	var current_input_state = input_component.get_input_state()
 	
-	if current_input_state["jumping"] and blackboard.get("jump_timer").is_stopped():
+	if current_input_state["dashing"] and blackboard["dash_timer"].is_stopped():
+		var input_dir: float = current_input_state["movement"]	
+		if input_dir != 0.0:
+			blackboard["dash_dir"] = sign(input_dir)
+		else:
+			blackboard["dash_dir"] = actor.facing
+		transitioned.emit(self, "playerdash")
+	elif current_input_state["jumping"] and blackboard.get("jump_timer").is_stopped():
 		transitioned.emit(self, "playerjump")
+	elif current_input_state["ability_held"] and blackboard["gun_holder"].current_gun.ability:
+		transitioned.emit(self, "playerability")
 	elif not actor.is_on_floor():
 		transitioned.emit(self, "playerfall")
+	elif current_input_state["jumping"] and blackboard.get("jump_timer").is_stopped():
+		transitioned.emit(self, "playerjump")
 	elif current_input_state["crouching"]:
 		transitioned.emit(self, "playercrouch")
 	elif current_input_state["movement"]:

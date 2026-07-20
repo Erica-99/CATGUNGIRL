@@ -18,7 +18,8 @@ func init(blackboard: Dictionary = {}) -> void:
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()] = child
-			child.transitioned.connect(on_child_transition)
+			if not child.transitioned.is_connected(on_child_transition):
+				child.transitioned.connect(on_child_transition)
 			child.init(blackboard)
 	
 	if initial_state:
