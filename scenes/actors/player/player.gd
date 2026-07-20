@@ -50,6 +50,7 @@ signal player_dead()
 @export var wall_slide_max_angle: float = 20.0
 
 var facing: float
+var enable_facing_updates: bool = true
 var speed_multiplier: float = 1.0
 # gun enabled by default
 @export var has_gun: bool = true
@@ -63,8 +64,8 @@ var speed_multiplier: float = 1.0
 
 var blackboard: Dictionary
 @onready var health_component = $HealthComponent
-
 @onready var gun_holder: Node3D = $GunHolder
+
 ## This is to know what scene to reload when the player dies
 var currentScene
 
@@ -80,7 +81,9 @@ func _ready() -> void:
 	"dash_timer": dash_timer,
 	"wall_jump_dir": 0.0,
 	"dash_dir": 0.0,
-	"can_air_dash": true
+	"can_air_dash": true,
+	"gun_holder": gun_holder,
+	"enable_facing_updates": enable_facing_updates
 	}
 	
 	movement_state_machine.init(blackboard)
@@ -95,7 +98,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	var current_state = input_component.get_input_state()
 	
-	if current_state["movement"] != 0:
+	if current_state["movement"] != 0 and blackboard["enable_facing_updates"]:
 		set_facing(sign(current_state["movement"]))
 	
 	# Debug damage input

@@ -35,6 +35,8 @@ func update(_delta: float) -> void:
 		else:
 			blackboard["dash_dir"] = actor.facing
 		transitioned.emit(self, "playerdash")
+	elif input_state["ability_held"] and blackboard["gun_holder"].current_gun.ability:
+		transitioned.emit(self, "playerability")
 	elif input_state["jumping"] and blackboard.get("jump_timer").is_stopped():
 		transitioned.emit(self, "playerjump")
 	elif not actor.is_on_floor():
@@ -47,15 +49,11 @@ func update(_delta: float) -> void:
 
 func physics_update(_delta: float) -> void:
 	var input_state = input_component.get_input_state()
-	# Right now this is all just using the provided godot sample code for movement so I can test. This will be completely changed.
-	# Handling inputs inside states is a horrible idea.
 	
 	# Add the gravity.
 	if not actor.is_on_floor():
 		actor.velocity += actor.get_gravity() * _delta
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir: float = input_state["movement"]
 	var direction := (actor.transform.basis * Vector3(input_dir, 0, 0)).normalized()
 	var speed = actor.speed * actor.speed_multiplier
