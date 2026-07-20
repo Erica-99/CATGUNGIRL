@@ -44,9 +44,10 @@ func _switch_gun():
 	current_gun_index += 1
 	if current_gun_index == current_child_count:
 		current_gun_index = 0
-		
+	var rotation_save = current_gun.rotation.z
 	_deactivate_gun()
 	current_gun = get_child(current_gun_index)
+	current_gun.rotation.z = rotation_save
 	_activate_gun()
 	print("GUN SWITCHED TO: ")
 	print(current_gun)

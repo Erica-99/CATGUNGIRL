@@ -79,6 +79,7 @@ var Gun_Animation: AnimationPlayer
 var Muzzle_VFX: AnimationPlayer
 
 var input_component: Node
+
 var active: bool = false:
 	set(value):
 		active = value
@@ -107,7 +108,7 @@ func _process(delta: float) -> void:
 	# in hindsight, the is_reloading should probably have a set of interactions for attempted bulletshots whilst reload but anyways...
 	if !active:
 		return
-	
+		
 	var current_input_state = input_component.get_input_state()
 	_update_aim(current_input_state.get("mouse_world_pos"), current_input_state, delta)
 	_fire_cooldown = maxf(_fire_cooldown - delta, 0.0)
