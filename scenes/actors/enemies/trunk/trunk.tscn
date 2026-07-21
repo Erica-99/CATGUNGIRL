@@ -12,6 +12,8 @@
 [ext_resource type="Script" uid="uid://dl0vqm7sn4iea" path="res://scenes/components/state_machine/states/enemy/trunk/trunk_melee.gd" id="8_31nnk"]
 [ext_resource type="Script" uid="uid://bivm8q1sfq6tc" path="res://scenes/components/state_machine/states/enemy/trunk/trunk_outranged.gd" id="9_3l87d"]
 [ext_resource type="Script" uid="uid://briciybelpcwe" path="res://scenes/components/state_machine/states/enemy/enemy_death.gd" id="10_t7x1w"]
+[ext_resource type="PackedScene" uid="uid://csd06hicr5wny" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="13_31nnk"]
+[ext_resource type="Shape3D" uid="uid://cxemkg2bdxscg" path="res://resources/hitboxes/enemies/trunk/trunk_melee_hb.tres" id="14_31nnk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8xk6t"]
 atlas = ExtResource("1_vou3e")
@@ -375,7 +377,7 @@ radius = 30.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_31nnk"]
 radius = 4.0
 
-[node name="Trunk" type="CharacterBody3D" unique_id=400593386 node_paths=PackedStringArray("state_machine", "start_idle", "start_patrol", "start_aggro")]
+[node name="Trunk" type="CharacterBody3D" unique_id=400593386 node_paths=PackedStringArray("state_machine", "start_idle", "start_patrol", "start_aggro", "melee_hitbox")]
 collision_layer = 4
 script = ExtResource("1_usk1l")
 state_machine = NodePath("StateMachine")
@@ -386,7 +388,11 @@ chase_speed = 5.0
 patrol_speed = 2.0
 elapsed_direction_switch = 3.0
 xpos_distance_to_melee = 0.1
-melee_stop_speed = 2.0
+melee_stop_speed = 5.0
+melee_lunge_distance = 8.0
+melee_lunge_duration = 0.3
+melee_damage = 50.0
+melee_hitbox = NodePath("MeleeHitbox3D")
 
 [node name="TrunkMesh" type="Node3D" parent="." unique_id=574855283]
 
@@ -470,6 +476,16 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeleeRange" unique_id=1973083525]
 shape = SubResource("SphereShape3D_31nnk")
 debug_color = Color(0.9586238, 0, 0.5287736, 0.41960785)
+
+[node name="MeleeHitbox3D" parent="." unique_id=1965125698 node_paths=PackedStringArray("team_component") instance=ExtResource("13_31nnk")]
+collision_mask = 10
+team_component = NodePath("../TeamComponent")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeleeHitbox3D" unique_id=364759522]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2408955, 0, 0)
+shape = ExtResource("14_31nnk")
+disabled = true
+debug_color = Color(0.9882353, 0.050980393, 0.03529412, 0.41960785)
 
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]
