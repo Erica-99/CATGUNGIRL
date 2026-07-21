@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://x3k5nwycrxwr"]
+
+[ext_resource type="ArrayMesh" uid="uid://dp4jrkjbj0vn1" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/5_Warehouse/WoodenPallet.obj" id="1_r883n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r883n"]
+size = Vector3(1.26, 0.195685, 1.26)
+
+[node name="WoodenPallet" type="StaticBody3D" unique_id=1418901303]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 0, 0)
+
+[node name="WoodenPallet_Mesh" type="MeshInstance3D" parent="." unique_id=1631997098]
+mesh = ExtResource("1_r883n")
+
+[node name="WoodenPallet_Collision" type="CollisionShape3D" parent="." unique_id=922102968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0980795, 0)
+shape = SubResource("BoxShape3D_r883n")

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://qmb01fn4g6i"]
+
+[ext_resource type="ArrayMesh" uid="uid://4lefpftopwyn" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/3_GuardRooms/Folders.obj" id="1_r1tyg"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4kggl"]
+points = PackedVector3Array(-0.15, 0, -0.134973, -0.15, 0, 0.13502799, -0.15, 0.34996575, -0.134973, 0.15, 0, -0.12292127, 0.15, 0, 0.122949824, -0.15, 0.34996575, 0.13502799, 0.15, 0.34996575, -0.12292127, 0.15, 0.34996575, 0.122949824)
+
+[node name="Folders" type="StaticBody3D" unique_id=1146875503]
+
+[node name="Folders_Mesh" type="MeshInstance3D" parent="." unique_id=1084519770]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = ExtResource("1_r1tyg")
+
+[node name="Folders_Collision" type="CollisionShape3D" parent="." unique_id=1921496486]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_4kggl")

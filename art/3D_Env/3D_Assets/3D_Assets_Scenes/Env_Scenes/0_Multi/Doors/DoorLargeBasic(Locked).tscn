@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dbm4o7gs6g22"]
+
+[ext_resource type="ArrayMesh" uid="uid://bok0rpxpwpb1p" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/DoorwayLargeBasic.obj" id="1_dwn6c"]
+[ext_resource type="ArrayMesh" uid="uid://dtc1kkneki67t" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/DoorLargeBasic.obj" id="2_j4wia"]
+[ext_resource type="ArrayMesh" uid="uid://b4053jlwdvpmc" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/SmallLight.obj" id="3_4qdub"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fcy0q"]
+size = Vector3(1.1309204, 0.4975586, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dejms"]
+points = PackedVector3Array(-0.173392, 0.116572, -1.869592, -0.173392, 3.68383, -1.869592, 0.173392, 0.116572, -1.869592, -0.173392, 0.116572, 1.869591, 0.173392, 3.68383, -1.869592, -0.173392, 3.68383, 1.869591, 0.173392, 0.116572, 1.869591, 0.173392, 3.68383, 1.869591)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwn6c"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+
+[node name="DoorLargeBasic" type="StaticBody3D" unique_id=101148383]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="DoorwayLargeBasic_Mesh" type="MeshInstance3D" parent="." unique_id=946614900]
+mesh = ExtResource("1_dwn6c")
+
+[node name="DoorwayLargeBasic_Collision" type="CollisionShape3D" parent="." unique_id=340457162]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.1552734e-05, 3.8535066, 0)
+shape = SubResource("BoxShape3D_fcy0q")
+
+[node name="DoorLargeBasic_Mesh" type="MeshInstance3D" parent="." unique_id=600289034]
+mesh = ExtResource("2_j4wia")
+
+[node name="DoorLargeBasic_Collision" type="CollisionShape3D" parent="." unique_id=469734932]
+shape = SubResource("ConvexPolygonShape3D_dejms")
+
+[node name="SmallLight" type="MeshInstance3D" parent="." unique_id=1226034978]
+transform = Transform3D(1.4139173, -1.4145097, 2.1358503e-07, -1.4145097, -1.4139173, 2.1349557e-07, 0, -3.019916e-07, -2, 0.45017707, 3.8231373, 0)
+mesh = ExtResource("3_4qdub")
+
+[node name="SmallLight2" type="MeshInstance3D" parent="." unique_id=824556057]
+transform = Transform3D(-1.4097637, -1.4186494, 2.1421008e-07, -1.4186494, 1.4097637, -2.1286836e-07, 4.2089067e-18, -3.0199158e-07, -2, -0.45, 3.823, 0)
+mesh = ExtResource("3_4qdub")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=689553744]
+transform = Transform3D(0.28159925, 0, 0, 0, -2.21282e-08, 0.28159925, 0, -0.50623417, -1.2309093e-08, 0.54542136, 3.7162697, 0)
+height = 1.0303955
+material = SubResource("StandardMaterial3D_dwn6c")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." unique_id=1899453401]
+transform = Transform3D(0.28159925, 0, 0, 0, -2.21282e-08, 0.28159925, 0, -0.50623417, -1.2309093e-08, -0.543571, 3.7162697, 0)
+height = 1.0303955
+material = SubResource("StandardMaterial3D_dwn6c")

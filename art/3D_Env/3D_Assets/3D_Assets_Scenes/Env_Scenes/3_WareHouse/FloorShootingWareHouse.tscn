@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cgl5ipcguaba2"]
+
+[ext_resource type="ArrayMesh" uid="uid://b7eth0d6bmnhf" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/3_WareHouse/FloorShootingWareHouse.obj" id="1_fmy8l"]
+[ext_resource type="Texture2D" uid="uid://b8ukl81h6bnh3" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/3_WareHouse/Floor/TextureTrimSheetFloorW.png" id="2_ay7xk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ay7xk"]
+albedo_texture = ExtResource("2_ay7xk")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_aok77"]
+points = PackedVector3Array(2.0016143, 0.100005, 2.499758, 2.0016143, -0.100006, 2.499758, 2.0016143, 0.100005, -2.500242, -2.00163, 0.100005, 2.499758, -2.00163, -0.100006, 2.499758, 2.0016143, -0.100006, -2.500242, -2.00163, 0.100005, -2.500242, -2.00163, -0.100006, -2.500242)
+
+[node name="FloorShootingWareHouse" type="StaticBody3D" unique_id=1396051659]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="FloorShootingWareHouse_Mesh" type="MeshInstance3D" parent="." unique_id=1655955516]
+mesh = ExtResource("1_fmy8l")
+surface_material_override/0 = SubResource("StandardMaterial3D_ay7xk")
+
+[node name="FloorShootingWareHouse_Collision" type="CollisionShape3D" parent="." unique_id=1291697742]
+shape = SubResource("ConvexPolygonShape3D_aok77")
