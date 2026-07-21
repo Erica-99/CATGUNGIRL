@@ -15,7 +15,6 @@ func init(blackboard_dict : Dictionary) -> void:
 
 func enter() -> void:
 	print("Out of range")
-	pass
 	# set missile firing to TRUE
 	# ammo = 0? or keep reference over states?
 

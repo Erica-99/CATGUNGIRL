@@ -16,7 +16,6 @@ func init(blackboard_dict : Dictionary) -> void:
 
 func enter() -> void:
 	print("Chasing")
-	pass
 
 func exit() -> void:
 	pass
@@ -29,8 +28,10 @@ func physics_update(delta: float) -> void:
 	actor.facing = direction
 	#anim.play("chase")
 	
-	actor.velocity.x += direction * chase_speed * delta
-	actor.velocity.x = clamp(actor.velocity.x, -chase_speed, chase_speed)
+	#actor.velocity.x += direction * chase_speed * delta
+	#actor.velocity.x = clamp(actor.velocity.x, -chase_speed, chase_speed)
+	
+	actor.velocity.x = move_toward(actor.velocity.x, 0, delta)
 	
 	actor.move_and_slide()
 
