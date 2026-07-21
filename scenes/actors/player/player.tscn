@@ -1506,10 +1506,10 @@ transparent_bg = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.685501, 0.016272783, 19.920624)
 texture = SubResource("ViewportTexture_llrf1")
 
-[node name="Node3D" type="Node3D" parent="AMMOHUDConcept/AmmoHUD/Sprite3D" unique_id=1124464669]
+[node name="FXNode" type="Node3D" parent="AMMOHUDConcept/AmmoHUD/Sprite3D" unique_id=1124464669]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1721878, -0.98295784, -0.16559601)
 
-[node name="BulletVFX" parent="AMMOHUDConcept/AmmoHUD/Sprite3D/Node3D" unique_id=1767152557 instance=ExtResource("3_haoly")]
+[node name="BulletVFX" parent="AMMOHUDConcept/AmmoHUD/Sprite3D/FXNode" unique_id=1767152557 instance=ExtResource("3_haoly")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.53321266, -1.4630585, -0.5016537)
 
 [node name="PlayerVisuals" type="Node3D" parent="." unique_id=229281811]
@@ -1710,6 +1710,7 @@ script = ExtResource("27_cat03")
 input_component = NodePath("../PlayerInput")
 
 [connection signal="facing_changed" from="." to="PlayerVisuals" method="_on_player_facing_changed"]
+[connection signal="bulletlost" from="AMMOHUDConcept/AmmoHUD/SubViewport/AmmoCount" to="AMMOHUDConcept/AmmoHUD" method="_on_ammo_count_bulletlost"]
 [connection signal="animation_finished" from="PlayerVisuals/ROOT_P/GUN_P/GUN_AIM/Hand_Anims" to="PlayerVisuals" method="_on_hand_anims_animation_finished"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="health_changed" from="HealthComponent" to="InsanityComponent" method="_on_health_component_health_changed"]
