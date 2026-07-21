@@ -123,7 +123,7 @@ func _process(delta: float) -> void:
 			single_reload_timer += delta
 			if single_reload_timer > reload_time:
 				_current_ammo += 1
-				single_reload_timer = 0
+				single_reload_timer = reload_time / 2.0
 	
 	if !_is_reloading:
 		# normal fire (left click) read from input component
