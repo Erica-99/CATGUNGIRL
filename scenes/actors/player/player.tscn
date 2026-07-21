@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" uid="uid://cabb16sxnh4bu" path="res://scenes/actors/player/player.gd" id="1_qdyt2"]
 [ext_resource type="Script" uid="uid://bjypb0bixh3rp" path="res://scenes/actors/player/player_visuals.gd" id="2_0w3ce"]
+[ext_resource type="Script" uid="uid://b5wuc23rlp8as" path="res://scenes/actors/player/ammo_hud.gd" id="2_gisjq"]
 [ext_resource type="Script" uid="uid://c71argnkra1em" path="res://scenes/actors/player/debug_state_display.gd" id="2_inh5e"]
 [ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="2_mpktj"]
+[ext_resource type="PackedScene" uid="uid://d1dtceqi3s5oh" path="res://art/2d_assets/real_world/UI/ammo_count.tscn" id="2_owjsm"]
+[ext_resource type="PackedScene" uid="uid://pp03qyrbback" path="res://art/2d_assets/real_world/UI/bullet_count_VFX.tscn" id="3_haoly"]
 [ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="3_qdyt2"]
 [ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="3_yg5k4"]
 [ext_resource type="PackedScene" uid="uid://c6wep4oftfyke" path="res://scenes/components/state_machine/state_machine.tscn" id="4_qdyt2"]
@@ -32,6 +35,9 @@
 [ext_resource type="Script" uid="uid://cei5rp5pteo06" path="res://scenes/actors/player/gigi_bubble.gd" id="27_cat03"]
 [ext_resource type="PackedScene" uid="uid://dp6f6qebbi8kl" path="res://scenes/components/gun_poc/gun_holder.tscn" id="28_7i6t6"]
 [ext_resource type="Script" uid="uid://da3n34oh0bagw" path="res://scenes/actors/player/audio_caller.gd" id="33_owjsm"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_llrf1"]
+viewport_path = NodePath("AMMOHUDConcept/AmmoHUD/SubViewport")
 
 [sub_resource type="Animation" id="Animation_lguxi"]
 resource_name = "Fall"
@@ -1483,6 +1489,28 @@ mantle_detector = NodePath("MantleDetector")
 feet_point = NodePath("FeetPoint")
 jump_timer = NodePath("JumpDelay")
 dash_timer = NodePath("DashDelay")
+
+[node name="AMMOHUDConcept" type="Node3D" parent="." unique_id=2088313326]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1309547, 1.2480261, 0)
+
+[node name="AmmoHUD" type="Node3D" parent="AMMOHUDConcept" unique_id=652509324]
+transform = Transform3D(0.85918325, 0, -0.511668, 0, 1, 0, 0.511668, 0, 0.85918325, 1.4140921, 2.4402962, 5.811571)
+script = ExtResource("2_gisjq")
+
+[node name="SubViewport" type="SubViewport" parent="AMMOHUDConcept/AmmoHUD" unique_id=512941231]
+transparent_bg = true
+
+[node name="AmmoCount" parent="AMMOHUDConcept/AmmoHUD/SubViewport" unique_id=76601130 instance=ExtResource("2_owjsm")]
+
+[node name="Sprite3D" type="Sprite3D" parent="AMMOHUDConcept/AmmoHUD" unique_id=334038523]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.685501, 0.016272783, 19.920624)
+texture = SubResource("ViewportTexture_llrf1")
+
+[node name="Node3D" type="Node3D" parent="AMMOHUDConcept/AmmoHUD/Sprite3D" unique_id=1124464669]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1721878, -0.98295784, -0.16559601)
+
+[node name="BulletVFX" parent="AMMOHUDConcept/AmmoHUD/Sprite3D/Node3D" unique_id=1767152557 instance=ExtResource("3_haoly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.53321266, -1.4630585, -0.5016537)
 
 [node name="PlayerVisuals" type="Node3D" parent="." unique_id=229281811]
 script = ExtResource("2_0w3ce")

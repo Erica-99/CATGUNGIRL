@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://d1dtceqi3s5oh"]
+
+[ext_resource type="PackedScene" uid="uid://bwjuhhi62r2ot" path="res://art/2d_assets/real_world/UI/bullet_icon.tscn" id="1_kreqv"]
+
+[node name="AmmoCount" type="Control" unique_id=76601130]
+custom_minimum_size = Vector2(150, 500)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=804988426]
+custom_minimum_size = Vector2(30, 100)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9764706, 0, 0.42745098, 0.35686275)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect" unique_id=1086819581]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer" unique_id=69376001]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="BulletIcon" parent="ColorRect/MarginContainer/VBoxContainer" unique_id=167410703 instance=ExtResource("1_kreqv")]
+layout_mode = 2

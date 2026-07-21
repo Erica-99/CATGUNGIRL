@@ -67,6 +67,12 @@ signal perfect_window_changed(active: bool) # for indicator flash
 @onready var _normal_flash: CPUParticles3D = $Muzzle/NormalMuzzleFlash
 @onready var _perfect_flash: CPUParticles3D = $Muzzle/PerfectMuzzleFlash
 
+## Signal for when Ammo Count needs to be updated on the UI
+
+signal update_ammo_countUI(Status)
+
+
+
 
 var Gun_Animation: AnimationPlayer
 var Muzzle_VFX: AnimationPlayer
@@ -222,7 +228,13 @@ func _shoot_handler():
 func _shoot(damage, bullet_scale):
 	_spawn_bullet(damage, bullet_scale)
 
+
 func _handle_ammo():
+	#Hello this is wacchowski code here for the ammo ui, if theres issues please let me know
+	#I aim to send a signal for when ammo is used and when it is reloaded.
+	update_ammo_countUI.emit('Fire')
+	
+	
 	_current_ammo -= 1
 	if _current_ammo <= 0:
 		_is_reloading = true
