@@ -33,6 +33,11 @@ func _ready() -> void:
 	killstreak_timeout.timeout.connect(_ended_killstreak)
 
 func _process(delta: float) -> void:
+	
+	if killstreak == 0:
+		modulate = Color(0.0, 0.0, 0.0, 0.118)
+	else:
+		modulate = Color(1.0, 1.0, 1.0, 1.0)
 	# temp debug calls
 	# TODO: REMOVE WHEN NEEDED
 	if Input.is_action_just_pressed("debug_kill"):
