@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 # reset back to zero once killstreak is over
 func _ended_killstreak():
 	killstreak = 0
-	killstreak_display.text = "x " + str(killstreak)
+	killstreak_display.text = str(killstreak)
 	killstreak_timeout.stop()
 	killstreak_progression.value = 0
 	
