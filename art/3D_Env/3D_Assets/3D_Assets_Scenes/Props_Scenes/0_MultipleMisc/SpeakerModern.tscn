@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://t6186i4fjihc"]
+
+[ext_resource type="ArrayMesh" uid="uid://crtv3sed3qgum" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/0_MultipleMisc/SpeakerModern.obj" id="1_dmb45"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4262s"]
+size = Vector3(0.109577, 0.25, 0.25)
+
+[node name="SpeakerModern" type="StaticBody3D" unique_id=761986972]
+
+[node name="SpeakerModern_Mesh" type="MeshInstance3D" parent="." unique_id=1600053295]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+mesh = ExtResource("1_dmb45")
+
+[node name="SpeakerModern_Collision" type="CollisionShape3D" parent="." unique_id=1618535319]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.089365505, 0.375, -0.0023040175)
+shape = SubResource("BoxShape3D_4262s")

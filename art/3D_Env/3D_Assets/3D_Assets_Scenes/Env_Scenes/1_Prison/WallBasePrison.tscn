@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://61tag58erj5t"]
+
+[ext_resource type="ArrayMesh" uid="uid://b6lmqgjxjdv41" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/1_Prison/WallBasePrison.obj" id="1_7u61v"]
+[ext_resource type="Texture2D" uid="uid://coio8xeekyrxq" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Base_color.png" id="2_xb1ty"]
+[ext_resource type="Texture2D" uid="uid://djuu0spniu0gp" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Mixed_AO.png" id="3_wop6e"]
+[ext_resource type="Texture2D" uid="uid://cvdxlc7lgtoc1" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Height.png" id="4_m4ciw"]
+[ext_resource type="Texture2D" uid="uid://0m33qxdqhrfp" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Base_metalness.png" id="5_1er8x"]
+[ext_resource type="Texture2D" uid="uid://502420uyft1k" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Normal_OpenGL.png" id="6_ginvf"]
+[ext_resource type="Texture2D" uid="uid://ccuxlmt0vkg4f" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Specular_roughness.png" id="7_pkbuj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f6wyb"]
+albedo_texture = ExtResource("2_xb1ty")
+metallic = 1.0
+metallic_texture = ExtResource("5_1er8x")
+roughness_texture = ExtResource("7_pkbuj")
+normal_enabled = true
+normal_texture = ExtResource("6_ginvf")
+ao_enabled = true
+ao_texture = ExtResource("3_wop6e")
+heightmap_enabled = true
+heightmap_scale = 1.0
+heightmap_texture = ExtResource("4_m4ciw")
+
+[node name="WallBasePrison" type="StaticBody3D" unique_id=206436331]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="WallBasePrison" type="MeshInstance3D" parent="." unique_id=1523229018]
+mesh = ExtResource("1_7u61v")
+surface_material_override/0 = SubResource("StandardMaterial3D_f6wyb")

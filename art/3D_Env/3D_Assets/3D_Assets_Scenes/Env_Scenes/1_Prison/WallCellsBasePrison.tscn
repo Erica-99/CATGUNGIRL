@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c08wu3qjtxvd"]
+
+[ext_resource type="ArrayMesh" uid="uid://0aubr2u73net" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/1_Prison/WallCellsBasePrison.obj" id="1_yln3m"]
+[ext_resource type="Texture2D" uid="uid://doriadyi6ch0l" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/TextureTrimSheetWallP.png" id="2_4s17p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ctiav"]
+albedo_texture = ExtResource("2_4s17p")
+
+[node name="WallCellsBasePrison" type="StaticBody3D" unique_id=1079452789]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="WallCellsBasePrison_Mesh" type="MeshInstance3D" parent="." unique_id=620759585]
+mesh = ExtResource("1_yln3m")
+surface_material_override/0 = SubResource("StandardMaterial3D_ctiav")
