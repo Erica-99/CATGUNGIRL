@@ -46,6 +46,15 @@ var facing: float = 1.0:
 @export_category("Melee State Modifiers")
 @export var xpos_distance_to_melee: float
 @export var melee_stop_speed: float
+@export var melee_windup_time: float = 0.5
+@export var melee_lunge_distance: float = 3.0
+@export var melee_lunge_duration: float = 0.2
+@export var melee_recovery_time: float = 5.0
+
+@export_category("Attack Variables")
+@export var melee_damage: float = 30.0
+@export var melee_hitbox: Area3D
+var damage_instance: DamageHealInstance = DamageHealInstance.new()
 
 var in_attacking_range: bool
 
@@ -58,6 +67,13 @@ const GRAVITY = 50
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	damage_instance.amount = melee_damage
+	damage_instance.is_heal = false
+	damage_instance.type = Enums.DamageType.NORMAL
+	damage_instance.knockback = 0
+	damage_instance.source = get_path()
+	melee_hitbox.damage_or_heal_instance = damage_instance
+	
 	# Blackboard contains the information states will use
 	blackboard = {
 		# Actor for movement stats
@@ -74,6 +90,12 @@ func _ready() -> void:
 		"elapsed_direction_switch": elapsed_direction_switch,
 		"xpos_distance_to_melee": xpos_distance_to_melee,
 		"melee_stop_speed": melee_stop_speed,
+		"melee_hitbox": melee_hitbox,
+		"melee_damage": melee_damage,
+		"melee_windup_time": melee_windup_time,
+		"melee_lunge_distance": melee_lunge_distance,
+		"melee_lunge_duration": melee_lunge_duration,
+		"melee_recovery_time": melee_recovery_time,
 		"target": get_tree().get_first_node_in_group("player") as CharacterBody3D,
 	}
 	# Change initial state based on Inspector values
