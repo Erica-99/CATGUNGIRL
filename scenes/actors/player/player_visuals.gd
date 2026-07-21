@@ -44,6 +44,8 @@ func _on_movement_state_machine_state_changed(_prev: String, new: String) -> voi
 	elif new == 'playercrouch':
 		
 		pass
+	elif new == 'playerability':
+		RosAnims.play("Fall") # This should instead somehow pull the animation for the specific ability but this works as a placeholder.
 
 
 func _on_player_facing_changed(new_facing: float) -> void:
