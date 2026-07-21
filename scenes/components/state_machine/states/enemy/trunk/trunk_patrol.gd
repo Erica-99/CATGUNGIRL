@@ -47,9 +47,10 @@ func update(_delta: float) -> void:
 func physics_update(delta: float) -> void:
 	#direction = sign(actor.velocity.x)
 	actor.facing = direction
+	actor.velocity.x = move_toward(actor.velocity.x, 0, delta)
 	
-	actor.velocity.x += direction * patrol_speed * delta
-	actor.velocity.x = clamp(actor.velocity.x, -patrol_speed, patrol_speed)
+	#actor.velocity.x += direction * patrol_speed * delta
+	#actor.velocity.x = clamp(actor.velocity.x, -patrol_speed, patrol_speed)
 	
 	actor.move_and_slide()
 

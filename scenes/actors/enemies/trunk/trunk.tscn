@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cwsqw5g17fn2e" path="res://scenes/actors/enemies/trunk/trunk.gd" id="1_usk1l"]
 [ext_resource type="Texture2D" uid="uid://sp21pewb2nh1" path="res://art/2d_assets/real_world/enemy_convict/Convict_Idle_SPR.png" id="1_vou3e"]
+[ext_resource type="Script" uid="uid://bygxuy1e66ano" path="res://scenes/actors/enemies/trunk/trunk_visuals.gd" id="2_3l87d"]
 [ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="2_rp7bq"]
 [ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="3_3oahq"]
 [ext_resource type="PackedScene" uid="uid://c6wep4oftfyke" path="res://scenes/components/state_machine/state_machine.tscn" id="4_igprn"]
@@ -359,6 +360,29 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_31nnk"]
+resource_name = "step"
+length = 0.2
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_take_step"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3l87d"]
+_data = {
+&"step": SubResource("Animation_31nnk")
+}
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_igprn"]
 size = Vector3(2.2, 4.1, 1)
 
@@ -369,7 +393,7 @@ size = Vector3(1.8, 3, 1)
 size = Vector3(2, 1.5, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_usk1l"]
-radius = 15.0
+radius = 25.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7c8p8"]
 radius = 30.0
@@ -395,10 +419,14 @@ melee_damage = 50.0
 melee_hitbox = NodePath("MeleeHitbox3D")
 
 [node name="TrunkMesh" type="Node3D" parent="." unique_id=574855283]
+script = ExtResource("2_3l87d")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="TrunkMesh" unique_id=2017350818]
 transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0, 0)
 sprite_frames = SubResource("SpriteFrames_4k1rn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TrunkMesh" unique_id=1888694093]
+libraries/ = SubResource("AnimationLibrary_3l87d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1958256337]
 shape = SubResource("BoxShape3D_igprn")
@@ -487,6 +515,19 @@ shape = ExtResource("14_31nnk")
 disabled = true
 debug_color = Color(0.9882353, 0.050980393, 0.03529412, 0.41960785)
 
+[node name="PlatformCheck" type="RayCast3D" parent="." unique_id=79042437]
+target_position = Vector3(4, -2.5, 0)
+
+[node name="ObjectCheck" type="RayCast3D" parent="." unique_id=1937259524]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+target_position = Vector3(3, 0, 0)
+
+[node name="StepHandler" type="Timer" parent="." unique_id=745284242]
+one_shot = true
+
+[node name="OutrangedTimer" type="Timer" parent="." unique_id=309027732]
+
+[connection signal="facing_changed" from="." to="TrunkMesh" method="_on_trunk_facing_changed"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]
 [connection signal="body_entered" from="DetectionRange" to="StateMachine/TrunkIdle" method="_on_detection_range_body_entered"]
@@ -495,3 +536,5 @@ debug_color = Color(0.9882353, 0.050980393, 0.03529412, 0.41960785)
 [connection signal="body_exited" from="ChaseRange" to="StateMachine/TrunkChase" method="_on_chase_range_body_exited"]
 [connection signal="body_entered" from="MeleeRange" to="StateMachine/TrunkChase" method="_on_melee_range_body_entered"]
 [connection signal="body_exited" from="MeleeRange" to="StateMachine/TrunkMelee" method="_on_melee_range_body_exited"]
+[connection signal="timeout" from="StepHandler" to="." method="_on_step_handler_timeout"]
+[connection signal="timeout" from="OutrangedTimer" to="." method="_on_outranged_timer_timeout"]

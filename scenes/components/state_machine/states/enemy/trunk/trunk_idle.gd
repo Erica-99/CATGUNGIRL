@@ -23,9 +23,13 @@ func enter() -> void:
 	print("Idle")
 	idle_timer.wait_time = randf_range(min_idle_time, max_idle_time)
 	idle_timer.start()
+	
+	actor._stop_step_handler()
 
 func exit() -> void:
 	idle_timer.stop()
+	
+	actor._reset_step_handler()
 
 func update(_delta: float) -> void:
 	pass

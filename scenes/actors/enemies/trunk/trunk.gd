@@ -28,6 +28,7 @@ var facing: float = 1.0:
 	set(value):
 		if value != facing:
 			facing = value
+			current_time_between_steps = base_time_between_steps
 			facing_changed.emit(self)
 
 @export_category("Hitstun Variables")
@@ -54,11 +55,32 @@ var facing: float = 1.0:
 @export_category("Attack Variables")
 @export var melee_damage: float = 30.0
 @export var melee_hitbox: Area3D
+
+@export_category("Walking Variables")
+@export var distance_per_step: float = 2.0
+@export var base_time_between_steps: float = 1.0
+@export var min_time_between_steps: float = 0.3
+@export var exponential_decrement_per_step: float = 0.9
+
+@export_category("Outrange Timeout")
+@export var time_till_outrange: float = 6.0
+
+var current_time_between_steps: float
+var can_take_step: bool = true
+var past_platform_collider_status: bool = true
+var past_object_collider_status: bool = false
+
+@onready var step_handler: Timer = $StepHandler
+@onready var outranged_timer: Timer = $OutrangedTimer
+@onready var platform_check: RayCast3D = $PlatformCheck
+@onready var object_check: RayCast3D = $ObjectCheck
+@onready var animation_player: AnimationPlayer = $TrunkMesh/AnimationPlayer
+
 var damage_instance: DamageHealInstance = DamageHealInstance.new()
 
 var in_attacking_range: bool
 
-signal facing_changed(scrub: CharacterBody3D)
+signal facing_changed(trunk: CharacterBody3D)
 
 var is_dead: bool = false
 var blackboard: Dictionary
@@ -73,6 +95,9 @@ func _ready() -> void:
 	damage_instance.knockback = 0
 	damage_instance.source = get_path()
 	melee_hitbox.damage_or_heal_instance = damage_instance
+	
+	outranged_timer.wait_time = time_till_outrange
+	_reset_step_handler()
 	
 	# Blackboard contains the information states will use
 	blackboard = {
@@ -110,7 +135,7 @@ func _ready() -> void:
 	state_machine.init(blackboard)
 	
 func _process(delta):
-	pass
+	_handle_collision_check()
 
 func _physics_process(delta: float) -> void:
 	velocity.y -= GRAVITY * delta
@@ -125,3 +150,43 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 	if !detected_player && !is_dead:
 		detected_player = true
 		state_machine.on_child_transition(state_machine.current_state, "trunkchase")
+
+func _reset_step_handler():
+	current_time_between_steps = base_time_between_steps
+	step_handler.wait_time = base_time_between_steps
+	step_handler.start()
+	
+func _stop_step_handler():
+	step_handler.stop()
+
+func _take_step():
+	if can_take_step:
+		global_position.x += distance_per_step * facing
+
+func _on_step_handler_timeout() -> void:
+	animation_player.play("step")
+	await animation_player.animation_finished
+	
+	current_time_between_steps = max(current_time_between_steps * exponential_decrement_per_step, min_time_between_steps)
+	
+	step_handler.wait_time = current_time_between_steps
+	step_handler.start()
+
+func _handle_collision_check():
+	platform_check.force_raycast_update()
+	object_check.force_raycast_update()
+	# platform_check should always be colliding, object_check should never be colliding
+	if past_platform_collider_status != platform_check.is_colliding() or past_object_collider_status != object_check.is_colliding():
+		past_platform_collider_status = platform_check.is_colliding()
+		past_object_collider_status = object_check.is_colliding()
+		
+		can_take_step = past_platform_collider_status and !past_object_collider_status
+		
+		if !can_take_step:
+			if detected_player:
+				outranged_timer.start()
+		else:
+			outranged_timer.stop()
+
+func _on_outranged_timer_timeout() -> void:
+	state_machine.on_child_transition(state_machine.current_state, "trunkoutranged")
