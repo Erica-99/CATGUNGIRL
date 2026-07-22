@@ -4,17 +4,34 @@ extends Control
 
 @onready var VBOX = $ColorRect/MarginContainer/VBoxContainer
 
-var CurrentAmmo = 20
-var TargetAmmo = 10
-
 signal bulletlost
 
-func _process(delta: float) -> void:
-	CurrentAmmo = VBOX.get_child_count()
-	if CurrentAmmo < TargetAmmo:
+func _ready() -> void:
+	EventManager.new_mag_loaded.connect(_load_new_mag)
+	EventManager.shot_fired.connect(_fire_shot)
+	EventManager.shots_loaded.connect(_add_bullets)
+
+
+func _load_new_mag(ammo: int, mag_capacity: int) -> void:
+	# Not currently using mag capacity but I've included it anyway
+	
+	# Clear old bullets without firing them
+	for child in VBOX.get_children():
+		child.queue_free()
+	
+	# Load new bullets
+	for i in ammo:
 		var newbullet = ui_bullet_icon.instantiate()
 		VBOX.add_child(newbullet)
-	elif CurrentAmmo > TargetAmmo:
-		bulletlost.emit()
-		var deadbullet = VBOX.get_child(VBOX.get_child_count(-1))
-		deadbullet.queue_free()
+
+
+func _fire_shot() -> void:
+	var deadbullet = VBOX.get_children()[-1]
+	deadbullet.queue_free()
+	bulletlost.emit()
+
+
+func _add_bullets(bullets_to_add: int) -> void:
+	for bullet in bullets_to_add:
+		var newbullet = ui_bullet_icon.instantiate()
+		VBOX.add_child(newbullet)

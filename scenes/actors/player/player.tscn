@@ -2,11 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cabb16sxnh4bu" path="res://scenes/actors/player/player.gd" id="1_qdyt2"]
 [ext_resource type="Script" uid="uid://bjypb0bixh3rp" path="res://scenes/actors/player/player_visuals.gd" id="2_0w3ce"]
-[ext_resource type="Script" uid="uid://b5wuc23rlp8as" path="res://scenes/actors/player/ammo_hud.gd" id="2_gisjq"]
 [ext_resource type="Script" uid="uid://c71argnkra1em" path="res://scenes/actors/player/debug_state_display.gd" id="2_inh5e"]
 [ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="2_mpktj"]
-[ext_resource type="PackedScene" uid="uid://d1dtceqi3s5oh" path="res://art/2d_assets/real_world/UI/ammo_count.tscn" id="2_owjsm"]
-[ext_resource type="PackedScene" uid="uid://pp03qyrbback" path="res://art/2d_assets/real_world/UI/bullet_count_VFX.tscn" id="3_haoly"]
 [ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="3_qdyt2"]
 [ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="3_yg5k4"]
 [ext_resource type="PackedScene" uid="uid://c6wep4oftfyke" path="res://scenes/components/state_machine/state_machine.tscn" id="4_qdyt2"]
@@ -1425,9 +1422,6 @@ metadata/_custom_type_script = "uid://y2ix2xo5owxw"
 [sub_resource type="BoxShape3D" id="BoxShape3D_g2g7f"]
 size = Vector3(1.2752686, 3.1870117, 1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_llrf1"]
-viewport_path = NodePath("CameraComponent/AMMOHUDConcept/AmmoHUD/SubViewport")
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_llrf1"]
 radius = 1.0
 
@@ -1610,29 +1604,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6085612, 0)
 transform = Transform3D(1, 0, 0, 0, 0.99660444, 0.08233857, 0, -0.08233857, 0.99660444, 0, 4.07051, 55.812668)
 fov = 26.8
 
-[node name="AMMOHUDConcept" type="Node3D" parent="CameraComponent" unique_id=2088313326]
-transform = Transform3D(0.3, 0, 0, 0, 0.29898134, -0.024701586, 0, 0.024701586, 0.29898134, 0.77514887, -1.7584262, -4.239952)
-
-[node name="AmmoHUD" type="Node3D" parent="CameraComponent/AMMOHUDConcept" unique_id=652509324]
-transform = Transform3D(0.85918325, 0, -0.511668, 0, 1, 0, 0.511668, 0, 0.85918325, 2.8519964, 2.4402962, -9.690643)
-script = ExtResource("2_gisjq")
-
-[node name="SubViewport" type="SubViewport" parent="CameraComponent/AMMOHUDConcept/AmmoHUD" unique_id=512941231]
-transparent_bg = true
-
-[node name="AmmoCount" parent="CameraComponent/AMMOHUDConcept/AmmoHUD/SubViewport" unique_id=76601130 instance=ExtResource("2_owjsm")]
-
-[node name="Sprite3D" type="Sprite3D" parent="CameraComponent/AMMOHUDConcept/AmmoHUD" unique_id=334038523]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3355465, 0.016272783, -2.4963646)
-texture = SubResource("ViewportTexture_llrf1")
-
-[node name="FXNode" type="Node3D" parent="CameraComponent/AMMOHUDConcept/AmmoHUD/Sprite3D" unique_id=1124464669]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1721878, -0.98295784, -0.16559601)
-
-[node name="BulletVFX" parent="CameraComponent/AMMOHUDConcept/AmmoHUD/Sprite3D/FXNode" unique_id=1767152557 instance=ExtResource("3_haoly")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.53321266, -1.4630585, -0.5016537)
-emitting = false
-
 [node name="MovementStateMachine" parent="." unique_id=1499026333 node_paths=PackedStringArray("initial_state") instance=ExtResource("4_qdyt2")]
 initial_state = NodePath("PlayerIdle")
 
@@ -1721,7 +1692,6 @@ input_component = NodePath("../PlayerInput")
 [connection signal="crouching" from="PlayerInput" to="MovementStateMachine/PlayerCrouch" method="_on_player_input_crouching"]
 [connection signal="hasLanded" from="PlayerInput" to="MovementStateMachine/PlayerJump" method="_on_player_input_has_landed"]
 [connection signal="standing" from="PlayerInput" to="MovementStateMachine/PlayerCrouch" method="_on_player_input_standing"]
-[connection signal="bulletlost" from="CameraComponent/AMMOHUDConcept/AmmoHUD/SubViewport/AmmoCount" to="CameraComponent/AMMOHUDConcept/AmmoHUD" method="_on_ammo_count_bulletlost"]
 [connection signal="state_changed" from="MovementStateMachine" to="PlayerVisuals" method="_on_movement_state_machine_state_changed"]
 [connection signal="state_changed" from="MovementStateMachine" to="DebugStateDisplay" method="_on_movement_state_machine_state_changed"]
 [connection signal="overlap" from="MovementStateMachine/PlayerCrouch" to="MovementStateMachine/PlayerIdle" method="_on_player_crouch_overlap"]
