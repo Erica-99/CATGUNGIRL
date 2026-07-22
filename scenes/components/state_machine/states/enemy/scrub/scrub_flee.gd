@@ -10,6 +10,7 @@ var actor: CharacterBody3D
 var anim: AnimatedSprite3D
 var target: CharacterBody3D
 var flee_speed: float
+var flee_acceleration: float
 
 func init(blackboard_dict : Dictionary) -> void:
 	super(blackboard_dict)
@@ -17,6 +18,7 @@ func init(blackboard_dict : Dictionary) -> void:
 	anim = blackboard["anim"]
 	target = blackboard["target"]
 	flee_speed = blackboard["flee_speed"]
+	flee_acceleration = blackboard["flee_acceleration"]
 
 func enter() -> void:
 	pass
@@ -28,22 +30,14 @@ func update(_delta: float) -> void:
 	pass
 
 func physics_update(delta: float) -> void:
-	var direction
-	#var direction = sign(actor.global_position.x - target.global_position.x)
-	#if direction != actor.facing:
-		#actor.facing_changed.emit(direction)
-	#anim.play("flee")
-	if actor.global_position > target.global_position:
-		#anim.flip_h = false;
-		direction = -1
-	elif actor.global_position < target.global_position:
-		#anim.flip_h = true;
-		direction = 1
+	var direction: float = sign(actor.global_position.x - target.global_position.x)
 	
-	actor.facing = direction
+	if direction == 0.0:
+		direction = actor.facing
+	
+	actor.facing = -direction
 		
-	# Same logic as chase, just made negative, to move away from player
-	actor.velocity.x += -(direction * flee_speed * delta)
-	actor.velocity.x = clamp(actor.velocity.x, -flee_speed, flee_speed)
-	
+	# Same logic as chase
+	var target_velocity: float = direction * flee_speed
+	actor.velocity.x = move_toward(actor.velocity.x, target_velocity, flee_acceleration * delta)
 	actor.move_and_slide()

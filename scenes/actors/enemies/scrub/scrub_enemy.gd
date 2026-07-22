@@ -25,7 +25,9 @@ var is_dead: bool = false
 @export var move_speed: float = 10
 @export var patrol_speed: float
 @export var chase_speed: float
+@export var chase_acceleration: float = 5.0
 @export var flee_speed: float
+@export var flee_acceleration: float = 5.0
 @export var slow_down_speed: float = 30
 var facing: float = 1.0:
 	set(value):
@@ -64,7 +66,9 @@ func _ready() -> void:
 		"grenade": grenade,
 		"patrol_speed": patrol_speed,
 		"chase_speed": chase_speed,
+		"chase_acceleration": chase_acceleration,
 		"flee_speed": flee_speed,
+		"flee_acceleration": flee_acceleration,
 		"slow_down_speed": slow_down_speed,
 		"target": get_tree().get_first_node_in_group("player") as CharacterBody3D,
 	}
