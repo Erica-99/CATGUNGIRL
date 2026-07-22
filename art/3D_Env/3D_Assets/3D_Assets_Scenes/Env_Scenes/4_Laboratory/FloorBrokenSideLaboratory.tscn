@@ -2,6 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://chhs6piyyjtp5" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/4_Laboratory/FloorBrokenSideLaboratory.obj" id="1_3q1sr"]
 [ext_resource type="Texture2D" uid="uid://b4vdk8nkr21tl" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Floor/TextureTrimSheetFloorL.png" id="2_pxmlj"]
+[ext_resource type="ArrayMesh" uid="uid://h0w5igixha5g" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/RebarEdge.obj" id="3_a7ub3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85esb"]
 albedo_texture = ExtResource("2_pxmlj")
@@ -18,3 +19,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_85esb")
 
 [node name="FloorBrokenSideLaboratory_Collision" type="CollisionShape3D" parent="." unique_id=1815163273]
 shape = SubResource("ConcavePolygonShape3D_mdxb7")
+
+[node name="RebarEdge_Mesh" type="MeshInstance3D" parent="." unique_id=1700778817]
+mesh = ExtResource("3_a7ub3")
