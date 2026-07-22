@@ -47,7 +47,7 @@ func _process(delta: float) -> void:
 		var target_angle = Vector2(direction.x, direction.y).angle()
 		rotation.z = target_angle
 		
-		if _bullets_fired < 3:
+		if _bullets_fired < bullets_per_barrage:
 			_fire_cooldown += delta
 			if _fire_cooldown > fire_rate:
 				_fire_cooldown = 0
