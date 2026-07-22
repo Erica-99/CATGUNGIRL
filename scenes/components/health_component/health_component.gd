@@ -88,6 +88,10 @@ func take_damage_or_heal(damage_or_heal_instance: DamageHealInstance) -> void:
 			if killable and current_health <= min_health:
 				killed.emit(damage_or_heal_instance, prev_health - min_health)
 		
+		## If stun (i.e. if stun_time value in DamageHealInstance more than 0)
+		## then make state machine switch to given state
+		
+		
 	elif healable and damage_or_heal_instance.is_heal:
 		var prev_health = current_health
 		current_health += damage_or_heal_instance.amount
