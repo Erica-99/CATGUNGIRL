@@ -255,7 +255,10 @@ func _shoot_handler():
 func _shoot(damage, bullet_scale):
 	_spawn_bullet(damage, bullet_scale)
 
+
 func _handle_ammo():
+	EventManager.shot_fired.emit()
+	
 	_current_ammo -= 1
 	if _current_ammo <= 0 and reload_full: 
 		_is_reloading = true
@@ -292,3 +295,5 @@ func _spawn_bullet(damage: float, size: float) -> void:
 func _on_reload_timer_timeout() -> void:
 	_is_reloading = false
 	_current_ammo = ammo_max
+	
+	EventManager.new_mag_loaded.emit(_current_ammo, ammo_max)
