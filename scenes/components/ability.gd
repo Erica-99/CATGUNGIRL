@@ -7,7 +7,6 @@ var active: bool = false:
 	set(value):
 		active = value
 		visible = active
-		_set_children_active(active)
 
 func initialise(ability_state: State, actor_blackboard: Dictionary) -> void:
 	_ability_state = ability_state

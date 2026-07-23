@@ -53,7 +53,6 @@ func _switch_gun():
 	_activate_gun()
 	print("GUN SWITCHED TO: ")
 	print(current_gun)
-	print(current_gun.active)
 	
 	EventManager.new_mag_loaded.emit(current_gun._current_ammo, current_gun.ammo_max)
 	EventManager.new_gun_equipped.emit(current_gun.gun_name)

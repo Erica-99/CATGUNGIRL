@@ -8,6 +8,8 @@ var hook: Node3D
 
 var initial_dist: float
 
+var cancelled_early: bool = false
+
 func init(blackboard_dict : Dictionary) -> void:
 	super(blackboard_dict)
 	
@@ -18,13 +20,16 @@ func enter() -> void:
 	reeling = false
 	hook = blackboard["current_grapple_hook"]
 	hook.can_latch = false
+	cancelled_early = false
 	_enable_reeling_after_delay(delay)
 	
 func exit() -> void:
 	blackboard["grapplegun_object"].cancel_hook.emit()
 	
 func update(_delta: float) -> void:
-	pass
+	if not blackboard["grapplegun_object"].active:
+		cancelled_early = true
+		transitioned.emit(self, "grappleretracted")
 	
 func physics_update(_delta: float) -> void:
 	if not reeling:
@@ -47,8 +52,9 @@ func physics_update(_delta: float) -> void:
 
 func _enable_reeling_after_delay(delay: float) -> void:
 	await get_tree().create_timer(delay).timeout
-	initial_dist = (hook.global_position - blackboard["rope_attach_point"].global_position).length()
-	actor.velocity = Vector3.ZERO
-	reeling = true
+	if not cancelled_early:
+		initial_dist = (hook.global_position - blackboard["rope_attach_point"].global_position).length()
+		actor.velocity = Vector3.ZERO
+		reeling = true
 	
 	
