@@ -21,7 +21,10 @@ initial_state = NodePath("MissileSpawn")
 
 [node name="MissileSpawn" type="Node" parent="StateMachine" unique_id=475441113]
 script = ExtResource("3_vsmuw")
-launch_duration = 0.6
+burst_duration = 0.4
+burst_damp = 3
+spin_count = 3
+spin_damp = 2
 
 [node name="MissileHome" type="Node" parent="StateMachine" unique_id=1725437539]
 script = ExtResource("4_a5ply")
