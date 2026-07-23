@@ -5,7 +5,11 @@ extends Control
 @onready var sprite = $Guns
 
 var currentgun = 'Pistol'
-var targetgun = 'Shotgun'
+var targetgun = 'Pistol'
+
+
+func _ready() -> void:
+	EventManager.new_gun_equipped.connect(_on_gun_swapped)
 
 
 func _process(delta: float) -> void:
@@ -22,3 +26,7 @@ func _on_gun_animations_animation_finished(anim_name: StringName) -> void:
 	elif anim_name == 'Return':
 		anims.play('Idle')
 	pass # Replace with function body.
+
+
+func _on_gun_swapped(new_gun: String) -> void:
+	targetgun = new_gun

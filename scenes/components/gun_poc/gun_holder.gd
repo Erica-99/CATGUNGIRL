@@ -9,11 +9,11 @@ var current_gun: Gun
 
 const PISTOL_PREFAB = preload("res://scenes/components/gun_poc/pistol/pistol.tscn")
 const SHOTGUN_PREFAB = preload("res://scenes/components/gun_poc/shotgun/shotgun.tscn")
-const RIFLE_PREFAB = preload("res://scenes/components/gun_poc/rifle/rifle.tscn")
+#const RIFLE_PREFAB = preload("res://scenes/components/gun_poc/rifle/rifle.tscn")
 const SNIPER_PREFAB = preload("res://scenes/components/gun_poc/sniper/sniper.tscn")
 
 # can make this instead an export var for better customisation (for the poc i am being lazy)
-const guns_available = [PISTOL_PREFAB, SHOTGUN_PREFAB, RIFLE_PREFAB, SNIPER_PREFAB]
+const guns_available = [PISTOL_PREFAB, SHOTGUN_PREFAB, SNIPER_PREFAB]
 
 var current_child_count: int = 0
 var current_gun_index: int = 0
@@ -34,6 +34,7 @@ func _ready() -> void:
 	current_gun = get_child(current_gun_index)
 	_activate_gun()
 	EventManager.new_mag_loaded.emit(current_gun._current_ammo, current_gun.ammo_max)
+	EventManager.new_gun_equipped.emit(current_gun.gun_name)
 
 func _process(delta: float) -> void:
 	var current_input_state = input_component.get_input_state()
@@ -55,6 +56,7 @@ func _switch_gun():
 	print(current_gun.active)
 	
 	EventManager.new_mag_loaded.emit(current_gun._current_ammo, current_gun.ammo_max)
+	EventManager.new_gun_equipped.emit(current_gun.gun_name)
 
 func _deactivate_gun():
 	current_gun.active = false

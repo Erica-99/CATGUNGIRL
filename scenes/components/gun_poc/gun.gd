@@ -6,6 +6,8 @@ const HITBOX_SCENE = preload("res://scenes/components/hitbox_component/hitbox_co
 ## gun component - handles aiming, normal fire, and charged shots
 ## attach as a child of player node
 
+@export var gun_name: String
+
 ## exported variables
 @export var bullet_scene: PackedScene	# bullet.tscn file to spawn when firing
 @export var team_component: Node		# player TeamComponent reference, passed to bullets
