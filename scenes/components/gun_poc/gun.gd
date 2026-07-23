@@ -100,7 +100,7 @@ var _spam_count: int = 0			# track spam count
 # var _has_printed_settle: bool = false
 var _charge_progress: float = 0.0	# beam
 var _is_perfect_charge: bool = false
-var _current_ammo: int = ammo_max
+@onready var _current_ammo: int = ammo_max
 var _is_reloading: bool = false
 
 # check if aim within threshold
@@ -108,17 +108,6 @@ func _is_aim_settled() -> bool:
 	return abs(_recoil_offset) < recoil_amount * (1.0 - aim_settled_threshold / 100.0)
 
 func _process(delta: float) -> void:
-	# in hindsight, the is_reloading should probably have a set of interactions for attempted bulletshots whilst reload but anyways...
-	if !active:
-		return
-		
-	var current_input_state = input_component.get_input_state()
-	_update_aim(current_input_state.get("mouse_world_pos"), current_input_state, delta)
-	_fire_cooldown = maxf(_fire_cooldown - delta, 0.0)
-	_time_since_last_shot += delta
-	if _time_since_last_shot >= spam_window:
-		_is_spamming = false
-		_spam_count = 0
 	
 	# single shot reloading
 	if !reload_full:
@@ -127,6 +116,19 @@ func _process(delta: float) -> void:
 			if single_reload_timer > reload_time:
 				_current_ammo += 1
 				single_reload_timer = reload_time / 2.0
+				if active: EventManager.shots_loaded.emit(1)
+	
+	# in hindsight, the is_reloading should probably have a set of interactions for attempted bulletshots whilst reload but anyways...
+	if !active:
+		return
+	
+	var current_input_state = input_component.get_input_state()
+	_update_aim(current_input_state.get("mouse_world_pos"), current_input_state, delta)
+	_fire_cooldown = maxf(_fire_cooldown - delta, 0.0)
+	_time_since_last_shot += delta
+	if _time_since_last_shot >= spam_window:
+		_is_spamming = false
+		_spam_count = 0
 	
 	if !_is_reloading:
 		# normal fire (left click) read from input component
@@ -255,7 +257,10 @@ func _shoot_handler():
 func _shoot(damage, bullet_scale):
 	_spawn_bullet(damage, bullet_scale)
 
+
 func _handle_ammo():
+	EventManager.shot_fired.emit()
+	
 	_current_ammo -= 1
 	if _current_ammo <= 0 and reload_full: 
 		_is_reloading = true
@@ -292,3 +297,5 @@ func _spawn_bullet(damage: float, size: float) -> void:
 func _on_reload_timer_timeout() -> void:
 	_is_reloading = false
 	_current_ammo = ammo_max
+	
+	if active: EventManager.new_mag_loaded.emit(_current_ammo, ammo_max)

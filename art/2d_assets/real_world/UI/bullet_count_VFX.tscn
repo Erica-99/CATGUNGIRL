@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://pp03qyrbback"]
+
+[ext_resource type="Texture2D" uid="uid://crng4f3f2avnf" path="res://icon.svg" id="1_sg5fs"]
+[ext_resource type="Script" uid="uid://cyeklj01bo3ow" path="res://art/2d_assets/real_world/UI/bullet_count_vfx.gd" id="2_ndrie"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsnmo"]
+albedo_texture = ExtResource("1_sg5fs")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_msxka"]
+direction = Vector3(1, 35.86, 0)
+spread = 34.964
+flatness = 1.0
+initial_velocity_min = 30.0
+initial_velocity_max = 30.0
+angular_velocity_min = 254.11998
+angular_velocity_max = 254.11998
+gravity = Vector3(0, -50, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_haoly"]
+
+[node name="BulletVFX" type="GPUParticles3D" unique_id=1767152557]
+material_overlay = SubResource("StandardMaterial3D_xsnmo")
+amount = 1
+lifetime = 3.0
+one_shot = true
+speed_scale = 4.0
+process_material = SubResource("ParticleProcessMaterial_msxka")
+draw_pass_1 = SubResource("QuadMesh_haoly")
+script = ExtResource("2_ndrie")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
