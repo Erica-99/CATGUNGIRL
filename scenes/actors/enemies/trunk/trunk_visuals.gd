@@ -3,6 +3,7 @@ extends Node3D
 @onready var sprite_pivot = $Torso
 @onready var platform_check: RayCast3D = $"../PlatformCheck"
 @onready var object_check: RayCast3D = $"../ObjectCheck"
+@onready var anim_manager = $TorsoAnims
 # chuck all visual code stuff and gun/missile aiming here
 
 func _on_trunk_facing_changed(trunk: CharacterBody3D) -> void:
@@ -15,3 +16,12 @@ func _on_trunk_facing_changed(trunk: CharacterBody3D) -> void:
 	
 	platform_check.target_position.x = -platform_check.target_position.x
 	object_check.target_position.x = -object_check.target_position.x
+
+
+func _on_state_machine_state_changed(prev: String, new: String) -> void:
+	print(new)
+	if new == 'TrunkIdle' or new == 'trunkoutranged':
+		anim_manager.play("Idle")
+	elif new == 'trunkchase':
+		anim_manager.play('StepStart')
+	pass # Replace with function body.
