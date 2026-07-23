@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cngu3je7rp286"]
+
+[ext_resource type="ArrayMesh" uid="uid://cjddnb2nv20rv" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/3_WareHouse/DoorwayNoneMidWareHouse.obj" id="1_vk8rd"]
+[ext_resource type="Texture2D" uid="uid://dgey57obwj80x" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/3_WareHouse/Walls/TextureTrimSheetWallW.png" id="2_urnyt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tbgin"]
+albedo_texture = ExtResource("2_urnyt")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_r4pps"]
+points = PackedVector3Array(-0.099878, -0.100005, -2.500938, 0.09987801, -0.100005, -2.500938, -0.099878, -0.100005, 2.4997582, -0.099878, 4.10165, -2.500938, 0.09987801, 4.10165, -2.500938, 0.09987801, -0.100005, 2.4997582, -0.099878, 4.10165, 2.4997582, 0.09987801, 4.10165, 2.4997582)
+
+[node name="DoorwayNoneMidWareHouse" type="StaticBody3D" unique_id=974643408]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="DoorwayNoneMidWareHouse_Mesh" type="MeshInstance3D" parent="." unique_id=253180081]
+mesh = ExtResource("1_vk8rd")
+surface_material_override/0 = SubResource("StandardMaterial3D_tbgin")
+
+[node name="DoorwayNoneMidWareHouse_Collision" type="CollisionShape3D" parent="." unique_id=23059112]
+shape = SubResource("ConvexPolygonShape3D_r4pps")

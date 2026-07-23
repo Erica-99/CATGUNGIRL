@@ -17,16 +17,22 @@ const HITBOX_SCENE = preload("res://scenes/components/hitbox_component/hitbox_co
 @export_group("Ammo")
 @export var ammo_max: int = 10
 @export var reload_time: float = 3.0
+@export var reload_full: bool = true 	# differentiates full mag reloaders (pistol)
+										# and single shot reloaders (shotgun)
+var single_reload_timer: float = 0 # to control changing reload times (e.g. 1.0 -> 0.5 -> 0.5 -> 0.5)
 
 @export_group("Normal Fire")
 @export var fire_rate: float = 0.15			# min time (seconds) between shots
+@export var full_auto: bool = true
 @export var bullet_damage: float = 10.0
 @export var bullet_knockback: float = 5.0	# knockback force (can remove)
 @export var bullet_scale: float = 1.0
+@export var bullet_velocity_multiplier: float = 1.0 # higher = faster
 @export var recoil_amount: float = 0.35		# higher = more
 @export var recoil_recovery: float = 5.0 	# higher = faster
 @export var wobble_amount: float = 0.1		# higher = more
 @export var wobble_speed: float = 7.0		# higher = faster
+@export var base_aim_spread: float = 0		# for weapons with imperfect aiming
 
 @export_group("Spam Fire")
 @export var spam_spread_angle: float = 5.0			# max degrees of random offset per spam shot
@@ -67,11 +73,14 @@ signal perfect_window_changed(active: bool) # for indicator flash
 @onready var _normal_flash: CPUParticles3D = $Muzzle/NormalMuzzleFlash
 @onready var _perfect_flash: CPUParticles3D = $Muzzle/PerfectMuzzleFlash
 
+## semi-auto buffer
+var semi_available: bool = true
 
 var Gun_Animation: AnimationPlayer
 var Muzzle_VFX: AnimationPlayer
 
 var input_component: Node
+
 var active: bool = false:
 	set(value):
 		active = value
@@ -91,7 +100,7 @@ var _spam_count: int = 0			# track spam count
 # var _has_printed_settle: bool = false
 var _charge_progress: float = 0.0	# beam
 var _is_perfect_charge: bool = false
-var _current_ammo: int = ammo_max
+@onready var _current_ammo: int = ammo_max
 var _is_reloading: bool = false
 
 # check if aim within threshold
@@ -99,6 +108,16 @@ func _is_aim_settled() -> bool:
 	return abs(_recoil_offset) < recoil_amount * (1.0 - aim_settled_threshold / 100.0)
 
 func _process(delta: float) -> void:
+	
+	# single shot reloading
+	if !reload_full:
+		if _current_ammo != ammo_max:
+			single_reload_timer += delta
+			if single_reload_timer > reload_time:
+				_current_ammo += 1
+				single_reload_timer = reload_time / 2.0
+				if active: EventManager.shots_loaded.emit(1)
+	
 	# in hindsight, the is_reloading should probably have a set of interactions for attempted bulletshots whilst reload but anyways...
 	if !active:
 		return
@@ -114,9 +133,21 @@ func _process(delta: float) -> void:
 	if !_is_reloading:
 		# normal fire (left click) read from input component
 		if current_input_state.get("fire_held", false):
-			_try_fire()
+			if full_auto:
+				_try_fire()
+			else: # buffer the checks for semi-auto firing
+				if semi_available:
+					_try_fire()
+					
 		# input handling for special attack
 		_handle_special(current_input_state, delta)
+	
+	# buffer for semi auto firing
+	if !full_auto:
+		if input_component._fire_held:
+			semi_available = false
+		else:
+			semi_available = true
 		
 	if _is_charging:
 		spread_changed.emit(_charge_progress)
@@ -164,6 +195,9 @@ func _handle_special(input_state: Dictionary, delta: float) -> void:
 	pass
 
 func _try_fire() -> void:
+	# won't fire on empty ammo (added for shotgun)
+	if _current_ammo == 0:
+		return
 	# won't fire if cooldown not expired
 	if _fire_cooldown > 0.0:
 		return
@@ -217,14 +251,18 @@ func _shoot_handler():
 	_shoot(damage, bullet_scale)
 	_recoil_offset += recoil_amount * sign(global_transform.basis.x.x)
 	_time_since_last_shot = 0.0
+	single_reload_timer = 0.0
 	# _has_printed_settle = false
 
 func _shoot(damage, bullet_scale):
 	_spawn_bullet(damage, bullet_scale)
 
+
 func _handle_ammo():
+	EventManager.shot_fired.emit()
+	
 	_current_ammo -= 1
-	if _current_ammo <= 0:
+	if _current_ammo <= 0 and reload_full: 
 		_is_reloading = true
 		reload_timer.start(reload_time)
 
@@ -234,6 +272,9 @@ func _spawn_bullet(damage: float, size: float) -> void:
 	bullet.global_transform = muzzle.global_transform
 	
 	var aim_dir = Vector3(cos(rotation.z), sin(rotation.z), 0.0).normalized()
+	if base_aim_spread != 0:
+		var aim_deviation = randf_range(-deg_to_rad(base_aim_spread), deg_to_rad(base_aim_spread))
+		aim_dir = aim_dir.rotated(Vector3(0.0, 0.0, 1.0), aim_deviation)
 	
 	# new spread
 	if _is_spamming:
@@ -249,9 +290,12 @@ func _spawn_bullet(damage: float, size: float) -> void:
 	damage_instance.source = get_path()
 	
 	bullet.initialize(aim_dir, damage_instance, team_component, size)
+	bullet.speed *= bullet_velocity_multiplier
 	var hb = bullet.get_node("HitboxComponent") 
 	hb.hurtbox_hit.connect(func(hurtbox): enemy_hit.emit(hurtbox))
 
 func _on_reload_timer_timeout() -> void:
 	_is_reloading = false
 	_current_ammo = ammo_max
+	
+	if active: EventManager.new_mag_loaded.emit(_current_ammo, ammo_max)

@@ -33,6 +33,7 @@ func _ready() -> void:
 	# lazy code - should be changed to consider other child types...
 	current_gun = get_child(current_gun_index)
 	_activate_gun()
+	EventManager.new_mag_loaded.emit(current_gun._current_ammo, current_gun.ammo_max)
 
 func _process(delta: float) -> void:
 	var current_input_state = input_component.get_input_state()
@@ -44,16 +45,21 @@ func _switch_gun():
 	current_gun_index += 1
 	if current_gun_index == current_child_count:
 		current_gun_index = 0
-		
+	var rotation_save = current_gun.rotation.z
 	_deactivate_gun()
 	current_gun = get_child(current_gun_index)
+	current_gun.rotation.z = rotation_save
 	_activate_gun()
 	print("GUN SWITCHED TO: ")
 	print(current_gun)
 	print(current_gun.active)
+	
+	EventManager.new_mag_loaded.emit(current_gun._current_ammo, current_gun.ammo_max)
 
 func _deactivate_gun():
 	current_gun.active = false
 
 func _activate_gun():
 	current_gun.active = true
+	if current_gun._current_ammo > current_gun.ammo_max:
+		current_gun._current_ammo = current_gun.ammo_max

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bncqrcy5rw3pp"]
+
+[ext_resource type="ArrayMesh" uid="uid://ykjudri5hvgw" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/3_GuardRooms/FilingCabinet4.obj" id="1_wrl1s"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gifyk"]
+points = PackedVector3Array(-0.579414, 0.22650744, -0.054240048, -0.579414, 0.22650744, 0.05177012, -0.579414, 0.26018012, -0.054240048, -0.5657951, 0.04992169, -0.22622517, -0.579414, 0.26018012, 0.05177012, -0.5657951, 0.04992169, 0.2238042, -0.5657951, 0.34475332, -0.22622517, -0.27828524, 0, -0.251186, -0.5657951, 0.34475332, 0.2238042, -0.27828524, 0, 0.24881399, -0.27828524, 1, -0.251186, 0.23421502, 0, -0.251186, -0.27828524, 1, 0.24881399, 0.23421502, 0, 0.24881399, 0.23421502, 1, -0.251186, 0.23421502, 1, 0.24881399)
+
+[node name="FilingCabinet4" type="StaticBody3D" unique_id=382330]
+
+[node name="FilingCabinet4_Mesh" type="MeshInstance3D" parent="." unique_id=685208652]
+transform = Transform3D(-1.3113416e-07, 0, 3, 0, 3, 0, -3, 0, -1.3113416e-07, 0, 0, 0)
+mesh = ExtResource("1_wrl1s")
+
+[node name="FilingCabinet4_Collision" type="CollisionShape3D" parent="." unique_id=1711231700]
+transform = Transform3D(-1.3113416e-07, 0, 3, 0, 3, 0, -3, 0, -1.3113416e-07, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_gifyk")

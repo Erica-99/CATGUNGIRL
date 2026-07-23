@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dnuawo7ady5q"]
+
+[ext_resource type="ArrayMesh" uid="uid://hnlewxamoafk" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/1_TestChamber/TestDummy.obj" id="1_merlg"]
+[ext_resource type="ArrayMesh" uid="uid://bbaqnnnr3ikwo" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/1_TestChamber/TestDummyStand.obj" id="2_lvsuk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1byu"]
+stencil_mode = 3
+stencil_flags = 2
+stencil_reference = 2
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8j1rr"]
+points = PackedVector3Array(0.34310445, 1.3877788e-17, 0.032040097, -0.032040097, 0, -0.34310445, -0.08577611, 0, -0.33235726, -0.051826045, 0.12657395, 0.09337792, -0.23576675, -1.3877788e-17, 0.25732836, 0.15198766, 0.017551813, 0.3506337, -0.3506337, 0.017551813, -0.15198766, 0.051826045, 0.12657395, -0.09337792, 0.28060952, 0.017551813, -0.25709718, 0.3506337, 0.017551813, 0.15198766, -0.28060952, 0.017551813, 0.25709718, -0.03493885, 0.017551813, -0.374146, -0.051826045, 0.12657395, -0.09337792, 0.051826045, 0.12657395, 0.09337792, -0.03493885, 0.017551813, 0.374146, 0.374146, 0.017551813, -0.03493885, -0.374146, 0.017551813, 0.03493885, 0.13937779, -1.3877788e-17, 0.3215429, -0.25709718, 0.017551813, -0.28060952, -0.3215429, 0, -0.13937779, 0.15198766, 0.017551813, -0.3506337, 0.25732836, -2.7755576e-17, -0.23576675, -0.15198766, 0.017551813, 0.3506337, 0.28060952, 0.017551813, 0.25709718, 0.3506337, 0.017551813, -0.15198766, -0.3506337, 0.017551813, 0.15198766, -0.15198766, 0.017551813, -0.3506337, -0.3215429, -1.3877788e-17, 0.13937779, -0.032040097, -1.3877788e-17, 0.34310445, 0.25732836, 1.3877788e-17, 0.23576675, -0.23576675, 0, -0.25732836, 0.03493885, 0.017551813, 0.374146)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_j54gn"]
+points = PackedVector3Array(0.019019647, 1.2181742, 0.44954962, -0.038503975, 1.2151755, 0.44178876, 0.054685667, 0.050753117, -0.04330529, -0.2880201, 1.3505621, -0.010492126, -0.038503975, 1.1076937, -0.4786468, -0.06784537, 1.9855945, -0.07004299, 0.17904809, 1.885108, 0.04991479, -0.038503975, 0.050753117, 0.04991479, 0.2044935, 0.99179274, -0.01013168, -0.16286641, 1.885108, 0.14313486, 0.08585846, 1.1700271, -0.44751057, 0.054685667, 1.1388605, 0.4852563, -0.19392961, 1.8229694, -0.13652536, -0.06956719, 1.1076937, 0.45412007, -0.038503975, 0.050753117, -0.04330529, 0.054685667, 1.9162747, 0.17427112, 0.14803967, 1.9162747, -0.10548346, 0.054685667, 0.050753117, 0.04991479, -0.100685194, 1.2011938, -0.4163743, -0.22316647, 0.9138393, -0.009826391, 0.21117868, 1.4618225, -0.010501334, -0.13174841, 1.8541361, -0.16766162, 0.11692166, 1.325471, 0.36080563, -0.27936783, 1.3133345, 0.04342253, -0.22504762, 1.8541361, 0.018778529, 0.018385883, 1.3304334, -0.40951183, 0.049667403, 1.987166, 0.07677514, 0.054685667, 1.1076937, -0.4786468, 0.08585846, 1.1388605, 0.4229838, -0.038503975, 1.1076937, 0.4852563, 0.14803967, 1.9162747, 0.11209296, -0.14278398, 0.88960046, 0.19880041)
+
+[node name="TestDummy" type="StaticBody3D" unique_id=669336158]
+
+[node name="TestDummyStand_Mesh" type="MeshInstance3D" parent="." unique_id=976191908]
+mesh = ExtResource("2_lvsuk")
+surface_material_override/0 = SubResource("StandardMaterial3D_m1byu")
+
+[node name="TestDummyStand_Collision" type="CollisionShape3D" parent="." unique_id=368519766]
+shape = SubResource("ConvexPolygonShape3D_8j1rr")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1014079981]
+
+[node name="TestDummy_Mesh" type="MeshInstance3D" parent="Node3D" unique_id=1846877387]
+mesh = ExtResource("1_merlg")
+surface_material_override/0 = SubResource("StandardMaterial3D_m1byu")
+surface_material_override/1 = SubResource("StandardMaterial3D_m1byu")
+surface_material_override/2 = SubResource("StandardMaterial3D_m1byu")
+surface_material_override/3 = SubResource("StandardMaterial3D_m1byu")
+
+[node name="TestDummy_Collision" type="CollisionShape3D" parent="Node3D" unique_id=201029127]
+shape = SubResource("ConvexPolygonShape3D_j54gn")
