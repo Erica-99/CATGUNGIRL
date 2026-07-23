@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bwjuhhi62r2ot"]
 
-[ext_resource type="Texture2D" uid="uid://crng4f3f2avnf" path="res://icon.svg" id="1_1c5rx"]
+[ext_resource type="Texture2D" uid="uid://rpdyb2kkdclo" path="res://art/2d_assets/real_world/UI/PistolUIIcon.png" id="1_1c5rx"]
 
 [sub_resource type="Animation" id="Animation_1c5rx"]
 resource_name = "End"
@@ -90,17 +90,32 @@ _data = {
 &"Spawn": SubResource("Animation_t8j33")
 }
 
+[sub_resource type="Gradient" id="Gradient_1c5rx"]
+interpolation_mode = 2
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qufh4"]
+gradient = SubResource("Gradient_1c5rx")
+
 [node name="BulletIcon" type="Control" unique_id=167410703]
-modulate = Color(4.0059752, 4.0059752, 4.0059752, 0.6392157)
 layout_mode = 3
 anchors_preset = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1414907912]
 use_parent_material = true
+scale = Vector2(0.06, 0.06)
 texture = ExtResource("1_1c5rx")
 centered = false
-offset = Vector2(0, -125)
+offset = Vector2(0, -1400)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=98164184]
 libraries/ = SubResource("AnimationLibrary_wt66f")
 autoplay = &"Spawn"
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1663375117]
+position = Vector2(1.0000038, -41.999996)
+scale = Vector2(0.1439922, 12.887302)
+energy = 1.69
+blend_mode = 2
+range_z_min = -1010
+texture = SubResource("GradientTexture1D_qufh4")
+texture_scale = 2.86
