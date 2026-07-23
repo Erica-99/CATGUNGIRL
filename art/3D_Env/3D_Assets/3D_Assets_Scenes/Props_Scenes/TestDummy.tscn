@@ -3,6 +3,11 @@
 [ext_resource type="ArrayMesh" uid="uid://hnlewxamoafk" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/TestDummy.obj" id="1_merlg"]
 [ext_resource type="ArrayMesh" uid="uid://bbaqnnnr3ikwo" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/TestDummyStand.obj" id="2_lvsuk"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1byu"]
+stencil_mode = 3
+stencil_flags = 2
+stencil_reference = 2
+
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8j1rr"]
 points = PackedVector3Array(0.34310445, 1.3877788e-17, 0.032040097, -0.032040097, 0, -0.34310445, -0.08577611, 0, -0.33235726, -0.051826045, 0.12657395, 0.09337792, -0.23576675, -1.3877788e-17, 0.25732836, 0.15198766, 0.017551813, 0.3506337, -0.3506337, 0.017551813, -0.15198766, 0.051826045, 0.12657395, -0.09337792, 0.28060952, 0.017551813, -0.25709718, 0.3506337, 0.017551813, 0.15198766, -0.28060952, 0.017551813, 0.25709718, -0.03493885, 0.017551813, -0.374146, -0.051826045, 0.12657395, -0.09337792, 0.051826045, 0.12657395, 0.09337792, -0.03493885, 0.017551813, 0.374146, 0.374146, 0.017551813, -0.03493885, -0.374146, 0.017551813, 0.03493885, 0.13937779, -1.3877788e-17, 0.3215429, -0.25709718, 0.017551813, -0.28060952, -0.3215429, 0, -0.13937779, 0.15198766, 0.017551813, -0.3506337, 0.25732836, -2.7755576e-17, -0.23576675, -0.15198766, 0.017551813, 0.3506337, 0.28060952, 0.017551813, 0.25709718, 0.3506337, 0.017551813, -0.15198766, -0.3506337, 0.017551813, 0.15198766, -0.15198766, 0.017551813, -0.3506337, -0.3215429, -1.3877788e-17, 0.13937779, -0.032040097, -1.3877788e-17, 0.34310445, 0.25732836, 1.3877788e-17, 0.23576675, -0.23576675, 0, -0.25732836, 0.03493885, 0.017551813, 0.374146)
 
@@ -13,6 +18,7 @@ points = PackedVector3Array(0.019019647, 1.2181742, 0.44954962, -0.038503975, 1.
 
 [node name="TestDummyStand_Mesh" type="MeshInstance3D" parent="." unique_id=976191908]
 mesh = ExtResource("2_lvsuk")
+surface_material_override/0 = SubResource("StandardMaterial3D_m1byu")
 
 [node name="TestDummyStand_Collision" type="CollisionShape3D" parent="." unique_id=368519766]
 shape = SubResource("ConvexPolygonShape3D_8j1rr")
@@ -21,6 +27,10 @@ shape = SubResource("ConvexPolygonShape3D_8j1rr")
 
 [node name="TestDummy_Mesh" type="MeshInstance3D" parent="Node3D" unique_id=1846877387]
 mesh = ExtResource("1_merlg")
+surface_material_override/0 = SubResource("StandardMaterial3D_m1byu")
+surface_material_override/1 = SubResource("StandardMaterial3D_m1byu")
+surface_material_override/2 = SubResource("StandardMaterial3D_m1byu")
+surface_material_override/3 = SubResource("StandardMaterial3D_m1byu")
 
 [node name="TestDummy_Collision" type="CollisionShape3D" parent="Node3D" unique_id=201029127]
 shape = SubResource("ConvexPolygonShape3D_j54gn")

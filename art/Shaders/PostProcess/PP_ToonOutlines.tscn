@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://clgirefcu7tjw"]
+
+[ext_resource type="Shader" uid="uid://dglmx35avw2fa" path="res://art/Shaders/PostProcess/PostProcess_DetectEdges.gdshader" id="1_p7nml"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p7nml"]
+render_priority = 0
+shader = ExtResource("1_p7nml")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_thickness = 2.0
+shader_parameter/edge_threshold = 0.2
+shader_parameter/edge_smoothness = 0.5
+shader_parameter/outline_intensity = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_lwhn1"]
+material = SubResource("ShaderMaterial_p7nml")
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_w60dx"]
+
+[node name="PpToonOutlines" type="Node3D" unique_id=1568469715]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1553633238]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.99508905)
+
+[node name="PostProcess_DetectEdges" type="MeshInstance3D" parent="Camera3D" unique_id=1320533181]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, -0.013535379)
+cast_shadow = 0
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_lwhn1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=511132928]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5809937)
+mesh = SubResource("CapsuleMesh_w60dx")

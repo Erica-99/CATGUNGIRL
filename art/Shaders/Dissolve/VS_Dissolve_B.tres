@@ -1,6 +1,6 @@
-[gd_resource type="VisualShader" format=3 uid="uid://bitd1t5r8qge6"]
+[gd_resource type="VisualShader" format=3 uid="uid://d0ck4r86aek16"]
 
-[ext_resource type="Script" uid="uid://dl1cyknt31fs6" path="res://art/Shaders/Scripts/PerlinNoise3DNode.gd" id="1_11few"]
+[ext_resource type="Script" uid="uid://dl1cyknt31fs6" path="res://art/Shaders/Scripts/PerlinNoise3DNode.gd" id="1_6vlnm"]
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_ukln8"]
 
@@ -58,6 +58,9 @@ operator = 2
 
 [sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_11few"]
 
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_6vlnm"]
+input_name = "time"
+
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_wd80l"]
 constant = 0.5
 
@@ -78,7 +81,7 @@ function = 31
 [sub_resource type="VisualShaderNodeCustom" id="VisualShaderNodeCustom_rahir"]
 default_input_values = [2, 0.0]
 initialized = true
-script = ExtResource("1_11few")
+script = ExtResource("1_6vlnm")
 
 [sub_resource type="VisualShaderNodeVaryingSetter" id="VisualShaderNodeVaryingSetter_wd80l"]
 varying_name = "WorldPos"
@@ -93,7 +96,6 @@ input_name = "model_matrix"
 [sub_resource type="VisualShaderNodeTransformVecMult" id="VisualShaderNodeTransformVecMult_rahir"]
 
 [resource]
-modes/cull = 2
 varyings/WorldPos = "0,4"
 nodes/vertex/0/position = Vector2(480, 140)
 nodes/vertex/2/node = SubResource("VisualShaderNodeVaryingSetter_wd80l")
@@ -121,7 +123,7 @@ nodes/fragment/8/position = Vector2(-520, 600)
 nodes/fragment/9/node = SubResource("VisualShaderNodeCustom_rahir")
 nodes/fragment/9/position = Vector2(-1820, 660)
 nodes/fragment/10/node = SubResource("VisualShaderNodeFloatConstant_ukln8")
-nodes/fragment/10/position = Vector2(-2100, 700)
+nodes/fragment/10/position = Vector2(-2020, 580)
 nodes/fragment/11/node = SubResource("VisualShaderNodeFloatParameter_ukln8")
 nodes/fragment/11/position = Vector2(-2180, 1040)
 nodes/fragment/12/node = SubResource("VisualShaderNodeFloatParameter_rahir")
@@ -147,5 +149,7 @@ nodes/fragment/21/position = Vector2(-20, 740)
 nodes/fragment/22/node = SubResource("VisualShaderNodeFloatOp_11few")
 nodes/fragment/22/position = Vector2(-260, 680)
 nodes/fragment/23/node = SubResource("VisualShaderNodeVectorDecompose_11few")
-nodes/fragment/23/position = Vector2(-2100, 800)
-nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 0, 19, 6, 0, 7, 0, 7, 0, 8, 0, 10, 0, 9, 1, 10, 0, 9, 3, 4, 0, 9, 0, 11, 0, 9, 2, 12, 0, 13, 0, 9, 0, 14, 1, 12, 0, 14, 0, 13, 0, 15, 1, 14, 0, 15, 0, 15, 0, 16, 0, 16, 0, 7, 1, 6, 0, 18, 0, 17, 0, 18, 1, 18, 0, 19, 0, 16, 0, 19, 1, 8, 0, 0, 1, 8, 0, 22, 0, 22, 0, 21, 0, 19, 0, 22, 1, 20, 0, 21, 1, 21, 0, 0, 5, 4, 0, 23, 0, 23, 1, 16, 1)
+nodes/fragment/23/position = Vector2(-2120, 820)
+nodes/fragment/24/node = SubResource("VisualShaderNodeInput_6vlnm")
+nodes/fragment/24/position = Vector2(-2180, 700)
+nodes/fragment/connections = PackedInt32Array(3, 0, 0, 19, 7, 0, 8, 0, 10, 0, 9, 1, 4, 0, 9, 0, 11, 0, 9, 2, 12, 0, 13, 0, 9, 0, 14, 1, 12, 0, 14, 0, 13, 0, 15, 1, 14, 0, 15, 0, 20, 0, 21, 1, 4, 0, 23, 0, 21, 0, 0, 5, 2, 0, 0, 0, 22, 0, 21, 0, 15, 0, 16, 0, 6, 0, 18, 0, 17, 0, 18, 1, 8, 0, 0, 1, 24, 0, 9, 3, 23, 1, 16, 1, 16, 0, 7, 1, 6, 0, 7, 0, 18, 0, 19, 0, 16, 0, 19, 1, 8, 0, 22, 0, 19, 0, 22, 1)

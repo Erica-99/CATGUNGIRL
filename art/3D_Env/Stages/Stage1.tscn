@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dhd47imi6qm6a"]
 
+[ext_resource type="Shader" uid="uid://dglmx35avw2fa" path="res://art/Shaders/PostProcess/PostProcess_DetectEdges.gdshader" id="1_m1byu"]
 [ext_resource type="PackedScene" uid="uid://11pckncgaxu4" path="res://scenes/components/level_components/level_transitions/level_end.tscn" id="5_58xmu"]
 [ext_resource type="PackedScene" uid="uid://bj864mme28vmc" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Multi/PrisonCell.tscn" id="10_515bo"]
 [ext_resource type="PackedScene" uid="uid://cue2gdrvswqwe" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/FloorMeshEdge.tscn" id="11_5tcoj"]
@@ -27,10 +28,33 @@
 [ext_resource type="PackedScene" uid="uid://c08wu3qjtxvd" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Prison/WallCellsBasePrison.tscn" id="30_x5d1q"]
 [ext_resource type="PackedScene" uid="uid://ms7yhmwowtnu" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/Prison/FloorShootingPrison.tscn" id="31_yxtek"]
 
+[sub_resource type="QuadMesh" id="QuadMesh_ta45j"]
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3qrbx"]
+render_priority = 0
+shader = ExtResource("1_m1byu")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_thickness = 1.0
+shader_parameter/edge_threshold = 0.2
+shader_parameter/edge_smoothness = 0.5
+shader_parameter/depth_threshold = 0.1
+shader_parameter/depth_smoothness = 0.1
+shader_parameter/outline_intensity = 0.65
+shader_parameter/color_cycle_speed = 0.0
+shader_parameter/debug_view = 0
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_fxtw2"]
 size = Vector3(1, 7.2834473, 1)
 
 [node name="StageOne" type="Node3D" unique_id=1668100898]
+
+[node name="PostProcess_DetectEdges" type="MeshInstance3D" parent="." unique_id=1139640560]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, -0.013535379)
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_ta45j")
+surface_material_override/0 = SubResource("ShaderMaterial_3qrbx")
 
 [node name="Player" parent="." unique_id=1349193765 instance=ExtResource("15_58xmu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.075523615, 2.14, 0)
@@ -103,7 +127,7 @@ transform = Transform3D(-9.8350625e-08, 0, -2.25, 0, 2.25, 0, 2.25, 0, -9.835062
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 12, 0, 0)
 
 [node name="FloorPrison3" parent="Environment" unique_id=447367769 instance=ExtResource("26_3qrbx")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 24, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 23.97405, 9.536743e-07, -0.004858017)
 
 [node name="FloorPrison4" parent="Environment" unique_id=988104403 instance=ExtResource("26_3qrbx")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 36, 0, 0)
