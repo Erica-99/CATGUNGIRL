@@ -4,6 +4,9 @@ extends Node3D
 @onready var platform_check: RayCast3D = $"../PlatformCheck"
 @onready var object_check: RayCast3D = $"../ObjectCheck"
 @onready var anim_manager = $TorsoAnims
+
+
+
 # chuck all visual code stuff and gun/missile aiming here
 
 func _on_trunk_facing_changed(trunk: CharacterBody3D) -> void:
