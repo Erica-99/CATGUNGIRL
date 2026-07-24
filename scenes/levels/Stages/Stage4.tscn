@@ -64,11 +64,291 @@
 [ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="58_k3b3x"]
 [ext_resource type="PackedScene" uid="uid://c4w6eac8jl84" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorBig.tscn" id="60_trf4c"]
 [ext_resource type="PackedScene" uid="uid://bqxkqmc0c1lue" path="res://scenes/actors/enemies/enemy_spawner/enemy_spawner.tscn" id="64_8tv4h"]
+[ext_resource type="Script" uid="uid://b3h8o32ohtn6q" path="res://scenes/levels/Stages/trunk_event_trigger.gd" id="64_defdb"]
 [ext_resource type="PackedScene" uid="uid://4rsfb5kh40wj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/B_Collisions/45Ramp.tscn" id="65_517df"]
 [ext_resource type="PackedScene" uid="uid://dk2ngf0qgohte" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/3_WareHouse/WallPlainBaseWareHouse.tscn" id="66_c3edl"]
 [ext_resource type="PackedScene" uid="uid://cntfde8q5l450" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/3_WareHouse/RoofBrokenWareHouse.tscn" id="67_ib8r7"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_eafu1"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ib8r7"]
+emission_shape = 3
+emission_box_extents = Vector3(32.06, 1.99, 6.445)
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 6.7999997
+initial_velocity_max = 17.01
+gravity = Vector3(0, -30, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_defdb"]
+size = Vector3(0.6, 0.6, 0.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ib8r7"]
+size = Vector3(10.471191, 15.152466, 13.627014)
+
+[sub_resource type="Animation" id="Animation_qmdqw"]
+resource_name = "Fixed"
+length = 0.33333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BridgeFixed/Bridge1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BridgeBroken/Bridge2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BridgeBroken/RoofBrokenWareHouse:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BridgeFixed/RoofWareHouse43:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BridgeBroken/GPUParticles3D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BridgeFixed/Bridge1:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -200, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_defdb"]
+resource_name = "Fixed"
+length = 0.36666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BridgeFixed/Bridge1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BridgeBroken/Bridge2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BridgeBroken/RoofBrokenWareHouse:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BridgeFixed/RoofWareHouse43:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_wf5pt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BridgeFixed/Bridge1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BridgeBroken/Bridge2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BridgeBroken/RoofBrokenWareHouse:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BridgeFixed/RoofWareHouse43:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BridgeBroken/GPUParticles3D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BridgeFixed/Bridge1:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ib8r7"]
+resource_name = "Fixed"
+length = 0.33333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BridgeFixed/Bridge1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BridgeBroken/Bridge2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BridgeBroken/RoofBrokenWareHouse:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BridgeFixed/RoofWareHouse43:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qmdqw"]
+_data = {
+&"Broken": SubResource("Animation_qmdqw"),
+&"Fixed": SubResource("Animation_defdb"),
+&"RESET": SubResource("Animation_wf5pt"),
+&"TrunkSpawn": SubResource("Animation_ib8r7")
+}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bs6b4"]
 size = Vector3(17.088806, 7.2834473, 1)
@@ -79,7 +359,7 @@ size = Vector3(1, 8, 6)
 [node name="StageThree" type="Node3D" unique_id=535640616]
 
 [node name="Player" parent="." unique_id=1349193765 instance=ExtResource("1_eg5o7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3895743, 1.9932861, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.68008, 169.58197, 0)
 collision_mask = 129
 
 [node name="Environment" type="Node3D" parent="." unique_id=1639754073]
@@ -2235,31 +2515,32 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -12.504259, 8.4, 0)
 
 [node name="BridgeFixed" type="StaticBody3D" parent="Interactive" unique_id=583184918]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 186, 167.88365, 0)
-visible = false
-
-[node name="FloorMeshEdge8" parent="Interactive/BridgeFixed" unique_id=1579060651 instance=ExtResource("3_7mswh")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -30, -0.18864441, 0)
-
-[node name="FloorMeshEdge9" parent="Interactive/BridgeFixed" unique_id=1965467794 instance=ExtResource("3_7mswh")]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 42, -0.189, 0)
-
-[node name="FloorMeshCentre13" parent="Interactive/BridgeFixed" unique_id=972647558 instance=ExtResource("4_t3u5g")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -18, -0.18864441, 0)
-
-[node name="FloorMeshCentre14" parent="Interactive/BridgeFixed" unique_id=1609417635 instance=ExtResource("4_t3u5g")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, -0.189, 0)
-
-[node name="FloorMeshCentre15" parent="Interactive/BridgeFixed" unique_id=1659857478 instance=ExtResource("4_t3u5g")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, -0.189, 0)
-
-[node name="FloorMeshCentre16" parent="Interactive/BridgeFixed" unique_id=483729387 instance=ExtResource("4_t3u5g")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 18, -0.189, 0)
-
-[node name="FloorMeshCentre17" parent="Interactive/BridgeFixed" unique_id=2064493029 instance=ExtResource("4_t3u5g")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30, -0.189, 0)
 
 [node name="RoofWareHouse43" parent="Interactive/BridgeFixed" unique_id=1398010773 instance=ExtResource("12_h3ot2")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 18, 16.611343, 0)
+
+[node name="Bridge1" type="Node3D" parent="Interactive/BridgeFixed" unique_id=1079679248]
+
+[node name="FloorMeshEdge8" parent="Interactive/BridgeFixed/Bridge1" unique_id=1579060651 instance=ExtResource("3_7mswh")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -30, -0.18864441, 0)
+
+[node name="FloorMeshEdge9" parent="Interactive/BridgeFixed/Bridge1" unique_id=1965467794 instance=ExtResource("3_7mswh")]
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 42, -0.18899536, 0)
+
+[node name="FloorMeshCentre13" parent="Interactive/BridgeFixed/Bridge1" unique_id=972647558 instance=ExtResource("4_t3u5g")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -18, -0.18864441, 0)
+
+[node name="FloorMeshCentre14" parent="Interactive/BridgeFixed/Bridge1" unique_id=1609417635 instance=ExtResource("4_t3u5g")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, -0.18899536, 0)
+
+[node name="FloorMeshCentre15" parent="Interactive/BridgeFixed/Bridge1" unique_id=1659857478 instance=ExtResource("4_t3u5g")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, -0.18899536, 0)
+
+[node name="FloorMeshCentre16" parent="Interactive/BridgeFixed/Bridge1" unique_id=483729387 instance=ExtResource("4_t3u5g")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 18, -0.18899536, 0)
+
+[node name="FloorMeshCentre17" parent="Interactive/BridgeFixed/Bridge1" unique_id=2064493029 instance=ExtResource("4_t3u5g")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30, -0.18899536, 0)
 
 [node name="BridgeBroken" type="StaticBody3D" parent="Interactive" unique_id=752419616]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 186, 167.88365, 0)
@@ -2267,17 +2548,42 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 186, 167.88365, 0)
 [node name="RoofBrokenWareHouse" parent="Interactive/BridgeBroken" unique_id=1395048681 instance=ExtResource("67_ib8r7")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 18, 16.611343, 0)
 
-[node name="FloorMeshEdge7" parent="Interactive/BridgeBroken" unique_id=2055974100 instance=ExtResource("3_7mswh")]
+[node name="Bridge2" type="Node3D" parent="Interactive/BridgeBroken" unique_id=1006335302]
+
+[node name="FloorMeshEdge7" parent="Interactive/BridgeBroken/Bridge2" unique_id=2055974100 instance=ExtResource("3_7mswh")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -30, -0.18864441, 0)
 
-[node name="FloorMeshCentre12" parent="Interactive/BridgeBroken" unique_id=902506792 instance=ExtResource("4_t3u5g")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -18, -0.18864441, 0)
+[node name="FloorMeshCentreBrokenSide" parent="Interactive/BridgeBroken/Bridge2" unique_id=1260515321 instance=ExtResource("6_defdb")]
+transform = Transform3D(-1.9999995, 0, 0.001326386, 0, 2, 0, -0.001326386, 0, -1.9999995, -18, -0.18864441, 0)
 
-[node name="FloorMeshCentreBrokenSide" parent="Interactive/BridgeBroken" unique_id=1260515321 instance=ExtResource("6_defdb")]
-transform = Transform3D(-1.9999995, 0, 0.001326386, 0, 2, 0, -0.001326386, 0, -1.9999995, -6, -0.18864441, 0)
-
-[node name="FloorMeshEdgeBroken" parent="Interactive/BridgeBroken" unique_id=1129230683 instance=ExtResource("7_wf5pt")]
+[node name="FloorMeshEdgeBroken" parent="Interactive/BridgeBroken/Bridge2" unique_id=1129230683 instance=ExtResource("7_wf5pt")]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 42, -0.18864441, 0)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Interactive/BridgeBroken" unique_id=1372923857]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.36348, -1.6570587, -0.7970333)
+emitting = false
+amount = 100
+lifetime = 4.0
+one_shot = true
+speed_scale = 3.0
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ib8r7")
+draw_pass_1 = SubResource("BoxMesh_defdb")
+
+[node name="TrunkEventTrigger" type="Area3D" parent="Interactive" unique_id=391775350]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 184.20644, 168.91684, 0)
+script = ExtResource("64_defdb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactive/TrunkEventTrigger" unique_id=1585074928]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2998352, 7.076233, 0.20614624)
+shape = SubResource("BoxShape3D_ib8r7")
+
+[node name="TrunkEventAnims" type="AnimationPlayer" parent="Interactive/TrunkEventTrigger" unique_id=2135571124]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_qmdqw")
+
+[node name="TrunkSpawnLocation" type="Node3D" parent="Interactive/TrunkEventTrigger" unique_id=97702117]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.214935, 13.170822, 0)
 
 [node name="Lighting" type="Node3D" parent="." unique_id=1172114958]
 
@@ -2543,22 +2849,6 @@ wave_enemies = Array[int]([0, 0])
 [node name="Room Two" parent="Enemies" unique_id=1961159401 instance=ExtResource("26_cehyk")]
 room_ID = 1
 
-[node name="Scrub4" parent="Enemies/Room Two" unique_id=1062535484 instance=ExtResource("27_cj161")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156, 146, 0)
-
-[node name="Scrub5" parent="Enemies/Room Two" unique_id=1771489288 instance=ExtResource("27_cj161")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176, 129, 0)
-
-[node name="Scrub8" parent="Enemies/Room Two" unique_id=995124295 instance=ExtResource("27_cj161")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 230, 146, 0)
-
-[node name="Convict2" parent="Enemies/Room Two" unique_id=466764878 instance=ExtResource("28_iffub")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198, 128, 0)
-
-[node name="Convict" parent="Enemies/Room Two" unique_id=855207641 instance=ExtResource("28_iffub")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 206, 128, 0)
-visible = false
-
 [node name="Room Three" parent="Enemies" unique_id=1680082919 instance=ExtResource("26_cehyk")]
 room_ID = 2
 
@@ -2566,4 +2856,6 @@ room_ID = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 270, 183, 0)
 visible = false
 
+[connection signal="area_entered" from="Interactive/TrunkEventTrigger" to="Interactive/TrunkEventTrigger" method="_on_area_entered"]
+[connection signal="animation_finished" from="Interactive/TrunkEventTrigger/TrunkEventAnims" to="Interactive/TrunkEventTrigger" method="_on_trunk_event_anims_animation_finished"]
 [connection signal="stage_cleared" from="Enemies/Room Three" to="Environment/DoorExit" method="_on_enemy_manager_stage_cleared"]
