@@ -45,3 +45,5 @@ func _ammo_type_changed(new_type: String) -> void:
 		current_ammo_icon = bullet_icons[new_type]
 	else:
 		bullet_icons.values()[0] # Just default to the first item (should be pistol ammo)
+	
+	VBOX.set_settings_for_gun(new_type)
