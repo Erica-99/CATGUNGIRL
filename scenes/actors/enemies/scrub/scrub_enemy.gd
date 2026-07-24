@@ -6,6 +6,7 @@ extends CharacterBody3D
 @export var animator: AnimatedSprite3D
 @export var state_machine: StateMachine
 @onready var can_shoot: RayCast3D = $CanShoot
+@onready var softCollider = $SoftCollider
 
 var is_dead: bool = false
 
@@ -102,6 +103,11 @@ func _physics_process(delta: float) -> void:
 	global_position.z = 0
 	#print("velo y calced is : " + str(velocity.y))
 	
+	# Soft Collision physics effects to avoid overlap.
+	if softCollider.is_colliding():
+		var push_vel = softCollider.get_push_vector() * delta * 20
+		push_vel.z = 0
+		velocity += push_vel
 	
 	move_and_slide()
 	pass
