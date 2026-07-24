@@ -105,9 +105,31 @@ func _physics_process(delta: float) -> void:
 	
 	# Soft Collision physics effects to avoid overlap.
 	if softCollider.is_colliding():
-		var push_vel = softCollider.get_push_vector() * delta * 20
+		var push_vel = softCollider.get_push_vector() * delta * 12
 		push_vel.z = 0
 		velocity += push_vel
+		var vertical_push: float = 0.0
+		
+		for area in softCollider.get_overlapping_areas():
+			if area == softCollider:
+				continue
+			
+			var other_scrub = area.get_parent()
+			
+			if other_scrub == self:
+				continue
+			
+			var height_difference: float = global_position.y - other_scrub.global_position.y
+			
+			if abs(height_difference) <= 0.15:
+				if get_instance_id() > other_scrub.get_instance_id():
+					vertical_push += 1.0
+				else:
+					vertical_push -= 1.0
+			else:
+				vertical_push += sign(height_difference)
+		
+		velocity.y += vertical_push * delta * 50
 	
 	move_and_slide()
 	pass
