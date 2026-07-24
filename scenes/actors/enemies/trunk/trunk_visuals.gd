@@ -1,5 +1,4 @@
 extends Node3D
-@onready var animated_sprite_3d: AnimatedSprite3D = $Torso/AnimatedSprite3D
 @onready var sprite_pivot = $Torso
 @onready var platform_check: RayCast3D = $"../PlatformCheck"
 @onready var object_check: RayCast3D = $"../ObjectCheck"
