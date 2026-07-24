@@ -24,6 +24,7 @@ extends CharacterBody3D
 @export var direction: int = 1
 @export var move_speed: float = 10
 @export var chase_speed: float
+@export var change_sprite_on_half_hp: bool = true
 
 #Trunk Visual Code
 @onready var sprite_anims = $TrunkMesh/TorsoAnims
@@ -89,6 +90,7 @@ signal facing_changed(trunk: CharacterBody3D)
 
 var is_dead: bool = false
 var blackboard: Dictionary
+var under_half_hp: bool = false
 
 const GRAVITY = 50
 
@@ -155,11 +157,15 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 	if !detected_player && !is_dead:
 		detected_player = true
 		state_machine.on_child_transition(state_machine.current_state, "trunkchase")
+	
+	if new_health < health_comp.starting_health and change_sprite_on_half_hp and !under_half_hp:
+		under_half_hp = true
+		print("yo im under half hp rn type shit")
 
 func _reset_step_handler():
 	current_time_between_steps = base_time_between_steps
-	step_handler.wait_time = base_time_between_steps
-	step_handler.start()
+	#step_handler.wait_time = base_time_between_steps
+	#step_handler.start()
 	
 func _stop_step_handler():
 	step_handler.stop()
@@ -189,7 +195,7 @@ func _on_step_handler_timeout() -> void:
 	await animation_player.animation_finished
 	current_time_between_steps = max(current_time_between_steps * exponential_decrement_per_step, min_time_between_steps)
 	
-	step_handler.wait_time = current_time_between_steps
+	#step_handler.wait_time = current_time_between_steps
 
 
 func _handle_collision_check():
