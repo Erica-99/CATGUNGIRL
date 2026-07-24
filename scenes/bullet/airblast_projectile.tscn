@@ -8,7 +8,7 @@
 radius = 2.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0vdx3"]
-radius = 2.0
+radius = 3.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_83itf"]
 radius = 0.1
@@ -143,13 +143,15 @@ animations = [{
 
 [node name="Airblast" type="CharacterBody3D" unique_id=1342868883]
 collision_layer = 32
+motion_mode = 1
 script = ExtResource("1_qiyor")
 speed = 0.0
 max_range = 5.0
 max_lifetime = 0.5
+destroy_on_collision = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=244744939]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.0020717382, -0.005582571, 0.0029153824)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.0020717382, -0.005582571, 0.0029153824)
 shape = SubResource("SphereShape3D_c6pnf")
 
 [node name="HitboxComponent" parent="." unique_id=1965125698 instance=ExtResource("2_ps8eh")]

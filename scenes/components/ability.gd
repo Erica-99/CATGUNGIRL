@@ -9,6 +9,10 @@ var active: bool = false:
 		visible = active
 		_set_children_active(active)
 
+# Override this method if you need the state to only be enterable with certain conditions.
+func is_ability_enterable() -> bool:
+	return true
+
 func initialise(ability_state: State, actor_blackboard: Dictionary) -> void:
 	_ability_state = ability_state
 	_actor_blackboard = actor_blackboard

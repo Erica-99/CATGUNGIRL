@@ -8,7 +8,7 @@ signal bulletlost
 
 func _ready() -> void:
 	EventManager.new_mag_loaded.connect(_load_new_mag)
-	EventManager.shot_fired.connect(_fire_shot)
+	EventManager.shots_fired.connect(_fire_shots)
 	EventManager.shots_loaded.connect(_add_bullets)
 
 
@@ -25,10 +25,11 @@ func _load_new_mag(ammo: int, mag_capacity: int) -> void:
 		VBOX.add_child(newbullet)
 
 
-func _fire_shot() -> void:
-	var deadbullet = VBOX.get_children()[-1]
-	deadbullet.queue_free()
-	bulletlost.emit()
+func _fire_shots(shots: int) -> void:
+	for i in range(shots):
+		var deadbullet = VBOX.get_children()[-(i+1)]
+		deadbullet.queue_free()
+		bulletlost.emit()
 
 
 func _add_bullets(bullets_to_add: int) -> void:

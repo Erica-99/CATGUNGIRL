@@ -2,7 +2,7 @@ extends Ability
 class_name AirblastComponent
 
 var actor: CharacterBody3D
-var shotgun: Node
+@export var shotgun: Node
 var state_machine: StateMachine
 var team_component: Node
 
@@ -21,13 +21,15 @@ var slow_target_y: float
 
 signal enemy_hit(hurtbox: Area3D)
 
+func is_ability_enterable() -> bool:
+	return shotgun._current_ammo > 0
 
 func initialise(ability_state: State, actor_blackboard: Dictionary) -> void:
 	super.initialise(ability_state, actor_blackboard)
+	activated = false
 	actor = actor_blackboard["actor"]
-	shotgun = actor.gun_holder.current_gun # To alleviate writing it out a lot
+	
 	team_component = actor.get_node("TeamComponent")
-	print("Airblast initialised")
 	activated = true
 	charge_timer = 0
 	slow_target_x = actor.velocity.x * slow_down_target
@@ -61,7 +63,7 @@ func _fire_blast():
 		var blast = blast_object.instantiate()
 		get_tree().root.add_child(blast)
 		var aim_dir = Vector3(cos(shotgun.rotation.z), sin(shotgun.rotation.z), 0.0).normalized()
-		blast.global_transform = shotgun.muzzle.global_transform.translated(aim_dir * 3) # magic number-ish to offset spawn pos
+		blast.global_transform = shotgun.muzzle.global_transform.translated(aim_dir * (shotgun._current_ammo + 1)) # offset spawn pos
 		
 		var damage_instance = DamageHealInstance.new()
 		damage_instance.amount = blast_base_damage * shotgun._current_ammo
@@ -72,11 +74,11 @@ func _fire_blast():
 		
 		blast.initialize(aim_dir, damage_instance, team_component, shotgun._current_ammo) # ammo count for scale
 		var hb = blast.get_node("HitboxComponent") 
-		hb.hurtbox_hit.connect(func(hurtbox): enemy_hit.emit(hurtbox))
-		print("Blast fired")
+		hb.hurtbox_hit.connect(func(hurtbox): enemy_hit.emit(hurtbox)) # Will need to modify this to work with new enemy_hit signal behaviour in dev.
 		# This handles the launch
 		actor.velocity = -aim_dir * (launch_speed * shotgun._current_ammo)
 		
+		var prev_ammo = shotgun._current_ammo
 		shotgun._current_ammo = 0
-		EventManager.shot_fired.emit()
+		EventManager.shots_fired.emit(prev_ammo)
 	
