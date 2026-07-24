@@ -60,10 +60,10 @@ var facing: float = 1.0:
 @export_category("Melee State Modifiers")
 @export var xpos_distance_to_melee: float
 @export var melee_stop_speed: float
-@export var melee_windup_time: float = 0.5
-@export var melee_lunge_distance: float = 3.0
-@export var melee_lunge_duration: float = 0.2
-@export var melee_recovery_time: float = 5.0
+@export var melee_windup_time: float = 0.50
+@export var melee_lunge_distance: float = 4
+@export var melee_lunge_duration: float = 0.1
+@export var melee_recovery_time: float = 2
 
 @export_category("Attack Variables")
 @export var melee_damage: float = 30.0
@@ -163,6 +163,8 @@ func _physics_process(delta: float) -> void:
 func _on_health_component_killed(killing_blow: DamageHealInstance, health_before_death: Variant) -> void:
 	# Possibly implement knockback affects here
 	is_dead = true
+	sprite_anims.play("Idle")
+	sprite_anims.stop()
 	state_machine.on_child_transition(state_machine.current_state, "trunkdeath")
 
 func _on_health_component_health_changed(old_health: float, new_health: float, damage_or_heal_instance: DamageHealInstance) -> void:
@@ -190,6 +192,8 @@ func _take_step():
 
 
 func _on_torso_anims_animation_finished(anim_name: StringName) -> void:
+	if anim_name == 'PunchStart':
+		animation_player.play("PunchActive")
 	if anim_name == 'StepFront' or anim_name == 'StepBack':
 		step_handler.start()
 	elif anim_name == 'StepStart':
