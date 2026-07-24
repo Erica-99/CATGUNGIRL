@@ -3,7 +3,7 @@ extends State
 class_name EnemyDeath
 
 var actor: CharacterBody3D
-@onready var anim = $"../../TrunkMesh/TorsoAnims"
+var anim: AnimationPlayer
 
 var fade_time: float = 0.0
 # temp timer, would wanna line it up more with death anim

@@ -19,7 +19,7 @@ var slow_target_y: float
 @export var blast_base_damage: float = 3
 @export var blast_base_knockback: float = 20
 
-signal enemy_hit(hurtbox: Area3D)
+signal enemy_hit(damage: float)
 
 func is_ability_enterable() -> bool:
 	return shotgun._current_ammo > 0
@@ -72,7 +72,7 @@ func _fire_blast():
 		
 		blast.initialize(aim_dir, damage_instance, team_component, shotgun._current_ammo) # ammo count for scale
 		var hb = blast.get_node("HitboxComponent") 
-		hb.hurtbox_hit.connect(func(hurtbox): enemy_hit.emit(hurtbox)) # Will need to modify this to work with new enemy_hit signal behaviour in dev.
+		hb.damage_dealt.connect(func(damage): enemy_hit.emit(damage)) # Will need to modify this to work with new enemy_hit signal behaviour in dev.
 		# This handles the launch
 		actor.velocity = -aim_dir * (launch_speed * shotgun._current_ammo)
 		
