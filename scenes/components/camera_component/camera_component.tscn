@@ -18,7 +18,10 @@
 [ext_resource type="Script" uid="uid://b3wyfqrf023lh" path="res://scenes/components/camera_component/InsanityTut.gd" id="15_e435g"]
 [ext_resource type="Script" uid="uid://b5wuc23rlp8as" path="res://scenes/actors/player/ammo_hud.gd" id="17_04dda"]
 [ext_resource type="PackedScene" uid="uid://d1dtceqi3s5oh" path="res://art/2d_assets/real_world/UI/ammo_count.tscn" id="18_c1rnt"]
+[ext_resource type="PackedScene" uid="uid://bwjuhhi62r2ot" path="res://art/2d_assets/real_world/UI/pistol_bullet_icon.tscn" id="19_ibrvc"]
 [ext_resource type="PackedScene" uid="uid://pp03qyrbback" path="res://art/2d_assets/real_world/UI/bullet_count_VFX.tscn" id="19_rph6b"]
+[ext_resource type="PackedScene" uid="uid://d0bck3rf10len" path="res://art/2d_assets/real_world/UI/shotgun_bullet_icon.tscn" id="20_uicuq"]
+[ext_resource type="PackedScene" uid="uid://ddj7xjcety3sc" path="res://art/2d_assets/real_world/UI/sniper_bullet_icon.tscn" id="21_isppp"]
 
 [sub_resource type="Resource" id="Resource_434qr"]
 script = ExtResource("3_6tqft")
@@ -241,6 +244,11 @@ handle_input_locally = false
 render_target_update_mode = 4
 
 [node name="AmmoCount" parent="AMMOHUDConcept/AmmoHUD/SubViewport" unique_id=76601130 instance=ExtResource("18_c1rnt")]
+bullet_icons = Dictionary[String, PackedScene]({
+"Pistol": ExtResource("19_ibrvc"),
+"Shotgun": ExtResource("20_uicuq"),
+"Sniper": ExtResource("21_isppp")
+})
 
 [node name="Sprite3D" type="Sprite3D" parent="AMMOHUDConcept/AmmoHUD" unique_id=559928206]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, -2.9802322e-08, 7.450581e-09, 1, 4.335546, 0.016273022, -2.4963627)
@@ -251,7 +259,6 @@ transform = Transform3D(0.9999993, -4.8428774e-08, -2.682209e-07, -1.8626451e-08
 
 [node name="BulletVFX" parent="AMMOHUDConcept/AmmoHUD/Sprite3D/FXNode" unique_id=1767152557 instance=ExtResource("19_rph6b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.53321266, -1.4630585, -0.5016537)
-emitting = false
 
 [connection signal="animation_finished" from="OverlayVisuals/CanvasLayer/AnimationPlayer" to="OverlayVisuals/CanvasLayer" method="_on_animation_player_animation_finished"]
 [connection signal="bulletlost" from="AMMOHUDConcept/AmmoHUD/SubViewport/AmmoCount" to="AMMOHUDConcept/AmmoHUD" method="_on_ammo_count_bulletlost"]
