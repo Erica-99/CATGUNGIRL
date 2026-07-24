@@ -16,7 +16,7 @@ var slow_target_x: float
 var slow_target_y: float
 @export var launch_speed: float = 50
 @export var blast_object: PackedScene
-@export var blast_base_damage: float = 20
+@export var blast_base_damage: float = 3
 @export var blast_base_knockback: float = 20
 
 signal enemy_hit(hurtbox: Area3D)
@@ -66,7 +66,7 @@ func _fire_blast():
 		var damage_instance = DamageHealInstance.new()
 		damage_instance.amount = blast_base_damage * shotgun._current_ammo
 		damage_instance.is_heal = false
-		damage_instance.type = Enums.DamageType.NORMAL
+		damage_instance.type = Enums.DamageType.EXPLOSIVE
 		damage_instance.knockback = blast_base_knockback * shotgun._current_ammo
 		damage_instance.source = get_path()
 		

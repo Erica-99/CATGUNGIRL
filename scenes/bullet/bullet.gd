@@ -47,4 +47,5 @@ func _physics_process(delta: float) -> void:
 		queue_free() # destroy bullet on hitting terrain/enemy if destroy on collision is enabled (it is by default)
 
 func _on_hit(_hurtbox: Area3D) -> void:
-	queue_free()
+	if destroy_on_collision:
+		queue_free()

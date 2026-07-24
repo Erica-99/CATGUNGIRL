@@ -549,13 +549,12 @@ radius = 6.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_leh5i"]
 
-[node name="Convict" type="CharacterBody3D" unique_id=1506947017 node_paths=PackedStringArray("animator", "sprite", "health_comp", "state_machine", "start_idle", "start_patrol", "start_aggro", "attack_hitbox")]
+[node name="Convict" type="CharacterBody3D" unique_id=1506947017 node_paths=PackedStringArray("animator", "health_comp", "state_machine", "start_idle", "start_patrol", "start_aggro", "attack_hitbox")]
 collision_layer = 4
 floor_constant_speed = true
 platform_floor_layers = 1
 script = ExtResource("1_awmif")
 animator = NodePath("Visuals/AnimationPlayer")
-sprite = NodePath("")
 health_comp = NodePath("HealthComponent")
 state_machine = NodePath("StateMachine")
 start_idle = NodePath("StateMachine/ConvictIdle")
@@ -635,7 +634,7 @@ health_component = NodePath("../HealthComponent")
 damage_multiplier = 2.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HeadHurtbox" unique_id=440381038]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025838926, 1.2750584, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025838926, 1.0454437, 0)
 shape = SubResource("BoxShape3D_a68hs")
 debug_color = Color(0.9201433, 0.7565305, 1, 0.41960785)
 

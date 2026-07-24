@@ -24,7 +24,10 @@ func take_hit(hitbox: Area3D) -> void:
 		AudioManager.play_sfx(hit_sfx_ref)
 	hitbox.call("register_hit", self)
 	if hitbox.damage_or_heal_instance != null and health_component != null:
-		# apply damage multiplier to damage
-		hitbox.damage_or_heal_instance.amount *= damage_multiplier
+		# apply damage multiplier to damage. ignore multipliers above 1.0 if damage is explosive since it doesnt make sense for explosive damage to headshot.
+		if hitbox.damage_or_heal_instance.type == Enums.DamageType.EXPLOSIVE:
+			hitbox.damage_or_heal_instance.amount *= clampf(damage_multiplier, 0, 1)
+		else:
+			hitbox.damage_or_heal_instance.amount *= damage_multiplier
 		health_component.take_damage_or_heal(hitbox.damage_or_heal_instance)
 	
