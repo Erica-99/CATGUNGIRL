@@ -2387,9 +2387,10 @@ radius = 30.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_31nnk"]
 radius = 4.0
 
-[node name="Trunk" type="CharacterBody3D" unique_id=400593386 node_paths=PackedStringArray("state_machine", "start_idle", "start_patrol", "start_aggro", "melee_hitbox")]
+[node name="Trunk" type="CharacterBody3D" unique_id=400593386 node_paths=PackedStringArray("animation_manager", "state_machine", "start_idle", "start_patrol", "start_aggro", "melee_hitbox")]
 collision_layer = 4
 script = ExtResource("1_usk1l")
+animation_manager = NodePath("TrunkMesh/TorsoAnims")
 state_machine = NodePath("StateMachine")
 start_idle = NodePath("StateMachine/TrunkIdle")
 start_patrol = NodePath("StateMachine/TrunkPatrol")
@@ -2397,6 +2398,8 @@ start_aggro = NodePath("StateMachine/TrunkChase")
 chase_speed = 5.0
 patrol_speed = 2.0
 elapsed_direction_switch = 3.0
+xpos_distance_vert_offset = 4.0
+vert_threshold = 5.0
 xpos_distance_to_melee = 0.1
 melee_stop_speed = 5.0
 melee_lunge_distance = 8.0
@@ -2545,11 +2548,13 @@ one_shot = true
 
 [node name="OutrangedTimer" type="Timer" parent="." unique_id=309027732]
 
+[connection signal="cant_step" from="." to="TrunkMesh" method="_on_trunk_cant_step"]
 [connection signal="facing_changed" from="." to="TrunkMesh" method="_on_trunk_facing_changed"]
 [connection signal="animation_finished" from="TrunkMesh/TorsoAnims" to="." method="_on_torso_anims_animation_finished"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]
 [connection signal="state_changed" from="StateMachine" to="TrunkMesh" method="_on_state_machine_state_changed"]
+[connection signal="reached_chase_offset" from="StateMachine/TrunkChase" to="TrunkMesh" method="_on_trunk_chase_reached_chase_offset"]
 [connection signal="body_entered" from="DetectionRange" to="StateMachine/TrunkIdle" method="_on_detection_range_body_entered"]
 [connection signal="body_entered" from="DetectionRange" to="StateMachine/TrunkPatrol" method="_on_detection_range_body_entered"]
 [connection signal="body_entered" from="ChaseRange" to="StateMachine/TrunkOutranged" method="_on_chase_range_body_entered"]

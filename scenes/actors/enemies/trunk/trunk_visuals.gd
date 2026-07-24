@@ -28,3 +28,17 @@ func _on_state_machine_state_changed(prev: String, new: String) -> void:
 	elif new == 'trunkchase':
 		anim_manager.play('StepStart')
 	pass # Replace with function body.
+
+
+func _on_trunk_chase_reached_chase_offset(status: bool) -> void:
+	if status:
+		anim_manager.play("Idle")
+	else:
+		anim_manager.play("StepStart")
+
+
+func _on_trunk_cant_step(status: bool) -> void:
+	if status:
+		anim_manager.play("Idle")
+	else:
+		anim_manager.play("StepStart")
