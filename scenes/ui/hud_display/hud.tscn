@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dnbitthls47tp" path="res://scenes/ui/hud_display/2d_hud_entities/2d_hud_entities.tscn" id="1_0mwgc"]
 [ext_resource type="Script" uid="uid://binhmujh1w86w" path="res://scenes/ui/insanity_jitter.gd" id="2_hqnrr"]
+[ext_resource type="PackedScene" uid="uid://daigpy0nr3obt" path="res://scenes/ui/hud_display/NewHealthbar/healthbar.tscn" id="2_rix7v"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1982623268]
 layer = 15
@@ -18,6 +19,9 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="2DHudEntities" parent="SubViewportContainer/SubViewport" unique_id=1605915058 instance=ExtResource("1_0mwgc")]
+
+[node name="Healthbar" parent="SubViewportContainer/SubViewport" unique_id=90995781 instance=ExtResource("2_rix7v")]
+visible = false
 
 [node name="Jitter" type="Node" parent="SubViewportContainer" unique_id=88277945]
 script = ExtResource("2_hqnrr")

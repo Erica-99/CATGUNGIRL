@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bkwgnwc4h86gr"]
+
+[ext_resource type="Script" uid="uid://kyvdbjdddfgp" path="res://scenes/components/grappling_hook/rope.gd" id="1_dfhen"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dfhen"]
+albedo_color = Color(0.17641911, 0.17641908, 0.17641908, 1)
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_sadby"]
+
+[node name="Rope" type="MeshInstance3D" unique_id=1877789551]
+material_override = SubResource("StandardMaterial3D_dfhen")
+mesh = SubResource("ImmediateMesh_sadby")
+script = ExtResource("1_dfhen")
+point_b = Vector3(0, 5, 0)
+thickness = 0.2

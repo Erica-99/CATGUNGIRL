@@ -4,9 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://orss63q04vwl" path="res://scenes/ui/hud_display/insanity_indicator/insanity_indicator.tscn" id="2_vo6fg"]
 [ext_resource type="PackedScene" uid="uid://3ukueorlwt6y" path="res://scenes/ui/hud_display/health_bar/health_bar.tscn" id="3_icvoa"]
 [ext_resource type="Script" uid="uid://boilkxk181vi5" path="res://scenes/ui/hud_display/killstreak_display/killstreak_handler.gd" id="4_xj1pg"]
-[ext_resource type="Texture2D" uid="uid://b0grt2qyst7gu" path="res://resources/killstreak/unfilled.png" id="5_vm65q"]
-[ext_resource type="Texture2D" uid="uid://dscdygp436wi2" path="res://resources/killstreak/filled.png" id="6_bws33"]
+[ext_resource type="Texture2D" uid="uid://bl4laydqu4jxg" path="res://art/2d_assets/real_world/UI/KillStreakConcept.png" id="5_56vlf"]
+[ext_resource type="Texture2D" uid="uid://bntup7uka4wb2" path="res://art/2d_assets/real_world/UI/KillStreakConcept1.png" id="6_yp244"]
 [ext_resource type="PackedScene" uid="uid://1hgtrlupdh8t" path="res://scenes/ui/dating/gigi_popup.tscn" id="7_wg2f8"]
+[ext_resource type="Script" uid="uid://cbbllb78src8d" path="res://scenes/ui/hud_display/2d_hud_entities/gun_icon.gd" id="8_vm65q"]
+[ext_resource type="Texture2D" uid="uid://by82v1in0qac5" path="res://art/UI/HUD/Guns/Pistol with grapple hook.png" id="8_xj1pg"]
+[ext_resource type="Texture2D" uid="uid://b323gltk7mlxa" path="res://art/UI/HUD/Guns/shotgun.png" id="9_vm65q"]
+[ext_resource type="Texture2D" uid="uid://dhbbj142fa8mo" path="res://art/UI/HUD/Guns/sniper rifle.png" id="10_bws33"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hc7wi"]
 bg_color = Color(0.4862745, 0.5529412, 1, 0.29411766)
@@ -30,6 +34,159 @@ size = Vector2(20, 1080)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wvca"]
 size = Vector2(20, 1080)
+
+[sub_resource type="Animation" id="Animation_xj1pg"]
+resource_name = "GoAway"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(333, 1013.705), Vector2(333.00003, 856.00006)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.509636141582344, 0.08929845]
+}
+
+[sub_resource type="Animation" id="Animation_vm65q"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(333.00003, 856.00006)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.08929845]
+}
+
+[sub_resource type="Animation" id="Animation_bws33"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(333.00003, 856.00006)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.08929845]
+}
+
+[sub_resource type="Animation" id="Animation_wg2f8"]
+resource_name = "GoAway"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(333.00003, 856.00006), Vector2(333, 1013.705)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.08929845, -0.509636141582344]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wg2f8"]
+_data = {
+&"GoAway": SubResource("Animation_xj1pg"),
+&"Idle": SubResource("Animation_vm65q"),
+&"RESET": SubResource("Animation_bws33"),
+&"Return": SubResource("Animation_wg2f8")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_85gk0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_xj1pg")
+}],
+"loop": true,
+"name": &"Pistol",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_vm65q")
+}],
+"loop": true,
+"name": &"Shotgun",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_xj1pg")
+}],
+"loop": true,
+"name": &"Smg",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_bws33")
+}],
+"loop": true,
+"name": &"Sniper",
+"speed": 5.0
+}]
 
 [node name="2DHudEntities" type="Control" unique_id=1605915058]
 layout_mode = 3
@@ -66,6 +223,7 @@ min_dialogue_elapsed_time = 5.0
 max_dialogue_elapsed_time = 10.0
 
 [node name="InsanityIndicator" parent="." unique_id=526210011 instance=ExtResource("2_vo6fg")]
+visible = false
 layout_mode = 0
 offset_left = 326.0
 offset_top = 1003.0
@@ -82,58 +240,64 @@ offset_top = 1032.0
 offset_right = 560.0
 offset_bottom = 1067.0
 grow_vertical = 0
-tint_progress = Color(0, 1, 0, 1)
 
 [node name="KillstreakHandler" type="Control" parent="." unique_id=1311237957]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 1678.0
-offset_top = 931.0
-offset_right = 1718.0
-offset_bottom = 971.0
+offset_left = 1613.0
+offset_top = 1037.0
+offset_right = 1653.0
+offset_bottom = 1077.0
 grow_horizontal = 2
+rotation = 0.08741926
+scale = Vector2(0.7181443, 0.7181443)
 mouse_filter = 2
 script = ExtResource("4_xj1pg")
+
+[node name="KillstreakProgression" type="TextureProgressBar" parent="KillstreakHandler" unique_id=380031560]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -400.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+max_value = 10.0
+step = 0.01
+value = 5.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = ExtResource("5_56vlf")
+texture_progress = ExtResource("6_yp244")
 
 [node name="KillstreakDisplay" type="RichTextLabel" parent="KillstreakHandler" unique_id=1262287277]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -126.0
-offset_top = 50.0
-offset_right = 126.0
-offset_bottom = 105.0
+offset_left = -584.8211
+offset_top = -224.46948
+offset_right = -332.8211
+offset_bottom = -169.46948
 grow_horizontal = 2
+rotation = -0.08875916
+scale = Vector2(3.3855453, 3.3855453)
 mouse_filter = 2
-theme_override_colors/default_color = Color(0.8572629, 2.1658839e-06, 0.39528286, 1)
+theme_override_colors/default_color = Color(0, 1, 1, 1)
 theme_override_font_sizes/normal_font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_p31j5")
 bbcode_enabled = true
-text = "x 0"
+text = "0"
 fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="KillstreakProgression" type="TextureProgressBar" parent="KillstreakHandler" unique_id=380031560]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -200.0
-offset_top = 100.0
-offset_right = 200.0
-offset_bottom = 120.0
-grow_horizontal = 2
-mouse_filter = 2
-max_value = 10.0
-step = 0.01
-nine_patch_stretch = true
-texture_under = ExtResource("5_vm65q")
-texture_progress = ExtResource("6_bws33")
 
 [node name="TopStaticBox" type="StaticBody2D" parent="." unique_id=1072806553]
 position = Vector2(960, -10)
@@ -173,3 +337,23 @@ offset_left = 20.0
 offset_top = 800.0
 offset_right = 120.0
 offset_bottom = 900.0
+
+[node name="GunIcon" type="Control" parent="." unique_id=1762134854]
+anchors_preset = 0
+offset_left = 333.00003
+offset_top = 856.00006
+offset_right = 373.00003
+offset_bottom = 896.0001
+rotation = 0.08929845
+scale = Vector2(0.65802884, 0.65802884)
+script = ExtResource("8_vm65q")
+
+[node name="GunAnimations" type="AnimationPlayer" parent="GunIcon" unique_id=683005595]
+libraries/ = SubResource("AnimationLibrary_wg2f8")
+
+[node name="Guns" type="AnimatedSprite2D" parent="GunIcon" unique_id=2113284741]
+scale = Vector2(0.665, 0.665)
+sprite_frames = SubResource("SpriteFrames_85gk0")
+animation = &"Pistol"
+
+[connection signal="animation_finished" from="GunIcon/GunAnimations" to="GunIcon" method="_on_gun_animations_animation_finished"]
