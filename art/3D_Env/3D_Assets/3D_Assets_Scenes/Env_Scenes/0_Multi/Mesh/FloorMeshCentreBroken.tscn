@@ -9,7 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://dp0ruh7q1e3j4" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/MeshFloor_Normal_OpenGL.png" id="6_cj8ci"]
 [ext_resource type="Texture2D" uid="uid://c4ek3iwrnnxp1" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/MeshFloor_Roughness.png" id="7_7s0ch"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ono5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tl0dy"]
+transparency = 1
 albedo_texture = ExtResource("2_tl0dy")
 metallic = 1.0
 metallic_texture = ExtResource("5_jd6pd")
@@ -46,7 +47,7 @@ collision_layer = 128
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.058, 0)
 layers = 128
 mesh = ExtResource("2_p28mn")
-surface_material_override/0 = SubResource("StandardMaterial3D_7ono5")
+surface_material_override/0 = SubResource("StandardMaterial3D_tl0dy")
 
 [node name="FloorMeshCentreBroken_02_Collision" type="CollisionShape3D" parent="." unique_id=321374854]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.058, 0)
