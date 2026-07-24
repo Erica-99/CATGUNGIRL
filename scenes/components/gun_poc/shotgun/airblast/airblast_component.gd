@@ -10,7 +10,10 @@ var team_component: Node
 var activated: bool = false
 @export var charge_time: float = 0.5
 var charge_timer: float = 0
-@export var slow_down_speed: float = 30
+@export var slow_down_speed: float = 30 # how fast you slow down
+@export var slow_down_target: float = 0.3 # what speed is the slow down aiming for (percentage of current speed)
+var slow_target_x: float
+var slow_target_y: float
 @export var launch_speed: float = 50
 @export var blast_object: PackedScene
 @export var blast_base_damage: float = 20
@@ -27,19 +30,22 @@ func initialise(ability_state: State, actor_blackboard: Dictionary) -> void:
 	print("Airblast initialised")
 	activated = true
 	charge_timer = 0
+	slow_target_x = actor.velocity.x * slow_down_target
+	slow_target_y = actor.velocity.y * slow_down_target
 
 func _physics_process(_delta: float) -> void:
 	if activated:
+		shotgun.single_reload_timer = 0 # to stop from reloading while using ability
 		# To cancel when gun is swapped
 		if actor.gun_holder.current_gun != shotgun:
 			_ability_state.end_ability.emit()
 			activated = false
 		
 		# While charging blast
-		if charge_timer < charge_time:
+		if charge_timer < charge_time and shotgun._current_ammo != 0:
 			charge_timer += _delta
-			actor.velocity.x = move_toward(actor.velocity.x, 0, slow_down_speed * _delta)
-			actor.velocity.y = move_toward(actor.velocity.y, 0, slow_down_speed * _delta * 1.5)
+			actor.velocity.x = move_toward(actor.velocity.x, slow_target_x, slow_down_speed * _delta)
+			actor.velocity.y = move_toward(actor.velocity.y, slow_target_y, slow_down_speed * _delta)
 		# When finished charging
 		else:
 			_fire_blast()
