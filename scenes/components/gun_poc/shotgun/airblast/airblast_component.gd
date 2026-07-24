@@ -16,7 +16,8 @@ var slow_target_x: float
 var slow_target_y: float
 @export var launch_speed: float = 50
 @export var blast_object: PackedScene
-@export var blast_base_damage: float = 3
+@export var blast_base_damage: float = 10
+@export var blast_damage_increase_per_bullet = 2
 @export var blast_base_knockback: float = 20
 
 signal enemy_hit(damage: float)
@@ -64,13 +65,13 @@ func _fire_blast():
 		blast.global_transform = shotgun.muzzle.global_transform.translated(aim_dir * (shotgun._current_ammo + 1)) # offset spawn pos
 		
 		var damage_instance = DamageHealInstance.new()
-		damage_instance.amount = blast_base_damage * shotgun._current_ammo
+		damage_instance.amount = blast_base_damage + (blast_damage_increase_per_bullet * shotgun._current_ammo)
 		damage_instance.is_heal = false
 		damage_instance.type = Enums.DamageType.EXPLOSIVE
 		damage_instance.knockback = blast_base_knockback * shotgun._current_ammo
 		damage_instance.source = get_path()
 		
-		blast.initialize(aim_dir, damage_instance, team_component, shotgun._current_ammo) # ammo count for scale
+		blast.initialize(aim_dir, damage_instance, team_component, 2 + (shotgun._current_ammo / 2)) # ammo count for scale
 		var hb = blast.get_node("HitboxComponent") 
 		hb.damage_dealt.connect(func(damage): enemy_hit.emit(damage)) # Will need to modify this to work with new enemy_hit signal behaviour in dev.
 		# This handles the launch
