@@ -54,5 +54,5 @@ func physics_update(delta):
 	
 	# Collision Check
 	if body.get_last_slide_collision() != null:
+		print("Collided")
 		transitioned.emit(self, "missiledetonate")
-		print("Boom")

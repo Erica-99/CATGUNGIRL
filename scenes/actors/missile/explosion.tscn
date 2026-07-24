@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://b7kxu4jab6vwf"]
+
+[ext_resource type="Script" uid="uid://dh72y8q7rw1mq" path="res://scenes/actors/missile/explosion.gd" id="1_7nyiy"]
+[ext_resource type="PackedScene" uid="uid://csd06hicr5wny" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="1_nk3wx"]
+[ext_resource type="Script" uid="uid://y2ix2xo5owxw" path="res://resources/damage_heal_instance/damage_heal_instance.gd" id="2_7nyiy"]
+[ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="3_183jd"]
+
+[sub_resource type="Resource" id="Resource_shv1t"]
+script = ExtResource("2_7nyiy")
+metadata/_custom_type_script = "uid://y2ix2xo5owxw"
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nk3wx"]
+radius = 3.0
+
+[node name="Explosion" type="Node3D" unique_id=1074334678]
+script = ExtResource("1_7nyiy")
+
+[node name="HitboxComponent" parent="." unique_id=1965125698 node_paths=PackedStringArray("team_component") instance=ExtResource("1_nk3wx")]
+team_component = NodePath("../TeamComponent")
+damage_or_heal_instance = SubResource("Resource_shv1t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxComponent" unique_id=1608720344]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_nk3wx")
+
+[node name="TeamComponent" parent="." unique_id=2076917082 instance=ExtResource("3_183jd")]
+team = 2
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=913201651]
+
+[node name="Timer" type="Timer" parent="." unique_id=1434372028]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

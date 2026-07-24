@@ -9,8 +9,9 @@ func enter() -> void:
 	body = blackboard["actor"]
 	body.velocity = Vector3.ZERO
 	
-	#var explosion = explosion_scene.instantiate()
-	#explosion.global_position = body.global_position
-	#body.get_parent().add_child(explosion)
+	var explosion = explosion_scene.instantiate()
+	explosion.global_position = body.global_position
+	body.get_parent().add_child(explosion)
+	print("Boom")
 	
 	body.queue_free()
