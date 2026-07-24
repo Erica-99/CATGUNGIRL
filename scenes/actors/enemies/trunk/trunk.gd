@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @export_category("Node References")
 @export var animator: AnimatedSprite3D
+@export var animation_manager: AnimationPlayer
 @export var state_machine: StateMachine
 
 @export_category("Starting State Variables")
@@ -50,6 +51,10 @@ var facing: float = 1.0:
 @export var patrol_speed: float
 @export var elapsed_direction_switch: float
 
+@export_category("Chase State Modifiers")
+@export var xpos_distance_vert_offset: float
+@export var vert_threshold: float
+
 @export_category("Melee State Modifiers")
 @export var xpos_distance_to_melee: float
 @export var melee_stop_speed: float
@@ -81,6 +86,7 @@ var past_object_collider_status: bool = false
 @onready var platform_check: RayCast3D = $PlatformCheck
 @onready var object_check: RayCast3D = $ObjectCheck
 @onready var animation_player: AnimationPlayer = $TrunkMesh/TorsoAnims
+@onready var chase_range: Area3D = $ChaseRange
 
 var damage_instance: DamageHealInstance = DamageHealInstance.new()
 
@@ -111,6 +117,7 @@ func _ready() -> void:
 		# Actor for movement stats
 		"actor": self,
 		"anim": animator,
+		"animation_manager": animation_manager,
 		"direction": direction,
 		"gun_component": gun_component,
 		"patrol_speed": patrol_speed,
@@ -128,6 +135,8 @@ func _ready() -> void:
 		"melee_lunge_distance": melee_lunge_distance,
 		"melee_lunge_duration": melee_lunge_duration,
 		"melee_recovery_time": melee_recovery_time,
+		"xpos_distance_vert_offset": xpos_distance_vert_offset,
+		"vert_threshold": vert_threshold,
 		"target": get_tree().get_first_node_in_group("player") as CharacterBody3D,
 	}
 	# Change initial state based on Inspector values
@@ -213,6 +222,8 @@ func _handle_collision_check():
 				outranged_timer.start()
 		else:
 			outranged_timer.stop()
+			if state_machine.current_state is TrunkOutranged:
+				state_machine.on_child_transition(state_machine.current_state, "trunkchase")
 
 func _on_outranged_timer_timeout() -> void:
 	state_machine.on_child_transition(state_machine.current_state, "trunkoutranged")

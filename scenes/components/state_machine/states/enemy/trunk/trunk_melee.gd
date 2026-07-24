@@ -104,6 +104,9 @@ func _update_lunge(delta: float) -> void:
 	actor.velocity.x = direction * lunge_speed
 	phase_timer -= delta
 	
+	if !actor.can_take_step:
+		phase_timer = 0.0
+	
 	if phase_timer <= 0.0:
 		_start_recovery()	
 
