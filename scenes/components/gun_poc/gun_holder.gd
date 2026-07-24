@@ -1,7 +1,7 @@
 extends Node3D
 var current_gun: Gun
 
-signal enemy_hit(hurtbox: Area3D)
+signal enemy_hit(damage: float)
 signal current_gun_charge_progress_changed(progress: float)
 signal current_gun_charge_ended
 signal current_gun_charge_started
@@ -85,8 +85,8 @@ func _activate_gun():
 	current_gun.charge_started.connect(_on_current_gun_charge_started)
 	current_gun.charge_ended.connect(_on_current_gun_charge_ended)
 
-func _on_enemy_hit(hurtbox: Area3D) -> void:
-	enemy_hit.emit(hurtbox)
+func _on_enemy_hit(damage: float) -> void:
+	enemy_hit.emit(damage)
 	
 func _on_current_gun_charge_progress_changed(progress: float) -> void:
 	current_gun_charge_progress_changed.emit(progress)

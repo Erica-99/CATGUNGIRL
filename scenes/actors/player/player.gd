@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 signal facing_changed(new_facing: float)
-@export var hit_heal_amount: float = 5.0 
+@export var hit_heal_fraction: float = 1.0
 
 
 ## Extending signals for ui and other components
@@ -142,9 +142,10 @@ func _on_insanity_component_insanity_death():
 func _on_insanity_component_interest_rank_changed(new_rank):
 	EventManager.player_interest_rank_changed.emit(new_rank)
 	
-func _on_gun_enemy_hit(_hurtbox: Area3D) -> void:
+func _on_gun_enemy_hit(_damage: float) -> void:
+	print("Healing from hit: " + str(_damage))
 	var heal = DamageHealInstance.new()
-	heal.amount = hit_heal_amount
+	heal.amount = hit_heal_fraction * _damage
 	heal.is_heal = true
 	heal.type = Enums.DamageType.NORMAL
 	heal.knockback = 0.0
