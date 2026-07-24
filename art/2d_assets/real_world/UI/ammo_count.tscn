@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://d1dtceqi3s5oh"]
 
-[ext_resource type="PackedScene" uid="uid://bwjuhhi62r2ot" path="res://art/2d_assets/real_world/UI/bullet_icon.tscn" id="1_kreqv"]
+[ext_resource type="PackedScene" uid="uid://bwjuhhi62r2ot" path="res://art/2d_assets/real_world/UI/pistol_bullet_icon.tscn" id="1_kreqv"]
 [ext_resource type="Script" uid="uid://cdinb0r0mkv7k" path="res://art/2d_assets/real_world/UI/ammo_count.gd" id="1_lujb8"]
+[ext_resource type="Script" uid="uid://cxsupceufyyj0" path="res://art/2d_assets/real_world/UI/ammo_v_box_container.gd" id="2_jflu3"]
 
 [node name="AmmoCount" type="Control" unique_id=76601130]
 custom_minimum_size = Vector2(150, 500)
@@ -36,8 +37,14 @@ theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer" unique_id=69376001]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 40
 alignment = 2
+script = ExtResource("2_jflu3")
+separation_mappings = Dictionary[String, int]({
+"Pistol": 40,
+"Shotgun": 50,
+"Sniper": 0
+})
 
-[node name="BulletIcon" parent="ColorRect/MarginContainer/VBoxContainer" unique_id=167410703 instance=ExtResource("1_kreqv")]
+[node name="PistolBulletIcon" parent="ColorRect/MarginContainer/VBoxContainer" unique_id=167410703 instance=ExtResource("1_kreqv")]
 layout_mode = 2

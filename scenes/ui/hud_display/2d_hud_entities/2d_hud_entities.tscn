@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://bl4laydqu4jxg" path="res://art/2d_assets/real_world/UI/KillStreakConcept.png" id="5_56vlf"]
 [ext_resource type="Texture2D" uid="uid://bntup7uka4wb2" path="res://art/2d_assets/real_world/UI/KillStreakConcept1.png" id="6_yp244"]
 [ext_resource type="PackedScene" uid="uid://1hgtrlupdh8t" path="res://scenes/ui/dating/gigi_popup.tscn" id="7_wg2f8"]
+[ext_resource type="Script" uid="uid://cbbllb78src8d" path="res://scenes/ui/hud_display/2d_hud_entities/gun_icon.gd" id="8_vm65q"]
+[ext_resource type="Texture2D" uid="uid://by82v1in0qac5" path="res://art/UI/HUD/Guns/Pistol with grapple hook.png" id="8_xj1pg"]
+[ext_resource type="Texture2D" uid="uid://b323gltk7mlxa" path="res://art/UI/HUD/Guns/shotgun.png" id="9_vm65q"]
+[ext_resource type="Texture2D" uid="uid://dhbbj142fa8mo" path="res://art/UI/HUD/Guns/sniper rifle.png" id="10_bws33"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hc7wi"]
 bg_color = Color(0.4862745, 0.5529412, 1, 0.29411766)
@@ -31,6 +35,159 @@ size = Vector2(20, 1080)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wvca"]
 size = Vector2(20, 1080)
 
+[sub_resource type="Animation" id="Animation_xj1pg"]
+resource_name = "GoAway"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(333, 1013.705), Vector2(333.00003, 856.00006)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.509636141582344, 0.08929845]
+}
+
+[sub_resource type="Animation" id="Animation_vm65q"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(333.00003, 856.00006)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.08929845]
+}
+
+[sub_resource type="Animation" id="Animation_bws33"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(333.00003, 856.00006)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.08929845]
+}
+
+[sub_resource type="Animation" id="Animation_wg2f8"]
+resource_name = "GoAway"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(333.00003, 856.00006), Vector2(333, 1013.705)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.08929845, -0.509636141582344]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wg2f8"]
+_data = {
+&"GoAway": SubResource("Animation_xj1pg"),
+&"Idle": SubResource("Animation_vm65q"),
+&"RESET": SubResource("Animation_bws33"),
+&"Return": SubResource("Animation_wg2f8")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_85gk0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_xj1pg")
+}],
+"loop": true,
+"name": &"Pistol",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_vm65q")
+}],
+"loop": true,
+"name": &"Shotgun",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_xj1pg")
+}],
+"loop": true,
+"name": &"Smg",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_bws33")
+}],
+"loop": true,
+"name": &"Sniper",
+"speed": 5.0
+}]
+
 [node name="2DHudEntities" type="Control" unique_id=1605915058]
 layout_mode = 3
 anchors_preset = 0
@@ -52,6 +209,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hc7wi")
 
 [node name="DialogueComponent" parent="." unique_id=277394654 instance=ExtResource("1_yp244")]
+visible = false
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -180,3 +338,23 @@ offset_left = 20.0
 offset_top = 800.0
 offset_right = 120.0
 offset_bottom = 900.0
+
+[node name="GunIcon" type="Control" parent="." unique_id=1762134854]
+anchors_preset = 0
+offset_left = 333.00003
+offset_top = 856.00006
+offset_right = 373.00003
+offset_bottom = 896.0001
+rotation = 0.08929845
+scale = Vector2(0.65802884, 0.65802884)
+script = ExtResource("8_vm65q")
+
+[node name="GunAnimations" type="AnimationPlayer" parent="GunIcon" unique_id=683005595]
+libraries/ = SubResource("AnimationLibrary_wg2f8")
+
+[node name="Guns" type="AnimatedSprite2D" parent="GunIcon" unique_id=2113284741]
+scale = Vector2(0.665, 0.665)
+sprite_frames = SubResource("SpriteFrames_85gk0")
+animation = &"Pistol"
+
+[connection signal="animation_finished" from="GunIcon/GunAnimations" to="GunIcon" method="_on_gun_animations_animation_finished"]

@@ -36,7 +36,8 @@ func update(_delta: float) -> void:
 	if jump_held_on_enter and not input_state["jumping"]:
 		jump_held_on_enter = false
 	
-	elif input_state["ability_held"] and blackboard["gun_holder"].current_gun.ability:
+	elif (input_state["ability_held"] and blackboard["gun_holder"].current_gun.ability and 
+	blackboard["gun_holder"].current_gun.ability.is_ability_enterable()):
 		transitioned.emit(self, "playerability")
 		return
 

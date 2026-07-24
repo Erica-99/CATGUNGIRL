@@ -17,7 +17,7 @@ func init(blackboard_dict : Dictionary) -> void:
 
 func enter() -> void:
 	var current_ability: Ability = blackboard["gun_holder"].current_gun.ability
-	if current_ability == null:
+	if current_ability == null or not current_ability.is_ability_enterable():
 		# I know this is awful I just can't come up with any better way of making it a one-shot input.
 		input_component._ability_held = false
 		

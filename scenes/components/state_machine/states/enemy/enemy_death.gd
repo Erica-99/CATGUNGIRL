@@ -16,7 +16,6 @@ func init(blackboard_dict: Dictionary) -> void:
 
 func enter() -> void:
 	#anim.play("Death")
-	
 	# Play death sound
 	AudioManager.play_sfx("gore_1")
 	EventManager.enemy_killed.emit(self)
