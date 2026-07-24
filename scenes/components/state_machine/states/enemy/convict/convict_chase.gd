@@ -118,8 +118,8 @@ func physics_update(_delta: float) -> void:
 	actor.move_and_slide()
 	
 	## Attempt to manually trigger stun to test things
-	if Input.is_action_pressed("ui_left"):
-		transitioned.emit(self, "convictstun")
+	#if Input.is_action_pressed("ui_left"):
+		#transitioned.emit(self, "convictstun")
 
 func _on_attack_hitbox_body_entered(body: Node3D) -> void:
 	# To track if the target remains in hitbox
@@ -127,7 +127,6 @@ func _on_attack_hitbox_body_entered(body: Node3D) -> void:
 	if actor.action_pending:
 		return
 	transitioned.emit(self, "convicthitconfirm")
-	#transitioned.emit(self, "convictstun")
 
 func _on_pounce_range_3d_body_entered(body: Node3D) -> void:
 	if actor.action_pending:

@@ -616,7 +616,9 @@ shape = SubResource("BoxShape3D_4ra3w")
 [node name="TeamComponent" parent="." unique_id=2076917082 instance=ExtResource("3_pee7w")]
 team = 2
 
-[node name="HealthComponent" parent="." unique_id=236252344 instance=ExtResource("4_4p71r")]
+[node name="HealthComponent" parent="." unique_id=236252344 node_paths=PackedStringArray("stun_state", "state_machine") instance=ExtResource("4_4p71r")]
+stun_state = NodePath("../StateMachine/ConvictStun")
+state_machine = NodePath("../StateMachine")
 starting_health = 40.0
 max_health = 40.0
 

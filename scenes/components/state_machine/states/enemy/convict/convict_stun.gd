@@ -8,7 +8,7 @@ extends State
 var actor: CharacterBody3D
 var anim: AnimationPlayer
 var slow_down_speed: float
-var total_stun_time: float #= stun_time
+var total_stun_time: float
 var stun_timer: float = 0.0
 
 func init(blackboard_dict: Dictionary) -> void:
@@ -25,6 +25,7 @@ func update(_delta: float) -> void:
 	print("Current Timer Value: %f" %stun_timer)
 	if stun_timer >= total_stun_time:
 		print("Final Timer Value: %f" %stun_timer)
+		#stun_timer = 0.0
 		#transitioned.emit(self, "convictidle")
 		transitioned.emit(self, "convictchase")
 

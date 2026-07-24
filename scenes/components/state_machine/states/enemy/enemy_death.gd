@@ -16,6 +16,7 @@ func init(blackboard_dict: Dictionary) -> void:
 
 func enter() -> void:
 	#anim.play("Death")
+	print("Enemy: Dead State Entered")
 	# Play death sound
 	AudioManager.play_sfx("gore_1")
 	EventManager.enemy_killed.emit(self)
@@ -32,3 +33,4 @@ func update(_delta: float) -> void:
 	basic_timer += _delta
 	if basic_timer > 1:
 		actor.queue_free()
+		print("Enemy Fully Dead")

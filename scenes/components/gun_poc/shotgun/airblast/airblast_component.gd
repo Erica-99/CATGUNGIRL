@@ -69,6 +69,7 @@ func _fire_blast():
 		damage_instance.is_heal = false
 		damage_instance.type = Enums.DamageType.EXPLOSIVE
 		damage_instance.knockback = blast_base_knockback * shotgun._current_ammo
+		damage_instance.stun_time = 1
 		damage_instance.source = get_path()
 		
 		blast.initialize(aim_dir, damage_instance, team_component, 2 + (shotgun._current_ammo / 2)) # ammo count for scale
