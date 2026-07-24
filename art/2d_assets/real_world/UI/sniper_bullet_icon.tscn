@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://bwjuhhi62r2ot"]
+[gd_scene format=3 uid="uid://ddj7xjcety3sc"]
 
-[ext_resource type="Texture2D" uid="uid://rpdyb2kkdclo" path="res://art/2d_assets/real_world/UI/PistolUIIcon.png" id="1_1c5rx"]
+[ext_resource type="Texture2D" uid="uid://bhiurilrj8h6c" path="res://art/2d_assets/real_world/UI/SniperBulletIcon.png" id="1_f2j0c"]
 
 [sub_resource type="Animation" id="Animation_1c5rx"]
 resource_name = "End"
@@ -96,16 +96,18 @@ interpolation_mode = 2
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_qufh4"]
 gradient = SubResource("Gradient_1c5rx")
 
-[node name="BulletIcon" type="Control" unique_id=167410703]
+[node name="SniperBulletIcon" type="Control" unique_id=167410703]
 layout_mode = 3
 anchors_preset = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1414907912]
 use_parent_material = true
-scale = Vector2(0.06, 0.06)
-texture = ExtResource("1_1c5rx")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_f2j0c")
 centered = false
-offset = Vector2(0, -1400)
+offset = Vector2(0, -2039)
+region_enabled = true
+region_rect = Rect2(367.05627, 0, 568.1062, 2039)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=98164184]
 libraries/ = SubResource("AnimationLibrary_wt66f")
