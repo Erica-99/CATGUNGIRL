@@ -1,0 +1,76 @@
+extends Ability
+class_name AirblastComponent
+
+var actor: CharacterBody3D
+var shotgun: Node
+var state_machine: StateMachine
+var team_component: Node
+
+@export_category("Blast Attributes")
+var activated: bool = false
+@export var charge_time: float = 0.5
+var charge_timer: float = 0
+@export var slow_down_speed: float = 30
+@export var launch_speed: float = 50
+@export var blast_object: PackedScene
+@export var blast_base_damage: float = 20
+@export var blast_base_knockback: float = 20
+
+signal enemy_hit(hurtbox: Area3D)
+
+
+func initialise(ability_state: State, actor_blackboard: Dictionary) -> void:
+	super.initialise(ability_state, actor_blackboard)
+	actor = actor_blackboard["actor"]
+	shotgun = actor.gun_holder.current_gun # To alleviate writing it out a lot
+	team_component = actor.get_node("TeamComponent")
+	print("Airblast initialised")
+	activated = true
+	charge_timer = 0
+
+func _physics_process(_delta: float) -> void:
+	if activated:
+		# To cancel when gun is swapped
+		if actor.gun_holder.current_gun != shotgun:
+			_ability_state.end_ability.emit()
+			activated = false
+		
+		# While charging blast
+		if charge_timer < charge_time:
+			charge_timer += _delta
+			actor.velocity.x = move_toward(actor.velocity.x, 0, slow_down_speed * _delta)
+			actor.velocity.y = move_toward(actor.velocity.y, 0, slow_down_speed * _delta * 1.5)
+		# When finished charging
+		else:
+			_fire_blast()
+			charge_timer = 0
+			activated = false
+			_ability_state.end_ability.emit()
+
+# Create a static projectile that knocks back enemies where aiming, and launch player
+# in the opposite direction
+func _fire_blast():
+	if shotgun._current_ammo > 0:
+		# create the airblast projectile - static, scales to ammo
+		var blast = blast_object.instantiate()
+		get_tree().root.add_child(blast)
+		var aim_dir = Vector3(cos(shotgun.rotation.z), sin(shotgun.rotation.z), 0.0).normalized()
+		blast.global_transform = shotgun.muzzle.global_transform.translated(aim_dir * 3) # magic number-ish to offset spawn pos
+		
+		var damage_instance = DamageHealInstance.new()
+		damage_instance.amount = blast_base_damage * shotgun._current_ammo
+		damage_instance.is_heal = false
+		damage_instance.type = Enums.DamageType.NORMAL
+		damage_instance.knockback = blast_base_knockback * shotgun._current_ammo
+		damage_instance.source = get_path()
+		
+		blast.initialize(aim_dir, damage_instance, team_component, shotgun._current_ammo)
+		var hb = blast.get_node("HitboxComponent") 
+		hb.hurtbox_hit.connect(func(hurtbox): enemy_hit.emit(hurtbox))
+		print("Blast fired")
+		# This handles the launch
+		actor.velocity = -aim_dir * (launch_speed * shotgun._current_ammo)
+		
+		shotgun._current_ammo = 0
+		EventManager.shot_fired.emit()
+	

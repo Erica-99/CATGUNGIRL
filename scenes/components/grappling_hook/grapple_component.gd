@@ -26,6 +26,7 @@ func initialise(ability_state: State, actor_blackboard: Dictionary) -> void:
 	super.initialise(ability_state, actor_blackboard)
 	
 	actor = actor_blackboard["actor"]
+	print("Grapple initialised")
 	
 	blackboard = {
 		"actor": actor,

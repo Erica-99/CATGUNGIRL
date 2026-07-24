@@ -4,13 +4,14 @@ extends CharacterBody3D
 
 @export var speed: float = 25.0			# how fast bullet travels (units/second)
 @export var max_range: float = 40.0		# how far bullet travels before self destruct (world units)
+@export var max_lifetime: float = 20		# how long a bullet stays active before self destruct (seconds)
 
 @onready var hitbox_component = $HitboxComponent
 @onready var mesh_instance = $MeshInstance3D
 
 var _direction: Vector3 = Vector3.RIGHT	# default points right
 var _distance_traveled: float = 0.0		# tracks total distance for destruction at max range
-
+var _lifetime: float = 0
 
 ## called immediately after spawning by GunComponent
 func initialize(direction: Vector3, damage_instance: DamageHealInstance, team_comp: Node, bullet_size: float = 1.0) -> void:
@@ -36,9 +37,11 @@ func _physics_process(delta: float) -> void:
 	var collision = move_and_collide(velocity * delta)
 	# tracks total distance (adds per frame)
 	_distance_traveled += speed * delta
+	# tracks lifetime
+	_lifetime += delta
 
-	if collision != null or _distance_traveled >= max_range:
-		queue_free()	# destroys bullet if hitting geometry OR reaches max range
+	if collision != null or _distance_traveled >= max_range or _lifetime >= max_lifetime:
+		queue_free()	# destroys bullet if hitting geometry OR reaches max range / lifetime
 
 func _on_hit(_hurtbox: Area3D) -> void:
 	queue_free()
