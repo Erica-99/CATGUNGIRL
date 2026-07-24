@@ -1,14 +1,14 @@
 # Stun State: Convict freezes for a second after being hit
 #    TODO: add stun dialogue???
 
-# Stun moves Idle (I think?)
+# Stun moves Chase
 
 extends State
 
 var actor: CharacterBody3D
 var anim: AnimationPlayer
 var slow_down_speed: float
-var total_stun_time: float = 5.0
+var total_stun_time: float #= stun_time
 var stun_timer: float = 0.0
 
 func init(blackboard_dict: Dictionary) -> void:
