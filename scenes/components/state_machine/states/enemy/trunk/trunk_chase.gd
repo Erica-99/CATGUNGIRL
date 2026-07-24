@@ -25,7 +25,7 @@ func init(blackboard_dict : Dictionary) -> void:
 
 func enter() -> void:
 	reached_offset = false
-	print("Chasing")
+	#print("Chasing")
 
 func exit() -> void:
 	pass

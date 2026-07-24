@@ -174,7 +174,7 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 		under_half_hp = true
 		
 		torso_sprite.sprite_frames = InjuredFrames
-		print("yo im under half hp rn type shit")
+		#print("yo im under half hp rn type shit")
 
 func _reset_step_handler():
 	current_time_between_steps = base_time_between_steps

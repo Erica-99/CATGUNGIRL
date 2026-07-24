@@ -30,7 +30,7 @@ func init(blackboard_dict: Dictionary) -> void:
 	add_child(patrol_timer)
 
 func enter() -> void:
-	print("Patrolling")
+	#print("Patrolling")
 	patrol_timer.wait_time = randf_range(min_patrol_time, max_patrol_time)
 	patrol_timer.start()
 

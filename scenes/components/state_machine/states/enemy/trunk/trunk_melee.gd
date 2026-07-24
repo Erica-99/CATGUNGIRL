@@ -39,7 +39,7 @@ func init(blackboard_dict : Dictionary) -> void:
 	melee_recovery_time = blackboard["melee_recovery_time"]
 
 func enter() -> void:
-	print("Melee")
+	#print("Melee")
 	_disable_melee_hitbox()
 	direction = sign(target.global_position.x - actor.global_position.x)
 	if direction == 0.0:
@@ -79,7 +79,7 @@ func _update_approach(_delta: float) -> void:
 		_start_windup()
 
 func _start_windup() -> void:
-	print("Melee windup")
+	#print("Melee windup")
 	phase = MeleePhase.WINDUP
 	phase_timer = melee_windup_time
 	actor.velocity.x = 0.0
@@ -92,7 +92,7 @@ func _update_windup(delta: float) -> void:
 		_start_lunge()
 
 func _start_lunge() -> void:
-	print("Melee lunge")
+	#print("Melee lunge")
 	phase = MeleePhase.LUNGE
 	phase_timer = melee_lunge_duration
 	var duration: float = max(melee_lunge_duration, 0.01)
@@ -111,7 +111,7 @@ func _update_lunge(delta: float) -> void:
 		_start_recovery()	
 
 func _start_recovery() -> void:
-	print("Melee recovery")
+	#print("Melee recovery")
 	_disable_melee_hitbox()
 	actor.velocity.x = 0.0
 	phase = MeleePhase.RECOVERY

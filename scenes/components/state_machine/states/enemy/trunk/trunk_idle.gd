@@ -21,7 +21,7 @@ func init(blackboard_dict : Dictionary) -> void:
 	max_idle_time = blackboard["max_idle_time"]
 
 func enter() -> void:
-	print("Idle")
+	#print("Idle")
 	idle_timer.wait_time = randf_range(min_idle_time, max_idle_time)
 	idle_timer.start()
 	

@@ -17,7 +17,7 @@ func init(blackboard_dict : Dictionary) -> void:
 
 func enter() -> void:
 	past_player_pos = target.global_position
-	print("Out of range")
+	#print("Out of range")
 	# set missile firing to TRUE
 	# ammo = 0? or keep reference over states?
 

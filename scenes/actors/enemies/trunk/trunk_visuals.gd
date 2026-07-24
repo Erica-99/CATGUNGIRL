@@ -21,7 +21,6 @@ func _on_trunk_facing_changed(trunk: CharacterBody3D) -> void:
 
 
 func _on_state_machine_state_changed(prev: String, new: String) -> void:
-	print(new)
 	if new == 'TrunkIdle' or new == 'trunkoutranged':
 		anim_manager.play("Idle")
 	elif new == 'trunkchase':
