@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://cp7e8b0rk6ymf" path="res://scenes/components/state_machine/states/missile/missile_detonate.gd" id="5_epe2e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i0qyu"]
-size = Vector3(0.8, 1.7, 1)
+size = Vector3(0.7, 1.5, 1)
 
 [node name="Missile" type="CharacterBody3D" unique_id=1058796648 node_paths=PackedStringArray("state_machine")]
 collision_layer = 0
@@ -18,6 +18,7 @@ script = ExtResource("1_wyuj3")
 state_machine = NodePath("StateMachine")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=798733028]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_i0qyu")
 
 [node name="StateMachine" parent="." unique_id=1499026333 node_paths=PackedStringArray("initial_state") instance=ExtResource("2_3t0jd")]
@@ -25,17 +26,18 @@ initial_state = NodePath("MissileSpawn")
 
 [node name="MissileSpawn" type="Node" parent="StateMachine" unique_id=475441113]
 script = ExtResource("3_vsmuw")
-burst_duration = 0.4
+burst_duration = 0.2
+burst_velocity = 6
 burst_damp = 3
-spin_count = 3
-spin_damp = 3
 
 [node name="MissileHome" type="Node" parent="StateMachine" unique_id=1725437539]
 script = ExtResource("4_a5ply")
+acceleration = 0.5
 
 [node name="MissileDetonate" type="Node" parent="StateMachine" unique_id=564308262]
 script = ExtResource("5_epe2e")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1259470629]
 transform = Transform3D(0.4, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
+offset = Vector2(0, -100)
 texture = ExtResource("3_epqap")
