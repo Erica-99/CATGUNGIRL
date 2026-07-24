@@ -28,7 +28,9 @@ extends CharacterBody3D
 @export var change_sprite_on_half_hp: bool = true
 
 #Trunk Visual Code
+@onready var InjuredFrames = preload("res://art/2d_assets/real_world/Trunks/TrunkInjured.tres")
 @onready var sprite_anims = $TrunkMesh/TorsoAnims
+@onready var torso_sprite = $TrunkMesh/Torso/TorsoSprite
 var current_step: String
 
 var facing: float = 1.0:
@@ -170,6 +172,8 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 	
 	if new_health < health_comp.starting_health and change_sprite_on_half_hp and !under_half_hp:
 		under_half_hp = true
+		
+		torso_sprite.sprite_frames = InjuredFrames
 		print("yo im under half hp rn type shit")
 
 func _reset_step_handler():
