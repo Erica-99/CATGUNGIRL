@@ -65,7 +65,7 @@ signal charge_progress_changed(progress: float)
 ## Signal emitted when charging stops (fired or cancelled)
 signal charge_ended()
 signal charge_started()
-signal enemy_hit(hurtbox: Area3D)
+signal enemy_hit(damage: float)
 
 ## perfect shot signal
 signal perfect_shot_fired()
@@ -294,7 +294,7 @@ func _spawn_bullet(damage: float, size: float) -> void:
 	bullet.initialize(aim_dir, damage_instance, team_component, size)
 	bullet.speed *= bullet_velocity_multiplier
 	var hb = bullet.get_node("HitboxComponent") 
-	hb.hurtbox_hit.connect(func(hurtbox): enemy_hit.emit(hurtbox))
+	hb.damage_dealt.connect(func(damage): enemy_hit.emit(damage))
 
 func _on_reload_timer_timeout() -> void:
 	_is_reloading = false
