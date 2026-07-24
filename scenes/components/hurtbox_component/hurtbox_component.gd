@@ -25,9 +25,10 @@ func take_hit(hitbox: Area3D) -> void:
 	hitbox.call("register_hit", self)
 	if hitbox.damage_or_heal_instance != null and health_component != null:
 		# apply damage multiplier to damage. ignore multipliers above 1.0 if damage is explosive since it doesnt make sense for explosive damage to headshot.
-		if hitbox.damage_or_heal_instance.type == Enums.DamageType.EXPLOSIVE:
-			hitbox.damage_or_heal_instance.amount *= clampf(damage_multiplier, 0, 1)
+		if dmg_heal_instance.type == Enums.DamageType.EXPLOSIVE:
+			dmg_heal_instance.amount *= clampf(damage_multiplier, 0, 1)
 		else:
-			hitbox.damage_or_heal_instance.amount *= damage_multiplier
-		health_component.take_damage_or_heal(hitbox.damage_or_heal_instance)
+			dmg_heal_instance.amount *= damage_multiplier
+		health_component.take_damage_or_heal(dmg_heal_instance)
+		hitbox.call("register_damage_dealt", dmg_heal_instance.amount * float(not dmg_heal_instance.is_heal))
 	

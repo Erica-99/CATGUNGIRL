@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 signal facing_changed(new_facing: float)
-@export var hit_heal_amount: float = 5.0 
+@export var hit_heal_fraction: float = 1.0
 
 
 ## Extending signals for ui and other components
@@ -87,10 +87,10 @@ func _ready() -> void:
 	}
 	
 	movement_state_machine.init(blackboard)
-	gun_holder.current_gun.enemy_hit.connect(_on_gun_enemy_hit)
-	gun_holder.current_gun.charge_progress_changed.connect(_on_gun_charge_progress)
-	gun_holder.current_gun.charge_ended.connect(_on_gun_charge_ended)
-	gun_holder.current_gun.charge_started.connect(_on_gun_charge_started)
+	gun_holder.enemy_hit.connect(_on_gun_enemy_hit)
+	gun_holder.current_gun_charge_progress_changed.connect(_on_gun_charge_progress)
+	gun_holder.current_gun_charge_ended.connect(_on_gun_charge_ended)
+	gun_holder.current_gun_charge_started.connect(_on_gun_charge_started)
 	
 	EventManager.gun_picked_up.connect(_equip_gun)
 	_set_gun_enabled(has_gun)
@@ -142,9 +142,10 @@ func _on_insanity_component_insanity_death():
 func _on_insanity_component_interest_rank_changed(new_rank):
 	EventManager.player_interest_rank_changed.emit(new_rank)
 	
-func _on_gun_enemy_hit(_hurtbox: Area3D) -> void:
+func _on_gun_enemy_hit(_damage: float) -> void:
+	print("Healing from hit: " + str(_damage))
 	var heal = DamageHealInstance.new()
-	heal.amount = hit_heal_amount
+	heal.amount = hit_heal_fraction * _damage
 	heal.is_heal = true
 	heal.type = Enums.DamageType.NORMAL
 	heal.knockback = 0.0
@@ -169,6 +170,7 @@ func _set_gun_enabled(enabled: bool) -> void:
 	gun_holder.current_gun.process_mode = Node.PROCESS_MODE_INHERIT if enabled else Node.PROCESS_MODE_DISABLED
 	gun_holder.current_gun.visible = enabled
 	gun_arm_node.visible = enabled
+	gun_holder.allow_swapping = enabled
 	
 func set_facing(new_facing: float) -> void:
 	if new_facing == 0.0:

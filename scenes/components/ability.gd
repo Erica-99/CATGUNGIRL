@@ -7,7 +7,6 @@ var active: bool = false:
 	set(value):
 		active = value
 		visible = active
-		_set_children_active(active)
 
 # Override this method if you need the state to only be enterable with certain conditions.
 func is_ability_enterable() -> bool:

@@ -20,7 +20,8 @@ func exit() -> void:
 		blackboard["grapplegun_object"].cancel_hook.emit()
 
 func update(_delta: float) -> void:
-	if cancelled:
+	if cancelled or not blackboard["grapplegun_object"].active:
+		cancelled = true
 		transitioned.emit(self, "grappleretracted")
 	
 	pass

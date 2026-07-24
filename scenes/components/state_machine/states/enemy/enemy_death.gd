@@ -3,7 +3,7 @@ extends State
 class_name EnemyDeath
 
 var actor: CharacterBody3D
-var anim: AnimationPlayer
+@onready var anim = $"../../TrunkMesh/TorsoAnims"
 
 var fade_time: float = 0.0
 # temp timer, would wanna line it up more with death anim
@@ -16,7 +16,6 @@ func init(blackboard_dict: Dictionary) -> void:
 
 func enter() -> void:
 	#anim.play("Death")
-	
 	# Play death sound
 	AudioManager.play_sfx("gore_1")
 	EventManager.enemy_killed.emit(self)
