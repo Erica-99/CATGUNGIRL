@@ -64,7 +64,7 @@ func _fire_blast():
 		damage_instance.knockback = blast_base_knockback * shotgun._current_ammo
 		damage_instance.source = get_path()
 		
-		blast.initialize(aim_dir, damage_instance, team_component, shotgun._current_ammo)
+		blast.initialize(aim_dir, damage_instance, team_component, shotgun._current_ammo) # ammo count for scale
 		var hb = blast.get_node("HitboxComponent") 
 		hb.hurtbox_hit.connect(func(hurtbox): enemy_hit.emit(hurtbox))
 		print("Blast fired")
