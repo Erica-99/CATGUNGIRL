@@ -26,9 +26,7 @@ func is_ability_enterable() -> bool:
 
 func initialise(ability_state: State, actor_blackboard: Dictionary) -> void:
 	super.initialise(ability_state, actor_blackboard)
-	activated = false
 	actor = actor_blackboard["actor"]
-	
 	team_component = actor.get_node("TeamComponent")
 	activated = true
 	charge_timer = 0
