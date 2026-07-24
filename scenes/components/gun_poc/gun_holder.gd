@@ -1,6 +1,11 @@
 extends Node3D
 var current_gun: Gun
 
+signal enemy_hit(hurtbox: Area3D)
+signal current_gun_charge_progress_changed(progress: float)
+signal current_gun_charge_ended
+signal current_gun_charge_started
+
 @export var input_component: Node
 
 @onready var Gun_Animation: AnimationPlayer = $"../PlayerVisuals/ROOT_P/GUN_P/GUN_AIM/Hand_Anims"
@@ -29,6 +34,7 @@ func _ready() -> void:
 		gun.Gun_Animation = Gun_Animation
 		gun.Muzzle_VFX = Muzzle_VFX
 		gun.team_component = team_component
+		gun.enemy_hit.connect(_on_enemy_hit) # Bind all the enemy hit signals at the start so hits still heal if they land after swapping weapons
 	
 	current_child_count = get_child_count()
 	
@@ -64,8 +70,29 @@ func _switch_gun():
 
 func _deactivate_gun():
 	current_gun.active = false
+	
+	current_gun.charge_progress_changed.disconnect(_on_current_gun_charge_progress_changed)
+	current_gun.charge_started.disconnect(_on_current_gun_charge_started)
+	current_gun.charge_ended.disconnect(_on_current_gun_charge_ended)
 
 func _activate_gun():
 	current_gun.active = true
 	if current_gun._current_ammo > current_gun.ammo_max:
 		current_gun._current_ammo = current_gun.ammo_max
+	
+	# Swap the signals for current gun charge and stuff. Idk what these are for but player.gd wants them.
+	current_gun.charge_progress_changed.connect(_on_current_gun_charge_progress_changed)
+	current_gun.charge_started.connect(_on_current_gun_charge_started)
+	current_gun.charge_ended.connect(_on_current_gun_charge_ended)
+
+func _on_enemy_hit(hurtbox: Area3D) -> void:
+	enemy_hit.emit(hurtbox)
+	
+func _on_current_gun_charge_progress_changed(progress: float) -> void:
+	current_gun_charge_progress_changed.emit(progress)
+
+func _on_current_gun_charge_started() -> void:
+	current_gun_charge_started.emit()
+
+func _on_current_gun_charge_ended() -> void:
+	current_gun_charge_ended.emit()

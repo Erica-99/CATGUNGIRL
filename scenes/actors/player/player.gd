@@ -87,10 +87,10 @@ func _ready() -> void:
 	}
 	
 	movement_state_machine.init(blackboard)
-	gun_holder.current_gun.enemy_hit.connect(_on_gun_enemy_hit)
-	gun_holder.current_gun.charge_progress_changed.connect(_on_gun_charge_progress)
-	gun_holder.current_gun.charge_ended.connect(_on_gun_charge_ended)
-	gun_holder.current_gun.charge_started.connect(_on_gun_charge_started)
+	gun_holder.enemy_hit.connect(_on_gun_enemy_hit)
+	gun_holder.current_gun_charge_progress_changed.connect(_on_gun_charge_progress)
+	gun_holder.current_gun_charge_ended.connect(_on_gun_charge_ended)
+	gun_holder.current_gun_charge_started.connect(_on_gun_charge_started)
 	
 	EventManager.gun_picked_up.connect(_equip_gun)
 	_set_gun_enabled(has_gun)
