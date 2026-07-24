@@ -36,7 +36,7 @@ func physics_update(delta):
 	
 	# Steer (find new direction)
 	var speed_ratio = current_speed / max_speed
-	var turn_multiplier = pow(1.0 - speed_ratio, 2)
+	var turn_multiplier = 1.0 - speed_ratio
 	var new_dir = current_dir.slerp(target_dir, turn_rate * delta)
 	
 	
