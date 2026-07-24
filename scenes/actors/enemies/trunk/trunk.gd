@@ -24,6 +24,11 @@ extends CharacterBody3D
 @export var direction: int = 1
 @export var move_speed: float = 10
 @export var chase_speed: float
+
+#Trunk Visual Code
+@onready var sprite_anims = $TrunkMesh/TorsoAnims
+var current_step: String
+
 var facing: float = 1.0:
 	set(value):
 		if value != facing:
@@ -58,9 +63,9 @@ var facing: float = 1.0:
 
 @export_category("Walking Variables")
 @export var distance_per_step: float = 2.0
-@export var base_time_between_steps: float = 1.0
-@export var min_time_between_steps: float = 0.3
-@export var exponential_decrement_per_step: float = 0.9
+@export var base_time_between_steps: float = 0.0
+@export var min_time_between_steps: float = 0.00
+@export var exponential_decrement_per_step: float = 0.0
 
 @export_category("Outrange Timeout")
 @export var time_till_outrange: float = 6.0
@@ -74,7 +79,7 @@ var past_object_collider_status: bool = false
 @onready var outranged_timer: Timer = $OutrangedTimer
 @onready var platform_check: RayCast3D = $PlatformCheck
 @onready var object_check: RayCast3D = $ObjectCheck
-@onready var animation_player: AnimationPlayer = $TrunkMesh/AnimationPlayer
+@onready var animation_player: AnimationPlayer = $TrunkMesh/TorsoAnims
 
 var damage_instance: DamageHealInstance = DamageHealInstance.new()
 
@@ -163,14 +168,29 @@ func _take_step():
 	if can_take_step:
 		global_position.x += distance_per_step * facing
 
+
+func _on_torso_anims_animation_finished(anim_name: StringName) -> void:
+	if anim_name == 'StepFront' or anim_name == 'StepBack':
+		step_handler.start()
+	elif anim_name == 'StepStart':
+		animation_player.play('StepBack')
+	pass # Replace with function body.
+func _step(currentstep):
+	if currentstep == 'StepFront':
+		animation_player.play("StepBack")
+	elif currentstep == 'StepBack':
+		animation_player.play("StepFront")
+	else:
+		animation_player.play("StepStart")
+
 func _on_step_handler_timeout() -> void:
-	animation_player.play("step")
-	await animation_player.animation_finished
+	_step(sprite_anims.get_assigned_animation())
 	
+	await animation_player.animation_finished
 	current_time_between_steps = max(current_time_between_steps * exponential_decrement_per_step, min_time_between_steps)
 	
 	step_handler.wait_time = current_time_between_steps
-	step_handler.start()
+
 
 func _handle_collision_check():
 	platform_check.force_raycast_update()
