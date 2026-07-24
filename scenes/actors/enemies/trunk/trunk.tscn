@@ -3518,6 +3518,7 @@ one_shot = true
 
 [node name="OutrangedTimer" type="Timer" parent="." unique_id=309027732]
 
+[connection signal="cant_step" from="." to="TrunkMesh" method="_on_trunk_cant_step"]
 [connection signal="facing_changed" from="." to="TrunkMesh" method="_on_trunk_facing_changed"]
 [connection signal="animation_finished" from="TrunkMesh/TorsoAnims" to="." method="_on_torso_anims_animation_finished"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]

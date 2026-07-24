@@ -93,6 +93,7 @@ var damage_instance: DamageHealInstance = DamageHealInstance.new()
 var in_attacking_range: bool
 
 signal facing_changed(trunk: CharacterBody3D)
+signal cant_step(status: bool)
 
 var is_dead: bool = false
 var blackboard: Dictionary
@@ -220,6 +221,7 @@ func _handle_collision_check():
 		if !can_take_step:
 			if detected_player:
 				outranged_timer.start()
+				cant_step.emit(true)
 		else:
 			outranged_timer.stop()
 			if state_machine.current_state is TrunkOutranged:

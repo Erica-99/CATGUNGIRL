@@ -32,3 +32,10 @@ func _on_trunk_chase_reached_chase_offset(status: bool) -> void:
 		anim_manager.play("Idle")
 	else:
 		anim_manager.play("StepStart")
+
+
+func _on_trunk_cant_step(status: bool) -> void:
+	if status:
+		anim_manager.play("Idle")
+	else:
+		anim_manager.play("StepStart")
