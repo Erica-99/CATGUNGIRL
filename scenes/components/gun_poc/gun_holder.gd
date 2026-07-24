@@ -18,6 +18,8 @@ const guns_available = [PISTOL_PREFAB, SHOTGUN_PREFAB, SNIPER_PREFAB]
 var current_child_count: int = 0
 var current_gun_index: int = 0
 
+var allow_swapping: bool
+
 func _ready() -> void:
 	for guns in guns_available:
 		var gun = guns.instantiate()
@@ -43,6 +45,9 @@ func _process(delta: float) -> void:
 		_switch_gun()
 
 func _switch_gun():
+	if not allow_swapping:
+		return
+	
 	current_gun_index += 1
 	if current_gun_index == current_child_count:
 		current_gun_index = 0

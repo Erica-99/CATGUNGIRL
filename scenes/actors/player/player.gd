@@ -169,6 +169,7 @@ func _set_gun_enabled(enabled: bool) -> void:
 	gun_holder.current_gun.process_mode = Node.PROCESS_MODE_INHERIT if enabled else Node.PROCESS_MODE_DISABLED
 	gun_holder.current_gun.visible = enabled
 	gun_arm_node.visible = enabled
+	gun_holder.allow_swapping = enabled
 	
 func set_facing(new_facing: float) -> void:
 	if new_facing == 0.0:
