@@ -261,7 +261,7 @@ func _shoot(damage, bullet_scale):
 
 
 func _handle_ammo():
-	EventManager.shot_fired.emit()
+	EventManager.shots_fired.emit(1)
 	
 	_current_ammo -= 1
 	if _current_ammo <= 0 and reload_full: 

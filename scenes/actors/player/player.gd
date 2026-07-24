@@ -143,7 +143,6 @@ func _on_insanity_component_interest_rank_changed(new_rank):
 	EventManager.player_interest_rank_changed.emit(new_rank)
 	
 func _on_gun_enemy_hit(_damage: float) -> void:
-	print("Healing from hit: " + str(_damage))
 	var heal = DamageHealInstance.new()
 	heal.amount = hit_heal_fraction * _damage
 	heal.is_heal = true

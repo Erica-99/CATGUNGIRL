@@ -12,6 +12,7 @@ enum Team {
 enum DamageType {
 	NORMAL,
 	DECAY,
+	EXPLOSIVE,
 }
 
 ## Based off of the health bar, rank would affect access to moves

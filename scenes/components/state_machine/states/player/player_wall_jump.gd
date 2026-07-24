@@ -30,7 +30,8 @@ func update(_delta: float) -> void:
 			transitioned.emit(self, "playeridle")
 		else:
 			transitioned.emit(self, "playermove")
-	elif input_state["ability_held"] and blackboard["gun_holder"].current_gun.ability:
+	elif (input_state["ability_held"] and blackboard["gun_holder"].current_gun.ability and 
+	blackboard["gun_holder"].current_gun.ability.is_ability_enterable()):
 		transitioned.emit(self, "playerability")
 	elif actor.velocity.y < 0:
 		transitioned.emit(self, "playerfall")
