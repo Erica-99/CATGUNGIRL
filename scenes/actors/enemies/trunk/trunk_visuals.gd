@@ -21,10 +21,15 @@ func _on_trunk_facing_changed(trunk: CharacterBody3D) -> void:
 
 
 func _on_state_machine_state_changed(prev: String, new: String) -> void:
-	if new == 'TrunkIdle' or new == 'trunkoutranged':
+	anim_manager.play("Idle")
+	anim_manager.stop()
+	if new == 'trunkmelee':
+		anim_manager.play("PunchStart")
+	elif new == 'trunkidle' or new == 'trunkoutranged':
 		anim_manager.play("Idle")
 	elif new == 'trunkchase':
 		anim_manager.play('StepStart')
+
 	pass # Replace with function body.
 
 

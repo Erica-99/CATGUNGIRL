@@ -68,6 +68,7 @@
 [ext_resource type="PackedScene" uid="uid://4rsfb5kh40wj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/B_Collisions/45Ramp.tscn" id="65_517df"]
 [ext_resource type="PackedScene" uid="uid://dk2ngf0qgohte" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/3_WareHouse/WallPlainBaseWareHouse.tscn" id="66_c3edl"]
 [ext_resource type="PackedScene" uid="uid://cntfde8q5l450" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/3_WareHouse/RoofBrokenWareHouse.tscn" id="67_ib8r7"]
+[ext_resource type="PackedScene" uid="uid://c2474vxopv84k" path="res://scenes/actors/enemies/trunk/trunk.tscn" id="69_wf5pt"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_eafu1"]
 
@@ -214,6 +215,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Enemies/Room Two/Trunk:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_wf5pt"]
 length = 0.001
@@ -289,6 +302,42 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Enemies/Room Two/Trunk:process_mode")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Enemies/Room Two/Trunk:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TrunkEventTrigger/GPUParticles3D2:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ib8r7"]
 resource_name = "Fixed"
@@ -340,6 +389,42 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Enemies/Room Two/Trunk:process_mode")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Enemies/Room Two/Trunk:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TrunkEventTrigger/GPUParticles3D2:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qmdqw"]
@@ -2571,16 +2656,28 @@ process_material = SubResource("ParticleProcessMaterial_ib8r7")
 draw_pass_1 = SubResource("BoxMesh_defdb")
 
 [node name="TrunkEventTrigger" type="Area3D" parent="Interactive" unique_id=391775350]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 184.20644, 168.91684, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 191.00958, 168.91684, 0)
 script = ExtResource("64_defdb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactive/TrunkEventTrigger" unique_id=1585074928]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2998352, 7.076233, 0.20614624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2941437, 7.076233, 0.20614624)
 shape = SubResource("BoxShape3D_ib8r7")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Interactive/TrunkEventTrigger" unique_id=294212640]
+transform = Transform3D(0.2808169, 0, 0, 0, 1, 0, 0, 0, 1, 13.70285, 15.044037, -0.7970333)
+emitting = false
+amount = 30
+lifetime = 4.0
+one_shot = true
+speed_scale = 3.0
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ib8r7")
+draw_pass_1 = SubResource("BoxMesh_defdb")
 
 [node name="TrunkEventAnims" type="AnimationPlayer" parent="Interactive/TrunkEventTrigger" unique_id=2135571124]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_qmdqw")
+autoplay = &"Fixed"
 
 [node name="TrunkSpawnLocation" type="Node3D" parent="Interactive/TrunkEventTrigger" unique_id=97702117]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.214935, 13.170822, 0)
@@ -2848,6 +2945,10 @@ wave_enemies = Array[int]([0, 0])
 
 [node name="Room Two" parent="Enemies" unique_id=1961159401 instance=ExtResource("26_cehyk")]
 room_ID = 1
+
+[node name="Trunk" parent="Enemies/Room Two" unique_id=400593386 instance=ExtResource("69_wf5pt")]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.66942, 182.66878, 0)
 
 [node name="Room Three" parent="Enemies" unique_id=1680082919 instance=ExtResource("26_cehyk")]
 room_ID = 2
