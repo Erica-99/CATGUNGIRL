@@ -79,6 +79,8 @@ func _activate_gun():
 	current_gun.active = true
 	if current_gun._current_ammo > current_gun.ammo_max:
 		current_gun._current_ammo = current_gun.ammo_max
+	current_gun._fire_cooldown = 0
+	current_gun._time_since_last_shot = 999
 	
 	# Swap the signals for current gun charge and stuff. Idk what these are for but player.gd wants them.
 	current_gun.charge_progress_changed.connect(_on_current_gun_charge_progress_changed)
