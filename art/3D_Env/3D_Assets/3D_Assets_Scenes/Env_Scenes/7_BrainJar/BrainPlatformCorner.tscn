@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bpjjy1et0y5se"]
+
+[ext_resource type="ArrayMesh" uid="uid://dogofkelwisn6" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/7_BrainJar/BrainPlatformCorner.obj" id="1_2x558"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2x558"]
+data = PackedVector3Array(-5.0004, 0, 0, -5.0004, -0.19999999, 0, -0.0001, 0, 0, -0.0001, 0, 0, -5.0004, -0.19999999, 0, 0, -0.19999999, 0, 0, -0.19999999, 5, -0.0001, 0, 5, 0, -0.19999999, 0, 0, -0.19999999, 0, -0.0001, 0, 5, -0.0001, 0, 0, -5.0004, -0.19999999, 2.5, -5.0004, 0, 2.5, -2.5005, -0.19999999, 5, -2.5005, -0.19999999, 5, -5.0004, 0, 2.5, -2.5005, 0, 5, -2.5005, -0.19999999, 5, 0, -0.19999999, 5, -5.0004, -0.19999999, 2.5, -5.0004, -0.19999999, 2.5, 0, -0.19999999, 5, -5.0004, -0.19999999, 0, -5.0004, -0.19999999, 0, 0, -0.19999999, 5, 0, -0.19999999, 0, -0.0001, 0, 5, 0, -0.19999999, 5, -2.5005, 0, 5, -2.5005, 0, 5, 0, -0.19999999, 5, -2.5005, -0.19999999, 5, -5.0004, 0, 2.5, -5.0004, -0.19999999, 2.5, -5.0004, 0, 0, -5.0004, 0, 0, -5.0004, -0.19999999, 2.5, -5.0004, -0.19999999, 0, -2.5005, 0, 5, -5.0004, 0, 2.5, -0.0001, 0, 5, -0.0001, 0, 5, -5.0004, 0, 2.5, -0.0001, 0, 0, -0.0001, 0, 0, -5.0004, 0, 2.5, -5.0004, 0, 0)
+
+[node name="BrainPlatformCorner" type="StaticBody3D" unique_id=1743438253]
+
+[node name="BrainPlatformCorner_Mesh" type="MeshInstance3D" parent="." unique_id=603310456]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = ExtResource("1_2x558")
+
+[node name="BrainPlatformCorner_Collision" type="CollisionShape3D" parent="." unique_id=68341104]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_2x558")
