@@ -42,7 +42,6 @@ func _ready() -> void:
 # actually start spawning timer
 func _spawn_enemy(custom_delay: float, spawner_path: NodePath):
 	if wave_spawner:
-		print("Spawner set to: WAVE")
 		for wave_enemy in wave_enemies:
 			var enemy
 			if wave_enemy == Enums.EnemyType.CONVICT:
@@ -51,7 +50,6 @@ func _spawn_enemy(custom_delay: float, spawner_path: NodePath):
 				enemy = SCRUB_PREFAB
 			enemy = enemy.instantiate()
 			_add_to_manager(enemy)
-			print(enemy, " added to Manager")
 	else:
 		if enemies.get_path_to(self) == spawner_path.slice(COMPARE_SLICE):
 			if custom_delay == 0:
