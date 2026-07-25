@@ -96,21 +96,24 @@ func play_sfx_at_location(sfx_ref: String, location: Vector3):
 			# Adjust limit as necessary
 			sound_effect.change_audio_count(1)
 			# Assign avalible ASP node
-			var asp: AudioStreamPlayer = null
-			for player in sfx_global_pool:
+			var asp3d: AudioStreamPlayer3D = null
+			for player in sfx_positional_pool:
 				if player.playing == false:
-					asp = player
+					asp3d = player
 					break
-			if asp == null: # Alert dev if sfx global pool limit is exceded (likely will change to a fallback solution later)
-				print("Global sfx pool exceded")
+			if asp3d == null: # Alert dev if sfx pool limit is exceded (likely will change to a fallback solution later)
+				print("Positional sfx pool exceded")
 			# Configure ASP node
-			asp.stream = sound_effect.sound_clip
-			asp.volume_db = sound_effect.volume
-			asp.pitch_scale = sound_effect.pitch_scale + randf_range(-sound_effect.pitch_random_shift, sound_effect.pitch_random_shift)
+			asp3d.stream = sound_effect.sound_clip
+			asp3d.volume_db = sound_effect.volume
+			asp3d.pitch_scale = sound_effect.pitch_scale + randf_range(-sound_effect.pitch_random_shift, sound_effect.pitch_random_shift)
+			asp3d.global_position = location
+			
 			# Connect finished signal
-			if not asp.finished.is_connected(sound_effect.on_audio_finished):
-				asp.finished.connect(sound_effect.on_audio_finished)
+			if not asp3d.finished.is_connected(sound_effect.on_audio_finished):
+				asp3d.finished.connect(sound_effect.on_audio_finished)
+				
 			# Play sound effect
-			asp.play()
+			asp3d.play()
 	else:
 		push_error("Sound effect not found")

@@ -8,6 +8,7 @@ const GRAVITY = 50
 @export var health_comp: Node
 @export var state_machine: StateMachine
 @onready var softCollider: Area3D = $SoftCollider
+@export var audio_caller: Node
 
 var is_dead: bool = false
 
@@ -143,3 +144,10 @@ func _apply_hitstun(duration: float) -> void:
 # When the target leaves the hitbox, change value. Used to let enemy keep attacking a still target
 func _on_attack_hitbox_3d_body_exited(body: Node3D) -> void:
 	target_in_hitbox = false
+
+
+func call_sfx_at_current_location(sfx_ref: String) -> void:
+	if audio_caller == null:
+		return
+		
+	audio_caller.play_sfx_at_location(sfx_ref, global_position)
