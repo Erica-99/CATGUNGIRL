@@ -54,7 +54,3 @@ func on_cancel_hook() -> void:
 		blackboard["current_grapple_hook"] = null
 	
 	_ability_state.end_ability.emit()
-
-func _process(delta: float) -> void:
-	if active and "actor" in blackboard.keys():
-		print(actor.velocity)
