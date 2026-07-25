@@ -85,10 +85,10 @@ func _end_popup():
 	visible = false
 
 # Debug input
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("gigi_show"):
-		if not popup_active:
-			_popup_start(0)
+#func _unhandled_input(event: InputEvent) -> void:
+	#if event.is_action_pressed("gigi_show"):
+		#if not popup_active:
+			#_popup_start(0)
 
 func _on_activate_popup(popup_id: int) -> void:
 	_popup_start(popup_id)
