@@ -5,6 +5,7 @@ var actor: CharacterBody3D
 @export var shotgun: Node
 var state_machine: StateMachine
 var team_component: Node
+@export var player_knockback_animation_name: String
 
 @export_category("Blast Attributes")
 var activated: bool = false
@@ -76,6 +77,7 @@ func _fire_blast():
 		hb.damage_dealt.connect(func(damage): enemy_hit.emit(damage)) # Will need to modify this to work with new enemy_hit signal behaviour in dev.
 		# This handles the launch
 		actor.velocity = -aim_dir * (launch_speed * shotgun._current_ammo)
+		request_animation(player_knockback_animation_name)
 		
 		var prev_ammo = shotgun._current_ammo
 		shotgun._current_ammo = 0

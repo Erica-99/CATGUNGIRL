@@ -39,10 +39,12 @@ func physics_update(_delta: float) -> void:
 	var start_pos: Vector3 = blackboard["fired_position"]
 	var end_pos: Vector3 = blackboard["target_position"]
 	
+	var travelled_distance = (hook_object.global_position - blackboard["rope_attach_point"].global_position).length()
+	
 	if hook_object.collided:
 		transitioned.emit(self, "GrappleReeling")
 		return
-	elif time_elapsed >= 3:
+	elif travelled_distance > blackboard["max_grapple_distance"]:
 		cancelled = true
 		return
 	
@@ -54,10 +56,11 @@ func physics_update(_delta: float) -> void:
 
 func _setup_grapple() -> void:
 	if not blackboard["grapple_raycast"].is_colliding():
-		cancelled = true
-		return
+		#cancelled = true
+		blackboard["target_position"] = blackboard["grapple_raycast"].to_global(blackboard["grapple_raycast"].target_position)
+	else:
+		blackboard["target_position"] = _get_grapple_point()
 	
-	blackboard["target_position"] = _get_grapple_point()
 	blackboard["fired_position"] = blackboard["rope_attach_point"].global_position
 	
 	var grapple_scene_instance = blackboard["grapple_hook_scene"].instantiate()

@@ -110,9 +110,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		_interacting = true
 		
-	if event.is_action_pressed("move_down"):
-		_crouching = true
-		crouching.emit()
+	#if event.is_action_pressed("move_down"):
+		#_crouching = true
+		#crouching.emit()
 		
 	if event.is_action_pressed("switch_gun") and not event.is_echo():
 		_switch_gun = true
@@ -135,11 +135,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("dash"):
 		_dash_held = false
 	
-	if event.is_action_released("move_down"):
-		if not toggle_crouch:
-			_crouching = false
-			standing.emit()
-			#_on_player_crouch_overlap()
+	#if event.is_action_released("move_down"):
+		#if not toggle_crouch:
+			#_crouching = false
+			#standing.emit()
+			##_on_player_crouch_overlap()
 	
 	if event.is_action_released("interact"):
 		_interacting = false

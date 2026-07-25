@@ -551,8 +551,9 @@ radius = 6.5
 
 [node name="Convict" type="CharacterBody3D" unique_id=1506947017 node_paths=PackedStringArray("animator", "health_comp", "state_machine", "audio_caller", "start_idle", "start_patrol", "start_aggro", "attack_hitbox")]
 collision_layer = 4
+collision_mask = 129
 floor_constant_speed = true
-platform_floor_layers = 1
+platform_floor_layers = 129
 script = ExtResource("1_awmif")
 animator = NodePath("Visuals/AnimationPlayer")
 health_comp = NodePath("HealthComponent")

@@ -1,6 +1,8 @@
 extends State
 class_name GrappleReeling
 
+@export var reeling_animation_name: String
+
 var reeling := false
 
 var actor: CharacterBody3D
@@ -56,5 +58,6 @@ func _enable_reeling_after_delay(delay: float) -> void:
 		initial_dist = (hook.global_position - blackboard["rope_attach_point"].global_position).length()
 		actor.velocity = Vector3.ZERO
 		reeling = true
+		blackboard["grapplegun_object"].request_animation(reeling_animation_name)
 	
 	

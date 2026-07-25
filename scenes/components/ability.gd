@@ -26,3 +26,7 @@ func _set_children_active(_active: bool) -> void:
 	else:
 		for child in get_children():
 			child.process_mode = Node.PROCESS_MODE_INHERIT
+
+func request_animation(animation_name: String) -> void:
+	if _ability_state != null and active:
+		_ability_state.request_animation(animation_name)

@@ -1476,7 +1476,7 @@ collision_layer = 2
 axis_lock_linear_z = true
 platform_floor_layers = 1
 script = ExtResource("1_qdyt2")
-hit_heal_fraction = 0.2
+hit_heal_fraction = 0.3
 movement_state_machine = NodePath("MovementStateMachine")
 gun_arm_node = NodePath("PlayerVisuals/ROOT_P/GUN_P")
 input_component = NodePath("PlayerInput")
@@ -1700,3 +1700,4 @@ current = true
 [connection signal="state_changed" from="MovementStateMachine" to="DebugStateDisplay" method="_on_movement_state_machine_state_changed"]
 [connection signal="overlap" from="MovementStateMachine/PlayerCrouch" to="MovementStateMachine/PlayerIdle" method="_on_player_crouch_overlap"]
 [connection signal="overlap" from="MovementStateMachine/PlayerCrouch" to="MovementStateMachine/PlayerMove" method="_on_player_crouch_overlap"]
+[connection signal="request_ability_animation" from="MovementStateMachine/PlayerAbility" to="PlayerVisuals" method="_on_request_ability_animation"]
