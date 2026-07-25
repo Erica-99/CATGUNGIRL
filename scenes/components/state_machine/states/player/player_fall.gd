@@ -5,7 +5,7 @@ class_name PlayerFall
 
 var actor: CharacterBody3D
 var input_component: InputComponent
-var blocked_states: Dictionary
+var blocked_states: Dictionary = {}
 
 func init(blackboard_dict : Dictionary) -> void:
 	super(blackboard_dict)
@@ -17,13 +17,27 @@ func enter() -> void:
 		blackboard["mantle_detector"].set_checking_enabled(true)
 
 func exit() -> void:
-	AudioManager.play_sfx("jump_landing")
+	#only when player landed
+	if actor.is_on_floor():
+		AudioManager.play_sfx("jump_landing")
+		blackboard["jump_timer"].start()
+
 	if blackboard["mantle_detector"] != null:
 		blackboard["mantle_detector"].set_checking_enabled(false)
-	blackboard["jump_timer"].start()
 
 func update(_delta: float) -> void:
-	if actor.is_on_floor():
+	var input_state = input_component.get_input_state()
+	if input_state["dashing"] and blackboard["dash_timer"].is_stopped() and blackboard["can_air_dash"]:
+		var input_dir: float = input_state["movement"]
+		if input_dir != 0.0:
+			blackboard["dash_dir"] = sign(input_dir)
+		else:
+			blackboard["dash_dir"] = actor.facing
+		transitioned.emit(self, "playerdash")
+	elif (input_state["ability_held"] and blackboard["gun_holder"].current_gun.ability and 
+	blackboard["gun_holder"].current_gun.ability.is_ability_enterable()):
+		transitioned.emit(self, "playerability")
+	elif actor.is_on_floor():
 		if actor.velocity.x == 0:
 			transitioned.emit(self, "playeridle")
 		else:
@@ -45,6 +59,13 @@ func physics_update(_delta: float) -> void:
 	actor.velocity.x = clampf(actor.velocity.x + direction.x * accel * _delta, -speed, speed)
 		
 	actor.move_and_slide()
+	
+	var wall_jump_dir: float = actor.get_wall_jump_dir(input_dir)
+	
+	if wall_jump_dir != 0.0:
+		blackboard["wall_jump_dir"] = wall_jump_dir
+		transitioned.emit(self, "playerwallslide")
+		return
 	
 	if input_state["movement"] != 0 and blackboard["mantle_detector"].can_mantle:
 		blackboard["current_mantle_target"] = blackboard["mantle_detector"].get_target_mantle_point()

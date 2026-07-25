@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://l0pt5mcxodxm"]
+
+[ext_resource type="Script" uid="uid://ws1rfas63x3n" path="res://scenes/components/grappling_hook/grapple_component.gd" id="1_ly5qd"]
+[ext_resource type="PackedScene" uid="uid://b1xovfmr2jo4s" path="res://scenes/components/grappling_hook/grappling_hook_hook.tscn" id="2_4u4vp"]
+[ext_resource type="PackedScene" uid="uid://c6wep4oftfyke" path="res://scenes/components/state_machine/state_machine.tscn" id="2_mst2j"]
+[ext_resource type="Texture2D" uid="uid://crng4f3f2avnf" path="res://icon.svg" id="3_mb7m4"]
+[ext_resource type="Script" uid="uid://bitvaweib8l2v" path="res://scenes/components/grappling_hook/grapple_retracted.gd" id="3_mst2j"]
+[ext_resource type="Script" uid="uid://cmt8f4wb6eirf" path="res://scenes/components/grappling_hook/grapple_shooting.gd" id="4_rpvph"]
+[ext_resource type="Script" uid="uid://cxaegba2kenjm" path="res://scenes/components/grappling_hook/grapple_reeling.gd" id="7_8ovlh"]
+
+[sub_resource type="Curve" id="Curve_4u4vp"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.08035715, 1), 0.0, 0.0, 0, 0, Vector2(0.5029762, 0.6239669), -1.2134178, -1.2134178, 0, 0, Vector2(1, 0.3860684), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ovlh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_mb7m4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="GrappleComponent" type="Node3D" unique_id=875314025 node_paths=PackedStringArray("grapple_raycast", "retract_state")]
+script = ExtResource("1_ly5qd")
+grapple_raycast = NodePath("GrappleRaycast")
+grapple_hook_scene = ExtResource("2_4u4vp")
+retract_state = NodePath("StateMachine/GrappleRetracted")
+total_fire_time = 0.15
+firing_curve = SubResource("Curve_4u4vp")
+reel_delay = 0.2
+reel_minimum_distance = 5.0
+
+[node name="GrapplingHookSprite" type="AnimatedSprite3D" parent="." unique_id=2098842336]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+visible = false
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_8ovlh")
+
+[node name="GrappleRaycast" type="RayCast3D" parent="." unique_id=1211203710]
+target_position = Vector3(25, 0, 0)
+collision_mask = 133
+
+[node name="StateMachine" parent="." unique_id=1499026333 node_paths=PackedStringArray("initial_state") instance=ExtResource("2_mst2j")]
+initial_state = NodePath("GrappleRetracted")
+
+[node name="GrappleRetracted" type="Node" parent="StateMachine" unique_id=1337567789]
+script = ExtResource("3_mst2j")
+metadata/_custom_type_script = "uid://dropwvjh2s43u"
+
+[node name="GrappleShooting" type="Node" parent="StateMachine" unique_id=1834458622]
+script = ExtResource("4_rpvph")
+gravity_multiplier = 1.4
+metadata/_custom_type_script = "uid://dropwvjh2s43u"
+
+[node name="GrappleReeling" type="Node" parent="StateMachine" unique_id=1368261832]
+script = ExtResource("7_8ovlh")
+reeling_animation_name = "Fall"
+metadata/_custom_type_script = "uid://dropwvjh2s43u"

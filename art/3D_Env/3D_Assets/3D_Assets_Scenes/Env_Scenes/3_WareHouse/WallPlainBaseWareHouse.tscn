@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dk2ngf0qgohte"]
+
+[ext_resource type="ArrayMesh" uid="uid://cnqtj21xryki" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/3_WareHouse/WallPlainBaseWareHouse.obj" id="1_jln5d"]
+[ext_resource type="Texture2D" uid="uid://dgey57obwj80x" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/3_WareHouse/Walls/TextureTrimSheetWallW.png" id="2_f70b1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6o2k"]
+albedo_texture = ExtResource("2_f70b1")
+
+[node name="WallPlainRearWareHouse" type="StaticBody3D" unique_id=1669431150]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="WallPlainBaseWareHouse" type="MeshInstance3D" parent="." unique_id=1665472897]
+mesh = ExtResource("1_jln5d")
+surface_material_override/0 = SubResource("StandardMaterial3D_b6o2k")

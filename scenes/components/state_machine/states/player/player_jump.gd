@@ -32,7 +32,18 @@ func exit() -> void:
 		blackboard["mantle_detector"].set_checking_enabled(false)
 
 func update(_delta: float) -> void:
-	if actor.is_on_floor():
+	var input_state = input_component.get_input_state()
+	if input_state["dashing"] and blackboard["dash_timer"].is_stopped() and blackboard["can_air_dash"]:
+		var input_dir: float = input_state["movement"]
+		if input_dir != 0.0:
+			blackboard["dash_dir"] = sign(input_dir)
+		else:
+			blackboard["dash_dir"] = actor.facing
+		transitioned.emit(self, "playerdash")
+	elif (input_state["ability_held"] and blackboard["gun_holder"].current_gun.ability and 
+	blackboard["gun_holder"].current_gun.ability.is_ability_enterable()):
+		transitioned.emit(self, "playerability")
+	elif actor.is_on_floor():
 		if actor.velocity.x == 0:
 			transitioned.emit(self, "playeridle")
 		else:
@@ -59,6 +70,13 @@ func physics_update(_delta: float) -> void:
 	actor.velocity.x = clampf(actor.velocity.x + direction.x * accel * _delta, -speed, speed)
 	
 	actor.move_and_slide()
+	
+	var wall_jump_dir: float = actor.get_wall_jump_dir(input_dir)
+
+	if wall_jump_dir != 0.0:
+		blackboard["wall_jump_dir"] = wall_jump_dir
+		transitioned.emit(self, "playerwallslide")
+		return
 	
 	# Only allow mantle if player is pressing forward and can mantle.
 	if input_state["movement"] != 0 and blackboard["mantle_detector"].can_mantle:

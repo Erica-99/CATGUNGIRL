@@ -12,15 +12,19 @@
 [ext_resource type="Script" uid="uid://bniqs510pmxtt" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_idle.gd" id="5_apte0"]
 [ext_resource type="PackedScene" uid="uid://bb6sghw3w0sxm" path="res://scenes/components/enemy_components/scrub_components/scrub_gun/scrub_gun.tscn" id="5_ew88m"]
 [ext_resource type="Texture2D" uid="uid://b7ul7iixbo68q" path="res://art/2d_assets/Scrubs/ScrubGun.png" id="5_m88xv"]
-[ext_resource type="Texture2D" uid="uid://5gbrgov3cp7r" path="res://art/2d_assets/Scrubs/ScrubLeg.png" id="6_bmk6k"]
+[ext_resource type="Texture2D" uid="uid://b5voqwyn7k2te" path="res://art/2d_assets/Scrubs/ScrubBackLeg.png" id="7_uh1gn"]
+[ext_resource type="Texture2D" uid="uid://ccloam1y8g5ky" path="res://art/2d_assets/Scrubs/ScrubFrontLeg.png" id="8_dxowq"]
 [ext_resource type="Script" uid="uid://dwu8ceiw2k1hg" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_alert.gd" id="8_in183"]
+[ext_resource type="Texture2D" uid="uid://bm0gc0v4gq0q0" path="res://art/2d_assets/Scrubs/ScrubHand.png" id="9_m0g3o"]
 [ext_resource type="Script" uid="uid://dilpn6f8cm6aw" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_attack.gd" id="9_uw3am"]
 [ext_resource type="Script" uid="uid://ceil7gp5xrgc5" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_grenade.gd" id="10_apte0"]
 [ext_resource type="Script" uid="uid://bp55fp56p8pwx" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_chase.gd" id="10_ly0j2"]
+[ext_resource type="Texture2D" uid="uid://3561oba6nuq4" path="res://art/2d_assets/Scrubs/ScrubJetPack.png" id="10_wri7d"]
 [ext_resource type="Script" uid="uid://doxqnfsm4wb8g" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_flee.gd" id="11_2i5hx"]
 [ext_resource type="PackedScene" uid="uid://bky5phrwc32e8" path="res://scenes/bullet/ScrubBullet.tscn" id="11_m88xv"]
 [ext_resource type="Script" uid="uid://briciybelpcwe" path="res://scenes/components/state_machine/states/enemy/enemy_death.gd" id="21_m88xv"]
 [ext_resource type="Script" uid="uid://rwkg37dkkbs1" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_patrol.gd" id="22_bmk6k"]
+[ext_resource type="Script" uid="uid://dpwol7txodmxp" path="res://scenes/components/soft_collision.gd" id="22_hw6pp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hw6pp"]
 animations = [{
@@ -55,16 +59,307 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_m0g3o"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_bmk6k")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="Animation" id="Animation_uh1gn"]
+resource_name = "Idle"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torso_P:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.43333334, 0.6666667, 0.9, 1.1333334, 1.3666667, 1.6000001, 1.8666667, 2.1000004, 2.4, 2.6333337, 2.8333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.259, 0.758, -0.047), Vector3(-0.194, 0.758, -0.047), Vector3(-0.259, 0.758, -0.047), Vector3(-0.194, 0.758, -0.047), Vector3(-0.259, 0.758, -0.047), Vector3(-0.194, 0.758, -0.047), Vector3(-0.259, 0.758, -0.047), Vector3(-0.194, 0.758, -0.047), Vector3(-0.259, 0.758, -0.047), Vector3(-0.194, 0.758, -0.047), Vector3(-0.259, 0.758, -0.047), Vector3(-0.194, 0.758, -0.047), Vector3(-0.259, 0.758, -0.047)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Torso_P/Hand_P:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Torso_P/Hand_P:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.5, 0.73333335, 1.0666667, 1.3000001, 1.6333333, 1.8666667, 2.2, 2.4333334, 2.7666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.0371275, 0.3422938, 0.06981729), Vector3(-1.037, 0.407, 0.07), Vector3(-1.0371275, 0.3422938, 0.06981729), Vector3(-1.037, 0.407, 0.07), Vector3(-1.0371275, 0.3422938, 0.06981729), Vector3(-1.037, 0.407, 0.07), Vector3(-1.0371275, 0.3422938, 0.06981729), Vector3(-1.037, 0.407, 0.07), Vector3(-1.0371275, 0.3422938, 0.06981729), Vector3(-1.037, 0.407, 0.07), Vector3(-1.0371275, 0.3422938, 0.06981729)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Torso_P/Head_P:rotation")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.0333333, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.12217305), Vector3(0, 0, 0.022689281)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Torso_P/AnimatedSprite3D:rotation")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Torso_P:rotation")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.96666664, 2.2333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.12217305), Vector3(0, 0, 0.09599311)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Torso_P/Jetpack_P:position")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.70000005, 0.8, 0.90000004, 1, 1.1, 1.2, 1.3, 1.4000001, 1.5, 1.6, 1.7, 1.8, 1.9000001, 2, 2.1, 2.2, 2.3, 2.3666666, 2.4666667, 2.5666666, 2.6666665, 2.7666664, 2.8666663, 2.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.16826937, 0.350972, -0.2214306), Vector3(0.168, 0.306, -0.221), Vector3(0.16826937, 0.350972, -0.2214306), Vector3(0.168, 0.306, -0.221), Vector3(0.16826937, 0.350972, -0.2214306), Vector3(0.168, 0.306, -0.221), Vector3(0.16826937, 0.350972, -0.2214306), Vector3(0.168, 0.306, -0.221), Vector3(0.16826937, 0.350972, -0.2214306), Vector3(0.168, 0.306, -0.221), Vector3(0.16826937, 0.350972, -0.2214306), Vector3(0.168, 0.306, -0.221), Vector3(0.16826937, 0.350972, -0.2214306), Vector3(0.168, 0.306, -0.221), Vector3(0.16826937, 0.350972, -0.2214306), Vector3(0.168, 0.306, -0.221), Vector3(0.16826937, 0.350972, -0.2214306), Vector3(0.168, 0.306, -0.221), Vector3(0.16826937, 0.350972, -0.2214306), Vector3(0.168, 0.306, -0.221), Vector3(0.16826937, 0.350972, -0.2214306), Vector3(0.168, 0.306, -0.221), Vector3(0.16826937, 0.350972, -0.2214306), Vector3(0.168, 0.306, -0.221), Vector3(0.16826937, 0.350972, -0.2214306), Vector3(0.168, 0.306, -0.221), Vector3(0.16826937, 0.350972, -0.2214306), Vector3(0.168, 0.306, -0.221), Vector3(0.16826937, 0.350972, -0.2214306), Vector3(0.168, 0.306, -0.221), Vector3(0.16826937, 0.350972, -0.2214306)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Torso_P/Legs_P/BackLeg_P:rotation")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.93333334, 2.2333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.12217305), Vector3(0, 0, -0.12042772)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Torso_P/Legs_P/FrontLeg_P:rotation")
+tracks/8/interp = 2
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.1666666, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.2443461), Vector3(0, 0, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Torso_P/Legs_P/BackLeg_P:position")
+tracks/9/interp = 2
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 2.2333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.014583409, -0.13683939, 0.10329899), Vector3(0.015, 0.168, 0.103)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = false
+tracks/10/path = NodePath("Torso_P/Gun_P:position")
+tracks/10/interp = 2
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.70000005, 0.76666665, 0.8666667, 0.9666667, 1.0666667, 1.1666666, 1.2666667, 1.3666667, 1.4666667, 1.5666666, 1.6666666, 1.7666667, 1.8666667, 1.9333333, 2.0333333, 2.1333332, 2.2333333, 2.3333333, 2.4333334, 2.5333333, 2.6333332, 2.733333, 2.8333333, 2.9333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.2297484, 0.13730878, -0.31735772), Vector3(1.23, 0.187, -0.317), Vector3(1.2297484, 0.13730878, -0.31735772), Vector3(1.23, 0.187, -0.317), Vector3(1.2297484, 0.13730878, -0.31735772), Vector3(1.23, 0.187, -0.317), Vector3(1.2297484, 0.13730878, -0.31735772), Vector3(1.23, 0.187, -0.317), Vector3(1.2297484, 0.13730878, -0.31735772), Vector3(1.23, 0.187, -0.317), Vector3(1.2297484, 0.13730878, -0.31735772), Vector3(1.23, 0.187, -0.317), Vector3(1.2297484, 0.13730878, -0.31735772), Vector3(1.23, 0.187, -0.317), Vector3(1.2297484, 0.13730878, -0.31735772), Vector3(1.23, 0.187, -0.317), Vector3(1.2297484, 0.13730878, -0.31735772), Vector3(1.23, 0.187, -0.317), Vector3(1.2297484, 0.13730878, -0.31735772), Vector3(1.23, 0.187, -0.317), Vector3(1.2297484, 0.13730878, -0.31735772), Vector3(1.23, 0.187, -0.317), Vector3(1.2297484, 0.13730878, -0.31735772), Vector3(1.23, 0.187, -0.317), Vector3(1.2297484, 0.13730878, -0.31735772), Vector3(1.23, 0.187, -0.317), Vector3(1.2297484, 0.13730878, -0.31735772), Vector3(1.23, 0.187, -0.317), Vector3(1.2297484, 0.13730878, -0.31735772), Vector3(1.23, 0.187, -0.317), Vector3(1.2297484, 0.13730878, -0.31735772)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = false
+tracks/11/path = NodePath("Torso_P/Gun_P:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.8, 2.2333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.12217305), Vector3(0, 0, -0.08028515)]
+}
+
+[sub_resource type="Animation" id="Animation_dxowq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torso_P:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.26351106, 0.523074, -0.047480106)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Torso_P/Hand_P:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Torso_P/Hand_P:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.0371275, 0.3422938, 0.06981729)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Torso_P/Head_P:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Torso_P/AnimatedSprite3D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Torso_P:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Torso_P/Jetpack_P:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.16826937, 0.350972, -0.2214306)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Torso_P/Legs_P/BackLeg_P:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Torso_P/Legs_P/FrontLeg_P:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Torso_P/Legs_P/BackLeg_P:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.014583409, -0.13683939, 0.10329899)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Torso_P/Gun_P:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.2297484, 0.13730878, -0.31735772)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Torso_P/Gun_P:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dxowq"]
+_data = {
+&"Idle": SubResource("Animation_uh1gn"),
+&"RESET": SubResource("Animation_dxowq")
+}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ly0j2"]
 size = Vector3(1.285553, 3.2021484, 1)
@@ -74,7 +369,7 @@ radius = 0.88964844
 height = 2.6924133
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t6mem"]
-size = Vector3(1.1513062, 0.7642578, 1)
+size = Vector3(1.4890976, 1.1897217, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ly0j2"]
 radius = 12.0
@@ -88,6 +383,9 @@ radius = 8.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_dosxg"]
 size = Vector3(8.5, 5, 1)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_uh1gn"]
+radius = 2.1603687
+
 [node name="Scrub" type="CharacterBody3D" unique_id=1090872008 node_paths=PackedStringArray("state_machine", "start_idle", "start_patrol", "start_aggro", "gun_component")]
 collision_layer = 4
 script = ExtResource("1_2i5hx")
@@ -100,7 +398,8 @@ gun_component = NodePath("ScrubGun")
 grenade = ExtResource("2_tpnop")
 patrol_speed = 5.0
 chase_speed = 10.0
-flee_speed = 20.0
+chase_acceleration = 3.0
+flee_speed = 15.0
 body_hitstun_threshold = 10.0
 body_hitstun_duration = 0.15
 head_hitstun_threshold = 10.0
@@ -112,46 +411,82 @@ script = ExtResource("3_dosxg")
 [node name="Visual_MOVE_P" type="Node3D" parent="Scrub_Mesh" unique_id=655061120]
 
 [node name="Torso_P" type="Node3D" parent="Scrub_Mesh/Visual_MOVE_P" unique_id=1384674082]
-transform = Transform3D(0.5897999, 0, 0, 0, 0.5897999, 0, 0, 0, 0.5897999, -0.26351106, 0.523074, -0.047480106)
+transform = Transform3D(0.59, 0, 0, 0, 0.59, 0, 0, 0, 0.59, -0.26351106, 0.523074, -0.047480106)
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Scrub_Mesh/Visual_MOVE_P/Torso_P" unique_id=769907325]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3618228, -1.8022637, 0)
+sorting_offset = 1.0
 flip_h = true
 sprite_frames = SubResource("SpriteFrames_hw6pp")
 
 [node name="Head_P" type="Node3D" parent="Scrub_Mesh/Visual_MOVE_P/Torso_P" unique_id=644978609]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1999588, 0.34855533, 0.21237731)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29732454, 0.040134728, 0.21237732)
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Scrub_Mesh/Visual_MOVE_P/Torso_P/Head_P" unique_id=491376275]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1388657, -1.7207423, 0)
+sorting_offset = 2.0
 flip_h = true
 sprite_frames = SubResource("SpriteFrames_uh1gn")
 
 [node name="Gun_P" type="Node3D" parent="Scrub_Mesh/Visual_MOVE_P/Torso_P" unique_id=1807537869]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2297484, 0.13730878, 0.3197797)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2297484, 0.13730878, -0.31735772)
 
 [node name="Gun_AIM_P" type="Node3D" parent="Scrub_Mesh/Visual_MOVE_P/Torso_P/Gun_P" unique_id=1401736108]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10133648, 0)
+transform = Transform3D(0.97713214, -0.21263283, 0, 0.21263283, 0.97713214, 0, 0, 0, 0.9999997, -0.2660761, -0.07496905, 0.0003671348)
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Scrub_Mesh/Visual_MOVE_P/Torso_P/Gun_P/Gun_AIM_P" unique_id=80290405]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.7774873, 0)
+transform = Transform3D(0.98745674, 0.15789133, 0, -0.15789133, 0.98745674, 0, 0, 0, 0.99999994, -0.06745996, -1.8358128, 2.2351742e-05)
 flip_h = true
 sprite_frames = SubResource("SpriteFrames_dxowq")
 
 [node name="Legs_P" type="Node3D" parent="Scrub_Mesh/Visual_MOVE_P/Torso_P" unique_id=221195692]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.039492607, -1.2641313, -0.30831146)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10699412, -1.9302051, -0.30831146)
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Scrub_Mesh/Visual_MOVE_P/Torso_P/Legs_P" unique_id=926076047]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3893046, -0.5671476, 0)
+[node name="BackLeg_P" type="Node3D" parent="Scrub_Mesh/Visual_MOVE_P/Torso_P/Legs_P" unique_id=1272119068]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.014583409, -0.13683939, 0.10329899)
+
+[node name="BackLeg" type="Sprite3D" parent="Scrub_Mesh/Visual_MOVE_P/Torso_P/Legs_P/BackLeg_P" unique_id=1047208313]
+transform = Transform3D(1.185, 0, 0, 0, 1.185, 0, 0, 0, 1.185, 1.3386912, 0, 0)
 flip_h = true
-sprite_frames = SubResource("SpriteFrames_m0g3o")
+texture = ExtResource("7_uh1gn")
+
+[node name="FrontLeg_P" type="Node3D" parent="Scrub_Mesh/Visual_MOVE_P/Torso_P/Legs_P" unique_id=1468997954]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.17670973)
+
+[node name="FrontLeg" type="Sprite3D" parent="Scrub_Mesh/Visual_MOVE_P/Torso_P/Legs_P/FrontLeg_P" unique_id=1129912740]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3386912, 0, 0)
+sorting_offset = 1.0
+flip_h = true
+texture = ExtResource("8_dxowq")
+
+[node name="Hand_P" type="Node3D" parent="Scrub_Mesh/Visual_MOVE_P/Torso_P" unique_id=467872610]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0371275, 0.3422938, 0.06981729)
+
+[node name="Sprite3D" type="Sprite3D" parent="Scrub_Mesh/Visual_MOVE_P/Torso_P/Hand_P" unique_id=1022196132]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5510144, -2.0870132, 0)
+sorting_offset = 3.0
+flip_h = true
+texture = ExtResource("9_m0g3o")
+
+[node name="Jetpack_P" type="Node3D" parent="Scrub_Mesh/Visual_MOVE_P/Torso_P" unique_id=411865536]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16826937, 0.350972, -0.2214306)
+
+[node name="Sprite3D" type="Sprite3D" parent="Scrub_Mesh/Visual_MOVE_P/Torso_P/Jetpack_P" unique_id=98083476]
+transform = Transform3D(0.9795226, 0, 0.20133436, 0, 1, 0, -0.20133436, 0, 0.9795226, 0.93679744, -2.4425166, -0.4638463)
+sorting_offset = -1.0
+flip_h = true
+texture = ExtResource("10_wri7d")
+
+[node name="ScrubAnim" type="AnimationPlayer" parent="Scrub_Mesh/Visual_MOVE_P" unique_id=430141723]
+libraries/ = SubResource("AnimationLibrary_dxowq")
+autoplay = &"Idle"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1549018224]
 shape = SubResource("BoxShape3D_ly0j2")
 
 [node name="HealthComponent" parent="." unique_id=236252344 instance=ExtResource("1_jvusm")]
-starting_health = 40.0
-max_health = 40.0
+starting_health = 35.0
+max_health = 35.0
 
 [node name="TeamComponent" parent="." unique_id=2076917082 instance=ExtResource("2_in183")]
 team = 2
@@ -161,6 +496,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3521698, 0.581293, 0)
 visible = false
 bullet_scene = ExtResource("11_m88xv")
 team_component = NodePath("../TeamComponent")
+fire_rate = 0.5
 bullet_damage = 5.0
 
 [node name="CanShoot" type="RayCast3D" parent="." unique_id=697706949]
@@ -180,7 +516,7 @@ health_component = NodePath("../HealthComponent")
 damage_multiplier = 1.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HeadHurtbox" unique_id=2020127821]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025854155, 1.2821288, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012021974, 0.9222485, 0)
 shape = SubResource("BoxShape3D_t6mem")
 debug_color = Color(0.9201433, 0.7565305, 1, 0.41960785)
 
@@ -252,6 +588,15 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 shape = SubResource("BoxShape3D_dosxg")
 debug_color = Color(3.7541986e-06, 0.64062357, 0.3518193, 0.41960785)
+
+[node name="SoftCollider" type="Area3D" parent="." unique_id=1708472180]
+collision_layer = 256
+collision_mask = 256
+script = ExtResource("22_hw6pp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SoftCollider" unique_id=260812791]
+shape = SubResource("SphereShape3D_uh1gn")
+debug_color = Color(0, 0.61960787, 0.5686275, 0.41960785)
 
 [connection signal="facing_changed" from="." to="Scrub_Mesh" method="_on_scrub_facing_changed"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]

@@ -31,10 +31,10 @@ func _on_insanity_changed(prev_rank: int, new_rank: int):
 func _on_player_interest_rank_changed(new_rank):
 	match new_rank:
 		Enums.InterestRank.LOW:
-			tint_progress = Color(0.698, 0.02, 1.0, 1.0)
+			tint_progress = Color(1.0, 1.0, 1.0, 1.0)
 		Enums.InterestRank.MEDLOW:
-			tint_progress = Color(1.0, 0.529, 1.0, 1.0)
+			tint_progress = Color(1.0, 1.0, 1.0, 1.0)
 		Enums.InterestRank.MEDHIGH:
-			tint_progress = Color(1.0, 0.529, 1.0, 1.0)
+			tint_progress = Color(1.0, 1.0, 1.0, 1.0)
 		Enums.InterestRank.HIGH:
-			tint_progress = Color(1.0, 0.529, 1.0, 1.0)
+			tint_progress = Color(1.0, 1.0, 1.0, 1.0)

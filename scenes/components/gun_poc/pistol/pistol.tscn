@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c6ecv631622i4"]
+
+[ext_resource type="PackedScene" uid="uid://b4ob13ffx7c2o" path="res://scenes/components/gun_poc/gun.tscn" id="1_6606j"]
+[ext_resource type="Script" uid="uid://d23a1wf1h1v0t" path="res://scenes/components/gun_poc/pistol/pistol.gd" id="2_qjgw1"]
+[ext_resource type="PackedScene" uid="uid://l0pt5mcxodxm" path="res://scenes/components/grappling_hook/grapple_component.tscn" id="3_3fqn3"]
+
+[node name="Pistol" unique_id=2005532977 node_paths=PackedStringArray("ability") instance=ExtResource("1_6606j")]
+visible = true
+script = ExtResource("2_qjgw1")
+gun_name = "Pistol"
+ability = NodePath("GrappleComponent")
+ammo_max = 7
+
+[node name="Muzzle" parent="." index="0" unique_id=1339096906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.591, 0, 0)
+
+[node name="GrappleComponent" parent="." index="2" unique_id=875314025 instance=ExtResource("3_3fqn3")]

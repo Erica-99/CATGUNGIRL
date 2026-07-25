@@ -6,6 +6,7 @@ extends CharacterBody3D
 @export var animator: AnimatedSprite3D
 @export var state_machine: StateMachine
 @onready var can_shoot: RayCast3D = $CanShoot
+@onready var softCollider = $SoftCollider
 
 var is_dead: bool = false
 
@@ -25,7 +26,9 @@ var is_dead: bool = false
 @export var move_speed: float = 10
 @export var patrol_speed: float
 @export var chase_speed: float
+@export var chase_acceleration: float = 5.0
 @export var flee_speed: float
+@export var flee_acceleration: float = 5.0
 @export var slow_down_speed: float = 30
 var facing: float = 1.0:
 	set(value):
@@ -64,7 +67,9 @@ func _ready() -> void:
 		"grenade": grenade,
 		"patrol_speed": patrol_speed,
 		"chase_speed": chase_speed,
+		"chase_acceleration": chase_acceleration,
 		"flee_speed": flee_speed,
+		"flee_acceleration": flee_acceleration,
 		"slow_down_speed": slow_down_speed,
 		"target": get_tree().get_first_node_in_group("player") as CharacterBody3D,
 	}
@@ -98,6 +103,33 @@ func _physics_process(delta: float) -> void:
 	global_position.z = 0
 	#print("velo y calced is : " + str(velocity.y))
 	
+	# Soft Collision physics effects to avoid overlap.
+	if softCollider.is_colliding():
+		var push_vel = softCollider.get_push_vector() * delta * 12
+		push_vel.z = 0
+		velocity += push_vel
+		var vertical_push: float = 0.0
+		
+		for area in softCollider.get_overlapping_areas():
+			if area == softCollider:
+				continue
+			
+			var other_scrub = area.get_parent()
+			
+			if other_scrub == self:
+				continue
+			
+			var height_difference: float = global_position.y - other_scrub.global_position.y
+			
+			if abs(height_difference) <= 0.15:
+				if get_instance_id() > other_scrub.get_instance_id():
+					vertical_push += 1.0
+				else:
+					vertical_push -= 1.0
+			else:
+				vertical_push += sign(height_difference)
+		
+		velocity.y += vertical_push * delta * 50
 	
 	move_and_slide()
 	pass
@@ -128,10 +160,8 @@ func _on_detection_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player") && !is_dead:
 		if detected_player == false:
 			detected_player = true
-			print("Player entered detection area")
 			if in_attacking_range:
 				state_machine.on_child_transition(state_machine.current_state, "scrubattack")
-				print("Attacking Player")
 			else:
 				state_machine.on_child_transition(state_machine.current_state, "scrubchase")
 
@@ -142,7 +172,6 @@ func _on_att_range_area_3d_body_entered(body):
 		in_attacking_range = true
 		if detected_player:
 			state_machine.on_child_transition(state_machine.current_state, "scrubattack")
-			print("Attacking Player")
 
 # When player leaves attack range, check of that they're out of range
 # If they have been detected, move to chase
@@ -151,13 +180,11 @@ func _on_att_range_area_3d_body_exited(body):
 		in_attacking_range = true
 		if detected_player:
 			state_machine.on_child_transition(state_machine.current_state, "scrubchase")
-			print("Chasing Player")
 
 # When player enters flee range, move to flee
 func _on_flee_area_3d_body_entered(body):
 	if body.is_in_group("player") && !is_dead:
 		state_machine.on_child_transition(state_machine.current_state, "scrubflee")
-		print("Fleeing Player")
 
 # When player exits flee range, move to attack
 # TODO: Improve flee logic so that Scrub tries to make distance/
@@ -170,7 +197,6 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 	if !detected_player && !is_dead:
 		detected_player = true
 		state_machine.on_child_transition(state_machine.current_state, "scrubchase")
-		print("Chasing Player")
 	if damage_or_heal_instance.amount > head_hitstun_threshold:
 		_apply_hitstun(head_hitstun_duration)
 	elif damage_or_heal_instance.amount == body_hitstun_threshold:

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://k4bj1vh7ofsj"]
+
+[ext_resource type="Script" uid="uid://chvc3xyfwjiok" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/door_exit.gd" id="1_5tbkx"]
+[ext_resource type="ArrayMesh" uid="uid://bog4dx1ueifrx" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/DoorSlidingExit.obj" id="1_kvlv1"]
+[ext_resource type="ArrayMesh" uid="uid://b6ba1imm8am10" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/DoorwaySlidingExit.obj" id="2_5tbkx"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vye6i"]
+points = PackedVector3Array(-0.14107618, 0.08232379, -0.6177761, 0.14174286, 2.344876, 0.65490943, -0.14107618, 2.344876, 0.65490943, 0.14174286, 0.08232379, 0.65490943, 0.14174286, 2.344876, -0.6177761, -0.14107618, 2.344876, -0.6177761, -0.14107618, 0.08232379, 0.65490943, 0.14174286, 0.08232379, -0.6177761)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kvlv1"]
+size = Vector3(0.8179016, 0.52075195, 1.1655273)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kvlv1"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+
+[node name="DoorExit" type="StaticBody3D" unique_id=863191425]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_5tbkx")
+
+[node name="DoorSlidingExit_Mesh" type="MeshInstance3D" parent="." unique_id=1728184330]
+mesh = ExtResource("1_kvlv1")
+
+[node name="DoorSlidingExit_Collision" type="CollisionShape3D" parent="." unique_id=1146573450]
+shape = SubResource("ConvexPolygonShape3D_vye6i")
+
+[node name="DoorwaySlidingExit_Mesh" type="MeshInstance3D" parent="." unique_id=1996083026]
+mesh = ExtResource("2_5tbkx")
+
+[node name="DoorwaySlidingBasic_Collision" type="CollisionShape3D" parent="." unique_id=142326310]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0007171631, 2.5749319, -0.0026855469)
+shape = SubResource("BoxShape3D_kvlv1")
+
+[node name="EXITHERECYLINDER" type="CSGCylinder3D" parent="." unique_id=908169972]
+transform = Transform3D(0.26, 0, 0, 0, -5.289078e-09, -0.26, 0, 0.121, -1.13649605e-08, 0.3085317, 2.4297729, 1.08457115e-07)
+material = SubResource("StandardMaterial3D_kvlv1")
+
+[node name="EXITHERECYLINDER2" type="CSGCylinder3D" parent="." unique_id=495205314]
+transform = Transform3D(0.26, 0, 0, 0, -5.289078e-09, -0.26, 0, 0.121, -1.13649605e-08, -0.3063939, 2.4297729, 1.08457115e-07)
+material = SubResource("StandardMaterial3D_kvlv1")
