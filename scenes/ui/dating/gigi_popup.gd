@@ -6,7 +6,7 @@ extends BoxContainer
 @onready var grid_container: GridContainer = $VBoxContainer/GridContainer
 
 ## You can change this to however long you want before the popup closes
-var _delay = 2
+var _delay = 5
 
 # runtime vars
 var popup_active = false
@@ -61,7 +61,7 @@ func _display():
 			button.pressed.connect(_option_selected.bind(option))
 			grid_container.add_child(button)
 	else:
-		await get_tree().create_timer(_delay).timeout
+		await get_tree().create_timer(_delay + 2).timeout
 		_increment_date_stage(popup_dialogue)
 
 func _option_selected(value: Dictionary):
