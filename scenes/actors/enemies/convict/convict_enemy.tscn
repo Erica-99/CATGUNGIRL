@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://b5fy6b2q2tlyp" path="res://scenes/components/state_machine/states/enemy/convict/convict_chase.gd" id="14_purhx"]
 [ext_resource type="Script" uid="uid://dfiyo3gtayc2n" path="res://scenes/components/state_machine/states/enemy/convict/convict_pounce.gd" id="15_2quec"]
 [ext_resource type="Script" uid="uid://lenec5y0wbqb" path="res://scenes/components/state_machine/states/enemy/convict/convict_hitconfirm.gd" id="15_resq1"]
+[ext_resource type="Script" uid="uid://bus3ovj8itv35" path="res://scenes/components/state_machine/states/enemy/convict/convict_stun.gd" id="17_31snm"]
 [ext_resource type="Script" uid="uid://briciybelpcwe" path="res://scenes/components/state_machine/states/enemy/enemy_death.gd" id="17_583mm"]
 [ext_resource type="Script" uid="uid://de2djfh2ufwig" path="res://scenes/components/state_machine/states/enemy/convict/convict_superjump.gd" id="19_28j07"]
 [ext_resource type="Shape3D" uid="uid://c5sya8gsonmd8" path="res://resources/hitboxes/enemies/convict/convict_attack_hb.tres" id="19_a68hs"]
@@ -617,7 +618,9 @@ shape = SubResource("BoxShape3D_4ra3w")
 [node name="TeamComponent" parent="." unique_id=2076917082 instance=ExtResource("3_pee7w")]
 team = 2
 
-[node name="HealthComponent" parent="." unique_id=236252344 instance=ExtResource("4_4p71r")]
+[node name="HealthComponent" parent="." unique_id=236252344 node_paths=PackedStringArray("stun_state", "state_machine") instance=ExtResource("4_4p71r")]
+stun_state = NodePath("../StateMachine/ConvictStun")
+state_machine = NodePath("../StateMachine")
 starting_health = 40.0
 max_health = 40.0
 
@@ -669,6 +672,10 @@ metadata/_custom_type_script = "uid://dropwvjh2s43u"
 
 [node name="ConvictPounceAttack" type="Node" parent="StateMachine" unique_id=492991162]
 script = ExtResource("20_q6lyk")
+metadata/_custom_type_script = "uid://dropwvjh2s43u"
+
+[node name="ConvictStun" type="Node" parent="StateMachine" unique_id=372919021]
+script = ExtResource("17_31snm")
 metadata/_custom_type_script = "uid://dropwvjh2s43u"
 
 [node name="AttackHitbox3D" parent="." unique_id=1965125698 node_paths=PackedStringArray("team_component") instance=ExtResource("20_31snm")]

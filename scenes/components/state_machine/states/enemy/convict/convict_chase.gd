@@ -115,6 +115,10 @@ func physics_update(_delta: float) -> void:
 		anim.play("Run")
 		
 	actor.move_and_slide()
+	
+	## Attempt to manually trigger stun to test things
+	#if Input.is_action_pressed("ui_left"):
+		#transitioned.emit(self, "convictstun")
 
 func _on_attack_hitbox_body_entered(body: Node3D) -> void:
 	# To track if the target remains in hitbox

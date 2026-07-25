@@ -2,6 +2,8 @@
 extends State
 class_name EnemyDeath
 
+@export var max_death_animation_time: float = 0.5
+
 var actor: CharacterBody3D
 var anim: AnimationPlayer
 
@@ -30,5 +32,5 @@ func update(_delta: float) -> void:
 	fade_time += _delta
 	#anim.modulate = Color(1,1,1,lerp(1, 0, fade_time))
 	basic_timer += _delta
-	if basic_timer > 1:
+	if basic_timer > max_death_animation_time:
 		actor.queue_free()
