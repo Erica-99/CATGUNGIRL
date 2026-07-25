@@ -17,8 +17,10 @@ var slow_target_y: float
 @export var launch_speed: float = 50
 @export var blast_object: PackedScene
 @export var blast_base_damage: float = 10
-@export var blast_damage_increase_per_bullet = 2
+@export var blast_damage_increase_per_bullet: float = 2
 @export var blast_base_knockback: float = 20
+@export var base_stun_time: float = 0.25
+@export var stun_increase_per_bullet: float = 0.25
 
 signal enemy_hit(damage: float)
 
@@ -69,7 +71,7 @@ func _fire_blast():
 		damage_instance.is_heal = false
 		damage_instance.type = Enums.DamageType.EXPLOSIVE
 		damage_instance.knockback = blast_base_knockback * shotgun._current_ammo
-		damage_instance.stun_time = 1
+		damage_instance.stun_time = base_stun_time + (stun_increase_per_bullet * shotgun._current_ammo)
 		damage_instance.source = get_path()
 		
 		blast.initialize(aim_dir, damage_instance, team_component, 2 + (shotgun._current_ammo / 2)) # ammo count for scale

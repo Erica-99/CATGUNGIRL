@@ -95,10 +95,7 @@ func take_damage_or_heal(damage_or_heal_instance: DamageHealInstance) -> void:
 		## If stun (i.e. if stun_time value in DamageHealInstance more than 0)
 		## then make state machine switch to given state
 		if stun_state != null and damage_or_heal_instance.stun_time > 0:
-			#print("State before check: %s" %state_machine.current_state.name)
 			if !(state_machine.current_state is EnemyDeath):
-				print("State after check: %s" %state_machine.current_state.name)
-				#print("Would do stun now")
 				set_stun(stun_state, damage_or_heal_instance.stun_time)
 		
 	elif healable and damage_or_heal_instance.is_heal:

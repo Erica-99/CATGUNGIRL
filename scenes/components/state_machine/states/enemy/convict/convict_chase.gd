@@ -41,7 +41,6 @@ func init(blackboard_dict: Dictionary) -> void:
 	super_jump_cd = blackboard["super_jump_cd"]
 
 func enter() -> void:
-	print("Chasing")
 	# TODO: update with more intricated targetting
 	target = get_tree().get_nodes_in_group("player")[0] as CharacterBody3D
 	actor.velocity = Vector3.ZERO

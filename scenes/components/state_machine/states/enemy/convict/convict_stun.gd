@@ -5,6 +5,8 @@
 
 extends State
 
+@export var failsafe_max_stun_duration: float = 8
+
 var actor: CharacterBody3D
 var anim: AnimationPlayer
 var slow_down_speed: float
@@ -18,15 +20,11 @@ func init(blackboard_dict: Dictionary) -> void:
 	slow_down_speed = blackboard["slow_down_speed"]
 
 func enter() -> void:
-	print("Stunned")
+	pass
 
 func update(_delta: float) -> void:
 	stun_timer += _delta
-	print("Current Timer Value: %f" %stun_timer)
-	if stun_timer >= total_stun_time:
-		print("Final Timer Value: %f" %stun_timer)
-		#stun_timer = 0.0
-		#transitioned.emit(self, "convictidle")
+	if stun_timer >= total_stun_time or stun_timer >= failsafe_max_stun_duration:
 		transitioned.emit(self, "convictchase")
 
 func physics_update(_delta: float) -> void:
