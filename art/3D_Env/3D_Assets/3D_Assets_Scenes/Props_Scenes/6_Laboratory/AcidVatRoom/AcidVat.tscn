@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://ckkjv4pfh7tik"]
 
 [ext_resource type="ArrayMesh" uid="uid://u6dy7talvrql" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/6_Laboratory/AcidVatRoom/AcidVat.obj" id="1_14ari"]
+[ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="1_ijpka"]
+[ext_resource type="Script" uid="uid://gtetmr0bytkn" path="res://scenes/environmental_hazards/death_zone.gd" id="2_3wf5u"]
 [ext_resource type="ArrayMesh" uid="uid://cievitltb64t" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/6_Laboratory/AcidVatRoom/AcidVatAcid.obj" id="2_t8eru"]
 [ext_resource type="ArrayMesh" uid="uid://7cqvlvkfaiab" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/6_Laboratory/AcidVatRoom/AcidVatLadder.obj" id="3_yypcm"]
 
@@ -15,6 +17,8 @@ points = PackedVector3Array(0.584, 5.6224895, -1.9808937, -0.584, 5.6224895, -1.
 
 [node name="AcidVat" type="StaticBody3D" unique_id=1311896367]
 
+[node name="TeamComponent" parent="." unique_id=2076917082 instance=ExtResource("1_ijpka")]
+
 [node name="AcidVat_Mesh" type="MeshInstance3D" parent="." unique_id=591868089]
 transform = Transform3D(1.9999999, 0, 0, 0, 1.9999999, 0, 0, 0, 1.9999999, 0, 0, 0)
 mesh = ExtResource("1_14ari")
@@ -25,7 +29,12 @@ shape = SubResource("ConcavePolygonShape3D_yypcm")
 
 [node name="AcidVatAcid" type="Node3D" parent="." unique_id=533429664]
 
-[node name="DeathZone" type="Area3D" parent="AcidVatAcid" unique_id=330277544]
+[node name="DeathZone" type="Area3D" parent="AcidVatAcid" unique_id=330277544 node_paths=PackedStringArray("team_component")]
+collision_mask = 8
+script = ExtResource("2_3wf5u")
+damage_amount = 9999.0
+instant_kill = true
+team_component = NodePath("../../TeamComponent")
 
 [node name="AcidVatAcid_Mesh" type="MeshInstance3D" parent="AcidVatAcid/DeathZone" unique_id=583916409]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
