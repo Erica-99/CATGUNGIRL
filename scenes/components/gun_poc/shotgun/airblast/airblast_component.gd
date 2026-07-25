@@ -11,7 +11,7 @@ var activated: bool = false
 @export var charge_time: float = 0.5
 var charge_timer: float = 0
 @export var slow_down_speed: float = 30 # how fast you slow down
-@export var slow_down_target: float = 0.3 # what speed is the slow down aiming for (percentage of current speed)
+@export var slow_down_target: float = 0.2 # what speed is the slow down aiming for (percentage of current speed)
 var slow_target_x: float
 var slow_target_y: float
 @export var launch_speed: float = 50
