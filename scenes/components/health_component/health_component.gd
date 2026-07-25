@@ -1,4 +1,5 @@
 extends Node
+class_name HealthComponent
 
 ## Health will be gained through actions like shooting enemies,
 ## headshots, etc. And lost from getting hit.
