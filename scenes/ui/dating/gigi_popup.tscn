@@ -10,29 +10,44 @@ offset_bottom = 488.0
 vertical = true
 script = ExtResource("1_rc63n")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1920164913]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=679600812]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1920164913]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/separation = 11
 
-[node name="gigi_image" type="TextureRect" parent="VBoxContainer" unique_id=32520337]
-custom_minimum_size = Vector2(310, 400)
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("1_rfouv")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="DialogueBubble" parent="VBoxContainer" unique_id=1148095700 instance=ExtResource("2_4b0uy")]
-custom_minimum_size = Vector2(400, 35)
+[node name="DialogueBubble" parent="HBoxContainer/VBoxContainer" unique_id=1148095700 instance=ExtResource("2_4b0uy")]
+custom_minimum_size = Vector2(800, 35)
 layout_mode = 2
 size_flags_horizontal = 4
 type = 2
 
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer" unique_id=1983819392]
+[node name="Spaghettibuffer" type="TextureRect" parent="HBoxContainer/VBoxContainer" unique_id=1688826689]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/VBoxContainer" unique_id=1983819392]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 2
+
+[node name="gigi_image" type="TextureRect" parent="HBoxContainer" unique_id=32520337]
+custom_minimum_size = Vector2(310, 400)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+texture = ExtResource("1_rfouv")
+expand_mode = 1
+stretch_mode = 5

@@ -1,9 +1,9 @@
 extends BoxContainer
 
 # references
-@onready var gigi_image: TextureRect = $VBoxContainer/gigi_image
-@onready var gigi_dialogue: PanelContainer = $VBoxContainer/DialogueBubble
-@onready var grid_container: GridContainer = $VBoxContainer/GridContainer
+@onready var gigi_image: TextureRect = $HBoxContainer/gigi_image
+@onready var gigi_dialogue: PanelContainer = $HBoxContainer/VBoxContainer/DialogueBubble
+@onready var grid_container: GridContainer = $HBoxContainer/VBoxContainer/GridContainer
 
 ## You can change this to however long you want before the popup closes
 var _delay = 5
@@ -54,7 +54,7 @@ func _display():
 			var button = Button.new()
 			# set button values
 			button.text = option["option"]
-			button.custom_minimum_size = Vector2(140.0, 50.0)
+			button.custom_minimum_size = Vector2(280, 100.0)
 			button.autowrap_mode = TextServer.AUTOWRAP_WORD
 			button.size_flags_vertical = Control.SIZE_EXPAND
 			# connect to handler
