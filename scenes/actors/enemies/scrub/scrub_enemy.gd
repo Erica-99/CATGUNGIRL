@@ -160,10 +160,8 @@ func _on_detection_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player") && !is_dead:
 		if detected_player == false:
 			detected_player = true
-			print("Player entered detection area")
 			if in_attacking_range:
 				state_machine.on_child_transition(state_machine.current_state, "scrubattack")
-				print("Attacking Player")
 			else:
 				state_machine.on_child_transition(state_machine.current_state, "scrubchase")
 
@@ -174,7 +172,6 @@ func _on_att_range_area_3d_body_entered(body):
 		in_attacking_range = true
 		if detected_player:
 			state_machine.on_child_transition(state_machine.current_state, "scrubattack")
-			print("Attacking Player")
 
 # When player leaves attack range, check of that they're out of range
 # If they have been detected, move to chase
@@ -183,13 +180,11 @@ func _on_att_range_area_3d_body_exited(body):
 		in_attacking_range = true
 		if detected_player:
 			state_machine.on_child_transition(state_machine.current_state, "scrubchase")
-			print("Chasing Player")
 
 # When player enters flee range, move to flee
 func _on_flee_area_3d_body_entered(body):
 	if body.is_in_group("player") && !is_dead:
 		state_machine.on_child_transition(state_machine.current_state, "scrubflee")
-		print("Fleeing Player")
 
 # When player exits flee range, move to attack
 # TODO: Improve flee logic so that Scrub tries to make distance/
@@ -202,7 +197,6 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 	if !detected_player && !is_dead:
 		detected_player = true
 		state_machine.on_child_transition(state_machine.current_state, "scrubchase")
-		print("Chasing Player")
 	if damage_or_heal_instance.amount > head_hitstun_threshold:
 		_apply_hitstun(head_hitstun_duration)
 	elif damage_or_heal_instance.amount == body_hitstun_threshold:
