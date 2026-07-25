@@ -33,7 +33,11 @@ func _popup_start(popup_id: int):
 
 # displays dialogue on screen
 func _display():
-	# get delay via popup char count
+	# failsafe
+	if "dialogue" not in popup_dialogue.keys():
+		_end_popup()
+	
+	# get delay via popup char count	
 	_delay = SECONDS_PER_CHARACTER * popup_dialogue["dialogue"].length()
 	# set text - additional params determine how it should display (as typewriter)
 	gigi_dialogue._set_text(popup_dialogue["dialogue"], true, _delay * LEEWAY_OF_TYPEWRITER)
