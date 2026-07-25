@@ -170,6 +170,7 @@ func _set_gun_enabled(enabled: bool) -> void:
 	gun_holder.current_gun.visible = enabled
 	gun_arm_node.visible = enabled
 	gun_holder.allow_swapping = enabled
+	EventManager.enable_gun_ui.emit(enabled)
 	
 func set_facing(new_facing: float) -> void:
 	if new_facing == 0.0:

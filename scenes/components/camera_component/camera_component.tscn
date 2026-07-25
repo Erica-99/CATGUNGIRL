@@ -19,7 +19,6 @@
 [ext_resource type="Script" uid="uid://b5wuc23rlp8as" path="res://scenes/actors/player/ammo_hud.gd" id="17_04dda"]
 [ext_resource type="PackedScene" uid="uid://d1dtceqi3s5oh" path="res://art/2d_assets/real_world/UI/ammo_count.tscn" id="18_c1rnt"]
 [ext_resource type="PackedScene" uid="uid://bwjuhhi62r2ot" path="res://art/2d_assets/real_world/UI/pistol_bullet_icon.tscn" id="19_ibrvc"]
-[ext_resource type="PackedScene" uid="uid://pp03qyrbback" path="res://art/2d_assets/real_world/UI/bullet_count_VFX.tscn" id="19_rph6b"]
 [ext_resource type="PackedScene" uid="uid://d0bck3rf10len" path="res://art/2d_assets/real_world/UI/shotgun_bullet_icon.tscn" id="20_uicuq"]
 [ext_resource type="PackedScene" uid="uid://ddj7xjcety3sc" path="res://art/2d_assets/real_world/UI/sniper_bullet_icon.tscn" id="21_isppp"]
 
@@ -256,9 +255,6 @@ texture = SubResource("ViewportTexture_04dda")
 
 [node name="FXNode" type="Node3D" parent="AMMOHUDConcept/AmmoHUD/Sprite3D" unique_id=1062389188]
 transform = Transform3D(0.9999993, -4.8428774e-08, -2.682209e-07, -1.8626451e-08, 0.99999976, -2.9802322e-08, -1.7881393e-07, 1.4901161e-08, 0.9999991, -2.2311177, -1.0807219, -0.91220856)
-
-[node name="BulletVFX" parent="AMMOHUDConcept/AmmoHUD/Sprite3D/FXNode" unique_id=1767152557 instance=ExtResource("19_rph6b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.53321266, -1.4630585, -0.5016537)
 
 [connection signal="animation_finished" from="OverlayVisuals/CanvasLayer/AnimationPlayer" to="OverlayVisuals/CanvasLayer" method="_on_animation_player_animation_finished"]
 [connection signal="bulletlost" from="AMMOHUDConcept/AmmoHUD/SubViewport/AmmoCount" to="AMMOHUDConcept/AmmoHUD" method="_on_ammo_count_bulletlost"]

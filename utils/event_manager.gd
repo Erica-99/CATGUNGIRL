@@ -24,6 +24,7 @@ signal shots_fired(shots: int)
 signal shots_loaded(shots: int)
 
 signal new_gun_equipped(gun_name: String)
+signal enable_gun_ui(enabled: bool)
 
 signal room_cleared(room_ID: Enums.Room, is_clear: bool)
 signal spawn_enemy(custom_delay: float, spawner_path: NodePath)

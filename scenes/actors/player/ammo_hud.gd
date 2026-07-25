@@ -14,6 +14,9 @@ extends Node3D
 var TargetBullets
 var BulletCount
 
+func _ready() -> void:
+	EventManager.enable_gun_ui.connect(func(enabled): visible = enabled)
+
 
 func _on_ammo_count_bulletlost() -> void:
 	var BulletDebri = BulletFX.instantiate()

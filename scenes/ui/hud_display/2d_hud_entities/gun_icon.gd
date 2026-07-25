@@ -10,6 +10,7 @@ var targetgun = 'Pistol'
 
 func _ready() -> void:
 	EventManager.new_gun_equipped.connect(_on_gun_swapped)
+	EventManager.enable_gun_ui.connect(func(enabled): visible = enabled)
 
 
 func _process(delta: float) -> void:
