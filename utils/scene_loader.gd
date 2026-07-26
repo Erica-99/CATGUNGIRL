@@ -69,3 +69,5 @@ func _input(event: InputEvent) -> void:
 		_load_scene(Globals.LEVEL_PATHS["Stage5"])
 	elif event.is_action_pressed("debug_level_6"):
 		_load_scene(Globals.LEVEL_PATHS["Stage6"])
+	elif event.is_action_pressed("reload_game"):
+		_load_scene(Globals.LEVEL_PATHS["main_menu"])
