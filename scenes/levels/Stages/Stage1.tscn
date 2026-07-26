@@ -1423,13 +1423,14 @@ metallic = 1.0
 roughness = 0.7
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fxtw2"]
-size = Vector3(1, 7.2834473, 1)
+size = Vector3(9.30127, 7.2834473, 1)
 
 [node name="StageOne" type="Node3D" unique_id=1668100898]
 
 [node name="Player" parent="." unique_id=1349193765 instance=ExtResource("1_ruvr1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.075523615, 2.14, 0)
 collision_mask = 129
+hit_heal_fraction = 0.15
 has_gun = false
 
 [node name="Environment" type="Node3D" parent="." unique_id=929020045]
@@ -5149,6 +5150,9 @@ door_to_unlock = NodePath("../DoorBasic")
 [node name="GunPodium_Mesh" parent="Interactive/GunPodium" index="0" unique_id=1164015310]
 surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
 
+[node name="InteractableComponent" parent="Interactive/GunPodium/GunPodium_Mesh" index="0" unique_id=2140039813]
+visible = false
+
 [node name="GunPodiumGun" parent="Interactive" unique_id=1733078243 instance=ExtResource("21_5y7s6")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 12, 0.2, -1)
 collision_layer = 0
@@ -5267,7 +5271,7 @@ _signal_parameters = [0]
 signal_name = "activate_popup"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DATES_POPUPS/ConvictPopup" unique_id=496084148]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0794678, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.668, 1.079, 0)
 shape = SubResource("BoxShape3D_fxtw2")
 debug_color = Color(0.919504, 0.13431916, 0.6161928, 0.41960785)
 

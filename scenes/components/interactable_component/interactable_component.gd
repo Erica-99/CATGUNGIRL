@@ -27,7 +27,7 @@ func _ready() -> void:
 	if interactable_type == Enums.InteractableType.BRAIN_TERMINAL:
 		enabled = false
 		EventManager.shield_enabled_status.connect(_handle_shield_changes)
-		EventManager.room_cleared.connect(_handle_adds_changes)
+		#EventManager.room_cleared.connect(_handle_adds_changes)
 
 func _calculate_interaction_zone(is_using_obj_asset: bool = true):
 	#https://forum.godotengine.org/t/is-there-a-way-to-get-the-size-of-a-3d-mesh/23154/3
@@ -97,7 +97,8 @@ func _on_interaction_range_body_exited(body: Node3D) -> void:
 
 func _handle_shield_changes(status: bool):
 	shields_up = status
-	if shields_up && enemies_dead && $EventTrigger.active:
+	#if shields_up && enemies_dead && $EventTrigger.active:
+	if shields_up && $EventTrigger.active:
 		enabled = true
 	else:
 		enabled = false

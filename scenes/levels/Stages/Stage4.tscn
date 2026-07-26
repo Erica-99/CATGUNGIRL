@@ -2822,7 +2822,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bs6b4"]
-size = Vector3(17.088806, 7.2834473, 1)
+size = Vector3(11.524498, 7.2834473, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x2xyk"]
 size = Vector3(1, 8, 6)
@@ -5086,6 +5086,7 @@ shape = SubResource("SphereShape3D_usk1l")
 debug_color = Color(0.57556546, 0.3865835, 1, 0.41960785)
 
 [node name="ChaseRange" type="Area3D" parent="Props/TrunkPuppet" unique_id=2127282752]
+transform = Transform3D(0.298, 0, 0, 0, 0.298, 0, 0, 0, 0.298, 0, 0, 0)
 collision_layer = 0
 collision_mask = 2
 
@@ -5447,7 +5448,7 @@ _signal_parameters = [4]
 signal_name = "activate_popup"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DATES_POPUPS/SheriffPopup" unique_id=595214372]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0794678, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.882149, 1.0794678, 0)
 shape = SubResource("BoxShape3D_bs6b4")
 debug_color = Color(0.919504, 0.13431916, 0.6161928, 0.41960785)
 
@@ -5457,7 +5458,7 @@ _signal_parameters = [3]
 signal_name = "activate_popup"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DATES_POPUPS/RememberPopup" unique_id=557406143]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0794678, 0)
+transform = Transform3D(6.4063177, 0, 0, 0, 1, 0, 0, 0, 3.265722, -49.75148, 16.001572, 0)
 shape = SubResource("BoxShape3D_bs6b4")
 debug_color = Color(0.919504, 0.13431916, 0.6161928, 0.41960785)
 
@@ -5501,12 +5502,14 @@ room_ID = 1
 process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.66942, 182.66878, 0)
 
+[node name="Scrub2" parent="Enemies/Room Two" unique_id=1090872008 instance=ExtResource("27_cj161")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 143.60393, 129.4385, 0)
+
 [node name="Room Three" parent="Enemies" unique_id=1680082919 instance=ExtResource("26_cehyk")]
 room_ID = 2
 
 [node name="Convict3" parent="Enemies/Room Three" unique_id=618630284 instance=ExtResource("28_iffub")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 270, 183, 0)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 267.74377, 183, 0)
 
 [connection signal="cant_step" from="Props/TrunkPuppet" to="Props/TrunkPuppet/TrunkMesh" method="_on_trunk_cant_step"]
 [connection signal="facing_changed" from="Props/TrunkPuppet" to="Props/TrunkPuppet/TrunkMesh" method="_on_trunk_facing_changed"]

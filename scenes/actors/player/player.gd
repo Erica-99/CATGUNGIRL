@@ -101,27 +101,39 @@ func _process(_delta: float) -> void:
 	if current_state["movement"] != 0 and blackboard["enable_facing_updates"]:
 		set_facing(sign(current_state["movement"]))
 	
-	# Debug damage input
-	if Input.is_action_just_pressed("debug_damage"):
+	## Debug damage input
+	#if Input.is_action_just_pressed("debug_damage"):
+		#var debug_damage = DamageHealInstance.new()
+		#debug_damage.amount = 20
+		#debug_damage.is_heal = false
+		#debug_damage.type = Enums.DamageType.NORMAL
+		#debug_damage.knockback = 0
+		#debug_damage.source = ^"."
+		#
+		#health_component.take_damage_or_heal(debug_damage)
+	
+	## Debug heal input
+	#if Input.is_action_just_pressed("debug_heal"):
+		#var debug_heal = DamageHealInstance.new()
+		#debug_heal.amount = 10
+		#debug_heal.is_heal = true
+		#debug_heal.type = Enums.DamageType.NORMAL
+		#debug_heal.knockback = 0
+		#debug_heal.source = ^"."
+		#
+		#health_component.take_damage_or_heal(debug_heal)
+		
+	# Debug suicide
+	if Input.is_action_just_pressed("debug_kill"):
 		var debug_damage = DamageHealInstance.new()
-		debug_damage.amount = 20
+		debug_damage.amount = 99999
 		debug_damage.is_heal = false
 		debug_damage.type = Enums.DamageType.NORMAL
 		debug_damage.knockback = 0
+		debug_damage.stun_time = 0
 		debug_damage.source = ^"."
-		
 		health_component.take_damage_or_heal(debug_damage)
-	
-	# Debug heal input
-	if Input.is_action_just_pressed("debug_heal"):
-		var debug_heal = DamageHealInstance.new()
-		debug_heal.amount = 10
-		debug_heal.is_heal = true
-		debug_heal.type = Enums.DamageType.NORMAL
-		debug_heal.knockback = 0
-		debug_heal.source = ^"."
-		
-		health_component.take_damage_or_heal(debug_heal)
+		_on_insanity_component_insanity_death()
 
 func _on_health_component_health_initialised(init_current_health, init_max_health):
 	EventManager.player_health_initialised.emit(init_current_health, init_max_health)

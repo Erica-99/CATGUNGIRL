@@ -40,10 +40,10 @@ func _process(delta: float) -> void:
 		modulate = Color(1.0, 1.0, 1.0, 1.0)
 	# temp debug calls
 	# TODO: REMOVE WHEN NEEDED
-	if Input.is_action_just_pressed("debug_kill"):
-		EventManager.enemy_killed.emit()
-	if Input.is_action_just_pressed("debug_damage"):
-		EventManager.player_hit_by_enemy.emit()
+	#if Input.is_action_just_pressed("debug_kill"):
+		#EventManager.enemy_killed.emit()
+	#if Input.is_action_just_pressed("debug_damage"):
+		#EventManager.player_hit_by_enemy.emit()
 	
 	# update progression value	
 	killstreak_progression.value = killstreak_timeout.time_left
