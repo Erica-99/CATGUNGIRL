@@ -24,23 +24,23 @@ func init(blackboard_dict : Dictionary) -> void:
 	anim = blackboard["anim"]
 	slow_down_speed = blackboard["slow_down_speed"]
 
-#func enter() -> void:
-	#pass
-#
+func enter() -> void:
+	print("Stun Started")
+	print("Initial Total Stun Time = %f" %total_stun_time)
+
 #func exit() -> void:
 	#pass
 
 func update(_delta: float) -> void:
+	print("In-Update Total Stun Time = %f" %total_stun_time)
 	stun_timer += _delta
+	print("Stun Timer = %f" %stun_timer)
 	if stun_timer >= total_stun_time or stun_timer >= failsafe_max_stun_duration:
+		print("Stun Finished: Pt 1")
 		timer_finished.emit()
+		print("Stun Finished: Pt 1.5")
 
 func physics_update(delta: float) -> void:
 	actor.velocity.x = move_toward(actor.velocity.x, 0, slow_down_speed * delta)
 	#anim.play("idle")
 	actor.move_and_slide()
-
-#func update(_delta: float) -> void:
-	#stun_timer += _delta
-	#if stun_timer >= total_stun_time or stun_timer >= failsafe_max_stun_duration:
-		#transitioned.emit(self, "convictchase")

@@ -204,6 +204,7 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 
 # When stun time finishes, return to Idle state.
 func _on_scrub_stun_timer_finished() -> void:
+	print("Stun Finished: Pt 2")
 	state_machine.on_child_transition(state_machine.current_state, "scrubidle")
 
 func _apply_hitstun(duration: float) -> void:
