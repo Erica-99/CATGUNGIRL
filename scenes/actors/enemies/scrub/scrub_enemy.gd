@@ -202,6 +202,10 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 	elif damage_or_heal_instance.amount == body_hitstun_threshold:
 		_apply_hitstun(body_hitstun_duration)
 
+# When stun time finishes, return to Idle state.
+func _on_scrub_stun_timer_finished() -> void:
+	state_machine.on_child_transition(state_machine.current_state, "scrubidle")
+
 func _apply_hitstun(duration: float) -> void:
 	velocity.x = 0.0	# remove velocity.x and velocity.z and replace with
 	velocity.z = 0.0	# velocity = Vector3.ZERO if scrubs should fall on hitstun

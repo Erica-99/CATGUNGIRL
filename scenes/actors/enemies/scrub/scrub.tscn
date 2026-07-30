@@ -25,6 +25,7 @@
 [ext_resource type="Script" uid="uid://briciybelpcwe" path="res://scenes/components/state_machine/states/enemy/enemy_death.gd" id="21_m88xv"]
 [ext_resource type="Script" uid="uid://rwkg37dkkbs1" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_patrol.gd" id="22_bmk6k"]
 [ext_resource type="Script" uid="uid://dpwol7txodmxp" path="res://scenes/components/soft_collision.gd" id="22_hw6pp"]
+[ext_resource type="Script" uid="uid://d1xvpcaucwgpw" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_stun.gd" id="25_m0g3o"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hw6pp"]
 animations = [{
@@ -484,7 +485,9 @@ autoplay = &"Idle"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1549018224]
 shape = SubResource("BoxShape3D_ly0j2")
 
-[node name="HealthComponent" parent="." unique_id=236252344 instance=ExtResource("1_jvusm")]
+[node name="HealthComponent" parent="." unique_id=236252344 node_paths=PackedStringArray("stun_state", "state_machine") instance=ExtResource("1_jvusm")]
+stun_state = NodePath("../StateMachine/ScrubStun")
+state_machine = NodePath("../StateMachine")
 starting_health = 35.0
 max_health = 35.0
 
@@ -555,6 +558,10 @@ metadata/_custom_type_script = "uid://c18mlpgd4umeh"
 script = ExtResource("22_bmk6k")
 metadata/_custom_type_script = "uid://rwkg37dkkbs1"
 
+[node name="ScrubStun" type="Node" parent="StateMachine" unique_id=879578045]
+script = ExtResource("25_m0g3o")
+metadata/_custom_type_script = "uid://d1xvpcaucwgpw"
+
 [node name="DetectionArea3D" type="Area3D" parent="." unique_id=1101772605]
 collision_layer = 0
 collision_mask = 2
@@ -601,6 +608,7 @@ debug_color = Color(0, 0.61960787, 0.5686275, 0.41960785)
 [connection signal="facing_changed" from="." to="Scrub_Mesh" method="_on_scrub_facing_changed"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]
+[connection signal="timer_finished" from="StateMachine/ScrubStun" to="." method="_on_scrub_stun_timer_finished"]
 [connection signal="body_entered" from="DetectionArea3D" to="." method="_on_detection_area_3d_body_entered"]
 [connection signal="body_entered" from="AttRangeArea3D" to="." method="_on_att_range_area_3d_body_entered"]
 [connection signal="body_exited" from="AttRangeArea3D" to="." method="_on_att_range_area_3d_body_exited"]
