@@ -39,3 +39,8 @@ func physics_update(delta: float) -> void:
 func _on_detection_area_3d_body_entered(body):
 	if body.is_in_group("player"):
 		transitioned.emit(self, "scrubchase")
+
+
+func _on_flee_area_3d_body_entered(body: Node3D) -> void:
+	if !actor.is_dead:
+		transitioned.emit(self, "scrubflee")

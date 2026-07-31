@@ -40,3 +40,17 @@ func physics_update(delta: float) -> void:
 	#anim.play("idle")
 	
 	actor.move_and_slide()
+
+
+func _on_detection_area_3d_body_entered(body: Node3D) -> void:
+		if !actor.is_dead:
+			actor.detected_player = true
+			if actor.in_attacking_range:
+				transitioned.emit(self, "scrubattack")
+			else:
+				transitioned.emit(self, "scrubchase")
+
+
+func _on_flee_area_3d_body_entered(body: Node3D) -> void:
+	if !actor.is_dead:
+		transitioned.emit(self, "scrubflee")
