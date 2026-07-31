@@ -1,6 +1,9 @@
 extends CharacterBody3D
 @onready var too_far_floor_detection: RayCast3D = $TooFarFloorDetection
 @onready var environment_too_close: Area3D = $EnvironmentTooClose
+@onready var detection_area_3d: Area3D = $DetectionArea3D
+@onready var att_range_area_3d: Area3D = $AttRangeArea3D
+@onready var flee_area_3d: Area3D = $FleeArea3D
 
 @export_category("Node References")
 @export var animator: AnimatedSprite3D
@@ -167,3 +170,11 @@ func _apply_hitstun(duration: float) -> void:
 	#animator.pause()
 	#await get_tree().create_timer(duration).timeout
 	#animator.play()
+
+func _return_from_stun():
+	if len(flee_area_3d.get_overlapping_bodies()) != 0:
+		state_machine.on_child_transition(state_machine.current_state, "scrubflee")
+	elif len(att_range_area_3d.get_overlapping_bodies()) != 0:
+		state_machine.on_child_transition(state_machine.current_state, "scrubattack")
+	else:
+		state_machine.on_child_transition(state_machine.current_state, "scrubchase")
