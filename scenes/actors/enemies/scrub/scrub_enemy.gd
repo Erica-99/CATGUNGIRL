@@ -152,47 +152,6 @@ func _on_health_component_killed(killing_blow: DamageHealInstance, health_before
 	is_dead = true
 	state_machine.on_child_transition(state_machine.current_state, "scrubdeath")
 
-# When player enters detection range, move to attack
-# For a possible specific case, if they are in detection but
-# not attack range move to chase.
-# TODO: Improve by utilising more detection logic than just an area
-func _on_detection_area_3d_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player") && !is_dead:
-		if detected_player == false:
-			detected_player = true
-			if in_attacking_range:
-				state_machine.on_child_transition(state_machine.current_state, "scrubattack")
-			else:
-				state_machine.on_child_transition(state_machine.current_state, "scrubchase")
-
-# When player enters attack range, check off that theyre in range
-# If player has been detected, move to attack state
-func _on_att_range_area_3d_body_entered(body):
-	if body.is_in_group("player") && !is_dead:
-		in_attacking_range = true
-		if detected_player:
-			state_machine.on_child_transition(state_machine.current_state, "scrubattack")
-
-# When player leaves attack range, check of that they're out of range
-# If they have been detected, move to chase
-func _on_att_range_area_3d_body_exited(body):
-	if body.is_in_group("player") && !is_dead:
-		in_attacking_range = true
-		if detected_player:
-			state_machine.on_child_transition(state_machine.current_state, "scrubchase")
-
-# When player enters flee range, move to flee
-func _on_flee_area_3d_body_entered(body):
-	if body.is_in_group("player") && !is_dead:
-		state_machine.on_child_transition(state_machine.current_state, "scrubflee")
-
-# When player exits flee range, move to attack
-# TODO: Improve flee logic so that Scrub tries to make distance/
-#    stops fleeing if they are blocked.
-func _on_flee_area_3d_body_exited(body):
-	if body.is_in_group("player") && !is_dead:
-		state_machine.on_child_transition(state_machine.current_state, "scrubattack")
-
 func _on_health_component_health_changed(old_health: float, new_health: float, damage_or_heal_instance: DamageHealInstance) -> void:
 	if !detected_player && !is_dead:
 		detected_player = true
