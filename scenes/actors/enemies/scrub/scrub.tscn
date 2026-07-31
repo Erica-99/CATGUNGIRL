@@ -558,8 +558,10 @@ metadata/_custom_type_script = "uid://c18mlpgd4umeh"
 script = ExtResource("22_bmk6k")
 metadata/_custom_type_script = "uid://rwkg37dkkbs1"
 
-[node name="ScrubStun" type="Node" parent="StateMachine" unique_id=879578045]
+[node name="ScrubStun" type="Node" parent="StateMachine" unique_id=879578045 node_paths=PackedStringArray("att_range_area_3d", "flee_area_3d")]
 script = ExtResource("25_m0g3o")
+att_range_area_3d = NodePath("../../AttRangeArea3D")
+flee_area_3d = NodePath("../../FleeArea3D")
 metadata/_custom_type_script = "uid://d1xvpcaucwgpw"
 
 [node name="DetectionArea3D" type="Area3D" parent="." unique_id=1101772605]
@@ -609,6 +611,7 @@ debug_color = Color(0, 0.61960787, 0.5686275, 0.41960785)
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]
 [connection signal="body_entered" from="DetectionArea3D" to="StateMachine/ScrubIdle" method="_on_detection_area_3d_body_entered"]
+[connection signal="body_entered" from="DetectionArea3D" to="StateMachine/ScrubPatrol" method="_on_detection_area_3d_body_entered"]
 [connection signal="body_entered" from="AttRangeArea3D" to="StateMachine/ScrubChase" method="_on_att_range_area_3d_body_entered"]
 [connection signal="body_exited" from="AttRangeArea3D" to="StateMachine/ScrubAttack" method="_on_att_range_area_3d_body_exited"]
 [connection signal="body_entered" from="FleeArea3D" to="StateMachine/ScrubIdle" method="_on_flee_area_3d_body_entered"]
