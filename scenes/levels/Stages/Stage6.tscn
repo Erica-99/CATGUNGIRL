@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://bpjjy1et0y5se" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/BrainPlatformCorner.tscn" id="28_2hrad"]
 [ext_resource type="PackedScene" uid="uid://1xc6lcs75uhc" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/BrainScaffold.tscn" id="29_q5o8m"]
 [ext_resource type="PackedScene" uid="uid://c4ro8cmikau3a" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/FacilityCore.tscn" id="30_ewsem"]
+[ext_resource type="PackedScene" uid="uid://c7wdqebqhqbuu" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorLargeBasic.tscn" id="31_oxwui"]
 [ext_resource type="PackedScene" uid="uid://6tfxiayy0yhs" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/BrainReactorRight.tscn" id="31_vk2v5"]
 [ext_resource type="PackedScene" uid="uid://di1tah411ep" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/BrainReactorLeft.tscn" id="32_oxwui"]
 [ext_resource type="PackedScene" uid="uid://cfnoxl7t1chgl" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/BrainReactorMiddle.tscn" id="33_rjdl7"]
@@ -40,9 +41,6 @@ collision_mask = 129
 [node name="Environment" type="Node3D" parent="." unique_id=2005469797]
 
 [node name="BrainJarRoom" type="Node3D" parent="Environment" unique_id=712403107]
-
-[node name="DoorBasic" parent="Environment/BrainJarRoom" unique_id=1555103701 instance=ExtResource("10_w3i34")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -54, 0, 0)
 
 [node name="DoorSlidingBasic" parent="Environment/BrainJarRoom" unique_id=1555562335 instance=ExtResource("10_w3i34")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -55.091995, 9.799999, 0)
@@ -2415,3 +2413,6 @@ wave_spawner = true
 
 [node name="Convict" parent="Enemies/EnemyManager" unique_id=1506947017 instance=ExtResource("18_k88h2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -173.8289, 1.9099693, 0)
+
+[node name="DoorLargeBasic" parent="." unique_id=101148383 instance=ExtResource("31_oxwui")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -54, 0.2, 0)
