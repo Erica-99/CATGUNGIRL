@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://7632byenhkky"]
+[gd_scene format=3 uid="uid://c7wdqebqhqbuu"]
 
 [ext_resource type="ArrayMesh" uid="uid://bok0rpxpwpb1p" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/DoorwayLargeBasic.obj" id="1_fcy0q"]
-[ext_resource type="Script" uid="uid://cfm1cn1jsl5sl" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/doorlarge_basic.gd" id="1_h1lf6"]
+[ext_resource type="Script" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/doorlarge_basic.gd" id="1_h1lf6"]
 [ext_resource type="ArrayMesh" uid="uid://dtc1kkneki67t" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/DoorLargeBasic.obj" id="2_6if0h"]
 [ext_resource type="ArrayMesh" uid="uid://b4053jlwdvpmc" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/SmallLight.obj" id="2_87vft"]
 
@@ -106,8 +106,9 @@ emission = Color(1, 0, 0, 1)
 [node name="DoorLargeBasic" type="StaticBody3D" unique_id=101148383]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
-[node name="DoorLargeBasic" type="StaticBody3D" parent="." unique_id=1927791547]
+[node name="DoorLargeBasic" type="StaticBody3D" parent="." unique_id=1927791547 node_paths=PackedStringArray("animation_player")]
 script = ExtResource("1_h1lf6")
+animation_player = NodePath("DoorLargeBasic_AnimationPlayer")
 
 [node name="DoorLargeBasic_Mesh" type="MeshInstance3D" parent="DoorLargeBasic" unique_id=600289034]
 mesh = ExtResource("2_6if0h")
