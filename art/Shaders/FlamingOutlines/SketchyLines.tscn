@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dde7bsowx13o8"]
+
+[ext_resource type="Material" path="res://art/Shaders/FlamingOutlines/SketchyOutline.tres" id="1_3syyf"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_lwhn1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p41gq"]
+next_pass = ExtResource("1_3syyf")
+
+[node name="SketchyLines" type="Node3D" unique_id=716067555]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=875761352]
+mesh = SubResource("SphereMesh_lwhn1")
+surface_material_override/0 = SubResource("StandardMaterial3D_p41gq")
