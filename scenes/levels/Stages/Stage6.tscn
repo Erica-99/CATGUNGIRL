@@ -24,8 +24,10 @@
 [ext_resource type="PackedScene" uid="uid://bpjjy1et0y5se" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/BrainPlatformCorner.tscn" id="28_2hrad"]
 [ext_resource type="PackedScene" uid="uid://1xc6lcs75uhc" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/BrainScaffold.tscn" id="29_q5o8m"]
 [ext_resource type="PackedScene" uid="uid://c4ro8cmikau3a" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/FacilityCore.tscn" id="30_ewsem"]
+[ext_resource type="PackedScene" uid="uid://dbtlwlyu6425" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/BrainJarTerminal.tscn" id="31_oxwui"]
 [ext_resource type="PackedScene" uid="uid://6tfxiayy0yhs" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/BrainReactorRight.tscn" id="31_vk2v5"]
 [ext_resource type="PackedScene" uid="uid://di1tah411ep" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/BrainReactorLeft.tscn" id="32_oxwui"]
+[ext_resource type="PackedScene" uid="uid://casbl5hg2jrqe" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/EnemySpawnDoor.tscn" id="32_rjdl7"]
 [ext_resource type="PackedScene" uid="uid://cfnoxl7t1chgl" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/BrainReactorMiddle.tscn" id="33_rjdl7"]
 [ext_resource type="PackedScene" uid="uid://bw5qhbjjyao4t" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/BrainJarBeamX.tscn" id="34_etvpi"]
 [ext_resource type="PackedScene" uid="uid://ddoxqu46ytbng" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/BrainJarBeamZ.tscn" id="35_mxr2x"]
@@ -43,21 +45,6 @@ collision_mask = 129
 
 [node name="DoorBasic" parent="Environment/BrainJarRoom" unique_id=1555103701 instance=ExtResource("10_w3i34")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -54, 0, 0)
-
-[node name="DoorSlidingBasic" parent="Environment/BrainJarRoom" unique_id=1555562335 instance=ExtResource("10_w3i34")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -55.091995, 9.799999, 0)
-
-[node name="DoorSlidingBasic2" parent="Environment/BrainJarRoom" unique_id=1405335299 instance=ExtResource("10_w3i34")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -293.26828, 40.03752, 0)
-
-[node name="DoorSlidingBasic3" parent="Environment/BrainJarRoom" unique_id=831403881 instance=ExtResource("10_w3i34")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -293.26828, 10, 0)
-
-[node name="DoorSlidingBasic4" parent="Environment/BrainJarRoom" unique_id=486860021 instance=ExtResource("10_w3i34")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -55.091995, 40.23257, 0)
-
-[node name="BrainBeams" parent="Environment/BrainJarRoom" unique_id=1380243993 instance=ExtResource("25_snsbe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -174, 0.2, -15)
 
 [node name="ENV" type="Node3D" parent="Environment/BrainJarRoom" unique_id=1611512318]
 
@@ -941,8 +928,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 10.2, -15)
 [node name="BrainPlatform4" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=347965891 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 10.2, -15)
 
-[node name="BrainPlatform5" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=2089237383 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 10.2, -25)
+[node name="BrainPlatform5" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=44194779 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 25.2, -15)
 
 [node name="BrainPlatform6" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1287184425 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 10.2, -25)
@@ -953,11 +940,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 10.2, -35)
 [node name="BrainPlatform8" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=293319960 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 10.2, -35)
 
-[node name="BrainPlatform9" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1596699012 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 10.2, -45)
-
 [node name="BrainPlatform10" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1506102119 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 10.2, -45)
+
+[node name="BrainPlatform9" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1596699012 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 10.2, -45)
 
 [node name="BrainPlatform11" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1225290927 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 40.2, -5)
@@ -971,29 +958,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 40.2, -15)
 [node name="BrainPlatform14" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1181794318 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 40.2, -15)
 
-[node name="BrainPlatform15" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=780077567 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 40.2, -25)
-
 [node name="BrainPlatform16" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1789382089 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 40.2, -25)
-
-[node name="BrainPlatform17" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1883999917 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 40.2, -35)
 
 [node name="BrainPlatform18" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=2078718266 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 40.2, -35)
 
-[node name="BrainPlatform19" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1657679114 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 40.2, -45)
-
 [node name="BrainPlatform20" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1047891082 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 40.2, -45)
+
+[node name="BrainPlatform17" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1883999917 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 40.2, -35)
 
 [node name="BrainPlatform21" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1227533346 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -274, 10.2, -5)
 
 [node name="BrainPlatform22" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1427622687 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -284, 10.2, -5)
+
+[node name="BrainPlatform19" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1657679114 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 40.2, -45)
 
 [node name="BrainPlatform23" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=319161103 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -274, 10.2, -15)
@@ -1061,20 +1045,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214, 10.2, -15)
 [node name="BrainPlatform44" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1679162794 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 10.2, -15)
 
-[node name="BrainPlatform45" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=278442615 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214, 10.2, -25)
-
 [node name="BrainPlatform46" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=227670031 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 10.2, -25)
 
 [node name="BrainPlatform47" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=239787665 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214, 10.2, -35)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 10.2, -35)
 
 [node name="BrainPlatform48" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=631840477 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 10.2, -35)
 
 [node name="BrainPlatform49" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1580434218 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214, 10.2, -45)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 10.2, -45)
 
 [node name="BrainPlatform50" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1702685226 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 10.2, -45)
@@ -1103,29 +1084,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 40.2, -15)
 [node name="BrainPlatform54" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1781081993 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 40.2, -15)
 
-[node name="BrainPlatform55" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1337185227 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214, 40.2, -25)
-
 [node name="BrainPlatform56" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1400317134 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 40.2, -25)
 
 [node name="BrainPlatform57" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1025653030 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214, 40.2, -35)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 40.2, -55)
+
+[node name="BrainPlatform61" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1677087390 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 10.2, -5)
 
 [node name="BrainPlatform58" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=466508716 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 40.2, -35)
 
 [node name="BrainPlatform59" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1663254240 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214, 40.2, -45)
-
-[node name="BrainPlatform60" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1438074175 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 40.2, -45)
-
-[node name="BrainPlatform61" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1677087390 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 10.2, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 40.2, -65)
 
 [node name="BrainPlatform62" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=314866187 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 10.2, -5)
+
+[node name="BrainPlatform60" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1438074175 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 40.2, -45)
 
 [node name="BrainPlatform63" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1948299165 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 10.2, -15)
@@ -1136,20 +1114,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 10.2, -15)
 [node name="BrainPlatform65" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1828662310 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 10.2, -25)
 
-[node name="BrainPlatform66" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1769710822 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 10.2, -25)
-
 [node name="BrainPlatform67" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1467601054 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 10.2, -35)
 
-[node name="BrainPlatform68" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1941323227 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 10.2, -35)
-
 [node name="BrainPlatform69" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=672238540 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 10.2, -45)
-
-[node name="BrainPlatform70" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1273719165 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 10.2, -45)
 
 [node name="BrainPlatform71" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=956649478 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 40.2, -5)
@@ -1178,110 +1147,74 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 40.2, -15)
 [node name="BrainPlatform75" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1728426722 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 40.2, -25)
 
-[node name="BrainPlatform76" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1450115337 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 40.2, -25)
-
 [node name="BrainPlatform77" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1975834328 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 40.2, -35)
-
-[node name="BrainPlatform78" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1981630406 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 40.2, -35)
 
 [node name="BrainPlatform105" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1788099717 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 40.2, -35)
 
+[node name="BrainPlatform109" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=83882485 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 40.2, -25)
+
 [node name="BrainPlatform106" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1194388139 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 40.2, -45)
+
+[node name="BrainPlatform111" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1602979053 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 40.2, -65)
+
+[node name="BrainPlatform120" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1328999282 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 40.2, -55)
+
+[node name="BrainPlatform122" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=520660221 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 40.2, -75)
 
 [node name="BrainPlatform107" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=144352640 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 40.2, -35)
 
-[node name="BrainPlatform108" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=847911491 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 40.2, -45)
+[node name="BrainPlatform139" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=350209155 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 40.2, -25)
 
 [node name="BrainPlatform79" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=623846987 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 40.2, -45)
 
-[node name="BrainPlatform80" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1733333338 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 40.2, -45)
-
 [node name="BrainPlatform81" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=80518005 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214, 10.2, -55)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 10.2, -55)
+
+[node name="BrainPlatform108" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=847911491 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 40.2, -45)
 
 [node name="BrainPlatform82" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=334991858 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 10.2, -55)
 
 [node name="BrainPlatform83" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=939855751 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214, 10.2, -65)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 10.2, -65)
 
 [node name="BrainPlatform84" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1825353950 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 10.2, -65)
 
-[node name="BrainPlatform85" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1390917698 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214, 40.2, -55)
-
-[node name="BrainPlatform86" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=698195144 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 40.2, -55)
-
 [node name="BrainPlatform87" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1282635919 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214, 40.2, -65)
-
-[node name="BrainPlatform88" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1354039436 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 40.2, -65)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 40.2, -85)
 
 [node name="BrainPlatform89" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1234529491 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 10.2, -55)
 
-[node name="BrainPlatform90" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=834446650 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 10.2, -55)
-
 [node name="BrainPlatform91" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1279451215 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 10.2, -65)
 
-[node name="BrainPlatform92" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1498287192 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 10.2, -65)
+[node name="BrainPlatform85" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1390917698 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 40.2, -75)
 
-[node name="BrainPlatform109" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1004827254 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 25.2, -5)
+[node name="BrainPlatform86" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=698195144 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 40.2, -55)
 
-[node name="BrainPlatform110" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1883617188 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 25.2, -5)
-
-[node name="BrainPlatform111" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1560785334 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 25.2, -15)
-
-[node name="BrainPlatform112" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1837441273 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 25.2, -15)
-
-[node name="BrainPlatform113" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1195727576 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 25.2, -25)
-
-[node name="BrainPlatform114" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1082961029 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 25.2, -25)
-
-[node name="BrainPlatform115" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1746926396 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 25.2, -35)
-
-[node name="BrainPlatform116" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=406887726 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 25.2, -35)
-
-[node name="BrainPlatform117" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1043328650 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 25.2, -45)
-
-[node name="BrainPlatform118" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=315261742 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 25.2, -45)
+[node name="BrainPlatform88" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1354039436 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 40.2, -65)
 
 [node name="BrainPlatform119" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1607334249 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -274, 25.2, -5)
 
-[node name="BrainPlatform120" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1525001234 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -284, 25.2, -5)
-
 [node name="BrainPlatform121" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=356965034 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -274, 25.2, -15)
-
-[node name="BrainPlatform122" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=975647293 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -284, 25.2, -15)
 
 [node name="BrainPlatform123" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=476558151 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -274, 25.2, -25)
@@ -1292,56 +1225,50 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -284, 25.2, -25)
 [node name="BrainPlatform125" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1348430502 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -274, 25.2, -35)
 
-[node name="BrainPlatform126" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1559113300 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -284, 25.2, -35)
-
 [node name="BrainPlatform127" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1764674077 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -274, 25.2, -45)
-
-[node name="BrainPlatform128" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1149861550 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -284, 25.2, -45)
-
-[node name="BrainPlatform129" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=245851260 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214, 25.2, -5)
-
-[node name="BrainPlatform130" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=2048262023 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 25.2, -5)
 
 [node name="BrainPlatform131" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1559013700 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214, 25.2, -15)
 
+[node name="BrainPlatform133" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1283909004 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 25.2, -15)
+
 [node name="BrainPlatform132" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=199420138 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 25.2, -15)
-
-[node name="BrainPlatform133" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=20527494 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214, 25.2, -25)
 
 [node name="BrainPlatform134" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=736189024 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 25.2, -25)
 
 [node name="BrainPlatform135" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=784112924 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214, 25.2, -35)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 25.2, -35)
+
+[node name="BrainPlatform55" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1009553151 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 10.2, -25)
+
+[node name="BrainPlatform140" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=284834240 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 25.2, -25)
 
 [node name="BrainPlatform136" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1546928918 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 25.2, -35)
 
 [node name="BrainPlatform137" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1459691687 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214, 25.2, -45)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 25.2, -45)
 
 [node name="BrainPlatform138" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=968774347 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 25.2, -45)
 
-[node name="BrainPlatform139" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1913759098 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 25.2, -5)
-
-[node name="BrainPlatform140" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1383757130 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 25.2, -5)
-
 [node name="BrainPlatform141" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1143288916 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 25.2, -15)
 
-[node name="BrainPlatform142" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=577040336 instance=ExtResource("26_fkdyc")]
+[node name="BrainPlatform157" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=71619606 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 25.2, -5)
+
+[node name="BrainPlatform158" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=678751344 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 25.2, -15)
+
+[node name="BrainPlatform162" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=68746614 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 25.2, -15)
 
 [node name="BrainPlatform143" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1030601094 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 25.2, -25)
@@ -1353,22 +1280,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 25.2, -25)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 25.2, -35)
 
 [node name="BrainPlatform146" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1312848165 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 25.2, -35)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 25.2, -35)
+
+[node name="BrainPlatform159" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1281855019 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 25.2, -25)
 
 [node name="BrainPlatform147" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=622239503 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 25.2, -45)
 
 [node name="BrainPlatform148" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1153952537 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 25.2, -45)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 25.2, -45)
 
 [node name="BrainPlatform149" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=171583512 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214, 25.2, -55)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 25.2, -55)
 
 [node name="BrainPlatform150" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=282646093 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 25.2, -55)
 
 [node name="BrainPlatform151" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=174944648 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214, 25.2, -65)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 25.2, -65)
 
 [node name="BrainPlatform152" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=755754070 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 25.2, -65)
@@ -1377,40 +1307,46 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 25.2, -65)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 25.2, -55)
 
 [node name="BrainPlatform154" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=699947750 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 25.2, -55)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 25.2, -55)
 
 [node name="BrainPlatform155" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=671549840 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 25.2, -65)
 
 [node name="BrainPlatform156" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1904572477 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 25.2, -65)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 25.2, -65)
+
+[node name="BrainPlatform160" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=2060275364 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 25.2, -75)
+
+[node name="BrainPlatform161" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=791303467 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 10.200001, -35)
+
+[node name="BrainPlatform163" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1107478722 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 10.200001, -25)
+
+[node name="BrainPlatform164" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=728693380 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 10.200001, -45)
+
+[node name="BrainPlatform165" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1298598047 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 10.200001, -55)
+
+[node name="BrainPlatform166" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1850534530 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 10.200001, -65)
+
+[node name="BrainPlatform167" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=385269301 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 10.200001, -75)
 
 [node name="BrainPlatform93" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=521477510 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 40.2, -55)
 
-[node name="BrainPlatform94" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=675659432 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 40.2, -55)
-
 [node name="BrainPlatform95" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=973056516 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 40.2, -65)
-
-[node name="BrainPlatform96" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=337511299 instance=ExtResource("26_fkdyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 40.2, -65)
-
-[node name="BrainPlatformHalf" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1449641464 instance=ExtResource("27_idgl4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, 10.2, -5)
 
 [node name="BrainPlatformHalf2" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=214366285 instance=ExtResource("27_idgl4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, 40.2, -5)
 
 [node name="BrainPlatformHalf12" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1281419639 instance=ExtResource("27_idgl4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144, 40.2, -5)
-
-[node name="BrainPlatformHalf23" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=31800958 instance=ExtResource("27_idgl4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 25.2, -5)
-
-[node name="BrainPlatformHalf3" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1111235800 instance=ExtResource("27_idgl4")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -114, 10.2, 5)
 
 [node name="BrainPlatformHalf4" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=2081814587 instance=ExtResource("27_idgl4")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -114, 40.2, 5)
@@ -1421,35 +1357,41 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, 40.2, -15)
 [node name="BrainPlatformHalf18" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=937405530 instance=ExtResource("27_idgl4")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -114, 40.2, -5)
 
-[node name="BrainPlatformHalf15" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=703457018 instance=ExtResource("27_idgl4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, 10.2, -15)
+[node name="BrainPlatformHalf3" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1449641464 instance=ExtResource("27_idgl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, 10.200001, -5)
 
-[node name="BrainPlatformHalf17" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1996761690 instance=ExtResource("27_idgl4")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -114, 10.2, -5)
+[node name="BrainPlatformHalf39" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1625823126 instance=ExtResource("27_idgl4")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -114, 10.200001, 5)
 
-[node name="BrainPlatformHalf5" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1490993102 instance=ExtResource("27_idgl4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -234, 10.2, -5)
+[node name="BrainPlatformHalf40" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1992003922 instance=ExtResource("27_idgl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, 10.200001, -15)
+
+[node name="BrainPlatformHalf41" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=962937166 instance=ExtResource("27_idgl4")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -114, 10.200001, -5)
 
 [node name="BrainPlatformHalf6" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1791116859 instance=ExtResource("27_idgl4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -234, 40.2, -5)
 
-[node name="BrainPlatformHalf7" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=49118648 instance=ExtResource("27_idgl4")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -274, 10.2, 5)
-
 [node name="BrainPlatformHalf8" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=260008168 instance=ExtResource("27_idgl4")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -274, 40.2, 5)
-
-[node name="BrainPlatformHalf9" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=951165135 instance=ExtResource("27_idgl4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -234, 10.2, -15)
 
 [node name="BrainPlatformHalf11" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=246397333 instance=ExtResource("27_idgl4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -234, 40.2, -15)
 
-[node name="BrainPlatformHalf13" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=595792160 instance=ExtResource("27_idgl4")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -274, 10.2, -5)
-
 [node name="BrainPlatformHalf14" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=395860367 instance=ExtResource("27_idgl4")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -274, 40.2, -5)
+
+[node name="BrainPlatformHalf42" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=729215257 instance=ExtResource("27_idgl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -234, 10.200001, -5)
+
+[node name="BrainPlatformHalf43" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=2114305964 instance=ExtResource("27_idgl4")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -274, 10.200001, 5)
+
+[node name="BrainPlatformHalf44" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=833032287 instance=ExtResource("27_idgl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -234, 10.200001, -15)
+
+[node name="BrainPlatformHalf45" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1591344321 instance=ExtResource("27_idgl4")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -274, 10.200001, -5)
 
 [node name="BrainPlatformHalf10" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=382831564 instance=ExtResource("27_idgl4")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -204, 40.2, 5)
@@ -1460,68 +1402,53 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144, 40.2, -15)
 [node name="BrainPlatformHalf20" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1397769703 instance=ExtResource("27_idgl4")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -204, 40.2, -5)
 
-[node name="BrainPlatformHalf21" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1525586389 instance=ExtResource("27_idgl4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144, 40.2, -25)
-
-[node name="BrainPlatformHalf22" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=782660787 instance=ExtResource("27_idgl4")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -204, 40.2, -15)
-
-[node name="BrainPlatformHalf27" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1689760235 instance=ExtResource("27_idgl4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144, 40.2, -55)
-
-[node name="BrainPlatformHalf28" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1915759678 instance=ExtResource("27_idgl4")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -204, 40.2, -45)
-
-[node name="BrainPlatformHalf29" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=886438703 instance=ExtResource("27_idgl4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144, 40.2, -65)
-
-[node name="BrainPlatformHalf30" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=987383020 instance=ExtResource("27_idgl4")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -204, 40.2, -55)
-
-[node name="BrainPlatformHalf31" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=361130085 instance=ExtResource("27_idgl4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144, 40.2, -75)
-
-[node name="BrainPlatformHalf32" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=377612336 instance=ExtResource("27_idgl4")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -204, 40.2, -65)
-
-[node name="BrainPlatformHalf33" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1474107365 instance=ExtResource("27_idgl4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144, 40.2, -85)
-
-[node name="BrainPlatformHalf34" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1292224163 instance=ExtResource("27_idgl4")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -204, 40.2, -75)
-
 [node name="BrainPlatformCorner" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1743438253 instance=ExtResource("28_2hrad")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144, 10.2, -5)
 
-[node name="BrainPlatformCorner9" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1702559994 instance=ExtResource("28_2hrad")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 25.2, -15)
+[node name="BrainPlatformCorner9" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=308279809 instance=ExtResource("28_2hrad")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 25.2, -5)
 
-[node name="BrainPlatformHalf24" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=429618030 instance=ExtResource("27_idgl4")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -214, 25.2, 5)
+[node name="BrainPlatformCorner11" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1740629141 instance=ExtResource("28_2hrad")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -124, 25.2, -5)
 
-[node name="BrainPlatformCorner10" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=23944573 instance=ExtResource("28_2hrad")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -214, 25.2, -15)
+[node name="BrainPlatform168" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1760153016 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214, 25.2, -5)
+
+[node name="BrainPlatformCorner10" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1579745679 instance=ExtResource("28_2hrad")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 25.2, -5)
+
+[node name="BrainPlatformCorner20" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1137428331 instance=ExtResource("28_2hrad")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -214, 25.2, -5)
+
+[node name="BrainPlatform169" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=2106175151 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214, 25.2, -5)
+
+[node name="BrainPlatformCorner21" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1038273002 instance=ExtResource("28_2hrad")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 25.2, -5)
+
+[node name="BrainPlatformCorner22" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1137870420 instance=ExtResource("28_2hrad")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -214, 25.2, -5)
 
 [node name="BrainPlatformCorner2" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=653425289 instance=ExtResource("28_2hrad")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -144, 10.2, -5)
+
+[node name="BrainPlatform15" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1434424890 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 25.2, -5)
+
+[node name="BrainPlatform45" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=941387253 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 25.2, -35)
+
+[node name="BrainPlatform68" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=2095695784 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 25.2, -45)
+
+[node name="BrainPlatform66" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1000351257 instance=ExtResource("26_fkdyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 25.2, -25)
 
 [node name="BrainPlatformCorner3" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=932203784 instance=ExtResource("28_2hrad")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -204, 10.2, -5)
 
 [node name="BrainPlatformCorner4" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=254756039 instance=ExtResource("28_2hrad")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -204, 10.2, -5)
-
-[node name="BrainPlatformCorner5" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=207630865 instance=ExtResource("28_2hrad")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144, 40.2, -35)
-
-[node name="BrainPlatformCorner6" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1137387805 instance=ExtResource("28_2hrad")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -144, 40.2, -35)
-
-[node name="BrainPlatformCorner7" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1887698772 instance=ExtResource("28_2hrad")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -204, 40.2, -35)
-
-[node name="BrainPlatformCorner8" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=404680693 instance=ExtResource("28_2hrad")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -204, 40.2, -35)
 
 [node name="BrainScaffold" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1836218430 instance=ExtResource("29_q5o8m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94, 17.7, 0)
@@ -2124,6 +2051,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -174, 0.4, -15)
 [node name="BrainJar" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=561627710 instance=ExtResource("36_mxr2x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -174, 0.2, -15)
 
+[node name="BrainBeams3" parent="Environment/BrainJarRoom" unique_id=186136910 instance=ExtResource("25_snsbe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -174, 0, -15)
+
 [node name="Corridor" type="Node3D" parent="Environment" unique_id=527250202]
 
 [node name="DoorExit" parent="Environment/Corridor" unique_id=863191425 instance=ExtResource("11_a31f2")]
@@ -2175,6 +2105,9 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -48, 8.4, 0)
 [node name="DoorwaySingleLaboratory" parent="Environment/Corridor" unique_id=1936140797 instance=ExtResource("10_5hpc0")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 0, 0)
 
+[node name="DoorwaySingleLaboratory2" parent="Environment/Corridor" unique_id=920929669 instance=ExtResource("10_5hpc0")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -53.8, 0, 0)
+
 [node name="DoorwayNoneMidLaboratory" parent="Environment/Corridor" unique_id=974643408 instance=ExtResource("11_h2frl")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 0, -10)
 
@@ -2185,28 +2118,60 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 0, -10)
 [node name="Interactive" type="Node3D" parent="." unique_id=468008420]
 
 [node name="BrainJarConsole" parent="Interactive" unique_id=578323982 instance=ExtResource("14_5hpc0")]
-transform = Transform3D(2.4948392, 0, 0, 0, 2.4948392, 0, 0, 0, 2.4948392, -64, 41.890663, -2.9068742)
+transform = Transform3D(2.4948392, 0, 0, 0, 2.4948392, 0, 0, 0, 2.4948392, -69, 41.890663, -2.9068742)
+visible = false
 
 [node name="BrainJarConsole2" parent="Interactive" unique_id=233754283 instance=ExtResource("14_5hpc0")]
-transform = Transform3D(2.4948392, 0, 0, 0, 2.4948392, 0, 0, 0, 2.4948392, -64, 11.165483, -2.9068742)
+transform = Transform3D(2.4948392, 0, 0, 0, 2.4948392, 0, 0, 0, 2.4948392, -69, 11.165483, -2.9068742)
+visible = false
 
 [node name="BrainJarConsole3" parent="Interactive" unique_id=1530423075 instance=ExtResource("14_5hpc0")]
-transform = Transform3D(2.4948392, 0, 0, 0, 2.4948392, 0, 0, 0, 2.4948392, -124, 41.890663, -2.9068742)
+transform = Transform3D(2.4948392, 0, 0, 0, 2.4948392, 0, 0, 0, 2.4948392, -119, 41.890663, -2.9068742)
+visible = false
 
 [node name="BrainJarConsole4" parent="Interactive" unique_id=565415927 instance=ExtResource("14_5hpc0")]
-transform = Transform3D(2.4948392, 0, 0, 0, 2.4948392, 0, 0, 0, 2.4948392, -124, 11.165483, -2.9068742)
+transform = Transform3D(2.4948392, 0, 0, 0, 2.4948392, 0, 0, 0, 2.4948392, -119, 11.165483, -2.9068742)
+visible = false
 
 [node name="BrainJarConsole5" parent="Interactive" unique_id=6856461 instance=ExtResource("14_5hpc0")]
-transform = Transform3D(2.4948392, 0, 0, 0, 2.4948392, 0, 0, 0, 2.4948392, -224, 41.890663, -2.9068742)
+transform = Transform3D(2.4948392, 0, 0, 0, 2.4948392, 0, 0, 0, 2.4948392, -229, 41.890663, -2.9068742)
+visible = false
 
 [node name="BrainJarConsole6" parent="Interactive" unique_id=1002211151 instance=ExtResource("14_5hpc0")]
-transform = Transform3D(2.4948392, 0, 0, 0, 2.4948392, 0, 0, 0, 2.4948392, -224, 11.165483, -2.9068742)
+transform = Transform3D(2.4948392, 0, 0, 0, 2.4948392, 0, 0, 0, 2.4948392, -229, 11.165483, -2.9068742)
+visible = false
 
 [node name="BrainJarConsole7" parent="Interactive" unique_id=1916964208 instance=ExtResource("14_5hpc0")]
-transform = Transform3D(2.4948392, 0, 0, 0, 2.4948392, 0, 0, 0, 2.4948392, -284, 41.890663, -2.9068742)
+transform = Transform3D(2.4948392, 0, 0, 0, 2.4948392, 0, 0, 0, 2.4948392, -279, 41.890663, -2.9068742)
+visible = false
 
 [node name="BrainJarConsole8" parent="Interactive" unique_id=2035278342 instance=ExtResource("14_5hpc0")]
-transform = Transform3D(2.4948392, 0, 0, 0, 2.4948392, 0, 0, 0, 2.4948392, -284, 11.165483, -2.9068742)
+transform = Transform3D(2.4948392, 0, 0, 0, 2.4948392, 0, 0, 0, 2.4948392, -279, 11.165483, -2.9068742)
+visible = false
+
+[node name="BrainJarTerminal" parent="Interactive" unique_id=366402759 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -119, 10.2, -3)
+
+[node name="BrainJarTerminal2" parent="Interactive" unique_id=1115267105 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -119, 40.2, -3)
+
+[node name="BrainJarTerminal3" parent="Interactive" unique_id=1670510788 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -69, 10.2, -3)
+
+[node name="BrainJarTerminal4" parent="Interactive" unique_id=1770246225 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -69, 40.2, -3)
+
+[node name="BrainJarTerminal5" parent="Interactive" unique_id=538193210 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -279, 10.2, -3)
+
+[node name="BrainJarTerminal6" parent="Interactive" unique_id=101438954 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -279, 40.2, -3)
+
+[node name="BrainJarTerminal7" parent="Interactive" unique_id=355513012 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -229, 10.2, -3)
+
+[node name="BrainJarTerminal8" parent="Interactive" unique_id=832899734 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -229, 40.2, -3)
 
 [node name="Lighting" type="Node3D" parent="." unique_id=786967274]
 
@@ -2247,16 +2212,6 @@ shadow_enabled = true
 spot_range = 32.195656
 spot_angle = 47.085472
 
-[node name="SpotLight3D16" type="SpotLight3D" parent="Lighting" unique_id=828190345]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -174.86902, 72.859985, 3.9276695)
-light_color = Color(1, 0.8821077, 0.81144077, 1)
-light_energy = 12.198
-light_indirect_energy = 0.1
-light_volumetric_fog_energy = 0.1
-shadow_enabled = true
-spot_range = 70.130035
-spot_angle = 31.877684
-
 [node name="SpotLight3D24" type="SpotLight3D" parent="Lighting" unique_id=889082516]
 transform = Transform3D(1, 0, 0, 0, 1.3113416e-07, -1, 0, 1, 1.3113416e-07, -173.86902, 0.10082722, -18.07233)
 light_color = Color(1.9754877, 1.0244927, 0.33011526, 1)
@@ -2278,26 +2233,6 @@ shadow_enabled = true
 spot_range = 46.49971
 spot_angle = 31.877684
 
-[node name="SpotLight3D18" type="SpotLight3D" parent="Lighting" unique_id=1054486609]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -208.86902, 72.859985, 3.9276695)
-light_color = Color(1, 0.8821077, 0.81144077, 1)
-light_energy = 12.198
-light_indirect_energy = 0.1
-light_volumetric_fog_energy = 0.1
-shadow_enabled = true
-spot_range = 70.130035
-spot_angle = 31.877684
-
-[node name="SpotLight3D21" type="SpotLight3D" parent="Lighting" unique_id=1467551244]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -283.86902, 72.859985, 3.9276695)
-light_color = Color(1, 0.8821077, 0.81144077, 1)
-light_energy = 12.198
-light_indirect_energy = 0.1
-light_volumetric_fog_energy = 0.1
-shadow_enabled = true
-spot_range = 56.24321
-spot_angle = 31.877684
-
 [node name="SpotLight3D19" type="SpotLight3D" parent="Lighting" unique_id=2052707880]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 0.6, 0, -1, -2.6226834e-08, -253.86902, 53.859985, 0.9276695)
 light_color = Color(1, 0.8821077, 0.81144077, 1)
@@ -2307,6 +2242,116 @@ light_volumetric_fog_energy = 0.1
 shadow_enabled = true
 spot_range = 42.5215
 spot_angle = 31.877684
+
+[node name="SpotLight3D44" type="SpotLight3D" parent="Lighting" unique_id=543606234]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -253.86902, 53.859985, -45.07233)
+light_color = Color(4.8571644, 2.5281954, 0, 1)
+light_energy = 16.0
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+shadow_enabled = true
+spot_range = 65.41162
+spot_angle = 13.817237
+
+[node name="SpotLight3D46" type="SpotLight3D" parent="Lighting" unique_id=933714967]
+transform = Transform3D(1, 0, 0, 0, 0.39233708, 0.9198215, 0, -0.9198215, 0.39233708, -173.86902, 53.859985, -45.07233)
+light_color = Color(4.8570004, 2.459429, 1.7749729, 1)
+light_energy = 16.0
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+shadow_enabled = true
+spot_range = 54.39835
+spot_angle = 42.808453
+
+[node name="SpotLight3D45" type="SpotLight3D" parent="Lighting" unique_id=852721590]
+transform = Transform3D(1, 0, 0, 0, -0.11804006, 0.99300885, 0, -0.99300885, -0.11804006, -93.86902, 53.859985, -45.07233)
+light_color = Color(4.8571644, 2.5281954, 0, 1)
+light_energy = 16.0
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+shadow_enabled = true
+spot_range = 65.41162
+spot_angle = 13.817237
+
+[node name="SpotLight3D22" type="SpotLight3D" parent="Lighting" unique_id=278296210]
+transform = Transform3D(1, 0, 0, 0, 0.80410594, 0.5944861, 0, -0.5944861, 0.80410594, -289, 46.757233, -14.112641)
+light_color = Color(0.88794774, 0.36662975, 0.37217572, 1)
+light_energy = 5.386
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+shadow_enabled = true
+spot_range = 6.2608957
+spot_angle = 89.99
+
+[node name="SpotLight3D30" type="SpotLight3D" parent="Lighting" unique_id=532978886]
+transform = Transform3D(1, 0, 0, 0, 0.80410594, 0.5944861, 0, -0.5944861, 0.80410594, -289, 16.757233, -14.112641)
+light_color = Color(0.88794774, 0.36662975, 0.37217572, 1)
+light_energy = 5.386
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+shadow_enabled = true
+spot_range = 6.2608957
+spot_angle = 89.99
+
+[node name="SpotLight3D31" type="SpotLight3D" parent="Lighting" unique_id=1464770018]
+transform = Transform3D(1, 0, 0, 0, 0.80410594, 0.5944861, 0, -0.5944861, 0.80410594, -219, 46.757233, -14.112641)
+light_color = Color(0.88794774, 0.36662975, 0.37217572, 1)
+light_energy = 5.386
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+shadow_enabled = true
+spot_range = 6.2608957
+spot_angle = 89.99
+
+[node name="SpotLight3D32" type="SpotLight3D" parent="Lighting" unique_id=1449450800]
+transform = Transform3D(1, 0, 0, 0, 0.80410594, 0.5944861, 0, -0.5944861, 0.80410594, -219, 16.757233, -14.112641)
+light_color = Color(0.88794774, 0.36662975, 0.37217572, 1)
+light_energy = 5.386
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+shadow_enabled = true
+spot_range = 6.2608957
+spot_angle = 89.99
+
+[node name="SpotLight3D33" type="SpotLight3D" parent="Lighting" unique_id=8967820]
+transform = Transform3D(1, 0, 0, 0, 0.80410594, 0.5944861, 0, -0.5944861, 0.80410594, -129, 46.757233, -14.112641)
+light_color = Color(0.88794774, 0.36662975, 0.37217572, 1)
+light_energy = 5.386
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+shadow_enabled = true
+spot_range = 6.2608957
+spot_angle = 89.99
+
+[node name="SpotLight3D34" type="SpotLight3D" parent="Lighting" unique_id=457712619]
+transform = Transform3D(1, 0, 0, 0, 0.80410594, 0.5944861, 0, -0.5944861, 0.80410594, -129, 16.757233, -14.112641)
+light_color = Color(0.88794774, 0.36662975, 0.37217572, 1)
+light_energy = 5.386
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+shadow_enabled = true
+spot_range = 6.2608957
+spot_angle = 89.99
+
+[node name="SpotLight3D35" type="SpotLight3D" parent="Lighting" unique_id=227848746]
+transform = Transform3D(1, 0, 0, 0, 0.80410594, 0.5944861, 0, -0.5944861, 0.80410594, -59, 46.757233, -14.112641)
+light_color = Color(0.88794774, 0.36662975, 0.37217572, 1)
+light_energy = 5.386
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+shadow_enabled = true
+spot_range = 6.2608957
+spot_angle = 89.99
+
+[node name="SpotLight3D36" type="SpotLight3D" parent="Lighting" unique_id=2029347648]
+transform = Transform3D(1, 0, 0, 0, 0.80410594, 0.5944861, 0, -0.5944861, 0.80410594, -59, 16.757233, -14.112641)
+light_color = Color(0.88794774, 0.36662975, 0.37217572, 1)
+light_energy = 5.386
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+shadow_enabled = true
+spot_range = 6.2608957
+spot_angle = 89.99
 
 [node name="SpotLight3D25" type="SpotLight3D" parent="Lighting" unique_id=1833912545]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -253.86902, 31.859985, 0.9276695)
@@ -2328,26 +2373,6 @@ shadow_enabled = true
 spot_range = 21.140276
 spot_angle = 50.61118
 
-[node name="SpotLight3D17" type="SpotLight3D" parent="Lighting" unique_id=998014817]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -138.86902, 72.859985, 3.9276695)
-light_color = Color(1, 0.8821077, 0.81144077, 1)
-light_energy = 12.198
-light_indirect_energy = 0.1
-light_volumetric_fog_energy = 0.1
-shadow_enabled = true
-spot_range = 70.130035
-spot_angle = 31.877684
-
-[node name="SpotLight3D22" type="SpotLight3D" parent="Lighting" unique_id=177194446]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -63.86902, 72.859985, 3.9276695)
-light_color = Color(1, 0.8821077, 0.81144077, 1)
-light_energy = 12.198
-light_indirect_energy = 0.1
-light_volumetric_fog_energy = 0.1
-shadow_enabled = true
-spot_range = 56.605434
-spot_angle = 31.877684
-
 [node name="SpotLight3D20" type="SpotLight3D" parent="Lighting" unique_id=2140559184]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 0.6, 0, -1, -2.6226834e-08, -93.86902, 53.859985, 0.9276695)
 light_color = Color(1, 0.8821077, 0.81144077, 1)
@@ -2358,6 +2383,86 @@ shadow_enabled = true
 spot_range = 42.5215
 spot_angle = 31.877684
 
+[node name="SpotLight3D21" type="SpotLight3D" parent="Lighting" unique_id=809437979]
+transform = Transform3D(1, 0, 0, 0, 0.6677027, 0.74442816, 0, -0.74442816, 0.6677027, -69, 47.635143, 3.3306494)
+light_color = Color(1, 0.88235295, 0.8117647, 1)
+light_energy = 12.198
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+shadow_enabled = true
+spot_range = 19.62768
+spot_angle = 52.35304
+
+[node name="SpotLight3D37" type="SpotLight3D" parent="Lighting" unique_id=1332504265]
+transform = Transform3D(1, 0, 0, 0, 0.6677027, 0.74442816, 0, -0.74442816, 0.6677027, -69, 17.635143, 3.3306494)
+light_color = Color(1, 0.88235295, 0.8117647, 1)
+light_energy = 12.198
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+shadow_enabled = true
+spot_range = 19.62768
+spot_angle = 52.35304
+
+[node name="SpotLight3D38" type="SpotLight3D" parent="Lighting" unique_id=439879366]
+transform = Transform3D(1, 0, 0, 0, 0.6677027, 0.74442816, 0, -0.74442816, 0.6677027, -119, 47.635143, 3.3306494)
+light_color = Color(1, 0.88235295, 0.8117647, 1)
+light_energy = 12.198
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+shadow_enabled = true
+spot_range = 19.62768
+spot_angle = 52.35304
+
+[node name="SpotLight3D39" type="SpotLight3D" parent="Lighting" unique_id=117223256]
+transform = Transform3D(1, 0, 0, 0, 0.6677027, 0.74442816, 0, -0.74442816, 0.6677027, -119, 17.635143, 3.3306494)
+light_color = Color(1, 0.88235295, 0.8117647, 1)
+light_energy = 12.198
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+shadow_enabled = true
+spot_range = 19.62768
+spot_angle = 52.35304
+
+[node name="SpotLight3D40" type="SpotLight3D" parent="Lighting" unique_id=331953441]
+transform = Transform3D(1, 0, 0, 0, 0.6677027, 0.74442816, 0, -0.74442816, 0.6677027, -229, 47.635143, 3.3306494)
+light_color = Color(1, 0.88235295, 0.8117647, 1)
+light_energy = 12.198
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+shadow_enabled = true
+spot_range = 19.62768
+spot_angle = 52.35304
+
+[node name="SpotLight3D41" type="SpotLight3D" parent="Lighting" unique_id=2105691104]
+transform = Transform3D(1, 0, 0, 0, 0.6677027, 0.74442816, 0, -0.74442816, 0.6677027, -229, 17.635143, 3.3306494)
+light_color = Color(1, 0.88235295, 0.8117647, 1)
+light_energy = 12.198
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+shadow_enabled = true
+spot_range = 19.62768
+spot_angle = 52.35304
+
+[node name="SpotLight3D42" type="SpotLight3D" parent="Lighting" unique_id=1182161027]
+transform = Transform3D(1, 0, 0, 0, 0.6677027, 0.74442816, 0, -0.74442816, 0.6677027, -279, 47.635143, 3.3306494)
+light_color = Color(1, 0.88235295, 0.8117647, 1)
+light_energy = 12.198
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+shadow_enabled = true
+spot_range = 19.62768
+spot_angle = 52.35304
+
+[node name="SpotLight3D43" type="SpotLight3D" parent="Lighting" unique_id=2021810599]
+transform = Transform3D(1, 0, 0, 0, 0.6677027, 0.74442816, 0, -0.74442816, 0.6677027, -279, 17.635143, 3.3306494)
+light_color = Color(1, 0.88235295, 0.8117647, 1)
+light_energy = 12.198
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+shadow_enabled = true
+spot_range = 19.62768
+spot_angle = 52.35304
+
 [node name="Enemies" type="Node3D" parent="." unique_id=1092297902]
 
 [node name="BrainJar" parent="Enemies" unique_id=1593347133 instance=ExtResource("14_wj6kf")]
@@ -2365,53 +2470,77 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -174, 13.711103, 0)
 
 [node name="EnemyManager" parent="Enemies" unique_id=18369620 instance=ExtResource("16_h2frl")]
 
-[node name="EnemySpawner" parent="Enemies/EnemyManager" unique_id=1110059721 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("17_nqip8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.663406, 19.918274, 0)
+[node name="EnemySpawner1" parent="Enemies/EnemyManager" unique_id=1842844758 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("17_nqip8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -289, 17.918274, 0)
 linked_enemy_manager = NodePath("..")
 possible_spawns = Array[int]([0])
 wave_spawner = true
 
-[node name="EnemySpawner2" parent="Enemies/EnemyManager" unique_id=628757101 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("17_nqip8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.663406, 47.918274, 0)
+[node name="EnemySpawner2" parent="Enemies/EnemyManager" unique_id=1179718066 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("17_nqip8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -289, 47.918274, 0)
 linked_enemy_manager = NodePath("..")
 possible_spawns = Array[int]([0])
 wave_spawner = true
 
-[node name="EnemySpawner3" parent="Enemies/EnemyManager" unique_id=1842844758 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("17_nqip8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -291.6634, 19.918274, 0)
+[node name="EnemySpawner3" parent="Enemies/EnemyManager" unique_id=1270364651 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("17_nqip8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -219, 17.918274, 0)
 linked_enemy_manager = NodePath("..")
 possible_spawns = Array[int]([0])
 wave_spawner = true
 
-[node name="EnemySpawner4" parent="Enemies/EnemyManager" unique_id=1179718066 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("17_nqip8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -291.6634, 47.918274, 0)
+[node name="EnemySpawner4" parent="Enemies/EnemyManager" unique_id=2098915714 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("17_nqip8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -219, 47.918274, 0)
 linked_enemy_manager = NodePath("..")
 possible_spawns = Array[int]([0])
 wave_spawner = true
 
-[node name="EnemySpawner5" parent="Enemies/EnemyManager" unique_id=1159928159 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("17_nqip8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -209.08119, 19.918274, 0)
+[node name="EnemySpawner5" parent="Enemies/EnemyManager" unique_id=741829977 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("17_nqip8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59, 47.918274, 0)
 linked_enemy_manager = NodePath("..")
 possible_spawns = Array[int]([0])
 wave_spawner = true
 
-[node name="EnemySpawner6" parent="Enemies/EnemyManager" unique_id=357058719 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("17_nqip8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -209.08119, 47.918274, 0)
+[node name="EnemySpawner6" parent="Enemies/EnemyManager" unique_id=942460092 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("17_nqip8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59, 17.918274, 0)
 linked_enemy_manager = NodePath("..")
 possible_spawns = Array[int]([0])
 wave_spawner = true
 
-[node name="EnemySpawner7" parent="Enemies/EnemyManager" unique_id=1023690950 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("17_nqip8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.08119, 19.918274, 0)
+[node name="EnemySpawner7" parent="Enemies/EnemyManager" unique_id=1515334159 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("17_nqip8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129, 17.918274, 0)
 linked_enemy_manager = NodePath("..")
 possible_spawns = Array[int]([0])
 wave_spawner = true
 
-[node name="EnemySpawner8" parent="Enemies/EnemyManager" unique_id=1937207514 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("17_nqip8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.08119, 47.918274, 0)
+[node name="EnemySpawner8" parent="Enemies/EnemyManager" unique_id=794486292 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("17_nqip8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129, 47.918274, 0)
 linked_enemy_manager = NodePath("..")
 possible_spawns = Array[int]([0])
 wave_spawner = true
 
 [node name="Convict" parent="Enemies/EnemyManager" unique_id=1506947017 instance=ExtResource("18_k88h2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -173.8289, 1.9099693, 0)
+
+[node name="EnemyDoorFrame" parent="." unique_id=2002850953 instance=ExtResource("32_rjdl7")]
+transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, -129, 10.2, -15.000003)
+
+[node name="EnemyDoorFrame2" parent="." unique_id=272939438 instance=ExtResource("32_rjdl7")]
+transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, -129, 40.2, -15.000003)
+
+[node name="EnemyDoorFrame5" parent="." unique_id=1195938645 instance=ExtResource("32_rjdl7")]
+transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, -59, 10.2, -15.000003)
+
+[node name="EnemyDoorFrame6" parent="." unique_id=1862890776 instance=ExtResource("32_rjdl7")]
+transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, -59, 40.2, -15.000003)
+
+[node name="EnemyDoorFrame3" parent="." unique_id=144385858 instance=ExtResource("32_rjdl7")]
+transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, -219, 10.2, -14.999997)
+
+[node name="EnemyDoorFrame4" parent="." unique_id=632732022 instance=ExtResource("32_rjdl7")]
+transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, -219, 40.2, -14.999997)
+
+[node name="EnemyDoorFrame7" parent="." unique_id=371220747 instance=ExtResource("32_rjdl7")]
+transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, -289, 10.2, -14.999997)
+
+[node name="EnemyDoorFrame8" parent="." unique_id=1951694659 instance=ExtResource("32_rjdl7")]
+transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, -289, 40.2, -14.999997)
