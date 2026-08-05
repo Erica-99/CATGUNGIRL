@@ -31,6 +31,7 @@ retract_state = NodePath("StateMachine/GrappleRetracted")
 total_fire_time = 0.15
 firing_curve = SubResource("Curve_4u4vp")
 reel_delay = 0.2
+reel_minimum_distance = 5.0
 
 [node name="GrapplingHookSprite" type="AnimatedSprite3D" parent="." unique_id=2098842336]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
@@ -39,8 +40,8 @@ billboard = 1
 sprite_frames = SubResource("SpriteFrames_8ovlh")
 
 [node name="GrappleRaycast" type="RayCast3D" parent="." unique_id=1211203710]
-target_position = Vector3(40, 0, 0)
-collision_mask = 5
+target_position = Vector3(25, 0, 0)
+collision_mask = 133
 
 [node name="StateMachine" parent="." unique_id=1499026333 node_paths=PackedStringArray("initial_state") instance=ExtResource("2_mst2j")]
 initial_state = NodePath("GrappleRetracted")
@@ -56,4 +57,5 @@ metadata/_custom_type_script = "uid://dropwvjh2s43u"
 
 [node name="GrappleReeling" type="Node" parent="StateMachine" unique_id=1368261832]
 script = ExtResource("7_8ovlh")
+reeling_animation_name = "Fall"
 metadata/_custom_type_script = "uid://dropwvjh2s43u"

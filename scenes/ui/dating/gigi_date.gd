@@ -63,11 +63,11 @@ func _unhandled_input(event: InputEvent) -> void:
 				writing_timer.stop()
 				_display_button_press_info()
 					
-	if event.is_action_pressed("date_show"):
-		if dating_active:
-			pass
-		else:
-			_on_activate_date(0)
+	#if event.is_action_pressed("date_show"):
+		#if dating_active:
+			#pass
+		#else:
+			#_on_activate_date(0)
 
 # set values for started date and retrieve scene and dialogue
 # TODO: im just thinking but we could probably remove dating_active and favour 'visibility' as

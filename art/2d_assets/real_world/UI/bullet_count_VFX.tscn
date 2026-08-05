@@ -1,33 +1,36 @@
 [gd_scene format=3 uid="uid://pp03qyrbback"]
 
-[ext_resource type="Texture2D" uid="uid://crng4f3f2avnf" path="res://icon.svg" id="1_sg5fs"]
+[ext_resource type="Texture2D" uid="uid://rpdyb2kkdclo" path="res://art/2d_assets/real_world/UI/PistolUIIcon.png" id="1_psyk6"]
 [ext_resource type="Script" uid="uid://cyeklj01bo3ow" path="res://art/2d_assets/real_world/UI/bullet_count_vfx.gd" id="2_ndrie"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsnmo"]
-albedo_texture = ExtResource("1_sg5fs")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ndrie"]
+transparency = 1
+albedo_texture = ExtResource("1_psyk6")
+metallic = 1.0
 emission_enabled = true
-emission = Color(1, 1, 1, 1)
+emission = Color(0.5409905, 0.5409905, 0.5409905, 1)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_msxka"]
 direction = Vector3(1, 35.86, 0)
-spread = 34.964
-flatness = 1.0
-initial_velocity_min = 30.0
-initial_velocity_max = 30.0
+spread = 22.014
+initial_velocity_min = 25.21
+initial_velocity_max = 100.84
 angular_velocity_min = 254.11998
 angular_velocity_max = 254.11998
 gravity = Vector3(0, -50, 0)
 
-[sub_resource type="QuadMesh" id="QuadMesh_haoly"]
+[sub_resource type="QuadMesh" id="QuadMesh_psyk6"]
 
 [node name="BulletVFX" type="GPUParticles3D" unique_id=1767152557]
-material_overlay = SubResource("StandardMaterial3D_xsnmo")
+transform = Transform3D(0.91519207, -0.4030183, 0, 0.3720517, 0.84487164, 0.38440812, -0.1549235, -0.35180727, 0.92316324, 0, 0, -1.4952374)
+material_override = SubResource("StandardMaterial3D_ndrie")
+emitting = false
 amount = 1
 lifetime = 3.0
 one_shot = true
-speed_scale = 4.0
+speed_scale = 3.0
 process_material = SubResource("ParticleProcessMaterial_msxka")
-draw_pass_1 = SubResource("QuadMesh_haoly")
+draw_pass_1 = SubResource("QuadMesh_psyk6")
 script = ExtResource("2_ndrie")
 
 [connection signal="finished" from="." to="." method="_on_finished"]

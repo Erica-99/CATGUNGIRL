@@ -26,8 +26,7 @@ func init(blackboard_dict : Dictionary) -> void:
 	slow_down_speed = blackboard["slow_down_speed"]
 
 func enter() -> void:
-	#gun_component._is_firing = true
-	gun_component._bullets_fired = 0
+	pass
 
 func exit() -> void:
 	gun_component._is_firing = false

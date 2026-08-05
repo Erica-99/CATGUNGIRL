@@ -20,7 +20,8 @@ const LEVEL_PATHS: Dictionary = {
 	"Stage3": "res://scenes/levels/Stages/Stage3.tscn",
 	"Stage4": "res://scenes/levels/Stages/Stage4.tscn",
 	"Stage5": "res://scenes/levels/Stages/Stage5.tscn",
-	"Stage6": "res://scenes/levels/Stages/Stage6.tscn"
+	"Stage6": "res://scenes/levels/Stages/Stage6.tscn",
+	"main_menu": "res://scenes/ui/menu_screens/main_menu.tscn"
 }
 
 func _add_one_to_insanity() -> void:

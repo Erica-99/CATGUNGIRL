@@ -655,7 +655,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jr2x0")
 }],
-"loop": 0,
+"loop": false,
 "name": &"AirTime",
 "speed": 5.0
 }, {
@@ -705,7 +705,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jaqpl")
 }],
-"loop": 0,
+"loop": false,
 "name": &"Falling",
 "speed": 23.0
 }, {
@@ -713,7 +713,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l4xyt")
 }],
-"loop": 0,
+"loop": false,
 "name": &"Falling_Ext",
 "speed": 5.0
 }, {
@@ -790,7 +790,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vp2uo")
 }],
-"loop": 1,
+"loop": true,
 "name": &"Idle",
 "speed": 23.0
 }, {
@@ -843,7 +843,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_e3y70")
 }],
-"loop": 1,
+"loop": true,
 "name": &"Running",
 "speed": 23.0
 }]
@@ -924,7 +924,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xsxfv")
 }],
-"loop": 0,
+"loop": false,
 "name": &"HeadList",
 "speed": 5.0
 }, {
@@ -947,7 +947,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3sojj")
 }],
-"loop": 1,
+"loop": true,
 "name": &"Insane",
 "speed": 15.0
 }]
@@ -1057,7 +1057,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sn63g")
 }],
-"loop": 0,
+"loop": false,
 "name": &"Fire",
 "speed": 23.0
 }, {
@@ -1065,7 +1065,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8ecaa")
 }],
-"loop": 1,
+"loop": true,
 "name": &"Idle",
 "speed": 5.0
 }]
@@ -1210,7 +1210,7 @@ animations = [{
 "duration": 1.0,
 "texture": null
 }],
-"loop": 0,
+"loop": false,
 "name": &"Idle",
 "speed": 23.0
 }, {
@@ -1242,7 +1242,7 @@ animations = [{
 "duration": 1.0,
 "texture": null
 }],
-"loop": 0,
+"loop": false,
 "name": &"NormalFlash",
 "speed": 23.0
 }, {
@@ -1274,7 +1274,7 @@ animations = [{
 "duration": 1.0,
 "texture": null
 }],
-"loop": 0,
+"loop": false,
 "name": &"Perfect",
 "speed": 23.0
 }]
@@ -1414,7 +1414,7 @@ size = Vector3(1.2752914, 3.192688, 1)
 
 [sub_resource type="Resource" id="Resource_llrf1"]
 script = ExtResource("19_llrf1")
-amount = 1.0
+amount = 0.0
 type = 1
 source = NodePath(".")
 metadata/_custom_type_script = "uid://y2ix2xo5owxw"
@@ -1466,7 +1466,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_eltio")
 }],
-"loop": 1,
+"loop": true,
 "name": &"Bubble",
 "speed": 8.0
 }]
@@ -1476,6 +1476,7 @@ collision_layer = 2
 axis_lock_linear_z = true
 platform_floor_layers = 1
 script = ExtResource("1_qdyt2")
+hit_heal_fraction = 0.1
 movement_state_machine = NodePath("MovementStateMachine")
 gun_arm_node = NodePath("PlayerVisuals/ROOT_P/GUN_P")
 input_component = NodePath("PlayerInput")
@@ -1601,7 +1602,7 @@ target_position = Vector3(0, -2, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6085612, 0)
 
 [node name="CameraComponent" parent="." unique_id=974394070 instance=ExtResource("18_ffoq6")]
-transform = Transform3D(1, 0, 0, 0, 0.99660444, 0.08233857, 0, -0.08233857, 0.99660444, 0, 4.07051, 55.812668)
+transform = Transform3D(1, 0, 0, 0, 0.99660444, 0.08233857, 0, -0.08233857, 0.99660444, 0, 4.07051, 61.724174)
 fov = 26.8
 
 [node name="MovementStateMachine" parent="." unique_id=1499026333 node_paths=PackedStringArray("initial_state") instance=ExtResource("4_qdyt2")]
@@ -1681,6 +1682,9 @@ script = ExtResource("27_cat03")
 [node name="GunHolder" parent="." unique_id=407642416 node_paths=PackedStringArray("input_component") instance=ExtResource("28_7i6t6")]
 input_component = NodePath("../PlayerInput")
 
+[node name="AudioListener3D" type="AudioListener3D" parent="." unique_id=1025557284]
+current = true
+
 [connection signal="facing_changed" from="." to="PlayerVisuals" method="_on_player_facing_changed"]
 [connection signal="animation_finished" from="PlayerVisuals/ROOT_P/GUN_P/GUN_AIM/Hand_Anims" to="PlayerVisuals" method="_on_hand_anims_animation_finished"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
@@ -1696,3 +1700,4 @@ input_component = NodePath("../PlayerInput")
 [connection signal="state_changed" from="MovementStateMachine" to="DebugStateDisplay" method="_on_movement_state_machine_state_changed"]
 [connection signal="overlap" from="MovementStateMachine/PlayerCrouch" to="MovementStateMachine/PlayerIdle" method="_on_player_crouch_overlap"]
 [connection signal="overlap" from="MovementStateMachine/PlayerCrouch" to="MovementStateMachine/PlayerMove" method="_on_player_crouch_overlap"]
+[connection signal="request_ability_animation" from="MovementStateMachine/PlayerAbility" to="PlayerVisuals" method="_on_request_ability_animation"]

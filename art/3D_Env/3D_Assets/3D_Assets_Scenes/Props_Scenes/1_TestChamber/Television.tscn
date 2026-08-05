@@ -1,7 +1,23 @@
 [gd_scene format=3 uid="uid://c24i5tmt2brj2"]
 
+[ext_resource type="Texture2D" uid="uid://cts01vut76lvf" path="res://art/2d_assets/ui/real_world/TUTORIALSCREEN1.png" id="1_32m7u"]
 [ext_resource type="ArrayMesh" uid="uid://cxl0jp2u73tn6" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/1_TestChamber/Television.obj" id="1_xwf68"]
 [ext_resource type="Texture2D" uid="uid://bjmo0cxkf00uk" path="res://art/3D_Env/3D_Assets/3D_Textures/placeholder textures/Television/Television_light_Base_Colour_1001.png" id="2_u0q5s"]
+[ext_resource type="Texture2D" uid="uid://e8jqhykiwocu" path="res://art/2d_assets/ui/real_world/TUTORIALSCREEN2.png" id="2_uc50w"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ehvsm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_32m7u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_uc50w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kt5ar"]
 albedo_texture = ExtResource("2_u0q5s")
@@ -10,6 +26,12 @@ albedo_texture = ExtResource("2_u0q5s")
 points = PackedVector3Array(-5.0517335, -0.100583315, -0.61473334, 5.0517335, 5.2653074, 0.80606663, 5.0517335, 5.2653074, 0.17452271, -5.0517335, 5.2653074, 0.80606663, 5.0517335, 0.057005405, 0.016810581, 5.0517335, 0.68841016, -0.61473334, -5.0517335, 5.2653074, 0.17452271, -5.0517335, 0.057005405, 0.016810581, 5.0517335, 4.791491, 0.80606663, -5.0517335, 0.68841016, -0.61473334, 5.0517335, -0.100583315, -0.61473334, -5.0517335, 4.791491, 0.80606663, 5.0517335, 4.4757886, 0.016810581, 5.0517335, -0.100583315, -0.14104064, -5.0517335, 4.4757886, 0.016810581, -5.0517335, -0.100583315, -0.14104064)
 
 [node name="Television" type="StaticBody3D" unique_id=1230489901]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=634855209]
+transform = Transform3D(0.5107881, 0, 0, 0, 0.46422845, -0.16268359, 0, 0.07528006, 1.0032187, 0, 2.476935, 0.13949203)
+sprite_frames = SubResource("SpriteFrames_ehvsm")
+autoplay = "default"
+frame_progress = 0.66268873
 
 [node name="Television_Mesh" type="MeshInstance3D" parent="." unique_id=446709253]
 mesh = ExtResource("1_xwf68")

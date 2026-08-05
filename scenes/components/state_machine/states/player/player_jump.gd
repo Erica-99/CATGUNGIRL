@@ -40,7 +40,8 @@ func update(_delta: float) -> void:
 		else:
 			blackboard["dash_dir"] = actor.facing
 		transitioned.emit(self, "playerdash")
-	elif input_state["ability_held"] and blackboard["gun_holder"].current_gun.ability:
+	elif (input_state["ability_held"] and blackboard["gun_holder"].current_gun.ability and 
+	blackboard["gun_holder"].current_gun.ability.is_ability_enterable()):
 		transitioned.emit(self, "playerability")
 	elif actor.is_on_floor():
 		if actor.velocity.x == 0:

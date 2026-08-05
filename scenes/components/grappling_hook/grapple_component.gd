@@ -14,6 +14,7 @@ var actor: CharacterBody3D
 @export var reel_delay: float = 0.5
 @export var reel_force: float = 10
 @export var reel_minimum_distance: float = 2
+@export var max_grapple_distance: float = 30
 
 var state_machine: StateMachine
 var blackboard: Dictionary = {}
@@ -41,6 +42,7 @@ func initialise(ability_state: State, actor_blackboard: Dictionary) -> void:
 		"reel_delay": reel_delay,
 		"reel_force": reel_force,
 		"reel_min_dist": reel_minimum_distance,
+		"max_grapple_distance": max_grapple_distance,
 		"rope_attach_point": actor_blackboard["gun_holder"].current_gun.muzzle
 	}
 	

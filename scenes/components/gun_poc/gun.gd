@@ -6,6 +6,8 @@ const HITBOX_SCENE = preload("res://scenes/components/hitbox_component/hitbox_co
 ## gun component - handles aiming, normal fire, and charged shots
 ## attach as a child of player node
 
+@export var gun_name: String
+
 ## exported variables
 @export var bullet_scene: PackedScene	# bullet.tscn file to spawn when firing
 @export var team_component: Node		# player TeamComponent reference, passed to bullets
@@ -63,7 +65,7 @@ signal charge_progress_changed(progress: float)
 ## Signal emitted when charging stops (fired or cancelled)
 signal charge_ended()
 signal charge_started()
-signal enemy_hit(hurtbox: Area3D)
+signal enemy_hit(damage: float)
 
 ## perfect shot signal
 signal perfect_shot_fired()
@@ -259,7 +261,7 @@ func _shoot(damage, bullet_scale):
 
 
 func _handle_ammo():
-	EventManager.shot_fired.emit()
+	EventManager.shots_fired.emit(1)
 	
 	_current_ammo -= 1
 	if _current_ammo <= 0 and reload_full: 
@@ -292,7 +294,7 @@ func _spawn_bullet(damage: float, size: float) -> void:
 	bullet.initialize(aim_dir, damage_instance, team_component, size)
 	bullet.speed *= bullet_velocity_multiplier
 	var hb = bullet.get_node("HitboxComponent") 
-	hb.hurtbox_hit.connect(func(hurtbox): enemy_hit.emit(hurtbox))
+	hb.damage_dealt.connect(func(damage): enemy_hit.emit(damage))
 
 func _on_reload_timer_timeout() -> void:
 	_is_reloading = false

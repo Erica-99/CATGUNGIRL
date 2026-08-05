@@ -7,7 +7,10 @@ var active: bool = false:
 	set(value):
 		active = value
 		visible = active
-		_set_children_active(active)
+
+# Override this method if you need the state to only be enterable with certain conditions.
+func is_ability_enterable() -> bool:
+	return true
 
 func initialise(ability_state: State, actor_blackboard: Dictionary) -> void:
 	_ability_state = ability_state
@@ -23,3 +26,7 @@ func _set_children_active(_active: bool) -> void:
 	else:
 		for child in get_children():
 			child.process_mode = Node.PROCESS_MODE_INHERIT
+
+func request_animation(animation_name: String) -> void:
+	if _ability_state != null and active:
+		_ability_state.request_animation(animation_name)

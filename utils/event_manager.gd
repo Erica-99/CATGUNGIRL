@@ -20,8 +20,11 @@ signal player_health_changed(old_health, new_health, damage_or_heal_instance)
 signal player_interest_rank_changed(new_rank)
 
 signal new_mag_loaded(ammo: int, capacity: int)
-signal shot_fired
+signal shots_fired(shots: int)
 signal shots_loaded(shots: int)
+
+signal new_gun_equipped(gun_name: String)
+signal enable_gun_ui(enabled: bool)
 
 signal room_cleared(room_ID: Enums.Room, is_clear: bool)
 signal spawn_enemy(custom_delay: float, spawner_path: NodePath)

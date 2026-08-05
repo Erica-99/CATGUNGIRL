@@ -2,11 +2,10 @@ extends State
 class_name PlayerAbility
 
 signal end_ability
+signal request_ability_animation(animation_name: String)
 
 var actor: CharacterBody3D
 var input_component: InputComponent
-
-@export var grapple_component: GrappleComponent
 
 func init(blackboard_dict : Dictionary) -> void:
 	super(blackboard_dict)
@@ -17,7 +16,7 @@ func init(blackboard_dict : Dictionary) -> void:
 
 func enter() -> void:
 	var current_ability: Ability = blackboard["gun_holder"].current_gun.ability
-	if current_ability == null:
+	if current_ability == null or not current_ability.is_ability_enterable():
 		# I know this is awful I just can't come up with any better way of making it a one-shot input.
 		input_component._ability_held = false
 		
@@ -37,6 +36,11 @@ func update(_delta: float) -> void:
 func physics_update(_delta: float) -> void:
 	actor.move_and_slide()
 
+func request_animation(animation_name: String):
+	request_ability_animation.emit(animation_name)
 
 func _end_ability() -> void:
-	transitioned.emit(self, "PlayerIdle")
+	if actor.is_on_floor():
+		transitioned.emit(self, "PlayerMove")
+	else:
+		transitioned.emit(self, "PlayerJump")
