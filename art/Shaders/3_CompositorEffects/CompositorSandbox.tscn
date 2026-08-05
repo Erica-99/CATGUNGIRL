@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://cmp0sandbx4e2"]
+
+[ext_resource type="Script" uid="uid://dpulsefx3k1q8" path="res://art/Shaders/3_CompositorEffects/ScreenPulse/screen_pulse_effect.gd" id="1_pulse"]
+[ext_resource type="Script" uid="uid://c5nchrmfx8p0c" path="res://art/Shaders/3_CompositorEffects/ChromaticAberration/chromatic_aberration_effect.gd" id="2_chrom"]
+
+[sub_resource type="CompositorEffect" id="CompositorEffect_chrom"]
+resource_local_to_scene = false
+resource_name = ""
+enabled = true
+effect_callback_type = 4
+needs_motion_vectors = false
+needs_normal_roughness = false
+script = ExtResource("2_chrom")
+r_displacement = Vector2(-8.395, 0)
+g_displacement = Vector2(6.11, 0)
+
+[sub_resource type="CompositorEffect" id="CompositorEffect_pulse"]
+resource_local_to_scene = false
+resource_name = ""
+enabled = true
+effect_callback_type = 4
+needs_motion_vectors = false
+needs_normal_roughness = false
+script = ExtResource("1_pulse")
+
+[sub_resource type="Compositor" id="Compositor_main"]
+compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_chrom"), SubResource("CompositorEffect_pulse")])
+
+[sub_resource type="StandardMaterial3D" id="Mat_floor"]
+albedo_color = Color(0.8, 0.8, 0.8, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_floor"]
+size = Vector2(12, 12)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_test"]
+
+[sub_resource type="StandardMaterial3D" id="Mat_red"]
+albedo_color = Color(0.85, 0.15, 0.15, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_test"]
+
+[sub_resource type="StandardMaterial3D" id="Mat_blue"]
+albedo_color = Color(0.2, 0.4, 0.9, 1)
+
+[node name="CompositorSandbox" type="Node3D" unique_id=687224457]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1610763281]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 4.5)
+compositor = SubResource("Compositor_main")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=318757043]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 5, 0)
+shadow_enabled = true
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=295558006]
+material_override = SubResource("Mat_floor")
+mesh = SubResource("PlaneMesh_floor")
+
+[node name="Capsule" type="MeshInstance3D" parent="." unique_id=1480446937]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_test")
+
+[node name="BoxRed" type="MeshInstance3D" parent="." unique_id=576154697]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, -1)
+material_override = SubResource("Mat_red")
+mesh = SubResource("BoxMesh_test")
+
+[node name="BoxBlue" type="MeshInstance3D" parent="." unique_id=564443198]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0.5, -2)
+material_override = SubResource("Mat_blue")
+mesh = SubResource("BoxMesh_test")

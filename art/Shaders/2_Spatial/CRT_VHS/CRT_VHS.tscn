@@ -1,0 +1,311 @@
+[gd_scene format=3 uid="uid://6usudssqk0jx"]
+
+[ext_resource type="Material" uid="uid://bjnurqg1wcmre" path="res://art/Shaders/2_Spatial/CRT_VHS/SM_CRT_VHS.tres" id="1_jng6i"]
+[ext_resource type="Shader" uid="uid://benltksug3x3t" path="res://art/Shaders/2_Spatial/CRT_VHS/CRT_VHS.gdshader" id="2_dsigv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hrcfu"]
+albedo_color = Color(0.125, 0.125, 0.125, 1)
+refraction_scale = 0.35
+
+[sub_resource type="BoxMesh" id="BoxMesh_v6rxq"]
+material = SubResource("StandardMaterial3D_hrcfu")
+size = Vector3(21.03, 16.585, 0.16)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jng6i"]
+
+[sub_resource type="Sky" id="Sky_lv6na"]
+sky_material = SubResource("ProceduralSkyMaterial_jng6i")
+
+[sub_resource type="Environment" id="Environment_dsigv"]
+background_mode = 2
+sky = SubResource("Sky_lv6na")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a6qju"]
+
+[sub_resource type="Sky" id="Sky_sl642"]
+sky_material = SubResource("ProceduralSkyMaterial_a6qju")
+
+[sub_resource type="Environment" id="Environment_pybec"]
+background_color = Color(0.52898437, 0.5725517, 0.85935616, 1)
+sky = SubResource("Sky_sl642")
+glow_enabled = true
+
+[sub_resource type="Compositor" id="Compositor_4v0if"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hrcfu"]
+material = ExtResource("1_jng6i")
+size = Vector2(4.945, 5.19)
+
+[sub_resource type="Shader" id="Shader_o2mvd"]
+code = "
+shader_type spatial;
+
+uniform sampler2D SCREEN_TEXTURE: hint_screen_texture;
+uniform vec2 resolution = vec2(320.0, 180.0);
+uniform float scan_line_amount :hint_range(0.0, 1.0) = 1.0;
+uniform float warp_amount :hint_range(0.0, 5.0) = 0.1;
+uniform float noise_amount :hint_range(0.0, 0.3) = 0.03;
+uniform float interference_amount :hint_range(0.0, 1.0) = 0.2;
+uniform float grille_amount :hint_range(0.0, 1.0) = 0.1;
+uniform float grille_size :hint_range(1.0, 5.0) = 1.0;
+uniform float vignette_amount :hint_range(0.0, 2.0) = 0.6;
+uniform float vignette_intensity : hint_range(0.0, 1.0) = 0.4;
+uniform float aberation_amount :hint_range(0.0, 1.0) = 0.5;
+uniform float roll_line_amount :hint_range(0.0, 1.0) = 0.3;
+uniform float roll_speed :hint_range(-8.0, 8.0) = 1.0;
+uniform float scan_line_strength :hint_range(-12.0, -1.0) = -8.0;
+uniform float pixel_strength :hint_range(-4.0, 0.0) = -2.0;
+
+float random(vec2 uv){
+    return fract(cos(uv.x * 83.4827 + uv.y * 92.2842) * 43758.5453123);
+}
+
+vec3 fetch_pixel(vec2 uv, vec2 off){
+	vec2 pos = floor(uv * resolution + off) / resolution + vec2(0.5) / resolution;
+
+	float noise = 0.0;
+	if(noise_amount > 0.0){
+		noise = random(pos + fract(TIME)) * noise_amount;
+	}
+
+	if(max(abs(pos.x - 0.5), abs(pos.y - 0.5)) > 0.5){
+		return vec3(0.0, 0.0, 0.0);
+	}
+
+	vec3 clr = texture(SCREEN_TEXTURE , pos, -16.0).rgb + noise;
+	return clr;
+}
+
+// Distance in emulated pixels to nearest texel.
+vec2 Dist(vec2 pos){ 
+	pos = pos * resolution;
+	return - ((pos - floor(pos)) - vec2(0.5));
+}
+    
+// 1D Gaussian.
+float Gaus(float pos, float scale){ return exp2(scale * pos * pos); }
+
+// 3-tap Gaussian filter along horz line.
+vec3 Horz3(vec2 pos, float off){
+	vec3 b = fetch_pixel(pos, vec2(-1.0, off));
+	vec3 c = fetch_pixel(pos, vec2( 0.0, off));
+	vec3 d = fetch_pixel(pos, vec2( 1.0, off));
+	float dst = Dist(pos).x;
+	
+	// Convert distance to weight.
+	float scale = pixel_strength;
+	float wb = Gaus(dst - 1.0, scale);
+	float wc = Gaus(dst + 0.0, scale);
+	float wd = Gaus(dst + 1.0, scale);
+	
+	// Return filtered sample.
+	return (b * wb + c * wc + d * wd) / (wb + wc + wd);
+}
+
+// Return scanline weight.
+float Scan(vec2 pos, float off){
+	float dst = Dist(pos).y;
+	
+	return Gaus(dst + off, scan_line_strength);
+}
+
+// Allow nearest three lines to effect pixel.
+vec3 Tri(vec2 pos){
+	vec3 clr = fetch_pixel(pos, vec2(0.0));
+	if(scan_line_amount > 0.0){
+		vec3 a = Horz3(pos,-1.0);
+		vec3 b = Horz3(pos, 0.0);
+		vec3 c = Horz3(pos, 1.0);
+
+		float wa = Scan(pos,-1.0);
+		float wb = Scan(pos, 0.0);
+		float wc = Scan(pos, 1.0);
+
+		vec3 scanlines = a * wa + b * wb + c * wc;
+		clr = mix(clr, scanlines, scan_line_amount);
+	}
+	return clr;
+}
+
+// Takes in the UV and warps the edges, creating the spherized effect
+vec2 warp(vec2 uv){
+	vec2 delta = uv - 0.5;
+	float delta2 = dot(delta.xy, delta.xy);
+	float delta4 = delta2 * delta2;
+	float delta_offset = delta4 * warp_amount;
+	
+	vec2 warped = uv + delta * delta_offset;
+	return (warped - 0.5) / mix(1.0,1.2,warp_amount/5.0) + 0.5;
+}
+
+float vignette(vec2 uv){
+	uv *= 1.0 - uv.xy;
+	float vignette = uv.x * uv.y * 15.0;
+	return pow(vignette, vignette_intensity * vignette_amount);
+}
+
+float floating_mod(float a, float b){
+	return a - b * floor(a/b);
+}
+
+vec3 grille(vec2 uv){
+	float unit = PI / 3.0;
+	float scale = 2.0*unit/grille_size;
+	float r = smoothstep(0.5, 0.8, cos(uv.x*scale - unit));
+	float g = smoothstep(0.5, 0.8, cos(uv.x*scale + unit));
+	float b = smoothstep(0.5, 0.8, cos(uv.x*scale + 3.0*unit));
+	return mix(vec3(1.0), vec3(r,g,b), grille_amount);
+}
+
+float roll_line(vec2 uv){
+	float x = uv.y * 3.0 - TIME * roll_speed;
+	float f = cos(x) * cos(x * 2.35 + 1.1) * cos(x * 4.45 + 2.3);
+	float roll_line = smoothstep(0.5, 0.9, f);
+	return roll_line * roll_line_amount;
+}
+
+void fragment(){
+	vec2 pix = FRAGCOORD.xy;
+	vec2 pos = warp(SCREEN_UV);
+	
+	float line = 0.0;
+	if(roll_line_amount > 0.0){
+		line = roll_line(pos);
+	}
+
+	vec2 sq_pix = floor(pos * resolution) / resolution + vec2(0.5) / resolution;
+	if(interference_amount + roll_line_amount > 0.0){
+		float interference = random(sq_pix.yy + fract(TIME));
+		pos.x += (interference * (interference_amount + line * 6.0)) / resolution.x;
+	}
+
+	vec3 clr = Tri(pos);
+	if(aberation_amount > 0.0){
+		float chromatic = aberation_amount + line * 2.0;
+		vec2 chromatic_x = vec2(chromatic,0.0) / resolution.x;
+		vec2 chromatic_y = vec2(0.0, chromatic/2.0) / resolution.y;
+		float r = Tri(pos - chromatic_x).r;
+		float g = Tri(pos + chromatic_y).g;
+		float b = Tri(pos + chromatic_x).b;
+		clr = vec3(r,g,b);
+	}
+	
+	if(grille_amount > 0.0)clr *= grille(pix);
+	clr *= 1.0 + scan_line_amount * 0.6 + line * 3.0 + grille_amount * 2.0;
+	if(vignette_amount > 0.0)clr *= vignette(pos);
+	
+	ALBEDO.rgb = clr;
+	ALPHA = 1.0;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sl642"]
+render_priority = 0
+shader = SubResource("Shader_o2mvd")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.0
+shader_parameter/noise_amount = 0.058000002755
+shader_parameter/interference_amount = 1.0
+shader_parameter/grille_amount = 1.0
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.0
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/aberation_amount = 0.0
+shader_parameter/roll_line_amount = 0.1010000047975
+shader_parameter/roll_speed = 2.702000508345
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lv6na"]
+material = SubResource("ShaderMaterial_sl642")
+size = Vector2(4.945, 5.19)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_huftx"]
+render_priority = 0
+shader = ExtResource("2_dsigv")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.1
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.0
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ps7ce"]
+material = SubResource("ShaderMaterial_huftx")
+size = Vector2(4.945, 5.19)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5pcev"]
+render_priority = 0
+shader = ExtResource("2_dsigv")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.0
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.06000000285
+shader_parameter/grille_amount = 1.0
+shader_parameter/grille_size = 5.0
+shader_parameter/vignette_amount = 0.0
+shader_parameter/vignette_intensity = 0.0
+shader_parameter/aberation_amount = 0.550000026125
+shader_parameter/roll_line_amount = 0.5750000273125
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_o2mvd"]
+material = SubResource("ShaderMaterial_5pcev")
+size = Vector2(4.945, 5.19)
+
+[node name="Node3D" type="Node3D" unique_id=475400005]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1307506634]
+transform = Transform3D(0.99659806, 0, 0, 0, 0.99659806, 0, 0, 0, 0.99659806, 0.05844307, 7.1309156, 0.050154686)
+mesh = SubResource("BoxMesh_v6rxq")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1967221081]
+environment = SubResource("Environment_dsigv")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1705621564]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8660774, 6.835373, 11.107961)
+environment = SubResource("Environment_pybec")
+compositor = SubResource("Compositor_4v0if")
+fov = 85.6
+
+[node name="Label3D2" type="Label3D" parent="." unique_id=1739271777]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.035232544, 13.80993, 0.2210517)
+text = "CRT/VHS Screen Effect"
+font_size = 132
+
+[node name="Screen" type="MeshInstance3D" parent="." unique_id=662978794]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -2.284134, 4.143, 0.23809701)
+mesh = SubResource("PlaneMesh_hrcfu")
+
+[node name="Screen3" type="MeshInstance3D" parent="." unique_id=300236825]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -7.3841324, 9.462927, 0.17799997)
+mesh = SubResource("PlaneMesh_lv6na")
+
+[node name="Screen4" type="MeshInstance3D" parent="." unique_id=225503159]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -2.284134, 9.462927, 0.17799997)
+mesh = SubResource("PlaneMesh_ps7ce")
+
+[node name="Screen2" type="MeshInstance3D" parent="." unique_id=1682303166]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -7.3841324, 4.143, 0.178)
+mesh = SubResource("PlaneMesh_o2mvd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1054927365]
+transform = Transform3D(0.99659806, 0, 0, 0, 0.99659806, 0, 0, 0, 0.99659806, 0.05844307, 7.1309156, 0.050154686)
+mesh = SubResource("BoxMesh_v6rxq")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2023430464]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.991999, 0)
+shadow_enabled = true
