@@ -30,7 +30,9 @@ func _ready() -> void:
 		var gun = guns.instantiate()
 		add_child(gun)
 		gun.owner = self
-		gun.input_component = input_component
+		if input_component:
+			# if component is provided then player must be attached
+			gun.input_component = input_component
 		gun.Gun_Animation = Gun_Animation
 		gun.Muzzle_VFX = Muzzle_VFX
 		gun.team_component = team_component

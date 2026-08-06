@@ -26,6 +26,7 @@
 [ext_resource type="Script" uid="uid://rwkg37dkkbs1" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_patrol.gd" id="22_bmk6k"]
 [ext_resource type="Script" uid="uid://dpwol7txodmxp" path="res://scenes/components/soft_collision.gd" id="22_hw6pp"]
 [ext_resource type="Script" uid="uid://d1xvpcaucwgpw" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_stun.gd" id="25_m0g3o"]
+[ext_resource type="PackedScene" uid="uid://dp6f6qebbi8kl" path="res://scenes/components/gun_poc/gun_holder.tscn" id="27_wri7d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hw6pp"]
 animations = [{
@@ -606,6 +607,8 @@ script = ExtResource("22_hw6pp")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SoftCollider" unique_id=260812791]
 shape = SubResource("SphereShape3D_uh1gn")
 debug_color = Color(0, 0.61960787, 0.5686275, 0.41960785)
+
+[node name="GunHolder" parent="." unique_id=407642416 instance=ExtResource("27_wri7d")]
 
 [connection signal="facing_changed" from="." to="Scrub_Mesh" method="_on_scrub_facing_changed"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
