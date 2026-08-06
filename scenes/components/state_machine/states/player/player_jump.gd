@@ -8,7 +8,8 @@ var input_component: InputComponent
 
 var jump_vel: float
 var jump_velocity_applied := false
-
+@export var jump_cut_multiplier: float = 0.5
+var jump_cut := false
 
 func init(blackboard_dict : Dictionary) -> void:
 	super(blackboard_dict)
@@ -17,14 +18,15 @@ func init(blackboard_dict : Dictionary) -> void:
 
 func enter() -> void:
 	jump_velocity_applied = false
+	jump_cut = false
 	if blackboard["mantle_detector"] != null:
 		blackboard["mantle_detector"].set_checking_enabled(true)
 	jump_vel = actor.jump_velocity
 	
-	# Evaluate and adjust for super
-	var input = input_component.get_input_state()
-	if input["superjump_held"]:
-		jump_vel *= 1.5
+	# uncomment for super jump (also assign key to it)
+	#var input = input_component.get_input_state()
+	#if input["superjump_held"]:
+	#	jump_vel *= 1.5
 
 func exit() -> void:
 	jump_velocity_applied = false
@@ -52,16 +54,22 @@ func update(_delta: float) -> void:
 		transitioned.emit(self, "playerfall")
 
 func physics_update(_delta: float) -> void:
+	var input_state = input_component.get_input_state()
+	
 	if not jump_velocity_applied:
 		actor.velocity.y = jump_vel
 		jump_velocity_applied = true
 		
+	# cut jump short
+	if !input_state["jumping"] and actor.velocity.y > 0.0 and !jump_cut:
+		actor.velocity.y *= jump_cut_multiplier
+		jump_cut = true
+	
 	# Add gravity
 	if not actor.is_on_floor():
 		actor.velocity += actor.get_gravity() * _delta * gravity_multiplier
 	
 	# Add air movement
-	var input_state = input_component.get_input_state()
 	var input_dir: float = input_state["movement"]
 	var direction := (actor.transform.basis * Vector3(input_dir, 0, 0)).normalized()
 	var speed = actor.air_speed
