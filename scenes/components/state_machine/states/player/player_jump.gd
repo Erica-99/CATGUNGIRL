@@ -22,11 +22,6 @@ func enter() -> void:
 	if blackboard["mantle_detector"] != null:
 		blackboard["mantle_detector"].set_checking_enabled(true)
 	jump_vel = actor.jump_velocity
-	
-	# uncomment for super jump (also assign key to it)
-	#var input = input_component.get_input_state()
-	#if input["superjump_held"]:
-	#	jump_vel *= 1.5
 
 func exit() -> void:
 	jump_velocity_applied = false
