@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://dsmsaprxf0d5a"]
+
+[ext_resource type="PackedScene" uid="uid://tia5j8uydrvd" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/BrainPlatform.tscn" id="1_omfvg"]
+[ext_resource type="PackedScene" uid="uid://b1p88l2y8q31k" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/SteelBeamDiagonal.tscn" id="2_sm7ga"]
+[ext_resource type="PackedScene" uid="uid://c4dic5lfiwofb" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/ServerRack3.tscn" id="3_a87dm"]
+[ext_resource type="PackedScene" uid="uid://bpjabu4plwqym" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/Rails/RailDiagonal.tscn" id="4_484yh"]
+[ext_resource type="PackedScene" uid="uid://4rsfb5kh40wj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/B_Collisions/45Ramp.tscn" id="5_sm7ga"]
+
+[node name="Pile1" type="Node3D" unique_id=787250736]
+
+[node name="BrainPlatform173" parent="." unique_id=357363834 instance=ExtResource("1_omfvg")]
+transform = Transform3D(0.9041751, -0.119503304, -0.41010526, 0.078676105, 0.99023473, -0.11509081, 0.41985407, 0.071796715, 0.9047476, 6.1368256, 2.5492725, -5)
+visible = false
+
+[node name="BrainPlatform_Mesh" parent="BrainPlatform173" index="0" unique_id=621053924]
+transform = Transform3D(2, -7.450581e-09, 0, 7.450581e-09, 1.9999999, 0, -5.9604645e-08, -1.4901161e-08, 1.9999999, 13.562628, -1.7925494, -6.1515775)
+
+[node name="BrainPlatform_Collision" parent="BrainPlatform173" index="1" unique_id=905346918]
+transform = Transform3D(2, -7.450581e-09, 0, 7.450581e-09, 1.9999999, 0, -5.9604645e-08, -1.4901161e-08, 1.9999999, 0, 0, 0)
+
+[node name="SteelBeamDiagonal48" parent="." unique_id=1825941401 instance=ExtResource("2_sm7ga")]
+transform = Transform3D(2.5820503e-08, 0.5907043, -0.80688816, 1, -4.371139e-08, 0, -3.52702e-08, -0.80688816, -0.5907043, 1.5569763, 0.8000002, 5.8418746)
+visible = false
+
+[node name="SteelBeamDiagonal_Mesh" parent="SteelBeamDiagonal48" index="0" unique_id=1178736235]
+transform = Transform3D(2, 0, 0, 0, 1.9999999, 0, 3.5527137e-15, 0, 1.9999999, 3.5762787e-07, 8.860563, -12.10332)
+
+[node name="ServerRack42" parent="." unique_id=437024863 instance=ExtResource("3_a87dm")]
+transform = Transform3D(0.19650123, 0.26168865, 0.94493735, -0.9724167, -0.071509644, 0.22201928, 0.12567206, -0.96249956, 0.24041867, 2.3224335, 2.9891443, 0.6917529)
+visible = false
+
+[node name="ServerRack3_Mesh" parent="ServerRack42" index="0" unique_id=1090861390]
+transform = Transform3D(2, -1.4901161e-08, 1.1175871e-08, 2.9802322e-08, 2, 5.9604645e-08, -4.8428774e-08, 0, 2, 2.947517, 3.9253302, 14.174053)
+visible = false
+
+[node name="ServerRack3_Collision" parent="ServerRack42" index="1" unique_id=1460130642]
+visible = false
+
+[node name="RailDiagonal2" parent="." unique_id=2102622803 instance=ExtResource("4_484yh")]
+transform = Transform3D(-0.42197624, -1.4918494, 1.2634561, -1.1049289, 1.2483046, 1.1049289, -1.6127822, -0.46488774, -1.0875708, 0.9082489, -7.672763, -1.7294245)
+visible = false
+
+[node name="RailDiagonal_Mesh" parent="RailDiagonal2" index="0" unique_id=1850857752]
+transform = Transform3D(1, 4.4703484e-08, 2.9802322e-08, -4.4703484e-08, 1, 5.9604645e-08, -2.9802322e-08, 0, 1, -1.5824103, -5.5944347, 4.737961)
+visible = false
+
+[node name="RailDiagonal_Collision" parent="RailDiagonal2" index="1" unique_id=701366299]
+visible = false
+
+[node name="45Ramp" parent="." unique_id=2094150326 instance=ExtResource("5_sm7ga")]
+transform = Transform3D(-1.146196e-07, 0, -2.600079, 0, 2.2346046, 0, 2.622191, 0, -1.13653066e-07, 3.7893848, 0, 0)
+
+[node name="45Ramp3" parent="." unique_id=716516782 instance=ExtResource("5_sm7ga")]
+transform = Transform3D(1.4326075e-14, 1.5496886, 1.13653066e-07, 1.1461961e-07, -6.773904e-08, 2.600079, 2.622191, 0, -1.1365307e-07, 0.61694396, 4.465971, 0)
+
+[node name="45Ramp2" parent="." unique_id=1515861855 instance=ExtResource("5_sm7ga")]
+transform = Transform3D(3.438588e-07, 0, 0.82862204, 0, 0.32405972, 0, -2.6221907, 0, 1.0866066e-07, -6.906087, 0, 0)
+
+[editable path="BrainPlatform173"]
+[editable path="SteelBeamDiagonal48"]
+[editable path="ServerRack42"]
+[editable path="RailDiagonal2"]
