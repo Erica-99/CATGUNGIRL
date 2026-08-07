@@ -18,11 +18,15 @@ material = SubResource("StandardMaterial3D_floor")
 size = Vector2(20, 20)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_toon_b"]
+radial_segments = 129
+rings = 59
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0a44h"]
 next_pass = ExtResource("3_aura_b")
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_std"]
+radial_segments = 120
+rings = 77
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m018k"]
 next_pass = ExtResource("2_aura_a")
@@ -34,6 +38,8 @@ roughness = 0.8
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_big"]
 material = SubResource("StandardMaterial3D_big")
+radial_segments = 150
+rings = 32
 
 [node name="AuraOutlineTest" type="Node3D" unique_id=956290215]
 
@@ -51,6 +57,7 @@ current = true
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=1104044111]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.051750302, 0)
 mesh = SubResource("PlaneMesh_floor")
+metadata/_edit_lock_ = true
 
 [node name="CapsuleToonAuraB" type="MeshInstance3D" parent="." unique_id=680530556]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 1.1, 0)
