@@ -1,25 +1,13 @@
 [gd_scene format=3 uid="uid://ql0623qvuqmy"]
 
-[ext_resource type="Shader" uid="uid://deiyn6osgmb61" path="res://art/TechArt/2_VFX/fire_projectile/fire_body.tres" id="1_5ie3l"]
-[ext_resource type="Shader" uid="uid://bxne5yngnjmbt" path="res://art/TechArt/2_VFX/fire_projectile/fire_head.tres" id="2_5y6v8"]
+[ext_resource type="Material" uid="uid://n0bbv4rcjrc1" path="res://art/TechArt/2_VFX/fire_projectile/prefabs/M_fire_body.tres" id="2_5y6v8"]
 [ext_resource type="Material" uid="uid://bpcngb6p4ln3c" path="res://art/TechArt/2_VFX/fire_projectile/prefabs/M_fire_trail.tres" id="3_rcinq"]
+[ext_resource type="Material" uid="uid://dtyk6mtb0qwoo" path="res://art/TechArt/2_VFX/fire_projectile/prefabs/M_fire_head.tres" id="3_srkfl"]
 [ext_resource type="Texture2D" uid="uid://6uqlxmi5nqdt" path="res://art/TechArt/2_VFX/fire_projectile/tex/T_VFX_basic1.PNG" id="4_srkfl"]
 [ext_resource type="Script" uid="uid://dtltyva8ca2cv" path="res://art/TechArt/2_VFX/Trail3D.gd" id="5_e7xiy"]
 [ext_resource type="PackedScene" uid="uid://d1e6k01qln8q7" path="res://art/TechArt/2_VFX/fire_projectile/models/fire.blend" id="6_fvrs6"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_psoeq"]
-render_priority = 3
-shader = ExtResource("1_5ie3l")
-shader_parameter/color = Color(2.4061394, 1.848089, 0.6770981, 1)
-shader_parameter/speed = Vector2(0.1, 3)
-
 [sub_resource type="SphereMesh" id="SphereMesh_lwhn1"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fvrs6"]
-render_priority = 0
-shader = ExtResource("2_5y6v8")
-shader_parameter/ColorParameter = Color(0.917647, 0.602206, 0, 1)
-shader_parameter/fresnel_pow = 6.065
 
 [sub_resource type="QuadMesh" id="QuadMesh_mfimp"]
 orientation = 0
@@ -64,13 +52,13 @@ size = Vector2(0.1, 0.5)
 [node name="fire" unique_id=841000291 instance=ExtResource("6_fvrs6")]
 
 [node name="Sphere" parent="." index="0" unique_id=255381963]
-material_override = SubResource("ShaderMaterial_psoeq")
+material_override = ExtResource("2_5y6v8")
 cast_shadow = 0
 
 [node name="head" type="MeshInstance3D" parent="." index="1" unique_id=1573158119]
 transform = Transform3D(2.34, 0, 0, 0, 2.34, 0, 0, 0, 2.34, 0, 0, -0.07895999)
 mesh = SubResource("SphereMesh_lwhn1")
-surface_material_override/0 = SubResource("ShaderMaterial_fvrs6")
+surface_material_override/0 = ExtResource("3_srkfl")
 
 [node name="trail" type="MeshInstance3D" parent="." index="2" unique_id=1681153090]
 transform = Transform3D(-1.4968649, -9.8389506e-08, 4.433392e-07, 2.9802322e-08, -2.4708776, -1.671526e-07, 1.3086009e-07, -6.2855364e-08, 5.0712085, 1.9848535e-08, 0.1536982, 1.9913507)
