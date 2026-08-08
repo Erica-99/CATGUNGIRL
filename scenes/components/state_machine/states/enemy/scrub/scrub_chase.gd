@@ -41,3 +41,15 @@ func physics_update(delta: float) -> void:
 	actor.velocity.x = move_toward(actor.velocity.x, target_velocity, chase_acceleration * delta)
 	actor.move_and_slide()
 	
+
+
+func _on_att_range_area_3d_body_entered(body: Node3D) -> void:
+	if !actor.is_dead:
+		actor.in_attacking_range = true
+		if actor.detected_player:
+			transitioned.emit(self, "scrubattack")
+
+
+func _on_flee_area_3d_body_entered(body: Node3D) -> void:
+	if !actor.is_dead:
+		transitioned.emit(self, "scrubflee")

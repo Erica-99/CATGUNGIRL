@@ -41,3 +41,8 @@ func physics_update(delta: float) -> void:
 	var target_velocity: float = direction * flee_speed
 	actor.velocity.x = move_toward(actor.velocity.x, target_velocity, flee_acceleration * delta)
 	actor.move_and_slide()
+
+
+func _on_flee_area_3d_body_exited(body: Node3D) -> void:
+	if !actor.is_dead:
+		transitioned.emit(self, "scrubattack")
