@@ -5,6 +5,7 @@
 [ext_resource type="Material" uid="uid://bpcngb6p4ln3c" path="res://art/TechArt/2_VFX/fire_projectile/prefabs/M_fire_trail.tres" id="3_rcinq"]
 [ext_resource type="Texture2D" uid="uid://6uqlxmi5nqdt" path="res://art/TechArt/2_VFX/fire_projectile/tex/T_VFX_basic1.PNG" id="4_srkfl"]
 [ext_resource type="Script" uid="uid://dtltyva8ca2cv" path="res://art/TechArt/2_VFX/Trail3D.gd" id="5_e7xiy"]
+[ext_resource type="PackedScene" uid="uid://d1e6k01qln8q7" path="res://art/TechArt/2_VFX/fire_projectile/models/fire.blend" id="6_fvrs6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_psoeq"]
 render_priority = 3
@@ -58,11 +59,11 @@ color = Color(1.4369954, 0.97113675, 0.4220891, 1)
 [sub_resource type="QuadMesh" id="QuadMesh_w60dx"]
 size = Vector2(0.1, 0.5)
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_qgcfn"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_5y6v8"]
 
-[node name="fire" unique_id=841000291]
+[node name="fire" unique_id=841000291 instance=ExtResource("6_fvrs6")]
 
-[node name="Sphere" parent="." index="0" unique_id=1125418078]
+[node name="Sphere" parent="." index="0" unique_id=255381963]
 material_override = SubResource("ShaderMaterial_psoeq")
 cast_shadow = 0
 
@@ -87,7 +88,7 @@ draw_pass_1 = SubResource("QuadMesh_w60dx")
 
 [node name="Trail3D" type="MeshInstance3D" parent="." index="4" unique_id=689169411]
 visible = false
-mesh = SubResource("ImmediateMesh_qgcfn")
+mesh = SubResource("ImmediateMesh_5y6v8")
 script = ExtResource("5_e7xiy")
 fromWidth = 1.0
 toWidth = 1.0
