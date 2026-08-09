@@ -6,14 +6,14 @@ extends Node3D
 @onready var camera = $Camera
 @onready var player = $"../Player"
 @onready var playerrotate = $Player_rotation_pivot
-@export var default_offset = Vector3(0,20,45)
+@export var default_offset = Vector3(0,10,40)
 @export var CameraSpeed = 6
 
 ##The level of influence the target point has on the camera, 0 focuses on player, 1 focuses on target
 @export var Player_Target_Ratio = 0.5
 
 
-var looking_at_player = false
+var looking_at_player = true
 var targetpos
 var targetfov
 var playercam_pos
