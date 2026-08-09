@@ -1,10 +1,62 @@
 [gd_scene format=3 uid="uid://c8g2gv64sagbn"]
 
 [ext_resource type="Script" uid="uid://t3uocp5iyaxo" path="res://scenes/actors/missile/missile_launcher.gd" id="1_h533r"]
-[ext_resource type="Texture2D" uid="uid://crng4f3f2avnf" path="res://icon.svg" id="2_534j0"]
+[ext_resource type="Texture2D" uid="uid://o6wqi1oa7nku" path="res://art/2d_assets/real_world/vfx/explosion_placeholder.png" id="2_uqsi4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbkci"]
+atlas = ExtResource("2_uqsi4")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q40hx"]
+atlas = ExtResource("2_uqsi4")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nh7ad"]
+atlas = ExtResource("2_uqsi4")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdjve"]
+atlas = ExtResource("2_uqsi4")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bxcr"]
+atlas = ExtResource("2_uqsi4")
+region = Rect2(1024, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spj1w"]
+atlas = ExtResource("2_uqsi4")
+region = Rect2(1280, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_belb6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbkci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q40hx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nh7ad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdjve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bxcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spj1w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
 
 [node name="MissileLauncher" type="Node3D" unique_id=1269207243]
 script = ExtResource("1_h533r")
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=701048955]
-texture = ExtResource("2_534j0")
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1855114819]
+sprite_frames = SubResource("SpriteFrames_belb6")
+frame = 5
+frame_progress = 0.4961321
