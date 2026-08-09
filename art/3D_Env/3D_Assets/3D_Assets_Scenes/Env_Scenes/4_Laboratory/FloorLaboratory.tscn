@@ -1,10 +1,25 @@
 [gd_scene format=3 uid="uid://dqba7lkeq2lmh"]
 
 [ext_resource type="ArrayMesh" uid="uid://51wh0u4sskjq" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/4_Laboratory/FloorLaboratory.obj" id="1_58cxq"]
-[ext_resource type="Texture2D" uid="uid://b4vdk8nkr21tl" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Floor/TextureTrimSheetFloorL.png" id="2_y11j3"]
+[ext_resource type="Texture2D" uid="uid://dhh8qk80s8tub" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/FloorRoof/FloorRoofLaboratory_Base_color.png" id="2_bcho1"]
+[ext_resource type="Texture2D" uid="uid://38h5c0c1uo5m" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/FloorRoof/FloorRoofLaboratory_Mixed_AO.png" id="3_wrcgd"]
+[ext_resource type="Texture2D" uid="uid://b5en7uty47aw0" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/FloorRoof/FloorRoofLaboratory_Height.png" id="4_dry3n"]
+[ext_resource type="Texture2D" uid="uid://d3vbtdh8njif" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/FloorRoof/FloorRoofLaboratory_Base_metalness.png" id="5_eia4o"]
+[ext_resource type="Texture2D" uid="uid://e7jj2cuy4eyu" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/FloorRoof/FloorRoofLaboratory_Normal_OpenGL.png" id="6_366fe"]
+[ext_resource type="Texture2D" uid="uid://baqxi8qwwrt86" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/FloorRoof/FloorRoofLaboratory_Specular_roughness.png" id="7_iy7q1"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yumla"]
-albedo_texture = ExtResource("2_y11j3")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hp8wr"]
+albedo_texture = ExtResource("2_bcho1")
+metallic = 1.0
+metallic_texture = ExtResource("5_eia4o")
+roughness_texture = ExtResource("7_iy7q1")
+normal_enabled = true
+normal_texture = ExtResource("6_366fe")
+ao_enabled = true
+ao_texture = ExtResource("3_wrcgd")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("4_dry3n")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sisyk"]
 points = PackedVector3Array(-3.001934, -0.100005, -2.500938, -3.001934, 0.100004986, -2.500938, 3.001934, -0.100005, -2.500938, -3.001934, -0.100005, 2.499062, -3.001934, 0.100004986, 2.499062, 3.001934, 0.100004986, -2.500938, 3.001934, -0.100005, 2.499062, 3.001934, 0.100004986, 2.499062)
@@ -14,7 +29,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="FloorLaboratory_Mesh" type="MeshInstance3D" parent="." unique_id=1219280426]
 mesh = ExtResource("1_58cxq")
-surface_material_override/0 = SubResource("StandardMaterial3D_yumla")
+surface_material_override/0 = SubResource("StandardMaterial3D_hp8wr")
 
 [node name="FloorWareHouse_Collision" type="CollisionShape3D" parent="." unique_id=322746759]
 shape = SubResource("ConvexPolygonShape3D_sisyk")
