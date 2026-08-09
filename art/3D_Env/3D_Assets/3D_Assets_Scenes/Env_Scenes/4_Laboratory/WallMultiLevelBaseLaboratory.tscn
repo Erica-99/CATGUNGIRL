@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cschs0x82o57w"]
+
+[ext_resource type="ArrayMesh" uid="uid://b4a12loxjnpnl" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/4_Laboratory/WallMultiLevelBaseLaboratory.obj" id="1_il600"]
+[ext_resource type="Texture2D" uid="uid://cptd6ds2c83sd" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/TextureTrimSheetWallL.png" id="2_m84uf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jel8b"]
+albedo_texture = ExtResource("2_m84uf")
+
+[node name="WallMultiLevelBaseLaboratory" type="StaticBody3D" unique_id=2111039454]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="WallMultiLevelBaseLaboratory_Mesh" type="MeshInstance3D" parent="." unique_id=687846911]
+mesh = ExtResource("1_il600")
+surface_material_override/0 = SubResource("StandardMaterial3D_jel8b")

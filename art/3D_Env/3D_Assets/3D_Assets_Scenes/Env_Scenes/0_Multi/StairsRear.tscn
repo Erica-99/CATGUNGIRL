@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b4gr00hsf1l1f"]
+
+[ext_resource type="ArrayMesh" uid="uid://cvyspun4l34jr" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/StairsRear.obj" id="1_6c1yf"]
+[ext_resource type="Texture2D" uid="uid://bascwlbscwlww" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/MeshFloor_Base_color.png" id="2_djc1o"]
+[ext_resource type="Texture2D" uid="uid://wu5i7r37quhp" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/MeshFloor_Mixed_AO.png" id="3_nsn7k"]
+[ext_resource type="Texture2D" uid="uid://ddl4hxsg5k48g" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/MeshFloor_Height.png" id="4_ykt5v"]
+[ext_resource type="Texture2D" uid="uid://j40rerimy8tj" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/MeshFloor_Metallic.png" id="5_88fpm"]
+[ext_resource type="Texture2D" uid="uid://dp0ruh7q1e3j4" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/MeshFloor_Normal_OpenGL.png" id="6_l44e2"]
+[ext_resource type="Texture2D" uid="uid://c4ek3iwrnnxp1" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/MeshFloor_Roughness.png" id="7_48dfi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ael1d"]
+transparency = 1
+albedo_texture = ExtResource("2_djc1o")
+metallic = 1.0
+metallic_texture = ExtResource("5_88fpm")
+roughness_texture = ExtResource("7_48dfi")
+normal_enabled = true
+normal_texture = ExtResource("6_l44e2")
+ao_enabled = true
+ao_texture = ExtResource("3_nsn7k")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("4_ykt5v")
+
+[node name="StairsRear" type="StaticBody3D" unique_id=1677047197]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="StairsRear_Mesh" type="MeshInstance3D" parent="." unique_id=1922224383]
+mesh = ExtResource("1_6c1yf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ael1d")

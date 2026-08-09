@@ -26,8 +26,7 @@ func init(blackboard_dict : Dictionary) -> void:
 	slow_down_speed = blackboard["slow_down_speed"]
 
 func enter() -> void:
-	#gun_component._is_firing = true
-	gun_component._bullets_fired = 0
+	pass
 
 func exit() -> void:
 	gun_component._is_firing = false
@@ -45,3 +44,15 @@ func physics_update(delta: float) -> void:
 	actor.velocity.x = move_toward(actor.velocity.x, 0, slow_down_speed * delta)
 	#anim.play("idle")
 	actor.move_and_slide()
+
+
+func _on_att_range_area_3d_body_exited(body: Node3D) -> void:
+	if !actor.is_dead:
+		actor.in_attacking_range = true
+		if actor.detected_player:
+			transitioned.emit(self, "scrubchase")
+
+
+func _on_flee_area_3d_body_entered(body: Node3D) -> void:
+	if !actor.is_dead:
+		transitioned.emit(self, "scrubflee")

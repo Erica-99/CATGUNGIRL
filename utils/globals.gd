@@ -15,12 +15,13 @@ func _ready() -> void:
 const LEVEL_PATHS: Dictionary = {
 	"test1": "res://scenes/levels/test_level.tscn",
 	"test2": "res://scenes/levels/gun_test_level.tscn",
-	"Stage1": "res://art/3D_Env/Stages/Stage1.tscn",
-	"Stage2": "res://art/3D_Env/Stages/Stage2.tscn",
-	"Stage3": "res://art/3D_Env/Stages/Stage3.tscn",
-	"Stage4": "res://art/3D_Env/Stages/Stage4.tscn",
-	"Stage5": "res://art/3D_Env/Stages/Stage5.tscn",
-	"Stage6": "res://art/3D_Env/Stages/Stage6.tscn"
+	"Stage1": "res://scenes/levels/Stages/Stage1.tscn",
+	"Stage2": "res://scenes/levels/Stages/Stage2.tscn",
+	"Stage3": "res://scenes/levels/Stages/Stage3.tscn",
+	"Stage4": "res://scenes/levels/Stages/Stage4.tscn",
+	"Stage5": "res://scenes/levels/Stages/Stage5.tscn",
+	"Stage6": "res://scenes/levels/Stages/Stage6.tscn",
+	"main_menu": "res://scenes/ui/menu_screens/main_menu.tscn"
 }
 
 func _add_one_to_insanity() -> void:

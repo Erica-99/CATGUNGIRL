@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://b1xovfmr2jo4s"]
+
+[ext_resource type="Texture2D" uid="uid://crng4f3f2avnf" path="res://icon.svg" id="1_msdca"]
+[ext_resource type="Script" uid="uid://b6247shbr3kkr" path="res://scenes/components/grappling_hook/grappling_hook_hook.gd" id="1_rpau1"]
+[ext_resource type="PackedScene" uid="uid://bkwgnwc4h86gr" path="res://scenes/components/grappling_hook/rope.tscn" id="3_sadby"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_sadby"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sadby"]
+
+[node name="GrapplingHookHook" type="Node3D" unique_id=537857992]
+script = ExtResource("1_rpau1")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=763423315]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+texture = ExtResource("1_msdca")
+
+[node name="Rope" parent="." unique_id=1877789551 instance=ExtResource("3_sadby")]
+mesh = SubResource("ImmediateMesh_sadby")
+
+[node name="EarlyCollision" type="Area3D" parent="." unique_id=1966893026]
+collision_layer = 2
+collision_mask = 133
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EarlyCollision" unique_id=198183016]
+shape = SubResource("BoxShape3D_sadby")
+
+[node name="EarlyCollisionEnemy" type="Area3D" parent="." unique_id=1106496065]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EarlyCollisionEnemy" unique_id=1224908450]
+shape = SubResource("BoxShape3D_sadby")
+
+[connection signal="body_entered" from="EarlyCollision" to="." method="_on_early_collision_body_entered"]
+[connection signal="body_entered" from="EarlyCollisionEnemy" to="." method="_on_early_collision_enemy_body_entered"]

@@ -1,4 +1,5 @@
 extends Node
+class_name HealthComponent
 
 ## Health will be gained through actions like shooting enemies,
 ## headshots, etc. And lost from getting hit.
@@ -6,6 +7,10 @@ extends Node
 signal health_initialised(init_current_health: float, init_max_health: float)
 signal health_changed(old_health: float, new_health: float, damage_or_heal_instance: DamageHealInstance)
 signal killed(killing_blow: DamageHealInstance, health_before_death)
+
+## Stun Variables
+@export var stun_state: State
+@export var state_machine: StateMachine
 
 ## Health variables
 var _current_health: float
@@ -88,10 +93,21 @@ func take_damage_or_heal(damage_or_heal_instance: DamageHealInstance) -> void:
 			if killable and current_health <= min_health:
 				killed.emit(damage_or_heal_instance, prev_health - min_health)
 		
+		## If stun (i.e. if stun_time value in DamageHealInstance more than 0)
+		## then make state machine switch to given state
+		if stun_state != null and damage_or_heal_instance.stun_time > 0:
+			if !(state_machine.current_state is EnemyDeath):
+				set_stun(stun_state, damage_or_heal_instance.stun_time)
+		
 	elif healable and damage_or_heal_instance.is_heal:
 		var prev_health = current_health
 		current_health += damage_or_heal_instance.amount
 		health_changed.emit(prev_health, current_health, damage_or_heal_instance)
+
+func set_stun(stun_version: State, stun_time: float) -> void:
+	print("Stun Attempted")
+	stun_version.total_stun_time = stun_time
+	state_machine.current_state.transitioned.emit(state_machine.current_state, stun_version.name.to_lower())
 
 ## _process(delta) allows for updates independent of actual framerate.
 func _process(delta):

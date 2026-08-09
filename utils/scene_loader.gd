@@ -54,3 +54,20 @@ func _process(_delta: float) -> void:
 			get_tree().change_scene_to_packed(loaded_resource)
 			load_finished.emit()
 			set_process(false)
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("debug_level_1"):
+		_load_scene(Globals.LEVEL_PATHS["Stage1"])
+	elif event.is_action_pressed("debug_level_2"):
+		_load_scene(Globals.LEVEL_PATHS["Stage2"])
+	elif event.is_action_pressed("debug_level_3"):
+		_load_scene(Globals.LEVEL_PATHS["Stage3"])
+	elif event.is_action_pressed("debug_level_4"):
+		_load_scene(Globals.LEVEL_PATHS["Stage4"])
+	elif event.is_action_pressed("debug_level_5"):
+		_load_scene(Globals.LEVEL_PATHS["Stage5"])
+	elif event.is_action_pressed("debug_level_6"):
+		_load_scene(Globals.LEVEL_PATHS["Stage6"])
+	elif event.is_action_pressed("reload_game"):
+		_load_scene(Globals.LEVEL_PATHS["main_menu"])

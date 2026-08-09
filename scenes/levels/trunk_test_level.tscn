@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://cev7k0r6fgpd0"]
+
+[ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="1_qccgu"]
+[ext_resource type="PackedScene" uid="uid://c2474vxopv84k" path="res://scenes/actors/enemies/trunk/trunk.tscn" id="2_qccgu"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hwlmk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lrixx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qccgu"]
+size = Vector3(1, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l84o4"]
+size = Vector3(1, 5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_l84o4"]
+size = Vector3(30, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pm0vx"]
+size = Vector3(30, 1, 1)
+
+[node name="ScrubTestLevel" type="Node3D" unique_id=922912552]
+
+[node name="World" type="Node3D" parent="." unique_id=1704519241]
+
+[node name="Ground" type="MeshInstance3D" parent="World" unique_id=120316635]
+transform = Transform3D(75.164734, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_hwlmk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Ground" unique_id=631170646]
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground/StaticBody3D" unique_id=1705242629]
+shape = SubResource("BoxShape3D_lrixx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World" unique_id=928302054]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.81549, 0, 0)
+mesh = SubResource("BoxMesh_qccgu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/MeshInstance3D" unique_id=1728216307]
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/MeshInstance3D/StaticBody3D" unique_id=188208102]
+shape = SubResource("BoxShape3D_l84o4")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World" unique_id=964657999]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.87326, 0, 0)
+mesh = SubResource("BoxMesh_qccgu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/MeshInstance3D2" unique_id=1401280181]
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/MeshInstance3D2/StaticBody3D" unique_id=1533502551]
+shape = SubResource("BoxShape3D_l84o4")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="World" unique_id=1527422030]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.80696, 8.063955, 0)
+mesh = SubResource("BoxMesh_l84o4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/MeshInstance3D3" unique_id=1615386173]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/MeshInstance3D3/StaticBody3D" unique_id=1782071684]
+shape = SubResource("BoxShape3D_pm0vx")
+
+[node name="Player" parent="." unique_id=1349193765 groups=["Player"] instance=ExtResource("1_qccgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.592749, 2.4815655, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=89618215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.0746927, 11.460891)
+projection = 1
+size = 20.0
+
+[node name="Trunk" parent="." unique_id=400593386 instance=ExtResource("2_qccgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.20011, 11.335847, 0)

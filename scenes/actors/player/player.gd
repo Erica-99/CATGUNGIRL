@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 signal facing_changed(new_facing: float)
-@export var hit_heal_amount: float = 5.0 
+@export var hit_heal_fraction: float = 1.0
 
 
 ## Extending signals for ui and other components
@@ -50,6 +50,7 @@ signal player_dead()
 @export var wall_slide_max_angle: float = 20.0
 
 var facing: float
+var enable_facing_updates: bool = true
 var speed_multiplier: float = 1.0
 # gun enabled by default
 @export var has_gun: bool = true
@@ -63,8 +64,8 @@ var speed_multiplier: float = 1.0
 
 var blackboard: Dictionary
 @onready var health_component = $HealthComponent
-
 @onready var gun_holder: Node3D = $GunHolder
+
 ## This is to know what scene to reload when the player dies
 var currentScene
 
@@ -80,14 +81,16 @@ func _ready() -> void:
 	"dash_timer": dash_timer,
 	"wall_jump_dir": 0.0,
 	"dash_dir": 0.0,
-	"can_air_dash": true
+	"can_air_dash": true,
+	"gun_holder": gun_holder,
+	"enable_facing_updates": enable_facing_updates
 	}
 	
 	movement_state_machine.init(blackboard)
-	gun_holder.current_gun.enemy_hit.connect(_on_gun_enemy_hit)
-	gun_holder.current_gun.charge_progress_changed.connect(_on_gun_charge_progress)
-	gun_holder.current_gun.charge_ended.connect(_on_gun_charge_ended)
-	gun_holder.current_gun.charge_started.connect(_on_gun_charge_started)
+	gun_holder.enemy_hit.connect(_on_gun_enemy_hit)
+	gun_holder.current_gun_charge_progress_changed.connect(_on_gun_charge_progress)
+	gun_holder.current_gun_charge_ended.connect(_on_gun_charge_ended)
+	gun_holder.current_gun_charge_started.connect(_on_gun_charge_started)
 	
 	EventManager.gun_picked_up.connect(_equip_gun)
 	_set_gun_enabled(has_gun)
@@ -95,30 +98,42 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	var current_state = input_component.get_input_state()
 	
-	if current_state["movement"] != 0:
+	if current_state["movement"] != 0 and blackboard["enable_facing_updates"]:
 		set_facing(sign(current_state["movement"]))
 	
-	# Debug damage input
-	if Input.is_action_just_pressed("debug_damage"):
+	## Debug damage input
+	#if Input.is_action_just_pressed("debug_damage"):
+		#var debug_damage = DamageHealInstance.new()
+		#debug_damage.amount = 20
+		#debug_damage.is_heal = false
+		#debug_damage.type = Enums.DamageType.NORMAL
+		#debug_damage.knockback = 0
+		#debug_damage.source = ^"."
+		#
+		#health_component.take_damage_or_heal(debug_damage)
+	
+	## Debug heal input
+	#if Input.is_action_just_pressed("debug_heal"):
+		#var debug_heal = DamageHealInstance.new()
+		#debug_heal.amount = 10
+		#debug_heal.is_heal = true
+		#debug_heal.type = Enums.DamageType.NORMAL
+		#debug_heal.knockback = 0
+		#debug_heal.source = ^"."
+		#
+		#health_component.take_damage_or_heal(debug_heal)
+		
+	# Debug suicide
+	if Input.is_action_just_pressed("debug_kill"):
 		var debug_damage = DamageHealInstance.new()
-		debug_damage.amount = 20
+		debug_damage.amount = 99999
 		debug_damage.is_heal = false
 		debug_damage.type = Enums.DamageType.NORMAL
 		debug_damage.knockback = 0
+		debug_damage.stun_time = 0
 		debug_damage.source = ^"."
-		
 		health_component.take_damage_or_heal(debug_damage)
-	
-	# Debug heal input
-	if Input.is_action_just_pressed("debug_heal"):
-		var debug_heal = DamageHealInstance.new()
-		debug_heal.amount = 10
-		debug_heal.is_heal = true
-		debug_heal.type = Enums.DamageType.NORMAL
-		debug_heal.knockback = 0
-		debug_heal.source = ^"."
-		
-		health_component.take_damage_or_heal(debug_heal)
+		_on_insanity_component_insanity_death()
 
 func _on_health_component_health_initialised(init_current_health, init_max_health):
 	EventManager.player_health_initialised.emit(init_current_health, init_max_health)
@@ -139,9 +154,9 @@ func _on_insanity_component_insanity_death():
 func _on_insanity_component_interest_rank_changed(new_rank):
 	EventManager.player_interest_rank_changed.emit(new_rank)
 	
-func _on_gun_enemy_hit(_hurtbox: Area3D) -> void:
+func _on_gun_enemy_hit(_damage: float) -> void:
 	var heal = DamageHealInstance.new()
-	heal.amount = hit_heal_amount
+	heal.amount = hit_heal_fraction * _damage
 	heal.is_heal = true
 	heal.type = Enums.DamageType.NORMAL
 	heal.knockback = 0.0
@@ -166,6 +181,8 @@ func _set_gun_enabled(enabled: bool) -> void:
 	gun_holder.current_gun.process_mode = Node.PROCESS_MODE_INHERIT if enabled else Node.PROCESS_MODE_DISABLED
 	gun_holder.current_gun.visible = enabled
 	gun_arm_node.visible = enabled
+	gun_holder.allow_swapping = enabled
+	EventManager.enable_gun_ui.emit(enabled)
 	
 func set_facing(new_facing: float) -> void:
 	if new_facing == 0.0:

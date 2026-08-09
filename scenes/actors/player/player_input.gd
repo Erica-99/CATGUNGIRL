@@ -8,10 +8,10 @@ var _jump_held := false
 var _dash_held := false
 var _fire_held := false
 var _mouse_world_pos
-var _charge_fire_held := false
 var _interacting := false
 var _superjump_held:= false
 var _switch_gun := false
+var _ability_held := false
 
 var _input_locked := false
 var _jump_locked := false
@@ -41,7 +41,6 @@ func _process(_delta: float) -> void:
 		_jump_held = false
 		_dash_held = false
 		_fire_held = false
-		_charge_fire_held = false
 		_interacting = false
 		_switch_gun = false
 
@@ -59,10 +58,10 @@ func get_input_state() -> Dictionary:
 		"dashing": _dash_held,
 		"fire_held": _fire_held,
 		"mouse_world_pos": _mouse_world_pos,
-		"charge_fire_held": _charge_fire_held,
 		"interacting": _interacting,
 		"superjump_held": _superjump_held,
 		"switch_gun": _switch_gun,
+		"ability_held": _ability_held,
 	}
 	return input_state
 
@@ -101,9 +100,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("fire"):
 		_fire_held = true
 	
-	if event.is_action_pressed("shoot_charged"):
-		_charge_fire_held = true
-	
 	if event.is_action_pressed("jump"):
 		_jump_held = true                            ##Player jumps
 	
@@ -114,9 +110,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		_interacting = true
 		
-	if event.is_action_pressed("move_down"):
-		_crouching = true
-		crouching.emit()
+	#if event.is_action_pressed("move_down"):
+		#_crouching = true
+		#crouching.emit()
 		
 	if event.is_action_pressed("switch_gun") and not event.is_echo():
 		_switch_gun = true
@@ -124,13 +120,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("dash") and not event.is_echo():
 		_dash_held = true
 	
+	if event.is_action_pressed("use_ability") and get_parent().has_gun:
+		_ability_held = true
+	
 	# -- Actions released --
 	
 	if event.is_action_released("fire"):
 		_fire_held = false
-	
-	if event.is_action_released("shoot_charged"):
-		_charge_fire_held = false
 	
 	if event.is_action_released("jump"):
 		_jump_held = false
@@ -139,11 +135,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("dash"):
 		_dash_held = false
 	
-	if event.is_action_released("move_down"):
-		if not toggle_crouch:
-			_crouching = false
-			standing.emit()
-			#_on_player_crouch_overlap()
+	#if event.is_action_released("move_down"):
+		#if not toggle_crouch:
+			#_crouching = false
+			#standing.emit()
+			##_on_player_crouch_overlap()
 	
 	if event.is_action_released("interact"):
 		_interacting = false
+	
+	if event.is_action_released("use_ability"):
+		_ability_held = false

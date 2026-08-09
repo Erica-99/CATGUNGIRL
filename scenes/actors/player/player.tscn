@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://cmq1v8ob4m0w4" path="res://scenes/components/camera_component/camera_component.tscn" id="18_ffoq6"]
 [ext_resource type="Script" uid="uid://y2ix2xo5owxw" path="res://resources/damage_heal_instance/damage_heal_instance.gd" id="19_llrf1"]
 [ext_resource type="Script" uid="uid://cap87hwk6oo37" path="res://scenes/components/state_machine/states/player/player_wall_slide.gd" id="25_e5w6i"]
+[ext_resource type="Script" uid="uid://d0ul6wkyanmte" path="res://scenes/actors/player/player_ability.gd" id="25_t1vny"]
 [ext_resource type="Texture2D" uid="uid://bx0fammwess53" path="res://art/UI/placeholder/sprite_sheet.png" id="26_ffoq6"]
 [ext_resource type="Script" uid="uid://dpg6elo6whk1n" path="res://scenes/components/state_machine/states/player/player_wall_jump.gd" id="26_t1vny"]
 [ext_resource type="Script" uid="uid://canhkrs1snvht" path="res://scenes/components/state_machine/states/player/player_dash.gd" id="27_0e3lr"]
@@ -1413,7 +1414,7 @@ size = Vector3(1.2752914, 3.192688, 1)
 
 [sub_resource type="Resource" id="Resource_llrf1"]
 script = ExtResource("19_llrf1")
-amount = 1.0
+amount = 0.0
 type = 1
 source = NodePath(".")
 metadata/_custom_type_script = "uid://y2ix2xo5owxw"
@@ -1475,6 +1476,7 @@ collision_layer = 2
 axis_lock_linear_z = true
 platform_floor_layers = 1
 script = ExtResource("1_qdyt2")
+hit_heal_fraction = 0.1
 movement_state_machine = NodePath("MovementStateMachine")
 gun_arm_node = NodePath("PlayerVisuals/ROOT_P/GUN_P")
 input_component = NodePath("PlayerInput")
@@ -1600,7 +1602,7 @@ target_position = Vector3(0, -2, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6085612, 0)
 
 [node name="CameraComponent" parent="." unique_id=974394070 instance=ExtResource("18_ffoq6")]
-transform = Transform3D(1, 0, 0, 0, 0.99660444, 0.08233857, 0, -0.08233857, 0.99660444, 0, 4.07051, 55.812668)
+transform = Transform3D(1, 0, 0, 0, 0.99660444, 0.08233857, 0, -0.08233857, 0.99660444, 0, 4.07051, 61.724174)
 fov = 26.8
 
 [node name="MovementStateMachine" parent="." unique_id=1499026333 node_paths=PackedStringArray("initial_state") instance=ExtResource("4_qdyt2")]
@@ -1639,6 +1641,10 @@ script = ExtResource("26_t1vny")
 [node name="PlayerDash" type="Node" parent="MovementStateMachine" unique_id=611734550]
 script = ExtResource("27_0e3lr")
 
+[node name="PlayerAbility" type="Node" parent="MovementStateMachine" unique_id=336599975]
+script = ExtResource("25_t1vny")
+metadata/_custom_type_script = "uid://dropwvjh2s43u"
+
 [node name="SoftCollider" type="Area3D" parent="." unique_id=892099693]
 collision_layer = 256
 collision_mask = 256
@@ -1654,7 +1660,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010318756, 0.051490784, 0)
 shape = SubResource("BoxShape3D_llrf1")
 
 [node name="JumpDelay" type="Timer" parent="." unique_id=1638060030]
-wait_time = 0.5
+wait_time = 0.001
 one_shot = true
 
 [node name="DashDelay" type="Timer" parent="." unique_id=1161474199]
@@ -1676,11 +1682,10 @@ script = ExtResource("27_cat03")
 [node name="GunHolder" parent="." unique_id=407642416 node_paths=PackedStringArray("input_component") instance=ExtResource("28_7i6t6")]
 input_component = NodePath("../PlayerInput")
 
+[node name="AudioListener3D" type="AudioListener3D" parent="." unique_id=1025557284]
+current = true
+
 [connection signal="facing_changed" from="." to="PlayerVisuals" method="_on_player_facing_changed"]
-[connection signal="facing_changed" from="." to="MantleDetector" method="_on_player_facing_changed"]
-[connection signal="player_dead" from="." to="HealthComponent" method="_on_player_player_dead"]
-[connection signal="player_health_changed" from="." to="." method="_on_player_health_changed"]
-[connection signal="player_health_initialiased" from="." to="." method="_on_player_health_initialiased"]
 [connection signal="animation_finished" from="PlayerVisuals/ROOT_P/GUN_P/GUN_AIM/Hand_Anims" to="PlayerVisuals" method="_on_hand_anims_animation_finished"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="health_changed" from="HealthComponent" to="InsanityComponent" method="_on_health_component_health_changed"]
@@ -1695,3 +1700,4 @@ input_component = NodePath("../PlayerInput")
 [connection signal="state_changed" from="MovementStateMachine" to="DebugStateDisplay" method="_on_movement_state_machine_state_changed"]
 [connection signal="overlap" from="MovementStateMachine/PlayerCrouch" to="MovementStateMachine/PlayerIdle" method="_on_player_crouch_overlap"]
 [connection signal="overlap" from="MovementStateMachine/PlayerCrouch" to="MovementStateMachine/PlayerMove" method="_on_player_crouch_overlap"]
+[connection signal="request_ability_animation" from="MovementStateMachine/PlayerAbility" to="PlayerVisuals" method="_on_request_ability_animation"]

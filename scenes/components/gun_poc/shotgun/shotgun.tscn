@@ -2,6 +2,32 @@
 
 [ext_resource type="PackedScene" uid="uid://b4ob13ffx7c2o" path="res://scenes/components/gun_poc/gun.tscn" id="1_w7vck"]
 [ext_resource type="Script" uid="uid://dkjgm21loxiyu" path="res://scenes/components/gun_poc/shotgun/shotgun.gd" id="2_20g1x"]
+[ext_resource type="PackedScene" uid="uid://beunxwkewe1cv" path="res://scenes/components/gun_poc/shotgun/airblast/airblast_component.tscn" id="3_05d2k"]
 
-[node name="Shotgun" unique_id=2005532977 instance=ExtResource("1_w7vck")]
+[node name="Shotgun" unique_id=2005532977 node_paths=PackedStringArray("ability") instance=ExtResource("1_w7vck")]
 script = ExtResource("2_20g1x")
+pellet_amount = 10
+gun_name = "Shotgun"
+ability = NodePath("AirblastComponent")
+ammo_max = 4
+reload_time = 1.0
+reload_full = false
+fire_rate = 0.05
+full_auto = false
+bullet_damage = 3.0
+bullet_knockback = 2.0
+bullet_scale = 0.4
+bullet_velocity_multiplier = 0.75
+recoil_amount = 0.5
+base_aim_spread = 10.0
+
+[node name="AirblastComponent" parent="." index="2" unique_id=1197172489 node_paths=PackedStringArray("shotgun") instance=ExtResource("3_05d2k")]
+shotgun = NodePath("..")
+slow_down_speed = 200.0
+slow_down_target = 0.1
+launch_speed = 7.0
+blast_base_damage = 6.0
+blast_damage_increase_per_bullet = 1.5
+blast_base_knockback = 5.0
+
+[connection signal="enemy_hit" from="AirblastComponent" to="." method="_on_airblast_component_enemy_hit"]

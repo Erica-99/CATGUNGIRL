@@ -16,6 +16,11 @@
 [ext_resource type="PackedScene" uid="uid://cjku3tspjt4ep" path="res://scenes/ui/dating/gigi_date.tscn" id="14_ioa2x"]
 [ext_resource type="Texture2D" uid="uid://cd8hxjh4vv0tl" path="res://art/2d_assets/ui/real_world/tutPopup0 complete 2.png" id="15_bvmuw"]
 [ext_resource type="Script" uid="uid://b3wyfqrf023lh" path="res://scenes/components/camera_component/InsanityTut.gd" id="15_e435g"]
+[ext_resource type="Script" uid="uid://b5wuc23rlp8as" path="res://scenes/actors/player/ammo_hud.gd" id="17_04dda"]
+[ext_resource type="PackedScene" uid="uid://d1dtceqi3s5oh" path="res://art/2d_assets/real_world/UI/ammo_count.tscn" id="18_c1rnt"]
+[ext_resource type="PackedScene" uid="uid://bwjuhhi62r2ot" path="res://art/2d_assets/real_world/UI/pistol_bullet_icon.tscn" id="19_ibrvc"]
+[ext_resource type="PackedScene" uid="uid://d0bck3rf10len" path="res://art/2d_assets/real_world/UI/shotgun_bullet_icon.tscn" id="20_uicuq"]
+[ext_resource type="PackedScene" uid="uid://ddj7xjcety3sc" path="res://art/2d_assets/real_world/UI/sniper_bullet_icon.tscn" id="21_isppp"]
 
 [sub_resource type="Resource" id="Resource_434qr"]
 script = ExtResource("3_6tqft")
@@ -135,6 +140,9 @@ _data = {
 &"idle gone": SubResource("Animation_e435g")
 }
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_04dda"]
+viewport_path = NodePath("AMMOHUDConcept/AmmoHUD/SubViewport")
+
 [node name="CameraComponent" type="Camera3D" unique_id=974394070]
 size = 20.0
 script = ExtResource("1_osh5n")
@@ -222,4 +230,31 @@ texture = ExtResource("15_bvmuw")
 libraries/ = SubResource("AnimationLibrary_0slx5")
 autoplay = &"idle gone"
 
+[node name="AMMOHUDConcept" type="Node3D" parent="." unique_id=1658013476]
+transform = Transform3D(0.3, 0, 0, 0, 0.29898134, -0.024701586, 0, 0.024701586, 0.29898134, 0.77514887, -1.7584262, -4.239952)
+
+[node name="AmmoHUD" type="Node3D" parent="AMMOHUDConcept" unique_id=1025100988]
+transform = Transform3D(0.85918325, 0, -0.511668, 0, 1, 0, 0.511668, 0, 0.85918325, 2.8519964, 2.4402962, -9.690643)
+script = ExtResource("17_04dda")
+
+[node name="SubViewport" type="SubViewport" parent="AMMOHUDConcept/AmmoHUD" unique_id=1590794387]
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="AmmoCount" parent="AMMOHUDConcept/AmmoHUD/SubViewport" unique_id=76601130 instance=ExtResource("18_c1rnt")]
+bullet_icons = Dictionary[String, PackedScene]({
+"Pistol": ExtResource("19_ibrvc"),
+"Shotgun": ExtResource("20_uicuq"),
+"Sniper": ExtResource("21_isppp")
+})
+
+[node name="Sprite3D" type="Sprite3D" parent="AMMOHUDConcept/AmmoHUD" unique_id=559928206]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, -2.9802322e-08, 7.450581e-09, 1, 4.335546, 0.016273022, -2.4963627)
+texture = SubResource("ViewportTexture_04dda")
+
+[node name="FXNode" type="Node3D" parent="AMMOHUDConcept/AmmoHUD/Sprite3D" unique_id=1062389188]
+transform = Transform3D(0.9999993, -4.8428774e-08, -2.682209e-07, -1.8626451e-08, 0.99999976, -2.9802322e-08, -1.7881393e-07, 1.4901161e-08, 0.9999991, -2.2311177, -1.0807219, -0.91220856)
+
 [connection signal="animation_finished" from="OverlayVisuals/CanvasLayer/AnimationPlayer" to="OverlayVisuals/CanvasLayer" method="_on_animation_player_animation_finished"]
+[connection signal="bulletlost" from="AMMOHUDConcept/AmmoHUD/SubViewport/AmmoCount" to="AMMOHUDConcept/AmmoHUD" method="_on_ammo_count_bulletlost"]

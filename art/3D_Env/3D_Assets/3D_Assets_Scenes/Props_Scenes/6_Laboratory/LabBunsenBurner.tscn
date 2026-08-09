@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b26n2n71tibt0"]
+
+[ext_resource type="ArrayMesh" uid="uid://crw3em6wmr52" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/6_Laboratory/LabBunsenBurner.obj" id="1_kmxt5"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hh2xc"]
+points = PackedVector3Array(-0.045228, 0.0010425075, -8.85129e-06, -0.0319819, 0.0010425075, -0.0319819, -8.85129e-06, 0, -8.85129e-06, -0.0319819, 0.0010425075, 0.031973045, -0.045228, 0.005672865, -8.85129e-06, -0.0319819, 0.005672865, -0.0319819, -8.85129e-06, 0.0010425075, -0.045228, 0.031973045, 0.0010425075, -0.0319819, 0.045228, 0.0010425075, -8.85129e-06, 0.031973045, 0.0010425075, 0.031973045, -8.85129e-06, 0.0010425075, 0.045228, -0.0319819, 0.005672865, 0.031973045, -0.004675094, 0.13830148, 0.0046662427, -0.006605342, 0.13830148, -8.85129e-06, -0.004675094, 0.13830148, -0.004675094, -8.85129e-06, 0.005672865, -0.045228, 0.031973045, 0.005672865, -0.0319819, 0.045228, 0.005672865, -8.85129e-06, 0.031973045, 0.005672865, 0.031973045, -8.85129e-06, 0.005672865, 0.045228, -8.85129e-06, 0.13830148, 0.0065964907, -8.85129e-06, 0.13830148, -0.006605342, 0.0046662427, 0.13830148, -0.004675094, 0.0065964907, 0.13830148, -8.85129e-06, 0.0046662427, 0.13830148, 0.0046662427)
+
+[node name="LabBunsenBurner" type="StaticBody3D" unique_id=27895362]
+
+[node name="LabBunsenBurner_Mesh" type="MeshInstance3D" parent="." unique_id=1791941703]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = ExtResource("1_kmxt5")
+
+[node name="LabBunsenBurner_Collision" type="CollisionShape3D" parent="." unique_id=407277957]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_hh2xc")

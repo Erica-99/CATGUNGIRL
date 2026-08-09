@@ -14,12 +14,14 @@ func init(blackboard_dict : Dictionary) -> void:
 	
 func enter() -> void:
 	wall_jump_dir = blackboard.get("wall_jump_dir", 0.0)
+	blackboard["enable_facing_updates"] = false
+	actor.set_facing(wall_jump_dir)
 	
 	var input_state = input_component.get_input_state()
 	jump_held_on_enter = input_state["jumping"]
 	
 func exit() -> void:
-	pass
+	blackboard["enable_facing_updates"] = true
 	
 func update(_delta: float) -> void:
 	var input_state = input_component.get_input_state()
@@ -33,6 +35,11 @@ func update(_delta: float) -> void:
 	#stop instant wall jump when entering slide while holding jump
 	if jump_held_on_enter and not input_state["jumping"]:
 		jump_held_on_enter = false
+	
+	elif (input_state["ability_held"] and blackboard["gun_holder"].current_gun.ability and 
+	blackboard["gun_holder"].current_gun.ability.is_ability_enterable()):
+		transitioned.emit(self, "playerability")
+		return
 
 	if input_state["jumping"] and not jump_held_on_enter:
 		transitioned.emit(self, "playerwalljump")
