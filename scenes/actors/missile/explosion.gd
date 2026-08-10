@@ -1,11 +1,10 @@
 extends Node3D
 
+@onready var anim = $AnimationPlayer
 
 func _ready() -> void:
-	$Timer.wait_time = 0.15
-	$Timer.start()
+	anim.play("default")
 
-
-func _on_timer_timeout() -> void:
+func delete_self() -> void:
 	print("Explosion freed")
 	queue_free()

@@ -10,8 +10,8 @@ func enter() -> void:
 	body.velocity = Vector3.ZERO
 	
 	var explosion = explosion_scene.instantiate()
-	explosion.global_position = body.global_position
 	body.get_parent().add_child(explosion)
+	explosion.global_position = body.global_position
 	print("Boom")
 	
 	body.queue_free()
