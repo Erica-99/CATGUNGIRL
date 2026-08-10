@@ -9,6 +9,7 @@ class_name MissileSpawn
 var timer := 0.0
 var body: CharacterBody3D
 var launch_dir: Vector2
+var angular_v: Vector3
 
 
 func enter():
@@ -17,15 +18,17 @@ func enter():
 	var cone_radius := 0.4
 	var x := randf_range(-cone_radius, cone_radius)
 	var y := 1.0
+	
+	angular_v = Vector3(0, 0, randf_range(-0.5, 0.5)) * 2.0
 
 	launch_dir = Vector2(x, y).normalized()
-	
 	
 	timer = 0.0
 
 func physics_update(delta):
 	timer += delta
 	
+	body.rotation += angular_v * delta
 	
 	if timer <= burst_duration:
 		body.velocity.x = burst_velocity * launch_dir.x
