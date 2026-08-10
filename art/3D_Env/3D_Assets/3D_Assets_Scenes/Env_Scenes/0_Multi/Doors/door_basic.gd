@@ -5,11 +5,18 @@ extends StaticBody3D
 @export var enemy_manager: Node
 
 var opened = false
+var bodies_inside: Array[Node3D] = []
 
 func _ready() -> void:
 	EventManager.set_door_openable_state.connect(_set_openable_state)
 
 func open(body: Node3D):
+	if not body is CharacterBody3D:
+		return
+		
+	if !bodies_inside.has(body):
+		bodies_inside.append(body)
+	
 	if openable and not opened:
 		if enemy_manager != null:
 			if enemy_manager.is_cleared or enemy_manager.get_child_count() == 0:
@@ -20,11 +27,18 @@ func open(body: Node3D):
 			animation_player.play("DoorBasic_Opening")
 
 func close(body: Node3D):
-	if opened or not openable:
-		opened = false
-		animation_player.play("DoorBasic_IdleClosed")
+	if not body is CharacterBody3D:
+		return
+		
+	if bodies_inside.has(body):
+		bodies_inside.erase(body)
+	
+	if bodies_inside.is_empty():
+		if opened or not openable:
+			opened = false
+			animation_player.play("DoorBasic_IdleClosed")
 
-func _on_door_basic_animation_player_animation_finished(anim_name: StringName) -> void:
+func _on_door_basic_animation_player_animation_finished(_anim_name: StringName) -> void:
 	if opened:
 		animation_player.play("DoorBasic_IdleOpen")
 	else:
