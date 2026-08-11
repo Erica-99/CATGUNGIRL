@@ -2,18 +2,9 @@
 
 [ext_resource type="Script" uid="uid://t3uocp5iyaxo" path="res://scenes/actors/missile/missile_launcher.gd" id="1_h533r"]
 [ext_resource type="Texture2D" uid="uid://crng4f3f2avnf" path="res://icon.svg" id="2_534j0"]
-[ext_resource type="Script" uid="uid://ddjs1cw5jtwqb" path="res://scenes/components/state_machine/state_machine.gd" id="3_tbkci"]
 
 [node name="MissileLauncher" type="Node3D" unique_id=1269207243]
 script = ExtResource("1_h533r")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=701048955]
 texture = ExtResource("2_534j0")
-
-[node name="StateMachine" type="Node" parent="." unique_id=153755380]
-script = ExtResource("3_tbkci")
-metadata/_custom_type_script = "uid://ddjs1cw5jtwqb"
-
-[node name="LauncherInactive" type="Node" parent="StateMachine" unique_id=732036922]
-
-[node name="LauncherActive" type="Node" parent="StateMachine" unique_id=289052149]
