@@ -10,6 +10,7 @@ var max_patrol_time: float
 var direction: int
 var patrol_timer: Timer
 var elapsed_direction_switch: float
+var launcher: MissileLauncher
 
 var patrol_track: float = 0 # timer tracker
 
@@ -23,6 +24,7 @@ func init(blackboard_dict: Dictionary) -> void:
 	min_patrol_time = blackboard["min_patrol_time"]
 	max_patrol_time = blackboard["max_patrol_time"]
 	elapsed_direction_switch = blackboard["elapsed_direction_switch"]
+	launcher = blackboard["missile_launcher"]
 	
 	patrol_timer = Timer.new()
 	patrol_timer.one_shot = false
@@ -30,6 +32,7 @@ func init(blackboard_dict: Dictionary) -> void:
 	add_child(patrol_timer)
 
 func enter() -> void:
+	launcher.turn_off()
 	#print("Patrolling")
 	patrol_timer.wait_time = randf_range(min_patrol_time, max_patrol_time)
 	patrol_timer.start()

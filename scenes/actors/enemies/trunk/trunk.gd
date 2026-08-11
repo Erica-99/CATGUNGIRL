@@ -4,6 +4,7 @@ extends CharacterBody3D
 @export var animator: AnimatedSprite3D
 @export var animation_manager: AnimationPlayer
 @export var state_machine: StateMachine
+@export var launcher: MissileLauncher
 
 @export_category("Starting State Variables")
 @export var start_aggroed: bool
@@ -123,6 +124,7 @@ func _ready() -> void:
 		"animation_manager": animation_manager,
 		"direction": direction,
 		"gun_component": gun_component,
+		"missile_launcher": launcher,
 		"patrol_speed": patrol_speed,
 		"chase_speed": chase_speed,
 		"min_idle_time": min_idle_time,

@@ -1,4 +1,5 @@
 extends Node3D
+class_name MissileLauncher
 
 const MISSILE = preload("uid://bt57arw8qv0ya")
 

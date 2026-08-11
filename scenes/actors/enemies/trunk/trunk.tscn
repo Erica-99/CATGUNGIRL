@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://briciybelpcwe" path="res://scenes/components/state_machine/states/enemy/enemy_death.gd" id="10_t7x1w"]
 [ext_resource type="PackedScene" uid="uid://csd06hicr5wny" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="13_31nnk"]
 [ext_resource type="Shape3D" uid="uid://cxemkg2bdxscg" path="res://resources/hitboxes/enemies/trunk/trunk_melee_hb.tres" id="14_31nnk"]
+[ext_resource type="PackedScene" uid="uid://c8g2gv64sagbn" path="res://scenes/actors/missile/missile_launcher.tscn" id="21_qrlkp"]
 
 [sub_resource type="Animation" id="Animation_qrlkp"]
 resource_name = "Idle"
@@ -2387,12 +2388,13 @@ radius = 30.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_31nnk"]
 radius = 4.0
 
-[node name="Trunk" type="CharacterBody3D" unique_id=400593386 node_paths=PackedStringArray("animation_manager", "state_machine", "start_idle", "start_patrol", "start_aggro", "melee_hitbox")]
+[node name="Trunk" type="CharacterBody3D" unique_id=400593386 node_paths=PackedStringArray("animation_manager", "state_machine", "launcher", "start_idle", "start_patrol", "start_aggro", "melee_hitbox")]
 collision_layer = 4
 collision_mask = 129
 script = ExtResource("1_usk1l")
 animation_manager = NodePath("TrunkMesh/TorsoAnims")
 state_machine = NodePath("StateMachine")
+launcher = NodePath("MissileLauncher")
 start_idle = NodePath("StateMachine/TrunkIdle")
 start_patrol = NodePath("StateMachine/TrunkPatrol")
 start_aggro = NodePath("StateMachine/TrunkChase")
@@ -2550,6 +2552,10 @@ wait_time = 0.001
 one_shot = true
 
 [node name="OutrangedTimer" type="Timer" parent="." unique_id=309027732]
+
+[node name="MissileLauncher" parent="." unique_id=1269207243 instance=ExtResource("21_qrlkp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+spawn_count = 3
 
 [connection signal="cant_step" from="." to="TrunkMesh" method="_on_trunk_cant_step"]
 [connection signal="facing_changed" from="." to="TrunkMesh" method="_on_trunk_facing_changed"]
