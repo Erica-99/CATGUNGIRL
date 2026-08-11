@@ -1,4 +1,4 @@
-extends Node
+extends Node3D
 
 const MISSILE = preload("uid://bt57arw8qv0ya")
 
@@ -18,9 +18,10 @@ func _process(delta: float) -> void:
 
 # Spawns new missile
 func launch_missile() -> void:
-	var new_missile = MISSILE.instantiate()
+	var new_missile = MISSILE.instantiate() as CharacterBody3D
 	
 	get_tree().root.add_child(new_missile)
+	new_missile.global_position = global_position
 	print("Missile Launched")
 
 # Testing Scene Function Only
