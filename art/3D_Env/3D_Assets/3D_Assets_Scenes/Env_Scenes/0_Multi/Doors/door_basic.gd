@@ -9,6 +9,9 @@ var bodies_inside: Array[Node3D] = []
 
 func _ready() -> void:
 	EventManager.set_door_openable_state.connect(_set_openable_state)
+	
+	if enemy_manager != null:
+		enemy_manager.stage_cleared.connect(_on_enemy_manager_stage_cleared)
 
 func open(body: Node3D):
 	if not body is CharacterBody3D:
@@ -47,3 +50,7 @@ func _on_door_basic_animation_player_animation_finished(_anim_name: StringName) 
 func _set_openable_state(object_check: Node3D, new_state: bool):
 	if object_check == self:
 		openable = new_state
+
+func _on_enemy_manager_stage_cleared() -> void:
+	if openable and !opened and !bodies_inside.is_empty():
+		open(bodies_inside[0])
