@@ -8,7 +8,7 @@ class_name MissileSpawn
 
 var timer := 0.0
 var body: CharacterBody3D
-var launch_dir: Vector2
+var launch_dir: Vector3
 var angular_v: Vector3
 
 
@@ -19,7 +19,7 @@ func enter():
 	var cone_radius := 0.4
 	var x := randf_range(-cone_radius, cone_radius)
 	var y := 1.0
-	launch_dir = Vector2(x, y).normalized()
+	launch_dir = Vector3(x, y, 0).normalized()
 	
 	# Set Randomised Angluar Velocity
 	angular_v = Vector3(0, 0, randf_range(-0.5, 0.5))

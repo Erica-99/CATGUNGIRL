@@ -20,23 +20,21 @@ func physics_update(delta):
 		return
 
 	# Get Target Direction
-	var to_player: Vector2 = Vector2(
+	var to_player: Vector3 = Vector3(
 		player.global_position.x - body.global_position.x,
-		player.global_position.y - body.global_position.y
+		player.global_position.y - body.global_position.y,
+		0
 		)
 	
-	var target_dir = to_player.normalized()
+	var target_dir: Vector3 = to_player.normalized()
 	
 	# Determine Current Direction
-	var vel: Vector2 = Vector2(body.velocity.x, body.velocity.y)
-	var current_dir = vel.normalized()
+	var current_dir: Vector3 = Vector3.UP.rotated(Vector3(0,0,1), body.rotation.z)
 	
 	# Accelerate
 	current_speed = lerp(current_speed, max_speed, acceleration * delta)
 	
 	# Steer (find new direction)
-	var speed_ratio = current_speed / max_speed
-	var turn_multiplier = 1.0 - speed_ratio
 	var new_dir = current_dir.slerp(target_dir, turn_rate * delta)
 	
 	
@@ -49,7 +47,8 @@ func physics_update(delta):
 	body.move_and_slide()
 	
 	# Rotate to match new direction
-	var angle = new_dir.angle()
+	var angle = Vector2(new_dir.x, new_dir.y).angle()
+	print(angle)
 	body.rotation.z = angle + 3*PI/2
 	
 	# Collision Check
