@@ -2394,7 +2394,7 @@ collision_mask = 129
 script = ExtResource("1_usk1l")
 animation_manager = NodePath("TrunkMesh/TorsoAnims")
 state_machine = NodePath("StateMachine")
-launcher = NodePath("MissileLauncher")
+launcher = NodePath("TrunkMesh/Torso/Blaster_P/MissileLauncher")
 start_idle = NodePath("StateMachine/TrunkIdle")
 start_patrol = NodePath("StateMachine/TrunkPatrol")
 start_aggro = NodePath("StateMachine/TrunkChase")
@@ -2449,7 +2449,10 @@ flip_h = true
 sprite_frames = SubResource("SpriteFrames_45267")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.053245552
+frame_progress = 0.68541837
+
+[node name="MissileLauncher" parent="TrunkMesh/Torso/Blaster_P" unique_id=1269207243 instance=ExtResource("21_qrlkp")]
+transform = Transform3D(1.0000002, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 2.2195764, 0.721362, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1958256337]
 shape = SubResource("BoxShape3D_igprn")
@@ -2552,10 +2555,6 @@ wait_time = 0.001
 one_shot = true
 
 [node name="OutrangedTimer" type="Timer" parent="." unique_id=309027732]
-
-[node name="MissileLauncher" parent="." unique_id=1269207243 instance=ExtResource("21_qrlkp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-spawn_count = 3
 
 [connection signal="cant_step" from="." to="TrunkMesh" method="_on_trunk_cant_step"]
 [connection signal="facing_changed" from="." to="TrunkMesh" method="_on_trunk_facing_changed"]
