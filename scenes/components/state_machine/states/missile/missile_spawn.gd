@@ -22,8 +22,7 @@ func enter():
 	launch_dir = Vector2(x, y).normalized()
 	
 	# Set Randomised Angluar Velocity
-	angular_v = Vector3(0, 0, randf_range(-0.5, 0.5)) * 2.0
-
+	angular_v = Vector3(0, 0, randf_range(-0.5, 0.5))
 	timer = 0.0
 
 func physics_update(delta):
