@@ -172,7 +172,7 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 		detected_player = true
 		state_machine.on_child_transition(state_machine.current_state, "trunkchase")
 	
-	if new_health < health_comp.starting_health and change_sprite_on_half_hp and !under_half_hp:
+	if new_health <= (health_comp.starting_health / 2) and change_sprite_on_half_hp and !under_half_hp:
 		under_half_hp = true
 		
 		torso_sprite.sprite_frames = InjuredFrames

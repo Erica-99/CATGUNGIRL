@@ -2389,14 +2389,16 @@ radius = 30.0
 radius = 4.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_aq2d6"]
-radius = 4.0
+radius = 5.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qrlkp"]
+transparency = 1
+albedo_color = Color(0.71682304, 0.59046775, 1, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_688n6"]
 material = SubResource("StandardMaterial3D_qrlkp")
-radius = 4.0
-height = 8.0
+radius = 5.0
+height = 10.0
 
 [node name="Trunk" type="CharacterBody3D" unique_id=400593386 node_paths=PackedStringArray("animation_manager", "state_machine", "start_idle", "start_patrol", "start_aggro", "melee_hitbox")]
 collision_layer = 4
@@ -2562,16 +2564,17 @@ one_shot = true
 
 [node name="OutrangedTimer" type="Timer" parent="." unique_id=309027732]
 
-[node name="TrunkArmour" type="Area3D" parent="." unique_id=1118592428]
-collision_layer = 8
+[node name="TrunkArmour" type="Area3D" parent="." unique_id=1118592428 node_paths=PackedStringArray("team_component")]
+collision_layer = 9
 collision_mask = 16
 script = ExtResource("21_qrlkp")
+team_component = NodePath("../TeamComponent")
+break_sources = Array[String](["Sniper", "AirblastComponent"])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TrunkArmour" unique_id=1965770979]
 shape = SubResource("SphereShape3D_aq2d6")
 
 [node name="ShaderShield" type="MeshInstance3D" parent="TrunkArmour" unique_id=1962350623]
-visible = false
 mesh = SubResource("SphereMesh_688n6")
 
 [connection signal="cant_step" from="." to="TrunkMesh" method="_on_trunk_cant_step"]
@@ -2589,3 +2592,4 @@ mesh = SubResource("SphereMesh_688n6")
 [connection signal="body_exited" from="MeleeRange" to="StateMachine/TrunkMelee" method="_on_melee_range_body_exited"]
 [connection signal="timeout" from="StepHandler" to="." method="_on_step_handler_timeout"]
 [connection signal="timeout" from="OutrangedTimer" to="." method="_on_outranged_timer_timeout"]
+[connection signal="break_shield" from="TrunkArmour" to="TrunkArmour" method="_on_break_shield"]
