@@ -13,7 +13,7 @@ extends CharacterBody3D
 var _direction: Vector3 = Vector3.RIGHT	# default points right
 var _distance_traveled: float = 0.0		# tracks total distance for destruction at max range
 var _lifetime: float = 0
-var _pierce_on_headshot: bool = false	# if true, bullet survives hitting a headshot hurtbox instead of being destroyed
+var _pierce_on_headshot: bool = false	# do not destroy bullet on headshot
 
 ## called immediately after spawning by GunComponent
 func initialize(direction: Vector3, damage_instance: DamageHealInstance, team_comp: Node, bullet_size: float = 1.0, pierce_on_headshot: bool = false) -> void:
