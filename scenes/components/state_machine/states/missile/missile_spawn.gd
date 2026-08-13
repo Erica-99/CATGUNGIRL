@@ -39,6 +39,5 @@ func physics_update(delta):
 		body.velocity.y = lerp(body.velocity.y, 0.0, burst_damp * delta)
 		if body.velocity.y < 0.1:
 			transitioned.emit(self, "missilehome")
-			print("Target Locked")
 	
 	body.move_and_slide()

@@ -23,7 +23,6 @@ func launch_missile() -> void:
 	
 	get_tree().root.add_child(new_missile)
 	new_missile.global_position = global_position
-	print("Missile Launched")
 
 # Testing Scene Function Only
 func _on_button_pressed() -> void:

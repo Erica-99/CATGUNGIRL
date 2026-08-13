@@ -48,10 +48,8 @@ func physics_update(delta):
 	
 	# Rotate to match new direction
 	var angle = Vector2(new_dir.x, new_dir.y).angle()
-	print(angle)
 	body.rotation.z = angle + 3*PI/2
 	
 	# Collision Check
 	if body.get_last_slide_collision() != null:
-		print("Collided")
 		transitioned.emit(self, "missiledetonate")

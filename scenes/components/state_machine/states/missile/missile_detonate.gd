@@ -12,6 +12,5 @@ func enter() -> void:
 	var explosion = explosion_scene.instantiate()
 	get_tree().root.add_child(explosion)
 	explosion.global_position = body.global_position
-	print("Boom")
 	
 	body.queue_free()

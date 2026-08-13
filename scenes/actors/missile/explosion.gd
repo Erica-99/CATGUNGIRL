@@ -6,5 +6,4 @@ func _ready() -> void:
 	anim.play("default")
 
 func delete_self() -> void:
-	print("Explosion freed")
 	queue_free()
