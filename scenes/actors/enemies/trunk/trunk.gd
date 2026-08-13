@@ -192,13 +192,17 @@ func _take_step():
 
 
 func _on_torso_anims_animation_finished(anim_name: StringName) -> void:
-	if anim_name == 'PunchStart':
-		animation_player.play("PunchActive")
-	if anim_name == 'StepFront' or anim_name == 'StepBack':
-		step_handler.start()
-	elif anim_name == 'StepStart':
-		animation_player.play('StepBack')
-	pass # Replace with function body.
+	print("FUCK")
+	print(state_machine.current_state_name)
+	print(state_machine.current_state)
+	if state_machine.current_state != state_machine.states["trunkstun"]:
+		if anim_name == 'PunchStart':
+			animation_player.play("PunchActive")
+		if anim_name == 'StepFront' or anim_name == 'StepBack':
+			step_handler.start()
+		elif anim_name == 'StepStart':
+			animation_player.play('StepBack')
+	
 func _step(currentstep):
 	if currentstep == 'StepFront':
 		animation_player.play("StepBack")

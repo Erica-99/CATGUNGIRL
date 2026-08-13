@@ -1,4 +1,5 @@
 extends Area3D
+@onready var trunk: CharacterBody3D = $".."
 @onready var shader_shield: MeshInstance3D = $ShaderShield
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 @onready var head_hurtbox: Area3D = $"../HeadHurtbox"
@@ -52,3 +53,4 @@ func _on_break_shield() -> void:
 	collision_shape_3d.disabled = true
 	shader_shield.visible = false
 	head_hurtbox.damage_multiplier = 1.0
+	trunk.state_machine.on_child_transition(trunk.state_machine.current_state, "trunkstun")

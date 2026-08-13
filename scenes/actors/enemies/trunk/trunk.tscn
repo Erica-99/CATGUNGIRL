@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://briciybelpcwe" path="res://scenes/components/state_machine/states/enemy/enemy_death.gd" id="10_t7x1w"]
 [ext_resource type="PackedScene" uid="uid://csd06hicr5wny" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="13_31nnk"]
 [ext_resource type="Shape3D" uid="uid://cxemkg2bdxscg" path="res://resources/hitboxes/enemies/trunk/trunk_melee_hb.tres" id="14_31nnk"]
+[ext_resource type="Script" uid="uid://c247lxsaigxo8" path="res://scenes/components/state_machine/states/enemy/trunk/trunk_stun.gd" id="18_qrlkp"]
 [ext_resource type="Script" uid="uid://c76qn4ockcqyn" path="res://scenes/actors/enemies/trunk/trunk_armour.gd" id="21_qrlkp"]
 
 [sub_resource type="Animation" id="Animation_qrlkp"]
@@ -2497,6 +2498,11 @@ metadata/_custom_type_script = "uid://bivm8q1sfq6tc"
 [node name="TrunkDeath" type="Node" parent="StateMachine" unique_id=1245463811]
 script = ExtResource("10_t7x1w")
 metadata/_custom_type_script = "uid://n3y61s3xutuy"
+
+[node name="TrunkStun" type="Node" parent="StateMachine" unique_id=1071588348]
+script = ExtResource("18_qrlkp")
+failsafe_max_stun_duration = 4.0
+metadata/_custom_type_script = "uid://c247lxsaigxo8"
 
 [node name="BodyHurtbox" parent="." unique_id=338394069 node_paths=PackedStringArray("team_component", "health_component") instance=ExtResource("5_rp7bq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.544092, 0)
