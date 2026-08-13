@@ -30,6 +30,7 @@ var single_reload_timer: float = 0 # to control changing reload times (e.g. 1.0 
 @export var bullet_knockback: float = 5.0	# knockback force (can remove)
 @export var bullet_scale: float = 1.0
 @export var bullet_velocity_multiplier: float = 1.0 # higher = faster
+@export var bullet_range: float = 40.0		# higher = further (mainly for shotgun)
 @export var recoil_amount: float = 0.35		# higher = more
 @export var recoil_recovery: float = 5.0 	# higher = faster
 @export var wobble_amount: float = 0.1		# higher = more
@@ -293,6 +294,7 @@ func _spawn_bullet(damage: float, size: float) -> void:
 	
 	bullet.initialize(aim_dir, damage_instance, team_component, size)
 	bullet.speed *= bullet_velocity_multiplier
+	bullet.max_range = bullet_range
 	var hb = bullet.get_node("HitboxComponent") 
 	hb.damage_dealt.connect(func(damage): enemy_hit.emit(damage))
 
