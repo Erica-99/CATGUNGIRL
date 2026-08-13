@@ -2,27 +2,35 @@
 
 [ext_resource type="PackedScene" uid="uid://b4ob13ffx7c2o" path="res://scenes/components/gun_poc/gun.tscn" id="1_nkbca"]
 [ext_resource type="Script" uid="uid://bifdwt1uld0tp" path="res://scenes/components/gun_poc/sniper/sniper.gd" id="2_ibpnn"]
+[ext_resource type="PackedScene" uid="uid://bwepshttraygm" path="res://scenes/components/gun_poc/sniper/beam/beam_component.tscn" id="3_beam"]
 
-[node name="Sniper" unique_id=2005532977 instance=ExtResource("1_nkbca")]
+[node name="Sniper" unique_id=2005532977 node_paths=PackedStringArray("ability") instance=ExtResource("1_nkbca")]
 script = ExtResource("2_ibpnn")
-hold_charge_min = 0.2
-hold_charge_max = 2.0
-beam_damage_min = 20.0
-beam_damage_max = 60.0
-charged_recoil_multiplier = 2.0
-beam_range = 15.0
-perfect_charge_multiplier = 2.5
 gun_name = "Sniper"
+ability = NodePath("BeamComponent")
 aim_speed = 4.0
 ammo_max = 1
 fire_rate = 3.0
-bullet_damage = 30.0
+bullet_damage = 45.0
 bullet_knockback = 10.0
 bullet_scale = 0.75
-bullet_velocity_multiplier = 2.0
+bullet_velocity_multiplier = 3.0
+pierce_on_headshot = true
 recoil_amount = 0.7
 recoil_recovery = 2.5
 wobble_amount = 0.3
 perfect_damage_multiplier = 2.0
 perfect_shot_max_interval = 3.1
 laser_convergence_speed = 3.0
+
+[node name="BeamComponent" parent="." index="2" unique_id=221925256 node_paths=PackedStringArray("sniper", "muzzle") instance=ExtResource("3_beam")]
+sniper = NodePath("..")
+muzzle = NodePath("../Muzzle")
+charge_time = 0.7
+slow_motion_scale = 0.15
+beam_range = 50.0
+beam_thickness = 0.3
+beam_damage = 60.0
+kickback_force = 30.0
+
+[connection signal="enemy_hit" from="BeamComponent" to="." method="_on_beam_component_enemy_hit"]
