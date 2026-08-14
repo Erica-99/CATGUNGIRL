@@ -28,11 +28,18 @@
 [ext_resource type="PackedScene" uid="uid://cvckts4bqdso3" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Mesh/FloorMeshCentre.tscn" id="28_0xqxt"]
 [ext_resource type="PackedScene" uid="uid://ckjadvesqstsq" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/PrisonCell(Docile).tscn" id="28_bel3r"]
 [ext_resource type="PackedScene" uid="uid://7ndrvtyokajf" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/WallPlainMidPrison.tscn" id="29_ktb7l"]
+[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="30_djn4x"]
 [ext_resource type="PackedScene" uid="uid://bojsmqie6xi4c" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorBasicLocked.tscn" id="30_fcasa"]
 [ext_resource type="Script" uid="uid://cfi782wvlaqxd" path="res://scenes/components/level_components/event_trigger/event_trigger.gd" id="30_setcc"]
 [ext_resource type="PackedScene" uid="uid://rlu4e0ohmycv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwaySingleMidPrison.tscn" id="31_ddk0w"]
 [ext_resource type="PackedScene" uid="uid://bls076phgmcus" path="res://scenes/actors/enemies/scrub/scrub.tscn" id="31_yfq6p"]
 [ext_resource type="PackedScene" uid="uid://ms7yhmwowtnu" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/FloorShootingPrison.tscn" id="32_setcc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n7r8i"]
+size = Vector3(12.366272, 7.955017, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_setcc"]
+size = Vector3(12.367798, 15.196669, 1)
 
 [node name="StageTwo" type="Node3D" unique_id=1996110792]
 
@@ -887,11 +894,26 @@ spot_angle = 47.085472
 
 [node name="DATES_POPUPS" type="Node" parent="." unique_id=1535957502]
 
-[node name="TestPopup" type="Area3D" parent="DATES_POPUPS" unique_id=357383439]
+[node name="Test2Popup" parent="DATES_POPUPS" unique_id=1311781014 instance=ExtResource("30_djn4x")]
+_signal_parameters = [2]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DATES_POPUPS/Test2Popup" unique_id=704840360]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.765228, 3.9647522, 0)
+shape = SubResource("BoxShape3D_n7r8i")
+debug_color = Color(0.91764706, 0.13333334, 0.6156863, 0.41960785)
+
+[node name="Test1Popup" type="Area3D" parent="DATES_POPUPS" unique_id=357383439]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+visible = false
 script = ExtResource("30_setcc")
-_signal_parameters = [null]
+_signal_parameters = [2]
 signal_name = "activate_popup"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DATES_POPUPS/Test1Popup" unique_id=397502035]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47727776, 7.8221292, 0)
+visible = false
+shape = SubResource("BoxShape3D_setcc")
+debug_color = Color(0.91764706, 0.13333334, 0.6156863, 0.41960785)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=218442623]
 
@@ -930,5 +952,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.29885, -13.496223, 0)
 [node name="Convict" parent="Enemies/Room Three" unique_id=1506947017 instance=ExtResource("21_n434r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.26416, -23.496223, 0)
 
-[connection signal="body_entered" from="DATES_POPUPS/TestPopup" to="DATES_POPUPS/TestPopup" method="_on_body_entered"]
+[connection signal="body_entered" from="DATES_POPUPS/Test1Popup" to="DATES_POPUPS/Test1Popup" method="_on_body_entered"]
 [connection signal="stage_cleared" from="Enemies/Room Three" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]
