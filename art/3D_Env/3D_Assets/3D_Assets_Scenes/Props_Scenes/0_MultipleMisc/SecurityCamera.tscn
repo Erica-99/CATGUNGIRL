@@ -2,6 +2,18 @@
 
 [ext_resource type="ArrayMesh" uid="uid://cerx5dhpw5f38" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/0_MultipleMisc/SecurityCameraPivot.obj" id="1_5bqgr"]
 [ext_resource type="ArrayMesh" uid="uid://do67ldcqxqgxq" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/0_MultipleMisc/SecurityCamera.obj" id="2_jgfoi"]
+[ext_resource type="Texture2D" uid="uid://bu0xatispukrn" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/SecurityCamera/SecurityCamera_BC.png" id="3_ar7u6"]
+[ext_resource type="Texture2D" uid="uid://ql3ibrkd7wt" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/SecurityCamera/SecurityCamera_M.png" id="4_qnfp5"]
+[ext_resource type="Texture2D" uid="uid://bb665vwnyy8rn" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/SecurityCamera/SecurityCamera_N.png" id="5_140wb"]
+[ext_resource type="Texture2D" uid="uid://c2obthacn7xc" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/SecurityCamera/SecurityCamera_R.png" id="6_wmngy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bgme3"]
+albedo_texture = ExtResource("3_ar7u6")
+metallic = 1.0
+metallic_texture = ExtResource("4_qnfp5")
+roughness_texture = ExtResource("6_wmngy")
+normal_enabled = true
+normal_texture = ExtResource("5_140wb")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dbebh"]
 points = PackedVector3Array(0.17708199, 0.017648, 0, 0.17708199, 0.012482453, 0.027443, 0.17708199, 0.012482453, -0.027443, 0.17413479, 0.017648, 0, 0.17413479, 0.012482453, 0.027443, 0.17708199, -0.04681227, 0.027443, 0.17708199, -0.04681227, -0.027443, 0.17413479, 0.012482453, -0.027443, -0.01228, 2.5179237e-05, -0.01498405, -0.01228, 2.5179237e-05, 0.014978677, 0.17413479, -0.04681227, 0.027443, 0.17708199, -0.051971, 0, 0.17413479, -0.04681227, -0.027443, -0.01228, -0.016221073, -0.01498405, -0.01228, -0.016221073, 0.014978677, 0.17413479, -0.051971, 0)
@@ -14,6 +26,7 @@ points = PackedVector3Array(0.080200106, 0.165185, 0, 0.080200106, 0.15999559, 0
 [node name="SecurityCameraPivot_Mesh" type="MeshInstance3D" parent="." unique_id=497046933]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("1_5bqgr")
+surface_material_override/0 = SubResource("StandardMaterial3D_bgme3")
 
 [node name="SecurityCameraPivot_Collision" type="CollisionShape3D" parent="." unique_id=1888784223]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -24,6 +37,7 @@ shape = SubResource("ConvexPolygonShape3D_dbebh")
 [node name="SecurityCamera_Mesh" type="MeshInstance3D" parent="Node3D" unique_id=632338366]
 transform = Transform3D(1.8687247, -0.7126486, 0, 0.7126486, 1.8687247, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("2_jgfoi")
+surface_material_override/0 = SubResource("StandardMaterial3D_bgme3")
 
 [node name="SecurityCamera_Collision" type="CollisionShape3D" parent="Node3D" unique_id=1316010237]
 transform = Transform3D(1.8687247, -0.7126486, 0, 0.7126486, 1.8687247, 0, 0, 0, 2, 0, 0, 0)

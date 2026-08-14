@@ -23,7 +23,9 @@
 [ext_resource type="PackedScene" uid="uid://tia5j8uydrvd" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/BrainPlatform.tscn" id="26_fkdyc"]
 [ext_resource type="PackedScene" uid="uid://1ku10chfggb1" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/BrainPlatformHalf.tscn" id="27_idgl4"]
 [ext_resource type="PackedScene" uid="uid://bpjjy1et0y5se" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/BrainPlatformCorner.tscn" id="28_2hrad"]
+[ext_resource type="ArrayMesh" uid="uid://ccq14ldymcyat" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/7_BrainJar/BrainJarClaw.obj" id="28_4wvhs"]
 [ext_resource type="PackedScene" uid="uid://1xc6lcs75uhc" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/BrainScaffold.tscn" id="29_q5o8m"]
+[ext_resource type="PackedScene" uid="uid://djpj7kpgd3be2" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/ReactorWire.tscn" id="29_rm42m"]
 [ext_resource type="PackedScene" uid="uid://c4ro8cmikau3a" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/FacilityCore.tscn" id="30_ewsem"]
 [ext_resource type="PackedScene" uid="uid://d1c7rcjdkoaqg" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/ServerRack1.tscn" id="30_vk2v5"]
 [ext_resource type="PackedScene" uid="uid://dbtlwlyu6425" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/BrainJarTerminal.tscn" id="31_oxwui"]
@@ -36,11 +38,9 @@
 [ext_resource type="PackedScene" uid="uid://ba63jkd1jefr2" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/ServerRack4.tscn" id="33_etvpi"]
 [ext_resource type="PackedScene" uid="uid://digoq17tbjh5g" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/TerminalWiringLong.tscn" id="34_ckfat"]
 [ext_resource type="PackedScene" uid="uid://cslp0wcty1crc" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/SteelBeamVertical.tscn" id="34_d3ojd"]
-[ext_resource type="PackedScene" uid="uid://bw5qhbjjyao4t" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/BrainJarBeamX.tscn" id="34_etvpi"]
 [ext_resource type="PackedScene" uid="uid://comrwprnl6da6" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/ShipmentContainer.tscn" id="34_mxr2x"]
 [ext_resource type="PackedScene" uid="uid://r048nyhlrbkb" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeSets/Wall2GroundCurve.tscn" id="35_4j000"]
 [ext_resource type="PackedScene" uid="uid://b1p88l2y8q31k" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/SteelBeamDiagonal.tscn" id="35_etvpi"]
-[ext_resource type="PackedScene" uid="uid://ddoxqu46ytbng" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/BrainJarBeamZ.tscn" id="35_mxr2x"]
 [ext_resource type="PackedScene" uid="uid://ynlj1dj4j1ck" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/BrainJar.tscn" id="36_mxr2x"]
 [ext_resource type="PackedScene" uid="uid://ctx6x7x06kmnl" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeSets/Wall2GroundCurveMedium.tscn" id="37_4j000"]
 [ext_resource type="PackedScene" uid="uid://b3krra1e3n0g8" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/Trolley.tscn" id="37_xxyet"]
@@ -3494,7 +3494,7 @@ transform = Transform3D(-0.04378879, 0.99762297, -0.05320735, -0.06710605, 0.050
 [node name="BrainJarComponents" type="Node3D" parent="Environment/BrainJarRoom" unique_id=543131545]
 
 [node name="FacilityCore" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=913940677 instance=ExtResource("30_ewsem")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
 
 [node name="BrainReactorRight" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=2010028014 instance=ExtResource("31_vk2v5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
@@ -3502,14 +3502,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
 [node name="BrainReactorLeft" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=1469337861 instance=ExtResource("32_oxwui")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
 
-[node name="BrainJarBeamX" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=655992648 instance=ExtResource("34_etvpi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.4, -93)
-
-[node name="BrainJarBeamZ" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=1714177067 instance=ExtResource("35_mxr2x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.4, -15)
-
 [node name="BrainJar" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=561627710 instance=ExtResource("36_mxr2x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, -9.8, -31)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, -0.8000002, -15)
+
+[node name="BrainJarClaw" type="MeshInstance3D" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=379144484]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -124, 0, -15)
+mesh = ExtResource("28_4wvhs")
+
+[node name="ReactorWire" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=965618633 instance=ExtResource("29_rm42m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
+
+[node name="ReactorWire2" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=1220722081 instance=ExtResource("29_rm42m")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
 
 [node name="BrainBeams" parent="Environment/BrainJarRoom" unique_id=186136910 instance=ExtResource("25_snsbe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.96237, 0.105831146, -15.051819)
