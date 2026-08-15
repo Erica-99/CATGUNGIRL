@@ -81,5 +81,6 @@ func _spawn_bullet(damage: float, size: float) -> void:
 	damage_instance.knockback = bullet_knockback
 	damage_instance.source = get_path()
 	
+	AudioManager.play_sfx_at_location("scrub_shot", global_position)
 	scrub_bullet.initialize(aim_dir, damage_instance, team_component, size)
 	
