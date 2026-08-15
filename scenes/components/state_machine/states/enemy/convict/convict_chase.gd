@@ -77,6 +77,9 @@ func physics_update(_delta: float) -> void:
 	
 	# offset target position
 	var target_position = _get_target_position()
+	var move_direction: float = 0.0
+	var trying_to_run: bool = false
+	var blocked_ahead: bool = false
 	
 	# height/distance checks for superjump (UNCOMMENT TO TEST SUPERJUMP)
 	#var height_difference = target.global_position.y - actor.global_position.y
@@ -88,7 +91,6 @@ func physics_update(_delta: float) -> void:
 		actor.velocity.x = move_toward(actor.velocity.x, 0, slow_down_speed * _delta)
 		# NEW instant stop 
 		#actor.velocity.x = 0.0
-		anim.play("Idle")
 		
 		#TODO: proper superjump trigger (UNCOMMENT TO TEST SUPERJUMP)
 		#if height_difference > 3.0 and horizontal_difference <= 2.5:
@@ -96,8 +98,8 @@ func physics_update(_delta: float) -> void:
 			#print("transitioning to convictsuperjump")
 	
 	else:
-		var move_direction = sign(target_position.x - actor.global_position.x)
-		
+		move_direction = sign(target_position.x - actor.global_position.x)
+		trying_to_run = true
 		# print to check differences for tuning superjump values
 		# print("height: ", height_difference, " horizontal: ", horizontal_difference)
 		
@@ -112,9 +114,16 @@ func physics_update(_delta: float) -> void:
 		# leaving it here just in case
 		#actor.velocity.x = clamp(actor.velocity.x, -chase_speed, chase_speed)
 		
-		anim.play("Run")
+	#check if convict is blocked by something
+	if trying_to_run:
+		blocked_ahead = actor.test_move(actor.global_transform, Vector3(move_direction * 0.4, 0.0, 0.0))
 		
 	actor.move_and_slide()
+	
+	if !trying_to_run or blocked_ahead:
+		anim.play("Idle")
+	else:
+		anim.play("Run")
 	
 	## Attempt to manually trigger stun to test things
 	#if Input.is_action_pressed("ui_left"):

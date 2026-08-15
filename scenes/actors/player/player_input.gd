@@ -9,13 +9,11 @@ var _dash_held := false
 var _fire_held := false
 var _mouse_world_pos
 var _interacting := false
-var _superjump_held:= false
 var _switch_gun := false
 var _ability_held := false
 
 var _input_locked := false
 var _jump_locked := false
-var _superjump_enabled: bool = false
 
 signal hasLanded
 signal standing
@@ -23,16 +21,13 @@ signal crouching
 
 
 func _ready() -> void:
-	_superjump_enabled = get_parent().has_gun
 	EventManager.connect("begin_date_scene_lock", _lock_input)
 	EventManager.connect("end_date_scene_lock", _resume_input)
-	EventManager.gun_picked_up.connect(_enable_superjump)
 
 func _process(_delta: float) -> void:
 	if not _input_locked:
 		_horizontal_movement = Input.get_axis("move_left", "move_right")
 		_mouse_world_pos = _get_mouse_world_position()
-		_superjump_held = Input.is_action_pressed("super")
 		
 	else:
 		# Reset all inputs to off. Stops things like repeatedly shooting if you were holding down shoot when a date started.
@@ -59,7 +54,6 @@ func get_input_state() -> Dictionary:
 		"fire_held": _fire_held,
 		"mouse_world_pos": _mouse_world_pos,
 		"interacting": _interacting,
-		"superjump_held": _superjump_held,
 		"switch_gun": _switch_gun,
 		"ability_held": _ability_held,
 	}
@@ -84,9 +78,6 @@ func _lock_input() -> void:
 func _resume_input() -> void:
 	_input_locked = false
 
-func _enable_superjump() -> void:
-	_superjump_enabled = true
-
 func _physics_process(delta: float) -> void:
 	pass
 
@@ -102,10 +93,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("jump"):
 		_jump_held = true                            ##Player jumps
-	
-	if event.is_action_pressed("super") and event.is_action_pressed("jump"):
-		_jump_held = true
-		_superjump_held = true
 	
 	if event.is_action_pressed("interact"):
 		_interacting = true
