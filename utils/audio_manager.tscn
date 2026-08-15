@@ -27,6 +27,9 @@
 [ext_resource type="AudioStream" uid="uid://jdxg2216jjb4" path="res://audio/sound_clips/Scrub Charge Up.mp3" id="25_pplik"]
 [ext_resource type="AudioStream" uid="uid://44b2ee826yu8" path="res://audio/sound_clips/Enemy_Gibbed_2.mp3" id="26_8536u"]
 [ext_resource type="AudioStream" uid="uid://c5u0x2jxtyd7b" path="res://audio/sound_clips/Enemy_Gibbed_3.mp3" id="27_k7yxb"]
+[ext_resource type="AudioStream" uid="uid://c6ppqxyslar88" path="res://audio/sound_clips/Convict_Slash_1.mp3" id="28_57hb3"]
+[ext_resource type="AudioStream" uid="uid://bstxvrw4t4n3e" path="res://audio/sound_clips/Convict_Slash_2.mp3" id="29_f8iwo"]
+[ext_resource type="AudioStream" uid="uid://dy3ny8g74dukd" path="res://audio/sound_clips/Convict_Slash_3.mp3" id="30_35v0d"]
 
 [sub_resource type="Resource" id="Resource_0euqh"]
 resource_name = "test_music"
@@ -183,18 +186,21 @@ metadata/_custom_type_script = "uid://cyhl11tjftkqi"
 script = ExtResource("4_86fuy")
 sound_clip = ExtResource("25_46gwo")
 limit = 2
+pitch_random_shift = 0.1
 metadata/_custom_type_script = "uid://cyhl11tjftkqi"
 
 [sub_resource type="Resource" id="Resource_35v0d"]
 script = ExtResource("4_86fuy")
 sound_clip = ExtResource("26_8536u")
 limit = 2
+pitch_random_shift = 0.1
 metadata/_custom_type_script = "uid://cyhl11tjftkqi"
 
 [sub_resource type="Resource" id="Resource_suuxo"]
 script = ExtResource("4_86fuy")
 sound_clip = ExtResource("27_k7yxb")
 limit = 2
+pitch_random_shift = 0.1
 metadata/_custom_type_script = "uid://cyhl11tjftkqi"
 
 [sub_resource type="Resource" id="Resource_bbr7h"]
@@ -204,12 +210,40 @@ sfx_pool = Array[ExtResource("4_86fuy")]([SubResource("Resource_f8iwo"), SubReso
 sfx_ref = "enemy_death"
 metadata/_custom_type_script = "uid://f8abqnghabq5"
 
+[sub_resource type="Resource" id="Resource_6nha5"]
+script = ExtResource("4_86fuy")
+sound_clip = ExtResource("28_57hb3")
+limit = 2
+pitch_random_shift = 0.1
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_p5duw"]
+script = ExtResource("4_86fuy")
+sound_clip = ExtResource("29_f8iwo")
+limit = 2
+pitch_random_shift = 0.1
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_1ni11"]
+script = ExtResource("4_86fuy")
+sound_clip = ExtResource("30_35v0d")
+limit = 2
+pitch_random_shift = 0.1
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_rjtmv"]
+resource_name = "convict_slash"
+script = ExtResource("16_elrwl")
+sfx_pool = Array[ExtResource("4_86fuy")]([SubResource("Resource_6nha5"), SubResource("Resource_p5duw"), SubResource("Resource_1ni11")])
+sfx_ref = "convict_slash"
+metadata/_custom_type_script = "uid://f8abqnghabq5"
+
 [node name="AudioManager" type="Node" unique_id=850583180 node_paths=PackedStringArray("music_player")]
 script = ExtResource("1_yvh18")
 music_player = NodePath("MusicPlayer")
 music_tracks = Array[ExtResource("2_6ji2x")]([SubResource("Resource_0euqh")])
 sfx_global_pool_size = 16
 sfx_positional_pool_size = 16
-sound_effects = Array[ExtResource("4_8ir83")]([SubResource("Resource_oaxhr"), SubResource("Resource_rl7ob"), SubResource("Resource_dvfw8"), SubResource("Resource_iuerv"), SubResource("Resource_g36qw"), SubResource("Resource_jmy51"), SubResource("Resource_bskdb"), SubResource("Resource_8ir83"), SubResource("Resource_yryo2"), SubResource("Resource_k7yxb"), SubResource("Resource_57hb3"), SubResource("Resource_bbr7h")])
+sound_effects = Array[ExtResource("4_8ir83")]([SubResource("Resource_oaxhr"), SubResource("Resource_rl7ob"), SubResource("Resource_dvfw8"), SubResource("Resource_iuerv"), SubResource("Resource_g36qw"), SubResource("Resource_jmy51"), SubResource("Resource_bskdb"), SubResource("Resource_8ir83"), SubResource("Resource_yryo2"), SubResource("Resource_k7yxb"), SubResource("Resource_57hb3"), SubResource("Resource_bbr7h"), SubResource("Resource_rjtmv")])
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1228295571]
