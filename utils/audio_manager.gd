@@ -4,7 +4,7 @@ extends Node
 @export var music_tracks: Array[MusicTrack]
 @export_range(10, 100, 1) var sfx_global_pool_size: int = 10
 @export_range(10, 100, 1) var sfx_positional_pool_size: int = 10
-@export var sound_effects: Array[SoundEffect]
+@export var sound_effects: Array[CallableSFX]
 
 var music_dict: Dictionary
 var sfx_dict: Dictionary
@@ -20,10 +20,10 @@ func _ready() -> void:
 		music_dict[music.track_ref] = music
 	
 	# Assign sfx dict keys
-	for sound_effect: SoundEffect in sound_effects:
+	for sound_effect: CallableSFX in sound_effects:
 		sfx_dict[sound_effect.sfx_ref] = sound_effect
 	
-	# Generate sfx global node pool
+	# Generate sfx global ASP pool
 	for i in range(sfx_global_pool_size):
 		var asp := AudioStreamPlayer.new()
 		asp.autoplay = false
@@ -31,7 +31,7 @@ func _ready() -> void:
 		add_child(asp)
 		sfx_global_pool.append(asp)
 	
-	# Generate sfx positional node pool
+	# Generate sfx positional ASP pool
 	for i in range(sfx_positional_pool_size):
 		var asp := AudioStreamPlayer3D.new()
 		asp.autoplay = false
@@ -59,31 +59,38 @@ func play_music(track_ref: String):
 func play_sfx(sfx_ref: String):
 	# Check valid ref
 	if sfx_dict.has(sfx_ref):
-		# Assign sound effect locally
-		var sound_effect: SoundEffect = sfx_dict[sfx_ref]
-		# Check sfx limit
-		if sound_effect.has_open_limit():
-			# Adjust limit as necessary
-			sound_effect.change_audio_count(1)
-			# Assign avalible ASP node
-			var asp: AudioStreamPlayer = null
-			for player in sfx_global_pool:
-				if player.playing == false:
-					asp = player
-					break
-			if asp == null: # Alert dev if sfx global pool limit is exceded (likely will change to a fallback solution later)
-				print("Global sfx pool exceded")
-			# Configure ASP node
-			asp.stream = sound_effect.sound_clip
-			asp.volume_db = sound_effect.volume
-			asp.pitch_scale = sound_effect.pitch_scale + randf_range(-sound_effect.pitch_random_shift, sound_effect.pitch_random_shift)
-			# Connect finished signal
-			if not asp.finished.is_connected(sound_effect.on_audio_finished):
-				asp.finished.connect(sound_effect.on_audio_finished)
-			# Play sound effect
-			asp.play()
+		# Assign callable_sfx locally
+		var callable_sfx: CallableSFX = sfx_dict[sfx_ref]
+		# Get Sound Effect resource (will select a random Sound Effect entry if 
+		# SoundEffectPool, otherwise returns same as callable_sfx)
+		var sound_effect = callable_sfx.get_sfx()
+		# Verify sound_effect resource is assigned
+		if sound_effect == null:
+			push_error("SFX Resource is not found")
+		else:
+		# Check sfx limit		
+			if sound_effect.has_open_limit():
+				# Adjust limit as necessary
+				sound_effect.change_audio_count(1)
+				# Assign avalible ASP node
+				var asp: AudioStreamPlayer = null
+				for player in sfx_global_pool:
+					if player.playing == false:
+						asp = player
+						break
+				if asp == null: # Alert dev if sfx global pool limit is exceded (likely will change to a fallback solution later)
+					push_error("Global SFX ASP pool exceded")
+				# Configure ASP node
+				asp.stream = sound_effect.sound_clip
+				asp.volume_db = sound_effect.volume
+				asp.pitch_scale = sound_effect.pitch_scale + randf_range(-sound_effect.pitch_random_shift, sound_effect.pitch_random_shift)
+				# Connect finished signal
+				if not asp.finished.is_connected(sound_effect.on_audio_finished):
+					asp.finished.connect(sound_effect.on_audio_finished)
+				# Play sound effect
+				asp.play()
 	else:
-		push_error("Sound effect not found")
+		push_error("No SFX callable with reference '" + sfx_ref + "'")
 
 # Play positional sound effect with an in-game location (best for enemies, hits, etc.)
 func play_sfx_at_location(sfx_ref: String, location: Vector3):
