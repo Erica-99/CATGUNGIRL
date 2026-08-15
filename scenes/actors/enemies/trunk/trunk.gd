@@ -65,6 +65,9 @@ var facing: float = 1.0:
 @export var melee_lunge_duration: float = 0.1
 @export var melee_recovery_time: float = 2
 
+@export_category("Trunk Armour")
+@export var armour_break_recovery_time: float = 2
+
 @export_category("Attack Variables")
 @export var melee_damage: float = 30.0
 @export var melee_hitbox: Area3D
@@ -89,6 +92,11 @@ var past_object_collider_status: bool = false
 @onready var object_check: RayCast3D = $ObjectCheck
 @onready var animation_player: AnimationPlayer = $TrunkMesh/TorsoAnims
 @onready var chase_range: Area3D = $ChaseRange
+
+# recovery time is set within trunk_melee and on armour break - they both override the recovery_time blackboard variable
+# this const just sets the default when having not been overwritten yet
+# less magic numbers = gigi will be happy with u
+const BASE_RECOVERY_TIME = 5.0
 
 var damage_instance: DamageHealInstance = DamageHealInstance.new()
 
@@ -138,8 +146,10 @@ func _ready() -> void:
 		"melee_lunge_distance": melee_lunge_distance,
 		"melee_lunge_duration": melee_lunge_duration,
 		"melee_recovery_time": melee_recovery_time,
+		"armour_break_recovery_time": armour_break_recovery_time,
 		"xpos_distance_vert_offset": xpos_distance_vert_offset,
 		"vert_threshold": vert_threshold,
+		"recovery_time": BASE_RECOVERY_TIME,
 		"target": get_tree().get_first_node_in_group("player") as CharacterBody3D,
 	}
 	# Change initial state based on Inspector values
@@ -192,9 +202,6 @@ func _take_step():
 
 
 func _on_torso_anims_animation_finished(anim_name: StringName) -> void:
-	print("FUCK")
-	print(state_machine.current_state_name)
-	print(state_machine.current_state)
 	if state_machine.current_state != state_machine.states["trunkstun"]:
 		if anim_name == 'PunchStart':
 			animation_player.play("PunchActive")
