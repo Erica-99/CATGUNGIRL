@@ -7,6 +7,7 @@ extends Area3D
 @export_category("Hitbox Details")
 @export var team_component: Node
 @export var hit_sfx_ref: String
+@export var is_headshot: bool = false
 
 @export_category("Armour Variables")
 @export var is_broken: bool = false
