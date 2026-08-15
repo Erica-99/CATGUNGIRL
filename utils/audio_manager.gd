@@ -96,31 +96,38 @@ func play_sfx(sfx_ref: String):
 func play_sfx_at_location(sfx_ref: String, location: Vector3):
 	# Check valid ref
 	if sfx_dict.has(sfx_ref):
-		# Assign sound effect locally
-		var sound_effect: SoundEffect = sfx_dict[sfx_ref]
-		# Check sfx limit
-		if sound_effect.has_open_limit():
-			# Adjust limit as necessary
-			sound_effect.change_audio_count(1)
-			# Assign avalible ASP node
-			var asp3d: AudioStreamPlayer3D = null
-			for player in sfx_positional_pool:
-				if player.playing == false:
-					asp3d = player
-					break
-			if asp3d == null: # Alert dev if sfx pool limit is exceded (likely will change to a fallback solution later)
-				print("Positional sfx pool exceded")
-			# Configure ASP node
-			asp3d.stream = sound_effect.sound_clip
-			asp3d.volume_db = sound_effect.volume
-			asp3d.pitch_scale = sound_effect.pitch_scale + randf_range(-sound_effect.pitch_random_shift, sound_effect.pitch_random_shift)
-			asp3d.global_position = location
+		# Assign callable_sfx locally
+		var callable_sfx: CallableSFX = sfx_dict[sfx_ref]
+		# Get Sound Effect resource (will select a random Sound Effect entry if 
+		# SoundEffectPool, otherwise returns same as callable_sfx)
+		var sound_effect = callable_sfx.get_sfx()
+		# Verify sound_effect resource is assigned
+		if sound_effect == null:
+			push_error("SFX Resource is not found")
+		else:
+			# Check sfx limit
+			if sound_effect.has_open_limit():
+				# Adjust limit as necessary
+				sound_effect.change_audio_count(1)
+				# Assign avalible ASP node
+				var asp3d: AudioStreamPlayer3D = null
+				for player in sfx_positional_pool:
+					if player.playing == false:
+						asp3d = player
+						break
+				if asp3d == null: # Alert dev if sfx pool limit is exceded (likely will change to a fallback solution later)
+					print("Positional sfx pool exceded")
+				# Configure ASP node
+				asp3d.stream = sound_effect.sound_clip
+				asp3d.volume_db = sound_effect.volume
+				asp3d.pitch_scale = sound_effect.pitch_scale + randf_range(-sound_effect.pitch_random_shift, sound_effect.pitch_random_shift)
+				asp3d.global_position = location
 			
-			# Connect finished signal
-			if not asp3d.finished.is_connected(sound_effect.on_audio_finished):
-				asp3d.finished.connect(sound_effect.on_audio_finished)
+				# Connect finished signal
+				if not asp3d.finished.is_connected(sound_effect.on_audio_finished):
+					asp3d.finished.connect(sound_effect.on_audio_finished)
 				
-			# Play sound effect
-			asp3d.play()
+				# Play sound effect
+				asp3d.play()
 	else:
 		push_error("Sound effect not found")
