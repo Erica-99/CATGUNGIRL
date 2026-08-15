@@ -58,9 +58,7 @@ func _on_break_shield() -> void:
 	is_broken = true
 	_break_shield()
 	
-	
 	# ADD ANIMATION SWITCH HERE
-	
 	
 	# set recovery time to armour break recovery time (AFFECTS STUN IN TRUNKSTUN STATE)
 	trunk.blackboard["recovery_time"] = trunk.blackboard["armour_break_recovery_time"]
