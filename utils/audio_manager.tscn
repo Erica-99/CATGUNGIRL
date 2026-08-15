@@ -16,6 +16,13 @@
 [ext_resource type="AudioStream" uid="uid://b0o8y6cyyarhd" path="res://audio/sound_clips/Jump_Landing.mp3" id="13_bskdb"]
 [ext_resource type="AudioStream" uid="uid://c56agp10h8bne" path="res://audio/sound_clips/Damage_Grunt_1.mp3" id="13_jmy51"]
 [ext_resource type="Script" uid="uid://f8abqnghabq5" path="res://resources/sound_effect/sound_effect_pool.gd" id="16_elrwl"]
+[ext_resource type="AudioStream" uid="uid://6wt538gx6vr3" path="res://audio/sound_clips/Damage_1.mp3" id="17_yryo2"]
+[ext_resource type="AudioStream" uid="uid://bby6yggaa4urs" path="res://audio/sound_clips/Damage_2.mp3" id="18_nys0b"]
+[ext_resource type="AudioStream" uid="uid://cjq7q7lkg6o5j" path="res://audio/sound_clips/Damage_3.mp3" id="19_1w082"]
+[ext_resource type="AudioStream" uid="uid://b65nykjk7bhcy" path="res://audio/sound_clips/Damage_4.mp3" id="20_nbv41"]
+[ext_resource type="AudioStream" uid="uid://dfhm8e1gvcoty" path="res://audio/sound_clips/Damage_Grunt_2.mp3" id="21_pplik"]
+[ext_resource type="AudioStream" uid="uid://dvwh6hniumsw5" path="res://audio/sound_clips/Damage_Grunt_3.mp3" id="22_gl2gd"]
+[ext_resource type="AudioStream" uid="uid://cy0n1a0fwbp37" path="res://audio/sound_clips/Damage_Grunt_4.mp3" id="23_46gwo"]
 
 [sub_resource type="Resource" id="Resource_0euqh"]
 resource_name = "test_music"
@@ -100,17 +107,62 @@ sound_clip = ExtResource("13_bskdb")
 sfx_ref = "jump_landing"
 metadata/_custom_type_script = "uid://cyhl11tjftkqi"
 
-[sub_resource type="Resource" id="Resource_krs0q"]
-resource_name = "dmg_grunt_1"
+[sub_resource type="Resource" id="Resource_dau3t"]
+script = ExtResource("4_86fuy")
+sound_clip = ExtResource("17_yryo2")
+limit = 1
+pool_weighting = 2.0
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_8536u"]
+script = ExtResource("4_86fuy")
+sound_clip = ExtResource("18_nys0b")
+limit = 1
+pool_weighting = 2.0
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_kiplj"]
+script = ExtResource("4_86fuy")
+sound_clip = ExtResource("19_1w082")
+limit = 1
+pool_weighting = 2.0
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_1w082"]
+script = ExtResource("4_86fuy")
+sound_clip = ExtResource("20_nbv41")
+limit = 1
+pool_weighting = 2.0
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_nbv41"]
 script = ExtResource("4_86fuy")
 sound_clip = ExtResource("13_jmy51")
-volume = -5.0
-pitch_random_shift = 0.1
-sfx_ref = "dmg_grunt_1"
+limit = 1
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_pplik"]
+script = ExtResource("4_86fuy")
+sound_clip = ExtResource("21_pplik")
+limit = 1
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_gl2gd"]
+script = ExtResource("4_86fuy")
+sound_clip = ExtResource("22_gl2gd")
+limit = 1
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_46gwo"]
+script = ExtResource("4_86fuy")
+sound_clip = ExtResource("23_46gwo")
+limit = 1
 metadata/_custom_type_script = "uid://cyhl11tjftkqi"
 
 [sub_resource type="Resource" id="Resource_yryo2"]
+resource_name = "player_damaged"
 script = ExtResource("16_elrwl")
+sfx_pool = Array[ExtResource("4_86fuy")]([SubResource("Resource_dau3t"), SubResource("Resource_8536u"), SubResource("Resource_kiplj"), SubResource("Resource_1w082"), SubResource("Resource_nbv41"), SubResource("Resource_pplik"), SubResource("Resource_gl2gd"), SubResource("Resource_46gwo")])
 sfx_ref = "player_damaged"
 metadata/_custom_type_script = "uid://f8abqnghabq5"
 
@@ -120,6 +172,6 @@ music_player = NodePath("MusicPlayer")
 music_tracks = Array[ExtResource("2_6ji2x")]([SubResource("Resource_0euqh")])
 sfx_global_pool_size = 16
 sfx_positional_pool_size = 16
-sound_effects = Array[ExtResource("4_8ir83")]([SubResource("Resource_oaxhr"), SubResource("Resource_rl7ob"), SubResource("Resource_0nuek"), SubResource("Resource_dvfw8"), SubResource("Resource_iuerv"), SubResource("Resource_g36qw"), SubResource("Resource_jmy51"), SubResource("Resource_bskdb"), SubResource("Resource_8ir83"), SubResource("Resource_krs0q"), SubResource("Resource_yryo2")])
+sound_effects = Array[ExtResource("4_8ir83")]([SubResource("Resource_oaxhr"), SubResource("Resource_rl7ob"), SubResource("Resource_0nuek"), SubResource("Resource_dvfw8"), SubResource("Resource_iuerv"), SubResource("Resource_g36qw"), SubResource("Resource_jmy51"), SubResource("Resource_bskdb"), SubResource("Resource_8ir83"), SubResource("Resource_yryo2")])
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1228295571]
