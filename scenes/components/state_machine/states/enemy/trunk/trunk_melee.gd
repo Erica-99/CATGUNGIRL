@@ -122,6 +122,8 @@ func _start_recovery() -> void:
 	# overwrite recovery_time so trunkstun works for melee recovery
 	blackboard["recovery_time"] = melee_recovery_time
 	
+	# ADD ANIMATION SWITCH HERE
+	
 	# switched to use trunkstun state - revert this change by removing the line just below this (and uncommenting lines above)
 	transitioned.emit(self, "trunkstun")
 
