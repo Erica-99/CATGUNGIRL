@@ -363,7 +363,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ly0j2"]
-size = Vector3(1.285553, 3.2021484, 1)
+size = Vector3(2.5, 4.5, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bmk6k"]
 radius = 0.88964844
@@ -389,6 +389,7 @@ radius = 2.1603687
 
 [node name="Scrub" type="CharacterBody3D" unique_id=1090872008 node_paths=PackedStringArray("state_machine", "start_idle", "start_patrol", "start_aggro", "gun_component")]
 collision_layer = 4
+collision_mask = 129
 script = ExtResource("1_2i5hx")
 state_machine = NodePath("StateMachine")
 patroller = true
@@ -483,6 +484,7 @@ libraries/ = SubResource("AnimationLibrary_dxowq")
 autoplay = &"Idle"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1549018224]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1880244, -0.671875, 0)
 shape = SubResource("BoxShape3D_ly0j2")
 
 [node name="HealthComponent" parent="." unique_id=236252344 node_paths=PackedStringArray("stun_state", "state_machine") instance=ExtResource("1_jvusm")]
@@ -517,6 +519,7 @@ debug_color = Color(0.75945634, 0.3475156, 1, 0.41960785)
 team_component = NodePath("../TeamComponent")
 health_component = NodePath("../HealthComponent")
 damage_multiplier = 1.5
+is_headshot = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HeadHurtbox" unique_id=2020127821]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012021974, 0.9222485, 0)

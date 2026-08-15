@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cslp0wcty1crc"]
+
+[ext_resource type="ArrayMesh" uid="uid://b8pa64mbrqg7x" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/0_MultipleMisc/SteelBeamVertical.obj" id="1_slu8o"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_slu8o"]
+points = PackedVector3Array(-0.322349, 0.002527, -0.254938, 0.32235807, 0.002527, -0.254938, -0.322349, 0.002527, 0.25449508, -0.322349, 0.061716083, -0.254938, 0.32235807, 0.002527, 0.25449508, 0.32235807, 0.061716083, -0.254938, -0.322349, 0.061716083, 0.25449508, -0.23658581, 4.801541, -0.18362236, 0.32235807, 0.061716083, 0.25449508, 0.23653173, 4.801541, -0.18362236, -0.23658581, 4.801541, 0.18317947, 0.23653173, 4.801541, 0.18317947)
+
+[node name="SteelBeamVertical" type="StaticBody3D" unique_id=1918824723]
+
+[node name="SteelBeamVertical_Mesh" type="MeshInstance3D" parent="." unique_id=913616726]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = ExtResource("1_slu8o")
+
+[node name="SteelBeamVertical_Collision" type="CollisionShape3D" parent="." unique_id=1621565319]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_slu8o")
