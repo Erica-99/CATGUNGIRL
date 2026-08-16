@@ -1479,6 +1479,7 @@ script = ExtResource("1_qdyt2")
 hit_heal_fraction = 0.1
 movement_state_machine = NodePath("MovementStateMachine")
 gun_arm_node = NodePath("PlayerVisuals/ROOT_P/GUN_P")
+jump_velocity = 35.0
 input_component = NodePath("PlayerInput")
 mantle_detector = NodePath("MantleDetector")
 feet_point = NodePath("FeetPoint")
@@ -1620,7 +1621,8 @@ metadata/_custom_type_script = "uid://dropwvjh2s43u"
 
 [node name="PlayerJump" type="Node" parent="MovementStateMachine" unique_id=1318792244]
 script = ExtResource("11_8bj4u")
-gravity_multiplier = 1.0
+gravity_multiplier = 1.1
+jump_cut_multiplier = 0.7
 metadata/_custom_type_script = "uid://dropwvjh2s43u"
 
 [node name="PlayerFall" type="Node" parent="MovementStateMachine" unique_id=1314206425]
