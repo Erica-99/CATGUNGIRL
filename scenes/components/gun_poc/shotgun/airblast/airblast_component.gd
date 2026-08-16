@@ -20,6 +20,7 @@ var slow_target_y: float
 @export var blast_damage: float = 10
 @export var blast_knockback: float = 20
 @export var blast_stun_time: float = 0.25
+@export var blast_size: float = 4
 
 signal enemy_hit(damage: float)
 
@@ -63,7 +64,7 @@ func _fire_blast():
 		var blast = blast_object.instantiate()
 		get_tree().root.add_child(blast)
 		var aim_dir = Vector3(cos(shotgun.rotation.z), sin(shotgun.rotation.z), 0.0).normalized()
-		blast.global_transform = shotgun.muzzle.global_transform.translated(aim_dir * (3)) # offset spawn pos
+		blast.global_transform = shotgun.muzzle.global_transform.translated(aim_dir * (blast_size+1)) # offset spawn pos
 		
 		var damage_instance = DamageHealInstance.new()
 		damage_instance.amount = blast_damage
@@ -73,7 +74,7 @@ func _fire_blast():
 		damage_instance.stun_time = blast_stun_time
 		damage_instance.source = get_path()
 		
-		blast.initialize(aim_dir, damage_instance, team_component, 2) #
+		blast.initialize(aim_dir, damage_instance, team_component, blast_size)
 		var hb = blast.get_node("HitboxComponent") 
 		hb.damage_dealt.connect(func(damage): enemy_hit.emit(damage)) # Will need to modify this to work with new enemy_hit signal behaviour in dev.
 		# This handles the launch
