@@ -1681,8 +1681,12 @@ frame = 1
 frame_progress = 0.037387703
 script = ExtResource("27_cat03")
 
-[node name="GunHolder" parent="." unique_id=407642416 node_paths=PackedStringArray("input_component") instance=ExtResource("28_7i6t6")]
+[node name="GunHolder" parent="." unique_id=407642416 node_paths=PackedStringArray("input_component", "team_component", "Gun_Animation", "Muzzle_VFX") instance=ExtResource("28_7i6t6")]
 input_component = NodePath("../PlayerInput")
+team_component = NodePath("../TeamComponent")
+Gun_Animation = NodePath("../PlayerVisuals/ROOT_P/GUN_P/GUN_AIM/Hand_Anims")
+Muzzle_VFX = NodePath("../PlayerVisuals/ROOT_P/GUN_P/GUN_AIM/MuzzleFlash_P/AnimationPlayer")
+guns_available = Array[int]([0, 1, 2])
 
 [node name="AudioListener3D" type="AudioListener3D" parent="." unique_id=1025557284]
 current = true

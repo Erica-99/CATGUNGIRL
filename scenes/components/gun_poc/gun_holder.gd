@@ -1,50 +1,62 @@
 extends Node3D
-var current_gun: Gun
 
+class_name GunHolder
+
+# export var references
+@export var input_component: Node
+@export var team_component: Node
+
+# these were node tree references, but that no longer works and shit
+@export var Gun_Animation: AnimationPlayer
+@export var Muzzle_VFX: AnimationPlayer
+
+@export var attached_to_player: bool
+
+# signals
 signal enemy_hit(damage: float)
 signal current_gun_charge_progress_changed(progress: float)
 signal current_gun_charge_ended
 signal current_gun_charge_started
 
-@export var input_component: Node
+# define gun switches for this entity - IF player keep as per default
+# IF ENEMY edit as needed 
+# this used to be the const but i stopped being lazy tbh
+#@export var guns_available: Array = [PISTOL_PREFAB, SHOTGUN_PREFAB, SNIPER_PREFAB]
+@export var guns_available: Array[Enums.Guns]
 
-@onready var Gun_Animation: AnimationPlayer = $"../PlayerVisuals/ROOT_P/GUN_P/GUN_AIM/Hand_Anims"
-@onready var Muzzle_VFX: AnimationPlayer = $"../PlayerVisuals/ROOT_P/GUN_P/GUN_AIM/MuzzleFlash_P/AnimationPlayer"
-@onready var team_component: Node = $"../TeamComponent"
+# runtime var holding reference to currently equipped gun
+var current_gun: Gun
 
-const PISTOL_PREFAB = preload("res://scenes/components/gun_poc/pistol/pistol.tscn")
-const SHOTGUN_PREFAB = preload("res://scenes/components/gun_poc/shotgun/shotgun.tscn")
-#const RIFLE_PREFAB = preload("res://scenes/components/gun_poc/rifle/rifle.tscn")
-const SNIPER_PREFAB = preload("res://scenes/components/gun_poc/sniper/sniper.tscn")
-
-# can make this instead an export var for better customisation (for the poc i am being lazy)
-const guns_available = [PISTOL_PREFAB, SHOTGUN_PREFAB, SNIPER_PREFAB]
-
+# indexing vars for handling gun list
 var current_child_count: int = 0
 var current_gun_index: int = 0
 
+# allow switch to occur - more of a bug fixing/trialling code given switches can be limited via export
 var allow_swapping: bool
 
 func _ready() -> void:
-	for guns in guns_available:
-		var gun = guns.instantiate()
-		add_child(gun)
-		gun.owner = self
-		if input_component:
-			# if component is provided then player must be attached
+	if team_component != null:
+		for guns in guns_available:
+			var gun = GunList._get_gun_reference_from_enum(guns).instantiate()
+			add_child(gun)
+			gun.owner = self
 			gun.input_component = input_component
-		gun.Gun_Animation = Gun_Animation
-		gun.Muzzle_VFX = Muzzle_VFX
-		gun.team_component = team_component
-		gun.enemy_hit.connect(_on_enemy_hit) # Bind all the enemy hit signals at the start so hits still heal if they land after swapping weapons
-	
-	current_child_count = get_child_count()
-	
-	# lazy code - should be changed to consider other child types...
-	current_gun = get_child(current_gun_index)
-	_activate_gun()
-	EventManager.new_gun_equipped.emit(current_gun.gun_name)
-	EventManager.new_mag_loaded.emit(current_gun._current_ammo, current_gun.ammo_max)
+			gun.Gun_Animation = Gun_Animation
+			gun.Muzzle_VFX = Muzzle_VFX
+			gun.team_component = team_component
+			gun.attached_to_player = attached_to_player
+			gun.enemy_hit.connect(_on_enemy_hit) # Bind all the enemy hit signals at the start so hits still heal if they land after swapping weapons
+		
+		current_child_count = get_child_count()
+		
+		# lazy code - should be changed to consider other child types...
+		current_gun = get_child(current_gun_index)
+		_activate_gun()
+		if attached_to_player:
+			EventManager.new_gun_equipped.emit(current_gun.gun_name)
+			EventManager.new_mag_loaded.emit(current_gun._current_ammo, current_gun.ammo_max)
+	else:
+		print("ERROR = TEAM COMPONENT IS CURRENTLY NULL")
 
 func _process(delta: float) -> void:
 	var current_input_state = input_component.get_input_state()

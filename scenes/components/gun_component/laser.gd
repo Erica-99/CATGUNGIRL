@@ -1,5 +1,7 @@
 extends Node3D
 
+@export var is_active: bool = true
+
 ## laser sight
 @export_group("Aiming Laser")
 @export var max_range: float = 40.0			# max laser length if nothing is hit
@@ -36,21 +38,22 @@ func on_perfect_window_changed(active: bool) -> void:
 	_in_perfect_window = active
 
 func _ready() -> void:
-	ray_cast.target_position = Vector3(max_range, 0.0, 0.0)
-	mesh_instance.mesh = ImmediateMesh.new()
-	var material = StandardMaterial3D.new()
-	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	material.vertex_color_use_as_albedo = true
-	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	mesh_instance.material_override = material
-	## BEAM
-	beam_mesh_instance.mesh = ImmediateMesh.new()
-	var beam_material = StandardMaterial3D.new()
-	beam_material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	beam_material.vertex_color_use_as_albedo = true
-	beam_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	beam_material.blend_mode = BaseMaterial3D.BLEND_MODE_ADD
-	beam_mesh_instance.material_override = beam_material
+	if is_active:
+		ray_cast.target_position = Vector3(max_range, 0.0, 0.0)
+		mesh_instance.mesh = ImmediateMesh.new()
+		var material = StandardMaterial3D.new()
+		material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+		material.vertex_color_use_as_albedo = true
+		material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+		mesh_instance.material_override = material
+		## BEAM
+		beam_mesh_instance.mesh = ImmediateMesh.new()
+		var beam_material = StandardMaterial3D.new()
+		beam_material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+		beam_material.vertex_color_use_as_albedo = true
+		beam_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+		beam_material.blend_mode = BaseMaterial3D.BLEND_MODE_ADD
+		beam_mesh_instance.material_override = beam_material
 
 func on_spread_changed(spread: float) -> void:
 	_current_spread = spread

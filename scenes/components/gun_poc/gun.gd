@@ -84,6 +84,8 @@ var Muzzle_VFX: AnimationPlayer
 
 var input_component: Node
 
+var attached_to_player: bool
+
 var active: bool = false:
 	set(value):
 		active = value

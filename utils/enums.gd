@@ -62,3 +62,9 @@ enum EnemyType {
 	CONVICT,
 	SCRUB,
 }
+
+enum Guns {
+	PISTOL,
+	SHOTGUN,
+	SNIPER,
+}
