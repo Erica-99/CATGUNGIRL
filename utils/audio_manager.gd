@@ -28,6 +28,7 @@ func _ready() -> void:
 		var asp := AudioStreamPlayer.new()
 		asp.autoplay = false
 		asp.bus = "SFX"  # optional
+		asp.finished.connect(on_sfx_finished)
 		add_child(asp)
 		sfx_global_pool.append(asp)
 	
@@ -36,6 +37,7 @@ func _ready() -> void:
 		var asp := AudioStreamPlayer3D.new()
 		asp.autoplay = false
 		asp.bus = "SFX"  # optional
+		asp.finished.connect(on_sfx_finished)
 		add_child(asp)
 		sfx_positional_pool.append(asp)
 
@@ -84,8 +86,8 @@ func play_sfx(sfx_ref: String):
 			asp.pitch_scale = sound_effect.pitch_scale + randf_range(-sound_effect.pitch_random_shift, sound_effect.pitch_random_shift)
 			
 			# Connect finished signal
-			if not asp.finished.is_connected(sound_effect.on_audio_finished):
-				asp.finished.connect(sound_effect.on_audio_finished)
+			asp.finished.disconnect(on_sfx_finished)
+			asp.finished.connect(on_sfx_finished.bind(sound_effect))
 			
 			# Play sound effect
 			asp.play()
@@ -120,11 +122,13 @@ func play_sfx_at_location(sfx_ref: String, location: Vector3):
 			asp3d.global_position = location
 			
 			# Connect finished signal
-			if not asp3d.finished.is_connected(sound_effect.on_audio_finished):
-				asp3d.finished.connect(sound_effect.on_audio_finished)
+			asp3d.finished.disconnect(on_sfx_finished)
+			asp3d.finished.connect(on_sfx_finished.bind(sound_effect))
 			
 			# Play sound effect
 			asp3d.play()
+
+
 
 func get_sfx_from_dict(sfx_ref: String) -> SoundEffect:
 	if sfx_dict.has(sfx_ref):
@@ -137,3 +141,6 @@ func get_sfx_from_dict(sfx_ref: String) -> SoundEffect:
 	else: 
 		push_error("No entry in sound effect register matching '" + sfx_ref + "'" )
 		return null
+
+func on_sfx_finished(sfx: SoundEffect):
+	sfx.on_audio_finished()
