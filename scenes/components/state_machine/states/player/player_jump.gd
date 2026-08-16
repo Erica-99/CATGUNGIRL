@@ -22,6 +22,8 @@ func enter() -> void:
 	if blackboard["mantle_detector"] != null:
 		blackboard["mantle_detector"].set_checking_enabled(true)
 	jump_vel = actor.jump_velocity
+	if not actor.is_on_floor():
+		jump_velocity_applied = true
 
 func exit() -> void:
 	jump_velocity_applied = false
