@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://rlu4e0ohmycv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwaySingleMidPrison.tscn" id="31_ddk0w"]
 [ext_resource type="PackedScene" uid="uid://bls076phgmcus" path="res://scenes/actors/enemies/scrub/scrub.tscn" id="31_yfq6p"]
 [ext_resource type="PackedScene" uid="uid://ms7yhmwowtnu" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/FloorShootingPrison.tscn" id="32_setcc"]
+[ext_resource type="PackedScene" uid="uid://dek1idjvaqpdl" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/FloorBrokenSidePrison.tscn" id="33_setcc"]
 
 [node name="StageTwo" type="Node3D" unique_id=1996110792]
 
@@ -595,14 +596,8 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 80, -8.4, 0)
 [node name="RoofPrison24" parent="Environment" unique_id=1309109547 instance=ExtResource("25_nw6od")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 80, -8.4, -10)
 
-[node name="RoofPrison25" parent="Environment" unique_id=1703812117 instance=ExtResource("25_nw6od")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 90, -8.4, 0)
-
 [node name="RoofPrison26" parent="Environment" unique_id=1738758963 instance=ExtResource("25_nw6od")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 90, -8.4, -10)
-
-[node name="RoofPrison27" parent="Environment" unique_id=1745772535 instance=ExtResource("25_nw6od")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 100, -8.4, 0)
 
 [node name="RoofPrison29" parent="Environment" unique_id=1749688967 instance=ExtResource("25_nw6od")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 110, -8.4, 0)
@@ -907,9 +902,18 @@ room_ID = 1
 room_ID = 2
 
 [node name="Scrub3" parent="Enemies/Room Three" unique_id=1744272114 instance=ExtResource("31_yfq6p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.29885, -13.496223, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.093834, -13.496223, 0)
 
 [node name="Convict" parent="Enemies/Room Three" unique_id=1506947017 instance=ExtResource("21_n434r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.26416, -23.496223, 0)
+
+[node name="FloorBrokenSidePrison" parent="." unique_id=182992622 instance=ExtResource("33_setcc")]
+transform = Transform3D(1.5623003, -1.2486864, 0, 1.2486864, 1.5623003, 0, 0, 0, 2, 101.17924, -11.43822, 0)
+
+[node name="FloorBrokenSidePrison2" parent="." unique_id=263574101 instance=ExtResource("33_setcc")]
+transform = Transform3D(-1.8953587, 0.63844794, -1.6569751e-07, 0.63844794, 1.8953587, 5.5814883e-08, 1.7484555e-07, 0, -2, 87.86047, -9.139285, 0)
+
+[node name="PrisonCell" parent="." unique_id=217031620 instance=ExtResource("20_0yyri")]
+transform = Transform3D(-1.6031886, -1.5786976, -1.4015521e-07, -1.5786976, 1.6031886, -1.3801413e-07, 1.9670125e-07, 0, -2.25, 97.4638, -10.894598, 0)
 
 [connection signal="stage_cleared" from="Enemies/Room Three" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]

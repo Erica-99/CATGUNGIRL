@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dek1idjvaqpdl"]
 
 [ext_resource type="ArrayMesh" uid="uid://bfj50wdjvl6ge" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/1_Prison/FloorBrokenSidePrison.obj" id="1_i1bhl"]
-[ext_resource type="Texture2D" uid="uid://db76j10ognk01" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/FloorRoof/TextureTrimSheetFloorP.png" id="2_x5wte"]
 [ext_resource type="ArrayMesh" uid="uid://h0w5igixha5g" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/RebarEdge.obj" id="3_rwuer"]
 [ext_resource type="Texture2D" uid="uid://bnq5s5pb7dh6j" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/FloorRoof/Floor_RoofPrison_Base_color.png" id="4_g67sh"]
 [ext_resource type="Texture2D" uid="uid://cs382iyixowlj" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/FloorRoof/Floor_RoofPrison_Mixed_AO.png" id="5_vgl37"]
@@ -10,8 +9,18 @@
 [ext_resource type="Texture2D" uid="uid://dqbmkyoo6y5r2" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/FloorRoof/Floor_RoofPrison_Normal_OpenGL.png" id="8_44st2"]
 [ext_resource type="Texture2D" uid="uid://dn0pmjhi73ibf" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/FloorRoof/Floor_RoofPrison_Specular_roughness.png" id="9_ml1et"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_byj3a"]
-albedo_texture = ExtResource("2_x5wte")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_83r4d"]
+albedo_texture = ExtResource("4_g67sh")
+metallic = 1.0
+metallic_texture = ExtResource("7_ylw7e")
+roughness_texture = ExtResource("9_ml1et")
+normal_enabled = true
+normal_texture = ExtResource("8_44st2")
+ao_enabled = true
+ao_texture = ExtResource("5_vgl37")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("6_axsq7")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xcmra"]
 albedo_texture = ExtResource("4_g67sh")
@@ -31,7 +40,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="FloorBrokenSidePrison_Mesh" type="MeshInstance3D" parent="." unique_id=1388799136]
 mesh = ExtResource("1_i1bhl")
-surface_material_override/0 = SubResource("StandardMaterial3D_byj3a")
+surface_material_override/0 = SubResource("StandardMaterial3D_83r4d")
 
 [node name="RebarEdge_Mesh" type="MeshInstance3D" parent="." unique_id=1154885482]
 mesh = ExtResource("3_rwuer")

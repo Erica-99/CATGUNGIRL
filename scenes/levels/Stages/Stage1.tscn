@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://b3ig2tp4e62bo" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeSets/SuperLongDistancePipe.tscn" id="15_ewyc7"]
 [ext_resource type="Texture2D" uid="uid://csgb8m3me7rx8" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/0_MultipleMisc/Pipes/PipesTexture_N.png" id="15_gnlg4"]
 [ext_resource type="PackedScene" uid="uid://d1isfmus58oku" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/IndustrialLight1.tscn" id="15_oeecs"]
+[ext_resource type="ArrayMesh" uid="uid://ckswbgels33vw" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/PrisonRailDoor.obj" id="15_rpc8p"]
 [ext_resource type="PackedScene" uid="uid://k4bj1vh7ofsj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorExit.tscn" id="15_th7oq"]
 [ext_resource type="PackedScene" uid="uid://bncqrcy5rw3pp" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/3_GuardRooms/FilingCabinet4.tscn" id="15_wfw32"]
 [ext_resource type="Texture2D" uid="uid://ohyqjbbhmmvp" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/0_MultipleMisc/Pipes/PipesTexture_R.png" id="16_eqd1r"]
@@ -122,29 +123,7 @@
 [ext_resource type="Texture2D" uid="uid://ql3ibrkd7wt" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/0_MultipleMisc/SecurityCamera/SecurityCamera_M.png" id="89_ncrw4"]
 [ext_resource type="Texture2D" uid="uid://bb665vwnyy8rn" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/0_MultipleMisc/SecurityCamera/SecurityCamera_N.png" id="90_vm2sj"]
 [ext_resource type="Texture2D" uid="uid://c2obthacn7xc" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/0_MultipleMisc/SecurityCamera/SecurityCamera_R.png" id="91_f2j4k"]
-[ext_resource type="Texture2D" uid="uid://d1ama0ua3owem" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/1_TestChamber/TestDummy/TestDummyTexture_BC.png" id="115_jx5wa"]
-[ext_resource type="Texture2D" uid="uid://dtda4qld3jetk" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/1_TestChamber/TestDummy/TestDummyTexture_M.png" id="116_x4ehs"]
-[ext_resource type="Texture2D" uid="uid://dw6q287kn8vdt" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/1_TestChamber/TestDummy/TestDummyTexture_N.png" id="117_2qri5"]
-[ext_resource type="Texture2D" uid="uid://lnxp703rb04k" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/1_TestChamber/TestDummy/TestDummyTexture_R.png" id="118_xwepp"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jd7j6"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_thger"]
-albedo_color = Color(0.63529414, 0.6392157, 0.69803923, 1)
-metallic = 0.55
-metallic_specular = 0.43
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_op348"]
-albedo_color = Color(0.7538296, 0.777908, 0.781913, 1)
-metallic = 1.0
-roughness = 0.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06we4"]
-albedo_color = Color(0.7538296, 0.777908, 0.781913, 1)
-metallic = 1.0
-roughness = 0.7
+[ext_resource type="PackedScene" uid="uid://c10iyc1w0tn8i" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/WallObservation.tscn" id="123_tatg8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bq6qj"]
 albedo_color = Color(0.6114719, 0.6536162, 0.6536162, 1)
@@ -154,167 +133,33 @@ roughness = 0.3
 emission = Color(0.64066195, 0.37603098, 0.43618172, 1)
 emission_energy_multiplier = 3.17
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5v7pu"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_afvtq"]
 albedo_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0q1lw"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q7fmf"]
 albedo_color = Color(0.63529414, 0.6392157, 0.69803923, 1)
 metallic = 0.55
 metallic_specular = 0.43
 roughness = 0.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7hfjq"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qckti"]
 albedo_color = Color(0.7538296, 0.777908, 0.781913, 1)
 metallic = 1.0
 roughness = 0.7
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1t1es"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wi4bw"]
 albedo_color = Color(0.7538296, 0.777908, 0.781913, 1)
 metallic = 1.0
 roughness = 0.7
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2p84i"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6u1f1"]
-albedo_color = Color(0.63529414, 0.6392157, 0.69803923, 1)
-metallic = 0.55
-metallic_specular = 0.43
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kuiv1"]
-albedo_color = Color(0.7538296, 0.777908, 0.781913, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7tyxq"]
+albedo_texture = ExtResource("56_6gdgj")
 metallic = 1.0
-roughness = 0.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2myrm"]
-albedo_color = Color(0.7538296, 0.777908, 0.781913, 1)
-metallic = 1.0
-roughness = 0.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xrlub"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bitlq"]
-albedo_color = Color(0.63529414, 0.6392157, 0.69803923, 1)
-metallic = 0.55
-metallic_specular = 0.43
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ojiy"]
-albedo_color = Color(0.7538296, 0.777908, 0.781913, 1)
-metallic = 1.0
-roughness = 0.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4v23u"]
-albedo_color = Color(0.7538296, 0.777908, 0.781913, 1)
-metallic = 1.0
-roughness = 0.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3whq5"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6pyeh"]
-albedo_color = Color(0.63529414, 0.6392157, 0.69803923, 1)
-metallic = 0.55
-metallic_specular = 0.43
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_suxro"]
-albedo_color = Color(0.7538296, 0.777908, 0.781913, 1)
-metallic = 1.0
-roughness = 0.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pma4y"]
-albedo_color = Color(0.7538296, 0.777908, 0.781913, 1)
-metallic = 1.0
-roughness = 0.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p7t3a"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qf7jt"]
-albedo_color = Color(0.63529414, 0.6392157, 0.69803923, 1)
-metallic = 0.55
-metallic_specular = 0.43
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jll1g"]
-albedo_color = Color(0.7538296, 0.777908, 0.781913, 1)
-metallic = 1.0
-roughness = 0.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wdqt5"]
-albedo_color = Color(0.7538296, 0.777908, 0.781913, 1)
-metallic = 1.0
-roughness = 0.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i8kwg"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2yji3"]
-albedo_color = Color(0.63529414, 0.6392157, 0.69803923, 1)
-metallic = 0.55
-metallic_specular = 0.43
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_67uth"]
-albedo_color = Color(0.7538296, 0.777908, 0.781913, 1)
-metallic = 1.0
-roughness = 0.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vscju"]
-albedo_color = Color(0.7538296, 0.777908, 0.781913, 1)
-metallic = 1.0
-roughness = 0.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d6rod"]
-albedo_color = Color(0.63529414, 0.6392157, 0.69803923, 1)
-metallic = 0.55
-metallic_specular = 0.43
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrdhv"]
-albedo_color = Color(0.63529414, 0.6392157, 0.69803923, 1)
-metallic = 0.55
-metallic_specular = 0.43
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ambl4"]
-albedo_color = Color(0.7538296, 0.777908, 0.781913, 1)
-metallic = 1.0
-roughness = 0.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ko3rn"]
-albedo_color = Color(0.7538296, 0.777908, 0.781913, 1)
-metallic = 1.0
-roughness = 0.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v1rce"]
-albedo_texture = ExtResource("13_tsxy5")
-metallic = 1.0
-metallic_texture = ExtResource("14_ubwhr")
-metallic_texture_channel = 4
-roughness_texture = ExtResource("16_eqd1r")
-roughness_texture_channel = 4
+metallic_texture = ExtResource("57_x768c")
+roughness_texture = ExtResource("59_jsqmv")
 normal_enabled = true
-normal_texture = ExtResource("15_gnlg4")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_voksi"]
-albedo_texture = ExtResource("20_v1rce")
-metallic = 1.0
-metallic_texture = ExtResource("21_3k85b")
-roughness_texture = ExtResource("23_uf4cr")
-normal_enabled = true
-normal_texture = ExtResource("22_g3qdj")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8txt0"]
-albedo_texture = ExtResource("20_v1rce")
-metallic = 1.0
-metallic_texture = ExtResource("21_3k85b")
-roughness_texture = ExtResource("23_uf4cr")
-normal_enabled = true
-normal_texture = ExtResource("22_g3qdj")
+normal_scale = 1.3
+normal_texture = ExtResource("58_lj8ni")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3k85b"]
 albedo_texture = ExtResource("21_mb0aj")
@@ -342,106 +187,6 @@ metallic_texture = ExtResource("31_5dowj")
 roughness_texture = ExtResource("33_lu0sx")
 normal_enabled = true
 normal_texture = ExtResource("32_0oi4h")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dlrul"]
-albedo_texture = ExtResource("35_ne32r")
-metallic = 1.0
-metallic_texture = ExtResource("36_w37es")
-roughness_texture = ExtResource("38_1fqij")
-normal_enabled = true
-normal_texture = ExtResource("37_bohod")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ax44"]
-albedo_texture = ExtResource("38_44hq7")
-metallic = 1.0
-metallic_texture = ExtResource("39_202ki")
-roughness_texture = ExtResource("41_tx7sn")
-normal_enabled = true
-normal_texture = ExtResource("40_r1v12")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5isfi"]
-albedo_texture = ExtResource("38_44hq7")
-metallic = 1.0
-metallic_texture = ExtResource("39_202ki")
-roughness_texture = ExtResource("41_tx7sn")
-normal_enabled = true
-normal_texture = ExtResource("40_r1v12")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lg5jc"]
-albedo_texture = ExtResource("38_44hq7")
-metallic = 1.0
-metallic_texture = ExtResource("39_202ki")
-roughness_texture = ExtResource("41_tx7sn")
-normal_enabled = true
-normal_texture = ExtResource("40_r1v12")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b152w"]
-albedo_texture = ExtResource("38_44hq7")
-metallic = 1.0
-metallic_texture = ExtResource("39_202ki")
-roughness_texture = ExtResource("41_tx7sn")
-normal_enabled = true
-normal_texture = ExtResource("40_r1v12")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g3qdj"]
-albedo_texture = ExtResource("13_tsxy5")
-metallic = 1.0
-metallic_texture = ExtResource("14_ubwhr")
-metallic_texture_channel = 4
-roughness_texture = ExtResource("16_eqd1r")
-roughness_texture_channel = 4
-normal_enabled = true
-normal_texture = ExtResource("15_gnlg4")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_afvtq"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q7fmf"]
-albedo_color = Color(0.63529414, 0.6392157, 0.69803923, 1)
-metallic = 0.55
-metallic_specular = 0.43
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qckti"]
-albedo_color = Color(0.7538296, 0.777908, 0.781913, 1)
-metallic = 1.0
-roughness = 0.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wi4bw"]
-albedo_color = Color(0.7538296, 0.777908, 0.781913, 1)
-metallic = 1.0
-roughness = 0.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0asyg"]
-albedo_color = Color(0.63529414, 0.6392157, 0.69803923, 1)
-metallic = 0.55
-metallic_specular = 0.43
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5mo4d"]
-albedo_color = Color(0.63529414, 0.6392157, 0.69803923, 1)
-metallic = 0.55
-metallic_specular = 0.43
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e0ccj"]
-albedo_color = Color(0.7538296, 0.777908, 0.781913, 1)
-metallic = 1.0
-roughness = 0.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jo11s"]
-albedo_color = Color(0.7538296, 0.777908, 0.781913, 1)
-metallic = 1.0
-roughness = 0.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7tyxq"]
-albedo_texture = ExtResource("56_6gdgj")
-metallic = 1.0
-metallic_texture = ExtResource("57_x768c")
-roughness_texture = ExtResource("59_jsqmv")
-normal_enabled = true
-normal_scale = 1.3
-normal_texture = ExtResource("58_lj8ni")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j4f4c"]
 albedo_texture = ExtResource("38_44hq7")
@@ -484,6 +229,14 @@ roughness_texture = ExtResource("56_mx3rv")
 roughness_texture_channel = 4
 normal_enabled = true
 normal_texture = ExtResource("55_07lsr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8txt0"]
+albedo_texture = ExtResource("20_v1rce")
+metallic = 1.0
+metallic_texture = ExtResource("21_3k85b")
+roughness_texture = ExtResource("23_uf4cr")
+normal_enabled = true
+normal_texture = ExtResource("22_g3qdj")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bly8b"]
 albedo_texture = ExtResource("66_cx5vn")
@@ -534,6 +287,14 @@ metallic_texture = ExtResource("72_3j6m3")
 roughness_texture = ExtResource("74_uhx6n")
 normal_enabled = true
 normal_texture = ExtResource("73_emoyc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dlrul"]
+albedo_texture = ExtResource("35_ne32r")
+metallic = 1.0
+metallic_texture = ExtResource("36_w37es")
+roughness_texture = ExtResource("38_1fqij")
+normal_enabled = true
+normal_texture = ExtResource("37_bohod")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_60rir"]
 albedo_color = Color(1, 1, 0.8627451, 1)
@@ -1145,282 +906,65 @@ roughness_texture_channel = 4
 normal_enabled = true
 normal_texture = ExtResource("15_gnlg4")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_flo5n"]
-albedo_color = Color(0.6114719, 0.6536162, 0.6536162, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v1rce"]
+albedo_texture = ExtResource("13_tsxy5")
 metallic = 1.0
-metallic_specular = 0.65
-roughness = 0.3
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7am4i"]
-albedo_color = Color(0.6399979, 0.72550595, 0.7825793, 1)
-metallic = 1.0
-roughness = 0.6
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v3t1d"]
-albedo_color = Color(0.38422897, 0.38422897, 0.38422894, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n2mqi"]
-albedo_color = Color(0.6114719, 0.6536162, 0.6536162, 1)
-metallic = 1.0
-metallic_specular = 0.65
-roughness = 0.3
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mtc3x"]
-albedo_color = Color(0.6399979, 0.72550595, 0.7825793, 1)
-metallic = 1.0
-roughness = 0.6
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4m60o"]
-albedo_color = Color(0.38422897, 0.38422897, 0.38422894, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6x05"]
-albedo_color = Color(0.6114719, 0.6536162, 0.6536162, 1)
-metallic = 1.0
-metallic_specular = 0.65
-roughness = 0.3
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mausv"]
-albedo_color = Color(0.6399979, 0.72550595, 0.7825793, 1)
-metallic = 1.0
-roughness = 0.6
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rj715"]
-albedo_color = Color(0.38422897, 0.38422897, 0.38422894, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ktgub"]
-albedo_color = Color(0.6114719, 0.6536162, 0.6536162, 1)
-metallic = 1.0
-metallic_specular = 0.65
-roughness = 0.3
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhaws"]
-albedo_color = Color(0.6399979, 0.72550595, 0.7825793, 1)
-metallic = 1.0
-roughness = 0.6
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vgx0k"]
-albedo_color = Color(0.38422897, 0.38422897, 0.38422894, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_shocd"]
-albedo_color = Color(0.6114719, 0.6536162, 0.6536162, 1)
-metallic = 1.0
-metallic_specular = 0.65
-roughness = 0.3
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qailq"]
-albedo_color = Color(0.6399979, 0.72550595, 0.7825793, 1)
-metallic = 1.0
-roughness = 0.6
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_88dlr"]
-albedo_color = Color(0.38422897, 0.38422897, 0.38422894, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v2afn"]
-albedo_color = Color(0.6114719, 0.6536162, 0.6536162, 1)
-metallic = 1.0
-metallic_specular = 0.65
-roughness = 0.3
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ko0i6"]
-albedo_color = Color(0.6399979, 0.72550595, 0.7825793, 1)
-metallic = 1.0
-roughness = 0.6
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bapw4"]
-albedo_color = Color(0.38422897, 0.38422897, 0.38422894, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pkqmm"]
-albedo_color = Color(0.6114719, 0.6536162, 0.6536162, 1)
-metallic = 1.0
-metallic_specular = 0.65
-roughness = 0.3
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pqyx5"]
-albedo_color = Color(0.6399979, 0.72550595, 0.7825793, 1)
-metallic = 1.0
-roughness = 0.6
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r2jby"]
-albedo_color = Color(0.6399979, 0.72550595, 0.7825793, 1)
-metallic = 1.0
-roughness = 0.6
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c3f5o"]
-albedo_color = Color(0.38422897, 0.38422897, 0.38422894, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vooa"]
-albedo_color = Color(0.63529414, 0.6392157, 0.69803923, 1)
-metallic = 0.55
-metallic_specular = 0.43
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kbi0g"]
-albedo_color = Color(0.63529414, 0.6392157, 0.69803923, 1)
-metallic = 0.55
-metallic_specular = 0.43
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vpu5g"]
-albedo_color = Color(0.7538296, 0.777908, 0.781913, 1)
-metallic = 1.0
-roughness = 0.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w6bli"]
-albedo_color = Color(0.7538296, 0.777908, 0.781913, 1)
-metallic = 1.0
-roughness = 0.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_no74g"]
-albedo_color = Color(0.63529414, 0.6392157, 0.69803923, 1)
-metallic = 0.55
-metallic_specular = 0.43
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yqsgj"]
-albedo_color = Color(0.63529414, 0.6392157, 0.69803923, 1)
-metallic = 0.55
-metallic_specular = 0.43
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8n3br"]
-albedo_color = Color(0.7538296, 0.777908, 0.781913, 1)
-metallic = 1.0
-roughness = 0.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r4hrw"]
-albedo_color = Color(0.7538296, 0.777908, 0.781913, 1)
-metallic = 1.0
-roughness = 0.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_88r0d"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1jw6j"]
-albedo_color = Color(0.63529414, 0.6392157, 0.69803923, 1)
-metallic = 0.55
-metallic_specular = 0.43
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrmkh"]
-albedo_color = Color(0.7538296, 0.777908, 0.781913, 1)
-metallic = 1.0
-roughness = 0.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_46m0c"]
-albedo_color = Color(0.7538296, 0.777908, 0.781913, 1)
-metallic = 1.0
-roughness = 0.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_imwpe"]
-albedo_texture = ExtResource("115_jx5wa")
-metallic = 1.0
-metallic_texture = ExtResource("116_x4ehs")
-roughness_texture = ExtResource("118_xwepp")
+metallic_texture = ExtResource("14_ubwhr")
+metallic_texture_channel = 4
+roughness_texture = ExtResource("16_eqd1r")
+roughness_texture_channel = 4
 normal_enabled = true
-normal_texture = ExtResource("117_2qri5")
+normal_texture = ExtResource("15_gnlg4")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vi05u"]
-albedo_texture = ExtResource("115_jx5wa")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_voksi"]
+albedo_texture = ExtResource("20_v1rce")
 metallic = 1.0
-metallic_texture = ExtResource("116_x4ehs")
-roughness_texture = ExtResource("118_xwepp")
+metallic_texture = ExtResource("21_3k85b")
+roughness_texture = ExtResource("23_uf4cr")
 normal_enabled = true
-normal_texture = ExtResource("117_2qri5")
+normal_texture = ExtResource("22_g3qdj")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5qss7"]
-albedo_texture = ExtResource("115_jx5wa")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ax44"]
+albedo_texture = ExtResource("38_44hq7")
 metallic = 1.0
-metallic_texture = ExtResource("116_x4ehs")
-roughness_texture = ExtResource("118_xwepp")
+metallic_texture = ExtResource("39_202ki")
+roughness_texture = ExtResource("41_tx7sn")
 normal_enabled = true
-normal_texture = ExtResource("117_2qri5")
+normal_texture = ExtResource("40_r1v12")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2b7i3"]
-albedo_texture = ExtResource("115_jx5wa")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5isfi"]
+albedo_texture = ExtResource("38_44hq7")
 metallic = 1.0
-metallic_texture = ExtResource("116_x4ehs")
-roughness_texture = ExtResource("118_xwepp")
+metallic_texture = ExtResource("39_202ki")
+roughness_texture = ExtResource("41_tx7sn")
 normal_enabled = true
-normal_texture = ExtResource("117_2qri5")
+normal_texture = ExtResource("40_r1v12")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b8i3u"]
-albedo_texture = ExtResource("115_jx5wa")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lg5jc"]
+albedo_texture = ExtResource("38_44hq7")
 metallic = 1.0
-metallic_texture = ExtResource("116_x4ehs")
-roughness_texture = ExtResource("118_xwepp")
+metallic_texture = ExtResource("39_202ki")
+roughness_texture = ExtResource("41_tx7sn")
 normal_enabled = true
-normal_texture = ExtResource("117_2qri5")
+normal_texture = ExtResource("40_r1v12")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x56ae"]
-albedo_texture = ExtResource("115_jx5wa")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b152w"]
+albedo_texture = ExtResource("38_44hq7")
 metallic = 1.0
-metallic_texture = ExtResource("116_x4ehs")
-roughness_texture = ExtResource("118_xwepp")
+metallic_texture = ExtResource("39_202ki")
+roughness_texture = ExtResource("41_tx7sn")
 normal_enabled = true
-normal_texture = ExtResource("117_2qri5")
+normal_texture = ExtResource("40_r1v12")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ueb7y"]
-albedo_texture = ExtResource("115_jx5wa")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g3qdj"]
+albedo_texture = ExtResource("13_tsxy5")
 metallic = 1.0
-metallic_texture = ExtResource("116_x4ehs")
-roughness_texture = ExtResource("118_xwepp")
+metallic_texture = ExtResource("14_ubwhr")
+metallic_texture_channel = 4
+roughness_texture = ExtResource("16_eqd1r")
+roughness_texture_channel = 4
 normal_enabled = true
-normal_texture = ExtResource("117_2qri5")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oq6vl"]
-albedo_texture = ExtResource("115_jx5wa")
-metallic = 1.0
-metallic_texture = ExtResource("116_x4ehs")
-roughness_texture = ExtResource("118_xwepp")
-normal_enabled = true
-normal_texture = ExtResource("117_2qri5")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jh5eh"]
-albedo_texture = ExtResource("115_jx5wa")
-metallic = 1.0
-metallic_texture = ExtResource("116_x4ehs")
-roughness_texture = ExtResource("118_xwepp")
-normal_enabled = true
-normal_texture = ExtResource("117_2qri5")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_68h5w"]
-albedo_texture = ExtResource("115_jx5wa")
-metallic = 1.0
-metallic_texture = ExtResource("116_x4ehs")
-roughness_texture = ExtResource("118_xwepp")
-normal_enabled = true
-normal_texture = ExtResource("117_2qri5")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4j0v3"]
-albedo_color = Color(0.6114719, 0.6536162, 0.6536162, 1)
-metallic = 0.3
-metallic_specular = 0.65
-roughness = 0.3
-emission_enabled = true
-emission = Color(0.8516594, 0, 0.37878263, 1)
-emission_energy_multiplier = 0.94
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4irdc"]
-albedo_color = Color(0.63529414, 0.6392157, 0.69803923, 1)
-metallic = 0.55
-metallic_specular = 0.43
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gd4fi"]
-albedo_color = Color(0.63529414, 0.6392157, 0.69803923, 1)
-metallic = 0.55
-metallic_specular = 0.43
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5tani"]
-albedo_color = Color(0.7538296, 0.777908, 0.781913, 1)
-metallic = 1.0
-roughness = 0.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v58yf"]
-albedo_color = Color(0.7538296, 0.777908, 0.781913, 1)
-metallic = 1.0
-roughness = 0.7
+normal_texture = ExtResource("15_gnlg4")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fxtw2"]
 size = Vector3(9.30127, 7.2834473, 1)
@@ -1428,15 +972,12 @@ size = Vector3(9.30127, 7.2834473, 1)
 [node name="StageOne" type="Node3D" unique_id=1668100898]
 
 [node name="Player" parent="." unique_id=1349193765 instance=ExtResource("1_ruvr1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.075523615, 2.14, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5418005, 2.14, 0)
 collision_mask = 129
 hit_heal_fraction = 0.15
 has_gun = false
 
 [node name="Environment" type="Node3D" parent="." unique_id=929020045]
-
-[node name="DoorSlidingBasic3" parent="Environment" unique_id=1228585808 instance=ExtResource("2_ohrdm")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 54.61, 8.4, 0)
 
 [node name="FloorMeshEdge" parent="Environment" unique_id=2123686609 instance=ExtResource("3_b1r7n")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30, 8.4, 0)
@@ -1453,104 +994,26 @@ transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 15
 [node name="PrisonCell3" parent="Environment" unique_id=1430763070 instance=ExtResource("4_xshw8")]
 transform = Transform3D(-9.8350625e-08, 0, -2.25, 0, 2.25, 0, 2.25, 0, -9.8350625e-08, 79.96933, 5.3626533, -6.6145744)
 
-[node name="Cell_Mesh" parent="Environment/PrisonCell3" index="0" unique_id=78601187]
-surface_material_override/0 = SubResource("StandardMaterial3D_jd7j6")
-surface_material_override/1 = SubResource("StandardMaterial3D_thger")
-surface_material_override/2 = SubResource("StandardMaterial3D_op348")
-surface_material_override/3 = SubResource("StandardMaterial3D_06we4")
-
-[node name="CellDoor_Mesh" parent="Environment/PrisonCell3/CellArm_01_Mesh/CellArm_02_Mesh/CellDoor" parent_id_path=PackedInt32Array(1430763070, 975245470) index="0" unique_id=1318509788]
-transform = Transform3D(-4.470347e-08, 0.99999994, 4.2351647e-22, -0.99999994, -4.470347e-08, 0, 3.5527137e-15, -8.4703295e-22, 1, -0.014787674, -0.00093603134, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
-
-[node name="DoorSlidingBasic4" parent="Environment" unique_id=1077477008 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("2_ohrdm")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 54.61, 8.4, 0)
-visible = false
-enemy_manager = NodePath("../../Enemies/RoomOne")
-
 [node name="PrisonCell4" parent="Environment" unique_id=180734453 instance=ExtResource("4_xshw8")]
 transform = Transform3D(-1.0050696, 0, -2.0130413, 0, 2.25, 0, 2.0130413, 0, -1.0050696, 89.6815, 2.738, 0)
-
-[node name="Cell_Mesh" parent="Environment/PrisonCell4" index="0" unique_id=78601187]
-surface_material_override/0 = SubResource("StandardMaterial3D_5v7pu")
-surface_material_override/1 = SubResource("StandardMaterial3D_0q1lw")
-surface_material_override/2 = SubResource("StandardMaterial3D_7hfjq")
-surface_material_override/3 = SubResource("StandardMaterial3D_1t1es")
-
-[node name="CellDoor_Mesh" parent="Environment/PrisonCell4/CellArm_01_Mesh/CellArm_02_Mesh/CellDoor" parent_id_path=PackedInt32Array(180734453, 975245470) index="0" unique_id=1318509788]
-surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
 
 [node name="PrisonCell5" parent="Environment" unique_id=1926955850 instance=ExtResource("4_xshw8")]
 transform = Transform3D(-9.8350625e-08, 0, -2.25, 0, 2.25, 0, 2.25, 0, -9.8350625e-08, 99.910484, 5.3981338, -7.9822807)
 
-[node name="Cell_Mesh" parent="Environment/PrisonCell5" index="0" unique_id=78601187]
-surface_material_override/0 = SubResource("StandardMaterial3D_2p84i")
-surface_material_override/1 = SubResource("StandardMaterial3D_6u1f1")
-surface_material_override/2 = SubResource("StandardMaterial3D_kuiv1")
-surface_material_override/3 = SubResource("StandardMaterial3D_2myrm")
-
-[node name="CellDoor_Mesh" parent="Environment/PrisonCell5/CellArm_01_Mesh/CellArm_02_Mesh/CellDoor" parent_id_path=PackedInt32Array(1926955850, 975245470) index="0" unique_id=1318509788]
-surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
-
 [node name="PrisonCell7" parent="Environment" unique_id=1593485779 instance=ExtResource("4_xshw8")]
 transform = Transform3D(-9.8350625e-08, 0, -2.25, 0, 2.25, 0, 2.25, 0, -9.8350625e-08, 109.979614, 5.37255, -7.115057)
-
-[node name="Cell_Mesh" parent="Environment/PrisonCell7" index="0" unique_id=78601187]
-surface_material_override/0 = SubResource("StandardMaterial3D_xrlub")
-surface_material_override/1 = SubResource("StandardMaterial3D_bitlq")
-surface_material_override/2 = SubResource("StandardMaterial3D_5ojiy")
-surface_material_override/3 = SubResource("StandardMaterial3D_4v23u")
-
-[node name="CellDoor_Mesh" parent="Environment/PrisonCell7/CellArm_01_Mesh/CellArm_02_Mesh/CellDoor" parent_id_path=PackedInt32Array(1593485779, 975245470) index="0" unique_id=1318509788]
-surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
 
 [node name="PrisonCell8" parent="Environment" unique_id=1981730147 instance=ExtResource("4_xshw8")]
 transform = Transform3D(-9.8350625e-08, 0, -2.25, 0, 2.25, 0, 2.25, 0, -9.8350625e-08, 69.94322, 11.437209, -7.606148)
 
-[node name="Cell_Mesh" parent="Environment/PrisonCell8" index="0" unique_id=78601187]
-surface_material_override/0 = SubResource("StandardMaterial3D_3whq5")
-surface_material_override/1 = SubResource("StandardMaterial3D_6pyeh")
-surface_material_override/2 = SubResource("StandardMaterial3D_suxro")
-surface_material_override/3 = SubResource("StandardMaterial3D_pma4y")
-
-[node name="CellDoor_Mesh" parent="Environment/PrisonCell8/CellArm_01_Mesh/CellArm_02_Mesh/CellDoor" parent_id_path=PackedInt32Array(1981730147, 975245470) index="0" unique_id=1318509788]
-surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
-
 [node name="PrisonCell9" parent="Environment" unique_id=46160804 instance=ExtResource("4_xshw8")]
 transform = Transform3D(-9.8350625e-08, 0, -2.25, 0, 2.25, 0, 2.25, 0, -9.8350625e-08, 80.02048, 11.449036, -5.666598)
-
-[node name="Cell_Mesh" parent="Environment/PrisonCell9" index="0" unique_id=78601187]
-surface_material_override/0 = SubResource("StandardMaterial3D_p7t3a")
-surface_material_override/1 = SubResource("StandardMaterial3D_qf7jt")
-surface_material_override/2 = SubResource("StandardMaterial3D_jll1g")
-surface_material_override/3 = SubResource("StandardMaterial3D_wdqt5")
-
-[node name="CellDoor_Mesh" parent="Environment/PrisonCell9/CellArm_01_Mesh/CellArm_02_Mesh/CellDoor" parent_id_path=PackedInt32Array(46160804, 975245470) index="0" unique_id=1318509788]
-surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
 
 [node name="PrisonCell11" parent="Environment" unique_id=1222097470 instance=ExtResource("4_xshw8")]
 transform = Transform3D(-9.8350625e-08, 0, -2.25, 0, 2.25, 0, 2.25, 0, -9.8350625e-08, 99.99459, 11.453479, -7.323612)
 
-[node name="Cell_Mesh" parent="Environment/PrisonCell11" index="0" unique_id=78601187]
-surface_material_override/0 = SubResource("StandardMaterial3D_i8kwg")
-surface_material_override/1 = SubResource("StandardMaterial3D_2yji3")
-surface_material_override/2 = SubResource("StandardMaterial3D_67uth")
-surface_material_override/3 = SubResource("StandardMaterial3D_vscju")
-
-[node name="CellDoor_Mesh" parent="Environment/PrisonCell11/CellArm_01_Mesh/CellArm_02_Mesh/CellDoor" parent_id_path=PackedInt32Array(1222097470, 975245470) index="0" unique_id=1318509788]
-surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
-
 [node name="PrisonCell12" parent="Environment" unique_id=1378167168 instance=ExtResource("4_xshw8")]
 transform = Transform3D(-9.8350625e-08, 0, -2.25, 0, 2.25, 0, 2.25, 0, -9.8350625e-08, 109.97493, 11.436843, -8.548561)
-
-[node name="Cell_Mesh" parent="Environment/PrisonCell12" index="0" unique_id=78601187]
-surface_material_override/0 = SubResource("StandardMaterial3D_d6rod")
-surface_material_override/1 = SubResource("StandardMaterial3D_wrdhv")
-surface_material_override/2 = SubResource("StandardMaterial3D_ambl4")
-surface_material_override/3 = SubResource("StandardMaterial3D_ko3rn")
-
-[node name="CellDoor_Mesh" parent="Environment/PrisonCell12/CellArm_01_Mesh/CellArm_02_Mesh/CellDoor" parent_id_path=PackedInt32Array(1378167168, 975245470) index="0" unique_id=1318509788]
-surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
 
 [node name="FloorPrison27" parent="Environment" unique_id=1610848886 instance=ExtResource("5_uwi0l")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 140, 8.4, -10)
@@ -1589,24 +1052,25 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 190, 0, -10)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 200, 0, -10)
 
 [node name="WallPlainBasePrison" parent="Environment" unique_id=1669431150 instance=ExtResource("6_v4gt6")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -48.040512)
 
 [node name="WallPlainBasePrison3" parent="Environment" unique_id=2017718944 instance=ExtResource("6_v4gt6")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10, 0, -48.040512)
 
 [node name="WallPlainBasePrison5" parent="Environment" unique_id=1649417085 instance=ExtResource("6_v4gt6")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 20, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 20, 0, -48.040512)
 
 [node name="RoofPrison" parent="Environment" unique_id=153271769 instance=ExtResource("8_6cuhj")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 16.8, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 16.8, -48.040512)
 
 [node name="RoofPrison2" parent="Environment" unique_id=1959605650 instance=ExtResource("8_6cuhj")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10, 16.8, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10, 16.8, -48.040512)
 
 [node name="RoofPrison3" parent="Environment" unique_id=2024158979 instance=ExtResource("8_6cuhj")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 20, 16.8, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 20, 16.8, -48.040512)
 
 [node name="DoorwayNoneBasePrison" parent="Environment" unique_id=974643408 instance=ExtResource("7_gqdjt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -48.040512)
 
 [node name="DoorwayNoneBasePrison4" parent="Environment" unique_id=790106246 instance=ExtResource("7_gqdjt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 8.4, -10)
@@ -1815,493 +1279,14 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 210, 16.8, -10)
 [node name="WallMultiLevelBasePrison10" parent="Environment" unique_id=1466223239 instance=ExtResource("11_6smy0")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 210, 0.4, -7.688)
 
-[node name="PipeNetwork1" parent="Environment" unique_id=1539366594 instance=ExtResource("15_5y7s6")]
-transform = Transform3D(-5.2453668e-08, 0, -1.2, 0, 1.2, 0, 1.2, 0, -5.2453668e-08, 178.3117, 4.6267495, -14.080101)
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeConnector2" parent_id_path=PackedInt32Array(1539366594, 765497012) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeConnector6" parent_id_path=PackedInt32Array(1539366594, 1268886813) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeConnector13" parent_id_path=PackedInt32Array(1539366594, 1761449947) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeConnector3" parent_id_path=PackedInt32Array(1539366594, 191562681) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeConnector4" parent_id_path=PackedInt32Array(1539366594, 1829971725) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeConnector5" parent_id_path=PackedInt32Array(1539366594, 1587213076) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeConnector7" parent_id_path=PackedInt32Array(1539366594, 1107786459) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeConnector11" parent_id_path=PackedInt32Array(1539366594, 1558455410) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeConnector12" parent_id_path=PackedInt32Array(1539366594, 1958492604) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeConnector8" parent_id_path=PackedInt32Array(1539366594, 27868285) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeConnector9" parent_id_path=PackedInt32Array(1539366594, 339206662) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeConnector10" parent_id_path=PackedInt32Array(1539366594, 280811574) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeR_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeShapeR11" parent_id_path=PackedInt32Array(1539366594, 466542268) index="0" unique_id=954856188]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeR_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeShapeR2" parent_id_path=PackedInt32Array(1539366594, 482452705) index="0" unique_id=954856188]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeR_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeShapeR3" parent_id_path=PackedInt32Array(1539366594, 1200470234) index="0" unique_id=954856188]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeR_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeShapeR4" parent_id_path=PackedInt32Array(1539366594, 1676565347) index="0" unique_id=954856188]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeR_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeShapeR5" parent_id_path=PackedInt32Array(1539366594, 449983864) index="0" unique_id=954856188]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeR_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeShapeR6" parent_id_path=PackedInt32Array(1539366594, 1821915980) index="0" unique_id=954856188]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeR_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeShapeR7" parent_id_path=PackedInt32Array(1539366594, 1377812206) index="0" unique_id=954856188]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeR_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeShapeR12" parent_id_path=PackedInt32Array(1539366594, 608274722) index="0" unique_id=954856188]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeR_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeShapeR9" parent_id_path=PackedInt32Array(1539366594, 1960774836) index="0" unique_id=954856188]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeR_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeShapeR10" parent_id_path=PackedInt32Array(1539366594, 17987721) index="0" unique_id=954856188]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeU_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeShapeU" parent_id_path=PackedInt32Array(1539366594, 1248328049) index="0" unique_id=1507382853]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeU_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeShapeU2" parent_id_path=PackedInt32Array(1539366594, 1914224408) index="0" unique_id=1507382853]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeT_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeShapeT" parent_id_path=PackedInt32Array(1539366594, 379942003) index="0" unique_id=890226892]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeT_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeShapeT2" parent_id_path=PackedInt32Array(1539366594, 149040190) index="0" unique_id=890226892]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeY_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeShapeY" parent_id_path=PackedInt32Array(1539366594, 1918234742) index="0" unique_id=158927346]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeY_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeShapeY3" parent_id_path=PackedInt32Array(1539366594, 947392476) index="0" unique_id=158927346]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeY_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeShapeY2" parent_id_path=PackedInt32Array(1539366594, 242774624) index="0" unique_id=158927346]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeY_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeShapeY4" parent_id_path=PackedInt32Array(1539366594, 1731769321) index="0" unique_id=158927346]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeValve_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeValve" parent_id_path=PackedInt32Array(1539366594, 244363744) index="0" unique_id=913540183]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeSizeMedium_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeSizeMedium3" parent_id_path=PackedInt32Array(1539366594, 342598861) index="0" unique_id=351861640]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeSizeMedium_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeSizeMedium4" parent_id_path=PackedInt32Array(1539366594, 1421533068) index="0" unique_id=351861640]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipePressure_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipePressure" parent_id_path=PackedInt32Array(1539366594, 1073310426) index="0" unique_id=676733933]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipePressure_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipePressure2" parent_id_path=PackedInt32Array(1539366594, 79459182) index="0" unique_id=676733933]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeZigZag_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeZigZag" parent_id_path=PackedInt32Array(1539366594, 1074663485) index="0" unique_id=1196144936]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeZigZag_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeZigZag2" parent_id_path=PackedInt32Array(1539366594, 2104256622) index="0" unique_id=1196144936]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeSizeSmall_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeSizeSmall3" parent_id_path=PackedInt32Array(1539366594, 1613811009) index="0" unique_id=1275745915]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeSizeSmall_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeSizeSmall" parent_id_path=PackedInt32Array(1539366594, 266761220) index="0" unique_id=1275745915]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeSizeSmall_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeSizeSmall2" parent_id_path=PackedInt32Array(1539366594, 2135716412) index="0" unique_id=1275745915]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeC_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeShapeC" parent_id_path=PackedInt32Array(1539366594, 1388748965) index="0" unique_id=379475741]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeC_Mesh" parent="Environment/PipeNetwork1/Pipe4/PipeShapeC2" parent_id_path=PackedInt32Array(1539366594, 56001612) index="0" unique_id=379475741]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeSizeMedium_Mesh" parent="Environment/PipeNetwork1/Pipe5/PipeSizeMedium2" parent_id_path=PackedInt32Array(1539366594, 1515396228) index="0" unique_id=351861640]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeR_Mesh" parent="Environment/PipeNetwork1/Pipe5/PipeShapeR" parent_id_path=PackedInt32Array(1539366594, 1203566551) index="0" unique_id=954856188]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeR_Mesh" parent="Environment/PipeNetwork1/Pipe5/PipeShapeR3" parent_id_path=PackedInt32Array(1539366594, 777797736) index="0" unique_id=954856188]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeR_Mesh" parent="Environment/PipeNetwork1/Pipe5/PipeShapeR2" parent_id_path=PackedInt32Array(1539366594, 558431173) index="0" unique_id=954856188]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe5/PipeConnector" parent_id_path=PackedInt32Array(1539366594, 1366939229) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe5/PipeConnector6" parent_id_path=PackedInt32Array(1539366594, 498393751) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe5/PipeConnector3" parent_id_path=PackedInt32Array(1539366594, 1271360427) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe5/PipeConnector5" parent_id_path=PackedInt32Array(1539366594, 66593039) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe5/PipeConnector4" parent_id_path=PackedInt32Array(1539366594, 1793319819) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe5/PipeConnector7" parent_id_path=PackedInt32Array(1539366594, 1471529494) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe5/PipeConnector2" parent_id_path=PackedInt32Array(1539366594, 1044133532) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeY_Mesh" parent="Environment/PipeNetwork1/Pipe5/PipeShapeY" parent_id_path=PackedInt32Array(1539366594, 40453690) index="0" unique_id=158927346]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeY_Mesh" parent="Environment/PipeNetwork1/Pipe5/PipeShapeY2" parent_id_path=PackedInt32Array(1539366594, 1601558033) index="0" unique_id=158927346]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeSizeMedium_Mesh" parent="Environment/PipeNetwork1/Pipe6/PipeSizeMedium2" parent_id_path=PackedInt32Array(1539366594, 92283122) index="0" unique_id=351861640]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeR_Mesh" parent="Environment/PipeNetwork1/Pipe6/PipeShapeR" parent_id_path=PackedInt32Array(1539366594, 1812836360) index="0" unique_id=954856188]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeR_Mesh" parent="Environment/PipeNetwork1/Pipe6/PipeShapeR2" parent_id_path=PackedInt32Array(1539366594, 1208880620) index="0" unique_id=954856188]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe6/PipeConnector" parent_id_path=PackedInt32Array(1539366594, 653047875) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe6/PipeConnector3" parent_id_path=PackedInt32Array(1539366594, 1702247896) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeR_Mesh" parent="Environment/PipeNetwork1/Pipe6/PipeShapeR3" parent_id_path=PackedInt32Array(1539366594, 1347870783) index="0" unique_id=954856188]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe6/PipeConnector5" parent_id_path=PackedInt32Array(1539366594, 354620124) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe6/PipeConnector6" parent_id_path=PackedInt32Array(1539366594, 1792327739) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe6/PipeConnector4" parent_id_path=PackedInt32Array(1539366594, 1900234845) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe6/PipeConnector7" parent_id_path=PackedInt32Array(1539366594, 1496930686) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe6/PipeConnector2" parent_id_path=PackedInt32Array(1539366594, 2074077346) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeR_Mesh" parent="Environment/PipeNetwork1/Pipe7/PipeShapeR" parent_id_path=PackedInt32Array(1539366594, 1308256433) index="0" unique_id=954856188]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeR_Mesh" parent="Environment/PipeNetwork1/Pipe7/PipeShapeR2" parent_id_path=PackedInt32Array(1539366594, 117887365) index="0" unique_id=954856188]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe7/PipeConnector" parent_id_path=PackedInt32Array(1539366594, 1776136203) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe7/PipeConnector3" parent_id_path=PackedInt32Array(1539366594, 818848490) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe7/PipeConnector2" parent_id_path=PackedInt32Array(1539366594, 1004882276) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe7/PipeConnector6" parent_id_path=PackedInt32Array(1539366594, 225610959) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeSizeSmall_Mesh" parent="Environment/PipeNetwork1/Pipe7/PipeSizeSmall2" parent_id_path=PackedInt32Array(1539366594, 1046918432) index="0" unique_id=1275745915]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeR_Mesh" parent="Environment/PipeNetwork1/Pipe8/PipeShapeR" parent_id_path=PackedInt32Array(1539366594, 272875186) index="0" unique_id=954856188]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeR_Mesh" parent="Environment/PipeNetwork1/Pipe8/PipeShapeR2" parent_id_path=PackedInt32Array(1539366594, 1237894546) index="0" unique_id=954856188]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe8/PipeConnector" parent_id_path=PackedInt32Array(1539366594, 2034832833) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe8/PipeConnector3" parent_id_path=PackedInt32Array(1539366594, 471702193) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe8/PipeConnector4" parent_id_path=PackedInt32Array(1539366594, 508559263) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeSizeSmall_Mesh" parent="Environment/PipeNetwork1/Pipe8/PipeSizeSmall" parent_id_path=PackedInt32Array(1539366594, 548342315) index="0" unique_id=1275745915]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe8/PipeConnector5" parent_id_path=PackedInt32Array(1539366594, 491496673) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeR_Mesh" parent="Environment/PipeNetwork1/Pipe9/PipeShapeR" parent_id_path=PackedInt32Array(1539366594, 260589991) index="0" unique_id=954856188]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeR_Mesh" parent="Environment/PipeNetwork1/Pipe9/PipeShapeR2" parent_id_path=PackedInt32Array(1539366594, 1408521138) index="0" unique_id=954856188]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe9/PipeConnector" parent_id_path=PackedInt32Array(1539366594, 558623561) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe9/PipeConnector3" parent_id_path=PackedInt32Array(1539366594, 1873625518) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe9/PipeConnector4" parent_id_path=PackedInt32Array(1539366594, 1855663610) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe9/PipeConnector5" parent_id_path=PackedInt32Array(1539366594, 123718175) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeR_Mesh" parent="Environment/PipeNetwork1/Pipe10/PipeShapeR" parent_id_path=PackedInt32Array(1539366594, 1239773991) index="0" unique_id=954856188]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeR_Mesh" parent="Environment/PipeNetwork1/Pipe10/PipeShapeR2" parent_id_path=PackedInt32Array(1539366594, 1209743343) index="0" unique_id=954856188]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe10/PipeConnector" parent_id_path=PackedInt32Array(1539366594, 765839781) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe10/PipeConnector3" parent_id_path=PackedInt32Array(1539366594, 639915395) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe10/PipeConnector2" parent_id_path=PackedInt32Array(1539366594, 232290046) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe10/PipeConnector6" parent_id_path=PackedInt32Array(1539366594, 1600691207) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeSizeSmall_Mesh" parent="Environment/PipeNetwork1/Pipe10/PipeSizeSmall2" parent_id_path=PackedInt32Array(1539366594, 1280349905) index="0" unique_id=1275745915]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeR_Mesh" parent="Environment/PipeNetwork1/Pipe11/PipeShapeR" parent_id_path=PackedInt32Array(1539366594, 252982219) index="0" unique_id=954856188]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeShapeR_Mesh" parent="Environment/PipeNetwork1/Pipe11/PipeShapeR2" parent_id_path=PackedInt32Array(1539366594, 2104569794) index="0" unique_id=954856188]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe11/PipeConnector" parent_id_path=PackedInt32Array(1539366594, 362775734) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe11/PipeConnector3" parent_id_path=PackedInt32Array(1539366594, 1928603014) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe11/PipeConnector2" parent_id_path=PackedInt32Array(1539366594, 438418273) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeConnector_Mesh" parent="Environment/PipeNetwork1/Pipe11/PipeConnector6" parent_id_path=PackedInt32Array(1539366594, 1309270512) index="0" unique_id=2138763370]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="PipeSizeSmall_Mesh" parent="Environment/PipeNetwork1/Pipe11/PipeSizeSmall2" parent_id_path=PackedInt32Array(1539366594, 1557372331) index="0" unique_id=1275745915]
-surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
-
-[node name="Folders" parent="Environment" unique_id=1146875503 instance=ExtResource("16_v5ylw")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 37.75156, 3.2000096, -14.178563)
-
-[node name="Folders_Mesh" parent="Environment/Folders" index="0" unique_id=1084519770]
-surface_material_override/0 = SubResource("StandardMaterial3D_voksi")
-
-[node name="Folders7" parent="Environment" unique_id=1807052735 instance=ExtResource("16_v5ylw")]
-transform = Transform3D(0.58143324, 0, 0.8135941, 0, 1, 0, -0.8135941, 0, 0.58143324, 44.40316, 2.1981122, -14.604994)
-
-[node name="Folders_Mesh" parent="Environment/Folders7" index="0" unique_id=1084519770]
-surface_material_override/0 = SubResource("StandardMaterial3D_8txt0")
-
-[node name="Folders3" parent="Environment" unique_id=893209002 instance=ExtResource("16_v5ylw")]
-transform = Transform3D(-0.47748908, -0.8786377, -5.9278186e-08, -4.371139e-08, -4.371139e-08, 1, -0.8786377, 0.47748908, -1.7534761e-08, 36.794098, 3.4794366, -14.340561)
-
-[node name="Folders_Mesh" parent="Environment/Folders3" index="0" unique_id=1084519770]
-surface_material_override/0 = SubResource("StandardMaterial3D_8txt0")
-
-[node name="Folders6" parent="Environment" unique_id=777142328 instance=ExtResource("16_v5ylw")]
-transform = Transform3D(0.41538605, -0.9096452, -2.1604757e-08, -4.371139e-08, -4.371139e-08, 1, -0.9096452, -0.41538605, -5.791896e-08, 26.125328, 3.4794366, -14.340561)
-
-[node name="Folders_Mesh" parent="Environment/Folders6" index="0" unique_id=1084519770]
-surface_material_override/0 = SubResource("StandardMaterial3D_8txt0")
-
-[node name="Folders2" parent="Environment" unique_id=83725569 instance=ExtResource("16_v5ylw")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 38.343697, 3.2000096, -14.178563)
-
-[node name="Folders_Mesh" parent="Environment/Folders2" index="0" unique_id=1084519770]
-surface_material_override/0 = SubResource("StandardMaterial3D_8txt0")
-
-[node name="Folders4" parent="Environment" unique_id=162095232 instance=ExtResource("16_v5ylw")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 28.75156, 3.2000096, -14.178563)
-
-[node name="Folders_Mesh" parent="Environment/Folders4" index="0" unique_id=1084519770]
-surface_material_override/0 = SubResource("StandardMaterial3D_8txt0")
-
-[node name="Folders5" parent="Environment" unique_id=1000148125 instance=ExtResource("16_v5ylw")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 29.343697, 3.2000096, -14.178563)
-
-[node name="Folders_Mesh" parent="Environment/Folders5" index="0" unique_id=1084519770]
-surface_material_override/0 = SubResource("StandardMaterial3D_8txt0")
-
-[node name="ChairSteel2" parent="Environment" unique_id=966378687 instance=ExtResource("27_b1r7n")]
-transform = Transform3D(-5.966981e-08, -0.4977864, -0.8672997, 1, -4.371139e-08, -4.371139e-08, -1.6151938e-08, -0.8672997, 0.4977864, 42.648148, 9.19415, -8.064698)
-
-[node name="ChairSteel_Mesh" parent="Environment/ChairSteel2" index="0" unique_id=695165550]
-surface_material_override/0 = SubResource("StandardMaterial3D_3k85b")
-
-[node name="Bin" parent="Environment" unique_id=71420854 instance=ExtResource("19_v4gt6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 142.78603, 0.20001006, -14.344309)
-
-[node name="Bin_Mesh" parent="Environment/Bin" index="0" unique_id=1946725391]
-surface_material_override/0 = SubResource("StandardMaterial3D_iebvt")
-surface_material_override/1 = SubResource("StandardMaterial3D_phshf")
-
-[node name="Bin2" parent="Environment" unique_id=155482485 instance=ExtResource("19_v4gt6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153.36613, 0.20000982, -4.1112494)
-
-[node name="Bin_Mesh" parent="Environment/Bin2" index="0" unique_id=1946725391]
-surface_material_override/0 = SubResource("StandardMaterial3D_iebvt")
-surface_material_override/1 = SubResource("StandardMaterial3D_phshf")
-
-[node name="FilingCabinet2" parent="Environment" unique_id=399022806 instance=ExtResource("33_5p1di")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 140.42586, 8.6033535, -12.153369)
-
-[node name="FilingCabinet2_Mesh" parent="Environment/FilingCabinet2" index="0" unique_id=265571242]
-surface_material_override/0 = SubResource("StandardMaterial3D_dlrul")
-
-[node name="FilingCabinet3" parent="Environment" unique_id=1739014877 instance=ExtResource("35_cj1de")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 140.42586, 8.6033535, -9.081912)
-
-[node name="FilingCabinet3_Mesh" parent="Environment/FilingCabinet3" index="0" unique_id=1397752019]
-surface_material_override/0 = SubResource("StandardMaterial3D_dlrul")
-
-[node name="FilingCabinet4" parent="Environment" unique_id=382330 instance=ExtResource("15_wfw32")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 140.42586, 8.6033535, -13.680163)
-
-[node name="FilingCabinet4_Mesh" parent="Environment/FilingCabinet4" index="0" unique_id=685208652]
-surface_material_override/0 = SubResource("StandardMaterial3D_dlrul")
-
-[node name="FilingCabinet5" parent="Environment" unique_id=1675835105 instance=ExtResource("33_5p1di")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 139.0036, 8.6033535, -10.614894)
-
-[node name="FilingCabinet2_Mesh" parent="Environment/FilingCabinet5" index="0" unique_id=265571242]
-surface_material_override/0 = SubResource("StandardMaterial3D_dlrul")
-
-[node name="FilingCabinet6" parent="Environment" unique_id=1495855782 instance=ExtResource("35_cj1de")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 139.0036, 8.6033535, -13.686351)
-
-[node name="FilingCabinet3_Mesh" parent="Environment/FilingCabinet6" index="0" unique_id=1397752019]
-surface_material_override/0 = SubResource("StandardMaterial3D_dlrul")
-
-[node name="FilingCabinet7" parent="Environment" unique_id=2010557878 instance=ExtResource("15_wfw32")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 139.0036, 8.6033535, -9.0880995)
-
-[node name="FilingCabinet4_Mesh" parent="Environment/FilingCabinet7" index="0" unique_id=685208652]
-surface_material_override/0 = SubResource("StandardMaterial3D_dlrul")
-
-[node name="FilingCabinet8" parent="Environment" unique_id=1985802999 instance=ExtResource("33_5p1di")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 151.56499, 8.6033535, -12.153369)
-
-[node name="FilingCabinet2_Mesh" parent="Environment/FilingCabinet8" index="0" unique_id=265571242]
-surface_material_override/0 = SubResource("StandardMaterial3D_dlrul")
-
-[node name="FilingCabinet9" parent="Environment" unique_id=1740072812 instance=ExtResource("35_cj1de")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 151.56499, 8.6033535, -9.081912)
-
-[node name="FilingCabinet3_Mesh" parent="Environment/FilingCabinet9" index="0" unique_id=1397752019]
-surface_material_override/0 = SubResource("StandardMaterial3D_dlrul")
-
-[node name="FilingCabinet10" parent="Environment" unique_id=895697654 instance=ExtResource("15_wfw32")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 151.56499, 8.6033535, -13.680163)
-
-[node name="FilingCabinet4_Mesh" parent="Environment/FilingCabinet10" index="0" unique_id=685208652]
-surface_material_override/0 = SubResource("StandardMaterial3D_dlrul")
-
-[node name="FilingCabinet11" parent="Environment" unique_id=1851694265 instance=ExtResource("33_5p1di")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 150.14273, 8.6033535, -10.614894)
-
-[node name="FilingCabinet2_Mesh" parent="Environment/FilingCabinet11" index="0" unique_id=265571242]
-surface_material_override/0 = SubResource("StandardMaterial3D_dlrul")
-
-[node name="FilingCabinet12" parent="Environment" unique_id=491706224 instance=ExtResource("35_cj1de")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 150.14273, 8.6033535, -13.686351)
-
-[node name="FilingCabinet3_Mesh" parent="Environment/FilingCabinet12" index="0" unique_id=1397752019]
-surface_material_override/0 = SubResource("StandardMaterial3D_dlrul")
-
-[node name="FilingCabinet13" parent="Environment" unique_id=1195730560 instance=ExtResource("15_wfw32")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 150.14273, 8.6033535, -9.0880995)
-
-[node name="FilingCabinet4_Mesh" parent="Environment/FilingCabinet13" index="0" unique_id=685208652]
-surface_material_override/0 = SubResource("StandardMaterial3D_dlrul")
-
-[node name="ComputerRig" parent="Environment" unique_id=694902240 instance=ExtResource("28_xshw8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144.91719, 10.602652, -13.429971)
-
-[node name="ComputerRig_Mesh" parent="Environment/ComputerRig" index="0" unique_id=1210401787]
-surface_material_override/0 = SubResource("StandardMaterial3D_8ax44")
-surface_material_override/1 = SubResource("StandardMaterial3D_5isfi")
-surface_material_override/2 = SubResource("StandardMaterial3D_lg5jc")
-surface_material_override/3 = SubResource("StandardMaterial3D_b152w")
-
-[node name="Folder" parent="Environment" unique_id=1988535447 instance=ExtResource("29_uwi0l")]
-transform = Transform3D(-0.7380725, 0, 0.67472136, 0, 1, 0, -0.67472136, 0, -0.7380725, 146.1332, 10.60001, -12.451173)
-
-[node name="Folder_Mesh" parent="Environment/Folder" index="0" unique_id=1611891132]
-surface_material_override/0 = SubResource("StandardMaterial3D_8txt0")
-
-[node name="HandlebarSmall" parent="Environment" unique_id=606722363 instance=ExtResource("50_bcfbs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 217.96695, 0.20000982, -11.513497)
-
-[node name="PipeShapeR" parent="Environment/HandlebarSmall" index="0" unique_id=777797736]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.122452, 0, 0)
-
-[node name="PipeShapeR_Mesh" parent="Environment/HandlebarSmall/PipeShapeR" index="0" unique_id=954856188]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.0301056, 0, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_g3qdj")
-
-[node name="PipeShapeR_Collision" parent="Environment/HandlebarSmall/PipeShapeR" index="1" unique_id=1888525015]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.0301056, 0, 0)
-
-[node name="PipeShapeR2" parent="Environment/HandlebarSmall" index="1" unique_id=1408664100]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -10.122452, 0, 3)
-
-[node name="PipeShapeR_Mesh" parent="Environment/HandlebarSmall/PipeShapeR2" index="0" unique_id=954856188]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.0301056, 0, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_g3qdj")
-
-[node name="PipeShapeR_Collision" parent="Environment/HandlebarSmall/PipeShapeR2" index="1" unique_id=1888525015]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.0301056, 0, 0)
-
-[node name="PipeSizeSmall" parent="Environment/HandlebarSmall" index="2" unique_id=266761220]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -10.122452, 1, 1)
-
-[node name="PipeSizeSmall_Mesh" parent="Environment/HandlebarSmall/PipeSizeSmall" index="0" unique_id=1275745915]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.0301056, 0, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_g3qdj")
-
-[node name="PipeSizeSmall_Collision" parent="Environment/HandlebarSmall/PipeSizeSmall" index="1" unique_id=1355184953]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.0301056, 0.5, 0)
-
 [node name="WallPlainBasePrison14" parent="Environment" unique_id=1717984994 instance=ExtResource("6_v4gt6")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30, 0, -10)
+
+[node name="WallPlainBasePrison18" parent="Environment" unique_id=1840668654 instance=ExtResource("6_v4gt6")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 20, 0, -10)
+
+[node name="WallPlainBasePrison19" parent="Environment" unique_id=779381112 instance=ExtResource("6_v4gt6")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -20, 0, -10)
 
 [node name="WallPlainBasePrison15" parent="Environment" unique_id=1498773518 instance=ExtResource("6_v4gt6")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 40, 0, -10)
@@ -2315,68 +1300,55 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 150, 0, -10)
 [node name="DoorwayPrisonRailPrison" parent="Environment" unique_id=466471037 instance=ExtResource("56_a3ov2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 16.8, 0)
 
+[node name="DoorwayPrisonRailPrison3" parent="Environment" unique_id=708239747 instance=ExtResource("56_a3ov2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 8.4, 0)
+
+[node name="PrisonRailDoor" type="MeshInstance3D" parent="Environment/DoorwayPrisonRailPrison3" unique_id=341678172]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = ExtResource("15_rpc8p")
+
+[node name="PrisonRailDoor2" type="MeshInstance3D" parent="Environment/DoorwayPrisonRailPrison3" unique_id=1903619896]
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
+mesh = ExtResource("15_rpc8p")
+
 [node name="DoorwayPrisonRailPrison2" parent="Environment" unique_id=323179958 instance=ExtResource("56_a3ov2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135, 16.8, 0)
 
 [node name="PrisonCraneRail" parent="Environment" unique_id=722171053 instance=ExtResource("57_khcj5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 16.8, 0)
 
-[node name="PrisonRail" parent="Environment/PrisonCraneRail" index="0" unique_id=1016540394]
-surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
-
 [node name="PrisonCraneRail9" parent="Environment" unique_id=709359433 instance=ExtResource("57_khcj5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 16.8, 0)
 
-[node name="PrisonRail" parent="Environment/PrisonCraneRail9" index="0" unique_id=1016540394]
-surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
+[node name="PrisonCraneRail12" parent="Environment" unique_id=1621844105 instance=ExtResource("57_khcj5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 8.4, 0)
+
+[node name="PrisonCraneRail13" parent="Environment" unique_id=1576544231 instance=ExtResource("57_khcj5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 8.4, 0)
 
 [node name="PrisonCraneRail2" parent="Environment" unique_id=639597076 instance=ExtResource("57_khcj5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 16.8, 0)
 
-[node name="PrisonRail" parent="Environment/PrisonCraneRail2" index="0" unique_id=1016540394]
-surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
-
 [node name="PrisonCraneRail3" parent="Environment" unique_id=1672678339 instance=ExtResource("57_khcj5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 16.8, 0)
-
-[node name="PrisonRail" parent="Environment/PrisonCraneRail3" index="0" unique_id=1016540394]
-surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
 
 [node name="PrisonCraneRail4" parent="Environment" unique_id=820127692 instance=ExtResource("57_khcj5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 16.8, 0)
 
-[node name="PrisonRail" parent="Environment/PrisonCraneRail4" index="0" unique_id=1016540394]
-surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
-
 [node name="PrisonCraneRail5" parent="Environment" unique_id=2089689181 instance=ExtResource("57_khcj5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 16.8, 0)
-
-[node name="PrisonRail" parent="Environment/PrisonCraneRail5" index="0" unique_id=1016540394]
-surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
 
 [node name="PrisonCraneRail6" parent="Environment" unique_id=43281064 instance=ExtResource("57_khcj5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110, 16.8, 0)
 
-[node name="PrisonRail" parent="Environment/PrisonCraneRail6" index="0" unique_id=1016540394]
-surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
-
 [node name="PrisonCraneRail11" parent="Environment" unique_id=1424603877 instance=ExtResource("57_khcj5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120, 16.8, 0)
-
-[node name="PrisonRail" parent="Environment/PrisonCraneRail11" index="0" unique_id=1016540394]
-surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
 
 [node name="PrisonCraneRail7" parent="Environment" unique_id=1043863247 instance=ExtResource("57_khcj5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 130.0763, 16.8, 0)
 
-[node name="PrisonRail" parent="Environment/PrisonCraneRail7" index="0" unique_id=1016540394]
-surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
-
 [node name="PrisonCraneRail8" parent="Environment" unique_id=849883693 instance=ExtResource("57_khcj5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140, 16.8, 0)
-
-[node name="PrisonRail" parent="Environment/PrisonCraneRail8" index="0" unique_id=1016540394]
-surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
 
 [node name="PrisonCrane" type="StaticBody3D" parent="Environment" unique_id=655778044]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 133.81499, 16.8, 0)
@@ -2414,17 +1386,17 @@ surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
 [node name="PrisonCell" parent="Environment" unique_id=1678701466 instance=ExtResource("4_xshw8")]
 transform = Transform3D(2.2404099, -0.20751855, 0, 0.20751855, 2.2404099, 0, 0, 0, 2.25, 43.117905, 19.740238, 0.09459829)
 
-[node name="Cell_Mesh" parent="Environment/PrisonCell" index="0" unique_id=78601187]
-surface_material_override/0 = SubResource("StandardMaterial3D_0asyg")
-surface_material_override/1 = SubResource("StandardMaterial3D_5mo4d")
-surface_material_override/2 = SubResource("StandardMaterial3D_e0ccj")
-surface_material_override/3 = SubResource("StandardMaterial3D_jo11s")
-
-[node name="CellDoor_Mesh" parent="Environment/PrisonCell/CellArm_01_Mesh/CellArm_02_Mesh/CellDoor" parent_id_path=PackedInt32Array(1678701466, 975245470) index="0" unique_id=1318509788]
-surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
-
 [node name="DoorwayNoneMidPrison" parent="Environment" unique_id=1238568985 instance=ExtResource("31_qhut5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 8.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 8.4, -48.040512)
+
+[node name="DoorwayNoneBasePrison2" parent="Environment" unique_id=1232509428 instance=ExtResource("7_gqdjt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 0)
+
+[node name="DoorwayNoneBasePrison3" parent="Environment" unique_id=2031177087 instance=ExtResource("7_gqdjt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -10)
+
+[node name="DoorwayNoneMidPrison6" parent="Environment" unique_id=912874260 instance=ExtResource("31_qhut5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 8.4, -10)
 
 [node name="DoorwayNoneMidPrison2" parent="Environment" unique_id=334907220 instance=ExtResource("31_qhut5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 8.4, 0)
@@ -2436,13 +1408,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 215, 8.4, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 215, 8.4, -10)
 
 [node name="WallPlainMidPrison" parent="Environment" unique_id=1125147099 instance=ExtResource("62_6itfv")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 8.4, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 8.4, -48.040512)
 
 [node name="WallPlainMidPrison2" parent="Environment" unique_id=2016240955 instance=ExtResource("62_6itfv")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10, 8.4, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10, 8.4, -48.040512)
 
 [node name="WallPlainMidPrison3" parent="Environment" unique_id=451198994 instance=ExtResource("62_6itfv")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 20, 8.4, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 20, 8.4, -48.040512)
 
 [node name="WallPlainMidPrison4" parent="Environment" unique_id=2041971139 instance=ExtResource("62_6itfv")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 50, 16.8, 0)
@@ -2464,9 +1436,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 70, 0, 0)
 
 [node name="PrisonCraneRail10" parent="Environment" unique_id=930790604 instance=ExtResource("57_khcj5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 16.8, 0)
-
-[node name="PrisonRail" parent="Environment/PrisonCraneRail10" index="0" unique_id=1016540394]
-surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
 
 [node name="WallPlainMidPrison11" parent="Environment" unique_id=2054676243 instance=ExtResource("62_6itfv")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 70, 16.8, 0)
@@ -2496,12 +1465,72 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 120, 16.8, 0)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 130, 16.8, 0)
 
 [node name="FloorPrison" parent="Environment" unique_id=2022107086 instance=ExtResource("5_uwi0l")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -48.040512)
 
 [node name="FloorPrison2" parent="Environment" unique_id=824566052 instance=ExtResource("5_uwi0l")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10, 0, -48.040512)
 
 [node name="FloorPrison3" parent="Environment" unique_id=447367769 instance=ExtResource("5_uwi0l")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 20, 0, -48.040512)
+
+[node name="RoofPrison33" parent="Environment" unique_id=1395306378 instance=ExtResource("8_6cuhj")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 16.8, 0)
+
+[node name="RoofPrison34" parent="Environment" unique_id=1714342365 instance=ExtResource("8_6cuhj")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10, 16.8, 0)
+
+[node name="RoofPrison35" parent="Environment" unique_id=901459946 instance=ExtResource("8_6cuhj")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 20, 16.8, 0)
+
+[node name="FloorPrison37" parent="Environment" unique_id=1477242566 instance=ExtResource("5_uwi0l")]
+
+[node name="RoofPrison36" parent="Environment" unique_id=350228296 instance=ExtResource("8_6cuhj")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10, 16.8, 0)
+
+[node name="RoofPrison37" parent="Environment" unique_id=1443928183 instance=ExtResource("8_6cuhj")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -20, 16.8, 0)
+
+[node name="RoofPrison38" parent="Environment" unique_id=1643939493 instance=ExtResource("8_6cuhj")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 16.8, -10)
+
+[node name="RoofPrison39" parent="Environment" unique_id=222003802 instance=ExtResource("8_6cuhj")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10, 16.8, -10)
+
+[node name="RoofPrison40" parent="Environment" unique_id=2018882499 instance=ExtResource("8_6cuhj")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 20, 16.8, -10)
+
+[node name="RoofPrison41" parent="Environment" unique_id=93877875 instance=ExtResource("8_6cuhj")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10, 16.8, -10)
+
+[node name="RoofPrison42" parent="Environment" unique_id=1462008337 instance=ExtResource("8_6cuhj")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -20, 16.8, -10)
+
+[node name="FloorPrison40" parent="Environment" unique_id=267631922 instance=ExtResource("5_uwi0l")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10, 0, 0)
+
+[node name="FloorPrison38" parent="Environment" unique_id=216745076 instance=ExtResource("5_uwi0l")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10, 0, 0)
+
+[node name="FloorPrison39" parent="Environment" unique_id=1938668370 instance=ExtResource("5_uwi0l")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 20, 0, 0)
+
+[node name="FloorPrison41" parent="Environment" unique_id=804124962 instance=ExtResource("5_uwi0l")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -10)
+
+[node name="FloorPrison42" parent="Environment" unique_id=133351147 instance=ExtResource("5_uwi0l")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10, 0, -10)
+
+[node name="FloorPrison45" parent="Environment" unique_id=262767379 instance=ExtResource("5_uwi0l")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -20, 0, 0)
+
+[node name="FloorPrison46" parent="Environment" unique_id=1080198675 instance=ExtResource("5_uwi0l")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -20, 0, -10)
+
+[node name="FloorPrison43" parent="Environment" unique_id=1000560823 instance=ExtResource("5_uwi0l")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10, 0, -10)
+
+[node name="FloorPrison44" parent="Environment" unique_id=391072441 instance=ExtResource("5_uwi0l")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 20, 0, -10)
 
 [node name="FloorPrison4" parent="Environment" unique_id=988104403 instance=ExtResource("5_uwi0l")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30, 0, 0)
@@ -4632,6 +3661,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_8txt0")
 
 [node name="Folder24" parent="Props" unique_id=1168123971 instance=ExtResource("29_uwi0l")]
 transform = Transform3D(-0.7056817, 0, 0.70852906, 0, 1, 0, -0.70852906, 0, -0.7056817, 138.65584, 11.584408, -9.35743)
+visible = false
 
 [node name="Folder_Mesh" parent="Props/Folder24" index="0" unique_id=1611891132]
 surface_material_override/0 = SubResource("StandardMaterial3D_8txt0")
@@ -5295,68 +4325,511 @@ transform = Transform3D(1, -7.642743e-15, 0, 1.4210855e-14, -4.371139e-08, 1, -3
 [node name="PipeConnector_Mesh" parent="Props/Wall2GroundCurve3/PipeConnector5" index="0" unique_id=2138763370]
 surface_material_override/0 = SubResource("StandardMaterial3D_ahc83")
 
+[node name="PipeNetwork1" parent="Props" unique_id=1539366594 instance=ExtResource("15_5y7s6")]
+transform = Transform3D(-5.2453668e-08, 0, -1.2, 0, 1.2, 0, 1.2, 0, -5.2453668e-08, 178.3117, 4.6267495, -14.080101)
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeConnector2" parent_id_path=PackedInt32Array(1539366594, 765497012) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeConnector6" parent_id_path=PackedInt32Array(1539366594, 1268886813) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeConnector13" parent_id_path=PackedInt32Array(1539366594, 1761449947) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeConnector3" parent_id_path=PackedInt32Array(1539366594, 191562681) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeConnector4" parent_id_path=PackedInt32Array(1539366594, 1829971725) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeConnector5" parent_id_path=PackedInt32Array(1539366594, 1587213076) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeConnector7" parent_id_path=PackedInt32Array(1539366594, 1107786459) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeConnector11" parent_id_path=PackedInt32Array(1539366594, 1558455410) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeConnector12" parent_id_path=PackedInt32Array(1539366594, 1958492604) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeConnector8" parent_id_path=PackedInt32Array(1539366594, 27868285) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeConnector9" parent_id_path=PackedInt32Array(1539366594, 339206662) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeConnector10" parent_id_path=PackedInt32Array(1539366594, 280811574) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeR_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeShapeR11" parent_id_path=PackedInt32Array(1539366594, 466542268) index="0" unique_id=954856188]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeR_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeShapeR2" parent_id_path=PackedInt32Array(1539366594, 482452705) index="0" unique_id=954856188]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeR_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeShapeR3" parent_id_path=PackedInt32Array(1539366594, 1200470234) index="0" unique_id=954856188]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeR_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeShapeR4" parent_id_path=PackedInt32Array(1539366594, 1676565347) index="0" unique_id=954856188]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeR_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeShapeR5" parent_id_path=PackedInt32Array(1539366594, 449983864) index="0" unique_id=954856188]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeR_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeShapeR6" parent_id_path=PackedInt32Array(1539366594, 1821915980) index="0" unique_id=954856188]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeR_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeShapeR7" parent_id_path=PackedInt32Array(1539366594, 1377812206) index="0" unique_id=954856188]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeR_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeShapeR12" parent_id_path=PackedInt32Array(1539366594, 608274722) index="0" unique_id=954856188]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeR_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeShapeR9" parent_id_path=PackedInt32Array(1539366594, 1960774836) index="0" unique_id=954856188]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeR_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeShapeR10" parent_id_path=PackedInt32Array(1539366594, 17987721) index="0" unique_id=954856188]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeU_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeShapeU" parent_id_path=PackedInt32Array(1539366594, 1248328049) index="0" unique_id=1507382853]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeU_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeShapeU2" parent_id_path=PackedInt32Array(1539366594, 1914224408) index="0" unique_id=1507382853]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeT_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeShapeT" parent_id_path=PackedInt32Array(1539366594, 379942003) index="0" unique_id=890226892]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeT_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeShapeT2" parent_id_path=PackedInt32Array(1539366594, 149040190) index="0" unique_id=890226892]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeY_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeShapeY" parent_id_path=PackedInt32Array(1539366594, 1918234742) index="0" unique_id=158927346]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeY_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeShapeY3" parent_id_path=PackedInt32Array(1539366594, 947392476) index="0" unique_id=158927346]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeY_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeShapeY2" parent_id_path=PackedInt32Array(1539366594, 242774624) index="0" unique_id=158927346]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeY_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeShapeY4" parent_id_path=PackedInt32Array(1539366594, 1731769321) index="0" unique_id=158927346]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeValve_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeValve" parent_id_path=PackedInt32Array(1539366594, 244363744) index="0" unique_id=913540183]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeSizeMedium_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeSizeMedium3" parent_id_path=PackedInt32Array(1539366594, 342598861) index="0" unique_id=351861640]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeSizeMedium_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeSizeMedium4" parent_id_path=PackedInt32Array(1539366594, 1421533068) index="0" unique_id=351861640]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipePressure_Mesh" parent="Props/PipeNetwork1/Pipe4/PipePressure" parent_id_path=PackedInt32Array(1539366594, 1073310426) index="0" unique_id=676733933]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipePressure_Mesh" parent="Props/PipeNetwork1/Pipe4/PipePressure2" parent_id_path=PackedInt32Array(1539366594, 79459182) index="0" unique_id=676733933]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeZigZag_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeZigZag" parent_id_path=PackedInt32Array(1539366594, 1074663485) index="0" unique_id=1196144936]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeZigZag_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeZigZag2" parent_id_path=PackedInt32Array(1539366594, 2104256622) index="0" unique_id=1196144936]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeSizeSmall_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeSizeSmall3" parent_id_path=PackedInt32Array(1539366594, 1613811009) index="0" unique_id=1275745915]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeSizeSmall_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeSizeSmall" parent_id_path=PackedInt32Array(1539366594, 266761220) index="0" unique_id=1275745915]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeSizeSmall_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeSizeSmall2" parent_id_path=PackedInt32Array(1539366594, 2135716412) index="0" unique_id=1275745915]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeC_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeShapeC" parent_id_path=PackedInt32Array(1539366594, 1388748965) index="0" unique_id=379475741]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeC_Mesh" parent="Props/PipeNetwork1/Pipe4/PipeShapeC2" parent_id_path=PackedInt32Array(1539366594, 56001612) index="0" unique_id=379475741]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeSizeMedium_Mesh" parent="Props/PipeNetwork1/Pipe5/PipeSizeMedium2" parent_id_path=PackedInt32Array(1539366594, 1515396228) index="0" unique_id=351861640]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeR_Mesh" parent="Props/PipeNetwork1/Pipe5/PipeShapeR" parent_id_path=PackedInt32Array(1539366594, 1203566551) index="0" unique_id=954856188]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeR_Mesh" parent="Props/PipeNetwork1/Pipe5/PipeShapeR3" parent_id_path=PackedInt32Array(1539366594, 777797736) index="0" unique_id=954856188]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeR_Mesh" parent="Props/PipeNetwork1/Pipe5/PipeShapeR2" parent_id_path=PackedInt32Array(1539366594, 558431173) index="0" unique_id=954856188]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe5/PipeConnector" parent_id_path=PackedInt32Array(1539366594, 1366939229) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe5/PipeConnector6" parent_id_path=PackedInt32Array(1539366594, 498393751) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe5/PipeConnector3" parent_id_path=PackedInt32Array(1539366594, 1271360427) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe5/PipeConnector5" parent_id_path=PackedInt32Array(1539366594, 66593039) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe5/PipeConnector4" parent_id_path=PackedInt32Array(1539366594, 1793319819) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe5/PipeConnector7" parent_id_path=PackedInt32Array(1539366594, 1471529494) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe5/PipeConnector2" parent_id_path=PackedInt32Array(1539366594, 1044133532) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeY_Mesh" parent="Props/PipeNetwork1/Pipe5/PipeShapeY" parent_id_path=PackedInt32Array(1539366594, 40453690) index="0" unique_id=158927346]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeY_Mesh" parent="Props/PipeNetwork1/Pipe5/PipeShapeY2" parent_id_path=PackedInt32Array(1539366594, 1601558033) index="0" unique_id=158927346]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeSizeMedium_Mesh" parent="Props/PipeNetwork1/Pipe6/PipeSizeMedium2" parent_id_path=PackedInt32Array(1539366594, 92283122) index="0" unique_id=351861640]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeR_Mesh" parent="Props/PipeNetwork1/Pipe6/PipeShapeR" parent_id_path=PackedInt32Array(1539366594, 1812836360) index="0" unique_id=954856188]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeR_Mesh" parent="Props/PipeNetwork1/Pipe6/PipeShapeR2" parent_id_path=PackedInt32Array(1539366594, 1208880620) index="0" unique_id=954856188]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe6/PipeConnector" parent_id_path=PackedInt32Array(1539366594, 653047875) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe6/PipeConnector3" parent_id_path=PackedInt32Array(1539366594, 1702247896) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeR_Mesh" parent="Props/PipeNetwork1/Pipe6/PipeShapeR3" parent_id_path=PackedInt32Array(1539366594, 1347870783) index="0" unique_id=954856188]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe6/PipeConnector5" parent_id_path=PackedInt32Array(1539366594, 354620124) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe6/PipeConnector6" parent_id_path=PackedInt32Array(1539366594, 1792327739) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe6/PipeConnector4" parent_id_path=PackedInt32Array(1539366594, 1900234845) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe6/PipeConnector7" parent_id_path=PackedInt32Array(1539366594, 1496930686) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe6/PipeConnector2" parent_id_path=PackedInt32Array(1539366594, 2074077346) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeR_Mesh" parent="Props/PipeNetwork1/Pipe7/PipeShapeR" parent_id_path=PackedInt32Array(1539366594, 1308256433) index="0" unique_id=954856188]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeR_Mesh" parent="Props/PipeNetwork1/Pipe7/PipeShapeR2" parent_id_path=PackedInt32Array(1539366594, 117887365) index="0" unique_id=954856188]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe7/PipeConnector" parent_id_path=PackedInt32Array(1539366594, 1776136203) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe7/PipeConnector3" parent_id_path=PackedInt32Array(1539366594, 818848490) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe7/PipeConnector2" parent_id_path=PackedInt32Array(1539366594, 1004882276) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe7/PipeConnector6" parent_id_path=PackedInt32Array(1539366594, 225610959) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeSizeSmall_Mesh" parent="Props/PipeNetwork1/Pipe7/PipeSizeSmall2" parent_id_path=PackedInt32Array(1539366594, 1046918432) index="0" unique_id=1275745915]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeR_Mesh" parent="Props/PipeNetwork1/Pipe8/PipeShapeR" parent_id_path=PackedInt32Array(1539366594, 272875186) index="0" unique_id=954856188]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeR_Mesh" parent="Props/PipeNetwork1/Pipe8/PipeShapeR2" parent_id_path=PackedInt32Array(1539366594, 1237894546) index="0" unique_id=954856188]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe8/PipeConnector" parent_id_path=PackedInt32Array(1539366594, 2034832833) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe8/PipeConnector3" parent_id_path=PackedInt32Array(1539366594, 471702193) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe8/PipeConnector4" parent_id_path=PackedInt32Array(1539366594, 508559263) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeSizeSmall_Mesh" parent="Props/PipeNetwork1/Pipe8/PipeSizeSmall" parent_id_path=PackedInt32Array(1539366594, 548342315) index="0" unique_id=1275745915]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe8/PipeConnector5" parent_id_path=PackedInt32Array(1539366594, 491496673) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeR_Mesh" parent="Props/PipeNetwork1/Pipe9/PipeShapeR" parent_id_path=PackedInt32Array(1539366594, 260589991) index="0" unique_id=954856188]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeR_Mesh" parent="Props/PipeNetwork1/Pipe9/PipeShapeR2" parent_id_path=PackedInt32Array(1539366594, 1408521138) index="0" unique_id=954856188]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe9/PipeConnector" parent_id_path=PackedInt32Array(1539366594, 558623561) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe9/PipeConnector3" parent_id_path=PackedInt32Array(1539366594, 1873625518) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe9/PipeConnector4" parent_id_path=PackedInt32Array(1539366594, 1855663610) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe9/PipeConnector5" parent_id_path=PackedInt32Array(1539366594, 123718175) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeR_Mesh" parent="Props/PipeNetwork1/Pipe10/PipeShapeR" parent_id_path=PackedInt32Array(1539366594, 1239773991) index="0" unique_id=954856188]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeR_Mesh" parent="Props/PipeNetwork1/Pipe10/PipeShapeR2" parent_id_path=PackedInt32Array(1539366594, 1209743343) index="0" unique_id=954856188]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe10/PipeConnector" parent_id_path=PackedInt32Array(1539366594, 765839781) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe10/PipeConnector3" parent_id_path=PackedInt32Array(1539366594, 639915395) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe10/PipeConnector2" parent_id_path=PackedInt32Array(1539366594, 232290046) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe10/PipeConnector6" parent_id_path=PackedInt32Array(1539366594, 1600691207) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeSizeSmall_Mesh" parent="Props/PipeNetwork1/Pipe10/PipeSizeSmall2" parent_id_path=PackedInt32Array(1539366594, 1280349905) index="0" unique_id=1275745915]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeR_Mesh" parent="Props/PipeNetwork1/Pipe11/PipeShapeR" parent_id_path=PackedInt32Array(1539366594, 252982219) index="0" unique_id=954856188]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeShapeR_Mesh" parent="Props/PipeNetwork1/Pipe11/PipeShapeR2" parent_id_path=PackedInt32Array(1539366594, 2104569794) index="0" unique_id=954856188]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe11/PipeConnector" parent_id_path=PackedInt32Array(1539366594, 362775734) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe11/PipeConnector3" parent_id_path=PackedInt32Array(1539366594, 1928603014) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe11/PipeConnector2" parent_id_path=PackedInt32Array(1539366594, 438418273) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeConnector_Mesh" parent="Props/PipeNetwork1/Pipe11/PipeConnector6" parent_id_path=PackedInt32Array(1539366594, 1309270512) index="0" unique_id=2138763370]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="PipeSizeSmall_Mesh" parent="Props/PipeNetwork1/Pipe11/PipeSizeSmall2" parent_id_path=PackedInt32Array(1539366594, 1557372331) index="0" unique_id=1275745915]
+surface_material_override/0 = SubResource("StandardMaterial3D_v1rce")
+
+[node name="Folders22" parent="Props" unique_id=1146875503 instance=ExtResource("16_v5ylw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 37.75156, 3.2000096, -14.178563)
+
+[node name="Folders_Mesh" parent="Props/Folders22" index="0" unique_id=1084519770]
+surface_material_override/0 = SubResource("StandardMaterial3D_voksi")
+
+[node name="Folders23" parent="Props" unique_id=1807052735 instance=ExtResource("16_v5ylw")]
+transform = Transform3D(0.58143324, 0, 0.8135941, 0, 1, 0, -0.8135941, 0, 0.58143324, 44.40316, 2.1981122, -14.604994)
+
+[node name="Folders_Mesh" parent="Props/Folders23" index="0" unique_id=1084519770]
+surface_material_override/0 = SubResource("StandardMaterial3D_8txt0")
+
+[node name="Folders24" parent="Props" unique_id=893209002 instance=ExtResource("16_v5ylw")]
+transform = Transform3D(-0.47748908, -0.8786377, -5.9278186e-08, -4.371139e-08, -4.371139e-08, 1, -0.8786377, 0.47748908, -1.7534761e-08, 36.794098, 3.4794366, -14.340561)
+
+[node name="Folders_Mesh" parent="Props/Folders24" index="0" unique_id=1084519770]
+surface_material_override/0 = SubResource("StandardMaterial3D_8txt0")
+
+[node name="Folders25" parent="Props" unique_id=777142328 instance=ExtResource("16_v5ylw")]
+transform = Transform3D(0.41538605, -0.9096452, -2.1604757e-08, -4.371139e-08, -4.371139e-08, 1, -0.9096452, -0.41538605, -5.791896e-08, 26.125328, 3.4794366, -14.340561)
+
+[node name="Folders_Mesh" parent="Props/Folders25" index="0" unique_id=1084519770]
+surface_material_override/0 = SubResource("StandardMaterial3D_8txt0")
+
+[node name="Folders26" parent="Props" unique_id=83725569 instance=ExtResource("16_v5ylw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 38.343697, 3.2000096, -14.178563)
+
+[node name="Folders_Mesh" parent="Props/Folders26" index="0" unique_id=1084519770]
+surface_material_override/0 = SubResource("StandardMaterial3D_8txt0")
+
+[node name="Folders27" parent="Props" unique_id=162095232 instance=ExtResource("16_v5ylw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 28.75156, 3.2000096, -14.178563)
+
+[node name="Folders_Mesh" parent="Props/Folders27" index="0" unique_id=1084519770]
+surface_material_override/0 = SubResource("StandardMaterial3D_8txt0")
+
+[node name="Folders28" parent="Props" unique_id=1000148125 instance=ExtResource("16_v5ylw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 29.343697, 3.2000096, -14.178563)
+
+[node name="Folders_Mesh" parent="Props/Folders28" index="0" unique_id=1084519770]
+surface_material_override/0 = SubResource("StandardMaterial3D_8txt0")
+
+[node name="ChairSteel21" parent="Props" unique_id=966378687 instance=ExtResource("27_b1r7n")]
+transform = Transform3D(-5.966981e-08, -0.4977864, -0.8672997, 1, -4.371139e-08, -4.371139e-08, -1.6151938e-08, -0.8672997, 0.4977864, 42.648148, 9.19415, -8.064698)
+
+[node name="ChairSteel_Mesh" parent="Props/ChairSteel21" index="0" unique_id=695165550]
+surface_material_override/0 = SubResource("StandardMaterial3D_3k85b")
+
+[node name="Bin9" parent="Props" unique_id=71420854 instance=ExtResource("19_v4gt6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 142.78603, 0.20001006, -14.344309)
+
+[node name="Bin_Mesh" parent="Props/Bin9" index="0" unique_id=1946725391]
+surface_material_override/0 = SubResource("StandardMaterial3D_iebvt")
+surface_material_override/1 = SubResource("StandardMaterial3D_phshf")
+
+[node name="Bin10" parent="Props" unique_id=155482485 instance=ExtResource("19_v4gt6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153.36613, 0.20000982, -4.1112494)
+
+[node name="Bin_Mesh" parent="Props/Bin10" index="0" unique_id=1946725391]
+surface_material_override/0 = SubResource("StandardMaterial3D_iebvt")
+surface_material_override/1 = SubResource("StandardMaterial3D_phshf")
+
+[node name="FilingCabinet23" parent="Props" unique_id=399022806 instance=ExtResource("33_5p1di")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 140.42586, 8.6033535, -12.153369)
+
+[node name="FilingCabinet2_Mesh" parent="Props/FilingCabinet23" index="0" unique_id=265571242]
+surface_material_override/0 = SubResource("StandardMaterial3D_dlrul")
+
+[node name="FilingCabinet24" parent="Props" unique_id=1739014877 instance=ExtResource("35_cj1de")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 140.42586, 8.6033535, -9.081912)
+
+[node name="FilingCabinet3_Mesh" parent="Props/FilingCabinet24" index="0" unique_id=1397752019]
+surface_material_override/0 = SubResource("StandardMaterial3D_dlrul")
+
+[node name="FilingCabinet25" parent="Props" unique_id=382330 instance=ExtResource("15_wfw32")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 140.42586, 8.6033535, -13.680163)
+
+[node name="FilingCabinet4_Mesh" parent="Props/FilingCabinet25" index="0" unique_id=685208652]
+surface_material_override/0 = SubResource("StandardMaterial3D_dlrul")
+
+[node name="FilingCabinet26" parent="Props" unique_id=1675835105 instance=ExtResource("33_5p1di")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 139.0036, 8.6033535, -10.614894)
+
+[node name="FilingCabinet2_Mesh" parent="Props/FilingCabinet26" index="0" unique_id=265571242]
+surface_material_override/0 = SubResource("StandardMaterial3D_dlrul")
+
+[node name="FilingCabinet27" parent="Props" unique_id=1495855782 instance=ExtResource("35_cj1de")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 139.0036, 8.6033535, -13.686351)
+
+[node name="FilingCabinet3_Mesh" parent="Props/FilingCabinet27" index="0" unique_id=1397752019]
+surface_material_override/0 = SubResource("StandardMaterial3D_dlrul")
+
+[node name="FilingCabinet28" parent="Props" unique_id=2010557878 instance=ExtResource("15_wfw32")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 139.0036, 8.6033535, -9.0880995)
+
+[node name="FilingCabinet4_Mesh" parent="Props/FilingCabinet28" index="0" unique_id=685208652]
+surface_material_override/0 = SubResource("StandardMaterial3D_dlrul")
+
+[node name="FilingCabinet29" parent="Props" unique_id=1985802999 instance=ExtResource("33_5p1di")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 151.56499, 8.6033535, -12.153369)
+
+[node name="FilingCabinet2_Mesh" parent="Props/FilingCabinet29" index="0" unique_id=265571242]
+surface_material_override/0 = SubResource("StandardMaterial3D_dlrul")
+
+[node name="FilingCabinet30" parent="Props" unique_id=1740072812 instance=ExtResource("35_cj1de")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 151.56499, 8.6033535, -9.081912)
+
+[node name="FilingCabinet3_Mesh" parent="Props/FilingCabinet30" index="0" unique_id=1397752019]
+surface_material_override/0 = SubResource("StandardMaterial3D_dlrul")
+
+[node name="FilingCabinet31" parent="Props" unique_id=895697654 instance=ExtResource("15_wfw32")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 151.56499, 8.6033535, -13.680163)
+
+[node name="FilingCabinet4_Mesh" parent="Props/FilingCabinet31" index="0" unique_id=685208652]
+surface_material_override/0 = SubResource("StandardMaterial3D_dlrul")
+
+[node name="FilingCabinet32" parent="Props" unique_id=1851694265 instance=ExtResource("33_5p1di")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 150.14273, 8.6033535, -10.614894)
+
+[node name="FilingCabinet2_Mesh" parent="Props/FilingCabinet32" index="0" unique_id=265571242]
+surface_material_override/0 = SubResource("StandardMaterial3D_dlrul")
+
+[node name="FilingCabinet33" parent="Props" unique_id=491706224 instance=ExtResource("35_cj1de")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 150.14273, 8.6033535, -13.686351)
+
+[node name="FilingCabinet3_Mesh" parent="Props/FilingCabinet33" index="0" unique_id=1397752019]
+surface_material_override/0 = SubResource("StandardMaterial3D_dlrul")
+
+[node name="FilingCabinet34" parent="Props" unique_id=1195730560 instance=ExtResource("15_wfw32")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 150.14273, 8.6033535, -9.0880995)
+
+[node name="FilingCabinet4_Mesh" parent="Props/FilingCabinet34" index="0" unique_id=685208652]
+surface_material_override/0 = SubResource("StandardMaterial3D_dlrul")
+
+[node name="ComputerRig11" parent="Props" unique_id=694902240 instance=ExtResource("28_xshw8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144.91719, 10.602652, -13.429971)
+
+[node name="ComputerRig_Mesh" parent="Props/ComputerRig11" index="0" unique_id=1210401787]
+surface_material_override/0 = SubResource("StandardMaterial3D_8ax44")
+surface_material_override/1 = SubResource("StandardMaterial3D_5isfi")
+surface_material_override/2 = SubResource("StandardMaterial3D_lg5jc")
+surface_material_override/3 = SubResource("StandardMaterial3D_b152w")
+
+[node name="Folder31" parent="Props" unique_id=1988535447 instance=ExtResource("29_uwi0l")]
+transform = Transform3D(-0.7380725, 0, 0.67472136, 0, 1, 0, -0.67472136, 0, -0.7380725, 146.1332, 10.60001, -12.451173)
+
+[node name="Folder_Mesh" parent="Props/Folder31" index="0" unique_id=1611891132]
+surface_material_override/0 = SubResource("StandardMaterial3D_8txt0")
+
+[node name="HandlebarSmall7" parent="Props" unique_id=606722363 instance=ExtResource("50_bcfbs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 217.96695, 0.20000982, -11.513497)
+
+[node name="PipeShapeR" parent="Props/HandlebarSmall7" index="0" unique_id=777797736]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.122452, 0, 0)
+
+[node name="PipeShapeR_Mesh" parent="Props/HandlebarSmall7/PipeShapeR" index="0" unique_id=954856188]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.0301056, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_g3qdj")
+
+[node name="PipeShapeR_Collision" parent="Props/HandlebarSmall7/PipeShapeR" index="1" unique_id=1888525015]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.0301056, 0, 0)
+
+[node name="PipeShapeR2" parent="Props/HandlebarSmall7" index="1" unique_id=1408664100]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -10.122452, 0, 3)
+
+[node name="PipeShapeR_Mesh" parent="Props/HandlebarSmall7/PipeShapeR2" index="0" unique_id=954856188]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.0301056, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_g3qdj")
+
+[node name="PipeShapeR_Collision" parent="Props/HandlebarSmall7/PipeShapeR2" index="1" unique_id=1888525015]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.0301056, 0, 0)
+
+[node name="PipeSizeSmall" parent="Props/HandlebarSmall7" index="2" unique_id=266761220]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -10.122452, 1, 1)
+
+[node name="PipeSizeSmall_Mesh" parent="Props/HandlebarSmall7/PipeSizeSmall" index="0" unique_id=1275745915]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.0301056, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_g3qdj")
+
+[node name="PipeSizeSmall_Collision" parent="Props/HandlebarSmall7/PipeSizeSmall" index="1" unique_id=1355184953]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.0301056, 0.5, 0)
+
 [node name="Interactive" type="Node3D" parent="." unique_id=1604478648]
 
 [node name="DoorBasic" parent="Interactive" unique_id=1555562335 instance=ExtResource("2_ohrdm")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 25, 0, 0)
 openable = false
 
-[node name="DoorSlidingBasic_Mesh" parent="Interactive/DoorBasic/DoorSlidingBasic" parent_id_path=PackedInt32Array(1555562335, 1404790232) index="0" unique_id=1339969428]
-surface_material_override/0 = SubResource("StandardMaterial3D_flo5n")
-
-[node name="DoorwaySlidingBasic_Mesh" parent="Interactive/DoorBasic" index="1" unique_id=1315032598]
-surface_material_override/0 = SubResource("StandardMaterial3D_7am4i")
-surface_material_override/1 = SubResource("StandardMaterial3D_v3t1d")
-
 [node name="DoorBasic2" parent="Interactive" unique_id=1217171111 instance=ExtResource("2_ohrdm")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 45, 0, 0)
-
-[node name="DoorSlidingBasic_Mesh" parent="Interactive/DoorBasic2/DoorSlidingBasic" parent_id_path=PackedInt32Array(1217171111, 1404790232) index="0" unique_id=1339969428]
-surface_material_override/0 = SubResource("StandardMaterial3D_n2mqi")
-
-[node name="DoorwaySlidingBasic_Mesh" parent="Interactive/DoorBasic2" index="1" unique_id=1315032598]
-surface_material_override/0 = SubResource("StandardMaterial3D_mtc3x")
-surface_material_override/1 = SubResource("StandardMaterial3D_4m60o")
 
 [node name="DoorBasic3" parent="Interactive" unique_id=1538546167 instance=ExtResource("2_ohrdm")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 135, 0, 0)
 
-[node name="DoorSlidingBasic_Mesh" parent="Interactive/DoorBasic3/DoorSlidingBasic" parent_id_path=PackedInt32Array(1538546167, 1404790232) index="0" unique_id=1339969428]
-surface_material_override/0 = SubResource("StandardMaterial3D_b6x05")
-
-[node name="DoorwaySlidingBasic_Mesh" parent="Interactive/DoorBasic3" index="1" unique_id=1315032598]
-surface_material_override/0 = SubResource("StandardMaterial3D_mausv")
-surface_material_override/1 = SubResource("StandardMaterial3D_rj715")
-
 [node name="DoorBasic4" parent="Interactive" unique_id=1502657736 instance=ExtResource("2_ohrdm")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 155, 0, 0)
-
-[node name="DoorSlidingBasic_Mesh" parent="Interactive/DoorBasic4/DoorSlidingBasic" parent_id_path=PackedInt32Array(1502657736, 1404790232) index="0" unique_id=1339969428]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktgub")
-
-[node name="DoorwaySlidingBasic_Mesh" parent="Interactive/DoorBasic4" index="1" unique_id=1315032598]
-surface_material_override/0 = SubResource("StandardMaterial3D_qhaws")
-surface_material_override/1 = SubResource("StandardMaterial3D_vgx0k")
 
 [node name="DoorBasic10" parent="Interactive" unique_id=1963614819 instance=ExtResource("14_2bdqd")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 155, 8.4, 0)
 
-[node name="DoorSlidingBasic_Mesh" parent="Interactive/DoorBasic10/DoorSlidingBasic" parent_id_path=PackedInt32Array(1963614819, 1404790232) index="0" unique_id=1339969428]
-surface_material_override/0 = SubResource("StandardMaterial3D_shocd")
-
-[node name="DoorwaySlidingBasic_Mesh" parent="Interactive/DoorBasic10" index="1" unique_id=1315032598]
-surface_material_override/0 = SubResource("StandardMaterial3D_qailq")
-surface_material_override/1 = SubResource("StandardMaterial3D_88dlr")
-
 [node name="DoorBasic11" parent="Interactive" unique_id=681596247 instance=ExtResource("14_2bdqd")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 135, 8.4, 0)
-
-[node name="DoorSlidingBasic_Mesh" parent="Interactive/DoorBasic11/DoorSlidingBasic" parent_id_path=PackedInt32Array(681596247, 1404790232) index="0" unique_id=1339969428]
-surface_material_override/0 = SubResource("StandardMaterial3D_v2afn")
-
-[node name="DoorwaySlidingBasic_Mesh" parent="Interactive/DoorBasic11" index="1" unique_id=1315032598]
-surface_material_override/0 = SubResource("StandardMaterial3D_ko0i6")
-surface_material_override/1 = SubResource("StandardMaterial3D_bapw4")
 
 [node name="DoorExit" parent="Interactive" unique_id=863191425 instance=ExtResource("15_th7oq")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 215, 0, 0)
@@ -5366,129 +4839,45 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.11778259, 1.2896835,
 monitoring = false
 level_name = "Stage2"
 
-[node name="DoorSlidingBasic" parent="Interactive" unique_id=1236263169 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("2_ohrdm")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 162.424, 8.4, 0)
-visible = false
-enemy_manager = NodePath("../../Enemies/RoomOne")
-
-[node name="DoorSlidingBasic_Mesh" parent="Interactive/DoorSlidingBasic/DoorSlidingBasic" parent_id_path=PackedInt32Array(1236263169, 1404790232) index="0" unique_id=1339969428]
-surface_material_override/0 = SubResource("StandardMaterial3D_pkqmm")
-
-[node name="DoorwaySlidingBasic_Mesh" parent="Interactive/DoorSlidingBasic" index="1" unique_id=1315032598]
-surface_material_override/0 = SubResource("StandardMaterial3D_pqyx5")
-
 [node name="DoorSlidingBasic4" parent="Interactive" unique_id=551553933 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("2_ohrdm")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 45, 8.4, 0)
 enemy_manager = NodePath("../../Enemies/RoomOne")
 
-[node name="DoorSlidingBasic_Mesh" parent="Interactive/DoorSlidingBasic4/DoorSlidingBasic" parent_id_path=PackedInt32Array(551553933, 1404790232) index="0" unique_id=1339969428]
-surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
-
-[node name="DoorwaySlidingBasic_Mesh" parent="Interactive/DoorSlidingBasic4" index="1" unique_id=1315032598]
-surface_material_override/0 = SubResource("StandardMaterial3D_r2jby")
-surface_material_override/1 = SubResource("StandardMaterial3D_c3f5o")
-
 [node name="PrisonCell2" parent="Interactive" unique_id=588542897 instance=ExtResource("17_krhad")]
 transform = Transform3D(-2.249138, 0, -0.062273815, 0, 2.25, 0, 0.062273815, 0, -2.249138, 74.33239, 2.7381234, 0)
-
-[node name="Cell_Mesh" parent="Interactive/PrisonCell2" index="0" unique_id=649634502]
-surface_material_override/0 = SubResource("StandardMaterial3D_7vooa")
-surface_material_override/1 = SubResource("StandardMaterial3D_kbi0g")
-surface_material_override/2 = SubResource("StandardMaterial3D_vpu5g")
-surface_material_override/3 = SubResource("StandardMaterial3D_w6bli")
-
-[node name="CellDoor_Mesh" parent="Interactive/PrisonCell2/CellArm_01_Mesh/CellArm_02_Mesh/CellDoor" parent_id_path=PackedInt32Array(588542897, 368092532) index="0" unique_id=134328525]
-surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
 
 [node name="PrisonCell10" parent="Interactive" unique_id=1282201414 instance=ExtResource("17_krhad")]
 transform = Transform3D(2.2321396, 0, -0.28293476, 0, 2.25, 0, 0.28293476, 0, 2.2321396, 112.32689, 2.7318683, 0)
 
-[node name="Cell_Mesh" parent="Interactive/PrisonCell10" index="0" unique_id=649634502]
-surface_material_override/0 = SubResource("StandardMaterial3D_no74g")
-surface_material_override/1 = SubResource("StandardMaterial3D_yqsgj")
-surface_material_override/2 = SubResource("StandardMaterial3D_8n3br")
-surface_material_override/3 = SubResource("StandardMaterial3D_r4hrw")
-
-[node name="CellDoor_Mesh" parent="Interactive/PrisonCell10/CellArm_01_Mesh/CellArm_02_Mesh/CellDoor" parent_id_path=PackedInt32Array(1282201414, 368092532) index="0" unique_id=134328525]
-surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
-
 [node name="PrisonCell6" parent="Interactive" unique_id=1391043240 instance=ExtResource("17_krhad")]
 transform = Transform3D(2.25, 0, 0, 0, 2.25, 0, 0, 0, 2.25, 89.852135, 7.8098373, 0)
-
-[node name="Cell_Mesh" parent="Interactive/PrisonCell6" index="0" unique_id=649634502]
-surface_material_override/0 = SubResource("StandardMaterial3D_88r0d")
-surface_material_override/1 = SubResource("StandardMaterial3D_1jw6j")
-surface_material_override/2 = SubResource("StandardMaterial3D_wrmkh")
-surface_material_override/3 = SubResource("StandardMaterial3D_46m0c")
-
-[node name="CellDoor_Mesh" parent="Interactive/PrisonCell6/CellArm_01_Mesh/CellArm_02_Mesh/CellDoor" parent_id_path=PackedInt32Array(1391043240, 368092532) index="0" unique_id=134328525]
-surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
 
 [node name="TestDummy" parent="Interactive" unique_id=669336158 instance=ExtResource("18_jph5v")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 18.510084, 0.2, -1)
 collision_layer = 0
 
-[node name="TestDummyStand_Mesh" parent="Interactive/TestDummy" index="0" unique_id=976191908]
-surface_material_override/0 = SubResource("StandardMaterial3D_imwpe")
+[node name="TestDummy3" parent="Interactive" unique_id=173144000 instance=ExtResource("18_jph5v")]
+transform = Transform3D(1.0250254, 0, 1.0951362, 0, 1.5, 0, -1.0951362, 0, 1.0250254, 16.45037, 0.2, -11.027395)
+collision_layer = 0
 
-[node name="TestDummy_Mesh" parent="Interactive/TestDummy/Node3D" parent_id_path=PackedInt32Array(669336158, 1014079981) index="0" unique_id=1846877387]
-surface_material_override/0 = SubResource("StandardMaterial3D_vi05u")
-surface_material_override/1 = SubResource("StandardMaterial3D_5qss7")
-surface_material_override/2 = SubResource("StandardMaterial3D_2b7i3")
-surface_material_override/3 = SubResource("StandardMaterial3D_b8i3u")
+[node name="TestDummy4" parent="Interactive" unique_id=310635492 instance=ExtResource("18_jph5v")]
+transform = Transform3D(-0.9766384, 0, 1.1384981, 0, 1.5, 0, -1.1384981, 0, -0.9766384, -18.486298, 0.2, -10.79426)
+collision_layer = 0
 
 [node name="TestDummy2" parent="Interactive" unique_id=435308937 instance=ExtResource("18_jph5v")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 18.510084, 8.6, 0)
 
-[node name="TestDummyStand_Mesh" parent="Interactive/TestDummy2" index="0" unique_id=976191908]
-surface_material_override/0 = SubResource("StandardMaterial3D_x56ae")
-
-[node name="TestDummy_Mesh" parent="Interactive/TestDummy2/Node3D" parent_id_path=PackedInt32Array(435308937, 1014079981) index="0" unique_id=1846877387]
-surface_material_override/0 = SubResource("StandardMaterial3D_ueb7y")
-surface_material_override/1 = SubResource("StandardMaterial3D_oq6vl")
-surface_material_override/2 = SubResource("StandardMaterial3D_jh5eh")
-surface_material_override/3 = SubResource("StandardMaterial3D_68h5w")
-
 [node name="Television" parent="Interactive" unique_id=1230489901 instance=ExtResource("19_ewyc7")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 10, 5.995277, -4.297233)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 8.606749, -9.117573)
 
 [node name="GunPodium" parent="Interactive" unique_id=786548764 node_paths=PackedStringArray("door_to_unlock") instance=ExtResource("20_gufy2")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 12, 0.2, -1)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.2, -1)
 collision_layer = 0
 door_to_unlock = NodePath("../DoorBasic")
 
-[node name="GunPodium_Mesh" parent="Interactive/GunPodium" index="0" unique_id=1164015310]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1705589, 0, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
-
-[node name="InteractableComponent" parent="Interactive/GunPodium/GunPodium_Mesh" index="0" unique_id=2140039813]
-visible = false
-
-[node name="GunPodium_Collision" parent="Interactive/GunPodium" index="1" unique_id=1995899151]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1705589, 0.6758156, 0)
-
 [node name="GunPodiumGun" parent="Interactive" unique_id=1733078243 instance=ExtResource("21_5y7s6")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 12, 0.2, -1)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.2, -1)
 collision_layer = 0
-
-[node name="GunPodiumGun_Mesh" parent="Interactive/GunPodiumGun" index="0" unique_id=1317579020]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1705589, 0, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_4j0v3")
-
-[node name="GunPodiumGun_Collision" parent="Interactive/GunPodiumGun" index="1" unique_id=341764206]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1705589, 0, 0)
-
-[node name="PrisonCell3" parent="Interactive" unique_id=1763152432 instance=ExtResource("17_krhad")]
-transform = Transform3D(1.4453579, 1.7243667, 0, -1.7243667, 1.4453579, 0, 0, 0, 2.25, -2.2005439, 12.978621, 0)
-
-[node name="Cell_Mesh" parent="Interactive/PrisonCell3" index="0" unique_id=649634502]
-surface_material_override/0 = SubResource("StandardMaterial3D_4irdc")
-surface_material_override/1 = SubResource("StandardMaterial3D_gd4fi")
-surface_material_override/2 = SubResource("StandardMaterial3D_5tani")
-surface_material_override/3 = SubResource("StandardMaterial3D_v58yf")
-
-[node name="CellDoor_Mesh" parent="Interactive/PrisonCell3/CellArm_01_Mesh/CellArm_02_Mesh/CellDoor" parent_id_path=PackedInt32Array(1763152432, 368092532) index="0" unique_id=134328525]
-surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
 
 [node name="Lighting" type="Node3D" parent="." unique_id=295073022]
 
@@ -5503,7 +4892,7 @@ light_energy = 0.04
 shadow_enabled = true
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lighting" unique_id=60844031]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 10, 14.483, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 14.483, 0)
 light_energy = 6.386
 light_indirect_energy = 0.1
 light_volumetric_fog_energy = 0.1
@@ -5574,13 +4963,6 @@ shadow_enabled = true
 spot_range = 32.195656
 spot_angle = 47.085472
 
-[node name="SpotLight3D9" type="SpotLight3D" parent="Lighting" unique_id=896811395]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 10.03, 0.582)
-spot_range = 11.929
-spot_attenuation = -0.29
-spot_angle = 121.25
-spot_angle_attenuation = 7.2099733
-
 [node name="DATES_POPUPS" type="Node" parent="." unique_id=983173156]
 
 [node name="ConvictPopup" parent="DATES_POPUPS" unique_id=1311781014 instance=ExtResource("22_cj1de")]
@@ -5589,7 +4971,7 @@ _signal_parameters = [0]
 signal_name = "activate_popup"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DATES_POPUPS/ConvictPopup" unique_id=496084148]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.423836, 1.079, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.58653, 1.079, 0)
 shape = SubResource("BoxShape3D_fxtw2")
 debug_color = Color(0.919504, 0.13431916, 0.6161928, 0.41960785)
 
@@ -5627,158 +5009,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.99605, 4, 0)
 [node name="Scrub2" parent="Enemies/RoomFive" unique_id=1918494423 instance=ExtResource("25_6l7h5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 210.00385, 12, 0)
 
+[node name="WallObservation" parent="." unique_id=844890682 instance=ExtResource("123_tatg8")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -10)
+
+[node name="WallPlainMidPrison" parent="." unique_id=919517043 instance=ExtResource("62_6itfv")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -20, 8.4, -10)
+
+[node name="WallPlainMidPrison2" parent="." unique_id=1038803121 instance=ExtResource("62_6itfv")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 20, 8.4, -10)
+
+[node name="PrisonCell" parent="." unique_id=861874070 instance=ExtResource("17_krhad")]
+transform = Transform3D(2.25, 0, 0, 0, 2.25, 0, 0, 0, 2.25, -20.152466, 2.7317371, 0.25831795)
+
 [connection signal="stage_cleared" from="Enemies/RoomFive" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]
 
-[editable path="Environment/PrisonCell3"]
-[editable path="Environment/PrisonCell4"]
-[editable path="Environment/PrisonCell5"]
-[editable path="Environment/PrisonCell7"]
-[editable path="Environment/PrisonCell8"]
-[editable path="Environment/PrisonCell9"]
-[editable path="Environment/PrisonCell11"]
-[editable path="Environment/PrisonCell12"]
-[editable path="Environment/PipeNetwork1"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeConnector2"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeConnector6"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeConnector13"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeConnector3"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeConnector4"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeConnector5"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeConnector7"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeConnector11"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeConnector12"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeConnector8"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeConnector9"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeConnector10"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeShapeR11"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeShapeR2"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeShapeR3"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeShapeR4"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeShapeR5"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeShapeR6"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeShapeR7"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeShapeR12"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeShapeR9"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeShapeR10"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeShapeU"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeShapeU2"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeShapeT"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeShapeT2"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeShapeY"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeShapeY3"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeShapeY2"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeShapeY4"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeValve"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeSizeMedium3"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeSizeMedium4"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipePressure"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipePressure2"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeZigZag"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeZigZag2"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeSizeSmall3"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeSizeSmall"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeSizeSmall2"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeShapeC"]
-[editable path="Environment/PipeNetwork1/Pipe4/PipeShapeC2"]
-[editable path="Environment/PipeNetwork1/Pipe5/PipeSizeMedium2"]
-[editable path="Environment/PipeNetwork1/Pipe5/PipeShapeR"]
-[editable path="Environment/PipeNetwork1/Pipe5/PipeShapeR3"]
-[editable path="Environment/PipeNetwork1/Pipe5/PipeShapeR2"]
-[editable path="Environment/PipeNetwork1/Pipe5/PipeConnector"]
-[editable path="Environment/PipeNetwork1/Pipe5/PipeConnector6"]
-[editable path="Environment/PipeNetwork1/Pipe5/PipeConnector3"]
-[editable path="Environment/PipeNetwork1/Pipe5/PipeConnector5"]
-[editable path="Environment/PipeNetwork1/Pipe5/PipeConnector4"]
-[editable path="Environment/PipeNetwork1/Pipe5/PipeConnector7"]
-[editable path="Environment/PipeNetwork1/Pipe5/PipeConnector2"]
-[editable path="Environment/PipeNetwork1/Pipe5/PipeShapeY"]
-[editable path="Environment/PipeNetwork1/Pipe5/PipeShapeY2"]
-[editable path="Environment/PipeNetwork1/Pipe6/PipeSizeMedium2"]
-[editable path="Environment/PipeNetwork1/Pipe6/PipeShapeR"]
-[editable path="Environment/PipeNetwork1/Pipe6/PipeShapeR2"]
-[editable path="Environment/PipeNetwork1/Pipe6/PipeConnector"]
-[editable path="Environment/PipeNetwork1/Pipe6/PipeConnector3"]
-[editable path="Environment/PipeNetwork1/Pipe6/PipeShapeR3"]
-[editable path="Environment/PipeNetwork1/Pipe6/PipeConnector5"]
-[editable path="Environment/PipeNetwork1/Pipe6/PipeConnector6"]
-[editable path="Environment/PipeNetwork1/Pipe6/PipeConnector4"]
-[editable path="Environment/PipeNetwork1/Pipe6/PipeConnector7"]
-[editable path="Environment/PipeNetwork1/Pipe6/PipeConnector2"]
-[editable path="Environment/PipeNetwork1/Pipe7/PipeShapeR"]
-[editable path="Environment/PipeNetwork1/Pipe7/PipeShapeR2"]
-[editable path="Environment/PipeNetwork1/Pipe7/PipeConnector"]
-[editable path="Environment/PipeNetwork1/Pipe7/PipeConnector3"]
-[editable path="Environment/PipeNetwork1/Pipe7/PipeConnector2"]
-[editable path="Environment/PipeNetwork1/Pipe7/PipeConnector6"]
-[editable path="Environment/PipeNetwork1/Pipe7/PipeSizeSmall2"]
-[editable path="Environment/PipeNetwork1/Pipe8/PipeShapeR"]
-[editable path="Environment/PipeNetwork1/Pipe8/PipeShapeR2"]
-[editable path="Environment/PipeNetwork1/Pipe8/PipeConnector"]
-[editable path="Environment/PipeNetwork1/Pipe8/PipeConnector3"]
-[editable path="Environment/PipeNetwork1/Pipe8/PipeConnector4"]
-[editable path="Environment/PipeNetwork1/Pipe8/PipeSizeSmall"]
-[editable path="Environment/PipeNetwork1/Pipe8/PipeConnector5"]
-[editable path="Environment/PipeNetwork1/Pipe9/PipeShapeR"]
-[editable path="Environment/PipeNetwork1/Pipe9/PipeShapeR2"]
-[editable path="Environment/PipeNetwork1/Pipe9/PipeConnector"]
-[editable path="Environment/PipeNetwork1/Pipe9/PipeConnector3"]
-[editable path="Environment/PipeNetwork1/Pipe9/PipeConnector4"]
-[editable path="Environment/PipeNetwork1/Pipe9/PipeConnector5"]
-[editable path="Environment/PipeNetwork1/Pipe10/PipeShapeR"]
-[editable path="Environment/PipeNetwork1/Pipe10/PipeShapeR2"]
-[editable path="Environment/PipeNetwork1/Pipe10/PipeConnector"]
-[editable path="Environment/PipeNetwork1/Pipe10/PipeConnector3"]
-[editable path="Environment/PipeNetwork1/Pipe10/PipeConnector2"]
-[editable path="Environment/PipeNetwork1/Pipe10/PipeConnector6"]
-[editable path="Environment/PipeNetwork1/Pipe10/PipeSizeSmall2"]
-[editable path="Environment/PipeNetwork1/Pipe11/PipeShapeR"]
-[editable path="Environment/PipeNetwork1/Pipe11/PipeShapeR2"]
-[editable path="Environment/PipeNetwork1/Pipe11/PipeConnector"]
-[editable path="Environment/PipeNetwork1/Pipe11/PipeConnector3"]
-[editable path="Environment/PipeNetwork1/Pipe11/PipeConnector2"]
-[editable path="Environment/PipeNetwork1/Pipe11/PipeConnector6"]
-[editable path="Environment/PipeNetwork1/Pipe11/PipeSizeSmall2"]
-[editable path="Environment/Folders"]
-[editable path="Environment/Folders7"]
-[editable path="Environment/Folders3"]
-[editable path="Environment/Folders6"]
-[editable path="Environment/Folders2"]
-[editable path="Environment/Folders4"]
-[editable path="Environment/Folders5"]
-[editable path="Environment/ChairSteel2"]
-[editable path="Environment/Bin"]
-[editable path="Environment/Bin2"]
-[editable path="Environment/FilingCabinet2"]
-[editable path="Environment/FilingCabinet3"]
-[editable path="Environment/FilingCabinet4"]
-[editable path="Environment/FilingCabinet5"]
-[editable path="Environment/FilingCabinet6"]
-[editable path="Environment/FilingCabinet7"]
-[editable path="Environment/FilingCabinet8"]
-[editable path="Environment/FilingCabinet9"]
-[editable path="Environment/FilingCabinet10"]
-[editable path="Environment/FilingCabinet11"]
-[editable path="Environment/FilingCabinet12"]
-[editable path="Environment/FilingCabinet13"]
-[editable path="Environment/ComputerRig"]
-[editable path="Environment/Folder"]
-[editable path="Environment/HandlebarSmall"]
-[editable path="Environment/HandlebarSmall/PipeShapeR"]
-[editable path="Environment/HandlebarSmall/PipeShapeR2"]
-[editable path="Environment/HandlebarSmall/PipeSizeSmall"]
-[editable path="Environment/PrisonCraneRail"]
-[editable path="Environment/PrisonCraneRail9"]
-[editable path="Environment/PrisonCraneRail2"]
-[editable path="Environment/PrisonCraneRail3"]
-[editable path="Environment/PrisonCraneRail4"]
-[editable path="Environment/PrisonCraneRail5"]
-[editable path="Environment/PrisonCraneRail6"]
-[editable path="Environment/PrisonCraneRail11"]
-[editable path="Environment/PrisonCraneRail7"]
-[editable path="Environment/PrisonCraneRail8"]
 [editable path="Environment/PrisonCrane/PrisonCell"]
-[editable path="Environment/PrisonCell"]
-[editable path="Environment/PrisonCraneRail10"]
 [editable path="Props/IndustrialLight14"]
 [editable path="Props/IndustrialLight15"]
 [editable path="Props/IndustrialLight16"]
@@ -6454,20 +5699,132 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 210.00385, 12, 0)
 [editable path="Props/Wall2GroundCurve3/PipeConnector2"]
 [editable path="Props/Wall2GroundCurve3/PipeConnector4"]
 [editable path="Props/Wall2GroundCurve3/PipeConnector5"]
-[editable path="Interactive/DoorBasic"]
-[editable path="Interactive/DoorBasic2"]
-[editable path="Interactive/DoorBasic3"]
-[editable path="Interactive/DoorBasic4"]
-[editable path="Interactive/DoorBasic10"]
-[editable path="Interactive/DoorBasic11"]
-[editable path="Interactive/DoorExit"]
-[editable path="Interactive/DoorSlidingBasic"]
-[editable path="Interactive/DoorSlidingBasic4"]
-[editable path="Interactive/PrisonCell2"]
-[editable path="Interactive/PrisonCell10"]
-[editable path="Interactive/PrisonCell6"]
-[editable path="Interactive/TestDummy"]
-[editable path="Interactive/TestDummy2"]
-[editable path="Interactive/GunPodium"]
-[editable path="Interactive/GunPodiumGun"]
-[editable path="Interactive/PrisonCell3"]
+[editable path="Props/PipeNetwork1"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeConnector2"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeConnector6"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeConnector13"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeConnector3"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeConnector4"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeConnector5"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeConnector7"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeConnector11"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeConnector12"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeConnector8"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeConnector9"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeConnector10"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeShapeR11"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeShapeR2"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeShapeR3"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeShapeR4"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeShapeR5"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeShapeR6"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeShapeR7"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeShapeR12"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeShapeR9"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeShapeR10"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeShapeU"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeShapeU2"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeShapeT"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeShapeT2"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeShapeY"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeShapeY3"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeShapeY2"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeShapeY4"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeValve"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeSizeMedium3"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeSizeMedium4"]
+[editable path="Props/PipeNetwork1/Pipe4/PipePressure"]
+[editable path="Props/PipeNetwork1/Pipe4/PipePressure2"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeZigZag"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeZigZag2"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeSizeSmall3"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeSizeSmall"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeSizeSmall2"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeShapeC"]
+[editable path="Props/PipeNetwork1/Pipe4/PipeShapeC2"]
+[editable path="Props/PipeNetwork1/Pipe5/PipeSizeMedium2"]
+[editable path="Props/PipeNetwork1/Pipe5/PipeShapeR"]
+[editable path="Props/PipeNetwork1/Pipe5/PipeShapeR3"]
+[editable path="Props/PipeNetwork1/Pipe5/PipeShapeR2"]
+[editable path="Props/PipeNetwork1/Pipe5/PipeConnector"]
+[editable path="Props/PipeNetwork1/Pipe5/PipeConnector6"]
+[editable path="Props/PipeNetwork1/Pipe5/PipeConnector3"]
+[editable path="Props/PipeNetwork1/Pipe5/PipeConnector5"]
+[editable path="Props/PipeNetwork1/Pipe5/PipeConnector4"]
+[editable path="Props/PipeNetwork1/Pipe5/PipeConnector7"]
+[editable path="Props/PipeNetwork1/Pipe5/PipeConnector2"]
+[editable path="Props/PipeNetwork1/Pipe5/PipeShapeY"]
+[editable path="Props/PipeNetwork1/Pipe5/PipeShapeY2"]
+[editable path="Props/PipeNetwork1/Pipe6/PipeSizeMedium2"]
+[editable path="Props/PipeNetwork1/Pipe6/PipeShapeR"]
+[editable path="Props/PipeNetwork1/Pipe6/PipeShapeR2"]
+[editable path="Props/PipeNetwork1/Pipe6/PipeConnector"]
+[editable path="Props/PipeNetwork1/Pipe6/PipeConnector3"]
+[editable path="Props/PipeNetwork1/Pipe6/PipeShapeR3"]
+[editable path="Props/PipeNetwork1/Pipe6/PipeConnector5"]
+[editable path="Props/PipeNetwork1/Pipe6/PipeConnector6"]
+[editable path="Props/PipeNetwork1/Pipe6/PipeConnector4"]
+[editable path="Props/PipeNetwork1/Pipe6/PipeConnector7"]
+[editable path="Props/PipeNetwork1/Pipe6/PipeConnector2"]
+[editable path="Props/PipeNetwork1/Pipe7/PipeShapeR"]
+[editable path="Props/PipeNetwork1/Pipe7/PipeShapeR2"]
+[editable path="Props/PipeNetwork1/Pipe7/PipeConnector"]
+[editable path="Props/PipeNetwork1/Pipe7/PipeConnector3"]
+[editable path="Props/PipeNetwork1/Pipe7/PipeConnector2"]
+[editable path="Props/PipeNetwork1/Pipe7/PipeConnector6"]
+[editable path="Props/PipeNetwork1/Pipe7/PipeSizeSmall2"]
+[editable path="Props/PipeNetwork1/Pipe8/PipeShapeR"]
+[editable path="Props/PipeNetwork1/Pipe8/PipeShapeR2"]
+[editable path="Props/PipeNetwork1/Pipe8/PipeConnector"]
+[editable path="Props/PipeNetwork1/Pipe8/PipeConnector3"]
+[editable path="Props/PipeNetwork1/Pipe8/PipeConnector4"]
+[editable path="Props/PipeNetwork1/Pipe8/PipeSizeSmall"]
+[editable path="Props/PipeNetwork1/Pipe8/PipeConnector5"]
+[editable path="Props/PipeNetwork1/Pipe9/PipeShapeR"]
+[editable path="Props/PipeNetwork1/Pipe9/PipeShapeR2"]
+[editable path="Props/PipeNetwork1/Pipe9/PipeConnector"]
+[editable path="Props/PipeNetwork1/Pipe9/PipeConnector3"]
+[editable path="Props/PipeNetwork1/Pipe9/PipeConnector4"]
+[editable path="Props/PipeNetwork1/Pipe9/PipeConnector5"]
+[editable path="Props/PipeNetwork1/Pipe10/PipeShapeR"]
+[editable path="Props/PipeNetwork1/Pipe10/PipeShapeR2"]
+[editable path="Props/PipeNetwork1/Pipe10/PipeConnector"]
+[editable path="Props/PipeNetwork1/Pipe10/PipeConnector3"]
+[editable path="Props/PipeNetwork1/Pipe10/PipeConnector2"]
+[editable path="Props/PipeNetwork1/Pipe10/PipeConnector6"]
+[editable path="Props/PipeNetwork1/Pipe10/PipeSizeSmall2"]
+[editable path="Props/PipeNetwork1/Pipe11/PipeShapeR"]
+[editable path="Props/PipeNetwork1/Pipe11/PipeShapeR2"]
+[editable path="Props/PipeNetwork1/Pipe11/PipeConnector"]
+[editable path="Props/PipeNetwork1/Pipe11/PipeConnector3"]
+[editable path="Props/PipeNetwork1/Pipe11/PipeConnector2"]
+[editable path="Props/PipeNetwork1/Pipe11/PipeConnector6"]
+[editable path="Props/PipeNetwork1/Pipe11/PipeSizeSmall2"]
+[editable path="Props/Folders22"]
+[editable path="Props/Folders23"]
+[editable path="Props/Folders24"]
+[editable path="Props/Folders25"]
+[editable path="Props/Folders26"]
+[editable path="Props/Folders27"]
+[editable path="Props/Folders28"]
+[editable path="Props/ChairSteel21"]
+[editable path="Props/Bin9"]
+[editable path="Props/Bin10"]
+[editable path="Props/FilingCabinet23"]
+[editable path="Props/FilingCabinet24"]
+[editable path="Props/FilingCabinet25"]
+[editable path="Props/FilingCabinet26"]
+[editable path="Props/FilingCabinet27"]
+[editable path="Props/FilingCabinet28"]
+[editable path="Props/FilingCabinet29"]
+[editable path="Props/FilingCabinet30"]
+[editable path="Props/FilingCabinet31"]
+[editable path="Props/FilingCabinet32"]
+[editable path="Props/FilingCabinet33"]
+[editable path="Props/FilingCabinet34"]
+[editable path="Props/ComputerRig11"]
+[editable path="Props/Folder31"]
+[editable path="Props/HandlebarSmall7"]
+[editable path="Props/HandlebarSmall7/PipeShapeR"]
+[editable path="Props/HandlebarSmall7/PipeShapeR2"]
+[editable path="Props/HandlebarSmall7/PipeSizeSmall"]
