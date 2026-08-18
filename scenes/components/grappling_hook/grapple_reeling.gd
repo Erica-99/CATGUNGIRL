@@ -12,6 +12,8 @@ var initial_dist: float
 
 var cancelled_early: bool = false
 
+var asp_ref
+
 func init(blackboard_dict : Dictionary) -> void:
 	super(blackboard_dict)
 	
@@ -23,9 +25,12 @@ func enter() -> void:
 	hook = blackboard["current_grapple_hook"]
 	hook.can_latch = false
 	cancelled_early = false
+	asp_ref = AudioManager.play_sfx("jump_launch", true)
 	_enable_reeling_after_delay(delay)
 	
 func exit() -> void:
+	asp_ref.stop()
+	asp_ref.finished.emit()
 	blackboard["grapplegun_object"].cancel_hook.emit()
 	
 func update(_delta: float) -> void:

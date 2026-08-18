@@ -5,13 +5,13 @@ extends Node
 @export_range(10, 100, 1) var sfx_global_pool_size: int = 10
 @export_range(10, 100, 1) var sfx_positional_pool_size: int = 10
 @export var sound_effects: Array[CallableSFX]
+@export var enemy_stingers: Array[CallableSFX]
 
 var music_dict: Dictionary
 var sfx_dict: Dictionary
 
 var sfx_global_pool: Array[AudioStreamPlayer]
 var sfx_positional_pool: Array[AudioStreamPlayer3D]
-
 
 func _ready() -> void:
 	# Build MusicTrack Dictionary
@@ -57,7 +57,7 @@ func play_music(track_ref: String):
 		push_error("Music track not found")
 
 # Play global sound effect (best for menu, UI, most player sounds, etc.)
-func play_sfx(sfx_ref: String):
+func play_sfx(sfx_ref: String, loop: bool = false):
 	
 	var sound_effect: SoundEffect = get_sfx_from_dict(sfx_ref)
 	
@@ -81,6 +81,7 @@ func play_sfx(sfx_ref: String):
 			else:
 			# Configure ASP node
 				asp.stream = sound_effect.sound_clip
+				asp.stream.loop = loop
 				asp.volume_db = sound_effect.volume
 				asp.pitch_scale = sound_effect.pitch_scale + randf_range(-sound_effect.pitch_random_shift, sound_effect.pitch_random_shift)
 				
@@ -90,10 +91,16 @@ func play_sfx(sfx_ref: String):
 				
 				# Play sound effect
 				asp.play()
+				
+				# Return asp ref if looping for termination control
+				if loop:
+					return asp
+		else:
+			push_error("Limit for '" + sfx_ref + "' exceeded")
 
 
 # Play positional sound effect with an in-game location (best for enemies, hits, etc.)
-func play_sfx_at_location(sfx_ref: String, location: Vector3):
+func play_sfx_at_location(sfx_ref: String, location: Vector3, loop: bool = false):
 	
 	var sound_effect: SoundEffect = get_sfx_from_dict(sfx_ref)
 	# Check SoundEffect Resource was found
@@ -116,6 +123,7 @@ func play_sfx_at_location(sfx_ref: String, location: Vector3):
 			else:
 			# Configure ASP node
 				asp3d.stream = sound_effect.sound_clip
+				asp3d.stream.loop = loop
 				asp3d.volume_db = sound_effect.volume
 				asp3d.pitch_scale = sound_effect.pitch_scale + randf_range(-sound_effect.pitch_random_shift, sound_effect.pitch_random_shift)
 				asp3d.global_position = location
@@ -126,6 +134,11 @@ func play_sfx_at_location(sfx_ref: String, location: Vector3):
 				
 				# Play sound effect
 				asp3d.play()
+				
+				# Return asp3d ref if looping for termination control
+				if loop:
+					return asp3d
+
 
 # Retrieves a sound effect resource from a SoundEffect or SoundEffectPool in the sfx_dict, that matches sfx_ref
 func get_sfx_from_dict(sfx_ref: String) -> SoundEffect:
