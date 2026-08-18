@@ -5,10 +5,12 @@ extends Node
 @export_range(10, 100, 1) var sfx_global_pool_size: int = 10
 @export_range(10, 100, 1) var sfx_positional_pool_size: int = 10
 @export var sound_effects: Array[CallableSFX]
+@export var hotseat: AudioStreamPlayer3D
 @export var enemy_stingers: Array[CallableSFX]
 
 var music_dict: Dictionary
 var sfx_dict: Dictionary
+var stinger_dict: Dictionary
 
 var sfx_global_pool: Array[AudioStreamPlayer]
 var sfx_positional_pool: Array[AudioStreamPlayer3D]
@@ -139,6 +141,21 @@ func play_sfx_at_location(sfx_ref: String, location: Vector3, loop: bool = false
 				if loop:
 					return asp3d
 
+func play_stinger(stinger_ref: String, location: Vector3):
+	if hotseat.playing == false:
+		var stinger: SoundEffect = get_stinger_from_dict(stinger_ref)
+		if stinger == null:
+			push_error("Stinger Resource is not found")
+		else:
+			hotseat.stream = stinger.sound_clip
+			hotseat.stream.loop = false
+			hotseat.volume_db = stinger.volume
+			hotseat.pitch_scale = hotseat.pitch_scale + randf_range(-hotseat.pitch_random_shift, hotseat.pitch_random_shift)
+			hotseat.global_position = location
+			
+			hotseat.play()
+	else:
+		play_sfx_at_location(stinger_ref, location)
 
 # Retrieves a sound effect resource from a SoundEffect or SoundEffectPool in the sfx_dict, that matches sfx_ref
 func get_sfx_from_dict(sfx_ref: String) -> SoundEffect:
@@ -150,6 +167,18 @@ func get_sfx_from_dict(sfx_ref: String) -> SoundEffect:
 		return callable_sfx.get_sfx()
 	else: 
 		push_error("No entry in sound effect register matching '" + sfx_ref + "'" )
+		return null
+
+# Retrieves a sound effect resource from a SoundEffect or SoundEffectPool in the stinger_dict, that matches stinger_ref
+func get_stinger_from_dict(stinger_ref: String) -> SoundEffect:
+	if stinger_dict.has(stinger_ref):
+		# Assign callable_sfx locally
+		var callable_sfx: CallableSFX = stinger_dict[stinger_ref]
+		# Get Sound Effect resource (will select a random Sound Effect entry if 
+		# SoundEffectPool, otherwise returns same as callable_sfx)
+		return callable_sfx.get_sfx()
+	else: 
+		push_error("No entry in stinger register matching '" + stinger_ref + "'" )
 		return null
 
 func on_sfx_finished(sfx: SoundEffect):

@@ -1,7 +1,7 @@
 extends CallableSFX
 class_name SoundEffect
 
-@export var sound_clip: AudioStreamMP3
+@export var sound_clip: AudioStream
 @export_range(1, 10) var limit: int = 5
 @export_range(-40, 20) var volume: float = 0
 @export_range(0.01, 4.0, 0.01) var pitch_scale: float = 1
