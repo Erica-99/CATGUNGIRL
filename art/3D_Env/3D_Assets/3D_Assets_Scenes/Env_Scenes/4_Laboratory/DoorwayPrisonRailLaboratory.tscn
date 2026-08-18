@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b42dldjildi6x" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Base_metalness.png" id="5_trrso"]
 [ext_resource type="Texture2D" uid="uid://vnh1mohlmhni" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Normal_OpenGL.png" id="6_rmm0a"]
 [ext_resource type="Texture2D" uid="uid://drpgycg7mebgy" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Specular_roughness.png" id="7_3ngre"]
+[ext_resource type="ArrayMesh" uid="uid://ckswbgels33vw" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/PrisonRailDoor.obj" id="8_t0y45"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nqbn2"]
 albedo_texture = ExtResource("2_a1brn")
@@ -33,3 +34,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_nqbn2")
 
 [node name="DoorwayPrisonRailLaboratory_Collision" type="CollisionShape3D" parent="." unique_id=196067185]
 shape = SubResource("ConcavePolygonShape3D_tnqua")
+
+[node name="PrisonRailDoor" type="MeshInstance3D" parent="." unique_id=184445042]
+mesh = ExtResource("8_t0y45")
+
+[node name="PrisonRailDoor2" type="MeshInstance3D" parent="." unique_id=1840165176]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+mesh = ExtResource("8_t0y45")

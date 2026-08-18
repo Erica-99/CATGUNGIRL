@@ -58,7 +58,7 @@
 [ext_resource type="PackedScene" uid="uid://dh1ouxldd8xy5" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwayNoneBasePrison.tscn" id="52_vyn8v"]
 [ext_resource type="PackedScene" uid="uid://doqjtagulhsfs" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwaySingleBasePrison.tscn" id="53_lk7tg"]
 [ext_resource type="PackedScene" uid="uid://dfpvd6sa7ppg6" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/PanopticonWallsAlternate.tscn" id="53_vrydf"]
-[ext_resource type="ArrayMesh" uid="uid://cjsuwjrkr6uvu" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/CellStatic.obj" id="55_tb4re"]
+[ext_resource type="Script" uid="uid://05ax0kjhvug4" path="res://scenes/levels/Stages/falling_cell_p.gd" id="55_tb4re"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lk7tg"]
 transparency = 1
@@ -265,7 +265,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_tb4re"]
 resource_name = "PanopticonCranePlatform"
-length = 12.0
+length = 14.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -274,7 +274,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 3, 4.5333333),
+"times": PackedFloat32Array(0, 1.1333333, 7.0333333, 8.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(153.03033, 78.258484, -10.2479925), Vector3(153.03, 78.258, -10.248), Vector3(153.03033, 23.821762, -10.2479925), Vector3(153.03, 23.822, -10.248)]
@@ -286,10 +286,10 @@ tracks/1/path = NodePath("CellCranePrt_02/CellCranePrt_03/CellCranePrt_04:rotati
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.09000003, 0.17999995, 1, 1.0999999, 3, 3.0900002, 3.2199998, 4.5333333, 4.633333),
+"times": PackedFloat32Array(0, 0.15666676, 0.31333327, 1.1333333, 1.2333332, 7.0333333, 7.203334, 7.3333335, 8.6, 8.733334),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 2.3602087, 0), Vector3(-0.0012024931, 2.3589892, -0.052470833), Vector3(-0.0017453292, 2.3596852, 0), Vector3(-0.0017453292, 2.3596852, 0), Vector3(-0.0025452315, 2.3591359, -0.030858444), Vector3(-0.0025452315, 2.3591359, -0.030858444), Vector3(-0.0007506106, 2.357505, 0.048222885), Vector3(0, 2.3579397, 0), Vector3(0, 2.3579397, 0), Vector3(0.00095808296, 2.3582253, 0.0419634)]
+"values": [Vector3(0, 2.3602087, 0), Vector3(-0.0017453292, 2.3596852, -0.017453292), Vector3(-0.0017453292, 2.3596852, 0), Vector3(-0.0017453292, 2.3596852, 0), Vector3(-0.0017453292, 2.3596852, -0.017453292), Vector3(-0.0017453292, 2.3596852, -0.017453292), Vector3(0, 2.3579397, 0.017453292), Vector3(0, 2.3579397, 0), Vector3(0, 2.3579397, 0), Vector3(0.0017453292, 2.3579397, 0.034906585)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -298,10 +298,10 @@ tracks/2/path = NodePath("CellCranePrt_02/CellCranePrt_03:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.09000003, 0.17999995, 1, 1.0999999, 3, 3.0900002, 3.2199998, 4.5333333, 4.633333),
+"times": PackedFloat32Array(0, 0.15666676, 0.31333327, 1.2666668, 1.3666667, 7.0333333, 7.203334, 7.3333335, 8.766666, 8.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 1.6280955, 0), Vector3(0.00076519646, 1.6288549, -0.035413492), Vector3(0, 1.6283922, 0), Vector3(0, 1.6283922, 0), Vector3(0.0015625339, 1.6259483, -0.030705173), Vector3(0.0015625339, 1.6259483, -0.030705173), Vector3(-0.009502768, 1.6302065, 0.03747512), Vector3(-0.008726646, 1.6301376, 0), Vector3(-0.008726646, 1.6301376, 0), Vector3(-0.00953796, 1.6290802, 0.02992984)]
+"values": [Vector3(0, 1.6280955, 0), Vector3(0, 1.6283922, -0.008726646), Vector3(0, 1.6283922, 0), Vector3(0, 1.6283922, 0), Vector3(0.0017453292, 1.6266469, -0.017453292), Vector3(0.0017453292, 1.6266469, -0.017453292), Vector3(-0.008726646, 1.6301376, 0.019198623), Vector3(-0.008726646, 1.6301376, 0), Vector3(-0.008726646, 1.6301376, 0), Vector3(-0.008726646, 1.6283922, 0.022689281)]
 }
 
 [sub_resource type="Animation" id="Animation_vrydf"]
@@ -658,7 +658,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(79.42639, 286.30118, -71.95815)]
+"values": [Vector3(79.42639, 70.42116, -71.95815)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -715,22 +715,182 @@ _data = {
 &"RESET": SubResource("Animation_cey8m")
 }
 
-[sub_resource type="Curve" id="Curve_tb4re"]
-_limits = [-360.0, 360.0, 0.04733728, 0.9999999]
-_data = [Vector2(0.04733728, 182.02249), 0.0, 0.0, 0, 0, Vector2(0.5621301, -360), 0.0, 0.0, 0, 0, Vector2(0.9999999, 360), 0.0, 0.0, 0, 0]
-point_count = 3
+[sub_resource type="Animation" id="Animation_f54w6"]
+resource_name = "Falling_01"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -243.04263, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-3.3859386, 3.0979595, -1.8413223)]
+}
 
-[sub_resource type="CurveTexture" id="CurveTexture_f54w6"]
-curve = SubResource("Curve_tb4re")
+[sub_resource type="Animation" id="Animation_7yujx"]
+resource_name = "Falling_02"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -243.04263, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(4.4331365, -1.7540559, -6.536258)]
+}
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f54w6"]
-emission_shape = 6
-emission_ring_axis = Vector3(0, 0, 1)
-emission_ring_height = 1.0
-emission_ring_radius = 1.0
-emission_ring_inner_radius = 0.0
-emission_ring_cone_angle = 90.0
-angle_curve = SubResource("CurveTexture_f54w6")
+[sub_resource type="Animation" id="Animation_jaog8"]
+resource_name = "Falling_03"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -243.04263, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-6.431538, -5.113815, 3.8571777)]
+}
+
+[sub_resource type="Animation" id="Animation_n0rqr"]
+resource_name = "Falling_04"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -243.04263, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(2.469641, 5.3407073, 5.323254)]
+}
+
+[sub_resource type="Animation" id="Animation_r7lcn"]
+resource_name = "Falling_05"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -243.04263, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.9738937, -3.3196163, 2.8867745)]
+}
+
+[sub_resource type="Animation" id="Animation_4t8ow"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7yujx"]
+_data = {
+&"Falling_01": SubResource("Animation_f54w6"),
+&"Falling_02": SubResource("Animation_7yujx"),
+&"Falling_03": SubResource("Animation_jaog8"),
+&"Falling_04": SubResource("Animation_n0rqr"),
+&"Falling_05": SubResource("Animation_r7lcn"),
+&"RESET": SubResource("Animation_4t8ow")
+}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aiqfw"]
 size = Vector3(1, 12.658752, 1)
@@ -1272,7 +1432,7 @@ mesh = ExtResource("20_lk7tg")
 shape = SubResource("ConcavePolygonShape3D_rsbjq")
 
 [node name="CellCranePrt_03" type="StaticBody3D" parent="Environment/Layer_01/Cranes_01/PanopticonCrane2/CellCranePrt_02" unique_id=1140035759]
-transform = Transform3D(-0.057267826, 0, 0.9983587, 0, 0.9999999, 0, -0.9983587, 0, -0.057267826, -7.666004, 1.2034645, 0.0002784729)
+transform = Transform3D(-0.057267826, 0, 0.99835867, 0, 0.9999999, 0, -0.9983587, 0, -0.057267822, -7.666004, 1.2034645, 0.0002784729)
 
 [node name="CellCranePrt_03_Mesh" type="MeshInstance3D" parent="Environment/Layer_01/Cranes_01/PanopticonCrane2/CellCranePrt_02/CellCranePrt_03" unique_id=1906994643]
 mesh = ExtResource("21_iax5p")
@@ -2381,140 +2541,6 @@ transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, -10.
 
 [node name="PanopticonAccessShaft2" parent="Environment/Layer_03" unique_id=557765937 instance=ExtResource("30_kcm3w")]
 
-[node name="CellsAssortment3" type="StaticBody3D" parent="Environment/Layer_03" unique_id=1583646098]
-
-[node name="PrisonCell17" parent="Environment/Layer_03/CellsAssortment3" unique_id=385871750 instance=ExtResource("13_murac")]
-transform = Transform3D(1.9699279, 0, -1.0871447, 0, 2.2499998, 0, 1.0871447, 0, 1.9699279, -67.75466, -12.402746, -36.14498)
-
-[node name="PrisonCell9" parent="Environment/Layer_03/CellsAssortment3" unique_id=437074867 instance=ExtResource("13_murac")]
-transform = Transform3D(2.0005581, 0, -1.0296925, 0, 2.2499998, 0, 1.0296925, 0, 2.0005581, -67.943535, 21.263994, -35.956764)
-
-[node name="PrisonCell20" parent="Environment/Layer_03/CellsAssortment3" unique_id=726078128 instance=ExtResource("14_6h3re")]
-transform = Transform3D(2.0881, 0, -0.8380563, 0, 2.25, 0, 0.8380563, 0, 2.0881, -66.46274, 46.488026, -35.699074)
-
-[node name="PrisonCell31" parent="Environment/Layer_03/CellsAssortment3" unique_id=42489301 instance=ExtResource("13_murac")]
-transform = Transform3D(2.002746, 0, -1.0254304, 0, 2.2499995, 0, 1.0254304, 0, 2.002746, -72.146576, 21.263994, -21.903967)
-
-[node name="PrisonCell35" parent="Environment/Layer_03/CellsAssortment3" unique_id=1344646622 instance=ExtResource("14_6h3re")]
-transform = Transform3D(2.2342606, 0, -0.26566797, 0, 2.25, 0, 0.26566797, 0, 2.2342606, -72.35792, 4.3863873, -21.86498)
-
-[node name="PrisonCell40" parent="Environment/Layer_03/CellsAssortment3" unique_id=1112196538 instance=ExtResource("13_murac")]
-transform = Transform3D(1.6484886, 0, -1.5313342, 0, 2.2499998, 0, 1.5313342, 0, 1.6484886, -60.148758, -4.158281, -49.53955)
-
-[node name="PrisonCell42" parent="Environment/Layer_03/CellsAssortment3" unique_id=869355474 instance=ExtResource("13_murac")]
-transform = Transform3D(1.6777133, 0, -1.4992586, 0, 2.2499995, 0, 1.4992586, 0, 1.6777133, -59.28232, -20.768509, -48.757526)
-
-[node name="PrisonCell45" parent="Environment/Layer_03/CellsAssortment3" unique_id=604646132 instance=ExtResource("13_murac")]
-transform = Transform3D(1.6484886, 0, -1.5313342, 0, 2.2499998, 0, 1.5313342, 0, 1.6484886, -59.28232, 63.133595, -48.757526)
-
-[node name="PrisonCell54" parent="Environment/Layer_03/CellsAssortment3" unique_id=823910079 instance=ExtResource("13_murac")]
-transform = Transform3D(1.1682465, 0, -1.9229399, 0, 2.2499993, 0, 1.9229399, 0, 1.1682465, -22.106846, 12.503616, -71.92173)
-
-[node name="PrisonCell56" parent="Environment/Layer_03/CellsAssortment3" unique_id=102714270 instance=ExtResource("13_murac")]
-transform = Transform3D(1.3092656, 0, -1.8298423, 0, 2.2499998, 0, 1.8298423, 0, 1.3092656, -48.668674, 4.490632, -59.515896)
-
-[node name="PrisonCell58" parent="Environment/Layer_03/CellsAssortment3" unique_id=1094994783 instance=ExtResource("13_murac")]
-transform = Transform3D(1.4247116, 0, -1.7414637, 0, 2.2499993, 0, 1.7414637, 0, 1.4247116, -48.61199, -29.18097, -59.257076)
-
-[node name="PrisonCell65" parent="Environment/Layer_03/CellsAssortment3" unique_id=905170555 instance=ExtResource("14_6h3re")]
-transform = Transform3D(1.3262945, 0, -1.8175374, 0, 2.25, 0, 1.8175374, 0, 1.3262945, -48.730648, -12.288752, -59.3115)
-
-[node name="PrisonCell66" parent="Environment/Layer_03/CellsAssortment3" unique_id=63113876 instance=ExtResource("14_6h3re")]
-transform = Transform3D(1.3262945, 0, -1.8175374, 0, 2.25, 0, 1.8175374, 0, 1.3262945, -48.730648, 29.519999, -59.3115)
-
-[node name="PrisonCell70" parent="Environment/Layer_03/CellsAssortment3" unique_id=162769290 instance=ExtResource("13_murac")]
-transform = Transform3D(0.97410476, 0, -2.0282059, 0, 2.2499995, 0, 2.0282059, 0, 0.97410476, -36.12996, -4.158281, -67.83859)
-
-[node name="PrisonCell74" parent="Environment/Layer_03/CellsAssortment3" unique_id=1240954680 instance=ExtResource("13_murac")]
-transform = Transform3D(0.97410476, 0, -2.0282059, 0, 2.2499995, 0, 2.0282059, 0, 0.97410476, -36.12996, 54.89119, -67.83859)
-
-[node name="PrisonCell76" parent="Environment/Layer_03/CellsAssortment3" unique_id=1415048213 instance=ExtResource("13_murac")]
-transform = Transform3D(1.0323799, 0, -1.999172, 0, 2.2499993, 0, 1.999172, 0, 1.0323799, -36.392986, 21.263994, -67.79483)
-
-[node name="PrisonCell85" parent="Environment/Layer_03/CellsAssortment3" unique_id=1167473716 instance=ExtResource("13_murac")]
-transform = Transform3D(0.97410476, 0, -2.0282059, 0, 2.2499995, 0, 2.0282059, 0, 0.97410476, -36.12996, -3.8934937, -67.83859)
-
-[node name="PrisonCell88" parent="Environment/Layer_03/CellsAssortment3" unique_id=1439029345 instance=ExtResource("13_murac")]
-transform = Transform3D(1.1678104, 0, -1.923205, 0, 2.2499993, 0, 1.923205, 0, 1.1678104, -35.3988, -37.642914, -66.25013)
-
-[node name="PrisonCell89" parent="Environment/Layer_03/CellsAssortment3" unique_id=316915292 instance=ExtResource("13_murac")]
-transform = Transform3D(0.97410476, 0, -2.0282059, 0, 2.2499995, 0, 2.0282059, 0, 0.97410476, -35.538105, 54.89119, -65.91074)
-
-[node name="PrisonCell101" parent="Environment/Layer_03/CellsAssortment3" unique_id=1275992164 instance=ExtResource("13_murac")]
-transform = Transform3D(0.6353059, 0, -2.158445, 0, 2.2499993, 0, 2.158445, 0, 0.6353059, -22.184635, -12.402746, -73.44596)
-
-[node name="PrisonCell104" parent="Environment/Layer_03/CellsAssortment3" unique_id=1078676479 instance=ExtResource("13_murac")]
-transform = Transform3D(0.6353059, 0, -2.158445, 0, 2.2499993, 0, 2.158445, 0, 0.6353059, -21.407314, 46.326344, -70.71449)
-
-[node name="PrisonCell110" parent="Environment/Layer_03/CellsAssortment3" unique_id=145638331 instance=ExtResource("14_6h3re")]
-transform = Transform3D(0.65543246, 0, -2.152419, 0, 2.25, 0, 2.152419, 0, 0.65543246, -22.31033, -3.953673, -73.27327)
-
-[node name="PrisonCell111" parent="Environment/Layer_03/CellsAssortment3" unique_id=2057574784 instance=ExtResource("14_6h3re")]
-transform = Transform3D(0.65543246, 0, -2.152419, 0, 2.25, 0, 2.152419, 0, 0.65543246, -22.31033, 29.519999, -73.27327)
-
-[node name="PrisonCell112" parent="Environment/Layer_03/CellsAssortment3" unique_id=1317357430 instance=ExtResource("14_6h3re")]
-transform = Transform3D(0.8945197, 0, -2.0645418, 0, 2.2499998, 0, 2.0645418, 0, 0.8945197, -22.131336, 54.960728, -72.32158)
-
-[node name="PrisonCell115" parent="Environment/Layer_03/CellsAssortment3" unique_id=524078112 instance=ExtResource("13_murac")]
-transform = Transform3D(-0.72665876, 0, -2.1294284, 0, 2.249999, 0, 2.1294284, 0, -0.72665876, 22.39067, -4.158281, -73.44368)
-
-[node name="PrisonCell120" parent="Environment/Layer_03/CellsAssortment3" unique_id=677938024 instance=ExtResource("13_murac")]
-transform = Transform3D(-0.72665876, 0, -2.1294284, 0, 2.249999, 0, 2.1294284, 0, -0.72665876, 22.39067, 63.133595, -73.44368)
-
-[node name="PrisonCell121" parent="Environment/Layer_03/CellsAssortment3" unique_id=323238014 instance=ExtResource("13_murac")]
-transform = Transform3D(-0.15484825, -0.05319387, -2.244034, -0.8242668, 2.0935674, 0.0072508864, 2.0878463, 0.82258016, -0.16356955, 21.694595, 21.021065, -71.151215)
-
-[node name="PrisonCell129" parent="Environment/Layer_03/CellsAssortment3" unique_id=463112159 instance=ExtResource("13_murac")]
-transform = Transform3D(-1.1117787, 0, -1.9561299, 0, 2.2499986, 0, 1.9561299, 0, -1.1117787, 35.73806, 12.544651, -66.99745)
-
-[node name="PrisonCell131" parent="Environment/Layer_03/CellsAssortment3" unique_id=812580727 instance=ExtResource("13_murac")]
-transform = Transform3D(-1.1679108, 0, -1.9231439, 0, 2.249999, 0, 1.9231439, 0, -1.1679108, 37.198326, -12.402746, -69.41911)
-
-[node name="PrisonCell132" parent="Environment/Layer_03/CellsAssortment3" unique_id=568050279 instance=ExtResource("13_murac")]
-transform = Transform3D(-1.1679108, 0, -1.9231439, 0, 2.249999, 0, 1.9231439, 0, -1.1679108, 35.41877, -20.868374, -66.19452)
-
-[node name="PrisonCell134" parent="Environment/Layer_03/CellsAssortment3" unique_id=984268846 instance=ExtResource("13_murac")]
-transform = Transform3D(-1.1679108, 0, -1.9231439, 0, 2.249999, 0, 1.9231439, 0, -1.1679108, 36.28141, 54.89119, -67.754845)
-
-[node name="PrisonCell148" parent="Environment/Layer_03/CellsAssortment3" unique_id=203036459 instance=ExtResource("13_murac")]
-transform = Transform3D(-1.4991705, 0, -1.6777918, 0, 2.249999, 0, 1.6777918, 0, -1.4991705, 47.467415, -37.642914, -57.88988)
-
-[node name="PrisonCell150" parent="Environment/Layer_03/CellsAssortment3" unique_id=1493100511 instance=ExtResource("13_murac")]
-transform = Transform3D(-1.4991705, 0, -1.6777918, 0, 2.249999, 0, 1.6777918, 0, -1.4991705, 48.84655, 63.133595, -59.344803)
-
-[node name="PrisonCell160" parent="Environment/Layer_03/CellsAssortment3" unique_id=990161268 instance=ExtResource("13_murac")]
-transform = Transform3D(-1.7928327, 0, -1.359503, 0, 2.249999, 0, 1.359503, 0, -1.7928327, 59.501015, -4.158281, -48.59253)
-
-[node name="PrisonCell171" parent="Environment/Layer_03/CellsAssortment3" unique_id=653596505 instance=ExtResource("14_6h3re")]
-transform = Transform3D(-1.7800605, 0, -1.3761843, 0, 2.2499998, 0, 1.3761843, 0, -1.7800605, 59.29496, 29.519999, -48.648827)
-
-[node name="PrisonCell172" parent="Environment/Layer_03/CellsAssortment3" unique_id=1521228020 instance=ExtResource("14_6h3re")]
-transform = Transform3D(-1.6131033, 0, -1.568565, 0, 2.2499998, 0, 1.568565, 0, -1.6131033, 59.29496, 46.488026, -48.648827)
-
-[node name="PrisonCell173" parent="Environment/Layer_03/CellsAssortment3" unique_id=122010652 instance=ExtResource("13_murac")]
-transform = Transform3D(-2.044766, 0, -0.938845, 0, 2.2499998, 0, 0.938845, 0, -2.044766, 66.30488, 38.0079, -35.307076)
-
-[node name="PrisonCell180" parent="Environment/Layer_03/CellsAssortment3" unique_id=1841446548 instance=ExtResource("13_murac")]
-transform = Transform3D(-2.05098, 0, -0.9251913, 0, 2.2499988, 0, 0.9251913, 0, -2.05098, 67.68597, 63.133595, -35.967937)
-
-[node name="PrisonCell181" parent="Environment/Layer_03/CellsAssortment3" unique_id=976324753 instance=ExtResource("13_murac")]
-transform = Transform3D(-2.0233521, 0, -0.98414564, 0, 2.2499986, 0, 0.98414564, 0, -2.0233521, 67.64854, 21.263994, -36.231953)
-
-[node name="PrisonCell182" parent="Environment/Layer_03/CellsAssortment3" unique_id=1717196493 instance=ExtResource("14_6h3re")]
-transform = Transform3D(-2.0422516, 0, -0.9443017, 0, 2.2499998, 0, 0.9443017, 0, -2.0422516, 67.49766, -29.091703, -36.068794)
-
-[node name="PrisonCell185" parent="Environment/Layer_03/CellsAssortment3" unique_id=779793352 instance=ExtResource("14_6h3re")]
-transform = Transform3D(-2.0422516, 0, -0.9443017, 0, 2.2499998, 0, 0.9443017, 0, -2.0422516, 66.360344, 4.3863873, -35.14021)
-
-[node name="PrisonCell193" parent="Environment/Layer_03/CellsAssortment3" unique_id=1074657782 instance=ExtResource("13_murac")]
-transform = Transform3D(-2.1633139, 0, -0.6185228, 0, 2.2499986, 0, 0.6185228, 0, -2.1633139, 73.63763, -37.642914, -22.123894)
-
-[node name="PrisonCell196" parent="Environment/Layer_03/CellsAssortment3" unique_id=1888417660 instance=ExtResource("13_murac")]
-transform = Transform3D(-2.193981, 0, -0.49894312, 0, 2.2499986, 0, 0.49894312, 0, -2.193981, 71.73301, 21.263994, -22.054602)
-
-[node name="PrisonCell200" parent="Environment/Layer_03/CellsAssortment3" unique_id=1569764488 instance=ExtResource("14_6h3re")]
-transform = Transform3D(-1.884101, -0.51115096, -1.118653, -0.4395188, 2.1911693, -0.26095682, 1.1486876, 0, -1.934687, 71.094536, 4.3863873, -21.540764)
-
 [node name="PanopticonBridgeConnector5" type="StaticBody3D" parent="Environment/Layer_03" unique_id=1616132742]
 transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 0, 0, -71.29148)
 
@@ -2739,98 +2765,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 67.02, 0)
 
 [node name="PanopticonAccessShaft2" parent="Environment/Layer_00" unique_id=662050732 instance=ExtResource("30_kcm3w")]
 
-[node name="CellsAssortment3" type="StaticBody3D" parent="Environment/Layer_00" unique_id=1812390545]
-
-[node name="PrisonCell17" parent="Environment/Layer_00/CellsAssortment3" unique_id=93765937 instance=ExtResource("13_murac")]
-transform = Transform3D(1.9699279, 0, -1.0871447, 0, 2.2499998, 0, 1.0871447, 0, 1.9699279, -67.68024, -12.383713, -36.399895)
-
-[node name="PrisonCell35" parent="Environment/Layer_00/CellsAssortment3" unique_id=1332179830 instance=ExtResource("14_6h3re")]
-transform = Transform3D(2.1373143, 0, -0.70312655, 0, 2.2500002, 0, 0.70312655, 0, 2.1373143, -72.3712, 4.4965286, -21.978764)
-
-[node name="PrisonCell40" parent="Environment/Layer_00/CellsAssortment3" unique_id=602987305 instance=ExtResource("13_murac")]
-transform = Transform3D(1.6888659, 0, -1.4866846, 0, 2.2499998, 0, 1.4866846, 0, 1.6888659, -58.97372, -3.9277344, -48.409924)
-
-[node name="PrisonCell42" parent="Environment/Layer_00/CellsAssortment3" unique_id=267588678 instance=ExtResource("13_murac")]
-transform = Transform3D(1.6484886, 0, -1.5313342, 0, 2.2499998, 0, 1.5313342, 0, 1.6484886, -59.28232, -20.75003, -48.757526)
-
-[node name="PrisonCell45" parent="Environment/Layer_00/CellsAssortment3" unique_id=1649842896 instance=ExtResource("13_murac")]
-transform = Transform3D(1.6484886, 0, -1.5313342, 0, 2.2499998, 0, 1.5313342, 0, 1.6484886, -59.28232, 63.133595, -48.757526)
-
-[node name="PrisonCell56" parent="Environment/Layer_00/CellsAssortment3" unique_id=749316567 instance=ExtResource("13_murac")]
-transform = Transform3D(1.4021018, 0, -1.7597188, 0, 2.2499995, 0, 1.7597188, 0, 1.4021018, -48.78662, 4.490631, -59.434834)
-
-[node name="PrisonCell58" parent="Environment/Layer_00/CellsAssortment3" unique_id=1741334370 instance=ExtResource("13_murac")]
-transform = Transform3D(1.3092656, 0, -1.8298423, 0, 2.2499998, 0, 1.8298423, 0, 1.3092656, -49.235744, -29.329685, -60.545124)
-
-[node name="PrisonCell59" parent="Environment/Layer_00/CellsAssortment3" unique_id=325917151 instance=ExtResource("13_murac")]
-transform = Transform3D(1.4343249, 0, -1.7335546, 0, 2.2499995, 0, 1.7335546, 0, 1.4343249, -48.201515, -46.020798, -58.742783)
-
-[node name="PrisonCell65" parent="Environment/Layer_00/CellsAssortment3" unique_id=2019919092 instance=ExtResource("14_6h3re")]
-transform = Transform3D(1.477614, 0, -1.6968076, 0, 2.25, 0, 1.6968076, 0, 1.477614, -48.62924, -12.288757, -59.19548)
-
-[node name="PrisonCell70" parent="Environment/Layer_00/CellsAssortment3" unique_id=782954399 instance=ExtResource("13_murac")]
-transform = Transform3D(0.97410476, 0, -2.0282059, 0, 2.2499995, 0, 2.0282059, 0, 0.97410476, -36.12996, -4.158281, -67.83859)
-
-[node name="PrisonCell74" parent="Environment/Layer_00/CellsAssortment3" unique_id=1131696084 instance=ExtResource("13_murac")]
-transform = Transform3D(0.97410476, 0, -2.0282059, 0, 2.2499995, 0, 2.0282059, 0, 0.97410476, -36.12996, 54.89119, -67.83859)
-
-[node name="PrisonCell85" parent="Environment/Layer_00/CellsAssortment3" unique_id=2095457331 instance=ExtResource("13_murac")]
-transform = Transform3D(0.97410476, 0, -2.0282059, 0, 2.2499995, 0, 2.0282059, 0, 0.97410476, -36.12996, -3.8983917, -67.83859)
-
-[node name="PrisonCell88" parent="Environment/Layer_00/CellsAssortment3" unique_id=1824101940 instance=ExtResource("13_murac")]
-transform = Transform3D(1.0485014, 0, -1.9907649, 0, 2.2499993, 0, 1.9907649, 0, 1.0485014, -35.392735, -37.642914, -66.11962)
-
-[node name="PrisonCell89" parent="Environment/Layer_00/CellsAssortment3" unique_id=974540592 instance=ExtResource("13_murac")]
-transform = Transform3D(0.97410476, 0, -2.0282059, 0, 2.2499995, 0, 2.0282059, 0, 0.97410476, -35.538105, 54.89119, -65.91074)
-
-[node name="PrisonCell101" parent="Environment/Layer_00/CellsAssortment3" unique_id=1307274145 instance=ExtResource("13_murac")]
-transform = Transform3D(0.6353059, 0, -2.158445, 0, 2.2499993, 0, 2.158445, 0, 0.6353059, -22.184635, -12.402746, -73.44596)
-
-[node name="PrisonCell110" parent="Environment/Layer_00/CellsAssortment3" unique_id=1278891737 instance=ExtResource("14_6h3re")]
-transform = Transform3D(0.65543246, 0, -2.152419, 0, 2.25, 0, 2.152419, 0, 0.65543246, -22.248627, -3.9536743, -73.27327)
-
-[node name="PrisonCell112" parent="Environment/Layer_00/CellsAssortment3" unique_id=1286703280 instance=ExtResource("14_6h3re")]
-transform = Transform3D(0.8945197, 0, -2.0645418, 0, 2.2499998, 0, 2.0645418, 0, 0.8945197, -22.131336, 54.960728, -72.32158)
-
-[node name="PrisonCell115" parent="Environment/Layer_00/CellsAssortment3" unique_id=1444169352 instance=ExtResource("13_murac")]
-transform = Transform3D(-0.72665876, 0, -2.1294284, 0, 2.249999, 0, 2.1294284, 0, -0.72665876, 22.39067, -4.158281, -73.44368)
-
-[node name="PrisonCell120" parent="Environment/Layer_00/CellsAssortment3" unique_id=1451924223 instance=ExtResource("13_murac")]
-transform = Transform3D(-0.72665876, 0, -2.1294284, 0, 2.249999, 0, 2.1294284, 0, -0.72665876, 22.39067, 63.133595, -73.44368)
-
-[node name="PrisonCell131" parent="Environment/Layer_00/CellsAssortment3" unique_id=1569170048 instance=ExtResource("13_murac")]
-transform = Transform3D(-1.1679108, 0, -1.9231439, 0, 2.249999, 0, 1.9231439, 0, -1.1679108, 37.198326, -12.402746, -69.41911)
-
-[node name="PrisonCell132" parent="Environment/Layer_00/CellsAssortment3" unique_id=605912968 instance=ExtResource("13_murac")]
-transform = Transform3D(-1.1679108, 0, -1.9231439, 0, 2.249999, 0, 1.9231439, 0, -1.1679108, 35.41877, -20.868374, -66.19452)
-
-[node name="PrisonCell134" parent="Environment/Layer_00/CellsAssortment3" unique_id=1455290689 instance=ExtResource("13_murac")]
-transform = Transform3D(-1.1679108, 0, -1.9231439, 0, 2.249999, 0, 1.9231439, 0, -1.1679108, 36.28141, 54.89119, -67.754845)
-
-[node name="PrisonCell148" parent="Environment/Layer_00/CellsAssortment3" unique_id=1194533986 instance=ExtResource("13_murac")]
-transform = Transform3D(-1.4991705, 0, -1.6777918, 0, 2.249999, 0, 1.6777918, 0, -1.4991705, 47.467415, -37.642914, -57.88988)
-
-[node name="PrisonCell150" parent="Environment/Layer_00/CellsAssortment3" unique_id=1924430631 instance=ExtResource("13_murac")]
-transform = Transform3D(-1.4991705, 0, -1.6777918, 0, 2.249999, 0, 1.6777918, 0, -1.4991705, 48.84655, 63.133595, -59.344803)
-
-[node name="PrisonCell160" parent="Environment/Layer_00/CellsAssortment3" unique_id=627378945 instance=ExtResource("13_murac")]
-transform = Transform3D(-1.7928327, 0, -1.359503, 0, 2.249999, 0, 1.359503, 0, -1.7928327, 59.501022, -3.980606, -48.59253)
-
-[node name="PrisonCell180" parent="Environment/Layer_00/CellsAssortment3" unique_id=1573381836 instance=ExtResource("13_murac")]
-transform = Transform3D(-2.05098, 0, -0.9251913, 0, 2.2499988, 0, 0.9251913, 0, -2.05098, 67.68597, 63.133595, -35.967937)
-
-[node name="PrisonCell182" parent="Environment/Layer_00/CellsAssortment3" unique_id=1821837529 instance=ExtResource("14_6h3re")]
-transform = Transform3D(-2.0422516, 0, -0.9443017, 0, 2.2499998, 0, 0.9443017, 0, -2.0422516, 67.497665, -29.158585, -36.068794)
-
-[node name="PrisonCell185" parent="Environment/Layer_00/CellsAssortment3" unique_id=313907737 instance=ExtResource("14_6h3re")]
-transform = Transform3D(-2.0422516, 0, -0.9443017, 0, 2.2499998, 0, 0.9443017, 0, -2.0422516, 66.360344, 4.3863873, -35.14021)
-
-[node name="PrisonCell193" parent="Environment/Layer_00/CellsAssortment3" unique_id=417650554 instance=ExtResource("13_murac")]
-transform = Transform3D(-2.1633139, 0, -0.6185228, 0, 2.2499986, 0, 0.6185228, 0, -2.1633139, 73.63762, -37.541916, -22.357534)
-
-[node name="PrisonCell200" parent="Environment/Layer_00/CellsAssortment3" unique_id=2145138298 instance=ExtResource("14_6h3re")]
-transform = Transform3D(-1.884101, -0.51115096, -1.118653, -0.4395188, 2.1911693, -0.26095682, 1.1486876, 0, -1.934687, 71.09453, 4.2871094, -21.540764)
-
 [node name="PanopticonBridgeConnector3" type="StaticBody3D" parent="Environment/Layer_00" unique_id=845069264]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -72.236, 0, 0)
 
@@ -3030,7 +2964,7 @@ level_name = "Stage4"
 [node name="CraneBackground" type="Node3D" parent="Background" unique_id=1272895125]
 
 [node name="PanopticonCrane" type="StaticBody3D" parent="Background/CraneBackground" unique_id=1825676035]
-transform = Transform3D(-8.742277e-08, 0, 1.9999999, 0, 2, 0, -1.9999999, 0, -8.742277e-08, 79.42639, 286.30118, -71.95815)
+transform = Transform3D(-8.742277e-08, 0, 1.9999999, 0, 2, 0, -1.9999999, 0, -8.742277e-08, 79.42639, 70.42116, -71.95815)
 
 [node name="CellCranePrt_01_Mesh" type="MeshInstance3D" parent="Background/CraneBackground/PanopticonCrane" unique_id=1650597706]
 mesh = ExtResource("19_6qhdc")
@@ -3078,18 +3012,16 @@ shape = SubResource("ConcavePolygonShape3D_f54w6")
 libraries/ = SubResource("AnimationLibrary_n0rqr")
 autoplay = &"CraneBackground"
 
-[node name="PrisonCell137" parent="Background/CraneBackground" unique_id=606389681 instance=ExtResource("13_murac")]
-transform = Transform3D(-1.0487449, 0, -1.9906366, 0, 2.2499986, 0, 1.9906366, 0, -1.0487449, 126.08797, 247.88194, -67.882286)
+[node name="FallingCell_P" type="Node3D" parent="Background" unique_id=1424602923]
+transform = Transform3D(2.25, 0, 0, 0, 2.25, 0, 0, 0, 2.25, 54.676064, 344.99222, -48.690292)
+script = ExtResource("55_tb4re")
 
-[node name="Raining Cells" type="GPUParticles3D" parent="Background" unique_id=963363769]
-transform = Transform3D(59.191456, 0, 0, 0, -5.167742e-07, 2.7676482, 0, -11.822416, -1.2097775e-07, 89.33969, 264.55103, -38.272194)
-visible = false
-amount = 10
-lifetime = 60.0
-speed_scale = 2.73
-randomness = 0.75
-process_material = SubResource("ParticleProcessMaterial_f54w6")
-draw_pass_1 = ExtResource("55_tb4re")
+[node name="PrisonCell" parent="Background/FallingCell_P" unique_id=2008943432 instance=ExtResource("13_murac")]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/FallingCell_P/PrisonCell" unique_id=289383833]
+libraries/ = SubResource("AnimationLibrary_7yujx")
+autoplay = &"Falling_01"
 
 [node name="Lighting" type="Node3D" parent="." unique_id=89940555]
 
@@ -3315,4 +3247,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93, 71, 0)
 [node name="Scrub7" parent="Enemies/EnemyManager" unique_id=330088300 instance=ExtResource("47_wjtp4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 130, 0)
 
+[connection signal="animation_finished" from="Background/FallingCell_P/PrisonCell/AnimationPlayer" to="Background/FallingCell_P" method="_on_animation_player_animation_finished"]
 [connection signal="stage_cleared" from="Enemies/EnemyManager" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]

@@ -416,6 +416,9 @@ albedo_color = Color(0, 1, 0, 1)
 emission_enabled = true
 emission = Color(0, 1, 0, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_h6e6k"]
+size = Vector3(0.5755615, 0.08544922, 1)
+
 [node name="PrisonCell" type="StaticBody3D" unique_id=1430763070]
 transform = Transform3D(2.25, 0, 0, 0, 2.25, 0, 0, 0, 2.25, 0, 0, 0)
 script = ExtResource("1_hp7oy")
@@ -479,3 +482,7 @@ mesh = ExtResource("7_k5dx3")
 transform = Transform3D(0.08648003, 0, 0, 0, 0.26437512, 0, 0, 0, 0.08648003, 1.041285, 0.6994451, 0.8616561)
 height = 1.0303955
 material = SubResource("StandardMaterial3D_hp7oy")
+
+[node name="CellRamp" type="CollisionShape3D" parent="." unique_id=488244613]
+transform = Transform3D(0.9480908, 0.31799975, 0, -0.31799975, 0.9480908, 0, 0, 0, 1.428991, 1.2573414, -0.9923566, 0)
+shape = SubResource("BoxShape3D_h6e6k")
