@@ -48,6 +48,8 @@ func enter() -> void:
 		_start_cooldown()
 	
 	super_jump_timer = 0
+	
+	AudioManager.play_stinger("test_alert", actor.global_position)
 
 func _start_cooldown() -> void:
 	await get_tree().create_timer(randf_range(attack_cooldown_min, attack_cooldown_max)).timeout

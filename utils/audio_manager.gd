@@ -24,6 +24,10 @@ func _ready() -> void:
 	for sound_effect: CallableSFX in sound_effects:
 		sfx_dict[sound_effect.sfx_ref] = sound_effect
 	
+	# Build Stinger Dictionary
+	for stinger: CallableSFX in enemy_stingers:
+		stinger_dict[stinger.sfx_ref] = stinger
+	
 	# Generate sfx global ASP pool (adjust size with sfx_global_pool_size)
 	for i in range(sfx_global_pool_size):
 		var asp := AudioStreamPlayer.new()
@@ -148,9 +152,8 @@ func play_stinger(stinger_ref: String, location: Vector3):
 			push_error("Stinger Resource is not found")
 		else:
 			hotseat.stream = stinger.sound_clip
-			hotseat.stream.loop = false
 			hotseat.volume_db = stinger.volume
-			hotseat.pitch_scale = hotseat.pitch_scale + randf_range(-hotseat.pitch_random_shift, hotseat.pitch_random_shift)
+			hotseat.pitch_scale = stinger.pitch_scale + randf_range(-stinger.pitch_random_shift, stinger.pitch_random_shift)
 			hotseat.global_position = location
 			
 			hotseat.play()
