@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://ccgg2t71rdo0l"]
 
+[ext_resource type="PackedScene" uid="uid://wn4bdivbwbsn" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/BrainJarScreenTemplate.tscn" id="2_o5d64"]
 [ext_resource type="PackedScene" uid="uid://d1isfmus58oku" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/IndustrialLight1.tscn" id="5_coglk"]
 [ext_resource type="PackedScene" uid="uid://btcwaxl38nip5" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeSets/HandlebarSmall.tscn" id="5_mxr2x"]
 [ext_resource type="PackedScene" uid="uid://br8eqclc5secj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/Rails/RailFull.tscn" id="9_uoh3v"]
@@ -74,6 +75,112 @@
 [ext_resource type="PackedScene" uid="uid://b8mgks4mhehhj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/SecurityHandReader.tscn" id="72_mywdw"]
 [ext_resource type="PackedScene" uid="uid://bdcqxo5x0okem" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/PanopticonCrane.tscn" id="73_8vmub"]
 
+[sub_resource type="Animation" id="Animation_s2yuo"]
+resource_name = "Active"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-123.903, 57.205, -40)]
+}
+
+[sub_resource type="Animation" id="Animation_o5d64"]
+resource_name = "CutsceneIdle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-123.942, 13.245, -3.039), Vector3(-123.942, 13.965, -3.039)]
+}
+
+[sub_resource type="Animation" id="Animation_oo4g3"]
+resource_name = "CutsceneLiftUp"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-123.942, 13.245, -3.039), Vector3(-123.942, 44.531, -16.458), Vector3(-123.942, 55, -40)]
+}
+
+[sub_resource type="Animation" id="Animation_ypbdf"]
+resource_name = "Cutscene_DropDown"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 2.5333333, 2.5666666, 2.6, 2.6333334, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-123.92689, 57.205368, -3.038515), Vector3(-123.927, 13.245, -3.039), Vector3(-125.042, 13.245, -3.039), Vector3(-124.012, 13.245, -3.039), Vector3(-123.067, 13.245, -3.039), Vector3(-123.942, 13.245, -3.039), Vector3(-123.942, 13.245, -3.039)]
+}
+
+[sub_resource type="Animation" id="Animation_wsdjh"]
+resource_name = "PreFightIdle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-123.92689, 57.205368, -3.038515)]
+}
+
+[sub_resource type="Animation" id="Animation_lqc63"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-123.92689, 57.205368, -3.038515)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oo4g3"]
+_data = {
+&"Active": SubResource("Animation_s2yuo"),
+&"CutsceneIdle": SubResource("Animation_o5d64"),
+&"CutsceneLiftUp": SubResource("Animation_oo4g3"),
+&"Cutscene_DropDown": SubResource("Animation_ypbdf"),
+&"PreFightIdle": SubResource("Animation_wsdjh"),
+&"RESET": SubResource("Animation_lqc63")
+}
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_7jlaj"]
 size = Vector3(2.7580125, 1.2358398, 0.15810546)
 
@@ -87,6 +194,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124, 2.14, 0)
 collision_mask = 129
 
 [node name="Environment" type="Node3D" parent="." unique_id=2005469797]
+
+[node name="BrainJar_Root_P" type="Node3D" parent="Environment" unique_id=705346624]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.92689, 57.205368, -3.038515)
+
+[node name="Brainjar Anims" type="AnimationPlayer" parent="Environment/BrainJar_Root_P" unique_id=1787086687]
+libraries/ = SubResource("AnimationLibrary_oo4g3")
+
+[node name="BrainFace" parent="Environment/BrainJar_Root_P" unique_id=636526495 instance=ExtResource("2_o5d64")]
 
 [node name="BrainJarRoom" type="Node3D" parent="Environment" unique_id=712403107]
 
