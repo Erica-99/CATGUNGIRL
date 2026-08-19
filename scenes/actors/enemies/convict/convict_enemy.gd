@@ -37,11 +37,13 @@ var is_dead: bool = false
 # multiplier for slow_down_speed (hitconfirm)
 @export var hit_deceleration: float
 
-@export_category("Convict Superjump")
-@export var windup_duration: float	# pause timer
-@export var super_jump_cd: float # time before transitioning to superjump
-@export var superjump_force: float	# upwards force
-@export var superjump_speed: float	# horizontal force
+@export_category("Convict Power Dive")
+@export var windup_duration: float = 0.4
+@export var dive_cd: float = 4.0
+@export var dive_launch_force: float = 35.0
+@export var dive_charge_duration: float = 0.3
+@export var dive_speed: float = 30
+@export var dive_recovery_duration: float = 0.5
 
 @export_category("Attack Variables")
 # Convict Attack Damage Stats
@@ -82,11 +84,14 @@ func _ready() -> void:
 		"pounce_speed": pounce_speed,
 		"hit_deceleration": hit_deceleration,
 		"windup_duration": windup_duration,
-		"super_jump_cd": super_jump_cd,
-		"superjump_force": superjump_force,
-		"superjump_speed": superjump_speed,
+		"dive_cd": dive_cd,
+		"dive_launch_force": dive_launch_force,
+		"dive_charge_duration": dive_charge_duration,
+		"dive_speed": dive_speed,
+		"dive_recovery_duration": dive_recovery_duration,
 		"attack_cooldown_min": attack_cooldown_min,
 		"attack_cooldown_max": attack_cooldown_max,
+		"gravity": GRAVITY
 	}
 	# Change initial state based on Inspector values
 	if start_aggroed:

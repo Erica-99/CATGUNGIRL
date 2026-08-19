@@ -22,9 +22,11 @@ var target: CharacterBody3D
 var attack_hitbox: Area3D
 var attack_cooldown_min: float
 var attack_cooldown_max: float
-# big jump transition time
-var super_jump_cd: float
-var super_jump_timer: float = 0
+# dive
+var dive_cd: float
+var dive_timer: float = 0
+var gravity: float
+var dive_launch_force: float
 
 
 func init(blackboard_dict: Dictionary) -> void:
@@ -38,7 +40,9 @@ func init(blackboard_dict: Dictionary) -> void:
 	attack_hitbox = blackboard["attack_hitbox"]
 	attack_cooldown_min = blackboard["attack_cooldown_min"]
 	attack_cooldown_max = blackboard["attack_cooldown_max"]
-	super_jump_cd = blackboard["super_jump_cd"]
+	dive_cd = blackboard["dive_cd"]
+	gravity = blackboard["gravity"]
+	dive_launch_force = blackboard["dive_launch_force"]
 
 func enter() -> void:
 	# TODO: update with more intricated targetting
@@ -47,7 +51,7 @@ func enter() -> void:
 	if actor.action_pending:
 		_start_cooldown()
 	
-	super_jump_timer = 0
+	dive_timer = 0
 
 func _start_cooldown() -> void:
 	await get_tree().create_timer(randf_range(attack_cooldown_min, attack_cooldown_max)).timeout
@@ -67,13 +71,17 @@ func physics_update(_delta: float) -> void:
 	
 	# While beneath target, add to super jump cooldown
 	if actor.global_position.y < target.global_position.y:
-		super_jump_timer += _delta
+		dive_timer += _delta
 	else:
-		super_jump_timer = 0
+		dive_timer = 0
 	
 	# When below target for long enough, move to superjump state
-	if super_jump_timer > super_jump_cd:
-		transitioned.emit(self, "convictsuperjump")
+	if dive_timer > dive_cd:
+		var estimated_dive_height := (dive_launch_force * dive_launch_force) / (2.0 * gravity)
+		var has_space_above := !actor.test_move(actor.global_transform, Vector3(0.0, estimated_dive_height, 0.0))
+		
+		if has_space_above:
+			transitioned.emit(self, "convictpowerdive")
 	
 	# offset target position
 	var target_position = _get_target_position()
