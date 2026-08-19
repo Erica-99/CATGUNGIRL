@@ -38,11 +38,17 @@ var is_dead: bool = false
 @export var hit_deceleration: float
 
 @export_category("Convict Power Dive")
+##how long convicts pause before launching upwards
 @export var windup_duration: float = 0.4
+##how long before convict tries to power dive
 @export var dive_cd: float = 4.0
+##higher value causes higher jump 
 @export var dive_launch_force: float = 35.0
+##how long convict pauses at top before diving
 @export var dive_charge_duration: float = 0.3
+##speed of the dive
 @export var dive_speed: float = 30
+##how long convicts wait before returning to chase
 @export var dive_recovery_duration: float = 0.5
 
 @export_category("Attack Variables")
@@ -56,7 +62,7 @@ var target_in_hitbox: bool = false
 @export var attack_cooldown_max: float
 
 var action_pending: bool = false
-
+var enemy_manager: EnemyManager
 var blackboard : Dictionary 
 
 @onready var Convict_Piv = $Visuals
@@ -69,6 +75,12 @@ func _ready() -> void:
 	damage_instance.knockback = 0 # TODO: change for implementing knockback
 	damage_instance.source = get_path()
 	attack_hitbox.damage_or_heal_instance = damage_instance
+	
+	var room_convict_route_points: Array = []
+	enemy_manager = _get_enemy_manager()
+
+	if enemy_manager != null:
+		room_convict_route_points =	 enemy_manager.get_convict_route_points()
 	
 	# Populates blackboard and distributes it to all states
 	blackboard = {
@@ -91,6 +103,7 @@ func _ready() -> void:
 		"dive_recovery_duration": dive_recovery_duration,
 		"attack_cooldown_min": attack_cooldown_min,
 		"attack_cooldown_max": attack_cooldown_max,
+		"convict_route_points": room_convict_route_points,
 		"gravity": GRAVITY
 	}
 	# Change initial state based on Inspector values
@@ -156,3 +169,14 @@ func call_sfx_at_current_location(sfx_ref: String) -> void:
 		return
 		
 	audio_caller.play_sfx_at_location(sfx_ref, global_position)
+
+func _get_enemy_manager() -> EnemyManager:
+	var current: Node = get_parent()
+	
+	while current != null:
+		if current is EnemyManager:
+			return current
+		
+		current = current.get_parent()
+	
+	return null

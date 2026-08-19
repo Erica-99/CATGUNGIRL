@@ -22,8 +22,13 @@ var slow_down_speed: float
 
 var phase: DivePhase = DivePhase.WINDUP
 var phase_timer: float = 0.0
+var gravity: float
+var dive_velocity: Vector3 = Vector3.ZERO
 var dive_direction: Vector3 = Vector3.ZERO
 var locked_target_position: Vector3 = Vector3.ZERO
+
+@export var dive_gravity_multiplier: float = 1.0
+@export var dive_horizontal_falloff: float = 0.0
 
 func init(blackboard_dict: Dictionary) -> void:
 	super(blackboard_dict)
@@ -35,6 +40,7 @@ func init(blackboard_dict: Dictionary) -> void:
 	dive_recovery_duration = blackboard["dive_recovery_duration"]
 	slow_down_speed = blackboard["slow_down_speed"]
 	windup_duration = blackboard["windup_duration"]
+	gravity = blackboard["gravity"]
 
 func enter() -> void:
 	target = get_tree().get_nodes_in_group("player")[0] as CharacterBody3D
@@ -54,7 +60,7 @@ func physics_update(_delta: float) -> void:
 		DivePhase.CHARGE:
 			_update_charge(_delta)
 		DivePhase.DIVE:
-			_update_dive()
+			_update_dive(_delta)
 		DivePhase.RECOVERY:
 			_update_recovery(_delta)
 	actor.move_and_slide()
@@ -107,10 +113,16 @@ func _start_dive() -> void:
 		dive_direction = Vector3(actor.direction, -1.0, 0.0)
 	
 	dive_direction = dive_direction.normalized()
+	dive_velocity = dive_direction * dive_speed
 	#anim.play("ConvictPowerDive")
 
-func _update_dive() -> void:
-	actor.velocity = dive_direction * dive_speed
+func _update_dive(delta: float) -> void:
+	dive_velocity.y -= gravity * dive_gravity_multiplier * delta
+	
+	if dive_horizontal_falloff > 0.0:
+		dive_velocity.x = move_toward(dive_velocity.x, 0.0, dive_horizontal_falloff * delta)
+	
+	actor.velocity = dive_velocity
 
 func _start_recovery() -> void:
 	phase = DivePhase.RECOVERY

@@ -22,12 +22,15 @@ var target: CharacterBody3D
 var attack_hitbox: Area3D
 var attack_cooldown_min: float
 var attack_cooldown_max: float
-# dive
+# power dive
 var dive_cd: float
 var dive_timer: float = 0
 var gravity: float
 var dive_launch_force: float
-
+# shared route points
+var convict_route_points: Array = []
+var current_route_point: Node3D = null
+var route_point_reached_distance: float = 1.0
 
 func init(blackboard_dict: Dictionary) -> void:
 	super(blackboard_dict)
@@ -43,6 +46,7 @@ func init(blackboard_dict: Dictionary) -> void:
 	dive_cd = blackboard["dive_cd"]
 	gravity = blackboard["gravity"]
 	dive_launch_force = blackboard["dive_launch_force"]
+	convict_route_points = blackboard["convict_route_points"]
 
 func enter() -> void:
 	# TODO: update with more intricated targetting
@@ -52,6 +56,7 @@ func enter() -> void:
 		_start_cooldown()
 	
 	dive_timer = 0
+	current_route_point = null
 
 func _start_cooldown() -> void:
 	await get_tree().create_timer(randf_range(attack_cooldown_min, attack_cooldown_max)).timeout
@@ -62,6 +67,26 @@ func _start_cooldown() -> void:
 # stop_offset * -direction flips the offset to whichever side convict is coming from 
 func _get_target_position() -> Vector3:
 	return target.global_position + Vector3(stop_offset * -direction, 0, 0)
+	
+#find closest route point
+func _pick_route_point() -> Node3D:
+	if convict_route_points.is_empty():
+		return null
+	
+	var closest_point: Node3D = null
+	var closest_distance: float = INF
+	
+	for point in convict_route_points:
+		if point == null:
+			continue
+		
+		var distance: float = actor.global_position.distance_squared_to(point.global_position)
+		
+		if distance < closest_distance:
+			closest_distance = distance
+			closest_point = point
+	
+	return closest_point
 
 func physics_update(_delta: float) -> void:
 	if actor.global_position.x > target.global_position.x:
@@ -74,14 +99,19 @@ func physics_update(_delta: float) -> void:
 		dive_timer += _delta
 	else:
 		dive_timer = 0
-	
+		
+	var searching_for_dive_spot: bool = false
 	# When below target for long enough, move to superjump state
 	if dive_timer > dive_cd:
 		var estimated_dive_height := (dive_launch_force * dive_launch_force) / (2.0 * gravity)
 		var has_space_above := !actor.test_move(actor.global_transform, Vector3(0.0, estimated_dive_height, 0.0))
 		
 		if has_space_above:
+			current_route_point = null
 			transitioned.emit(self, "convictpowerdive")
+			return
+		else:
+			searching_for_dive_spot = true
 	
 	# offset target position
 	var target_position = _get_target_position()
@@ -94,28 +124,22 @@ func physics_update(_delta: float) -> void:
 	#var horizontal_difference = abs(actor.global_position.x - target.global_position.x)
 	
 	# check if convict is already in an acceptable position
-	if abs(actor.global_position.x - target_position.x) <= acceptable_distance:
-		# OLD (slidey stop) swap with instant swap if we want sharper movement
-		actor.velocity.x = move_toward(actor.velocity.x, 0, slow_down_speed * _delta)
-		# NEW instant stop 
-		#actor.velocity.x = 0.0
+	if searching_for_dive_spot and !convict_route_points.is_empty():
+		if current_route_point == null or abs(actor.global_position.x - current_route_point.global_position.x) <= route_point_reached_distance:
+			current_route_point = _pick_route_point()
 		
-		#TODO: proper superjump trigger (UNCOMMENT TO TEST SUPERJUMP)
-		#if height_difference > 3.0 and horizontal_difference <= 2.5:
-			#transitioned.emit(self, "convictsuperjump")
-			#print("transitioning to convictsuperjump")
+		if current_route_point != null:
+			move_direction = sign(current_route_point.global_position.x - actor.global_position.x)
+			trying_to_run = true
+			actor.velocity.x = move_toward(actor.velocity.x, chase_speed * move_direction, accel_speed * _delta)
+
+	elif abs(actor.global_position.x - target_position.x) <= acceptable_distance:
+		actor.velocity.x = move_toward(actor.velocity.x, 0, slow_down_speed * _delta)
 	
 	else:
 		move_direction = sign(target_position.x - actor.global_position.x)
 		trying_to_run = true
-		# print to check differences for tuning superjump values
-		# print("height: ", height_difference, " horizontal: ", horizontal_difference)
-		
-		# TODO: proper superjump trigger (UNCOMMENT TO TEST SUPERJUMP)
-		#if height_difference > 3.0 and horizontal_difference <= 2.5:
-			#transitioned.emit(self, "convictsuperjump")
-			#print("transitioning to convictsuperjump")
-		
+
 		# Basic physics implementation 
 		actor.velocity.x = move_toward(actor.velocity.x, chase_speed * move_direction, accel_speed * _delta)
 		# move_toward shouldn't allow going over target value so this line is redundant
