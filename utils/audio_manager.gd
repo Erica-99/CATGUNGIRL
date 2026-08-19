@@ -72,7 +72,7 @@ func play_music(track_ref: String):
 		push_error("Music track not found")
 
 # Play global sound effect (best for menu, UI, most player sounds, etc.)
-func play_sfx(sfx_ref: String, loop: bool = false):
+func play_sfx(sfx_ref: String):
 	
 	var sound_effect: SoundEffect = get_sfx_from_dict(sfx_ref)
 	
@@ -96,7 +96,6 @@ func play_sfx(sfx_ref: String, loop: bool = false):
 			else:
 				# Configure ASP node
 				asp.stream = sound_effect.sound_clip
-				asp.stream.loop = loop
 				asp.volume_db = sound_effect.volume
 				asp.pitch_scale = sound_effect.pitch_scale + randf_range(-sound_effect.pitch_random_shift, sound_effect.pitch_random_shift)
 				
@@ -107,9 +106,8 @@ func play_sfx(sfx_ref: String, loop: bool = false):
 				# Play sound effect
 				asp.play()
 				
-				# Return asp ref if looping for termination control
-				if loop:
-					return asp
+				# Return asp ref if for termination control
+				return asp
 		else:
 			push_error("Limit for '" + sfx_ref + "' exceeded")
 
@@ -138,7 +136,6 @@ func play_sfx_at_location(sfx_ref: String, location: Vector3, loop: bool = false
 			else:
 			# Configure ASP node
 				asp3d.stream = sound_effect.sound_clip
-				asp3d.stream.loop = loop
 				asp3d.volume_db = sound_effect.volume
 				asp3d.pitch_scale = sound_effect.pitch_scale + randf_range(-sound_effect.pitch_random_shift, sound_effect.pitch_random_shift)
 				asp3d.global_position = location
@@ -150,9 +147,8 @@ func play_sfx_at_location(sfx_ref: String, location: Vector3, loop: bool = false
 				# Play sound effect
 				asp3d.play()
 				
-				# Return asp3d ref if looping for termination control
-				if loop:
-					return asp3d
+				# Return asp3d ref for termination control
+				return asp3d
 
 func play_stinger(stinger_ref: String, location: Vector3):
 	if hotseat.playing == false:

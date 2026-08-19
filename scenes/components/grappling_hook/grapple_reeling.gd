@@ -25,7 +25,7 @@ func enter() -> void:
 	hook = blackboard["current_grapple_hook"]
 	hook.can_latch = false
 	cancelled_early = false
-	asp_ref = AudioManager.play_sfx("jump_launch", true)
+	asp_ref = AudioManager.play_sfx("grapple_reel")
 	_enable_reeling_after_delay(delay)
 	
 func exit() -> void:
