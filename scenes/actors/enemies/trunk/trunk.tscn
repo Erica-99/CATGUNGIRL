@@ -20,6 +20,8 @@
 [ext_resource type="Script" uid="uid://briciybelpcwe" path="res://scenes/components/state_machine/states/enemy/enemy_death.gd" id="10_t7x1w"]
 [ext_resource type="PackedScene" uid="uid://csd06hicr5wny" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="13_31nnk"]
 [ext_resource type="Shape3D" uid="uid://cxemkg2bdxscg" path="res://resources/hitboxes/enemies/trunk/trunk_melee_hb.tres" id="14_31nnk"]
+[ext_resource type="Script" uid="uid://c247lxsaigxo8" path="res://scenes/components/state_machine/states/enemy/trunk/trunk_stun.gd" id="18_qrlkp"]
+[ext_resource type="Script" uid="uid://c76qn4ockcqyn" path="res://scenes/actors/enemies/trunk/trunk_armour.gd" id="21_qrlkp"]
 
 [sub_resource type="Animation" id="Animation_qrlkp"]
 resource_name = "Idle"
@@ -2387,6 +2389,18 @@ radius = 30.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_31nnk"]
 radius = 4.0
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_aq2d6"]
+radius = 5.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qrlkp"]
+transparency = 1
+albedo_color = Color(0.71682304, 0.59046775, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_688n6"]
+material = SubResource("StandardMaterial3D_qrlkp")
+radius = 5.0
+height = 10.0
+
 [node name="Trunk" type="CharacterBody3D" unique_id=400593386 node_paths=PackedStringArray("animation_manager", "state_machine", "start_idle", "start_patrol", "start_aggro", "melee_hitbox")]
 collision_layer = 4
 collision_mask = 129
@@ -2485,6 +2499,11 @@ metadata/_custom_type_script = "uid://bivm8q1sfq6tc"
 script = ExtResource("10_t7x1w")
 metadata/_custom_type_script = "uid://n3y61s3xutuy"
 
+[node name="TrunkStun" type="Node" parent="StateMachine" unique_id=1071588348]
+script = ExtResource("18_qrlkp")
+failsafe_max_stun_duration = 4.0
+metadata/_custom_type_script = "uid://c247lxsaigxo8"
+
 [node name="BodyHurtbox" parent="." unique_id=338394069 node_paths=PackedStringArray("team_component", "health_component") instance=ExtResource("5_rp7bq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.544092, 0)
 team_component = NodePath("../TeamComponent")
@@ -2498,7 +2517,8 @@ shape = SubResource("BoxShape3D_rp7bq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3917332, 0)
 team_component = NodePath("../TeamComponent")
 health_component = NodePath("../HealthComponent")
-damage_multiplier = 1.5
+damage_multiplier = 0.0
+is_headshot = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HeadHurtbox" unique_id=194489168]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39940786, 0)
@@ -2551,6 +2571,19 @@ one_shot = true
 
 [node name="OutrangedTimer" type="Timer" parent="." unique_id=309027732]
 
+[node name="TrunkArmour" type="Area3D" parent="." unique_id=1118592428 node_paths=PackedStringArray("team_component")]
+collision_layer = 9
+collision_mask = 16
+script = ExtResource("21_qrlkp")
+team_component = NodePath("../TeamComponent")
+break_sources = Array[String](["BeamComponent", "AirblastComponent"])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrunkArmour" unique_id=1965770979]
+shape = SubResource("SphereShape3D_aq2d6")
+
+[node name="ShaderShield" type="MeshInstance3D" parent="TrunkArmour" unique_id=1962350623]
+mesh = SubResource("SphereMesh_688n6")
+
 [connection signal="cant_step" from="." to="TrunkMesh" method="_on_trunk_cant_step"]
 [connection signal="facing_changed" from="." to="TrunkMesh" method="_on_trunk_facing_changed"]
 [connection signal="animation_finished" from="TrunkMesh/TorsoAnims" to="." method="_on_torso_anims_animation_finished"]
@@ -2566,3 +2599,4 @@ one_shot = true
 [connection signal="body_exited" from="MeleeRange" to="StateMachine/TrunkMelee" method="_on_melee_range_body_exited"]
 [connection signal="timeout" from="StepHandler" to="." method="_on_step_handler_timeout"]
 [connection signal="timeout" from="OutrangedTimer" to="." method="_on_outranged_timer_timeout"]
+[connection signal="break_shield" from="TrunkArmour" to="TrunkArmour" method="_on_break_shield"]

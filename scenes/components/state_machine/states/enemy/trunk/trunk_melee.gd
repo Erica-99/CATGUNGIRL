@@ -112,10 +112,20 @@ func _update_lunge(delta: float) -> void:
 
 func _start_recovery() -> void:
 	#print("Melee recovery")
-	_disable_melee_hitbox()
-	actor.velocity.x = 0.0
+	#_disable_melee_hitbox()
+	#actor.velocity.x = 0.0
+	
+	# old recovery using phase_timer
+	#phase_timer = melee_recovery_time
 	phase = MeleePhase.RECOVERY
-	phase_timer = melee_recovery_time
+	
+	# overwrite recovery_time so trunkstun works for melee recovery
+	blackboard["recovery_time"] = melee_recovery_time
+	
+	# ADD ANIMATION SWITCH HERE
+	
+	# switched to use trunkstun state - revert this change by removing the line just below this (and uncommenting lines above)
+	transitioned.emit(self, "trunkstun")
 
 func _update_recovery(delta: float) -> void:
 	actor.velocity.x = 0.0
