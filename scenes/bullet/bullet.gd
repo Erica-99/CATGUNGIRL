@@ -42,6 +42,11 @@ func _physics_process(delta: float) -> void:
 	_distance_traveled += speed * delta
 	# tracks lifetime
 	_lifetime += delta
+	
+	# bullet fizzles as it reaches its max range
+	if (max_range - _distance_traveled) <= 1:
+		$AnimatedSprite3D.modulate.a = (max_range - _distance_traveled)
+		$AnimatedSprite3D/OmniLight3D.light_energy = (max_range - _distance_traveled)
 
 	if _distance_traveled >= max_range or _lifetime >= max_lifetime:
 		queue_free()	# destroys bullet if reaches max range / lifetime
