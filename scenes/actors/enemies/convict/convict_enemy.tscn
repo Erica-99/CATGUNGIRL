@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://lenec5y0wbqb" path="res://scenes/components/state_machine/states/enemy/convict/convict_hitconfirm.gd" id="15_resq1"]
 [ext_resource type="Script" uid="uid://bus3ovj8itv35" path="res://scenes/components/state_machine/states/enemy/convict/convict_stun.gd" id="17_31snm"]
 [ext_resource type="Script" uid="uid://briciybelpcwe" path="res://scenes/components/state_machine/states/enemy/enemy_death.gd" id="17_583mm"]
+[ext_resource type="Script" uid="uid://0pnxiwm7nggk" path="res://scenes/components/state_machine/states/enemy/convict/convict_execute.gd" id="18_leh5i"]
 [ext_resource type="Script" uid="uid://de2djfh2ufwig" path="res://scenes/components/state_machine/states/enemy/convict/convict_superjump.gd" id="19_28j07"]
 [ext_resource type="Shape3D" uid="uid://c5sya8gsonmd8" path="res://resources/hitboxes/enemies/convict/convict_attack_hb.tres" id="19_a68hs"]
 [ext_resource type="PackedScene" uid="uid://csd06hicr5wny" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="20_31snm"]
@@ -108,6 +109,9 @@ tracks/6/keys = {
 "update": 1,
 "values": [1.0, -1.0]
 }
+
+[sub_resource type="Animation" id="Animation_31snm"]
+resource_name = "Execute"
 
 [sub_resource type="Animation" id="Animation_4p71r"]
 resource_name = "Idle"
@@ -525,6 +529,7 @@ tracks/7/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xi3ex"]
 _data = {
 &"Attack": SubResource("Animation_gi3f3"),
+&"Execute": SubResource("Animation_31snm"),
 &"Idle": SubResource("Animation_4p71r"),
 &"Pounce": SubResource("Animation_2quec"),
 &"RESET": SubResource("Animation_xi3ex"),
@@ -678,6 +683,9 @@ metadata/_custom_type_script = "uid://dropwvjh2s43u"
 [node name="ConvictStun" type="Node" parent="StateMachine" unique_id=372919021]
 script = ExtResource("17_31snm")
 metadata/_custom_type_script = "uid://dropwvjh2s43u"
+
+[node name="ConvictExecute" type="Node" parent="StateMachine" unique_id=680250322]
+script = ExtResource("18_leh5i")
 
 [node name="AttackHitbox3D" parent="." unique_id=1965125698 node_paths=PackedStringArray("team_component") instance=ExtResource("20_31snm")]
 collision_mask = 10

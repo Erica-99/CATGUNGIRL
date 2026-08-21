@@ -7,3 +7,5 @@ extends Resource
 @export var knockback: float = 0.0
 @export var stun_time: float = 0.0
 @export var source: NodePath
+# True if the attack leads to an execution animation on kill, generally Melees
+@export var execution: bool = false

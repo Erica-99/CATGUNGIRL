@@ -60,12 +60,14 @@ var blackboard : Dictionary
 @onready var Convict_Piv = $Visuals
 
 func _ready() -> void:
+	EventManager.player_killed.connect(_on_player_killed)
 	# Set up Attack
 	damage_instance.amount = attack_damage
 	damage_instance.is_heal = false
 	damage_instance.type = Enums.DamageType.NORMAL
 	damage_instance.knockback = 0 # TODO: change for implementing knockback
 	damage_instance.source = get_path()
+	damage_instance.execution = true
 	attack_hitbox.damage_or_heal_instance = damage_instance
 	
 	# Populates blackboard and distributes it to all states
@@ -127,6 +129,10 @@ func _on_health_component_killed(killing_blow: DamageHealInstance, health_before
 	# Possibly implement knockback affects here
 	is_dead = true
 	state_machine.on_child_transition(state_machine.current_state, "convictdeath")
+	
+func _on_player_killed(final_blow: DamageHealInstance) -> void:
+	if final_blow.execution and final_blow.source == get_path():
+		state_machine.on_child_transition(state_machine.current_state, "convictexecute")
 
 # Hitstun "flinching", can be improved due to some jank with pounce, might not be needed with knockback implemented
 func _on_health_component_health_changed(old_health: float, new_health: float, damage_or_heal_instance: DamageHealInstance) -> void:

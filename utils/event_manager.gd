@@ -17,7 +17,8 @@ signal gun_picked_up
 
 signal player_health_initialised(init_current_health, init_max_health)
 signal player_health_changed(old_health, new_health, damage_or_heal_instance)
-signal player_interest_rank_changed(new_rank)
+## Called when player is killed, uses final_blow to trigger execution animation.
+signal player_killed(final_blow)
 
 signal new_mag_loaded(ammo: int, capacity: int)
 signal shots_fired(shots: int)

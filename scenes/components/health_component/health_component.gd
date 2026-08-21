@@ -113,10 +113,5 @@ func set_stun(stun_version: State, stun_time: float) -> void:
 func _process(delta):
 	pass
 
-func _on_insanity_component_insanity_gained(amount, buffer):
-	min_health += amount
-	current_health = min_health + buffer
-	print("Insanity Damage Taken - Insanity: " + str(min_health))
-
 func set_health_to_min() -> void:
 	current_health = min_health

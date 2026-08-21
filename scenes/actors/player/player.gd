@@ -7,12 +7,8 @@ signal facing_changed(new_facing: float)
 ## Extending signals for ui and other components
 signal player_health_initialiased(init_current_health: float, init_max_health: float)
 signal player_health_changed(old_health, new_health, damage_or_heal_instance)
-signal player_insanity_gained(amount, buffer)
-signal player_interest_rank_changed(new_rank)
 signal player_charge_progress(progress: float)
 signal player_charge_ended()
-## Signal for when the player is D E D
-signal player_dead()
 
 @export var movement_state_machine: StateMachine
 
@@ -133,7 +129,6 @@ func _process(_delta: float) -> void:
 		debug_damage.stun_time = 0
 		debug_damage.source = ^"."
 		health_component.take_damage_or_heal(debug_damage)
-		_on_insanity_component_insanity_death()
 
 func _on_health_component_health_initialised(init_current_health, init_max_health):
 	EventManager.player_health_initialised.emit(init_current_health, init_max_health)
@@ -141,19 +136,26 @@ func _on_health_component_health_initialised(init_current_health, init_max_healt
 func _on_health_component_health_changed(old_health, new_health, damage_or_heal_instance):
 	EventManager.player_health_changed.emit(old_health, new_health, damage_or_heal_instance)
 
-func _on_insanity_component_insanity_gained(amount, buffer):
-	EventManager.player_insanity_gained.emit(amount, buffer)
-
-## When Insanity reaches max, game over
-func _on_insanity_component_insanity_death():
-	## TODO: Death stuff
-	player_dead.emit()
-	print("PLAYER IS DEAD")
+# When killed, the death state takes over
+func _on_health_component_killed(killing_blow, health_before_death):
+	# lock player inputs
+	input_component._input_locked = true
+	EventManager.player_killed.emit(killing_blow)
+	# Death animations (check for execute/explode if none)
+	if killing_blow.execution:
+		# If the attack that kills the player has an execution anim
+		# hide the player and do the animation on the attack's source
+		for visual in get_tree().get_nodes_in_group("player_visuals"):
+			visual.visible = false
+		await get_tree().create_timer(2.0).timeout
+	else:
+		# TODO: death animations, the explode into gore one here
+		# (I don't really know how to put in animations properly)
+		$PlayerVisuals/ROOT_P/BODY_P/TORSO_P/Ros_Torso.play("Death")
+		await get_tree().create_timer(2.0).timeout
+	# TODO: set up proper game over screen rather than just reload scene
 	SceneLoader._load_scene(get_tree().current_scene.scene_file_path)
 
-func _on_insanity_component_interest_rank_changed(new_rank):
-	EventManager.player_interest_rank_changed.emit(new_rank)
-	
 func _on_gun_enemy_hit(_damage: float) -> void:
 	var heal = DamageHealInstance.new()
 	heal.amount = hit_heal_fraction * _damage
