@@ -28,10 +28,14 @@
 [ext_resource type="PackedScene" uid="uid://cvckts4bqdso3" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Mesh/FloorMeshCentre.tscn" id="28_0xqxt"]
 [ext_resource type="PackedScene" uid="uid://ckjadvesqstsq" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/PrisonCell(Docile).tscn" id="28_bel3r"]
 [ext_resource type="PackedScene" uid="uid://7ndrvtyokajf" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/WallPlainMidPrison.tscn" id="29_ktb7l"]
+[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="30_djn4x"]
 [ext_resource type="PackedScene" uid="uid://bojsmqie6xi4c" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorBasicLocked.tscn" id="30_fcasa"]
 [ext_resource type="PackedScene" uid="uid://rlu4e0ohmycv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwaySingleMidPrison.tscn" id="31_ddk0w"]
 [ext_resource type="PackedScene" uid="uid://bls076phgmcus" path="res://scenes/actors/enemies/scrub/scrub.tscn" id="31_yfq6p"]
 [ext_resource type="PackedScene" uid="uid://ms7yhmwowtnu" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/FloorShootingPrison.tscn" id="32_setcc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_setcc"]
+size = Vector3(1.010086, 16.356148, 1)
 
 [node name="StageTwo" type="Node3D" unique_id=1996110792]
 
@@ -883,6 +887,17 @@ light_volumetric_fog_energy = 0.1
 shadow_enabled = true
 spot_range = 32.195656
 spot_angle = 47.085472
+
+[node name="DATES_POPUPS" type="Node" parent="." unique_id=1535957502]
+
+[node name="TestPopup" parent="DATES_POPUPS" unique_id=1311781014 instance=ExtResource("30_djn4x")]
+_signal_parameters = [5]
+signal_name = "activate_popup"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DATES_POPUPS/TestPopup" unique_id=397502035]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8438663, 8.401869, 0)
+shape = SubResource("BoxShape3D_setcc")
+debug_color = Color(0.91764706, 0.13333334, 0.6156863, 0.41960785)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=218442623]
 
