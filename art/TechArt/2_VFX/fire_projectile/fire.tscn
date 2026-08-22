@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://dtyk6mtb0qwoo" path="res://art/TechArt/2_VFX/fire_projectile/prefabs/M_fire_head.tres" id="3_srkfl"]
 [ext_resource type="Texture2D" uid="uid://6uqlxmi5nqdt" path="res://art/TechArt/2_VFX/fire_projectile/tex/T_VFX_basic1.PNG" id="4_srkfl"]
 [ext_resource type="Script" uid="uid://dtltyva8ca2cv" path="res://art/TechArt/2_VFX/shield/scripts/Trail3D.gd" id="5_e7xiy"]
-[ext_resource type="PackedScene" uid="uid://d1e6k01qln8q7" path="res://art/TechArt/2_VFX/fire_projectile/models/fire.blend" id="6_fvrs6"]
+[ext_resource type="ArrayMesh" uid="uid://kq0v2r03f3qc" path="res://art/TechArt/2_VFX/fire_projectile/models/fire.obj" id="6_fvrs6"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_lwhn1"]
 
@@ -49,23 +49,24 @@ size = Vector2(0.1, 0.5)
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_5y6v8"]
 
-[node name="fire" unique_id=841000291 instance=ExtResource("6_fvrs6")]
+[node name="fire" type="Node3D" unique_id=841000291]
 
-[node name="Sphere" parent="." index="0" unique_id=255381963]
+[node name="Sphere" type="MeshInstance3D" parent="." unique_id=255381963]
+mesh = ExtResource("6_fvrs6")
 material_override = ExtResource("2_5y6v8")
 cast_shadow = 0
 
-[node name="head" type="MeshInstance3D" parent="." index="1" unique_id=1573158119]
+[node name="head" type="MeshInstance3D" parent="." unique_id=1573158119]
 transform = Transform3D(2.34, 0, 0, 0, 2.34, 0, 0, 0, 2.34, 0, 0, -0.07895999)
 mesh = SubResource("SphereMesh_lwhn1")
 surface_material_override/0 = ExtResource("3_srkfl")
 
-[node name="trail" type="MeshInstance3D" parent="." index="2" unique_id=1681153090]
+[node name="trail" type="MeshInstance3D" parent="." unique_id=1681153090]
 transform = Transform3D(-1.4968649, -9.8389506e-08, 4.433392e-07, 2.9802322e-08, -2.4708776, -1.671526e-07, 1.3086009e-07, -6.2855364e-08, 5.0712085, 1.9848535e-08, 0.1536982, 1.9913507)
 mesh = SubResource("QuadMesh_mfimp")
 surface_material_override/0 = ExtResource("3_rcinq")
 
-[node name="sparks_small" type="GPUParticles3D" parent="." index="3" unique_id=1420577456]
+[node name="sparks_small" type="GPUParticles3D" parent="." unique_id=1420577456]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.025895238, 0)
 material_override = SubResource("StandardMaterial3D_mfimp")
 amount = 10
@@ -74,7 +75,7 @@ explosiveness = 0.45
 process_material = SubResource("ParticleProcessMaterial_lwhn1")
 draw_pass_1 = SubResource("QuadMesh_w60dx")
 
-[node name="Trail3D" type="MeshInstance3D" parent="." index="4" unique_id=689169411]
+[node name="Trail3D" type="MeshInstance3D" parent="." unique_id=689169411]
 visible = false
 mesh = SubResource("ImmediateMesh_5y6v8")
 script = ExtResource("5_e7xiy")

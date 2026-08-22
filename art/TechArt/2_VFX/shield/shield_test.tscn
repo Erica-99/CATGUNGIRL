@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://dcb8aqbenss74" path="res://art/TechArt/2_VFX/shield/scripts/shield_impact_controller.gd" id="5_671gw"]
 [ext_resource type="Texture2D" uid="uid://bhq5eo74htgxr" path="res://art/TechArt/2_VFX/shield/tex/T_Hex1_inv.jpg" id="6_d7h0p"]
 [ext_resource type="ArrayMesh" uid="uid://c6t1qxuywnsiq" path="res://art/TechArt/2_VFX/shield/model/BrainJarShield.obj" id="7_6xvwq"]
-[ext_resource type="PackedScene" uid="uid://dnu58jd0bwwp" path="res://art/TechArt/2_VFX/shield/model/shield_base.blend" id="7_iqnve"]
 [ext_resource type="Material" uid="uid://tedlly26ftxc" path="res://art/TechArt/2_VFX/shield/prefab/M_shield_impact.tres" id="8_jcxaq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_671gw"]
@@ -277,9 +276,9 @@ merge_same_frame = false
 unique_materials_per_instance = false
 debug_enabled = true
 
-[node name="base" parent="ShieldImpact" unique_id=947246828 instance=ExtResource("7_iqnve")]
+[node name="base" type="Node3D" parent="ShieldImpact" unique_id=947246828]
 
-[node name="shield_base_icosphere" parent="ShieldImpact/base" index="0" unique_id=551033919]
+[node name="shield_base_icosphere" type="MeshInstance3D" parent="ShieldImpact/base" unique_id=551033919]
 material_override = ExtResource("8_jcxaq")
 cast_shadow = 0
 extra_cull_margin = 1.0
