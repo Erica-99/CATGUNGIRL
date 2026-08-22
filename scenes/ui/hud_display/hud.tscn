@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://ckp576f04778f"]
 
 [ext_resource type="PackedScene" uid="uid://dnbitthls47tp" path="res://scenes/ui/hud_display/2d_hud_entities/2d_hud_entities.tscn" id="1_0mwgc"]
+[ext_resource type="PackedScene" uid="uid://d1dtceqi3s5oh" path="res://art/2d_assets/real_world/UI/ammo_count.tscn" id="2_5t4p4"]
 [ext_resource type="Script" uid="uid://binhmujh1w86w" path="res://scenes/ui/insanity_jitter.gd" id="2_hqnrr"]
 [ext_resource type="PackedScene" uid="uid://daigpy0nr3obt" path="res://scenes/ui/hud_display/NewHealthbar/healthbar.tscn" id="2_rix7v"]
+[ext_resource type="PackedScene" uid="uid://bwjuhhi62r2ot" path="res://art/2d_assets/real_world/UI/pistol_bullet_icon.tscn" id="3_7c4j5"]
+[ext_resource type="PackedScene" uid="uid://d0bck3rf10len" path="res://art/2d_assets/real_world/UI/shotgun_bullet_icon.tscn" id="4_jop4h"]
+[ext_resource type="PackedScene" uid="uid://ddj7xjcety3sc" path="res://art/2d_assets/real_world/UI/sniper_bullet_icon.tscn" id="5_mrwyo"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1982623268]
 layer = 15
@@ -19,6 +23,17 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="2DHudEntities" parent="SubViewportContainer/SubViewport" unique_id=1605915058 instance=ExtResource("1_0mwgc")]
+
+[node name="AmmoCount" parent="SubViewportContainer/SubViewport" unique_id=76601130 instance=ExtResource("2_5t4p4")]
+offset_left = 1740.0
+offset_top = 552.0
+offset_right = 1890.0
+offset_bottom = 1052.0
+bullet_icons = Dictionary[String, PackedScene]({
+"Pistol": ExtResource("3_7c4j5"),
+"Shotgun": ExtResource("4_jop4h"),
+"Sniper": ExtResource("5_mrwyo")
+})
 
 [node name="Healthbar" parent="SubViewportContainer/SubViewport" unique_id=90995781 instance=ExtResource("2_rix7v")]
 visible = false
