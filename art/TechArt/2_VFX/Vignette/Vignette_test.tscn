@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dcoomix7u1wac"]
+
+[ext_resource type="Material" uid="uid://dethcn17gb0at" path="res://art/TechArt/2_VFX/Vignette/VS_Vignette.tres" id="1_xmsqr"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rtxs8"]
+
+[sub_resource type="Sky" id="Sky_tt2gc"]
+sky_material = SubResource("ProceduralSkyMaterial_rtxs8")
+
+[sub_resource type="Environment" id="Environment_hv82r"]
+background_mode = 2
+sky = SubResource("Sky_tt2gc")
+glow_enabled = true
+
+[node name="VignetteTest" type="Node3D" unique_id=1953528991]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1672333993]
+
+[node name="TextureRect" type="ColorRect" parent="Camera3D" unique_id=812033098]
+material = ExtResource("1_xmsqr")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=525876574]
+environment = SubResource("Environment_hv82r")
