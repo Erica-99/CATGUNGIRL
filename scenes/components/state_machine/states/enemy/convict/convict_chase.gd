@@ -176,6 +176,7 @@ func physics_update(_delta: float) -> void:
 			routing_to_dive_spot = true
 			current_route_point = null
 	
+	actor.apply_soft_collision(_delta)
 	actor.move_and_slide()
 	
 	if !trying_to_run or blocked_ahead:

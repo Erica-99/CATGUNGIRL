@@ -131,11 +131,15 @@ func _physics_process(delta: float) -> void:
 		direction = 1
 		#sprite.flip_h = false
 		Convict_Piv.scale.x = 1
-	# Soft Collision physics effects to avoid overlap.
-	if softCollider.is_colliding():
-		var push_vel = softCollider.get_push_vector() * delta * 10
-		push_vel.z = 0
-		velocity += push_vel
+
+func apply_soft_collision(delta: float) -> void:
+	if !softCollider.is_colliding():
+		return
+	
+	var push_vel = softCollider.get_push_vector() * delta * 40.0
+	push_vel.z = 0.0
+	velocity += push_vel
+
 
 # General (or Global I guess) state change conditions, such as damage taken effects, etc.
 # When you don't want to write a state change function in each state.
