@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://lenec5y0wbqb" path="res://scenes/components/state_machine/states/enemy/convict/convict_hitconfirm.gd" id="15_resq1"]
 [ext_resource type="Script" uid="uid://bus3ovj8itv35" path="res://scenes/components/state_machine/states/enemy/convict/convict_stun.gd" id="17_31snm"]
 [ext_resource type="Script" uid="uid://briciybelpcwe" path="res://scenes/components/state_machine/states/enemy/enemy_death.gd" id="17_583mm"]
-[ext_resource type="Script" uid="uid://de2djfh2ufwig" path="res://scenes/components/state_machine/states/enemy/convict/convict_superjump.gd" id="19_28j07"]
+[ext_resource type="Script" uid="uid://de2djfh2ufwig" path="res://scenes/components/state_machine/states/enemy/convict/convict_power_dive.gd" id="19_28j07"]
 [ext_resource type="Shape3D" uid="uid://c5sya8gsonmd8" path="res://resources/hitboxes/enemies/convict/convict_attack_hb.tres" id="19_a68hs"]
 [ext_resource type="PackedScene" uid="uid://csd06hicr5wny" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="20_31snm"]
 [ext_resource type="Script" uid="uid://v4r5cbix8jcm" path="res://scenes/components/state_machine/states/enemy/convict/convict_pounce_attack.gd" id="20_q6lyk"]
@@ -549,6 +549,7 @@ radius = 12.5
 radius = 6.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_leh5i"]
+radius = 0.8854963
 
 [node name="Convict" type="CharacterBody3D" unique_id=1506947017 node_paths=PackedStringArray("animator", "health_comp", "state_machine", "audio_caller", "start_idle", "start_patrol", "start_aggro", "attack_hitbox")]
 collision_layer = 4
@@ -574,10 +575,9 @@ head_hitstun_threshold = 10.0
 head_hitstun_duration = 0.3
 pounce_speed = 18.0
 hit_deceleration = 200.0
-windup_duration = 1.5
-super_jump_cd = 4.0
-superjump_force = 25.0
-superjump_speed = 10.0
+dive_cd = 0.5
+dive_charge_duration = 0.0
+dive_speed = 40.0
 attack_damage = 10.0
 attack_hitbox = NodePath("AttackHitbox3D")
 attack_cooldown_min = 1.0
@@ -667,7 +667,7 @@ script = ExtResource("15_resq1")
 [node name="ConvictDeath" type="Node" parent="StateMachine" unique_id=23697395]
 script = ExtResource("17_583mm")
 
-[node name="ConvictSuperjump" type="Node" parent="StateMachine" unique_id=284280301]
+[node name="ConvictPowerDive" type="Node" parent="StateMachine" unique_id=284280301]
 script = ExtResource("19_28j07")
 metadata/_custom_type_script = "uid://dropwvjh2s43u"
 

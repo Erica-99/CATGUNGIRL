@@ -5375,8 +5375,9 @@ debug_color = Color(0.919504, 0.13431916, 0.6161928, 0.41960785)
 [node name="RoomTwo" parent="Enemies" unique_id=18369620 instance=ExtResource("24_2ao7q")]
 room_ID = 1
 
-[node name="RoomThree" parent="Enemies" unique_id=1942243816 instance=ExtResource("24_2ao7q")]
+[node name="RoomThree" parent="Enemies" unique_id=1942243816 node_paths=PackedStringArray("convict_route_points") instance=ExtResource("24_2ao7q")]
 room_ID = 2
+convict_route_points = NodePath("ConvictRoutePoints")
 
 [node name="Convict4" parent="Enemies/RoomThree" unique_id=660825129 instance=ExtResource("23_v5ylw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82, 3, 0)
@@ -5389,6 +5390,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92, 16, 0)
 
 [node name="Convict3" parent="Enemies/RoomThree" unique_id=1741826564 instance=ExtResource("23_v5ylw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125, 2, 0)
+
+[node name="ConvictRoutePoints" type="Node3D" parent="Enemies/RoomThree" unique_id=447539534]
+
+[node name="RoutePoint_01" type="Marker3D" parent="Enemies/RoomThree/ConvictRoutePoints" unique_id=115620994]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.437256, 0, 0)
+
+[node name="RoutePoint_02" type="Marker3D" parent="Enemies/RoomThree/ConvictRoutePoints" unique_id=1981306038]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.152756, 0, 0)
+
+[node name="RoutePoint_04" type="Marker3D" parent="Enemies/RoomThree/ConvictRoutePoints" unique_id=682989838]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125.188156, 0, 0)
+
+[node name="RoutePoint_03" type="Marker3D" parent="Enemies/RoomThree/ConvictRoutePoints" unique_id=1744806972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.89493, 0, 0)
 
 [node name="RoomFour" parent="Enemies" unique_id=1372172768 instance=ExtResource("24_2ao7q")]
 room_ID = 3
