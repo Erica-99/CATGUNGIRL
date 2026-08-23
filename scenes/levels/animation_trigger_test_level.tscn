@@ -121,6 +121,7 @@
 [ext_resource type="PackedScene" uid="uid://c24i5tmt2brj2" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/Television.tscn" id="119_4svec"]
 [ext_resource type="PackedScene" uid="uid://b5iexscfcb83b" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/GunPodium.tscn" id="120_kofos"]
 [ext_resource type="PackedScene" uid="uid://xc4xlrvpu6gv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/GunPodiumGun.tscn" id="121_fx63d"]
+[ext_resource type="Script" uid="uid://5uw776ahw4f0" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/prison_cell_active_test_ver.gd" id="122_1grlp"]
 [ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="122_osgd0"]
 [ext_resource type="PackedScene" uid="uid://dld0qjmojk1t8" path="res://scenes/actors/enemies/enemy_manager/enemy_manager.tscn" id="123_pfdu3"]
 [ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict/convict_enemy.tscn" id="124_b15pa"]
@@ -1424,6 +1425,9 @@ roughness = 0.7
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fxtw2"]
 size = Vector3(9.30127, 7.2834473, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1grlp"]
+size = Vector3(4.7315674, 7.830742, 1)
 
 [node name="AnimationTriggerTest" type="Node3D" unique_id=1668100898]
 
@@ -5172,6 +5176,20 @@ surface_material_override/3 = SubResource("StandardMaterial3D_v58yf")
 [node name="CellDoor_Mesh" parent="Interactive/PrisonCell3/CellArm_01_Mesh/CellArm_02_Mesh/CellDoor" parent_id_path=PackedInt32Array(1763152432, 368092532) index="0" unique_id=134328525]
 surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
 
+[node name="PrisonCell4Test" parent="Interactive" unique_id=997674247 node_paths=PackedStringArray("cell_anim_player") instance=ExtResource("53_8hrhs")]
+transform = Transform3D(-2.249138, 0, -0.062273815, 0, 2.25, 0, 0.062273815, 0, -2.249138, 43.986813, 11.301945, 0)
+script = ExtResource("122_1grlp")
+cell_anim_player = NodePath("AnimationPlayer")
+
+[node name="Cell_Mesh" parent="Interactive/PrisonCell4Test" index="0" unique_id=649634502]
+surface_material_override/0 = SubResource("StandardMaterial3D_7vooa")
+surface_material_override/1 = SubResource("StandardMaterial3D_kbi0g")
+surface_material_override/2 = SubResource("StandardMaterial3D_vpu5g")
+surface_material_override/3 = SubResource("StandardMaterial3D_w6bli")
+
+[node name="CellDoor_Mesh" parent="Interactive/PrisonCell4Test/CellArm_01_Mesh/CellArm_02_Mesh/CellDoor" parent_id_path=PackedInt32Array(997674247, 368092532) index="0" unique_id=134328525]
+surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
+
 [node name="Lighting" type="Node3D" parent="." unique_id=295073022]
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Lighting" unique_id=2010916355]
@@ -5274,6 +5292,15 @@ signal_name = "activate_popup"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.668, 1.079, 0)
 shape = SubResource("BoxShape3D_fxtw2")
 debug_color = Color(0.919504, 0.13431916, 0.6161928, 0.41960785)
+
+[node name="LevelEvents" type="Node" parent="." unique_id=367027751]
+
+[node name="EventTrigger" parent="LevelEvents" unique_id=1629357961 instance=ExtResource("122_osgd0")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelEvents/EventTrigger" unique_id=1600612138]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.564537, 4.1515837, 0)
+shape = SubResource("BoxShape3D_1grlp")
+debug_color = Color(0.8013382, 0.0024673748, 0.9996713, 0.41960785)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=1148700225]
 
@@ -6181,3 +6208,4 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 132, 16.8, 0)
 [editable path="Interactive/GunPodium"]
 [editable path="Interactive/GunPodiumGun"]
 [editable path="Interactive/PrisonCell3"]
+[editable path="Interactive/PrisonCell4Test"]
