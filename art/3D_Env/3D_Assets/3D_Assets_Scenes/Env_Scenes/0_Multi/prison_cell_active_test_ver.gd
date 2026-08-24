@@ -4,4 +4,9 @@ extends StaticBody3D
 @export var cell_anim_player: AnimationPlayer
 
 func _ready() -> void:
+	EventManager.connect("start_animation", _on_start_animation)
 	cell_anim_player.play("Cell_IdleClosed")
+
+func _on_start_animation() -> void:
+	#print("Animation starting now")
+	cell_anim_player.play("Cell_Opening")

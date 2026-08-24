@@ -36,3 +36,6 @@ signal system_message(dialogue: String, message_status: bool)
 signal shield_enabled_status(status: bool)
 
 signal set_door_openable_state(door: Node3D, openable: bool)
+
+signal start_animation
+#signal spawn_enemy
