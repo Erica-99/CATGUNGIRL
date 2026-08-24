@@ -5177,10 +5177,11 @@ surface_material_override/3 = SubResource("StandardMaterial3D_v58yf")
 [node name="CellDoor_Mesh" parent="Interactive/PrisonCell3/CellArm_01_Mesh/CellArm_02_Mesh/CellDoor" parent_id_path=PackedInt32Array(1763152432, 368092532) index="0" unique_id=134328525]
 surface_material_override/0 = SubResource("StandardMaterial3D_bq6qj")
 
-[node name="PrisonCell4Test" parent="Interactive" unique_id=997674247 node_paths=PackedStringArray("cell_anim_player") instance=ExtResource("53_8hrhs")]
+[node name="PrisonCell4Test" parent="Interactive" unique_id=997674247 node_paths=PackedStringArray("cell_anim_player", "enemy_spawner") instance=ExtResource("53_8hrhs")]
 transform = Transform3D(-2.249138, 0, -0.062273815, 0, 2.25, 0, 0.062273815, 0, -2.249138, 43.986813, 11.301945, 0)
 script = ExtResource("122_1grlp")
 cell_anim_player = NodePath("AnimationPlayer")
+enemy_spawner = NodePath("../../Enemies/RoomTwo/ConvictSpawner1")
 
 [node name="Cell_Mesh" parent="Interactive/PrisonCell4Test" index="0" unique_id=649634502]
 surface_material_override/0 = SubResource("StandardMaterial3D_7vooa")
@@ -5312,8 +5313,10 @@ debug_color = Color(0.8013382, 0.0024673748, 0.9996713, 0.41960785)
 room_ID = 1
 
 [node name="ConvictSpawner1" type="Node3D" parent="Enemies/RoomTwo" unique_id=1441897291 node_paths=PackedStringArray("linked_enemy_manager")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.964832, 11.379911, 0)
 script = ExtResource("125_udx6q")
 linked_enemy_manager = NodePath("..")
+wave_spawner = true
 metadata/_custom_type_script = "uid://btje133cvblp7"
 
 [node name="RoomThree" parent="Enemies" unique_id=1942243816 instance=ExtResource("123_pfdu3")]
