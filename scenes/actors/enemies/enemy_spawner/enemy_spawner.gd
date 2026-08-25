@@ -42,6 +42,7 @@ func _ready() -> void:
 
 # actually start spawning timer
 func _spawn_enemy(custom_delay: float, spawner_path: NodePath):
+	#print("1st If triggered")
 	if wave_spawner:
 		for wave_enemy in wave_enemies:
 			var enemy
@@ -53,14 +54,16 @@ func _spawn_enemy(custom_delay: float, spawner_path: NodePath):
 			_add_to_manager(enemy)
 	else:
 		if enemies.get_path_to(self) == spawner_path.slice(COMPARE_SLICE):
+			print("2nd If triggered")
 			if custom_delay == 0:
 				custom_delay = base_spawn_delay
 			spawn_delay_timer.start(custom_delay)
-			check_timer = true
+			#check_timer = true
 
 func _process(delta):
-	if check_timer:
-		print("Current Spawn Timer:", delta)
+	pass
+	#if check_timer:
+		#print("Current Spawn Timer:", delta)
 
 # create enemy
 func _on_spawn_delay_timer_timeout() -> void:
