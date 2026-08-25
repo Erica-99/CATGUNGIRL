@@ -26,6 +26,7 @@ var possible_prefabs: Array = []
 @export var wave_spawner = false
 @export var wave_enemies: Array[Enums.EnemyType] = [Enums.EnemyType.CONVICT, Enums.EnemyType.SCRUB]
  
+var check_timer: bool = false
 
 func _ready() -> void:
 	# link up spawn signal
@@ -55,9 +56,15 @@ func _spawn_enemy(custom_delay: float, spawner_path: NodePath):
 			if custom_delay == 0:
 				custom_delay = base_spawn_delay
 			spawn_delay_timer.start(custom_delay)
+			check_timer = true
+
+func _process(delta):
+	if check_timer:
+		print("Current Spawn Timer:", delta)
 
 # create enemy
 func _on_spawn_delay_timer_timeout() -> void:
+	print("timer ran out, should spawn now")
 	var random_prefab = possible_prefabs[randi_range(0, possible_prefabs.size() - 1)]
 	var enemy = random_prefab.instantiate()
 	_add_to_manager(enemy)

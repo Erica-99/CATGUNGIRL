@@ -126,7 +126,7 @@
 [ext_resource type="PackedScene" uid="uid://dld0qjmojk1t8" path="res://scenes/actors/enemies/enemy_manager/enemy_manager.tscn" id="123_pfdu3"]
 [ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict/convict_enemy.tscn" id="124_b15pa"]
 [ext_resource type="PackedScene" uid="uid://bls076phgmcus" path="res://scenes/actors/enemies/scrub/scrub.tscn" id="125_6gjsx"]
-[ext_resource type="Script" uid="uid://btje133cvblp7" path="res://scenes/actors/enemies/enemy_spawner/enemy_spawner.gd" id="125_udx6q"]
+[ext_resource type="PackedScene" uid="uid://bqxkqmc0c1lue" path="res://scenes/actors/enemies/enemy_spawner/enemy_spawner.tscn" id="125_pkg87"]
 [ext_resource type="PackedScene" uid="uid://7ndrvtyokajf" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/WallPlainMidPrison.tscn" id="126_o4jsv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jd7j6"]
@@ -5312,12 +5312,11 @@ debug_color = Color(0.8013382, 0.0024673748, 0.9996713, 0.41960785)
 [node name="RoomTwo" parent="Enemies" unique_id=18369620 instance=ExtResource("123_pfdu3")]
 room_ID = 1
 
-[node name="ConvictSpawner1" type="Node3D" parent="Enemies/RoomTwo" unique_id=1441897291 node_paths=PackedStringArray("linked_enemy_manager")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.964832, 11.379911, 0)
-script = ExtResource("125_udx6q")
+[node name="ConvictSpawner1" parent="Enemies/RoomTwo" unique_id=1110059721 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("125_pkg87")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.036503, 11.403478, 0)
 linked_enemy_manager = NodePath("..")
-wave_spawner = true
-metadata/_custom_type_script = "uid://btje133cvblp7"
+possible_spawns = [0]
+wave_enemies = [0]
 
 [node name="RoomThree" parent="Enemies" unique_id=1942243816 instance=ExtResource("123_pfdu3")]
 room_ID = 2
