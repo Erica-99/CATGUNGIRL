@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://7s5t51km8oqm"]
+
+[ext_resource type="Script" uid="uid://b5p7fo85o0wlo" path="res://scenes/components/global_guns/base/gun.gd" id="1_oeexr"]
+
+[node name="Gun" type="Node3D" unique_id=2005532977]
+visible = false
+script = ExtResource("1_oeexr")
+
+[node name="ReloadTimer" type="Timer" parent="." unique_id=1791899876]
+one_shot = true
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

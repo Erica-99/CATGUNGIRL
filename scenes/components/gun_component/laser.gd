@@ -1,5 +1,7 @@
 extends Node3D
 
+# needs reference to parent for automatic signal assignment (around perfect/imperfect shots)
+@export var parent_reference: ImprovedGun = null
 @export var is_active: bool = true
 
 ## laser sight
@@ -27,6 +29,13 @@ extends Node3D
 @onready var mesh_instance: MeshInstance3D = $LaserMeshInstance
 @onready var beam_mesh_instance: MeshInstance3D = $BeamMeshInstance
 
+@onready var _normal_flash: CPUParticles3D = $NormalMuzzleFlash
+@onready var _perfect_flash: CPUParticles3D = $PerfectMuzzleFlash
+
+# muzzle vfx has to be passed from player to gun somehow
+# previous way was jank asf - best to have vfx per gun? or for the whole gunHolder?
+var Muzzle_VFX: AnimationPlayer
+
 var _current_spread: float = 0.0 # 0.0 = perfect shot (when laser converges), 1.0 = full spread (spam/max recoil)
 var _beam_active: bool = false
 var _beam_end: Vector3 = Vector3.ZERO
@@ -39,6 +48,10 @@ func on_perfect_window_changed(active: bool) -> void:
 
 func _ready() -> void:
 	if is_active:
+		# handle signalling connections
+		parent_reference.perfect_shot_fired.connect(_perfect_shot)
+		parent_reference.imperfect_shot_fired.connect(_imperfect_shot)
+		
 		ray_cast.target_position = Vector3(max_range, 0.0, 0.0)
 		mesh_instance.mesh = ImmediateMesh.new()
 		var material = StandardMaterial3D.new()
@@ -168,4 +181,16 @@ func _draw_laser() -> void:
 	else:
 		var beam_mesh: ImmediateMesh = beam_mesh_instance.mesh
 		beam_mesh.clear_surfaces()
+
+func _imperfect_shot() -> void:
+	AudioManager.play_sfx("laser_imperfect")
+	_normal_flash.restart()
+	Muzzle_VFX.stop()
+	Muzzle_VFX.play("Imperfect")
 	
+
+func _perfect_shot() -> void:
+	AudioManager.play_sfx("laser_perfect")
+	_perfect_flash.restart()
+	Muzzle_VFX.stop()
+	Muzzle_VFX.play("Perfect")

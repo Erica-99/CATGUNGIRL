@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ykuani8v131x"]
+
+[ext_resource type="PackedScene" uid="uid://7s5t51km8oqm" path="res://scenes/components/global_guns/base/gun.tscn" id="1_8utor"]
+[ext_resource type="PackedScene" uid="uid://jxh6l32ejg47" path="res://scenes/components/global_guns/gun_components/lazer_handler/lazer_handler.tscn" id="2_ahjyh"]
+
+[node name="Pistol" unique_id=2005532977 instance=ExtResource("1_8utor")]
+gun_name = "PISTOL"
+
+[node name="Muzzle" type="Marker3D" parent="." index="1" unique_id=1407118475]
+
+[node name="LazerHandler" parent="Muzzle" index="0" unique_id=2054621043 instance=ExtResource("2_ahjyh")]
