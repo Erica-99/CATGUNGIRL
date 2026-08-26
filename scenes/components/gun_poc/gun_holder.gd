@@ -60,17 +60,38 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	var current_input_state = input_component.get_input_state()
+	# Switch to next gun (Pistol -> Shotgun -> Sniper)
 	if current_input_state.get("switch_gun", false):
 		input_component._switch_gun = false
-		_switch_gun()
+		_switch_gun(-1)
+	
+	# Switch to specific gun
+	if current_input_state.get("switch_gun_one", false):
+		input_component._switch_gun_one = false
+		_switch_gun(0)
+	if current_input_state.get("switch_gun_two", false):
+		input_component._switch_gun_two = false
+		_switch_gun(1)
+	if current_input_state.get("switch_gun_three", false):
+		input_component._switch_gun_three = false
+		_switch_gun(2)
 
-func _switch_gun():
+func _switch_gun(slot_num: int):
 	if not allow_swapping:
 		return
 	
-	current_gun_index += 1
-	if current_gun_index == current_child_count:
-		current_gun_index = 0
+	# For "next gun" swap (Q)
+	if slot_num < 0:
+		current_gun_index += 1
+		if current_gun_index == current_child_count:
+			current_gun_index = 0
+	# For specific swap (1,2,3)
+	else:
+		# Don't swap to current gun
+		if slot_num == current_gun_index:
+			return
+		else:
+			current_gun_index = slot_num
 	var rotation_save = current_gun.rotation.z
 	_deactivate_gun()
 	current_gun = get_child(current_gun_index)

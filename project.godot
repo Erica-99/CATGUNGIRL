@@ -34,7 +34,7 @@ GunList="*uid://3tukyx5h3lnm"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [dotnet]
 
@@ -58,6 +58,7 @@ folder_colors={
 "res://art/3D_Env/3D_Assets/3D_Models/Props_Models/": "orange",
 "res://art/3D_Env/3D_Assets/3D_Models/Props_Models/A_SparesAndPlaceholders/": "gray",
 "res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/": "teal",
+"res://art/TechArt/": "red",
 "res://audio/": "green",
 "res://resources/": "orange",
 "res://scenes/": "yellow",
@@ -147,6 +148,21 @@ switch_gun={
 , Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":3,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
+switch_gun_first_slot={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":49,"key_label":0,"unicode":49,"location":0,"echo":false,"script":null)
+]
+}
+switch_gun_second_slot={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":50,"key_label":0,"unicode":50,"location":0,"echo":false,"script":null)
+]
+}
+switch_gun_third_slot={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":51,"key_label":0,"unicode":51,"location":0,"echo":false,"script":null)
+]
+}
 dash={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194325,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
@@ -205,6 +221,7 @@ reload_game={
 3d_physics/layer_7="Event"
 3d_physics/layer_8="LevelPenetrable"
 3d_physics/layer_9="SoftCollider"
+3d_physics/layer_10="CameraPanZone"
 
 [physics]
 
@@ -215,3 +232,4 @@ common/physics_ticks_per_second=120
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+anti_aliasing/quality/screen_space_aa=2

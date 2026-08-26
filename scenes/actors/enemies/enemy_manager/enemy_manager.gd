@@ -4,6 +4,7 @@ class_name EnemyManager
 
 # export vars
 @export var room_ID: Enums.Room
+@export var convict_route_points: Node3D
 
 # runtime vars
 var is_cleared: bool = false
@@ -33,4 +34,15 @@ func _check_enemies_remaining(enemy):
 		if !room_cleared && is_cleared:
 			is_cleared = false
 			EventManager.room_cleared.emit(room_ID, is_cleared)
-		
+
+func get_convict_route_points() -> Array:
+	var points: Array = []
+	
+	if convict_route_points == null:
+		return points
+	
+	for child in convict_route_points.get_children():
+		if child is Marker3D:
+			points.append(child)
+	
+	return points

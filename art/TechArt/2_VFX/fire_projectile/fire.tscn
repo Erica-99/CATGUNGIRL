@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://ql0623qvuqmy"]
+
+[ext_resource type="Material" uid="uid://n0bbv4rcjrc1" path="res://art/TechArt/2_VFX/fire_projectile/prefabs/M_fire_body.tres" id="2_5y6v8"]
+[ext_resource type="Material" uid="uid://bpcngb6p4ln3c" path="res://art/TechArt/2_VFX/fire_projectile/prefabs/M_fire_trail.tres" id="3_rcinq"]
+[ext_resource type="Material" uid="uid://dtyk6mtb0qwoo" path="res://art/TechArt/2_VFX/fire_projectile/prefabs/M_fire_head.tres" id="3_srkfl"]
+[ext_resource type="Texture2D" uid="uid://6uqlxmi5nqdt" path="res://art/TechArt/2_VFX/fire_projectile/tex/T_VFX_basic1.PNG" id="4_srkfl"]
+[ext_resource type="Script" uid="uid://dtltyva8ca2cv" path="res://art/TechArt/2_VFX/shield/scripts/Trail3D.gd" id="5_e7xiy"]
+[ext_resource type="ArrayMesh" uid="uid://kq0v2r03f3qc" path="res://art/TechArt/2_VFX/fire_projectile/models/fire.obj" id="6_fvrs6"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_lwhn1"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_mfimp"]
+orientation = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mfimp"]
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("4_srkfl")
+
+[sub_resource type="Curve" id="Curve_1huvk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mfimp"]
+curve = SubResource("Curve_1huvk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lwhn1"]
+particle_flag_align_y = true
+emission_shape = 2
+emission_sphere_radius = 0.5
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+initial_velocity_min = 3.0
+initial_velocity_max = 8.0
+radial_velocity_min = 0.99997765
+radial_velocity_max = 1.9999776
+gravity = Vector3(0, 0, 0)
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_mfimp")
+color = Color(1.4369954, 0.97113675, 0.4220891, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_w60dx"]
+size = Vector2(0.1, 0.5)
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_5y6v8"]
+
+[node name="fire" type="Node3D" unique_id=841000291]
+
+[node name="Sphere" type="MeshInstance3D" parent="." unique_id=255381963]
+mesh = ExtResource("6_fvrs6")
+material_override = ExtResource("2_5y6v8")
+cast_shadow = 0
+
+[node name="head" type="MeshInstance3D" parent="." unique_id=1573158119]
+transform = Transform3D(2.34, 0, 0, 0, 2.34, 0, 0, 0, 2.34, 0, 0, -0.07895999)
+mesh = SubResource("SphereMesh_lwhn1")
+surface_material_override/0 = ExtResource("3_srkfl")
+
+[node name="trail" type="MeshInstance3D" parent="." unique_id=1681153090]
+transform = Transform3D(-1.4968649, -9.8389506e-08, 4.433392e-07, 2.9802322e-08, -2.4708776, -1.671526e-07, 1.3086009e-07, -6.2855364e-08, 5.0712085, 1.9848535e-08, 0.1536982, 1.9913507)
+mesh = SubResource("QuadMesh_mfimp")
+surface_material_override/0 = ExtResource("3_rcinq")
+
+[node name="sparks_small" type="GPUParticles3D" parent="." unique_id=1420577456]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.025895238, 0)
+material_override = SubResource("StandardMaterial3D_mfimp")
+amount = 10
+lifetime = 0.3
+explosiveness = 0.45
+process_material = SubResource("ParticleProcessMaterial_lwhn1")
+draw_pass_1 = SubResource("QuadMesh_w60dx")
+
+[node name="Trail3D" type="MeshInstance3D" parent="." unique_id=689169411]
+visible = false
+mesh = SubResource("ImmediateMesh_5y6v8")
+script = ExtResource("5_e7xiy")
+fromWidth = 1.0
+toWidth = 1.0
+lifespan = 0.3
+startColor = Color(1.380357, 1.0068789, 0, 1)
+endColor = Color(1.6852883, 0, 0, 0.7529412)
