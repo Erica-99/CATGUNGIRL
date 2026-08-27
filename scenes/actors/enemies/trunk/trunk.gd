@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 @export_category("Node References")
-@export var animator: AnimatedSprite3D
+@export var animator: AnimationPlayer
 @export var animation_manager: AnimationPlayer
 @export var state_machine: StateMachine
 
