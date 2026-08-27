@@ -16,7 +16,6 @@ const CONVICT_PREFAB = preload("res://scenes/actors/enemies/convict/convict_enem
 const SCRUB_PREFAB = preload("res://scenes/actors/enemies/scrub/scrub.tscn")
 # how much should be sliced for path comparison
 const COMPARE_SLICE: int = 2
-#const COMPARE_SLICE: int = 3
 
 #@export var possible_spawns: Array = [CONVICT_PREFAB, SCRUB_PREFAB]
 @export var possible_spawns: Array[Enums.EnemyType] = [Enums.EnemyType.CONVICT, Enums.EnemyType.SCRUB]
@@ -43,8 +42,6 @@ func _ready() -> void:
 
 # actually start spawning timer
 func _spawn_enemy(custom_delay: float, spawner_path: NodePath):
-	#print("1st If triggered")
-	print("spawner_path 2 = ", spawner_path)
 	if wave_spawner:
 		for wave_enemy in wave_enemies:
 			var enemy
@@ -55,20 +52,13 @@ func _spawn_enemy(custom_delay: float, spawner_path: NodePath):
 			enemy = enemy.instantiate()
 			_add_to_manager(enemy)
 	else:
-		print("spawner_path 2.5 = ", spawner_path)
-		print("1st thing: ", enemies.get_path_to(self))
-		print("2nd thing: ", spawner_path.slice(COMPARE_SLICE))
 		if enemies.get_path_to(self) == spawner_path.slice(COMPARE_SLICE):
-			#print("2nd If triggered")
 			if custom_delay == 0:
 				custom_delay = base_spawn_delay
 			spawn_delay_timer.start(custom_delay)
-	print("1st thing: ", enemies.get_path_to(self))
-	print("2nd thing: ", spawner_path.slice(COMPARE_SLICE))
 
 # create enemy
 func _on_spawn_delay_timer_timeout() -> void:
-	print("timer ran out, should spawn now")
 	var random_prefab = possible_prefabs[randi_range(0, possible_prefabs.size() - 1)]
 	var enemy = random_prefab.instantiate()
 	_add_to_manager(enemy)
