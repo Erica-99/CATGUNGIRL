@@ -10,6 +10,7 @@ signal state_changed(prev: String, new: String)
 @export var initial_state: State
 
 @export_category("Debug")
+##enable to block state transition when no aggro is enable
 @export var block_state_transitions: bool = true
 
 var current_state : State
