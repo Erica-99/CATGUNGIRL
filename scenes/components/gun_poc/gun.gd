@@ -203,6 +203,10 @@ func _update_aim(mouse_world: Vector3, input_state: Dictionary, delta: float) ->
 		_wobble_time = 0.0
 		
 	var current_aim_speed = aim_speed
+	
+	if using_controller:
+		current_aim_speed /= 2.0
+	
 	if _is_spamming and not _is_aim_settled():
 		current_aim_speed = aim_speed * spam_aim_multiplier
 		
