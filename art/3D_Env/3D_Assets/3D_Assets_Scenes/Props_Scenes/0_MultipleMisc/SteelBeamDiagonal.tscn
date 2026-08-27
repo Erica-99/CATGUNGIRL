@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b1p88l2y8q31k"]
+
+[ext_resource type="ArrayMesh" uid="uid://bgjw6p4a32rou" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/0_MultipleMisc/SteelBeamDiagonal.obj" id="1_jqv72"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jqv72"]
+points = PackedVector3Array(-0.323482, 1.617694, 0, -0.323482, 4.800128, 0, 0.32348207, 1.617694, 0, -0.323482, 1.617694, 0.025008902, 0.32348207, 4.800128, 0, -0.323482, 4.800128, 0.025008902, -0.2694628, 4.801998, 2.658901, 0.32348207, 1.617694, 0.025008902, -0.23190898, 4.0074806, 3.6387954, -0.2694628, 4.7655296, 3.871075, 0.32348207, 4.800128, 0.025008902, 0.2693995, 4.801998, 2.658901, -0.2694628, 4.801998, 3.871075, 0.2693995, 4.7655296, 3.871075, 0.2318457, 4.0074806, 3.6387954, -0.23190898, 4.5127425, 3.8441715, -0.14546557, 4.558874, 3.8574338, -0.12874684, 4.5520167, 3.8574338, 0.2693995, 4.801998, 3.871075, 0.13368651, 4.5520167, 3.8574338, 0.15040523, 4.558874, 3.8574338, 0.2318457, 4.5127425, 3.8441715)
+
+[node name="SteelBeamDiagonal" type="StaticBody3D" unique_id=1825941401]
+
+[node name="SteelBeamDiagonal_Mesh" type="MeshInstance3D" parent="." unique_id=1178736235]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = ExtResource("1_jqv72")
+
+[node name="SteelBeamDiagonal_Collision" type="CollisionShape3D" parent="." unique_id=808538773]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_jqv72")
