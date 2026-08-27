@@ -57,6 +57,11 @@ var single_reload_timer: float = 0 # to control changing reload times (e.g. 1.0 
 ## Reload timer (can be replaced with programmatical timer as needed)
 @onready var reload_timer: Timer = $ReloadTimer
 
+## Controller Aiming variables
+var using_controller = false
+var controller_deadzone = 0.2
+var target_angle : float
+
 ## bzzt
 
 signal beam_fired(beam_end: Vector3, charge_progress: float)
@@ -110,6 +115,16 @@ var _is_reloading: bool = false
 # check if aim within threshold
 func _is_aim_settled() -> bool:
 	return abs(_recoil_offset) < recoil_amount * (1.0 - aim_settled_threshold / 100.0)
+	
+
+func _input(event):
+	if event is InputEventJoypadMotion:
+		if abs(event.axis_value) > controller_deadzone:
+			using_controller = true
+	
+	elif event is InputEventMouseMotion:
+			using_controller = false
+	return
 
 func _process(delta: float) -> void:
 	
@@ -162,14 +177,22 @@ func _process(delta: float) -> void:
 	perfect_window_changed.emit(in_window)
 
 
+
 func _update_aim(mouse_world: Vector3, input_state: Dictionary, delta: float) -> void:
 	if mouse_world == null:
 		return
 	# direction vector from gun to mouse
-	var direction = mouse_world - global_position
-	direction.z = 0.0
-	var target_angle = Vector2(direction.x, direction.y).angle()
-	_current_target_angle = target_angle
+	if using_controller:
+		var controller_input = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
+		if controller_input.length() > controller_deadzone:
+			controller_input.y *= -1
+			target_angle = controller_input.angle()
+			_current_target_angle = target_angle
+	else:
+		var direction = mouse_world - global_position
+		direction.z = 0.0
+		target_angle = Vector2(direction.x, direction.y).angle()
+		_current_target_angle = target_angle
 	
 	var is_moving = input_state.get("movement", 0.0) != 0.0 or input_state.get("jumping", false)
 	var wobble: float = 0.0
