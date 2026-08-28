@@ -29,7 +29,11 @@ func set_no_aggro(enabled: bool) -> void:
 
 func set_pause_enemies(enabled: bool) -> void:
 	pause_enemies = enabled
-	print("Pause Enemies: ", pause_enemies)
+	var enemy_managers: Array = []
+	_find_enemy_managers(get_tree().current_scene, enemy_managers)
+	
+	for enemy_manager in enemy_managers:
+		enemy_manager.set_enemies_paused(enabled)
 
 func set_infinite_ammo(enabled: bool) -> void:
 	infinite_ammo = enabled

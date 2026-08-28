@@ -8,6 +8,7 @@ class_name EnemyManager
 
 # runtime vars
 var is_cleared: bool = false
+var paused_enemy_process_modes: Dictionary = {}
 
 signal stage_cleared
 
@@ -70,3 +71,25 @@ func kill_all_enemies() -> void:
 		debug_damage.stun_time = 0.0
 		debug_damage.source = get_path()
 		health_component.take_damage_or_heal(debug_damage)
+
+func set_enemies_paused(enabled: bool) -> void:
+	var enemies = find_children("*", "CharacterBody3D", true)
+	
+	for enemy in enemies:
+		if enemy.get("is_dead") == true:
+			continue
+		
+		if enabled:
+			if !paused_enemy_process_modes.has(enemy):
+				paused_enemy_process_modes[enemy] = enemy.process_mode
+			
+			enemy.velocity = Vector3.ZERO
+			enemy.process_mode = Node.PROCESS_MODE_DISABLED
+		else:
+			if paused_enemy_process_modes.has(enemy):
+				enemy.process_mode = paused_enemy_process_modes[enemy]
+			else:
+				enemy.process_mode = Node.PROCESS_MODE_INHERIT
+	
+	if !enabled:
+		paused_enemy_process_modes.clear()
