@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://coirj7uqclsre"]
 
 [ext_resource type="ArrayMesh" uid="uid://dck3apkt5v8bv" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/1_Prison/FloorPrison.obj" id="1_d55h8"]
-[ext_resource type="Texture2D" uid="uid://bnq5s5pb7dh6j" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Floor/Floor_RoofPrison_Base_color.png" id="2_ha1nv"]
-[ext_resource type="Texture2D" uid="uid://cs382iyixowlj" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Floor/Floor_RoofPrison_Mixed_AO.png" id="3_i4kui"]
-[ext_resource type="Texture2D" uid="uid://bm4v6ak55dy0e" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Floor/Floor_RoofPrison_Height.png" id="4_f2y7y"]
-[ext_resource type="Texture2D" uid="uid://dcp37yongg4mv" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Floor/Floor_RoofPrison_Base_metalness.png" id="5_0lkn4"]
-[ext_resource type="Texture2D" uid="uid://dqbmkyoo6y5r2" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Floor/Floor_RoofPrison_Normal_OpenGL.png" id="6_bk5py"]
-[ext_resource type="Texture2D" uid="uid://dn0pmjhi73ibf" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Floor/Floor_RoofPrison_Specular_roughness.png" id="7_v4b57"]
+[ext_resource type="Texture2D" uid="uid://bnq5s5pb7dh6j" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/FloorRoof/Floor_RoofPrison_Base_color.png" id="2_ha1nv"]
+[ext_resource type="Texture2D" uid="uid://cs382iyixowlj" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/FloorRoof/Floor_RoofPrison_Mixed_AO.png" id="3_i4kui"]
+[ext_resource type="Texture2D" uid="uid://bm4v6ak55dy0e" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/FloorRoof/Floor_RoofPrison_Height.png" id="4_f2y7y"]
+[ext_resource type="Texture2D" uid="uid://dcp37yongg4mv" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/FloorRoof/Floor_RoofPrison_Base_metalness.png" id="5_0lkn4"]
+[ext_resource type="Texture2D" uid="uid://dqbmkyoo6y5r2" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/FloorRoof/Floor_RoofPrison_Normal_OpenGL.png" id="6_bk5py"]
+[ext_resource type="Texture2D" uid="uid://dn0pmjhi73ibf" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/FloorRoof/Floor_RoofPrison_Specular_roughness.png" id="7_v4b57"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ooar"]
 albedo_texture = ExtResource("2_ha1nv")
@@ -21,8 +21,8 @@ heightmap_enabled = true
 heightmap_scale = 0.0
 heightmap_texture = ExtResource("4_f2y7y")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_d55h8"]
-points = PackedVector3Array(-3.001934, -0.100005, -2.500938, -3.001934, 0.100004986, -2.500938, 3.001934, -0.100005, -2.500938, -3.001934, -0.100005, 2.499062, -3.001934, 0.100004986, 2.499062, 3.001934, 0.100004986, -2.500938, 3.001934, -0.100005, 2.499062, 3.001934, 0.100004986, 2.499062)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ha1nv"]
+points = PackedVector3Array(-2.500911, -0.100005, -2.5, -2.500911, 0.100004986, -2.5, 2.500911, -0.100005, -2.5, -2.500911, -0.100005, 2.5, -2.500911, 0.100004986, 2.5, 2.500911, 0.100004986, -2.5, 2.500911, -0.100005, 2.5, 2.500911, 0.100004986, 2.5)
 
 [node name="FloorPrison" type="StaticBody3D" unique_id=2022107086]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -31,5 +31,5 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("1_d55h8")
 surface_material_override/0 = SubResource("StandardMaterial3D_2ooar")
 
-[node name="FloorPrison_Collision" type="CollisionShape3D" parent="." unique_id=1647059328]
-shape = SubResource("ConvexPolygonShape3D_d55h8")
+[node name="FloorPrison_Collision" type="CollisionShape3D" parent="." unique_id=315250414]
+shape = SubResource("ConvexPolygonShape3D_ha1nv")

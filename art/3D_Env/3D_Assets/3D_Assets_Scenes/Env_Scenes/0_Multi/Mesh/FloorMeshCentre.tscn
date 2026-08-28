@@ -36,8 +36,8 @@ heightmap_enabled = true
 heightmap_scale = 0.0
 heightmap_texture = ExtResource("4_043gx")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_aju46"]
-points = PackedVector3Array(-3.001934, 0.010589, -2.359406, -3.001934, 0.040424995, -2.359406, 3.001934, 0.010589, -2.359406, -3.001934, 0.010589, 2.35753, -3.001934, 0.040424995, 2.35753, 3.001934, 0.040424995, -2.359406, 3.001934, 0.010589, 2.35753, 3.001934, 0.040424995, 2.35753)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_keixx"]
+points = PackedVector3Array(-2.500911, 0.010589, -2.359406, -2.500911, 0.010589, 2.35753, -2.500911, 0.040424995, -2.359406, 2.500911, 0.010589, -2.359406, -2.500911, 0.040424995, 2.35753, 2.500911, 0.010589, 2.35753, 2.500911, 0.040424995, -2.359406, 2.500911, 0.040424995, 2.35753)
 
 [node name="FloorMeshCentre" type="StaticBody3D" unique_id=663417651]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -56,3 +56,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_3ov8p")
 [node name="FloorMeshCentre_02_Collision" type="CollisionShape3D" parent="." unique_id=751549995]
 transform = Transform3D(1.06, 0, 0, 0, 1.06, 0, 0, 0, 1.06, 0, 0.058, 0)
 shape = SubResource("ConvexPolygonShape3D_aju46")
+
+[node name="FloorMeshCentre_02_Collision" type="CollisionShape3D" parent="." unique_id=1188120147]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.058, 0)
+shape = SubResource("ConvexPolygonShape3D_keixx")
+
