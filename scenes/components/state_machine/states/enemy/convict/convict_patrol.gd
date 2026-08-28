@@ -9,6 +9,7 @@ var actor: CharacterBody3D
 var anim: AnimationPlayer
 var patrol_speed: float
 var direction: int
+var stinger_call: StingerComponent
 
 var patrol_timer: float = 4 # time in seconds that enemy walks for
 var patrol_track: float = 0 # timer tracker
@@ -19,6 +20,7 @@ func init(blackboard_dict: Dictionary) -> void:
 	anim = blackboard["anim"]
 	direction = blackboard["direction"]
 	patrol_speed = blackboard["patrol_speed"]
+	stinger_call = blackboard["stinger_call"]
 
 func update(_delta: float) -> void:
 	patrol_track += _delta
@@ -32,6 +34,9 @@ func physics_update(_delta: float) -> void:
 	actor.velocity.x += direction * patrol_speed * _delta
 	actor.velocity.x = clamp(actor.velocity.x, -patrol_speed, patrol_speed)
 	actor.move_and_slide()
+
+func exit() -> void:
+	stinger_call.play_stinger("test_alert")
 
 func _on_detection_area_3d_body_entered(body):
 	if body.is_in_group("player"):

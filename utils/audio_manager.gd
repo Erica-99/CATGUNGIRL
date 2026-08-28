@@ -10,7 +10,6 @@ extends Node
 @export var sound_effects: Array[CallableSFX]
 
 @export_category("Stingers")
-@export var hotseat: AudioStreamPlayer3D
 @export var enemy_stingers: Array[CallableSFX]
 
 var music_dict: Dictionary
@@ -19,6 +18,8 @@ var stinger_dict: Dictionary
 
 var sfx_global_pool: Array[AudioStreamPlayer]
 var sfx_3D_pool: Array[AudioStreamPlayer3D]
+
+var hotseat: AudioStreamPlayer3D
 
 func _ready() -> void:
 	#region Audio Dictionary Construction
@@ -150,20 +151,13 @@ func play_sfx_at_location(sfx_ref: String, location: Vector3, loop: bool = false
 				# Return asp3d ref for termination control
 				return asp3d
 
-func play_stinger(stinger_ref: String, location: Vector3):
-	if hotseat.playing == false:
-		var stinger: SoundEffect = get_stinger_from_dict(stinger_ref)
-		if stinger == null:
-			push_error("Stinger Resource is not found")
-		else:
-			hotseat.stream = stinger.sound_clip
-			hotseat.volume_db = stinger.volume
-			hotseat.pitch_scale = stinger.pitch_scale + randf_range(-stinger.pitch_random_shift, stinger.pitch_random_shift)
-			hotseat.global_position = location
-			
-			hotseat.play()
+func play_stinger(asp3d: AudioStreamPlayer3D, stinger_ref: String):
+	if hotseat == null:
+		take_hotseat(asp3d, stinger_ref)
+	elif hotseat.playing == false:
+		take_hotseat(asp3d, stinger_ref)
 	else:
-		play_sfx_at_location(stinger_ref, location)
+		play_sfx_at_location(stinger_ref, asp3d.global_position)
 
 # Retrieves a sound effect resource from a SoundEffect or SoundEffectPool in the sfx_dict, that matches sfx_ref
 func get_sfx_from_dict(sfx_ref: String) -> SoundEffect:
@@ -214,3 +208,16 @@ func configure_3D_asp(asp3d: AudioStreamPlayer3D, sound_effect: SoundEffect, loc
 	asp3d.finished.disconnect(on_sfx_finished) # Close existing connection
 	asp3d.finished.connect(on_sfx_finished.bind(sound_effect)) # Open new connection
 				
+
+func take_hotseat(asp3d: AudioStreamPlayer3D, stinger_ref: String):
+	var stinger: SoundEffect = get_stinger_from_dict(stinger_ref)
+	if stinger == null:
+		push_error("Stinger Resource is not found")
+	else:
+		hotseat = asp3d
+		hotseat.stream = stinger.sound_clip
+		hotseat.volume_db = stinger.volume
+		hotseat.pitch_scale = stinger.pitch_scale + randf_range(-stinger.pitch_random_shift, stinger.pitch_random_shift)
+			
+		hotseat.play()
+	

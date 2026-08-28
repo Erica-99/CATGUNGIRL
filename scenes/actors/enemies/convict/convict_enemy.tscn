@@ -19,6 +19,7 @@
 [ext_resource type="Shape3D" uid="uid://c5sya8gsonmd8" path="res://resources/hitboxes/enemies/convict/convict_attack_hb.tres" id="19_a68hs"]
 [ext_resource type="PackedScene" uid="uid://csd06hicr5wny" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="20_31snm"]
 [ext_resource type="Script" uid="uid://v4r5cbix8jcm" path="res://scenes/components/state_machine/states/enemy/convict/convict_pounce_attack.gd" id="20_q6lyk"]
+[ext_resource type="PackedScene" uid="uid://1cp7l8jl2mma" path="res://scenes/components/stinger_component/stinger_component.tscn" id="21_28j07"]
 [ext_resource type="Script" uid="uid://dpwol7txodmxp" path="res://scenes/components/soft_collision.gd" id="21_leh5i"]
 
 [sub_resource type="Animation" id="Animation_gi3f3"]
@@ -550,7 +551,7 @@ radius = 6.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_leh5i"]
 
-[node name="Convict" type="CharacterBody3D" unique_id=1506947017 node_paths=PackedStringArray("animator", "health_comp", "state_machine", "audio_caller", "start_idle", "start_patrol", "start_aggro", "attack_hitbox")]
+[node name="Convict" type="CharacterBody3D" unique_id=1506947017 node_paths=PackedStringArray("animator", "health_comp", "state_machine", "sfx_caller", "stinger_caller", "start_idle", "start_patrol", "start_aggro", "attack_hitbox")]
 collision_layer = 4
 collision_mask = 129
 floor_constant_speed = true
@@ -559,7 +560,8 @@ script = ExtResource("1_awmif")
 animator = NodePath("Visuals/AnimationPlayer")
 health_comp = NodePath("HealthComponent")
 state_machine = NodePath("StateMachine")
-audio_caller = NodePath("Visuals/FootstepCaller")
+sfx_caller = NodePath("Visuals/FootstepCaller")
+stinger_caller = NodePath("StingerComponent")
 start_idle = NodePath("StateMachine/ConvictIdle")
 start_patrol = NodePath("StateMachine/ConvictPatrol")
 start_aggro = NodePath("StateMachine/ConvictChase")
@@ -710,6 +712,8 @@ script = ExtResource("21_leh5i")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SoftCollider" unique_id=550787868]
 shape = SubResource("SphereShape3D_leh5i")
 debug_color = Color(0, 0.61960787, 0.5686275, 0.41960785)
+
+[node name="StingerComponent" parent="." unique_id=392420070 instance=ExtResource("21_28j07")]
 
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="health_changed" from="HealthComponent" to="StateMachine/ConvictIdle" method="_on_health_component_health_changed"]
