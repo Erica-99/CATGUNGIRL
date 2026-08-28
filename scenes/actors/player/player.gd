@@ -55,9 +55,12 @@ var speed_multiplier: float = 1.0
 # gun enabled by default
 @export var has_gun: bool = true
 
-@export_category("Debug Variables")
+@export_category("Debug")
 ##Controls no clip speed
 @export var no_clip_speed: float = 25.0
+##Nodes hidden when invisible debug is on
+@export var debug_hidden_nodes: Array[Node3D] = []
+var player_invisible_last_frame: bool = false
 
 @export_category("Movement Dependencies")
 @export var input_component: InputComponent
@@ -109,6 +112,7 @@ func _ready() -> void:
 	_set_gun_enabled(has_gun)
 
 func _process(_delta: float) -> void:
+	_handle_debug_player_invisible()
 	var current_state = input_component.get_input_state()
 	
 	if current_state["movement"] != 0 and blackboard["enable_facing_updates"]:
@@ -267,3 +271,15 @@ func _set_debug_no_clip_enabled(enabled: bool) -> void:
 		collision_layer = original_collision_layer
 		collision_mask = original_collision_mask
 		movement_state_machine.process_mode = original_state_machine_process_mode
+
+func _handle_debug_player_invisible() -> void:
+	if player_invisible_last_frame == DebugManager.player_invisible:
+		return
+	
+	player_invisible_last_frame = DebugManager.player_invisible
+	
+	for node in debug_hidden_nodes:
+		if node == null:
+			continue
+		
+		node.visible = !DebugManager.player_invisible
