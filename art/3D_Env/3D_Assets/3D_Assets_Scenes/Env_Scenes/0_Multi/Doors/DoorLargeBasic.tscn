@@ -1,123 +1,17 @@
 [gd_scene format=3 uid="uid://c7wdqebqhqbuu"]
 
 [ext_resource type="ArrayMesh" uid="uid://bok0rpxpwpb1p" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/DoorwayLargeBasic.obj" id="1_fcy0q"]
-[ext_resource type="Script" uid="uid://cfm1cn1jsl5sl" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/doorlarge_basic.gd" id="1_h1lf6"]
 [ext_resource type="ArrayMesh" uid="uid://dtc1kkneki67t" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/DoorLargeBasic.obj" id="2_6if0h"]
 [ext_resource type="ArrayMesh" uid="uid://b4053jlwdvpmc" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/SmallLight.obj" id="2_87vft"]
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dejms"]
-points = PackedVector3Array(-0.173392, 0.116572, -1.869592, -0.173392, 3.68383, -1.869592, 0.173392, 0.116572, -1.869592, -0.173392, 0.116572, 1.869591, 0.173392, 3.68383, -1.869592, -0.173392, 3.68383, 1.869591, 0.173392, 0.116572, 1.869591, 0.173392, 3.68383, 1.869591)
-
-[sub_resource type="Animation" id="Animation_epsmd"]
-resource_name = "DoorLargeBasic_Closing"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, -3.529), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_ty6ui"]
-resource_name = "DoorLargeBasic_IdleClosed"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_6y024"]
-resource_name = "DoorLargeBasic_IdleOpen"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, -3.529)]
-}
-
-[sub_resource type="Animation" id="Animation_h1lf6"]
-resource_name = "DoorLargeBasic"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, -3.5294356)]
-}
-
-[sub_resource type="Animation" id="Animation_tewx1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_epsmd"]
-_data = {
-&"DoorLargeBasic_Closing": SubResource("Animation_epsmd"),
-&"DoorLargeBasic_IdleClosed": SubResource("Animation_ty6ui"),
-&"DoorLargeBasic_IdleOpen": SubResource("Animation_6y024"),
-&"DoorLargeBasic_Opening": SubResource("Animation_h1lf6"),
-&"RESET": SubResource("Animation_tewx1")
-}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fcy0q"]
 size = Vector3(1.1309204, 0.4975586, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_h1lf6"]
-size = Vector3(7, 2.5, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwn6c"]
-albedo_color = Color(1, 0, 0, 1)
-emission_enabled = true
-emission = Color(0, 1, 0, 1)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dejms"]
+points = PackedVector3Array(-0.173392, 0.116572, -1.869592, -0.173392, 3.68383, -1.869592, 0.173392, 0.116572, -1.869592, -0.173392, 0.116572, 1.869591, 0.173392, 3.68383, -1.869592, -0.173392, 3.68383, 1.869591, 0.173392, 0.116572, 1.869591, 0.173392, 3.68383, 1.869591)
 
 [node name="DoorLargeBasic" type="StaticBody3D" unique_id=101148383]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-
-[node name="DoorLargeBasic" type="StaticBody3D" parent="." unique_id=1927791547 node_paths=PackedStringArray("animation_player")]
-script = ExtResource("1_h1lf6")
-animation_player = NodePath("DoorLargeBasic_AnimationPlayer")
-
-[node name="DoorLargeBasic_Mesh" type="MeshInstance3D" parent="DoorLargeBasic" unique_id=600289034]
-mesh = ExtResource("2_6if0h")
-
-[node name="DoorLargeBasic_Collision" type="CollisionShape3D" parent="DoorLargeBasic" unique_id=469734932]
-shape = SubResource("ConvexPolygonShape3D_dejms")
-
-[node name="DoorLargeBasic_AnimationPlayer" type="AnimationPlayer" parent="DoorLargeBasic" unique_id=754441030]
-libraries/ = SubResource("AnimationLibrary_epsmd")
 
 [node name="DoorwayLargeBasic_Mesh" type="MeshInstance3D" parent="." unique_id=946614900]
 mesh = ExtResource("1_fcy0q")
@@ -126,14 +20,11 @@ mesh = ExtResource("1_fcy0q")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.1552734e-05, 3.8535066, 0)
 shape = SubResource("BoxShape3D_fcy0q")
 
-[node name="DoorOpenArea" type="Area3D" parent="." unique_id=1499485327]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5933199, 0)
-collision_layer = 0
-collision_mask = 6
+[node name="DoorLargeBasic_Mesh" type="MeshInstance3D" parent="." unique_id=600289034]
+mesh = ExtResource("2_6if0h")
 
-[node name="DoorOpenerCollider" type="CollisionShape3D" parent="DoorOpenArea" unique_id=1934298092]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
-shape = SubResource("BoxShape3D_h1lf6")
+[node name="DoorLargeBasic_Collision" type="CollisionShape3D" parent="." unique_id=469734932]
+shape = SubResource("ConvexPolygonShape3D_dejms")
 
 [node name="SmallLight" type="MeshInstance3D" parent="." unique_id=1226034978]
 transform = Transform3D(1.4139173, -1.4145097, 2.1358503e-07, -1.4145097, -1.4139173, 2.1349557e-07, 0, -3.019916e-07, -2, 0.45017707, 3.8231373, 0)
@@ -142,17 +33,3 @@ mesh = ExtResource("2_87vft")
 [node name="SmallLight2" type="MeshInstance3D" parent="." unique_id=824556057]
 transform = Transform3D(-1.4097637, -1.4186494, 2.1421008e-07, -1.4186494, 1.4097637, -2.1286836e-07, 4.2089067e-18, -3.0199158e-07, -2, -0.45, 3.823, 0)
 mesh = ExtResource("2_87vft")
-
-[node name="EXITHERECYLINDER" type="CSGCylinder3D" parent="." unique_id=689553744]
-transform = Transform3D(0.28159925, 0, 0, 0, -2.21282e-08, 0.28159925, 0, -0.50623417, -1.2309093e-08, 0.54542136, 3.7162697, 0)
-height = 1.0303955
-material = SubResource("StandardMaterial3D_dwn6c")
-
-[node name="EXITHERECYLINDER2" type="CSGCylinder3D" parent="." unique_id=1899453401]
-transform = Transform3D(0.28159925, 0, 0, 0, -2.21282e-08, 0.28159925, 0, -0.50623417, -1.2309093e-08, -0.543571, 3.7162697, 0)
-height = 1.0303955
-material = SubResource("StandardMaterial3D_dwn6c")
-
-[connection signal="animation_finished" from="DoorLargeBasic/DoorLargeBasic_AnimationPlayer" to="DoorLargeBasic" method="_on_door_basic_animation_player_animation_finished"]
-[connection signal="body_entered" from="DoorOpenArea" to="DoorLargeBasic" method="open"]
-[connection signal="body_exited" from="DoorOpenArea" to="DoorLargeBasic" method="close"]

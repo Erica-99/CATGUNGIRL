@@ -7,13 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://0m33qxdqhrfp" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Base_metalness.png" id="5_xa7ky"]
 [ext_resource type="Texture2D" uid="uid://502420uyft1k" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Normal_OpenGL.png" id="6_s3583"]
 [ext_resource type="Texture2D" uid="uid://ccuxlmt0vkg4f" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Specular_roughness.png" id="7_077g1"]
-[ext_resource type="ArrayMesh" uid="uid://cemntpfgwid56" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/2_Panopticon/CellPlacements.obj" id="8_y6n0f"]
-[ext_resource type="Texture2D" uid="uid://boajeduprdcum" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Base_color.png" id="9_how8r"]
-[ext_resource type="Texture2D" uid="uid://cqjmuyra8pf8y" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Mixed_AO.png" id="10_6h6pk"]
-[ext_resource type="Texture2D" uid="uid://c4by1atd5xpq6" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Height.png" id="11_6ynjb"]
-[ext_resource type="Texture2D" uid="uid://b42dldjildi6x" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Base_metalness.png" id="12_4nw1b"]
-[ext_resource type="Texture2D" uid="uid://vnh1mohlmhni" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Normal_OpenGL.png" id="13_gphwe"]
-[ext_resource type="Texture2D" uid="uid://drpgycg7mebgy" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Specular_roughness.png" id="14_616oa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gllay"]
 albedo_texture = ExtResource("2_a40nv")
@@ -28,19 +21,6 @@ heightmap_enabled = true
 heightmap_scale = 0.0
 heightmap_texture = ExtResource("4_n0wds")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4e6h5"]
-albedo_texture = ExtResource("9_how8r")
-metallic = 1.0
-metallic_texture = ExtResource("12_4nw1b")
-roughness_texture = ExtResource("14_616oa")
-normal_enabled = true
-normal_texture = ExtResource("13_gphwe")
-ao_enabled = true
-ao_texture = ExtResource("10_6h6pk")
-heightmap_enabled = true
-heightmap_scale = 0.0
-heightmap_texture = ExtResource("11_6ynjb")
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_f260d"]
 size = Vector3(0.33666992, 29.410212, 1)
 
@@ -50,10 +30,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 [node name="PanopticonWalls_Mesh" type="MeshInstance3D" parent="." unique_id=64085491]
 mesh = ExtResource("1_f260d")
 surface_material_override/0 = SubResource("StandardMaterial3D_gllay")
-
-[node name="CellPlacements_Mesh" type="MeshInstance3D" parent="." unique_id=860001918]
-mesh = ExtResource("8_y6n0f")
-surface_material_override/0 = SubResource("StandardMaterial3D_4e6h5")
 
 [node name="PanopticonWalls_Collision_001" type="CollisionShape3D" parent="." unique_id=768091935]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 5, -37.36221, -14.707191, 0)
