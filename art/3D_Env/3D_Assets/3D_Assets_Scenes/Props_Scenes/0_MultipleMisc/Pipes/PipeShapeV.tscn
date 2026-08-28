@@ -1,6 +1,18 @@
 [gd_scene format=3 uid="uid://202p0nqqyq2q"]
 
 [ext_resource type="ArrayMesh" uid="uid://c48wd3ik3ybku" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/0_MultipleMisc/Pipes/PipeShapeV.obj" id="1_aidie"]
+[ext_resource type="Texture2D" uid="uid://bbpkgdsu2gp7y" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/Pipes/PipesTexture_BC.png" id="2_i0qgd"]
+[ext_resource type="Texture2D" uid="uid://nhvvr0k2ekny" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/Pipes/PipesTexture_M.png" id="3_veyw2"]
+[ext_resource type="Texture2D" uid="uid://csgb8m3me7rx8" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/Pipes/PipesTexture_N.png" id="4_tjpwl"]
+[ext_resource type="Texture2D" uid="uid://ohyqjbbhmmvp" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/Pipes/PipesTexture_R.png" id="5_cer4b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_in6yj"]
+albedo_texture = ExtResource("2_i0qgd")
+metallic = 1.0
+metallic_texture = ExtResource("3_veyw2")
+roughness_texture = ExtResource("5_cer4b")
+normal_enabled = true
+normal_texture = ExtResource("4_tjpwl")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oyxjb"]
 points = PackedVector3Array(-2.6911497e-05, 0, -0.12509787, -2.6911497e-05, 6.240211e-05, -0.13752937, 0.06872308, 0, -0.11912686, -0.06875, 0, -0.11912686, -0.06875, 0.3809025, -0.5, -2.6911497e-05, 0.36249387, -0.49990213, 0.06872308, 0.3809025, -0.5, 0.1190608, 0, -0.06881362, 0.1190608, 0.4311986, -0.5, -0.11908771, 0, -0.06881362, -0.11908771, 0.4311986, -0.5, -2.6911497e-05, 0.37497428, -0.5, 0.1375, 0, -9.787083e-05, 0.1375, 0.49996573, -0.5, -0.1375, 0, -9.787083e-05, -0.1375, 0.49996573, -0.5, 0.1375, 0.49996573, 0.49990213, 0.1190608, 0, 0.06871575, 0.1190608, 0.56873286, -0.5, 0.13747309, 0.50015295, -0.4500783, -0.11908771, 0, 0.06871575, -0.1375, 0.49996573, 0.49990213, -0.1375, 0.50015295, -0.4500783, -0.11908771, 0.56873286, -0.5, 0.13747309, 0.50015295, 0.44998044, 0.1190608, 0.56873286, 0.49990213, 0.10823953, 0.56249267, 0.5, 0.12498288, 0.49996573, 0.5, 0.10823953, 0.43743882, 0.5, 0.1190608, 0.4311986, 0.49990213, 0.06872308, 0, 0.119028986, 0.06872308, 0.6190289, -0.5, -0.06875, 0, 0.119028986, -0.11908771, 0.4311986, 0.49990213, -0.12500979, 0.49996573, 0.5, -0.11908771, 0.56873286, 0.49990213, -0.1375, 0.50015295, 0.44998044, -0.06875, 0.6190289, -0.5, 0.06872308, 0.6190289, 0.49990213, 0.062477976, 0.6082334, 0.5, 0.062477976, 0.39169806, 0.5, 0.06872308, 0.3809025, 0.49990213, -2.6911497e-05, 6.240211e-05, 0.1374315, -2.6911497e-05, 0, 0.12490213, -2.6911497e-05, 0.6375, -0.5, -0.06875, 0.3809025, 0.49990213, -0.062504895, 0.39169806, 0.5, -0.10826644, 0.43743882, 0.5, -0.10826644, 0.56249267, 0.5, -0.062504895, 0.6082334, 0.5, -0.06875, 0.6190289, 0.49990213, -2.6911497e-05, 0.6375, 0.49990213, -2.6911497e-05, 0.62495714, 0.5, -2.6911497e-05, 0.37497428, 0.5, -2.6911497e-05, 0.36249387, 0.49980426)
@@ -10,6 +22,7 @@ points = PackedVector3Array(-2.6911497e-05, 0, -0.12509787, -2.6911497e-05, 6.24
 [node name="PipeShapeV_Mesh" type="MeshInstance3D" parent="." unique_id=1136264988]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("1_aidie")
+surface_material_override/0 = SubResource("StandardMaterial3D_in6yj")
 
 [node name="PipeShapeV_Collision" type="CollisionShape3D" parent="." unique_id=857745848]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

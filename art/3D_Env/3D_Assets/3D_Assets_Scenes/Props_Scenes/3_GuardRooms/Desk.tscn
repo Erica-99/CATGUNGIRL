@@ -1,6 +1,18 @@
 [gd_scene format=3 uid="uid://bgnpboigg42pb"]
 
 [ext_resource type="ArrayMesh" uid="uid://dw1uo5rgidh4q" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/3_GuardRooms/Desk.obj" id="1_406uk"]
+[ext_resource type="Texture2D" uid="uid://b256oosfrvvs2" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/Desk/Desk_BC.png" id="2_grirp"]
+[ext_resource type="Texture2D" uid="uid://cl0hq6ied65rh" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/Desk/Desk_M.png" id="3_8s5yi"]
+[ext_resource type="Texture2D" uid="uid://ejye1fs81o8t" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/Desk/Desk_N.png" id="4_07mki"]
+[ext_resource type="Texture2D" uid="uid://cogkngp0mqf3p" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/Desk/Desk_R.png" id="5_4v1t8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yha58"]
+albedo_texture = ExtResource("2_grirp")
+metallic = 1.0
+metallic_texture = ExtResource("3_8s5yi")
+roughness_texture = ExtResource("5_4v1t8")
+normal_enabled = true
+normal_texture = ExtResource("4_07mki")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t5n1s"]
 size = Vector3(0.969586, 0.8, 2.061482)
@@ -10,6 +22,7 @@ size = Vector3(0.969586, 0.8, 2.061482)
 [node name="Desk_Mesh" type="MeshInstance3D" parent="." unique_id=1284894835]
 transform = Transform3D(-1.09278474e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278474e-07, 0, 0, 0)
 mesh = ExtResource("1_406uk")
+surface_material_override/0 = SubResource("StandardMaterial3D_yha58")
 
 [node name="Desk_Collision" type="CollisionShape3D" parent="." unique_id=408322895]
 transform = Transform3D(-1.09278474e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278474e-07, 0, 1, 0)
