@@ -46,3 +46,27 @@ func get_convict_route_points() -> Array:
 			points.append(child)
 	
 	return points
+
+func kill_all_enemies() -> void:
+	var enemies = find_children("*", "CharacterBody3D", true)
+	
+	for enemy in enemies:
+		if enemy.get("is_dead") == true:
+			continue
+		
+		var health_component: HealthComponent = enemy.get_node_or_null("HealthComponent")
+		
+		if health_component == null:
+			health_component = enemy.get("health_comp")
+		
+		if health_component == null:
+			continue
+		
+		var debug_damage = DamageHealInstance.new()
+		debug_damage.amount = 99999
+		debug_damage.is_heal = false
+		debug_damage.type = Enums.DamageType.NORMAL
+		debug_damage.knockback = 0.0
+		debug_damage.stun_time = 0.0
+		debug_damage.source = get_path()
+		health_component.take_damage_or_heal(debug_damage)

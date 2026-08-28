@@ -40,7 +40,18 @@ func unlock_all_guns() -> void:
 	print("Unlock All Guns")
 
 func kill_all_enemies() -> void:
-	print("Kill All Enemies")
+	var enemy_managers: Array = []
+	_find_enemy_managers(get_tree().current_scene, enemy_managers)
+	
+	for enemy_manager in enemy_managers:
+		enemy_manager.kill_all_enemies()
+
+func _find_enemy_managers(node: Node, enemy_managers: Array) -> void:
+	if node is EnemyManager:
+		enemy_managers.append(node)
+	
+	for child in node.get_children():
+		_find_enemy_managers(child, enemy_managers)
 
 func reset_debug_values() -> void:
 	debug_menu_open = false

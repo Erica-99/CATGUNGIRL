@@ -11,13 +11,14 @@ extends Control
 
 func _ready() -> void:
 	visible = false
+	DebugManager.debug_menu_open = false
 	
-	_setup_toggle_button(no_clip_toggle, "No Clip")
-	_setup_toggle_button(god_mode_toggle, "God Mode")
-	_setup_toggle_button(invisible_toggle, "Invisible")
-	_setup_toggle_button(no_aggro_toggle, "No Aggro")
-	_setup_toggle_button(pause_enemies_toggle, "Pause Enemies")
-	_setup_toggle_button(infinite_ammo_toggle, "Infinite Ammo")
+	_setup_toggle_button(no_clip_toggle, "No Clip", DebugManager.no_clip)
+	_setup_toggle_button(god_mode_toggle, "God Mode", DebugManager.god_mode)
+	_setup_toggle_button(invisible_toggle, "Invisible", DebugManager.player_invisible)
+	_setup_toggle_button(no_aggro_toggle, "No Aggro", DebugManager.no_aggro)
+	_setup_toggle_button(pause_enemies_toggle, "Pause Enemies", DebugManager.pause_enemies)
+	_setup_toggle_button(infinite_ammo_toggle, "Infinite Ammo", DebugManager.infinite_ammo)
 	
 	no_clip_toggle.toggled.connect(_on_no_clip_toggled)
 	god_mode_toggle.toggled.connect(_on_god_mode_toggled)
@@ -35,10 +36,10 @@ func _input(event: InputEvent) -> void:
 		DebugManager.debug_menu_open = visible
 		print("Debug menu visible: ", visible)
 
-func _setup_toggle_button(button: Button, label: String) -> void:
+func _setup_toggle_button(button: Button, label: String, enabled: bool) -> void:
 	button.toggle_mode = true
-	button.button_pressed = false
-	button.text = label + ": OFF"
+	button.set_pressed_no_signal(enabled)
+	button.text = label + ": ON" if enabled else label + ": OFF"
 
 func _set_toggle_text(button: Button, label: String, enabled: bool) -> void:
 	button.text = label + ": ON" if enabled else label + ": OFF"
