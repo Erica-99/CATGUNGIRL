@@ -1,0 +1,24 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c0tfcjajjvvfh"]
+
+[ext_resource type="Shader" uid="uid://dk0t1niu3gox2" path="res://art/TechArt/2_VFX/shield/shaders/shield.tres" id="1_4qb0o"]
+[ext_resource type="Gradient" uid="uid://ctgcy8omt77yp" path="res://art/TechArt/2_VFX/shield/prefab/T_gradient_1D.tres" id="2_4qb0o"]
+[ext_resource type="Texture2D" uid="uid://bhq5eo74htgxr" path="res://art/TechArt/2_VFX/shield/tex/T_Hex1_inv.jpg" id="3_vjbtn"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ne3qd"]
+gradient = ExtResource("2_4qb0o")
+
+[resource]
+render_priority = 1
+shader = ExtResource("1_4qb0o")
+shader_parameter/Size_Sphere = 0.0
+shader_parameter/overlay_scale = Vector2(2, 2)
+shader_parameter/overlay_velocity = Vector2(0, -0.2)
+shader_parameter/Overlay_Texture = ExtResource("3_vjbtn")
+shader_parameter/Overlay_Power = 0.65
+shader_parameter/overlay_toggle = true
+shader_parameter/proximity_light = 0.365
+shader_parameter/proximity_power = 0.56
+shader_parameter/fresnel_invert = false
+shader_parameter/fresnel_power = 1.993
+shader_parameter/darkness = 1.43
+shader_parameter/Gradient_1D_Color = SubResource("GradientTexture1D_ne3qd")

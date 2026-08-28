@@ -16,7 +16,7 @@ class_name ScrubIdle
 
 # Information gained from state machine
 var actor: CharacterBody3D
-var anim: AnimatedSprite3D
+var anim: AnimationPlayer
 var slow_down_speed: float
 
 func init(blackboard_dict : Dictionary) -> void:
@@ -40,3 +40,17 @@ func physics_update(delta: float) -> void:
 	#anim.play("idle")
 	
 	actor.move_and_slide()
+
+
+func _on_detection_area_3d_body_entered(body: Node3D) -> void:
+		if !actor.is_dead:
+			actor.detected_player = true
+			if actor.in_attacking_range:
+				transitioned.emit(self, "scrubattack")
+			else:
+				transitioned.emit(self, "scrubchase")
+
+
+func _on_flee_area_3d_body_entered(body: Node3D) -> void:
+	if !actor.is_dead:
+		transitioned.emit(self, "scrubflee")

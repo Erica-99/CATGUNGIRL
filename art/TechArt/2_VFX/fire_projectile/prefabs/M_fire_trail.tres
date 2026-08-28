@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bpcngb6p4ln3c"]
+
+[ext_resource type="Shader" uid="uid://7c472uifcfj5" path="res://art/TechArt/2_VFX/fire_projectile/fire_trail.tres" id="1_72cme"]
+
+[sub_resource type="Gradient" id="Gradient_mfimp"]
+offsets = PackedFloat32Array(0, 0.38405797, 0.96014494, 1)
+colors = PackedColorArray(1, 0, 0, 0, 3.5629182, 0, 0, 1, 1.685791, 1.6599079, 0, 1, 1.4547673, 1.4323194, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yvxb6"]
+gradient = SubResource("Gradient_mfimp")
+use_hdr = true
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_72cme")
+shader_parameter/color_tex = SubResource("GradientTexture1D_yvxb6")
+shader_parameter/scale = Vector2(0.795, 1)
+shader_parameter/trail_speed = Vector2(3, 0)
