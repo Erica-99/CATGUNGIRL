@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c70yq00id7x8w"]
+
+[ext_resource type="PackedScene" uid="uid://cyjer27c8qsr6" path="res://scenes/components/global_guns/base_gun.tscn" id="1_pmrbw"]
+[ext_resource type="PackedScene" uid="uid://dhnpo8ytsmuxp" path="res://scenes/components/global_guns/gun_components/perfect_shot_handler/perfect_shot_handler.tscn" id="2_3j4rw"]
+[ext_resource type="PackedScene" uid="uid://ddcuwh0fuvmp8" path="res://scenes/components/global_guns/gun_components/aim_handler/aim_handler.tscn" id="3_grlg7"]
+
+[node name="Pistol" unique_id=1475158734 instance=ExtResource("1_pmrbw")]
+
+[node name="PerfectShotHandler" parent="Muzzle" parent_id_path=PackedInt32Array(1350555134) index="0" unique_id=2130453036 instance=ExtResource("2_3j4rw")]
+
+[node name="AimHandler" parent="Muzzle" parent_id_path=PackedInt32Array(1350555134) index="1" unique_id=2060430421 instance=ExtResource("3_grlg7")]

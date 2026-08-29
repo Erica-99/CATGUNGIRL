@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cyjer27c8qsr6"]
+
+[ext_resource type="Script" uid="uid://dmsmua4ncag0o" path="res://scenes/components/global_guns/base_gun.gd" id="1_xhfbd"]
+[ext_resource type="PackedScene" uid="uid://chlt5bxk3xjc6" path="res://scenes/components/global_guns/gun_components/ammo_component/ammo_component.tscn" id="2_kcqc4"]
+[ext_resource type="PackedScene" uid="uid://bywuvf2b7rq4y" path="res://scenes/components/global_guns/gun_components/muzzle/muzzle.tscn" id="3_dei6y"]
+
+[node name="BaseGun" type="Node3D" unique_id=1475158734]
+script = ExtResource("1_xhfbd")
+
+[node name="AmmoComponent" parent="." unique_id=74964385 instance=ExtResource("2_kcqc4")]
+
+[node name="Muzzle" parent="." unique_id=1350555134 instance=ExtResource("3_dei6y")]
+
+[node name="GunSprite" type="Sprite3D" parent="." unique_id=1644399396]
+
+[connection signal="bullet_fired" from="." to="AmmoComponent" method="_handle_ammo"]
