@@ -62,6 +62,11 @@ func _process(delta: float) -> void:
 		input_component._switch_gun_three = false
 		_switch_gun(2)
 
+func _updategunvisuals(gun):
+	
+	pass
+
+
 func _switch_gun(slot_num: int):
 	if not allow_swapping:
 		return
@@ -85,7 +90,7 @@ func _switch_gun(slot_num: int):
 	_activate_gun()
 	print("GUN SWITCHED TO: ")
 	print(current_gun)
-	
+	_updategunvisuals(current_gun)
 	EventManager.new_gun_equipped.emit(current_gun.gun_name)
 	EventManager.new_mag_loaded.emit(current_gun._current_ammo, current_gun.ammo_max)
 

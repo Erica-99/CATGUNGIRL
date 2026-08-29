@@ -9,6 +9,7 @@ extends Node3D
 @onready var gun_anims = $ROOT_P/GUN_P/GUN_AIM/Hand_Anims
 
 @onready var torso_pivot = $ROOT_P/BODY_P/TORSO_P
+@onready var torso_sprite = $ROOT_P/BODY_P/TORSO_P/Ros_Torso
 #@onready var leg_pivot = $ROOT_P/BODY_P/LEG_P
 
 @onready var hand_pivot = $ROOT_P/GUN_P
@@ -17,9 +18,33 @@ extends Node3D
 
 @onready var Playeroot = $".."
 var current_action 
+@onready var SPR_Torso2 = preload("res://art/2d_assets/real_world/player_rosington/SpriteFrames/NoArms.tres")
+@onready var SPR_Torso1 = preload("res://art/2d_assets/real_world/player_rosington/SpriteFrames/Arms.tres")
+var GunName
 
+
+func _ready() -> void:
+	EventManager.new_gun_equipped.connect(_new_gun_equipped)
+	
+	pass
+
+
+func _new_gun_equipped(newgun):
+	if newgun == 'Sniper':
+		torso_sprite.sprite_frames = SPR_Torso2
+		pass
+	if newgun == 'Shotgun':
+		torso_sprite.sprite_frames = SPR_Torso2
+		pass
+	if newgun == 'Pistol':
+		torso_sprite.sprite_frames = SPR_Torso1
+		pass
+	
+	pass
 
 func _process(delta: float) -> void:
+	print(str($ROOT_P/GUN_P/GUN_AIM.rotation.z))
+	
 	gun_pivot.rotation.z = gun_holder.current_gun.rotation.z
 	if current_action == 'playercrouch':
 		if Input.is_action_pressed("move_left") == true or Input.is_action_pressed("move_right") == true:
