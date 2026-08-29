@@ -4,3 +4,8 @@
 
 [node name="AmmoHandler" type="Node3D" unique_id=718685796]
 script = ExtResource("1_qwsdh")
+
+[node name="ReloadTimer" type="Timer" parent="." unique_id=160170097]
+one_shot = true
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

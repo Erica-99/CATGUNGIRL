@@ -1,12 +1,17 @@
 [gd_scene format=3 uid="uid://7s5t51km8oqm"]
 
 [ext_resource type="Script" uid="uid://b5p7fo85o0wlo" path="res://scenes/components/global_guns/base/gun.gd" id="1_oeexr"]
+[ext_resource type="PackedScene" uid="uid://blbbob40v73s7" path="res://scenes/components/global_guns/gun_components/ammo_handler/ammo_handler.tscn" id="2_3oehm"]
+[ext_resource type="PackedScene" uid="uid://bt1hjfsxn6ikn" path="res://scenes/components/global_guns/gun_components/bullet_handler/bullet_handler.tscn" id="3_pxwry"]
 
 [node name="Gun" type="Node3D" unique_id=2005532977]
 visible = false
 script = ExtResource("1_oeexr")
 
-[node name="ReloadTimer" type="Timer" parent="." unique_id=1791899876]
-one_shot = true
+[node name="GunSprite" type="Sprite3D" parent="." unique_id=33829333]
 
-[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
+[node name="AmmoHandler" parent="." unique_id=718685796 instance=ExtResource("2_3oehm")]
+
+[node name="BulletHandler" parent="." unique_id=1534700926 instance=ExtResource("3_pxwry")]
+
+[node name="Muzzle" type="Marker3D" parent="." unique_id=1291904284]

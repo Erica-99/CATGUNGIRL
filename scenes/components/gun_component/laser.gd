@@ -187,7 +187,6 @@ func _imperfect_shot() -> void:
 	_normal_flash.restart()
 	Muzzle_VFX.stop()
 	Muzzle_VFX.play("Imperfect")
-	
 
 func _perfect_shot() -> void:
 	AudioManager.play_sfx("laser_perfect")

@@ -19,6 +19,12 @@ const HITBOX_SCENE = preload("res://scenes/components/hitbox_component/hitbox_co
 @export_group("Aim")
 @export var aim_speed: float = 8.0		# gun rotation speed towards mouse (lower = more delay)
 
+##Gun Animation Handler
+#@onready var muzzle: Marker3D = $Muzzle
+
+@onready var ammo_handler: AmmoHandler = $AmmoHandler
+@onready var bullet_handler: BulletHandler = $BulletHandler
+
 @export_group("Normal Fire")
 @export var fire_rate: float = 0.15			# min time (seconds) between shots
 @export var full_auto: bool = true
@@ -46,12 +52,6 @@ const HITBOX_SCENE = preload("res://scenes/components/hitbox_component/hitbox_co
 @export var perfect_damage_multiplier: float = 1.5	# damage bonus for perfect shot
 @export var perfect_shot_max_interval: float = 1.0	# max seconds between shots for perfect shot to trigger
 @export var laser_convergence_speed: float = 0.73	# time to converge
-
-##Gun Animation Handler
-#@onready var muzzle: Marker3D = $Muzzle
-
-## Reload timer (can be replaced with programmatical timer as needed)
-@onready var reload_timer: Timer = $ReloadTimer
 
 ## bzzt
 
@@ -120,7 +120,7 @@ func _process(delta: float) -> void:
 		_is_spamming = false
 		_spam_count = 0
 	
-	if !_is_reloading:
+	if !ammo_handler._is_reloading:
 		# normal fire (left click) read from input component
 		if current_input_state.get("fire_held", false):
 			if full_auto:
@@ -186,11 +186,13 @@ func _handle_special(input_state: Dictionary, delta: float) -> void:
 
 func _try_fire() -> void:
 	# won't fire on empty ammo (added for shotgun)
-	if _current_ammo == 0:
+	if ammo_handler._current_ammo == 0:
 		return
+	
 	# won't fire if cooldown not expired
 	if _fire_cooldown > 0.0:
 		return
+	
 	if bullet_scene == null or muzzle == null:
 		print("Bullet scene or muzzle is currently null. Cannot fire.")
 		return
@@ -201,7 +203,7 @@ func _try_fire() -> void:
 	# handle perfect shots etc - probably needs to be decomposed better, but ok for proof of concept and initial work
 	# override in other children of GUN!!!!
 	_shoot_handler()
-	_handle_ammo()
+	EventManager.shots_fired.emit(1)
 
 func _play_shoot_animation():
 	Gun_Animation.stop()
@@ -231,52 +233,7 @@ func _shoot_handler():
 	_shoot(damage, bullet_scale)
 	_recoil_offset += recoil_amount * sign(global_transform.basis.x.x)
 	_time_since_last_shot = 0.0
-	single_reload_timer = 0.0
 	# _has_printed_settle = false
 
 func _shoot(damage, bullet_scale):
-	_spawn_bullet(damage, bullet_scale)
-
-
-func _handle_ammo():
-	EventManager.shots_fired.emit(1)
-	
-	_current_ammo -= 1
-	if _current_ammo <= 0 and reload_full: 
-		_is_reloading = true
-		reload_timer.start(reload_time)
-
-func _spawn_bullet(damage: float, size: float) -> void:
-	var bullet = bullet_scene.instantiate()
-	get_tree().root.add_child(bullet)
-	bullet.global_transform = muzzle.global_transform
-	
-	var aim_dir = Vector3(cos(rotation.z), sin(rotation.z), 0.0).normalized()
-	if base_aim_spread != 0:
-		var aim_deviation = randf_range(-deg_to_rad(base_aim_spread), deg_to_rad(base_aim_spread))
-		aim_dir = aim_dir.rotated(Vector3(0.0, 0.0, 1.0), aim_deviation)
-	
-	# new spread
-	if _is_spamming:
-		var total_spread = deg_to_rad(minf(spam_spread_angle + spam_spread_increase * (_spam_count - 1), spam_max_spread))
-		var random_offset = randf_range(-total_spread, total_spread)
-		aim_dir = aim_dir.rotated(Vector3(0.0, 0.0, 1.0), random_offset)
-	
-	var damage_instance = DamageHealInstance.new()
-	damage_instance.amount = damage
-	damage_instance.is_heal = false
-	damage_instance.type = Enums.DamageType.NORMAL
-	damage_instance.knockback = bullet_knockback
-	damage_instance.source = get_path()
-	
-	bullet.initialize(aim_dir, damage_instance, team_component, size, pierce_on_headshot)
-	bullet.speed *= bullet_velocity_multiplier
-	bullet.max_range = bullet_range
-	var hb = bullet.get_node("HitboxComponent") 
-	hb.damage_dealt.connect(func(damage): enemy_hit.emit(damage))
-
-func _on_reload_timer_timeout() -> void:
-	_is_reloading = false
-	_current_ammo = ammo_max
-	
-	if active: EventManager.new_mag_loaded.emit(_current_ammo, ammo_max)
+	bullet_handler._spawn_bullet(damage, bullet_scale)
