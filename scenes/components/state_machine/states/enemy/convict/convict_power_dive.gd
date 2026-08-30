@@ -54,19 +54,14 @@ func enter() -> void:
 func physics_update(_delta: float) -> void:
 	match phase:
 		DivePhase.WINDUP:
-			anim.play('Windup')
 			_update_windup(_delta)
 		DivePhase.LAUNCH:
-			anim.play('Launch')
 			_update_launch()
 		DivePhase.CHARGE:
-			
 			_update_charge(_delta)
 		DivePhase.DIVE:
-			
 			_update_dive(_delta)
 		DivePhase.RECOVERY:
-
 			_update_recovery(_delta)
 	actor.move_and_slide()
 	
@@ -93,7 +88,6 @@ func _update_launch() -> void:
 		_start_charge()
 
 func _start_charge() -> void:
-	anim.play('Charge')
 	phase = DivePhase.CHARGE
 	phase_timer = 0.0
 	actor.velocity = Vector3.ZERO
@@ -110,7 +104,6 @@ func _update_charge(delta: float) -> void:
 		_start_dive()
 
 func _start_dive() -> void:
-	anim.play('Dive')
 	phase = DivePhase.DIVE
 	phase_timer = 0.0
 	dive_direction = locked_target_position - actor.global_position
@@ -132,7 +125,6 @@ func _update_dive(delta: float) -> void:
 	actor.velocity = dive_velocity
 
 func _start_recovery() -> void:
-	anim.play('Recovery')
 	phase = DivePhase.RECOVERY
 	phase_timer = 0.0
 	actor.velocity.x = 0.0
@@ -146,7 +138,6 @@ func _update_recovery(delta: float) -> void:
 		transitioned.emit(self, "convictchase")
 
 func exit() -> void:
-	anim.play("Idle")
 	phase = DivePhase.WINDUP
 	phase_timer = 0.0
 	dive_direction = Vector3.ZERO
