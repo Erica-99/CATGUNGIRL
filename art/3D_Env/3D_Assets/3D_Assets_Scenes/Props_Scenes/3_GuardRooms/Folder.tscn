@@ -1,18 +1,6 @@
 [gd_scene format=3 uid="uid://clg1kec6jsi1e"]
 
 [ext_resource type="ArrayMesh" uid="uid://c5lvy0q1ctdpa" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/3_GuardRooms/Folder.obj" id="1_w53aq"]
-[ext_resource type="Texture2D" uid="uid://bhf573kkbo1an" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/Folders/Folder_BC.png" id="2_ol4av"]
-[ext_resource type="Texture2D" uid="uid://vevsncjpisie" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/Folders/Folder_M.png" id="3_348iq"]
-[ext_resource type="Texture2D" uid="uid://3wgchso1pgji" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/Folders/Folder_N.png" id="4_l18a7"]
-[ext_resource type="Texture2D" uid="uid://btmdrg8y0soai" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/Folders/Folder_R.png" id="5_512sq"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkjm4"]
-albedo_texture = ExtResource("2_ol4av")
-metallic = 1.0
-metallic_texture = ExtResource("3_348iq")
-roughness_texture = ExtResource("5_512sq")
-normal_enabled = true
-normal_texture = ExtResource("4_l18a7")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cxd0c"]
 points = PackedVector3Array(-0.175, 0, 5.3e-05, -0.175, 0.05, 5.3e-05, 0.17496575, 0, 5.3e-05, -0.175, 0.0120644085, 0.300053, -0.175, 0.037930697, 0.300053, 0.17496575, 0.05, 5.3e-05, 0.17496575, 0.0120644085, 0.300053, 0.17496575, 0.037930697, 0.300053)
@@ -22,7 +10,6 @@ points = PackedVector3Array(-0.175, 0, 5.3e-05, -0.175, 0.05, 5.3e-05, 0.1749657
 [node name="Folder_Mesh" type="MeshInstance3D" parent="." unique_id=1611891132]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("1_w53aq")
-surface_material_override/0 = SubResource("StandardMaterial3D_xkjm4")
 
 [node name="Folder_Collision" type="CollisionShape3D" parent="." unique_id=851115139]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

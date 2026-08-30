@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 @export_category("Node References")
-@export var animator: AnimationPlayer
+@export var animator: AnimatedSprite3D
 @export var animation_manager: AnimationPlayer
 @export var state_machine: StateMachine
 
@@ -29,7 +29,7 @@ extends CharacterBody3D
 
 #Trunk Visual Code
 @onready var InjuredFrames = preload("res://art/2d_assets/real_world/Trunks/TrunkInjured.tres")
-@onready var sprite_anims = $TrunkMesh/AnimationPlayer
+@onready var sprite_anims = $TrunkMesh/TorsoAnims
 @onready var torso_sprite = $TrunkMesh/Torso/TorsoSprite
 var current_step: String
 
@@ -90,7 +90,7 @@ var past_object_collider_status: bool = false
 @onready var outranged_timer: Timer = $OutrangedTimer
 @onready var platform_check: RayCast3D = $PlatformCheck
 @onready var object_check: RayCast3D = $ObjectCheck
-@onready var animation_player: AnimationPlayer = $TrunkMesh/AnimationPlayer
+@onready var animation_player: AnimationPlayer = $TrunkMesh/TorsoAnims
 @onready var chase_range: Area3D = $ChaseRange
 
 # recovery time is set within trunk_melee and on armour break - they both override the recovery_time blackboard variable

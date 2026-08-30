@@ -2,7 +2,7 @@ extends State
 class_name TrunkPatrol
 
 var actor: CharacterBody3D
-var anim: AnimationPlayer
+var anim: AnimatedSprite3D
 var target: CharacterBody3D
 var patrol_speed: float
 var min_patrol_time: float

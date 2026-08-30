@@ -1,18 +1,6 @@
 [gd_scene format=3 uid="uid://c5vncayclpa5t"]
 
 [ext_resource type="ArrayMesh" uid="uid://dfp31v0xojxo1" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/3_GuardRooms/ChairSteel.obj" id="1_66pug"]
-[ext_resource type="Texture2D" uid="uid://cfpectu8idpc6" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/ChairSteel/ChairSteel_BC.png" id="2_k1iae"]
-[ext_resource type="Texture2D" uid="uid://bbbyc2e2y6jgb" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/ChairSteel/ChairSteel_M.png" id="3_yymsr"]
-[ext_resource type="Texture2D" uid="uid://cdhhw56x03mr" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/ChairSteel/ChairSteel_N.png" id="4_fvc0w"]
-[ext_resource type="Texture2D" uid="uid://dacnpmdtfyfit" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/ChairSteel/ChairSteel_R.png" id="5_sfkrp"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bkej3"]
-albedo_texture = ExtResource("2_k1iae")
-metallic = 1.0
-metallic_texture = ExtResource("3_yymsr")
-roughness_texture = ExtResource("5_sfkrp")
-normal_enabled = true
-normal_texture = ExtResource("4_fvc0w")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2uttg"]
 points = PackedVector3Array(-1.060527, 0, -1.060527, 1.0603195, 0, -1.060527, -1.060527, 0, 1.0603193, -1.0320829, 0.84774125, -0.79934, -1.0001093, 1.799878, -0.7501339, -1.015058, 0.84774125, -1.0181724, -1.0094522, 0.95171744, -1.0129818, -0.7501339, 1.799878, -1.0001093, 0.74992645, 1.9998643, -1.0001093, 1.0603195, 0, 1.0603193, 0.9999019, 1.9998643, -1.0001093, 0.9999019, 4.0592637, -0.83691937, 0.9999019, 4.1842027, -0.77276456, 0.9999019, 4.283148, -0.6278452, -0.7501339, 1.799878, 0.99990165, -1.0094522, 0.95171744, 1.0127743, -1.015058, 0.84774125, 1.0179647, -1.0001093, 1.799878, 0.7499263, -1.0320829, 0.84774125, 0.79913247, 0.74992645, 1.9998643, 0.99990165, -0.9706272, 1.9998643, -0.7501339, -0.9637757, 1.799878, -0.9706272, 0.74992645, 4.0592637, -0.83691937, 0.9999019, 4.283148, 0.6276376, 0.9999019, 4.1842027, 0.772557, 0.9999019, 4.0592637, 0.83671176, 0.9999019, 1.9998643, 0.99990165, 0.74992645, 4.1842027, -0.77276456, 0.74992645, 4.283148, -0.6278452, -0.9637757, 1.799878, 0.9704195, 0.74992645, 4.0592637, 0.83671176, -0.9706272, 1.9998643, 0.7499263, -0.91976005, 1.9998643, -0.92370486, 0.74992645, 4.283148, 0.6276376, 0.74992645, 4.1842027, 0.772557, -0.91976005, 1.9998643, 0.9234973)
@@ -22,7 +10,6 @@ points = PackedVector3Array(-1.060527, 0, -1.060527, 1.0603195, 0, -1.060527, -1
 [node name="ChairSteel_Mesh" type="MeshInstance3D" parent="." unique_id=695165550]
 transform = Transform3D(-2.6226834e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.6226834e-08, 0.0071972017, 0, 0.0071972013)
 mesh = ExtResource("1_66pug")
-surface_material_override/0 = SubResource("StandardMaterial3D_bkej3")
 
 [node name="ChairSteel_Collision" type="CollisionShape3D" parent="." unique_id=387296707]
 transform = Transform3D(-2.6226834e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.6226834e-08, 0.0071972017, 0, 0.0071972013)

@@ -3,7 +3,7 @@ class_name TrunkChase
 
 # Information gained from state machine
 var actor: CharacterBody3D
-var anim: AnimationPlayer
+var anim: AnimatedSprite3D
 var animation_manager: AnimationPlayer
 var target: CharacterBody3D
 var chase_speed: float

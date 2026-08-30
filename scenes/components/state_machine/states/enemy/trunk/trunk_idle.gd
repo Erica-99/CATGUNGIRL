@@ -3,7 +3,7 @@ class_name TrunkIdle
 
 # Information gained from state machine
 var actor: CharacterBody3D
-var anim: AnimationPlayer
+var anim: AnimatedSprite3D
 var min_idle_time: float
 var max_idle_time: float
 var idle_timer: Timer

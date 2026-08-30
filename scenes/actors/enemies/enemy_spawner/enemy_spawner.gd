@@ -25,6 +25,7 @@ var possible_prefabs: Array = []
 @export_category("Wave Settings")
 @export var wave_spawner = false
 @export var wave_enemies: Array[Enums.EnemyType] = [Enums.EnemyType.CONVICT, Enums.EnemyType.SCRUB]
+ 
 
 func _ready() -> void:
 	# link up spawn signal

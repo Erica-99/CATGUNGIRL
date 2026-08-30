@@ -15,7 +15,7 @@ class_name ScrubStun
 
 # Information gained from state machine
 var actor: CharacterBody3D
-var anim: AnimationPlayer
+var anim: AnimatedSprite3D
 var slow_down_speed: float
 var total_stun_time: float
 var stun_timer: float = 0.0

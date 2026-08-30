@@ -34,12 +34,6 @@ signal player_dead()
 @export var dash_duration: float = 0.15
 ## If true, dash kills vertical movement
 @export var dash_kill_movement: bool = true
-## If true, the player is invincible for part of the dash
-@export var dash_grants_iframes: bool = true
-## Point in the dash (0 = start, 1 = end) where invincibility begins
-@export_range(0.0, 1.0, 0.01) var dash_iframe_start: float = 0.0
-## Point in the dash (0 = start, 1 = end) where invincibility ends
-@export_range(0.0, 1.0, 0.01) var dash_iframe_end: float = 1.0
 
 @export_category("Wall Movement Variables")
 ##Maximum speed the player falls while sliding down a wall
@@ -70,7 +64,6 @@ var speed_multiplier: float = 1.0
 
 var blackboard: Dictionary
 @onready var health_component = $HealthComponent
-@onready var hurtbox_component = $HurtboxComponent
 @onready var gun_holder: Node3D = $GunHolder
 
 ## This is to know what scene to reload when the player dies
@@ -90,7 +83,6 @@ func _ready() -> void:
 	"dash_dir": 0.0,
 	"can_air_dash": true,
 	"gun_holder": gun_holder,
-	"hurtbox_component": hurtbox_component,
 	"enable_facing_updates": enable_facing_updates
 	}
 	

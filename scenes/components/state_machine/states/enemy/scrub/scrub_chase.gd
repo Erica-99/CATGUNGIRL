@@ -11,7 +11,7 @@ class_name ScrubChase
 
 # Information gained from state machine
 var actor: CharacterBody3D
-var anim: AnimationPlayer
+var anim: AnimatedSprite3D
 var target: CharacterBody3D
 var chase_speed: float
 var chase_acceleration: float
