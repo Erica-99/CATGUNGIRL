@@ -1,0 +1,221 @@
+[gd_scene format=3 uid="uid://drwvnm7unw8ji"]
+
+[ext_resource type="PackedScene" uid="uid://6usudssqk0jx" path="res://art/TechArt/1_Shaders/Spatial/CRT_VHS/CRT_VHS.tscn" id="1_sl642"]
+[ext_resource type="Material" uid="uid://dm67e6q5genrh" path="res://art/TechArt/1_Shaders/Spatial/InvertedHullOutlines/MAT_ToonOutline.tres" id="3_5pcev"]
+[ext_resource type="Shader" uid="uid://benltksug3x3t" path="res://art/TechArt/1_Shaders/Spatial/CRT_VHS/CRT_VHS.gdshader" id="3_o2mvd"]
+[ext_resource type="Material" uid="uid://cfvj38q2eysss" path="res://art/TechArt/1_Shaders/Spatial/Dissolve/SM_Dissolve_A.tres" id="5_5pcev"]
+[ext_resource type="Material" uid="uid://y3l8gp2chv30" path="res://art/TechArt/1_Shaders/Spatial/Dissolve/SM_Dissolve_B.tres" id="5_lv6na"]
+[ext_resource type="Material" uid="uid://d0qapxjbo2sui" path="res://art/TechArt/NOT_IN_USE/FlamingOutlines/UNUSED/MAT_FlamingOutline.tres" id="5_sl642"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sl642"]
+
+[sub_resource type="Sky" id="Sky_lv6na"]
+sky_material = SubResource("ProceduralSkyMaterial_sl642")
+
+[sub_resource type="Environment" id="Environment_huftx"]
+background_mode = 2
+sky = SubResource("Sky_lv6na")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5pcev"]
+
+[sub_resource type="Sky" id="Sky_huftx"]
+sky_material = SubResource("ProceduralSkyMaterial_5pcev")
+
+[sub_resource type="Environment" id="Environment_5pcev"]
+background_color = Color(0.52898437, 0.5725517, 0.85935616, 1)
+sky = SubResource("Sky_huftx")
+glow_enabled = true
+
+[sub_resource type="Compositor" id="Compositor_5pcev"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mwbg0"]
+size = Vector2(100, 100)
+subdivide_width = 4
+subdivide_depth = 4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hrcfu"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5pcev"]
+render_priority = 0
+shader = ExtResource("3_o2mvd")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.0
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.06000000285
+shader_parameter/grille_amount = 1.0
+shader_parameter/grille_size = 5.0
+shader_parameter/vignette_amount = 0.0
+shader_parameter/vignette_intensity = 0.0
+shader_parameter/aberation_amount = 0.550000026125
+shader_parameter/roll_line_amount = 0.5750000273125
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_o2mvd"]
+material = SubResource("ShaderMaterial_5pcev")
+size = Vector2(4.945, 5.19)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hrcfu"]
+albedo_color = Color(0.125, 0.125, 0.125, 1)
+refraction_scale = 0.35
+
+[sub_resource type="BoxMesh" id="BoxMesh_v6rxq"]
+material = SubResource("StandardMaterial3D_hrcfu")
+size = Vector3(21.03, 16.585, 0.16)
+
+[sub_resource type="SphereMesh" id="SphereMesh_hrcfu"]
+material = ExtResource("3_5pcev")
+radius = 1.5
+height = 3.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_sl642"]
+material = ExtResource("5_5pcev")
+radius = 1.5
+height = 3.0
+
+[sub_resource type="Animation" id="Animation_5pcev"]
+resource_name = "Dissolve"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:shader_parameter/DissolveHeight")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.625, -1.65]
+}
+
+[sub_resource type="Animation" id="Animation_sl642"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:shader_parameter/DissolveHeight")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.035]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sl642"]
+_data = {
+&"Dissolve": SubResource("Animation_5pcev"),
+&"RESET": SubResource("Animation_sl642")
+}
+
+[sub_resource type="SphereMesh" id="SphereMesh_huftx"]
+material = ExtResource("5_lv6na")
+radius = 1.5
+height = 3.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_lv6na"]
+material = ExtResource("5_sl642")
+radius = 1.5
+height = 3.0
+
+[node name="ShaderSandbox" type="Node3D" unique_id=1474632214]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1985914262]
+environment = SubResource("Environment_huftx")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1250261632]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.214157, 1.1059256, 11.107961)
+environment = SubResource("Environment_5pcev")
+compositor = SubResource("Compositor_5pcev")
+fov = 85.6
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1005955202]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1777755104]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7656555e-05, -0.020570993, 0.015726566)
+mesh = SubResource("PlaneMesh_mwbg0")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1658537014]
+shape = SubResource("BoxShape3D_hrcfu")
+metadata/_edit_lock_ = true
+
+[node name="CRT_VHS_Effect" type="Node" parent="." unique_id=2056789344]
+
+[node name="Node3D" parent="CRT_VHS_Effect" unique_id=475400005 instance=ExtResource("1_sl642")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.897106, -6.207379, 0)
+
+[node name="Node3D2" type="Node3D" parent="CRT_VHS_Effect" unique_id=817816747]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.66115, -6.207379, 0)
+
+[node name="Label3D2" type="Label3D" parent="CRT_VHS_Effect/Node3D2" unique_id=331078682]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.035232544, 13.80993, 0.2210517)
+text = "CRT/VHS Screen Effect"
+font_size = 132
+
+[node name="Screen2" type="MeshInstance3D" parent="CRT_VHS_Effect/Node3D2" unique_id=449025172]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -7.3841324, 9.02364, 0.17800021)
+mesh = SubResource("PlaneMesh_o2mvd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CRT_VHS_Effect/Node3D2" unique_id=1064672910]
+transform = Transform3D(0.99659806, 0, 0, 0, 0.99659806, 0, 0, 0, 0.99659806, 0.05844307, 7.1309156, 0.050154686)
+mesh = SubResource("BoxMesh_v6rxq")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CRT_VHS_Effect/Node3D2" unique_id=914381299]
+transform = Transform3D(0.99659806, 0, 0, 0, 0.99659806, 0, 0, 0, 0.99659806, 0.05844307, 7.1309156, 0.050154686)
+mesh = SubResource("BoxMesh_v6rxq")
+
+[node name="InvertedHullOutlines" type="Node" parent="." unique_id=2097085463]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InvertedHullOutlines" unique_id=848372343]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.373396, 0, 0)
+mesh = SubResource("SphereMesh_hrcfu")
+
+[node name="Label3D" type="Label3D" parent="InvertedHullOutlines/MeshInstance3D" unique_id=904985605]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0257, 0)
+text = "Basic Toon Outlines"
+font_size = 132
+
+[node name="DissolveEffect" type="Node" parent="." unique_id=1451994931]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DissolveEffect" unique_id=1528443498]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.245861, 0, 0)
+mesh = SubResource("SphereMesh_sl642")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DissolveEffect/MeshInstance3D" unique_id=2134990958]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_sl642")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="DissolveEffect" unique_id=1770137466]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.245861, 4.21424, 0)
+mesh = SubResource("SphereMesh_huftx")
+
+[node name="Label3D2" type="Label3D" parent="DissolveEffect" unique_id=754681411]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.245861, 2.026, 0)
+text = "Dissolve Effect"
+font_size = 132
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1671688920]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.991999, 0)
+shadow_enabled = true
+
+[node name="Flaming_Outlines" type="Node" parent="." unique_id=1370366773]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Flaming_Outlines" unique_id=1357316850]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3775797, 0, 0)
+mesh = SubResource("SphereMesh_lv6na")
+
+[node name="Label3D" type="Label3D" parent="Flaming_Outlines/MeshInstance3D2" unique_id=819630766]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0257, 0)
+text = "Flaming Outlines"
+font_size = 132

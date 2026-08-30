@@ -62,23 +62,21 @@
 [ext_resource type="Script" uid="uid://cwsqw5g17fn2e" path="res://scenes/actors/enemies/trunk/trunk.gd" id="56_abaql"]
 [ext_resource type="Script" uid="uid://bygxuy1e66ano" path="res://scenes/actors/enemies/trunk/trunk_visuals.gd" id="57_barxx"]
 [ext_resource type="Texture2D" uid="uid://cvmmbgy6t0owe" path="res://art/2d_assets/real_world/Trunks/Trunk_Fist_Sprites.png" id="58_c7g71"]
-[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="58_k3b3x"]
 [ext_resource type="Texture2D" uid="uid://di7keacy5eue6" path="res://art/2d_assets/real_world/Trunks/sprite_sheet (1).png" id="59_88vs6"]
 [ext_resource type="Texture2D" uid="uid://dgvcqghmq3h8t" path="res://art/2d_assets/real_world/Trunks/Trunk_Punch_Sprites.png" id="60_i7rx3"]
 [ext_resource type="SpriteFrames" uid="uid://cbv3hnugbma00" path="res://art/2d_assets/real_world/Trunks/TrunkHealthy.tres" id="61_1b2pj"]
 [ext_resource type="Texture2D" uid="uid://b2enayxnykpm" path="res://art/2d_assets/real_world/Trunks/Blaster_Firing_Sprite.png" id="62_7laie"]
 [ext_resource type="Texture2D" uid="uid://qr5lv4aw2e6f" path="res://art/2d_assets/real_world/Trunks/Blaster_Idle.png" id="63_6350v"]
+[ext_resource type="PackedScene" uid="uid://cxge5m5sp5n26" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Elevator.tscn" id="55_1xq2m"]
+[ext_resource type="Script" uid="uid://b8370nobsmmuf" path="res://scenes/levels/elevator_platform/elevator_platform.gd" id="56_0conm"]
+[ext_resource type="PackedScene" uid="uid://ou3g778y2q8g" path="res://scenes/components/interactable_component/interactable_component.tscn" id="57_l5p45"]
+[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="58_k3b3x"]
+[ext_resource type="PackedScene" uid="uid://c4w6eac8jl84" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorBig.tscn" id="60_trf4c"]
 [ext_resource type="PackedScene" uid="uid://bqxkqmc0c1lue" path="res://scenes/actors/enemies/enemy_spawner/enemy_spawner.tscn" id="64_8tv4h"]
 [ext_resource type="Script" uid="uid://b3h8o32ohtn6q" path="res://scenes/levels/Stages/trunk_event_trigger.gd" id="64_defdb"]
-[ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="64_o4o51"]
 [ext_resource type="PackedScene" uid="uid://4rsfb5kh40wj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/B_Collisions/45Ramp.tscn" id="65_517df"]
-[ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="65_o7h8b"]
 [ext_resource type="PackedScene" uid="uid://dk2ngf0qgohte" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/3_WareHouse/WallPlainBaseWareHouse.tscn" id="66_c3edl"]
-[ext_resource type="PackedScene" uid="uid://c6wep4oftfyke" path="res://scenes/components/state_machine/state_machine.tscn" id="66_gdwyr"]
-[ext_resource type="Script" uid="uid://co5boy5qbl43m" path="res://scenes/components/state_machine/states/enemy/trunk/trunk_idle.gd" id="67_eogpr"]
 [ext_resource type="PackedScene" uid="uid://cntfde8q5l450" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/3_WareHouse/RoofBrokenWareHouse.tscn" id="67_ib8r7"]
-[ext_resource type="Script" uid="uid://clsww4kd76vy4" path="res://scenes/components/state_machine/states/enemy/trunk/trunk_patrol.gd" id="68_x06j8"]
-[ext_resource type="Script" uid="uid://dr4ftksqw40hc" path="res://scenes/components/state_machine/states/enemy/trunk/trunk_chase.gd" id="69_c5tre"]
 [ext_resource type="PackedScene" uid="uid://c2474vxopv84k" path="res://scenes/actors/enemies/trunk/trunk.tscn" id="69_wf5pt"]
 [ext_resource type="Script" uid="uid://dl0vqm7sn4iea" path="res://scenes/components/state_machine/states/enemy/trunk/trunk_melee.gd" id="70_p683y"]
 [ext_resource type="Script" uid="uid://bivm8q1sfq6tc" path="res://scenes/components/state_machine/states/enemy/trunk/trunk_outranged.gd" id="71_l1mde"]
@@ -2826,7 +2824,7 @@ size = Vector3(1, 8, 6)
 [node name="StageThree" type="Node3D" unique_id=535640616]
 
 [node name="Player" parent="." unique_id=1349193765 instance=ExtResource("1_eg5o7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1801267, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.091752, 144.74742, 0)
 collision_mask = 129
 
 [node name="Environment" type="Node3D" parent="." unique_id=1639754073]
