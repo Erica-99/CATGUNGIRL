@@ -7,7 +7,7 @@ extends State
 class_name ScrubFlee
 
 var actor: CharacterBody3D
-var anim: AnimatedSprite3D
+var anim: AnimationPlayer
 var target: CharacterBody3D
 var flee_speed: float
 var flee_acceleration: float
