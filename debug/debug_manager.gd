@@ -13,19 +13,15 @@ var all_guns_unlocked: bool = false
 
 func set_no_clip(enabled: bool) -> void:
 	no_clip = enabled
-	print("No Clip: ", no_clip)
 
 func set_god_mode(enabled: bool) -> void:
 	god_mode = enabled
-	print("God Mode: ", god_mode)
 
 func set_player_invisible(enabled: bool) -> void:
 	player_invisible = enabled
-	print("Player Invisible: ", player_invisible)
 
 func set_no_aggro(enabled: bool) -> void:
 	no_aggro = enabled
-	print("No Aggro: ", no_aggro)
 
 func set_pause_enemies(enabled: bool) -> void:
 	pause_enemies = enabled
@@ -37,7 +33,6 @@ func set_pause_enemies(enabled: bool) -> void:
 
 func set_infinite_ammo(enabled: bool) -> void:
 	infinite_ammo = enabled
-	print("Infinite Ammo: ", infinite_ammo)
 
 func unlock_all_guns() -> void:
 	all_guns_unlocked = true

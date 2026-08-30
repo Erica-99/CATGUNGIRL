@@ -34,7 +34,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_menu"):
 		visible = !visible
 		DebugManager.debug_menu_open = visible
-		print("Debug menu visible: ", visible)
 
 func _setup_toggle_button(button: Button, label: String, enabled: bool) -> void:
 	button.toggle_mode = true
