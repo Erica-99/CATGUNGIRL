@@ -34,6 +34,12 @@ signal player_dead()
 @export var dash_duration: float = 0.15
 ## If true, dash kills vertical movement
 @export var dash_kill_movement: bool = true
+## If true, the player is invincible for part of the dash
+@export var dash_grants_iframes: bool = true
+## Point in the dash (0 = start, 1 = end) where invincibility begins
+@export_range(0.0, 1.0, 0.01) var dash_iframe_start: float = 0.0
+## Point in the dash (0 = start, 1 = end) where invincibility ends
+@export_range(0.0, 1.0, 0.01) var dash_iframe_end: float = 1.0
 
 @export_category("Wall Movement Variables")
 ##Maximum speed the player falls while sliding down a wall
@@ -55,6 +61,13 @@ var speed_multiplier: float = 1.0
 # gun enabled by default
 @export var has_gun: bool = true
 
+@export_category("Debug")
+##Controls no clip speed
+@export var no_clip_speed: float = 25.0
+##Nodes hidden when invisible debug is on
+@export var debug_hidden_nodes: Array[Node3D] = []
+var player_invisible_last_frame: bool = false
+
 @export_category("Movement Dependencies")
 @export var input_component: InputComponent
 @export var mantle_detector: Node3D
@@ -64,13 +77,23 @@ var speed_multiplier: float = 1.0
 
 var blackboard: Dictionary
 @onready var health_component = $HealthComponent
+@onready var hurtbox_component = $HurtboxComponent
 @onready var gun_holder: Node3D = $GunHolder
 
 ## This is to know what scene to reload when the player dies
 var currentScene
 
+## no clip debug variables
+var no_clip_enabled_last_frame: bool = false
+var original_collision_layer: int
+var original_collision_mask: int
+var original_state_machine_process_mode: int
+
 func _ready() -> void:
 	Engine.max_fps = 60
+	original_collision_layer = collision_layer
+	original_collision_mask = collision_mask
+	original_state_machine_process_mode = movement_state_machine.process_mode
 	blackboard = {
 	"actor": self,
 	"input_component": input_component,
@@ -83,6 +106,7 @@ func _ready() -> void:
 	"dash_dir": 0.0,
 	"can_air_dash": true,
 	"gun_holder": gun_holder,
+	"hurtbox_component": hurtbox_component,
 	"enable_facing_updates": enable_facing_updates
 	}
 	
@@ -96,6 +120,7 @@ func _ready() -> void:
 	_set_gun_enabled(has_gun)
 
 func _process(_delta: float) -> void:
+	_handle_debug_player_invisible()
 	var current_state = input_component.get_input_state()
 	
 	if current_state["movement"] != 0 and blackboard["enable_facing_updates"]:
@@ -134,6 +159,10 @@ func _process(_delta: float) -> void:
 		debug_damage.source = ^"."
 		health_component.take_damage_or_heal(debug_damage)
 		_on_insanity_component_insanity_death()
+
+func _physics_process(delta: float) -> void:
+	if _handle_debug_no_clip(delta):
+		return
 
 func _on_health_component_health_initialised(init_current_health, init_max_health):
 	EventManager.player_health_initialised.emit(init_current_health, init_max_health)
@@ -211,3 +240,54 @@ func get_wall_jump_dir(input_dir: float) -> float:
 		if is_too_steep and is_valid_wall_angle and sign(input_dir) == -sign(normal.x):
 			return sign(normal.x)
 	return 0.0
+
+func _handle_debug_no_clip(delta: float) -> bool:
+	if !DebugManager.no_clip:
+		if no_clip_enabled_last_frame:
+			_set_debug_no_clip_enabled(false)
+		return false
+	
+	if !no_clip_enabled_last_frame:
+		_set_debug_no_clip_enabled(true)
+	
+	var move_direction: Vector3 = _get_no_clip_move_direction()
+	velocity = move_direction * no_clip_speed
+	global_position += velocity * delta
+	global_position.z = 0.0
+	return true
+
+func _get_no_clip_move_direction() -> Vector3:
+	var input_state = input_component.get_input_state()
+	var move_direction: Vector3 = Vector3.ZERO
+	
+	move_direction.x = input_state["movement"]
+	move_direction.y = Input.get_axis("move_down", "move_up")
+	
+	if move_direction.length() > 0.0:
+		move_direction = move_direction.normalized()
+	
+	return move_direction
+
+func _set_debug_no_clip_enabled(enabled: bool) -> void:
+	no_clip_enabled_last_frame = enabled
+	velocity = Vector3.ZERO
+	
+	if enabled:
+		collision_mask = 0
+		movement_state_machine.process_mode = Node.PROCESS_MODE_DISABLED
+	else:
+		collision_layer = original_collision_layer
+		collision_mask = original_collision_mask
+		movement_state_machine.process_mode = original_state_machine_process_mode
+
+func _handle_debug_player_invisible() -> void:
+	if player_invisible_last_frame == DebugManager.player_invisible:
+		return
+	
+	player_invisible_last_frame = DebugManager.player_invisible
+	
+	for node in debug_hidden_nodes:
+		if node == null:
+			continue
+		
+		node.visible = !DebugManager.player_invisible
