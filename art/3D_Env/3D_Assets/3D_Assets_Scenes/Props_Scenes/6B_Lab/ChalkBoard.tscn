@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://brev3ts0pcpfg"]
+
+[ext_resource type="PackedScene" uid="uid://cehq068paju70" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/6B_Lab/ChalkBoard.fbx" id="1_uy8ck"]
+[ext_resource type="Texture2D" uid="uid://ctnbcygabet31" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/ChalkBoard/ChalkBoard_BC.png" id="2_w735v"]
+[ext_resource type="Texture2D" uid="uid://dac2jivhv26nq" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/ChalkBoard/ChalkBoard_N.png" id="3_eokw8"]
+[ext_resource type="Texture2D" uid="uid://lbu4fv5meihg" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/ChalkBoard/ChalkBoard_R.png" id="4_unskj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xycge"]
+albedo_texture = ExtResource("2_w735v")
+roughness_texture = ExtResource("4_unskj")
+normal_enabled = true
+normal_texture = ExtResource("3_eokw8")
+
+[node name="ChalkBoard" type="StaticBody3D" unique_id=306728926]
+
+[node name="ChalkBoard" parent="." unique_id=783708876 instance=ExtResource("1_uy8ck")]
+
+[node name="ChalkBoard" parent="ChalkBoard" index="0" unique_id=426914480]
+surface_material_override/0 = SubResource("StandardMaterial3D_xycge")
+
+[editable path="ChalkBoard"]

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dup1x3y6suf0g"]
+
+[ext_resource type="PackedScene" uid="uid://w1axhsibjaa5" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/6B_Lab/LabCabinet.fbx" id="1_52a1r"]
+[ext_resource type="Texture2D" uid="uid://b4lj7lk1vw7hq" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/LabCabinet/LabCabinet_BC.png" id="2_vkmde"]
+[ext_resource type="Texture2D" uid="uid://chknl2kref1pb" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/LabCabinet/LabCabinet_N.png" id="3_snavy"]
+[ext_resource type="Texture2D" uid="uid://gpwjn3jldvnw" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/LabCabinet/LabCabinet_R.png" id="4_hab0x"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h7mkk"]
+load_path = "res://.godot/imported/LabCabinet_M.png-9fff460018486a45d8de7d32c4ee88c2.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_njhgg"]
+albedo_texture = ExtResource("2_vkmde")
+metallic = 1.0
+metallic_texture = SubResource("CompressedTexture2D_h7mkk")
+metallic_texture_channel = 4
+roughness_texture = ExtResource("4_hab0x")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_texture = ExtResource("3_snavy")
+
+[node name="LabCabinet" type="StaticBody3D" unique_id=306728926]
+
+[node name="LabCabinet" parent="." unique_id=1513615811 instance=ExtResource("1_52a1r")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="cabnit_001" parent="LabCabinet" index="0" unique_id=653312535]
+surface_material_override/0 = SubResource("StandardMaterial3D_njhgg")
+
+[editable path="LabCabinet"]

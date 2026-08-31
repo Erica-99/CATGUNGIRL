@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dm8ktbuadvqyr"]
+
+[ext_resource type="PackedScene" uid="uid://bpkq213qqlhpc" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/6B_Lab/BeakerStand.fbx" id="1_pu7d0"]
+[ext_resource type="Texture2D" uid="uid://8lcqyai173dd" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/BeakerStand/BeakerStand_BC.png" id="2_ooorb"]
+[ext_resource type="Texture2D" uid="uid://d8r14isd8pyr" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/BeakerStand/BeakerStand_M.png" id="3_hcd7h"]
+[ext_resource type="Texture2D" uid="uid://cec8quygtguxc" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/BeakerStand/BeakerStand_N.png" id="4_mwgur"]
+[ext_resource type="Texture2D" uid="uid://bl0xyh1p6dr6g" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/BeakerStand/BeakerStand_R.png" id="5_vidwo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ujcpt"]
+albedo_texture = ExtResource("2_ooorb")
+metallic = 1.0
+metallic_texture = ExtResource("3_hcd7h")
+roughness_texture = ExtResource("5_vidwo")
+normal_enabled = true
+normal_texture = ExtResource("4_mwgur")
+
+[node name="LabCabinet" type="StaticBody3D" unique_id=306728926]
+
+[node name="BeakerStand" parent="." unique_id=528422898 instance=ExtResource("1_pu7d0")]
+
+[node name="Stand" parent="BeakerStand" index="1" unique_id=1334812085]
+surface_material_override/0 = SubResource("StandardMaterial3D_ujcpt")
+
+[editable path="BeakerStand"]

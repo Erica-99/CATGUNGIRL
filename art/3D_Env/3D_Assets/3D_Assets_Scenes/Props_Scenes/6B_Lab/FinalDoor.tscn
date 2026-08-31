@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://ls5wg3ha5l7u"]
+
+[ext_resource type="PackedScene" uid="uid://puv1kydw50ne" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/6B_Lab/FinalDoor.fbx" id="1_4ryqw"]
+[ext_resource type="Texture2D" uid="uid://beldjkbkkc522" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/FinalDoor/FinalDoor_BC.png" id="2_6kh51"]
+[ext_resource type="Texture2D" uid="uid://dhi57oowhtcqa" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/FinalDoor/FinalDoor_M.png" id="3_lqy6s"]
+[ext_resource type="Texture2D" uid="uid://3w27pfs2wowc" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/FinalDoor/FinalDoor_N.png" id="4_vadxt"]
+[ext_resource type="Texture2D" uid="uid://bf4wdrwapwxtx" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/FinalDoor/FinalDoor_R.png" id="5_3yw46"]
+[ext_resource type="Texture2D" uid="uid://nays7vy62ylg" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/IndustrialLight/IndustrialLight_BC.png" id="6_hncax"]
+[ext_resource type="Texture2D" uid="uid://bagvbf1gwmiy4" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/IndustrialLight/IndustrialLight_M.png" id="7_f3003"]
+[ext_resource type="Texture2D" uid="uid://iil1bqym32j7" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/IndustrialLight/IndustrialLight_N.png" id="8_0k3ld"]
+[ext_resource type="Texture2D" uid="uid://08c5uslabuou" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/IndustrialLight/IndustrialLight_R.png" id="9_n6y2u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x2amv"]
+albedo_texture = ExtResource("2_6kh51")
+metallic = 1.0
+metallic_texture = ExtResource("3_lqy6s")
+roughness_texture = ExtResource("5_3yw46")
+normal_enabled = true
+normal_texture = ExtResource("4_vadxt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f7mp8"]
+albedo_texture = ExtResource("6_hncax")
+metallic = 1.0
+metallic_texture = ExtResource("7_f3003")
+roughness_texture = ExtResource("9_n6y2u")
+normal_enabled = true
+normal_texture = ExtResource("8_0k3ld")
+
+[node name="FinalDoor" type="StaticBody3D" unique_id=306728926]
+
+[node name="FinalDoor" parent="." unique_id=1903052867 instance=ExtResource("1_4ryqw")]
+
+[node name="defaultMaterial" parent="FinalDoor" index="0" unique_id=615371970]
+surface_material_override/0 = SubResource("StandardMaterial3D_x2amv")
+surface_material_override/1 = SubResource("StandardMaterial3D_f7mp8")
+
+[editable path="FinalDoor"]

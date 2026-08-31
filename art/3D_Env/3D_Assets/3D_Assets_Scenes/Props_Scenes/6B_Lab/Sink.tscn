@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ctcpwyd8a67ib"]
+
+[ext_resource type="PackedScene" uid="uid://by6w6ijlu18ae" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/6B_Lab/Sink.fbx" id="1_xjq8q"]
+[ext_resource type="Texture2D" uid="uid://dqho74exknua8" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/Sink/Sink_BC.png" id="2_34lss"]
+[ext_resource type="Texture2D" uid="uid://b4d4j8akfhxf2" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/Sink/Sink_M.png" id="3_1fxjn"]
+[ext_resource type="Texture2D" uid="uid://cab8ee5pbma2i" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/Sink/Sink_N.png" id="4_w5wa7"]
+[ext_resource type="Texture2D" uid="uid://3qvp1aqk7ish" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/Sink/Sink_R.png" id="5_yxsls"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pnyvs"]
+albedo_texture = ExtResource("2_34lss")
+metallic = 1.0
+metallic_texture = ExtResource("3_1fxjn")
+roughness_texture = ExtResource("5_yxsls")
+normal_enabled = true
+normal_texture = ExtResource("4_w5wa7")
+
+[node name="LabCabinet" type="StaticBody3D" unique_id=306728926]
+
+[node name="Sink" parent="." unique_id=1391948442 instance=ExtResource("1_xjq8q")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="sink" parent="Sink" index="0" unique_id=1743204065]
+surface_material_override/0 = SubResource("StandardMaterial3D_pnyvs")
+
+[editable path="Sink"]

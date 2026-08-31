@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://brju4y4mox0ev"]
+
+[ext_resource type="PackedScene" uid="uid://dkms25s4xyrhb" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/6B_Lab/RollerShelf.fbx" id="1_uj2ps"]
+[ext_resource type="Texture2D" uid="uid://d24f2h6faebnh" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/RollerShelf/RollerShelf_BC.png" id="2_lnga3"]
+[ext_resource type="Texture2D" uid="uid://df3po6e36sdxd" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/RollerShelf/RollerShelf_M.png" id="3_hytfx"]
+[ext_resource type="Texture2D" uid="uid://cyts5docqveyk" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/RollerShelf/RollerShelf_N.png" id="4_y3vw5"]
+[ext_resource type="Texture2D" uid="uid://dbo6gkghoi0xy" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/RollerShelf/RollerShelf_R.png" id="5_e5m1e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d86h4"]
+albedo_texture = ExtResource("2_lnga3")
+metallic = 1.0
+metallic_texture = ExtResource("3_hytfx")
+roughness_texture = ExtResource("5_e5m1e")
+normal_enabled = true
+normal_texture = ExtResource("4_y3vw5")
+
+[node name="LabCabinet" type="StaticBody3D" unique_id=306728926]
+
+[node name="RollerShelf" parent="." unique_id=1979903219 instance=ExtResource("1_uj2ps")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="pCube26" parent="RollerShelf" index="0" unique_id=214552788]
+surface_material_override/0 = SubResource("StandardMaterial3D_d86h4")
+
+[editable path="RollerShelf"]

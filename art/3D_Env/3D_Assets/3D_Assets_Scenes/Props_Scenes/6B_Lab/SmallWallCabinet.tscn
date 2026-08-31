@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://0u5c4k12kkru"]
+
+[ext_resource type="PackedScene" uid="uid://cnhd2ciqgqvxu" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/6B_Lab/SmallWallCabinet.fbx" id="1_368r3"]
+[ext_resource type="Texture2D" uid="uid://c1eaukf0yoc71" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/SmallWallCabinet/SmallWallCabinet_BC.png" id="2_6vf3v"]
+[ext_resource type="Texture2D" uid="uid://ym0vugs2x831" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/SmallWallCabinet/SmallWallCabinet_M.png" id="3_k4to8"]
+[ext_resource type="Texture2D" uid="uid://5smrd0avatf1" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/SmallWallCabinet/SmallWallCabinet_N.png" id="4_5pf8r"]
+[ext_resource type="Texture2D" uid="uid://434h3jj4rnx6" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/SmallWallCabinet/SmallWallCabinet_R.png" id="5_33qvj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gc7fd"]
+albedo_texture = ExtResource("2_6vf3v")
+metallic = 1.0
+metallic_texture = ExtResource("3_k4to8")
+roughness_texture = ExtResource("5_33qvj")
+normal_enabled = true
+normal_texture = ExtResource("4_5pf8r")
+
+[node name="LabCabinet" type="StaticBody3D" unique_id=306728926]
+
+[node name="SmallWallCabinet" parent="." unique_id=1799786688 instance=ExtResource("1_368r3")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="Cube_003" parent="SmallWallCabinet" index="0" unique_id=1962264669]
+surface_material_override/0 = SubResource("StandardMaterial3D_gc7fd")
+
+[editable path="SmallWallCabinet"]
