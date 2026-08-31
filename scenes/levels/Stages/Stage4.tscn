@@ -62,25 +62,18 @@
 [ext_resource type="Script" uid="uid://cwsqw5g17fn2e" path="res://scenes/actors/enemies/trunk/trunk.gd" id="56_abaql"]
 [ext_resource type="Script" uid="uid://bygxuy1e66ano" path="res://scenes/actors/enemies/trunk/trunk_visuals.gd" id="57_barxx"]
 [ext_resource type="Texture2D" uid="uid://cvmmbgy6t0owe" path="res://art/2d_assets/real_world/Trunks/Trunk_Fist_Sprites.png" id="58_c7g71"]
+[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="58_k3b3x"]
 [ext_resource type="Texture2D" uid="uid://di7keacy5eue6" path="res://art/2d_assets/real_world/Trunks/sprite_sheet (1).png" id="59_88vs6"]
 [ext_resource type="Texture2D" uid="uid://dgvcqghmq3h8t" path="res://art/2d_assets/real_world/Trunks/Trunk_Punch_Sprites.png" id="60_i7rx3"]
 [ext_resource type="SpriteFrames" uid="uid://cbv3hnugbma00" path="res://art/2d_assets/real_world/Trunks/TrunkHealthy.tres" id="61_1b2pj"]
 [ext_resource type="Texture2D" uid="uid://b2enayxnykpm" path="res://art/2d_assets/real_world/Trunks/Blaster_Firing_Sprite.png" id="62_7laie"]
 [ext_resource type="Texture2D" uid="uid://qr5lv4aw2e6f" path="res://art/2d_assets/real_world/Trunks/Blaster_Idle.png" id="63_6350v"]
-[ext_resource type="PackedScene" uid="uid://cxge5m5sp5n26" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Elevator.tscn" id="55_1xq2m"]
-[ext_resource type="Script" uid="uid://b8370nobsmmuf" path="res://scenes/levels/elevator_platform/elevator_platform.gd" id="56_0conm"]
-[ext_resource type="PackedScene" uid="uid://ou3g778y2q8g" path="res://scenes/components/interactable_component/interactable_component.tscn" id="57_l5p45"]
-[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="58_k3b3x"]
-[ext_resource type="PackedScene" uid="uid://c4w6eac8jl84" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorBig.tscn" id="60_trf4c"]
 [ext_resource type="PackedScene" uid="uid://bqxkqmc0c1lue" path="res://scenes/actors/enemies/enemy_spawner/enemy_spawner.tscn" id="64_8tv4h"]
 [ext_resource type="Script" uid="uid://b3h8o32ohtn6q" path="res://scenes/levels/Stages/trunk_event_trigger.gd" id="64_defdb"]
 [ext_resource type="PackedScene" uid="uid://4rsfb5kh40wj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/B_Collisions/45Ramp.tscn" id="65_517df"]
 [ext_resource type="PackedScene" uid="uid://dk2ngf0qgohte" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/3_WareHouse/WallPlainBaseWareHouse.tscn" id="66_c3edl"]
 [ext_resource type="PackedScene" uid="uid://cntfde8q5l450" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/3_WareHouse/RoofBrokenWareHouse.tscn" id="67_ib8r7"]
 [ext_resource type="PackedScene" uid="uid://c2474vxopv84k" path="res://scenes/actors/enemies/trunk/trunk.tscn" id="69_wf5pt"]
-[ext_resource type="Script" uid="uid://dl0vqm7sn4iea" path="res://scenes/components/state_machine/states/enemy/trunk/trunk_melee.gd" id="70_p683y"]
-[ext_resource type="Script" uid="uid://bivm8q1sfq6tc" path="res://scenes/components/state_machine/states/enemy/trunk/trunk_outranged.gd" id="71_l1mde"]
-[ext_resource type="Script" uid="uid://briciybelpcwe" path="res://scenes/components/state_machine/states/enemy/enemy_death.gd" id="72_2dxwv"]
 [ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="73_av0vb"]
 [ext_resource type="PackedScene" uid="uid://csd06hicr5wny" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="74_ahtpk"]
 [ext_resource type="Shape3D" uid="uid://cxemkg2bdxscg" path="res://resources/hitboxes/enemies/trunk/trunk_melee_hb.tres" id="75_r6wjk"]
@@ -5419,16 +5412,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 277.16315, 32.225456, 0)
 [node name="VentAirIntake4" parent="Props" unique_id=25830024 instance=ExtResource("10_qmdqw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 277.16315, 51.841164, 0)
 
-[node name="TrunkPuppet" type="CharacterBody3D" parent="Props" unique_id=400593386 node_paths=PackedStringArray("animation_manager", "state_machine", "start_idle", "start_patrol", "start_aggro", "melee_hitbox")]
+[node name="TrunkPuppet" type="CharacterBody3D" parent="Props" unique_id=400593386 node_paths=PackedStringArray("animation_manager", "melee_hitbox")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.35968, 37.653866, -15.334957)
 collision_layer = 4
 collision_mask = 129
 script = ExtResource("56_abaql")
 animation_manager = NodePath("TrunkMesh/TorsoAnims")
-state_machine = NodePath("StateMachine")
-start_idle = NodePath("StateMachine/TrunkIdle")
-start_patrol = NodePath("StateMachine/TrunkPatrol")
-start_aggro = NodePath("StateMachine/TrunkChase")
 chase_speed = 5.0
 patrol_speed = 2.0
 elapsed_direction_switch = 3.0
@@ -5486,52 +5475,16 @@ frame_progress = 0.053245552
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2181168, -1.6936493, 0)
 shape = SubResource("BoxShape3D_igprn")
 
-[node name="HealthComponent" parent="Props/TrunkPuppet" unique_id=236252344 instance=ExtResource("64_o4o51")]
-starting_health = 100.0
-
-[node name="TeamComponent" parent="Props/TrunkPuppet" unique_id=2076917082 instance=ExtResource("65_o7h8b")]
-team = 2
-
-[node name="StateMachine" parent="Props/TrunkPuppet" unique_id=1499026333 instance=ExtResource("66_gdwyr")]
-
-[node name="TrunkIdle" type="Node" parent="Props/TrunkPuppet/StateMachine" unique_id=391710438]
-script = ExtResource("67_eogpr")
-metadata/_custom_type_script = "uid://co5boy5qbl43m"
-
-[node name="TrunkPatrol" type="Node" parent="Props/TrunkPuppet/StateMachine" unique_id=904016991]
-script = ExtResource("68_x06j8")
-metadata/_custom_type_script = "uid://clsww4kd76vy4"
-
-[node name="TrunkChase" type="Node" parent="Props/TrunkPuppet/StateMachine" unique_id=1521671396]
-script = ExtResource("69_c5tre")
-metadata/_custom_type_script = "uid://dr4ftksqw40hc"
-
-[node name="TrunkMelee" type="Node" parent="Props/TrunkPuppet/StateMachine" unique_id=574384534]
-script = ExtResource("70_p683y")
-metadata/_custom_type_script = "uid://dl0vqm7sn4iea"
-
-[node name="TrunkOutranged" type="Node" parent="Props/TrunkPuppet/StateMachine" unique_id=751611111]
-script = ExtResource("71_l1mde")
-metadata/_custom_type_script = "uid://bivm8q1sfq6tc"
-
-[node name="TrunkDeath" type="Node" parent="Props/TrunkPuppet/StateMachine" unique_id=1245463811]
-script = ExtResource("72_2dxwv")
-metadata/_custom_type_script = "uid://n3y61s3xutuy"
-
-[node name="BodyHurtbox" parent="Props/TrunkPuppet" unique_id=338394069 node_paths=PackedStringArray("team_component", "health_component") instance=ExtResource("73_av0vb")]
+[node name="BodyHurtbox" parent="Props/TrunkPuppet" unique_id=338394069 instance=ExtResource("73_av0vb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.544092, 0)
-team_component = NodePath("../TeamComponent")
-health_component = NodePath("../HealthComponent")
 damage_multiplier = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Props/TrunkPuppet/BodyHurtbox" unique_id=1156962716]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2181168, -1.6936493, 0)
 shape = SubResource("BoxShape3D_rp7bq")
 
-[node name="HeadHurtbox" parent="Props/TrunkPuppet" unique_id=1735528742 node_paths=PackedStringArray("team_component", "health_component") instance=ExtResource("73_av0vb")]
+[node name="HeadHurtbox" parent="Props/TrunkPuppet" unique_id=1735528742 instance=ExtResource("73_av0vb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3917332, 0)
-team_component = NodePath("../TeamComponent")
-health_component = NodePath("../HealthComponent")
 damage_multiplier = 1.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Props/TrunkPuppet/HeadHurtbox" unique_id=194489168]
@@ -5566,9 +5519,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2181168, -1.6936493, 0)
 shape = SubResource("SphereShape3D_31nnk")
 debug_color = Color(0.9586238, 0, 0.5287736, 0.41960785)
 
-[node name="MeleeHitbox3D" parent="Props/TrunkPuppet" unique_id=1965125698 node_paths=PackedStringArray("team_component") instance=ExtResource("74_ahtpk")]
+[node name="MeleeHitbox3D" parent="Props/TrunkPuppet" unique_id=1965125698 instance=ExtResource("74_ahtpk")]
 collision_mask = 10
-team_component = NodePath("../TeamComponent")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Props/TrunkPuppet/MeleeHitbox3D" unique_id=364759522]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9772263, -1.6936493, 0)
@@ -5958,16 +5910,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 277.01422, 40.70954, 0)
 [connection signal="cant_step" from="Props/TrunkPuppet" to="Props/TrunkPuppet/TrunkMesh" method="_on_trunk_cant_step"]
 [connection signal="facing_changed" from="Props/TrunkPuppet" to="Props/TrunkPuppet/TrunkMesh" method="_on_trunk_facing_changed"]
 [connection signal="animation_finished" from="Props/TrunkPuppet/TrunkMesh/TorsoAnims" to="Props/TrunkPuppet" method="_on_torso_anims_animation_finished"]
-[connection signal="health_changed" from="Props/TrunkPuppet/HealthComponent" to="Props/TrunkPuppet" method="_on_health_component_health_changed"]
-[connection signal="killed" from="Props/TrunkPuppet/HealthComponent" to="Props/TrunkPuppet" method="_on_health_component_killed"]
-[connection signal="state_changed" from="Props/TrunkPuppet/StateMachine" to="Props/TrunkPuppet/TrunkMesh" method="_on_state_machine_state_changed"]
-[connection signal="reached_chase_offset" from="Props/TrunkPuppet/StateMachine/TrunkChase" to="Props/TrunkPuppet/TrunkMesh" method="_on_trunk_chase_reached_chase_offset"]
-[connection signal="body_entered" from="Props/TrunkPuppet/DetectionRange" to="Props/TrunkPuppet/StateMachine/TrunkIdle" method="_on_detection_range_body_entered"]
-[connection signal="body_entered" from="Props/TrunkPuppet/DetectionRange" to="Props/TrunkPuppet/StateMachine/TrunkPatrol" method="_on_detection_range_body_entered"]
-[connection signal="body_entered" from="Props/TrunkPuppet/ChaseRange" to="Props/TrunkPuppet/StateMachine/TrunkOutranged" method="_on_chase_range_body_entered"]
-[connection signal="body_exited" from="Props/TrunkPuppet/ChaseRange" to="Props/TrunkPuppet/StateMachine/TrunkChase" method="_on_chase_range_body_exited"]
-[connection signal="body_entered" from="Props/TrunkPuppet/MeleeRange" to="Props/TrunkPuppet/StateMachine/TrunkChase" method="_on_melee_range_body_entered"]
-[connection signal="body_exited" from="Props/TrunkPuppet/MeleeRange" to="Props/TrunkPuppet/StateMachine/TrunkMelee" method="_on_melee_range_body_exited"]
 [connection signal="timeout" from="Props/TrunkPuppet/StepHandler" to="Props/TrunkPuppet" method="_on_step_handler_timeout"]
 [connection signal="timeout" from="Props/TrunkPuppet/OutrangedTimer" to="Props/TrunkPuppet" method="_on_outranged_timer_timeout"]
 [connection signal="area_entered" from="Interactive/BridgeBroken/TrunkEventTrigger" to="Interactive/BridgeBroken/TrunkEventTrigger" method="_on_area_entered"]
