@@ -1,14 +1,34 @@
 [gd_scene format=3 uid="uid://lwj26gr6bvpq"]
 
-[ext_resource type="ArrayMesh" uid="uid://d0unyq3vf225v" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/5_Warehouse/Forklift.obj" id="1_h3f7o"]
+[ext_resource type="ArrayMesh" uid="uid://bq3myg22ksfty" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/5_Warehouse/Forklift.obj" id="1_h3f7o"]
+[ext_resource type="Texture2D" uid="uid://dejniru8a0snu" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/OtherProps/Forklift/Forklift_Forklift_BaseColor.png" id="2_17xyb"]
+[ext_resource type="Texture2D" uid="uid://bks8t43ldkqba" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/OtherProps/Forklift/Forklift_Forklift_Emissive.png" id="3_vo884"]
+[ext_resource type="Texture2D" uid="uid://e13grpwk40hp" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/OtherProps/Forklift/Forklift_Forklift_Metallic.png" id="4_l1pvd"]
+[ext_resource type="Texture2D" uid="uid://k5rdcy43m3wl" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/OtherProps/Forklift/Forklift_Forklift_Normal.png" id="5_uxvon"]
+[ext_resource type="Texture2D" uid="uid://yalc3e2uq16" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/OtherProps/Forklift/Forklift_Forklift_Roughness.png" id="6_lo3vt"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_h3f7o"]
-points = PackedVector3Array(0.3592767, 0.9850457, 1.5749435, -0.5875745, 0.036747906, -0.6114003, 0.59523666, 0.040236592, -0.6102393, -0.35732895, 2.1288216, -0.92011565, -0.59361184, 0.20537789, 1.4194565, 0.4156188, 2.159551, 0.68267196, 0.38368958, 0.2192288, -2.2773762, -0.41282418, 2.17705, 0.6982298, 0.6361013, 0.15603316, 1.5115689, -0.37408954, 0.15603316, -2.2773762, 0.3668502, 2.1285985, -0.9199712, 0.69947624, 0.7875446, -0.6984183, -0.6898762, 0.7875446, -0.76171905, -0.5635343, 0.85051775, 1.6377747, -0.5342043, 0.025321063, 1.2405975, 0.6361013, 0.724349, 1.385363, 0.5423292, 0.028271006, 1.2365001, -0.41955748, 0.37563258, 1.6837456, -0.62650126, 0.7875446, 1.2591572, 0.42844486, 0.7400751, 1.6804872, -0.63618934, 0.05450278, -0.5478132, 0.64728934, 0.11029112, -0.6652196, 0.38368958, 0.15603316, -2.2773762, -0.37408954, 0.2192288, -2.2773762, -0.6898762, 0.5349845, -0.06738904, -0.6898762, 0.6611533, -0.8879249, -0.6898762, 0.85051775, -0.38270587, 0.69947624, 0.7875446, -0.2565, 0.69947624, 0.47178888, -0.06738904, 0.42786896, 0.37784183, 1.6778541, -0.3599664, 0.79931027, 1.6890478, -0.5387454, 0.07646655, 1.3739116)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u7pk8"]
+albedo_texture = ExtResource("2_17xyb")
+metallic = 1.0
+metallic_texture = ExtResource("4_l1pvd")
+roughness_texture = ExtResource("6_lo3vt")
+emission_enabled = true
+emission_texture = ExtResource("3_vo884")
+normal_enabled = true
+normal_texture = ExtResource("5_uxvon")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1nytq"]
+points = PackedVector3Array(0.42389584, 0.86636287, 1.6578012, -0.58775, 0.036070228, -0.6085479, -0.3735752, 0.15611535, -2.2774334, -0.4128473, 2.1821835, 0.70462596, 0.3655555, 2.1235156, -0.9114241, 0.64893824, 0.11138081, -0.6615391, -0.5373627, 0.07859525, 1.3769636, -0.3583548, 2.1371114, -0.9202142, 0.3855753, 0.15611535, -2.2774334, 0.41562006, 2.158452, 0.68353134, 0.63858, 0.15611535, 1.5183685, -0.6899333, 0.7888316, -0.7586371, -0.56336284, 0.8521478, 1.6448026, 0.7019334, 0.7888316, -0.6952218, 0.54353076, 0.029835196, 1.2401043, 0.63858, 0.72551537, 1.3919342, 0.59732753, 0.04043141, -0.60709685, -0.46736765, 0.33557916, 1.6410339, -0.62657994, 0.72551537, 1.3919342, -0.6363267, 0.05388672, -0.54445523, 0.3855753, 0.21943158, -2.2774334, -0.5333715, 0.026153281, 1.2452173, -0.3735752, 0.21943158, -2.2774334, 0.30306304, 0.92673594, 1.6489732, -0.6899333, 0.8521478, -0.4419569, 0.5753629, 0.72551537, 1.6448026, -0.59271175, 0.20691662, 1.4235352, -0.6899333, 0.53556675, -0.063446864, -0.6899333, 0.66219914, -0.8850713, 0.7019334, 0.7888316, -0.25290006, 0.7019334, 0.4724735, -0.063446864, -0.29159302, 0.9264179, 1.6523669)
 
 [node name="Forklift" type="StaticBody3D" unique_id=500869341]
 
 [node name="Forklift_Mesh" type="MeshInstance3D" parent="." unique_id=1569543608]
 mesh = ExtResource("1_h3f7o")
+surface_material_override/0 = SubResource("StandardMaterial3D_u7pk8")
+surface_material_override/1 = SubResource("StandardMaterial3D_u7pk8")
+surface_material_override/2 = SubResource("StandardMaterial3D_u7pk8")
+surface_material_override/3 = SubResource("StandardMaterial3D_u7pk8")
+surface_material_override/4 = SubResource("StandardMaterial3D_u7pk8")
 
-[node name="Forklift_Collision" type="CollisionShape3D" parent="." unique_id=194926416]
-shape = SubResource("ConvexPolygonShape3D_h3f7o")
+[node name="Forklift_Collision" type="CollisionShape3D" parent="." unique_id=1945099771]
+shape = SubResource("ConvexPolygonShape3D_1nytq")

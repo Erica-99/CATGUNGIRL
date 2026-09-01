@@ -1,6 +1,18 @@
 [gd_scene format=3 uid="uid://butl22j5b5b2w"]
 
 [ext_resource type="ArrayMesh" uid="uid://gds3rdtgd7no" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/5_Warehouse/WoodenCrates/WoodenCrate5.obj" id="1_nywjo"]
+[ext_resource type="Texture2D" uid="uid://dbeydxq7c6j7n" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/WoodenCrates/WoodenCrate5/WoodenCrate5_DefaultMaterial_BaseColor.png" id="2_a0fwl"]
+[ext_resource type="Texture2D" uid="uid://buy78lct2vtat" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/WoodenCrates/WoodenCrate5/WoodenCrate5_DefaultMaterial_Height.png" id="3_r170f"]
+[ext_resource type="Texture2D" uid="uid://cxnkiho01ipas" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/WoodenCrates/WoodenCrate5/WoodenCrate5_DefaultMaterial_Normal.png" id="4_e4tcg"]
+[ext_resource type="Texture2D" uid="uid://dwb4chk5kg3d3" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/WoodenCrates/WoodenCrate5/WoodenCrate5_DefaultMaterial_Roughness.png" id="5_qyesu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e4tcg"]
+albedo_texture = ExtResource("2_a0fwl")
+roughness_texture = ExtResource("5_qyesu")
+normal_enabled = true
+normal_texture = ExtResource("4_e4tcg")
+heightmap_scale = 1.0
+heightmap_texture = ExtResource("3_r170f")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gnvp6"]
 size = Vector3(0.6, 0.682329, 0.6)
@@ -10,6 +22,7 @@ transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 0, 0)
 
 [node name="WoodenCrate5_Mesh" type="MeshInstance3D" parent="." unique_id=1809546740]
 mesh = ExtResource("1_nywjo")
+surface_material_override/0 = SubResource("StandardMaterial3D_e4tcg")
 
 [node name="WoodenCrate5_Collision" type="CollisionShape3D" parent="." unique_id=1731919699]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3421525, 0)

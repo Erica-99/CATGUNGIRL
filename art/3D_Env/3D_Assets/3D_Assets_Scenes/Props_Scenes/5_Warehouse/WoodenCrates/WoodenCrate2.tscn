@@ -1,6 +1,15 @@
 [gd_scene format=3 uid="uid://cungdm77df17h"]
 
 [ext_resource type="ArrayMesh" uid="uid://cxequn1nuiwts" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/5_Warehouse/WoodenCrates/WoodenCrate2.obj" id="1_ovu2e"]
+[ext_resource type="Texture2D" uid="uid://b761qkskyrkgd" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/WoodenCrates/WoodenCrate2/WoodenCrate2_DefaultMaterial_BaseColor.png" id="2_qaqwi"]
+[ext_resource type="Texture2D" uid="uid://d3huxffur43gu" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/WoodenCrates/WoodenCrate2/WoodenCrate2_DefaultMaterial_Normal.png" id="3_0jhdl"]
+[ext_resource type="Texture2D" uid="uid://do6c73x1ik4uu" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/WoodenCrates/WoodenCrate2/WoodenCrate2_DefaultMaterial_Roughness.png" id="4_ovntk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16ljp"]
+albedo_texture = ExtResource("2_qaqwi")
+roughness_texture = ExtResource("4_ovntk")
+normal_enabled = true
+normal_texture = ExtResource("3_0jhdl")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ovu2e"]
 size = Vector3(0.395136, 0.31096798, 0.395136)
@@ -10,6 +19,7 @@ transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 0, 0)
 
 [node name="WoodenCrate2_Mesh" type="MeshInstance3D" parent="." unique_id=593041118]
 mesh = ExtResource("1_ovu2e")
+surface_material_override/0 = SubResource("StandardMaterial3D_16ljp")
 
 [node name="WoodenCrate2_Collision" type="CollisionShape3D" parent="." unique_id=1167555776]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15648599, 0)

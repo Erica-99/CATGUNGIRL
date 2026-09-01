@@ -1,6 +1,18 @@
 [gd_scene format=3 uid="uid://b1p88l2y8q31k"]
 
 [ext_resource type="ArrayMesh" uid="uid://bgjw6p4a32rou" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/0_MultipleMisc/SteelBeamDiagonal.obj" id="1_jqv72"]
+[ext_resource type="Texture2D" uid="uid://bkjxofify1j46" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/0_MultipleMisc/SteelBeamDiagonal/SteelBeamDiagonal_DefaultMaterial_BaseColor.png" id="2_cpwrt"]
+[ext_resource type="Texture2D" uid="uid://cgyxv8ta6qfcv" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/0_MultipleMisc/SteelBeamDiagonal/SteelBeamDiagonal_DefaultMaterial_Metallic.png" id="3_vt8um"]
+[ext_resource type="Texture2D" uid="uid://dewkt4vfnj3p1" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/0_MultipleMisc/SteelBeamDiagonal/SteelBeamDiagonal_DefaultMaterial_Normal.png" id="4_bma1t"]
+[ext_resource type="Texture2D" uid="uid://dm6r4d6tqnh3e" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/0_MultipleMisc/SteelBeamDiagonal/SteelBeamDiagonal_DefaultMaterial_Roughness.png" id="5_feuik"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0kj4w"]
+albedo_texture = ExtResource("2_cpwrt")
+metallic = 1.0
+metallic_texture = ExtResource("3_vt8um")
+roughness_texture = ExtResource("5_feuik")
+normal_enabled = true
+normal_texture = ExtResource("4_bma1t")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jqv72"]
 points = PackedVector3Array(-0.323482, 1.617694, 0, -0.323482, 4.800128, 0, 0.32348207, 1.617694, 0, -0.323482, 1.617694, 0.025008902, 0.32348207, 4.800128, 0, -0.323482, 4.800128, 0.025008902, -0.2694628, 4.801998, 2.658901, 0.32348207, 1.617694, 0.025008902, -0.23190898, 4.0074806, 3.6387954, -0.2694628, 4.7655296, 3.871075, 0.32348207, 4.800128, 0.025008902, 0.2693995, 4.801998, 2.658901, -0.2694628, 4.801998, 3.871075, 0.2693995, 4.7655296, 3.871075, 0.2318457, 4.0074806, 3.6387954, -0.23190898, 4.5127425, 3.8441715, -0.14546557, 4.558874, 3.8574338, -0.12874684, 4.5520167, 3.8574338, 0.2693995, 4.801998, 3.871075, 0.13368651, 4.5520167, 3.8574338, 0.15040523, 4.558874, 3.8574338, 0.2318457, 4.5127425, 3.8441715)
@@ -10,6 +22,7 @@ points = PackedVector3Array(-0.323482, 1.617694, 0, -0.323482, 4.800128, 0, 0.32
 [node name="SteelBeamDiagonal_Mesh" type="MeshInstance3D" parent="." unique_id=1178736235]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("1_jqv72")
+surface_material_override/0 = SubResource("StandardMaterial3D_0kj4w")
 
 [node name="SteelBeamDiagonal_Collision" type="CollisionShape3D" parent="." unique_id=808538773]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
