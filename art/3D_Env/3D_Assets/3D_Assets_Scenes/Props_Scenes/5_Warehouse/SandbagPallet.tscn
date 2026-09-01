@@ -11,12 +11,13 @@ roughness_texture = ExtResource("4_ijkrg")
 normal_enabled = true
 normal_texture = ExtResource("3_k57bg")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_gybhb"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_kavpw"]
 size = Vector3(1.277022, 0.783801, 1.293303)
 
 [node name="SandbagPallet" type="StaticBody3D" unique_id=2057848645]
 
 [node name="SandbagPallet_Mesh" type="MeshInstance3D" parent="." unique_id=493195755]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 mesh = ExtResource("1_teuk7")
 surface_material_override/0 = SubResource("StandardMaterial3D_pawry")
 surface_material_override/1 = SubResource("StandardMaterial3D_pawry")
@@ -38,6 +39,7 @@ surface_material_override/16 = SubResource("StandardMaterial3D_pawry")
 surface_material_override/17 = SubResource("StandardMaterial3D_pawry")
 surface_material_override/18 = SubResource("StandardMaterial3D_pawry")
 
-[node name="SandbagPallet_Collision" type="CollisionShape3D" parent="." unique_id=221069178]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0048270226, 0.3921375, -0.005627513)
-shape = SubResource("BoxShape3D_gybhb")
+[node name="SandbagPallet_Collision" type="CollisionShape3D" parent="." unique_id=1252944274]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.007240534, 0.58820623, -0.008441269)
+visible = false
+shape = SubResource("BoxShape3D_kavpw")
