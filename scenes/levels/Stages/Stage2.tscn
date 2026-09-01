@@ -934,6 +934,51 @@ transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 50
 [node name="FloorShootingPrison2" parent="Environment" unique_id=1371424100 instance=ExtResource("32_setcc")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 80, -16.8, 0)
 
+[node name="BarrierFull" parent="Environment" unique_id=1204649463 instance=ExtResource("55_ljbqk")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 40, 0, -20)
+
+[node name="BarrierFull2" parent="Environment" unique_id=1649725988 instance=ExtResource("55_ljbqk")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 50, 0, -20)
+
+[node name="BarrierFull3" parent="Environment" unique_id=770775011 instance=ExtResource("55_ljbqk")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30, 0, -20)
+
+[node name="BarrierFull4" parent="Environment" unique_id=1057190644 instance=ExtResource("55_ljbqk")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 20, 0, -10)
+
+[node name="BarrierFull5" parent="Environment" unique_id=1362878695 instance=ExtResource("55_ljbqk")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -8.4, 0)
+
+[node name="BarrierFull6" parent="Environment" unique_id=1422312080 instance=ExtResource("55_ljbqk")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10, -8.4, 0)
+
+[node name="BarrierFull7" parent="Environment" unique_id=1292453084 instance=ExtResource("55_ljbqk")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 40, -8.4, 0)
+
+[node name="BarrierFull8" parent="Environment" unique_id=363353466 instance=ExtResource("55_ljbqk")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 50, -8.4, 0)
+
+[node name="BarrierFull9" parent="Environment" unique_id=676684439 instance=ExtResource("55_ljbqk")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 90, -16.8, -10)
+
+[node name="BarrierFull10" parent="Environment" unique_id=949019637 instance=ExtResource("55_ljbqk")]
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 110, -16.8, 0)
+
+[node name="BarrierFull11" parent="Environment" unique_id=1909565857 instance=ExtResource("55_ljbqk")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 110, -16.8, 0)
+
+[node name="BarrierFull12" parent="Environment" unique_id=22885145 instance=ExtResource("55_ljbqk")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 120, -16.8, 0)
+
+[node name="BarrierBrokenCentre" parent="Environment" unique_id=1137095866 instance=ExtResource("56_ljbqk")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 100, -16.8, -10)
+
+[node name="BarrierCorner" parent="Environment" unique_id=326435535 instance=ExtResource("54_3rmdv")]
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 110, -16.8, 0)
+
+[node name="BarrierCorner2" parent="Environment" unique_id=1550381768 instance=ExtResource("54_3rmdv")]
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 90, -16.8, -10)
+
 [node name="Props" type="Node3D" parent="." unique_id=1981854926]
 
 [node name="Interactive" type="Node3D" parent="." unique_id=212887502]
@@ -949,12 +994,12 @@ level_name = "Stage3"
 [node name="PrisonCell" parent="Interactive" unique_id=1449443355 instance=ExtResource("20_0yyri")]
 transform = Transform3D(2.25, 0, 0, 0, 2.25, 0, 0, 0, 2.25, 31.246552, -22.75604, 0)
 
-[node name="DoorBasic" parent="Interactive" unique_id=1555562335 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("22_n434r")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 75, -25.2, 0)
-enemy_manager = NodePath("../../Enemies/Room One")
-
 [node name="DoorBasic2" parent="Interactive" unique_id=582229069 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("22_n434r")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 55, -25.2, 0)
+enemy_manager = NodePath("../../Enemies/Room Two")
+
+[node name="DoorBasictemp" parent="Interactive" unique_id=1901950879 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("22_n434r")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 75, -25.2, 0)
 enemy_manager = NodePath("../../Enemies/Room Two")
 
 [node name="RoofBroken" type="StaticBody3D" parent="Interactive" unique_id=1709219406]
@@ -1102,50 +1147,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.093834, -13.496223, 0)
 
 [node name="Convict" parent="Enemies/Room Three" unique_id=1506947017 instance=ExtResource("21_n434r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.26416, -23.496223, 0)
-
-[node name="BarrierFull" parent="." unique_id=1204649463 instance=ExtResource("55_ljbqk")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 40, 0, -20)
-
-[node name="BarrierFull2" parent="." unique_id=1649725988 instance=ExtResource("55_ljbqk")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 50, 0, -20)
-
-[node name="BarrierFull3" parent="." unique_id=770775011 instance=ExtResource("55_ljbqk")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30, 0, -20)
-
-[node name="BarrierFull4" parent="." unique_id=1057190644 instance=ExtResource("55_ljbqk")]
-transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 20, 0, -10)
-
-[node name="BarrierFull5" parent="." unique_id=1362878695 instance=ExtResource("55_ljbqk")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -8.4, 0)
-
-[node name="BarrierFull6" parent="." unique_id=1422312080 instance=ExtResource("55_ljbqk")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10, -8.4, 0)
-
-[node name="BarrierFull7" parent="." unique_id=1292453084 instance=ExtResource("55_ljbqk")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 40, -8.4, 0)
-
-[node name="BarrierFull8" parent="." unique_id=363353466 instance=ExtResource("55_ljbqk")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 50, -8.4, 0)
-
-[node name="BarrierFull9" parent="." unique_id=676684439 instance=ExtResource("55_ljbqk")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 90, -16.8, -10)
-
-[node name="BarrierFull10" parent="." unique_id=949019637 instance=ExtResource("55_ljbqk")]
-transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 110, -16.8, 0)
-
-[node name="BarrierFull11" parent="." unique_id=1909565857 instance=ExtResource("55_ljbqk")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 110, -16.8, 0)
-
-[node name="BarrierFull12" parent="." unique_id=22885145 instance=ExtResource("55_ljbqk")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 120, -16.8, 0)
-
-[node name="BarrierBrokenCentre" parent="." unique_id=1137095866 instance=ExtResource("56_ljbqk")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 100, -16.8, -10)
-
-[node name="BarrierCorner" parent="." unique_id=326435535 instance=ExtResource("54_3rmdv")]
-transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 110, -16.8, 0)
-
-[node name="BarrierCorner2" parent="." unique_id=1550381768 instance=ExtResource("54_3rmdv")]
-transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 90, -16.8, -10)
 
 [connection signal="stage_cleared" from="Enemies/Room Three" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]
