@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://0m33qxdqhrfp" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Base_metalness.png" id="5_uiptr"]
 [ext_resource type="Texture2D" uid="uid://502420uyft1k" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Normal_OpenGL.png" id="6_mucqo"]
 [ext_resource type="Texture2D" uid="uid://ccuxlmt0vkg4f" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Specular_roughness.png" id="7_t5cew"]
+[ext_resource type="ArrayMesh" uid="uid://ckswbgels33vw" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/PrisonRailDoor.obj" id="8_xsce0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3nqmm"]
 albedo_texture = ExtResource("2_r1nn0")
@@ -24,13 +25,288 @@ heightmap_texture = ExtResource("4_vch1l")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3nqmm"]
 data = PackedVector3Array(0.0999, 2.7919, -2.2856, 0.0999, 0.31329998, -2.2856, 0.0999, 2.7919, -1.5649999, 0.0999, 2.7919, -1.5649999, 0.0999, 0.31329998, -2.2856, 0.0999, 0.31329998, -1.5649999, 0.0999, 2.7919, -2.2856, 0.0999, 2.7919, -2.5005, 0.0999, 0.31329998, -2.2856, 0.0999, 2.7919, -2.2856, 0.0999, 3.8922, -2.5005, 0.0999, 2.7919, -2.5005, 0.0999, 3.8922, -2.2856, 0.0999, 3.8922, -2.5005, 0.0999, 2.7919, -2.2856, 0.0999, 0.31329998, -2.2856, 0.0999, 2.7919, -2.5005, 0.0999, 0.31329998, -2.5005, 0.0999, 3.8922, -2.2856, 0.0999, 4.1017, -2.5005, 0.0999, 3.8922, -2.5005, 0.0999, 4.1017, -2.2856, 0.0999, 4.1017, -2.5005, 0.0999, 3.8922, -2.2856, 0.0999, 3.8922, -0.76199996, 0.0999, 4.1017, -2.2856, 0.0999, 3.8922, -2.2856, 0.0999, 4.1017, -0.76199996, 0.0999, 4.1017, -2.2856, 0.0999, 3.8922, -0.76199996, 0.0999, 3.8922, 0.7617, 0.0999, 4.1017, -0.76199996, 0.0999, 3.8922, -0.76199996, 0.0999, 4.1017, 0.7617, 0.0999, 4.1017, -0.76199996, 0.0999, 3.8922, 0.7617, 0.0999, 0.31329998, -2.2856, 0.0999, 0.31329998, -2.5005, 0.0999, -0.099999994, -2.2856, 0.0999, -0.099999994, -2.2856, 0.0999, 0.31329998, -2.5005, 0.0999, -0.099999994, -2.5005, 0.0999, 0.31329998, -2.2856, 0.0999, -0.099999994, -2.2856, 0.0999, 0.31329998, -1.5649999, 0.0999, 0.31329998, -1.5649999, 0.0999, -0.099999994, -2.2856, 0.0999, -0.099999994, -1.5649999, 0.0999, -0.099999994, -1.5649999, 0.0999, -0.099999994, 1.5646, 0.0999, 0.31329998, -1.5649999, 0.0999, 3.8922, 2.2853, 0.0999, 4.1017, 0.7617, 0.0999, 3.8922, 0.7617, 0.0999, 4.1017, 2.2853, 0.0999, 4.1017, 0.7617, 0.0999, 3.8922, 2.2853, 0.0999, 0.31329998, -1.5649999, 0.0999, -0.099999994, 1.5646, 0.0999, 0.31329998, 1.5646, 0.0999, -0.099999994, 1.5646, 0.0999, -0.099999994, 2.2853, 0.0999, 0.31329998, 1.5646, 0.0999, 3.8922, 2.5002, 0.0999, 4.1017, 2.2853, 0.0999, 3.8922, 2.2853, 0.0999, 4.1017, 2.5002, 0.0999, 4.1017, 2.2853, 0.0999, 3.8922, 2.5002, 0.0999, 3.8922, 2.5002, 0.0999, 3.8922, 2.2853, 0.0999, 2.7919, 2.5002, 0.0999, 2.7919, 2.5002, 0.0999, 3.8922, 2.2853, 0.0999, 2.7919, 2.2853, 0.0999, 0.31329998, 1.5646, 0.0999, 2.7919, 2.2853, 0.0999, 2.7919, 1.5646, 0.0999, 2.7919, 2.5002, 0.0999, 2.7919, 2.2853, 0.0999, 0.31329998, 2.5002, 0.0999, 0.31329998, 1.5646, 0.0999, -0.099999994, 2.2853, 0.0999, 0.31329998, 2.2853, 0.0999, 0.31329998, 2.2853, 0.0999, 2.7919, 2.2853, 0.0999, 0.31329998, 1.5646, 0.0999, 0.31329998, 2.5002, 0.0999, 2.7919, 2.2853, 0.0999, 0.31329998, 2.2853, 0.0999, -0.099999994, 2.5002, 0.0999, 0.31329998, 2.2853, 0.0999, -0.099999994, 2.2853, 0.0999, 0.31329998, 2.5002, 0.0999, 0.31329998, 2.2853, 0.0999, -0.099999994, 2.5002, -0.0999, 3.8922, 2.5002, -0.0999, 3.8922, 2.2853, -0.0999, 4.1017, 2.5002, -0.0999, 4.1017, 2.5002, -0.0999, 3.8922, 2.2853, -0.0999, 4.1017, 2.2853, -0.0999, 3.8922, 2.5002, -0.0999, 2.7919, 2.2853, -0.0999, 3.8922, 2.2853, -0.0999, 3.8922, 2.2853, -0.0999, 3.8922, 0.7617, -0.0999, 4.1017, 2.2853, -0.0999, 4.1017, 2.2853, -0.0999, 3.8922, 0.7617, -0.0999, 4.1017, 0.7617, -0.0999, 3.8922, 0.7617, -0.0999, 3.8922, -0.76199996, -0.0999, 4.1017, 0.7617, -0.0999, 4.1017, 0.7617, -0.0999, 3.8922, -0.76199996, -0.0999, 4.1017, -0.76199996, -0.0999, 2.7919, 2.5002, -0.0999, 2.7919, 2.2853, -0.0999, 3.8922, 2.5002, -0.0999, 3.8922, -0.76199996, -0.0999, 3.8922, -2.2856, -0.0999, 4.1017, -0.76199996, -0.0999, 4.1017, -0.76199996, -0.0999, 3.8922, -2.2856, -0.0999, 4.1017, -2.2856, -0.0999, 2.7919, 2.5002, -0.0999, 0.31329998, 2.2853, -0.0999, 2.7919, 2.2853, -0.0999, 2.7919, 2.2853, -0.0999, 0.31329998, 2.2853, -0.0999, 2.7919, 1.5646, -0.0999, 0.31329998, 2.5002, -0.0999, 0.31329998, 2.2853, -0.0999, 2.7919, 2.5002, -0.0999, 2.7919, 1.5646, -0.0999, 0.31329998, 2.2853, -0.0999, 0.31329998, 1.5646, -0.0999, 0.31329998, 2.5002, -0.0999, -0.099999994, 2.2853, -0.0999, 0.31329998, 2.2853, -0.0999, -0.099999994, 2.5002, -0.0999, -0.099999994, 2.2853, -0.0999, 0.31329998, 2.5002, -0.0999, -0.099999994, 1.5646, -0.0999, 0.31329998, 2.2853, -0.0999, -0.099999994, 2.2853, -0.0999, 0.31329998, 1.5646, -0.0999, 0.31329998, 2.2853, -0.0999, -0.099999994, 1.5646, -0.0999, -0.099999994, 1.5646, -0.0999, -0.099999994, -1.5649999, -0.0999, 0.31329998, 1.5646, -0.0999, 0.31329998, 1.5646, -0.0999, -0.099999994, -1.5649999, -0.0999, 0.31329998, -1.5649999, -0.0999, -0.099999994, -1.5649999, -0.0999, -0.099999994, -2.2856, -0.0999, 0.31329998, -1.5649999, -0.0999, 0.31329998, -1.5649999, -0.0999, -0.099999994, -2.2856, -0.0999, 0.31329998, -2.2856, -0.0999, -0.099999994, -2.2856, -0.0999, -0.099999994, -2.5005, -0.0999, 0.31329998, -2.2856, -0.0999, 0.31329998, -2.2856, -0.0999, -0.099999994, -2.5005, -0.0999, 0.31329998, -2.5005, -0.0999, 0.31329998, -2.2856, -0.0999, 2.7919, -2.2856, -0.0999, 0.31329998, -1.5649999, -0.0999, 0.31329998, -2.2856, -0.0999, 0.31329998, -2.5005, -0.0999, 2.7919, -2.2856, -0.0999, 0.31329998, -1.5649999, -0.0999, 2.7919, -2.2856, -0.0999, 2.7919, -1.5649999, -0.0999, 2.7919, -2.2856, -0.0999, 0.31329998, -2.5005, -0.0999, 2.7919, -2.5005, -0.0999, 2.7919, -2.2856, -0.0999, 2.7919, -2.5005, -0.0999, 3.8922, -2.2856, -0.0999, 3.8922, -2.2856, -0.0999, 2.7919, -2.5005, -0.0999, 3.8922, -2.5005, -0.0999, 3.8922, -2.2856, -0.0999, 3.8922, -2.5005, -0.0999, 4.1017, -2.2856, -0.0999, 4.1017, -2.2856, -0.0999, 3.8922, -2.5005, -0.0999, 4.1017, -2.5005, -0.0999, 0.31329998, 2.5002, 0.0999, 0.31329998, 2.5002, -0.0999, -0.099999994, 2.5002, -0.0999, -0.099999994, 2.5002, 0.0999, 0.31329998, 2.5002, 0.0999, -0.099999994, 2.5002, -0.0999, 0.31329998, 2.5002, 0.0999, 2.7919, 2.5002, 0.0999, 0.31329998, 2.5002, -0.0999, 2.7919, 2.5002, 0.0999, 2.7919, 2.5002, -0.0999, 0.31329998, 2.5002, -0.0999, 2.7919, 2.5002, 0.0999, 3.8922, 2.5002, 0.0999, 2.7919, 2.5002, -0.0999, 3.8922, 2.5002, 0.0999, 3.8922, 2.5002, -0.0999, 2.7919, 2.5002, -0.0999, 3.8922, 2.5002, 0.0999, 4.1017, 2.5002, 0.0999, 3.8922, 2.5002, -0.0999, 4.1017, 2.5002, 0.0999, 4.1017, 2.5002, -0.0999, 3.8922, 2.5002, 0.0999, -0.099999994, 2.5002, 0.0999, -0.099999994, 2.2853, -0.0999, -0.099999994, 2.5002, -0.0999, -0.099999994, 2.5002, 0.0999, -0.099999994, 2.2853, -0.0999, -0.099999994, 2.2853, -0.0999, -0.099999994, 2.2853, 0.0999, -0.099999994, 2.2853, -0.0999, -0.099999994, 1.5646, -0.0999, -0.099999994, 1.5646, 0.0999, -0.099999994, 2.2853, 0.0999, -0.099999994, 1.5646, 0.0999, -0.099999994, -1.5649999, -0.0999, -0.099999994, 1.5646, 0.0999, -0.099999994, 1.5646, -0.0999, -0.099999994, -1.5649999, -0.0999, -0.099999994, 1.5646, 0.0999, -0.099999994, -1.5649999, 0.0999, -0.099999994, -1.5649999, -0.0999, -0.099999994, -2.2856, -0.0999, -0.099999994, -1.5649999, 0.0999, -0.099999994, -2.2856, -0.0999, -0.099999994, -2.2856, 0.0999, -0.099999994, -1.5649999, 0.0999, -0.099999994, -2.2856, 0.0999, -0.099999994, -2.5005, -0.0999, -0.099999994, -2.2856, -0.0999, -0.099999994, -2.2856, 0.0999, -0.099999994, -2.5005, -0.0999, -0.099999994, -2.5005, -0.0999, 4.1017, 2.5002, -0.0999, 4.1017, 2.2853, 0.0999, 4.1017, 2.5002, 0.0999, 4.1017, 2.5002, -0.0999, 4.1017, 2.2853, 0.0999, 4.1017, 2.2853, -0.0999, 4.1017, 2.2853, -0.0999, 4.1017, 0.7617, 0.0999, 4.1017, 2.2853, 0.0999, 4.1017, 2.2853, -0.0999, 4.1017, 0.7617, 0.0999, 4.1017, 0.7617, -0.0999, 4.1017, 0.7617, -0.0999, 4.1017, -0.76199996, 0.0999, 4.1017, 0.7617, 0.0999, 4.1017, 0.7617, -0.0999, 4.1017, -0.76199996, 0.0999, 4.1017, -0.76199996, -0.0999, 4.1017, -0.76199996, -0.0999, 4.1017, -2.2856, 0.0999, 4.1017, -0.76199996, 0.0999, 4.1017, -0.76199996, -0.0999, 4.1017, -2.2856, 0.0999, 4.1017, -2.2856, -0.0999, 4.1017, -2.2856, -0.0999, 4.1017, -2.5005, 0.0999, 4.1017, -2.2856, 0.0999, 4.1017, -2.2856, -0.0999, 4.1017, -2.5005, 0.0999, 4.1017, -2.5005, 0.0999, 2.7919, 2.2853, -0.0999, 2.7919, 2.2853, 0.0999, 2.7919, 1.5646, 0.0999, 2.7919, 1.5646, -0.0999, 2.7919, 2.2853, -0.0999, 2.7919, 1.5646, -0.0999, 2.7919, -2.5005, 0.0999, 2.7919, -2.5005, -0.0999, 3.8922, -2.5005, -0.0999, 3.8922, -2.5005, 0.0999, 2.7919, -2.5005, 0.0999, 3.8922, -2.5005, -0.0999, 3.8922, -2.5005, 0.0999, 3.8922, -2.5005, -0.0999, 4.1017, -2.5005, -0.0999, 4.1017, -2.5005, 0.0999, 3.8922, -2.5005, 0.0999, 4.1017, -2.5005, -0.0999, 2.7919, -2.5005, 0.0999, 0.31329998, -2.5005, 0.0999, 2.7919, -2.5005, -0.0999, 0.31329998, -2.5005, 0.0999, 0.31329998, -2.5005, -0.0999, 2.7919, -2.5005, -0.0999, 0.31329998, -2.5005, 0.0999, -0.099999994, -2.5005, 0.0999, 0.31329998, -2.5005, -0.0999, -0.099999994, -2.5005, 0.0999, -0.099999994, -2.5005, -0.0999, 0.31329998, -2.5005, -0.0999, 2.7919, -1.5649999, 0.0999, 2.7919, -1.5649999, -0.0999, 0.31329998, -1.5649999, -0.0999, 0.31329998, -1.5649999, 0.0999, 2.7919, -1.5649999, 0.0999, 0.31329998, -1.5649999, 0.0999, 3.8922, 2.2853, 0.0999, 3.8922, 0.7617, -0.0999, 3.8922, 2.2853, -0.0999, 3.8922, 2.2853, 0.0999, 3.8922, 0.7617, -0.0999, 3.8922, 0.7617, 0.0999, 3.8922, 0.7617, 0.0999, 3.8922, -0.76199996, -0.0999, 3.8922, 0.7617, -0.0999, 3.8922, 0.7617, 0.0999, 3.8922, -0.76199996, -0.0999, 3.8922, -0.76199996, 0.0999, 3.8922, -0.76199996, 0.0999, 3.8922, -2.2856, -0.0999, 3.8922, -0.76199996, -0.0999, 3.8922, -0.76199996, 0.0999, 3.8922, -2.2856, -0.0999, 3.8922, -2.2856, 0.0999, 0.31329998, 1.5646, 0.0999, 2.7919, 1.5646, -0.0999, 0.31329998, 1.5646, -0.0999, 0.31329998, 1.5646, 0.0999, 2.7919, 1.5646, -0.0999, 2.7919, 1.5646, 0.0999, 2.7919, 2.2853, 0.0999, 3.8922, 2.2853, -0.0999, 2.7919, 2.2853, -0.0999, 2.7919, 2.2853, 0.0999, 3.8922, 2.2853, -0.0999, 3.8922, 2.2853, -0.0999, 3.8922, -2.2856, 0.0999, 3.8922, -2.2856, -0.0999, 2.7919, -2.2856, -0.0999, 2.7919, -2.2856, 0.0999, 3.8922, -2.2856, 0.0999, 2.7919, -2.2856, -0.0999, 2.7919, -2.2856, 0.0999, 2.7919, -2.2856, -0.0999, 2.7919, -1.5649999, -0.0999, 2.7919, -1.5649999, 0.0999, 2.7919, -2.2856, 0.0999, 2.7919, -1.5649999, -0.0999, 0.31329998, 1.5646, -0.0999, 0.31329998, -1.5649999, 0.0999, 0.31329998, 1.5646, 0.0999, 0.31329998, 1.5646, -0.0999, 0.31329998, -1.5649999, 0.0999, 0.31329998, -1.5649999)
 
+[sub_resource type="Animation" id="Animation_t5cew"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrisonRailDoor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PrisonRailDoor:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PrisonRailDoor2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PrisonRailDoor2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.1415925, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xsce0"]
+resource_name = "RailDoorwayClosed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrisonRailDoor2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PrisonRailDoor2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.1415925, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PrisonRailDoor:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PrisonRailDoor:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vch1l"]
+resource_name = "RailDoorwayClosing"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrisonRailDoor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666662, 0.56666666, 0.76666665, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.295, 0, 1.572366), Vector3(0.295, 0, 0), Vector3(0.295, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PrisonRailDoor:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8998666, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.2635447, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PrisonRailDoor2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.36666662, 0.56666666, 0.76666665, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.295, 0, -1.572), Vector3(0.295, 0, 0), Vector3(0.295, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PrisonRailDoor2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.9, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 2.878048, 0), Vector3(0, 3.1415927, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uiptr"]
+resource_name = "RailDoorwayOpen"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrisonRailDoor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.295, 0, 1.572366)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PrisonRailDoor:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.2635447, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PrisonRailDoor2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.8788857, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PrisonRailDoor2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.295, 0, -1.572)]
+}
+
+[sub_resource type="Animation" id="Animation_mucqo"]
+resource_name = "RailDoorwayOpening"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrisonRailDoor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5333333, 0.76666665, 0.9666667, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0.295, 0, 0), Vector3(0.295, 0, 0), Vector3(0.295, 0, 1.572366)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PrisonRailDoor:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.36670005),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.2635447, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PrisonRailDoor2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.53333336, 0.76666665, 0.9666667, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0.295, 0, 0), Vector3(0.295, 0, 0), Vector3(0.295, 0, -1.572)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PrisonRailDoor2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3668334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 3.1415927, 0), Vector3(0, 2.878048, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t5cew"]
+_data = {
+&"RESET": SubResource("Animation_t5cew"),
+&"RailDoorwayClosed": SubResource("Animation_xsce0"),
+&"RailDoorwayClosing": SubResource("Animation_vch1l"),
+&"RailDoorwayOpen": SubResource("Animation_uiptr"),
+&"RailDoorwayOpening": SubResource("Animation_mucqo")
+}
+
 [node name="DoorwayPrisonRailPrison" type="StaticBody3D" unique_id=466471037]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="DoorwayPrisonRailPrison_Mesh" type="MeshInstance3D" parent="." unique_id=1877230586]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("1_rbvji")
 surface_material_override/0 = SubResource("StandardMaterial3D_3nqmm")
 
 [node name="DoorwayPrisonRailPrison_Collision" type="CollisionShape3D" parent="." unique_id=1152395583]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_3nqmm")
+
+[node name="PrisonRailDoor" type="MeshInstance3D" parent="." unique_id=930452636]
+mesh = ExtResource("8_xsce0")
+
+[node name="PrisonRailDoor2" type="MeshInstance3D" parent="." unique_id=1351191806]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
+mesh = ExtResource("8_xsce0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1277918423]
+libraries/ = SubResource("AnimationLibrary_t5cew")

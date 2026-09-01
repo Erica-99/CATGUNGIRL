@@ -1,20 +1,35 @@
 [gd_scene format=3 uid="uid://cv8vmfjhudskh"]
 
 [ext_resource type="ArrayMesh" uid="uid://s2gjwqt5oa1w" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/3_WareHouse/RoofWareHouse.obj" id="1_4h75b"]
-[ext_resource type="Texture2D" uid="uid://cmebwlg1yldv5" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/3_WareHouse/Roof/TextureTrimSheetRoofW.png" id="2_3rejv"]
+[ext_resource type="Texture2D" uid="uid://bnq5s5pb7dh6j" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/FloorRoof/Floor_RoofPrison_Base_color.png" id="2_q7ptp"]
+[ext_resource type="Texture2D" uid="uid://cs382iyixowlj" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/FloorRoof/Floor_RoofPrison_Mixed_AO.png" id="3_xr0x0"]
+[ext_resource type="Texture2D" uid="uid://bm4v6ak55dy0e" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/FloorRoof/Floor_RoofPrison_Height.png" id="4_yymw2"]
+[ext_resource type="Texture2D" uid="uid://dcp37yongg4mv" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/FloorRoof/Floor_RoofPrison_Base_metalness.png" id="5_ufamb"]
+[ext_resource type="Texture2D" uid="uid://dqbmkyoo6y5r2" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/FloorRoof/Floor_RoofPrison_Normal_OpenGL.png" id="6_ijaaq"]
+[ext_resource type="Texture2D" uid="uid://dn0pmjhi73ibf" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/FloorRoof/Floor_RoofPrison_Specular_roughness.png" id="7_3rn3a"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4h75b"]
-albedo_texture = ExtResource("2_3rejv")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6xnc5"]
+albedo_texture = ExtResource("2_q7ptp")
+metallic = 1.0
+metallic_texture = ExtResource("5_ufamb")
+roughness_texture = ExtResource("7_3rn3a")
+normal_enabled = true
+normal_texture = ExtResource("6_ijaaq")
+ao_enabled = true
+ao_texture = ExtResource("3_xr0x0")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("4_yymw2")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jl1ik"]
-points = PackedVector3Array(-3.001934, -0.100005, -2.500938, -3.001934, 0.100004986, -2.500938, 3.001934, -0.100005, -2.500938, -3.001934, -0.100005, 2.499062, -3.001934, 0.100004986, 2.499062, 3.001934, 0.100004986, -2.500938, 3.001934, -0.100005, 2.499062, 3.001934, 0.100004986, 2.499062)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_q7ptp"]
+points = PackedVector3Array(-2.500911, -0.100005, -2.500938, -2.500911, 0.100004986, -2.500938, 2.500911, -0.100005, -2.500938, -2.500911, -0.100005, 2.499062, -2.500911, 0.100004986, 2.499062, 2.500911, 0.100004986, -2.500938, 2.500911, -0.100005, 2.499062, 2.500911, 0.100004986, 2.499062)
 
 [node name="RoofWareHouse" type="StaticBody3D" unique_id=1959605650]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="RoofWareHouse_Mesh" type="MeshInstance3D" parent="." unique_id=160174624]
 mesh = ExtResource("1_4h75b")
-surface_material_override/0 = SubResource("StandardMaterial3D_4h75b")
+surface_material_override/0 = SubResource("StandardMaterial3D_6xnc5")
 
-[node name="RoofWareHouse_Collision" type="CollisionShape3D" parent="." unique_id=1992290985]
-shape = SubResource("ConvexPolygonShape3D_jl1ik")
+[node name="RoofWareHouse_Collision" type="CollisionShape3D" parent="." unique_id=1532391076]
+shape = SubResource("ConvexPolygonShape3D_q7ptp")
