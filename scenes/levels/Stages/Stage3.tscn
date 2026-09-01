@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bt342tsy3excl" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/ElevatorPanopticon.tscn" id="2_1woh0"]
 [ext_resource type="PackedScene" uid="uid://cvybenralblx6" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/PanopticonBridge.tscn" id="3_t5wms"]
 [ext_resource type="PackedScene" uid="uid://0jvpofncsmg4" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/FloorShootingPanopticon.tscn" id="5_lj0hr"]
+[ext_resource type="PackedScene" uid="uid://11pckncgaxu4" path="res://scenes/components/level_components/level_transitions/level_end.tscn" id="6_jaog8"]
 [ext_resource type="PackedScene" uid="uid://b17cpk4q25npy" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/PanopticonWalls.tscn" id="6_ngxgl"]
 [ext_resource type="PackedScene" uid="uid://bhjyu5ru1eqco" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/PanopticonPillars.tscn" id="8_1drs5"]
 [ext_resource type="PackedScene" uid="uid://c7wdqebqhqbuu" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorLargeBasic.tscn" id="8_f54w6"]
@@ -903,6 +904,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.96518, 23.758255, 43.6681
 
 [node name="DoorExit2" parent="Interactive" unique_id=403907276 instance=ExtResource("9_4t8ow")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 185, 126.05, 0.668)
+
+[node name="LevelEnd" parent="Interactive/DoorExit2" unique_id=914563996 instance=ExtResource("6_jaog8")]
+level_name = "Stage4"
 
 [node name="Environment" type="Node3D" parent="." unique_id=2084935905]
 
