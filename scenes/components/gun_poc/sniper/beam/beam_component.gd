@@ -47,7 +47,7 @@ func _physics_process(delta: float) -> void:
 	if not actor.is_on_floor():
 		actor.velocity += actor.get_gravity() * slow_motion_scale * delta
 		
-	if charge_timer < charge_time:
+	if charge_timer < charge_time and (DebugManager.infinite_ammo or sniper._current_ammo > 0):
 		charge_timer += delta
 	else:
 		_fire_beam()
@@ -55,6 +55,10 @@ func _physics_process(delta: float) -> void:
 		_ability_state.end_ability.emit()
 
 func _fire_beam() -> void:
+	# left-click firing (_try_fire) can drain ammo to 0 mid-charge; skip firing/consuming ammo if so
+	if not DebugManager.infinite_ammo and sniper._current_ammo <= 0:
+		return
+
 	var aim_dir = Vector3(cos(sniper.rotation.z), sin(sniper.rotation.z), 0.0).normalized()
 	actor.velocity = -aim_dir * kickback_force
 	
