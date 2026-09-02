@@ -55,7 +55,6 @@ func _physics_process(delta: float) -> void:
 		_ability_state.end_ability.emit()
 
 func _fire_beam() -> void:
-	# left-click firing (_try_fire) can drain ammo to 0 mid-charge; skip firing/consuming ammo if so
 	if not DebugManager.infinite_ammo and sniper._current_ammo <= 0:
 		return
 
