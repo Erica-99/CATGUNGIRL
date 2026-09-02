@@ -14,6 +14,7 @@
 [ext_resource type="ArrayMesh" uid="uid://ix82dyplhvw4" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/2_Panopticon/PanopticonBridge.obj" id="8_5b604"]
 [ext_resource type="Texture2D" uid="uid://dp0ruh7q1e3j4" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/MeshFloor_Normal_OpenGL.png" id="8_ssuyk"]
 [ext_resource type="Texture2D" uid="uid://c4ek3iwrnnxp1" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/MeshFloor_Roughness.png" id="9_tcfhg"]
+[ext_resource type="ArrayMesh" uid="uid://pb57n7wnm28d" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/Barriers/BarrierFull.obj" id="15_1mvpt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3hitm"]
 albedo_color = Color(0.32156864, 0.32156864, 0.32156864, 1)
@@ -54,10 +55,12 @@ data = PackedVector3Array(5.6355, 8.2344, -3.7654998, 4.4146, 8.2344, -4.4146, 4
 [node name="Bridge" type="StaticBody3D" parent="." unique_id=665159845]
 
 [node name="PanopticonBridgeBase_Mesh" type="MeshInstance3D" parent="Bridge" unique_id=852367478]
+visible = false
 mesh = ExtResource("2_p42ql")
 surface_material_override/0 = SubResource("StandardMaterial3D_3hitm")
 
 [node name="PanopticonBridgeBase_Collision" type="CollisionShape3D" parent="Bridge" unique_id=975295773]
+visible = false
 shape = SubResource("ConcavePolygonShape3D_yfl1q")
 
 [node name="PanopticonBridge_Mesh" type="MeshInstance3D" parent="Bridge" unique_id=74363884]
@@ -65,6 +68,7 @@ mesh = ExtResource("8_5b604")
 surface_material_override/0 = SubResource("StandardMaterial3D_3hitm")
 
 [node name="PanopticonBridge_Collision" type="CollisionShape3D" parent="Bridge" unique_id=519992741]
+visible = false
 shape = SubResource("ConcavePolygonShape3D_mk2fx")
 
 [node name="PanopticonBridgeWalkway_Mesh" type="MeshInstance3D" parent="Bridge" unique_id=805516707]
@@ -72,6 +76,7 @@ mesh = ExtResource("6_yfl1q")
 surface_material_override/0 = SubResource("StandardMaterial3D_ols25")
 
 [node name="PanopticonBridgeWalkway_Collision" type="CollisionShape3D" parent="Bridge" unique_id=891090306]
+visible = false
 shape = SubResource("ConcavePolygonShape3D_2kmfr")
 
 [node name="PanopticonBridgeBeams_Mesh" type="MeshInstance3D" parent="Bridge" unique_id=925963955]
@@ -91,10 +96,12 @@ mesh = ExtResource("7_2kmfr")
 surface_material_override/0 = SubResource("StandardMaterial3D_3hitm")
 
 [node name="PanopticonBridgeBearing_01_Mesh" type="MeshInstance3D" parent="." unique_id=2137918657]
+visible = false
 mesh = ExtResource("5_yfl1q")
 surface_material_override/0 = SubResource("StandardMaterial3D_3hitm")
 
 [node name="PanopticonBridgeBearing_01_Collision" type="CollisionShape3D" parent="." unique_id=579910702]
+visible = false
 shape = SubResource("ConcavePolygonShape3D_lgxqh")
 
 [node name="PanopticonBridgeBearing_02_Mesh" type="MeshInstance3D" parent="." unique_id=365155033]
@@ -104,4 +111,39 @@ surface_material_override/0 = SubResource("StandardMaterial3D_3hitm")
 
 [node name="PanopticonBridgeBearing_02_Collision" type="CollisionShape3D" parent="." unique_id=1203738295]
 transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 2.792, 0)
+visible = false
 shape = SubResource("ConcavePolygonShape3D_p42ql")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=156463641]
+
+[node name="BarrierFull2" type="MeshInstance3D" parent="Node3D" unique_id=1135228427]
+transform = Transform3D(0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071068, -4.7163067, 0, 4.715933)
+mesh = ExtResource("15_1mvpt")
+
+[node name="BarrierFull3" type="MeshInstance3D" parent="Node3D" unique_id=1260370981]
+transform = Transform3D(0.96592593, 0, 0.25881913, 0, 1, 0, -0.25881913, 0, 0.96592593, 1.7259648, 0, 6.4424076)
+mesh = ExtResource("15_1mvpt")
+
+[node name="BarrierFull4" type="MeshInstance3D" parent="Node3D" unique_id=624082239]
+transform = Transform3D(0.7071068, 0, 0.70710695, 0, 1, 0, -0.70710695, 0, 0.7071068, 4.743624, 0, 4.698453)
+mesh = ExtResource("15_1mvpt")
+
+[node name="BarrierFull" type="MeshInstance3D" parent="Node3D" unique_id=1840847965]
+transform = Transform3D(0.96592593, 0, -0.25881907, 0, 1, 0, 0.25881907, 0, 0.96592593, -1.7258694, 0, 6.445531)
+mesh = ExtResource("15_1mvpt")
+
+[node name="BarrierFull5" type="MeshInstance3D" parent="Node3D" unique_id=242255512]
+transform = Transform3D(-0.7071069, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.7071069, 4.716306, 0, -4.7159333)
+mesh = ExtResource("15_1mvpt")
+
+[node name="BarrierFull6" type="MeshInstance3D" parent="Node3D" unique_id=1847294460]
+transform = Transform3D(-0.96592593, 0, -0.25881922, 0, 1, 0, 0.25881922, 0, -0.96592593, -1.7259654, 0, -6.4424076)
+mesh = ExtResource("15_1mvpt")
+
+[node name="BarrierFull7" type="MeshInstance3D" parent="Node3D" unique_id=2117254003]
+transform = Transform3D(-0.70710677, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.70710677, -4.7436247, 0, -4.6984525)
+mesh = ExtResource("15_1mvpt")
+
+[node name="BarrierFull8" type="MeshInstance3D" parent="Node3D" unique_id=1197196896]
+transform = Transform3D(-0.96592593, 0, 0.25881898, 0, 1, 0, -0.25881898, 0, -0.96592593, 1.7258688, 0, -6.445531)
+mesh = ExtResource("15_1mvpt")
