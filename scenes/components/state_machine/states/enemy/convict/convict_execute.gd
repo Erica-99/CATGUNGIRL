@@ -14,4 +14,7 @@ func enter() -> void:
 	anim.stop()
 	print(str(actor.get_path()) + " is doing their execute.")
 	anim.play("Execute")
+	# Await animation finish when animation is implemented
+	await get_tree().create_timer(5.0).timeout
+	SceneLoader._load_scene(get_tree().current_scene.scene_file_path)
 	

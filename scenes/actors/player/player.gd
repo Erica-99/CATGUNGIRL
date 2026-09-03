@@ -147,14 +147,14 @@ func _on_health_component_killed(killing_blow, health_before_death):
 		# hide the player and do the animation on the attack's source
 		for visual in get_tree().get_nodes_in_group("player_visuals"):
 			visual.visible = false
-		await get_tree().create_timer(2.0).timeout
 	else:
 		# TODO: death animations, the explode into gore one here
 		# (I don't really know how to put in animations properly)
 		$PlayerVisuals/ROOT_P/BODY_P/TORSO_P/Ros_Torso.play("Death")
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(5.0).timeout
+		SceneLoader._load_scene(get_tree().current_scene.scene_file_path)
 	# TODO: set up proper game over screen rather than just reload scene
-	SceneLoader._load_scene(get_tree().current_scene.scene_file_path)
+	
 
 func _on_gun_enemy_hit(_damage: float) -> void:
 	var heal = DamageHealInstance.new()
