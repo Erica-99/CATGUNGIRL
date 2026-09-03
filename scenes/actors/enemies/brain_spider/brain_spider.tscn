@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://4l4kw7i1ga4c"]
+
+[ext_resource type="Script" uid="uid://bx3cch7eqxmiy" path="res://scenes/actors/enemies/brain_spider/brain_spider.gd" id="1_fjoht"]
+[ext_resource type="SpriteFrames" uid="uid://vtbk6tputppd" path="res://art/2d_assets/real_world/enemy_convict/Convict_Head1.tres" id="1_iobuc"]
+[ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="1_lgmbn"]
+[ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="2_luyx4"]
+[ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="3_c43gv"]
+[ext_resource type="PackedScene" uid="uid://c6wep4oftfyke" path="res://scenes/components/state_machine/state_machine.tscn" id="4_iobuc"]
+[ext_resource type="Script" uid="uid://dpwol7txodmxp" path="res://scenes/components/soft_collision.gd" id="5_c43gv"]
+[ext_resource type="Script" uid="uid://ckbdwmxo5r6p0" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_idle.gd" id="7_b3mpv"]
+[ext_resource type="Script" uid="uid://hkfr65k60uhn" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_chase.gd" id="8_hh7i0"]
+[ext_resource type="Script" uid="uid://cexabo1e6yx6k" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_death.gd" id="9_jq4cx"]
+[ext_resource type="Script" uid="uid://c74c3xocthoxl" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_explode.gd" id="10_dwws2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iobuc"]
+size = Vector3(1, 1.5, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fjoht"]
+radius = 0.7
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_b2kas"]
+radius = 12.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_iobuc"]
+radius = 6.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_b3mpv"]
+radius = 2.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fmqj0"]
+
+[node name="BrainSpider" type="CharacterBody3D" unique_id=166394742 node_paths=PackedStringArray("state_machine", "start_idle", "start_aggro")]
+collision_layer = 4
+collision_mask = 129
+script = ExtResource("1_fjoht")
+state_machine = NodePath("StateMachine")
+start_idle = NodePath("StateMachine/BrainSpiderIdle")
+start_aggro = NodePath("StateMachine/BrainSpiderChase")
+
+[node name="Visuals" type="Node3D" parent="." unique_id=24143131]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Visuals" unique_id=697202520]
+transform = Transform3D(0.13018179, 0, 0, 0, 0.13018179, 0, 0, 0, 1, 0, 0, 0.048760533)
+sprite_frames = ExtResource("1_iobuc")
+animation = &"Heads"
+frame = 14
+frame_progress = 0.56379896
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1966061484]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+shape = SubResource("BoxShape3D_iobuc")
+
+[node name="HealthComponent" parent="." unique_id=236252344 instance=ExtResource("1_lgmbn")]
+starting_health = 1.0
+max_health = 1.0
+
+[node name="TeamComponent" parent="." unique_id=2076917082 instance=ExtResource("2_luyx4")]
+team = 2
+
+[node name="BodyHurtbox" parent="." unique_id=338394069 node_paths=PackedStringArray("team_component", "health_component") instance=ExtResource("3_c43gv")]
+team_component = NodePath("../TeamComponent")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyHurtbox" unique_id=608189007]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+shape = SubResource("SphereShape3D_fjoht")
+debug_color = Color(0.5352921, 0.41064504, 1, 0.41960785)
+
+[node name="StateMachine" parent="." unique_id=1499026333 node_paths=PackedStringArray("initial_state") instance=ExtResource("4_iobuc")]
+initial_state = NodePath("BrainSpiderIdle")
+
+[node name="BrainSpiderIdle" type="Node" parent="StateMachine" unique_id=1454409864]
+script = ExtResource("7_b3mpv")
+metadata/_custom_type_script = "uid://bniqs510pmxtt"
+
+[node name="BrainSpiderChase" type="Node" parent="StateMachine" unique_id=995637477]
+script = ExtResource("8_hh7i0")
+metadata/_custom_type_script = "uid://bniqs510pmxtt"
+
+[node name="BrainSpiderDeath" type="Node" parent="StateMachine" unique_id=250050443]
+script = ExtResource("9_jq4cx")
+metadata/_custom_type_script = "uid://bniqs510pmxtt"
+
+[node name="BrainSpiderExplode" type="Node" parent="StateMachine" unique_id=95671718]
+script = ExtResource("10_dwws2")
+metadata/_custom_type_script = "uid://bniqs510pmxtt"
+
+[node name="DetectionArea3D" type="Area3D" parent="." unique_id=490970563]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea3D" unique_id=514660265]
+shape = SubResource("SphereShape3D_b2kas")
+
+[node name="ExplosionArea3D" type="Area3D" parent="." unique_id=2097400944]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplosionArea3D" unique_id=1819540724]
+shape = SubResource("SphereShape3D_iobuc")
+debug_color = Color(0.7327484, 0.4705764, 0.08985577, 0.41960785)
+
+[node name="DetonationArea3D" type="Area3D" parent="." unique_id=28998021]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetonationArea3D" unique_id=865739754]
+shape = SubResource("SphereShape3D_b3mpv")
+debug_color = Color(1.2032687e-07, 0.65133816, 0.04358659, 0.41960785)
+
+[node name="SoftCollider" type="Area3D" parent="." unique_id=1344993571]
+script = ExtResource("5_c43gv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SoftCollider" unique_id=931580870]
+shape = SubResource("SphereShape3D_fmqj0")

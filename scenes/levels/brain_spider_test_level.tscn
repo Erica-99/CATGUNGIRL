@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://0stmavme4hii"]
+
+[ext_resource type="PackedScene" uid="uid://coirj7uqclsre" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/FloorPrison.tscn" id="1_0n6yi"]
+[ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="1_a5jny"]
+[ext_resource type="PackedScene" uid="uid://bjgcp621b7xqm" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/RoofPrison.tscn" id="2_1u7ui"]
+[ext_resource type="PackedScene" uid="uid://dh1ouxldd8xy5" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwayNoneBasePrison.tscn" id="3_25i7c"]
+[ext_resource type="PackedScene" uid="uid://cf56x5mffkcgr" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwayNoneMidPrison.tscn" id="4_urbgn"]
+[ext_resource type="PackedScene" uid="uid://4l4kw7i1ga4c" path="res://scenes/actors/enemies/brain_spider/brain_spider.tscn" id="6_1u7ui"]
+
+[node name="ScrubTestLevel" type="Node3D" unique_id=922912552]
+
+[node name="World" type="Node3D" parent="." unique_id=1704519241]
+
+[node name="FloorPrison15" parent="World" unique_id=2022107086 instance=ExtResource("1_0n6yi")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -20.2164, 0, 0)
+
+[node name="FloorPrison16" parent="World" unique_id=900160346 instance=ExtResource("1_0n6yi")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10.2164, 0, 0)
+
+[node name="FloorPrison17" parent="World" unique_id=1679660795 instance=ExtResource("1_0n6yi")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.21640015, 0, 0)
+
+[node name="FloorPrison18" parent="World" unique_id=1305403519 instance=ExtResource("1_0n6yi")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 9.7836, 0, 0)
+
+[node name="FloorPrison19" parent="World" unique_id=918556621 instance=ExtResource("1_0n6yi")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 19.7836, 0, 0)
+
+[node name="RoofPrison19" parent="World" unique_id=1959605650 instance=ExtResource("2_1u7ui")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -20.2164, 16.8, 0)
+
+[node name="RoofPrison21" parent="World" unique_id=718195337 instance=ExtResource("2_1u7ui")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10.2164, 16.8, 0)
+
+[node name="RoofPrison23" parent="World" unique_id=917722536 instance=ExtResource("2_1u7ui")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.21640015, 16.8, 0)
+
+[node name="RoofPrison25" parent="World" unique_id=169004631 instance=ExtResource("2_1u7ui")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 9.7836, 16.8, 0)
+
+[node name="RoofPrison27" parent="World" unique_id=864741049 instance=ExtResource("2_1u7ui")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 19.7836, 16.8, 0)
+
+[node name="FloorPrison35" parent="World" unique_id=813500960 instance=ExtResource("1_0n6yi")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 29.7836, 0, 0)
+
+[node name="RoofPrison31" parent="World" unique_id=1171229084 instance=ExtResource("2_1u7ui")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 29.7836, 16.8, 0)
+
+[node name="DoorwayNoneBasePrison2" parent="World" unique_id=974643408 instance=ExtResource("3_25i7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 0)
+
+[node name="DoorwayNoneBasePrison3" parent="World" unique_id=1205541616 instance=ExtResource("3_25i7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.784, 0, 0)
+
+[node name="DoorwayNoneMidPrison3" parent="World" unique_id=1238568985 instance=ExtResource("4_urbgn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.7836, 8.4, 0)
+
+[node name="DoorwayNoneMidPrison6" parent="World" unique_id=7085013 instance=ExtResource("4_urbgn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 8.4, -0.005739212)
+
+[node name="Player" parent="." unique_id=1349193765 groups=["Player"] instance=ExtResource("1_a5jny")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.592749, 2.4815655, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=89618215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.0746927, 11.460891)
+projection = 1
+size = 20.0
+
+[node name="BrainSpider" parent="." unique_id=166394742 instance=ExtResource("6_1u7ui")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2912364, 3.2264209, 0)
