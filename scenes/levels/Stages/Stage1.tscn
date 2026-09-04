@@ -128,6 +128,7 @@
 [ext_resource type="Texture2D" uid="uid://dw6q287kn8vdt" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/TestDummy/TestDummyTexture_N.png" id="117_2qri5"]
 [ext_resource type="Texture2D" uid="uid://lnxp703rb04k" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/TestDummy/TestDummyTexture_R.png" id="118_xwepp"]
 [ext_resource type="Script" uid="uid://4t3uo3s2mf8e" path="res://scenes/levels/Stages/camera_pan_node.gd" id="123_emoyc"]
+[ext_resource type="PackedScene" uid="uid://crm8asnriomew" path="res://scenes/VFX/blood_spurt_medium_vfx.tscn" id="124_uhx6n"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jd7j6"]
 albedo_color = Color(0, 0, 0, 1)
@@ -5012,6 +5013,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ahc83")
 
 [node name="DoorBasic" parent="Interactive" unique_id=1555562335 instance=ExtResource("2_ohrdm")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30.020061, 0, 0)
+collision_layer = 1025
 openable = false
 
 [node name="DoorSlidingBasic_Mesh" parent="Interactive/DoorBasic/DoorSlidingBasic" parent_id_path=PackedInt32Array(1555562335, 1404790232) index="0" unique_id=1339969428]
@@ -5265,6 +5267,9 @@ shape = SubResource("BoxShape3D_uhx6n")
 [node name="CameraTarget" type="Node3D" parent="Interactive/CameraPanNode2" unique_id=702545634]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.028803, 1.5672941, 17.515985)
 
+[node name="BloodSpurt1_VFX" type="Node3D" parent="Interactive" unique_id=425089821]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7513, 3.0505724, 0)
+
 [node name="Lighting" type="Node3D" parent="." unique_id=295073022]
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Lighting" unique_id=2010916355]
@@ -5355,6 +5360,14 @@ spot_range = 11.929
 spot_attenuation = -0.29
 spot_angle = 121.25
 spot_angle_attenuation = 7.2099733
+
+[node name="VFX" type="Node3D" parent="." unique_id=974720759]
+
+[node name="BloodSpurtMedium_VFX" parent="VFX" unique_id=465993057 instance=ExtResource("124_uhx6n")]
+transform = Transform3D(-0.12581512, -1.306154, -1.5093483, -0.1085011, 1.514583, -1.3016397, 1.9930875, 0, -0.16613829, 12.441309, 8.869937, 0)
+
+[node name="BloodSplatter1" parent="VFX/BloodSpurtMedium_VFX" index="0" unique_id=60022980]
+transform = Transform3D(0.9999999, -7.424874e-09, -1.4901161e-08, 1.1175871e-08, 1, 2.9802322e-08, 2.2351742e-08, 3.0838712e-10, 1, 0.1951127, -1.9336596, 1.6617966)
 
 [node name="DATES_POPUPS" type="Node" parent="." unique_id=983173156]
 
@@ -6305,3 +6318,4 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 132, 16.8, 0)
 [editable path="Interactive/GunPodium"]
 [editable path="Interactive/GunPodiumGun"]
 [editable path="Interactive/PrisonCell3"]
+[editable path="VFX/BloodSpurtMedium_VFX"]

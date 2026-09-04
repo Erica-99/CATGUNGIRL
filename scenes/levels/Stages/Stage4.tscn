@@ -2960,6 +2960,8 @@ room_ID = 2
 [node name="Convict3" parent="Enemies/Room Three" unique_id=618630284 instance=ExtResource("28_iffub")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 267.74377, 183, 0)
 
+[node name="VFX" type="Node3D" parent="." unique_id=1268975209]
+
 [connection signal="area_entered" from="Interactive/TrunkEventTrigger" to="Interactive/TrunkEventTrigger" method="_on_area_entered"]
 [connection signal="animation_finished" from="Interactive/TrunkEventTrigger/TrunkEventAnims" to="Interactive/TrunkEventTrigger" method="_on_trunk_event_anims_animation_finished"]
 [connection signal="stage_cleared" from="Enemies/Room Three" to="Environment/DoorExit" method="_on_enemy_manager_stage_cleared"]

@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://siyh5kyihmtu"]
+
+[ext_resource type="Texture2D" uid="uid://b7yg3u174rdus" path="res://art/2d_assets/real_world/vfx/Blood/Splatter1/Bloodburst1_Mask.png" id="1_8gwx0"]
+[ext_resource type="Texture2D" uid="uid://c20xfpab0d4xp" path="res://art/2d_assets/real_world/vfx/Blood/Splatter1/T_Blood1_Mask.png" id="1_im0rn"]
+[ext_resource type="Texture2D" uid="uid://cnj302kdmtl33" path="res://art/2d_assets/real_world/vfx/Blood/Splatter1/Bloodburst1_MaskN.png" id="2_gtq8e"]
+[ext_resource type="Texture2D" uid="uid://bwjcx46jwlaet" path="res://art/2d_assets/real_world/vfx/Blood/Splatter1/T_Blood1_MaskN.png" id="2_qmmps"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c15ai"]
+transparency = 2
+alpha_scissor_threshold = 0.15
+alpha_antialiasing_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("1_im0rn")
+roughness = 0.15
+normal_enabled = true
+normal_scale = 9.7
+normal_texture = ExtResource("2_qmmps")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_toeg3"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.103846155, 0.9894992), 1.2754266, 1.2754266, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_fjwyq"]
+curve = SubResource("Curve_toeg3")
+
+[sub_resource type="Gradient" id="Gradient_2jncs"]
+offsets = PackedFloat32Array(0.017094018, 0.2863248)
+colors = PackedColorArray(0.25552174, 2.6171097e-07, 1.2032688e-08, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_x5qg2"]
+gradient = SubResource("Gradient_2jncs")
+
+[sub_resource type="Curve" id="Curve_knpo7"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2576923, 0.78998387), 2.1001618, 2.1001618, 0, 0, Vector2(1, 0), -5.4856257, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_mcjph"]
+curve = SubResource("Curve_knpo7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yr6r3"]
+particle_flag_rotate_y = true
+emission_shape = 1
+emission_sphere_radius = 0.3
+direction = Vector3(0, 1, 0)
+initial_velocity_min = -0.5
+initial_velocity_max = 3.0
+radial_velocity_min = -2.2351742e-05
+radial_velocity_max = 0.39997762
+scale_min = 0.29999998
+scale_max = 0.7
+scale_curve = SubResource("CurveTexture_mcjph")
+color_ramp = SubResource("GradientTexture1D_x5qg2")
+alpha_curve = SubResource("CurveTexture_fjwyq")
+
+[sub_resource type="QuadMesh" id="QuadMesh_w2n8d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_im0rn"]
+transparency = 2
+alpha_scissor_threshold = 0.259
+alpha_antialiasing_mode = 2
+alpha_antialiasing_edge = 0.3
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("1_8gwx0")
+metallic = 0.5
+metallic_texture = ExtResource("2_gtq8e")
+normal_enabled = true
+normal_scale = 16.0
+normal_texture = ExtResource("2_gtq8e")
+billboard_keep_scale = true
+
+[sub_resource type="Curve" id="Curve_qmmps"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.16153845, 0.73747987), 0.8763635, 0.8763635, 0, 0, Vector2(0.88846153, 0.6009694), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_c15ai"]
+curve = SubResource("Curve_qmmps")
+
+[sub_resource type="Gradient" id="Gradient_toeg3"]
+offsets = PackedFloat32Array(0, 0.23504274)
+colors = PackedColorArray(0.23566195, 6.768387e-08, 5.4147094e-08, 1, 0.88431424, 3.200695e-06, 1.1551381e-06, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2jncs"]
+gradient = SubResource("Gradient_toeg3")
+
+[sub_resource type="Curve" id="Curve_dnjhp"]
+_data = [Vector2(0, 0), 0.0, 3.4894996, 0, 0, Vector2(0.2076923, 1), 0.8089513, 0.8089513, 0, 0, Vector2(0.97307694, 0), -5.1570616, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_knpo7"]
+curve = SubResource("Curve_dnjhp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_watpx"]
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+emission_shape = 1
+emission_sphere_radius = 0.15
+spread = 20.0
+initial_velocity_min = 2.0
+initial_velocity_max = 5.0
+radial_velocity_min = -2.0000224
+radial_velocity_max = 4.9999776
+gravity = Vector3(0, -3, 0)
+scale_curve = SubResource("CurveTexture_knpo7")
+color_ramp = SubResource("GradientTexture1D_2jncs")
+alpha_curve = SubResource("CurveTexture_c15ai")
+
+[sub_resource type="QuadMesh" id="QuadMesh_yr6r3"]
+
+[node name="BloodSpurtMedium_VFX" type="Node3D" unique_id=425089821]
+
+[node name="BloodSplatter1" type="GPUParticles3D" parent="." unique_id=1662804324]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05658996, 0, 0)
+layers = 1024
+material_override = SubResource("StandardMaterial3D_c15ai")
+amount = 15
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_yr6r3")
+draw_pass_1 = SubResource("QuadMesh_w2n8d")
+
+[node name="BloodSplatter" type="GPUParticles3D" parent="." unique_id=1503088888]
+material_override = SubResource("StandardMaterial3D_im0rn")
+amount = 30
+lifetime = 0.5
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_watpx")
+draw_pass_1 = SubResource("QuadMesh_yr6r3")

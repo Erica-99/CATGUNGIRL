@@ -209,6 +209,18 @@ tracks/7/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../VFX_target:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.53404325, 0.120693445, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_28j07"]
 resource_name = "Death2"
@@ -308,6 +320,18 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../VFX_target:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.39624447, 0.94161725, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_q6lyk"]
@@ -409,6 +433,18 @@ tracks/7/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../VFX_target:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.3248281, 0.94161725, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_kdnv2"]
 resource_name = "Death4"
@@ -508,6 +544,18 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../VFX_target:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.25609976, 0.059176683, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_4p71r"]
@@ -722,6 +770,18 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../VFX_target:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.053640306, 0.81362605, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_mjfjc"]
@@ -1000,11 +1060,15 @@ attack_hitbox = NodePath("AttackHitbox3D")
 attack_cooldown_min = 1.0
 attack_cooldown_max = 1.5
 
+[node name="VFX_target" type="Node3D" parent="." unique_id=300429819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.053640306, 0.81362605, 0)
+
 [node name="Visuals" type="Node3D" parent="." unique_id=1400416479]
 script = ExtResource("2_leh5i")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals" unique_id=750356507]
 libraries/ = SubResource("AnimationLibrary_xi3ex")
+autoplay = &"Idle"
 playback_auto_capture = false
 
 [node name="Sprite_Pivot" type="Node3D" parent="Visuals" unique_id=569478775]

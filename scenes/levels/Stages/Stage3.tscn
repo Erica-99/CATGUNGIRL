@@ -1722,18 +1722,6 @@ debug_color = Color(0.919504, 0.13431916, 0.6161928, 0.41960785)
 
 [node name="EmptyManager" parent="Enemies" unique_id=1088774491 instance=ExtResource("46_ix7p3")]
 
-[node name="Convict5" parent="Enemies" unique_id=895222274 instance=ExtResource("48_gs35e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139, 2, 0)
-
-[node name="Scrub2" parent="Enemies" unique_id=321714991 instance=ExtResource("47_wjtp4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 8.612963, 0)
-
-[node name="Scrub8" parent="Enemies" unique_id=1987250186 instance=ExtResource("47_wjtp4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136, 130, 0)
-
-[node name="Convict3" parent="Enemies" unique_id=922981550 instance=ExtResource("48_gs35e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99, 69, 0)
-
 [node name="EnemyManager" parent="Enemies" unique_id=18369620 instance=ExtResource("46_ix7p3")]
 
 [node name="Convict" parent="Enemies/EnemyManager" unique_id=1506947017 instance=ExtResource("48_gs35e")]
@@ -1756,6 +1744,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93, 71, 0)
 
 [node name="Scrub7" parent="Enemies/EnemyManager" unique_id=330088300 instance=ExtResource("47_wjtp4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 130, 0)
+
+[node name="Convict5" parent="Enemies/EnemyManager" unique_id=895222274 instance=ExtResource("48_gs35e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139, 2, 0)
+
+[node name="Scrub2" parent="Enemies/EnemyManager" unique_id=321714991 instance=ExtResource("47_wjtp4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 8.612963, 0)
+
+[node name="Scrub8" parent="Enemies/EnemyManager" unique_id=1987250186 instance=ExtResource("47_wjtp4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136, 130, 0)
+
+[node name="Convict3" parent="Enemies/EnemyManager" unique_id=922981550 instance=ExtResource("48_gs35e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99, 69, 0)
 
 [node name="DoorwaySingleBasePrison" parent="." unique_id=1441356343 instance=ExtResource("53_lk7tg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
@@ -1849,6 +1849,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.127, 134.45, -30)
 
 [node name="DoorwayNoneMidPrison14" parent="." unique_id=1088360851 instance=ExtResource("41_ah5gb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.127, 134.45, -30)
+
+[node name="VFX" type="Node3D" parent="." unique_id=1772010943]
 
 [connection signal="removecameratween" from="Interactive/CameraPanNode" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="Interactive/CameraPanNode" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]

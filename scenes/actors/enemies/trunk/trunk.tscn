@@ -2937,6 +2937,9 @@ shape = SubResource("SphereShape3D_aq2d6")
 [node name="ShaderShield" type="MeshInstance3D" parent="TrunkArmour" unique_id=1962350623]
 mesh = SubResource("SphereMesh_688n6")
 
+[node name="VFX_target" type="Node3D" parent="." unique_id=1523297649]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16113561, 2.206633, 0)
+
 [connection signal="cant_step" from="." to="TrunkMesh" method="_on_trunk_cant_step"]
 [connection signal="facing_changed" from="." to="TrunkMesh" method="_on_trunk_facing_changed"]
 [connection signal="animation_finished" from="TrunkMesh/AnimationPlayer" to="." method="_on_torso_anims_animation_finished"]

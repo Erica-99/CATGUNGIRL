@@ -4,6 +4,10 @@ class_name EnemyDeath
 
 @export var max_death_animation_time: float = 5
 
+var death_gpu_emitter = preload("res://scenes/VFX/blood_spurt_medium_vfx.tscn")
+
+@onready var VFX_spawn_node = $"../../../../../VFX"
+
 var actor: CharacterBody3D
 var anim: AnimationPlayer
 
@@ -19,6 +23,11 @@ func init(blackboard_dict: Dictionary) -> void:
 func enter() -> void:
 	#anim.play("Death")
 	# Play death sound
+	var blood_VFX = death_gpu_emitter.instantiate()
+	var VFX_spawn = $"../../VFX_target"
+	blood_VFX.position = VFX_spawn.global_position
+	VFX_spawn_node.add_child(blood_VFX)
+
 	AudioManager.play_sfx("gore_1")
 	randomize()
 	var deathid = 'Death' + str(randi_range(1,3))

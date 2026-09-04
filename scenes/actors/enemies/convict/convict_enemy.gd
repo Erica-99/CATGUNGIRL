@@ -65,6 +65,8 @@ var action_pending: bool = false
 var enemy_manager: EnemyManager
 var blackboard : Dictionary 
 
+
+
 @onready var Convict_Piv = $Visuals
 
 func _ready() -> void:
