@@ -15,6 +15,7 @@ const HITBOX_SCENE = preload("res://scenes/components/hitbox_component/hitbox_co
 
 @export_group("Aim")
 @export var aim_speed: float = 8.0		# gun rotation speed towards mouse (lower = more delay)
+@export var controller_aim_speed = 3.5
 
 @export_group("Ammo")
 @export var ammo_max: int = 10
@@ -118,13 +119,12 @@ func _is_aim_settled() -> bool:
 	
 
 func _input(event):
+	#Establish if the player is using KBM or a controller
 	if event is InputEventJoypadMotion:
 		if abs(event.axis_value) > controller_deadzone:
 			using_controller = true
-	
 	elif event is InputEventMouseMotion:
 			using_controller = false
-	return
 
 func _process(delta: float) -> void:
 	
@@ -181,7 +181,7 @@ func _process(delta: float) -> void:
 func _update_aim(mouse_world: Vector3, input_state: Dictionary, delta: float) -> void:
 	if mouse_world == null:
 		return
-	# direction vector from gun to mouse
+	#Check if the player is using a controller
 	if using_controller:
 		var controller_input = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
 		if controller_input.length() > controller_deadzone:
@@ -189,6 +189,7 @@ func _update_aim(mouse_world: Vector3, input_state: Dictionary, delta: float) ->
 			target_angle = controller_input.angle()
 			_current_target_angle = target_angle
 	else:
+		# direction vector from gun to mouse
 		var direction = mouse_world - global_position
 		direction.z = 0.0
 		target_angle = Vector2(direction.x, direction.y).angle()
@@ -201,11 +202,13 @@ func _update_aim(mouse_world: Vector3, input_state: Dictionary, delta: float) ->
 		wobble = sin(_wobble_time * wobble_speed) * wobble_amount
 	else:
 		_wobble_time = 0.0
-		
-	var current_aim_speed = aim_speed
 	
+	#Set the current aim speed depending on user's input
+	var current_aim_speed
 	if using_controller:
-		current_aim_speed /= 2.0
+		current_aim_speed = controller_aim_speed
+	else:
+		current_aim_speed = aim_speed
 	
 	if _is_spamming and not _is_aim_settled():
 		current_aim_speed = aim_speed * spam_aim_multiplier
