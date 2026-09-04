@@ -1471,15 +1471,17 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Player" type="CharacterBody3D" unique_id=1349193765 node_paths=PackedStringArray("movement_state_machine", "gun_arm_node", "input_component", "mantle_detector", "feet_point", "jump_timer", "dash_timer") groups=["player"]]
+[node name="Player" type="CharacterBody3D" unique_id=1349193765 node_paths=PackedStringArray("movement_state_machine", "gun_arm_node", "debug_hidden_nodes", "input_component", "mantle_detector", "feet_point", "jump_timer", "dash_timer") groups=["player"]]
 collision_layer = 2
 axis_lock_linear_z = true
+floor_snap_length = 0.4
 platform_floor_layers = 1
 script = ExtResource("1_qdyt2")
 hit_heal_fraction = 0.1
 movement_state_machine = NodePath("MovementStateMachine")
 gun_arm_node = NodePath("PlayerVisuals/ROOT_P/GUN_P")
 jump_velocity = 35.0
+debug_hidden_nodes = [NodePath("PlayerVisuals"), NodePath("GunHolder")]
 input_component = NodePath("PlayerInput")
 mantle_detector = NodePath("MantleDetector")
 feet_point = NodePath("FeetPoint")
@@ -1611,6 +1613,7 @@ transform = Transform3D(1, 0, 0, 0, 0.99660444, 0.08233857, 0, -0.08233857, 0.99
 
 [node name="MovementStateMachine" parent="." unique_id=1499026333 node_paths=PackedStringArray("initial_state") instance=ExtResource("4_qdyt2")]
 initial_state = NodePath("PlayerIdle")
+block_state_transitions = false
 
 [node name="PlayerIdle" type="Node" parent="MovementStateMachine" unique_id=1867921853]
 script = ExtResource("7_fp13k")

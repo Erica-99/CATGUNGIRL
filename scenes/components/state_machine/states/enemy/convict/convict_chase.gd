@@ -102,19 +102,25 @@ func physics_update(_delta: float) -> void:
 	
 	var player_is_above: bool = actor.global_position.y < target.global_position.y
 	var player_is_below: bool = actor.global_position.y > target.global_position.y + 1.0
+	var can_power_dive: bool = actor.is_on_floor()
 	
-	if player_is_below:
+	if !can_power_dive:
+		dive_timer = 0.0
+		routing_to_dive_spot = false
+		current_route_point = null
+	elif player_is_below:
+		dive_timer = 0.0
 		routing_to_dive_spot = false
 		current_route_point = null
 	# add to dive timer while below target
-	if player_is_above:
+	elif player_is_above:
 		dive_timer += _delta
 	else:
 		dive_timer = 0
 		
 	var searching_for_dive_spot: bool = false
 	# When below target for long enough, move to superjump state
-	if dive_timer > dive_cd:
+	if can_power_dive and dive_timer > dive_cd:
 		if _has_power_dive_space():
 			current_route_point = null
 			routing_to_dive_spot = false
@@ -139,7 +145,7 @@ func physics_update(_delta: float) -> void:
 	if (searching_for_dive_spot or routing_to_dive_spot) and !convict_route_points.is_empty():
 		using_route_point = true
 
-		if _has_power_dive_space():
+		if can_power_dive and _has_power_dive_space():
 			current_route_point = null
 			routing_to_dive_spot = false
 			transitioned.emit(self, "convictpowerdive")

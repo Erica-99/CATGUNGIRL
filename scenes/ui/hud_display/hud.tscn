@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bwjuhhi62r2ot" path="res://art/2d_assets/real_world/UI/pistol_bullet_icon.tscn" id="3_7c4j5"]
 [ext_resource type="PackedScene" uid="uid://d0bck3rf10len" path="res://art/2d_assets/real_world/UI/shotgun_bullet_icon.tscn" id="4_jop4h"]
 [ext_resource type="PackedScene" uid="uid://ddj7xjcety3sc" path="res://art/2d_assets/real_world/UI/sniper_bullet_icon.tscn" id="5_mrwyo"]
+[ext_resource type="PackedScene" uid="uid://b83rx2yi7uwng" path="res://debug/DebugMenu.tscn" id="7_68ye3"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1982623268]
 layer = 15
@@ -37,6 +38,8 @@ bullet_icons = Dictionary[String, PackedScene]({
 
 [node name="Healthbar" parent="SubViewportContainer/SubViewport" unique_id=90995781 instance=ExtResource("2_rix7v")]
 visible = false
+
+[node name="DebugMenu" parent="SubViewportContainer/SubViewport" unique_id=1334771727 instance=ExtResource("7_68ye3")]
 
 [node name="Jitter" type="Node" parent="SubViewportContainer" unique_id=88277945]
 script = ExtResource("2_hqnrr")
