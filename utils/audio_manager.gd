@@ -220,4 +220,31 @@ func take_hotseat(asp3d: AudioStreamPlayer3D, stinger_ref: String):
 		hotseat.pitch_scale = stinger.pitch_scale + randf_range(-stinger.pitch_random_shift, stinger.pitch_random_shift)
 			
 		hotseat.play()
-	
+
+func play_fallback(asp3d: AudioStreamPlayer3D, stinger_ref: String) -> void:
+	var fallback_ref: String
+	if stinger_dict.has(stinger_ref):
+		# Assign callable_sfx locally
+		var callable_sfx: CallableSFX = stinger_dict[stinger_ref]
+		# Get Sound Effect resource (will select a random Sound Effect entry if 
+		# SoundEffectPool, otherwise returns same as callable_sfx)
+		fallback_ref = callable_sfx.get_fallback_ref()
+		
+		if fallback_ref == null:
+			return
+		
+		var fallback: SoundEffect = get_stinger_from_dict(fallback_ref)
+		if fallback == null:
+			push_error("Fallback Resource is not found")
+			return
+		
+		asp3d.stream = fallback.sound_clip
+		asp3d.volume_db = fallback.volume
+		asp3d.pitch_scale = fallback.pitch_scale + randf_range(-fallback.pitch_random_shift, fallback.pitch_random_shift)
+		
+		asp3d.play()
+		
+	else: 
+		push_error("No entry in stinger register matching '" + stinger_ref + "'" )
+		
+		
