@@ -4,6 +4,9 @@ class_name BrainSpider
 @onready var detection_area_3d: Area3D = $DetectionArea3D
 @onready var explosion_area_3d: Area3D = $ExplosionArea3D
 @onready var detonation_area_3d: Area3D = $DetonationArea3D
+@onready var explosion_collision_shape: CollisionShape3D = $ExplosionArea3D/CollisionShape3D
+@onready var explosion_visual: AnimatedSprite3D = $Visuals/ExplosionVisual
+@onready var body_visual: AnimatedSprite3D = $Visuals/AnimatedSprite3D
 @onready var softCollider = $SoftCollider
 @onready var health_comp = $HealthComponent
 
@@ -30,7 +33,8 @@ enum SpiderMode {
 
 @export_category("Explosion Variables")
 @export var explosion_damage: float = 25.0
-@export var explosion_duration: float = 0.1
+@export var explosion_knockback: float = 10.0
+@export var explosion_delete_frame: int = 10
 
 @export_category("Death Variables")
 @export var death_duration: float = 0.5
@@ -56,6 +60,8 @@ func _ready() -> void:
 	else:
 		state_machine.initial_state = start_idle
 	
+	explosion_visual.visible = false
+	match_explosion_visual_to_radius()
 	state_machine.init(blackboard)
 	health_comp.killed.connect(_on_health_component_killed)
 
@@ -85,8 +91,8 @@ func damage_players_in_explosion_area() -> void:
 		damage_instance.amount = explosion_damage
 		damage_instance.is_heal = false
 		damage_instance.type = Enums.DamageType.EXPLOSIVE
+		damage_instance.knockback = explosion_knockback
 		damage_instance.source = get_path()
-		
 		player_health.take_damage_or_heal(damage_instance)
 
 func apply_soft_collision(delta: float) -> void:
@@ -104,3 +110,16 @@ func die() -> void:
 	
 	EventManager.enemy_killed.emit(self)
 	queue_free()
+
+func match_explosion_visual_to_radius() -> void:
+	if !(explosion_collision_shape.shape is SphereShape3D):
+		return
+	
+	var explosion_radius: float = explosion_collision_shape.shape.radius
+	explosion_visual.scale = Vector3.ONE * explosion_radius
+
+func show_explosion_effect() -> void:
+	body_visual.visible = false
+	explosion_visual.visible = true
+	explosion_visual.frame = 0
+	explosion_visual.play("default")

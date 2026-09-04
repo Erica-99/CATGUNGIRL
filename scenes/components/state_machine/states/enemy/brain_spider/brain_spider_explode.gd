@@ -1,7 +1,6 @@
 extends State
 
 var actor: BrainSpider
-var explosion_timer: float = 0.0
 var has_damaged: bool = false
 
 func init(blackboard_dict: Dictionary) -> void:
@@ -9,11 +8,11 @@ func init(blackboard_dict: Dictionary) -> void:
 	actor = blackboard["actor"]
 
 func enter() -> void:
-	explosion_timer = 0.0
 	has_damaged = false
 	actor.velocity = Vector3.ZERO
+	actor.show_explosion_effect()
 
-func update(delta: float) -> void:
+func update(_delta: float) -> void:
 	if actor.is_dead:
 		return
 	
@@ -21,10 +20,8 @@ func update(delta: float) -> void:
 		has_damaged = true
 		actor.damage_players_in_explosion_area()
 	
-	explosion_timer += delta
-	
-	if explosion_timer >= actor.explosion_duration:
-		transitioned.emit(self, "brainspiderdeath")
+	if !actor.explosion_visual.is_playing():
+		actor.die()
 
 func physics_update(_delta: float) -> void:
 	actor.velocity = Vector3.ZERO
