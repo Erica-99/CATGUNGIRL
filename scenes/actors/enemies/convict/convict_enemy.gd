@@ -18,6 +18,7 @@ var is_dead: bool = false
 @export var start_idle: State
 @export var start_patrol: State
 @export var start_aggro: State
+@export var is_brainspider: bool
 
 @export_category("Stat Variables")
 # Change direction to -1 to start facing the other way
