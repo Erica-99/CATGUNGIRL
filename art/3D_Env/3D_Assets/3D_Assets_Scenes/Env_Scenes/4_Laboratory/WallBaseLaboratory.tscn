@@ -1,29 +1,14 @@
 [gd_scene format=3 uid="uid://ukr8s37yqom1"]
 
 [ext_resource type="ArrayMesh" uid="uid://b46rmc17it7on" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/4_Laboratory/WallBaseLaboratory.obj" id="1_aai38"]
-[ext_resource type="Texture2D" uid="uid://boajeduprdcum" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Base_color.png" id="2_w8ebx"]
-[ext_resource type="Texture2D" uid="uid://cqjmuyra8pf8y" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Mixed_AO.png" id="3_m0vnc"]
-[ext_resource type="Texture2D" uid="uid://c4by1atd5xpq6" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Height.png" id="4_8dg1p"]
-[ext_resource type="Texture2D" uid="uid://b42dldjildi6x" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Base_metalness.png" id="5_6dkk5"]
-[ext_resource type="Texture2D" uid="uid://vnh1mohlmhni" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Normal_OpenGL.png" id="6_2tlye"]
-[ext_resource type="Texture2D" uid="uid://drpgycg7mebgy" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Specular_roughness.png" id="7_qxfay"]
+[ext_resource type="Texture2D" uid="uid://cptd6ds2c83sd" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/TextureTrimSheetWallL.png" id="2_gv8mo"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jlh6x"]
-albedo_texture = ExtResource("2_w8ebx")
-metallic = 1.0
-metallic_texture = ExtResource("5_6dkk5")
-roughness_texture = ExtResource("7_qxfay")
-normal_enabled = true
-normal_texture = ExtResource("6_2tlye")
-ao_enabled = true
-ao_texture = ExtResource("3_m0vnc")
-heightmap_enabled = true
-heightmap_scale = 0.0
-heightmap_texture = ExtResource("4_8dg1p")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uwxin"]
+albedo_texture = ExtResource("2_gv8mo")
 
 [node name="WallBaseLaboratory" type="StaticBody3D" unique_id=206436331]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="WallBaseLaboratory_Mesh" type="MeshInstance3D" parent="." unique_id=994904343]
 mesh = ExtResource("1_aai38")
-surface_material_override/0 = SubResource("StandardMaterial3D_jlh6x")
+surface_material_override/0 = SubResource("StandardMaterial3D_uwxin")

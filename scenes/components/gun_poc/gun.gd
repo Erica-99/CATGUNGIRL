@@ -114,7 +114,7 @@ func _is_aim_settled() -> bool:
 func _process(delta: float) -> void:
 	
 	# single shot reloading
-	if !DebugManager.infinite_ammo and !reload_full:
+	if !reload_full:
 		if _current_ammo != ammo_max:
 			single_reload_timer += delta
 			if single_reload_timer > reload_time:
@@ -200,7 +200,7 @@ func _handle_special(input_state: Dictionary, delta: float) -> void:
 
 func _try_fire() -> void:
 	# won't fire on empty ammo (added for shotgun)
-	if _current_ammo == 0 and !DebugManager.infinite_ammo:
+	if _current_ammo == 0:
 		return
 	# won't fire if cooldown not expired
 	if _fire_cooldown > 0.0:
@@ -261,35 +261,14 @@ func _shoot_handler():
 func _shoot(damage, bullet_scale):
 	_spawn_bullet(damage, bullet_scale)
 
+
 func _handle_ammo():
-	if DebugManager.infinite_ammo:
-		_current_ammo = ammo_max
-		
-		if active:
-			EventManager.new_mag_loaded.emit(_current_ammo, ammo_max)
-			
-		return
-	
 	EventManager.shots_fired.emit(1)
 	
 	_current_ammo -= 1
 	if _current_ammo <= 0 and reload_full: 
 		_is_reloading = true
 		reload_timer.start(reload_time)
-
-func _handle_debug_infinite_ammo() -> void:
-	if !DebugManager.infinite_ammo:
-		return
-	
-	_is_reloading = false
-	reload_timer.stop()
-	single_reload_timer = 0.0
-	
-	if _current_ammo != ammo_max:
-		_current_ammo = ammo_max
-		
-		if active:
-			EventManager.new_mag_loaded.emit(_current_ammo, ammo_max)
 
 func _spawn_bullet(damage: float, size: float) -> void:
 	var bullet = bullet_scene.instantiate()

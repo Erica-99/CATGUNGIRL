@@ -1,26 +1,14 @@
 [gd_scene format=3 uid="uid://dd0xhengvef2y"]
 
 [ext_resource type="ArrayMesh" uid="uid://cbf2un8m7tkl1" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/3_WareHouse/WallBaseWareHouse.obj" id="1_c6cnh"]
-[ext_resource type="Texture2D" uid="uid://c14wt76naw6n1" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/3_WareHouse/Walls/WallWareHouse_Base_color.png" id="2_jc1i5"]
-[ext_resource type="Texture2D" uid="uid://h4qmijiqjpf5" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/3_WareHouse/Walls/WallWareHouse_Height.png" id="3_qn5j5"]
-[ext_resource type="Texture2D" uid="uid://d2xca0koajjv4" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/3_WareHouse/Walls/WallWareHouse_Base_metalness.png" id="4_vxhm4"]
-[ext_resource type="Texture2D" uid="uid://c6tvd2b6t41co" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/3_WareHouse/Walls/WallWareHouse_Normal_OpenGL.png" id="5_cu26l"]
-[ext_resource type="Texture2D" uid="uid://by0bwpub6ypxv" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/3_WareHouse/Walls/WallWareHouse_Specular_roughness.png" id="6_eoutj"]
+[ext_resource type="Texture2D" uid="uid://dgey57obwj80x" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/3_WareHouse/Walls/TextureTrimSheetWallW.png" id="2_tr6mj"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7bch1"]
-albedo_texture = ExtResource("2_jc1i5")
-metallic = 1.0
-metallic_texture = ExtResource("4_vxhm4")
-roughness_texture = ExtResource("6_eoutj")
-normal_enabled = true
-normal_texture = ExtResource("5_cu26l")
-heightmap_enabled = true
-heightmap_scale = 0.0
-heightmap_texture = ExtResource("3_qn5j5")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ocys"]
+albedo_texture = ExtResource("2_tr6mj")
 
 [node name="WallBaseWareHouse" type="StaticBody3D" unique_id=206436331]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="WallBaseWareHouse" type="MeshInstance3D" parent="." unique_id=1059073075]
 mesh = ExtResource("1_c6cnh")
-surface_material_override/0 = SubResource("StandardMaterial3D_7bch1")
+surface_material_override/0 = SubResource("StandardMaterial3D_5ocys")
