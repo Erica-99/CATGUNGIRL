@@ -1,9 +1,29 @@
 [gd_scene format=3 uid="uid://b1dyr1nexts4g"]
 
 [ext_resource type="ArrayMesh" uid="uid://dhp1madmnad8i" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/2_Panopticon/CellCrainRailBroken.obj" id="1_yfcy7"]
+[ext_resource type="Texture2D" uid="uid://b65gyyo0kcmco" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCraneRailBroken/CellCrainRailBroken_Base_color.png" id="2_tcjwk"]
+[ext_resource type="Texture2D" uid="uid://df2q45uboydki" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCraneRailBroken/CellCrainRailBroken_Mixed_AO.png" id="3_o5y4n"]
+[ext_resource type="Texture2D" uid="uid://bkr4b8ok55o6k" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCraneRailBroken/CellCrainRailBroken_Height.png" id="4_rorxv"]
+[ext_resource type="Texture2D" uid="uid://2tqtquk08mh5" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCraneRailBroken/CellCrainRailBroken_Base_metalness.png" id="5_nrn1p"]
+[ext_resource type="Texture2D" uid="uid://ct48b3q71dkhq" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCraneRailBroken/CellCrainRailBroken_Normal_OpenGL.png" id="6_bn46y"]
+[ext_resource type="Texture2D" uid="uid://dvbbpo7askymx" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCraneRailBroken/CellCrainRailBroken_Specular_roughness.png" id="7_wte23"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gus8k"]
+albedo_texture = ExtResource("2_tcjwk")
+metallic = 1.0
+metallic_texture = ExtResource("5_nrn1p")
+roughness_texture = ExtResource("7_wte23")
+normal_enabled = true
+normal_texture = ExtResource("6_bn46y")
+ao_enabled = true
+ao_texture = ExtResource("3_o5y4n")
+heightmap_enabled = true
+heightmap_scale = 1.0
+heightmap_texture = ExtResource("4_rorxv")
 
 [node name="PanopticonCraneRailBroken" type="StaticBody3D" unique_id=1809273445]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="CellCrainRailBroken" type="MeshInstance3D" parent="." unique_id=852175763]
 mesh = ExtResource("1_yfcy7")
+surface_material_override/0 = SubResource("StandardMaterial3D_gus8k")

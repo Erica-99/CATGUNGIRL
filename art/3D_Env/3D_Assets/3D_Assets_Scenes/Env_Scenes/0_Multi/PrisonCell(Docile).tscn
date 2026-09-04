@@ -32,6 +32,13 @@
 [ext_resource type="Texture2D" uid="uid://by3nyot0lgx5o" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellDoor/CellDoor_Base_metalness.png" id="22_10r4t"]
 [ext_resource type="Texture2D" uid="uid://xcuu7w0qbbq0" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellDoor/CellDoor_Normal_OpenGL.png" id="23_sb28s"]
 [ext_resource type="Texture2D" uid="uid://t1yn5admj13x" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellDoor/CellDoor_Specular_roughness.png" id="24_nyjw3"]
+[ext_resource type="Texture2D" uid="uid://bvp1fbmx6gvsn" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/SmallLight/SmallLight_Base_color.png" id="33_ffg1i"]
+[ext_resource type="Texture2D" uid="uid://e0k2y8je55wb" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/SmallLight/SmallLight_Mixed_AO.png" id="34_8ciwo"]
+[ext_resource type="Texture2D" uid="uid://d37ql3q400ama" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/SmallLight/SmallLight_Emission_color.png" id="35_w3c22"]
+[ext_resource type="Texture2D" uid="uid://juv1f8r26e4m" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/SmallLight/SmallLight_Height.png" id="36_015y2"]
+[ext_resource type="Texture2D" uid="uid://dq8nlwih6tnya" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/SmallLight/SmallLight_Base_metalness.png" id="37_r6h65"]
+[ext_resource type="Texture2D" uid="uid://b3n1qfp5ls7ye" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/SmallLight/SmallLight_Normal_OpenGL.png" id="38_osd4e"]
+[ext_resource type="Texture2D" uid="uid://dvl0rvyslvng" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/SmallLight/SmallLight_Specular_roughness.png" id="39_5h5hc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_whh22"]
 albedo_texture = ExtResource("2_h25w6")
@@ -112,6 +119,21 @@ emission_enabled = true
 emission = Color(1, 0, 0, 1)
 emission_energy_multiplier = 5.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w3whg"]
+albedo_texture = ExtResource("33_ffg1i")
+metallic = 1.0
+metallic_texture = ExtResource("37_r6h65")
+roughness_texture = ExtResource("39_5h5hc")
+emission_enabled = true
+emission_texture = ExtResource("35_w3c22")
+normal_enabled = true
+normal_texture = ExtResource("38_osd4e")
+ao_enabled = true
+ao_texture = ExtResource("34_8ciwo")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("36_015y2")
+
 [node name="PrisonCell" type="StaticBody3D" unique_id=1430763070]
 transform = Transform3D(2.25, 0, 0, 0, 2.25, 0, 0, 0, 2.25, 0, 0, 0)
 
@@ -169,11 +191,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_cksll")
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_vg3oc")
 
-[node name="SmallLight" type="MeshInstance3D" parent="." unique_id=1583364968]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.99298126, 0.7008265, 0.861371)
-mesh = ExtResource("7_8okpm")
-
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=20845986]
-transform = Transform3D(0.08648003, 0, 0, 0, 0.26437512, 0, 0, 0, 0.08648003, 1.041285, 0.6994451, 0.8616561)
+transform = Transform3D(0.08648003, 0, 0, 0, 0.26437512, 0, 0, 0, 0.08648003, 1.041285, 0.6994451, 0.9108237)
 height = 1.0303955
 material = SubResource("StandardMaterial3D_8okpm")
+
+[node name="SmallLight" type="MeshInstance3D" parent="." unique_id=499112181]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.99298126, 0.7008265, 0.91025925)
+mesh = ExtResource("7_8okpm")
+surface_material_override/0 = SubResource("StandardMaterial3D_w3whg")
