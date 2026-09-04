@@ -163,6 +163,20 @@
 [ext_resource type="AudioStream" uid="uid://d3erohx6la5l3" path="res://audio/sound_clips/stingers/Convict/Convict_F_2_Laugh_04.mp3" id="161_xtvfi"]
 [ext_resource type="AudioStream" uid="uid://c5h24imoaha25" path="res://audio/sound_clips/stingers/Convict/Convict_F_2_Laugh_05.mp3" id="162_pg0bg"]
 [ext_resource type="AudioStream" uid="uid://dasstg2wyu67n" path="res://audio/sound_clips/stingers/Convict/Convict_F_2_Laugh_06.mp3" id="163_pg0bg"]
+[ext_resource type="AudioStream" uid="uid://b4oqcxcepjedy" path="res://audio/sound_clips/stingers/Convict/Convict_F_3_Death_03.mp3" id="164_7wtae"]
+[ext_resource type="AudioStream" uid="uid://bl4hsrhuv5h3s" path="res://audio/sound_clips/stingers/Convict/Convict_F_3_Death_02.mp3" id="165_gi12e"]
+[ext_resource type="AudioStream" uid="uid://jitrcfxkdf25" path="res://audio/sound_clips/stingers/Convict/Convict_F_3_Death_04.mp3" id="166_ommax"]
+[ext_resource type="AudioStream" uid="uid://b4tnmvxwy733a" path="res://audio/sound_clips/stingers/Convict/Convict_F_3_Death_05.mp3" id="167_1ojma"]
+[ext_resource type="AudioStream" uid="uid://qqhxmcp78rc0" path="res://audio/sound_clips/stingers/Convict/Convict_F_3_Detect_01.mp3" id="168_43rji"]
+[ext_resource type="AudioStream" uid="uid://7l2vxpp70rdn" path="res://audio/sound_clips/stingers/Convict/Convict_F_3_Detect_03.mp3" id="169_d37it"]
+[ext_resource type="AudioStream" uid="uid://cemdgi5lcw47w" path="res://audio/sound_clips/stingers/Convict/Convict_F_3_Hostile_06.mp3" id="170_ffyon"]
+[ext_resource type="AudioStream" uid="uid://lxr2df1ce3bf" path="res://audio/sound_clips/stingers/Convict/Convict_F_3_Hostile_07.mp3" id="171_01jxl"]
+[ext_resource type="AudioStream" uid="uid://cmphpxso0yhcu" path="res://audio/sound_clips/stingers/Convict/Convict_F_3_Hostile_09.mp3" id="172_y8837"]
+[ext_resource type="AudioStream" uid="uid://k54htegykp0" path="res://audio/sound_clips/stingers/Convict/Convict_F_3_Hostile_10.mp3" id="173_m3ber"]
+[ext_resource type="AudioStream" uid="uid://d4eae76x83rge" path="res://audio/sound_clips/stingers/Convict/Convict_F_3_Hostile_13.mp3" id="174_10wa2"]
+[ext_resource type="AudioStream" uid="uid://dpavn2hvlyhmn" path="res://audio/sound_clips/stingers/Convict/Convict_F_3_Laugh_01.mp3" id="175_01jxl"]
+[ext_resource type="AudioStream" uid="uid://dgojqfqs32mlx" path="res://audio/sound_clips/stingers/Convict/Convict_F_3_Laugh_02.mp3" id="176_y8837"]
+[ext_resource type="AudioStream" uid="uid://p5sx51ysimka" path="res://audio/sound_clips/stingers/Convict/Convict_F_3_Laugh_03.mp3" id="177_m3ber"]
 
 [sub_resource type="Resource" id="Resource_0euqh"]
 resource_name = "test_music"
@@ -1476,6 +1490,7 @@ metadata/_custom_type_script = "uid://cyhl11tjftkqi"
 resource_name = "convict_laugh_f2_fb_6"
 script = ExtResource("4_86fuy")
 sound_clip = ExtResource("163_pg0bg")
+limit = 1
 metadata/_custom_type_script = "uid://cyhl11tjftkqi"
 
 [sub_resource type="Resource" id="Resource_ryetu"]
@@ -1485,6 +1500,149 @@ sfx_pool = Array[ExtResource("4_86fuy")]([SubResource("Resource_5d2lp"), SubReso
 sfx_ref = "convict_laugh_f2_fb"
 metadata/_custom_type_script = "uid://f8abqnghabq5"
 
+[sub_resource type="Resource" id="Resource_x06cw"]
+resource_name = "convict_death_f3_3"
+script = ExtResource("4_86fuy")
+sound_clip = ExtResource("164_7wtae")
+limit = 1
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_daxi3"]
+resource_name = "convict_death_f3"
+script = ExtResource("16_elrwl")
+sfx_pool = Array[ExtResource("4_86fuy")]([SubResource("Resource_x06cw")])
+sfx_ref = "convict_death_f3"
+fallback_ref = "convict_death_f3_fb"
+metadata/_custom_type_script = "uid://f8abqnghabq5"
+
+[sub_resource type="Resource" id="Resource_opsbj"]
+resource_name = "convict_death_f3_fb_1"
+script = ExtResource("4_86fuy")
+sound_clip = ExtResource("165_gi12e")
+limit = 1
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_u6pb6"]
+resource_name = "convict_death_f3_fb_2"
+script = ExtResource("4_86fuy")
+sound_clip = ExtResource("166_ommax")
+limit = 1
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_w6hec"]
+resource_name = "convict_death_f3_fb_3"
+script = ExtResource("4_86fuy")
+sound_clip = ExtResource("167_1ojma")
+limit = 1
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_6d48f"]
+resource_name = "convict_death_f3_fb"
+script = ExtResource("16_elrwl")
+sfx_pool = Array[ExtResource("4_86fuy")]([SubResource("Resource_opsbj"), SubResource("Resource_u6pb6"), SubResource("Resource_w6hec")])
+sfx_ref = "convict_death_f3_fb"
+metadata/_custom_type_script = "uid://f8abqnghabq5"
+
+[sub_resource type="Resource" id="Resource_4s07u"]
+resource_name = "convict_alert_f3_1"
+script = ExtResource("4_86fuy")
+sound_clip = ExtResource("168_43rji")
+limit = 1
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_yrm8r"]
+resource_name = "convict_alert_f3_2"
+script = ExtResource("4_86fuy")
+sound_clip = ExtResource("169_d37it")
+limit = 1
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_y7a5h"]
+resource_name = "convict_alert_f3"
+script = ExtResource("16_elrwl")
+sfx_pool = Array[ExtResource("4_86fuy")]([SubResource("Resource_4s07u"), SubResource("Resource_yrm8r")])
+sfx_ref = "convict_alert_f3"
+fallback_ref = "convict_laugh_f3_fb"
+metadata/_custom_type_script = "uid://f8abqnghabq5"
+
+[sub_resource type="Resource" id="Resource_07olv"]
+resource_name = "convict_hostile_f3_1"
+script = ExtResource("4_86fuy")
+sound_clip = ExtResource("170_ffyon")
+limit = 1
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_r1ovv"]
+resource_name = "convict_hostile_f3_2"
+script = ExtResource("4_86fuy")
+sound_clip = ExtResource("171_01jxl")
+limit = 1
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_mt3ms"]
+resource_name = "convict_hostile_f3_3"
+script = ExtResource("4_86fuy")
+sound_clip = ExtResource("172_y8837")
+limit = 1
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_kw3vg"]
+resource_name = "convict_hostile_f3_4"
+script = ExtResource("4_86fuy")
+sound_clip = ExtResource("173_m3ber")
+limit = 1
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_awuav"]
+resource_name = "convict_hostile_f3_5"
+script = ExtResource("4_86fuy")
+sound_clip = ExtResource("173_m3ber")
+limit = 1
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_am5yw"]
+resource_name = "convict_hostile_f3_6"
+script = ExtResource("4_86fuy")
+sound_clip = ExtResource("174_10wa2")
+limit = 1
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_olc00"]
+resource_name = "convict_hostile_f3"
+script = ExtResource("16_elrwl")
+sfx_pool = Array[ExtResource("4_86fuy")]([SubResource("Resource_07olv"), SubResource("Resource_r1ovv"), SubResource("Resource_mt3ms"), SubResource("Resource_kw3vg"), SubResource("Resource_awuav"), SubResource("Resource_am5yw")])
+sfx_ref = "convict_hostile_f3"
+fallback_ref = "convict_laugh_f3_fb"
+metadata/_custom_type_script = "uid://f8abqnghabq5"
+
+[sub_resource type="Resource" id="Resource_4r6qj"]
+resource_name = "convict_laugh_f3_fb_1"
+script = ExtResource("4_86fuy")
+sound_clip = ExtResource("175_01jxl")
+limit = 1
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_ispld"]
+resource_name = "convict_laugh_f3_fb_2"
+script = ExtResource("4_86fuy")
+sound_clip = ExtResource("176_y8837")
+limit = 1
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_rme6q"]
+resource_name = "convict_laugh_f3_fb_3"
+script = ExtResource("4_86fuy")
+sound_clip = ExtResource("177_m3ber")
+limit = 1
+metadata/_custom_type_script = "uid://cyhl11tjftkqi"
+
+[sub_resource type="Resource" id="Resource_dmaiy"]
+resource_name = "convict_laugh_f3_fb"
+script = ExtResource("16_elrwl")
+sfx_pool = Array[ExtResource("4_86fuy")]([SubResource("Resource_4r6qj"), SubResource("Resource_ispld"), SubResource("Resource_rme6q")])
+sfx_ref = "convict_laugh_f3_fb"
+metadata/_custom_type_script = "uid://f8abqnghabq5"
+
 [node name="AudioManager" type="Node" unique_id=850583180 node_paths=PackedStringArray("music_player")]
 script = ExtResource("1_yvh18")
 music_player = NodePath("MusicPlayer")
@@ -1492,6 +1650,6 @@ music_tracks = Array[ExtResource("2_6ji2x")]([SubResource("Resource_0euqh")])
 sfx_global_pool_size = 16
 sfx_3D_pool_size = 16
 sound_effects = Array[ExtResource("4_8ir83")]([SubResource("Resource_oaxhr"), SubResource("Resource_rl7ob"), SubResource("Resource_dvfw8"), SubResource("Resource_iuerv"), SubResource("Resource_g36qw"), SubResource("Resource_jmy51"), SubResource("Resource_bskdb"), SubResource("Resource_8ir83"), SubResource("Resource_yryo2"), SubResource("Resource_k7yxb"), SubResource("Resource_57hb3"), SubResource("Resource_bbr7h"), SubResource("Resource_rjtmv"), SubResource("Resource_s3d81"), SubResource("Resource_ybi1n"), SubResource("Resource_q5241"), SubResource("Resource_dggsv")])
-enemy_stingers = Array[ExtResource("4_8ir83")]([SubResource("Resource_d0atu"), SubResource("Resource_derof"), SubResource("Resource_5lqjm"), SubResource("Resource_4dtiy"), SubResource("Resource_tu5r3"), SubResource("Resource_l8cpe"), SubResource("Resource_d6nxs"), SubResource("Resource_646im"), SubResource("Resource_q77b2"), SubResource("Resource_im4bw"), SubResource("Resource_rx7v0"), SubResource("Resource_ek5kn"), SubResource("Resource_3ruj6"), SubResource("Resource_6n24a"), SubResource("Resource_o5wwq"), SubResource("Resource_ec802"), SubResource("Resource_8ryjv"), SubResource("Resource_fn420"), SubResource("Resource_yedhf"), SubResource("Resource_7jyfs"), SubResource("Resource_pupx5"), SubResource("Resource_21g8i"), SubResource("Resource_4mvj6"), SubResource("Resource_7wtae"), SubResource("Resource_6dpuo"), SubResource("Resource_ryetu")])
+enemy_stingers = Array[ExtResource("4_8ir83")]([SubResource("Resource_d0atu"), SubResource("Resource_derof"), SubResource("Resource_5lqjm"), SubResource("Resource_4dtiy"), SubResource("Resource_tu5r3"), SubResource("Resource_l8cpe"), SubResource("Resource_d6nxs"), SubResource("Resource_646im"), SubResource("Resource_q77b2"), SubResource("Resource_im4bw"), SubResource("Resource_rx7v0"), SubResource("Resource_ek5kn"), SubResource("Resource_3ruj6"), SubResource("Resource_6n24a"), SubResource("Resource_o5wwq"), SubResource("Resource_ec802"), SubResource("Resource_8ryjv"), SubResource("Resource_fn420"), SubResource("Resource_yedhf"), SubResource("Resource_7jyfs"), SubResource("Resource_pupx5"), SubResource("Resource_21g8i"), SubResource("Resource_4mvj6"), SubResource("Resource_7wtae"), SubResource("Resource_6dpuo"), SubResource("Resource_ryetu"), SubResource("Resource_daxi3"), SubResource("Resource_6d48f"), SubResource("Resource_y7a5h"), SubResource("Resource_olc00"), SubResource("Resource_dmaiy")])
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1228295571]
