@@ -17,8 +17,14 @@ emission_texture = ExtResource("3_vo884")
 normal_enabled = true
 normal_texture = ExtResource("5_uxvon")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1nytq"]
-points = PackedVector3Array(0.42389584, 0.86636287, 1.6578012, -0.58775, 0.036070228, -0.6085479, -0.3735752, 0.15611535, -2.2774334, -0.4128473, 2.1821835, 0.70462596, 0.3655555, 2.1235156, -0.9114241, 0.64893824, 0.11138081, -0.6615391, -0.5373627, 0.07859525, 1.3769636, -0.3583548, 2.1371114, -0.9202142, 0.3855753, 0.15611535, -2.2774334, 0.41562006, 2.158452, 0.68353134, 0.63858, 0.15611535, 1.5183685, -0.6899333, 0.7888316, -0.7586371, -0.56336284, 0.8521478, 1.6448026, 0.7019334, 0.7888316, -0.6952218, 0.54353076, 0.029835196, 1.2401043, 0.63858, 0.72551537, 1.3919342, 0.59732753, 0.04043141, -0.60709685, -0.46736765, 0.33557916, 1.6410339, -0.62657994, 0.72551537, 1.3919342, -0.6363267, 0.05388672, -0.54445523, 0.3855753, 0.21943158, -2.2774334, -0.5333715, 0.026153281, 1.2452173, -0.3735752, 0.21943158, -2.2774334, 0.30306304, 0.92673594, 1.6489732, -0.6899333, 0.8521478, -0.4419569, 0.5753629, 0.72551537, 1.6448026, -0.59271175, 0.20691662, 1.4235352, -0.6899333, 0.53556675, -0.063446864, -0.6899333, 0.66219914, -0.8850713, 0.7019334, 0.7888316, -0.25290006, 0.7019334, 0.4724735, -0.063446864, -0.29159302, 0.9264179, 1.6523669)
+[sub_resource type="BoxShape3D" id="BoxShape3D_17xyb"]
+size = Vector3(1.31654, 2.199944, 1.8459144)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vo884"]
+size = Vector3(1.31654, 1.2185041, 1.0793269)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l1pvd"]
+size = Vector3(0.70022875, 0.0517264, 1.2673246)
 
 [node name="Forklift" type="StaticBody3D" unique_id=500869341]
 
@@ -30,6 +36,14 @@ surface_material_override/2 = SubResource("StandardMaterial3D_u7pk8")
 surface_material_override/3 = SubResource("StandardMaterial3D_u7pk8")
 surface_material_override/4 = SubResource("StandardMaterial3D_u7pk8")
 
-[node name="Forklift_Collision" type="CollisionShape3D" parent="." unique_id=1945099771]
-visible = false
-shape = SubResource("ConvexPolygonShape3D_1nytq")
+[node name="Forklift_Collision1" type="CollisionShape3D" parent="." unique_id=845781759]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.097791, -0.13156116)
+shape = SubResource("BoxShape3D_17xyb")
+
+[node name="Forklift_Collision2" type="CollisionShape3D" parent="." unique_id=204559293]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.607071, 1.2002987)
+shape = SubResource("BoxShape3D_vo884")
+
+[node name="Forklift_Collision3" type="CollisionShape3D" parent="." unique_id=758896870]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0024581254, 0.19306287, -1.6121778)
+shape = SubResource("BoxShape3D_l1pvd")

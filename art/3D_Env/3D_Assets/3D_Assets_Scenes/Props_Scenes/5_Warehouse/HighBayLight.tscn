@@ -1,26 +1,33 @@
 [gd_scene format=3 uid="uid://u0ps1hxqgdbr"]
 
 [ext_resource type="ArrayMesh" uid="uid://dqfxykc6thj8d" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/5_Warehouse/HighBayLight.obj" id="1_vren0"]
-[ext_resource type="Texture2D" uid="uid://gk2wq6arlpki" path="res://art/3D_Env/3D_Assets/3D_Textures/placeholder textures/hanging light fixture/hanging_light_Base_color_1001.png" id="2_3e81y"]
-[ext_resource type="Texture2D" uid="uid://55dm0x0vwp8f" path="res://art/3D_Env/3D_Assets/3D_Textures/placeholder textures/hanging light fixture/hanging_light_Metallic_1001.png" id="3_184tg"]
-[ext_resource type="Texture2D" uid="uid://clewvm4fuvvfr" path="res://art/3D_Env/3D_Assets/3D_Textures/placeholder textures/hanging light fixture/hanging_light_Roughness_1001.png" id="4_cd74i"]
+[ext_resource type="Texture2D" uid="uid://d0shxx8r1qgcv" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/OtherProps/HighBayLight/HighBayLight_DefaultMaterial_BaseColor.png" id="2_ojyge"]
+[ext_resource type="Texture2D" uid="uid://bp5b5focasqhj" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/OtherProps/HighBayLight/HighBayLight_DefaultMaterial_Emissive.png" id="3_owjvi"]
+[ext_resource type="Texture2D" uid="uid://bfod3rrhfxo6i" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/OtherProps/HighBayLight/HighBayLight_DefaultMaterial_Metallic.png" id="4_rbmgl"]
+[ext_resource type="Texture2D" uid="uid://cw2hh23qyti5p" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/OtherProps/HighBayLight/HighBayLight_DefaultMaterial_Normal.png" id="5_o38kt"]
+[ext_resource type="Texture2D" uid="uid://dvqta2hyt0313" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/OtherProps/HighBayLight/HighBayLight_DefaultMaterial_Roughness.png" id="6_gf6rr"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vren0"]
-albedo_texture = ExtResource("2_3e81y")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vm3h1"]
+albedo_texture = ExtResource("2_ojyge")
 metallic = 1.0
-metallic_texture = ExtResource("3_184tg")
-roughness_texture = ExtResource("4_cd74i")
+metallic_texture = ExtResource("4_rbmgl")
+roughness_texture = ExtResource("6_gf6rr")
+emission_enabled = true
+emission_energy_multiplier = 5.0
+emission_texture = ExtResource("3_owjvi")
+normal_enabled = true
+normal_texture = ExtResource("5_o38kt")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_d7j7x"]
-points = PackedVector3Array(-0.167513, 0.000317, 0, -0.15478884, 0.000317, -0.064112745, -0.15478884, 0.000317, 0.064079955, -0.167513, 0.034583922, 0, -0.11845281, 0.000317, -0.11845281, -0.15478884, 0.034583922, -0.064112745, -0.11845281, 0.000317, 0.11842002, -0.15478884, 0.034583922, 0.064079955, -0.0037385523, 1.224341, 0, -0.064112745, 0.000317, -0.15478884, -0.11845281, 0.034583922, -0.11845281, -0.0026235431, 1.224341, -0.0026235431, -0.064112745, 0.000317, 0.15475602, -0.11845281, 0.034583922, 0.11842002, -0.0026235431, 1.224341, 0.0025907457, 0, 0.000317, -0.167513, -0.064112745, 0.034583922, -0.15478884, 0, 1.224341, -0.0037385523, 0, 0.000317, 0.167513, -0.064112745, 0.034583922, 0.15475602, 0, 1.224341, 0.00370574, 0.064079955, 0.000317, -0.15478884, 0, 0.034583922, -0.167513, 0.0025907457, 1.224341, -0.0026235431, 0.064079955, 0.034583922, -0.15478884, 0.064079955, 0.000317, 0.15475602, 0, 0.034583922, 0.167513, 0.0025907457, 1.224341, 0.0025907457, 0.064079955, 0.034583922, 0.15475602, 0.11842002, 0.000317, -0.11845281, 0.00370574, 1.224341, 0, 0.15475602, 0.034583922, -0.064112745, 0.11842002, 0.034583922, -0.11845281, 0.11842002, 0.000317, 0.11842002, 0.11842002, 0.034583922, 0.11842002, 0.15475602, 0.034583922, 0.064079955, 0.15475602, 0.000317, -0.064112745, 0.167513, 0.034583922, 0, 0.15475602, 0.000317, 0.064079955, 0.167513, 0.000317, 0)
+[sub_resource type="BoxShape3D" id="BoxShape3D_owjvi"]
+size = Vector3(1.219494, 0.689373, 1.219494)
 
 [node name="HighBayLight" type="StaticBody3D" unique_id=1692028619]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 
 [node name="HighBayLight_Mesh" type="MeshInstance3D" parent="." unique_id=569690555]
 mesh = ExtResource("1_vren0")
-surface_material_override/0 = SubResource("StandardMaterial3D_vren0")
+surface_material_override/0 = SubResource("StandardMaterial3D_vm3h1")
 
-[node name="HighBayLight_Collision" type="CollisionShape3D" parent="." unique_id=553178835]
-visible = false
-shape = SubResource("ConvexPolygonShape3D_d7j7x")
+[node name="HighBayLight_Collision" type="CollisionShape3D" parent="." unique_id=526341294]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3458395, 0)
+shape = SubResource("BoxShape3D_owjvi")

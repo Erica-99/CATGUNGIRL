@@ -1,11 +1,27 @@
 [gd_scene format=3 uid="uid://b61rhgk3qi27n"]
 
 [ext_resource type="ArrayMesh" uid="uid://b1hfvhouwan53" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/6_Laboratory/AcidVatRoom/TankChain.obj" id="1_t4xth"]
+[ext_resource type="Texture2D" uid="uid://gddo8576q0c2" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/TankExperimentation/TankExperimentation_DefaultMaterial_BaseColor.png" id="2_m8p7t"]
 [ext_resource type="ArrayMesh" uid="uid://cqu7nt6y8nb7m" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/6_Laboratory/AcidVatRoom/TankExperimentation.obj" id="2_vcur7"]
+[ext_resource type="Texture2D" uid="uid://d0s8dqgysoh8s" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/TankExperimentation/TankExperimentation_DefaultMaterial_Emissive.png" id="3_hqmhm"]
 [ext_resource type="ArrayMesh" uid="uid://dsbwayn6tp021" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/6_Laboratory/AcidVatRoom/TankHolder.obj" id="3_m8p7t"]
+[ext_resource type="Texture2D" uid="uid://bbamy4fhm0hut" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/TankExperimentation/TankExperimentation_DefaultMaterial_Metallic.png" id="4_c81ou"]
+[ext_resource type="Texture2D" uid="uid://ldku1ydkp07g" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/TankExperimentation/TankExperimentation_DefaultMaterial_Normal.png" id="5_y4bh2"]
+[ext_resource type="Texture2D" uid="uid://0kthvrk45dvd" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/TankExperimentation/TankExperimentation_DefaultMaterial_Roughness.png" id="6_tl044"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8in00"]
+albedo_texture = ExtResource("2_m8p7t")
+metallic = 1.0
+metallic_texture = ExtResource("4_c81ou")
+roughness_texture = ExtResource("6_tl044")
+emission_enabled = true
+emission_energy_multiplier = 2.0
+emission_texture = ExtResource("3_hqmhm")
+normal_enabled = true
+normal_texture = ExtResource("5_y4bh2")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t4xth"]
-size = Vector3(3.720226, 5.76, 3.756565)
+size = Vector3(3.720226, 5.8858595, 3.756565)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_t4xth"]
 height = 0.66355324
@@ -16,9 +32,22 @@ radius = 2.109448
 [node name="TankExperimentation_Mesh" type="MeshInstance3D" parent="." unique_id=914390176]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("2_vcur7")
+surface_material_override/0 = SubResource("StandardMaterial3D_8in00")
+
+[node name="CeilingLight13" type="OmniLight3D" parent="TankExperimentation_Mesh" unique_id=308657020]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, 0.5, 0, -0.5, -2.1855694e-08, 0.009307861, 12.514168, 0)
+light_color = Color(0.93333334, 1, 0.3647059, 1)
+light_energy = 16.0
+light_size = 0.12
+shadow_bias = 0.16
+shadow_normal_bias = 0.24
+shadow_reverse_cull_face = true
+shadow_opacity = 0.0
+shadow_blur = 0.0
+omni_range = 37.93676
 
 [node name="TankExperimentation_Collision" type="CollisionShape3D" parent="." unique_id=609952950]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 25.76, 0.036339045)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 25.63414, 0.036339045)
 visible = false
 shape = SubResource("BoxShape3D_t4xth")
 
