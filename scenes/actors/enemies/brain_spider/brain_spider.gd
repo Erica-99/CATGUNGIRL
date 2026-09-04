@@ -34,7 +34,7 @@ enum SpiderMode {
 @export_category("Explosion Variables")
 @export var explosion_damage: float = 25.0
 @export var explosion_knockback: float = 10.0
-@export var explosion_delete_frame: int = 10
+@export var explosion_delay: float = 1.0
 
 @export_category("Death Variables")
 @export var death_duration: float = 0.5
