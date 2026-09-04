@@ -12,6 +12,10 @@
 [ext_resource type="Script" uid="uid://hkfr65k60uhn" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_chase.gd" id="8_hh7i0"]
 [ext_resource type="Script" uid="uid://cexabo1e6yx6k" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_death.gd" id="9_jq4cx"]
 [ext_resource type="Script" uid="uid://c74c3xocthoxl" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_explode.gd" id="10_dwws2"]
+[ext_resource type="Script" uid="uid://gs162ktdk81a" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_surface_chase.gd" id="12_0umjx"]
+[ext_resource type="Script" uid="uid://dp3kifbyh42ts" path="res://scenes/components/gun_component/laser.gd" id="13_jq4cx"]
+[ext_resource type="Script" uid="uid://cjqn2hw06rk6f" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_aim.gd" id="13_jv02q"]
+[ext_resource type="Script" uid="uid://54ums46u7kgu" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_laser.gd" id="14_c6328"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ps8eh"]
 atlas = ExtResource("3_hh7i0")
@@ -157,13 +161,14 @@ radius = 2.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fmqj0"]
 
-[node name="BrainSpider" type="CharacterBody3D" unique_id=166394742 node_paths=PackedStringArray("state_machine", "start_idle", "start_aggro")]
+[node name="BrainSpider" type="CharacterBody3D" unique_id=166394742 node_paths=PackedStringArray("state_machine", "start_idle", "start_floor_aggro", "start_surface_aggro")]
 collision_layer = 4
 collision_mask = 129
 script = ExtResource("1_fjoht")
 state_machine = NodePath("StateMachine")
 start_idle = NodePath("StateMachine/BrainSpiderIdle")
-start_aggro = NodePath("StateMachine/BrainSpiderChase")
+start_floor_aggro = NodePath("StateMachine/BrainSpiderChase")
+start_surface_aggro = NodePath("StateMachine/BrainSpiderSurfaceChase")
 
 [node name="Visuals" type="Node3D" parent="." unique_id=24143131]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -220,6 +225,18 @@ metadata/_custom_type_script = "uid://bniqs510pmxtt"
 script = ExtResource("10_dwws2")
 metadata/_custom_type_script = "uid://bniqs510pmxtt"
 
+[node name="BrainSpiderSurfaceChase" type="Node" parent="StateMachine" unique_id=1846416137]
+script = ExtResource("12_0umjx")
+metadata/_custom_type_script = "uid://bniqs510pmxtt"
+
+[node name="BrainSpiderAim" type="Node" parent="StateMachine" unique_id=311900575]
+script = ExtResource("13_jv02q")
+metadata/_custom_type_script = "uid://bniqs510pmxtt"
+
+[node name="BrainSpiderLaser" type="Node" parent="StateMachine" unique_id=998006923]
+script = ExtResource("14_c6328")
+metadata/_custom_type_script = "uid://bniqs510pmxtt"
+
 [node name="DetectionArea3D" type="Area3D" parent="." unique_id=490970563]
 collision_layer = 0
 collision_mask = 2
@@ -248,3 +265,19 @@ script = ExtResource("5_c43gv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SoftCollider" unique_id=931580870]
 shape = SubResource("SphereShape3D_fmqj0")
+
+[node name="LaserOrigin" type="Marker3D" parent="." unique_id=1138581709]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 0.2, 0)
+
+[node name="Laser" type="Node3D" parent="LaserOrigin" unique_id=28765477]
+visible = false
+script = ExtResource("13_jq4cx")
+max_spread = 1.5
+beam_color = Color(0.5294118, 0.80784315, 0.92156863, 0.7058824)
+
+[node name="RayCast3D" type="RayCast3D" parent="LaserOrigin/Laser" unique_id=1861970321]
+collision_mask = 3
+
+[node name="LaserMeshInstance" type="MeshInstance3D" parent="LaserOrigin/Laser" unique_id=1741654014]
+
+[node name="BeamMeshInstance" type="MeshInstance3D" parent="LaserOrigin/Laser" unique_id=417492618]

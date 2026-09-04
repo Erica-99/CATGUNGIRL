@@ -1,6 +1,7 @@
 extends CharacterBody3D
 class_name BrainSpider
 
+@onready var visuals: Node3D = $Visuals
 @onready var detection_area_3d: Area3D = $DetectionArea3D
 @onready var explosion_area_3d: Area3D = $ExplosionArea3D
 @onready var detonation_area_3d: Area3D = $DetonationArea3D
@@ -17,7 +18,8 @@ class_name BrainSpider
 @export_category("Starting State Variables")
 @export var start_aggroed: bool
 @export var start_idle: State
-@export var start_aggro: State
+@export var start_floor_aggro: State
+@export var start_surface_aggro: State
 
 @export_category("Brain Spider Type")
 enum SpiderMode {
@@ -25,6 +27,13 @@ enum SpiderMode {
 	WALL_CEILING
 }
 @export var spider_mode: SpiderMode = SpiderMode.FLOOR
+
+enum SurfaceType {
+	CEILING,
+	LEFT_WALL,
+	RIGHT_WALL
+}
+@export var surface_type: SurfaceType = SurfaceType.CEILING
 
 @export_category("Stat Variables")
 @export var move_speed: float = 8.0
@@ -56,16 +65,20 @@ func _ready() -> void:
 	}
 	
 	if start_aggroed:
-		state_machine.initial_state = start_aggro
+		if spider_mode == SpiderMode.WALL_CEILING:
+			state_machine.initial_state = start_surface_aggro
+		else:
+			state_machine.initial_state = start_floor_aggro
 	else:
 		state_machine.initial_state = start_idle
 	
 	explosion_visual.visible = false
 	match_explosion_visual_to_radius()
 	state_machine.init(blackboard)
+	apply_surface_visual_rotation()
 	health_comp.killed.connect(_on_health_component_killed)
 
-func _on_health_component_killed(killing_blow: DamageHealInstance, health_before_death: Variant) -> void:
+func _on_health_component_killed(_killing_blow: DamageHealInstance, _health_before_death: Variant) -> void:
 	start_death()
 
 func start_death() -> void:
@@ -123,3 +136,38 @@ func show_explosion_effect() -> void:
 	explosion_visual.visible = true
 	explosion_visual.frame = 0
 	explosion_visual.play("default")
+
+func get_surface_move_axis() -> Vector3:
+	match surface_type:
+		SurfaceType.CEILING:
+			return Vector3.RIGHT
+		SurfaceType.LEFT_WALL:
+			return Vector3.UP
+		SurfaceType.RIGHT_WALL:
+			return Vector3.UP
+	
+	return Vector3.RIGHT
+
+func get_surface_gravity_direction() -> Vector3:
+	match surface_type:
+		SurfaceType.CEILING:
+			return Vector3.UP
+		SurfaceType.LEFT_WALL:
+			return Vector3.LEFT
+		SurfaceType.RIGHT_WALL:
+			return Vector3.RIGHT
+	
+	return Vector3.DOWN
+
+func apply_surface_visual_rotation() -> void:
+	if spider_mode == SpiderMode.FLOOR:
+		visuals.rotation.z = 0.0
+		return
+	
+	match surface_type:
+		SurfaceType.CEILING:
+			visuals.rotation.z = PI
+		SurfaceType.LEFT_WALL:
+			visuals.rotation.z = -PI / 2.0
+		SurfaceType.RIGHT_WALL:
+			visuals.rotation.z = PI / 2.0

@@ -19,11 +19,20 @@ func update(_delta: float) -> void:
 	for body in detection_area.get_overlapping_bodies():
 		if body.is_in_group("player"):
 			actor.target = body as CharacterBody3D
-			transitioned.emit(self, "brainspiderchase")
+			if actor.spider_mode == BrainSpider.SpiderMode.WALL_CEILING:
+				transitioned.emit(self, "brainspidersurfacechase")
+			else:
+				transitioned.emit(self, "brainspiderchase")
 			return
 
 func physics_update(delta: float) -> void:
 	if actor.is_dying or actor.is_dead:
+		return
+	
+	if actor.spider_mode == BrainSpider.SpiderMode.WALL_CEILING:
+		actor.velocity += actor.get_surface_gravity_direction() * actor.gravity * delta
+		actor.velocity.z = 0
+		actor.move_and_slide()
 		return
 	
 	if !actor.is_on_floor():
