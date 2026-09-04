@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b6scl0mgb00p7"]
+
+[ext_resource type="PackedScene" uid="uid://p18vd3d0ego7" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/OilDrumAcid.tscn" id="1_nujkl"]
+[ext_resource type="Texture2D" uid="uid://3l1dcr605sxd" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/OtherProps/OilDrum/Blue/OilDrum_DefaultMaterial_BaseColor.png" id="2_lnt4t"]
+[ext_resource type="Texture2D" uid="uid://b4gaici3udyfe" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/OtherProps/OilDrum/Blue/OilDrum_DefaultMaterial_Normal.png" id="4_k4vvm"]
+[ext_resource type="Texture2D" uid="uid://s1otbfly1wxf" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/OtherProps/OilDrum/Blue/OilDrum_DefaultMaterial_Roughness.png" id="5_g8mr7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m7i0x"]
+albedo_texture = ExtResource("2_lnt4t")
+roughness_texture = ExtResource("5_g8mr7")
+normal_enabled = true
+normal_texture = ExtResource("4_k4vvm")
+
+[node name="OilDrumBlue" unique_id=808956009 instance=ExtResource("1_nujkl")]
+
+[node name="OilDrum_Mesh" parent="." index="0" unique_id=639912215]
+surface_material_override/0 = SubResource("StandardMaterial3D_m7i0x")

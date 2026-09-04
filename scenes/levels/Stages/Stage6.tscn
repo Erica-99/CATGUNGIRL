@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://btcwaxl38nip5" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeSets/HandlebarSmall.tscn" id="5_mxr2x"]
 [ext_resource type="PackedScene" uid="uid://br8eqclc5secj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/Rails/RailFull.tscn" id="9_uoh3v"]
 [ext_resource type="PackedScene" uid="uid://bpjabu4plwqym" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/Rails/RailDiagonal.tscn" id="10_e2mff"]
-[ext_resource type="ArrayMesh" uid="uid://boagqi5jm1ymv" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/7_BrainJar/Rails/RailFull.obj" id="11_8vmub"]
 [ext_resource type="PackedScene" uid="uid://k4bj1vh7ofsj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorExit.tscn" id="11_a31f2"]
 [ext_resource type="PackedScene" uid="uid://mtb08p1he0i6" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/LabFlask.tscn" id="11_jdc7q"]
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="13_7yaim"]
@@ -63,7 +62,7 @@
 [ext_resource type="PackedScene" uid="uid://c5vncayclpa5t" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/3_GuardRooms/ChairSteel.tscn" id="61_uw2yj"]
 [ext_resource type="PackedScene" uid="uid://0te5grryooui" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/3_GuardRooms/Bin.tscn" id="62_3thvm"]
 [ext_resource type="PackedScene" uid="uid://lwj26gr6bvpq" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/Forklift.tscn" id="66_7ig5u"]
-[ext_resource type="PackedScene" uid="uid://p18vd3d0ego7" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/OilDrum.tscn" id="67_a1wiy"]
+[ext_resource type="PackedScene" uid="uid://p18vd3d0ego7" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/OilDrumAcid.tscn" id="67_a1wiy"]
 [ext_resource type="PackedScene" uid="uid://dywiy7oiheh68" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/WoodenCrates/WoodenCrate6.tscn" id="67_ckfat"]
 [ext_resource type="PackedScene" uid="uid://cdert83wyj2x2" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/TerminalWiringShort.tscn" id="69_4wvhs"]
 [ext_resource type="PackedScene" uid="uid://dngk8lco7i138" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/VentGrate.tscn" id="70_rm42m"]
@@ -190,9 +189,6 @@ _data = {
 &"PreFightIdle": SubResource("Animation_wsdjh"),
 &"RESET": SubResource("Animation_lqc63")
 }
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_7jlaj"]
-size = Vector3(2.7580125, 1.2358398, 0.15810546)
 
 [node name="Stage6" type="Node3D" unique_id=1033722064]
 
@@ -5183,30 +5179,6 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -96.
 [node name="FallenRails" type="StaticBody3D" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=357625558]
 transform = Transform3D(0.9955751, 0, 0.09396929, 0, 1, 0, -0.09396929, 0, 0.9955751, -284.12762, 27.048481, -2.166172)
 
-[node name="RailFull_Mesh2" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Rails/FallenRails" unique_id=828347586]
-transform = Transform3D(0.09245859, 0.9952897, 0.029130625, -0.45633304, 0.016352577, 0.8896589, 0.8849928, -0.09554964, 0.45569563, -1.2352142, -3.0091934, -0.39736176)
-mesh = ExtResource("11_8vmub")
-
-[node name="RailFull_Mesh3" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Rails/FallenRails" unique_id=1621277202]
-transform = Transform3D(0.09245857, 0.99528974, 0.029130623, 0.21173078, 0.008934755, -0.9772873, -0.972945, 0.096526384, -0.20990743, -1.2352142, -2.78578, -0.5960083)
-mesh = ExtResource("11_8vmub")
-
-[node name="RailFull_CollisionBox2" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Rails/FallenRails" unique_id=1342701622]
-transform = Transform3D(0.008955225, 1.999894, 0.014670782, -0.43073475, -0.012398604, 1.9530244, 1.9530461, -0.011900691, 0.43066344, -0.41603088, -3.3803444, 1.7909851)
-shape = SubResource("BoxShape3D_7jlaj")
-
-[node name="RailHalf20" parent="Environment/BrainJarRoom/ENV/Rails/FallenRails" unique_id=1914028437 instance=ExtResource("43_y0pes")]
-transform = Transform3D(-0.015851583, 0.48897853, -0.10319264, 0.3500032, -0.062832505, -0.35149652, -0.35671622, -0.083379075, -0.34029615, -1.704361, 3.4174423, -7.7495117)
-
-[node name="RailHalf22" parent="Environment/BrainJarRoom/ENV/Rails/FallenRails" unique_id=1192903687 instance=ExtResource("43_y0pes")]
-transform = Transform3D(-0.015851583, 0.48897853, -0.10319264, 0.4352327, -0.037232302, -0.24328215, -0.24560371, -0.097538434, -0.4244585, -1.6153412, 1.606678, -5.9188576)
-
-[node name="RailHalf21" parent="Environment/BrainJarRoom/ENV/Rails/FallenRails" unique_id=1910300915 instance=ExtResource("43_y0pes")]
-transform = Transform3D(-0.0142921135, 0.4979331, 0.04310868, -0.007495331, 0.042907912, -0.49809912, -0.49973953, -0.01488401, 0.006237857, -1.704361, 2.6713982, -12.972721)
-
-[node name="RailHalf23" parent="Environment/BrainJarRoom/ENV/Rails/FallenRails" unique_id=1691698587 instance=ExtResource("43_y0pes")]
-transform = Transform3D(-0.014292113, 0.49793306, 0.043108672, -0.11633809, 0.03862728, -0.48474047, -0.48606706, -0.023886297, 0.11475304, -1.6053467, 2.6713982, -10.458775)
-
 [node name="RailFull94" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=564496376 instance=ExtResource("9_uoh3v")]
 transform = Transform3D(6.556708e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, 6.556708e-08, -224, 30.2, -15)
 
@@ -5995,9 +5967,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.96237, 0.105831146, -15.
 
 [node name="DoorExit" parent="Environment/BrainJarRoom/ENV" unique_id=863191425 instance=ExtResource("11_a31f2")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 0, 0)
-
-[node name="DoorExit2" parent="Environment/BrainJarRoom/ENV" unique_id=970615935 instance=ExtResource("11_a31f2")]
-transform = Transform3D(-2, 0, 1.7484555e-07, 0, 2, 0, -1.7484555e-07, 0, -2, -277, 0, -1.208334)
 
 [node name="BrainJarComponents" type="Node3D" parent="Environment/BrainJarRoom" unique_id=543131545]
 
