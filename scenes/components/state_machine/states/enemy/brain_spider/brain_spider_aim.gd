@@ -69,7 +69,6 @@ func update(delta: float) -> void:
 	actor.laser.visible = true
 	
 	if !aim_locked:
-		actor.aim_laser()
 		aim_timer += delta
 		
 		if aim_timer >= actor.laser_track_time:

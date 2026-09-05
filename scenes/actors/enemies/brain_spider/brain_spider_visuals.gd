@@ -21,9 +21,6 @@ func show_explosion_visual() -> void:
 func is_explosion_playing() -> bool:
 	return explosion_visual.is_playing()
 
-func set_explosion_visual_radius(explosion_radius: float) -> void:
-	explosion_visual.scale = Vector3.ONE * explosion_radius
-
 func apply_surface_rotation() -> void:
 	if brain_spider.spider_mode == BrainSpider.SpiderMode.FLOOR:
 		rotation.z = 0.0

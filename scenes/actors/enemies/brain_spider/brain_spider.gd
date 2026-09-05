@@ -5,7 +5,6 @@ class_name BrainSpider
 @onready var explosion_area_3d: Area3D = $ExplosionArea3D
 @onready var detonation_area_3d: Area3D = $DetonationArea3D
 @onready var body_hurtbox: Area3D = $BodyHurtbox
-@onready var explosion_collision_shape: CollisionShape3D = $ExplosionArea3D/CollisionShape3D
 @onready var laser_origin: Marker3D = $SpiderPivot/LaserOrigin
 @onready var laser: Node3D = $SpiderPivot/LaserOrigin/Laser
 @onready var laser_ray: RayCast3D = $SpiderPivot/LaserOrigin/Laser/RayCast3D
@@ -21,7 +20,9 @@ class_name BrainSpider
 @export_category("Starting State Variables")
 @export var start_aggroed: bool
 @export var start_idle: State
+##The agro state used by floor spider
 @export var start_floor_aggro: State
+##The agro state used by wall/ceiling spider
 @export var start_surface_aggro: State
 
 @export_category("Brain Spider Type")
@@ -29,6 +30,7 @@ enum SpiderMode {
 	FLOOR,
 	WALL_CEILING
 }
+##Controls what behaviour the spider should have
 @export var spider_mode: SpiderMode = SpiderMode.FLOOR
 
 enum SurfaceType {
@@ -36,36 +38,51 @@ enum SurfaceType {
 	LEFT_WALL,
 	RIGHT_WALL
 }
+##Surface the spider starts attached to (wont matter if spider behaviour is floor)
 @export var surface_type: SurfaceType = SurfaceType.CEILING
 
 @export_category("Stat Variables")
 @export var move_speed: float = 8.0
 @export var acceleration: float = 20.0
+##Gravity strength for surface sticking and death falling
 @export var gravity: float = 50.0
 
 @export_category("Explosion Variables")
+##Damage of self destruct explosion
 @export var explosion_damage: float = 25.0
-@export var explosion_knockback: float = 10.0
+##Delay before spider explodes
 @export var explosion_delay: float = 1.0
 
 @export_category("Laser Variables")
+##Time turret follows player before locking direction
 @export var laser_track_time: float = 2.0
+##Time between laser direction and firing
 @export var laser_lock_time: float = 0.5
+##Delay before turret fires again
 @export var laser_cooldown: float = 3.5
+##Damage of laser
 @export var laser_damage: float = 20.0
+##Scene used for laser
 @export var laser_scene: PackedScene
+##Laser thickness
 @export var laser_size: float = 0.5
 
 @export_category("Death Variables")
+##Time death explosion stays active
 @export var death_duration: float = 0.5
+##Maximum time before death (prevents spiders that never touch the floor from never exploding
 @export var fall_death_max_time: float = 1.5
 
 @export_category("Damage Multiplier Variables")
+##Damage multiplier used when in normal state
 @export var spider_damage_multiplier: float = 1.0
+##Damage multiplier used when in turret state
 @export var turret_damage_multiplier: float = 0.5
 
 @export_category("Animation Timing")
+##Temporary timing delay for turret morph animation
 @export var morph_turret_time: float = 0.7
+##Temporary timing delay for spider morph animation
 @export var morph_spider_time: float = 0.7
 
 var is_dying: bool = false
@@ -95,7 +112,6 @@ func _ready() -> void:
 		state_machine.initial_state = start_idle
 	
 	laser.visible = false
-	match_explosion_visual_to_radius()
 	state_machine.init(blackboard)
 	brain_spider_visuals.apply_surface_rotation()
 	health_comp.killed.connect(_on_health_component_killed)
@@ -126,7 +142,6 @@ func damage_players_in_explosion_area() -> void:
 		damage_instance.amount = explosion_damage
 		damage_instance.is_heal = false
 		damage_instance.type = Enums.DamageType.EXPLOSIVE
-		damage_instance.knockback = explosion_knockback
 		damage_instance.source = get_path()
 		player_health.take_damage_or_heal(damage_instance)
 
@@ -145,13 +160,6 @@ func die() -> void:
 	
 	EventManager.enemy_killed.emit(self)
 	queue_free()
-
-func match_explosion_visual_to_radius() -> void:
-	if !(explosion_collision_shape.shape is SphereShape3D):
-		return
-	
-	var explosion_radius: float = explosion_collision_shape.shape.radius
-	brain_spider_visuals.set_explosion_visual_radius(explosion_radius)
 
 func show_explosion_effect() -> void:
 	brain_spider_visuals.show_explosion_visual()
@@ -181,7 +189,7 @@ func get_surface_gravity_direction() -> Vector3:
 func has_line_of_sight() -> bool:
 	if target == null or !is_instance_valid(target):
 		return false
-	
+	#Warning laser ray is also used for checking LOS
 	aim_laser()
 	laser_ray.force_raycast_update()
 	
