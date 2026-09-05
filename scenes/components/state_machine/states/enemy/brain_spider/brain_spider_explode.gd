@@ -27,7 +27,7 @@ func update(delta: float) -> void:
 		
 		return
 	
-	if !actor.explosion_visual.is_playing():
+	if !actor.is_explosion_effect_playing():
 		actor.die()
 
 func physics_update(_delta: float) -> void:

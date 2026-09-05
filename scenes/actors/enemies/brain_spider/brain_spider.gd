@@ -1,20 +1,18 @@
 extends CharacterBody3D
 class_name BrainSpider
 
-@onready var spider_pivot: Node3D = $SpiderPivot
-@onready var visuals: Node3D = $SpiderPivot/Visuals
 @onready var detection_area_3d: Area3D = $DetectionArea3D
 @onready var explosion_area_3d: Area3D = $ExplosionArea3D
 @onready var detonation_area_3d: Area3D = $DetonationArea3D
+@onready var body_hurtbox: Area3D = $BodyHurtbox
 @onready var explosion_collision_shape: CollisionShape3D = $ExplosionArea3D/CollisionShape3D
-@onready var explosion_visual: AnimatedSprite3D = $SpiderPivot/Visuals/ExplosionVisual
-@onready var body_visual: AnimatedSprite3D = $SpiderPivot/Visuals/AnimatedSprite3D
 @onready var laser_origin: Marker3D = $SpiderPivot/LaserOrigin
 @onready var laser: Node3D = $SpiderPivot/LaserOrigin/Laser
 @onready var laser_ray: RayCast3D = $SpiderPivot/LaserOrigin/Laser/RayCast3D
 @onready var softCollider = $SoftCollider
 @onready var health_comp = $HealthComponent
 @onready var team_component = $TeamComponent
+@onready var brain_spider_visuals: BrainSpiderVisuals = $SpiderPivot
 
 @export_category("Node References")
 @export var animator: AnimationPlayer
@@ -54,19 +52,28 @@ enum SurfaceType {
 @export var laser_track_time: float = 2.0
 @export var laser_lock_time: float = 0.5
 @export var laser_cooldown: float = 3.5
-@export var laser_aim_speed: float = 8.0
 @export var laser_damage: float = 20.0
 @export var laser_scene: PackedScene
 @export var laser_size: float = 0.5
 
 @export_category("Death Variables")
 @export var death_duration: float = 0.5
+@export var fall_death_max_time: float = 1.5
+
+@export_category("Damage Multiplier Variables")
+@export var spider_damage_multiplier: float = 1.0
+@export var turret_damage_multiplier: float = 0.5
+
+@export_category("Animation Timing")
+@export var morph_turret_time: float = 0.7
+@export var morph_spider_time: float = 0.7
 
 var is_dying: bool = false
 var is_dead: bool = false
 var target: CharacterBody3D = null
 var laser_cooldown_timer: float = 0.0
 var locked_laser_direction: Vector3 = Vector3.RIGHT
+var is_in_turret_form: bool = false
 var blackboard: Dictionary
 
 func _ready() -> void:
@@ -87,11 +94,10 @@ func _ready() -> void:
 	else:
 		state_machine.initial_state = start_idle
 	
-	explosion_visual.visible = false
 	laser.visible = false
 	match_explosion_visual_to_radius()
 	state_machine.init(blackboard)
-	apply_surface_visual_rotation()
+	brain_spider_visuals.apply_surface_rotation()
 	health_comp.killed.connect(_on_health_component_killed)
 
 func _on_health_component_killed(_killing_blow: DamageHealInstance, _health_before_death: Variant) -> void:
@@ -145,13 +151,10 @@ func match_explosion_visual_to_radius() -> void:
 		return
 	
 	var explosion_radius: float = explosion_collision_shape.shape.radius
-	explosion_visual.scale = Vector3.ONE * explosion_radius
+	brain_spider_visuals.set_explosion_visual_radius(explosion_radius)
 
 func show_explosion_effect() -> void:
-	body_visual.visible = false
-	explosion_visual.visible = true
-	explosion_visual.frame = 0
-	explosion_visual.play("default")
+	brain_spider_visuals.show_explosion_visual()
 
 func get_surface_move_axis() -> Vector3:
 	match surface_type:
@@ -174,19 +177,6 @@ func get_surface_gravity_direction() -> Vector3:
 			return Vector3.RIGHT
 	
 	return Vector3.DOWN
-
-func apply_surface_visual_rotation() -> void:
-	if spider_mode == SpiderMode.FLOOR:
-		spider_pivot.rotation.z = 0.0
-		return
-	
-	match surface_type:
-		SurfaceType.CEILING:
-			spider_pivot.rotation.z = PI
-		SurfaceType.LEFT_WALL:
-			spider_pivot.rotation.z = -PI / 2.0
-		SurfaceType.RIGHT_WALL:
-			spider_pivot.rotation.z = PI / 2.0
 
 func has_line_of_sight() -> bool:
 	if target == null or !is_instance_valid(target):
@@ -241,3 +231,21 @@ func fire_laser() -> void:
 	laser_beam.global_position = beam_midpoint
 	laser_beam.global_rotation.z = Vector2(locked_laser_direction.x, locked_laser_direction.y).angle()
 	laser_beam.scale = Vector3(beam_length, laser_size, laser_size)
+
+func set_spider_damage_multiplier() -> void:
+	if body_hurtbox == null:
+		return
+	
+	body_hurtbox.damage_multiplier = spider_damage_multiplier
+
+func set_turret_damage_multiplier() -> void:
+	if body_hurtbox == null:
+		return
+	
+	body_hurtbox.damage_multiplier = turret_damage_multiplier
+
+func show_spider_visual() -> void:
+	brain_spider_visuals.show_spider_visual()
+
+func is_explosion_effect_playing() -> bool:
+	return brain_spider_visuals.is_explosion_playing()

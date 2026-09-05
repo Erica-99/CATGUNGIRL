@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d4ne67jtrsmhn" path="res://scenes/bullet/sniper_beam.tscn" id="2_jv02q"]
 [ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="2_luyx4"]
 [ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="3_c43gv"]
+[ext_resource type="Script" uid="uid://bs3ju2i8at5e" path="res://scenes/actors/enemies/brain_spider/brain_spider_visuals.gd" id="3_c6328"]
 [ext_resource type="Texture2D" uid="uid://d13e6m33m6vyo" path="res://art/2d_assets/real_world/vfx/explosiondotgif.png" id="3_hh7i0"]
 [ext_resource type="PackedScene" uid="uid://c6wep4oftfyke" path="res://scenes/components/state_machine/state_machine.tscn" id="4_iobuc"]
 [ext_resource type="Script" uid="uid://dpwol7txodmxp" path="res://scenes/components/soft_collision.gd" id="5_c43gv"]
@@ -172,8 +173,10 @@ start_floor_aggro = NodePath("StateMachine/BrainSpiderChase")
 start_surface_aggro = NodePath("StateMachine/BrainSpiderSurfaceChase")
 laser_cooldown = 1.5
 laser_scene = ExtResource("2_jv02q")
+fall_death_max_time = 2.0
 
 [node name="SpiderPivot" type="Node3D" parent="." unique_id=2009618564]
+script = ExtResource("3_c6328")
 
 [node name="LaserOrigin" type="Marker3D" parent="SpiderPivot" unique_id=1138581709]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
@@ -215,8 +218,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 shape = SubResource("BoxShape3D_iobuc")
 
 [node name="HealthComponent" parent="." unique_id=236252344 instance=ExtResource("1_lgmbn")]
-starting_health = 1.0
-max_health = 1.0
+starting_health = 10.0
+max_health = 10.0
 
 [node name="TeamComponent" parent="." unique_id=2076917082 instance=ExtResource("2_luyx4")]
 team = 2

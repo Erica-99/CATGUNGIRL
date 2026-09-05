@@ -9,6 +9,7 @@ func init(blackboard_dict: Dictionary) -> void:
 func enter() -> void:
 	actor.velocity = Vector3.ZERO
 	actor.laser.visible = false
+	actor.set_spider_damage_multiplier()
 
 func update(_delta: float) -> void:
 	if actor.is_dying or actor.is_dead:
