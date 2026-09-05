@@ -2,7 +2,7 @@
 extends State
 class_name EnemyDeath
 
-@export var max_death_animation_time: float = 5
+@export var max_death_animation_time: float = 2
 
 var actor: CharacterBody3D
 var anim: AnimationPlayer
