@@ -1,11 +1,25 @@
-extends Node
+extends State
 
+var actor: BrainSpider
+var has_fired: bool = false
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func init(blackboard_dict: Dictionary) -> void:
+	super(blackboard_dict)
+	actor = blackboard["actor"]
 
+func enter() -> void:
+	has_fired = false
+	actor.velocity = Vector3.ZERO
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func update(_delta: float) -> void:
+	if actor.is_dying or actor.is_dead:
+		return
+	
+	if !has_fired:
+		has_fired = true
+		actor.fire_laser()
+		actor.laser_cooldown_timer = actor.laser_cooldown
+		transitioned.emit(self, "brainspideraim")
+
+func physics_update(_delta: float) -> void:
+	actor.velocity = Vector3.ZERO

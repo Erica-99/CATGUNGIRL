@@ -8,6 +8,7 @@ func init(blackboard_dict: Dictionary) -> void:
 
 func enter() -> void:
 	actor.velocity = Vector3.ZERO
+	actor.laser.visible = false
 
 func update(_delta: float) -> void:
 	if actor.is_dying or actor.is_dead:
@@ -15,6 +16,10 @@ func update(_delta: float) -> void:
 	
 	if actor.target == null or !is_instance_valid(actor.target):
 		actor.target = blackboard["target"]
+	
+	if actor.has_line_of_sight():
+		transitioned.emit(self, "brainspideraim")
+		return
 
 func physics_update(delta: float) -> void:
 	if actor.is_dying or actor.is_dead:

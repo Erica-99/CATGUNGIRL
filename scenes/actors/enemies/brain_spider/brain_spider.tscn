@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bx3cch7eqxmiy" path="res://scenes/actors/enemies/brain_spider/brain_spider.gd" id="1_fjoht"]
 [ext_resource type="SpriteFrames" uid="uid://vtbk6tputppd" path="res://art/2d_assets/real_world/enemy_convict/Convict_Head1.tres" id="1_iobuc"]
 [ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="1_lgmbn"]
+[ext_resource type="PackedScene" uid="uid://d4ne67jtrsmhn" path="res://scenes/bullet/sniper_beam.tscn" id="2_jv02q"]
 [ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="2_luyx4"]
 [ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="3_c43gv"]
 [ext_resource type="Texture2D" uid="uid://d13e6m33m6vyo" path="res://art/2d_assets/real_world/vfx/explosiondotgif.png" id="3_hh7i0"]
@@ -169,18 +170,41 @@ state_machine = NodePath("StateMachine")
 start_idle = NodePath("StateMachine/BrainSpiderIdle")
 start_floor_aggro = NodePath("StateMachine/BrainSpiderChase")
 start_surface_aggro = NodePath("StateMachine/BrainSpiderSurfaceChase")
+laser_cooldown = 1.5
+laser_scene = ExtResource("2_jv02q")
 
-[node name="Visuals" type="Node3D" parent="." unique_id=24143131]
+[node name="SpiderPivot" type="Node3D" parent="." unique_id=2009618564]
+
+[node name="LaserOrigin" type="Marker3D" parent="SpiderPivot" unique_id=1138581709]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="Laser" type="Node3D" parent="SpiderPivot/LaserOrigin" unique_id=28765477]
+visible = false
+script = ExtResource("13_jq4cx")
+max_range = 25.0
+max_spread = 0.0
+side_laser_length = 0.0
+fill_alpha = 0.0
+beam_color = Color(0.5294118, 0.80784315, 0.92156863, 0.7058824)
+
+[node name="RayCast3D" type="RayCast3D" parent="SpiderPivot/LaserOrigin/Laser" unique_id=1861970321]
+collision_mask = 3
+
+[node name="LaserMeshInstance" type="MeshInstance3D" parent="SpiderPivot/LaserOrigin/Laser" unique_id=1741654014]
+
+[node name="BeamMeshInstance" type="MeshInstance3D" parent="SpiderPivot/LaserOrigin/Laser" unique_id=417492618]
+
+[node name="Visuals" type="Node3D" parent="SpiderPivot" unique_id=24143131]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Visuals" unique_id=697202520]
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="SpiderPivot/Visuals" unique_id=697202520]
 transform = Transform3D(0.13018179, 0, 0, 0, 0.13018179, 0, 0, 0, 1, 0, 0, 0.048760533)
 sprite_frames = ExtResource("1_iobuc")
 animation = &"Heads"
 frame = 14
 frame_progress = 0.56379896
 
-[node name="ExplosionVisual" type="AnimatedSprite3D" parent="Visuals" unique_id=960346810]
+[node name="ExplosionVisual" type="AnimatedSprite3D" parent="SpiderPivot/Visuals" unique_id=960346810]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0.055)
 sprite_frames = SubResource("SpriteFrames_hh7i0")
 autoplay = "default"
@@ -265,19 +289,3 @@ script = ExtResource("5_c43gv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SoftCollider" unique_id=931580870]
 shape = SubResource("SphereShape3D_fmqj0")
-
-[node name="LaserOrigin" type="Marker3D" parent="." unique_id=1138581709]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 0.2, 0)
-
-[node name="Laser" type="Node3D" parent="LaserOrigin" unique_id=28765477]
-visible = false
-script = ExtResource("13_jq4cx")
-max_spread = 1.5
-beam_color = Color(0.5294118, 0.80784315, 0.92156863, 0.7058824)
-
-[node name="RayCast3D" type="RayCast3D" parent="LaserOrigin/Laser" unique_id=1861970321]
-collision_mask = 3
-
-[node name="LaserMeshInstance" type="MeshInstance3D" parent="LaserOrigin/Laser" unique_id=1741654014]
-
-[node name="BeamMeshInstance" type="MeshInstance3D" parent="LaserOrigin/Laser" unique_id=417492618]

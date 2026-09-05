@@ -1,15 +1,20 @@
 extends CharacterBody3D
 class_name BrainSpider
 
-@onready var visuals: Node3D = $Visuals
+@onready var spider_pivot: Node3D = $SpiderPivot
+@onready var visuals: Node3D = $SpiderPivot/Visuals
 @onready var detection_area_3d: Area3D = $DetectionArea3D
 @onready var explosion_area_3d: Area3D = $ExplosionArea3D
 @onready var detonation_area_3d: Area3D = $DetonationArea3D
 @onready var explosion_collision_shape: CollisionShape3D = $ExplosionArea3D/CollisionShape3D
-@onready var explosion_visual: AnimatedSprite3D = $Visuals/ExplosionVisual
-@onready var body_visual: AnimatedSprite3D = $Visuals/AnimatedSprite3D
+@onready var explosion_visual: AnimatedSprite3D = $SpiderPivot/Visuals/ExplosionVisual
+@onready var body_visual: AnimatedSprite3D = $SpiderPivot/Visuals/AnimatedSprite3D
+@onready var laser_origin: Marker3D = $SpiderPivot/LaserOrigin
+@onready var laser: Node3D = $SpiderPivot/LaserOrigin/Laser
+@onready var laser_ray: RayCast3D = $SpiderPivot/LaserOrigin/Laser/RayCast3D
 @onready var softCollider = $SoftCollider
 @onready var health_comp = $HealthComponent
+@onready var team_component = $TeamComponent
 
 @export_category("Node References")
 @export var animator: AnimationPlayer
@@ -45,13 +50,23 @@ enum SurfaceType {
 @export var explosion_knockback: float = 10.0
 @export var explosion_delay: float = 1.0
 
+@export_category("Laser Variables")
+@export var laser_track_time: float = 2.0
+@export var laser_lock_time: float = 0.5
+@export var laser_cooldown: float = 3.5
+@export var laser_aim_speed: float = 8.0
+@export var laser_damage: float = 20.0
+@export var laser_scene: PackedScene
+@export var laser_size: float = 0.5
+
 @export_category("Death Variables")
 @export var death_duration: float = 0.5
 
 var is_dying: bool = false
 var is_dead: bool = false
 var target: CharacterBody3D = null
-
+var laser_cooldown_timer: float = 0.0
+var locked_laser_direction: Vector3 = Vector3.RIGHT
 var blackboard: Dictionary
 
 func _ready() -> void:
@@ -73,6 +88,7 @@ func _ready() -> void:
 		state_machine.initial_state = start_idle
 	
 	explosion_visual.visible = false
+	laser.visible = false
 	match_explosion_visual_to_radius()
 	state_machine.init(blackboard)
 	apply_surface_visual_rotation()
@@ -161,13 +177,67 @@ func get_surface_gravity_direction() -> Vector3:
 
 func apply_surface_visual_rotation() -> void:
 	if spider_mode == SpiderMode.FLOOR:
-		visuals.rotation.z = 0.0
+		spider_pivot.rotation.z = 0.0
 		return
 	
 	match surface_type:
 		SurfaceType.CEILING:
-			visuals.rotation.z = PI
+			spider_pivot.rotation.z = PI
 		SurfaceType.LEFT_WALL:
-			visuals.rotation.z = -PI / 2.0
+			spider_pivot.rotation.z = -PI / 2.0
 		SurfaceType.RIGHT_WALL:
-			visuals.rotation.z = PI / 2.0
+			spider_pivot.rotation.z = PI / 2.0
+
+func has_line_of_sight() -> bool:
+	if target == null or !is_instance_valid(target):
+		return false
+	
+	aim_laser()
+	laser_ray.force_raycast_update()
+	
+	if !laser_ray.is_colliding():
+		return false
+	
+	var collider = laser_ray.get_collider()
+	
+	if collider == null:
+		return false
+	
+	return collider.is_in_group("player")
+	
+func aim_laser() -> void:
+	if target == null or !is_instance_valid(target):
+		return
+	
+	var direction: Vector3 = target.global_position - laser_origin.global_position
+	direction.z = 0
+	
+	if direction == Vector3.ZERO:
+		return
+	
+	var target_angle: float = Vector2(direction.x, direction.y).angle()
+	laser_origin.global_rotation.z = target_angle
+
+func fire_laser() -> void:
+	if laser_scene == null:
+		return
+	
+	var beam_start: Vector3 = laser_origin.global_position
+	var beam_end: Vector3 = beam_start + locked_laser_direction * laser_ray.target_position.length()
+	laser_ray.force_raycast_update()
+	if laser_ray.is_colliding():
+		beam_end = laser_ray.get_collision_point()
+	
+	var beam_length: float = beam_start.distance_to(beam_end)
+	var beam_midpoint: Vector3 = beam_start + locked_laser_direction * (beam_length * 0.5)
+	var damage_instance = DamageHealInstance.new()
+	damage_instance.amount = laser_damage
+	damage_instance.is_heal = false
+	damage_instance.type = Enums.DamageType.NORMAL
+	damage_instance.source = get_path()
+	var laser_beam = laser_scene.instantiate()
+	get_tree().root.add_child(laser_beam)
+	laser_beam.initialize(locked_laser_direction, damage_instance, team_component, 1.0)
+	laser_beam.global_position = beam_midpoint
+	laser_beam.global_rotation.z = Vector2(locked_laser_direction.x, locked_laser_direction.y).angle()
+	laser_beam.scale = Vector3(beam_length, laser_size, laser_size)
