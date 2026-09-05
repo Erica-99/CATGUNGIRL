@@ -185,7 +185,6 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 	if new_health <= (health_comp.starting_health / 2) and change_sprite_on_half_hp and !under_half_hp:
 		under_half_hp = true
 		
-		torso_sprite.sprite_frames = InjuredFrames
 		#print("yo im under half hp rn type shit")
 
 func _reset_step_handler():

@@ -29,7 +29,8 @@ func _on_state_machine_state_changed(prev: String, new: String) -> void:
 		anim_manager.play("Idle")
 	elif new == 'trunkchase':
 		anim_manager.play('StepStart')
-
+	elif new == 'trunkstun':
+		anim_manager.play('Stun')
 	pass # Replace with function body.
 
 
