@@ -15,6 +15,7 @@ const HITBOX_SCENE = preload("res://scenes/components/hitbox_component/hitbox_co
 
 @export_group("Aim")
 @export var aim_speed: float = 8.0		# gun rotation speed towards mouse (lower = more delay)
+@export var controller_aim_speed = 3.5
 
 @export_group("Ammo")
 @export var ammo_max: int = 10
@@ -56,6 +57,11 @@ var single_reload_timer: float = 0 # to control changing reload times (e.g. 1.0 
 
 ## Reload timer (can be replaced with programmatical timer as needed)
 @onready var reload_timer: Timer = $ReloadTimer
+
+## Controller Aiming variables
+var using_controller = false
+var controller_deadzone = 0.2
+var target_angle : float
 
 ## bzzt
 
@@ -110,6 +116,15 @@ var _is_reloading: bool = false
 # check if aim within threshold
 func _is_aim_settled() -> bool:
 	return abs(_recoil_offset) < recoil_amount * (1.0 - aim_settled_threshold / 100.0)
+	
+
+func _input(event):
+	#Establish if the player is using KBM or a controller
+	if event is InputEventJoypadMotion:
+		if abs(event.axis_value) > controller_deadzone:
+			using_controller = true
+	elif event is InputEventMouseMotion:
+			using_controller = false
 
 func _process(delta: float) -> void:
 	
@@ -162,14 +177,23 @@ func _process(delta: float) -> void:
 	perfect_window_changed.emit(in_window)
 
 
+
 func _update_aim(mouse_world: Vector3, input_state: Dictionary, delta: float) -> void:
 	if mouse_world == null:
 		return
-	# direction vector from gun to mouse
-	var direction = mouse_world - global_position
-	direction.z = 0.0
-	var target_angle = Vector2(direction.x, direction.y).angle()
-	_current_target_angle = target_angle
+	#Check if the player is using a controller
+	if using_controller:
+		var controller_input = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
+		if controller_input.length() > controller_deadzone:
+			controller_input.y *= -1
+			target_angle = controller_input.angle()
+			_current_target_angle = target_angle
+	else:
+		# direction vector from gun to mouse
+		var direction = mouse_world - global_position
+		direction.z = 0.0
+		target_angle = Vector2(direction.x, direction.y).angle()
+		_current_target_angle = target_angle
 	
 	var is_moving = input_state.get("movement", 0.0) != 0.0 or input_state.get("jumping", false)
 	var wobble: float = 0.0
@@ -178,8 +202,14 @@ func _update_aim(mouse_world: Vector3, input_state: Dictionary, delta: float) ->
 		wobble = sin(_wobble_time * wobble_speed) * wobble_amount
 	else:
 		_wobble_time = 0.0
-		
-	var current_aim_speed = aim_speed
+	
+	#Set the current aim speed depending on user's input
+	var current_aim_speed
+	if using_controller:
+		current_aim_speed = controller_aim_speed
+	else:
+		current_aim_speed = aim_speed
+	
 	if _is_spamming and not _is_aim_settled():
 		current_aim_speed = aim_speed * spam_aim_multiplier
 		
