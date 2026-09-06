@@ -31,6 +31,7 @@ func physics_update(_delta: float) -> void:
 	anim.play("Walk")
 	actor.velocity.x += direction * patrol_speed * _delta
 	actor.velocity.x = clamp(actor.velocity.x, -patrol_speed, patrol_speed)
+	actor.apply_soft_collision(_delta)
 	actor.move_and_slide()
 
 func _on_detection_area_3d_body_entered(body):

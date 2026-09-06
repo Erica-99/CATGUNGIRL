@@ -16,7 +16,7 @@ var requires_option_selection = false
 
 # consts
 const SECONDS_PER_CHARACTER = 0.05
-# I HATE NAMING VARIABLES IDK WHGAT TO CALL THIS FUCKASS CONSTANT!?!??!
+# I HATE NAMING VARIABLES IDK WHAT TO CALL THIS CONSTANT!?!??!
 const LEEWAY_OF_TYPEWRITER = 0.8
 
 # connect popup to event handler

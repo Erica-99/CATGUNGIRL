@@ -1,6 +1,18 @@
 [gd_scene format=3 uid="uid://cqxuvhdp4abct"]
 
 [ext_resource type="ArrayMesh" uid="uid://dlcbcph1xbur3" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/3_GuardRooms/FilingCabinet2.obj" id="1_cmuj7"]
+[ext_resource type="Texture2D" uid="uid://d0wabwbgufffm" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/FilingCabinet/FilingCabinet_BC.png" id="2_nu8r2"]
+[ext_resource type="Texture2D" uid="uid://c41fd2jww1pf1" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/FilingCabinet/FilingCabinet_M.png" id="3_datmk"]
+[ext_resource type="Texture2D" uid="uid://c8mon3h3asgih" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/FilingCabinet/FilingCabinet_N.png" id="4_r40yb"]
+[ext_resource type="Texture2D" uid="uid://bfs1eakcb0njw" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/FilingCabinet/FilingCabinet_R.png" id="5_axavq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o4pvd"]
+albedo_texture = ExtResource("2_nu8r2")
+metallic = 1.0
+metallic_texture = ExtResource("3_datmk")
+roughness_texture = ExtResource("5_axavq")
+normal_enabled = true
+normal_texture = ExtResource("4_r40yb")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_f7fe8"]
 points = PackedVector3Array(-0.432961, 0.22934613, -0.05484605, -0.432961, 0.22934613, 0.05116412, -0.432961, 0.2630188, -0.05484605, -0.41937715, 0.052760378, -0.22683117, -0.432961, 0.2630188, 0.05116412, -0.41937715, 0.052760378, 0.2231982, -0.41937715, 0.34759203, -0.22683117, -0.27831405, 0, -0.251792, -0.41937715, 0.34759203, 0.2231982, -0.27831405, 0, 0.24820799, -0.27831405, 1, -0.251792, 0.23421502, 0, -0.251792, -0.27831405, 1, 0.24820799, 0.23421502, 0, 0.24820799, 0.23421502, 1, -0.251792, 0.23421502, 1, 0.24820799)
@@ -10,6 +22,7 @@ points = PackedVector3Array(-0.432961, 0.22934613, -0.05484605, -0.432961, 0.229
 [node name="FilingCabinet2_Mesh" type="MeshInstance3D" parent="." unique_id=265571242]
 transform = Transform3D(-1.3113416e-07, 0, 3, 0, 3, 0, -3, 0, -1.3113416e-07, 0, 0, 0)
 mesh = ExtResource("1_cmuj7")
+surface_material_override/0 = SubResource("StandardMaterial3D_o4pvd")
 
 [node name="FilingCabinet2_Collision" type="CollisionShape3D" parent="." unique_id=459156063]
 transform = Transform3D(-1.3113416e-07, 0, 3, 0, 3, 0, -3, 0, -1.3113416e-07, 0, 0, 0)

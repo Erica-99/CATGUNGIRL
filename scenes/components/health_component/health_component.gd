@@ -80,6 +80,9 @@ func set_health(value: float) -> void:
 
 ## Take the specified damage or heal instance
 func take_damage_or_heal(damage_or_heal_instance: DamageHealInstance) -> void:
+	if _should_ignore_damage(damage_or_heal_instance):
+		return
+		
 	if damageable and not damage_or_heal_instance.is_heal:		
 		var prev_health = current_health
 		current_health -= damage_or_heal_instance.amount
@@ -103,6 +106,19 @@ func take_damage_or_heal(damage_or_heal_instance: DamageHealInstance) -> void:
 		var prev_health = current_health
 		current_health += damage_or_heal_instance.amount
 		health_changed.emit(prev_health, current_health, damage_or_heal_instance)
+
+func _should_ignore_damage(damage_or_heal_instance: DamageHealInstance) -> bool:
+	if !DebugManager.god_mode:
+		return false
+	
+	if damage_or_heal_instance.is_heal:
+		return false
+	
+	var health_owner = get_parent()
+	if health_owner == null:
+		return false
+	
+	return health_owner.is_in_group("player")
 
 func set_stun(stun_version: State, stun_time: float) -> void:
 	print("Stun Attempted")

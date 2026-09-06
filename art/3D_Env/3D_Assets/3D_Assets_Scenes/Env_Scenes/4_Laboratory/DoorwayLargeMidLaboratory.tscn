@@ -1,10 +1,25 @@
 [gd_scene format=3 uid="uid://ve17p6gkie3w"]
 
 [ext_resource type="ArrayMesh" uid="uid://dle50rjsv0tnw" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/4_Laboratory/DoorwayLargeMidLaboratory.obj" id="1_afcea"]
-[ext_resource type="Texture2D" uid="uid://cptd6ds2c83sd" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/TextureTrimSheetWallL.png" id="2_44p7y"]
+[ext_resource type="Texture2D" uid="uid://boajeduprdcum" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Base_color.png" id="2_npb72"]
+[ext_resource type="Texture2D" uid="uid://cqjmuyra8pf8y" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Mixed_AO.png" id="3_uftws"]
+[ext_resource type="Texture2D" uid="uid://c4by1atd5xpq6" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Height.png" id="4_2cqho"]
+[ext_resource type="Texture2D" uid="uid://b42dldjildi6x" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Base_metalness.png" id="5_d0r0a"]
+[ext_resource type="Texture2D" uid="uid://vnh1mohlmhni" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Normal_OpenGL.png" id="6_2igf1"]
+[ext_resource type="Texture2D" uid="uid://drpgycg7mebgy" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Specular_roughness.png" id="7_44kdl"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lxmwl"]
-albedo_texture = ExtResource("2_44p7y")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sdvyo"]
+albedo_texture = ExtResource("2_npb72")
+metallic = 1.0
+metallic_texture = ExtResource("5_d0r0a")
+roughness_texture = ExtResource("7_44kdl")
+normal_enabled = true
+normal_texture = ExtResource("6_2igf1")
+ao_enabled = true
+ao_texture = ExtResource("3_uftws")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("4_2cqho")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_44p7y"]
 data = PackedVector3Array(-0.0999, 3.6037998, -2.5009, -0.0999, 4.1017, -2.5009, -0.0999, 3.6037998, -1.7935, -0.0999, 3.6037998, -1.7935, -0.0999, 4.1017, -2.5009, -0.0999, 4.1017, -1.7935, -0.0999, -0.099999994, -1.7935, -0.0999, 3.6037998, -2.5009, -0.0999, 3.6037998, -1.7935, -0.0999, -0.099999994, -2.5009, -0.0999, 3.6037998, -2.5009, -0.0999, -0.099999994, -1.7935, -0.0999, 3.6037998, -1.7935, -0.0999, 4.1017, -1.7935, -0.0999, 3.6037998, 1.7918999, -0.0999, 3.6037998, 1.7918999, -0.0999, 4.1017, -1.7935, -0.0999, 4.1017, 1.7918999, -0.0999, 3.6037998, 1.7918999, -0.0999, 4.1017, 1.7918999, -0.0999, 3.6037998, 2.4998, -0.0999, 3.6037998, 2.4998, -0.0999, 4.1017, 1.7918999, -0.0999, 4.1017, 2.4998, -0.0999, -0.099999994, 2.4998, -0.0999, 3.6037998, 1.7918999, -0.0999, 3.6037998, 2.4998, -0.0999, -0.099999994, 1.7918999, -0.0999, 3.6037998, 1.7918999, -0.0999, -0.099999994, 2.4998, 0.0999, 4.1017, -1.7935, 0.0999, 3.6037998, -1.7935, 0.0999, 4.1017, 1.7918999, 0.0999, 4.1017, -1.7935, 0.0999, 3.6037998, -2.5009, 0.0999, 3.6037998, -1.7935, 0.0999, 4.1017, -2.5009, 0.0999, 3.6037998, -2.5009, 0.0999, 4.1017, -1.7935, 0.0999, -0.099999994, -2.5009, 0.0999, 3.6037998, -1.7935, 0.0999, 3.6037998, -2.5009, 0.0999, -0.099999994, -1.7935, 0.0999, 3.6037998, -1.7935, 0.0999, -0.099999994, -2.5009, 0.0999, 4.1017, 1.7918999, 0.0999, 3.6037998, -1.7935, 0.0999, 3.6037998, 1.7918999, 0.0999, 4.1017, 1.7918999, 0.0999, 3.6037998, 1.7918999, 0.0999, 4.1017, 2.4998, 0.0999, 4.1017, 2.4998, 0.0999, 3.6037998, 1.7918999, 0.0999, 3.6037998, 2.4998, 0.0999, -0.099999994, 1.7918999, 0.0999, 3.6037998, 2.4998, 0.0999, 3.6037998, 1.7918999, 0.0999, -0.099999994, 2.4998, 0.0999, 3.6037998, 2.4998, 0.0999, -0.099999994, 1.7918999, 0.0999, -0.099999994, -2.5009, 0.0999, 3.6037998, -2.5009, -0.0999, -0.099999994, -2.5009, -0.0999, -0.099999994, -2.5009, 0.0999, 3.6037998, -2.5009, -0.0999, 3.6037998, -2.5009, 0.0999, 3.6037998, -2.5009, -0.0999, 4.1017, -2.5009, -0.0999, 3.6037998, -2.5009, 0.0999, 4.1017, -2.5009, -0.0999, 4.1017, -2.5009, 0.0999, 3.6037998, -2.5009, -0.0999, -0.099999994, 2.4998, -0.0999, 3.6037998, 2.4998, 0.0999, -0.099999994, 2.4998, 0.0999, -0.099999994, 2.4998, -0.0999, 3.6037998, 2.4998, 0.0999, 3.6037998, 2.4998, -0.0999, 3.6037998, 2.4998, 0.0999, 4.1017, 2.4998, 0.0999, 3.6037998, 2.4998, -0.0999, 4.1017, 2.4998, 0.0999, 4.1017, 2.4998, -0.0999, 3.6037998, 2.4998, 0.0999, 4.1017, -1.7935, -0.0999, 4.1017, -1.7935, 0.0999, 4.1017, -2.5009, 0.0999, 4.1017, -2.5009, -0.0999, 4.1017, -1.7935, -0.0999, 4.1017, -2.5009, 0.0999, 4.1017, -1.7935, -0.0999, 4.1017, 1.7918999, -0.0999, 4.1017, -1.7935, 0.0999, 4.1017, 1.7918999, -0.0999, 4.1017, 1.7918999, 0.0999, 4.1017, -1.7935, 0.0999, 4.1017, 1.7918999, -0.0999, 4.1017, 2.4998, -0.0999, 4.1017, 1.7918999, 0.0999, 4.1017, 2.4998, -0.0999, 4.1017, 2.4998, 0.0999, 4.1017, 1.7918999, 0.0999, -0.099999994, 1.7918999, 0.0999, 3.6037998, 1.7918999, -0.0999, -0.099999994, 1.7918999, -0.0999, -0.099999994, 1.7918999, 0.0999, 3.6037998, 1.7918999, -0.0999, 3.6037998, 1.7918999, 0.0999, 3.6037998, -1.7935, -0.0999, 3.6037998, -1.7935, 0.0999, 3.6037998, 1.7918999, 0.0999, 3.6037998, 1.7918999, -0.0999, 3.6037998, -1.7935, -0.0999, 3.6037998, 1.7918999, -0.0999, -0.099999994, 2.4998, 0.0999, -0.099999994, 2.4998, -0.0999, -0.099999994, 1.7918999, -0.0999, -0.099999994, 1.7918999, 0.0999, -0.099999994, 2.4998, 0.0999, -0.099999994, 1.7918999, -0.0999, -0.099999994, -2.5009, -0.0999, -0.099999994, -1.7935, 0.0999, -0.099999994, -2.5009, 0.0999, -0.099999994, -2.5009, -0.0999, -0.099999994, -1.7935, 0.0999, -0.099999994, -1.7935, -0.0999, -0.099999994, -1.7935, -0.0999, 3.6037998, -1.7935, 0.0999, -0.099999994, -1.7935, 0.0999, -0.099999994, -1.7935, -0.0999, 3.6037998, -1.7935, 0.0999, 3.6037998, -1.7935)
@@ -14,7 +29,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="DoorwayLargeMidLaboratory_Mesh" type="MeshInstance3D" parent="." unique_id=1434172323]
 mesh = ExtResource("1_afcea")
-surface_material_override/0 = SubResource("StandardMaterial3D_lxmwl")
+surface_material_override/0 = SubResource("StandardMaterial3D_sdvyo")
 
 [node name="DoorwayLargeMidLaboratory_Collision" type="CollisionShape3D" parent="." unique_id=2003307990]
 shape = SubResource("ConcavePolygonShape3D_44p7y")

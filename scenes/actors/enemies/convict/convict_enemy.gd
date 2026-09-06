@@ -37,11 +37,19 @@ var is_dead: bool = false
 # multiplier for slow_down_speed (hitconfirm)
 @export var hit_deceleration: float
 
-@export_category("Convict Superjump")
-@export var windup_duration: float	# pause timer
-@export var super_jump_cd: float # time before transitioning to superjump
-@export var superjump_force: float	# upwards force
-@export var superjump_speed: float	# horizontal force
+@export_category("Convict Power Dive")
+##how long convicts pause before launching upwards
+@export var windup_duration: float = 0.4
+##how long before convict tries to power dive
+@export var dive_cd: float = 4.0
+##higher value causes higher jump 
+@export var dive_launch_force: float = 35.0
+##how long convict pauses at top before diving
+@export var dive_charge_duration: float = 0.3
+##speed of the dive
+@export var dive_speed: float = 30
+##how long convicts wait before returning to chase
+@export var dive_recovery_duration: float = 0.5
 
 @export_category("Attack Variables")
 # Convict Attack Damage Stats
@@ -54,7 +62,7 @@ var target_in_hitbox: bool = false
 @export var attack_cooldown_max: float
 
 var action_pending: bool = false
-
+var enemy_manager: EnemyManager
 var blackboard : Dictionary 
 
 @onready var Convict_Piv = $Visuals
@@ -67,6 +75,12 @@ func _ready() -> void:
 	damage_instance.knockback = 0 # TODO: change for implementing knockback
 	damage_instance.source = get_path()
 	attack_hitbox.damage_or_heal_instance = damage_instance
+	
+	var room_convict_route_points: Array = []
+	enemy_manager = _get_enemy_manager()
+
+	if enemy_manager != null:
+		room_convict_route_points =	 enemy_manager.get_convict_route_points()
 	
 	# Populates blackboard and distributes it to all states
 	blackboard = {
@@ -82,11 +96,15 @@ func _ready() -> void:
 		"pounce_speed": pounce_speed,
 		"hit_deceleration": hit_deceleration,
 		"windup_duration": windup_duration,
-		"super_jump_cd": super_jump_cd,
-		"superjump_force": superjump_force,
-		"superjump_speed": superjump_speed,
+		"dive_cd": dive_cd,
+		"dive_launch_force": dive_launch_force,
+		"dive_charge_duration": dive_charge_duration,
+		"dive_speed": dive_speed,
+		"dive_recovery_duration": dive_recovery_duration,
 		"attack_cooldown_min": attack_cooldown_min,
 		"attack_cooldown_max": attack_cooldown_max,
+		"convict_route_points": room_convict_route_points,
+		"gravity": GRAVITY
 	}
 	# Change initial state based on Inspector values
 	if start_aggroed:
@@ -113,11 +131,15 @@ func _physics_process(delta: float) -> void:
 		direction = 1
 		#sprite.flip_h = false
 		Convict_Piv.scale.x = 1
-	# Soft Collision physics effects to avoid overlap.
-	if softCollider.is_colliding():
-		var push_vel = softCollider.get_push_vector() * delta * 10
-		push_vel.z = 0
-		velocity += push_vel
+
+func apply_soft_collision(delta: float) -> void:
+	if !softCollider.is_colliding():
+		return
+	
+	var push_vel = softCollider.get_push_vector() * delta * 40.0
+	push_vel.z = 0.0
+	velocity += push_vel
+
 
 # General (or Global I guess) state change conditions, such as damage taken effects, etc.
 # When you don't want to write a state change function in each state.
@@ -151,3 +173,14 @@ func call_sfx_at_current_location(sfx_ref: String) -> void:
 		return
 		
 	audio_caller.play_sfx_at_location(sfx_ref, global_position)
+
+func _get_enemy_manager() -> EnemyManager:
+	var current: Node = get_parent()
+	
+	while current != null:
+		if current is EnemyManager:
+			return current
+		
+		current = current.get_parent()
+	
+	return null

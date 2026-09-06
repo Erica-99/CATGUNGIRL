@@ -14,15 +14,19 @@ var animation_manager: AnimationPlayer
 var recovery_time: float
 var stun_timer: float = 0.0
 
+@onready var InjuredFrames = preload("res://art/2d_assets/real_world/Trunks/TrunkInjured.tres")
+@onready var torso_sprite = $"../../TrunkMesh/Torso/TorsoSprite"
+
 func init(blackboard_dict: Dictionary) -> void:
 	super(blackboard_dict)
+	
 	actor = blackboard["actor"]
 	animation_manager = blackboard["animation_manager"]
 	recovery_time = blackboard["recovery_time"]
 
 func enter() -> void:
 	stun_timer = 0.0
-
+	torso_sprite.sprite_frames = InjuredFrames
 func exit() -> void:
 	pass
 

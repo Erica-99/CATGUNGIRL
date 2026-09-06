@@ -18,6 +18,7 @@ func init(blackboard_dict: Dictionary) -> void:
 func physics_update(_delta: float) -> void:
 	actor.velocity.x = move_toward(actor.velocity.x, 0, slow_down_speed * _delta)
 	anim.play("Idle")
+	actor.apply_soft_collision(_delta)
 	actor.move_and_slide()
 
 func _on_detection_area_3d_body_entered(body):

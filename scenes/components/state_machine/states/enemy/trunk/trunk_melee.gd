@@ -10,7 +10,7 @@ enum MeleePhase {
 
 # Information gained from state machine
 var actor: CharacterBody3D
-var anim: AnimatedSprite3D
+var anim: AnimationPlayer
 var target: CharacterBody3D
 var xpos_distance_to_melee: float
 var melee_stop_speed: float

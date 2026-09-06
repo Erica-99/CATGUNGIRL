@@ -6,7 +6,7 @@ extends CharacterBody3D
 @onready var flee_area_3d: Area3D = $FleeArea3D
 
 @export_category("Node References")
-@export var animator: AnimatedSprite3D
+@export var animator: AnimationPlayer
 @export var state_machine: StateMachine
 @onready var can_shoot: RayCast3D = $CanShoot
 @onready var softCollider = $SoftCollider
