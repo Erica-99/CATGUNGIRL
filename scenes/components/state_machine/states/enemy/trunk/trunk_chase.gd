@@ -9,6 +9,7 @@ var target: CharacterBody3D
 var chase_speed: float
 var xpos_distance_vert_offset: float
 var vert_threshold: float
+var launcher: MissileLauncher
 
 var reached_offset: bool = false
 signal reached_chase_offset(status: bool)
@@ -22,10 +23,12 @@ func init(blackboard_dict : Dictionary) -> void:
 	chase_speed = blackboard["chase_speed"]
 	xpos_distance_vert_offset = blackboard["xpos_distance_vert_offset"]
 	vert_threshold = blackboard["vert_threshold"]
+	launcher = blackboard["missile_launcher"]
 
 func enter() -> void:
 	reached_offset = false
 	#print("Chasing")
+	launcher.turn_on()
 
 func exit() -> void:
 	pass

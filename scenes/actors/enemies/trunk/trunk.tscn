@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://dr4ftksqw40hc" path="res://scenes/components/state_machine/states/enemy/trunk/trunk_chase.gd" id="7_7c8p8"]
 [ext_resource type="Script" uid="uid://dl0vqm7sn4iea" path="res://scenes/components/state_machine/states/enemy/trunk/trunk_melee.gd" id="8_31nnk"]
 [ext_resource type="Script" uid="uid://bivm8q1sfq6tc" path="res://scenes/components/state_machine/states/enemy/trunk/trunk_outranged.gd" id="9_3l87d"]
+[ext_resource type="PackedScene" uid="uid://cpavuc8mued8" path="res://scenes/actors/missile/missile_launcher.tscn" id="9_ge31e"]
 [ext_resource type="Script" uid="uid://briciybelpcwe" path="res://scenes/components/state_machine/states/enemy/enemy_death.gd" id="10_t7x1w"]
 [ext_resource type="PackedScene" uid="uid://csd06hicr5wny" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="13_31nnk"]
 [ext_resource type="Shape3D" uid="uid://cxemkg2bdxscg" path="res://resources/hitboxes/enemies/trunk/trunk_melee_hb.tres" id="14_31nnk"]
@@ -2906,13 +2907,14 @@ material = SubResource("StandardMaterial3D_qrlkp")
 radius = 5.0
 height = 10.0
 
-[node name="Trunk" type="CharacterBody3D" unique_id=400593386 node_paths=PackedStringArray("animator", "animation_manager", "state_machine", "start_idle", "start_patrol", "start_aggro", "melee_hitbox")]
+[node name="Trunk" type="CharacterBody3D" unique_id=400593386 node_paths=PackedStringArray("animator", "animation_manager", "state_machine", "missile_launcher", "start_idle", "start_patrol", "start_aggro", "melee_hitbox")]
 collision_layer = 4
 collision_mask = 129
 script = ExtResource("1_usk1l")
 animator = NodePath("TrunkMesh/AnimationPlayer")
 animation_manager = NodePath("TrunkMesh/AnimationPlayer")
 state_machine = NodePath("StateMachine")
+missile_launcher = NodePath("TrunkMesh/Torso/Blaster_P/BlasterSprite/MissileLauncher")
 start_idle = NodePath("StateMachine/TrunkIdle")
 start_patrol = NodePath("StateMachine/TrunkPatrol")
 start_aggro = NodePath("StateMachine/TrunkChase")
@@ -2968,6 +2970,9 @@ sprite_frames = SubResource("SpriteFrames_45267")
 animation = &"Idle"
 autoplay = "Idle"
 frame_progress = 0.053245552
+
+[node name="MissileLauncher" parent="TrunkMesh/Torso/Blaster_P/BlasterSprite" unique_id=1269207243 instance=ExtResource("9_ge31e")]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, 2.2476115, 1.2223349, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1958256337]
 shape = SubResource("BoxShape3D_igprn")
@@ -3088,6 +3093,7 @@ break_sources = Array[String](["BeamComponent", "AirblastComponent"])
 shape = SubResource("SphereShape3D_aq2d6")
 
 [node name="ShaderShield" type="MeshInstance3D" parent="TrunkArmour" unique_id=1962350623]
+visible = false
 mesh = SubResource("SphereMesh_688n6")
 
 [connection signal="cant_step" from="." to="TrunkMesh" method="_on_trunk_cant_step"]
