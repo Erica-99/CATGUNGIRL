@@ -22,6 +22,7 @@ var is_dead: bool = false
 @export var start_aggro: State
 
 @export_category("Stat Variables")
+@export var health: int = 40
 # Change direction to -1 to start facing the other way
 @export var direction: int = 1
 @export var patrol_speed: float
@@ -70,6 +71,8 @@ var blackboard : Dictionary
 @onready var Convict_Piv = $Visuals
 
 func _ready() -> void:
+	health_comp.set_max_health(health)
+	health_comp.set_health(health)
 	# Set up Attack
 	damage_instance.amount = attack_damage
 	damage_instance.is_heal = false
@@ -83,6 +86,8 @@ func _ready() -> void:
 
 	if enemy_manager != null:
 		room_convict_route_points =	 enemy_manager.get_convict_route_points()
+	
+	health_comp.knocked_back.connect(take_knockback)
 	
 	# Populates blackboard and distributes it to all states
 	blackboard = {
@@ -171,7 +176,6 @@ func _apply_hitstun(duration: float) -> void:
 func _on_attack_hitbox_3d_body_exited(body: Node3D) -> void:
 	target_in_hitbox = false
 
-
 func call_sfx_at_current_location(sfx_ref: String) -> void:
 	if sfx_caller == null:
 		return
@@ -188,3 +192,16 @@ func _get_enemy_manager() -> EnemyManager:
 		current = current.get_parent()
 	
 	return null
+
+## When taking damage, get pushed back 
+func take_knockback(knockback_direction: Vector3, knockback_strength: float):
+	# Different knockback handling for on the floor/in the air
+	# When on the floor knock up-left/right
+	if is_on_floor():
+		if knockback_direction.x >= 0:
+			velocity = Vector3(knockback_strength, knockback_strength/log(10), 0)
+		else:
+			velocity = Vector3(-knockback_strength, knockback_strength/log(10), 0)
+	# When in the air knock in the direction of the attack
+	else:
+		velocity = knockback_direction * knockback_strength

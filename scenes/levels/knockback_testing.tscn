@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://mmonvnrj57dp"]
+
+[ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="1_fmmif"]
+[ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict/convict_enemy.tscn" id="2_myflo"]
+[ext_resource type="PackedScene" uid="uid://bls076phgmcus" path="res://scenes/actors/enemies/scrub/scrub.tscn" id="3_myflo"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yt8p2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0liot"]
+
+[node name="KnockbackTesting" type="Node3D" unique_id=1605022950]
+
+[node name="Convict" parent="." unique_id=1506947017 instance=ExtResource("2_myflo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.729294, 2, 0)
+health = 999
+
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=801685126]
+transform = Transform3D(1747.53, 0, 0, 0, 1, 0, 0, 0, 1, 5.6090527, 0, 0)
+mesh = SubResource("BoxMesh_yt8p2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground" unique_id=692841140]
+visible = false
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D" unique_id=73414704]
+visible = false
+shape = SubResource("BoxShape3D_0liot")
+
+[node name="Player" parent="." unique_id=1349193765 instance=ExtResource("1_fmmif")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.073, 2, 0.5)
+
+[node name="Scrub" parent="." unique_id=1090872008 instance=ExtResource("3_myflo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.969065, 11.174584, 0)
