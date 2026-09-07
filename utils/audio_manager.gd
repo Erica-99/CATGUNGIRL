@@ -157,7 +157,7 @@ func play_stinger(asp3d: AudioStreamPlayer3D, stinger_ref: String):
 	elif hotseat.playing == false:
 		take_hotseat(asp3d, stinger_ref)
 	else:
-		play_sfx_at_location(stinger_ref, asp3d.global_position)
+		play_fallback(asp3d, stinger_ref)
 
 # Retrieves a sound effect resource from a SoundEffect or SoundEffectPool in the sfx_dict, that matches sfx_ref
 func get_sfx_from_dict(sfx_ref: String) -> SoundEffect:
