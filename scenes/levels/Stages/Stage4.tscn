@@ -85,6 +85,7 @@
 [ext_resource type="PackedScene" uid="uid://h4ji2qgexuq0" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/LightPortable.tscn" id="83_m0mg7"]
 [ext_resource type="PackedScene" uid="uid://br8eqclc5secj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/Rails/RailFull.tscn" id="84_m0mg7"]
 [ext_resource type="PackedScene" uid="uid://dklchihqbn4p8" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/Rails/RailHalf.tscn" id="85_0524g"]
+[ext_resource type="PackedScene" uid="uid://dqba7lkeq2lmh" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/4_Laboratory/FloorLaboratory.tscn" id="86_1s6dl"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ib8r7"]
 emission_shape = 3
@@ -537,6 +538,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21125793, 0.22578049, 0)
 
 [node name="Lighting" type="Node3D" parent="." unique_id=1172114958]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting" unique_id=1742368922]
+environment = SubResource("Environment_0524g")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting" unique_id=761782660]
 transform = Transform3D(1, 0, 0, 0, 0.713495, 0.7006603, 0, -0.7006603, 0.713495, 128.65552, 67.409195, 50.60542)
 light_color = Color(0.84, 0.574, 0.42, 1)
@@ -548,14 +552,23 @@ light_color = Color(0.23392546, 0.23392546, 0.23392543, 1)
 light_energy = 4.225
 light_specular = 0.0
 
-[node name="SpotLight3D12" type="SpotLight3D" parent="Lighting" unique_id=1185657637]
-transform = Transform3D(1, 0, 0, 0, 0.874425, 0.48516074, 0, -0.48516074, 0.874425, 160.51086, 38.56292, 13.244465)
+[node name="FillLightWarehouseWall" type="SpotLight3D" parent="Lighting" unique_id=1185657637]
+transform = Transform3D(-4.1785984e-08, 0.20712641, -0.97831416, -1.2830307e-08, 0.97831416, 0.20712641, 1, 2.120705e-08, -3.8222336e-08, 120.510864, 38.56292, -16.755535)
+light_color = Color(0.98230857, 0.8935585, 0.8258832, 1)
 light_energy = 6.386
 light_indirect_energy = 0.1
 light_volumetric_fog_energy = 0.1
-shadow_enabled = true
-spot_range = 32.195656
-spot_angle = 47.085472
+spot_range = 57.32216
+spot_angle = 67.439514
+
+[node name="FillLightWarehouseWall2" type="SpotLight3D" parent="Lighting" unique_id=702736757]
+transform = Transform3D(2.8715208e-08, 0.3405599, 0.9402228, 3.295635e-08, -0.9402228, 0.3405599, 1, 2.1207057e-08, -3.822231e-08, 43.510864, 38.56292, -16.755535)
+light_color = Color(0.98230857, 0.8935585, 0.8258832, 1)
+light_energy = 6.386
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+spot_range = 57.32216
+spot_angle = 67.439514
 
 [node name="SpotLight3D22" type="SpotLight3D" parent="Lighting" unique_id=469969338]
 transform = Transform3D(1, 0, 0, 0, 0.874425, 0.48516074, 0, -0.48516074, 0.874425, 304.9197, 26.490704, 13.244465)
@@ -651,7 +664,7 @@ spot_angle = 54.658062
 
 [node name="SpotLight3D30" type="SpotLight3D" parent="Lighting" unique_id=71403171]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 105.03621, 40.990433, -9.928673)
-light_color = Color(2.7083335, 2.4699793, 2.3416355, 1)
+light_color = Color(2.708, 2.47, 2.342, 1)
 light_energy = 12.198
 light_indirect_energy = 0.1
 light_volumetric_fog_energy = 0.1
@@ -873,9 +886,6 @@ shadow_bias = 1.3
 shadow_normal_bias = 10.0
 shadow_blur = 0.0
 omni_range = 47.88582
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting" unique_id=1742368922]
-environment = SubResource("Environment_0524g")
 
 [node name="DATES_POPUPS" type="Node" parent="." unique_id=697093068]
 
@@ -2994,52 +3004,52 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 260, 50.4, -20)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 260, 50.4, -30)
 
 [node name="RoofWareHouse84" parent="Environment/Roof" unique_id=375168070 instance=ExtResource("12_h3ot2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 180, 25.2, -50)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 180, 24.8, -50)
 
 [node name="RoofWareHouse85" parent="Environment/Roof" unique_id=1828670345 instance=ExtResource("12_h3ot2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 190, 25.2, -50)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 190, 24.8, -50)
 
 [node name="RoofWareHouse86" parent="Environment/Roof" unique_id=208693953 instance=ExtResource("12_h3ot2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 210, 25.2, -50)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 210, 24.8, -50)
 
 [node name="RoofWareHouse87" parent="Environment/Roof" unique_id=2037096707 instance=ExtResource("12_h3ot2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 220, 25.2, -50)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 220, 24.8, -50)
 
 [node name="RoofWareHouse88" parent="Environment/Roof" unique_id=1105251619 instance=ExtResource("12_h3ot2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 230, 25.2, -50)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 230, 24.8, -50)
 
 [node name="RoofWareHouse89" parent="Environment/Roof" unique_id=79441062 instance=ExtResource("12_h3ot2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 250, 25.2, -50)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 250, 24.8, -50)
 
 [node name="RoofWareHouse90" parent="Environment/Roof" unique_id=1193978987 instance=ExtResource("12_h3ot2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 260, 25.2, -50)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 260, 24.8, -50)
 
 [node name="RoofWareHouse91" parent="Environment/Roof" unique_id=1826100072 instance=ExtResource("12_h3ot2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 180, 25.2, -40)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 180, 24.8, -40)
 
 [node name="RoofWareHouse92" parent="Environment/Roof" unique_id=563668202 instance=ExtResource("12_h3ot2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 190, 25.2, -40)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 190, 24.8, -40)
 
 [node name="RoofWareHouse93" parent="Environment/Roof" unique_id=852525268 instance=ExtResource("12_h3ot2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 210, 25.2, -40)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 210, 24.8, -40)
 
 [node name="RoofWareHouse94" parent="Environment/Roof" unique_id=954981659 instance=ExtResource("12_h3ot2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 220, 25.2, -40)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 220, 24.8, -40)
 
 [node name="RoofWareHouse95" parent="Environment/Roof" unique_id=1508658597 instance=ExtResource("12_h3ot2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 230, 25.2, -40)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 230, 24.8, -40)
 
 [node name="RoofWareHouse96" parent="Environment/Roof" unique_id=1537019432 instance=ExtResource("12_h3ot2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 250, 25.2, -40)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 250, 24.8, -40)
 
 [node name="RoofWareHouse115" parent="Environment/Roof" unique_id=544025831 instance=ExtResource("12_h3ot2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 240, 25.2, -50)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 240, 24.8, -50)
 
 [node name="RoofWareHouse116" parent="Environment/Roof" unique_id=357545768 instance=ExtResource("12_h3ot2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 240, 25.2, -40)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 240, 24.8, -40)
 
 [node name="RoofWareHouse97" parent="Environment/Roof" unique_id=1612291095 instance=ExtResource("12_h3ot2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 260, 25.2, -40)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 260, 24.8, -40)
 
 [node name="RoofWareHouse20" parent="Environment/Roof" unique_id=937286070 instance=ExtResource("12_h3ot2")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 100, 50.4, -10)
@@ -3101,9 +3111,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 110, 50.4, -10)
 [node name="RoofWareHouse24" parent="Environment/Roof" unique_id=928645307 instance=ExtResource("12_h3ot2")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 110, 50.4, -20)
 
-[node name="RoofLaboratory" parent="Environment/Roof" unique_id=1416839176 instance=ExtResource("14_c2k2n")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 290.2, 58.8, 0)
-
 [node name="RoofWareHouse99" parent="Environment/Roof" unique_id=1833209138 instance=ExtResource("12_h3ot2")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 60, 50.4, 0)
 
@@ -3126,10 +3133,10 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 200, 50.4, -30)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 200, 50.4, -20)
 
 [node name="RoofWareHouse109" parent="Environment/Roof" unique_id=554618981 instance=ExtResource("12_h3ot2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 200, 25.2, -50)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 200, 24.8, -50)
 
 [node name="RoofWareHouse110" parent="Environment/Roof" unique_id=267037309 instance=ExtResource("12_h3ot2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 200, 25.2, -40)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 200, 24.8, -40)
 
 [node name="RoofWareHouse111" parent="Environment/Roof" unique_id=161039687 instance=ExtResource("12_h3ot2")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 240, 50.4, 0)
@@ -4616,6 +4623,9 @@ transform = Transform3D(-4.3711378e-07, 0, -0.77971745, 0, 0.3024684, 0, 1.99999
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160.99947, -4, 5)
 pixel_size = 0.01
 text = "Imagine a Toilet Here ;)"
+
+[node name="FloorLaboratory" parent="." unique_id=1101159966 instance=ExtResource("86_1s6dl")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 290, 58.8, 0)
 
 [connection signal="area_entered" from="Interactive/BridgeBroken/TrunkEventTrigger" to="Interactive/BridgeBroken/TrunkEventTrigger" method="_on_area_entered"]
 [connection signal="animation_finished" from="Interactive/BridgeBroken/TrunkEventTrigger/TrunkEventAnims" to="Interactive/BridgeBroken/TrunkEventTrigger" method="_on_trunk_event_anims_animation_finished"]
