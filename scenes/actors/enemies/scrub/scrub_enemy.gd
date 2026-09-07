@@ -58,8 +58,11 @@ signal facing_changed(scrub: CharacterBody3D)
 
 var blackboard: Dictionary
 
-var launch_speed = Vector3.ZERO
+
+## Variables for death zoomies
 @onready var death_detector = $DeathDetector
+var death_speed = randf_range(10.0, 70.0)
+var launch_speed = Vector3.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -91,7 +94,8 @@ func _ready() -> void:
 	state_machine.init(blackboard)
 	
 	death_detector.body_entered.connect(_on_death_detector_body_entered)
-	
+	death_detector.collision_layer = 1
+	death_detector.collision_mask = 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -100,8 +104,7 @@ func _process(delta):
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
-		softCollider.monitoring = false
-		await get_tree().create_timer(0.3).timeout
+		await get_tree().create_timer(0.5).timeout
 		velocity = launch_speed
 		move_and_slide()
 		return
@@ -202,14 +205,10 @@ func _return_from_stun():
 
 func _scrub_death():
 	rotation.z = deg_to_rad(randi_range(0, 360))
-	var speed = randf_range(10.0, 70.0)
 	var launch_direction = transform.basis.y
-	launch_speed = launch_direction.normalized() * speed
+	launch_speed = launch_direction.normalized() * death_speed
 
 
 func _on_death_detector_body_entered(body: Node3D) -> void:
-	print("SCRUB HAS HIT: ", body.name)
 	if is_dead:
-		print("DIE BITCH!!!")
 		queue_free()
-	return

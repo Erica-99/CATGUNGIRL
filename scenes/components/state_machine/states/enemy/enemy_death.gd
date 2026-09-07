@@ -27,6 +27,8 @@ func enter() -> void:
 	EventManager.enemy_killed.emit(self)
 	
 	for child in actor.find_children("*", "Area3D", true):
+		if child.name == "DeathDetector":
+			continue
 		child.collision_layer = 0
 		child.collision_mask = 0
 		child.hide()
