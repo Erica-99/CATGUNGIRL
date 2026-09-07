@@ -8,6 +8,7 @@ extends CharacterBody3D
 @export_category("Node References")
 @export var animator: AnimationPlayer
 @export var state_machine: StateMachine
+@export var stinger_caller: StingerComponent
 @onready var can_shoot: RayCast3D = $CanShoot
 @onready var softCollider = $SoftCollider
 
@@ -155,6 +156,7 @@ func _physics_process(delta: float) -> void:
 func _on_health_component_killed(killing_blow: DamageHealInstance, health_before_death: Variant) -> void:
 	# Possibly implement knockback affects here
 	is_dead = true
+	stinger_caller.play_stinger("scrub_death_" + id, true)
 	state_machine.on_child_transition(state_machine.current_state, "scrubdeath")
 
 func _on_health_component_health_changed(old_health: float, new_health: float, damage_or_heal_instance: DamageHealInstance) -> void:
