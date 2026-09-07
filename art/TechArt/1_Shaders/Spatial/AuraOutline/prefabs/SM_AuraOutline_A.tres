@@ -1,0 +1,24 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cgw8efsjypx61"]
+
+[ext_resource type="Material" uid="uid://b0w2n7lvivb8p" path="res://art/TechArt/1_Shaders/Spatial/AuraOutline/prefabs/SM_ThinOutline.tres" id="1_60y85"]
+[ext_resource type="Shader" uid="uid://dywwtjoe6w5fc" path="res://art/TechArt/1_Shaders/Spatial/AuraOutline/aura_outline.gdshader" id="2_oixv0"]
+[ext_resource type="Texture2D" uid="uid://bpnfbtotkjam6" path="res://art/TechArt/1_Shaders/Spatial/AuraOutline/tex/T_aura_noise.png" id="3_ic3v6"]
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_60y85")
+shader = ExtResource("2_oixv0")
+shader_parameter/color_tex = ExtResource("3_ic3v6")
+shader_parameter/color_uv = Vector4(1.705, 0.26, 0, 0)
+shader_parameter/color_speed = Vector4(0, 1.195, 0.02, 0)
+shader_parameter/light_color = Color(1.4954206, 1.4954206, 1.4954206, 1)
+shader_parameter/dark_color = Color(0, 0, 0, 1)
+shader_parameter/contrast = 3.0
+shader_parameter/tint = Color(1, 1, 1, 1)
+shader_parameter/color_power = 0.91200004332
+shader_parameter/wpo_tex = ExtResource("3_ic3v6")
+shader_parameter/wpo_uv = Vector4(2, 2, 0, 0)
+shader_parameter/wpo_speed = Vector4(0, 0.1, 1, 0)
+shader_parameter/wpo_power = 0.02000000095
+shader_parameter/wpo_contrast = 0.97500001301657
+shader_parameter/outline_width = 0.0400000019

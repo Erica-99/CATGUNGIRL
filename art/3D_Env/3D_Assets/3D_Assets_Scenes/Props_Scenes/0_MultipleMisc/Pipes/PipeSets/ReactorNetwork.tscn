@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://btgbsvw8t3xl8"]
+
+[ext_resource type="PackedScene" uid="uid://btcwaxl38nip5" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeSets/HandlebarSmall.tscn" id="1_kckac"]
+[ext_resource type="PackedScene" uid="uid://dly86nhtl8eng" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeSets/HandlebarMedium.tscn" id="2_51uru"]
+[ext_resource type="PackedScene" uid="uid://rsap58iq70sc" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeShapeC.tscn" id="6_0sbmx"]
+[ext_resource type="PackedScene" uid="uid://ckewheevah8ml" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeConnector.tscn" id="6_oc6pb"]
+[ext_resource type="PackedScene" uid="uid://w8n8ng11l4f0" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeShapeR.tscn" id="7_0sbmx"]
+[ext_resource type="PackedScene" uid="uid://4rsfb5kh40wj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/B_Collisions/45Ramp.tscn" id="7_u4ysk"]
+[ext_resource type="PackedScene" uid="uid://bs4coexsxhqva" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeShapeU.tscn" id="8_u4ysk"]
+[ext_resource type="PackedScene" uid="uid://de3yt81kfx8tp" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeShapeT.tscn" id="9_5blt3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oc6pb"]
+size = Vector3(0.3252526, 2.3358643, 1.2)
+
+[node name="ReactorNetwork" type="StaticBody3D" unique_id=2003632835]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0)
+
+[node name="HandlebarSmall" parent="." unique_id=606722363 instance=ExtResource("1_kckac")]
+transform = Transform3D(1.9318516, 0, 0.51763797, 0, 2, 0, -0.51763797, 0, 1.9318516, -12, 0.2616026, -3.2499998)
+
+[node name="HandlebarSmall2" parent="." unique_id=1246409211 instance=ExtResource("1_kckac")]
+transform = Transform3D(1.9318516, 0, -0.5176381, 0, 2, 0, 0.5176381, 0, 1.9318516, 12, 0.2616026, -3.2499998)
+
+[node name="HandlebarSmall3" parent="." unique_id=791128108 instance=ExtResource("2_51uru")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.32320535, -25.999998)
+
+[node name="Network" type="Node3D" parent="." unique_id=994055750]
+transform = Transform3D(-0.8, 0, 6.9938224e-08, 0, 0.8, 0, -6.9938224e-08, 0, -0.8, 0, 0, -14)
+
+[node name="PipeConnector" parent="Network" unique_id=165308863 instance=ExtResource("6_oc6pb")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -4, 0.4, 0)
+
+[node name="PipeConnector5" parent="Network" unique_id=710278345 instance=ExtResource("6_oc6pb")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -12, 0.4, -16)
+
+[node name="PipeConnector2" parent="Network" unique_id=1043753319 instance=ExtResource("6_oc6pb")]
+transform = Transform3D(4, 0, 0, 0, -1.7484555e-07, 4, 0, -4, -1.7484555e-07, -4, 4.4, -4)
+
+[node name="PipeConnector3" parent="Network" unique_id=442393161 instance=ExtResource("6_oc6pb")]
+transform = Transform3D(4, 0, 0, 0, -1.7484555e-07, 4, 0, -4, -1.7484555e-07, -4, 4.4, -12)
+
+[node name="PipeConnector4" parent="Network" unique_id=1800165574 instance=ExtResource("6_oc6pb")]
+transform = Transform3D(4, 0, 0, 0, -1.7484555e-07, 4, 0, -4, -1.7484555e-07, -4, 4.4, -20)
+
+[node name="PipeConnector13" parent="Network" unique_id=855439948 instance=ExtResource("6_oc6pb")]
+transform = Transform3D(-1.7484555e-07, -4, -1.7484555e-07, 0, -1.7484555e-07, 4, -4, 1.7484555e-07, 7.642742e-15, 0, 4.4, -8)
+
+[node name="PipeShapeR" parent="Network" unique_id=777797736 instance=ExtResource("7_0sbmx")]
+transform = Transform3D(-4, 0, 6.039832e-07, 0, 4, 0, -6.039832e-07, 0, -4, -4, 0.4, 0)
+
+[node name="PipeShapeR2" parent="Network" unique_id=1883303872 instance=ExtResource("7_0sbmx")]
+transform = Transform3D(3.9999998, 0, -2.3841858e-07, 0, 4, 0, 2.3841858e-07, 0, 3.9999998, -4, 0.4, -24)
+
+[node name="PipeShapeR3" parent="Network" unique_id=748145008 instance=ExtResource("7_0sbmx")]
+transform = Transform3D(3.0199158e-07, 0, 3.9999995, 0, 4, 0, -3.9999995, 0, 3.0199158e-07, -12, 0.4, -16)
+
+[node name="PipeShapeT" parent="Network" unique_id=379942003 instance=ExtResource("9_5blt3")]
+transform = Transform3D(-1.7484555e-07, 4, 0, -4, -1.7484555e-07, 0, 0, 0, 4, -8, 4.4, -16)
+
+[node name="PipeShapeT2" parent="Network" unique_id=1842262286 instance=ExtResource("9_5blt3")]
+transform = Transform3D(1.7484555e-07, -4, -6.039832e-07, -4, -1.7484555e-07, 0, -2.6400945e-14, 6.039832e-07, -4, 0, 4.4, -8)
+
+[node name="PipeConnector7" parent="Network" unique_id=371776309 instance=ExtResource("6_oc6pb")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 4, 0.4, 0)
+
+[node name="PipeConnector8" parent="Network" unique_id=1586312794 instance=ExtResource("6_oc6pb")]
+transform = Transform3D(-4, 0, -6.039832e-07, 0, 4, 0, 6.039832e-07, 0, -4, 12, 0.4, -16)
+
+[node name="PipeConnector14" parent="Network" unique_id=460468773 instance=ExtResource("6_oc6pb")]
+transform = Transform3D(-4, 0, -6.039832e-07, 0, 4, 0, 6.039832e-07, 0, -4, 4, 0.4, -24)
+
+[node name="PipeConnector15" parent="Network" unique_id=1879068217 instance=ExtResource("6_oc6pb")]
+transform = Transform3D(-4, 0, -6.039832e-07, 0, 4, 0, 6.039832e-07, 0, -4, -4, 0.4, -24)
+
+[node name="PipeConnector9" parent="Network" unique_id=943596781 instance=ExtResource("6_oc6pb")]
+transform = Transform3D(4, 0, 0, 0, -1.7484555e-07, 4, 0, -4, -1.7484555e-07, 4, 4.4, -4)
+
+[node name="PipeConnector10" parent="Network" unique_id=243539517 instance=ExtResource("6_oc6pb")]
+transform = Transform3D(4, 0, 0, 0, -1.7484555e-07, 4, 0, -4, -1.7484555e-07, 4, 4.4, -12)
+
+[node name="PipeConnector11" parent="Network" unique_id=1872339636 instance=ExtResource("6_oc6pb")]
+transform = Transform3D(4, 0, 0, 0, -1.7484555e-07, 4, 0, -4, -1.7484555e-07, 4, 4.4, -20)
+
+[node name="PipeShapeR4" parent="Network" unique_id=632128160 instance=ExtResource("7_0sbmx")]
+transform = Transform3D(-4, 0, 6.039832e-07, 0, 4, 0, -6.039832e-07, 0, -4, 4, 0.4, 0)
+
+[node name="PipeShapeR5" parent="Network" unique_id=900241870 instance=ExtResource("7_0sbmx")]
+transform = Transform3D(4, 0, -2.3841858e-07, 0, 4, 0, 2.384186e-07, 0, 3.9999998, 4, 0.4, -24)
+
+[node name="PipeShapeR6" parent="Network" unique_id=1155937568 instance=ExtResource("7_0sbmx")]
+transform = Transform3D(-1.7484555e-07, 0, -3.9999995, 0, 4, 0, 4, 0, -1.7484554e-07, 12, 0.4, -16)
+
+[node name="PipeShapeT3" parent="Network" unique_id=1391154899 instance=ExtResource("9_5blt3")]
+transform = Transform3D(3.019916e-07, -4, 0, 4, 3.019916e-07, 0, 0, 0, 4, 8, 4.4, -16)
+
+[node name="PipeShapeT4" parent="Network" unique_id=1247427360 instance=ExtResource("9_5blt3")]
+transform = Transform3D(1.7484555e-07, 4, 6.039832e-07, 4, -1.7484555e-07, -5.280189e-14, -2.6400945e-14, 6.039832e-07, -4, 0, 4.4, -8)
+
+[node name="Network_Collision1" type="CollisionShape3D" parent="." unique_id=1236683901]
+transform = Transform3D(19.816051, 0, 0, 0, 1.8429273, 0, 0, 0, 8.015793, -0.013013879, 2.243552, -1)
+shape = SubResource("BoxShape3D_oc6pb")
+
+[node name="PipeShapeC" parent="." unique_id=1388748965 instance=ExtResource("6_0sbmx")]
+transform = Transform3D(2.4999998, 0, 0, 0, -1.09278474e-07, 2.4999998, 0, -2.4999998, -1.09278474e-07, 0, 0.2002086, 8.999999)
+
+[node name="45Ramp" parent="." unique_id=2094150326 instance=ExtResource("7_u4ysk")]
+transform = Transform3D(0, 0, 1.4526765, 0, 0.75508416, 0, -1, 0, 0, -8.505104, 2.720954, -1)
+
+[node name="45Ramp2" parent="." unique_id=1822478424 instance=ExtResource("7_u4ysk")]
+transform = Transform3D(8.742278e-08, 0, -1.4526765, 0, 0.75508416, 0, 1, 0, 1.2699702e-07, 8.494896, 2.720954, -1)
+
+[node name="PipeShapeU" parent="." unique_id=1248328049 instance=ExtResource("8_u4ysk")]
+transform = Transform3D(3.5000002, 0, 0, 0, 3.5000002, 0, 0, 0, 3.5000002, 0, 0.2002086, -4)

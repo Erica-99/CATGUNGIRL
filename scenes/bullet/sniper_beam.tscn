@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://d4ne67jtrsmhn"]
+
+[ext_resource type="Script" uid="uid://bgsxy7x62gxql" path="res://scenes/bullet/bullet.gd" id="1_beam"]
+[ext_resource type="PackedScene" uid="uid://csd06hicr5wny" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="2_beam"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_beam_body"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_beam_hitbox"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_beam"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_beam"]
+albedo_color = Color(3.080368e-06, 0.70269114, 0.9528318, 1)
+emission_enabled = true
+emission = Color(0.38080326, 0.8354445, 0.9772423, 1)
+emission_energy_multiplier = 2.5
+
+[node name="SniperBeam" type="CharacterBody3D" unique_id=418182174]
+collision_layer = 32
+motion_mode = 1
+script = ExtResource("1_beam")
+speed = 0.0
+max_range = 5.0
+max_lifetime = 0.25
+destroy_on_collision = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=547570058]
+shape = SubResource("BoxShape3D_beam_body")
+
+[node name="HitboxComponent" parent="." unique_id=1957240096 instance=ExtResource("2_beam")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxComponent" unique_id=925088875]
+shape = SubResource("BoxShape3D_beam_hitbox")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1149786042]
+mesh = SubResource("BoxMesh_beam")
+surface_material_override/0 = SubResource("StandardMaterial3D_beam")

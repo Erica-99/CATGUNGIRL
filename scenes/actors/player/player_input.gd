@@ -10,6 +10,9 @@ var _fire_held := false
 var _mouse_world_pos
 var _interacting := false
 var _switch_gun := false
+var _switch_gun_one := false
+var _switch_gun_two := false
+var _switch_gun_three := false
 var _ability_held := false
 
 var _input_locked := false
@@ -55,6 +58,9 @@ func get_input_state() -> Dictionary:
 		"mouse_world_pos": _mouse_world_pos,
 		"interacting": _interacting,
 		"switch_gun": _switch_gun,
+		"switch_gun_one": _switch_gun_one,
+		"switch_gun_two": _switch_gun_two,
+		"switch_gun_three": _switch_gun_three,
 		"ability_held": _ability_held,
 	}
 	return input_state
@@ -103,6 +109,15 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 	if event.is_action_pressed("switch_gun") and not event.is_echo():
 		_switch_gun = true
+	
+	if event.is_action_pressed("switch_gun_first_slot") and not event.is_echo():
+		_switch_gun_one = true
+	
+	if event.is_action_pressed("switch_gun_second_slot") and not event.is_echo():
+		_switch_gun_two = true
+	
+	if event.is_action_pressed("switch_gun_third_slot") and not event.is_echo():
+		_switch_gun_three = true
 		
 	if event.is_action_pressed("dash") and not event.is_echo():
 		_dash_held = true

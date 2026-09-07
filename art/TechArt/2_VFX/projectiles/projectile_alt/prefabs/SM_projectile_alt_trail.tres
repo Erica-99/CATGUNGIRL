@@ -1,0 +1,30 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://i8e0680c2cn7"]
+
+[ext_resource type="Shader" uid="uid://oqdk6tdbcssr" path="res://art/TechArt/2_VFX/projectiles/projectile_alt/VS_projectile_alt_trail.tres" id="1_r41jh"]
+[ext_resource type="Texture2D" uid="uid://cchl5ypaubg6k" path="res://art/TechArt/2_VFX/Vignette/tex/voronoi.png" id="2_v1xrd"]
+
+[sub_resource type="Gradient" id="Gradient_trail"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.598361, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0.28485, 0.28485, 0.28485, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_trail"]
+gradient = SubResource("Gradient_trail")
+fill_from = Vector2(0.5, 0)
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_r41jh")
+shader_parameter/time_scale = 1.0
+shader_parameter/mask1_scale = Vector2(2, 1)
+shader_parameter/mask1_scroll = Vector2(-0.1, -2)
+shader_parameter/mask1_texture = ExtResource("2_v1xrd")
+shader_parameter/mask3_texture = SubResource("GradientTexture2D_trail")
+shader_parameter/displacement_offset = 0.5
+shader_parameter/displacement_scale = 0.05
+shader_parameter/tertiary_color = Color(0.99607843, 0.477451, 0.27450985, 1)
+shader_parameter/secondary_color = Color(1, 0.65625, 0, 1)
+shader_parameter/color_smoothness = 0.5
+shader_parameter/alpha_smoothness = 1.0
+shader_parameter/alpha_multiplier = 1.0
+shader_parameter/emission_strength = 2.0

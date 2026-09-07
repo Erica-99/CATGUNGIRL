@@ -9,6 +9,7 @@ script = ExtResource("2_20g1x")
 pellet_amount = 10
 gun_name = "Shotgun"
 ability = NodePath("AirblastComponent")
+aim_speed = 6.0
 ammo_max = 4
 reload_time = 1.0
 reload_full = false
@@ -18,16 +19,18 @@ bullet_damage = 3.0
 bullet_knockback = 2.0
 bullet_scale = 0.4
 bullet_velocity_multiplier = 0.75
+bullet_range = 12.0
 recoil_amount = 0.5
 base_aim_spread = 10.0
 
 [node name="AirblastComponent" parent="." index="2" unique_id=1197172489 node_paths=PackedStringArray("shotgun") instance=ExtResource("3_05d2k")]
 shotgun = NodePath("..")
+charge_time = 0.05
 slow_down_speed = 200.0
 slow_down_target = 0.1
-launch_speed = 7.0
-blast_base_damage = 6.0
-blast_damage_increase_per_bullet = 1.5
-blast_base_knockback = 5.0
+launch_speed = 40.0
+blast_damage = 15.0
+blast_knockback = 40.0
+blast_stun_time = 1.0
 
 [connection signal="enemy_hit" from="AirblastComponent" to="." method="_on_airblast_component_enemy_hit"]

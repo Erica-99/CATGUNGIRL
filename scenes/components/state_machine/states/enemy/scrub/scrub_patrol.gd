@@ -4,7 +4,7 @@ extends State
 class_name ScrubPatrol
 
 var actor: CharacterBody3D
-var anim: AnimatedSprite3D
+var anim: AnimationPlayer
 var target: CharacterBody3D
 var patrol_speed: float
 var direction: int

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://d1c7rcjdkoaqg"]
+
+[ext_resource type="ArrayMesh" uid="uid://cnkkxm5m8olx0" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/7_BrainJar/ServerRack1.obj" id="1_uokt6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uokt6"]
+size = Vector3(1.252809, 2.4, 1.2)
+
+[node name="ServerRack1" type="StaticBody3D" unique_id=1498321296]
+
+[node name="ServerRack1_Mesh" type="MeshInstance3D" parent="." unique_id=1205784505]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = ExtResource("1_uokt6")
+
+[node name="ServerRack1_Collision" type="CollisionShape3D" parent="." unique_id=914890811]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.052809, 2.4, 0)
+shape = SubResource("BoxShape3D_uokt6")

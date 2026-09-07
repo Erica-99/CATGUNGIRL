@@ -2,7 +2,7 @@
 extends State
 class_name EnemyDeath
 
-@export var max_death_animation_time: float = 0.5
+@export var max_death_animation_time: float = 2
 
 var actor: CharacterBody3D
 var anim: AnimationPlayer
@@ -20,6 +20,11 @@ func enter() -> void:
 	#anim.play("Death")
 	# Play death sound
 	AudioManager.play_sfx("enemy_death")
+	randomize()
+	var deathid = 'Death' + str(randi_range(1,3))
+	print(deathid)
+	anim.play(deathid)
+
 	EventManager.enemy_killed.emit(self)
 	
 	for child in actor.find_children("*", "Area3D", true):

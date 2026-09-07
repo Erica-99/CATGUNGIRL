@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://gjh4qeum0g8n"]
+
+[ext_resource type="Material" uid="uid://cgw8efsjypx61" path="res://art/TechArt/1_Shaders/Spatial/AuraOutline/prefabs/SM_AuraOutline_A.tres" id="2_aura_a"]
+[ext_resource type="Material" uid="uid://dhgj5h7ptbl1t" path="res://art/TechArt/1_Shaders/Spatial/AuraOutline/prefabs/SM_AuraOutline_B.tres" id="3_aura_b"]
+[ext_resource type="Material" uid="uid://dcg44pvae2ew1" path="res://art/TechArt/1_Shaders/Spatial/AuraOutline/prefabs/SM_AuraOutline_C.tres" id="3_cbhlw"]
+
+[sub_resource type="Environment" id="Environment_aura"]
+background_mode = 1
+background_color = Color(0.171875, 0.171875, 0.171875, 1)
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_floor"]
+albedo_color = Color(0.14, 0.14, 0.16, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_floor"]
+material = SubResource("StandardMaterial3D_floor")
+size = Vector2(20, 20)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_toon_b"]
+radial_segments = 129
+rings = 59
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0a44h"]
+next_pass = ExtResource("3_aura_b")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_std"]
+radial_segments = 120
+rings = 77
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m018k"]
+next_pass = ExtResource("2_aura_a")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_big"]
+next_pass = ExtResource("3_cbhlw")
+albedo_color = Color(0.9, 0.9, 0.92, 1)
+roughness = 0.8
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_big"]
+material = SubResource("StandardMaterial3D_big")
+radial_segments = 150
+rings = 32
+
+[node name="AuraOutlineTest" type="Node3D" unique_id=956290215]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1685574526]
+environment = SubResource("Environment_aura")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=156945277]
+transform = Transform3D(0.866025, 0.353553, -0.353553, 0, 0.707107, 0.707107, 0.5, -0.612372, 0.612372, 0, 8, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=918182008]
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 1.5185854, 1.6897905, 2.7494986)
+current = true
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=1104044111]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.051750302, 0)
+mesh = SubResource("PlaneMesh_floor")
+metadata/_edit_lock_ = true
+
+[node name="CapsuleToonAuraB" type="MeshInstance3D" parent="." unique_id=680530556]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 1.1, 0)
+mesh = SubResource("CapsuleMesh_toon_b")
+surface_material_override/0 = SubResource("StandardMaterial3D_0a44h")
+
+[node name="CapsuleStdAuraA" type="MeshInstance3D" parent="." unique_id=1918387343]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 1.1, 0)
+mesh = SubResource("CapsuleMesh_std")
+surface_material_override/0 = SubResource("StandardMaterial3D_m018k")
+
+[node name="CapsuleExaggerated" type="MeshInstance3D" parent="." unique_id=879361092]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9, 1.1, 0)
+mesh = SubResource("CapsuleMesh_big")
