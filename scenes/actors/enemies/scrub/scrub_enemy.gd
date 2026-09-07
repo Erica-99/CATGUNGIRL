@@ -54,6 +54,8 @@ var time: float = 0.0
 @export var frequency: float = 3.0
 @export var amplitude: float = 2.0
 
+@onready var id: String = get_id()
+
 signal facing_changed(scrub: CharacterBody3D)
 
 var blackboard: Dictionary
@@ -183,3 +185,23 @@ func _return_from_stun():
 		state_machine.on_child_transition(state_machine.current_state, "scrubattack")
 	else:
 		state_machine.on_child_transition(state_machine.current_state, "scrubchase")
+
+
+func get_id() -> String:
+	var case = randi_range(0, 5)
+	match case:
+		0:
+			return "f1"
+		1:
+			return "m1"
+		2:
+			return "m2"
+		3:
+			return "m3"
+		4:
+			return "m4"
+		5:
+			return "m5"
+		_:
+			return ""
+		

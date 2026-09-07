@@ -151,7 +151,11 @@ func play_sfx_at_location(sfx_ref: String, location: Vector3, loop: bool = false
 				# Return asp3d ref for termination control
 				return asp3d
 
-func play_stinger(asp3d: AudioStreamPlayer3D, stinger_ref: String):
+func play_stinger(asp3d: AudioStreamPlayer3D, stinger_ref: String, bypass: bool = false):
+	if bypass:
+		bypass_hotseat(asp3d, stinger_ref)
+		return
+	
 	if hotseat == null:
 		take_hotseat(asp3d, stinger_ref)
 	elif hotseat.playing == false:
@@ -246,5 +250,15 @@ func play_fallback(asp3d: AudioStreamPlayer3D, stinger_ref: String) -> void:
 		
 	else: 
 		push_error("No entry in stinger register matching '" + stinger_ref + "'" )
+
+func bypass_hotseat(asp3d: AudioStreamPlayer3D, ref: String):
+	var res: SoundEffect = get_stinger_from_dict(ref)
+	if res == null:
+		push_error("Sound Resource is not found")
+		return
 		
-		
+	asp3d.stream = res.sound_clip
+	asp3d.volume_db = res.volume
+	asp3d.pitch_scale = res.pitch_scale + randf_range(-res.pitch_random_shift, res.pitch_random_shift)
+	
+	asp3d.play()
