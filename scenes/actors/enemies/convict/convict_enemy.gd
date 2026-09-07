@@ -105,10 +105,11 @@ func _ready() -> void:
 		"dive_recovery_duration": dive_recovery_duration,
 		"attack_cooldown_min": attack_cooldown_min,
 		"attack_cooldown_max": attack_cooldown_max,
-		"stinger_call": stinger_caller
+		"stinger_call": stinger_caller,
 		"convict_route_points": room_convict_route_points,
-		"gravity": GRAVITY
+		"gravity": GRAVITY,
 	}
+		
 	# Change initial state based on Inspector values
 	if start_aggroed:
 		state_machine.initial_state = start_aggro
