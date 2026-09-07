@@ -60,6 +60,8 @@ func enter() -> void:
 	current_route_point = null
 	routing_to_dive_spot = false
 
+
+
 func _start_cooldown() -> void:
 	await get_tree().create_timer(randf_range(attack_cooldown_min, attack_cooldown_max)).timeout
 	attack_hitbox.find_child("*").set_deferred("disabled", false)

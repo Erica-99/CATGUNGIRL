@@ -8,7 +8,9 @@ const GRAVITY = 50
 @export var health_comp: Node
 @export var state_machine: StateMachine
 @onready var softCollider: Area3D = $SoftCollider
-@export var audio_caller: Node
+@export var sfx_caller: Node
+@export var stinger_caller: StingerComponent
+
 
 var is_dead: bool = false
 
@@ -103,9 +105,11 @@ func _ready() -> void:
 		"dive_recovery_duration": dive_recovery_duration,
 		"attack_cooldown_min": attack_cooldown_min,
 		"attack_cooldown_max": attack_cooldown_max,
+		"stinger_call": stinger_caller,
 		"convict_route_points": room_convict_route_points,
-		"gravity": GRAVITY
+		"gravity": GRAVITY,
 	}
+		
 	# Change initial state based on Inspector values
 	if start_aggroed:
 		state_machine.initial_state = start_aggro
@@ -169,10 +173,10 @@ func _on_attack_hitbox_3d_body_exited(body: Node3D) -> void:
 
 
 func call_sfx_at_current_location(sfx_ref: String) -> void:
-	if audio_caller == null:
+	if sfx_caller == null:
 		return
 		
-	audio_caller.play_sfx_at_location(sfx_ref, global_position)
+	sfx_caller.play_sfx_at_location(sfx_ref, global_position)
 
 func _get_enemy_manager() -> EnemyManager:
 	var current: Node = get_parent()

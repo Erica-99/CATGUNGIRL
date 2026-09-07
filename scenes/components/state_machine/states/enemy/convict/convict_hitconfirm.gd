@@ -24,6 +24,7 @@ func enter() -> void:
 	#Allow for animation interrupts if a target jumps onto them while in their attack anim
 	anim.stop()
 	anim.play("Attack")
+	AudioManager.play_sfx_at_location("convict_slash", actor.global_position)
 	attack_hitbox.find_child("*").set_deferred("disabled", false)
 
 # The time that the Convict stops for after an attack is determined by their attack anim
