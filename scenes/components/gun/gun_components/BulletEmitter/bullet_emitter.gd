@@ -25,14 +25,8 @@ extends Node3D
 @export var spam_spread_increase: float = 2.0		# extra degrees added per consecutive spam shot
 @export var spam_max_spread: float = 15.0			# max spread angle
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+## semi-auto buffer
+var semi_available: bool = true
 
 # spawns a singular bullet
 func _spawn_bullet(damage: float, size: float) -> void:
@@ -40,7 +34,7 @@ func _spawn_bullet(damage: float, size: float) -> void:
 	get_tree().root.add_child(bullet)
 	bullet.global_transform = muzzle.global_transform
 	
-	var aim_dir = Vector3(cos(rotation.z), sin(rotation.z), 0.0).normalized()
+	var aim_dir = Vector3(cos(gun_link.rotation.z), sin(gun_link.rotation.z), 0.0).normalized()
 	
 	if gun_link.team_component.team == Enums.Team.PLAYER:
 		if base_aim_spread != 0:
@@ -88,11 +82,11 @@ func _try_fire() -> void:
 	# handle perfect shots etc - probably needs to be decomposed better, but ok for proof of concept and initial work
 	# override in other children of GUN!!!!
 	gun_link._shoot_handler()
-	ammo_component.handle_ammo()
+	ammo_component._handle_ammo()
 
 func _play_shoot_animation():
-	gun_link.gun_animator.stop()
-	gun_link.gun_animator.play("Fire")
+	gun_link.Gun_Animation.stop()
+	gun_link.Gun_Animation.play("Fire")
 
 func _shoot(damage, bullet_scale):
 	_spawn_bullet(damage, bullet_scale)

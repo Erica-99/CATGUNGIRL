@@ -29,16 +29,19 @@ func enter() -> void:
 	pass
 
 func exit() -> void:
-	gun_component._is_firing = false
+	gun_component.active = false
+	#gun_component._is_firing = false
 
 func update(_delta: float) -> void:
 	var direction = sign(target.global_position.x - actor.global_position.x)
 	actor.facing = direction
 	
 	if actor.can_shoot.is_colliding():
-		gun_component._is_firing = false
+		#gun_component._is_firing = false
+		gun_component.active = false
 	else:
-		gun_component._is_firing = true
+		#gun_component._is_firing = true
+		gun_component.active = true
 
 func physics_update(delta: float) -> void:
 	actor.velocity.x = move_toward(actor.velocity.x, 0, slow_down_speed * delta)

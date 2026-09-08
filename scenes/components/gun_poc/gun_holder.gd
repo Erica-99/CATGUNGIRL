@@ -1,5 +1,5 @@
 extends Node3D
-var current_gun: Gun
+var current_gun: Node3D
 
 signal enemy_hit(damage: float)
 signal current_gun_charge_progress_changed(progress: float)
@@ -12,13 +12,14 @@ signal current_gun_charge_started
 @onready var Muzzle_VFX: AnimationPlayer = $"../PlayerVisuals/ROOT_P/GUN_P/GUN_AIM/MuzzleFlash_P/AnimationPlayer"
 @onready var team_component: Node = $"../TeamComponent"
 
-const PISTOL_PREFAB = preload("res://scenes/components/gun_poc/pistol/pistol.tscn")
+#const PISTOL_PREFAB = preload("res://scenes/components/gun_poc/pistol/pistol.tscn")
+const PISTOL_PREFAB = preload("res://scenes/components/gun/gun_variants/pistol/pistol.tscn")
 const SHOTGUN_PREFAB = preload("res://scenes/components/gun_poc/shotgun/shotgun.tscn")
 #const RIFLE_PREFAB = preload("res://scenes/components/gun_poc/rifle/rifle.tscn")
 const SNIPER_PREFAB = preload("res://scenes/components/gun_poc/sniper/sniper.tscn")
 
 # can make this instead an export var for better customisation (for the poc i am being lazy)
-const guns_available = [PISTOL_PREFAB, SHOTGUN_PREFAB, SNIPER_PREFAB]
+const guns_available = [PISTOL_PREFAB]
 
 var current_child_count: int = 0
 var current_gun_index: int = 0
@@ -42,7 +43,7 @@ func _ready() -> void:
 	current_gun = get_child(current_gun_index)
 	_activate_gun()
 	EventManager.new_gun_equipped.emit(current_gun.gun_name)
-	EventManager.new_mag_loaded.emit(current_gun._current_ammo, current_gun.ammo_max)
+	EventManager.new_mag_loaded.emit(current_gun.ammo_component._current_ammo, current_gun.ammo_component.ammo_max)
 
 func _process(delta: float) -> void:
 	var current_input_state = input_component.get_input_state()
@@ -97,9 +98,10 @@ func _deactivate_gun():
 	current_gun.charge_ended.disconnect(_on_current_gun_charge_ended)
 
 func _activate_gun():
+	var gun_ammo = current_gun.ammo_component
 	current_gun.active = true
-	if current_gun._current_ammo > current_gun.ammo_max:
-		current_gun._current_ammo = current_gun.ammo_max
+	if gun_ammo._current_ammo > gun_ammo.ammo_max:
+		gun_ammo._current_ammo = gun_ammo.ammo_max
 	current_gun._fire_cooldown = 0
 	current_gun._time_since_last_shot = 999
 	

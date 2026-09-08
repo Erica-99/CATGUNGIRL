@@ -7,13 +7,15 @@ class_name BaseGun
 # however, gun instances such as Pistol, Shotgun etc. shall inherit fom base gun to obtain the basics (then have customised attached nodes)
 # some attached nodes will be forced (such as the BulletEmitter), others will be optional (i.e. attached handling for Player aiming etc idk)
 
+@export var gun_name: String
+
 @onready var ammo_component: AmmoComponent = $AmmoComponent
-@onready var bullet_emitter: Node3D = $BulletEmitter
+@export var bullet_emitter: Node3D
 var input_component: Node
 
 @export var team_component: Node = null		# player or enemy TeamComponent reference, passed to bullets
-@export var gun_animator: AnimationPlayer = null
-@export var muzzle_vfx: AnimationPlayer = null
+@export var Gun_Animation: AnimationPlayer = null
+@export var Muzzle_VFX: AnimationPlayer = null
 @export var _normal_flash: CPUParticles3D
 @export var _perfect_flash: CPUParticles3D
 
@@ -49,6 +51,7 @@ var _fire_cooldown: float = 0.0
 var _is_charging: bool = false
 var _charge_progress: float = 0.0	# beam
 var _wobble_time: float = 0.0
+var _player_target: CharacterBody3D = null
 
 var _enemy_bullets_fired: int = 0
 
@@ -71,6 +74,15 @@ signal perfect_shot_fired()
 signal spread_changed(spread: float) # visual indicator 
 signal perfect_window_changed(active: bool) # for indicator flash
 
+## emitted every frame while charging, value is 0.0 to 1.0
+signal charge_progress_changed(progress: float)
+
+## Signal emitted when charging stops (fired or cancelled)
+signal charge_ended()
+signal charge_started()
+
+func _ready() -> void:
+	_player_target = get_tree().get_first_node_in_group("player") as CharacterBody3D
 
 func _input(event):
 	#Establish if the player is using KBM or a controller
@@ -95,7 +107,7 @@ func _process(delta: float) -> void:
 			_is_spamming = false
 			_spam_count = 0
 		
-		if !ammo_component.is_reloading:
+		if !ammo_component._is_reloading:
 			# normal fire (left click) read from input component
 			if current_input_state.get("fire_held", false):
 				if bullet_emitter.full_auto:
@@ -124,6 +136,10 @@ func _process(delta: float) -> void:
 	
 	else:
 		# HANDLE NON-PLAYER
+		var direction = _player_target.global_position - global_position
+		direction.z = 0.0
+		var target_angle = Vector2(direction.x, direction.y).angle()
+		rotation.z = target_angle
 		
 		if ammo_component._check_if_can_shoot():
 			_fire_cooldown += delta
@@ -200,8 +216,8 @@ func _shoot_handler():
 		perfect_shot_fired.emit()
 		AudioManager.play_sfx("laser_perfect")
 		_perfect_flash.restart()
-		muzzle_vfx.stop()
-		muzzle_vfx.play("Perfect")
+		Muzzle_VFX.stop()
+		Muzzle_VFX.play("Perfect")
 	# Spam shot 
 	elif _time_since_last_shot < spam_window:
 		_is_spamming = true
@@ -209,14 +225,14 @@ func _shoot_handler():
 		# print("spam shot, count: ", _spam_count)
 		AudioManager.play_sfx("laser_imperfect")
 		_normal_flash.restart()
-		muzzle_vfx.stop()
-		muzzle_vfx.play("Imperfect")
+		Muzzle_VFX.stop()
+		Muzzle_VFX.play("Imperfect")
 	else: # Normal shot
 		# print("normal shot, damage: ", bullet_damage)
 		AudioManager.play_sfx("laser_imperfect")
 		_normal_flash.restart()
-		muzzle_vfx.stop()
-		muzzle_vfx.play("Imperfect")
+		Muzzle_VFX.stop()
+		Muzzle_VFX.play("Imperfect")
 	# resets firing cooldown
 	_fire_cooldown = bullet_emitter.fire_rate
 	bullet_emitter._shoot(damage, bullet_emitter.bullet_scale)

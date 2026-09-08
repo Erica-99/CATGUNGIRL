@@ -5,7 +5,8 @@ extends Node3D
 @onready var torso_p: Node3D = $Visual_MOVE_P/Torso_P
 @onready var legs_p: Node3D = $Visual_MOVE_P/Torso_P/Legs_P
 @onready var gun_aim_p: Node3D = $Visual_MOVE_P/Torso_P/Gun_P/Gun_AIM_P
-@onready var scrub_gun: Node3D = $"../ScrubGun"
+#@onready var scrub_gun: Node3D = $"../ScrubGun"
+@onready var scrub_gun: BaseGun = $"../Pistol"
 #@onready var scrub_gun: Node3D = $Visual_MOVE_P/Torso_P/Gun_P/Gun_AIM_P/ScrubGun
 @onready var gun_sprite: AnimatedSprite3D = $Visual_MOVE_P/Torso_P/Gun_P/Gun_AIM_P/AnimatedSprite3D
 
