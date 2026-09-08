@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cib7lo1lbwb5j"]
+
+[ext_resource type="Script" uid="uid://0ek5b5d4lsxw" path="res://scenes/components/gun/base_gun/base_gun.gd" id="1_5rmqj"]
+[ext_resource type="PackedScene" uid="uid://c726a2exvin2q" path="res://scenes/components/gun/gun_components/AmmoComponent/ammo_component.tscn" id="2_x4efb"]
+[ext_resource type="PackedScene" uid="uid://hrmscnoogh3l" path="res://scenes/components/gun/gun_components/BulletEmitter/bullet_emitter.tscn" id="3_1fr2g"]
+
+[node name="BaseGun" type="Node3D" unique_id=814655304]
+script = ExtResource("1_5rmqj")
+
+[node name="AmmoComponent" parent="." unique_id=761015893 instance=ExtResource("2_x4efb")]
+
+[node name="BulletEmitter" parent="." unique_id=1440563695 instance=ExtResource("3_1fr2g")]

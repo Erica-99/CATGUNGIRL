@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c726a2exvin2q"]
+
+[ext_resource type="Script" uid="uid://dstioesb2pvlv" path="res://scenes/components/gun/gun_components/AmmoComponent/ammo_component.gd" id="1_rx8x2"]
+
+[node name="AmmoComponent" type="Node3D" unique_id=761015893]
+script = ExtResource("1_rx8x2")
+
+[node name="ReloadTimer" type="Timer" parent="." unique_id=991850686]
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

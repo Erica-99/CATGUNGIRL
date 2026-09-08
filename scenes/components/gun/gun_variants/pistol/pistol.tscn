@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://cxxwo2fx6lqr1"]
+
+[ext_resource type="PackedScene" uid="uid://cib7lo1lbwb5j" path="res://scenes/components/gun/base_gun/base_gun.tscn" id="1_1wroa"]
+[ext_resource type="PackedScene" uid="uid://bx3yqkplme1o" path="res://scenes/bullet/bullet.tscn" id="2_bdjbh"]
+[ext_resource type="PackedScene" uid="uid://vty7b6fdl1nx" path="res://scenes/components/gun/gun_components/LaserComponent/laser_component.tscn" id="2_ui2ou"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ui2ou"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.43072295, 0.90990365, 0.9999998, 1)
+emission_energy_multiplier = 2.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_bdjbh"]
+material = SubResource("StandardMaterial3D_ui2ou")
+radius = 0.06
+height = 0.09
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2g73y"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.7794714, 0.40008292, 1, 1)
+emission_energy_multiplier = 3.8
+
+[sub_resource type="SphereMesh" id="SphereMesh_anq2f"]
+material = SubResource("StandardMaterial3D_2g73y")
+radius = 0.07
+height = 0.1
+
+[node name="Pistol" unique_id=814655304 node_paths=PackedStringArray("_normal_flash", "_perfect_flash") instance=ExtResource("1_1wroa")]
+_normal_flash = NodePath("Muzzle/NormalMuzzleFlash")
+_perfect_flash = NodePath("Muzzle/PerfectMuzzleFlash")
+
+[node name="AmmoComponent" parent="." index="0" unique_id=761015893 node_paths=PackedStringArray("gun_link")]
+gun_link = NodePath("..")
+
+[node name="BulletEmitter" parent="." index="1" unique_id=1440563695 node_paths=PackedStringArray("muzzle", "gun_link", "ammo_component")]
+muzzle = NodePath("../Muzzle")
+bullet_scene = ExtResource("2_bdjbh")
+gun_link = NodePath("..")
+ammo_component = NodePath("../AmmoComponent")
+
+[node name="Muzzle" type="Marker3D" parent="." index="2" unique_id=607096182]
+
+[node name="LaserComponent" parent="Muzzle" index="0" unique_id=1046289513 instance=ExtResource("2_ui2ou")]
+
+[node name="NormalMuzzleFlash" type="CPUParticles3D" parent="Muzzle" index="1" unique_id=1716957033]
+emitting = false
+amount = 14
+lifetime = 0.15000000000000002
+one_shot = true
+speed_scale = 1.2
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_bdjbh")
+gravity = Vector3(0, -0.5, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 9.0
+
+[node name="PerfectMuzzleFlash" type="CPUParticles3D" parent="Muzzle" index="2" unique_id=519741719]
+emitting = false
+amount = 16
+lifetime = 0.15000000000000002
+one_shot = true
+speed_scale = 1.2
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_anq2f")
+gravity = Vector3(0, -1, 0)
+initial_velocity_min = 6.0
+initial_velocity_max = 10.0
+color = Color(0.43669105, 0.99999994, 0.96197826, 1)
