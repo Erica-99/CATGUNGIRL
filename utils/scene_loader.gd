@@ -28,10 +28,10 @@ func _load_scene(_scene_path: String) -> void:
 	var new_load_screen = loading_screen.instantiate()
 	add_child(new_load_screen)
 	
-	progress_changed.connect(new_load_screen._on_progress_changed)
+	#progress_changed.connect(new_load_screen._on_progress_changed)
 	load_finished.connect(new_load_screen._on_load_finished)
 	
-	await new_load_screen.loading_screen_ready
+	await new_load_screen.loading_complete
 	
 	start_load()
 

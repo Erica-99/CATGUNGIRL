@@ -2,13 +2,11 @@ extends CanvasLayer
 
 class_name LoadingScreen
 
-signal loading_screen_ready
-
-@export var animation_player: AnimationPlayer
 @onready var progress_bar: ProgressBar = $Panel/HorizontalLayout/VertDisplay/ProgressBar
 @onready var meme_image: TextureRect = $Panel/HorizontalLayout/MemeImage
+@onready var gigi_jumpscare: TextureRect = $Panel/GigiJumpscare
 
-var next_scene: String = ""
+@export var animation_player: AnimationPlayer
 
 # this is awful but i am tired and i will fix later
 const image_1 = preload("res://scenes/ui/menu_screens/loading_screen/meme_images/5_eva.jpg")
@@ -28,9 +26,21 @@ const image_arr: Array = [
 	image_6,
 	image_7,
 ]
+
+# variables toggled during instantiation (set them where this loading_screen.tscn is initialised in another node)
+var next_scene: String = ""
+var run_in_background: bool = false
+var gigi_jumpscare_visible: bool = false
+
+signal loading_complete()
  
 func _ready() -> void:
 	meme_image.texture = image_arr[randi_range(0, len(image_arr) - 1)]
+	gigi_jumpscare.visible = gigi_jumpscare_visible
+	
+	# if run_in_background is active, make canvas not visible (load in background)
+	visible = !run_in_background
+	
 	await animation_player.animation_finished
 	#loading_screen_ready.emit()
 	if next_scene != null:
@@ -49,10 +59,10 @@ func _ready() -> void:
 func _on_load_finished() -> void:
 	var scene = ResourceLoader.load_threaded_get(next_scene)
 	get_tree().change_scene_to_packed(scene)
+	loading_complete.emit()
 	animation_player.play_backwards()
 	await animation_player.animation_finished
 	queue_free()
-
 
 # just watch the below vid for info on this shit working
 # reference: https://www.youtube.com/watch?v=8tVyHgjzPJI

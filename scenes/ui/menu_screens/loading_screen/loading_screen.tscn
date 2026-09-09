@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://7udcn11vk5qc" path="res://scenes/ui/menu_screens/loading_screen/loading_screen.gd" id="1_udkb6"]
 [ext_resource type="Texture2D" uid="uid://bgqiskqyfjwr4" path="res://scenes/ui/menu_screens/loading_screen/meme_images/5_eva.jpg" id="2_n0s30"]
+[ext_resource type="Texture2D" uid="uid://x3tiustsrfly" path="res://scenes/ui/menu_screens/loading_screen/meme_images/peep_the_horrors.png" id="2_s0f50"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jbvo0"]
 bg_color = Color(0, 0, 0, 1)
@@ -56,6 +57,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jbvo0")
+
+[node name="GigiJumpscare" type="TextureRect" parent="Panel" unique_id=1896076071]
+visible = false
+self_modulate = Color(1, 1, 1, 0.15686275)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_s0f50")
 
 [node name="HorizontalLayout" type="HBoxContainer" parent="Panel" unique_id=1066079897]
 layout_mode = 1
