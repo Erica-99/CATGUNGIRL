@@ -4,44 +4,22 @@
 [ext_resource type="Texture2D" uid="uid://bl6hhcuc8law" path="res://art/2d_assets/visual_novel/vn_gigi/Gigi_Scarred.png" id="1_g5nha"]
 [ext_resource type="Resource" uid="uid://b8mbc5kk8symc" path="res://resources/death_screen/default_death_info.tres" id="2_gaqod"]
 [ext_resource type="Script" uid="uid://b0en6f1a27iwi" path="res://scenes/ui/menu_screens/death_screen/death_screen_info.gd" id="2_tqtpg"]
-[ext_resource type="Texture2D" uid="uid://dqgbq3infiupt" path="res://art/2d_assets/visual_novel/vn_gigi/cottage_smile.png" id="4_4o51t"]
-[ext_resource type="Texture2D" uid="uid://cosl0f37hp4vb" path="res://art/2d_assets/visual_novel/vn_gigi/cottage_thinking_cheeky.png" id="5_11r38"]
-[ext_resource type="Texture2D" uid="uid://drca6msjq7nbe" path="res://art/2d_assets/visual_novel/vn_gigi/cottage_aloof.png" id="6_xyb7c"]
-[ext_resource type="Texture2D" uid="uid://5k3jlj4ogjdl" path="res://art/2d_assets/visual_novel/vn_gigi/cottage_flirty.png" id="7_2e7b3"]
 [ext_resource type="Texture2D" uid="uid://d13nke41oilig" path="res://art/2d_assets/visual_novel/vn_gigi/cottage_celebrate.png" id="8_g3a3j"]
 
-[sub_resource type="Resource" id="Resource_r8u3h"]
+[sub_resource type="Resource" id="Resource_gaqod"]
 script = ExtResource("2_tqtpg")
-death_id = &"convict"
-enemy_info = "The Convict be like that some times"
-tip = "See how they attack? doge that. Also, they can kinda fly. Be careful with that"
-background = ExtResource("4_4o51t")
-enemy_image = ExtResource("5_11r38")
-metadata/_custom_type_script = "uid://b0en6f1a27iwi"
-
-[sub_resource type="Resource" id="Resource_qw0yo"]
-script = ExtResource("2_tqtpg")
-death_id = &"scrub"
-enemy_info = "This is a scrub"
-tip = "When it shoots, dodge the bullets"
-background = ExtResource("6_xyb7c")
-enemy_image = ExtResource("6_xyb7c")
-metadata/_custom_type_script = "uid://b0en6f1a27iwi"
-
-[sub_resource type="Resource" id="Resource_lajjf"]
-script = ExtResource("2_tqtpg")
-death_id = &"trunk"
-enemy_info = "Trunk is credit to team"
-tip = "He is very strong"
-background = ExtResource("7_2e7b3")
-enemy_image = ExtResource("7_2e7b3")
-metadata/_custom_type_script = "uid://b0en6f1a27iwi"
-
-[sub_resource type="Resource" id="Resource_e8ww7"]
-script = ExtResource("2_tqtpg")
-death_id = &"brain_spider"
+death_id = &"brain_spider_explosion"
 enemy_info = "They have big....heads?"
-tip = "They explode and shoot. Now u know"
+tip = "They explode. Now u know"
+background = ExtResource("8_g3a3j")
+enemy_image = ExtResource("8_g3a3j")
+metadata/_custom_type_script = "uid://b0en6f1a27iwi"
+
+[sub_resource type="Resource" id="Resource_4o51t"]
+script = ExtResource("2_tqtpg")
+death_id = &"brain_spider_laser"
+enemy_info = "They have big....heads?"
+tip = "They shoot lasers. Now u know"
 background = ExtResource("8_g3a3j")
 enemy_image = ExtResource("8_g3a3j")
 metadata/_custom_type_script = "uid://b0en6f1a27iwi"
@@ -55,7 +33,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_blny2")
 default_death_info = ExtResource("2_gaqod")
-death_infos = Array[ExtResource("2_tqtpg")]([SubResource("Resource_r8u3h"), SubResource("Resource_qw0yo"), SubResource("Resource_lajjf"), SubResource("Resource_e8ww7")])
+death_infos = Array[ExtResource("2_tqtpg")]([SubResource("Resource_gaqod"), SubResource("Resource_4o51t")])
 
 [node name="Background" type="TextureRect" parent="." unique_id=1623824727]
 layout_mode = 1

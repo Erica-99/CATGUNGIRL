@@ -189,12 +189,7 @@ func get_death_screen_id(killing_blow: DamageHealInstance) -> StringName:
 	if killing_blow == null:
 		return &"default"
 	
-	var source_node = get_node_or_null(killing_blow.source)
-	
-	if source_node != null and source_node.has_method("get_death_screen_id"):
-		return source_node.get_death_screen_id()
-	
-	return &"default"
+	return killing_blow.death_screen_id
 
 func _on_insanity_component_interest_rank_changed(new_rank):
 	EventManager.player_interest_rank_changed.emit(new_rank)

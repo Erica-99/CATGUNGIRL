@@ -86,8 +86,10 @@ enum SurfaceType {
 @export var morph_spider_time: float = 0.7
 
 @export_category("Death Screen Info")
-##ID used by death screen to choose the correct information
-@export var death_screen_id: StringName = &"brain_spider"
+##Death screen info used if player is killed by Spider explosion
+@export var explosion_death_screen_id: StringName = &"brain_spider_explosion"
+##Death screen info used if player is killed by Spider laser.
+@export var laser_death_screen_id: StringName = &"brain_spider_laser"
 
 var is_dying: bool = false
 var is_dead: bool = false
@@ -147,6 +149,7 @@ func damage_players_in_explosion_area() -> void:
 		damage_instance.is_heal = false
 		damage_instance.type = Enums.DamageType.EXPLOSIVE
 		damage_instance.source = get_path()
+		damage_instance.death_screen_id = explosion_death_screen_id
 		player_health.take_damage_or_heal(damage_instance)
 
 func apply_soft_collision(delta: float) -> void:
@@ -237,6 +240,7 @@ func fire_laser() -> void:
 	damage_instance.is_heal = false
 	damage_instance.type = Enums.DamageType.NORMAL
 	damage_instance.source = get_path()
+	damage_instance.death_screen_id = laser_death_screen_id
 	var laser_beam = laser_scene.instantiate()
 	get_tree().root.add_child(laser_beam)
 	laser_beam.initialize(locked_laser_direction, damage_instance, team_component, 1.0)
@@ -261,6 +265,3 @@ func show_spider_visual() -> void:
 
 func is_explosion_effect_playing() -> bool:
 	return brain_spider_visuals.is_explosion_playing()
-
-func get_death_screen_id() -> StringName:
-	return death_screen_id

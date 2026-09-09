@@ -94,10 +94,6 @@ var past_object_collider_status: bool = false
 @onready var animation_player: AnimationPlayer = $TrunkMesh/AnimationPlayer
 @onready var chase_range: Area3D = $ChaseRange
 
-@export_category("Death Screen Info")
-##ID used by death screen to choose the correct information
-@export var death_screen_id: StringName = &"trunk"
-
 # recovery time is set within trunk_melee and on armour break - they both override the recovery_time blackboard variable
 # this const just sets the default when having not been overwritten yet
 # less magic numbers = gigi will be happy with u
@@ -253,6 +249,3 @@ func _handle_collision_check():
 
 func _on_outranged_timer_timeout() -> void:
 	state_machine.on_child_transition(state_machine.current_state, "trunkoutranged")
-
-func get_death_screen_id() -> StringName:
-	return death_screen_id
