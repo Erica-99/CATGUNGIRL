@@ -69,6 +69,10 @@ var blackboard : Dictionary
 
 @onready var Convict_Piv = $Visuals
 
+@export_category("Death Screen Info")
+##ID used by death screen to choose the correct information
+@export var death_screen_id: StringName = &"convict"
+
 func _ready() -> void:
 	# Set up Attack
 	damage_instance.amount = attack_damage
@@ -188,3 +192,6 @@ func _get_enemy_manager() -> EnemyManager:
 		current = current.get_parent()
 	
 	return null
+
+func get_death_screen_id() -> StringName:
+	return death_screen_id

@@ -58,6 +58,10 @@ signal facing_changed(scrub: CharacterBody3D)
 
 var blackboard: Dictionary
 
+@export_category("Death Screen Info")
+##ID used by death screen to choose the correct information
+@export var death_screen_id: StringName = &"scrub"
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Blackboard contains the information states will use
@@ -183,3 +187,6 @@ func _return_from_stun():
 		state_machine.on_child_transition(state_machine.current_state, "scrubattack")
 	else:
 		state_machine.on_child_transition(state_machine.current_state, "scrubchase")
+
+func get_death_screen_id() -> StringName:
+	return death_screen_id

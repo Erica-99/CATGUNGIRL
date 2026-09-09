@@ -85,6 +85,10 @@ enum SurfaceType {
 ##Temporary timing delay for spider morph animation
 @export var morph_spider_time: float = 0.7
 
+@export_category("Death Screen Info")
+##ID used by death screen to choose the correct information
+@export var death_screen_id: StringName = &"brain_spider"
+
 var is_dying: bool = false
 var is_dead: bool = false
 var target: CharacterBody3D = null
@@ -257,3 +261,6 @@ func show_spider_visual() -> void:
 
 func is_explosion_effect_playing() -> bool:
 	return brain_spider_visuals.is_explosion_playing()
+
+func get_death_screen_id() -> StringName:
+	return death_screen_id

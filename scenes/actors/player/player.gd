@@ -111,6 +111,7 @@ func _ready() -> void:
 	}
 	
 	movement_state_machine.init(blackboard)
+	health_component.killed.connect(_on_health_component_killed)
 	gun_holder.enemy_hit.connect(_on_gun_enemy_hit)
 	gun_holder.current_gun_charge_progress_changed.connect(_on_gun_charge_progress)
 	gun_holder.current_gun_charge_ended.connect(_on_gun_charge_ended)
@@ -158,7 +159,6 @@ func _process(_delta: float) -> void:
 		debug_damage.stun_time = 0
 		debug_damage.source = ^"."
 		health_component.take_damage_or_heal(debug_damage)
-		_on_insanity_component_insanity_death()
 
 func _physics_process(delta: float) -> void:
 	if _handle_debug_no_clip(delta):
@@ -170,15 +170,31 @@ func _on_health_component_health_initialised(init_current_health, init_max_healt
 func _on_health_component_health_changed(old_health, new_health, damage_or_heal_instance):
 	EventManager.player_health_changed.emit(old_health, new_health, damage_or_heal_instance)
 
+func _on_health_component_killed(killing_blow: DamageHealInstance, _health_before_death: Variant) -> void:
+	go_to_death_screen(killing_blow)
+
 func _on_insanity_component_insanity_gained(amount, buffer):
 	EventManager.player_insanity_gained.emit(amount, buffer)
 
 ## When Insanity reaches max, game over
-func _on_insanity_component_insanity_death():
-	## TODO: Death stuff
+func _on_insanity_component_insanity_death() -> void:
+	go_to_death_screen(null)
+
+func go_to_death_screen(killing_blow: DamageHealInstance) -> void:
 	player_dead.emit()
 	print("PLAYER IS DEAD")
-	SceneLoader._load_scene(get_tree().current_scene.scene_file_path)
+	DeathManager.load_death_screen( get_death_screen_id(killing_blow), get_tree().current_scene.scene_file_path)
+
+func get_death_screen_id(killing_blow: DamageHealInstance) -> StringName:
+	if killing_blow == null:
+		return &"default"
+	
+	var source_node = get_node_or_null(killing_blow.source)
+	
+	if source_node != null and source_node.has_method("get_death_screen_id"):
+		return source_node.get_death_screen_id()
+	
+	return &"default"
 
 func _on_insanity_component_interest_rank_changed(new_rank):
 	EventManager.player_interest_rank_changed.emit(new_rank)
