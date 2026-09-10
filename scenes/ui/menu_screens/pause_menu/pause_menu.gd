@@ -4,12 +4,10 @@ extends CanvasLayer
 @onready var main_panel: PanelContainer = $MenuRoot/CenterContainer/MainPanel
 @onready var resume_button: Button = $MenuRoot/CenterContainer/MainPanel/MarginContainer/VBoxContainer/ResumeButton
 @onready var settings_button: Button = $MenuRoot/CenterContainer/MainPanel/MarginContainer/VBoxContainer/SettingsButton
-@onready var controls_button: Button = $MenuRoot/CenterContainer/MainPanel/MarginContainer/VBoxContainer/ControlsButton
 @onready var restart_button: Button = $MenuRoot/CenterContainer/MainPanel/MarginContainer/VBoxContainer/RestartButton
 @onready var main_menu_button: Button = $MenuRoot/CenterContainer/MainPanel/MarginContainer/VBoxContainer/MainMenuButton
 @onready var quit_button: Button = $MenuRoot/CenterContainer/MainPanel/MarginContainer/VBoxContainer/QuitButton
 @onready var settings_panel: PanelContainer = $MenuRoot/CenterContainer/SettingsPanel
-@onready var controls_panel: PanelContainer = $MenuRoot/CenterContainer/ControlsPanel
 
 var _is_paused: bool = false
 
@@ -18,12 +16,10 @@ func _ready() -> void:
 	menu_root.visible = false
 	resume_button.pressed.connect(_on_resume_pressed)
 	settings_button.pressed.connect(_on_settings_pressed)
-	controls_button.pressed.connect(_on_controls_pressed)
 	restart_button.pressed.connect(_on_restart_pressed)
 	main_menu_button.pressed.connect(_on_main_menu_pressed)
 	quit_button.pressed.connect(_on_quit_pressed)
 	settings_panel.back_pressed.connect(_on_settings_back_pressed)
-	controls_panel.back_pressed.connect(_on_controls_back_pressed)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
@@ -41,7 +37,6 @@ func _toggle_pause() -> void:
 func _show_main_panel() -> void:
 	main_panel.visible = true
 	settings_panel.visible = false
-	controls_panel.visible = false
 
 func _on_resume_pressed() -> void:
 	_toggle_pause()
@@ -51,13 +46,6 @@ func _on_settings_pressed() -> void:
 	settings_panel.visible = true
 
 func _on_settings_back_pressed() -> void:
-	_show_main_panel()
-
-func _on_controls_pressed() -> void:
-	main_panel.visible = false
-	controls_panel.visible = true
-
-func _on_controls_back_pressed() -> void:
 	_show_main_panel()
 
 func _on_restart_pressed() -> void:

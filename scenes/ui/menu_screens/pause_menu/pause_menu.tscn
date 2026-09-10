@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dejv2kp4u4q7j" path="res://scenes/ui/menu_screens/pause_menu/pause_menu.gd" id="1_pause"]
 [ext_resource type="PackedScene" path="res://scenes/ui/menu_screens/settings_panel/settings_panel.tscn" id="2_settings"]
-[ext_resource type="PackedScene" path="res://scenes/ui/menu_screens/controls_panel/controls_panel.tscn" id="3_controls"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 bg_color = Color(0.036221787, 0, 0.020698166, 0.9137255)
@@ -102,20 +101,6 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_button")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
 text = "Settings"
 
-[node name="ControlsButton" type="Button" parent="MenuRoot/CenterContainer/MainPanel/MarginContainer/VBoxContainer" unique_id=1461784502]
-custom_minimum_size = Vector2(260, 56)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.8745098, 0, 0.8745098, 1)
-theme_override_colors/font_pressed_color = Color(0, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(0.5955917, 0.00025990605, 0.5955875, 1)
-theme_override_font_sizes/font_size = 28
-theme_override_styles/normal = SubResource("StyleBoxEmpty_button")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_button")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_button")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
-text = "Controls"
-
 [node name="RestartButton" type="Button" parent="MenuRoot/CenterContainer/MainPanel/MarginContainer/VBoxContainer" unique_id=1717820687]
 custom_minimum_size = Vector2(260, 56)
 layout_mode = 2
@@ -159,7 +144,4 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
 text = "Quit Game"
 
 [node name="SettingsPanel" parent="MenuRoot/CenterContainer" unique_id=1935283488 instance=ExtResource("2_settings")]
-visible = false
-
-[node name="ControlsPanel" parent="MenuRoot/CenterContainer" unique_id=1935283489 instance=ExtResource("3_controls")]
 visible = false

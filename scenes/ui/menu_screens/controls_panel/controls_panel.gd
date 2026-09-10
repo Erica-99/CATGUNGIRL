@@ -1,4 +1,4 @@
-extends PanelContainer
+extends MarginContainer
 
 signal back_pressed
 
@@ -6,25 +6,25 @@ const GUN_NAMES := ["Pistol", "Shotgun", "Sniper"]
 
 @onready var _rows: Dictionary = {
 	"Pistol": {
-		"slider": $MarginContainer/VBoxContainer/PistolAimRow/SliderRow/Slider,
-		"spinbox": $MarginContainer/VBoxContainer/PistolAimRow/SliderRow/SpinBox,
-		"reset_button": $MarginContainer/VBoxContainer/PistolAimRow/HeaderRow/ResetButton,
-		"default_label": $MarginContainer/VBoxContainer/PistolAimRow/DefaultLabel,
+		"slider": $VBoxContainer/PistolAimRow/SliderRow/Slider,
+		"spinbox": $VBoxContainer/PistolAimRow/SliderRow/SpinBox,
+		"reset_button": $VBoxContainer/PistolAimRow/HeaderRow/ResetButton,
+		"default_label": $VBoxContainer/PistolAimRow/DefaultLabel,
 	},
 	"Shotgun": {
-		"slider": $MarginContainer/VBoxContainer/ShotgunAimRow/SliderRow/Slider,
-		"spinbox": $MarginContainer/VBoxContainer/ShotgunAimRow/SliderRow/SpinBox,
-		"reset_button": $MarginContainer/VBoxContainer/ShotgunAimRow/HeaderRow/ResetButton,
-		"default_label": $MarginContainer/VBoxContainer/ShotgunAimRow/DefaultLabel,
+		"slider": $VBoxContainer/ShotgunAimRow/SliderRow/Slider,
+		"spinbox": $VBoxContainer/ShotgunAimRow/SliderRow/SpinBox,
+		"reset_button": $VBoxContainer/ShotgunAimRow/HeaderRow/ResetButton,
+		"default_label": $VBoxContainer/ShotgunAimRow/DefaultLabel,
 	},
 	"Sniper": {
-		"slider": $MarginContainer/VBoxContainer/SniperAimRow/SliderRow/Slider,
-		"spinbox": $MarginContainer/VBoxContainer/SniperAimRow/SliderRow/SpinBox,
-		"reset_button": $MarginContainer/VBoxContainer/SniperAimRow/HeaderRow/ResetButton,
-		"default_label": $MarginContainer/VBoxContainer/SniperAimRow/DefaultLabel,
+		"slider": $VBoxContainer/SniperAimRow/SliderRow/Slider,
+		"spinbox": $VBoxContainer/SniperAimRow/SliderRow/SpinBox,
+		"reset_button": $VBoxContainer/SniperAimRow/HeaderRow/ResetButton,
+		"default_label": $VBoxContainer/SniperAimRow/DefaultLabel,
 	},
 }
-@onready var back_button: Button = $MarginContainer/VBoxContainer/BackButton
+@onready var back_button: Button = $VBoxContainer/BackButton
 
 func _ready() -> void:
 	for gun_name in GUN_NAMES:
