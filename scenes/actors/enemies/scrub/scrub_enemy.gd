@@ -5,6 +5,7 @@ extends CharacterBody3D
 @onready var att_range_area_3d: Area3D = $AttRangeArea3D
 @onready var flee_area_3d: Area3D = $FleeArea3D
 @onready var death_detector: Area3D = $DeathDetector
+@onready var death_explosion: AnimatedSprite3D = $DeathExplosion
 
 @export_category("Node References")
 @export var animator: AnimationPlayer
@@ -63,6 +64,7 @@ signal facing_changed(scrub: CharacterBody3D)
 # death detector variables
 var death_speed = 3                        #randf_range(10.0, 70.0)
 var launch_speed = Vector3.ZERO
+var explosion_playing: bool = false
 
 var blackboard: Dictionary
 
@@ -107,6 +109,8 @@ func _physics_process(delta: float) -> void:
 	if is_dead:
 		await get_tree().create_timer(0.5).timeout
 		velocity += launch_speed
+		if explosion_playing:
+			velocity = Vector3.ZERO
 		move_and_slide()
 		return
 	
@@ -169,7 +173,7 @@ func _physics_process(delta: float) -> void:
 func _on_health_component_killed(killing_blow: DamageHealInstance, health_before_death: Variant) -> void:
 	# Possibly implement knockback affects here
 	is_dead = true
-	death_detector.monitoring = true
+	#death_detector.monitoring = true
 	print("Death Detector Monitoring: ", death_detector.monitoring)
 	stinger_caller.play_stinger("scrub_death_" + id, true)
 	state_machine.on_child_transition(state_machine.current_state, "scrubdeath")
@@ -231,5 +235,10 @@ func get_id() -> String:
 
 
 func _on_death_detector_body_entered(body: Node3D) -> void:
+	print(is_dead)
 	if is_dead:
+		death_explosion.visible = true
+		death_explosion.play("explode")
+		explosion_playing = true
+		await death_explosion.animation_finished
 		queue_free()

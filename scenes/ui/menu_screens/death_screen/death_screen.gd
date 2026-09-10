@@ -108,7 +108,7 @@ func load_scene(scene_path: String) -> void:
 		print("Death screen tried to load an empty scene path.")
 		return
 
-	var loading_screen: LoadingScreen = loading_screen_scene.instantiate()
+	var loading_screen = loading_screen_scene.instantiate()
 	loading_screen.next_scene = scene_path
 	loading_screen.run_in_background = false
 	loading_screen.gigi_jumpscare_visible = false
