@@ -15,7 +15,8 @@ const HITBOX_SCENE = preload("res://scenes/components/hitbox_component/hitbox_co
 
 @export_group("Aim")
 @export var aim_speed: float = 8.0		# gun rotation speed towards mouse (lower = more delay)
-@export var controller_aim_speed = 3.5
+#@export var controller_aim_speed = 3.5 
+# controller/mouse aim speed is now unified
 
 @export_group("Ammo")
 @export var ammo_max: int = 10
@@ -99,7 +100,8 @@ var active: bool = false:
 			ability.active = active
 
 var _fire_cooldown: float = 0.0
-var _recoil_offset: float = 0.0 
+var _aim_angle: float = 0.0
+var _recoil_offset: float = 0.0
 var _is_charging: bool = false
 var _charge_timer: float = 0.0		# how long (seconds) player has been charging
 var _wobble_time: float = 0.0
@@ -202,21 +204,16 @@ func _update_aim(mouse_world: Vector3, input_state: Dictionary, delta: float) ->
 		wobble = sin(_wobble_time * wobble_speed) * wobble_amount
 	else:
 		_wobble_time = 0.0
-	
-	#Set the current aim speed depending on user's input
-	var current_aim_speed
-	if using_controller:
-		current_aim_speed = controller_aim_speed
-	else:
-		current_aim_speed = aim_speed
-	
-	if _is_spamming and not _is_aim_settled():
-		current_aim_speed = aim_speed * spam_aim_multiplier
 		
-	rotation.z = lerp_angle(rotation.z, target_angle + _recoil_offset + wobble, current_aim_speed * delta)
+	var current_aim_speed = SettingsManager.get_aim_speed(gun_name)
+	if _is_spamming and not _is_aim_settled():
+		current_aim_speed *= spam_aim_multiplier
+		
+	_aim_angle = lerp_angle(_aim_angle, target_angle, current_aim_speed * delta)
 	_recoil_offset = lerpf(_recoil_offset, 0.0, recoil_recovery * delta)
 	if abs(_recoil_offset) < 0.001:
 		_recoil_offset = 0.0
+	rotation.z = _aim_angle + _recoil_offset + wobble
 	scale = Vector3(1.0, 1.0, 1.0)
 	## print to check recoil recovery
 	# if _is_aim_settled() and _time_since_last_shot < perfect_shot_max_interval:
@@ -258,6 +255,7 @@ func _shoot_handler():
 		_is_spamming = false
 		_spam_count = 0
 		print("Perfect Shot fired, damage: ", bullet_damage * perfect_damage_multiplier)
+		_aim_angle = _current_target_angle
 		rotation.z = _current_target_angle
 		damage = bullet_damage * perfect_damage_multiplier
 		perfect_shot_fired.emit()

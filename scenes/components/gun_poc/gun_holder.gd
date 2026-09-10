@@ -82,6 +82,7 @@ func _switch_gun(slot_num: int):
 	_deactivate_gun()
 	current_gun = get_child(current_gun_index)
 	current_gun.rotation.z = rotation_save
+	current_gun._aim_angle = rotation_save 
 	_activate_gun()
 	print("GUN SWITCHED TO: ")
 	print(current_gun)
