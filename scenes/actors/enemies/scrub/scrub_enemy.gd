@@ -58,6 +58,12 @@ signal facing_changed(scrub: CharacterBody3D)
 
 var blackboard: Dictionary
 
+
+## Variables for death zoomies
+@onready var death_detector = $DeathDetector
+var death_speed = 3                        #randf_range(10.0, 70.0)
+var launch_speed = Vector3.ZERO
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Blackboard contains the information states will use
@@ -87,6 +93,9 @@ func _ready() -> void:
 	# Initialise state machine with Scrub information
 	state_machine.init(blackboard)
 	
+	death_detector.body_entered.connect(_on_death_detector_body_entered)
+	death_detector.collision_layer = 1
+	death_detector.collision_mask = 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -94,6 +103,13 @@ func _process(delta):
 		can_shoot.target_position = can_shoot.to_local(get_tree().get_first_node_in_group("player").global_position)
 
 func _physics_process(delta: float) -> void:
+	if is_dead:
+		await get_tree().create_timer(0.5).timeout
+		velocity += launch_speed
+		print(velocity)
+		move_and_slide()
+		return
+	
 	var added_velo = 0
 	if !too_far_floor_detection.is_colliding():
 		added_velo += -1
@@ -147,13 +163,17 @@ func _physics_process(delta: float) -> void:
 	#direction = sign(velocity.x)
 	#if direction != facing && direction != 0.0:
 		#facing_changed.emit(direction)
+	
 
 
 # health comp killed taken from convict code
 func _on_health_component_killed(killing_blow: DamageHealInstance, health_before_death: Variant) -> void:
 	# Possibly implement knockback affects here
 	is_dead = true
+	death_detector.monitoring = true
+	print("Death Detector Monitoring: ", death_detector.monitoring)
 	state_machine.on_child_transition(state_machine.current_state, "scrubdeath")
+	_scrub_death()
 
 func _on_health_component_health_changed(old_health: float, new_health: float, damage_or_heal_instance: DamageHealInstance) -> void:
 	if !detected_player && !is_dead:
@@ -183,3 +203,13 @@ func _return_from_stun():
 		state_machine.on_child_transition(state_machine.current_state, "scrubattack")
 	else:
 		state_machine.on_child_transition(state_machine.current_state, "scrubchase")
+
+func _scrub_death():
+	rotation.z = deg_to_rad(randi_range(0, 360))
+	var launch_direction = transform.basis.y
+	launch_speed = launch_direction.normalized() * death_speed
+
+
+func _on_death_detector_body_entered(body: Node3D) -> void:
+	if is_dead:
+		queue_free()
