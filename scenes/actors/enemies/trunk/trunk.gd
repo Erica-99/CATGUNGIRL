@@ -153,7 +153,8 @@ func _ready() -> void:
 		"vert_threshold": vert_threshold,
 		"recovery_time": BASE_RECOVERY_TIME,
 		"target": get_tree().get_first_node_in_group("player") as CharacterBody3D,
-		"missile_launcher": missile_launcher
+		"missile_launcher": missile_launcher,
+		"stinger_call": stinger_caller,
 	}
 	# Change initial state based on Inspector values
 	if start_aggroed:
