@@ -4,6 +4,7 @@ extends CharacterBody3D
 @export var animator: AnimationPlayer
 @export var animation_manager: AnimationPlayer
 @export var state_machine: StateMachine
+@export var missile_launcher: MissileLauncher
 
 @export_category("Starting State Variables")
 @export var start_aggroed: bool
@@ -151,6 +152,7 @@ func _ready() -> void:
 		"vert_threshold": vert_threshold,
 		"recovery_time": BASE_RECOVERY_TIME,
 		"target": get_tree().get_first_node_in_group("player") as CharacterBody3D,
+		"missile_launcher": missile_launcher
 	}
 	# Change initial state based on Inspector values
 	if start_aggroed:
@@ -185,7 +187,6 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 	if new_health <= (health_comp.starting_health / 2) and change_sprite_on_half_hp and !under_half_hp:
 		under_half_hp = true
 		
-		torso_sprite.sprite_frames = InjuredFrames
 		#print("yo im under half hp rn type shit")
 
 func _reset_step_handler():

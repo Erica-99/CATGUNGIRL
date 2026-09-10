@@ -23,6 +23,17 @@ const LEEWAY_OF_TYPEWRITER = 0.8
 func _ready() -> void:
 	EventManager.connect("activate_popup", _on_activate_popup)
 
+func _unhandled_input(event: InputEvent) -> void:
+	if !requires_option_selection:
+		return
+	else:
+		if event.is_action_pressed("ui_left"):
+			_option_selected(popup_dialogue["options"][0])
+			get_viewport().set_input_as_handled()
+		elif event.is_action_pressed("ui_right"):
+			_option_selected(popup_dialogue["options"][1])
+			get_viewport().set_input_as_handled()
+
 # get values from JSON file via DialogueProcessor
 func _popup_start(popup_id: int):
 	visible = true
@@ -54,6 +65,7 @@ func _display():
 			var button = Button.new()
 			# set button values
 			button.text = option["option"]
+			button.focus_mode = Control.FOCUS_NONE
 			button.custom_minimum_size = Vector2(280, 100.0)
 			button.autowrap_mode = TextServer.AUTOWRAP_WORD
 			button.size_flags_vertical = Control.SIZE_EXPAND

@@ -1,6 +1,10 @@
 extends Control
 
+const LOADING_SCREEN_REFERENCE = preload("res://scenes/ui/menu_screens/loading_screen/loading_screen.tscn")
 
 func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file(Globals.LEVEL_PATHS["Stage1"])
-	pass # Replace with function body.
+	var loading_screen = LOADING_SCREEN_REFERENCE.instantiate()
+	loading_screen.next_scene = Globals.LEVEL_PATHS["Stage1"]
+	add_child(loading_screen)
+	#get_tree().change_scene_to_file(Globals.LEVEL_PATHS["Stage1"])
+	#pass # Replace with function body.
