@@ -1,6 +1,19 @@
 [gd_scene format=3 uid="uid://bogn5483ajt7k"]
 
 [ext_resource type="ArrayMesh" uid="uid://kt1vu5ev8ggy" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/6_Laboratory/LabPetriDish.obj" id="1_cnscb"]
+[ext_resource type="Texture2D" uid="uid://betuao1cctnyl" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/LabEquipment/LabEquipmentAll_DefaultMaterial_BaseColor.png" id="2_wtp64"]
+[ext_resource type="Texture2D" uid="uid://dytxvq7y713ym" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/LabEquipment/LabEquipmentAll_DefaultMaterial_Metallic.png" id="3_5g78b"]
+[ext_resource type="Texture2D" uid="uid://biedghgl0kixy" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/LabEquipment/LabEquipmentAll_DefaultMaterial_Normal.png" id="4_qrjro"]
+[ext_resource type="Texture2D" uid="uid://c4ehp46qfkj6u" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/LabEquipment/LabEquipmentAll_DefaultMaterial_Roughness.png" id="5_nkkv5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wtp64"]
+transparency = 1
+albedo_texture = ExtResource("2_wtp64")
+metallic = 1.0
+metallic_texture = ExtResource("3_5g78b")
+roughness_texture = ExtResource("5_nkkv5")
+normal_enabled = true
+normal_texture = ExtResource("4_qrjro")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bcfw6"]
 points = PackedVector3Array(0, 0, -0.036269, -0.025646757, 0, -0.025646757, 0, 0.008707148, -0.036269, 0.025639657, 0, -0.025646757, -0.025646757, 0.008707148, -0.025646757, -0.036269, 0, 0, 0.025639657, 0.008707148, -0.025646757, 0.036269, 0, 0, -0.036269, 0.008707148, 0, -0.025646757, 0, 0.025639657, 0.036269, 0.008707148, 0, 0.025639657, 0, 0.025639657, -0.025646757, 0.008707148, 0.025639657, 0, 0, 0.036269, 0.025639657, 0.008707148, 0.025639657, 0, 0.008707148, 0.036269)
@@ -10,6 +23,7 @@ points = PackedVector3Array(0, 0, -0.036269, -0.025646757, 0, -0.025646757, 0, 0
 [node name="LabPetriDish_Mesh" type="MeshInstance3D" parent="." unique_id=1852222597]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 mesh = ExtResource("1_cnscb")
+surface_material_override/0 = SubResource("StandardMaterial3D_wtp64")
 
 [node name="LabPetriDish_Collision" type="CollisionShape3D" parent="." unique_id=1502356473]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)

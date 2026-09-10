@@ -1,6 +1,18 @@
 [gd_scene format=3 uid="uid://b3krra1e3n0g8"]
 
 [ext_resource type="ArrayMesh" uid="uid://b61cwqumyv3kc" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/6_Laboratory/Trolley.obj" id="1_ydntu"]
+[ext_resource type="Texture2D" uid="uid://disyjc7aemus0" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/Trolley/Trolley_DefaultMaterial_BaseColor.png" id="2_aklmp"]
+[ext_resource type="Texture2D" uid="uid://i1a3451wng84" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/Trolley/Trolley_DefaultMaterial_Metallic.png" id="3_ug5uo"]
+[ext_resource type="Texture2D" uid="uid://c3c2kqbdgxqsx" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/Trolley/Trolley_DefaultMaterial_Normal.png" id="4_bfc0j"]
+[ext_resource type="Texture2D" uid="uid://dmbbiu2bku5q3" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/Trolley/Trolley_DefaultMaterial_Roughness.png" id="5_8vgrf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vep7x"]
+albedo_texture = ExtResource("2_aklmp")
+metallic = 1.0
+metallic_texture = ExtResource("3_ug5uo")
+roughness_texture = ExtResource("5_8vgrf")
+normal_enabled = true
+normal_texture = ExtResource("4_bfc0j")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_v14ud"]
 points = PackedVector3Array(-0.606811, 0.981292, 0.34019983, -0.606811, 0.981292, -0.34027198, -0.606811, 0.92129934, 0.34019983, -0.538727, 0.124734685, 0.353343, 0.48626047, 0.124734685, 0.353343, 0.5029252, 0.7670323, 0.34019983, -0.538727, 0.124734685, -0.353346, -0.606811, 0.92129934, -0.34027198, 0.5029252, 0.7670323, -0.34027198, 0.48626047, 0.124734685, -0.353346, -0.5700829, 0.14129768, 0.34019983, -0.5225009, 0.06310492, 0.353343, 0.49196154, 0.06310492, 0.353343, 0.513231, 0.04644562, 0.34019983, -0.5225009, 0.06310492, -0.353346, -0.5700829, 0.14129768, -0.34027198, 0.513231, 0.04644562, -0.34027198, 0.49196154, 0.06310492, -0.353346, -0.53346443, 0.0054233125, 0.34019983, -0.49520147, -0.002473, 0.34019983, 0.4654296, -0.002473, 0.34019983, 0.5029252, 0.0054233125, 0.34019983, -0.49520147, -0.002473, -0.34027198, -0.53346443, 0.0054233125, -0.34027198, 0.5029252, 0.0054233125, -0.34027198, 0.4654296, -0.002473, -0.34027198)
@@ -10,6 +22,10 @@ points = PackedVector3Array(-0.606811, 0.981292, 0.34019983, -0.606811, 0.981292
 [node name="Trolley_Mesh" type="MeshInstance3D" parent="." unique_id=497098479]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 mesh = ExtResource("1_ydntu")
+surface_material_override/0 = SubResource("StandardMaterial3D_vep7x")
+surface_material_override/1 = SubResource("StandardMaterial3D_vep7x")
+surface_material_override/2 = SubResource("StandardMaterial3D_vep7x")
+surface_material_override/3 = SubResource("StandardMaterial3D_vep7x")
 
 [node name="Trolley_Collision" type="CollisionShape3D" parent="." unique_id=989582623]
 transform = Transform3D(-1.09278474e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278474e-07, 0, 0, 0)

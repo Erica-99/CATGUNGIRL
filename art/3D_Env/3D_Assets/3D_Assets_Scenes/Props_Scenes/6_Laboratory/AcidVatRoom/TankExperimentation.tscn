@@ -8,6 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://bbamy4fhm0hut" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/TankExperimentation/TankExperimentation_DefaultMaterial_Metallic.png" id="4_c81ou"]
 [ext_resource type="Texture2D" uid="uid://ldku1ydkp07g" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/TankExperimentation/TankExperimentation_DefaultMaterial_Normal.png" id="5_y4bh2"]
 [ext_resource type="Texture2D" uid="uid://0kthvrk45dvd" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/TankExperimentation/TankExperimentation_DefaultMaterial_Roughness.png" id="6_tl044"]
+[ext_resource type="Texture2D" uid="uid://dg65idgrmqchc" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/TankChain/TankChain_DefaultMaterial_BaseColor.png" id="8_qui4d"]
+[ext_resource type="Texture2D" uid="uid://i55044wb2otc" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/TankHolder/TankHolder_DefaultMaterial_BaseColor.png" id="9_mx273"]
+[ext_resource type="Texture2D" uid="uid://bfsnavynmroe6" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/TankChain/TankChain_DefaultMaterial_Metallic.png" id="9_xd373"]
+[ext_resource type="Texture2D" uid="uid://dkegj88wfefn5" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/TankChain/TankChain_DefaultMaterial_Normal.png" id="10_5aynl"]
+[ext_resource type="Texture2D" uid="uid://nr1e4fkndk4u" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/TankHolder/TankHolder_DefaultMaterial_Metallic.png" id="10_gurlg"]
+[ext_resource type="Texture2D" uid="uid://cbjkbo7bja0pb" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/TankHolder/TankHolder_DefaultMaterial_Normal.png" id="11_03gwb"]
+[ext_resource type="Texture2D" uid="uid://dqlv2mbyg2alk" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/TankChain/TankChain_DefaultMaterial_Roughness.png" id="11_18kqt"]
+[ext_resource type="Texture2D" uid="uid://y3s7gaildt7w" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/TankHolder/TankHolder_DefaultMaterial_Roughness.png" id="12_maqhr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8in00"]
 albedo_texture = ExtResource("2_m8p7t")
@@ -22,6 +30,22 @@ normal_texture = ExtResource("5_y4bh2")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t4xth"]
 size = Vector3(3.720226, 5.8858595, 3.756565)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6rawi"]
+albedo_texture = ExtResource("8_qui4d")
+metallic = 1.0
+metallic_texture = ExtResource("9_xd373")
+roughness_texture = ExtResource("11_18kqt")
+normal_enabled = true
+normal_texture = ExtResource("10_5aynl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qui4d"]
+albedo_texture = ExtResource("9_mx273")
+metallic = 1.0
+metallic_texture = ExtResource("10_gurlg")
+roughness_texture = ExtResource("12_maqhr")
+normal_enabled = true
+normal_texture = ExtResource("11_03gwb")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_t4xth"]
 height = 0.66355324
@@ -51,17 +75,19 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 25.63414, 0.036339045)
 visible = false
 shape = SubResource("BoxShape3D_t4xth")
 
-[node name="TankChain" type="StaticBody3D" parent="." unique_id=1763584358]
+[node name="TankChain" type="Node3D" parent="." unique_id=188653155]
 
 [node name="TankChain_Mesh" type="MeshInstance3D" parent="TankChain" unique_id=936410133]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -3, 0)
 mesh = ExtResource("1_t4xth")
+surface_material_override/0 = SubResource("StandardMaterial3D_6rawi")
 
 [node name="TankHolder" type="StaticBody3D" parent="." unique_id=663460733]
 
 [node name="TankHolder_Mesh" type="MeshInstance3D" parent="TankHolder" unique_id=1282939474]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("3_m8p7t")
+surface_material_override/0 = SubResource("StandardMaterial3D_qui4d")
 
 [node name="TankHolder_Collision" type="CollisionShape3D" parent="TankHolder" unique_id=83641654]
 transform = Transform3D(2, 0, 0, 0, 0.9101052, 0, 0, 0, 2, 0, 31.809975, 0)
