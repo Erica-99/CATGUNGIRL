@@ -1413,6 +1413,11 @@ size = Vector3(8.5, 5, 1)
 radius = 2.1603687
 
 [node name="Scrub" type="CharacterBody3D" unique_id=1090872008 node_paths=PackedStringArray("animator", "state_machine", "stinger_caller", "start_idle", "start_patrol", "start_aggro", "gun_component")]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t6mem"]
+radius = 2.770996
+height = 5.541992
+
+[node name="Scrub" type="CharacterBody3D" unique_id=1090872008 node_paths=PackedStringArray("animator", "state_machine", "start_idle", "start_patrol", "start_aggro", "gun_component")]
 collision_layer = 4
 collision_mask = 129
 script = ExtResource("1_2i5hx")
@@ -1648,6 +1653,15 @@ shape = SubResource("SphereShape3D_uh1gn")
 debug_color = Color(0, 0.61960787, 0.5686275, 0.41960785)
 
 [node name="StingerComponent" parent="." unique_id=392420070 instance=ExtResource("32_xxogl")]
+
+[node name="DeathDetector" type="Area3D" parent="." unique_id=1263628694]
+collision_layer = 0
+collision_mask = 15
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathDetector" unique_id=732217122]
+shape = SubResource("CapsuleShape3D_t6mem")
+debug_color = Color(0.9529412, 0, 0, 0.41960785)
 
 [connection signal="facing_changed" from="." to="Scrub_Mesh" method="_on_scrub_facing_changed"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
