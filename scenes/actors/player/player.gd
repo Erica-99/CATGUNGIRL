@@ -187,7 +187,6 @@ func go_to_death_screen(killing_blow: DamageHealInstance) -> void:
 	
 	is_dead = true
 	velocity = Vector3.ZERO
-	movement_state_machine.process_mode = Node.PROCESS_MODE_DISABLED
 	player_dead.emit()
 	print("PLAYER IS DEAD")
 	DeathManager.load_death_screen(get_death_screen_id(killing_blow), get_tree().current_scene.scene_file_path)
