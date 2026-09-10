@@ -14,6 +14,9 @@ extends Area3D
 @export var break_sources: Array[String]
 @export var head_multiplier_on_break: float = 1.0
 
+@export_category("Other")
+@export var stinger_caller: StingerComponent
+
 signal break_shield()
 
 func _ready() -> void:
@@ -68,6 +71,7 @@ func _on_break_shield() -> void:
 # set variables for break
 # disconnected from _on_break_shield() so it can be ran without sending trunk to trunkstun state
 func _break_shield():
+	stinger_caller.play_stinger("trunk_break")
 	collision_shape_3d.disabled = true
 	shader_shield.visible = false
 	head_hurtbox.damage_multiplier = head_multiplier_on_break

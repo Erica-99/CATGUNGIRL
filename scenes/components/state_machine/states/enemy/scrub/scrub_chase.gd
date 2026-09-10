@@ -16,6 +16,9 @@ var target: CharacterBody3D
 var chase_speed: float
 var chase_acceleration: float
 
+var stinger_call: StingerComponent
+var id: String
+
 func init(blackboard_dict : Dictionary) -> void:
 	super(blackboard_dict)
 	actor = blackboard["actor"]
@@ -23,9 +26,14 @@ func init(blackboard_dict : Dictionary) -> void:
 	target = blackboard["target"]
 	chase_speed = blackboard["chase_speed"]
 	chase_acceleration = blackboard["chase_acceleration"]
+	stinger_call = blackboard["stinger_call"]
+	id = blackboard["id"]
 
 func enter() -> void:
-	pass
+	var hostile_sting: int = randi_range(0, 3)
+	if hostile_sting == 0:
+		stinger_call.play_stinger("scrub_hostile_" + id)
+
 
 func exit() -> void:
 	pass

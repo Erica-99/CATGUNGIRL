@@ -23,6 +23,7 @@
 [ext_resource type="Shape3D" uid="uid://cxemkg2bdxscg" path="res://resources/hitboxes/enemies/trunk/trunk_melee_hb.tres" id="14_31nnk"]
 [ext_resource type="Script" uid="uid://c247lxsaigxo8" path="res://scenes/components/state_machine/states/enemy/trunk/trunk_stun.gd" id="18_qrlkp"]
 [ext_resource type="Script" uid="uid://c76qn4ockcqyn" path="res://scenes/actors/enemies/trunk/trunk_armour.gd" id="21_qrlkp"]
+[ext_resource type="PackedScene" uid="uid://1cp7l8jl2mma" path="res://scenes/components/stinger_component/stinger_component.tscn" id="24_ogs6v"]
 
 [sub_resource type="Animation" id="Animation_yqeo7"]
 resource_name = "Death"
@@ -2907,7 +2908,7 @@ material = SubResource("StandardMaterial3D_qrlkp")
 radius = 5.0
 height = 10.0
 
-[node name="Trunk" type="CharacterBody3D" unique_id=400593386 node_paths=PackedStringArray("animator", "animation_manager", "state_machine", "missile_launcher", "start_idle", "start_patrol", "start_aggro", "melee_hitbox")]
+[node name="Trunk" type="CharacterBody3D" unique_id=400593386 node_paths=PackedStringArray("animator", "animation_manager", "state_machine", "missile_launcher", "stinger_caller", "start_idle", "start_patrol", "start_aggro", "melee_hitbox")]
 collision_layer = 4
 collision_mask = 129
 script = ExtResource("1_usk1l")
@@ -2915,6 +2916,7 @@ animator = NodePath("TrunkMesh/AnimationPlayer")
 animation_manager = NodePath("TrunkMesh/AnimationPlayer")
 state_machine = NodePath("StateMachine")
 missile_launcher = NodePath("TrunkMesh/Torso/Blaster_P/BlasterSprite/MissileLauncher")
+stinger_caller = NodePath("StingerComponent")
 start_idle = NodePath("StateMachine/TrunkIdle")
 start_patrol = NodePath("StateMachine/TrunkPatrol")
 start_aggro = NodePath("StateMachine/TrunkChase")
@@ -3082,12 +3084,13 @@ one_shot = true
 
 [node name="OutrangedTimer" type="Timer" parent="." unique_id=309027732]
 
-[node name="TrunkArmour" type="Area3D" parent="." unique_id=1118592428 node_paths=PackedStringArray("team_component")]
+[node name="TrunkArmour" type="Area3D" parent="." unique_id=1118592428 node_paths=PackedStringArray("team_component", "stinger_caller")]
 collision_layer = 9
 collision_mask = 16
 script = ExtResource("21_qrlkp")
 team_component = NodePath("../TeamComponent")
 break_sources = Array[String](["BeamComponent", "AirblastComponent"])
+stinger_caller = NodePath("../StingerComponent")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TrunkArmour" unique_id=1965770979]
 shape = SubResource("SphereShape3D_aq2d6")
@@ -3095,6 +3098,8 @@ shape = SubResource("SphereShape3D_aq2d6")
 [node name="ShaderShield" type="MeshInstance3D" parent="TrunkArmour" unique_id=1962350623]
 visible = false
 mesh = SubResource("SphereMesh_688n6")
+
+[node name="StingerComponent" parent="." unique_id=392420070 instance=ExtResource("24_ogs6v")]
 
 [connection signal="cant_step" from="." to="TrunkMesh" method="_on_trunk_cant_step"]
 [connection signal="facing_changed" from="." to="TrunkMesh" method="_on_trunk_facing_changed"]
