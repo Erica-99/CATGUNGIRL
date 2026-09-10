@@ -1,6 +1,18 @@
 [gd_scene format=3 uid="uid://dc66mdtqwfbgf"]
 
 [ext_resource type="ArrayMesh" uid="uid://mrdldhrsf48d" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/6_Laboratory/LabFridge.obj" id="1_ge5dc"]
+[ext_resource type="Texture2D" uid="uid://cofuq0jx5rnvn" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/LabFridge/LabFridge_DefaultMaterial_BaseColor.png" id="2_r62sk"]
+[ext_resource type="Texture2D" uid="uid://bxtaqpoc0f0qk" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/LabFridge/LabFridge_DefaultMaterial_Metallic.png" id="3_xuhqa"]
+[ext_resource type="Texture2D" uid="uid://d3yqbhsj25tsm" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/LabFridge/LabFridge_DefaultMaterial_Normal.png" id="4_an224"]
+[ext_resource type="Texture2D" uid="uid://b7skibwkex1c" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/LabFridge/LabFridge_DefaultMaterial_Roughness.png" id="5_05d07"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c21yl"]
+albedo_texture = ExtResource("2_r62sk")
+metallic = 1.0
+metallic_texture = ExtResource("3_xuhqa")
+roughness_texture = ExtResource("5_05d07")
+normal_enabled = true
+normal_texture = ExtResource("4_an224")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ge5dc"]
 points = PackedVector3Array(-0.329423, 0.5392688, -0.27368724, -0.329423, 0.5392688, -0.23433557, -0.329423, 0.99052566, -0.27368724, -0.27366418, 0.029979445, -0.3, -0.3000341, 0.056226507, -0.27368724, -0.329423, 0.99064606, -0.23433557, -0.3000341, 0.056226507, 0.27365345, -0.3001573, 0.21900646, 0.27359474, -0.3000341, 1.2036326, -0.27368724, -0.27366418, 1.23, -0.3, 0.29994345, 0.029979445, -0.3, -0.26232755, 0, -0.290074, -0.3000957, 0.9916093, 0.27359474, -0.3000341, 1.2036326, 0.27365345, -0.3001573, 0.24296594, 0.27359474, -0.26232755, 0, 0.29021645, -0.27366418, 0.029979445, 0.29996622, -0.27366418, 1.23, 0.29996622, 0.29994345, 1.23, -0.3, 0.29994345, 0.029979445, 0.29996622, 0.28922296, 0, -0.290074, 0.28922296, 0, 0.29021645, -0.27354094, 0.21840447, 0.300025, 0.29994345, 1.23, 0.29996622, -0.27354094, 0.24236394, 0.300025)
@@ -10,7 +22,9 @@ points = PackedVector3Array(-0.329423, 0.5392688, -0.27368724, -0.329423, 0.5392
 [node name="LabFridge_Mesh" type="MeshInstance3D" parent="." unique_id=1982496391]
 transform = Transform3D(-1.7484555e-07, 0, 4, 0, 4, 0, -4, 0, -1.7484555e-07, 0, 0, 0)
 mesh = ExtResource("1_ge5dc")
+surface_material_override/0 = SubResource("StandardMaterial3D_c21yl")
 
 [node name="LabFridge_Collision" type="CollisionShape3D" parent="." unique_id=2011478709]
 transform = Transform3D(-1.7484555e-07, 0, 4, 0, 4, 0, -4, 0, -1.7484555e-07, 0, 0, 0)
+visible = false
 shape = SubResource("ConvexPolygonShape3D_ge5dc")
