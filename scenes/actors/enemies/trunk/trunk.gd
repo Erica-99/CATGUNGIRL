@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var animation_manager: AnimationPlayer
 @export var state_machine: StateMachine
 @export var missile_launcher: MissileLauncher
+@export var stinger_caller: StingerComponent
 
 @export_category("Starting State Variables")
 @export var start_aggroed: bool
@@ -157,7 +158,8 @@ func _ready() -> void:
 		"vert_threshold": vert_threshold,
 		"recovery_time": BASE_RECOVERY_TIME,
 		"target": get_tree().get_first_node_in_group("player") as CharacterBody3D,
-		"missile_launcher": missile_launcher
+		"missile_launcher": missile_launcher,
+		"stinger_call": stinger_caller,
 	}
 	# Change initial state based on Inspector values
 	if start_aggroed:
@@ -182,6 +184,7 @@ func _on_health_component_killed(killing_blow: DamageHealInstance, health_before
 	is_dead = true
 	sprite_anims.play("Idle")
 	sprite_anims.stop()
+	stinger_caller.play_stinger("trunk_death", true)
 	state_machine.on_child_transition(state_machine.current_state, "trunkdeath")
 
 func _on_health_component_health_changed(old_health: float, new_health: float, damage_or_heal_instance: DamageHealInstance) -> void:

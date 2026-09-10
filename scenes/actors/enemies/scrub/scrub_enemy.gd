@@ -8,6 +8,7 @@ extends CharacterBody3D
 @export_category("Node References")
 @export var animator: AnimationPlayer
 @export var state_machine: StateMachine
+@export var stinger_caller: StingerComponent
 @onready var can_shoot: RayCast3D = $CanShoot
 @onready var softCollider = $SoftCollider
 
@@ -54,6 +55,8 @@ var time: float = 0.0
 @export var frequency: float = 3.0
 @export var amplitude: float = 2.0
 
+@onready var id: String = get_id()
+
 signal facing_changed(scrub: CharacterBody3D)
 
 var blackboard: Dictionary
@@ -75,6 +78,8 @@ func _ready() -> void:
 		"flee_acceleration": flee_acceleration,
 		"slow_down_speed": slow_down_speed,
 		"target": get_tree().get_first_node_in_group("player") as CharacterBody3D,
+		"stinger_call": stinger_caller,
+		"id": id
 	}
 	# Change initial state based on Inspector values
 	if start_aggroed:
@@ -153,6 +158,7 @@ func _physics_process(delta: float) -> void:
 func _on_health_component_killed(killing_blow: DamageHealInstance, health_before_death: Variant) -> void:
 	# Possibly implement knockback affects here
 	is_dead = true
+	stinger_caller.play_stinger("scrub_death_" + id, true)
 	state_machine.on_child_transition(state_machine.current_state, "scrubdeath")
 
 func _on_health_component_health_changed(old_health: float, new_health: float, damage_or_heal_instance: DamageHealInstance) -> void:
@@ -183,3 +189,23 @@ func _return_from_stun():
 		state_machine.on_child_transition(state_machine.current_state, "scrubattack")
 	else:
 		state_machine.on_child_transition(state_machine.current_state, "scrubchase")
+
+
+func get_id() -> String:
+	var case = randi_range(0, 5)
+	match case:
+		0:
+			return "f1"
+		1:
+			return "m1"
+		2:
+			return "m2"
+		3:
+			return "m3"
+		4:
+			return "m4"
+		5:
+			return "m5"
+		_:
+			return ""
+		

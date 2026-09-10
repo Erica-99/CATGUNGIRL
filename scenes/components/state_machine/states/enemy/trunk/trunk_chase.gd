@@ -14,6 +14,8 @@ var launcher: MissileLauncher
 var reached_offset: bool = false
 signal reached_chase_offset(status: bool)
 
+var stinger_call: StingerComponent
+
 func init(blackboard_dict : Dictionary) -> void:
 	super(blackboard_dict)
 	actor = blackboard["actor"]
@@ -24,11 +26,16 @@ func init(blackboard_dict : Dictionary) -> void:
 	xpos_distance_vert_offset = blackboard["xpos_distance_vert_offset"]
 	vert_threshold = blackboard["vert_threshold"]
 	launcher = blackboard["missile_launcher"]
+	stinger_call = blackboard["stinger_call"]
 
 func enter() -> void:
 	reached_offset = false
 	#print("Chasing")
 	launcher.turn_on()
+	
+	var hostile_sting: int = randi_range(0, 3)
+	if hostile_sting == 0:
+		stinger_call.play_stinger("trunk_hostile")
 
 func exit() -> void:
 	pass
