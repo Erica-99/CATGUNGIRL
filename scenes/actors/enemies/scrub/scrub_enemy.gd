@@ -235,7 +235,6 @@ func get_id() -> String:
 
 
 func _on_death_detector_body_entered(body: Node3D) -> void:
-	print(is_dead)
 	if is_dead:
 		death_explosion.visible = true
 		death_explosion.play("explode")
