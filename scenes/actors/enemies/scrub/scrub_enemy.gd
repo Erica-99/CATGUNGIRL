@@ -61,7 +61,7 @@ var blackboard: Dictionary
 
 ## Variables for death zoomies
 @onready var death_detector = $DeathDetector
-var death_speed = randf_range(10.0, 70.0)
+var death_speed = 3                        #randf_range(10.0, 70.0)
 var launch_speed = Vector3.ZERO
 
 # Called when the node enters the scene tree for the first time.
@@ -105,7 +105,8 @@ func _process(delta):
 func _physics_process(delta: float) -> void:
 	if is_dead:
 		await get_tree().create_timer(0.5).timeout
-		velocity = launch_speed
+		velocity += launch_speed
+		print(velocity)
 		move_and_slide()
 		return
 	
