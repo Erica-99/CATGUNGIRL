@@ -4,6 +4,8 @@ extends CharacterBody3D
 @onready var detection_area_3d: Area3D = $DetectionArea3D
 @onready var att_range_area_3d: Area3D = $AttRangeArea3D
 @onready var flee_area_3d: Area3D = $FleeArea3D
+@onready var death_detector: Area3D = $DeathDetector
+@onready var death_explosion: AnimatedSprite3D = $DeathExplosion
 
 @export_category("Node References")
 @export var animator: AnimationPlayer
@@ -59,6 +61,11 @@ var time: float = 0.0
 
 signal facing_changed(scrub: CharacterBody3D)
 
+# death detector variables
+var death_speed = 3                        #randf_range(10.0, 70.0)
+var launch_speed = Vector3.ZERO
+var explosion_playing: bool = false
+
 var blackboard: Dictionary
 
 # Called when the node enters the scene tree for the first time.
@@ -99,6 +106,14 @@ func _process(delta):
 		can_shoot.target_position = can_shoot.to_local(get_tree().get_first_node_in_group("player").global_position)
 
 func _physics_process(delta: float) -> void:
+	if is_dead:
+		await get_tree().create_timer(0.5).timeout
+		velocity += launch_speed
+		if explosion_playing:
+			velocity = Vector3.ZERO
+		move_and_slide()
+		return
+	
 	var added_velo = 0
 	if !too_far_floor_detection.is_colliding():
 		added_velo += -1
@@ -158,8 +173,11 @@ func _physics_process(delta: float) -> void:
 func _on_health_component_killed(killing_blow: DamageHealInstance, health_before_death: Variant) -> void:
 	# Possibly implement knockback affects here
 	is_dead = true
+	#death_detector.monitoring = true
+	print("Death Detector Monitoring: ", death_detector.monitoring)
 	stinger_caller.play_stinger("scrub_death_" + id, true)
 	state_machine.on_child_transition(state_machine.current_state, "scrubdeath")
+	_scrub_death()
 
 func _on_health_component_health_changed(old_health: float, new_health: float, damage_or_heal_instance: DamageHealInstance) -> void:
 	if !detected_player && !is_dead:
@@ -190,6 +208,11 @@ func _return_from_stun():
 	else:
 		state_machine.on_child_transition(state_machine.current_state, "scrubchase")
 
+func _scrub_death():
+	rotation.z = deg_to_rad(randi_range(0, 360))
+	var launch_direction = transform.basis.y
+	launch_speed = launch_direction.normalized() * death_speed
+
 
 func get_id() -> String:
 	var case = randi_range(0, 5)
@@ -209,3 +232,13 @@ func get_id() -> String:
 		_:
 			return ""
 		
+
+
+func _on_death_detector_body_entered(body: Node3D) -> void:
+	print(is_dead)
+	if is_dead:
+		death_explosion.visible = true
+		death_explosion.play("explode")
+		explosion_playing = true
+		await death_explosion.animation_finished
+		queue_free()
