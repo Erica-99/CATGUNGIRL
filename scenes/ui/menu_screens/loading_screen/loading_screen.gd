@@ -8,23 +8,16 @@ class_name LoadingScreen
 
 @export var animation_player: AnimationPlayer
 
-# this is awful but i am tired and i will fix later
-const image_1 = preload("res://scenes/ui/menu_screens/loading_screen/meme_images/5_eva.jpg")
-const image_2 = preload("res://scenes/ui/menu_screens/loading_screen/meme_images/1000_yard_stare.png")
-const image_3 = preload("res://scenes/ui/menu_screens/loading_screen/meme_images/4000.jpg")
-const image_4 = preload("res://scenes/ui/menu_screens/loading_screen/meme_images/absolute_cinema.png")
-const image_5 = preload("res://scenes/ui/menu_screens/loading_screen/meme_images/alone_again_lecture.jpg")
-const image_6 = preload("res://scenes/ui/menu_screens/loading_screen/meme_images/aughhhh.png")
-const image_7 = preload("res://scenes/ui/menu_screens/loading_screen/meme_images/couch_beer.png")
-
+#i couldnt find a way to extract files from a directory reference - might be possible if we change the file names to "image_1.jpg" etc
+# for now this is ok, but if we want to expand to more images, then we should fix it
 const image_arr: Array = [
-	image_1,
-	image_2,
-	image_3,
-	image_4,
-	image_5,
-	image_6,
-	image_7,
+	preload("res://scenes/ui/menu_screens/loading_screen/meme_images/5_eva.jpg"),
+	preload("res://scenes/ui/menu_screens/loading_screen/meme_images/1000_yard_stare.png"),
+	preload("res://scenes/ui/menu_screens/loading_screen/meme_images/4000.jpg"),
+	preload("res://scenes/ui/menu_screens/loading_screen/meme_images/absolute_cinema.png"),
+	preload("res://scenes/ui/menu_screens/loading_screen/meme_images/alone_again_lecture.jpg"),
+	preload("res://scenes/ui/menu_screens/loading_screen/meme_images/aughhhh.png"),
+	preload("res://scenes/ui/menu_screens/loading_screen/meme_images/couch_beer.png"),
 ]
 
 # variables toggled during instantiation (set them where this loading_screen.tscn is initialised in another node)
@@ -35,6 +28,7 @@ var gigi_jumpscare_visible: bool = false
 signal loading_complete()
  
 func _ready() -> void:
+	# set values from instantiation
 	meme_image.texture = image_arr[randi_range(0, len(image_arr) - 1)]
 	gigi_jumpscare.visible = gigi_jumpscare_visible
 	
@@ -42,6 +36,11 @@ func _ready() -> void:
 	visible = !run_in_background
 	
 	await animation_player.animation_finished
+	
+	# erase all projectiles
+	# this is done because the missile entity crashes if it cannot find a player (of which would have died)
+	get_tree().call_group("projectiles", "queue_free")
+	
 	#loading_screen_ready.emit()
 	if next_scene != null:
 		# loads next scene

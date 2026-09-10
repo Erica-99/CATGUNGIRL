@@ -17,15 +17,18 @@ var progress: Array = []
 var use_sub_threads: bool = true
 
 func _ready() -> void:
+	pass
 	# Processing only happens when a scene is being loaded
-	set_process(false)
+	#set_process(false)
 
 # Call _load_scene globally with the string of the scene path.
 # Brings up the loading screen, when loading is up, start to load new scene.
 func _load_scene(_scene_path: String) -> void:
 	scene_path = _scene_path
 	
+	# create scene
 	var new_load_screen = loading_screen.instantiate()
+	new_load_screen.next_scene = scene_path
 	add_child(new_load_screen)
 	
 	#progress_changed.connect(new_load_screen._on_progress_changed)
@@ -33,27 +36,31 @@ func _load_scene(_scene_path: String) -> void:
 	
 	await new_load_screen.loading_complete
 	
-	start_load()
+	#start_load()
+
+
+# THE FOLLOWING LINES HAVE BEEN COMMENTED OUT AS THEIR FUNCTIONALITY HAS BEEN MOVED TO LOADING_SCREEN.TSCN
+# THE CODE HAS BEEN LEFT BELOW IN CASE WE WISH TO REVERT TO THE ORIGINAL LOADING SYSTEM
 
 # If new scene is okay to be loaded, start processing
-func start_load() -> void:
-	var state = ResourceLoader.load_threaded_request(scene_path, "", use_sub_threads)
-	if state == OK:
-		set_process(true)
+#func start_load() -> void:
+	#var state = ResourceLoader.load_threaded_request(scene_path, "", use_sub_threads)
+	#if state == OK:
+		#set_process(true)
 
 # Get status of load, once new scene is loaded change to it
-func _process(_delta: float) -> void:
-	var load_status = ResourceLoader.load_threaded_get_status(scene_path, progress)
-	progress_changed.emit(progress[0])
-	match load_status:
-		ResourceLoader.THREAD_LOAD_INVALID_RESOURCE, ResourceLoader.THREAD_LOAD_FAILED:
-			print("Scene loader error: " + str(load_status))
-			set_process(false)
-		ResourceLoader.THREAD_LOAD_LOADED:
-			loaded_resource = ResourceLoader.load_threaded_get(scene_path)
-			get_tree().change_scene_to_packed(loaded_resource)
-			load_finished.emit()
-			set_process(false)
+#func _process(_delta: float) -> void:
+	#var load_status = ResourceLoader.load_threaded_get_status(scene_path, progress)
+	#progress_changed.emit(progress[0])
+	#match load_status:
+		#ResourceLoader.THREAD_LOAD_INVALID_RESOURCE, ResourceLoader.THREAD_LOAD_FAILED:
+			#print("Scene loader error: " + str(load_status))
+			#set_process(false)
+		#ResourceLoader.THREAD_LOAD_LOADED:
+			#loaded_resource = ResourceLoader.load_threaded_get(scene_path)
+			#get_tree().change_scene_to_packed(loaded_resource)
+			#load_finished.emit()
+			#set_process(false)
 
 
 func _input(event: InputEvent) -> void:
