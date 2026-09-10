@@ -33,6 +33,8 @@ var current_route_point: Node3D = null
 var route_point_reached_distance: float = 1.0
 var routing_to_dive_spot: bool = false
 
+var convict_piv
+
 func init(blackboard_dict: Dictionary) -> void:
 	super(blackboard_dict)
 	actor = blackboard["actor"]
@@ -48,6 +50,7 @@ func init(blackboard_dict: Dictionary) -> void:
 	gravity = blackboard["gravity"]
 	dive_launch_force = blackboard["dive_launch_force"]
 	convict_route_points = blackboard["convict_route_points"]
+	convict_piv = blackboard["convict_piv"]
 
 func enter() -> void:
 	# TODO: update with more intricated targetting
@@ -99,8 +102,10 @@ func _has_power_dive_space() -> bool:
 func physics_update(_delta: float) -> void:
 	if actor.global_position.x > target.global_position.x:
 		direction = -1
+		convict_piv.scale.x = -1
 	elif actor.global_position.x < target.global_position.x:
 		direction = 1
+		convict_piv.scale.x = 1
 	
 	var player_is_above: bool = actor.global_position.y < target.global_position.y
 	var player_is_below: bool = actor.global_position.y > target.global_position.y + 1.0

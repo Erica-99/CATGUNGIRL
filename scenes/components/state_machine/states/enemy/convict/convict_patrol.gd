@@ -14,6 +14,8 @@ var stinger_call: StingerComponent
 var patrol_timer: float = 4 # time in seconds that enemy walks for
 var patrol_track: float = 0 # timer tracker
 
+var convict_piv
+
 func init(blackboard_dict: Dictionary) -> void:
 	super(blackboard_dict)
 	actor = blackboard["actor"]
@@ -21,12 +23,14 @@ func init(blackboard_dict: Dictionary) -> void:
 	direction = blackboard["direction"]
 	patrol_speed = blackboard["patrol_speed"]
 	stinger_call = blackboard["stinger_call"]
+	convict_piv = blackboard["convict_piv"]
 
 func update(_delta: float) -> void:
 	patrol_track += _delta
 	if patrol_track >= patrol_timer:
 		actor.velocity = Vector3.ZERO
 		direction *= -1
+		convict_piv.scale.x *= -1
 		patrol_track = 0
 
 func physics_update(_delta: float) -> void:

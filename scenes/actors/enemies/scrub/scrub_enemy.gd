@@ -25,6 +25,7 @@ var is_dead: bool = false
 @export var grenade: PackedScene
 
 @export_category("Stat Variables")
+@export var health: int = 35
 @export var direction: int = 1
 @export var move_speed: float = 10
 @export var patrol_speed: float
@@ -60,6 +61,8 @@ var blackboard: Dictionary
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	health_comp.set_max_health(health)
+	health_comp.set_health(health)
 	health_comp.knocked_back.connect(take_knockback)
 	# Blackboard contains the information states will use
 	blackboard = {
@@ -168,7 +171,7 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 ## When taking damage, get pushed back 
 func take_knockback(knockback_direction: Vector3, knockback_strength: float):
 	# Only needs to handle air knockback
-	velocity = knockback_direction * knockback_strength
+	velocity += knockback_direction * knockback_strength
 
 # When stun time finishes, return to Idle state.
 func _on_scrub_stun_timer_finished() -> void:
