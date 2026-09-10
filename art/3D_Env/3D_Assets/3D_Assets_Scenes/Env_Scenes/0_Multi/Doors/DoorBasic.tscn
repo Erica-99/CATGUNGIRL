@@ -4,6 +4,10 @@
 [ext_resource type="ArrayMesh" uid="uid://bla12lknxolc2" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/DoorSlidingBasic.obj" id="1_rwo67"]
 [ext_resource type="ArrayMesh" uid="uid://dea42rnao7hhc" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/DoorwaySlidingBasic.obj" id="2_ohxkl"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kuvaa"]
+albedo_color = Color(0.4725, 0.4725, 0.4725, 1)
+metallic = 0.21
+
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_q7qm1"]
 points = PackedVector3Array(0.123398, 2.327184, 0.63912606, 0.123398, 2.327184, -0.600075, -0.123398, 2.327184, 0.63912606, 0.123398, 0.100005, 0.63912606, -0.123398, 2.327184, -0.600075, 0.123398, 0.100005, -0.600075, -0.123398, 0.100005, 0.63912606, -0.123398, 0.100005, -0.600075)
 
@@ -92,6 +96,10 @@ _data = {
 &"RESET": SubResource("Animation_41mw6")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ci7u6"]
+albedo_color = Color(0.56046253, 0.56046253, 0.56046253, 1)
+metallic = 0.17
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_rwo67"]
 size = Vector3(0.8179016, 0.52075195, 1.1655273)
 
@@ -113,6 +121,7 @@ animation_player = NodePath("DoorSlidingBasic/DoorBasic_AnimationPlayer")
 
 [node name="DoorSlidingBasic_Mesh" type="MeshInstance3D" parent="DoorSlidingBasic" unique_id=1339969428]
 mesh = ExtResource("1_rwo67")
+surface_material_override/0 = SubResource("StandardMaterial3D_kuvaa")
 
 [node name="DoorSlidingBasic_Collision" type="CollisionShape3D" parent="DoorSlidingBasic" unique_id=1106955015]
 shape = SubResource("ConvexPolygonShape3D_q7qm1")
@@ -124,6 +133,7 @@ speed_scale = 3.0
 
 [node name="DoorwaySlidingBasic_Mesh" type="MeshInstance3D" parent="." unique_id=1315032598]
 mesh = ExtResource("2_ohxkl")
+surface_material_override/0 = SubResource("StandardMaterial3D_ci7u6")
 
 [node name="DoorwaySlidingBasic_Collision" type="CollisionShape3D" parent="." unique_id=1978679842]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0007171631, 2.5749319, -0.0026855469)
