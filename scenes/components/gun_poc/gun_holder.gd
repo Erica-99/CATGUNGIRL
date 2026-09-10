@@ -13,13 +13,13 @@ signal current_gun_charge_started
 @onready var team_component: Node = $"../TeamComponent"
 
 #const PISTOL_PREFAB = preload("res://scenes/components/gun_poc/pistol/pistol.tscn")
-const PISTOL_PREFAB = preload("res://scenes/components/gun/gun_variants/pistol/pistol.tscn")
-const SHOTGUN_PREFAB = preload("res://scenes/components/gun_poc/shotgun/shotgun.tscn")
+#const PISTOL_PREFAB = preload("res://scenes/components/gun/gun_variants/pistol/pistol.tscn")
+#const SHOTGUN_PREFAB = preload("res://scenes/components/gun_poc/shotgun/shotgun.tscn")
 #const RIFLE_PREFAB = preload("res://scenes/components/gun_poc/rifle/rifle.tscn")
-const SNIPER_PREFAB = preload("res://scenes/components/gun_poc/sniper/sniper.tscn")
+#const SNIPER_PREFAB = preload("res://scenes/components/gun_poc/sniper/sniper.tscn")
 
 # can make this instead an export var for better customisation (for the poc i am being lazy)
-const guns_available = [PISTOL_PREFAB]
+#const guns_available = [PISTOL_PREFAB]
 
 var current_child_count: int = 0
 var current_gun_index: int = 0
@@ -27,17 +27,21 @@ var current_gun_index: int = 0
 var allow_swapping: bool
 
 func _ready() -> void:
-	for guns in guns_available:
-		var gun = guns.instantiate()
-		add_child(gun)
-		gun.owner = self
-		gun.input_component = input_component
-		gun.Gun_Animation = Gun_Animation
-		gun.Muzzle_VFX = Muzzle_VFX
-		gun.team_component = team_component
-		gun.enemy_hit.connect(_on_enemy_hit) # Bind all the enemy hit signals at the start so hits still heal if they land after swapping weapons
-	
+	#for guns in guns_available:
+		#var gun = guns.instantiate()
+		#add_child(gun)
+		#gun.owner = self
+		#gun.input_component = input_component
+		#gun.Gun_Animation = Gun_Animation
+		#gun.Muzzle_VFX = Muzzle_VFX
+		#gun.team_component = team_component
+		#gun.enemy_hit.connect(_on_enemy_hit) # Bind all the enemy hit signals at the start so hits still heal if they land after swapping weapons
+	#
 	current_child_count = get_child_count()
+	
+	for child in get_children():
+		child.input_component = input_component
+		child.enemy_hit.connect(_on_enemy_hit) # Bind all the enemy hit signals at the start so hits still heal if they land after swapping weapons
 	
 	# lazy code - should be changed to consider other child types...
 	current_gun = get_child(current_gun_index)

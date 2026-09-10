@@ -27,7 +27,7 @@
 [ext_resource type="Script" uid="uid://doxqnfsm4wb8g" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_flee.gd" id="27_r3qej"]
 [ext_resource type="Script" uid="uid://briciybelpcwe" path="res://scenes/components/state_machine/states/enemy/enemy_death.gd" id="28_e867v"]
 [ext_resource type="Script" uid="uid://rwkg37dkkbs1" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_patrol.gd" id="29_gus3q"]
-[ext_resource type="PackedScene" uid="uid://cxxwo2fx6lqr1" path="res://scenes/components/gun/gun_variants/pistol/pistol.tscn" id="30_7u8db"]
+[ext_resource type="PackedScene" uid="uid://dsk487odorlu5" path="res://scenes/components/gun/gun_variants/scrub_pistol/scrub_pistol.tscn" id="30_7u8db"]
 [ext_resource type="Script" uid="uid://d1xvpcaucwgpw" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_stun.gd" id="30_e7flc"]
 [ext_resource type="Script" uid="uid://dpwol7txodmxp" path="res://scenes/components/soft_collision.gd" id="31_q3xql"]
 
@@ -63,25 +63,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("7_2okoh")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_dxowq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_8y6ck")
-}],
-"loop": true,
-"name": &"Dead",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_k7hf0")
 }],
 "loop": true,
 "name": &"default",
@@ -252,7 +233,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Torso_P/Gun_P:position")
+tracks/10/path = NodePath("../../ScrubPistol/Gun_P:position")
 tracks/10/interp = 2
 tracks/10/loop_wrap = false
 tracks/10/keys = {
@@ -264,7 +245,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Torso_P/Gun_P:rotation")
+tracks/11/path = NodePath("../../ScrubPistol/Gun_P:rotation")
 tracks/11/interp = 2
 tracks/11/loop_wrap = false
 tracks/11/keys = {
@@ -300,7 +281,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("Torso_P/Gun_P/Gun_AIM_P/AnimatedSprite3D:animation")
+tracks/14/path = NodePath("../../ScrubPistol/Gun_P/Gun_AIM_P/AnimatedSprite3D:animation")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -472,7 +453,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Torso_P/Gun_P:position")
+tracks/10/path = NodePath("../../ScrubPistol/Gun_P:position")
 tracks/10/interp = 2
 tracks/10/loop_wrap = false
 tracks/10/keys = {
@@ -484,7 +465,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Torso_P/Gun_P:rotation")
+tracks/11/path = NodePath("../../ScrubPistol/Gun_P:rotation")
 tracks/11/interp = 2
 tracks/11/loop_wrap = false
 tracks/11/keys = {
@@ -520,7 +501,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("Torso_P/Gun_P/Gun_AIM_P/AnimatedSprite3D:animation")
+tracks/14/path = NodePath("../../ScrubPistol/Gun_P/Gun_AIM_P/AnimatedSprite3D:animation")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -692,7 +673,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Torso_P/Gun_P:position")
+tracks/10/path = NodePath("../../ScrubPistol/Gun_P:position")
 tracks/10/interp = 2
 tracks/10/loop_wrap = false
 tracks/10/keys = {
@@ -704,7 +685,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Torso_P/Gun_P:rotation")
+tracks/11/path = NodePath("../../ScrubPistol/Gun_P:rotation")
 tracks/11/interp = 2
 tracks/11/loop_wrap = false
 tracks/11/keys = {
@@ -740,7 +721,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("Torso_P/Gun_P/Gun_AIM_P/AnimatedSprite3D:animation")
+tracks/14/path = NodePath("../../ScrubPistol/Gun_P/Gun_AIM_P/AnimatedSprite3D:animation")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -912,7 +893,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Torso_P/Gun_P:position")
+tracks/10/path = NodePath("../../ScrubPistol/Gun_P:position")
 tracks/10/interp = 2
 tracks/10/loop_wrap = false
 tracks/10/keys = {
@@ -924,7 +905,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Torso_P/Gun_P:rotation")
+tracks/11/path = NodePath("../../ScrubPistol/Gun_P:rotation")
 tracks/11/interp = 2
 tracks/11/loop_wrap = false
 tracks/11/keys = {
@@ -960,7 +941,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("Torso_P/Gun_P/Gun_AIM_P/AnimatedSprite3D:animation")
+tracks/14/path = NodePath("../../ScrubPistol/Gun_P/Gun_AIM_P/AnimatedSprite3D:animation")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -1133,7 +1114,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = false
-tracks/10/path = NodePath("Torso_P/Gun_P:position")
+tracks/10/path = NodePath("../../ScrubPistol/Gun_P:position")
 tracks/10/interp = 2
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -1145,7 +1126,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = false
-tracks/11/path = NodePath("Torso_P/Gun_P:rotation")
+tracks/11/path = NodePath("../../ScrubPistol/Gun_P:rotation")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -1281,7 +1262,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Torso_P/Gun_P:position")
+tracks/10/path = NodePath("../../ScrubPistol/Gun_P:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -1293,7 +1274,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Torso_P/Gun_P:rotation")
+tracks/11/path = NodePath("../../ScrubPistol/Gun_P:rotation")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -1329,7 +1310,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("Torso_P/Gun_P/Gun_AIM_P/AnimatedSprite3D:animation")
+tracks/14/path = NodePath("../../ScrubPistol/Gun_P/Gun_AIM_P/AnimatedSprite3D:animation")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -1385,6 +1366,25 @@ _data = {
 &"RESET": SubResource("Animation_dxowq")
 }
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_7u8db"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_8y6ck")
+}],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_k7hf0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_ly0j2"]
 size = Vector3(2.5, 4.5, 1)
 
@@ -1420,7 +1420,7 @@ patroller = true
 start_idle = NodePath("StateMachine/ScrubIdle")
 start_patrol = NodePath("StateMachine/ScrubPatrol")
 start_aggro = NodePath("StateMachine/ScrubChase")
-gun_component = NodePath("Pistol")
+gun_component = NodePath("ScrubPistol")
 grenade = ExtResource("2_fswf5")
 patrol_speed = 5.0
 chase_speed = 10.0
@@ -1448,26 +1448,13 @@ animation = &"Dead"
 autoplay = "default"
 
 [node name="Head_P" type="Node3D" parent="Scrub_Mesh/Visual_MOVE_P/Torso_P" unique_id=644978609]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29732454, 0.040134728, 0.21237732)
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 1, 0.29732454, 0.040134728, 0.21237732)
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Scrub_Mesh/Visual_MOVE_P/Torso_P/Head_P" unique_id=491376275]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1388657, -1.7207423, 0)
 sorting_offset = 2.0
 flip_h = true
 sprite_frames = SubResource("SpriteFrames_uh1gn")
-autoplay = "default"
-
-[node name="Gun_P" type="Node3D" parent="Scrub_Mesh/Visual_MOVE_P/Torso_P" unique_id=1807537869]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2297484, 0.13730878, -0.31735772)
-
-[node name="Gun_AIM_P" type="Node3D" parent="Scrub_Mesh/Visual_MOVE_P/Torso_P/Gun_P" unique_id=1401736108]
-transform = Transform3D(0.97713214, -0.21263283, 0, 0.21263283, 0.97713214, 0, 0, 0, 0.9999997, -0.2660761, -0.07496905, 0.0003671348)
-
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Scrub_Mesh/Visual_MOVE_P/Torso_P/Gun_P/Gun_AIM_P" unique_id=80290405]
-transform = Transform3D(0.98745674, 0.15789133, 0, -0.15789133, 0.98745674, 0, 0, 0, 0.99999994, -0.06745996, -1.8358128, 2.2351742e-05)
-flip_h = true
-sprite_frames = SubResource("SpriteFrames_dxowq")
-animation = &"Dead"
 autoplay = "default"
 
 [node name="Legs_P" type="Node3D" parent="Scrub_Mesh/Visual_MOVE_P/Torso_P" unique_id=221195692]
@@ -1516,6 +1503,23 @@ texture = ExtResource("15_qugo2")
 root_node = NodePath("../Visual_MOVE_P")
 libraries/ = SubResource("AnimationLibrary_dxowq")
 autoplay = &"Idle"
+
+[node name="ScrubPistol" parent="." unique_id=814655304 node_paths=PackedStringArray("team_component") instance=ExtResource("30_7u8db")]
+transform = Transform3D(0.5899999, 0, 0, 0, 0.5899999, 0, 0, 0, 0.5899999, 0, 0.76126575, -7.450581e-09)
+team_component = NodePath("../TeamComponent")
+
+[node name="Gun_P" type="Node3D" parent="ScrubPistol" unique_id=546167227]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2297484, 0.13730878, -0.31735772)
+
+[node name="Gun_AIM_P" type="Node3D" parent="ScrubPistol/Gun_P" unique_id=679623053]
+transform = Transform3D(0.97713214, -0.21263283, 0, 0.21263283, 0.97713214, 0, 0, 0, 0.9999997, -0.2660761, -0.07496905, 0.0003671348)
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="ScrubPistol/Gun_P/Gun_AIM_P" unique_id=1573670352]
+transform = Transform3D(0.98745674, 0.15789133, 0, -0.15789133, 0.98745674, 0, 0, 0, 0.99999994, -0.06745996, -1.8358128, 2.2351742e-05)
+flip_h = true
+sprite_frames = SubResource("SpriteFrames_7u8db")
+animation = &"Dead"
+autoplay = "default"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1549018224]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1880244, -0.671875, 0)
@@ -1635,10 +1639,6 @@ script = ExtResource("31_q3xql")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SoftCollider" unique_id=260812791]
 shape = SubResource("SphereShape3D_uh1gn")
 debug_color = Color(0, 0.61960787, 0.5686275, 0.41960785)
-
-[node name="Pistol" parent="." unique_id=814655304 node_paths=PackedStringArray("team_component", "Gun_Animation") instance=ExtResource("30_7u8db")]
-team_component = NodePath("../TeamComponent")
-Gun_Animation = NodePath("../Scrub_Mesh/AnimationPlayer")
 
 [connection signal="facing_changed" from="." to="Scrub_Mesh" method="_on_scrub_facing_changed"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]

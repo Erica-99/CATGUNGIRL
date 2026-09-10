@@ -31,6 +31,7 @@
 [ext_resource type="Script" uid="uid://canhkrs1snvht" path="res://scenes/components/state_machine/states/player/player_dash.gd" id="27_0e3lr"]
 [ext_resource type="Script" uid="uid://cei5rp5pteo06" path="res://scenes/actors/player/gigi_bubble.gd" id="27_cat03"]
 [ext_resource type="PackedScene" uid="uid://dp6f6qebbi8kl" path="res://scenes/components/gun_poc/gun_holder.tscn" id="28_7i6t6"]
+[ext_resource type="PackedScene" uid="uid://cxxwo2fx6lqr1" path="res://scenes/components/gun/gun_variants/pistol/pistol.tscn" id="33_haoly"]
 [ext_resource type="Script" uid="uid://da3n34oh0bagw" path="res://scenes/actors/player/audio_caller.gd" id="33_owjsm"]
 
 [sub_resource type="Animation" id="Animation_lguxi"]
@@ -1527,11 +1528,14 @@ animation = &"HeadList"
 
 [node name="GUN_P" type="Node3D" parent="PlayerVisuals/ROOT_P" unique_id=462291408]
 transform = Transform3D(1, 0, 0, 0, 1, -8.742278e-08, 0, 8.742278e-08, 1, 0.04, 2.225, 0)
+visible = false
 
 [node name="GUN_AIM" type="Node3D" parent="PlayerVisuals/ROOT_P/GUN_P" unique_id=897534301]
+visible = false
 
 [node name="Ros_Gun_Sprite" type="AnimatedSprite3D" parent="PlayerVisuals/ROOT_P/GUN_P/GUN_AIM" unique_id=1008635135]
 transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, 0.6230711, 0.5157032, -0.18119152)
+visible = false
 sorting_offset = -10.0
 sprite_frames = SubResource("SpriteFrames_hjnn3")
 animation = &"Fire"
@@ -1542,9 +1546,11 @@ libraries/ = SubResource("AnimationLibrary_75awx")
 
 [node name="MuzzleFlash_P" type="Node3D" parent="PlayerVisuals/ROOT_P/GUN_P/GUN_AIM" unique_id=1265077713]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8967885, 0.20617592, -1.8024465e-08)
+visible = false
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="PlayerVisuals/ROOT_P/GUN_P/GUN_AIM/MuzzleFlash_P" unique_id=398450413]
 transform = Transform3D(0.5824651, 0, 0, 0, 0.13680483, 0, 0, 0, 0.305, 0.12104654, 0.016289055, -0.3526454)
+visible = false
 sorting_offset = -20.0
 sprite_frames = SubResource("SpriteFrames_v116r")
 animation = &"Idle"
@@ -1690,6 +1696,9 @@ script = ExtResource("27_cat03")
 
 [node name="GunHolder" parent="." unique_id=407642416 node_paths=PackedStringArray("input_component") instance=ExtResource("28_7i6t6")]
 input_component = NodePath("../PlayerInput")
+
+[node name="Pistol" parent="GunHolder" unique_id=814655304 node_paths=PackedStringArray("team_component") instance=ExtResource("33_haoly")]
+team_component = NodePath("../../TeamComponent")
 
 [node name="AudioListener3D" type="AudioListener3D" parent="." unique_id=1025557284]
 current = true
