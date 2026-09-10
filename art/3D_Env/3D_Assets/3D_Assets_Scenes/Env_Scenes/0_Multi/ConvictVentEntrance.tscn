@@ -1,11 +1,45 @@
 [gd_scene format=3 uid="uid://dcdig5lf7h8ws"]
 
 [ext_resource type="ArrayMesh" uid="uid://ce5unm33n6j1f" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/ConvictVentEntrance.obj" id="1_g133b"]
+[ext_resource type="Texture2D" uid="uid://5qtl0nf7exmf" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/ConvictVentEntrance/ConvictVentEntrance_Base_color.png" id="2_1w4ew"]
 [ext_resource type="ArrayMesh" uid="uid://b0xb28f2oikd8" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/ConvictVentHatch.obj" id="2_q8a6v"]
+[ext_resource type="Texture2D" uid="uid://btrcmknniuo5c" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/ConvictVentEntrance/ConvictVentEntrance_Mixed_AO.png" id="3_haap3"]
+[ext_resource type="Texture2D" uid="uid://dfno23msdyg1x" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/ConvictVentEntrance/ConvictVentEntrance_Height.png" id="4_m01i3"]
+[ext_resource type="Texture2D" uid="uid://cyywyx0aowdlm" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/ConvictVentEntrance/ConvictVentEntrance_Base_metalness.png" id="5_r24os"]
+[ext_resource type="Texture2D" uid="uid://b6bv0v4bc5n4h" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/ConvictVentEntrance/ConvictVentEntrance_Normal_OpenGL.png" id="6_wgjc5"]
+[ext_resource type="Texture2D" uid="uid://bftoe1didy552" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/ConvictVentEntrance/ConvictVentEntrance_Specular_roughness.png" id="7_8l2po"]
+[ext_resource type="Texture2D" uid="uid://dhjk7b1ebccc4" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/ConvictVentHatch/ConvictVentHatch_Base_color.png" id="9_8jxf7"]
+[ext_resource type="Texture2D" uid="uid://b0h138xi0hwjs" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/ConvictVentHatch/ConvictVentHatch_Mixed_AO.png" id="10_gyxiy"]
+[ext_resource type="Texture2D" uid="uid://ca4fpvxwibgq2" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/ConvictVentHatch/ConvictVentHatch_Height.png" id="11_n4hj1"]
+[ext_resource type="Texture2D" uid="uid://d3vx3waqpx5ka" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/ConvictVentHatch/ConvictVentHatch_Base_metalness.png" id="12_52plt"]
+[ext_resource type="Texture2D" uid="uid://c7nqw1y4sdhxh" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/ConvictVentHatch/ConvictVentHatch_Normal_OpenGL.png" id="13_yl31s"]
+[ext_resource type="Texture2D" uid="uid://c3qwmm2djaa2a" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/ConvictVentHatch/ConvictVentHatch_Specular_roughness.png" id="14_o4ptn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsvf0"]
+albedo_texture = ExtResource("2_1w4ew")
+metallic = 1.0
+metallic_texture = ExtResource("5_r24os")
+roughness_texture = ExtResource("7_8l2po")
+normal_enabled = true
+normal_texture = ExtResource("6_wgjc5")
+ao_enabled = true
+ao_texture = ExtResource("3_haap3")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("4_m01i3")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7kd4c"]
+albedo_texture = ExtResource("9_8jxf7")
+metallic = 1.0
+metallic_texture = ExtResource("12_52plt")
+roughness_texture = ExtResource("14_o4ptn")
+normal_enabled = true
+normal_texture = ExtResource("13_yl31s")
+ao_enabled = true
+ao_texture = ExtResource("10_gyxiy")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("11_n4hj1")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g133b"]
 
