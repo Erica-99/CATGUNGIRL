@@ -1412,6 +1412,10 @@ size = Vector3(8.5, 5, 1)
 [sub_resource type="SphereShape3D" id="SphereShape3D_uh1gn"]
 radius = 2.1603687
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xxogl"]
+radius = 2.771
+height = 5.542
+
 [node name="Scrub" type="CharacterBody3D" unique_id=1090872008 node_paths=PackedStringArray("animator", "state_machine", "stinger_caller", "start_idle", "start_patrol", "start_aggro", "gun_component")]
 collision_layer = 4
 collision_mask = 129
@@ -1649,6 +1653,13 @@ debug_color = Color(0, 0.61960787, 0.5686275, 0.41960785)
 
 [node name="StingerComponent" parent="." unique_id=392420070 instance=ExtResource("32_xxogl")]
 
+[node name="DeathDetector" type="Area3D" parent="." unique_id=944403690]
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathDetector" unique_id=1754639694]
+shape = SubResource("CapsuleShape3D_xxogl")
+debug_color = Color(0.9887456, 0, 0.3037642, 0.41960785)
+
 [connection signal="facing_changed" from="." to="Scrub_Mesh" method="_on_scrub_facing_changed"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]
@@ -1661,3 +1672,4 @@ debug_color = Color(0, 0.61960787, 0.5686275, 0.41960785)
 [connection signal="body_entered" from="FleeArea3D" to="StateMachine/ScrubChase" method="_on_flee_area_3d_body_entered"]
 [connection signal="body_entered" from="FleeArea3D" to="StateMachine/ScrubPatrol" method="_on_flee_area_3d_body_entered"]
 [connection signal="body_exited" from="FleeArea3D" to="StateMachine/ScrubFlee" method="_on_flee_area_3d_body_exited"]
+[connection signal="body_entered" from="DeathDetector" to="." method="_on_death_detector_body_entered"]
