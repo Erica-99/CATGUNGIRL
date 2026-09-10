@@ -95,6 +95,10 @@ var past_object_collider_status: bool = false
 @onready var animation_player: AnimationPlayer = $TrunkMesh/AnimationPlayer
 @onready var chase_range: Area3D = $ChaseRange
 
+
+@export_category("Death Screen Info")
+@export var melee_death_screen_id: StringName = &"trunk_melee"
+
 # recovery time is set within trunk_melee and on armour break - they both override the recovery_time blackboard variable
 # this const just sets the default when having not been overwritten yet
 # less magic numbers = gigi will be happy with u
@@ -120,6 +124,7 @@ func _ready() -> void:
 	damage_instance.type = Enums.DamageType.NORMAL
 	damage_instance.knockback = 0
 	damage_instance.source = get_path()
+	damage_instance.death_screen_id = melee_death_screen_id
 	melee_hitbox.damage_or_heal_instance = damage_instance
 	
 	outranged_timer.wait_time = time_till_outrange
