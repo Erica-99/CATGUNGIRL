@@ -27,7 +27,7 @@ func physics_update(_delta: float) -> void:
 	actor.move_and_slide()
 
 func exit() -> void:
-	stinger_call.play_stinger("convict_alert_" + id )
+	stinger_call.play_stinger("convict_alert_" + id)
 
 func _on_detection_area_3d_body_entered(body):
 	if body.is_in_group("player"):

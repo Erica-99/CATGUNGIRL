@@ -78,6 +78,8 @@ func _ready() -> void:
 		"flee_acceleration": flee_acceleration,
 		"slow_down_speed": slow_down_speed,
 		"target": get_tree().get_first_node_in_group("player") as CharacterBody3D,
+		"stinger_call": stinger_caller,
+		"id": id
 	}
 	# Change initial state based on Inspector values
 	if start_aggroed:

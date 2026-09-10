@@ -216,7 +216,7 @@ func configure_3D_asp(asp3d: AudioStreamPlayer3D, sound_effect: SoundEffect, loc
 func take_hotseat(asp3d: AudioStreamPlayer3D, stinger_ref: String):
 	var stinger: SoundEffect = get_stinger_from_dict(stinger_ref)
 	if stinger == null:
-		push_error("Stinger Resource is not found")
+		push_error("Stinger Resource is not found " + stinger_ref)
 	else:
 		hotseat = asp3d
 		hotseat.stream = stinger.sound_clip
@@ -234,12 +234,12 @@ func play_fallback(asp3d: AudioStreamPlayer3D, stinger_ref: String) -> void:
 		# SoundEffectPool, otherwise returns same as callable_sfx)
 		fallback_ref = callable_sfx.get_fallback_ref()
 		
-		if fallback_ref == null:
+		if fallback_ref == "":
 			return
 		
 		var fallback: SoundEffect = get_stinger_from_dict(fallback_ref)
 		if fallback == null:
-			push_error("Fallback Resource is not found")
+			push_error("Fallback Resource is not found " + fallback_ref)
 			return
 		
 		asp3d.stream = fallback.sound_clip

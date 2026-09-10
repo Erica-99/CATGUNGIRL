@@ -149,7 +149,7 @@ func _ready() -> void:
 		"melee_lunge_duration": melee_lunge_duration,
 		"melee_recovery_time": melee_recovery_time,
 		"armour_break_recovery_time": armour_break_recovery_time,
-		"xpos_distance_vert_offset": xpos_distance_vert_offset,
+		"xpos_distance_vert_offsets": xpos_distance_vert_offset,
 		"vert_threshold": vert_threshold,
 		"recovery_time": BASE_RECOVERY_TIME,
 		"target": get_tree().get_first_node_in_group("player") as CharacterBody3D,
