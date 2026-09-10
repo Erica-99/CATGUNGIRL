@@ -1974,7 +1974,16 @@ collision_layer = 0
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 18.510084, 8.6, 0)
 
 [node name="Television" parent="Interactive" unique_id=1230489901 instance=ExtResource("19_ewyc7")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 8.606749, -9.117573)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -9.398563, 8.606749, -9.117573)
+
+[node name="AnimatedSprite3D2" parent="Interactive/Television" index="1" unique_id=1155210467]
+visible = false
+
+[node name="Television2" parent="Interactive" unique_id=264735797 instance=ExtResource("19_ewyc7")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 9.933203, 8.606749, -9.117573)
+
+[node name="AnimatedSprite3D" parent="Interactive/Television2" index="0" unique_id=634855209]
+visible = false
 
 [node name="GunPodium" parent="Interactive" unique_id=786548764 node_paths=PackedStringArray("door_to_unlock") instance=ExtResource("20_gufy2")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.2, -1)
@@ -2366,3 +2375,5 @@ autoplay = &"Intro"
 [editable path="Props/LightingObjs/LightCeiling67"]
 [editable path="Props/LightingObjs/LightCeiling68"]
 [editable path="Props/LightingObjs/LightCeiling69"]
+[editable path="Interactive/Television"]
+[editable path="Interactive/Television2"]
