@@ -15,7 +15,8 @@ const HITBOX_SCENE = preload("res://scenes/components/hitbox_component/hitbox_co
 
 @export_group("Aim")
 @export var aim_speed: float = 8.0		# gun rotation speed towards mouse (lower = more delay)
-@export var controller_aim_speed = 3.5
+#@export var controller_aim_speed = 3.5 
+# controller/mouse aim speed is now unified
 
 @export_group("Ammo")
 @export var ammo_max: int = 10
