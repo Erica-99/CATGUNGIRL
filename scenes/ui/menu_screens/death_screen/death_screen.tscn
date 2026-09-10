@@ -4,7 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://bl6hhcuc8law" path="res://art/2d_assets/visual_novel/vn_gigi/Gigi_Scarred.png" id="1_g5nha"]
 [ext_resource type="Resource" uid="uid://b8mbc5kk8symc" path="res://resources/death_screen/default_death_info.tres" id="2_gaqod"]
 [ext_resource type="Script" uid="uid://b0en6f1a27iwi" path="res://scenes/ui/menu_screens/death_screen/death_screen_info.gd" id="2_tqtpg"]
+[ext_resource type="Texture2D" uid="uid://dqgbq3infiupt" path="res://art/2d_assets/visual_novel/vn_gigi/cottage_smile.png" id="5_11r38"]
+[ext_resource type="Texture2D" uid="uid://cosl0f37hp4vb" path="res://art/2d_assets/visual_novel/vn_gigi/cottage_thinking_cheeky.png" id="6_r8u3h"]
+[ext_resource type="Texture2D" uid="uid://drca6msjq7nbe" path="res://art/2d_assets/visual_novel/vn_gigi/cottage_aloof.png" id="7_r8u3h"]
 [ext_resource type="Texture2D" uid="uid://d13nke41oilig" path="res://art/2d_assets/visual_novel/vn_gigi/cottage_celebrate.png" id="8_g3a3j"]
+[ext_resource type="Texture2D" uid="uid://5k3jlj4ogjdl" path="res://art/2d_assets/visual_novel/vn_gigi/cottage_flirty.png" id="8_xyb7c"]
 
 [sub_resource type="Resource" id="Resource_gaqod"]
 script = ExtResource("2_tqtpg")
@@ -24,6 +28,42 @@ background = ExtResource("8_g3a3j")
 enemy_image = ExtResource("8_g3a3j")
 metadata/_custom_type_script = "uid://b0en6f1a27iwi"
 
+[sub_resource type="Resource" id="Resource_xyb7c"]
+script = ExtResource("2_tqtpg")
+death_id = &"convict_attack"
+enemy_info = "The Convict be like that some times"
+tip = "See how they attack? doge that. "
+background = ExtResource("5_11r38")
+enemy_image = ExtResource("6_r8u3h")
+metadata/_custom_type_script = "uid://b0en6f1a27iwi"
+
+[sub_resource type="Resource" id="Resource_2e7b3"]
+script = ExtResource("2_tqtpg")
+death_id = &"convict_power_dive"
+enemy_info = "The Convict be like that some times"
+tip = "They can kinda fly. Be careful with that"
+background = ExtResource("5_11r38")
+enemy_image = ExtResource("6_r8u3h")
+metadata/_custom_type_script = "uid://b0en6f1a27iwi"
+
+[sub_resource type="Resource" id="Resource_g3a3j"]
+script = ExtResource("2_tqtpg")
+death_id = &"scrub_pistol"
+enemy_info = "This is a scrub"
+tip = "When it shoots, dodge the bullets"
+background = ExtResource("7_r8u3h")
+enemy_image = ExtResource("7_r8u3h")
+metadata/_custom_type_script = "uid://b0en6f1a27iwi"
+
+[sub_resource type="Resource" id="Resource_qw0yo"]
+script = ExtResource("2_tqtpg")
+death_id = &"trunk_melee"
+enemy_info = "Trunk is credit to team"
+tip = "He is very strong"
+background = ExtResource("8_xyb7c")
+enemy_image = ExtResource("8_xyb7c")
+metadata/_custom_type_script = "uid://b0en6f1a27iwi"
+
 [node name="DeathScreen" type="Control" unique_id=1186847470]
 layout_mode = 3
 anchors_preset = 15
@@ -33,7 +73,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_blny2")
 default_death_info = ExtResource("2_gaqod")
-death_infos = Array[ExtResource("2_tqtpg")]([SubResource("Resource_gaqod"), SubResource("Resource_4o51t")])
+death_infos = Array[ExtResource("2_tqtpg")]([SubResource("Resource_gaqod"), SubResource("Resource_4o51t"), SubResource("Resource_xyb7c"), SubResource("Resource_2e7b3"), SubResource("Resource_g3a3j"), SubResource("Resource_qw0yo")])
 
 [node name="Background" type="TextureRect" parent="." unique_id=1623824727]
 layout_mode = 1

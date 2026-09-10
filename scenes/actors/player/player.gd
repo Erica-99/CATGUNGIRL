@@ -58,6 +58,7 @@ signal player_dead()
 var facing: float
 var enable_facing_updates: bool = true
 var speed_multiplier: float = 1.0
+var is_dead: bool = false
 # gun enabled by default
 @export var has_gun: bool = true
 
@@ -181,9 +182,15 @@ func _on_insanity_component_insanity_death() -> void:
 	go_to_death_screen(null)
 
 func go_to_death_screen(killing_blow: DamageHealInstance) -> void:
+	if is_dead:
+		return
+	
+	is_dead = true
+	velocity = Vector3.ZERO
+	movement_state_machine.process_mode = Node.PROCESS_MODE_DISABLED
 	player_dead.emit()
 	print("PLAYER IS DEAD")
-	DeathManager.load_death_screen( get_death_screen_id(killing_blow), get_tree().current_scene.scene_file_path)
+	DeathManager.load_death_screen(get_death_screen_id(killing_blow), get_tree().current_scene.scene_file_path)
 
 func get_death_screen_id(killing_blow: DamageHealInstance) -> StringName:
 	if killing_blow == null:

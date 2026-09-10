@@ -19,6 +19,9 @@ extends Node3D
 @export var bullet_knockback: float = 0.0	# knockback force (can remove)
 @export var bullet_scale: float = 1.0	# visual size of bullet 
 
+@export_category("Death Screen Info")
+@export var bullet_death_screen_id: StringName = &"scrub_pistol"
+
 # _is_firing is true when Scrub is in attack phase, will aim and fire
 var _is_firing: bool
 var _fire_cooldown: float = 0.0	# counts down each frame, gun can't fire until it hits 0
@@ -80,6 +83,7 @@ func _spawn_bullet(damage: float, size: float) -> void:
 	damage_instance.type = Enums.DamageType.NORMAL
 	damage_instance.knockback = bullet_knockback
 	damage_instance.source = get_path()
+	damage_instance.death_screen_id = bullet_death_screen_id
 	
 	AudioManager.play_sfx_at_location("scrub_shot", global_position)
 	scrub_bullet.initialize(aim_dir, damage_instance, team_component, size)

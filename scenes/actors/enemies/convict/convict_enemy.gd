@@ -69,6 +69,10 @@ var blackboard : Dictionary
 
 @onready var Convict_Piv = $Visuals
 
+@export_category("Death Screen Info")
+@export var attack_death_screen_id: StringName = &"convict_attack"
+@export var power_dive_death_screen_id: StringName = &"convict_power_dive"
+
 func _ready() -> void:
 	# Set up Attack
 	damage_instance.amount = attack_damage
@@ -76,6 +80,7 @@ func _ready() -> void:
 	damage_instance.type = Enums.DamageType.NORMAL
 	damage_instance.knockback = 0 # TODO: change for implementing knockback
 	damage_instance.source = get_path()
+	damage_instance.death_screen_id = attack_death_screen_id
 	attack_hitbox.damage_or_heal_instance = damage_instance
 	
 	var room_convict_route_points: Array = []

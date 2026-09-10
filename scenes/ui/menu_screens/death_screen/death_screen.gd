@@ -20,6 +20,8 @@ class_name DeathScreen
 ##List of death screen entries. Add one entry per enemy/hazard type
 @export var death_infos: Array[DeathScreenInfo] = []
 
+var is_leaving_death_screen: bool = false
+
 func _ready() -> void:	
 	continue_button.pressed.connect(_on_continue_button_pressed)
 	return_to_menu_button.pressed.connect(_on_return_to_menu_button_pressed)
@@ -30,6 +32,7 @@ func _ready() -> void:
 func show_death_screen(death_id: StringName) -> void:
 	var death_info: DeathScreenInfo = get_death_info(death_id)
 	
+	get_tree().paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
 	you_died_label.text = "You Died"
@@ -55,10 +58,27 @@ func get_enemy_info(death_info: DeathScreenInfo) -> String:
 	return death_info.enemy_info
 
 func _on_continue_button_pressed() -> void:
+	if is_leaving_death_screen:
+		return
+	
+	is_leaving_death_screen = true
+	disable_buttons()
+	get_tree().paused = false
 	DeathManager.load_last_death_level()
 
 func _on_return_to_menu_button_pressed() -> void:
+	if is_leaving_death_screen:
+		return
+	
+	is_leaving_death_screen = true
+	disable_buttons()
+	get_tree().paused = false
 	SceneLoader._load_scene(main_menu_scene_path)
 
 func _on_change_difficulty_button_pressed() -> void:
 	print("Change difficulty pressed")
+
+func disable_buttons() -> void:
+	continue_button.disabled = true
+	return_to_menu_button.disabled = true
+	change_difficulty_button.disabled = true
