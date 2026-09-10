@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://cpeyne8plj8s3"]
 
 [ext_resource type="Script" uid="uid://7udcn11vk5qc" path="res://scenes/ui/menu_screens/loading_screen/loading_screen.gd" id="1_udkb6"]
-[ext_resource type="Texture2D" uid="uid://bgqiskqyfjwr4" path="res://scenes/ui/menu_screens/loading_screen/meme_images/5_eva.jpg" id="2_n0s30"]
-[ext_resource type="Texture2D" uid="uid://x3tiustsrfly" path="res://scenes/ui/menu_screens/loading_screen/meme_images/peep_the_horrors.png" id="2_s0f50"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jbvo0"]
 bg_color = Color(0, 0, 0, 1)
@@ -57,55 +55,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jbvo0")
-
-[node name="GigiJumpscare" type="TextureRect" parent="Panel" unique_id=1896076071]
-visible = false
-self_modulate = Color(1, 1, 1, 0.15686275)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_s0f50")
-
-[node name="HorizontalLayout" type="HBoxContainer" parent="Panel" unique_id=1066079897]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 100.0
-offset_top = -362.5
-offset_right = 1750.0
-offset_bottom = 362.5
-grow_vertical = 2
-theme_override_constants/separation = 200
-alignment = 1
-
-[node name="MemeImage" type="TextureRect" parent="Panel/HorizontalLayout" unique_id=1355139188]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("2_n0s30")
-expand_mode = 4
-
-[node name="VertDisplay" type="VBoxContainer" parent="Panel/HorizontalLayout" unique_id=1639088211]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 40
-alignment = 1
-
-[node name="Title" type="RichTextLabel" parent="Panel/HorizontalLayout/VertDisplay" unique_id=76311158]
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 40
-bbcode_enabled = true
-text = "[center]NOW LOADING...[/center]"
-fit_content = true
-autowrap_mode = 0
-
-[node name="ProgressBar" type="ProgressBar" parent="Panel/HorizontalLayout/VertDisplay" unique_id=274305722]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=557101844]
 libraries/ = SubResource("AnimationLibrary_s0f50")
