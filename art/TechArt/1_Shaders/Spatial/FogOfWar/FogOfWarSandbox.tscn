@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://r6noy2mojylv"]
+
+[ext_resource type="Script" uid="uid://dtmkxtsmvw24o" path="res://art/TechArt/1_Shaders/Spatial/FogOfWar/fog_of_war_manager.gd" id="1_manager"]
+[ext_resource type="PackedScene" path="res://art/TechArt/1_Shaders/Spatial/FogOfWar/fog_of_war_region.tscn" id="2_region"]
+[ext_resource type="Script" uid="uid://c8sny5tddrle2" path="res://art/TechArt/1_Shaders/Spatial/FogOfWar/player_dummy.gd" id="4_stub"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sandbox"]
+
+[sub_resource type="Sky" id="Sky_sandbox"]
+sky_material = SubResource("ProceduralSkyMaterial_sandbox")
+
+[sub_resource type="Environment" id="Environment_sandbox"]
+background_mode = 2
+sky = SubResource("Sky_sandbox")
+tonemap_mode = 2
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 1.0
+fog_depth_begin = 123.1
+fog_depth_end = 274.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_floor"]
+albedo_color = Color(0.35, 0.35, 0.38, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_floor"]
+material = SubResource("StandardMaterial3D_floor")
+size = Vector3(220, 1, 220)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pillar"]
+albedo_color = Color(0.75, 0.55, 0.3, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pillar"]
+material = SubResource("StandardMaterial3D_pillar")
+size = Vector3(6, 12, 6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_stub"]
+albedo_color = Color(0.9, 0.2, 0.35, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_stub"]
+material = SubResource("StandardMaterial3D_stub")
+radius = 1.5
+height = 3.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_stub"]
+radius = 1.5
+height = 3.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_room_a"]
+size = Vector3(30, 30, 70)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_room_b"]
+size = Vector3(35, 30, 70)
+
+[node name="FogOfWarSandbox" type="Node3D" unique_id=59830954]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=304778401]
+environment = SubResource("Environment_sandbox")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1129982590]
+transform = Transform3D(1, 0, 0, 0, 0.6, 0.8, 0, -0.8, 0.6, 0, 40, 20)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=669965256]
+transform = Transform3D(1, 0, 0, 0, 0.99664, -0.08194, 0, 0.08194, 0.99664, 0, 4, 32)
+current = true
+
+[node name="Geometry" type="Node3D" parent="." unique_id=1839358768]
+
+[node name="Floor" type="MeshInstance3D" parent="Geometry" unique_id=1678182502]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, -30)
+mesh = SubResource("BoxMesh_floor")
+
+[node name="Pillar_Near" type="MeshInstance3D" parent="Geometry" unique_id=393900812]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 0)
+mesh = SubResource("BoxMesh_pillar")
+
+[node name="Pillar_Mid" type="MeshInstance3D" parent="Geometry" unique_id=1289798315]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -20)
+mesh = SubResource("BoxMesh_pillar")
+
+[node name="Pillar_Far" type="MeshInstance3D" parent="Geometry" unique_id=155730463]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -40)
+mesh = SubResource("BoxMesh_pillar")
+
+[node name="Pillar_Deep" type="MeshInstance3D" parent="Geometry" unique_id=2008796377]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, -60)
+mesh = SubResource("BoxMesh_pillar")
+
+[node name="player" type="CharacterBody3D" parent="." unique_id=1675253627]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 0)
+collision_layer = 2
+script = ExtResource("4_stub")
+
+[node name="Mesh" type="MeshInstance3D" parent="player" unique_id=168026113]
+mesh = SubResource("SphereMesh_stub")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player" unique_id=752812268]
+shape = SubResource("CapsuleShape3D_stub")
+
+[node name="Regions" type="Node3D" parent="." unique_id=1661917454]
+
+[node name="RoomA" parent="Regions" unique_id=485198602 instance=ExtResource("2_region")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -20)
+region_id = "room_a"
+
+[node name="CollisionShape3D" parent="Regions/RoomA" index="0"]
+shape = SubResource("BoxShape3D_room_a")
+
+[node name="RoomB" parent="Regions" unique_id=1677150181 instance=ExtResource("2_region")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, -20)
+region_id = "room_b"
+
+[node name="CollisionShape3D" parent="Regions/RoomB" index="0"]
+shape = SubResource("BoxShape3D_room_b")
+
+[node name="FogOfWarManager" type="Node3D" parent="." unique_id=640109702]
+script = ExtResource("1_manager")
+region_z_center = -20.0
+region_z_extent = 35.0
+
+[editable path="Regions/RoomA"]
+[editable path="Regions/RoomB"]

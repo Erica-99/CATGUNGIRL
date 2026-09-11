@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://art/TechArt/1_Shaders/Spatial/FogOfWar/fog_of_war_region.gd" id="1_fogregion"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fogregion"]
+size = Vector3(40, 30, 60)
+
+[node name="FogOfWarRegion" type="Area3D"]
+collision_layer = 64
+collision_mask = 2
+monitoring = false
+script = ExtResource("1_fogregion")
+region_id = ""
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_fogregion")
