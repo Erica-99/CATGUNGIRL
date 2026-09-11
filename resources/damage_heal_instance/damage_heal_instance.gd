@@ -7,3 +7,4 @@ extends Resource
 @export var knockback: float = 0.0
 @export var stun_time: float = 0.0
 @export var source: NodePath
+@export var death_screen_id: StringName = &"default"

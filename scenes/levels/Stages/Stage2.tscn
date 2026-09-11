@@ -79,6 +79,7 @@
 [ext_resource type="PackedScene" uid="uid://t6186i4fjihc" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/SpeakerModern.tscn" id="77_gm5ud"]
 [ext_resource type="PackedScene" uid="uid://ctpgo67g4y3mk" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/VentilationPipe1.tscn" id="78_o4lmb"]
 [ext_resource type="PackedScene" uid="uid://4rsfb5kh40wj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/B_Collisions/45Ramp.tscn" id="79_vwyjr"]
+[ext_resource type="PackedScene" uid="uid://c3xj7l00asao0" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/file_exploiter.tscn" id="80_slitr"]
 
 [sub_resource type="Environment" id="Environment_o4lmb"]
 background_mode = 1
@@ -1933,6 +1934,12 @@ transform = Transform3D(-3.271058e-08, 0.7483309, -0.6633256, -1, -4.371139e-08,
 
 [node name="45Ramp" parent="." unique_id=2094150326 instance=ExtResource("79_vwyjr")]
 transform = Transform3D(6.832996e-15, -2.6, -4.3711395e-08, -1.5632072e-07, -1.13649605e-07, 1.0000002, -3.5762014, 0, -4.3711395e-08, 94.19634, -9.887085, 0.16679001)
+
+[node name="2D_Props" type="Node3D" parent="." unique_id=1781639669]
+
+[node name="File_Exploiter" parent="2D_Props" unique_id=997203607 instance=ExtResource("80_slitr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3683262, 14.543289, -25)
+visible = false
 
 [connection signal="stage_cleared" from="Enemies/Room Three" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]
 
