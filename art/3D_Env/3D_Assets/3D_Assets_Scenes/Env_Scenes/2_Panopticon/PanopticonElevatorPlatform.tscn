@@ -68,6 +68,9 @@ heightmap_enabled = true
 heightmap_scale = 0.0
 heightmap_texture = ExtResource("5_4ji61")
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_iflwv"]
+points = PackedVector3Array(-0.12479, 0.100005, -3.431126, -0.12479, 5.960507, -3.431126, 0.12479, 0.100005, -3.431126, -0.12479, 0.100005, 3.431126, 0.12479, 5.960507, -3.431126, -0.12479, 5.960507, 3.431126, 0.12479, 0.100005, 3.431126, 0.12479, 5.960507, 3.431126)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dtbol"]
 transparency = 1
 albedo_texture = ExtResource("3_2t4xv")
@@ -81,6 +84,9 @@ ao_texture = ExtResource("4_yfwh5")
 heightmap_enabled = true
 heightmap_scale = 0.0
 heightmap_texture = ExtResource("5_4ji61")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yki2y"]
+points = PackedVector3Array(-0.12479, 0.100005, -3.431126, -0.12479, 5.960507, -3.431126, 0.12479, 0.100005, -3.431126, -0.12479, 0.100005, 3.431126, 0.12479, 5.960507, -3.431126, -0.12479, 5.960507, 3.431126, 0.12479, 0.100005, 3.431126, 0.12479, 5.960507, 3.431126)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5mhvh"]
 albedo_texture = ExtResource("16_4i6br")
@@ -111,12 +117,6 @@ heightmap_enabled = true
 heightmap_scale = 0.0
 heightmap_texture = ExtResource("26_dekm6")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_iflwv"]
-points = PackedVector3Array(-0.12479, 0.100005, -3.431126, -0.12479, 5.960507, -3.431126, 0.12479, 0.100005, -3.431126, -0.12479, 0.100005, 3.431126, 0.12479, 5.960507, -3.431126, -0.12479, 5.960507, 3.431126, 0.12479, 0.100005, 3.431126, 0.12479, 5.960507, 3.431126)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yki2y"]
-points = PackedVector3Array(-0.12479, 0.100005, -3.431126, -0.12479, 5.960507, -3.431126, 0.12479, 0.100005, -3.431126, -0.12479, 0.100005, 3.431126, 0.12479, 5.960507, -3.431126, -0.12479, 5.960507, 3.431126, 0.12479, 0.100005, 3.431126, 0.12479, 5.960507, 3.431126)
-
 [node name="PanopticonElevatorPlatform" type="StaticBody3D" unique_id=1754411523]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
@@ -124,10 +124,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.30671573, 0)
 mesh = ExtResource("1_80us2")
 surface_material_override/0 = SubResource("StandardMaterial3D_knw6h")
-
-[node name="PanopticonElevatorPlatform_Collision_01" type="CollisionShape3D" parent="." unique_id=267950498]
-transform = Transform3D(7.610729, 0, 0, 0, 0.9663544, 0, 0, 0, 7.6225266, 0, -0.37733558, 0)
-shape = SubResource("BoxShape3D_knw6h")
 
 [node name="PanopticonElevatorPlatform_Collision_02" type="CollisionShape3D" parent="." unique_id=50353578]
 transform = Transform3D(7.610729, 0, 0, 0, 1.0443602, 0, 0, 0, 7.6225266, 0, 6.5293407, 0)
@@ -169,11 +165,3 @@ surface_material_override/0 = SubResource("StandardMaterial3D_5mhvh")
 transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, 0, 0, 0.011642933)
 mesh = ExtResource("23_4i6br")
 surface_material_override/0 = SubResource("StandardMaterial3D_gqmsb")
-
-[node name="PanopticonElevatorDoor_01_Collision" type="CollisionShape3D" parent="." unique_id=1944820816]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6819081, 5.7077236, 0)
-shape = SubResource("ConvexPolygonShape3D_iflwv")
-
-[node name="PanopticonElevatorDoor_02_Collision" type="CollisionShape3D" parent="." unique_id=1464829243]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.682, 5.7077236, 0)
-shape = SubResource("ConvexPolygonShape3D_yki2y")
