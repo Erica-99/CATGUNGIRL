@@ -81,6 +81,14 @@
 [ext_resource type="ArrayMesh" uid="uid://bn0y7klu6axly" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/PrisonRailCranePrt02.obj" id="59_qhut5"]
 [ext_resource type="ArrayMesh" uid="uid://dkpon4gwwcus5" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/PrisonRailCranePrt03.obj" id="60_6itfv"]
 [ext_resource type="PackedScene" uid="uid://7ndrvtyokajf" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/WallPlainMidPrison.tscn" id="62_6itfv"]
+[ext_resource type="PackedScene" uid="uid://6rxc5ulb6sxc" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/World_Lore/Enlist.tscn" id="72_lraim"]
+[ext_resource type="PackedScene" uid="uid://556rwa2pdmor" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Lying_Convict.tscn" id="72_x0gst"]
+[ext_resource type="PackedScene" uid="uid://bx8juwy6m3hvf" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/World_Lore/Will_Portrait.tscn" id="73_4scdv"]
+[ext_resource type="PackedScene" uid="uid://c3xj7l00asao0" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/file_exploiter.tscn" id="74_nqvtq"]
+[ext_resource type="PackedScene" uid="uid://dfwubrqbnpy7l" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/Hostile_architecture.tscn" id="75_v1rce"]
+[ext_resource type="PackedScene" uid="uid://ddim4ukeuv6rp" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Impaled_Convict.tscn" id="77_3k85b"]
+[ext_resource type="PackedScene" uid="uid://bxoxckf5ed1td" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Scrub_Crashed.tscn" id="78_g3qdj"]
+[ext_resource type="PackedScene" uid="uid://xwmm12eihkbq" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Meat_lumps.tscn" id="92_4scdv"]
 [ext_resource type="PackedScene" uid="uid://co7fptrpmkvog" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/A_SparesAndPlaceholders/LightCeiling.tscn" id="96_g3qdj"]
 [ext_resource type="Script" uid="uid://4t3uo3s2mf8e" path="res://scenes/levels/Stages/camera_pan_node.gd" id="123_emoyc"]
 [ext_resource type="PackedScene" uid="uid://c10iyc1w0tn8i" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/WallObservation.tscn" id="123_tatg8"]
@@ -1925,6 +1933,28 @@ transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 170.
 [node name="PowercellLarge3" parent="Props/Other" unique_id=8179600 instance=ExtResource("51_dnrph")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 199.94583, 8.919618, -12.890817)
 
+[node name="2D_Posters" type="Node3D" parent="Props" unique_id=590890931]
+
+[node name="Enlist" parent="Props/2D_Posters" unique_id=56375923 instance=ExtResource("72_lraim")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 45.269924, 4.6974325, 3.5335202)
+
+[node name="File_Exploiter" parent="Props/2D_Posters" unique_id=1119518296 instance=ExtResource("74_nqvtq")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 155.23308, 6.0376663, -10.064179)
+
+[node name="HostileArchitecture" parent="Props/2D_Posters" unique_id=1333764258 instance=ExtResource("75_v1rce")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.7297, 5.5920496, -14.940098)
+
+[node name="2D_Corpses" type="Node3D" parent="Props" unique_id=722687240]
+
+[node name="LyingConvict" parent="Props/2D_Corpses" unique_id=1235913099 instance=ExtResource("72_x0gst")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.10137, 1.1637552, -11.237484)
+
+[node name="ImpaledConvict" parent="Props/2D_Corpses" unique_id=889351681 instance=ExtResource("77_3k85b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.09048, 1.0664933, 3.1750278)
+
+[node name="ScrubCrashed" parent="Props/2D_Corpses" unique_id=2089480923 instance=ExtResource("78_g3qdj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200.71062, 0.68806237, -6.5467396)
+
 [node name="Interactive" type="Node3D" parent="." unique_id=1604478648]
 
 [node name="DoorBasic" parent="Interactive" unique_id=1555562335 instance=ExtResource("2_ohrdm")]
@@ -2354,6 +2384,12 @@ libraries/ = SubResource("AnimationLibrary_ovhx5")
 autoplay = &"Intro"
 
 [node name="VFX" type="Node3D" parent="." unique_id=915792707]
+
+[node name="WillPortrait" parent="." unique_id=2105078253 instance=ExtResource("73_4scdv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.347645, 12.974404, -16.639408)
+
+[node name="MeatLumps" parent="." unique_id=720032926 instance=ExtResource("92_4scdv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.368645, 9.140897, -12.48376)
 
 [connection signal="removecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
