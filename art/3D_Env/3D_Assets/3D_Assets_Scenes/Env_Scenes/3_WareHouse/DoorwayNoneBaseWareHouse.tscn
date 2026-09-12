@@ -1,10 +1,22 @@
 [gd_scene format=3 uid="uid://cwj4k8rhnbo44"]
 
 [ext_resource type="ArrayMesh" uid="uid://bmf34vtv5amhu" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/3_WareHouse/DoorwayNoneBaseWareHouse.obj" id="1_run3g"]
-[ext_resource type="Texture2D" uid="uid://dgey57obwj80x" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/3_WareHouse/Walls/TextureTrimSheetWallW.png" id="2_vb4vx"]
+[ext_resource type="Texture2D" uid="uid://c14wt76naw6n1" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/3_WareHouse/Walls/WallWareHouse_Base_color.png" id="2_d0h5h"]
+[ext_resource type="Texture2D" uid="uid://h4qmijiqjpf5" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/3_WareHouse/Walls/WallWareHouse_Height.png" id="3_kgmyj"]
+[ext_resource type="Texture2D" uid="uid://d2xca0koajjv4" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/3_WareHouse/Walls/WallWareHouse_Base_metalness.png" id="4_06j87"]
+[ext_resource type="Texture2D" uid="uid://c6tvd2b6t41co" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/3_WareHouse/Walls/WallWareHouse_Normal_OpenGL.png" id="5_hcxv8"]
+[ext_resource type="Texture2D" uid="uid://by0bwpub6ypxv" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/3_WareHouse/Walls/WallWareHouse_Specular_roughness.png" id="6_joub3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_876xb"]
-albedo_texture = ExtResource("2_vb4vx")
+albedo_texture = ExtResource("2_d0h5h")
+metallic = 1.0
+metallic_texture = ExtResource("4_06j87")
+roughness_texture = ExtResource("6_joub3")
+normal_enabled = true
+normal_texture = ExtResource("5_hcxv8")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("3_kgmyj")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3ldup"]
 points = PackedVector3Array(-0.099878, -0.100005, -2.500938, 0.09987801, -0.100005, -2.500938, -0.099878, -0.100005, 2.4997582, -0.099878, 4.10165, -2.500938, 0.09987801, 4.10165, -2.500938, 0.09987801, -0.100005, 2.4997582, -0.099878, 4.10165, 2.4997582, 0.09987801, 4.10165, 2.4997582)

@@ -1,6 +1,15 @@
 [gd_scene format=3 uid="uid://bsfa44fgq7srb"]
 
 [ext_resource type="ArrayMesh" uid="uid://cckdokvntetev" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/6_Laboratory/LabDrawersSingle.obj" id="1_3pvwe"]
+[ext_resource type="Texture2D" uid="uid://dd02et8chex81" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/LabDrawers/LabDrawersAll_DefaultMaterial_BaseColor.png" id="2_dt6xc"]
+[ext_resource type="Texture2D" uid="uid://c6t63lr6jload" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/LabDrawers/LabDrawersAll_DefaultMaterial_Normal.png" id="3_vdr80"]
+[ext_resource type="Texture2D" uid="uid://cd32j763v17gf" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/LabDrawers/LabDrawersAll_DefaultMaterial_Roughness.png" id="4_v8ngf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dt6xc"]
+albedo_texture = ExtResource("2_dt6xc")
+roughness_texture = ExtResource("4_v8ngf")
+normal_enabled = true
+normal_texture = ExtResource("3_vdr80")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gwf0i"]
 size = Vector3(0.49782598, 0.57890004, 0.400022)
@@ -10,7 +19,9 @@ size = Vector3(0.49782598, 0.57890004, 0.400022)
 [node name="LabDrawersSingle_Mesh" type="MeshInstance3D" parent="." unique_id=1544685402]
 transform = Transform3D(-1.7484555e-07, 0, 4, 0, 4, 0, -4, 0, -1.7484555e-07, 0, 0, 0)
 mesh = ExtResource("1_3pvwe")
+surface_material_override/0 = SubResource("StandardMaterial3D_dt6xc")
 
 [node name="LabDrawerSingle_Collision" type="CollisionShape3D" parent="." unique_id=1648072428]
 transform = Transform3D(-1.7484555e-07, 0, 4, 0, 4, 0, -4, 0, -1.7484555e-07, 1.5584002e-09, 1.1527481, 0.03565204)
+visible = false
 shape = SubResource("BoxShape3D_gwf0i")
