@@ -2,14 +2,40 @@
 
 [ext_resource type="ArrayMesh" uid="uid://8fauhprg5agh" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/Mesh/FloorMesh.01.obj" id="1_4oia3"]
 [ext_resource type="ArrayMesh" uid="uid://cjk1efwximy3e" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/Mesh/FloorMesh.02.obj" id="2_8xfr6"]
-[ext_resource type="Texture2D" uid="uid://qbf1xmo1wrde" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6_Mesh/Floor/TextureTrimSheetMesh.png" id="2_xhna3"]
+[ext_resource type="Texture2D" uid="uid://bascwlbscwlww" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/MeshFloor_Base_color.png" id="2_juunq"]
+[ext_resource type="Texture2D" uid="uid://wu5i7r37quhp" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/MeshFloor_Mixed_AO.png" id="3_vtia4"]
+[ext_resource type="Texture2D" uid="uid://ddl4hxsg5k48g" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/MeshFloor_Height.png" id="4_fl6dt"]
+[ext_resource type="Texture2D" uid="uid://j40rerimy8tj" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/MeshFloor_Metallic.png" id="5_gpqpn"]
+[ext_resource type="Texture2D" uid="uid://dp0ruh7q1e3j4" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/MeshFloor_Normal_OpenGL.png" id="6_5trad"]
+[ext_resource type="Texture2D" uid="uid://c4ek3iwrnnxp1" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/MeshFloor_Roughness.png" id="7_berhe"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bwkfy"]
-albedo_texture = ExtResource("2_xhna3")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4oia3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_npp74"]
 transparency = 1
-albedo_texture = ExtResource("2_xhna3")
+albedo_texture = ExtResource("2_juunq")
+metallic = 1.0
+metallic_texture = ExtResource("5_gpqpn")
+roughness_texture = ExtResource("7_berhe")
+normal_enabled = true
+normal_texture = ExtResource("6_5trad")
+ao_enabled = true
+ao_texture = ExtResource("3_vtia4")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("4_fl6dt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ftn1w"]
+transparency = 1
+albedo_texture = ExtResource("2_juunq")
+metallic = 1.0
+metallic_texture = ExtResource("5_gpqpn")
+roughness_texture = ExtResource("7_berhe")
+normal_enabled = true
+normal_texture = ExtResource("6_5trad")
+ao_enabled = true
+ao_texture = ExtResource("3_vtia4")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("4_fl6dt")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xhna3"]
 points = PackedVector3Array(-2.860401, 0.010589, -2.359406, -2.860401, 0.040424995, -2.359406, 2.860401, 0.010589, -2.359406, -2.860401, 0.010589, 2.35753, -2.860401, 0.040424995, 2.35753, 2.860401, 0.040424995, -2.359406, 2.860401, 0.010589, 2.35753, 2.860401, 0.040424995, 2.35753)
@@ -20,12 +46,12 @@ collision_layer = 128
 
 [node name="FloorMesh_01_Mesh" type="MeshInstance3D" parent="." unique_id=49238705]
 mesh = ExtResource("1_4oia3")
-surface_material_override/0 = SubResource("StandardMaterial3D_bwkfy")
+surface_material_override/0 = SubResource("StandardMaterial3D_npp74")
 
 [node name="FloorMesh_02_Mesh" type="MeshInstance3D" parent="." unique_id=2059139313]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.058, 0)
 mesh = ExtResource("2_8xfr6")
-surface_material_override/0 = SubResource("StandardMaterial3D_4oia3")
+surface_material_override/0 = SubResource("StandardMaterial3D_ftn1w")
 
 [node name="FloorMesh_02_Collision" type="CollisionShape3D" parent="." unique_id=2091977402]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.058, 0)

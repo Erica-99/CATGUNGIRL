@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cllx8igs167qy"]
+
+[ext_resource type="ArrayMesh" uid="uid://pb57n7wnm28d" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/Barriers/BarrierFull.obj" id="1_yceqg"]
+[ext_resource type="Texture2D" uid="uid://befskmsf5x02m" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/Full/BarrierFull_Base_color.png" id="2_e7qrj"]
+[ext_resource type="Texture2D" uid="uid://s3md6ixpm47o" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/Full/BarrierFull_Mixed_AO.png" id="3_kyrvp"]
+[ext_resource type="Texture2D" uid="uid://b55ybfum6fdlf" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/Full/BarrierFull_Height.png" id="4_gspfn"]
+[ext_resource type="Texture2D" uid="uid://b2d26cyebk337" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/Full/BarrierFull_Base_metalness.png" id="5_rbofs"]
+[ext_resource type="Texture2D" uid="uid://ckqkg8ri6sfss" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/Full/BarrierFull_Normal_OpenGL.png" id="6_gawdh"]
+[ext_resource type="Texture2D" uid="uid://dl3jm7r5ubm8m" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/Full/BarrierFull_Specular_roughness.png" id="7_s0avw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7yow1"]
+albedo_texture = ExtResource("2_e7qrj")
+metallic = 1.0
+metallic_texture = ExtResource("5_rbofs")
+roughness_texture = ExtResource("7_s0avw")
+normal_enabled = true
+normal_texture = ExtResource("6_gawdh")
+ao_enabled = true
+ao_texture = ExtResource("3_kyrvp")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("4_gspfn")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yceqg"]
+points = PackedVector3Array(0.86513543, 1.0024462, 3.0516627, 0.88569903, 0.80677867, 3.078148, 2.5004222, 0.7778548, 2.8063912, 2.5004222, 0.7968496, 2.7985249, 2.5004222, 0.80472803, 2.7794533, 0.86513543, 1.0024462, 2.979847, -0.8656244, 1.0024462, 3.0516627, 0.88569903, 0.7978209, 3.074922, 2.5004222, 0.051305488, 2.6029415, -0.8861879, 0.80677867, 3.078148, 2.5004222, 0.7968496, 2.7603817, 0.90038705, 0.8050518, 2.7522323, -0.8656244, 1.0024462, 2.979847, -2.500911, 0.80472803, 2.7794533, -2.500911, 0.7968496, 2.7985249, -2.500911, 0.7778548, 2.8063912, 0.88569903, 0.74882305, 3.0572653, -0.8861879, 0.7978209, 3.074922, 2.5004222, 0.051305488, 2.5, 0.86513543, -0.100005, 2.6747007, -2.500911, 0.051305488, 2.6029415, 2.5004222, 0.45796588, 2.5771353, 0.90038705, 0.4661682, 2.5689862, -0.90087616, 0.8050518, 2.7522323, -2.500911, 0.7968496, 2.7603817, -0.8861879, 0.74882305, 3.0572653, 2.5004222, 0.099979535, 2.5, 0.86513543, -0.100005, 2.5, -0.8656244, -0.100005, 2.6747007, -2.500911, 0.051305488, 2.5, 2.5004222, 0.4388632, 2.5692692, 0.90038705, 0.4388632, 2.5576677, -0.90087616, 0.4661682, 2.5689862, -2.500911, 0.45796588, 2.5771353, -2.500911, 0.099979535, 2.5, -0.8656244, -0.100005, 2.5, -0.90087616, 0.4388632, 2.5576677, -2.500911, 0.4388632, 2.5692692)
+
+[node name="BarrierFull" type="StaticBody3D" unique_id=1204649463]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="BarrierFull_Mesh" type="MeshInstance3D" parent="." unique_id=1642702196]
+mesh = ExtResource("1_yceqg")
+surface_material_override/0 = SubResource("StandardMaterial3D_7yow1")
+
+[node name="BarrierFull_Collision" type="CollisionShape3D" parent="." unique_id=749147385]
+shape = SubResource("ConvexPolygonShape3D_yceqg")

@@ -7,6 +7,7 @@ var anim: AnimationPlayer
 var min_idle_time: float
 var max_idle_time: float
 var idle_timer: Timer
+var launcher: MissileLauncher
 
 
 func init(blackboard_dict : Dictionary) -> void:
@@ -19,11 +20,14 @@ func init(blackboard_dict : Dictionary) -> void:
 	add_child(idle_timer)
 	min_idle_time = blackboard["min_idle_time"]
 	max_idle_time = blackboard["max_idle_time"]
+	launcher = blackboard["missile_launcher"]
 
 func enter() -> void:
 	#print("Idle")
 	idle_timer.wait_time = randf_range(min_idle_time, max_idle_time)
 	idle_timer.start()
+	
+	launcher.turn_off()
 	
 	actor._stop_step_handler()
 

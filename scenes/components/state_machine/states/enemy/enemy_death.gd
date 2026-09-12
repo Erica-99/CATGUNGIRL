@@ -2,7 +2,7 @@
 extends State
 class_name EnemyDeath
 
-@export var max_death_animation_time: float = 5
+@export var max_death_animation_time: float = 2
 
 var death_gpu_emitter = preload("res://scenes/VFX/blood_spurt_medium_vfx.tscn")
 
@@ -25,20 +25,28 @@ func enter() -> void:
 	# Play death sound
 	var blood_VFX = death_gpu_emitter.instantiate()
 	var VFX_spawn = $"../../VFX_target"
-	blood_VFX.position = VFX_spawn.global_position
+	var VFX_spawn_node = get_tree().current_scene.get_node_or_null("VFX")
+
+	if VFX_spawn_node == null:
+		push_warning("No VFX node found in current scene")
+		return
+
 	VFX_spawn_node.add_child(blood_VFX)
+	blood_VFX.global_position = VFX_spawn.global_position
 
 	AudioManager.play_sfx("gore_1")
 	randomize()
 	var deathid = 'Death' + str(randi_range(1,3))
 	print(deathid)
 	anim.play(deathid)
+
 	EventManager.enemy_killed.emit(self)
 	
 	for child in actor.find_children("*", "Area3D", true):
-		child.collision_layer = 0
-		child.collision_mask = 0
-		child.hide()
+		if child.name != "DeathDetector":
+			child.collision_layer = 0
+			child.collision_mask = 0
+			child.hide()
 	
 
 func update(_delta: float) -> void:

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ws1rfas63x3n" path="res://scenes/components/grappling_hook/grapple_component.gd" id="1_ly5qd"]
 [ext_resource type="PackedScene" uid="uid://b1xovfmr2jo4s" path="res://scenes/components/grappling_hook/grappling_hook_hook.tscn" id="2_4u4vp"]
 [ext_resource type="PackedScene" uid="uid://c6wep4oftfyke" path="res://scenes/components/state_machine/state_machine.tscn" id="2_mst2j"]
-[ext_resource type="Texture2D" uid="uid://crng4f3f2avnf" path="res://icon.svg" id="3_mb7m4"]
+[ext_resource type="Texture2D" uid="uid://d1o2q5ijnk1xw" path="res://art/2d_assets/grappling_hook.png" id="3_8ovlh"]
 [ext_resource type="Script" uid="uid://bitvaweib8l2v" path="res://scenes/components/grappling_hook/grapple_retracted.gd" id="3_mst2j"]
 [ext_resource type="Script" uid="uid://cmt8f4wb6eirf" path="res://scenes/components/grappling_hook/grapple_shooting.gd" id="4_rpvph"]
 [ext_resource type="Script" uid="uid://cxaegba2kenjm" path="res://scenes/components/grappling_hook/grapple_reeling.gd" id="7_8ovlh"]
@@ -16,7 +16,7 @@ point_count = 4
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_mb7m4")
+"texture": ExtResource("3_8ovlh")
 }],
 "loop": true,
 "name": &"default",
@@ -45,6 +45,7 @@ collision_mask = 133
 
 [node name="StateMachine" parent="." unique_id=1499026333 node_paths=PackedStringArray("initial_state") instance=ExtResource("2_mst2j")]
 initial_state = NodePath("GrappleRetracted")
+block_state_transitions = false
 
 [node name="GrappleRetracted" type="Node" parent="StateMachine" unique_id=1337567789]
 script = ExtResource("3_mst2j")
