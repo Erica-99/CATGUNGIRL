@@ -23,16 +23,18 @@ func init(blackboard_dict: Dictionary) -> void:
 func enter() -> void:
 	#anim.play("Death")
 	# Play death sound
-<<<<<<< HEAD
 	var blood_VFX = death_gpu_emitter.instantiate()
 	var VFX_spawn = $"../../VFX_target"
-	blood_VFX.position = VFX_spawn.global_position
+	var VFX_spawn_node = get_tree().current_scene.get_node_or_null("VFX")
+
+	if VFX_spawn_node == null:
+		push_warning("No VFX node found in current scene")
+		return
+
 	VFX_spawn_node.add_child(blood_VFX)
+	blood_VFX.global_position = VFX_spawn.global_position
 
 	AudioManager.play_sfx("gore_1")
-=======
-	AudioManager.play_sfx("enemy_death")
->>>>>>> dev
 	randomize()
 	var deathid = 'Death' + str(randi_range(1,3))
 	print(deathid)
