@@ -6,7 +6,7 @@ signal current_gun_charge_progress_changed(progress: float)
 signal current_gun_charge_ended
 signal current_gun_charge_started
 
-@export var input_component: Node
+@export var input_component: Node = null
 
 @onready var Gun_Animation: AnimationPlayer = $"../PlayerVisuals/ROOT_P/GUN_P/GUN_AIM/Hand_Anims"
 @onready var Muzzle_VFX: AnimationPlayer = $"../PlayerVisuals/ROOT_P/GUN_P/GUN_AIM/MuzzleFlash_P/AnimationPlayer"
@@ -40,32 +40,37 @@ func _ready() -> void:
 	current_child_count = get_child_count()
 	
 	for child in get_children():
-		child.input_component = input_component
+		if input_component:
+			child.input_component = input_component
 		child.enemy_hit.connect(_on_enemy_hit) # Bind all the enemy hit signals at the start so hits still heal if they land after swapping weapons
 	
 	# lazy code - should be changed to consider other child types...
 	current_gun = get_child(current_gun_index)
 	_activate_gun()
-	EventManager.new_gun_equipped.emit(current_gun.gun_name)
-	EventManager.new_mag_loaded.emit(current_gun.ammo_component._current_ammo, current_gun.ammo_component.ammo_max)
+	
+	# INPUT COMPONENT IS USED TO DIFFERENTIATE WHETHER THIS IS A PLAYER-HELD GUN OR ENEMY-HELD (as enemies dont have inputcomponents)
+	if input_component:
+		EventManager.new_gun_equipped.emit(current_gun.gun_name)
+		EventManager.new_mag_loaded.emit(current_gun.ammo_component._current_ammo, current_gun.ammo_component.ammo_max)
 
 func _process(delta: float) -> void:
-	var current_input_state = input_component.get_input_state()
-	# Switch to next gun (Pistol -> Shotgun -> Sniper)
-	if current_input_state.get("switch_gun", false):
-		input_component._switch_gun = false
-		_switch_gun(-1)
-	
-	# Switch to specific gun
-	if current_input_state.get("switch_gun_one", false):
-		input_component._switch_gun_one = false
-		_switch_gun(0)
-	if current_input_state.get("switch_gun_two", false):
-		input_component._switch_gun_two = false
-		_switch_gun(1)
-	if current_input_state.get("switch_gun_three", false):
-		input_component._switch_gun_three = false
-		_switch_gun(2)
+	if input_component:
+		var current_input_state = input_component.get_input_state()
+		# Switch to next gun (Pistol -> Shotgun -> Sniper)
+		if current_input_state.get("switch_gun", false):
+			input_component._switch_gun = false
+			_switch_gun(-1)
+		
+		# Switch to specific gun
+		if current_input_state.get("switch_gun_one", false):
+			input_component._switch_gun_one = false
+			_switch_gun(0)
+		if current_input_state.get("switch_gun_two", false):
+			input_component._switch_gun_two = false
+			_switch_gun(1)
+		if current_input_state.get("switch_gun_three", false):
+			input_component._switch_gun_three = false
+			_switch_gun(2)
 
 func _switch_gun(slot_num: int):
 	if not allow_swapping:
@@ -91,8 +96,9 @@ func _switch_gun(slot_num: int):
 	print("GUN SWITCHED TO: ")
 	print(current_gun)
 	
-	EventManager.new_gun_equipped.emit(current_gun.gun_name)
-	EventManager.new_mag_loaded.emit(current_gun._current_ammo, current_gun.ammo_max)
+	if input_component:
+		EventManager.new_gun_equipped.emit(current_gun.gun_name)
+		EventManager.new_mag_loaded.emit(current_gun._current_ammo, current_gun.ammo_max)
 
 func _deactivate_gun():
 	current_gun.active = false
