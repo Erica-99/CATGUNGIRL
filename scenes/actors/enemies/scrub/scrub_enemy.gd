@@ -92,6 +92,9 @@ func _ready() -> void:
 func _process(delta):
 	if in_attacking_range:
 		can_shoot.target_position = can_shoot.to_local(get_tree().get_first_node_in_group("player").global_position)
+	
+	if state_machine.current_state_name != "ScrubAttack" and gun_component is BaseGun:
+		gun_component.rotation.z = -PI/2
 
 func _physics_process(delta: float) -> void:
 	var added_velo = 0

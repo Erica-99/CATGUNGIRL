@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dsk487odorlu5"]
 
 [ext_resource type="PackedScene" uid="uid://cib7lo1lbwb5j" path="res://scenes/components/gun/base_gun/base_gun.tscn" id="1_eyrdn"]
-[ext_resource type="Script" uid="uid://blv4gjtaxyqlc" path="res://scenes/components/gun/gun_variants/scrub_pistol/scrub_pistol.gd" id="2_em5m4"]
 [ext_resource type="PackedScene" uid="uid://bky5phrwc32e8" path="res://scenes/bullet/ScrubBullet.tscn" id="3_3agye"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eyrdn"]
@@ -27,7 +26,6 @@ radius = 0.07
 height = 0.1
 
 [node name="ScrubPistol" unique_id=814655304 node_paths=PackedStringArray("bullet_emitter", "_normal_flash", "_perfect_flash") instance=ExtResource("1_eyrdn")]
-script = ExtResource("2_em5m4")
 gun_name = "ScrubGun"
 bullet_emitter = NodePath("BulletEmitter")
 _normal_flash = NodePath("Muzzle/NormalMuzzleFlash")
@@ -48,10 +46,17 @@ bullets_per_barrage = 3
 
 [node name="AmmoComponent" parent="." index="0" unique_id=761015893 node_paths=PackedStringArray("gun_link")]
 gun_link = NodePath("..")
+ammo_max = 3
 
 [node name="BulletEmitter" parent="." index="1" unique_id=1440563695 node_paths=PackedStringArray("muzzle")]
 muzzle = NodePath("../Muzzle")
 bullet_scene = ExtResource("3_3agye")
+audio_string_id = "scrub_shot"
+fire_rate = 0.5
+full_auto = false
+bullet_damage = 5.0
+bullet_knockback = 0.0
+bullet_range = 20.0
 base_aim_spread = 10.0
 
 [node name="Muzzle" type="Marker3D" parent="." index="2" unique_id=1446864277]

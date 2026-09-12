@@ -21,6 +21,8 @@ var input_component: Node
 
 @export var ability: Ability = null
 
+@export var change_visibility_on_active_switch: bool = true
+
 @export_group("Aim")
 @export var aim_speed: float = 8.0		# gun rotation speed towards mouse (lower = more delay)
 @export var controller_aim_speed = 3.5
@@ -63,7 +65,8 @@ var target_angle : float
 var active: bool = false:
 	set(value):
 		active = value
-		visible = active
+		if change_visibility_on_active_switch:
+			visible = active
 		if ability != null:
 			ability.active = active
 
@@ -146,6 +149,9 @@ func _process(delta: float) -> void:
 			if _fire_cooldown > bullet_emitter.fire_rate:
 				_fire_cooldown = 0
 				bullet_emitter._spawn_bullet(bullet_emitter.bullet_damage, bullet_emitter.bullet_scale)
+				ammo_component._handle_ammo()
+		#else:
+			#rotation.z = -PI/2
 
 
 func _update_aim(mouse_world: Vector3, input_state: Dictionary, delta: float) -> void:
@@ -240,3 +246,8 @@ func _shoot_handler():
 	_time_since_last_shot = 0.0
 	ammo_component.single_reload_timer = 0.0
 	# _has_printed_settle = false
+
+
+# visual handling for ENEMY (scrub)
+func _direction_change(direction: float):
+	bullet_emitter.muzzle.position.x *= -1

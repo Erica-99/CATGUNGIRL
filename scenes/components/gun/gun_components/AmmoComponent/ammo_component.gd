@@ -65,19 +65,24 @@ func _process_enemy_reload(delta: float) -> void:
 # can be overriden to check whether additional ammo is needed to shoot (i.e. shotgun pellets)
 func _check_if_can_shoot(required_to_shoot: int = 1) -> bool:
 	if _current_ammo >= required_to_shoot:
+		if gun_link.team_component.team != Enums.Team.PLAYER:
+			print("ZAZ")
+			print(_current_ammo)
+			print(required_to_shoot)
 		return true
 	return false
 
 
 func _handle_ammo():
-	if DebugManager.infinite_ammo:
-		_current_ammo = ammo_max
+	if gun_link.team_component.team == Enums.Team.PLAYER:
+		if DebugManager.infinite_ammo:
+			_current_ammo = ammo_max
 		
-		if gun_link.active:
-			EventManager.new_mag_loaded.emit(_current_ammo, ammo_max)
-		return
-	
-	EventManager.shots_fired.emit(1)
+			if gun_link.active:
+				EventManager.new_mag_loaded.emit(_current_ammo, ammo_max)
+			return
+
+		EventManager.shots_fired.emit(1)
 	
 	_current_ammo -= 1
 	if _current_ammo <= 0 and reload_full: 

@@ -9,6 +9,8 @@ extends Node3D
 @export var gun_link: BaseGun
 @export var ammo_component: AmmoComponent
 
+@export var audio_string_id: String = ""
+
 @export_group("Normal Fire")
 @export var fire_rate: float = 0.15			# min time (seconds) between shots
 @export var full_auto: bool = true
@@ -58,6 +60,9 @@ func _spawn_bullet(damage: float, size: float) -> void:
 	damage_instance.source = get_path()
 	
 	bullet.initialize(aim_dir, damage_instance, gun_link.team_component, size, pierce_on_headshot)
+	
+	if audio_string_id:
+		AudioManager.play_sfx_at_location(audio_string_id, global_position)
 	
 	#AudioManager.play_sfx_at_location("scrub_shot", global_position)
 	bullet.speed *= bullet_velocity_multiplier
