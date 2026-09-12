@@ -31,6 +31,8 @@
 [ext_resource type="Script" uid="uid://rwkg37dkkbs1" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_patrol.gd" id="22_bmk6k"]
 [ext_resource type="Script" uid="uid://dpwol7txodmxp" path="res://scenes/components/soft_collision.gd" id="22_hw6pp"]
 [ext_resource type="Script" uid="uid://d1xvpcaucwgpw" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_stun.gd" id="25_m0g3o"]
+[ext_resource type="PackedScene" uid="uid://1cp7l8jl2mma" path="res://scenes/components/stinger_component/stinger_component.tscn" id="32_xxogl"]
+[ext_resource type="Texture2D" uid="uid://d13e6m33m6vyo" path="res://art/2d_assets/real_world/vfx/explosiondotgif.png" id="33_oagyr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hw6pp"]
 animations = [{
@@ -1411,12 +1413,143 @@ size = Vector3(8.5, 5, 1)
 [sub_resource type="SphereShape3D" id="SphereShape3D_uh1gn"]
 radius = 2.1603687
 
-[node name="Scrub" type="CharacterBody3D" unique_id=1090872008 node_paths=PackedStringArray("animator", "state_machine", "start_idle", "start_patrol", "start_aggro", "gun_component")]
+[sub_resource type="SphereShape3D" id="SphereShape3D_xxogl"]
+radius = 2.8
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8prio"]
+atlas = ExtResource("33_oagyr")
+region = Rect2(600, 200, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60ya3"]
+atlas = ExtResource("33_oagyr")
+region = Rect2(800, 200, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fw0v8"]
+atlas = ExtResource("33_oagyr")
+region = Rect2(0, 400, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eeg4k"]
+atlas = ExtResource("33_oagyr")
+region = Rect2(200, 400, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1oa3"]
+atlas = ExtResource("33_oagyr")
+region = Rect2(400, 400, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yow6v"]
+atlas = ExtResource("33_oagyr")
+region = Rect2(600, 400, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5kfv"]
+atlas = ExtResource("33_oagyr")
+region = Rect2(800, 400, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0thff"]
+atlas = ExtResource("33_oagyr")
+region = Rect2(0, 600, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5s4xm"]
+atlas = ExtResource("33_oagyr")
+region = Rect2(200, 600, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1kxj"]
+atlas = ExtResource("33_oagyr")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pa4dr"]
+atlas = ExtResource("33_oagyr")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adevv"]
+atlas = ExtResource("33_oagyr")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kf3cr"]
+atlas = ExtResource("33_oagyr")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odkr2"]
+atlas = ExtResource("33_oagyr")
+region = Rect2(800, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6psd2"]
+atlas = ExtResource("33_oagyr")
+region = Rect2(0, 200, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pddy3"]
+atlas = ExtResource("33_oagyr")
+region = Rect2(200, 200, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1k56d"]
+atlas = ExtResource("33_oagyr")
+region = Rect2(400, 200, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_obdxc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8prio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60ya3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fw0v8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eeg4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1oa3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yow6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5kfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0thff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5s4xm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1kxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pa4dr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adevv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kf3cr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odkr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6psd2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pddy3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1k56d")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 40.0
+}]
+
+[node name="Scrub" type="CharacterBody3D" unique_id=1090872008 node_paths=PackedStringArray("animator", "state_machine", "stinger_caller", "start_idle", "start_patrol", "start_aggro", "gun_component")]
 collision_layer = 4
 collision_mask = 129
 script = ExtResource("1_2i5hx")
 animator = NodePath("Scrub_Mesh/AnimationPlayer")
 state_machine = NodePath("StateMachine")
+stinger_caller = NodePath("StingerComponent")
 patroller = true
 start_idle = NodePath("StateMachine/ScrubIdle")
 start_patrol = NodePath("StateMachine/ScrubPatrol")
@@ -1645,6 +1778,23 @@ script = ExtResource("22_hw6pp")
 shape = SubResource("SphereShape3D_uh1gn")
 debug_color = Color(0, 0.61960787, 0.5686275, 0.41960785)
 
+[node name="StingerComponent" parent="." unique_id=392420070 instance=ExtResource("32_xxogl")]
+
+[node name="DeathDetector" type="Area3D" parent="." unique_id=944403690]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathDetector" unique_id=1754639694]
+shape = SubResource("SphereShape3D_xxogl")
+debug_color = Color(0.9887456, 0, 0.3037642, 0.41960785)
+
+[node name="DeathExplosion" type="AnimatedSprite3D" parent="." unique_id=1020787970]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0.3228777)
+visible = false
+render_priority = 1
+sprite_frames = SubResource("SpriteFrames_obdxc")
+animation = &"explode"
+frame = 16
+frame_progress = 1.0
+
 [connection signal="facing_changed" from="." to="Scrub_Mesh" method="_on_scrub_facing_changed"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]
@@ -1657,3 +1807,4 @@ debug_color = Color(0, 0.61960787, 0.5686275, 0.41960785)
 [connection signal="body_entered" from="FleeArea3D" to="StateMachine/ScrubChase" method="_on_flee_area_3d_body_entered"]
 [connection signal="body_entered" from="FleeArea3D" to="StateMachine/ScrubPatrol" method="_on_flee_area_3d_body_entered"]
 [connection signal="body_exited" from="FleeArea3D" to="StateMachine/ScrubFlee" method="_on_flee_area_3d_body_exited"]
+[connection signal="body_entered" from="DeathDetector" to="." method="_on_death_detector_body_entered"]

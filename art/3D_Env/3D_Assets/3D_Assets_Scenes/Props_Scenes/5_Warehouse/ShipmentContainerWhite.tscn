@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://v0l3vkp6slxc"]
+
+[ext_resource type="ArrayMesh" uid="uid://d2b80kavjqudd" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/5_Warehouse/ShipmentContainer.obj" id="1_cet35"]
+[ext_resource type="Texture2D" uid="uid://bp85ykg2ldsa5" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/OtherProps/ShipmentContainers/White/ShipmentContainer_DefaultMaterial_BaseColor.png" id="2_cet35"]
+[ext_resource type="Texture2D" uid="uid://b5g6pcg7appjh" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/OtherProps/ShipmentContainers/White/ShipmentContainer_DefaultMaterial_Metallic.png" id="3_5563h"]
+[ext_resource type="Texture2D" uid="uid://bsorg7rudqear" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/OtherProps/ShipmentContainers/White/ShipmentContainer_DefaultMaterial_Normal.png" id="4_clgb4"]
+[ext_resource type="Texture2D" uid="uid://foywd464ossy" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/OtherProps/ShipmentContainers/White/ShipmentContainer_DefaultMaterial_Roughness.png" id="5_po23l"]
+[ext_resource type="ArrayMesh" uid="uid://di47jbb5wkb2d" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/5_Warehouse/ShipmentContainerBars.obj" id="6_uhyuq"]
+[ext_resource type="Texture2D" uid="uid://bv432a32aax32" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/OtherProps/ShipmentContainers/ContainerBars/ShipmentContainerBars_DefaultMaterial_BaseColor.png" id="7_g3dic"]
+[ext_resource type="Texture2D" uid="uid://bfe06uhy3rvwt" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/OtherProps/ShipmentContainers/ContainerBars/ShipmentContainerBars_DefaultMaterial_Metallic.png" id="8_jbh3h"]
+[ext_resource type="Texture2D" uid="uid://cjr24faxqsh1v" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/OtherProps/ShipmentContainers/ContainerBars/ShipmentContainerBars_DefaultMaterial_Normal.png" id="9_5ipy0"]
+[ext_resource type="Texture2D" uid="uid://d1dljaxyddvyi" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/OtherProps/ShipmentContainers/ContainerBars/ShipmentContainerBars_DefaultMaterial_Roughness.png" id="10_2otks"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pab8s"]
+albedo_texture = ExtResource("2_cet35")
+metallic = 1.0
+metallic_texture = ExtResource("3_5563h")
+roughness_texture = ExtResource("5_po23l")
+normal_enabled = true
+normal_texture = ExtResource("4_clgb4")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_odtgt"]
+size = Vector3(7.614442, 2.786527, 2.16255)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v8xdy"]
+albedo_texture = ExtResource("7_g3dic")
+metallic = 1.0
+metallic_texture = ExtResource("8_jbh3h")
+roughness_texture = ExtResource("10_2otks")
+normal_enabled = true
+normal_texture = ExtResource("9_5ipy0")
+
+[node name="ShipmentContainerWhite" type="StaticBody3D" unique_id=1687539826]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="ShipmentContainer_Mesh" type="MeshInstance3D" parent="." unique_id=1385366026]
+mesh = ExtResource("1_cet35")
+surface_material_override/0 = SubResource("StandardMaterial3D_pab8s")
+
+[node name="ShipmentContainer_Collision" type="CollisionShape3D" parent="." unique_id=690726965]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3932635, 0)
+visible = false
+shape = SubResource("BoxShape3D_odtgt")
+
+[node name="ShipmentContainerBars_Mesh" type="MeshInstance3D" parent="." unique_id=439537080]
+mesh = ExtResource("6_uhyuq")
+surface_material_override/0 = SubResource("StandardMaterial3D_v8xdy")

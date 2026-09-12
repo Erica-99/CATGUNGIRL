@@ -10,15 +10,8 @@ class_name LoadingScreen
 
 #i couldnt find a way to extract files from a directory reference - might be possible if we change the file names to "image_1.jpg" etc
 # for now this is ok, but if we want to expand to more images, then we should fix it
-const image_arr: Array = [
-	preload("res://scenes/ui/menu_screens/loading_screen/meme_images/5_eva.jpg"),
-	preload("res://scenes/ui/menu_screens/loading_screen/meme_images/1000_yard_stare.png"),
-	preload("res://scenes/ui/menu_screens/loading_screen/meme_images/4000.jpg"),
-	preload("res://scenes/ui/menu_screens/loading_screen/meme_images/absolute_cinema.png"),
-	preload("res://scenes/ui/menu_screens/loading_screen/meme_images/alone_again_lecture.jpg"),
-	preload("res://scenes/ui/menu_screens/loading_screen/meme_images/aughhhh.png"),
-	preload("res://scenes/ui/menu_screens/loading_screen/meme_images/couch_beer.png"),
-]
+var image_arr: Array = []
+
 
 # variables toggled during instantiation (set them where this loading_screen.tscn is initialised in another node)
 var next_scene: String = ""
@@ -31,8 +24,14 @@ func _ready() -> void:
 	# lets the pause menu know a load is in progress
 	add_to_group("loading_screen")
 	
+	image_arr = Globals.meme_image_array
+	
 	# set values from instantiation
-	meme_image.texture = image_arr[randi_range(0, len(image_arr) - 1)]
+	meme_image.texture = image_arr[Globals.current_meme_index]
+	
+	# tell event manager to increment global index for next instantiation
+	EventManager.increase_meme_index.emit()
+	
 	gigi_jumpscare.visible = gigi_jumpscare_visible
 	
 	# if run_in_background is active, make canvas not visible (load in background)

@@ -6,5 +6,3 @@ func _on_button_pressed() -> void:
 	var loading_screen = LOADING_SCREEN_REFERENCE.instantiate()
 	loading_screen.next_scene = Globals.LEVEL_PATHS["Stage1"]
 	add_child(loading_screen)
-	#get_tree().change_scene_to_file(Globals.LEVEL_PATHS["Stage1"])
-	#pass # Replace with function body.

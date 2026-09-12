@@ -1,9 +1,29 @@
 [gd_scene format=3 uid="uid://xnrufhd38t56"]
 
 [ext_resource type="ArrayMesh" uid="uid://be237wx2ve754" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/2_Panopticon/CellCrainRail.obj" id="1_8awts"]
+[ext_resource type="Texture2D" uid="uid://b00aci6w8g75p" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCraneRail/CellCrainRail_Base_color.png" id="2_4x1ui"]
+[ext_resource type="Texture2D" uid="uid://d17xf1hcmqfmx" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCraneRail/CellCrainRail_Mixed_AO.png" id="3_rkyj6"]
+[ext_resource type="Texture2D" uid="uid://bn7el38hugm6" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCraneRail/CellCrainRail_Height.png" id="4_2mchp"]
+[ext_resource type="Texture2D" uid="uid://3x28prgf4xhg" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCraneRail/CellCrainRail_Base_metalness.png" id="5_r1xnd"]
+[ext_resource type="Texture2D" uid="uid://tn56mdj5hr1e" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCraneRail/CellCrainRail_Normal_OpenGL.png" id="6_qv760"]
+[ext_resource type="Texture2D" uid="uid://dlere1vafxdm4" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCraneRail/CellCrainRail_Specular_roughness.png" id="7_wnn7m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_me5i6"]
+albedo_texture = ExtResource("2_4x1ui")
+metallic = 1.0
+metallic_texture = ExtResource("5_r1xnd")
+roughness_texture = ExtResource("7_wnn7m")
+normal_enabled = true
+normal_texture = ExtResource("6_qv760")
+ao_enabled = true
+ao_texture = ExtResource("3_rkyj6")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("4_2mchp")
 
 [node name="PanopticonCraneRail" type="StaticBody3D" unique_id=1925246299]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="CellCrainRail" type="MeshInstance3D" parent="." unique_id=851416804]
 mesh = ExtResource("1_8awts")
+surface_material_override/0 = SubResource("StandardMaterial3D_me5i6")
