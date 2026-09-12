@@ -21,7 +21,11 @@ var gigi_jumpscare_visible: bool = false
 signal loading_complete()
  
 func _ready() -> void:
+	# lets the pause menu know a load is in progress
+	add_to_group("loading_screen")
+	
 	image_arr = Globals.meme_image_array
+	
 	# set values from instantiation
 	meme_image.texture = image_arr[Globals.current_meme_index]
 	
