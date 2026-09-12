@@ -3,10 +3,11 @@
 [ext_resource type="Material" uid="uid://5w5h12vxdc7p" path="res://art/TechArt/2_VFX/shield/prefab/M_shield_base_B.tres" id="1_dflp7"]
 [ext_resource type="Material" uid="uid://do77fomfg4eul" path="res://art/TechArt/2_VFX/shield/prefab/M_shield_base_C.tres" id="2_br3y5"]
 [ext_resource type="Material" uid="uid://c0tfcjajjvvfh" path="res://art/TechArt/2_VFX/shield/prefab/M_shield_base.tres" id="3_uxqe3"]
+[ext_resource type="ArrayMesh" uid="uid://ud5fsddjh32m" path="res://art/TechArt/2_VFX/shield/model/BrainJar.obj" id="4_671gw"]
 [ext_resource type="Shader" uid="uid://dk0t1niu3gox2" path="res://art/TechArt/2_VFX/shield/shaders/shield.tres" id="4_iqnve"]
 [ext_resource type="Script" uid="uid://dcb8aqbenss74" path="res://art/TechArt/2_VFX/shield/scripts/shield_impact_controller.gd" id="5_671gw"]
 [ext_resource type="Texture2D" uid="uid://bhq5eo74htgxr" path="res://art/TechArt/2_VFX/shield/tex/T_Hex1_inv.jpg" id="6_d7h0p"]
-[ext_resource type="ArrayMesh" uid="uid://c6t1qxuywnsiq" path="res://art/TechArt/2_VFX/shield/model/BrainJarShield.obj" id="7_6xvwq"]
+[ext_resource type="Texture2D" uid="uid://dg0x0psfntdaa" path="res://art/TechArt/2_VFX/shield/tex/Noise_12.tga" id="7_7och1"]
 [ext_resource type="Material" uid="uid://tedlly26ftxc" path="res://art/TechArt/2_VFX/shield/prefab/M_shield_impact.tres" id="8_jcxaq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_671gw"]
@@ -65,12 +66,12 @@ gradient = SubResource("Gradient_d7h0p")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s1oke"]
 render_priority = 1
 shader = ExtResource("4_iqnve")
-shader_parameter/Size_Sphere = 0.0
+shader_parameter/Size_Sphere = 0.06
 shader_parameter/overlay_scale = Vector2(2, 2)
 shader_parameter/overlay_velocity = Vector2(0, -0.2)
-shader_parameter/Overlay_Texture = ExtResource("6_d7h0p")
+shader_parameter/Overlay_Texture = ExtResource("7_7och1")
 shader_parameter/Overlay_Power = 0.65
-shader_parameter/overlay_toggle = false
+shader_parameter/overlay_toggle = true
 shader_parameter/proximity_light = 0.365
 shader_parameter/proximity_power = 0.56
 shader_parameter/fresnel_invert = false
@@ -238,20 +239,21 @@ material_override = ExtResource("3_uxqe3")
 mesh = SubResource("SphereMesh_lwhn1")
 
 [node name="Node3D" type="Node3D" parent="shields" unique_id=1846430070]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.320754, 0, 0)
 
 [node name="brainjar" type="MeshInstance3D" parent="shields/Node3D" unique_id=1098810228]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.914934, -7.268658, 0)
-mesh = ExtResource("7_6xvwq")
+mesh = ExtResource("4_671gw")
 
 [node name="brainjar_outer_shield" type="MeshInstance3D" parent="shields/Node3D" unique_id=251282268]
-transform = Transform3D(1, 0, 0, 0, 1.6545253, 0, 0, 0, 1, 8.922299, 1.6449747, 0)
+transform = Transform3D(1, 0, 0, 0, 1.6545253, 0, 0, 0, 1, 0, 0, 0)
+visible = false
 material_override = SubResource("ShaderMaterial_jcxaq")
 mesh = SubResource("SphereMesh_lwhn1")
 
 [node name="brainjar_inner_shield" type="MeshInstance3D" parent="shields/Node3D" unique_id=1945731440]
-transform = Transform3D(1.1, 0, 0, 0, 1, 0, 0, 0, 1.1, 8.914934, -7.2335844, 0)
+transform = Transform3D(1.1, 0, 0, 0, 1, 0, 0, 0, 1.1, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_s1oke")
-mesh = ExtResource("7_6xvwq")
+mesh = ExtResource("4_671gw")
 
 [node name="shield_base" type="Node3D" parent="shields" unique_id=592460114]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5442142, 0, 0)
@@ -278,7 +280,7 @@ debug_enabled = true
 
 [node name="base" type="Node3D" parent="ShieldImpact" unique_id=947246828]
 
-[node name="shield_base_icosphere" type="MeshInstance3D" parent="ShieldImpact/base" unique_id=551033919]
+[node name="shield_base_icosphere" type="MeshInstance3D" parent="ShieldImpact/base" unique_id=279025071]
 material_override = ExtResource("8_jcxaq")
 cast_shadow = 0
 extra_cull_margin = 1.0
@@ -297,5 +299,3 @@ draw_pass_1 = SubResource("QuadMesh_hnrlv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ShieldImpact" unique_id=1932744115]
 libraries/ = SubResource("AnimationLibrary_shimp")
-
-[editable path="ShieldImpact/base"]

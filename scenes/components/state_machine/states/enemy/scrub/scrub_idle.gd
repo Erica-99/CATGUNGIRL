@@ -19,18 +19,23 @@ var actor: CharacterBody3D
 var anim: AnimationPlayer
 var slow_down_speed: float
 
+var stinger_call: StingerComponent
+var id: String
+
 func init(blackboard_dict : Dictionary) -> void:
 	super(blackboard_dict)
 	actor = blackboard["actor"]
 	anim = blackboard["anim"]
 	slow_down_speed = blackboard["slow_down_speed"]
+	stinger_call = blackboard["stinger_call"]
+	id = blackboard["id"]
 	
 
 func enter() -> void:
 	pass
 
 func exit() -> void:
-	pass
+	stinger_call.play_stinger("stinger_hostile_" + id)
 
 func update(_delta: float) -> void:
 	pass

@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://c8oojpq6ogjht"]
+
+[ext_resource type="Material" uid="uid://b3ppcxq3y3p73" path="res://art/TechArt/2_VFX/projectiles/projectile_alt/prefabs/SM_projectile_alt_head.tres" id="2_yai2i"]
+[ext_resource type="Material" uid="uid://i8e0680c2cn7" path="res://art/TechArt/2_VFX/projectiles/projectile_alt/prefabs/SM_projectile_alt_trail.tres" id="3_2hcaa"]
+[ext_resource type="Material" uid="uid://byc5jvcatmoah" path="res://art/TechArt/2_VFX/projectiles/projectile_alt/prefabs/SM_projectile_alt_core.tres" id="4_4o5im"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_my7gh"]
+radius = 0.17
+height = 3.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_y5jg5"]
+top_radius = 0.15
+bottom_radius = 0.05
+height = 2.6
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="SphereMesh" id="SphereMesh_qaxu2"]
+radius = 0.1
+height = 0.835
+is_hemisphere = true
+
+[node name="projectile_alt" type="Node3D" unique_id=332683213]
+
+[node name="Head" type="MeshInstance3D" parent="." unique_id=1975663991]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -1.2, 0, 0)
+material_override = ExtResource("2_yai2i")
+mesh = SubResource("SphereMesh_my7gh")
+
+[node name="Trail" type="MeshInstance3D" parent="." unique_id=953379434]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -1.2, 0, 0)
+material_override = ExtResource("3_2hcaa")
+mesh = SubResource("CylinderMesh_y5jg5")
+
+[node name="Core" type="MeshInstance3D" parent="." unique_id=389432079]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.607, 0, 0)
+material_override = ExtResource("4_4o5im")
+mesh = SubResource("SphereMesh_qaxu2")

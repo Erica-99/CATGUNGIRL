@@ -15,6 +15,8 @@ const HITBOX_SCENE = preload("res://scenes/components/hitbox_component/hitbox_co
 
 @export_group("Aim")
 @export var aim_speed: float = 8.0		# gun rotation speed towards mouse (lower = more delay)
+#@export var controller_aim_speed = 3.5 
+# controller/mouse aim speed is now unified
 
 @export_group("Ammo")
 @export var ammo_max: int = 10
@@ -57,6 +59,11 @@ var single_reload_timer: float = 0 # to control changing reload times (e.g. 1.0 
 ## Reload timer (can be replaced with programmatical timer as needed)
 @onready var reload_timer: Timer = $ReloadTimer
 
+## Controller Aiming variables
+var using_controller = false
+var controller_deadzone = 0.2
+var target_angle : float
+
 ## bzzt
 
 signal beam_fired(beam_end: Vector3, charge_progress: float)
@@ -93,7 +100,8 @@ var active: bool = false:
 			ability.active = active
 
 var _fire_cooldown: float = 0.0
-var _recoil_offset: float = 0.0 
+var _aim_angle: float = 0.0
+var _recoil_offset: float = 0.0
 var _is_charging: bool = false
 var _charge_timer: float = 0.0		# how long (seconds) player has been charging
 var _wobble_time: float = 0.0
@@ -110,11 +118,20 @@ var _is_reloading: bool = false
 # check if aim within threshold
 func _is_aim_settled() -> bool:
 	return abs(_recoil_offset) < recoil_amount * (1.0 - aim_settled_threshold / 100.0)
+	
+
+func _input(event):
+	#Establish if the player is using KBM or a controller
+	if event is InputEventJoypadMotion:
+		if abs(event.axis_value) > controller_deadzone:
+			using_controller = true
+	elif event is InputEventMouseMotion:
+			using_controller = false
 
 func _process(delta: float) -> void:
 	
 	# single shot reloading
-	if !reload_full:
+	if !DebugManager.infinite_ammo and !reload_full:
 		if _current_ammo != ammo_max:
 			single_reload_timer += delta
 			if single_reload_timer > reload_time:
@@ -162,14 +179,23 @@ func _process(delta: float) -> void:
 	perfect_window_changed.emit(in_window)
 
 
+
 func _update_aim(mouse_world: Vector3, input_state: Dictionary, delta: float) -> void:
 	if mouse_world == null:
 		return
-	# direction vector from gun to mouse
-	var direction = mouse_world - global_position
-	direction.z = 0.0
-	var target_angle = Vector2(direction.x, direction.y).angle()
-	_current_target_angle = target_angle
+	#Check if the player is using a controller
+	if using_controller:
+		var controller_input = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
+		if controller_input.length() > controller_deadzone:
+			controller_input.y *= -1
+			target_angle = controller_input.angle()
+			_current_target_angle = target_angle
+	else:
+		# direction vector from gun to mouse
+		var direction = mouse_world - global_position
+		direction.z = 0.0
+		target_angle = Vector2(direction.x, direction.y).angle()
+		_current_target_angle = target_angle
 	
 	var is_moving = input_state.get("movement", 0.0) != 0.0 or input_state.get("jumping", false)
 	var wobble: float = 0.0
@@ -179,14 +205,15 @@ func _update_aim(mouse_world: Vector3, input_state: Dictionary, delta: float) ->
 	else:
 		_wobble_time = 0.0
 		
-	var current_aim_speed = aim_speed
+	var current_aim_speed = SettingsManager.get_aim_speed(gun_name)
 	if _is_spamming and not _is_aim_settled():
-		current_aim_speed = aim_speed * spam_aim_multiplier
+		current_aim_speed *= spam_aim_multiplier
 		
-	rotation.z = lerp_angle(rotation.z, target_angle + _recoil_offset + wobble, current_aim_speed * delta)
+	_aim_angle = lerp_angle(_aim_angle, target_angle, current_aim_speed * delta)
 	_recoil_offset = lerpf(_recoil_offset, 0.0, recoil_recovery * delta)
 	if abs(_recoil_offset) < 0.001:
 		_recoil_offset = 0.0
+	rotation.z = _aim_angle + _recoil_offset + wobble
 	scale = Vector3(1.0, 1.0, 1.0)
 	## print to check recoil recovery
 	# if _is_aim_settled() and _time_since_last_shot < perfect_shot_max_interval:
@@ -200,7 +227,7 @@ func _handle_special(input_state: Dictionary, delta: float) -> void:
 
 func _try_fire() -> void:
 	# won't fire on empty ammo (added for shotgun)
-	if _current_ammo == 0:
+	if _current_ammo == 0 and !DebugManager.infinite_ammo:
 		return
 	# won't fire if cooldown not expired
 	if _fire_cooldown > 0.0:
@@ -228,6 +255,7 @@ func _shoot_handler():
 		_is_spamming = false
 		_spam_count = 0
 		print("Perfect Shot fired, damage: ", bullet_damage * perfect_damage_multiplier)
+		_aim_angle = _current_target_angle
 		rotation.z = _current_target_angle
 		damage = bullet_damage * perfect_damage_multiplier
 		perfect_shot_fired.emit()
@@ -261,14 +289,35 @@ func _shoot_handler():
 func _shoot(damage, bullet_scale):
 	_spawn_bullet(damage, bullet_scale)
 
-
 func _handle_ammo():
+	if DebugManager.infinite_ammo:
+		_current_ammo = ammo_max
+		
+		if active:
+			EventManager.new_mag_loaded.emit(_current_ammo, ammo_max)
+			
+		return
+	
 	EventManager.shots_fired.emit(1)
 	
 	_current_ammo -= 1
 	if _current_ammo <= 0 and reload_full: 
 		_is_reloading = true
 		reload_timer.start(reload_time)
+
+func _handle_debug_infinite_ammo() -> void:
+	if !DebugManager.infinite_ammo:
+		return
+	
+	_is_reloading = false
+	reload_timer.stop()
+	single_reload_timer = 0.0
+	
+	if _current_ammo != ammo_max:
+		_current_ammo = ammo_max
+		
+		if active:
+			EventManager.new_mag_loaded.emit(_current_ammo, ammo_max)
 
 func _spawn_bullet(damage: float, size: float) -> void:
 	var bullet = bullet_scene.instantiate()

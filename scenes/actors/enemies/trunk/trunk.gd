@@ -4,6 +4,8 @@ extends CharacterBody3D
 @export var animator: AnimationPlayer
 @export var animation_manager: AnimationPlayer
 @export var state_machine: StateMachine
+@export var missile_launcher: MissileLauncher
+@export var stinger_caller: StingerComponent
 
 @export_category("Starting State Variables")
 @export var start_aggroed: bool
@@ -93,6 +95,10 @@ var past_object_collider_status: bool = false
 @onready var animation_player: AnimationPlayer = $TrunkMesh/AnimationPlayer
 @onready var chase_range: Area3D = $ChaseRange
 
+
+@export_category("Death Screen Info")
+@export var melee_death_screen_id: StringName = &"trunk_melee"
+
 # recovery time is set within trunk_melee and on armour break - they both override the recovery_time blackboard variable
 # this const just sets the default when having not been overwritten yet
 # less magic numbers = gigi will be happy with u
@@ -118,6 +124,7 @@ func _ready() -> void:
 	damage_instance.type = Enums.DamageType.NORMAL
 	damage_instance.knockback = 0
 	damage_instance.source = get_path()
+	damage_instance.death_screen_id = melee_death_screen_id
 	melee_hitbox.damage_or_heal_instance = damage_instance
 	
 	outranged_timer.wait_time = time_till_outrange
@@ -151,6 +158,8 @@ func _ready() -> void:
 		"vert_threshold": vert_threshold,
 		"recovery_time": BASE_RECOVERY_TIME,
 		"target": get_tree().get_first_node_in_group("player") as CharacterBody3D,
+		"missile_launcher": missile_launcher,
+		"stinger_call": stinger_caller,
 	}
 	# Change initial state based on Inspector values
 	if start_aggroed:
@@ -175,6 +184,7 @@ func _on_health_component_killed(killing_blow: DamageHealInstance, health_before
 	is_dead = true
 	sprite_anims.play("Idle")
 	sprite_anims.stop()
+	stinger_caller.play_stinger("trunk_death", true)
 	state_machine.on_child_transition(state_machine.current_state, "trunkdeath")
 
 func _on_health_component_health_changed(old_health: float, new_health: float, damage_or_heal_instance: DamageHealInstance) -> void:
@@ -185,7 +195,6 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 	if new_health <= (health_comp.starting_health / 2) and change_sprite_on_half_hp and !under_half_hp:
 		under_half_hp = true
 		
-		torso_sprite.sprite_frames = InjuredFrames
 		#print("yo im under half hp rn type shit")
 
 func _reset_step_handler():

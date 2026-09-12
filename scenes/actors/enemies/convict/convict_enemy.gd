@@ -8,7 +8,9 @@ const GRAVITY = 50
 @export var health_comp: Node
 @export var state_machine: StateMachine
 @onready var softCollider: Area3D = $SoftCollider
-@export var audio_caller: Node
+@export var sfx_caller: Node
+@export var stinger_caller: StingerComponent
+
 
 var is_dead: bool = false
 
@@ -69,6 +71,11 @@ var blackboard : Dictionary
 
 @onready var Convict_Piv = $Visuals
 
+@export_category("Death Screen Info")
+@export var attack_death_screen_id: StringName = &"convict_attack"
+@export var power_dive_death_screen_id: StringName = &"convict_power_dive"
+@onready var id = get_id()
+
 func _ready() -> void:
 	# Set up Attack
 	damage_instance.amount = attack_damage
@@ -76,6 +83,7 @@ func _ready() -> void:
 	damage_instance.type = Enums.DamageType.NORMAL
 	damage_instance.knockback = 0 # TODO: change for implementing knockback
 	damage_instance.source = get_path()
+	damage_instance.death_screen_id = attack_death_screen_id
 	attack_hitbox.damage_or_heal_instance = damage_instance
 	
 	var room_convict_route_points: Array = []
@@ -105,9 +113,12 @@ func _ready() -> void:
 		"dive_recovery_duration": dive_recovery_duration,
 		"attack_cooldown_min": attack_cooldown_min,
 		"attack_cooldown_max": attack_cooldown_max,
+		"stinger_call": stinger_caller,
 		"convict_route_points": room_convict_route_points,
-		"gravity": GRAVITY
+		"gravity": GRAVITY,
+		"id": id,
 	}
+		
 	# Change initial state based on Inspector values
 	if start_aggroed:
 		state_machine.initial_state = start_aggro
@@ -150,6 +161,7 @@ func apply_soft_collision(delta: float) -> void:
 func _on_health_component_killed(killing_blow: DamageHealInstance, health_before_death: Variant) -> void:
 	# Possibly implement knockback affects here
 	is_dead = true
+	stinger_caller.play_stinger("convict_death_" + id)
 	state_machine.on_child_transition(state_machine.current_state, "convictdeath")
 
 # Hitstun "flinching", can be improved due to some jank with pounce, might not be needed with knockback implemented
@@ -171,10 +183,10 @@ func _on_attack_hitbox_3d_body_exited(body: Node3D) -> void:
 
 
 func call_sfx_at_current_location(sfx_ref: String) -> void:
-	if audio_caller == null:
+	if sfx_caller == null:
 		return
 		
-	audio_caller.play_sfx_at_location(sfx_ref, global_position)
+	sfx_caller.play_sfx_at_location(sfx_ref, global_position)
 
 func _get_enemy_manager() -> EnemyManager:
 	var current: Node = get_parent()
@@ -186,3 +198,24 @@ func _get_enemy_manager() -> EnemyManager:
 		current = current.get_parent()
 	
 	return null
+
+func get_id() -> String:
+	var case = randi_range(0, 6)
+	match case:
+		0:
+			return "f1"
+		1:
+			return "f2"
+		2:
+			return "f3"
+		3:
+			return "f4"
+		4:
+			return "m1"
+		5:
+			return "m4"
+		6:
+			return "m5"
+		_:
+			return ""
+		
