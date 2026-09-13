@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://b7ul7iixbo68q" path="res://art/2d_assets/Scrubs/ScrubGun.png" id="16_4nh4e"]
 [ext_resource type="Texture2D" uid="uid://cjxlu4maqyyoi" path="res://art/2d_assets/Scrubs/ScrubShotgun.png" id="16_bvwpw"]
 [ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="17_18svs"]
-[ext_resource type="PackedScene" uid="uid://bkis2t5h6f25" path="res://scenes/components/gun/gun_variants/scrub_railgun/scrub_railgun.tscn" id="17_wvbbu"]
+[ext_resource type="PackedScene" uid="uid://bkis2t5h6f25" path="res://scenes/components/gun/gun_variants/scrub_missile/scrub_missile.tscn" id="17_wvbbu"]
 [ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="18_5e15c"]
 [ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="19_uudth"]
 [ext_resource type="PackedScene" uid="uid://c6wep4oftfyke" path="res://scenes/components/state_machine/state_machine.tscn" id="20_aonne"]
@@ -1541,7 +1541,7 @@ autoplay = "default"
 [node name="GunHolder" parent="." unique_id=407642416 node_paths=PackedStringArray("team_component") instance=ExtResource("31_wvbbu")]
 team_component = NodePath("../TeamComponent")
 
-[node name="ScrubSniper" parent="GunHolder" unique_id=287583906 node_paths=PackedStringArray("team_component") instance=ExtResource("17_wvbbu")]
+[node name="ScrubMissiles" parent="GunHolder" unique_id=287583906 node_paths=PackedStringArray("team_component") instance=ExtResource("17_wvbbu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6506206, 0.44911653, 0)
 team_component = NodePath("../../TeamComponent")
 

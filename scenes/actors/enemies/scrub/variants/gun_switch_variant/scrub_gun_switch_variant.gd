@@ -227,6 +227,8 @@ func _on_gun_switch_timer_timeout() -> void:
 	
 	# set new vars
 	gun_component.active = true
+	# give full ammo etc.
+	gun_component.ammo_component._current_ammo = gun_component.ammo_component.ammo_max
 	gun_component.in_range = false
 	if len(att_range_area_3d.get_overlapping_bodies()) > 0: 
 		gun_component.in_range = true

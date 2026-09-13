@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bkis2t5h6f25"]
 
-[ext_resource type="PackedScene" uid="uid://cib7lo1lbwb5j" path="res://scenes/components/gun/base_gun/base_gun.tscn" id="1_vrje1"]
-[ext_resource type="PackedScene" uid="uid://bt57arw8qv0ya" path="res://scenes/actors/missile/missile.tscn" id="2_d7023"]
+[ext_resource type="PackedScene" uid="uid://cib7lo1lbwb5j" path="res://scenes/components/gun/base_gun/base_gun.tscn" id="1_w84fu"]
+[ext_resource type="PackedScene" uid="uid://bt57arw8qv0ya" path="res://scenes/actors/missile/missile.tscn" id="2_wnaie"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eyrdn"]
 albedo_color = Color(0, 0, 0, 1)
@@ -25,7 +25,7 @@ material = SubResource("StandardMaterial3D_3agye")
 radius = 0.07
 height = 0.1
 
-[node name="ScrubRailgun" unique_id=814655304 node_paths=PackedStringArray("bullet_emitter", "_normal_flash", "_perfect_flash") instance=ExtResource("1_vrje1")]
+[node name="ScrubMissile" unique_id=814655304 node_paths=PackedStringArray("bullet_emitter", "_normal_flash", "_perfect_flash") instance=ExtResource("1_w84fu")]
 gun_name = "Sniper"
 bullet_emitter = NodePath("BulletEmitter")
 _normal_flash = NodePath("Muzzle/NormalMuzzleFlash")
@@ -46,11 +46,10 @@ wobble_speed = 7.0
 [node name="AmmoComponent" parent="." index="0" unique_id=761015893 node_paths=PackedStringArray("gun_link")]
 gun_link = NodePath("..")
 ammo_max = 1
-reload_time = 5.0
 
 [node name="BulletEmitter" parent="." index="1" unique_id=1440563695 node_paths=PackedStringArray("muzzle")]
 muzzle = NodePath("../Muzzle")
-bullet_scene = ExtResource("2_d7023")
+bullet_scene = ExtResource("2_wnaie")
 full_auto = false
 bullet_damage = 50.0
 bullet_knockback = 0.0

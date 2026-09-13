@@ -38,14 +38,14 @@ func initialise(ability_state: State, actor_blackboard: Dictionary) -> void:
 
 func _physics_process(_delta: float) -> void:
 	if activated:
-		shotgun.single_reload_timer = 0 # to stop from reloading while using ability
+		shotgun.ammo_component.single_reload_timer = 0 # to stop from reloading while using ability
 		# To cancel when gun is swapped
 		if actor.gun_holder.current_gun != shotgun:
 			_ability_state.end_ability.emit()
 			activated = false
 		
 		# While charging blast
-		if charge_timer < charge_time and (DebugManager.infinite_ammo or shotgun._current_ammo > 1):
+		if charge_timer < charge_time and (DebugManager.infinite_ammo or shotgun.ammo_component._current_ammo > 1):
 			charge_timer += _delta
 			actor.velocity.x = move_toward(actor.velocity.x, slow_target_x, slow_down_speed * _delta)
 			actor.velocity.y = move_toward(actor.velocity.y, slow_target_y, slow_down_speed * _delta)
@@ -59,12 +59,12 @@ func _physics_process(_delta: float) -> void:
 # Create a static projectile that knocks back enemies where aiming, and launch player
 # in the opposite direction
 func _fire_blast():
-	if DebugManager.infinite_ammo or shotgun._current_ammo > 1:
+	if DebugManager.infinite_ammo or shotgun.ammo_component._current_ammo > 1:
 		# create the airblast projectile - static, scales to ammo
 		var blast = blast_object.instantiate()
 		get_tree().root.add_child(blast)
 		var aim_dir = Vector3(cos(shotgun.rotation.z), sin(shotgun.rotation.z), 0.0).normalized()
-		blast.global_transform = shotgun.muzzle.global_transform.translated(aim_dir * (blast_size+1)) # offset spawn pos
+		blast.global_transform = shotgun.bullet_emitter.muzzle.global_transform.translated(aim_dir * (blast_size+1)) # offset spawn pos
 		
 		var damage_instance = DamageHealInstance.new()
 		damage_instance.amount = blast_damage
@@ -82,6 +82,6 @@ func _fire_blast():
 		request_animation(player_knockback_animation_name)
 		
 		if !DebugManager.infinite_ammo:
-			shotgun._current_ammo -= 2
+			shotgun.ammo_component._current_ammo -= 2
 			EventManager.shots_fired.emit(2)
 	

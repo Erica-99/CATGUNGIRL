@@ -26,7 +26,7 @@ var charge_timer: float = 0.0
 signal enemy_hit(damage: float)
 
 func is_ability_enterable() -> bool:
-	return sniper._current_ammo > 0
+	return sniper.ammo_component._current_ammo > 0
 
 func initialise(ability_state: State, actor_blackboard: Dictionary) -> void:
 	super.initialise(ability_state, actor_blackboard)
@@ -47,7 +47,7 @@ func _physics_process(delta: float) -> void:
 	if not actor.is_on_floor():
 		actor.velocity += actor.get_gravity() * slow_motion_scale * delta
 		
-	if charge_timer < charge_time and (DebugManager.infinite_ammo or sniper._current_ammo > 0):
+	if charge_timer < charge_time and (DebugManager.infinite_ammo or sniper.ammo_component._current_ammo > 0):
 		charge_timer += delta
 	else:
 		_fire_beam()
@@ -55,7 +55,7 @@ func _physics_process(delta: float) -> void:
 		_ability_state.end_ability.emit()
 
 func _fire_beam() -> void:
-	if not DebugManager.infinite_ammo and sniper._current_ammo <= 0:
+	if not DebugManager.infinite_ammo and sniper.ammo_component._current_ammo <= 0:
 		return
 
 	var aim_dir = Vector3(cos(sniper.rotation.z), sin(sniper.rotation.z), 0.0).normalized()
@@ -89,4 +89,4 @@ func _fire_beam() -> void:
 	hb.damage_dealt.connect(func(dmg): enemy_hit.emit(dmg))
 	
 	sniper._time_since_last_shot = 0.0
-	sniper._handle_ammo()
+	sniper.ammo_component._handle_ammo()

@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://cxxwo2fx6lqr1" path="res://scenes/components/gun/gun_variants/pistol/pistol.tscn" id="33_haoly"]
 [ext_resource type="Script" uid="uid://da3n34oh0bagw" path="res://scenes/actors/player/audio_caller.gd" id="33_owjsm"]
 [ext_resource type="PackedScene" uid="uid://wm6r6dyis4sv" path="res://scenes/components/gun/gun_variants/shotgun/shotgun.tscn" id="34_haoly"]
+[ext_resource type="PackedScene" uid="uid://dik7vpv3wgqrr" path="res://scenes/components/gun/gun_variants/sniper/sniper.tscn" id="35_gisjq"]
 
 [sub_resource type="Animation" id="Animation_lguxi"]
 resource_name = "Fall"
@@ -1705,6 +1706,10 @@ team_component = NodePath("../TeamComponent")
 team_component = NodePath("../../TeamComponent")
 
 [node name="Shotgun" parent="GunHolder" unique_id=1775432672 node_paths=PackedStringArray("team_component") instance=ExtResource("34_haoly")]
+visible = false
+team_component = NodePath("../../TeamComponent")
+
+[node name="Sniper" parent="GunHolder" unique_id=170427884 node_paths=PackedStringArray("team_component") instance=ExtResource("35_gisjq")]
 visible = false
 team_component = NodePath("../../TeamComponent")
 
