@@ -84,7 +84,6 @@
 [ext_resource type="PackedScene" uid="uid://co7fptrpmkvog" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/A_SparesAndPlaceholders/LightCeiling.tscn" id="96_g3qdj"]
 [ext_resource type="Script" uid="uid://4t3uo3s2mf8e" path="res://scenes/levels/Stages/camera_pan_node.gd" id="123_emoyc"]
 [ext_resource type="PackedScene" uid="uid://c10iyc1w0tn8i" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/WallObservation.tscn" id="123_tatg8"]
-[ext_resource type="PackedScene" uid="uid://crm8asnriomew" path="res://scenes/VFX/blood_spurt_medium_vfx.tscn" id="124_uhx6n"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6x05"]
 albedo_texture = ExtResource("17_0n1ur")
@@ -2278,15 +2277,6 @@ environment = SubResource("Environment_nym5h")
 
 [node name="VFX" type="Node3D" parent="." unique_id=974720759]
 
-[node name="BloodSpurtMedium_VFX" parent="VFX" unique_id=465993057 instance=ExtResource("124_uhx6n")]
-transform = Transform3D(-0.12581512, -1.306154, -1.5093483, -0.1085011, 1.514583, -1.3016397, 1.9930875, 0, -0.16613829, 12.441309, 8.869937, 0)
-
-[node name="BloodSplatter1" parent="VFX/BloodSpurtMedium_VFX" index="0" unique_id=60022980]
-transform = Transform3D(0.9999999, -7.424874e-09, -1.4901161e-08, 1.1175871e-08, 1, 2.9802322e-08, 2.2351742e-08, 3.0838712e-10, 1, 0.1951127, -1.9336596, 1.6617966)
-
-[node name="BloodPool" parent="VFX/BloodSpurtMedium_VFX/BloodSplatter1" index="0" unique_id=570071947]
-emitting = false
-
 [node name="DATES_POPUPS" type="Node" parent="." unique_id=983173156]
 
 [node name="ConvictPopup" parent="DATES_POPUPS" unique_id=1311781014 instance=ExtResource("22_cj1de")]
@@ -2428,4 +2418,3 @@ autoplay = &"Intro"
 [editable path="Interactive/Television2"]
 [editable path="Interactive/GunPodium"]
 [editable path="Interactive/GunPodiumGun"]
-[editable path="VFX/BloodSpurtMedium_VFX"]

@@ -125,7 +125,6 @@ metallic_texture = ExtResource("4_r5f43")
 normal_enabled = true
 normal_scale = 2.6
 normal_texture = ExtResource("4_r5f43")
-rim_enabled = true
 rim = 0.32
 rim_tint = 0.08
 rim_texture = ExtResource("4_r5f43")
@@ -136,7 +135,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="Curve" id="Curve_qmmps"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0153846145, 1), 0.8763635, 0.8763635, 0, 0, Vector2(0.88846153, 0), -3.8432975, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.21848741, 1), 0.8763635, 0.8763635, 0, 0, Vector2(1, 0), -3.8432975, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_c15ai"]
@@ -157,7 +156,8 @@ point_count = 4
 curve = SubResource("Curve_r5f43")
 
 [sub_resource type="Curve" id="Curve_dnjhp"]
-_data = [Vector2(0, 0.56946695), 0.0, 0.0, 0, 0, Vector2(0.22307691, 1), 0.0, 0.0, 0, 0, Vector2(0.82307696, 1), 0.0, 0.0, 0, 0, Vector2(0.97307694, 0), -2.1866393, 0.0, 0, 0]
+_limits = [0.0, 1.2, 0.0, 1.2]
+_data = [Vector2(0, 0), 0.0, 5.4060006, 0, 0, Vector2(0.26890758, 1.2), 0.0, 0.0, 0, 0, Vector2(0.68235296, 0.53142864), -2.301219, -2.301219, 0, 0, Vector2(1.2, 0.06857145), -0.11769228, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_knpo7"]
@@ -172,6 +172,7 @@ spread = 20.0
 initial_velocity_max = 5.0
 radial_velocity_curve = SubResource("CurveTexture_wovs4")
 gravity = Vector3(0, 0, 0)
+scale_min = 0.7
 scale_max = 3.0
 scale_curve = SubResource("CurveTexture_knpo7")
 scale_over_velocity_max = 2.0
@@ -270,6 +271,7 @@ draw_pass_1 = SubResource("QuadMesh_hpuq4")
 transform = Transform3D(-0.005693186, 0, -0.699977, 0, 0.7, 0, 0.699977, 0, -0.005693186, -0.05658997, 0, 4.656613e-10)
 layers = 1024
 material_override = SubResource("StandardMaterial3D_ylpuj")
+emitting = false
 amount = 20
 lifetime = 30.0
 one_shot = true
@@ -283,11 +285,11 @@ draw_pass_1 = SubResource("PlaneMesh_wovs4")
 transform = Transform3D(-0.005693189, 0, -0.69997686, 0, 0.7, 0, 0.69997686, 0, -0.005693189, 0, 0, 0)
 layers = 1024
 material_override = SubResource("StandardMaterial3D_im0rn")
-amount = 20
+amount = 40
 lifetime = 4.0
 one_shot = true
 speed_scale = 8.0
-explosiveness = 0.76
+explosiveness = 1.0
 fixed_fps = 60
 collision_base_size = 0.05
 visibility_aabb = AABB(-8, -8, -8, 16, 16, 16)

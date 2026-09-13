@@ -31,9 +31,9 @@ func enter() -> void:
 		push_warning("No VFX node found in current scene")
 		return
 
-	VFX_spawn_node.add_child(blood_VFX)
 	blood_VFX.global_position = VFX_spawn.global_position
-
+	VFX_spawn_node.add_child(blood_VFX)
+	
 	AudioManager.play_sfx("gore_1")
 	randomize()
 	var deathid = 'Death' + str(randi_range(1,3))
