@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://35uiv1vpc6lf"]
 
+[ext_resource type="Script" uid="uid://dawdwjrkswtqg" path="res://scenes/levels/Stages/panning_camera.gd" id="1_5csjs"]
 [ext_resource type="PackedScene" uid="uid://d1isfmus58oku" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/IndustrialLight1.tscn" id="2_4rc05"]
 [ext_resource type="PackedScene" uid="uid://2q8156sdqttw" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/OilDrumBlack.tscn" id="2_toh17"]
 [ext_resource type="PackedScene" uid="uid://bmllqy5j541cg" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/OilDrumDefault.tscn" id="2_ufe4p"]
@@ -172,6 +173,18 @@ _data = {
 }
 
 [node name="Stage4" type="Node3D" unique_id=1167791451]
+
+[node name="RailCamera" type="Node3D" parent="." unique_id=711019821]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.623193, 31.221176)
+script = ExtResource("1_5csjs")
+default_offset = Vector3(0, 5, 30)
+Player_Target_Ratio = 0.4
+
+[node name="Camera" type="Camera3D" parent="RailCamera" unique_id=1209364999]
+
+[node name="PlayerCamTarget" type="Node3D" parent="RailCamera" unique_id=281367674]
+
+[node name="Player_rotation_pivot" type="Node3D" parent="RailCamera" unique_id=357357685]
 
 [node name="Player" parent="." unique_id=1349193765 instance=ExtResource("15_qpjh2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124, 2.14, 0)

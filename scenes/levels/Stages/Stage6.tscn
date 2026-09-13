@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://ccgg2t71rdo0l"]
 
+[ext_resource type="Script" uid="uid://dawdwjrkswtqg" path="res://scenes/levels/Stages/panning_camera.gd" id="1_mywdw"]
 [ext_resource type="PackedScene" uid="uid://wn4bdivbwbsn" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/BrainJarScreenTemplate.tscn" id="2_o5d64"]
 [ext_resource type="PackedScene" uid="uid://d1isfmus58oku" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/IndustrialLight1.tscn" id="5_coglk"]
 [ext_resource type="PackedScene" uid="uid://btcwaxl38nip5" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeSets/HandlebarSmall.tscn" id="5_mxr2x"]
@@ -191,6 +192,18 @@ _data = {
 }
 
 [node name="Stage6" type="Node3D" unique_id=1033722064]
+
+[node name="RailCamera" type="Node3D" parent="." unique_id=1204773297]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.623193, 31.221176)
+script = ExtResource("1_mywdw")
+default_offset = Vector3(0, 5, 30)
+Player_Target_Ratio = 0.4
+
+[node name="Camera" type="Camera3D" parent="RailCamera" unique_id=1522276125]
+
+[node name="PlayerCamTarget" type="Node3D" parent="RailCamera" unique_id=412088629]
+
+[node name="Player_rotation_pivot" type="Node3D" parent="RailCamera" unique_id=47312281]
 
 [node name="Player" parent="." unique_id=1349193765 instance=ExtResource("13_7yaim")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124, 2.14, 0)

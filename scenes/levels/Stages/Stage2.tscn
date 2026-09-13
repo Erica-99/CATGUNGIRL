@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cear303gej657"]
 
+[ext_resource type="Script" uid="uid://dawdwjrkswtqg" path="res://scenes/levels/Stages/panning_camera.gd" id="1_75qhx"]
 [ext_resource type="PackedScene" uid="uid://cue2gdrvswqwe" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Mesh/FloorMeshEdge.tscn" id="3_fporf"]
 [ext_resource type="PackedScene" uid="uid://co7fptrpmkvog" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/A_SparesAndPlaceholders/LightCeiling.tscn" id="8_564b6"]
 [ext_resource type="PackedScene" uid="uid://k4bj1vh7ofsj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorExit.tscn" id="9_f12kt"]
@@ -257,6 +258,18 @@ emission = Color(0.78431374, 0.039215688, 0.043137256, 1)
 emission_energy_multiplier = 10.0
 
 [node name="StageTwo" type="Node3D" unique_id=1996110792]
+
+[node name="RailCamera" type="Node3D" parent="." unique_id=814891532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.623193, 31.221176)
+script = ExtResource("1_75qhx")
+default_offset = Vector3(0, 5, 30)
+Player_Target_Ratio = 0.4
+
+[node name="Camera" type="Camera3D" parent="RailCamera" unique_id=453575462]
+
+[node name="PlayerCamTarget" type="Node3D" parent="RailCamera" unique_id=888906295]
+
+[node name="Player_rotation_pivot" type="Node3D" parent="RailCamera" unique_id=1460287191]
 
 [node name="Player" parent="." unique_id=1349193765 instance=ExtResource("12_4vd0f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8309355, 0)
