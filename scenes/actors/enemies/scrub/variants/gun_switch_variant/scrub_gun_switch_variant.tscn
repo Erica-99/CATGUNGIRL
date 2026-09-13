@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://du8yjoegqlyag"]
 
 [ext_resource type="Script" uid="uid://cqga6s3j85e7b" path="res://scenes/actors/enemies/scrub/variants/gun_switch_variant/scrub_gun_switch_variant.gd" id="1_bf5nj"]
-[ext_resource type="Script" uid="uid://baqngs50hkbgn" path="res://scenes/actors/enemies/scrub/scrub_visuals.gd" id="3_05lix"]
+[ext_resource type="Script" uid="uid://c87477w5qq6u7" path="res://scenes/actors/enemies/scrub/variants/gun_switch_variant/scrub_mesh.gd" id="2_rsgxf"]
 [ext_resource type="Texture2D" uid="uid://58g3vxi73xw4" path="res://art/2d_assets/Scrubs/ScrubTorso2.png" id="4_v8nl6"]
 [ext_resource type="Texture2D" uid="uid://ia68l48n02j2" path="res://art/2d_assets/Scrubs/ScrubTorso.png" id="5_y0k7j"]
 [ext_resource type="Texture2D" uid="uid://bc3clhwjwkvlx" path="res://art/2d_assets/Scrubs/ScrubHead2.png" id="6_eh337"]
@@ -26,8 +26,7 @@
 [ext_resource type="Script" uid="uid://ceil7gp5xrgc5" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_grenade.gd" id="25_p8e5l"]
 [ext_resource type="Script" uid="uid://doxqnfsm4wb8g" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_flee.gd" id="26_h0tc8"]
 [ext_resource type="Script" uid="uid://briciybelpcwe" path="res://scenes/components/state_machine/states/enemy/enemy_death.gd" id="27_ftq3y"]
-[ext_resource type="Script" uid="uid://b3k0oou7pmgq8" path="res://scenes/components/state_machine/states/enemy/scrub_switch_weapon_variant/scrub_shotgun_attack.gd" id="27_w76ob"]
-[ext_resource type="Script" uid="uid://diqs311hnqwy0" path="res://scenes/components/state_machine/states/enemy/scrub_switch_weapon_variant/scrub_sniper_attack.gd" id="28_hnanj"]
+[ext_resource type="Script" uid="uid://diqs311hnqwy0" path="res://scenes/components/state_machine/states/enemy/scrub_switch_weapon_variant/switch_scrub_attack.gd" id="28_hnanj"]
 [ext_resource type="Script" uid="uid://d1xvpcaucwgpw" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_stun.gd" id="29_vm71c"]
 [ext_resource type="Script" uid="uid://dpwol7txodmxp" path="res://scenes/components/soft_collision.gd" id="30_rpm1u"]
 [ext_resource type="PackedScene" uid="uid://dp6f6qebbi8kl" path="res://scenes/components/gun_poc/gun_holder.tscn" id="31_wvbbu"]
@@ -1117,7 +1116,7 @@ tracks/9/keys = {
 }
 tracks/10/type = "value"
 tracks/10/imported = false
-tracks/10/enabled = false
+tracks/10/enabled = true
 tracks/10/path = NodePath("../../Gun_P:position")
 tracks/10/interp = 2
 tracks/10/loop_wrap = true
@@ -1129,7 +1128,7 @@ tracks/10/keys = {
 }
 tracks/11/type = "value"
 tracks/11/imported = false
-tracks/11/enabled = false
+tracks/11/enabled = true
 tracks/11/path = NodePath("../../Gun_P:rotation")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
@@ -1433,10 +1432,11 @@ radius = 2.1603687
 [sub_resource type="SphereShape3D" id="SphereShape3D_w76ob"]
 radius = 16.0
 
-[node name="GunSwitchScrub" type="CharacterBody3D" unique_id=1090872008 node_paths=PackedStringArray("animator", "state_machine", "start_idle", "start_patrol", "start_aggro", "gun_component", "gun_switcher", "base_visual_gun_node")]
+[node name="GunSwitchScrub" type="CharacterBody3D" unique_id=1090872008 node_paths=PackedStringArray("gun_sprite", "animator", "state_machine", "start_idle", "start_patrol", "start_aggro", "gun_component", "gun_switcher", "base_visual_gun_node")]
 collision_layer = 4
 collision_mask = 129
 script = ExtResource("1_bf5nj")
+gun_sprite = NodePath("Gun_P/Gun_AIM_P/AnimatedSprite3D")
 animator = NodePath("Scrub_Mesh/AnimationPlayer")
 state_machine = NodePath("StateMachine")
 patroller = true
@@ -1452,7 +1452,7 @@ chase_acceleration = 3.0
 flee_speed = 15.0
 
 [node name="Scrub_Mesh" type="Node3D" parent="." unique_id=326229984 node_paths=PackedStringArray("gun_aim_p", "gun_sprite")]
-script = ExtResource("3_05lix")
+script = ExtResource("2_rsgxf")
 gun_aim_p = NodePath("../Gun_P/Gun_AIM_P")
 gun_sprite = NodePath("../Gun_P/Gun_AIM_P/AnimatedSprite3D")
 
@@ -1542,10 +1542,11 @@ autoplay = "default"
 team_component = NodePath("../TeamComponent")
 
 [node name="ScrubSniper" parent="GunHolder" unique_id=287583906 node_paths=PackedStringArray("team_component") instance=ExtResource("17_wvbbu")]
-transform = Transform3D(0.59, 0, 0, 0, 0.59, 0, 0, 0, 0.59, 0, 0.76126575, 0.058228813)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6506206, 0.44911653, 0)
 team_component = NodePath("../../TeamComponent")
 
 [node name="ScrubShotgun" parent="GunHolder" unique_id=441850899 node_paths=PackedStringArray("team_component") instance=ExtResource("20_bvwpw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6506206, 0.44911653, 0)
 team_component = NodePath("../../TeamComponent")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1549018224]
@@ -1589,14 +1590,6 @@ debug_color = Color(0.9201433, 0.7565305, 1, 0.41960785)
 script = ExtResource("22_p7mi5")
 metadata/_custom_type_script = "uid://dwu8ceiw2k1hg"
 
-[node name="ScrubSniperAttack" type="Node" parent="StateMachine" unique_id=1863282631]
-script = ExtResource("28_hnanj")
-metadata/_custom_type_script = "uid://diqs311hnqwy0"
-
-[node name="ScrubShotgunAttack" type="Node" parent="StateMachine" unique_id=1746292694]
-script = ExtResource("27_w76ob")
-metadata/_custom_type_script = "uid://b3k0oou7pmgq8"
-
 [node name="ScrubGrenade" type="Node" parent="StateMachine" unique_id=2024638174]
 script = ExtResource("25_p8e5l")
 metadata/_custom_type_script = "uid://ceil7gp5xrgc5"
@@ -1626,6 +1619,10 @@ metadata/_custom_type_script = "uid://dc3l005j5p4ld"
 [node name="SwitchScrubPatrol" type="Node" parent="StateMachine" unique_id=2055270661]
 script = ExtResource("34_6ycb4")
 metadata/_custom_type_script = "uid://4763tv1xg3d8"
+
+[node name="SwitchScrubAttack" type="Node" parent="StateMachine" unique_id=917076676]
+script = ExtResource("28_hnanj")
+metadata/_custom_type_script = "uid://diqs311hnqwy0"
 
 [node name="DetectionArea3D" type="Area3D" parent="." unique_id=1101772605]
 collision_layer = 0
@@ -1679,20 +1676,19 @@ shape = SubResource("SphereShape3D_w76ob")
 debug_color = Color(0.36769408, 0.6085181, 0.28556496, 0.41960785)
 
 [node name="GunSwitchTimer" type="Timer" parent="." unique_id=490305242]
-wait_time = 2.0
+wait_time = 4.0
 
 [connection signal="facing_changed" from="." to="Scrub_Mesh" method="_on_scrub_facing_changed"]
+[connection signal="gun_change" from="." to="Scrub_Mesh" method="_on_gun_switch_scrub_gun_change"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]
 [connection signal="body_entered" from="DetectionArea3D" to="StateMachine/SwitchScrubIdle" method="_on_detection_area_3d_body_entered"]
 [connection signal="body_entered" from="DetectionArea3D" to="StateMachine/SwitchScrubPatrol" method="_on_detection_area_3d_body_entered"]
 [connection signal="body_entered" from="AttRangeArea3D" to="StateMachine/SwitchScrubChase" method="_on_att_range_area_3d_body_entered"]
-[connection signal="body_exited" from="AttRangeArea3D" to="StateMachine/ScrubSniperAttack" method="_on_att_range_area_3d_body_exited"]
-[connection signal="body_exited" from="AttRangeArea3D" to="StateMachine/ScrubShotgunAttack" method="_on_att_range_area_3d_body_exited"]
-[connection signal="body_entered" from="FleeArea3D" to="StateMachine/ScrubSniperAttack" method="_on_flee_area_3d_body_entered"]
-[connection signal="body_entered" from="FleeArea3D" to="StateMachine/ScrubShotgunAttack" method="_on_flee_area_3d_body_entered"]
+[connection signal="body_exited" from="AttRangeArea3D" to="StateMachine/SwitchScrubAttack" method="_on_att_range_area_3d_body_exited"]
 [connection signal="body_entered" from="FleeArea3D" to="StateMachine/SwitchScrubChase" method="_on_flee_area_3d_body_entered"]
 [connection signal="body_entered" from="FleeArea3D" to="StateMachine/SwitchScrubIdle" method="_on_flee_area_3d_body_entered"]
 [connection signal="body_entered" from="FleeArea3D" to="StateMachine/SwitchScrubPatrol" method="_on_flee_area_3d_body_entered"]
+[connection signal="body_entered" from="FleeArea3D" to="StateMachine/SwitchScrubAttack" method="_on_flee_area_3d_body_entered"]
 [connection signal="body_exited" from="FleeArea3D" to="StateMachine/ScrubFlee" method="_on_flee_area_3d_body_exited"]
 [connection signal="timeout" from="GunSwitchTimer" to="." method="_on_gun_switch_timer_timeout"]

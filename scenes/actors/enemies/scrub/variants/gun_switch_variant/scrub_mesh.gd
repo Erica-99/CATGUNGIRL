@@ -5,7 +5,7 @@ extends Node3D
 @onready var torso_p: Node3D = $Visual_MOVE_P/Torso_P
 @onready var legs_p: Node3D = $Visual_MOVE_P/Torso_P/Legs_P
 #@onready var scrub_gun: Node3D = $"../ScrubGun"
-@onready var scrub_gun: Node3D = scrubroot.gun_component
+@onready var base_gun: Node3D = scrubroot.gun_switcher
 #@onready var scrub_gun: Node3D = $Visual_MOVE_P/Torso_P/Gun_P/Gun_AIM_P/ScrubGun
 
 @export var gun_aim_p: Node3D
@@ -21,9 +21,6 @@ func _ready() -> void:
 	if gun_aim_p == null or gun_sprite == null:
 		print("ALERT: Aim node and/or gun sprite hasn't been assigned for a scrub!")
 
-func _process(delta: float) -> void:
-	if scrub_gun is not BaseGun:
-		gun_aim_p.rotation.z = scrub_gun.rotation.z * facing_direction
 	
 	#pass
 	#print(scrub_gun.rotation)
@@ -37,16 +34,14 @@ func _on_scrub_facing_changed(scrub: CharacterBody3D) -> void:
 		#legs_p.scale.x = -1
 		visual_p.scale.x = -1
 		gun_sprite.flip_h = false
-		if scrub_gun is BaseGun:
-			gun_aim_p.scale.x = -1
+		gun_aim_p.scale.x = -1
 		gun_aim_p.scale.y = -1
 		#scrub_gun.position
 	else:
 		#legs_p.scale.x = 1
 		visual_p.scale.x = 1
 		gun_sprite.flip_h = true
-		if scrub_gun is BaseGun:
-			gun_aim_p.scale.x = 1
+		gun_aim_p.scale.x = 1
 		gun_aim_p.scale.y = 1
 
-	scrub_gun.position.x *= -1
+	base_gun.position.x *= -1

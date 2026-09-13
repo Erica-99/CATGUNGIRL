@@ -48,7 +48,7 @@ func _on_detection_area_3d_body_entered(body: Node3D) -> void:
 			if actor.gun_switch_timer.is_stopped():
 				actor.gun_switch_timer.start()
 			if actor.in_attacking_range:
-				actor._enter_attack_state()
+				transitioned.emit(self, "switchscrubattack")
 			else:
 				transitioned.emit(self, "switchscrubchase")
 

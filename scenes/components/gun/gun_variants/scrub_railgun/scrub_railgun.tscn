@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bkis2t5h6f25"]
 
 [ext_resource type="PackedScene" uid="uid://cib7lo1lbwb5j" path="res://scenes/components/gun/base_gun/base_gun.tscn" id="1_vrje1"]
+[ext_resource type="PackedScene" uid="uid://bt57arw8qv0ya" path="res://scenes/actors/missile/missile.tscn" id="2_d7023"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eyrdn"]
 albedo_color = Color(0, 0, 0, 1)
@@ -49,6 +50,7 @@ reload_time = 5.0
 
 [node name="BulletEmitter" parent="." index="1" unique_id=1440563695 node_paths=PackedStringArray("muzzle")]
 muzzle = NodePath("../Muzzle")
+bullet_scene = ExtResource("2_d7023")
 full_auto = false
 bullet_damage = 50.0
 bullet_knockback = 0.0

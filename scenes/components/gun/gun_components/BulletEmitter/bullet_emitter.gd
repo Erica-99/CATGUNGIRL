@@ -59,16 +59,18 @@ func _spawn_bullet(damage: float, size: float) -> void:
 	damage_instance.knockback = bullet_knockback
 	damage_instance.source = get_path()
 	
-	bullet.initialize(aim_dir, damage_instance, gun_link.team_component, size, pierce_on_headshot)
+	if bullet is not Missile:
+		bullet.initialize(aim_dir, damage_instance, gun_link.team_component, size, pierce_on_headshot)
+	
+		#AudioManager.play_sfx_at_location("scrub_shot", global_position)
+		bullet.speed *= bullet_velocity_multiplier
+		bullet.max_range = bullet_range
+		var hb = bullet.get_node("HitboxComponent")
+		hb.damage_dealt.connect(func(damage): gun_link.enemy_hit.emit(damage))
+	
 	
 	if audio_string_id:
 		AudioManager.play_sfx_at_location(audio_string_id, global_position)
-	
-	#AudioManager.play_sfx_at_location("scrub_shot", global_position)
-	bullet.speed *= bullet_velocity_multiplier
-	bullet.max_range = bullet_range
-	var hb = bullet.get_node("HitboxComponent")
-	hb.damage_dealt.connect(func(damage): gun_link.enemy_hit.emit(damage))
 
 
 # PLAYER ONLY FUNCTION

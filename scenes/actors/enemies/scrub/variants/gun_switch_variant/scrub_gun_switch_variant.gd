@@ -6,7 +6,8 @@ extends CharacterBody3D
 @onready var flee_area_3d: Area3D = $FleeArea3D
 @onready var gun_switch_zone: Area3D = $GunSwitchZone
 @onready var gun_switch_timer: Timer = $GunSwitchTimer
-@onready var gun_sprite: AnimatedSprite3D = $Gun_P/Gun_AIM_P/AnimatedSprite3D
+
+@export var gun_sprite: AnimatedSprite3D
 
 @export_category("Node References")
 @export var animator: AnimationPlayer
@@ -68,13 +69,8 @@ var time: float = 0.0
 @export var frequency: float = 3.0
 @export var amplitude: float = 2.0
 
-# map gun name to state
-const GUN_NAME_MAPPING = {
-	"Shotgun": "scrubshotgunattack",
-	"Sniper": "scrubsniperattack"
-}
-
 signal facing_changed(scrub: CharacterBody3D)
+signal gun_change()
 
 var blackboard: Dictionary
 
@@ -94,10 +90,6 @@ func _ready() -> void:
 		"flee_speed": flee_speed,
 		"flee_acceleration": flee_acceleration,
 		"slow_down_speed": slow_down_speed,
-		"shotgun_flee_range_radius": shotgun_flee_range_radius,
-		"shotgun_attack_range_radius": shotgun_attack_range_radius,
-		"sniper_flee_range_radius": sniper_flee_range_radius,
-		"sniper_attack_range_radius": sniper_attack_range_radius,
 		"target": get_tree().get_first_node_in_group("player") as CharacterBody3D,
 	}
 	# Change initial state based on Inspector values
@@ -112,14 +104,14 @@ func _ready() -> void:
 	state_machine.init(blackboard)
 	
 	# reparent to current gun
-	base_visual_gun_node.reparent(gun_component)
+	base_visual_gun_node.reparent(gun_component, true)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if in_attacking_range:
 		can_shoot.target_position = can_shoot.to_local(get_tree().get_first_node_in_group("player").global_position)
 	
-	if state_machine.current_state_name != "ScrubSniperAttack" and state_machine.current_state_name != "ScrubShotgunAttack" and gun_component is BaseGun:
+	if state_machine.current_state_name != "SwitchScrubAttack":
 		gun_component.rotation.z = -PI/2
 
 func _physics_process(delta: float) -> void:
@@ -211,24 +203,19 @@ func _return_from_stun():
 	if len(flee_area_3d.get_overlapping_bodies()) != 0:
 		state_machine.on_child_transition(state_machine.current_state, "scrubflee")
 	elif len(att_range_area_3d.get_overlapping_bodies()) != 0:
-		_enter_attack_state()
+		state_machine.on_child_transition(state_machine.current_state, "switchscrubattack")
 	else:
 		state_machine.on_child_transition(state_machine.current_state, "switchscrubchase")
 
-# switch according to gun name
-func _enter_attack_state():
-	print(GUN_NAME_MAPPING[gun_component.gun_name])
-	if gun_component.gun_name in GUN_NAME_MAPPING:
-		state_machine.on_child_transition(state_machine.current_state, GUN_NAME_MAPPING[gun_component.gun_name])
-	else:
-		print("ALERT: GUN NAME DOES NOT MATCH GUN LIST")
 
 # when timer times out, check where player is and change gun equipped based off that
 func _on_gun_switch_timer_timeout() -> void:
-	print("SWITCHING")
-	print(gun_component.gun_name)
-	# if inside, switch to shotty, if outside, switch to sniper
+	# reset to default vars for current (to be switched) gun
 	gun_component.active = false
+	gun_component.in_range = false
+	gun_component.rotation.z = -PI/2
+	# if inside, switch to shotty, if outside, switch to sniper
+	# switch then set radius etc.
 	if len(gun_switch_zone.get_overlapping_bodies()) != 0:
 		gun_component = gun_switcher._switch_gun_by_name("Shotgun")
 		flee_area_3d.get_child(0).shape.radius = shotgun_flee_range_radius
@@ -237,8 +224,22 @@ func _on_gun_switch_timer_timeout() -> void:
 		gun_component = gun_switcher._switch_gun_by_name("Sniper")
 		flee_area_3d.get_child(0).shape.radius = sniper_flee_range_radius
 		att_range_area_3d.get_child(0).shape.radius = sniper_attack_range_radius
+	
+	# set new vars
 	gun_component.active = true
-	base_visual_gun_node.reparent(gun_component)
-	print(base_visual_gun_node.get_path())
+	gun_component.in_range = false
+	if len(att_range_area_3d.get_overlapping_bodies()) > 0: 
+		gun_component.in_range = true
+		
+	gun_component.rotation.z = -PI/2
+	
+	# reparent and change visual appearance
+	base_visual_gun_node.reparent(gun_component, true)
 	gun_sprite.play(gun_component.gun_name)
-	print(gun_component.gun_name)
+	
+	# emit change for visuals to be checked
+	gun_change.emit()
+	
+	# stun as per below - might be ongoing issues
+	#state_machine.on_child_transition(state_machine.current_state, "scrubstun")
+	

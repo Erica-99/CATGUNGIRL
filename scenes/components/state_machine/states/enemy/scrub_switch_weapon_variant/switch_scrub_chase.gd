@@ -47,7 +47,7 @@ func _on_att_range_area_3d_body_entered(body: Node3D) -> void:
 	if !actor.is_dead:
 		actor.in_attacking_range = true
 		if actor.detected_player:
-			actor._enter_attack_state()
+			transitioned.emit(self, "switchscrubattack")
 
 
 func _on_flee_area_3d_body_entered(body: Node3D) -> void:

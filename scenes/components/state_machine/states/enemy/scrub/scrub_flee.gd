@@ -45,4 +45,4 @@ func physics_update(delta: float) -> void:
 
 func _on_flee_area_3d_body_exited(body: Node3D) -> void:
 	if !actor.is_dead:
-		actor._enter_attack_state()
+		transitioned.emit(self, "switchscrubattack")
