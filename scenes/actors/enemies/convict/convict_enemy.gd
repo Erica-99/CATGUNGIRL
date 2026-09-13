@@ -67,6 +67,8 @@ var action_pending: bool = false
 var enemy_manager: EnemyManager
 var blackboard : Dictionary 
 
+
+
 @onready var Convict_Piv = $Visuals
 
 @export_category("Death Screen Info")

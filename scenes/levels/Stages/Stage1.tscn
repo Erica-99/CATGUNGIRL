@@ -99,9 +99,11 @@ heightmap_scale = 0.0
 heightmap_texture = ExtResource("19_qys1n")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mtc3x"]
+albedo_color = Color(0.6399979, 0.72550595, 0.7825793, 1)
 albedo_texture = ExtResource("18_xwepp")
 metallic = 1.0
 metallic_texture = ExtResource("21_opnci")
+roughness = 0.6
 roughness_texture = ExtResource("23_5c544")
 normal_enabled = true
 normal_texture = ExtResource("22_6q6ja")
@@ -112,9 +114,12 @@ heightmap_scale = 0.0
 heightmap_texture = ExtResource("20_3ubu5")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_flo5n"]
+albedo_color = Color(0.6114719, 0.6536162, 0.6536162, 1)
 albedo_texture = ExtResource("19_ncrw4")
 metallic = 1.0
+metallic_specular = 0.65
 metallic_texture = ExtResource("22_jx5wa")
+roughness = 0.3
 roughness_texture = ExtResource("24_2qri5")
 normal_enabled = true
 normal_texture = ExtResource("23_x4ehs")
@@ -124,9 +129,11 @@ heightmap_enabled = true
 heightmap_texture = ExtResource("21_f2j4k")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7am4i"]
+albedo_color = Color(0.6399979, 0.72550595, 0.7825793, 1)
 albedo_texture = ExtResource("19_ncrw4")
 metallic = 1.0
 metallic_texture = ExtResource("22_jx5wa")
+roughness = 0.6
 roughness_texture = ExtResource("24_2qri5")
 normal_enabled = true
 normal_texture = ExtResource("23_x4ehs")
@@ -177,6 +184,7 @@ heightmap_scale = 0.0
 heightmap_texture = ExtResource("19_qys1n")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4m60o"]
+albedo_color = Color(0.38422897, 0.38422897, 0.38422894, 1)
 albedo_texture = ExtResource("18_xwepp")
 metallic = 1.0
 metallic_texture = ExtResource("21_opnci")
@@ -190,6 +198,7 @@ heightmap_scale = 0.0
 heightmap_texture = ExtResource("20_3ubu5")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v3t1d"]
+albedo_color = Color(0.38422897, 0.38422897, 0.38422894, 1)
 albedo_texture = ExtResource("19_ncrw4")
 metallic = 1.0
 metallic_texture = ExtResource("22_jx5wa")
@@ -202,9 +211,12 @@ heightmap_enabled = true
 heightmap_texture = ExtResource("21_f2j4k")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n2mqi"]
+albedo_color = Color(0.6114719, 0.6536162, 0.6536162, 1)
 albedo_texture = ExtResource("19_ncrw4")
 metallic = 1.0
+metallic_specular = 0.65
 metallic_texture = ExtResource("22_jx5wa")
+roughness = 0.3
 roughness_texture = ExtResource("24_2qri5")
 normal_enabled = true
 normal_texture = ExtResource("23_x4ehs")
@@ -1929,6 +1941,7 @@ transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 199.
 
 [node name="DoorBasic" parent="Interactive" unique_id=1555562335 instance=ExtResource("2_ohrdm")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 25, 0, 0)
+collision_layer = 1025
 openable = false
 
 [node name="DoorBasic2" parent="Interactive" unique_id=1217171111 instance=ExtResource("2_ohrdm")]
@@ -2063,6 +2076,9 @@ shape = SubResource("BoxShape3D_uhx6n")
 
 [node name="CameraTarget" type="Node3D" parent="Interactive/CameraPanNode2" unique_id=702545634]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.028803, 1.5672941, 17.515985)
+
+[node name="BloodSpurt1_VFX" type="Node3D" parent="Interactive" unique_id=425089821]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7513, 3.0505724, 0)
 
 [node name="Lighting" type="Node3D" parent="." unique_id=295073022]
 
@@ -2259,6 +2275,8 @@ light_specular = 0.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting/DirectionalLight3D2" unique_id=888171453]
 environment = SubResource("Environment_nym5h")
 
+[node name="VFX" type="Node3D" parent="." unique_id=974720759]
+
 [node name="DATES_POPUPS" type="Node" parent="." unique_id=983173156]
 
 [node name="ConvictPopup" parent="DATES_POPUPS" unique_id=1311781014 instance=ExtResource("22_cj1de")]
@@ -2353,7 +2371,7 @@ transform = Transform3D(1.1250001, 0, 0, 0, 1.1250001, 0, 0, 0, 1.125, 0.0095024
 libraries/ = SubResource("AnimationLibrary_ovhx5")
 autoplay = &"Intro"
 
-[node name="VFX" type="Node3D" parent="." unique_id=915792707]
+[node name="VFX2" type="Node3D" parent="." unique_id=915792707]
 
 [connection signal="removecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
@@ -2373,9 +2391,30 @@ autoplay = &"Intro"
 [connection signal="body_exited" from="Interactive/CameraPanNode2/Area" to="Interactive/CameraPanNode2" method="_on_area_body_exited"]
 [connection signal="stage_cleared" from="Enemies/RoomFive" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]
 
+[editable path="Environment/PrisonCraneRail"]
+[editable path="Environment/PrisonCraneRail9"]
+[editable path="Environment/PrisonCraneRail2"]
+[editable path="Environment/PrisonCraneRail3"]
+[editable path="Environment/PrisonCraneRail4"]
+[editable path="Environment/PrisonCraneRail5"]
+[editable path="Environment/PrisonCraneRail6"]
+[editable path="Environment/PrisonCraneRail7"]
+[editable path="Environment/PrisonCraneRail8"]
 [editable path="Props/LightingObjs/LightCeiling66"]
 [editable path="Props/LightingObjs/LightCeiling67"]
 [editable path="Props/LightingObjs/LightCeiling68"]
 [editable path="Props/LightingObjs/LightCeiling69"]
+[editable path="Interactive/DoorBasic"]
+[editable path="Interactive/DoorBasic2"]
+[editable path="Interactive/DoorBasic3"]
+[editable path="Interactive/DoorBasic4"]
+[editable path="Interactive/DoorBasic10"]
+[editable path="Interactive/DoorBasic11"]
+[editable path="Interactive/DoorExit"]
+[editable path="Interactive/DoorSlidingBasic4"]
+[editable path="Interactive/TestDummy"]
+[editable path="Interactive/TestDummy2"]
 [editable path="Interactive/Television"]
 [editable path="Interactive/Television2"]
+[editable path="Interactive/GunPodium"]
+[editable path="Interactive/GunPodiumGun"]
