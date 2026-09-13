@@ -20,13 +20,16 @@ func enter() -> void:
 	actor.show_spider_visual()
 	
 	if actor.spider_mode == BrainSpider.SpiderMode.FLOOR:
+		
 		play_death_explosion()
 
 func update(delta: float) -> void:
 	if actor.is_dead:
+		actor.animator.play('Death')
 		return
 	
 	if !has_exploded:
+		
 		fall_timer += delta
 		
 		if fall_timer >= actor.fall_death_max_time:
@@ -62,7 +65,6 @@ func physics_update(delta: float) -> void:
 func play_death_explosion() -> void:
 	if has_exploded:
 		return
-	
 	has_exploded = true
 	death_timer = 0.0
 	actor.velocity = Vector3.ZERO
