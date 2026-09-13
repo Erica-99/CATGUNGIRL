@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bt57arw8qv0ya"]
+
+[ext_resource type="Script" uid="uid://bow8u4aqdp5ka" path="res://scenes/actors/missile/missile.gd" id="1_wyuj3"]
+[ext_resource type="PackedScene" uid="uid://c6wep4oftfyke" path="res://scenes/components/state_machine/state_machine.tscn" id="2_3t0jd"]
+[ext_resource type="Texture2D" uid="uid://bux6kt8yamdxv" path="res://art/2d_assets/real_world/vfx/placeholder_missile.png" id="3_epqap"]
+[ext_resource type="Script" uid="uid://cs2yc5vaj1yy" path="res://scenes/components/state_machine/states/missile/missile_spawn.gd" id="3_vsmuw"]
+[ext_resource type="Script" uid="uid://dxm4eiklqta28" path="res://scenes/components/state_machine/states/missile/missile_home.gd" id="4_a5ply"]
+[ext_resource type="Script" uid="uid://b58vefkia0mhm" path="res://scenes/components/state_machine/states/missile/missile_detonate.gd" id="5_epe2e"]
+[ext_resource type="PackedScene" uid="uid://b7kxu4jab6vwf" path="res://scenes/actors/missile/explosion.tscn" id="6_5lpuf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i0qyu"]
+size = Vector3(0.7, 1.5, 1)
+
+[node name="Missile" type="CharacterBody3D" unique_id=1058796648 node_paths=PackedStringArray("state_machine") groups=["projectiles"]]
+collision_layer = 0
+collision_mask = 3
+axis_lock_linear_z = true
+script = ExtResource("1_wyuj3")
+state_machine = NodePath("StateMachine")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=798733028]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_i0qyu")
+
+[node name="StateMachine" parent="." unique_id=1499026333 node_paths=PackedStringArray("initial_state") instance=ExtResource("2_3t0jd")]
+initial_state = NodePath("MissileSpawn")
+
+[node name="MissileSpawn" type="Node" parent="StateMachine" unique_id=475441113]
+script = ExtResource("3_vsmuw")
+burst_duration = 0.2
+burst_velocity = 10
+burst_damp = 3
+
+[node name="MissileHome" type="Node" parent="StateMachine" unique_id=1725437539]
+script = ExtResource("4_a5ply")
+acceleration = 1.0
+
+[node name="MissileDetonate" type="Node" parent="StateMachine" unique_id=564308262]
+script = ExtResource("5_epe2e")
+explosion_scene = ExtResource("6_5lpuf")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1259470629]
+transform = Transform3D(0.4, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
+offset = Vector2(0, -100)
+texture = ExtResource("3_epqap")

@@ -25,7 +25,7 @@ var slow_target_y: float
 signal enemy_hit(damage: float)
 
 func is_ability_enterable() -> bool:
-	return shotgun._current_ammo > 1
+	return DebugManager.infinite_ammo or shotgun._current_ammo > 1
 
 func initialise(ability_state: State, actor_blackboard: Dictionary) -> void:
 	super.initialise(ability_state, actor_blackboard)
@@ -45,7 +45,7 @@ func _physics_process(_delta: float) -> void:
 			activated = false
 		
 		# While charging blast
-		if charge_timer < charge_time and shotgun._current_ammo > 1:
+		if charge_timer < charge_time and (DebugManager.infinite_ammo or shotgun._current_ammo > 1):
 			charge_timer += _delta
 			actor.velocity.x = move_toward(actor.velocity.x, slow_target_x, slow_down_speed * _delta)
 			actor.velocity.y = move_toward(actor.velocity.y, slow_target_y, slow_down_speed * _delta)
@@ -59,7 +59,7 @@ func _physics_process(_delta: float) -> void:
 # Create a static projectile that knocks back enemies where aiming, and launch player
 # in the opposite direction
 func _fire_blast():
-	if shotgun._current_ammo > 1:
+	if DebugManager.infinite_ammo or shotgun._current_ammo > 1:
 		# create the airblast projectile - static, scales to ammo
 		var blast = blast_object.instantiate()
 		get_tree().root.add_child(blast)
@@ -81,6 +81,7 @@ func _fire_blast():
 		actor.velocity = -aim_dir * launch_speed
 		request_animation(player_knockback_animation_name)
 		
-		shotgun._current_ammo -= 2
-		EventManager.shots_fired.emit(2)
+		if !DebugManager.infinite_ammo:
+			shotgun._current_ammo -= 2
+			EventManager.shots_fired.emit(2)
 	

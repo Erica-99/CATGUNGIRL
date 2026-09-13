@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://b0vmq33m1ksy5"]
+
+[ext_resource type="Texture2D" uid="uid://p5n5d6e25uty" path="res://art/TechArt/2_VFX/projectiles/muzzle_flash/tex/muzzle_flash_colorize.png" id="1_guibs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p1m18"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+disable_specular_occlusion = true
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("1_guibs")
+
+[sub_resource type="Curve" id="Curve_si3en"]
+_data = [Vector2(0, 1), 0.0, -2.5844321, 0, 0, Vector2(1, 0.019161582), 0.08835714, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1onsr"]
+curve = SubResource("Curve_si3en")
+
+[sub_resource type="Curve" id="Curve_s2tln"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lgbki"]
+curve = SubResource("Curve_s2tln")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iji6r"]
+lifetime_randomness = 1.0
+particle_flag_align_y = true
+emission_shape = 1
+emission_sphere_radius = 0.25
+direction = Vector3(0, 0, 1)
+spread = 10.0
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+damping_min = 0.5
+damping_max = 0.8
+damping_curve = SubResource("CurveTexture_lgbki")
+scale_min = 0.19999999
+scale_max = 0.39999998
+color = Color(3.5618727, 2.983765, 2.0695474, 1)
+alpha_curve = SubResource("CurveTexture_1onsr")
+
+[sub_resource type="QuadMesh" id="QuadMesh_fb84l"]
+size = Vector2(0.2, 0.8)
+
+[node name="sparks" type="GPUParticles3D" unique_id=960700993]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_p1m18")
+lifetime = 0.62
+explosiveness = 0.79
+randomness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_iji6r")
+draw_pass_1 = SubResource("QuadMesh_fb84l")

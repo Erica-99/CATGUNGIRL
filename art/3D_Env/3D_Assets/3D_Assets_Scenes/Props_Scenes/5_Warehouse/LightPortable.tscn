@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://h4ji2qgexuq0"]
+
+[ext_resource type="ArrayMesh" uid="uid://dvnurua15yxo4" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/5_Warehouse/LightPortable.obj" id="1_yeom4"]
+[ext_resource type="Texture2D" uid="uid://sief6dqiqdgw" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/OtherProps/LightPortable/LightPortable_DefaultMaterial_BaseColor.png" id="2_xuoku"]
+[ext_resource type="Texture2D" uid="uid://dt22fiwvocgmi" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/OtherProps/LightPortable/LightPortable_DefaultMaterial_Emissive.png" id="3_xuoku"]
+[ext_resource type="Texture2D" uid="uid://gdoqrv66ftyc" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/OtherProps/LightPortable/LightPortable_DefaultMaterial_Metallic.png" id="4_7jkw1"]
+[ext_resource type="Texture2D" uid="uid://bc2mtsns412ep" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/OtherProps/LightPortable/LightPortable_DefaultMaterial_Normal.png" id="5_kaa7c"]
+[ext_resource type="Texture2D" uid="uid://b4hdavr5r2763" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/4_Warehouse/OtherProps/LightPortable/LightPortable_DefaultMaterial_Roughness.png" id="6_5ocew"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dq6v6"]
+albedo_texture = ExtResource("2_xuoku")
+metallic = 1.0
+metallic_texture = ExtResource("4_7jkw1")
+roughness_texture = ExtResource("6_5ocew")
+emission_enabled = true
+emission_energy_multiplier = 5.0
+emission_texture = ExtResource("3_xuoku")
+normal_enabled = true
+normal_texture = ExtResource("5_kaa7c")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yeom4"]
+points = PackedVector3Array(-0.30444413, 0, -0.5904, -0.321598, 0.089823075, -0.000115573406, -0.30043188, 0.13537279, -0.4621024, -0.28287098, 0.06788582, -0.5904, 0.27244896, 0, -0.5904, -0.30444413, 0, 0.5904, -0.30043188, 0.13537279, 0.4619869, -0.030738294, 0.71371853, -0.41714048, -0.004745811, 0.7693992, -0.4621024, -0.15255977, 0.45238602, -0.5116877, 0.011884689, 0.35761708, -0.5904, 0.27244896, 0.119976826, -0.5904, 0.27244896, 0, 0.5904, -0.28287098, 0.06788582, 0.5904, -0.15255977, 0.45238602, 0.5115721, -0.004745811, 0.7693992, 0.4619869, -0.030738294, 0.71371853, 0.41702485, 0.01647845, 0.814949, -0.000115573406, 0.10248035, 0.7193823, -0.4621024, 0.23779231, 0.5441236, -0.3277945, 0.25285286, 0.5764312, -0.000115573406, 0.27244896, 0.119976826, 0.5904, 0.011884689, 0.35761708, 0.5904, 0.10248035, 0.7193823, 0.4619869, 0.12370461, 0.76493204, -0.000115573406, 0.23779231, 0.5441236, 0.32767892)
+
+[node name="LightPortable" type="StaticBody3D" unique_id=137147419]
+
+[node name="LightPortable_Mesh" type="MeshInstance3D" parent="." unique_id=878024995]
+mesh = ExtResource("1_yeom4")
+surface_material_override/0 = SubResource("StandardMaterial3D_dq6v6")
+surface_material_override/1 = SubResource("StandardMaterial3D_dq6v6")
+
+[node name="LightPortable_Collision" type="CollisionShape3D" parent="." unique_id=1871530209]
+shape = SubResource("ConvexPolygonShape3D_yeom4")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1889582615]
+transform = Transform3D(-3.8227142e-08, 0.4849623, 0.8745351, 2.1198375e-08, 0.8745351, -0.4849623, -1, 0, -4.3711392e-08, 0, 0.4060111, 0)
+light_energy = 11.311
+shadow_enabled = true
+spot_range = 7.69373
+spot_angle = 51.827538
