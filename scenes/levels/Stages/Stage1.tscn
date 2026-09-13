@@ -81,6 +81,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bn0y7klu6axly" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/PrisonRailCranePrt02.obj" id="59_qhut5"]
 [ext_resource type="ArrayMesh" uid="uid://dkpon4gwwcus5" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/PrisonRailCranePrt03.obj" id="60_6itfv"]
 [ext_resource type="PackedScene" uid="uid://7ndrvtyokajf" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/WallPlainMidPrison.tscn" id="62_6itfv"]
+[ext_resource type="PackedScene" uid="uid://4l4kw7i1ga4c" path="res://scenes/actors/enemies/brain_spider/brain_spider.tscn" id="85_x0gst"]
 [ext_resource type="PackedScene" uid="uid://co7fptrpmkvog" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/A_SparesAndPlaceholders/LightCeiling.tscn" id="96_g3qdj"]
 [ext_resource type="Script" uid="uid://4t3uo3s2mf8e" path="res://scenes/levels/Stages/camera_pan_node.gd" id="123_emoyc"]
 [ext_resource type="PackedScene" uid="uid://c10iyc1w0tn8i" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/WallObservation.tscn" id="123_tatg8"]
@@ -2372,6 +2373,9 @@ libraries/ = SubResource("AnimationLibrary_ovhx5")
 autoplay = &"Intro"
 
 [node name="VFX2" type="Node3D" parent="." unique_id=915792707]
+
+[node name="BrainSpider" parent="." unique_id=166394742 instance=ExtResource("85_x0gst")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.782099, 1.01823, 0)
 
 [connection signal="removecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]

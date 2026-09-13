@@ -40,5 +40,6 @@ func physics_update(delta: float) -> void:
 	actor.velocity += actor.get_surface_gravity_direction() * actor.gravity * delta
 	actor.velocity.z = 0
 	
+	actor.animator.play('Scurry')
 	actor.apply_soft_collision(delta)
 	actor.move_and_slide()
