@@ -33,3 +33,15 @@ func apply_surface_rotation() -> void:
 			rotation.z = -PI / 2.0
 		BrainSpider.SurfaceType.RIGHT_WALL:
 			rotation.z = PI / 2.0
+
+func face_direction(direction: float) -> void:
+	if direction == 0.0:
+		return
+	
+	var should_flip: bool = direction < 0.0
+	
+	if brain_spider.spider_mode == BrainSpider.SpiderMode.WALL_CEILING and brain_spider.surface_type == BrainSpider.SurfaceType.CEILING:
+		should_flip = !should_flip
+	
+	body_visual.flip_h = should_flip
+	explosion_visual.flip_h = should_flip

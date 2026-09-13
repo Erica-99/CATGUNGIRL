@@ -43,6 +43,8 @@ func physics_update(delta: float) -> void:
 	var move_direction: float = sign(actor.target.global_position.x - actor.global_position.x)
 	
 	if move_direction != 0.0:
+		actor.brain_spider_visuals.face_direction(move_direction)
 		actor.velocity.x = move_toward(actor.velocity.x, move_direction * actor.move_speed, actor.acceleration * delta)
+	
 	actor.apply_soft_collision(delta)
 	actor.move_and_slide()
