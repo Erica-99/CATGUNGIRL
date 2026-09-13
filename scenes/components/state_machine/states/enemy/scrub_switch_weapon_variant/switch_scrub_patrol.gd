@@ -1,7 +1,7 @@
 # Patrol moves to Chase
 
 extends State
-class_name ScrubPatrol
+class_name SwitchScrubPatrol
 
 var actor: CharacterBody3D
 var anim: AnimationPlayer
@@ -39,10 +39,12 @@ func physics_update(delta: float) -> void:
 func _on_detection_area_3d_body_entered(body: Node3D) -> void:
 	if !actor.is_dead:
 		actor.detected_player = true
+		if actor.gun_switch_timer.is_stopped():
+			actor.gun_switch_timer.start()
 		if actor.in_attacking_range:
-			transitioned.emit(self, "scrubattack")
+			actor._enter_attack_state()
 		else:
-			transitioned.emit(self, "scrubchase")
+			transitioned.emit(self, "switchscrubchase")
 
 #func _on_detection_area_3d_body_entered(body):
 	#if body.is_in_group("player"):

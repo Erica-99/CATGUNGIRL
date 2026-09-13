@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://cjdco8ftps1i6"]
+
+[ext_resource type="PackedScene" uid="uid://cib7lo1lbwb5j" path="res://scenes/components/gun/base_gun/base_gun.tscn" id="1_c5agf"]
+[ext_resource type="Script" uid="uid://b12uievld45rj" path="res://scenes/components/gun/gun_variants/scrub_shotgun/scrub_shotgun.gd" id="2_8hb6f"]
+
+[sub_resource type="GDScript" id="GDScript_8hb6f"]
+script/source = "extends \"res://scenes/components/gun/gun_components/BulletEmitter/bullet_emitter.gd\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eyrdn"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.43072295, 0.90990365, 0.9999998, 1)
+emission_energy_multiplier = 2.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_c5agf"]
+material = SubResource("StandardMaterial3D_eyrdn")
+radius = 0.06
+height = 0.09
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3agye"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.7794714, 0.40008292, 1, 1)
+emission_energy_multiplier = 3.8
+
+[sub_resource type="SphereMesh" id="SphereMesh_8hb6f"]
+material = SubResource("StandardMaterial3D_3agye")
+radius = 0.07
+height = 0.1
+
+[node name="ScrubShotgun" unique_id=814655304 node_paths=PackedStringArray("bullet_emitter", "_normal_flash", "_perfect_flash") instance=ExtResource("1_c5agf")]
+script = ExtResource("2_8hb6f")
+pellet_amount = 3
+gun_name = "Shotgun"
+bullet_emitter = NodePath("BulletEmitter")
+_normal_flash = NodePath("Muzzle/NormalMuzzleFlash")
+_perfect_flash = NodePath("Muzzle/PerfectMuzzleFlash")
+aim_speed = 8.0
+controller_aim_speed = 3.5
+aim_settled_threshold = 98.0
+perfect_damage_multiplier = 1.5
+perfect_shot_max_interval = 1.0
+laser_convergence_speed = 0.73
+spam_window = 0.6
+spam_aim_multiplier = 0.4
+recoil_amount = 0.35
+recoil_recovery = 5.0
+wobble_amount = 0.1
+wobble_speed = 7.0
+
+[node name="AmmoComponent" parent="." index="0" unique_id=761015893 node_paths=PackedStringArray("gun_link")]
+gun_link = NodePath("..")
+ammo_max = 4
+reload_time = 1.0
+
+[node name="BulletEmitter" parent="." index="1" unique_id=1440563695 node_paths=PackedStringArray("muzzle")]
+script = SubResource("GDScript_8hb6f")
+muzzle = NodePath("../Muzzle")
+fire_rate = 0.5
+full_auto = false
+bullet_damage = 2.0
+bullet_knockback = 0.0
+bullet_scale = 0.4
+bullet_velocity_multiplier = 0.5
+bullet_range = 12.0
+base_aim_spread = 10.0
+
+[node name="Muzzle" type="Marker3D" parent="." index="2" unique_id=1893751702]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2476225, 0.7716577, 0)
+
+[node name="NormalMuzzleFlash" type="CPUParticles3D" parent="Muzzle" index="0" unique_id=833389940]
+emitting = false
+amount = 14
+lifetime = 0.15000000000000002
+one_shot = true
+speed_scale = 1.2
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_c5agf")
+gravity = Vector3(0, -0.5, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 9.0
+
+[node name="PerfectMuzzleFlash" type="CPUParticles3D" parent="Muzzle" index="1" unique_id=1584081546]
+emitting = false
+amount = 16
+lifetime = 0.15000000000000002
+one_shot = true
+speed_scale = 1.2
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_8hb6f")
+gravity = Vector3(0, -1, 0)
+initial_velocity_min = 6.0
+initial_velocity_max = 10.0
+color = Color(0.43669105, 0.99999994, 0.96197826, 1)

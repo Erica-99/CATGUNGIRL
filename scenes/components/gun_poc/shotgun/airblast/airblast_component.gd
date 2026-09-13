@@ -25,7 +25,7 @@ var slow_target_y: float
 signal enemy_hit(damage: float)
 
 func is_ability_enterable() -> bool:
-	return DebugManager.infinite_ammo or shotgun._current_ammo > 1
+	return DebugManager.infinite_ammo or shotgun.ammo_component._current_ammo > 1
 
 func initialise(ability_state: State, actor_blackboard: Dictionary) -> void:
 	super.initialise(ability_state, actor_blackboard)

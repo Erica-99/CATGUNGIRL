@@ -41,9 +41,6 @@ var input_component: Node
 @export var wobble_amount: float = 0.1		# higher = more
 @export var wobble_speed: float = 7.0		# higher = faster
 
-@export_group("ENEMY Barrage")
-@export var bullets_per_barrage: int = 3
-
 var _is_spamming: bool = false
 var _spam_count: int = 0			# track spam count
 var _recoil_offset: float = 0.0 
@@ -69,6 +66,9 @@ var active: bool = false:
 			visible = active
 		if ability != null:
 			ability.active = active
+
+# ONLY FOR ENEMIES
+var in_range: bool = false
 
 signal enemy_hit(damage: float)
 
@@ -138,6 +138,10 @@ func _process(delta: float) -> void:
 		perfect_window_changed.emit(in_window)
 	
 	else:
+		# if not in range, cannot shoot
+		if !in_range:
+			return
+		
 		# HANDLE NON-PLAYER
 		var direction = _player_target.global_position - global_position
 		direction.z = 0.0
@@ -148,7 +152,7 @@ func _process(delta: float) -> void:
 			_fire_cooldown += delta
 			if _fire_cooldown > bullet_emitter.fire_rate:
 				_fire_cooldown = 0
-				bullet_emitter._spawn_bullet(bullet_emitter.bullet_damage, bullet_emitter.bullet_scale)
+				_shoot(bullet_emitter.bullet_damage, bullet_emitter.bullet_scale)
 				ammo_component._handle_ammo()
 		#else:
 			#rotation.z = -PI/2
@@ -241,7 +245,7 @@ func _shoot_handler():
 		Muzzle_VFX.play("Imperfect")
 	# resets firing cooldown
 	_fire_cooldown = bullet_emitter.fire_rate
-	bullet_emitter._shoot(damage, bullet_emitter.bullet_scale)
+	_shoot(damage, bullet_emitter.bullet_scale)
 	_recoil_offset += recoil_amount * sign(global_transform.basis.x.x)
 	_time_since_last_shot = 0.0
 	ammo_component.single_reload_timer = 0.0
@@ -251,3 +255,7 @@ func _shoot_handler():
 # visual handling for ENEMY (scrub)
 func _direction_change(direction: float):
 	bullet_emitter.muzzle.position.x *= -1
+
+
+func _shoot(damage, bullet_scale):
+	bullet_emitter._spawn_bullet(damage, bullet_scale)

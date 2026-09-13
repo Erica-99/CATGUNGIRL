@@ -41,7 +41,7 @@ func _process_player_reload(delta: float) -> void:
 	if DebugManager.infinite_ammo:
 		return
 	
-	if !reload_full:
+	if !reload_full and _current_ammo < ammo_max:
 		single_reload_timer += delta
 		# reload one shot
 		if single_reload_timer > reload_time:
@@ -65,10 +65,6 @@ func _process_enemy_reload(delta: float) -> void:
 # can be overriden to check whether additional ammo is needed to shoot (i.e. shotgun pellets)
 func _check_if_can_shoot(required_to_shoot: int = 1) -> bool:
 	if _current_ammo >= required_to_shoot:
-		if gun_link.team_component.team != Enums.Team.PLAYER:
-			print("ZAZ")
-			print(_current_ammo)
-			print(required_to_shoot)
 		return true
 	return false
 

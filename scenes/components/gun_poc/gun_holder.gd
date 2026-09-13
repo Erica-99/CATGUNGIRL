@@ -8,9 +8,9 @@ signal current_gun_charge_started
 
 @export var input_component: Node = null
 
-@onready var Gun_Animation: AnimationPlayer = $"../PlayerVisuals/ROOT_P/GUN_P/GUN_AIM/Hand_Anims"
-@onready var Muzzle_VFX: AnimationPlayer = $"../PlayerVisuals/ROOT_P/GUN_P/GUN_AIM/MuzzleFlash_P/AnimationPlayer"
-@onready var team_component: Node = $"../TeamComponent"
+@export var Gun_Animation: AnimationPlayer
+@export var Muzzle_VFX: AnimationPlayer
+@export var team_component: Node
 
 #const PISTOL_PREFAB = preload("res://scenes/components/gun_poc/pistol/pistol.tscn")
 #const PISTOL_PREFAB = preload("res://scenes/components/gun/gun_variants/pistol/pistol.tscn")
@@ -98,7 +98,7 @@ func _switch_gun(slot_num: int):
 	
 	if input_component:
 		EventManager.new_gun_equipped.emit(current_gun.gun_name)
-		EventManager.new_mag_loaded.emit(current_gun._current_ammo, current_gun.ammo_max)
+		EventManager.new_mag_loaded.emit(current_gun.ammo_component._current_ammo, current_gun.ammo_component.ammo_max)
 
 func _deactivate_gun():
 	current_gun.active = false
@@ -122,7 +122,13 @@ func _activate_gun():
 
 func _on_enemy_hit(damage: float) -> void:
 	enemy_hit.emit(damage)
-	
+
+func _switch_gun_by_name(gun_name: String) -> Node3D:
+	for child in get_children():
+		if child.gun_name == gun_name:
+			current_gun = child
+	return current_gun
+
 func _on_current_gun_charge_progress_changed(progress: float) -> void:
 	current_gun_charge_progress_changed.emit(progress)
 

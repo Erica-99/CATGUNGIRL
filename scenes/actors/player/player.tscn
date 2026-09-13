@@ -33,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://dp6f6qebbi8kl" path="res://scenes/components/gun_poc/gun_holder.tscn" id="28_7i6t6"]
 [ext_resource type="PackedScene" uid="uid://cxxwo2fx6lqr1" path="res://scenes/components/gun/gun_variants/pistol/pistol.tscn" id="33_haoly"]
 [ext_resource type="Script" uid="uid://da3n34oh0bagw" path="res://scenes/actors/player/audio_caller.gd" id="33_owjsm"]
+[ext_resource type="PackedScene" uid="uid://wm6r6dyis4sv" path="res://scenes/components/gun/gun_variants/shotgun/shotgun.tscn" id="34_haoly"]
 
 [sub_resource type="Animation" id="Animation_lguxi"]
 resource_name = "Fall"
@@ -1694,10 +1695,17 @@ frame = 1
 frame_progress = 0.037387703
 script = ExtResource("27_cat03")
 
-[node name="GunHolder" parent="." unique_id=407642416 node_paths=PackedStringArray("input_component") instance=ExtResource("28_7i6t6")]
+[node name="GunHolder" parent="." unique_id=407642416 node_paths=PackedStringArray("input_component", "Gun_Animation", "Muzzle_VFX", "team_component") instance=ExtResource("28_7i6t6")]
 input_component = NodePath("../PlayerInput")
+Gun_Animation = NodePath("../PlayerVisuals/ROOT_P/GUN_P/GUN_AIM/Hand_Anims")
+Muzzle_VFX = NodePath("../PlayerVisuals/ROOT_P/GUN_P/GUN_AIM/MuzzleFlash_P/AnimationPlayer")
+team_component = NodePath("../TeamComponent")
 
 [node name="Pistol" parent="GunHolder" unique_id=814655304 node_paths=PackedStringArray("team_component") instance=ExtResource("33_haoly")]
+team_component = NodePath("../../TeamComponent")
+
+[node name="Shotgun" parent="GunHolder" unique_id=1775432672 node_paths=PackedStringArray("team_component") instance=ExtResource("34_haoly")]
+visible = false
 team_component = NodePath("../../TeamComponent")
 
 [node name="AudioListener3D" type="AudioListener3D" parent="." unique_id=1025557284]

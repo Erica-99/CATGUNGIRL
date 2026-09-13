@@ -92,6 +92,3 @@ func _try_fire() -> void:
 func _play_shoot_animation():
 	gun_link.Gun_Animation.stop()
 	gun_link.Gun_Animation.play("Fire")
-
-func _shoot(damage, bullet_scale):
-	_spawn_bullet(damage, bullet_scale)
