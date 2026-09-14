@@ -1,6 +1,22 @@
 [gd_scene format=3 uid="uid://c4dic5lfiwofb"]
 
 [ext_resource type="ArrayMesh" uid="uid://dqos8ds5hd32b" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/7_BrainJar/ServerRack3.obj" id="1_j60bj"]
+[ext_resource type="Texture2D" uid="uid://byxplkijfxwl5" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/ServerRacksAll/ServerRacksAll_DefaultMaterial_BaseColor.png" id="2_svdhr"]
+[ext_resource type="Texture2D" uid="uid://fbxl4sdkf5m5" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/ServerRacksAll/ServerRacksAll_DefaultMaterial_Emissive.png" id="3_h5ocw"]
+[ext_resource type="Texture2D" uid="uid://mxa30juld7mp" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/ServerRacksAll/ServerRacksAll_DefaultMaterial_Metallic.png" id="4_p2h7s"]
+[ext_resource type="Texture2D" uid="uid://dc7y2cjgeb8n1" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/ServerRacksAll/ServerRacksAll_DefaultMaterial_Normal.png" id="5_d2m3r"]
+[ext_resource type="Texture2D" uid="uid://ir64xaxx4e3f" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/ServerRacksAll/ServerRacksAll_DefaultMaterial_Roughness.png" id="6_ux8hx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hfbpi"]
+albedo_texture = ExtResource("2_svdhr")
+metallic = 1.0
+metallic_texture = ExtResource("4_p2h7s")
+roughness_texture = ExtResource("6_ux8hx")
+emission_enabled = true
+emission_energy_multiplier = 20.0
+emission_texture = ExtResource("3_h5ocw")
+normal_enabled = true
+normal_texture = ExtResource("5_d2m3r")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j60bj"]
 size = Vector3(1.236917, 2.4, 1.2)
@@ -10,6 +26,7 @@ size = Vector3(1.236917, 2.4, 1.2)
 [node name="ServerRack3_Mesh" type="MeshInstance3D" parent="." unique_id=1090861390]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("1_j60bj")
+surface_material_override/0 = SubResource("StandardMaterial3D_hfbpi")
 
 [node name="ServerRack3_Collision" type="CollisionShape3D" parent="." unique_id=1460130642]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.03691697, 2.4, 0)
