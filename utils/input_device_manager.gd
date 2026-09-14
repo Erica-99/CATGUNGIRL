@@ -6,13 +6,11 @@ var _using_controller: bool = false
 
 const _JOYPAD_MOTION_DEADZONE: float = 0.5
 
-
 func _ready() -> void:
 	if Input.get_connected_joypads().size() == 0:
 		_using_controller = false
 	else:
 		_using_controller = true
-
 
 func _input(event: InputEvent) -> void:
 	var was_using_controller := _using_controller
@@ -27,15 +25,13 @@ func _input(event: InputEvent) -> void:
 	if _using_controller != was_using_controller:
 		input_device_changed.emit(_using_controller)
 
-
 func is_using_controller() -> bool:
 	return _using_controller
-
 
 func get_controller_family() -> StringName:
 	if Input.get_connected_joypads().size() == 0:
 		return &"none"
-
+	
 	var joypads := Input.get_connected_joypads()
 	
 	var joy_name := Input.get_joy_name(joypads[0]).to_lower()
