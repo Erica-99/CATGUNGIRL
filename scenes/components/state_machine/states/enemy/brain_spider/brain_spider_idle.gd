@@ -2,9 +2,10 @@ extends State
 
 var actor: BrainSpider
 var detection_area: Area3D
-
+var anim: AnimationPlayer
 func init(blackboard_dict: Dictionary) -> void:
 	super(blackboard_dict)
+	anim = blackboard["anim"]
 	actor = blackboard["actor"]
 	detection_area = blackboard["detection_area"]
 
@@ -20,8 +21,10 @@ func update(_delta: float) -> void:
 		if body.is_in_group("player"):
 			actor.target = body as CharacterBody3D
 			if actor.spider_mode == BrainSpider.SpiderMode.WALL_CEILING:
+				anim.play('Scurry')
 				transitioned.emit(self, "brainspidersurfacechase")
 			else:
+				anim.play('Scurry')
 				transitioned.emit(self, "brainspiderchase")
 			return
 

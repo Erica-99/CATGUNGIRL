@@ -7,10 +7,13 @@ var morph_timer: float = 0.0
 var aim_locked: bool = false
 var turret_ready: bool = false
 var morphing_to_spider: bool = false
+var anim: AnimationPlayer
+
 
 func init(blackboard_dict: Dictionary) -> void:
 	super(blackboard_dict)
 	actor = blackboard["actor"]
+	anim = blackboard["anim"]
 
 func enter() -> void:
 	aim_timer = 0.0
@@ -26,14 +29,15 @@ func enter() -> void:
 		actor.set_turret_damage_multiplier()
 		
 	#for when animation is added
-	#if actor.animator != null and !actor.is_in_turret_form:
-		#actor.animator.play("MorphToTurret")
+	if actor.animator != null and !actor.is_in_turret_form:
+		actor.animator.play("Turret")
 
 func update(delta: float) -> void:
 	if actor.is_dying or actor.is_dead:
 		return
 	
 	if actor.target == null or !is_instance_valid(actor.target):
+
 		start_morph_to_spider()
 		return
 	
@@ -93,7 +97,7 @@ func physics_update(_delta: float) -> void:
 func start_morph_to_spider() -> void:
 	if morphing_to_spider:
 		return
-	
+	anim.play('Emerge')
 	morphing_to_spider = true
 	morph_timer = 0.0
 	actor.laser.visible = false

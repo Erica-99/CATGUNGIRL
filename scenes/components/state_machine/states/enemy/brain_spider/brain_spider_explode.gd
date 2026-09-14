@@ -9,6 +9,7 @@ func init(blackboard_dict: Dictionary) -> void:
 	actor = blackboard["actor"]
 
 func enter() -> void:
+	actor.animator.play('Explode')
 	explosion_timer = 0.0
 	has_exploded = false
 	actor.velocity = Vector3.ZERO
@@ -18,6 +19,7 @@ func update(delta: float) -> void:
 		return
 	
 	if !has_exploded:
+		
 		explosion_timer += delta
 		
 		if explosion_timer >= actor.explosion_delay:

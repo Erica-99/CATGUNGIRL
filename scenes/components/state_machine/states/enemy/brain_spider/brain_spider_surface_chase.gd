@@ -36,9 +36,13 @@ func physics_update(delta: float) -> void:
 	var move_direction: float = sign(target_offset.dot(surface_move_axis))
 	var target_velocity: Vector3 = surface_move_axis * move_direction * actor.move_speed
 	
+	if move_direction != 0.0:
+		actor.brain_spider_visuals.face_direction(move_direction)
+	
 	actor.velocity = actor.velocity.move_toward(target_velocity, actor.acceleration * delta)
 	actor.velocity += actor.get_surface_gravity_direction() * actor.gravity * delta
 	actor.velocity.z = 0
 	
+	actor.animator.play('Scurry')
 	actor.apply_soft_collision(delta)
 	actor.move_and_slide()
