@@ -86,6 +86,7 @@
 [ext_resource type="PackedScene" uid="uid://co7fptrpmkvog" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/A_SparesAndPlaceholders/LightCeiling.tscn" id="81_wtq1c"]
 [ext_resource type="PackedScene" uid="uid://u0ps1hxqgdbr" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/HighBayLight.tscn" id="86_y6pi2"]
 [ext_resource type="PackedScene" uid="uid://8268415ukuhp" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/4_Panopticon/LightRailPanopticon.tscn" id="87_i8msr"]
+[ext_resource type="PackedScene" uid="uid://4rsfb5kh40wj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/B_Collisions/45Ramp.tscn" id="88_clbst"]
 [ext_resource type="PackedScene" uid="uid://d1isfmus58oku" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/IndustrialLight1.tscn" id="88_m4oo8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aiqfw"]
@@ -2495,6 +2496,9 @@ transform = Transform3D(-2, -1.7484554e-07, 0, 1.7484555e-07, -1.9999999, 0, 0, 
 [node name="PanopticonCraneRailBroken8" parent="Environment/Layer_01" unique_id=1918572414 instance=ExtResource("19_murac")]
 transform = Transform3D(-2, 0, -1.7484554e-07, 0, 1.9999998, 0, 1.7484555e-07, 0, -1.9999998, 74.395, 0, -10.413788)
 
+[node name="45Ramp" parent="Environment/Layer_01" unique_id=2094150326 instance=ExtResource("88_clbst")]
+transform = Transform3D(-8.0604295e-08, 1.8073931e-14, -1.4505488, 3.224172e-07, 2.364849, 0, 1.8440114, -4.1348332e-07, -6.34055e-08, -37.9564, 70.6507, -0.24496174)
+
 [node name="Layer_02" type="Node3D" parent="Environment" unique_id=738127830]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.916, 126, 0)
 
@@ -2706,7 +2710,7 @@ transform = Transform3D(-2.157444, 0, -0.6386956, 0, 2.2499998, 0, 0.6386956, 0,
 transform = Transform3D(-1.884101, -0.51115096, -1.118653, -0.4395188, 2.1911693, -0.26095682, 1.1486876, 0, -1.934687, 71.094536, 4.386383, -21.499552)
 
 [node name="PrisonCell" parent="Environment/Layer_02/CellsAssortment3" unique_id=1030322063 instance=ExtResource("14_6h3re")]
-transform = Transform3D(2.2499995, 0, -0.00031418784, 0, 2.25, 0, 0.00031418784, 0, 2.2499995, -33.611023, -56.315742, 3.1978834)
+transform = Transform3D(2.2499995, 0, -0.00031418784, 0, 2.25, 0, 0.00031418784, 0, 2.2499995, -33.611023, -56.315742, -0.31287932)
 
 [node name="Cranes_02" type="Node3D" parent="Environment/Layer_02" unique_id=341717374]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.050476, -126, 0)
@@ -3798,6 +3802,9 @@ transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 5, 4
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 175, 130.51346, -12.687115)
 
 [node name="VFX" type="Node3D" parent="." unique_id=1460483519]
+
+[node name="45Ramp" parent="." unique_id=914720184 instance=ExtResource("88_clbst")]
+transform = Transform3D(-8.3332117e-07, 0, -0.9999998, 0, 0.06681018, 0, 19.064167, 0, -4.3711378e-08, 34.724224, 0.07040602, -0.045533895)
 
 [connection signal="removecameratween" from="Interactive/CameraPanNode" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="Interactive/CameraPanNode" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
