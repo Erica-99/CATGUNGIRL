@@ -1,8 +1,24 @@
 [gd_scene format=3 uid="uid://dbtlwlyu6425"]
 
 [ext_resource type="ArrayMesh" uid="uid://ce3qpsp68gcft" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/7_BrainJar/BrainJarTerminal.obj" id="1_dnykt"]
+[ext_resource type="Texture2D" uid="uid://cw1jubtsb8pbj" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Terminal/On/BrainJarTerminal_DefaultMaterial_BaseColor.png" id="2_1a03a"]
 [ext_resource type="PackedScene" uid="uid://ou3g778y2q8g" path="res://scenes/components/interactable_component/interactable_component.tscn" id="2_se4xh"]
+[ext_resource type="Texture2D" uid="uid://cmt6820pw8dn4" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Terminal/On/BrainJarTerminal_DefaultMaterial_Emissive.png" id="3_0nt7d"]
 [ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="3_36cpf"]
+[ext_resource type="Texture2D" uid="uid://c7ln6yckke3vg" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Terminal/On/BrainJarTerminal_DefaultMaterial_Metallic.png" id="4_7iucu"]
+[ext_resource type="Texture2D" uid="uid://n5m5onbyyl7p" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Terminal/On/BrainJarTerminal_DefaultMaterial_Normal.png" id="5_rut6d"]
+[ext_resource type="Texture2D" uid="uid://bxdywwj1giatf" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Terminal/On/BrainJarTerminal_DefaultMaterial_Roughness.png" id="6_escjg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8oiad"]
+albedo_texture = ExtResource("2_1a03a")
+metallic = 1.0
+metallic_texture = ExtResource("4_7iucu")
+roughness_texture = ExtResource("6_escjg")
+emission_enabled = true
+emission_energy_multiplier = 5.0
+emission_texture = ExtResource("3_0nt7d")
+normal_enabled = true
+normal_texture = ExtResource("5_rut6d")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dnykt"]
 points = PackedVector3Array(-0.356143, 0.010629859, -0.33937576, -0.3435232, 0.010629859, -0.350066, -0.3435232, -5e-06, -0.33937576, -0.356143, 0.010629859, 0.3393178, -0.356143, 1.402537, -0.33944428, 0.34345347, 0.010629859, -0.350066, -0.3435232, 1.421008, -0.350066, -0.3435232, -5e-06, 0.3393178, 0.34345347, -5e-06, -0.33937576, -0.3435232, 0.010629859, 0.34993953, -0.356143, 1.2746388, 0.3393178, -0.356143, 1.4184892, -0.33944428, 0.356143, 0.010629859, -0.33937576, 0.34345347, 1.421008, -0.350066, 0.356143, 1.402537, -0.33944428, -0.3435232, 1.4295439, -0.3397184, 0.34345347, -5e-06, 0.3393178, 0.34345347, 0.010629859, 0.34993953, -0.15847945, 1.2213246, 0.35000807, -0.3435232, 1.2725399, 0.34993953, -0.3435232, 1.2854136, 0.33959192, -0.356143, 1.3280929, 0.08741176, 0.356143, 0.010629859, 0.3393178, 0.34345347, 1.4295439, -0.3397184, 0.356143, 1.4184892, -0.33944428, 0.34345347, 1.2725399, 0.34993953, 0.15840971, 1.2213246, 0.35000807, -0.15840973, 1.2725399, 0.35000807, 0.34345347, 1.2854136, 0.33959192, 0.356143, 1.2746388, 0.3393178, 0.356143, 1.3280929, 0.08741176, 0.15833998, 1.2725399, 0.35000807)
@@ -13,6 +29,7 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 [node name="BrainJarTerminal_Mesh" type="MeshInstance3D" parent="." unique_id=522974769]
 transform = Transform3D(-2, 0, 3.019916e-07, 0, 2, 0, -3.019916e-07, 0, -2, 0, 0, 0)
 mesh = ExtResource("1_dnykt")
+surface_material_override/0 = SubResource("StandardMaterial3D_8oiad")
 
 [node name="InteractableComponent" parent="BrainJarTerminal_Mesh" unique_id=2140039813 node_paths=PackedStringArray("event_trigger") instance=ExtResource("2_se4xh")]
 interactable_type = 3
