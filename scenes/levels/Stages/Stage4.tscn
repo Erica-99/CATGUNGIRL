@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://bsdva1ben1wdk"]
 
+[ext_resource type="Script" uid="uid://dawdwjrkswtqg" path="res://scenes/levels/Stages/panning_camera.gd" id="1_c7g71"]
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="1_eg5o7"]
 [ext_resource type="PackedScene" uid="uid://cue2gdrvswqwe" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Mesh/FloorMeshEdge.tscn" id="3_7mswh"]
 [ext_resource type="PackedScene" uid="uid://1ca03h2i7po8" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Mesh/FloorMeshCentreBroken.tscn" id="3_k70p3"]
+[ext_resource type="Script" uid="uid://4t3uo3s2mf8e" path="res://scenes/levels/Stages/camera_pan_node.gd" id="4_88vs6"]
 [ext_resource type="PackedScene" uid="uid://cvckts4bqdso3" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Mesh/FloorMeshCentre.tscn" id="4_t3u5g"]
 [ext_resource type="PackedScene" uid="uid://k4bj1vh7ofsj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorExit.tscn" id="5_1ex6n"]
 [ext_resource type="PackedScene" uid="uid://c7r1lxlcn4fbw" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Mesh/FloorMeshCentreBrokenSide.tscn" id="6_defdb"]
@@ -105,7 +107,7 @@ gravity = Vector3(0, -30, 0)
 size = Vector3(0.6, 0.6, 0.6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ib8r7"]
-size = Vector3(10.471191, 15.152466, 13.627014)
+size = Vector3(13.445679, 15.152466, 13.627014)
 
 [sub_resource type="Animation" id="Animation_qmdqw"]
 resource_name = "Fixed"
@@ -454,6 +456,27 @@ _data = {
 &"TrunkSpawn": SubResource("Animation_ib8r7")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_i7rx3"]
+size = Vector3(26.730682, 17.532715, 13.72467)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_88vs6"]
+size = Vector3(60.65081, 40.53833, 13.72467)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1b2pj"]
+size = Vector3(54.791348, 39.64496, 13.72467)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7laie"]
+size = Vector3(28.009077, 8.45285, 13.72467)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6350v"]
+size = Vector3(3.8337517, 8.45285, 13.72467)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o4o51"]
+size = Vector3(84.34231, 8.45285, 13.72467)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o7h8b"]
+size = Vector3(58.238537, 8.45285, 13.72467)
+
 [sub_resource type="Environment" id="Environment_0524g"]
 background_mode = 1
 glow_enabled = true
@@ -489,6 +512,18 @@ normal_texture = ExtResource("81_0524g")
 
 [node name="StageThree" type="Node3D" unique_id=535640616]
 
+[node name="RailCamera" type="Node3D" parent="." unique_id=1490590084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.623193, 31.221176)
+script = ExtResource("1_c7g71")
+default_offset = Vector3(0, 5, 30)
+Player_Target_Ratio = 0.4
+
+[node name="Camera" type="Camera3D" parent="RailCamera" unique_id=1070397874]
+
+[node name="PlayerCamTarget" type="Node3D" parent="RailCamera" unique_id=2088296192]
+
+[node name="Player_rotation_pivot" type="Node3D" parent="RailCamera" unique_id=1094884778]
+
 [node name="Player" parent="." unique_id=1349193765 instance=ExtResource("1_eg5o7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 2.099, 0)
 collision_mask = 129
@@ -521,7 +556,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.034561, 16.800003, 0)
 script = ExtResource("64_defdb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactive/BridgeBroken/TrunkEventTrigger" unique_id=1585074928]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020599365, -8.399452, 0.20614624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4666443, -8.399452, 0.20614624)
 shape = SubResource("BoxShape3D_ib8r7")
 
 [node name="GPUParticles3D2" type="GPUParticles3D" parent="Interactive/BridgeBroken/TrunkEventTrigger" unique_id=294212640]
@@ -542,6 +577,133 @@ autoplay = &"Fixed"
 
 [node name="TrunkSpawnLocation" type="Node3D" parent="Interactive/BridgeBroken/TrunkEventTrigger" unique_id=97702117]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21125793, 0.22578049, 0)
+
+[node name="CameraPanNode1" type="Node3D" parent="Interactive" unique_id=7253660]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.877256, 0, 0)
+script = ExtResource("4_88vs6")
+FOV = -15
+look_at_player = true
+
+[node name="Area" type="Area3D" parent="Interactive/CameraPanNode1" unique_id=317978619]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.363087, 0, 0)
+collision_layer = 512
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactive/CameraPanNode1/Area" unique_id=1009438255]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.443668, 5.494629, 0.5645447)
+shape = SubResource("BoxShape3D_i7rx3")
+
+[node name="CameraTarget" type="Node3D" parent="Interactive/CameraPanNode1" unique_id=1455854042]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.821098, 8.7990885, 18.931482)
+
+[node name="CameraPanNode2" type="Node3D" parent="Interactive" unique_id=594967329]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.310465, 12.397921, 0)
+script = ExtResource("4_88vs6")
+FOV = -15
+look_at_player = true
+
+[node name="Area" type="Area3D" parent="Interactive/CameraPanNode2" unique_id=1956365363]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.363087, 0, 0)
+collision_layer = 512
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactive/CameraPanNode2/Area" unique_id=1572701218]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5163918, 16.997437, 0.5645447)
+shape = SubResource("BoxShape3D_88vs6")
+
+[node name="CameraTarget" type="Node3D" parent="Interactive/CameraPanNode2" unique_id=479908875]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.832176, 16.628405, 18.931482)
+
+[node name="CameraPanNode3" type="Node3D" parent="Interactive" unique_id=1121952201]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.62302, 12.397921, 0)
+script = ExtResource("4_88vs6")
+FOV = -15
+look_at_player = true
+
+[node name="Area" type="Area3D" parent="Interactive/CameraPanNode3" unique_id=518408217]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.363087, 0, 0)
+collision_layer = 512
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactive/CameraPanNode3/Area" unique_id=361117852]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.279251, 16.55075, 0.5645447)
+shape = SubResource("BoxShape3D_1b2pj")
+
+[node name="CameraTarget" type="Node3D" parent="Interactive/CameraPanNode3" unique_id=611674191]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.217957, 27.192743, 18.931482)
+
+[node name="CameraPanNode4" type="Node3D" parent="Interactive" unique_id=2127669395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148.45515, 37.185745, 0)
+script = ExtResource("4_88vs6")
+FOV = -15
+look_at_player = true
+
+[node name="Area" type="Area3D" parent="Interactive/CameraPanNode4" unique_id=381770367]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.363087, 0, 0)
+collision_layer = 512
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactive/CameraPanNode4/Area" unique_id=623395180]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.111877, 0.95469666, 0.5645447)
+shape = SubResource("BoxShape3D_7laie")
+
+[node name="CameraTarget" type="Node3D" parent="Interactive/CameraPanNode4" unique_id=257290786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.036865, -0.25848007, 5.355547)
+
+[node name="CameraPanNode5" type="Node3D" parent="Interactive" unique_id=832894632]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 179.9868, 37.185745, 0)
+script = ExtResource("4_88vs6")
+FOV = -15
+look_at_player = true
+
+[node name="Area" type="Area3D" parent="Interactive/CameraPanNode5" unique_id=1405402129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.363087, 0, 0)
+collision_layer = 512
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactive/CameraPanNode5/Area" unique_id=1546608856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.199554, 0.95469666, 0.5645447)
+shape = SubResource("BoxShape3D_6350v")
+
+[node name="CameraTarget" type="Node3D" parent="Interactive/CameraPanNode5" unique_id=391156809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.562943, -0.25848007, 5.355547)
+
+[node name="CameraPanNode6" type="Node3D" parent="Interactive" unique_id=1177174105]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 179.9868, 26.860085, 0)
+script = ExtResource("4_88vs6")
+FOV = -15
+look_at_player = true
+
+[node name="Area" type="Area3D" parent="Interactive/CameraPanNode6" unique_id=1740892175]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.363087, 0, 0)
+collision_layer = 512
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactive/CameraPanNode6/Area" unique_id=795608134]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.054733, 0.95469666, 0.5645447)
+shape = SubResource("BoxShape3D_o4o51")
+
+[node name="CameraTarget" type="Node3D" parent="Interactive/CameraPanNode6" unique_id=740294493]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.568268, -13.6567955, 22.711172)
+
+[node name="CameraPanNode7" type="Node3D" parent="Interactive" unique_id=2129281544]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 259.26334, 13.656677, 0)
+script = ExtResource("4_88vs6")
+FOV = -15
+Reset_Camera_on_Entry = true
+look_at_player = true
+
+[node name="Area" type="Area3D" parent="Interactive/CameraPanNode7" unique_id=2095605109]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.363087, 0, 0)
+collision_layer = 512
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactive/CameraPanNode7/Area" unique_id=576983456]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.002838, 0.95469666, 0.5645447)
+shape = SubResource("BoxShape3D_o7h8b")
+
+[node name="CameraTarget" type="Node3D" parent="Interactive/CameraPanNode7" unique_id=1796917829]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.568268, -13.6567955, 22.711172)
 
 [node name="Lighting" type="Node3D" parent="." unique_id=1172114958]
 
@@ -4565,6 +4727,34 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 305, 17, -4.2527103)
 
 [connection signal="area_entered" from="Interactive/BridgeBroken/TrunkEventTrigger" to="Interactive/BridgeBroken/TrunkEventTrigger" method="_on_area_entered"]
 [connection signal="animation_finished" from="Interactive/BridgeBroken/TrunkEventTrigger/TrunkEventAnims" to="Interactive/BridgeBroken/TrunkEventTrigger" method="_on_trunk_event_anims_animation_finished"]
+[connection signal="removecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
+[connection signal="updatecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
+[connection signal="body_entered" from="Interactive/CameraPanNode1/Area" to="Interactive/CameraPanNode1" method="_on_area_body_entered"]
+[connection signal="body_exited" from="Interactive/CameraPanNode1/Area" to="Interactive/CameraPanNode1" method="_on_area_body_exited"]
+[connection signal="removecameratween" from="Interactive/CameraPanNode2" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
+[connection signal="updatecameratween" from="Interactive/CameraPanNode2" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
+[connection signal="body_entered" from="Interactive/CameraPanNode2/Area" to="Interactive/CameraPanNode2" method="_on_area_body_entered"]
+[connection signal="body_exited" from="Interactive/CameraPanNode2/Area" to="Interactive/CameraPanNode2" method="_on_area_body_exited"]
+[connection signal="removecameratween" from="Interactive/CameraPanNode3" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
+[connection signal="updatecameratween" from="Interactive/CameraPanNode3" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
+[connection signal="body_entered" from="Interactive/CameraPanNode3/Area" to="Interactive/CameraPanNode3" method="_on_area_body_entered"]
+[connection signal="body_exited" from="Interactive/CameraPanNode3/Area" to="Interactive/CameraPanNode3" method="_on_area_body_exited"]
+[connection signal="removecameratween" from="Interactive/CameraPanNode4" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
+[connection signal="updatecameratween" from="Interactive/CameraPanNode4" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
+[connection signal="body_entered" from="Interactive/CameraPanNode4/Area" to="Interactive/CameraPanNode4" method="_on_area_body_entered"]
+[connection signal="body_exited" from="Interactive/CameraPanNode4/Area" to="Interactive/CameraPanNode4" method="_on_area_body_exited"]
+[connection signal="removecameratween" from="Interactive/CameraPanNode5" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
+[connection signal="updatecameratween" from="Interactive/CameraPanNode5" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
+[connection signal="body_entered" from="Interactive/CameraPanNode5/Area" to="Interactive/CameraPanNode5" method="_on_area_body_entered"]
+[connection signal="body_exited" from="Interactive/CameraPanNode5/Area" to="Interactive/CameraPanNode5" method="_on_area_body_exited"]
+[connection signal="removecameratween" from="Interactive/CameraPanNode6" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
+[connection signal="updatecameratween" from="Interactive/CameraPanNode6" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
+[connection signal="body_entered" from="Interactive/CameraPanNode6/Area" to="Interactive/CameraPanNode6" method="_on_area_body_entered"]
+[connection signal="body_exited" from="Interactive/CameraPanNode6/Area" to="Interactive/CameraPanNode6" method="_on_area_body_exited"]
+[connection signal="removecameratween" from="Interactive/CameraPanNode7" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
+[connection signal="updatecameratween" from="Interactive/CameraPanNode7" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
+[connection signal="body_entered" from="Interactive/CameraPanNode7/Area" to="Interactive/CameraPanNode7" method="_on_area_body_entered"]
+[connection signal="body_exited" from="Interactive/CameraPanNode7/Area" to="Interactive/CameraPanNode7" method="_on_area_body_exited"]
 [connection signal="stage_cleared" from="Enemies/Room Three" to="Environment/Door/DoorExit" method="_on_enemy_manager_stage_cleared"]
 
 [editable path="Props/SecurityCams/SecurityCamera"]
