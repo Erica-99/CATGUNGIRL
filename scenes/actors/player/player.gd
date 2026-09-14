@@ -118,6 +118,7 @@ func _ready() -> void:
 	gun_holder.current_gun_charge_ended.connect(_on_gun_charge_ended)
 	gun_holder.current_gun_charge_started.connect(_on_gun_charge_started)
 	
+	EventManager.gun_sacrifice_requested.connect(sacrifice_current_gun)
 	EventManager.gun_picked_up.connect(_equip_gun)
 	_set_gun_enabled(has_gun)
 
@@ -224,12 +225,25 @@ func _equip_gun() -> void:
 	_set_gun_enabled(true)
 
 func _set_gun_enabled(enabled: bool) -> void:
-	gun_holder.current_gun.process_mode = Node.PROCESS_MODE_INHERIT if enabled else Node.PROCESS_MODE_DISABLED
-	gun_holder.current_gun.visible = enabled
+	if gun_holder.current_gun != null:
+		gun_holder.current_gun.process_mode = Node.PROCESS_MODE_INHERIT if enabled else Node.PROCESS_MODE_DISABLED
+		gun_holder.current_gun.visible = enabled
+	
 	gun_arm_node.visible = enabled
 	gun_holder.allow_swapping = enabled
 	EventManager.enable_gun_ui.emit(enabled)
+
+func sacrifice_current_gun() -> void:
+	if !has_gun:
+		return
 	
+	speed_multiplier = 1.0
+	gun_holder.sacrifice_current_gun()
+	
+	if gun_holder.current_gun == null:
+		has_gun = false
+		_set_gun_enabled(false)
+
 func set_facing(new_facing: float) -> void:
 	if new_facing == 0.0:
 		return

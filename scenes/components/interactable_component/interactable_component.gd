@@ -62,6 +62,7 @@ func _process(delta: float) -> void:
 			if current_player_status["interacting"]:
 				if event_trigger != null:
 					event_trigger._emit_signal()
+					player_reference.input_component._interacting = false
 					
 					if event_trigger._one_shot:
 						enabled = false

@@ -15,6 +15,9 @@ signal player_hit_by_enemy()
 signal current_killstreak(killstreak: int)
 signal gun_picked_up
 
+signal gun_sacrifice_requested
+signal gun_sacrificed(gun_name: String)
+
 signal player_health_initialised(init_current_health, init_max_health)
 signal player_health_changed(old_health, new_health, damage_or_heal_instance)
 signal player_interest_rank_changed(new_rank)

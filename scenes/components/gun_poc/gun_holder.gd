@@ -44,7 +44,7 @@ func _ready() -> void:
 	EventManager.new_gun_equipped.emit(current_gun.gun_name)
 	EventManager.new_mag_loaded.emit(current_gun._current_ammo, current_gun.ammo_max)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var current_input_state = input_component.get_input_state()
 	# Switch to next gun (Pistol -> Shotgun -> Sniper)
 	if current_input_state.get("switch_gun", false):
@@ -66,6 +66,11 @@ func _switch_gun(slot_num: int):
 	if not allow_swapping:
 		return
 	
+	current_child_count = get_child_count()
+
+	if current_child_count <= 0 or current_gun == null:
+		return
+	
 	# For "next gun" swap (Q)
 	if slot_num < 0:
 		current_gun_index += 1
@@ -74,10 +79,11 @@ func _switch_gun(slot_num: int):
 	# For specific swap (1,2,3)
 	else:
 		# Don't swap to current gun
-		if slot_num == current_gun_index:
+		if slot_num >= current_child_count or slot_num == current_gun_index:
 			return
 		else:
 			current_gun_index = slot_num
+		
 	var rotation_save = current_gun.rotation.z
 	_deactivate_gun()
 	current_gun = get_child(current_gun_index)
@@ -86,6 +92,36 @@ func _switch_gun(slot_num: int):
 	_activate_gun()
 	print("GUN SWITCHED TO: ")
 	print(current_gun)
+	
+	EventManager.new_gun_equipped.emit(current_gun.gun_name)
+	EventManager.new_mag_loaded.emit(current_gun._current_ammo, current_gun.ammo_max)
+
+func sacrifice_current_gun() -> void:
+	if current_gun == null or current_child_count <= 0:
+		return
+	
+	var sacrificed_gun := current_gun
+	var sacrificed_name := sacrificed_gun.gun_name
+	
+	_deactivate_gun()
+	remove_child(sacrificed_gun)
+	sacrificed_gun.queue_free()
+	
+	current_child_count = get_child_count()
+	EventManager.gun_sacrificed.emit(sacrificed_name)
+	
+	if current_child_count <= 0:
+		current_gun = null
+		current_gun_index = 0
+		allow_swapping = false
+		EventManager.enable_gun_ui.emit(false)
+		return
+	
+	if current_gun_index >= current_child_count:
+		current_gun_index = 0
+	
+	current_gun = get_child(current_gun_index)
+	_activate_gun()
 	
 	EventManager.new_gun_equipped.emit(current_gun.gun_name)
 	EventManager.new_mag_loaded.emit(current_gun._current_ammo, current_gun.ammo_max)
