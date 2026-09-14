@@ -80,6 +80,15 @@
 [ext_resource type="PackedScene" uid="uid://4rsfb5kh40wj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/B_Collisions/45Ramp.tscn" id="79_vwyjr"]
 [ext_resource type="PackedScene" uid="uid://dbm4o7gs6g22" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorLargeBasic(Locked).tscn" id="80_75qhx"]
 [ext_resource type="PackedScene" uid="uid://c3xj7l00asao0" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/file_exploiter.tscn" id="80_slitr"]
+[ext_resource type="PackedScene" uid="uid://dw60nghbaa5w6" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Disintegrated.tscn" id="81_fqval"]
+[ext_resource type="PackedScene" uid="uid://bxoxckf5ed1td" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Scrub_Crashed.tscn" id="82_lx8in"]
+[ext_resource type="PackedScene" uid="uid://xwmm12eihkbq" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Meat_lumps.tscn" id="83_cddd1"]
+[ext_resource type="PackedScene" uid="uid://556rwa2pdmor" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Lying_Convict.tscn" id="84_448ww"]
+[ext_resource type="PackedScene" uid="uid://ddim4ukeuv6rp" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Impaled_Convict.tscn" id="85_b8rbg"]
+[ext_resource type="PackedScene" uid="uid://bv27ylhgdgwqj" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/Let_Them_Raccook.tscn" id="86_dc4ih"]
+[ext_resource type="PackedScene" uid="uid://b8c8ldqk7w0t6" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Scrub_Torso.tscn" id="87_keve1"]
+[ext_resource type="PackedScene" uid="uid://ck4m03bswvsjg" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/Lost_Hook.tscn" id="88_ss6sb"]
+[ext_resource type="PackedScene" uid="uid://cpopgmurx621g" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/World_Lore/Pineapple_On_Pizza.tscn" id="89_08fg1"]
 
 [sub_resource type="Environment" id="Environment_o4lmb"]
 background_mode = 1
@@ -1862,6 +1871,42 @@ visible = false
 [node name="VFX" type="Node3D" parent="." unique_id=1886492453]
 [node name="DoorLargeBasic" parent="." unique_id=101148383 instance=ExtResource("80_75qhx")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5, -25.2, 0)
+
+[node name="Disintegrated" parent="." unique_id=395530572 instance=ExtResource("81_fqval")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.429567, 1.5865959, -7.976795)
+
+[node name="ScrubCrashed" parent="." unique_id=2089480923 instance=ExtResource("82_lx8in")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.71655, -7.6439395, -9.780123)
+
+[node name="MeatLumps" parent="." unique_id=720032926 instance=ExtResource("83_cddd1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.613102, -24.387491, -6.553409)
+
+[node name="LyingConvict" parent="." unique_id=1235913099 instance=ExtResource("84_448ww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2612753, -23.92749, -12.145688)
+
+[node name="ImpaledConvict" parent="." unique_id=889351681 instance=ExtResource("85_b8rbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.693626, -24.06609, 1.6303959)
+
+[node name="LetThemRaccook" parent="." unique_id=1758641376 instance=ExtResource("86_dc4ih")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.87775, -14.903053, -14.954335)
+
+[node name="ScrubTorso" parent="." unique_id=426037799 instance=ExtResource("87_keve1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.13821, -24.356491, -8.552328)
+
+[node name="LyingConvict2" parent="." unique_id=1103857381 instance=ExtResource("84_448ww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.48346, -23.927492, -13.931953)
+
+[node name="LostHook" parent="." unique_id=348250404 instance=ExtResource("88_ss6sb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.60779, -19.386347, -16.541458)
+
+[node name="PineappleOnPizza" parent="." unique_id=988902777 instance=ExtResource("89_08fg1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.689014, 5.378292, -24.523489)
+
+[node name="Disintegrated2" parent="." unique_id=1908618148 instance=ExtResource("81_fqval")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.161316, -23.53874, -7.0183167)
+
+[node name="ScrubCrashed2" parent="." unique_id=332418208 instance=ExtResource("82_lx8in")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 110.1406, -24.443941, 1.3472929)
 
 [connection signal="stage_cleared" from="Enemies/Room Three" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]
 
