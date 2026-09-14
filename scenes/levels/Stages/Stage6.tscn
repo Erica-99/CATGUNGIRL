@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://ccgg2t71rdo0l"]
 
+[ext_resource type="Script" uid="uid://dawdwjrkswtqg" path="res://scenes/levels/Stages/panning_camera.gd" id="1_mywdw"]
 [ext_resource type="PackedScene" uid="uid://wn4bdivbwbsn" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/BrainJarScreenTemplate.tscn" id="2_o5d64"]
 [ext_resource type="PackedScene" uid="uid://d1isfmus58oku" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/IndustrialLight1.tscn" id="5_coglk"]
 [ext_resource type="PackedScene" uid="uid://btcwaxl38nip5" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeSets/HandlebarSmall.tscn" id="5_mxr2x"]
+[ext_resource type="Script" uid="uid://4t3uo3s2mf8e" path="res://scenes/levels/Stages/camera_pan_node.gd" id="7_8vmub"]
 [ext_resource type="PackedScene" uid="uid://br8eqclc5secj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/Rails/RailFull.tscn" id="9_uoh3v"]
 [ext_resource type="PackedScene" uid="uid://bpjabu4plwqym" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/Rails/RailDiagonal.tscn" id="10_e2mff"]
 [ext_resource type="PackedScene" uid="uid://k4bj1vh7ofsj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorExit.tscn" id="11_a31f2"]
@@ -89,6 +91,9 @@ fog_depth_end = 153.5
 volumetric_fog_density = 0.0643
 volumetric_fog_albedo = Color(0, 0, 0, 1)
 volumetric_fog_length = 276.11
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o5d64"]
+size = Vector3(20.489685, 17.532715, 13.72467)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8vmub"]
 size = Vector3(12.6278105, 1.7686896, 3.8273802)
@@ -200,6 +205,18 @@ _data = {
 }
 
 [node name="Stage6" type="Node3D" unique_id=1033722064]
+
+[node name="RailCamera" type="Node3D" parent="." unique_id=1204773297]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.623193, 31.221176)
+script = ExtResource("1_mywdw")
+default_offset = Vector3(0, 5, 30)
+Player_Target_Ratio = 0.4
+
+[node name="Camera" type="Camera3D" parent="RailCamera" unique_id=1522276125]
+
+[node name="PlayerCamTarget" type="Node3D" parent="RailCamera" unique_id=412088629]
+
+[node name="Player_rotation_pivot" type="Node3D" parent="RailCamera" unique_id=47312281]
 
 [node name="Player" parent="." unique_id=1349193765 instance=ExtResource("13_7yaim")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124, 2.14, 0)
@@ -572,6 +589,28 @@ transform = Transform3D(2.4948392, 0, 0, 0, 2.4948392, 0, 0, 0, 2.4948392, -229,
 visible = false
 
 [node name="Reactors" type="Node3D" parent="Interactive" unique_id=261082351]
+
+[node name="BrainReactorLeft" parent="Interactive/Reactors" unique_id=944632863 instance=ExtResource("32_oxwui")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
+
+[node name="BrainReactorRight" parent="Interactive/Reactors" unique_id=531911111 instance=ExtResource("32_oxwui")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
+
+[node name="CameraPanNode1" type="Node3D" parent="Interactive" unique_id=1018793133]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135.89229, 4.3836174, 0)
+script = ExtResource("7_8vmub")
+
+[node name="Area" type="Area3D" parent="Interactive/CameraPanNode1" unique_id=832953900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.363087, 0, 0)
+collision_layer = 512
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactive/CameraPanNode1/Area" unique_id=2083641597]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.32317, 5.494629, 0.5645447)
+shape = SubResource("BoxShape3D_o5d64")
+
+[node name="CameraTarget" type="Node3D" parent="Interactive/CameraPanNode1" unique_id=48895379]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.028801, 32.55161, 86.376274)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=1092297902]
 
@@ -5667,6 +5706,11 @@ transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
 [node name="VFX" type="Node3D" parent="." unique_id=1761748796]
 
 [node name="VFX2" type="Node3D" parent="." unique_id=1844348877]
+
+[connection signal="removecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
+[connection signal="updatecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
+[connection signal="body_entered" from="Interactive/CameraPanNode1/Area" to="Interactive/CameraPanNode1" method="_on_area_body_entered"]
+[connection signal="body_exited" from="Interactive/CameraPanNode1/Area" to="Interactive/CameraPanNode1" method="_on_area_body_exited"]
 
 [editable path="Props/MultMiscProps/PanopticonCrane"]
 [editable path="Props/MultMiscProps/PanopticonCrane2"]
