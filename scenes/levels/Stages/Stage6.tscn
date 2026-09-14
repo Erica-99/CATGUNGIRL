@@ -443,6 +443,7 @@ light_energy = 0.111
 
 [node name="RimLight2" type="DirectionalLight3D" parent="Lighting/LightingPassPreFight" unique_id=1846120176]
 transform = Transform3D(0.9996472, 0, -0.026560992, 0, 1, 0, 0.026560992, 0, 0.9996472, 0.65761566, 42.14006, 54.83855)
+light_color = Color(0.13780683, 0.018581443, 0.030978756, 1)
 
 [node name="RightSectionAmbience" type="SpotLight3D" parent="Lighting/LightingPassPreFight" unique_id=1508550468]
 transform = Transform3D(1, 0, 0, 0, 0.94825166, 0.31751984, 0, -0.31751984, 0.94825166, -44, 10.591915, 42)
@@ -5637,31 +5638,31 @@ transform = Transform3D(-1.0555488e-07, -0.12940952, 0.4829629, -2.8283347e-08, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
 
 [node name="BrainJar" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=561627710 instance=ExtResource("36_mxr2x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, -0.8000002, -15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0, -15)
 
-[node name="ReactorWire" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=965618633 instance=ExtResource("29_rm42m")]
+[node name="ReactorPipeL" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=965618633 instance=ExtResource("29_rm42m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
 
-[node name="ReactorWire2" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=1220722081 instance=ExtResource("29_rm42m")]
+[node name="ReactorPipeR" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=1220722081 instance=ExtResource("29_rm42m")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
 
-[node name="BrainWires" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=455552606 instance=ExtResource("71_mywdw")]
+[node name="BrainPipeL" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=455552606 instance=ExtResource("71_mywdw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
 
-[node name="BrainWires2" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=1748327767 instance=ExtResource("71_mywdw")]
+[node name="BrainPipeR" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=1748327767 instance=ExtResource("71_mywdw")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
 
-[node name="Wires" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=290541380 instance=ExtResource("72_8vmub")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
-
-[node name="Wires2" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=2139112390 instance=ExtResource("72_8vmub")]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
-
-[node name="BrainReactor" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=944632863 instance=ExtResource("32_oxwui")]
+[node name="LeftBrainReactor" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=944632863 instance=ExtResource("32_oxwui")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 0, -45)
 
-[node name="BrainReactor2" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=146908358 instance=ExtResource("32_oxwui")]
+[node name="RightBrainReactor" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=146908358 instance=ExtResource("32_oxwui")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -44, 0, -45)
+
+[node name="WiresL" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=290541380 instance=ExtResource("72_8vmub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
+
+[node name="WiresR" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=2139112390 instance=ExtResource("72_8vmub")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
 
 [editable path="Props/MultMiscProps/PanopticonCrane"]
 [editable path="Props/MultMiscProps/PanopticonCrane2"]
