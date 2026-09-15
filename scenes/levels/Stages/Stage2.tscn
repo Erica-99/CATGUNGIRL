@@ -87,10 +87,12 @@
 [ext_resource type="PackedScene" uid="uid://xwmm12eihkbq" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Meat_lumps.tscn" id="83_cddd1"]
 [ext_resource type="PackedScene" uid="uid://556rwa2pdmor" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Lying_Convict.tscn" id="84_448ww"]
 [ext_resource type="PackedScene" uid="uid://ddim4ukeuv6rp" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Impaled_Convict.tscn" id="85_b8rbg"]
+[ext_resource type="PackedScene" uid="uid://ctulbbuyu35x" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/World_Lore/BJ_Watches.tscn" id="85_dc4ih"]
 [ext_resource type="PackedScene" uid="uid://bv27ylhgdgwqj" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/Let_Them_Raccook.tscn" id="86_dc4ih"]
 [ext_resource type="PackedScene" uid="uid://b8c8ldqk7w0t6" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Scrub_Torso.tscn" id="87_keve1"]
 [ext_resource type="PackedScene" uid="uid://ck4m03bswvsjg" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/Lost_Hook.tscn" id="88_ss6sb"]
 [ext_resource type="PackedScene" uid="uid://cpopgmurx621g" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/World_Lore/Pineapple_On_Pizza.tscn" id="89_08fg1"]
+[ext_resource type="PackedScene" uid="uid://bpds7cyyg8gb7" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Rubble.tscn" id="91_448ww"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sbpx0"]
 size = Vector3(22.905502, 13.890747, 13.72467)
@@ -1968,7 +1970,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.87775, -14.903053, -14.954
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.60779, -19.386347, -16.541458)
 
 [node name="PineappleOnPizza" parent="2D_Props/Posters" unique_id=988902777 instance=ExtResource("89_08fg1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.91625, 5.101718, -24.523489)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.683895, -3.5692644, -26.67883)
+
+[node name="AcceptBliss" parent="2D_Props/Posters" unique_id=1517328070 instance=ExtResource("85_dc4ih")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.421986, 14.666203, -24.931496)
 
 [node name="Corpses" type="Node3D" parent="2D_Props" unique_id=101059581]
 
@@ -1991,13 +1996,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.693626, -23.74467, 1.63039
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.13821, -16.02734, -7.8844414)
 
 [node name="LyingConvict2" parent="2D_Props/Corpses" unique_id=1103857381 instance=ExtResource("84_448ww")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.48346, -23.927492, -13.931953)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.48346, -23.927492, -3.8603497)
 
 [node name="Disintegrated2" parent="2D_Props/Corpses" unique_id=1908618148 instance=ExtResource("81_fqval")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.161316, -23.53874, -7.0183167)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.56611, -15.137807, -2.0654638)
 
 [node name="ScrubCrashed2" parent="2D_Props/Corpses" unique_id=332418208 instance=ExtResource("82_lx8in")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 110.1406, -24.237347, 1.3472929)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 110.1406, -24.237347, -3.9052105)
+
+[node name="Disintegrated" parent="2D_Props" unique_id=1104983045 instance=ExtResource("91_448ww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.30998, -22.92499, 2.639944)
 
 [node name="VFX" type="Node3D" parent="." unique_id=1886492453]
 
