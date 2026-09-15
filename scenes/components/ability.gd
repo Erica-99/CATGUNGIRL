@@ -19,6 +19,18 @@ func initialise(ability_state: State, actor_blackboard: Dictionary) -> void:
 func _end_ability() -> void:
 	_ability_state.emit_signal("end_ability")
 
+func cancel_ability() -> void:
+	if _ability_state == null:
+		return
+	
+	var state_machine := _ability_state.get_parent() as StateMachine
+	
+	#emit the ending signal when this ability state is currently active
+	if state_machine == null or state_machine.current_state != _ability_state:
+		return
+	
+	_end_ability()
+
 func _set_children_active(_active: bool) -> void:
 	if not _active:
 		for child in get_children():

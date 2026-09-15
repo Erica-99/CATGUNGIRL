@@ -14,6 +14,9 @@ signal player_charge_ended()
 ## Signal for when the player is D E D
 signal player_dead()
 
+const GUN_SACRIFICE_MENU_SCENE = preload("res://scenes/ui/hud_display/gun_sacrifice_menu/gun_sacrifice_menu.tscn")
+var gun_sacrifice_menu: GunSacrificeMenu = null
+
 @export var movement_state_machine: StateMachine
 
 @export var gun_arm_node: Node3D
@@ -117,8 +120,8 @@ func _ready() -> void:
 	gun_holder.current_gun_charge_progress_changed.connect(_on_gun_charge_progress)
 	gun_holder.current_gun_charge_ended.connect(_on_gun_charge_ended)
 	gun_holder.current_gun_charge_started.connect(_on_gun_charge_started)
+	EventManager.gun_sacrifice_requested.connect(_open_gun_sacrifice_menu)
 	
-	EventManager.gun_sacrifice_requested.connect(sacrifice_current_gun)
 	EventManager.gun_picked_up.connect(_equip_gun)
 	_set_gun_enabled(has_gun)
 
@@ -233,16 +236,51 @@ func _set_gun_enabled(enabled: bool) -> void:
 	gun_holder.allow_swapping = enabled
 	EventManager.enable_gun_ui.emit(enabled)
 
-func sacrifice_current_gun() -> void:
-	if !has_gun:
+func sacrifice_gun(selected_gun: Gun) -> void:
+	if !has_gun or !is_instance_valid(selected_gun):
 		return
 	
+	#prevent new gun from using ability after unpausing
+	input_component._ability_held = false
+	
+	#let an active ability finish its normal cleanup before gun is deleted.
+	if selected_gun == gun_holder.current_gun:
+		if is_instance_valid(selected_gun.ability):
+			selected_gun.ability.cancel_ability()
+	
 	speed_multiplier = 1.0
-	gun_holder.sacrifice_current_gun()
+	gun_holder.sacrifice_gun(selected_gun)
 	
 	if gun_holder.current_gun == null:
 		has_gun = false
 		_set_gun_enabled(false)
+
+func _open_gun_sacrifice_menu() -> void:
+	input_component._interacting = false
+	
+	if !has_gun or is_instance_valid(gun_sacrifice_menu):
+		return
+	
+	var current_scene := get_tree().current_scene
+	
+	if current_scene == null:
+		return
+	
+	gun_sacrifice_menu = (GUN_SACRIFICE_MENU_SCENE.instantiate() as GunSacrificeMenu)
+	
+	if gun_sacrifice_menu == null:
+		push_error("Could not instantiate the gun sacrifice menu.")
+		return
+	
+	current_scene.add_child(gun_sacrifice_menu)
+	gun_sacrifice_menu.gun_selected.connect(sacrifice_gun)
+	gun_sacrifice_menu.tree_exited.connect(_on_sacrifice_menu_closed)
+	
+	if !gun_sacrifice_menu.open_menu(gun_holder):
+		gun_sacrifice_menu.queue_free()
+
+func _on_sacrifice_menu_closed() -> void:
+	gun_sacrifice_menu = null
 
 func set_facing(new_facing: float) -> void:
 	if new_facing == 0.0:
