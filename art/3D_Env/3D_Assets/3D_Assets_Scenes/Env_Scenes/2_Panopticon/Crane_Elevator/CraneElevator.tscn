@@ -10,7 +10,6 @@
 [ext_resource type="ArrayMesh" uid="uid://crn0gjxrdnt4p" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/2_Panopticon/CellCranePrt.03.5.obj" id="5_266cl"]
 [ext_resource type="Texture2D" uid="uid://brgmm5r772s87" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCranePrt01/CellCranePrt.01_Height.png" id="5_gbedd"]
 [ext_resource type="ArrayMesh" uid="uid://cd1pnys8uchkm" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/2_Panopticon/CellCrane_Scoop.obj" id="5_y3kyf"]
-[ext_resource type="PackedScene" uid="uid://dl1dvclonvae4" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/PrisonCell(Active).tscn" id="6_5huns"]
 [ext_resource type="Texture2D" uid="uid://cbj50u5clm68" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCranePrt01/CellCranePrt.01_Base_metalness.png" id="6_51hxw"]
 [ext_resource type="Texture2D" uid="uid://bascwlbscwlww" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/MeshFloor_Base_color.png" id="6_o31nt"]
 [ext_resource type="Texture2D" uid="uid://c5dpqlvrx7hdy" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCranePrt01/CellCranePrt.01_Normal_OpenGL.png" id="7_eyskn"]
@@ -44,6 +43,58 @@
 [ext_resource type="Texture2D" uid="uid://dyuh13xnghj32" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCrane_Scoop/CellCrane_Scoop_Base_metalness.png" id="41_4snpg"]
 [ext_resource type="Texture2D" uid="uid://dx83y8w7ws4us" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCrane_Scoop/CellCrane_Scoop_Normal_OpenGL.png" id="42_71nm8"]
 [ext_resource type="Texture2D" uid="uid://tvryuo6bxnp6" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCrane_Scoop/CellCrane_Scoop_Specular_roughness.png" id="43_sbgk5"]
+[ext_resource type="Script" uid="uid://cjw755mywfccl" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/prison_cell(active).gd" id="44_nfo4o"]
+[ext_resource type="ArrayMesh" uid="uid://bal44yl7xp1fe" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/Cell.obj" id="45_y3v3d"]
+[ext_resource type="Texture2D" uid="uid://de44tldm81xyq" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/Cell/Cell_Base_color.png" id="46_o6qgi"]
+[ext_resource type="Texture2D" uid="uid://dpu6h5q03kw45" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/Cell/Cell_Mixed_AO.png" id="47_wn1gc"]
+[ext_resource type="Texture2D" uid="uid://03mfbvuahjxc" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/Cell/Cell_Height.png" id="48_c2ekg"]
+[ext_resource type="Texture2D" uid="uid://bk1frmnhx434x" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/Cell/Cell_Metallic.png" id="49_vbcvd"]
+[ext_resource type="Texture2D" uid="uid://deolt207f2jqo" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/Cell/Cell_Normal_OpenGL.png" id="50_gre3c"]
+[ext_resource type="Texture2D" uid="uid://c18rh3blatqcy" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/Cell/Cell_Roughness.png" id="51_je50c"]
+[ext_resource type="ArrayMesh" uid="uid://cjqh0x0gpfjyc" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/CellLock.obj" id="52_xkbi3"]
+[ext_resource type="Texture2D" uid="uid://bk56qnlhecroq" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellLock/CellLock_Base_color.png" id="53_v2smy"]
+[ext_resource type="Texture2D" uid="uid://4oafvuffqiqp" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellLock/CellLock_Mixed_AO.png" id="54_v6iow"]
+[ext_resource type="Texture2D" uid="uid://wg6dpfxq45jh" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellLock/CellLock_Emission_color.png" id="55_hk0o0"]
+[ext_resource type="Texture2D" uid="uid://dttpgylko42yk" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellLock/CellLock_Height.png" id="56_orvmy"]
+[ext_resource type="Texture2D" uid="uid://mtm4mfrkfg44" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellLock/CellLock_Base_metalness.png" id="57_rhqdn"]
+[ext_resource type="Texture2D" uid="uid://diwa6c3xh74is" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellLock/CellLock_Normal_OpenGL.png" id="58_7drhw"]
+[ext_resource type="Texture2D" uid="uid://clhroh101up47" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellLock/CellLock_Specular_roughness.png" id="59_it3q7"]
+[ext_resource type="ArrayMesh" uid="uid://du5sqrgiob014" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/CellAirIntake.obj" id="60_xjl5d"]
+[ext_resource type="Texture2D" uid="uid://rflk1kjjebyx" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellAirIntake/M_MetalGrate_Base_color.png" id="61_b56km"]
+[ext_resource type="Texture2D" uid="uid://buvnr8b4mp8yb" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellAirIntake/M_MetalGrate_Mixed_AO.png" id="62_mem4d"]
+[ext_resource type="Texture2D" uid="uid://5yx2om5mivoq" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellAirIntake/M_MetalGrate_Height.png" id="63_clalw"]
+[ext_resource type="Texture2D" uid="uid://jg2ywtf1r4xe" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellAirIntake/M_MetalGrate_Base_metalness.png" id="64_bylhp"]
+[ext_resource type="Texture2D" uid="uid://epoqap45qbg3" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellAirIntake/M_MetalGrate_Normal_OpenGL.png" id="65_qu8fj"]
+[ext_resource type="Texture2D" uid="uid://b64yy62eim0b1" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellAirIntake/M_MetalGrate_Specular_roughness.png" id="66_w6vml"]
+[ext_resource type="ArrayMesh" uid="uid://dm8di8wklriwd" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/CellArm.01.obj" id="67_f0p8h"]
+[ext_resource type="Texture2D" uid="uid://cs4v80eeww2g6" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellArm.01/CellArm.01_Base_color.png" id="68_1o0ur"]
+[ext_resource type="Texture2D" uid="uid://gfc2xsa2ybdc" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellArm.01/CellArm.01_Mixed_AO.png" id="69_shnta"]
+[ext_resource type="Texture2D" uid="uid://da7ups8lq75x5" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellArm.01/CellArm.01_Height.png" id="70_2px3b"]
+[ext_resource type="Texture2D" uid="uid://df5pv67ke1usl" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellArm.01/CellArm.01_Base_metalness.png" id="71_l6xnm"]
+[ext_resource type="Texture2D" uid="uid://s7rmbrxb3hrt" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellArm.01/CellArm.01_Normal_OpenGL.png" id="72_x14p6"]
+[ext_resource type="Texture2D" uid="uid://di3yffu2322cq" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellArm.01/CellArm.01_Specular_roughness.png" id="73_nyfxp"]
+[ext_resource type="ArrayMesh" uid="uid://d8rgsphhvuip" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/CellArm.02.obj" id="74_1go6j"]
+[ext_resource type="Texture2D" uid="uid://bfa1ocsmhds1m" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellArm.02/CellArm.02_Base_color.png" id="75_jptjy"]
+[ext_resource type="Texture2D" uid="uid://c37ewwkk4jv2i" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellArm.02/CellArm.02_Mixed_AO.png" id="76_wtyun"]
+[ext_resource type="Texture2D" uid="uid://dfuvoy8iqa6ha" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellArm.02/CellArm.02_Height.png" id="77_8ojr5"]
+[ext_resource type="Texture2D" uid="uid://cksbujhud4goj" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellArm.02/CellArm.02_Base_metalness.png" id="78_v0378"]
+[ext_resource type="Texture2D" uid="uid://prcxy1qcn50g" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellArm.02/CellArm.02_Normal_OpenGL.png" id="79_kmv2m"]
+[ext_resource type="Texture2D" uid="uid://csnwfoypqcg4l" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellArm.02/CellArm.02_Specular_roughness.png" id="80_jeat0"]
+[ext_resource type="ArrayMesh" uid="uid://b1ycljs44tsvy" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/CellDoor.obj" id="81_etvwp"]
+[ext_resource type="Texture2D" uid="uid://dkdnypum8anwu" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellDoor/CellDoor_Base_color.png" id="82_u4e42"]
+[ext_resource type="Texture2D" uid="uid://d3ys31v6umhpy" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellDoor/CellDoor_Mixed_AO.png" id="83_dxek5"]
+[ext_resource type="Texture2D" uid="uid://cb3cljxmd28w0" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellDoor/CellDoor_Height.png" id="84_2ofq6"]
+[ext_resource type="Texture2D" uid="uid://by3nyot0lgx5o" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellDoor/CellDoor_Base_metalness.png" id="85_b6lg8"]
+[ext_resource type="Texture2D" uid="uid://xcuu7w0qbbq0" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellDoor/CellDoor_Normal_OpenGL.png" id="86_cd0ij"]
+[ext_resource type="Texture2D" uid="uid://t1yn5admj13x" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonCell/CellDoor/CellDoor_Specular_roughness.png" id="87_phikj"]
+[ext_resource type="ArrayMesh" uid="uid://b4053jlwdvpmc" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/SmallLight.obj" id="88_vmjb5"]
+[ext_resource type="Texture2D" uid="uid://bvp1fbmx6gvsn" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/SmallLight/SmallLight_Base_color.png" id="89_nn11f"]
+[ext_resource type="Texture2D" uid="uid://e0k2y8je55wb" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/SmallLight/SmallLight_Mixed_AO.png" id="90_vsuml"]
+[ext_resource type="Texture2D" uid="uid://d37ql3q400ama" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/SmallLight/SmallLight_Emission_color.png" id="91_sn4ai"]
+[ext_resource type="Texture2D" uid="uid://juv1f8r26e4m" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/SmallLight/SmallLight_Height.png" id="92_6tjbq"]
+[ext_resource type="Texture2D" uid="uid://dq8nlwih6tnya" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/SmallLight/SmallLight_Base_metalness.png" id="93_0x2vj"]
+[ext_resource type="Texture2D" uid="uid://b3n1qfp5ls7ye" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/SmallLight/SmallLight_Normal_OpenGL.png" id="94_5d53b"]
+[ext_resource type="Texture2D" uid="uid://dvl0rvyslvng" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/SmallLight/SmallLight_Specular_roughness.png" id="95_ge3hr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ai3b1"]
 albedo_texture = ExtResource("3_siryc")
@@ -141,6 +192,510 @@ heightmap_texture = ExtResource("40_wygjh")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_p2rge"]
 points = PackedVector3Array(0.6832553, 0.557666, 1.3227198, -0.56989, 0.557666, 1.3227198, 0.6832553, -0.079847634, 1.3227198, 0.6832553, 0.557666, -1.32272, -0.56989, -0.559076, 1.3227198, -0.56989, 0.557666, -1.32272, -0.11353165, -0.559076, 1.3227198, 0.6832553, -0.31574517, 1.321943, 0.6832553, -0.079847634, -1.32272, -0.56989, -0.559076, -1.32272, -0.11353165, -0.559076, -1.32272, 0.6832553, -0.31574517, -1.3222022)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uei5r"]
+albedo_texture = ExtResource("46_o6qgi")
+metallic = 1.0
+metallic_texture = ExtResource("49_vbcvd")
+roughness_texture = ExtResource("51_je50c")
+normal_enabled = true
+normal_texture = ExtResource("50_gre3c")
+ao_enabled = true
+ao_texture = ExtResource("47_wn1gc")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("48_c2ekg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s8l1w"]
+albedo_texture = ExtResource("53_v2smy")
+metallic = 1.0
+metallic_texture = ExtResource("57_rhqdn")
+roughness_texture = ExtResource("59_it3q7")
+emission_enabled = true
+emission_energy_multiplier = 3.0
+emission_texture = ExtResource("55_hk0o0")
+normal_enabled = true
+normal_texture = ExtResource("58_7drhw")
+ao_enabled = true
+ao_texture = ExtResource("54_v6iow")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("56_orvmy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7cjwf"]
+albedo_texture = ExtResource("61_b56km")
+metallic = 1.0
+metallic_texture = ExtResource("64_bylhp")
+roughness_texture = ExtResource("66_w6vml")
+normal_enabled = true
+normal_texture = ExtResource("65_qu8fj")
+ao_enabled = true
+ao_texture = ExtResource("62_mem4d")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("63_clalw")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8i2uk"]
+size = Vector3(1.9974365, 0.13296509, 2.1379242)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k5dx3"]
+size = Vector3(1.9916077, 0.14050293, 1.99469)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hp7oy"]
+size = Vector3(0.14105225, 1.9992371, 2.5207214)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jfv3m"]
+size = Vector3(1.9893799, 1.3120728, 0.40515137)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n30ef"]
+size = Vector3(2.0014648, 1.3093262, 0.40750122)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m3buv"]
+albedo_texture = ExtResource("68_1o0ur")
+metallic = 1.0
+metallic_texture = ExtResource("71_l6xnm")
+roughness_texture = ExtResource("73_nyfxp")
+normal_enabled = true
+normal_texture = ExtResource("72_x14p6")
+ao_enabled = true
+ao_texture = ExtResource("69_shnta")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("70_2px3b")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q2xsu"]
+albedo_texture = ExtResource("75_jptjy")
+metallic = 1.0
+metallic_texture = ExtResource("78_v0378")
+roughness_texture = ExtResource("80_jeat0")
+normal_enabled = true
+normal_texture = ExtResource("79_kmv2m")
+ao_enabled = true
+ao_texture = ExtResource("76_wtyun")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("77_8ojr5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wq6g3"]
+albedo_texture = ExtResource("82_u4e42")
+metallic = 1.0
+metallic_texture = ExtResource("85_b6lg8")
+roughness_texture = ExtResource("87_phikj")
+normal_enabled = true
+normal_texture = ExtResource("86_cd0ij")
+ao_enabled = true
+ao_texture = ExtResource("83_dxek5")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("84_2ofq6")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_puijb"]
+points = PackedVector3Array(0.099874, 0.844466, 0.715435, 0.099874, 0.844466, -0.715436, -0.099874, 0.844466, 0.715435, 0.099874, -0.865672, 0.715435, -0.099874, 0.844466, -0.715436, 0.099874, -0.865672, -0.715436, -0.099874, -0.865672, 0.715435, -0.099874, -0.865672, -0.715436)
+
+[sub_resource type="Animation" id="Animation_3yo5u"]
+resource_name = "Cell_CloseAnimation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CellArm_01_Mesh/CellArm_02_Mesh/CellDoor:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.9432806), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CellArm_01_Mesh:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -2.6339462), Vector3(0, 0, -1.5707964)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CellArm_01_Mesh/CellArm_02_Mesh:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.37241825), Vector3(0, 0, -3.1415927)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CellArm_01_Mesh/CellArm_02_Mesh/CellDoor:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.6014564, -0.04111761, 0), Vector3(-0.6919383, -0.015027583, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CellArm_01_Mesh:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.891, 0, 0), Vector3(0.891, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CellArm_01_Mesh/CellArm_02_Mesh:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.7144033, -0.0067742765, 0), Vector3(-0.7144032, -0.0067743063, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_i5slr"]
+resource_name = "Cell_IdleClosed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CellArm_01_Mesh/CellArm_02_Mesh/CellDoor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.6919383, -0.015027583, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CellArm_01_Mesh:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.891, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CellArm_01_Mesh/CellArm_02_Mesh:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.7144032, -0.0067743063, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CellArm_01_Mesh/CellArm_02_Mesh/CellDoor:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CellArm_01_Mesh:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -1.5707964)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CellArm_01_Mesh/CellArm_02_Mesh:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -3.1415927)]
+}
+
+[sub_resource type="Animation" id="Animation_yi5x7"]
+resource_name = "Cell_IdleOpen"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CellArm_01_Mesh/CellArm_02_Mesh/CellDoor:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.9432806)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CellArm_01_Mesh:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -2.6339462)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CellArm_01_Mesh/CellArm_02_Mesh:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.37241825)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CellArm_01_Mesh/CellArm_02_Mesh/CellDoor:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.6014564, -0.04111761, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CellArm_01_Mesh:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.891, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CellArm_01_Mesh/CellArm_02_Mesh:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.7144033, -0.0067742765, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4u21t"]
+resource_name = "Cell_Opening"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CellArm_01_Mesh/CellArm_02_Mesh/CellDoor:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.6919383, -0.015027583, 0), Vector3(-0.6014564, -0.04111761, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CellArm_01_Mesh:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.891, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CellArm_01_Mesh/CellArm_02_Mesh:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.7144032, -0.0067743063, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CellArm_01_Mesh/CellArm_02_Mesh/CellDoor:rotation")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.9432806)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CellArm_01_Mesh:rotation")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -1.5707964), Vector3(0, 0, -2.6339462)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CellArm_01_Mesh/CellArm_02_Mesh:rotation")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -3.1415927), Vector3(0, 0, 0.37241825)]
+}
+
+[sub_resource type="Animation" id="Animation_xroih"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CellArm_01_Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.891, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CellArm_01_Mesh/CellArm_02_Mesh:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.7144032, -0.0067743063, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CellArm_01_Mesh/CellArm_02_Mesh/CellDoor:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.6919383, -0.015027583, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CellArm_01_Mesh/CellArm_02_Mesh/CellDoor:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CellArm_01_Mesh:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -1.5707964)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CellArm_01_Mesh/CellArm_02_Mesh:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -3.1415927)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_egeje"]
+_data = {
+&"Cell_Closing": SubResource("Animation_3yo5u"),
+&"Cell_IdleClosed": SubResource("Animation_i5slr"),
+&"Cell_IdleOpen": SubResource("Animation_yi5x7"),
+&"Cell_Opening": SubResource("Animation_4u21t"),
+&"RESET": SubResource("Animation_xroih")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k3uxo"]
+albedo_texture = ExtResource("89_nn11f")
+metallic = 1.0
+metallic_texture = ExtResource("93_0x2vj")
+roughness_texture = ExtResource("95_ge3hr")
+emission_enabled = true
+emission_texture = ExtResource("91_sn4ai")
+normal_enabled = true
+normal_texture = ExtResource("94_5d53b")
+ao_enabled = true
+ao_texture = ExtResource("90_vsuml")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("92_6tjbq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hp7oy"]
+albedo_color = Color(0, 1, 0, 1)
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+emission_energy_multiplier = 5.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ddti2"]
 size = Vector3(1.5020752, 1.0180664, 1)
@@ -247,8 +802,78 @@ surface_material_override/0 = SubResource("StandardMaterial3D_njxlx")
 [node name="CellCraneScoop_Collision" type="CollisionShape3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop" unique_id=1882510903]
 shape = SubResource("ConvexPolygonShape3D_p2rge")
 
-[node name="PrisonCell2" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop" unique_id=1430763070 instance=ExtResource("6_5huns")]
+[node name="PrisonCell2" type="StaticBody3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop" unique_id=1430763070]
 transform = Transform3D(-1.1249958, 1.6986965e-07, -0.0031609873, -1.6987028e-07, -1.125, -7.623297e-22, -0.0031609873, 4.7729576e-10, 1.1249958, -0.65514374, -0.015005112, -0.004884608)
+script = ExtResource("44_nfo4o")
+
+[node name="Cell_Mesh" type="MeshInstance3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop/PrisonCell2" unique_id=649634502]
+mesh = ExtResource("45_y3v3d")
+surface_material_override/0 = SubResource("StandardMaterial3D_uei5r")
+
+[node name="CellLock" type="MeshInstance3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop/PrisonCell2" unique_id=954695091]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0017477, 0.0079381, 0.89611745)
+mesh = ExtResource("52_xkbi3")
+surface_material_override/0 = SubResource("StandardMaterial3D_s8l1w")
+
+[node name="CellAirIntake" type="MeshInstance3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop/PrisonCell2" unique_id=1281293032]
+transform = Transform3D(1.0000004, 6.6227386e-08, 0, -6.6227386e-08, 1.0000004, 0, 0, 0, 1, 0.30104223, 0.7705985, 1.1531593)
+mesh = ExtResource("60_xjl5d")
+surface_material_override/0 = SubResource("StandardMaterial3D_7cjwf")
+
+[node name="Cell_Collision_01" type="CollisionShape3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop/PrisonCell2" unique_id=478816225]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0006713867, 0.92954916, 0.06751251)
+shape = SubResource("BoxShape3D_8i2uk")
+
+[node name="Cell_Collision_02" type="CollisionShape3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop/PrisonCell2" unique_id=770097402]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002822876, -0.9269999, 0.0027770996)
+shape = SubResource("BoxShape3D_k5dx3")
+
+[node name="Cell_Collision_03" type="CollisionShape3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop/PrisonCell2" unique_id=1658943574]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9289839, -0.0007171631, 0.001083374)
+shape = SubResource("BoxShape3D_hp7oy")
+
+[node name="Cell_Collision_04" type="CollisionShape3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop/PrisonCell2" unique_id=1203019691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0020141602, -0.06704712, 1.0611223)
+shape = SubResource("BoxShape3D_jfv3m")
+
+[node name="Cell_Collision_05" type="CollisionShape3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop/PrisonCell2" unique_id=1219426400]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0017089844, -0.07019043, -1.061562)
+shape = SubResource("BoxShape3D_n30ef")
+
+[node name="CellArm_01_Mesh" type="MeshInstance3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop/PrisonCell2" unique_id=331174773]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.891, 0, 0)
+mesh = ExtResource("67_f0p8h")
+surface_material_override/0 = SubResource("StandardMaterial3D_m3buv")
+
+[node name="CellArm_02_Mesh" type="MeshInstance3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop/PrisonCell2/CellArm_01_Mesh" unique_id=2091805606]
+transform = Transform3D(-1.0000007, -8.742284e-08, 0, 8.742284e-08, -1.0000007, 0, 0, 0, 1, -0.7144032, -0.0067743063, 0)
+mesh = ExtResource("74_1go6j")
+surface_material_override/0 = SubResource("StandardMaterial3D_q2xsu")
+
+[node name="CellDoor" type="StaticBody3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop/PrisonCell2/CellArm_01_Mesh/CellArm_02_Mesh" unique_id=368092532]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999964, 0, 0, 0, 1, -0.6919383, -0.015027583, 0)
+
+[node name="CellDoor_Mesh" type="MeshInstance3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop/PrisonCell2/CellArm_01_Mesh/CellArm_02_Mesh/CellDoor" unique_id=134328525]
+transform = Transform3D(-4.4703484e-08, 1, 0, -1, -4.4703484e-08, 0, 0, 0, 1, -0.014788389, -0.00093615055, 0)
+mesh = ExtResource("81_etvwp")
+surface_material_override/0 = SubResource("StandardMaterial3D_wq6g3")
+
+[node name="CellDoor_Collision" type="CollisionShape3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop/PrisonCell2/CellArm_01_Mesh/CellArm_02_Mesh/CellDoor" unique_id=976431651]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_puijb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop/PrisonCell2" unique_id=1404468319]
+libraries/ = SubResource("AnimationLibrary_egeje")
+
+[node name="SmallLight" type="MeshInstance3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop/PrisonCell2" unique_id=1431977708]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.99298126, 0.7008265, 0.91025925)
+mesh = ExtResource("88_vmjb5")
+surface_material_override/0 = SubResource("StandardMaterial3D_k3uxo")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop/PrisonCell2" unique_id=1030601324]
+transform = Transform3D(0.08648003, 0, 0, 0, 0.26437512, 0, 0, 0, 0.08648003, 1.041285, 0.6994451, 0.9105445)
+height = 1.0303955
+material = SubResource("StandardMaterial3D_hp7oy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04" unique_id=542249124]
 transform = Transform3D(1.0367408, 0, -4.6938658e-07, 0, 1, 0, 1.3038516e-08, 0, 2.5992484, -9.45918, -2.4696863, 0.015644073)
