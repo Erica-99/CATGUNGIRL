@@ -3010,6 +3010,7 @@ metadata/_custom_type_script = "uid://bivm8q1sfq6tc"
 
 [node name="TrunkDeath" type="Node" parent="StateMachine" unique_id=1245463811]
 script = ExtResource("10_t7x1w")
+explode_on_kill = true
 metadata/_custom_type_script = "uid://n3y61s3xutuy"
 
 [node name="TrunkStun" type="Node" parent="StateMachine" unique_id=1071588348]
@@ -3103,6 +3104,10 @@ mesh = SubResource("SphereMesh_688n6")
 
 [node name="VFX_target" type="Node3D" parent="." unique_id=1523297649]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16113561, 2.206633, 0)
+
+[node name="Explosion_target" type="Node3D" parent="." unique_id=2119718607]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.76134944, 0.52330434, 0)
+
 [node name="StingerComponent" parent="." unique_id=392420070 instance=ExtResource("24_ogs6v")]
 
 [connection signal="cant_step" from="." to="TrunkMesh" method="_on_trunk_cant_step"]

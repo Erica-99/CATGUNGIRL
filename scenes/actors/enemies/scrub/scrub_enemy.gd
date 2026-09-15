@@ -14,7 +14,10 @@ extends CharacterBody3D
 @onready var can_shoot: RayCast3D = $CanShoot
 @onready var softCollider = $SoftCollider
 
+@onready var VFX_spawn = $Explosion_target
+
 var is_dead: bool = false
+var explosion_gpu_emitter = preload("res://art/TechArt/1_Shaders/explosion_test.tscn")
 
 @export_category("Starting State Variables")
 @export var start_aggroed: bool
@@ -236,8 +239,11 @@ func get_id() -> String:
 
 func _on_death_detector_body_entered(body: Node3D) -> void:
 	if is_dead:
-		death_explosion.visible = true
-		death_explosion.play("explode")
-		explosion_playing = true
-		await death_explosion.animation_finished
+		var explosion_VFX = explosion_gpu_emitter.instantiate()
+		var VFX_spawn_node = get_tree().current_scene.get_node_or_null("VFX")
+		if VFX_spawn_node == null:
+			push_warning("No VFX node found in current scene")
+			return
+		explosion_VFX.global_position = VFX_spawn.global_position
+		VFX_spawn_node.add_child(explosion_VFX)
 		queue_free()
