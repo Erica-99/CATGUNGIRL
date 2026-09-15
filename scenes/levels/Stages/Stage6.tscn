@@ -1,12 +1,21 @@
 [gd_scene format=3 uid="uid://ccgg2t71rdo0l"]
 
 [ext_resource type="PackedScene" uid="uid://wn4bdivbwbsn" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/BrainJarScreenTemplate.tscn" id="2_o5d64"]
+[ext_resource type="Material" uid="uid://b727dofvw1y8h" path="res://art/TechArt/1_Shaders/Spatial/AuraOutline/prefabs/TerminalOutline.tres" id="4_pjbn0"]
+[ext_resource type="ArrayMesh" uid="uid://ce3qpsp68gcft" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/7_BrainJar/BrainJarTerminal.obj" id="5_3q0ox"]
 [ext_resource type="PackedScene" uid="uid://d1isfmus58oku" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/IndustrialLight1.tscn" id="5_coglk"]
 [ext_resource type="PackedScene" uid="uid://btcwaxl38nip5" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeSets/HandlebarSmall.tscn" id="5_mxr2x"]
+[ext_resource type="Texture2D" uid="uid://cw1jubtsb8pbj" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Terminal/On/BrainJarTerminal_DefaultMaterial_BaseColor.png" id="6_tdm0h"]
+[ext_resource type="Texture2D" uid="uid://cmt6820pw8dn4" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Terminal/On/BrainJarTerminal_DefaultMaterial_Emissive.png" id="7_g8f1e"]
+[ext_resource type="Texture2D" uid="uid://c7ln6yckke3vg" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Terminal/On/BrainJarTerminal_DefaultMaterial_Metallic.png" id="8_b5j8h"]
+[ext_resource type="Texture2D" uid="uid://n5m5onbyyl7p" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Terminal/On/BrainJarTerminal_DefaultMaterial_Normal.png" id="9_k126o"]
 [ext_resource type="PackedScene" uid="uid://br8eqclc5secj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/Rails/RailFull.tscn" id="9_uoh3v"]
+[ext_resource type="Texture2D" uid="uid://bxdywwj1giatf" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Terminal/On/BrainJarTerminal_DefaultMaterial_Roughness.png" id="10_7peoo"]
 [ext_resource type="PackedScene" uid="uid://bpjabu4plwqym" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/Rails/RailDiagonal.tscn" id="10_e2mff"]
 [ext_resource type="PackedScene" uid="uid://k4bj1vh7ofsj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorExit.tscn" id="11_a31f2"]
+[ext_resource type="PackedScene" uid="uid://ou3g778y2q8g" path="res://scenes/components/interactable_component/interactable_component.tscn" id="11_b08dn"]
 [ext_resource type="PackedScene" uid="uid://mtb08p1he0i6" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/LabFlask.tscn" id="11_jdc7q"]
+[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="12_waufx"]
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="13_7yaim"]
 [ext_resource type="PackedScene" uid="uid://dh3ij31rc4n7m" path="res://scenes/components/level_components/bossfight/brain_jar_console.tscn" id="14_5hpc0"]
 [ext_resource type="PackedScene" uid="uid://crxpi7vrp2sce" path="res://scenes/actors/enemies/brain_jar/brain_jar.tscn" id="14_wj6kf"]
@@ -47,12 +56,14 @@
 [ext_resource type="PackedScene" uid="uid://ci42wj42fpvxa" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/BrainPlatformCurve.tscn" id="39_do325"]
 [ext_resource type="PackedScene" uid="uid://mooe02l1trdi" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/ScaffoldStation.tscn" id="41_w5t74"]
 [ext_resource type="PackedScene" uid="uid://dklchihqbn4p8" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/Rails/RailHalf.tscn" id="43_y0pes"]
+[ext_resource type="PackedScene" uid="uid://37c6l8x8rq0k" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/OilDrumRed.tscn" id="45_rm42m"]
 [ext_resource type="PackedScene" uid="uid://dly86nhtl8eng" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeSets/HandlebarMedium.tscn" id="46_nx3df"]
 [ext_resource type="PackedScene" uid="uid://dcrpevdcall1c" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeSets/LongDistancePipe.tscn" id="47_y5k7s"]
 [ext_resource type="PackedScene" uid="uid://dwbieqdhb5cpu" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeSets/HandlebarCurved.tscn" id="48_rfqtr"]
 [ext_resource type="PackedScene" uid="uid://4rsfb5kh40wj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/B_Collisions/45Ramp.tscn" id="49_7jlaj"]
 [ext_resource type="PackedScene" uid="uid://bqbcx0g61dffh" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/LabBottleSpray.tscn" id="50_xc68p"]
 [ext_resource type="PackedScene" uid="uid://cxfad54eilwwy" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/LabBottle3L.tscn" id="51_mha7i"]
+[ext_resource type="PackedScene" uid="uid://du2j6wbmd50ju" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/BrainWallSide.tscn" id="52_snbyt"]
 [ext_resource type="PackedScene" uid="uid://ocvw5odaevub" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/WoodenCrates/WoodenCrate4.tscn" id="54_nsdpa"]
 [ext_resource type="PackedScene" uid="uid://cuvclg8yah7jk" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/WoodenCrates/WoodenCrate3.tscn" id="55_orqse"]
 [ext_resource type="PackedScene" uid="uid://butl22j5b5b2w" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/WoodenCrates/WoodenCrate5.tscn" id="56_5x8h6"]
@@ -62,12 +73,11 @@
 [ext_resource type="PackedScene" uid="uid://c5vncayclpa5t" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/3_GuardRooms/ChairSteel.tscn" id="61_uw2yj"]
 [ext_resource type="PackedScene" uid="uid://0te5grryooui" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/3_GuardRooms/Bin.tscn" id="62_3thvm"]
 [ext_resource type="PackedScene" uid="uid://lwj26gr6bvpq" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/Forklift.tscn" id="66_7ig5u"]
-[ext_resource type="PackedScene" uid="uid://p18vd3d0ego7" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/OilDrumAcid.tscn" id="67_a1wiy"]
 [ext_resource type="PackedScene" uid="uid://dywiy7oiheh68" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/WoodenCrates/WoodenCrate6.tscn" id="67_ckfat"]
 [ext_resource type="PackedScene" uid="uid://cdert83wyj2x2" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/TerminalWiringShort.tscn" id="69_4wvhs"]
 [ext_resource type="PackedScene" uid="uid://dngk8lco7i138" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/VentGrate.tscn" id="70_rm42m"]
+[ext_resource type="PackedScene" uid="uid://2sfngtaod2fr" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/BrainFloorAlt.tscn" id="71_3q0ox"]
 [ext_resource type="PackedScene" uid="uid://bakqempgc71sk" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/BrainWire.tscn" id="71_mywdw"]
-[ext_resource type="PackedScene" uid="uid://dh0mebvlppeee" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/SecurityCamera.tscn" id="71_snbyt"]
 [ext_resource type="PackedScene" uid="uid://hoqkq7244xmv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/Wires.tscn" id="72_8vmub"]
 [ext_resource type="PackedScene" uid="uid://b8mgks4mhehhj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/SecurityHandReader.tscn" id="72_mywdw"]
 [ext_resource type="PackedScene" uid="uid://bdcqxo5x0okem" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/PanopticonCrane.tscn" id="73_8vmub"]
@@ -83,12 +93,28 @@ fog_light_color = Color(0, 0, 0, 1)
 fog_light_energy = 0.0
 fog_density = 1.0
 fog_sky_affect = 0.0
+fog_height = 77.3
+fog_height_density = -1.0
 fog_depth_curve = 0.076946825
 fog_depth_begin = 100.0
 fog_depth_end = 153.5
 volumetric_fog_density = 0.0643
 volumetric_fog_albedo = Color(0, 0, 0, 1)
 volumetric_fog_length = 276.11
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8oiad"]
+albedo_texture = ExtResource("6_tdm0h")
+metallic = 1.0
+metallic_texture = ExtResource("8_b5j8h")
+roughness_texture = ExtResource("10_7peoo")
+emission_enabled = true
+emission_energy_multiplier = 5.0
+emission_texture = ExtResource("7_g8f1e")
+normal_enabled = true
+normal_texture = ExtResource("9_k126o")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dnykt"]
+points = PackedVector3Array(-0.356143, 0.010629859, -0.33937576, -0.3435232, 0.010629859, -0.350066, -0.3435232, -5e-06, -0.33937576, -0.356143, 0.010629859, 0.3393178, -0.356143, 1.402537, -0.33944428, 0.34345347, 0.010629859, -0.350066, -0.3435232, 1.421008, -0.350066, -0.3435232, -5e-06, 0.3393178, 0.34345347, -5e-06, -0.33937576, -0.3435232, 0.010629859, 0.34993953, -0.356143, 1.2746388, 0.3393178, -0.356143, 1.4184892, -0.33944428, 0.356143, 0.010629859, -0.33937576, 0.34345347, 1.421008, -0.350066, 0.356143, 1.402537, -0.33944428, -0.3435232, 1.4295439, -0.3397184, 0.34345347, -5e-06, 0.3393178, 0.34345347, 0.010629859, 0.34993953, -0.15847945, 1.2213246, 0.35000807, -0.3435232, 1.2725399, 0.34993953, -0.3435232, 1.2854136, 0.33959192, -0.356143, 1.3280929, 0.08741176, 0.356143, 0.010629859, 0.3393178, 0.34345347, 1.4295439, -0.3397184, 0.356143, 1.4184892, -0.33944428, 0.34345347, 1.2725399, 0.34993953, 0.15840971, 1.2213246, 0.35000807, -0.15840973, 1.2725399, 0.35000807, 0.34345347, 1.2854136, 0.33959192, 0.356143, 1.2746388, 0.3393178, 0.356143, 1.3280929, 0.08741176, 0.15833998, 1.2725399, 0.35000807)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8vmub"]
 size = Vector3(12.6278105, 1.7686896, 3.8273802)
@@ -210,16 +236,106 @@ collision_mask = 129
 [node name="PropLights" type="Node3D" parent="Lighting" unique_id=1326706094]
 
 [node name="IndustrialLight1" parent="Lighting/PropLights" unique_id=1599503383 instance=ExtResource("5_coglk")]
-transform = Transform3D(1.509958e-07, 0, 2, 0, 2, 0, -2, 0, 1.509958e-07, -9, 28, -15.039161)
-
-[node name="IndustrialLight4" parent="Lighting/PropLights" unique_id=1813835046 instance=ExtResource("5_coglk")]
-transform = Transform3D(1.509958e-07, 0, 2, 0, 2, 0, -2, 0, 1.509958e-07, -79, 33, -15.039161)
+transform = Transform3D(1.509958e-07, 0, 2, 0, 2, 0, -2, 0, 1.509958e-07, -9, 25, -15.039161)
 
 [node name="IndustrialLight6" parent="Lighting/PropLights" unique_id=1948395191 instance=ExtResource("5_coglk")]
 transform = Transform3D(1.509958e-07, 0, 2, 0, 2, 0, -2, 0, 1.509958e-07, -169, 33, -15.039161)
 
+[node name="IndustrialLight14" parent="Lighting/PropLights" unique_id=163494021 instance=ExtResource("5_coglk")]
+transform = Transform3D(-2, 0, 6.3573026e-08, 0, 2, 0, -6.3573026e-08, 0, -2, -164.04375, 33, -20.039162)
+
+[node name="IndustrialLight15" parent="Lighting/PropLights" unique_id=1900585628 instance=ExtResource("5_coglk")]
+transform = Transform3D(2, 0, -2.3841858e-07, 0, 2, 0, 2.3841858e-07, 0, 2, -173.92635, 33, -20.039145)
+
+[node name="IndustrialLight16" parent="Lighting/PropLights" unique_id=223212716 instance=ExtResource("5_coglk")]
+transform = Transform3D(1.509958e-07, 0, 2, 0, 2, 0, -2, 0, 1.509958e-07, -169, 52, -15.039161)
+
+[node name="IndustrialLight17" parent="Lighting/PropLights" unique_id=1268858402 instance=ExtResource("5_coglk")]
+transform = Transform3D(-2, 0, 6.3573026e-08, 0, 2, 0, -6.3573026e-08, 0, -2, -164.04375, 52, -20.039162)
+
+[node name="IndustrialLight18" parent="Lighting/PropLights" unique_id=1499374948 instance=ExtResource("5_coglk")]
+transform = Transform3D(2, 0, -2.3841858e-07, 0, 2, 0, 2.3841858e-07, 0, 2, -173.92635, 52, -20.039145)
+
+[node name="IndustrialLight19" parent="Lighting/PropLights" unique_id=12458238 instance=ExtResource("5_coglk")]
+transform = Transform3D(1.509958e-07, 0, 2, 0, 2, 0, -2, 0, 1.509958e-07, -79, 52, -15.039161)
+
+[node name="IndustrialLight20" parent="Lighting/PropLights" unique_id=264669322 instance=ExtResource("5_coglk")]
+transform = Transform3D(-2, 0, 6.3573026e-08, 0, 2, 0, -6.3573026e-08, 0, -2, -74.04375, 52, -20.039162)
+
+[node name="IndustrialLight21" parent="Lighting/PropLights" unique_id=2142163653 instance=ExtResource("5_coglk")]
+transform = Transform3D(2, 0, -2.3841858e-07, 0, 2, 0, 2.3841858e-07, 0, 2, -83.926346, 52, -20.039145)
+
+[node name="IndustrialLight22" parent="Lighting/PropLights" unique_id=1670644641 instance=ExtResource("5_coglk")]
+transform = Transform3D(1.509958e-07, 0, 2, 0, 2, 0, -2, 0, 1.509958e-07, -79, 33, -15.039161)
+
+[node name="IndustrialLight23" parent="Lighting/PropLights" unique_id=1535637441 instance=ExtResource("5_coglk")]
+transform = Transform3D(-2, 0, 6.3573026e-08, 0, 2, 0, -6.3573026e-08, 0, -2, -74.04375, 33, -20.039162)
+
+[node name="IndustrialLight24" parent="Lighting/PropLights" unique_id=570253904 instance=ExtResource("5_coglk")]
+transform = Transform3D(2, 0, -2.3841858e-07, 0, 2, 0, 2.3841858e-07, 0, 2, -83.926346, 33, -20.039145)
+
+[node name="IndustrialLight25" parent="Lighting/PropLights" unique_id=1922845646 instance=ExtResource("5_coglk")]
+transform = Transform3D(1.509958e-07, 0, 2, 0, 2, 0, -2, 0, 1.509958e-07, -79, 22, -15.039161)
+
+[node name="IndustrialLight26" parent="Lighting/PropLights" unique_id=231172507 instance=ExtResource("5_coglk")]
+transform = Transform3D(-2, 0, 6.3573026e-08, 0, 2, 0, -6.3573026e-08, 0, -2, -74.04375, 22, -20.039162)
+
+[node name="IndustrialLight27" parent="Lighting/PropLights" unique_id=264508544 instance=ExtResource("5_coglk")]
+transform = Transform3D(2, 0, -2.3841858e-07, 0, 2, 0, 2.3841858e-07, 0, 2, -83.926346, 22, -20.039145)
+
+[node name="IndustrialLight28" parent="Lighting/PropLights" unique_id=751145988 instance=ExtResource("5_coglk")]
+transform = Transform3D(1.509958e-07, 0, 2, 0, 2, 0, -2, 0, 1.509958e-07, -169, 22, -15.039161)
+
+[node name="IndustrialLight29" parent="Lighting/PropLights" unique_id=1709509744 instance=ExtResource("5_coglk")]
+transform = Transform3D(-2, 0, 6.3573026e-08, 0, 2, 0, -6.3573026e-08, 0, -2, -164.04375, 22, -20.039162)
+
+[node name="IndustrialLight30" parent="Lighting/PropLights" unique_id=1652481933 instance=ExtResource("5_coglk")]
+transform = Transform3D(2, 0, -2.3841858e-07, 0, 2, 0, 2.3841858e-07, 0, 2, -173.92635, 22, -20.039145)
+
+[node name="IndustrialLight31" parent="Lighting/PropLights" unique_id=1633357481 instance=ExtResource("5_coglk")]
+transform = Transform3D(1.509958e-07, 0, 2, 0, 2, 0, -2, 0, 1.509958e-07, -169, 5, -15.039161)
+
+[node name="IndustrialLight32" parent="Lighting/PropLights" unique_id=1652864111 instance=ExtResource("5_coglk")]
+transform = Transform3D(-2, 0, 6.3573026e-08, 0, 2, 0, -6.3573026e-08, 0, -2, -164.04375, 5, -20.039162)
+
+[node name="IndustrialLight33" parent="Lighting/PropLights" unique_id=264904214 instance=ExtResource("5_coglk")]
+transform = Transform3D(2, 0, -2.3841858e-07, 0, 2, 0, 2.3841858e-07, 0, 2, -173.92635, 5, -20.039145)
+
+[node name="IndustrialLight34" parent="Lighting/PropLights" unique_id=602824292 instance=ExtResource("5_coglk")]
+transform = Transform3D(1.509958e-07, 0, 2, 0, 2, 0, -2, 0, 1.509958e-07, -79, 5, -15.039161)
+
+[node name="IndustrialLight35" parent="Lighting/PropLights" unique_id=488793057 instance=ExtResource("5_coglk")]
+transform = Transform3D(-2, 0, 6.3573026e-08, 0, 2, 0, -6.3573026e-08, 0, -2, -74.04375, 5, -20.039162)
+
+[node name="IndustrialLight36" parent="Lighting/PropLights" unique_id=1834085649 instance=ExtResource("5_coglk")]
+transform = Transform3D(2, 0, -2.3841858e-07, 0, 2, 0, 2.3841858e-07, 0, 2, -83.926346, 5, -20.039145)
+
 [node name="IndustrialLight7" parent="Lighting/PropLights" unique_id=1226517453 instance=ExtResource("5_coglk")]
-transform = Transform3D(1.509958e-07, 0, 2, 0, 2, 0, -2, 0, 1.509958e-07, -239, 28, -15.039161)
+transform = Transform3D(1.509958e-07, 0, 2, 0, 2, 0, -2, 0, 1.509958e-07, -239, 25, -15.039161)
+
+[node name="IndustrialLight8" parent="Lighting/PropLights" unique_id=1308312708 instance=ExtResource("5_coglk")]
+transform = Transform3D(-2, 0, 6.3573026e-08, 0, 2, 0, -6.3573026e-08, 0, -2, -234, 25, -20.039162)
+
+[node name="IndustrialLight9" parent="Lighting/PropLights" unique_id=549265420 instance=ExtResource("5_coglk")]
+transform = Transform3D(2, 0, 1.1127253e-07, 0, 2, 0, -1.1127253e-07, 0, 2, -13.904017, 25, -20.039162)
+
+[node name="IndustrialLight2" parent="Lighting/PropLights" unique_id=1379511385 instance=ExtResource("5_coglk")]
+transform = Transform3D(1.509958e-07, 0, 2, 0, 2, 0, -2, 0, 1.509958e-07, -9, 52, -15.039161)
+
+[node name="IndustrialLight10" parent="Lighting/PropLights" unique_id=1022386325 instance=ExtResource("5_coglk")]
+transform = Transform3D(1.509958e-07, 0, 2, 0, 2, 0, -2, 0, 1.509958e-07, -239, 52, -15.039161)
+
+[node name="IndustrialLight11" parent="Lighting/PropLights" unique_id=924985955 instance=ExtResource("5_coglk")]
+transform = Transform3D(-2, 0, 6.3573026e-08, 0, 2, 0, -6.3573026e-08, 0, -2, -234, 52, -20.039162)
+
+[node name="IndustrialLight12" parent="Lighting/PropLights" unique_id=894679734 instance=ExtResource("5_coglk")]
+transform = Transform3D(2, 0, 1.1127253e-07, 0, 2, 0, -1.1127253e-07, 0, 2, -13.904017, 52, -20.039162)
+
+[node name="IndustrialLight3" parent="Lighting/PropLights" unique_id=1260024928 instance=ExtResource("5_coglk")]
+transform = Transform3D(1.509958e-07, 0, 2, 0, 2, 0, -2, 0, 1.509958e-07, -9, 5, -15.039161)
+
+[node name="IndustrialLight13" parent="Lighting/PropLights" unique_id=923146700 instance=ExtResource("5_coglk")]
+transform = Transform3D(1.509958e-07, 0, 2, 0, 2, 0, -2, 0, 1.509958e-07, -239, 5, -15.039161)
 
 [node name="TEMP_RoughLighting" type="Node3D" parent="Lighting" unique_id=456108394]
 
@@ -257,6 +373,28 @@ spot_angle = 33.471222
 
 [node name="SpotLight3D59" type="SpotLight3D" parent="Lighting/TEMP_RoughLighting" unique_id=1351595884]
 transform = Transform3D(1, 0, 0, 0, 0.95046157, 0.31084234, 0, -0.31084234, 0.95046157, -236, 28.019825, 20.36615)
+light_color = Color(0.56, 0.47432, 0.4088, 1)
+light_energy = 7.925
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+light_specular = 0.992
+shadow_enabled = true
+spot_range = 84.32649
+spot_angle = 89.99
+
+[node name="SpotLight3D66" type="SpotLight3D" parent="Lighting/TEMP_RoughLighting" unique_id=371626191]
+transform = Transform3D(1, 0, 0, 0, 0.95046157, 0.31084234, 0, -0.31084234, 0.95046157, -204, 28.019825, 20.36615)
+light_color = Color(0.56, 0.47432, 0.4088, 1)
+light_energy = 7.925
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+light_specular = 0.992
+shadow_enabled = true
+spot_range = 84.32649
+spot_angle = 89.99
+
+[node name="SpotLight3D67" type="SpotLight3D" parent="Lighting/TEMP_RoughLighting" unique_id=2009628552]
+transform = Transform3D(1, 0, 0, 0, 0.95046157, 0.31084234, 0, -0.31084234, 0.95046157, -44, 28.019825, 20.36615)
 light_color = Color(0.56, 0.47432, 0.4088, 1)
 light_energy = 7.925
 light_indirect_energy = 0.1
@@ -363,46 +501,6 @@ light_indirect_energy = 0.1
 light_volumetric_fog_energy = 0.1
 omni_range = 6.6309214
 
-[node name="SpotLight3D55" type="SpotLight3D" parent="Lighting/TEMP_RoughLighting" unique_id=224533495]
-transform = Transform3D(1, 0, 0, 0, 0.98993003, 0.14155784, 0, -0.14155784, 0.98993003, -44, 40.209137, 9.743936)
-light_color = Color(0.53010726, 0.63129634, 0.8470779, 1)
-light_energy = 14.574
-light_indirect_energy = 0.1
-light_volumetric_fog_energy = 0.1
-shadow_enabled = true
-spot_range = 47.189217
-spot_angle = 34.362446
-
-[node name="SpotLight3D56" type="SpotLight3D" parent="Lighting/TEMP_RoughLighting" unique_id=1710268563]
-transform = Transform3D(1, 0, 0, 0, 0.98993003, 0.14155784, 0, -0.14155784, 0.98993003, -44, 21.209137, 9.743936)
-light_color = Color(0.53010726, 0.63129634, 0.8470779, 1)
-light_energy = 14.574
-light_indirect_energy = 0.1
-light_volumetric_fog_energy = 0.1
-shadow_enabled = true
-spot_range = 47.189217
-spot_angle = 34.362446
-
-[node name="SpotLight3D57" type="SpotLight3D" parent="Lighting/TEMP_RoughLighting" unique_id=2029585095]
-transform = Transform3D(1, 0, 0, 0, 0.98993003, 0.14155784, 0, -0.14155784, 0.98993003, -204, 40.209137, 9.743936)
-light_color = Color(0.53010726, 0.63129634, 0.8470779, 1)
-light_energy = 14.574
-light_indirect_energy = 0.1
-light_volumetric_fog_energy = 0.1
-shadow_enabled = true
-spot_range = 47.189217
-spot_angle = 34.362446
-
-[node name="SpotLight3D58" type="SpotLight3D" parent="Lighting/TEMP_RoughLighting" unique_id=1086753715]
-transform = Transform3D(1, 0, 0, 0, 0.98993003, 0.14155784, 0, -0.14155784, 0.98993003, -204, 21.209137, 9.743936)
-light_color = Color(0.53010726, 0.63129634, 0.8470779, 1)
-light_energy = 14.574
-light_indirect_energy = 0.1
-light_volumetric_fog_energy = 0.1
-shadow_enabled = true
-spot_range = 47.189217
-spot_angle = 34.362446
-
 [node name="SpotLight3D46" type="SpotLight3D" parent="Lighting/TEMP_RoughLighting" unique_id=1408458112]
 transform = Transform3D(9.470128e-08, 0.98553246, -0.16948694, -9.070744e-08, 0.16948694, 0.98553246, 1, -7.795745e-08, 1.0544575e-07, -275.1494, 5.612772, -1.1422868)
 light_color = Color(0.88794774, 0.36662975, 0.37217572, 1)
@@ -483,8 +581,28 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -229, 10.2, -8)
 [node name="BrainJarTerminal6" parent="Interactive/Terminals/TerminalProps" unique_id=101438954 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -229, 40.2, -8)
 
-[node name="BrainJarTerminal7" parent="Interactive/Terminals/TerminalProps" unique_id=355513012 instance=ExtResource("31_oxwui")]
+[node name="BrainJarTerminal7" type="StaticBody3D" parent="Interactive/Terminals/TerminalProps" unique_id=355513012]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -179, 10.2, -8)
+
+[node name="BrainJarTerminal_Mesh" type="MeshInstance3D" parent="Interactive/Terminals/TerminalProps/BrainJarTerminal7" unique_id=522974769]
+transform = Transform3D(-2, 0, 3.019916e-07, 0, 2, 0, -3.019916e-07, 0, -2, 0, 0, 0)
+material_overlay = ExtResource("4_pjbn0")
+mesh = ExtResource("5_3q0ox")
+surface_material_override/0 = SubResource("StandardMaterial3D_8oiad")
+
+[node name="InteractableComponent" parent="Interactive/Terminals/TerminalProps/BrainJarTerminal7/BrainJarTerminal_Mesh" unique_id=2140039813 node_paths=PackedStringArray("event_trigger") instance=ExtResource("11_b08dn")]
+interactable_type = 3
+event_trigger = NodePath("EventTrigger")
+enabled = false
+
+[node name="EventTrigger" parent="Interactive/Terminals/TerminalProps/BrainJarTerminal7/BrainJarTerminal_Mesh/InteractableComponent" unique_id=1311781014 instance=ExtResource("12_waufx")]
+_signal_parameters = [false]
+signal_name = "shield_enabled_status"
+
+[node name="BrainJarTerminal_Collision" type="CollisionShape3D" parent="Interactive/Terminals/TerminalProps/BrainJarTerminal7" unique_id=83825867]
+transform = Transform3D(-2, 0, 3.019916e-07, 0, 2, 0, -3.019916e-07, 0, -2, 0, 0, 0)
+visible = false
+shape = SubResource("ConvexPolygonShape3D_dnykt")
 
 [node name="BrainJarTerminal8" parent="Interactive/Terminals/TerminalProps" unique_id=832899734 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -179, 40.2, -8)
@@ -513,11 +631,51 @@ transform = Transform3D(1.0606601, 0, -1.0606601, 0, 1.5, 0, 1.0606601, 0, 1.060
 [node name="BrainJarTerminal16" parent="Interactive/Terminals/TerminalProps" unique_id=196257627 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.0606601, -67, 40.2, -10)
 
-[node name="BrainJarTerminal17" parent="Interactive/Terminals/TerminalProps" unique_id=546859960 instance=ExtResource("31_oxwui")]
+[node name="BrainJarTerminal17" type="StaticBody3D" parent="Interactive/Terminals/TerminalProps" unique_id=546859960]
 transform = Transform3D(1.0606601, 0, -1.0606601, 0, 1.5, 0, 1.0606601, 0, 1.0606601, -181, 10.2, -10)
 
-[node name="BrainJarTerminal18" parent="Interactive/Terminals/TerminalProps" unique_id=1362434122 instance=ExtResource("31_oxwui")]
+[node name="BrainJarTerminal_Mesh" type="MeshInstance3D" parent="Interactive/Terminals/TerminalProps/BrainJarTerminal17" unique_id=331250761]
+transform = Transform3D(-2, 0, 3.019916e-07, 0, 2, 0, -3.019916e-07, 0, -2, 0, 0, 0)
+material_overlay = ExtResource("4_pjbn0")
+mesh = ExtResource("5_3q0ox")
+surface_material_override/0 = SubResource("StandardMaterial3D_8oiad")
+
+[node name="InteractableComponent" parent="Interactive/Terminals/TerminalProps/BrainJarTerminal17/BrainJarTerminal_Mesh" unique_id=514121652 node_paths=PackedStringArray("event_trigger") instance=ExtResource("11_b08dn")]
+interactable_type = 3
+event_trigger = NodePath("EventTrigger")
+enabled = false
+
+[node name="EventTrigger" parent="Interactive/Terminals/TerminalProps/BrainJarTerminal17/BrainJarTerminal_Mesh/InteractableComponent" unique_id=120433972 instance=ExtResource("12_waufx")]
+_signal_parameters = [false]
+signal_name = "shield_enabled_status"
+
+[node name="BrainJarTerminal_Collision" type="CollisionShape3D" parent="Interactive/Terminals/TerminalProps/BrainJarTerminal17" unique_id=810200307]
+transform = Transform3D(-2, 0, 3.019916e-07, 0, 2, 0, -3.019916e-07, 0, -2, 0, 0, 0)
+visible = false
+shape = SubResource("ConvexPolygonShape3D_dnykt")
+
+[node name="BrainJarTerminal18" type="StaticBody3D" parent="Interactive/Terminals/TerminalProps" unique_id=1362434122]
 transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.0606601, -177, 10.2, -10)
+
+[node name="BrainJarTerminal_Mesh" type="MeshInstance3D" parent="Interactive/Terminals/TerminalProps/BrainJarTerminal18" unique_id=2139451780]
+transform = Transform3D(-2, 0, 3.019916e-07, 0, 2, 0, -3.019916e-07, 0, -2, 0, 0, 0)
+material_overlay = ExtResource("4_pjbn0")
+mesh = ExtResource("5_3q0ox")
+surface_material_override/0 = SubResource("StandardMaterial3D_8oiad")
+
+[node name="InteractableComponent" parent="Interactive/Terminals/TerminalProps/BrainJarTerminal18/BrainJarTerminal_Mesh" unique_id=607417731 node_paths=PackedStringArray("event_trigger") instance=ExtResource("11_b08dn")]
+interactable_type = 3
+event_trigger = NodePath("EventTrigger")
+enabled = false
+
+[node name="EventTrigger" parent="Interactive/Terminals/TerminalProps/BrainJarTerminal18/BrainJarTerminal_Mesh/InteractableComponent" unique_id=1050803585 instance=ExtResource("12_waufx")]
+_signal_parameters = [false]
+signal_name = "shield_enabled_status"
+
+[node name="BrainJarTerminal_Collision" type="CollisionShape3D" parent="Interactive/Terminals/TerminalProps/BrainJarTerminal18" unique_id=620240546]
+transform = Transform3D(-2, 0, 3.019916e-07, 0, 2, 0, -3.019916e-07, 0, -2, 0, 0, 0)
+visible = false
+shape = SubResource("ConvexPolygonShape3D_dnykt")
 
 [node name="BrainJarTerminal19" parent="Interactive/Terminals/TerminalProps" unique_id=1936115532 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.0606601, 0, -1.0606601, 0, 1.5, 0, 1.0606601, 0, 1.0606601, -181, 40.2, -10)
@@ -2198,12 +2356,6 @@ transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, -239
 [node name="VentGrate4" parent="Props/MultMiscProps" unique_id=218083716 instance=ExtResource("70_rm42m")]
 transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, -169, 35, -15)
 
-[node name="SecurityCamera" parent="Props/MultMiscProps" unique_id=833208586 instance=ExtResource("71_snbyt")]
-transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -79, 20, -14.3255415)
-
-[node name="SecurityCamera2" parent="Props/MultMiscProps" unique_id=1397048108 instance=ExtResource("71_snbyt")]
-transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -169, 20, -14.3255415)
-
 [node name="PanopticonCrane" parent="Props/MultMiscProps" unique_id=1984596236 instance=ExtResource("73_8vmub")]
 transform = Transform3D(-1.25, 0, -1.8874475e-07, 0, 1.25, 0, 1.8874475e-07, 0, -1.25, -74, 56, -154)
 
@@ -2367,13 +2519,13 @@ transform = Transform3D(2.7893295, 0, -1.1043737, 0, 3.0000007, 0, 1.1043737, 0,
 [node name="Forklift" parent="Props/WarehouseProps" unique_id=500869341 instance=ExtResource("66_7ig5u")]
 transform = Transform3D(0.8244749, 0, 3.9141078, 0, 4, 0, -3.9141078, 0, 0.8244749, -225.87617, 0.20218128, -2.08424)
 
-[node name="OilDrum" parent="Props/WarehouseProps" unique_id=808956009 instance=ExtResource("67_a1wiy")]
+[node name="OilDrumRed" parent="Props/WarehouseProps" unique_id=808956009 instance=ExtResource("45_rm42m")]
 transform = Transform3D(1.9875982, 0, 0.2223829, 0, 2, 0, -0.2223829, 0, 1.9875982, -247.54982, 0.20851585, -3.9206104)
 
-[node name="OilDrum2" parent="Props/WarehouseProps" unique_id=1196327969 instance=ExtResource("67_a1wiy")]
+[node name="OilDrumRed2" parent="Props/WarehouseProps" unique_id=1765070976 instance=ExtResource("45_rm42m")]
 transform = Transform3D(-1.1120691, 0, -1.6623183, 0, 2, 0, 1.6623183, 0, -1.1120691, -250.55252, 0.20851585, -2.3186848)
 
-[node name="OilDrum3" parent="Props/WarehouseProps" unique_id=1533476390 instance=ExtResource("67_a1wiy")]
+[node name="OilDrumRed3" parent="Props/WarehouseProps" unique_id=446308862 instance=ExtResource("45_rm42m")]
 transform = Transform3D(1.7891049, 0, 0.89392596, 0, 2, 0, -0.89392596, 0, 1.7891049, -248.35315, 0.20851585, -0.47617877)
 
 [node name="LaboratoryProps" type="Node3D" parent="Props" unique_id=2016713345]
@@ -2413,8 +2565,6 @@ libraries/ = SubResource("AnimationLibrary_oo4g3")
 [node name="ENV" type="Node3D" parent="Environment/BrainJarRoom" unique_id=1611512318]
 
 [node name="Walls" type="Node3D" parent="Environment/BrainJarRoom/ENV" unique_id=2037864906]
-
-[node name="LightingPass" type="Node3D" parent="Environment/BrainJarRoom/ENV/Walls" unique_id=1500018124]
 
 [node name="Back" type="Node3D" parent="Environment/BrainJarRoom/ENV/Walls" unique_id=818047002]
 
@@ -3042,295 +3192,298 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -244, 60.2, -45)
 [node name="BrainWall274" parent="Environment/BrainJarRoom/ENV/Walls/Back" unique_id=1654665827 instance=ExtResource("22_do5uh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -244, 70.2, -45)
 
-[node name="Sides" type="Node3D" parent="Environment/BrainJarRoom/ENV/Walls" unique_id=331523642]
+[node name="RightSideWalls" type="Node3D" parent="Environment/BrainJarRoom/ENV/Walls" unique_id=331523642]
 
-[node name="BrainWall241" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1941309042 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 0.2, 5)
+[node name="BrainWallSide" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=513961701 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 0.2, 15)
 
-[node name="BrainWall243" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1872049816 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 10.200001, 5)
+[node name="BrainWallSide2" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=115747342 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 0.2, 5)
 
-[node name="BrainWall254" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1274427059 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 20.2, 5)
+[node name="BrainWallSide3" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=2091564187 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 0.2, -5)
 
-[node name="BrainWall257" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=831923054 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 30.2, 5)
+[node name="BrainWallSide4" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=1447513881 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 0.2, -15)
 
-[node name="BrainWall260" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=527469754 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 40.2, 5)
+[node name="BrainWallSide5" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=100098923 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 0.2, -25)
 
-[node name="BrainWall269" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=883242027 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 50.2, 5)
+[node name="BrainWallSide6" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=1057519669 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 0.2, -35)
 
-[node name="BrainWall283" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1097801544 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 60.2, 5)
+[node name="BrainWallSide7" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=1155768600 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 10.2, 15)
 
-[node name="BrainWall286" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1887640037 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 70.2, 5)
+[node name="BrainWallSide8" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=827147794 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 10.2, 5)
 
-[node name="BrainWall242" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=362854959 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 0.2, -5)
+[node name="BrainWallSide9" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=213254007 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 10.2, -5)
 
-[node name="BrainWall246" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1536537921 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 10.200001, -5)
+[node name="BrainWallSide10" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=1917958418 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 10.2, -15)
 
-[node name="BrainWall255" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1167957980 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 20.2, -5)
+[node name="BrainWallSide11" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=1072614128 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 10.2, -25)
 
-[node name="BrainWall258" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1493479419 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 30.2, -5)
+[node name="BrainWallSide12" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=1848571740 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 10.2, -35)
 
-[node name="BrainWall261" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1477871215 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 40.2, -5)
+[node name="BrainWallSide13" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=1781804141 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 20.2, 15)
 
-[node name="BrainWall275" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=785641517 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 50.2, -5)
+[node name="BrainWallSide14" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=120780248 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 20.2, 5)
 
-[node name="BrainWall284" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1936273944 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 60.2, -5)
+[node name="BrainWallSide15" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=415704750 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 20.2, -5)
 
-[node name="BrainWall287" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=329921603 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 70.2, -5)
+[node name="BrainWallSide16" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=645912372 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 20.2, -15)
 
-[node name="BrainWall247" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=261737184 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 0.2, -15)
+[node name="BrainWallSide17" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=1446054065 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 20.2, -25)
 
-[node name="BrainWall248" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=172975766 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 10.200001, -15)
+[node name="BrainWallSide18" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=1977254769 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 20.2, -35)
 
-[node name="BrainWall256" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1854989700 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 20.2, -15)
+[node name="BrainWallSide19" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=312563083 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 30.2, 15)
 
-[node name="BrainWall259" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1718287785 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 30.2, -15)
+[node name="BrainWallSide20" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=708424983 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 30.2, 5)
 
-[node name="BrainWall262" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1376558100 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 40.2, -15)
+[node name="BrainWallSide21" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=2091256852 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 30.2, -5)
 
-[node name="BrainWall276" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=942773218 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 50.2, -15)
+[node name="BrainWallSide22" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=1380717655 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 30.2, -15)
 
-[node name="BrainWall285" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=662515526 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 60.2, -15)
+[node name="BrainWallSide23" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=730126453 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 30.2, -25)
 
-[node name="BrainWall288" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1828922676 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 70.2, -15)
+[node name="BrainWallSide24" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=905964659 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 30.2, -35)
 
-[node name="BrainWall249" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=991599250 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 0.2, -25)
+[node name="BrainWallSide25" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=493537169 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 40.2, 15)
 
-[node name="BrainWall250" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1605404721 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 10.200001, -25)
+[node name="BrainWallSide26" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=2089885367 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 40.2, 5)
 
-[node name="BrainWall263" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1982875676 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 20.2, -25)
+[node name="BrainWallSide27" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=2023996174 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 40.2, -5)
 
-[node name="BrainWall264" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1528291583 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 30.2, -25)
+[node name="BrainWallSide28" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=1926595283 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 40.2, -15)
 
-[node name="BrainWall265" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=631610974 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 40.2, -25)
+[node name="BrainWallSide29" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=1606158150 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 40.2, -25)
 
-[node name="BrainWall277" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=231303245 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 50.2, -25)
+[node name="BrainWallSide30" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=765217755 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 40.2, -35)
 
-[node name="BrainWall289" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=578149763 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 60.2, -25)
+[node name="BrainWallSide31" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=316009144 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 50.2, 15)
 
-[node name="BrainWall290" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=526051168 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 70.2, -25)
+[node name="BrainWallSide32" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=429941181 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 50.2, 5)
 
-[node name="BrainWall251" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=492536573 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 0.2, -35)
+[node name="BrainWallSide33" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=1632682681 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 50.2, -5)
 
-[node name="BrainWall252" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1701670517 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 10.200001, -35)
+[node name="BrainWallSide34" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=904232562 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 50.2, -15)
 
-[node name="BrainWall266" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1364952913 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 20.2, -35)
+[node name="BrainWallSide35" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=672150389 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 50.2, -25)
 
-[node name="BrainWall267" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=85345363 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 30.2, -35)
+[node name="BrainWallSide36" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=126077583 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 50.2, -35)
 
-[node name="BrainWall268" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1871888554 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 40.2, -35)
+[node name="BrainWallSide37" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=621190973 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 60.2, 15)
 
-[node name="BrainWall278" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=462003420 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 50.2, -35)
+[node name="BrainWallSide38" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=1552260305 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 60.2, 5)
 
-[node name="BrainWall291" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1556260207 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 60.2, -35)
+[node name="BrainWallSide39" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=1521171233 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 60.2, -5)
 
-[node name="BrainWall292" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1566897268 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 70.2, -35)
+[node name="BrainWallSide40" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=1154534912 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 60.2, -15)
 
-[node name="BrainWall253" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1381284177 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 0.2, -45)
+[node name="BrainWallSide41" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=1288958341 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 60.2, -25)
 
-[node name="BrainWall279" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=654535260 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 10.200001, -45)
+[node name="BrainWallSide42" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=844198085 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 60.2, -35)
 
-[node name="BrainWall280" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=227502153 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 20.2, -45)
+[node name="BrainWallSide43" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=173303203 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 70.2, 15)
 
-[node name="BrainWall281" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=167906441 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 30.2, -45)
+[node name="BrainWallSide44" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=9958512 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 70.2, 5)
 
-[node name="BrainWall282" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1598643100 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 40.2, -45)
+[node name="BrainWallSide45" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=557246187 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 70.2, -5)
 
-[node name="BrainWall293" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1719313627 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 50.2, -45)
+[node name="BrainWallSide46" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=363816506 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 70.2, -15)
 
-[node name="BrainWall294" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=53876342 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 60.2, -45)
+[node name="BrainWallSide47" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=689406003 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 70.2, -25)
 
-[node name="BrainWall295" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1026284081 instance=ExtResource("22_do5uh")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -254, 70.2, -45)
+[node name="BrainWallSide48" parent="Environment/BrainJarRoom/ENV/Walls/RightSideWalls" unique_id=723653136 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 70.2, -35)
 
-[node name="BrainWall47" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=2073307474 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6.000004, 10.2, 15)
+[node name="LeftSideWalls" type="Node3D" parent="Environment/BrainJarRoom/ENV/Walls" unique_id=1942585833]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -248, 0, 0)
 
-[node name="BrainWall226" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=684506939 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6.000004, 0.19999981, 15)
+[node name="BrainWallSide" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=779337943 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 0.2, 15)
 
-[node name="BrainWall235" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=2085644143 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6.000004, 0.19999981, 5)
+[node name="BrainWallSide2" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=2081900953 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 0.2, 5)
 
-[node name="BrainWall48" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=897403461 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 10.2, 5)
+[node name="BrainWallSide3" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=347697752 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 0.2, -5)
 
-[node name="BrainWall49" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=922775704 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 0.19999981, -5)
+[node name="BrainWallSide4" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=673291284 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 0.2, -15)
 
-[node name="BrainWall50" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=904575889 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 0.19999981, -15)
+[node name="BrainWallSide5" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=1173193697 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 0.2, -25)
 
-[node name="BrainWall51" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=2043157593 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 10.2, -5)
+[node name="BrainWallSide6" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=1916414714 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 0.2, -35)
 
-[node name="BrainWall52" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1257258219 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 10.2, -15)
+[node name="BrainWallSide7" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=1720614370 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 10.2, 15)
 
-[node name="BrainWall53" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1471600650 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 0.19999981, -25)
+[node name="BrainWallSide8" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=1750798496 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 10.2, 5)
 
-[node name="BrainWall54" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1233074194 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 5.999996, 0.19999981, -35)
+[node name="BrainWallSide9" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=372557570 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 10.2, -5)
 
-[node name="BrainWall55" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1661098941 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 10.2, -25)
+[node name="BrainWallSide10" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=67458944 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 10.2, -15)
 
-[node name="BrainWall56" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1147850648 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 5.999996, 10.2, -35)
+[node name="BrainWallSide11" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=1228467821 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 10.2, -25)
 
-[node name="BrainWall94" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1638039960 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 20.2, 5)
+[node name="BrainWallSide12" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=84392540 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 10.2, -35)
 
-[node name="BrainWall96" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=2020981729 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 30.2, 5)
+[node name="BrainWallSide13" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=1153395695 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 20.2, 15)
 
-[node name="BrainWall93" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1702924930 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6.000004, 20.2, 15)
+[node name="BrainWallSide14" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=1112310492 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 20.2, 5)
 
-[node name="BrainWall97" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1719112973 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 20.2, -5)
+[node name="BrainWallSide15" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=2052631793 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 20.2, -5)
 
-[node name="BrainWall98" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1239870497 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 20.2, -15)
+[node name="BrainWallSide16" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=1343629627 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 20.2, -15)
 
-[node name="BrainWall95" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1579680265 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6.000004, 30.2, 15)
+[node name="BrainWallSide17" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=1579992109 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 20.2, -25)
 
-[node name="BrainWall99" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=91014311 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 30.2, -5)
+[node name="BrainWallSide18" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=57982303 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 20.2, -35)
 
-[node name="BrainWall101" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=875373714 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 20.2, -25)
+[node name="BrainWallSide19" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=1360647608 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 30.2, 15)
 
-[node name="BrainWall102" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=166074383 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 5.999996, 20.2, -35)
+[node name="BrainWallSide20" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=1532649521 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 30.2, 5)
 
-[node name="BrainWall227" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=224498689 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 30.2, -15)
+[node name="BrainWallSide21" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=588615358 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 30.2, -5)
 
-[node name="BrainWall228" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=2097155371 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 30.2, -25)
+[node name="BrainWallSide22" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=404788714 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 30.2, -15)
 
-[node name="BrainWall229" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=892967575 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 5.999996, 30.2, -35)
+[node name="BrainWallSide23" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=783532654 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 30.2, -25)
 
-[node name="BrainWall230" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1959959279 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 40.2, -15)
+[node name="BrainWallSide24" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=169060702 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 30.2, -35)
 
-[node name="BrainWall231" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1167518929 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 40.2, -25)
+[node name="BrainWallSide25" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=924046117 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 40.2, 15)
 
-[node name="BrainWall232" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1097203380 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 5.999996, 40.2, -35)
+[node name="BrainWallSide26" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=2095509910 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 40.2, 5)
 
-[node name="BrainWall150" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1250555899 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 40.2, 5)
+[node name="BrainWallSide27" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=1311625417 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 40.2, -5)
 
-[node name="BrainWall152" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1857012804 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 50.2, 5)
+[node name="BrainWallSide28" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=159488316 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 40.2, -15)
 
-[node name="BrainWall153" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1340785714 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 40.2, -5)
+[node name="BrainWallSide29" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=1576986608 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 40.2, -25)
 
-[node name="BrainWall155" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=643442083 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 50.2, -5)
+[node name="BrainWallSide30" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=175871554 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 40.2, -35)
 
-[node name="BrainWall149" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1694211206 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6.000004, 40.2, 15)
+[node name="BrainWallSide31" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=755362267 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 50.2, 15)
 
-[node name="BrainWall156" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1362829421 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 50.2, -15)
+[node name="BrainWallSide32" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=321101475 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 50.2, 5)
 
-[node name="BrainWall151" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1657533703 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6.000004, 50.2, 15)
+[node name="BrainWallSide33" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=476919076 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 50.2, -5)
 
-[node name="BrainWall159" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1285894013 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 50.2, -25)
+[node name="BrainWallSide34" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=719394757 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 50.2, -15)
 
-[node name="BrainWall160" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=630648396 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 5.999996, 50.2, -35)
+[node name="BrainWallSide35" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=352246508 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 50.2, -25)
 
-[node name="BrainWall206" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1919416757 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 60.2, 5)
+[node name="BrainWallSide36" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=889041673 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 50.2, -35)
 
-[node name="BrainWall208" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=670474299 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 70.2, 5)
+[node name="BrainWallSide37" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=364330117 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 60.2, 15)
 
-[node name="BrainWall209" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=583350780 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 60.2, -5)
+[node name="BrainWallSide38" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=38379241 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 60.2, 5)
 
-[node name="BrainWall210" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=228880910 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 60.2, -15)
+[node name="BrainWallSide39" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=960546995 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 60.2, -5)
 
-[node name="BrainWall211" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1614585106 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 70.2, -5)
+[node name="BrainWallSide40" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=48471555 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 60.2, -15)
 
-[node name="BrainWall212" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1771695866 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 70.2, -15)
+[node name="BrainWallSide41" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=2036098569 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 60.2, -25)
 
-[node name="BrainWall213" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=902599268 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 60.2, -25)
+[node name="BrainWallSide42" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=1223324141 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 60.2, -35)
 
-[node name="BrainWall205" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=741298326 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6.000004, 60.2, 15)
+[node name="BrainWallSide43" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=408479926 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 70.2, 15)
 
-[node name="BrainWall214" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=921077799 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 5.999996, 60.2, -35)
+[node name="BrainWallSide44" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=624511591 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 70.2, 5)
 
-[node name="BrainWall215" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=555401175 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6, 70.2, -25)
+[node name="BrainWallSide45" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=685557329 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 70.2, -5)
 
-[node name="BrainWall207" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=1202854769 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 6.000004, 70.2, 15)
+[node name="BrainWallSide46" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=1266321309 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 70.2, -15)
 
-[node name="BrainWall216" parent="Environment/BrainJarRoom/ENV/Walls/Sides" unique_id=741992339 instance=ExtResource("22_do5uh")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 5.999996, 70.2, -35)
+[node name="BrainWallSide47" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=587495054 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 70.2, -25)
+
+[node name="BrainWallSide48" parent="Environment/BrainJarRoom/ENV/Walls/LeftSideWalls" unique_id=809903254 instance=ExtResource("52_snbyt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 70.2, -35)
 
 [node name="Platforms" type="Node3D" parent="Environment/BrainJarRoom/ENV" unique_id=184693989]
 
@@ -3844,9 +3997,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 40.2, -55)
 [node name="BrainPlatform95" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=973056516 instance=ExtResource("26_fkdyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 40.2, -65)
 
-[node name="BrainPlatformHalf12" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1281419639 instance=ExtResource("27_idgl4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94, 40.2, -5)
-
 [node name="BrainPlatformHalf3" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1497461410 instance=ExtResource("27_idgl4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 10.200001, -5)
 
@@ -3889,6 +4039,12 @@ transform = Transform3D(-0.9659258, 0.25881904, -8.444392e-08, 0.25881904, 0.965
 [node name="BrainPlatformHalf70" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1574606290 instance=ExtResource("27_idgl4")]
 transform = Transform3D(-0.9659258, 0.25881904, -8.444392e-08, 0.25881904, 0.9659258, 2.262668e-08, 8.742278e-08, 0, -1, -224, 40.2, 5)
 
+[node name="BrainPlatformHalf23" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1561766180 instance=ExtResource("27_idgl4")]
+transform = Transform3D(-0.9659258, 0.25881904, -8.444392e-08, 0.25881904, 0.9659258, 2.262668e-08, 8.742278e-08, 0, -1, -64, 40.2, -5)
+
+[node name="BrainPlatformHalf73" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=132784329 instance=ExtResource("27_idgl4")]
+transform = Transform3D(-0.9659258, 0.25881904, -8.444392e-08, 0.25881904, 0.9659258, 2.262668e-08, 8.742278e-08, 0, -1, -64, 40.2, 5)
+
 [node name="BrainPlatformHalf63" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=583067793 instance=ExtResource("27_idgl4")]
 transform = Transform3D(0.9199174, -0.39211234, 1.6697533e-07, 0.39211234, 0.9199174, 4.657637e-08, -1.718667e-07, 2.2626683e-08, 1, -224, 20.2, -4.9999995)
 
@@ -3897,6 +4053,12 @@ transform = Transform3D(0.96592593, -0.25881907, 1.718667e-07, 0.25881907, 0.965
 
 [node name="BrainPlatformHalf56" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=926072701 instance=ExtResource("27_idgl4")]
 transform = Transform3D(0.96592593, -0.25881907, 1.718667e-07, 0.25881907, 0.96592593, 2.2626681e-08, -1.718667e-07, 2.2626683e-08, 1, -24, 40.2, -5)
+
+[node name="BrainPlatformHalf57" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=453799718 instance=ExtResource("27_idgl4")]
+transform = Transform3D(0.96592593, -0.25881907, 1.718667e-07, 0.25881907, 0.96592593, 2.2626681e-08, -1.718667e-07, 2.2626683e-08, 1, -184, 40.2, -15)
+
+[node name="BrainPlatformHalf58" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=881596401 instance=ExtResource("27_idgl4")]
+transform = Transform3D(0.96592593, -0.25881907, 1.718667e-07, 0.25881907, 0.96592593, 2.2626681e-08, -1.718667e-07, 2.2626683e-08, 1, -184, 40.2, -5)
 
 [node name="BrainPlatformHalf41" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=962937166 instance=ExtResource("27_idgl4")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -64, 10.200001, -5)
@@ -3913,15 +4075,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184, 10.200001, -15)
 [node name="BrainPlatformHalf45" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1591344321 instance=ExtResource("27_idgl4")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -224, 10.200001, -5)
 
-[node name="BrainPlatformHalf10" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=382831564 instance=ExtResource("27_idgl4")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -154, 40.2, 5)
-
-[node name="BrainPlatformHalf19" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1294383516 instance=ExtResource("27_idgl4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94, 40.2, -15)
-
-[node name="BrainPlatformHalf20" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1397769703 instance=ExtResource("27_idgl4")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -154, 40.2, -5)
-
 [node name="BrainPlatformCorner9" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=308279809 instance=ExtResource("28_2hrad")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84, 25.2, -5)
 
@@ -3937,20 +4090,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -164, 25.2, -5)
 [node name="BrainPlatformCorner10" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1579745679 instance=ExtResource("28_2hrad")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -174, 25.2, -5)
 
-[node name="BrainPlatformCorner13" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=451780951 instance=ExtResource("28_2hrad")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -184, 40.2, -5)
-
-[node name="BrainPlatformCorner14" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1536603370 instance=ExtResource("28_2hrad")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184, 40.2, -5)
-
 [node name="BrainPlatformCorner16" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=240838486 instance=ExtResource("28_2hrad")]
 transform = Transform3D(0.9961566, -0.087590404, 0, 0.087590404, 0.9961566, 0, 0, 0, 1, -224, 20.2, -15)
-
-[node name="BrainPlatformCorner19" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=877522037 instance=ExtResource("28_2hrad")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -64, 40.2, -5)
-
-[node name="BrainPlatformCorner24" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1229829305 instance=ExtResource("28_2hrad")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -64, 40.2, -5)
 
 [node name="BrainPlatformCorner20" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1137428331 instance=ExtResource("28_2hrad")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -164, 25.2, -5)
@@ -4126,607 +4267,90 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -44,
 [node name="BrainScaffold9" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=188585606 instance=ExtResource("29_q5o8m")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -44, 35.1, -3.6666667)
 
+[node name="DropdownCentral" type="Node3D" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=2138742513]
+
+[node name="BrainPlatformCorner" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral" unique_id=642519834 instance=ExtResource("28_2hrad")]
+transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0, 1, -94, 10.2, -5)
+
+[node name="BrainPlatformCorner2" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral" unique_id=653425289 instance=ExtResource("28_2hrad")]
+transform = Transform3D(-4.222196e-08, -0.25881904, -0.9659258, -1.131334e-08, 0.9659258, -0.25881904, 1, 0, -4.371139e-08, -94, 10.2, -5)
+
+[node name="RailDiagonal22" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral" unique_id=304367997 instance=ExtResource("10_e2mff")]
+transform = Transform3D(-4.222196e-08, -0.25881904, -0.9659258, -1.131334e-08, 0.9659258, -0.25881904, 1, 0, -4.371139e-08, -98.85339, 8.879175, -7.4645987)
+
+[node name="RailDiagonal23" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral" unique_id=179047395 instance=ExtResource("10_e2mff")]
+transform = Transform3D(-4.222196e-08, -0.25881904, -0.9659258, -1.131334e-08, 0.9659258, -0.25881904, 1, 0, -4.371139e-08, -96.37075, 9.544397, -10.029418)
+
+[node name="RailFull208" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral" unique_id=1769692005 instance=ExtResource("9_uoh3v")]
+transform = Transform3D(-0.4829629, -0.12940952, -1.2666587e-07, -0.12940952, 0.4829629, -3.394002e-08, 1.3113416e-07, 0, -0.5, -98.622536, 8.941032, -14.801604)
+
+[node name="RailFull209" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral" unique_id=317093648 instance=ExtResource("9_uoh3v")]
+transform = Transform3D(-1.0555488e-07, -0.12940952, 0.4829629, -2.8283347e-08, 0.4829629, 0.12940952, -0.5, 0, -1.0927846e-07, -103.64535, 7.595174, -9.801604)
+
+[node name="BrainPlatformCorner3" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral" unique_id=1743438253 instance=ExtResource("28_2hrad")]
+transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0, 1, -94, 40.2, -5)
+
+[node name="BrainPlatformCorner4" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral" unique_id=491044226 instance=ExtResource("28_2hrad")]
+transform = Transform3D(-4.222196e-08, -0.25881904, -0.9659258, -1.131334e-08, 0.9659258, -0.25881904, 1, 0, -4.371139e-08, -94, 40.2, -5)
+
+[node name="RailDiagonal24" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral" unique_id=786736048 instance=ExtResource("10_e2mff")]
+transform = Transform3D(-4.222196e-08, -0.25881904, -0.9659258, -1.131334e-08, 0.9659258, -0.25881904, 1, 0, -4.371139e-08, -98.85339, 38.879173, -7.4645987)
+
+[node name="RailDiagonal25" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral" unique_id=1716460975 instance=ExtResource("10_e2mff")]
+transform = Transform3D(-4.222196e-08, -0.25881904, -0.9659258, -1.131334e-08, 0.9659258, -0.25881904, 1, 0, -4.371139e-08, -96.37075, 39.544395, -10.029418)
+
+[node name="RailFull210" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral" unique_id=925810501 instance=ExtResource("9_uoh3v")]
+transform = Transform3D(-0.4829629, -0.12940952, -1.2666587e-07, -0.12940952, 0.4829629, -3.394002e-08, 1.3113416e-07, 0, -0.5, -98.622536, 38.941032, -14.801604)
+
+[node name="RailFull211" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral" unique_id=1724780557 instance=ExtResource("9_uoh3v")]
+transform = Transform3D(-1.0555488e-07, -0.12940952, 0.4829629, -2.8283347e-08, 0.4829629, 0.12940952, -0.5, 0, -1.0927846e-07, -103.64535, 37.595173, -9.801604)
+
+[node name="DropdownCentral2" type="Node3D" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=980970139]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -248, 0, 0)
+
+[node name="BrainPlatformCorner" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral2" unique_id=1551171368 instance=ExtResource("28_2hrad")]
+transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0, 1, -94, 10.2, -5)
+
+[node name="BrainPlatformCorner2" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral2" unique_id=1962770365 instance=ExtResource("28_2hrad")]
+transform = Transform3D(-4.222196e-08, -0.25881904, -0.9659258, -1.131334e-08, 0.9659258, -0.25881904, 1, 0, -4.371139e-08, -94, 10.2, -5)
+
+[node name="RailDiagonal22" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral2" unique_id=1141994600 instance=ExtResource("10_e2mff")]
+transform = Transform3D(-4.222196e-08, -0.25881904, -0.9659258, -1.131334e-08, 0.9659258, -0.25881904, 1, 0, -4.371139e-08, -98.85339, 8.879175, -7.4645987)
+
+[node name="RailDiagonal23" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral2" unique_id=950621106 instance=ExtResource("10_e2mff")]
+transform = Transform3D(-4.222196e-08, -0.25881904, -0.9659258, -1.131334e-08, 0.9659258, -0.25881904, 1, 0, -4.371139e-08, -96.37075, 9.544397, -10.029418)
+
+[node name="RailFull208" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral2" unique_id=492619027 instance=ExtResource("9_uoh3v")]
+transform = Transform3D(-0.4829629, -0.12940952, -1.2666587e-07, -0.12940952, 0.4829629, -3.394002e-08, 1.3113416e-07, 0, -0.5, -98.622536, 8.941032, -14.801604)
+
+[node name="RailFull209" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral2" unique_id=1561633224 instance=ExtResource("9_uoh3v")]
+transform = Transform3D(-1.0555488e-07, -0.12940952, 0.4829629, -2.8283347e-08, 0.4829629, 0.12940952, -0.5, 0, -1.0927846e-07, -103.64535, 7.595174, -9.801604)
+
+[node name="BrainPlatformCorner3" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral2" unique_id=1185472194 instance=ExtResource("28_2hrad")]
+transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0, 1, -94, 40.2, -5)
+
+[node name="BrainPlatformCorner4" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral2" unique_id=1499724975 instance=ExtResource("28_2hrad")]
+transform = Transform3D(-4.222196e-08, -0.25881904, -0.9659258, -1.131334e-08, 0.9659258, -0.25881904, 1, 0, -4.371139e-08, -94, 40.2, -5)
+
+[node name="RailDiagonal24" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral2" unique_id=1725576469 instance=ExtResource("10_e2mff")]
+transform = Transform3D(-4.222196e-08, -0.25881904, -0.9659258, -1.131334e-08, 0.9659258, -0.25881904, 1, 0, -4.371139e-08, -98.85339, 38.879173, -7.4645987)
+
+[node name="RailDiagonal25" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral2" unique_id=584754818 instance=ExtResource("10_e2mff")]
+transform = Transform3D(-4.222196e-08, -0.25881904, -0.9659258, -1.131334e-08, 0.9659258, -0.25881904, 1, 0, -4.371139e-08, -96.37076, 39.544395, -10.029418)
+
+[node name="RailFull210" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral2" unique_id=574373873 instance=ExtResource("9_uoh3v")]
+transform = Transform3D(-0.4829629, -0.12940952, -1.2666587e-07, -0.12940952, 0.4829629, -3.394002e-08, 1.3113416e-07, 0, -0.5, -98.62253, 38.941032, -14.801604)
+
+[node name="RailFull211" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral2" unique_id=439368623 instance=ExtResource("9_uoh3v")]
+transform = Transform3D(-1.0555488e-07, -0.12940952, 0.4829629, -2.8283347e-08, 0.4829629, 0.12940952, -0.5, 0, -1.0927846e-07, -103.645355, 37.595173, -9.801604)
+
 [node name="Floor" type="Node3D" parent="Environment/BrainJarRoom/ENV" unique_id=2042676141]
-
-[node name="BrainFloor" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=849645947 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.2, 5)
-
-[node name="BrainFloor2" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=384451084 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.2, -5)
-
-[node name="BrainFloor3" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1955659040 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.2, -15)
-
-[node name="BrainFloor4" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2124136252 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.2, -25)
-
-[node name="BrainFloor5" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1828841277 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.2, -35)
-
-[node name="BrainFloor6" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=635897369 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.2, -45)
-
-[node name="BrainFloor185" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=894897414 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.2, 5)
-
-[node name="BrainFloor186" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=734994630 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.2, -5)
-
-[node name="BrainFloor187" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=461704450 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.2, -15)
-
-[node name="BrainFloor188" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=717031963 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.2, -25)
-
-[node name="BrainFloor189" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1768319595 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.2, -35)
-
-[node name="BrainFloor190" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1179389987 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.2, -45)
-
-[node name="BrainFloor191" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=473057679 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -244, 0.2, 5)
-
-[node name="BrainFloor192" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1290838361 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -244, 0.2, -5)
-
-[node name="BrainFloor193" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1934221023 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -244, 0.2, -15)
-
-[node name="BrainFloor194" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2089091097 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -244, 0.2, -25)
-
-[node name="BrainFloor195" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=181565317 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -244, 0.2, -35)
-
-[node name="BrainFloor196" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=28739428 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -244, 0.2, -45)
-
-[node name="BrainFloor7" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1475562510 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.2, 5)
-
-[node name="BrainFloor8" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=312994723 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.2, -5)
-
-[node name="BrainFloor9" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1679285799 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.2, -15)
-
-[node name="BrainFloor10" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1715432847 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.2, -25)
-
-[node name="BrainFloor11" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=982751683 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.2, -35)
-
-[node name="BrainFloor12" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=803874939 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.2, -45)
-
-[node name="BrainFloor14" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1590692061 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0.2, -5)
-
-[node name="BrainFloor15" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1939788542 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0.2, -15)
-
-[node name="BrainFloor13" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1252721988 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0.2, 5)
-
-[node name="BrainFloor16" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2131846112 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0.2, -25)
-
-[node name="BrainFloor17" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1530725404 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0.2, -35)
-
-[node name="BrainFloor18" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1814655994 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0.2, -45)
-
-[node name="BrainFloor20" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=114693413 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.2, -5)
-
-[node name="BrainFloor21" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=679247183 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.2, -15)
-
-[node name="BrainFloor22" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1187451443 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.2, -25)
-
-[node name="BrainFloor19" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1136115755 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.2, 5)
-
-[node name="BrainFloor23" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=701949445 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.2, -35)
-
-[node name="BrainFloor24" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1717939588 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.2, -45)
-
-[node name="BrainFloor26" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1799882207 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44, 0.2, -5)
-
-[node name="BrainFloor27" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=520703071 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44, 0.2, -15)
-
-[node name="BrainFloor28" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=266596185 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44, 0.2, -25)
-
-[node name="BrainFloor29" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=522518883 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44, 0.2, -35)
-
-[node name="BrainFloor25" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=285064406 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44, 0.2, 5)
-
-[node name="BrainFloor30" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=901915701 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44, 0.2, -45)
-
-[node name="BrainFloor145" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1410986490 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44, 0.2, -55)
-
-[node name="BrainFloor146" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=792936629 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44, 0.2, -65)
-
-[node name="BrainFloor147" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1276131856 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 0.2, -55)
-
-[node name="BrainFloor148" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=474122929 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 0.2, -65)
-
-[node name="BrainFloor149" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=455001862 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0.2, -55)
-
-[node name="BrainFloor150" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1490202389 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0.2, -65)
-
-[node name="BrainFloor151" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=271129907 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, 0.2, -55)
-
-[node name="BrainFloor152" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1454242361 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, 0.2, -65)
-
-[node name="BrainFloor153" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1797860665 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84, 0.2, -55)
-
-[node name="BrainFloor154" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=340684785 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84, 0.2, -65)
-
-[node name="BrainFloor155" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1998579252 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94, 0.2, -55)
-
-[node name="BrainFloor156" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=251309036 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94, 0.2, -65)
-
-[node name="BrainFloor157" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=159298235 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104, 0.2, -55)
-
-[node name="BrainFloor158" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=433041837 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104, 0.2, -65)
-
-[node name="BrainFloor159" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1120899240 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 0.2, -55)
-
-[node name="BrainFloor160" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=976789749 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 0.2, -65)
-
-[node name="BrainFloor161" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=299361080 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -55)
-
-[node name="BrainFloor162" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1382689930 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -65)
-
-[node name="BrainFloor177" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=759241305 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104, 0.2, -75)
-
-[node name="BrainFloor178" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=886251641 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104, 0.2, -85)
-
-[node name="BrainFloor179" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1168887219 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 0.2, -75)
-
-[node name="BrainFloor180" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=893842021 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 0.2, -85)
-
-[node name="BrainFloor181" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=512591348 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -75)
-
-[node name="BrainFloor182" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=271693897 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -85)
-
-[node name="BrainFloor183" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=927099872 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 0.2, -75)
-
-[node name="BrainFloor184" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=939724194 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 0.2, -85)
-
-[node name="BrainFloor163" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1522123430 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 0.2, -55)
-
-[node name="BrainFloor164" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1932314126 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 0.2, -65)
-
-[node name="BrainFloor165" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=252075118 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144, 0.2, -55)
-
-[node name="BrainFloor166" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=289376172 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144, 0.2, -65)
-
-[node name="BrainFloor167" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=335412775 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154, 0.2, -55)
-
-[node name="BrainFloor168" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=416794792 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154, 0.2, -65)
-
-[node name="BrainFloor169" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=701809973 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -164, 0.2, -55)
-
-[node name="BrainFloor170" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1638028167 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -164, 0.2, -65)
-
-[node name="BrainFloor171" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1855537804 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -174, 0.2, -55)
-
-[node name="BrainFloor172" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=689414270 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -174, 0.2, -65)
-
-[node name="BrainFloor173" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1233837561 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184, 0.2, -55)
-
-[node name="BrainFloor174" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1344187238 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184, 0.2, -65)
-
-[node name="BrainFloor175" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1134670807 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -194, 0.2, -55)
-
-[node name="BrainFloor176" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2010725650 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -194, 0.2, -65)
-
-[node name="BrainFloor32" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1572809926 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 0.2, -5)
-
-[node name="BrainFloor33" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=102849169 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 0.2, -15)
-
-[node name="BrainFloor31" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1568038703 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 0.2, 5)
-
-[node name="BrainFloor34" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=721409535 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 0.2, -25)
-
-[node name="BrainFloor35" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1532677201 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 0.2, -35)
-
-[node name="BrainFloor36" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=865401427 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 0.2, -45)
-
-[node name="BrainFloor38" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=975515536 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0.2, -5)
-
-[node name="BrainFloor39" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1202334226 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0.2, -15)
-
-[node name="BrainFloor37" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1229175040 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0.2, 5)
-
-[node name="BrainFloor40" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=240715212 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0.2, -25)
-
-[node name="BrainFloor41" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1165409639 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0.2, -35)
-
-[node name="BrainFloor42" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1336370094 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0.2, -45)
-
-[node name="BrainFloor44" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=840536910 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, 0.2, -5)
-
-[node name="BrainFloor45" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1159174940 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, 0.2, -15)
-
-[node name="BrainFloor46" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2125859944 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, 0.2, -25)
-
-[node name="BrainFloor43" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1862192677 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, 0.2, 5)
-
-[node name="BrainFloor47" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=491288616 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, 0.2, -35)
-
-[node name="BrainFloor48" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1686669688 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, 0.2, -45)
-
-[node name="BrainFloor50" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1125095193 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84, 0.2, -5)
-
-[node name="BrainFloor51" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1410143404 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84, 0.2, -15)
-
-[node name="BrainFloor52" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1465467741 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84, 0.2, -25)
-
-[node name="BrainFloor53" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1416966994 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84, 0.2, -35)
-
-[node name="BrainFloor54" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1632311941 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84, 0.2, -45)
-
-[node name="BrainFloor56" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=248858373 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94, 0.2, -5)
-
-[node name="BrainFloor57" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=591318295 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94, 0.2, -15)
-
-[node name="BrainFloor58" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2041333129 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94, 0.2, -25)
-
-[node name="BrainFloor49" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1318605561 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84, 0.2, 5)
-
-[node name="BrainFloor59" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=147927793 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94, 0.2, -35)
-
-[node name="BrainFloor60" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=421458078 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94, 0.2, -45)
-
-[node name="BrainFloor62" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1278587846 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104, 0.2, -5)
-
-[node name="BrainFloor63" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=709135403 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104, 0.2, -15)
-
-[node name="BrainFloor64" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=405624724 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104, 0.2, -25)
-
-[node name="BrainFloor65" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=636759909 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104, 0.2, -35)
-
-[node name="BrainFloor55" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=954241840 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94, 0.2, 5)
-
-[node name="BrainFloor66" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=473420401 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104, 0.2, -45)
-
-[node name="BrainFloor68" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1823613224 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 0.2, -5)
-
-[node name="BrainFloor69" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1834579701 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 0.2, -15)
-
-[node name="BrainFloor70" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1193562973 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 0.2, -25)
-
-[node name="BrainFloor71" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=198193743 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 0.2, -35)
-
-[node name="BrainFloor72" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2140162930 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 0.2, -45)
-
-[node name="BrainFloor61" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=272342637 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104, 0.2, 5)
-
-[node name="BrainFloor74" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1872383046 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -5)
-
-[node name="BrainFloor75" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=692895375 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
-
-[node name="BrainFloor76" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=912449745 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -25)
-
-[node name="BrainFloor67" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=111069193 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 0.2, 5)
-
-[node name="BrainFloor77" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1733143668 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -35)
-
-[node name="BrainFloor78" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=700234430 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -45)
-
-[node name="BrainFloor80" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1586300111 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 0.2, -5)
-
-[node name="BrainFloor81" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=315275995 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 0.2, -15)
-
-[node name="BrainFloor82" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=935513037 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 0.2, -25)
-
-[node name="BrainFloor83" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1542884561 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 0.2, -35)
-
-[node name="BrainFloor73" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1774246397 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, 5)
-
-[node name="BrainFloor84" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=154541268 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 0.2, -45)
-
-[node name="BrainFloor86" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1578598174 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144, 0.2, -5)
-
-[node name="BrainFloor87" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1679814643 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144, 0.2, -15)
-
-[node name="BrainFloor88" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1481186945 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144, 0.2, -25)
-
-[node name="BrainFloor89" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1183021119 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144, 0.2, -35)
-
-[node name="BrainFloor90" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=476756271 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144, 0.2, -45)
-
-[node name="BrainFloor79" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1771239516 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 0.2, 5)
-
-[node name="BrainFloor92" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=822308681 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154, 0.2, -5)
-
-[node name="BrainFloor93" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1155247207 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154, 0.2, -15)
-
-[node name="BrainFloor94" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1150644733 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154, 0.2, -25)
-
-[node name="BrainFloor95" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=891496517 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154, 0.2, -35)
-
-[node name="BrainFloor96" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1913509450 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154, 0.2, -45)
-
-[node name="BrainFloor98" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=265128892 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -164, 0.2, -5)
-
-[node name="BrainFloor85" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2039658435 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144, 0.2, 5)
-
-[node name="BrainFloor99" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2133150133 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -164, 0.2, -15)
-
-[node name="BrainFloor100" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=78757405 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -164, 0.2, -25)
-
-[node name="BrainFloor101" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1863109614 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -164, 0.2, -35)
-
-[node name="BrainFloor102" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1342138087 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -164, 0.2, -45)
-
-[node name="BrainFloor104" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1822668218 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -174, 0.2, -5)
-
-[node name="BrainFloor105" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1462603238 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -174, 0.2, -15)
-
-[node name="BrainFloor91" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=41924469 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154, 0.2, 5)
-
-[node name="BrainFloor106" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1620947199 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -174, 0.2, -25)
-
-[node name="BrainFloor107" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1923320696 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -174, 0.2, -35)
-
-[node name="BrainFloor108" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=18206546 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -174, 0.2, -45)
-
-[node name="BrainFloor110" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1920635645 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184, 0.2, -5)
-
-[node name="BrainFloor111" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1812459215 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184, 0.2, -15)
-
-[node name="BrainFloor112" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=272824520 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184, 0.2, -25)
-
-[node name="BrainFloor97" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1250170959 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -164, 0.2, 5)
-
-[node name="BrainFloor113" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=346679014 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184, 0.2, -35)
-
-[node name="BrainFloor114" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2046616006 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184, 0.2, -45)
-
-[node name="BrainFloor116" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=918350962 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -194, 0.2, -5)
-
-[node name="BrainFloor117" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1111101952 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -194, 0.2, -15)
-
-[node name="BrainFloor118" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=686016896 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -194, 0.2, -25)
-
-[node name="BrainFloor119" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1298054511 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -194, 0.2, -35)
-
-[node name="BrainFloor103" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=393704462 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -174, 0.2, 5)
-
-[node name="BrainFloor120" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2002724114 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -194, 0.2, -45)
-
-[node name="BrainFloor122" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1500139656 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 0.2, -5)
-
-[node name="BrainFloor123" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2112878152 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 0.2, -15)
-
-[node name="BrainFloor124" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1495038512 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 0.2, -25)
-
-[node name="BrainFloor125" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1251854905 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 0.2, -35)
-
-[node name="BrainFloor126" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1113206357 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 0.2, -45)
-
-[node name="BrainFloor109" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1521578643 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184, 0.2, 5)
-
-[node name="BrainFloor128" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=479912787 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214, 0.2, -5)
-
-[node name="BrainFloor129" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=23798607 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214, 0.2, -15)
-
-[node name="BrainFloor130" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=233493857 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214, 0.2, -25)
-
-[node name="BrainFloor131" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1230360549 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214, 0.2, -35)
-
-[node name="BrainFloor132" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1508638857 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214, 0.2, -45)
-
-[node name="BrainFloor134" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=855855653 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 0.2, -5)
-
-[node name="BrainFloor115" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2007699389 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -194, 0.2, 5)
-
-[node name="BrainFloor135" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1919394919 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 0.2, -15)
-
-[node name="BrainFloor136" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=421059680 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 0.2, -25)
-
-[node name="BrainFloor137" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2074167409 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 0.2, -35)
-
-[node name="BrainFloor138" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=204158413 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 0.2, -45)
-
-[node name="BrainFloor140" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=166966949 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -234, 0.2, -5)
-
-[node name="BrainFloor121" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=618272508 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 0.2, 5)
-
-[node name="BrainFloor141" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1021827009 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -234, 0.2, -15)
-
-[node name="BrainFloor142" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1264940274 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -234, 0.2, -25)
-
-[node name="BrainFloor143" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1780313610 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -234, 0.2, -35)
-
-[node name="BrainFloor127" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1899913956 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214, 0.2, 5)
-
-[node name="BrainFloor144" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=140125323 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -234, 0.2, -45)
-
-[node name="BrainFloorCornerExtended" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=744885900 instance=ExtResource("21_v7mer")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -44, 0.2, -45)
 
 [node name="BrainFloorCornerExtended2" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1999426346 instance=ExtResource("21_v7mer")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -104, 0.2, -65)
 
 [node name="BrainFloorCornerExtended3" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2077575144 instance=ExtResource("21_v7mer")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -144, 0.2, -65)
-
-[node name="BrainFloorCornerExtended4" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1702490878 instance=ExtResource("21_v7mer")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -204, 0.2, -45)
-
-[node name="BrainFloor133" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=677993789 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 0.2, 5)
-
-[node name="BrainFloor139" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=479131222 instance=ExtResource("20_pqc8g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -234, 0.2, 5)
 
 [node name="ReactorNetwork" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2003632835 instance=ExtResource("38_4j000")]
 transform = Transform3D(-1.4, 0, 2.1139412e-07, 0, 1.4, 0, -2.1139412e-07, 0, -1.4, -124, 0, -61)
@@ -4742,6 +4366,612 @@ transform = Transform3D(-2.8284273, 0, 2.8284268, 0, 4, 0, -2.8284268, 0, -2.828
 
 [node name="Wall2GroundCurveMedium2" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=249961869 instance=ExtResource("37_4j000")]
 transform = Transform3D(-2.8284273, 0, 2.8284268, 0, 4, 0, -2.8284268, 0, -2.8284273, -106, 0.2, -70)
+
+[node name="BrainFloor" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=849645947 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -24, 0.2, 15)
+
+[node name="BrainFloor2" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1622067583 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.2, 5)
+
+[node name="BrainFloor3" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1168893011 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -24, 0.2, 5)
+
+[node name="BrainFloor4" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1391706800 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.2, -5)
+
+[node name="BrainFloor5" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=950386430 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -24, 0.2, -5)
+
+[node name="BrainFloor6" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1203223831 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.2, -15)
+
+[node name="BrainFloor7" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=361119659 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -24, 0.2, -15)
+
+[node name="BrainFloor8" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=915874988 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.2, -25)
+
+[node name="BrainFloor9" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=471770356 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -24, 0.2, -25)
+
+[node name="BrainFloor10" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1426001121 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.2, -35)
+
+[node name="BrainFloor11" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2000560890 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -24, 0.2, -35)
+
+[node name="BrainFloor43" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2112080504 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -94, 0.2, 15)
+
+[node name="BrainFloor44" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=864732330 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -94, 0.2, 5)
+
+[node name="BrainFloor45" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=24842585 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -94, 0.2, -5)
+
+[node name="BrainFloor46" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1205865641 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -94, 0.2, -15)
+
+[node name="BrainFloor47" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=628341446 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -94, 0.2, -25)
+
+[node name="BrainFloor48" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=226555186 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -94, 0.2, -35)
+
+[node name="BrainFloor49" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=952039397 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -94, 0.2, -45)
+
+[node name="BrainFloor50" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1346412970 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -94, 0.2, -55)
+
+[node name="BrainFloor59" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1924722462 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -154, 0.2, 15)
+
+[node name="BrainFloor60" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1222668369 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -154, 0.2, 5)
+
+[node name="BrainFloor61" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1653467489 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -154, 0.2, -5)
+
+[node name="BrainFloor62" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1146268566 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -154, 0.2, -15)
+
+[node name="BrainFloor63" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1758604684 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -154, 0.2, -25)
+
+[node name="BrainFloor64" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1671886421 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -154, 0.2, -35)
+
+[node name="BrainFloor65" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=605849655 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -154, 0.2, -45)
+
+[node name="BrainFloor66" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=331949283 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -154, 0.2, -55)
+
+[node name="BrainFloor67" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2146937012 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -184, 0.2, 15)
+
+[node name="BrainFloor68" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=580906143 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -184, 0.2, 5)
+
+[node name="BrainFloor69" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=482985133 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -184, 0.2, -5)
+
+[node name="BrainFloor70" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=651285337 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -184, 0.2, -15)
+
+[node name="BrainFloor71" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1716754198 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -184, 0.2, -25)
+
+[node name="BrainFloor72" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=966798618 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -184, 0.2, -35)
+
+[node name="BrainFloor73" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1916889129 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -184, 0.2, -45)
+
+[node name="BrainFloor74" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1905210658 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -184, 0.2, -55)
+
+[node name="BrainFloor75" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1137064185 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -224, 0.2, 15)
+
+[node name="BrainFloor76" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=697598717 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -224, 0.2, 5)
+
+[node name="BrainFloor77" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1597481428 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -224, 0.2, -5)
+
+[node name="BrainFloor78" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1156886310 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -224, 0.2, -15)
+
+[node name="BrainFloor79" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=877942124 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -224, 0.2, -25)
+
+[node name="BrainFloor80" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1613046869 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -224, 0.2, -35)
+
+[node name="BrainFloor81" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1101834013 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -224, 0.2, -45)
+
+[node name="BrainFloor83" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=26475841 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -254, 0.2, 15)
+
+[node name="BrainFloor84" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1034086798 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -254, 0.2, 5)
+
+[node name="BrainFloor85" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=106824457 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -254, 0.2, -5)
+
+[node name="BrainFloor86" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1049511200 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -254, 0.2, -15)
+
+[node name="BrainFloor87" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1363108499 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -254, 0.2, -25)
+
+[node name="BrainFloor88" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=234985414 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -254, 0.2, -35)
+
+[node name="BrainFloor51" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=634468519 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -64, 0.2, 15)
+
+[node name="BrainFloor52" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=458923139 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -64, 0.2, 5)
+
+[node name="BrainFloor53" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=919394133 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -64, 0.2, -5)
+
+[node name="BrainFloor54" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=317587808 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -64, 0.2, -15)
+
+[node name="BrainFloor55" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=958636651 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -64, 0.2, -25)
+
+[node name="BrainFloor56" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=224058268 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -64, 0.2, -35)
+
+[node name="BrainFloor57" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1621082239 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -64, 0.2, -45)
+
+[node name="BrainFloor58" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=48920514 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -64, 0.2, -55)
+
+[node name="BrainFloor12" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=240356382 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.2, -45)
+
+[node name="BrainFloor13" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2125745485 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0.2, 5)
+
+[node name="BrainFloor14" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1947155770 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0.2, -5)
+
+[node name="BrainFloor15" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=80819499 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0.2, -15)
+
+[node name="BrainFloor16" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=786798040 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0.2, -25)
+
+[node name="BrainFloor17" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=855648583 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0.2, -35)
+
+[node name="BrainFloor18" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=560650407 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0.2, -45)
+
+[node name="BrainFloor82" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=750737483 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0.2, -55)
+
+[node name="BrainFloor19" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1431314623 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0.2, 5)
+
+[node name="BrainFloor20" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2110040093 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0.2, -5)
+
+[node name="BrainFloor21" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1013926629 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0.2, -15)
+
+[node name="BrainFloor22" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1220094260 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0.2, -25)
+
+[node name="BrainFloor23" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1096245678 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0.2, -35)
+
+[node name="BrainFloor24" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=968780088 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0.2, -45)
+
+[node name="BrainFloor25" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1183090949 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94, 0.2, 5)
+
+[node name="BrainFloor26" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1160008814 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94, 0.2, -5)
+
+[node name="BrainFloor27" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1343701544 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94, 0.2, -15)
+
+[node name="BrainFloor28" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1488703424 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94, 0.2, -25)
+
+[node name="BrainFloor29" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1692890038 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94, 0.2, -35)
+
+[node name="BrainFloor30" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=872099572 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94, 0.2, -45)
+
+[node name="BrainFloor39" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=57070631 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94, 0.2, -55)
+
+[node name="BrainFloor40" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1143647888 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94, 0.2, -65)
+
+[node name="BrainFloor41" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1048712031 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0.2, -55)
+
+[node name="BrainFloor42" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1581460890 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0.2, -65)
+
+[node name="BrainFloor31" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=924384955 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154, 0.2, 5)
+
+[node name="BrainFloor32" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2121831832 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154, 0.2, -5)
+
+[node name="BrainFloor33" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2118950840 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154, 0.2, -15)
+
+[node name="BrainFloor34" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2098543177 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154, 0.2, -25)
+
+[node name="BrainFloor35" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1946268270 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154, 0.2, -35)
+
+[node name="BrainFloor36" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1119981019 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154, 0.2, -45)
+
+[node name="BrainFloor89" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1730807601 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184, 0.2, 5)
+
+[node name="BrainFloor90" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1122477638 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184, 0.2, -5)
+
+[node name="BrainFloor91" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1652898404 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184, 0.2, -15)
+
+[node name="BrainFloor92" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=467870337 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184, 0.2, -25)
+
+[node name="BrainFloor93" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1707074002 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184, 0.2, -35)
+
+[node name="BrainFloor94" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=838800641 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184, 0.2, -45)
+
+[node name="BrainFloor101" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2030374320 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184, 0.2, -55)
+
+[node name="BrainFloor102" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=222946933 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184, 0.2, -65)
+
+[node name="BrainFloor95" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=19863458 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 0.2, 5)
+
+[node name="BrainFloor96" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=670838469 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 0.2, -5)
+
+[node name="BrainFloor97" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=761691772 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 0.2, -15)
+
+[node name="BrainFloor98" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=179319062 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 0.2, -25)
+
+[node name="BrainFloor99" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=445581357 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 0.2, -35)
+
+[node name="BrainFloor100" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2041686018 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 0.2, -45)
+
+[node name="BrainFloor37" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1023490479 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154, 0.2, -55)
+
+[node name="BrainFloor38" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1716251831 instance=ExtResource("20_pqc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154, 0.2, -65)
+
+[node name="BrainFloorAlt" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1292774350 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, 0.2, 5)
+
+[node name="BrainFloorAlt2" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1359183919 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, 0.2, -5)
+
+[node name="BrainFloorAlt3" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=417399146 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, 0.2, -15)
+
+[node name="BrainFloorAlt4" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1527208005 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, 0.2, -25)
+
+[node name="BrainFloorAlt5" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1233505953 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, 0.2, -35)
+
+[node name="BrainFloorAlt6" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1530925812 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, 0.2, -45)
+
+[node name="BrainFloorAlt7" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=364468120 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -34, 0.2, 5)
+
+[node name="BrainFloorAlt8" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=859851156 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -34, 0.2, -5)
+
+[node name="BrainFloorAlt9" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=237194728 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -34, 0.2, -15)
+
+[node name="BrainFloorAlt10" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1746785025 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -34, 0.2, -25)
+
+[node name="BrainFloorAlt11" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1070797797 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -34, 0.2, -35)
+
+[node name="BrainFloorAlt12" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=859879480 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -34, 0.2, -45)
+
+[node name="BrainFloorAlt13" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=884494341 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -34, 0.2, -55)
+
+[node name="BrainFloorAlt14" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1634214119 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -34, 0.2, -65)
+
+[node name="BrainFloorAlt15" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1560556510 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -44, 0.2, 5)
+
+[node name="BrainFloorAlt16" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1015536653 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -44, 0.2, -5)
+
+[node name="BrainFloorAlt17" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=652156148 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -44, 0.2, -15)
+
+[node name="BrainFloorAlt18" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1351792376 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -44, 0.2, -25)
+
+[node name="BrainFloorAlt19" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1253484330 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -44, 0.2, -35)
+
+[node name="BrainFloorAlt20" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1681166100 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -44, 0.2, -45)
+
+[node name="BrainFloorAlt21" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2145443838 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -44, 0.2, -55)
+
+[node name="BrainFloorAlt22" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=175072235 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -44, 0.2, -65)
+
+[node name="BrainFloorAlt23" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1927767361 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -74, 0.2, 5)
+
+[node name="BrainFloorAlt24" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2083239453 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -74, 0.2, -5)
+
+[node name="BrainFloorAlt25" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=601818213 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -74, 0.2, -15)
+
+[node name="BrainFloorAlt26" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1168198360 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -74, 0.2, -25)
+
+[node name="BrainFloorAlt27" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1784633501 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -74, 0.2, -35)
+
+[node name="BrainFloorAlt28" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=580681009 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -74, 0.2, -45)
+
+[node name="BrainFloorAlt29" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=410491120 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -74, 0.2, -55)
+
+[node name="BrainFloorAlt30" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=809048161 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -74, 0.2, -65)
+
+[node name="BrainFloorAlt31" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=941229424 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -104, 0.2, 5)
+
+[node name="BrainFloorAlt32" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1323545762 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -104, 0.2, -5)
+
+[node name="BrainFloorAlt33" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1236934839 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -104, 0.2, -15)
+
+[node name="BrainFloorAlt34" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=74543033 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -104, 0.2, -25)
+
+[node name="BrainFloorAlt35" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1796365523 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -104, 0.2, -35)
+
+[node name="BrainFloorAlt36" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1295246523 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -104, 0.2, -45)
+
+[node name="BrainFloorAlt37" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2064846973 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -104, 0.2, -55)
+
+[node name="BrainFloorAlt38" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=713776770 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -104, 0.2, -65)
+
+[node name="BrainFloorAlt39" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1951142208 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -114, 0.2, 5)
+
+[node name="BrainFloorAlt40" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1127503058 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -114, 0.2, -5)
+
+[node name="BrainFloorAlt41" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=76247937 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -114, 0.2, -15)
+
+[node name="BrainFloorAlt42" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1657797421 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -114, 0.2, -25)
+
+[node name="BrainFloorAlt43" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=156869701 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -114, 0.2, -35)
+
+[node name="BrainFloorAlt44" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=872383657 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -114, 0.2, -45)
+
+[node name="BrainFloorAlt45" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1166307282 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -114, 0.2, -55)
+
+[node name="BrainFloorAlt46" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=645501436 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -114, 0.2, -65)
+
+[node name="BrainFloorAlt47" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=733948815 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -124, 0.2, 5)
+
+[node name="BrainFloorAlt48" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=655377078 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -124, 0.2, -5)
+
+[node name="BrainFloorAlt49" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1443300218 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -124, 0.2, -15)
+
+[node name="BrainFloorAlt50" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=478685416 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -124, 0.2, -25)
+
+[node name="BrainFloorAlt51" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2005798678 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -124, 0.2, -35)
+
+[node name="BrainFloorAlt52" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1580880215 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -124, 0.2, -45)
+
+[node name="BrainFloorAlt53" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1639992328 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -124, 0.2, -55)
+
+[node name="BrainFloorAlt54" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1004893852 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -124, 0.2, -65)
+
+[node name="BrainFloorAlt55" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1618311589 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -134, 0.2, 5)
+
+[node name="BrainFloorAlt56" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1699548408 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -134, 0.2, -5)
+
+[node name="BrainFloorAlt57" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1108472859 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -134, 0.2, -15)
+
+[node name="BrainFloorAlt58" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1751863161 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -134, 0.2, -25)
+
+[node name="BrainFloorAlt59" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1182318733 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -134, 0.2, -35)
+
+[node name="BrainFloorAlt60" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2071415188 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -134, 0.2, -45)
+
+[node name="BrainFloorAlt93" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1520332192 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -104, 0.2, -85)
+
+[node name="BrainFloorAlt94" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1289405738 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -114, 0.2, -85)
+
+[node name="BrainFloorAlt95" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=296835688 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -124, 0.2, -85)
+
+[node name="BrainFloorAlt96" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1826956739 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -134, 0.2, -85)
+
+[node name="BrainFloorAlt97" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=140721595 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -104, 0.2, -75)
+
+[node name="BrainFloorAlt98" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1333100733 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -114, 0.2, -75)
+
+[node name="BrainFloorAlt99" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1644638370 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -124, 0.2, -75)
+
+[node name="BrainFloorAlt100" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1735354637 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -134, 0.2, -75)
+
+[node name="BrainFloorAlt61" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1145531954 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -134, 0.2, -55)
+
+[node name="BrainFloorAlt62" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=21573289 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -134, 0.2, -65)
+
+[node name="BrainFloorAlt63" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1708477061 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -164, 0.2, 5)
+
+[node name="BrainFloorAlt64" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=343297487 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -164, 0.2, -5)
+
+[node name="BrainFloorAlt65" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1555347198 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -164, 0.2, -15)
+
+[node name="BrainFloorAlt66" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1575410738 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -164, 0.2, -25)
+
+[node name="BrainFloorAlt67" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=361824389 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -164, 0.2, -35)
+
+[node name="BrainFloorAlt68" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2011667368 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -164, 0.2, -45)
+
+[node name="BrainFloorAlt69" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2137259020 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -164, 0.2, -55)
+
+[node name="BrainFloorAlt70" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=705044949 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -164, 0.2, -65)
+
+[node name="BrainFloorAlt71" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=123213690 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -194, 0.2, 5)
+
+[node name="BrainFloorAlt72" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=929174877 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -194, 0.2, -5)
+
+[node name="BrainFloorAlt73" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1679599421 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -194, 0.2, -15)
+
+[node name="BrainFloorAlt74" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=237400563 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -194, 0.2, -25)
+
+[node name="BrainFloorAlt75" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1292774644 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -194, 0.2, -35)
+
+[node name="BrainFloorAlt76" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=964418852 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -194, 0.2, -45)
+
+[node name="BrainFloorAlt77" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1422247545 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -194, 0.2, -55)
+
+[node name="BrainFloorAlt78" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1465929905 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -194, 0.2, -65)
+
+[node name="BrainFloorAlt79" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1534374709 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -204, 0.2, 5)
+
+[node name="BrainFloorAlt80" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1095834122 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -204, 0.2, -5)
+
+[node name="BrainFloorAlt81" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=804771274 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -204, 0.2, -15)
+
+[node name="BrainFloorAlt82" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1006894677 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -204, 0.2, -25)
+
+[node name="BrainFloorAlt83" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=102352724 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -204, 0.2, -35)
+
+[node name="BrainFloorAlt84" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1144479244 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -204, 0.2, -45)
+
+[node name="BrainFloorAlt85" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1816549825 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -204, 0.2, -55)
+
+[node name="BrainFloorAlt86" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=607412887 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -204, 0.2, -65)
+
+[node name="BrainFloorAlt87" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=887232792 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -234, 0.2, 5)
+
+[node name="BrainFloorAlt88" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=2019612630 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -234, 0.2, -5)
+
+[node name="BrainFloorAlt89" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1777387097 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -234, 0.2, -15)
+
+[node name="BrainFloorAlt90" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=1273610052 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -234, 0.2, -25)
+
+[node name="BrainFloorAlt91" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=648422220 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -234, 0.2, -35)
+
+[node name="BrainFloorAlt92" parent="Environment/BrainJarRoom/ENV/Floor" unique_id=734328917 instance=ExtResource("71_3q0ox")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -234, 0.2, -45)
 
 [node name="Rails" type="Node3D" parent="Environment/BrainJarRoom/ENV" unique_id=156596603]
 
@@ -4762,18 +4992,6 @@ transform = Transform3D(-0.4266461, 0.24027523, -0.10119787, -0.10644356, 0.0166
 
 [node name="RailFull3" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=1876559395 instance=ExtResource("9_uoh3v")]
 transform = Transform3D(0.41994613, -0.01517275, 0.27095202, -0.2678273, 0.057302557, 0.41831198, -0.043746106, -0.49647373, 0.040000655, -229.34549, 10.07439, 0.38068175)
-
-[node name="RailDiagonal4" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=2121400797 instance=ExtResource("10_e2mff")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -189.039, 40.2, -7.463)
-
-[node name="RailDiagonal5" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=1626708462 instance=ExtResource("10_e2mff")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -186.46878, 40.2, -10.027826)
-
-[node name="RailDiagonal8" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=1669844857 instance=ExtResource("10_e2mff")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -61.545776, 40.2, -10.05732)
-
-[node name="RailDiagonal9" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=842216360 instance=ExtResource("10_e2mff")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -58.980957, 40.2, -7.4870987)
 
 [node name="RailDiagonal10" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=5947014 instance=ExtResource("10_e2mff")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -40.20837, 35.1, -7.3889174)
@@ -4835,24 +5053,6 @@ transform = Transform3D(6.556708e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, 6.556708e-08, 
 [node name="RailFull100" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=428089440 instance=ExtResource("9_uoh3v")]
 transform = Transform3D(-0.4829629, 0.12940952, -1.2666587e-07, 0.12940952, 0.4829629, 3.394002e-08, 1.3113416e-07, 0, -0.5, -224.2179, 40.2642, -14.8)
 
-[node name="RailFull144" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=11591134 instance=ExtResource("9_uoh3v")]
-transform = Transform3D(-0.5, 0, -1.3113416e-07, 0, 0.5, 0, 1.3113416e-07, 0, -0.5, -188.8, 40.2, -14.8)
-
-[node name="RailFull199" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=124360762 instance=ExtResource("9_uoh3v")]
-transform = Transform3D(-1.0927846e-07, 0, 0.5, 0, 0.5, 0, -0.5, 0, -1.0927846e-07, -194, 40.2, -9.8)
-
-[node name="RailFull279" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=1071442766 instance=ExtResource("9_uoh3v")]
-transform = Transform3D(-1.0927846e-07, 0, 0.5, 0, 0.5, 0, -0.5, 0, -1.0927846e-07, -54.20877, 40.2, -9.818321)
-
-[node name="RailFull280" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=1578790035 instance=ExtResource("9_uoh3v")]
-transform = Transform3D(0.5, 0, 8.742276e-08, 0, 0.5, 0, -8.742276e-08, 0, 0.5, -59.20877, 40.2, -15.018318)
-
-[node name="RailFull202" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=233620938 instance=ExtResource("9_uoh3v")]
-transform = Transform3D(0.5, 0, 8.742276e-08, 0, 0.5, 0, -8.742276e-08, 0, 0.5, -149.20877, 40.2, -15.018318)
-
-[node name="RailFull272" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=483521358 instance=ExtResource("9_uoh3v")]
-transform = Transform3D(0.5, 0, 8.742276e-08, 0, 0.5, 0, -8.742276e-08, 0, 0.5, -93.8, 40.2, -15.018)
-
 [node name="RailFull145" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=1214254799 instance=ExtResource("9_uoh3v")]
 transform = Transform3D(-0.5, 0, -1.3113416e-07, 0, 0.5, 0, 1.3113416e-07, 0, -0.5, -188.8, 10.2, -14.8)
 
@@ -4903,6 +5103,15 @@ transform = Transform3D(6.3332934e-08, 0.12940952, -0.4829629, -1.697001e-08, 0.
 
 [node name="RailFull195" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=1616836047 instance=ExtResource("9_uoh3v")]
 transform = Transform3D(6.3332934e-08, 0.12940952, -0.4829629, -1.697001e-08, 0.4829629, 0.12940952, 0.5, 0, 6.556708e-08, -219.17812, 38.909485, -10)
+
+[node name="RailFull107" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=1071442766 instance=ExtResource("9_uoh3v")]
+transform = Transform3D(-0.4829629, 0.12940952, -1.2666587e-07, 0.12940952, 0.4829629, 3.394002e-08, 1.3113416e-07, 0, -0.5, -64.217896, 40.2642, -14.8)
+
+[node name="RailFull199" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=493774666 instance=ExtResource("9_uoh3v")]
+transform = Transform3D(6.3332934e-08, 0.12940952, -0.4829629, -1.697001e-08, 0.4829629, 0.12940952, 0.5, 0, 6.556708e-08, -59.178116, 38.909485, -5)
+
+[node name="RailFull200" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=115235975 instance=ExtResource("9_uoh3v")]
+transform = Transform3D(6.3332934e-08, 0.12940952, -0.4829629, -1.697001e-08, 0.4829629, 0.12940952, 0.5, 0, 6.556708e-08, -59.178116, 38.909485, -10)
 
 [node name="RailFull117" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=1111533311 instance=ExtResource("9_uoh3v")]
 transform = Transform3D(6.556708e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, 6.556708e-08, -224, 10.200001, -25)
@@ -5045,12 +5254,6 @@ transform = Transform3D(6.556708e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, 6.556708e-08, 
 [node name="RailFull175" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=49752082 instance=ExtResource("9_uoh3v")]
 transform = Transform3D(6.556708e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, 6.556708e-08, -154, 40.2, -20.090912)
 
-[node name="RailFull182" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=140849396 instance=ExtResource("9_uoh3v")]
-transform = Transform3D(6.556708e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, 6.556708e-08, -149, 40.2, -5.090912)
-
-[node name="RailFull203" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=1900185107 instance=ExtResource("9_uoh3v")]
-transform = Transform3D(6.556708e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, 6.556708e-08, -149, 40.2, -10.090912)
-
 [node name="RailFull176" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=323268074 instance=ExtResource("9_uoh3v")]
 transform = Transform3D(6.556708e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, 6.556708e-08, -154, 40.2, -25.090912)
 
@@ -5086,12 +5289,6 @@ transform = Transform3D(-1.0927847e-07, 0, 0.5, 0, 0.5, 0, -0.5, 0, -1.0927847e-
 
 [node name="RailFull249" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=2071138116 instance=ExtResource("9_uoh3v")]
 transform = Transform3D(-1.0927847e-07, 0, 0.5, 0, 0.5, 0, -0.5, 0, -1.0927847e-07, -94, 40.2, -20)
-
-[node name="RailFull270" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=846399336 instance=ExtResource("9_uoh3v")]
-transform = Transform3D(-1.0927847e-07, 0, 0.5, 0, 0.5, 0, -0.5, 0, -1.0927847e-07, -99, 40.2, -15)
-
-[node name="RailFull271" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=1880423028 instance=ExtResource("9_uoh3v")]
-transform = Transform3D(-1.0927847e-07, 0, 0.5, 0, 0.5, 0, -0.5, 0, -1.0927847e-07, -99, 40.2, -10)
 
 [node name="RailFull258" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=651481391 instance=ExtResource("9_uoh3v")]
 transform = Transform3D(-1.0927847e-07, 0, 0.5, 0, 0.5, 0, -0.5, 0, -1.0927847e-07, -94, 40.2, -75)
@@ -5375,6 +5572,15 @@ transform = Transform3D(-1.0555489e-07, -0.12940952, 0.4829629, -2.8283349e-08, 
 [node name="RailFull325" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=1993417762 instance=ExtResource("9_uoh3v")]
 transform = Transform3D(-1.0555489e-07, -0.12940952, 0.4829629, -2.8283349e-08, 0.4829629, 0.12940952, -0.5, 0, -1.0927847e-07, -28.828157, 38.909763, -10)
 
+[node name="RailFull332" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=1460862688 instance=ExtResource("9_uoh3v")]
+transform = Transform3D(-0.4829629, -0.12940952, -1.2666587e-07, -0.12940952, 0.4829629, -3.394002e-08, 1.3113416e-07, 0, -0.5, -188.63498, 38.961525, -14.8)
+
+[node name="RailFull357" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=2115289924 instance=ExtResource("9_uoh3v")]
+transform = Transform3D(-1.0555489e-07, -0.12940952, 0.4829629, -2.8283349e-08, 0.4829629, 0.12940952, -0.5, 0, -1.0927847e-07, -188.82816, 38.909763, -15)
+
+[node name="RailFull358" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=286191929 instance=ExtResource("9_uoh3v")]
+transform = Transform3D(-1.0555489e-07, -0.12940952, 0.4829629, -2.8283349e-08, 0.4829629, 0.12940952, -0.5, 0, -1.0927847e-07, -188.82816, 38.909763, -10)
+
 [node name="RailFull164" parent="Environment/BrainJarRoom/ENV/Rails" unique_id=1496358507 instance=ExtResource("9_uoh3v")]
 transform = Transform3D(6.556708e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, 6.556708e-08, -154, 10.200001, -25.090912)
 
@@ -5583,54 +5789,13 @@ transform = Transform3D(6.556708e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, 6.556708e-08, 
 transform = Transform3D(6.556708e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, 6.556708e-08, -64, 10.200001, -60.09091)
 
 [node name="BrainCanopy" parent="Environment/BrainJarRoom/ENV" unique_id=416113135 instance=ExtResource("23_wejp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0, -15)
 
 [node name="BrainBeams" parent="Environment/BrainJarRoom/ENV" unique_id=186136910 instance=ExtResource("25_snsbe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.96237, 0.105831146, -15.051819)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.962, 0, -15.052)
 
 [node name="DoorExit" parent="Environment/BrainJarRoom/ENV" unique_id=863191425 instance=ExtResource("11_a31f2")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 0, 0)
-
-[node name="DropdownCentral" type="Node3D" parent="Environment/BrainJarRoom/ENV" unique_id=2138742513]
-
-[node name="BrainPlatformCorner" parent="Environment/BrainJarRoom/ENV/DropdownCentral" unique_id=1743438253 instance=ExtResource("28_2hrad")]
-transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0, 1, -94, 10.2, -5)
-
-[node name="BrainPlatformCorner2" parent="Environment/BrainJarRoom/ENV/DropdownCentral" unique_id=653425289 instance=ExtResource("28_2hrad")]
-transform = Transform3D(-4.222196e-08, -0.25881904, -0.9659258, -1.131334e-08, 0.9659258, -0.25881904, 1, 0, -4.371139e-08, -94, 10.2, -5)
-
-[node name="RailDiagonal22" parent="Environment/BrainJarRoom/ENV/DropdownCentral" unique_id=304367997 instance=ExtResource("10_e2mff")]
-transform = Transform3D(-4.222196e-08, -0.25881904, -0.9659258, -1.131334e-08, 0.9659258, -0.25881904, 1, 0, -4.371139e-08, -98.85339, 8.879175, -7.4645987)
-
-[node name="RailDiagonal23" parent="Environment/BrainJarRoom/ENV/DropdownCentral" unique_id=179047395 instance=ExtResource("10_e2mff")]
-transform = Transform3D(-4.222196e-08, -0.25881904, -0.9659258, -1.131334e-08, 0.9659258, -0.25881904, 1, 0, -4.371139e-08, -96.37075, 9.544397, -10.029418)
-
-[node name="RailFull208" parent="Environment/BrainJarRoom/ENV/DropdownCentral" unique_id=1769692005 instance=ExtResource("9_uoh3v")]
-transform = Transform3D(-0.4829629, -0.12940952, -1.2666587e-07, -0.12940952, 0.4829629, -3.394002e-08, 1.3113416e-07, 0, -0.5, -98.622536, 8.941032, -14.801604)
-
-[node name="RailFull209" parent="Environment/BrainJarRoom/ENV/DropdownCentral" unique_id=317093648 instance=ExtResource("9_uoh3v")]
-transform = Transform3D(-1.0555488e-07, -0.12940952, 0.4829629, -2.8283347e-08, 0.4829629, 0.12940952, -0.5, 0, -1.0927846e-07, -103.64535, 7.595174, -9.801604)
-
-[node name="DropdownCentral2" type="Node3D" parent="Environment/BrainJarRoom/ENV" unique_id=980970139]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -248, 0, 0)
-
-[node name="BrainPlatformCorner" parent="Environment/BrainJarRoom/ENV/DropdownCentral2" unique_id=1551171368 instance=ExtResource("28_2hrad")]
-transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0, 1, -94, 10.2, -5)
-
-[node name="BrainPlatformCorner2" parent="Environment/BrainJarRoom/ENV/DropdownCentral2" unique_id=1962770365 instance=ExtResource("28_2hrad")]
-transform = Transform3D(-4.222196e-08, -0.25881904, -0.9659258, -1.131334e-08, 0.9659258, -0.25881904, 1, 0, -4.371139e-08, -94, 10.2, -5)
-
-[node name="RailDiagonal22" parent="Environment/BrainJarRoom/ENV/DropdownCentral2" unique_id=1141994600 instance=ExtResource("10_e2mff")]
-transform = Transform3D(-4.222196e-08, -0.25881904, -0.9659258, -1.131334e-08, 0.9659258, -0.25881904, 1, 0, -4.371139e-08, -98.85339, 8.879175, -7.4645987)
-
-[node name="RailDiagonal23" parent="Environment/BrainJarRoom/ENV/DropdownCentral2" unique_id=950621106 instance=ExtResource("10_e2mff")]
-transform = Transform3D(-4.222196e-08, -0.25881904, -0.9659258, -1.131334e-08, 0.9659258, -0.25881904, 1, 0, -4.371139e-08, -96.37075, 9.544397, -10.029418)
-
-[node name="RailFull208" parent="Environment/BrainJarRoom/ENV/DropdownCentral2" unique_id=492619027 instance=ExtResource("9_uoh3v")]
-transform = Transform3D(-0.4829629, -0.12940952, -1.2666587e-07, -0.12940952, 0.4829629, -3.394002e-08, 1.3113416e-07, 0, -0.5, -98.622536, 8.941032, -14.801604)
-
-[node name="RailFull209" parent="Environment/BrainJarRoom/ENV/DropdownCentral2" unique_id=1561633224 instance=ExtResource("9_uoh3v")]
-transform = Transform3D(-1.0555488e-07, -0.12940952, 0.4829629, -2.8283347e-08, 0.4829629, 0.12940952, -0.5, 0, -1.0927846e-07, -103.64535, 7.595174, -9.801604)
 
 [node name="BrainJarComponents" type="Node3D" parent="Environment/BrainJarRoom" unique_id=543131545]
 
@@ -5638,7 +5803,7 @@ transform = Transform3D(-1.0555488e-07, -0.12940952, 0.4829629, -2.8283347e-08, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
 
 [node name="BrainJar" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=561627710 instance=ExtResource("36_mxr2x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0, -15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124.00054, -0.0007839203, -14.999931)
 
 [node name="ReactorPipeL" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=965618633 instance=ExtResource("29_rm42m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
