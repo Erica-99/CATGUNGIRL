@@ -1,14 +1,57 @@
 [gd_scene format=3 uid="uid://ddk1ekr7wnuj1"]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5knwh"]
-data = PackedVector3Array(-1.25, -0.75, 0.5, -1.25, -0.75, -0.5, -1.25, 0.75, -0.5, 1.25, -0.75, -0.5, -1.25, -0.75, -0.5, -1.25, -0.75, 0.5, -1.25, 0.75, -0.5, -1.25, -0.75, -0.5, 1.25, -0.75, -0.5, -1.25, 0.75, -0.5, -1.25, 0.75, 0.5, -1.25, -0.75, 0.5, -1.25, -0.75, 0.5, -1.25, 0.75, 0.5, 1.25, 0.75, 0.5, 1.25, 0.75, 0.5, -1.25, 0.75, 0.5, -1.25, 0.75, -0.5, -1.25, -0.75, 0.5, 1.25, -0.75, 0.5, 1.25, -0.75, -0.5, 1.25, 0.75, 0.5, 1.25, -0.75, 0.5, -1.25, -0.75, 0.5, 1.25, -0.75, -0.5, 1.25, -0.75, 0.5, 1.25, 0.75, 0.5, 1.25, -0.75, -0.5, 1.25, 0.75, -0.5, -1.25, 0.75, -0.5, -1.25, 0.75, -0.5, 1.25, 0.75, -0.5, 1.25, 0.75, 0.5, 1.25, 0.75, 0.5, 1.25, 0.75, -0.5, 1.25, -0.75, -0.5)
+[ext_resource type="ArrayMesh" uid="uid://d4dgsdx13uvju" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/VentilationBlock.obj" id="1_1bunn"]
+[ext_resource type="Texture2D" uid="uid://d2m24d0b2noat" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/VentilationBlock/VentilationBlock_Base_color.png" id="2_wryy6"]
+[ext_resource type="Texture2D" uid="uid://5kytx7ane4hq" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/VentilationBlock/VentilationBlock_Mixed_AO.png" id="3_5m5rs"]
+[ext_resource type="Texture2D" uid="uid://bg3kkdmao7tka" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/VentilationBlock/VentilationBlock_Height.png" id="4_cknqm"]
+[ext_resource type="Texture2D" uid="uid://b534ykb45ecl7" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/VentilationBlock/VentilationBlock_Base_metalness.png" id="5_es25r"]
+[ext_resource type="Texture2D" uid="uid://bfmjqrhc4letw" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/VentilationBlock/VentilationBlock_Normal_OpenGL.png" id="6_sh428"]
+[ext_resource type="Texture2D" uid="uid://bxeie5ytbabxe" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/VentilationBlock/VentilationBlock_Specular_roughness.png" id="7_y48fe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dsqq6"]
+albedo_texture = ExtResource("2_wryy6")
+metallic = 1.0
+metallic_texture = ExtResource("5_es25r")
+roughness_texture = ExtResource("7_y48fe")
+normal_enabled = true
+normal_texture = ExtResource("6_sh428")
+ao_enabled = true
+ao_texture = ExtResource("3_5m5rs")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("4_cknqm")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bocxv"]
+size = Vector3(1.0068359, 0.7292993, 0.5724411)
 
 [node name="VentAirIntake" type="StaticBody3D" unique_id=351188729]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
-[node name="VentAirIntake_Mesh" type="CSGBox3D" parent="." unique_id=2046825450]
-transform = Transform3D(1.5998361, 0, 0, 0, 5.2785974, 0, 0, 0, 3.0571067, 0, -0.39756918, 0)
-size = Vector3(2.5, 1.5, 1)
+[node name="VentilationBlock_Mesh" type="MeshInstance3D" parent="." unique_id=214840959]
+mesh = ExtResource("1_1bunn")
+surface_material_override/0 = SubResource("StandardMaterial3D_dsqq6")
 
-[node name="VentAirIntake_Collision" type="CollisionShape3D" parent="." unique_id=388983846]
-transform = Transform3D(1.5998361, 0, 0, 0, 5.2785974, 0, 0, 0, 3.0571067, 0, -0.39756918, 0)
-shape = SubResource("ConcavePolygonShape3D_5knwh")
+[node name="VentilationBlock_Mesh_01" type="CollisionShape3D" parent="VentilationBlock_Mesh" unique_id=1428219938]
+transform = Transform3D(0.9681367, 0, 0, 0, 1, 0, 0, 0, 1, 0.00044578314, -0.10113716, 0.4946289)
+visible = false
+shape = SubResource("BoxShape3D_bocxv")
+
+[node name="VentilationBlock_Mesh_02" type="CollisionShape3D" parent="VentilationBlock_Mesh" unique_id=1928569436]
+transform = Transform3D(1, 0, 0, 0, 1.3969592, 0, 0, 0, 1, 0.0034179688, -0.505651, -0.5319951)
+visible = false
+shape = SubResource("BoxShape3D_bocxv")
+
+[node name="VentilationBlock_Mesh_03" type="CollisionShape3D" parent="VentilationBlock_Mesh" unique_id=2063154861]
+transform = Transform3D(1, 0, 0, 0, 0.651674, -0.88452387, 0, 1.2356439, 0.46649465, 0.0034179688, -0.92364246, -0.0026361197)
+visible = false
+shape = SubResource("BoxShape3D_bocxv")
+
+[node name="VentilationBlock_Mesh_04" type="CollisionShape3D" parent="VentilationBlock_Mesh" unique_id=1672173134]
+transform = Transform3D(1, 0, 0, 0, 0.99544114, -0.70159346, 0, 0.98009735, 0.7125771, 0.0034179688, 0.86616313, -0.44486782)
+visible = false
+shape = SubResource("BoxShape3D_bocxv")
+
+[node name="VentilationBlock_Mesh_05" type="CollisionShape3D" parent="VentilationBlock_Mesh" unique_id=802932462]
+transform = Transform3D(1, 0, 0, 0, 1.3969557, 0.0021118522, 0, -0.002950251, 0.99999744, 0.0034179688, 0.99593914, -0.7828815)
+visible = false
+shape = SubResource("BoxShape3D_bocxv")
