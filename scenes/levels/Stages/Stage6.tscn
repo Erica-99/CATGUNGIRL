@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://ccgg2t71rdo0l"]
 
 [ext_resource type="PackedScene" uid="uid://wn4bdivbwbsn" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/BrainJarScreenTemplate.tscn" id="2_o5d64"]
-[ext_resource type="Material" uid="uid://b727dofvw1y8h" path="res://art/TechArt/1_Shaders/Spatial/AuraOutline/prefabs/TerminalOutline.tres" id="4_pjbn0"]
 [ext_resource type="ArrayMesh" uid="uid://ce3qpsp68gcft" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/7_BrainJar/BrainJarTerminal.obj" id="5_3q0ox"]
 [ext_resource type="PackedScene" uid="uid://d1isfmus58oku" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/IndustrialLight1.tscn" id="5_coglk"]
 [ext_resource type="PackedScene" uid="uid://btcwaxl38nip5" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeSets/HandlebarSmall.tscn" id="5_mxr2x"]
@@ -511,16 +510,6 @@ shadow_enabled = true
 spot_range = 22.09334
 spot_angle = 69.64401
 
-[node name="SpotLight3D60" type="SpotLight3D" parent="Lighting/TEMP_RoughLighting" unique_id=141879273]
-transform = Transform3D(3.6659994e-08, 0.93823963, 0.34598625, -1.2590559e-07, -0.34598625, 0.93823963, 1, -7.7957466e-08, 1.0544576e-07, 4.850586, 5.612772, -0.027451038)
-light_color = Color(0.999693, 0.07722326, 0.064925425, 1)
-light_energy = 5.386
-light_indirect_energy = 0.1
-light_volumetric_fog_energy = 0.1
-shadow_enabled = true
-spot_range = 22.09334
-spot_angle = 69.64401
-
 [node name="LightingPassPreFight" type="Node3D" parent="Lighting" unique_id=1658237545]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting/LightingPassPreFight" unique_id=2053725858]
@@ -586,7 +575,6 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -179, 10.2, -8)
 
 [node name="BrainJarTerminal_Mesh" type="MeshInstance3D" parent="Interactive/Terminals/TerminalProps/BrainJarTerminal7" unique_id=522974769]
 transform = Transform3D(-2, 0, 3.019916e-07, 0, 2, 0, -3.019916e-07, 0, -2, 0, 0, 0)
-material_overlay = ExtResource("4_pjbn0")
 mesh = ExtResource("5_3q0ox")
 surface_material_override/0 = SubResource("StandardMaterial3D_8oiad")
 
@@ -636,7 +624,6 @@ transform = Transform3D(1.0606601, 0, -1.0606601, 0, 1.5, 0, 1.0606601, 0, 1.060
 
 [node name="BrainJarTerminal_Mesh" type="MeshInstance3D" parent="Interactive/Terminals/TerminalProps/BrainJarTerminal17" unique_id=331250761]
 transform = Transform3D(-2, 0, 3.019916e-07, 0, 2, 0, -3.019916e-07, 0, -2, 0, 0, 0)
-material_overlay = ExtResource("4_pjbn0")
 mesh = ExtResource("5_3q0ox")
 surface_material_override/0 = SubResource("StandardMaterial3D_8oiad")
 
@@ -659,7 +646,6 @@ transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.060
 
 [node name="BrainJarTerminal_Mesh" type="MeshInstance3D" parent="Interactive/Terminals/TerminalProps/BrainJarTerminal18" unique_id=2139451780]
 transform = Transform3D(-2, 0, 3.019916e-07, 0, 2, 0, -3.019916e-07, 0, -2, 0, 0, 0)
-material_overlay = ExtResource("4_pjbn0")
 mesh = ExtResource("5_3q0ox")
 surface_material_override/0 = SubResource("StandardMaterial3D_8oiad")
 
@@ -1219,85 +1205,85 @@ transform = Transform3D(-3.3269593e-08, -0.7611196, -0.6486116, 1, -4.371139e-08
 transform = Transform3D(2.5820503e-08, 0.5907043, -0.80688816, 1, -4.371139e-08, 0, -3.52702e-08, -0.80688816, -0.5907043, -236.44302, 10.8, 5.8418746)
 
 [node name="SteelBeamVertical2" parent="Props/SteelBeams" unique_id=1276827097 instance=ExtResource("34_d3ojd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0.2, -13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5, 0.2, -13)
 
 [node name="SteelBeamVertical18" parent="Props/SteelBeams" unique_id=576910863 instance=ExtResource("34_d3ojd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 10.2, -13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5, 10.2, -13)
 
 [node name="SteelBeamVertical63" parent="Props/SteelBeams" unique_id=210714384 instance=ExtResource("34_d3ojd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 20.2, -13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5, 20.2, -13)
 
 [node name="SteelBeamVertical26" parent="Props/SteelBeams" unique_id=955550646 instance=ExtResource("34_d3ojd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -221, 10.2, -13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -222.5, 10.2, -13)
 
 [node name="SteelBeamVertical66" parent="Props/SteelBeams" unique_id=1984972696 instance=ExtResource("34_d3ojd")]
 transform = Transform3D(0.38235968, -0.8979406, -0.21795407, 0.91920996, 0.39365953, -0.009240147, 0.09409681, -0.19681258, 0.9759153, -231.3125, 30.6927, -10.632635)
 
 [node name="SteelBeamVertical65" parent="Props/SteelBeams" unique_id=1415495317 instance=ExtResource("34_d3ojd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -221, 20.2, -13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -222.5, 20.2, -13)
 
 [node name="SteelBeamVertical8" parent="Props/SteelBeams" unique_id=463642214 instance=ExtResource("34_d3ojd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -156, 0.2, -13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -155.5, 0.2, -13)
 
 [node name="SteelBeamVertical10" parent="Props/SteelBeams" unique_id=1887701720 instance=ExtResource("34_d3ojd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -187, 0.2, -13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -185.5, 0.2, -13)
 
 [node name="SteelBeamVertical12" parent="Props/SteelBeams" unique_id=1644956749 instance=ExtResource("34_d3ojd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -221, 0.2, -13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -222.5, 0.2, -13)
 
 [node name="SteelBeamVertical13" parent="Props/SteelBeams" unique_id=167658249 instance=ExtResource("34_d3ojd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -226, 0.2, -20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -225.5, 0.2, -20)
 
 [node name="SteelBeamVertical14" parent="Props/SteelBeams" unique_id=357302104 instance=ExtResource("34_d3ojd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -226, 0.2, -40)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -225.5, 0.2, -40)
 
 [node name="SteelBeamVertical15" parent="Props/SteelBeams" unique_id=712887385 instance=ExtResource("34_d3ojd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -182, 0.2, -20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -182.5, 0.2, -20)
 
 [node name="SteelBeamVertical16" parent="Props/SteelBeams" unique_id=229910004 instance=ExtResource("34_d3ojd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -182, 0.2, -40)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -182.5, 0.2, -40)
 
 [node name="SteelBeamVertical50" parent="Props/SteelBeams" unique_id=1572321799 instance=ExtResource("34_d3ojd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -156, 0.2, -20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -155.5, 0.2, -20)
 
 [node name="SteelBeamVertical51" parent="Props/SteelBeams" unique_id=322147593 instance=ExtResource("34_d3ojd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -156, 0.2, -40)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -155.5, 0.2, -40)
 
 [node name="SteelBeamVertical54" parent="Props/SteelBeams" unique_id=337196991 instance=ExtResource("34_d3ojd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -182, 0.2, -60)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -182.5, 0.2, -60)
 
 [node name="SteelBeamVertical55" parent="Props/SteelBeams" unique_id=451451243 instance=ExtResource("34_d3ojd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -156, 0.2, -60)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -155.5, 0.2, -60)
 
 [node name="SteelBeamVertical56" parent="Props/SteelBeams" unique_id=1365819641 instance=ExtResource("34_d3ojd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92, 0.2, -20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.5, 0.2, -20)
 
 [node name="SteelBeamVertical57" parent="Props/SteelBeams" unique_id=1248686419 instance=ExtResource("34_d3ojd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92, 0.2, -40)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.5, 0.2, -40)
 
 [node name="SteelBeamVertical58" parent="Props/SteelBeams" unique_id=2055428672 instance=ExtResource("34_d3ojd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66, 0.2, -20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.5, 0.2, -20)
 
 [node name="SteelBeamVertical59" parent="Props/SteelBeams" unique_id=341765622 instance=ExtResource("34_d3ojd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66, 0.2, -40)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.5, 0.2, -40)
 
 [node name="SteelBeamVertical60" parent="Props/SteelBeams" unique_id=644979246 instance=ExtResource("34_d3ojd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92, 0.2, -60)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.5, 0.2, -60)
 
 [node name="SteelBeamVertical61" parent="Props/SteelBeams" unique_id=158937177 instance=ExtResource("34_d3ojd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66, 0.2, -60)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.5, 0.2, -60)
 
 [node name="SteelBeamVertical52" parent="Props/SteelBeams" unique_id=608406101 instance=ExtResource("34_d3ojd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.2, -19.94429)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5, 0.2, -19.94429)
 
 [node name="SteelBeamVertical53" parent="Props/SteelBeams" unique_id=1314717709 instance=ExtResource("34_d3ojd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.2, -39.94429)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5, 0.2, -39.94429)
 
 [node name="SteelBeamVertical4" parent="Props/SteelBeams" unique_id=1003915190 instance=ExtResource("34_d3ojd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61, 0.2, -13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.5, 0.2, -13)
 
 [node name="SteelBeamVertical6" parent="Props/SteelBeams" unique_id=1127787868 instance=ExtResource("34_d3ojd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92, 0.2, -13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.5, 0.2, -13)
 
 [node name="SteelBeamDiagonal" parent="Props/SteelBeams" unique_id=1564578225 instance=ExtResource("35_etvpi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -166, 30.2, -15)
