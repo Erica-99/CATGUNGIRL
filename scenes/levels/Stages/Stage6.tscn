@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dawdwjrkswtqg" path="res://scenes/levels/Stages/panning_camera.gd" id="1_mywdw"]
 [ext_resource type="PackedScene" uid="uid://wn4bdivbwbsn" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/BrainJarScreenTemplate.tscn" id="2_o5d64"]
+[ext_resource type="Script" uid="uid://2cm4kbh0jgjy" path="res://scenes/components/level_components/bossfight/brain_jar_terminal_group.gd" id="4_o5d64"]
 [ext_resource type="PackedScene" uid="uid://d1isfmus58oku" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/IndustrialLight1.tscn" id="5_coglk"]
 [ext_resource type="PackedScene" uid="uid://btcwaxl38nip5" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeSets/HandlebarSmall.tscn" id="5_mxr2x"]
 [ext_resource type="Script" uid="uid://4t3uo3s2mf8e" path="res://scenes/levels/Stages/camera_pan_node.gd" id="7_8vmub"]
@@ -415,70 +416,6 @@ shadow_enabled = true
 spot_range = 84.32649
 spot_angle = 89.99
 
-[node name="SpotLight3D49" type="OmniLight3D" parent="Lighting/TEMP_RoughLighting" unique_id=1084174926]
-transform = Transform3D(1, 0, 0, 0, 0.98993003, 0.14155784, 0, -0.14155784, 0.98993003, -179, 10.991754, -6.9894433)
-light_color = Color(0.6627451, 1, 0.24313726, 1)
-light_energy = 6.02
-light_indirect_energy = 0.1
-light_volumetric_fog_energy = 0.1
-omni_range = 6.6309214
-
-[node name="SpotLight3D52" type="OmniLight3D" parent="Lighting/TEMP_RoughLighting" unique_id=487945059]
-transform = Transform3D(1, 0, 0, 0, 0.98993003, 0.14155784, 0, -0.14155784, 0.98993003, -179, 40.991753, -6.9894433)
-light_color = Color(0.6627451, 1, 0.24313726, 1)
-light_energy = 6.02
-light_indirect_energy = 0.1
-light_volumetric_fog_energy = 0.1
-omni_range = 6.6309214
-
-[node name="SpotLight3D50" type="OmniLight3D" parent="Lighting/TEMP_RoughLighting" unique_id=1866722616]
-transform = Transform3D(1, 0, 0, 0, 0.98993003, 0.14155784, 0, -0.14155784, 0.98993003, -229, 10.991754, -6.9894433)
-light_color = Color(0.6627451, 1, 0.24313726, 1)
-light_energy = 6.02
-light_indirect_energy = 0.1
-light_volumetric_fog_energy = 0.1
-omni_range = 6.6309214
-
-[node name="SpotLight3D51" type="OmniLight3D" parent="Lighting/TEMP_RoughLighting" unique_id=2029162737]
-transform = Transform3D(1, 0, 0, 0, 0.98993003, 0.14155784, 0, -0.14155784, 0.98993003, -229, 40.991753, -6.9894433)
-light_color = Color(0.6627451, 1, 0.24313726, 1)
-light_energy = 6.02
-light_indirect_energy = 0.1
-light_volumetric_fog_energy = 0.1
-omni_range = 6.6309214
-
-[node name="SpotLight3D53" type="OmniLight3D" parent="Lighting/TEMP_RoughLighting" unique_id=197284107]
-transform = Transform3D(1, 0, 0, 0, 0.98993003, 0.14155784, 0, -0.14155784, 0.98993003, -19, 10.991754, -6.9894433)
-light_color = Color(0.6627451, 1, 0.24313726, 1)
-light_energy = 6.02
-light_indirect_energy = 0.1
-light_volumetric_fog_energy = 0.1
-omni_range = 6.6309214
-
-[node name="SpotLight3D54" type="OmniLight3D" parent="Lighting/TEMP_RoughLighting" unique_id=189226701]
-transform = Transform3D(1, 0, 0, 0, 0.98993003, 0.14155784, 0, -0.14155784, 0.98993003, -19, 40.991753, -6.9894433)
-light_color = Color(0.6627451, 1, 0.24313726, 1)
-light_energy = 6.02
-light_indirect_energy = 0.1
-light_volumetric_fog_energy = 0.1
-omni_range = 6.6309214
-
-[node name="SpotLight3D63" type="OmniLight3D" parent="Lighting/TEMP_RoughLighting" unique_id=444134273]
-transform = Transform3D(1, 0, 0, 0, 0.98993003, 0.14155784, 0, -0.14155784, 0.98993003, -69, 10.991754, -6.9894433)
-light_color = Color(0.6627451, 1, 0.24313726, 1)
-light_energy = 6.02
-light_indirect_energy = 0.1
-light_volumetric_fog_energy = 0.1
-omni_range = 6.6309214
-
-[node name="SpotLight3D64" type="OmniLight3D" parent="Lighting/TEMP_RoughLighting" unique_id=1663365354]
-transform = Transform3D(1, 0, 0, 0, 0.98993003, 0.14155784, 0, -0.14155784, 0.98993003, -69, 40.991753, -6.9894433)
-light_color = Color(0.6627451, 1, 0.24313726, 1)
-light_energy = 6.02
-light_indirect_energy = 0.1
-light_volumetric_fog_energy = 0.1
-omni_range = 6.6309214
-
 [node name="LightingPassPreFight" type="Node3D" parent="Lighting" unique_id=1658237545]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting/LightingPassPreFight" unique_id=2053725858]
@@ -500,7 +437,11 @@ omni_range = 7.8113503
 
 [node name="TerminalProps" type="Node3D" parent="Interactive/Terminals" unique_id=2063101417]
 
-[node name="TerminalGroup1" type="Node3D" parent="Interactive/Terminals/TerminalProps" unique_id=10179901]
+[node name="TerminalGroup1" type="Node3D" parent="Interactive/Terminals/TerminalProps" unique_id=10179901 node_paths=PackedStringArray("interaction_console", "terminal_light", "terminal_visuals")]
+script = ExtResource("4_o5d64")
+interaction_console = NodePath("../../InteractiveZones/BrainJarConsole7")
+terminal_light = NodePath("SpotLight3D51")
+terminal_visuals = [NodePath("BrainJarTerminal24"), NodePath("BrainJarTerminal23"), NodePath("BrainJarTerminal6")]
 
 [node name="BrainJarTerminal24" parent="Interactive/Terminals/TerminalProps/TerminalGroup1" unique_id=1172441246 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.0606601, -227, 40.2, -10)
@@ -511,7 +452,19 @@ transform = Transform3D(1.0606601, 0, -1.0606601, 0, 1.5, 0, 1.0606601, 0, 1.060
 [node name="BrainJarTerminal6" parent="Interactive/Terminals/TerminalProps/TerminalGroup1" unique_id=101438954 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -229, 40.2, -8)
 
-[node name="TerminalGroup2" type="Node3D" parent="Interactive/Terminals/TerminalProps" unique_id=85642060]
+[node name="SpotLight3D51" type="OmniLight3D" parent="Interactive/Terminals/TerminalProps/TerminalGroup1" unique_id=2029162737]
+transform = Transform3D(1, 0, 0, 0, 0.98993003, 0.14155784, 0, -0.14155784, 0.98993003, -229, 40.991753, -6.9894433)
+light_color = Color(0.6627451, 1, 0.24313726, 1)
+light_energy = 6.02
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+omni_range = 6.6309214
+
+[node name="TerminalGroup2" type="Node3D" parent="Interactive/Terminals/TerminalProps" unique_id=85642060 node_paths=PackedStringArray("interaction_console", "terminal_light", "terminal_visuals")]
+script = ExtResource("4_o5d64")
+interaction_console = NodePath("../../InteractiveZones/BrainJarConsole5")
+terminal_light = NodePath("SpotLight3D52")
+terminal_visuals = [NodePath("BrainJarTerminal8"), NodePath("BrainJarTerminal19"), NodePath("BrainJarTerminal20")]
 
 [node name="BrainJarTerminal8" parent="Interactive/Terminals/TerminalProps/TerminalGroup2" unique_id=832899734 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -179, 40.2, -8)
@@ -522,7 +475,19 @@ transform = Transform3D(1.0606601, 0, -1.0606601, 0, 1.5, 0, 1.0606601, 0, 1.060
 [node name="BrainJarTerminal20" parent="Interactive/Terminals/TerminalProps/TerminalGroup2" unique_id=97068587 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.0606601, -177, 40.2, -10)
 
-[node name="TerminalGroup3" type="Node3D" parent="Interactive/Terminals/TerminalProps" unique_id=401165618]
+[node name="SpotLight3D52" type="OmniLight3D" parent="Interactive/Terminals/TerminalProps/TerminalGroup2" unique_id=487945059]
+transform = Transform3D(1, 0, 0, 0, 0.98993003, 0.14155784, 0, -0.14155784, 0.98993003, -179, 40.991753, -6.9894433)
+light_color = Color(0.6627451, 1, 0.24313726, 1)
+light_energy = 6.02
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+omni_range = 6.6309214
+
+[node name="TerminalGroup3" type="Node3D" parent="Interactive/Terminals/TerminalProps" unique_id=401165618 node_paths=PackedStringArray("interaction_console", "terminal_light", "terminal_visuals")]
+script = ExtResource("4_o5d64")
+interaction_console = NodePath("../../InteractiveZones/BrainJarConsole3")
+terminal_light = NodePath("SpotLight3D64")
+terminal_visuals = [NodePath("BrainJarTerminal2"), NodePath("BrainJarTerminal16"), NodePath("BrainJarTerminal15")]
 
 [node name="BrainJarTerminal2" parent="Interactive/Terminals/TerminalProps/TerminalGroup3" unique_id=1115267105 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -69, 40.2, -8)
@@ -533,7 +498,19 @@ transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.060
 [node name="BrainJarTerminal15" parent="Interactive/Terminals/TerminalProps/TerminalGroup3" unique_id=1900656630 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.0606601, 0, -1.0606601, 0, 1.5, 0, 1.0606601, 0, 1.0606601, -71, 40.2, -10)
 
-[node name="TerminalGroup4" type="Node3D" parent="Interactive/Terminals/TerminalProps" unique_id=1701303138]
+[node name="SpotLight3D64" type="OmniLight3D" parent="Interactive/Terminals/TerminalProps/TerminalGroup3" unique_id=1663365354]
+transform = Transform3D(1, 0, 0, 0, 0.98993003, 0.14155784, 0, -0.14155784, 0.98993003, -69, 40.991753, -6.9894433)
+light_color = Color(0.6627451, 1, 0.24313726, 1)
+light_energy = 6.02
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+omni_range = 6.6309214
+
+[node name="TerminalGroup4" type="Node3D" parent="Interactive/Terminals/TerminalProps" unique_id=1701303138 node_paths=PackedStringArray("interaction_console", "terminal_light", "terminal_visuals")]
+script = ExtResource("4_o5d64")
+interaction_console = NodePath("../../InteractiveZones/BrainJarConsole")
+terminal_light = NodePath("SpotLight3D54")
+terminal_visuals = [NodePath("BrainJarTerminal4"), NodePath("BrainJarTerminal12"), NodePath("BrainJarTerminal11")]
 
 [node name="BrainJarTerminal4" parent="Interactive/Terminals/TerminalProps/TerminalGroup4" unique_id=1770246225 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -19, 40.2, -8)
@@ -544,7 +521,19 @@ transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.060
 [node name="BrainJarTerminal11" parent="Interactive/Terminals/TerminalProps/TerminalGroup4" unique_id=558333159 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.0606601, 0, -1.0606601, 0, 1.5, 0, 1.0606601, 0, 1.0606601, -21, 40.2, -10)
 
-[node name="TerminalGroup5" type="Node3D" parent="Interactive/Terminals/TerminalProps" unique_id=1084070238]
+[node name="SpotLight3D54" type="OmniLight3D" parent="Interactive/Terminals/TerminalProps/TerminalGroup4" unique_id=189226701]
+transform = Transform3D(1, 0, 0, 0, 0.98993003, 0.14155784, 0, -0.14155784, 0.98993003, -19, 40.991753, -6.9894433)
+light_color = Color(0.6627451, 1, 0.24313726, 1)
+light_energy = 6.02
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+omni_range = 6.6309214
+
+[node name="TerminalGroup5" type="Node3D" parent="Interactive/Terminals/TerminalProps" unique_id=1084070238 node_paths=PackedStringArray("interaction_console", "terminal_light", "terminal_visuals")]
+script = ExtResource("4_o5d64")
+interaction_console = NodePath("../../InteractiveZones/BrainJarConsole8")
+terminal_light = NodePath("SpotLight3D50")
+terminal_visuals = [NodePath("BrainJarTerminal5"), NodePath("BrainJarTerminal22"), NodePath("BrainJarTerminal21")]
 
 [node name="BrainJarTerminal5" parent="Interactive/Terminals/TerminalProps/TerminalGroup5" unique_id=538193210 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -229, 10.2, -8)
@@ -555,7 +544,19 @@ transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.060
 [node name="BrainJarTerminal21" parent="Interactive/Terminals/TerminalProps/TerminalGroup5" unique_id=1224879742 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.0606601, 0, -1.0606601, 0, 1.5, 0, 1.0606601, 0, 1.0606601, -231, 10.2, -10)
 
-[node name="TerminalGroup6" type="Node3D" parent="Interactive/Terminals/TerminalProps" unique_id=1941295873]
+[node name="SpotLight3D50" type="OmniLight3D" parent="Interactive/Terminals/TerminalProps/TerminalGroup5" unique_id=1866722616]
+transform = Transform3D(1, 0, 0, 0, 0.98993003, 0.14155784, 0, -0.14155784, 0.98993003, -229, 10.991754, -6.9894433)
+light_color = Color(0.6627451, 1, 0.24313726, 1)
+light_energy = 6.02
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+omni_range = 6.6309214
+
+[node name="TerminalGroup6" type="Node3D" parent="Interactive/Terminals/TerminalProps" unique_id=1941295873 node_paths=PackedStringArray("interaction_console", "terminal_light", "terminal_visuals")]
+script = ExtResource("4_o5d64")
+interaction_console = NodePath("../../InteractiveZones/BrainJarConsole6")
+terminal_light = NodePath("SpotLight3D49")
+terminal_visuals = [NodePath("BrainJarTerminal7"), NodePath("BrainJarTerminal18"), NodePath("BrainJarTerminal17")]
 
 [node name="BrainJarTerminal7" parent="Interactive/Terminals/TerminalProps/TerminalGroup6" unique_id=355513012 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -179, 10.2, -8)
@@ -566,7 +567,19 @@ transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.060
 [node name="BrainJarTerminal17" parent="Interactive/Terminals/TerminalProps/TerminalGroup6" unique_id=546859960 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.0606601, 0, -1.0606601, 0, 1.5, 0, 1.0606601, 0, 1.0606601, -181, 10.2, -10)
 
-[node name="TerminalGroup7" type="Node3D" parent="Interactive/Terminals/TerminalProps" unique_id=624757043]
+[node name="SpotLight3D49" type="OmniLight3D" parent="Interactive/Terminals/TerminalProps/TerminalGroup6" unique_id=1084174926]
+transform = Transform3D(1, 0, 0, 0, 0.98993003, 0.14155784, 0, -0.14155784, 0.98993003, -179, 10.991754, -6.9894433)
+light_color = Color(0.6627451, 1, 0.24313726, 1)
+light_energy = 6.02
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+omni_range = 6.6309214
+
+[node name="TerminalGroup7" type="Node3D" parent="Interactive/Terminals/TerminalProps" unique_id=624757043 node_paths=PackedStringArray("interaction_console", "terminal_light", "terminal_visuals")]
+script = ExtResource("4_o5d64")
+interaction_console = NodePath("../../InteractiveZones/BrainJarConsole4")
+terminal_light = NodePath("SpotLight3D63")
+terminal_visuals = [NodePath("BrainJarTerminal"), NodePath("BrainJarTerminal14"), NodePath("BrainJarTerminal13")]
 
 [node name="BrainJarTerminal" parent="Interactive/Terminals/TerminalProps/TerminalGroup7" unique_id=366402759 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -69, 10.2, -8)
@@ -577,7 +590,19 @@ transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.060
 [node name="BrainJarTerminal13" parent="Interactive/Terminals/TerminalProps/TerminalGroup7" unique_id=1954858008 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.0606601, 0, -1.0606601, 0, 1.5, 0, 1.0606601, 0, 1.0606601, -71, 10.2, -10)
 
-[node name="TerminalGroup8" type="Node3D" parent="Interactive/Terminals/TerminalProps" unique_id=1210891904]
+[node name="SpotLight3D63" type="OmniLight3D" parent="Interactive/Terminals/TerminalProps/TerminalGroup7" unique_id=444134273]
+transform = Transform3D(1, 0, 0, 0, 0.98993003, 0.14155784, 0, -0.14155784, 0.98993003, -69, 10.991754, -6.9894433)
+light_color = Color(0.6627451, 1, 0.24313726, 1)
+light_energy = 6.02
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+omni_range = 6.6309214
+
+[node name="TerminalGroup8" type="Node3D" parent="Interactive/Terminals/TerminalProps" unique_id=1210891904 node_paths=PackedStringArray("interaction_console", "terminal_light", "terminal_visuals")]
+script = ExtResource("4_o5d64")
+interaction_console = NodePath("../../InteractiveZones/BrainJarConsole2")
+terminal_light = NodePath("SpotLight3D53")
+terminal_visuals = [NodePath("BrainJarTerminal3"), NodePath("BrainJarTerminal10"), NodePath("BrainJarTerminal9")]
 
 [node name="BrainJarTerminal3" parent="Interactive/Terminals/TerminalProps/TerminalGroup8" unique_id=1670510788 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -19, 10.2, -8)
@@ -587,6 +612,14 @@ transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.060
 
 [node name="BrainJarTerminal9" parent="Interactive/Terminals/TerminalProps/TerminalGroup8" unique_id=2123405156 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.0606601, 0, -1.0606601, 0, 1.5, 0, 1.0606601, 0, 1.0606601, -21, 10.2, -10)
+
+[node name="SpotLight3D53" type="OmniLight3D" parent="Interactive/Terminals/TerminalProps/TerminalGroup8" unique_id=197284107]
+transform = Transform3D(1, 0, 0, 0, 0.98993003, 0.14155784, 0, -0.14155784, 0.98993003, -19, 10.991754, -6.9894433)
+light_color = Color(0.6627451, 1, 0.24313726, 1)
+light_energy = 6.02
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
+omni_range = 6.6309214
 
 [node name="InteractiveZones" type="Node3D" parent="Interactive/Terminals" unique_id=1919106703]
 
@@ -652,7 +685,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.028801, 32.55161, 86.37627
 [node name="BrainJar" parent="Enemies" unique_id=1593347133 node_paths=PackedStringArray("terminals") instance=ExtResource("14_wj6kf")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -124, 13.711103, 0)
 visible = false
-terminals = NodePath("../../Interactive/Terminals/InteractiveZones")
+terminals = NodePath("../../Interactive/Terminals/TerminalProps")
 
 [node name="EnemyManager" parent="Enemies" unique_id=18369620 instance=ExtResource("16_h2frl")]
 

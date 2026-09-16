@@ -66,9 +66,7 @@ func _start_fight() -> void:
 	available_terminals.clear()
 	
 	for terminal in terminals.get_children():
-		var interactable = terminal.find_child("InteractableComponent", true, false)
-		
-		if interactable != null:
+		if terminal is BrainJarTerminalGroup:
 			available_terminals.append(terminal)
 	
 	available_terminals.shuffle()
@@ -86,17 +84,39 @@ func _start_current_phase() -> void:
 	var terminal_amount := mini(phase.terminal_count, available_terminals.size())
 	
 	for _i in range(terminal_amount):
-		var terminal: Node = available_terminals.pop_back()
-		var interactable = terminal.find_child("InteractableComponent", true, false)
+		var terminal_group: BrainJarTerminalGroup = (available_terminals.pop_back() as BrainJarTerminalGroup)
+		
+		if terminal_group == null:
+			continue
+		
+		var interactable: Node = (terminal_group.get_interactable_component())
+		
+		if interactable == null:
+			push_warning(terminal_group.name +" has no interaction console assigned.")
+			continue
+		
+		interactable.set("enabled", true)
+		terminal_group.set_active_visual(true)
+		active_terminals.append(terminal_group)
+
+func _on_terminal_activated() -> void:
+	activated_terminal_count += 1
+	call_deferred("_update_terminal_visual_states")
+	
+	if activated_terminal_count >= active_terminals.size():
+		_disable_shields()
+
+func _update_terminal_visual_states() -> void:
+	for terminal in active_terminals:
+		var terminal_group := terminal as BrainJarTerminalGroup
+		
+		if terminal_group == null:
+			continue
+		
+		var interactable: Node = (terminal_group.get_interactable_component())
 		
 		if interactable == null:
 			continue
 		
-		interactable.enabled = true
-		active_terminals.append(terminal)
-
-func _on_terminal_activated() -> void:
-	activated_terminal_count += 1
-	
-	if activated_terminal_count >= active_terminals.size():
-		_disable_shields()
+		if interactable.get("enabled") == false:
+			terminal_group.set_active_visual(false)
