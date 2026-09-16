@@ -33,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://bihvrgq70v1mq" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/4_Laboratory/RoofLaboratory.tscn" id="21_4qvx5"]
 [ext_resource type="PackedScene" uid="uid://bls076phgmcus" path="res://scenes/actors/enemies/scrub/scrub.tscn" id="21_dgb42"]
 [ext_resource type="PackedScene" uid="uid://b57sm0u8nmkgd" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/4_Laboratory/DoorwaySingleBaseLaboratory.tscn" id="22_mnn55"]
+[ext_resource type="PackedScene" uid="uid://c7wdqebqhqbuu" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorLargeBasic.tscn" id="26_5csjs"]
 [ext_resource type="PackedScene" uid="uid://ckjadvesqstsq" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/PrisonCell(Docile).tscn" id="27_6hxm8"]
 [ext_resource type="PackedScene" uid="uid://dbm4o7gs6g22" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorLargeBasic(Locked).tscn" id="29_yi4fc"]
 [ext_resource type="PackedScene" uid="uid://dablnp31mjysx" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/LabDrawersCorner.tscn" id="30_yi4fc"]
@@ -405,7 +406,7 @@ omni_range = 120.03847
 [node name="LabRoom" type="Node3D" parent="Lighting" unique_id=1484342102]
 
 [node name="CeilingLight1" type="OmniLight3D" parent="Lighting/LabRoom" unique_id=1422560380]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.009304047, 7.910469, 0)
+transform = Transform3D(0.9989265, 2.0247952e-09, -0.046321914, 0.046321914, -4.366447e-08, 0.9989265, 3.1570777e-17, -1, -4.3711392e-08, 0.33737135, 6.488505, 0)
 light_color = Color(0.7612285, 0.82377905, 0.8003766, 1)
 light_energy = 10.0
 light_specular = 0.128
@@ -2317,9 +2318,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -215, 0, 0)
 [node name="DoorExit" parent="Environment/Walls" unique_id=1999725414 instance=ExtResource("17_1nyol")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5, 0, 0)
 
-[node name="DoorExit2" parent="Environment/Walls" unique_id=1492701593 instance=ExtResource("17_1nyol")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 15, 8, 0)
-
 [node name="DoorExit4" parent="Environment/Walls" unique_id=1162159405 instance=ExtResource("17_1nyol")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -215, 16.579865, -20)
 
@@ -2329,6 +2327,12 @@ enemy_manager = NodePath("../../../Enemies/Room One")
 
 [node name="DoorBasicLocked" parent="Environment/Walls" unique_id=1074070208 instance=ExtResource("17_yf8gh")]
 transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, -5, 0, -5)
+
+[node name="DoorBasicLocked2" parent="Environment/Walls" unique_id=1555562335 instance=ExtResource("17_yf8gh")]
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 15, 8.4, 0)
+
+[node name="DoorLargeBasic6" parent="Environment/Walls" unique_id=1648709815 instance=ExtResource("26_5csjs")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -165, 0, 0)
 
 [node name="Platforms_Floors" type="Node3D" parent="Environment" unique_id=897761426]
 
@@ -2427,7 +2431,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -110, 0, -20)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -20, 8.4, 0)
 
 [node name="FloorLaboratory5" parent="Environment/Platforms_Floors/FloorLaboratory" unique_id=1913713396 instance=ExtResource("20_kuog2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10, 8.4, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 11.447732, 8.4, 0)
 
 [node name="FloorLaboratory36" parent="Environment/Platforms_Floors/FloorLaboratory" unique_id=1447399936 instance=ExtResource("20_kuog2")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -180, 0, 0)
@@ -4708,7 +4712,7 @@ transform = Transform3D(-2, 0, 0, 0, 2, 0, 0, 0, 2, -150, 33.6, -230)
 transform = Transform3D(-2, 0, 0, 0, 2, 0, 0, 0, 2, -150, 33.6, -230)
 
 [node name="FloorMeshEdgeBroken" parent="Environment/Platforms_Floors" unique_id=1129230683 instance=ExtResource("61_huagb")]
-transform = Transform3D(1.9318516, 0.5176381, 0, -0.5176381, 1.9318516, 0, 0, 0, 2, -160, 7.0675774, 0)
+transform = Transform3D(1.984212, 0.250805, 0, -0.250805, 1.984212, 0, 0, 0, 2, -160, 7.756504, 0)
 
 [node name="FloorMeshEdgeBroken2" parent="Environment/Platforms_Floors" unique_id=1486634821 instance=ExtResource("61_huagb")]
 transform = Transform3D(-2, 0, -1.7484555e-07, -2.9796459e-08, 1.9707447, 0.34083182, 1.7228795e-07, 0.34083182, -1.9707447, -140, 7.5465717, -0.040826797)
@@ -4720,10 +4724,10 @@ transform = Transform3D(1.9318516, 0.5176381, 0, -0.5176381, 1.9318516, 0, 0, 0,
 transform = Transform3D(-2, 0, -1.7484555e-07, -2.9796459e-08, 1.9707447, 0.34083182, 1.7228795e-07, 0.34083182, -1.9707447, -85, 7.5465717, -0.040826797)
 
 [node name="FloorBrokenSideLaboratory" parent="Environment/Platforms_Floors" unique_id=299416912 instance=ExtResource("10_yi4fc")]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, -10, 8.4, 0)
+transform = Transform3D(-1.9863291, 0.23344548, -1.736504e-07, 0.23344548, 1.9863291, 2.0408452e-08, 1.7484555e-07, 0, -2, -10.225763, 7.8282146, 0)
 
 [node name="FloorBrokenSideLaboratory2" parent="Environment/Platforms_Floors" unique_id=484545672 instance=ExtResource("10_yi4fc")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 8.4, 0)
+transform = Transform3D(1.97212, -0.3327803, 0, 0.3327803, 1.97212, 0, 0, 0, 2, 1.5754801, 7.582537, 0)
 
 [node name="Roof" type="Node3D" parent="Environment" unique_id=1829327165]
 
@@ -6390,7 +6394,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -130, 48.478138, -159)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -61, 48.478138, -159)
 
 [node name="LightCeiling" parent="Props/LightBased" unique_id=1312508579 instance=ExtResource("60_2e20y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+transform = Transform3D(0.91446596, -0.40466282, 0, 0.40466282, 0.91446596, 0, 0, 0, 1, 0.32393003, 6.5775094, 0)
 
 [node name="LightCeiling2" parent="Props/LightBased" unique_id=118708889 instance=ExtResource("60_2e20y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 8, 0)

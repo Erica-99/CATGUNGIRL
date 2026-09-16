@@ -28,12 +28,33 @@ data = PackedVector3Array(2.0012, 0.099999994, 2.4991, 2.0012, 0.099999994, 1.66
 [node name="RoofBrokenWareHouse" type="StaticBody3D" unique_id=1395048681]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
+[node name="RebarCentre_Mesh" type="MeshInstance3D" parent="." unique_id=1255668307]
+mesh = ExtResource("2_cve6m")
+
 [node name="RoofBrokenWareHouse_Mesh" type="MeshInstance3D" parent="." unique_id=60989743]
 mesh = ExtResource("1_taa3n")
 surface_material_override/0 = SubResource("StandardMaterial3D_4acnd")
 
 [node name="RoofBrokenWareHouse_Collision" type="CollisionShape3D" parent="." unique_id=549744706]
+visible = false
 shape = SubResource("ConcavePolygonShape3D_hj0iv")
 
-[node name="RebarCentre" type="MeshInstance3D" parent="." unique_id=1255668307]
-mesh = ExtResource("2_cve6m")
+[node name="RoofBrokenWareHouse_CollisionGPU_01" type="GPUParticlesCollisionBox3D" parent="." unique_id=1112594174]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.939621, 0.0011291504, -0.003540039)
+visible = false
+size = Vector3(1.1167297, 0.19671631, 4.9958496)
+
+[node name="RoofBrokenWareHouse_CollisionGPU_02" type="GPUParticlesCollisionBox3D" parent="." unique_id=770896357]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9423227, 0.0011291504, -0.003540039)
+visible = false
+size = Vector3(1.1167297, 0.19671631, 4.9958496)
+
+[node name="RoofBrokenWareHouse_CollisionGPU_03" type="GPUParticlesCollisionBox3D" parent="." unique_id=2096733289]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009282112, 0.0011291504, -1.7615051)
+visible = false
+size = Vector3(2.771614, 0.19671631, 1.4799194)
+
+[node name="RoofBrokenWareHouse_CollisionGPU_04" type="GPUParticlesCollisionBox3D" parent="." unique_id=1191035382]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009282112, 0.0011291504, 1.7917953)
+visible = false
+size = Vector3(2.771614, 0.19671631, 1.4025574)

@@ -54,6 +54,7 @@ surface_material_override/2 = SubResource("StandardMaterial3D_b47nn")
 
 [node name="BrainReactor_Collision" type="CollisionShape3D" parent="." unique_id=317077631]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.5357599, 17.292715, 0.535758)
+visible = false
 shape = SubResource("BoxShape3D_u6aye")
 
 [node name="SpotLight3D44" type="OmniLight3D" parent="." unique_id=1122774701]
@@ -63,5 +64,14 @@ light_energy = 0.985
 light_indirect_energy = 0.1
 light_volumetric_fog_energy = 0.1
 shadow_enabled = true
+shadow_blur = 2.333
+omni_range = 31.283148
+
+[node name="SpotLight3D45" type="OmniLight3D" parent="." unique_id=1320633305]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 34.223198, 0)
+light_color = Color(4.8571644, 2.5281954, 0, 1)
+light_energy = 0.985
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
 shadow_blur = 2.333
 omni_range = 31.283148
