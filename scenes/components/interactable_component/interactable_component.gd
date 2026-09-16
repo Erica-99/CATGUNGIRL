@@ -26,7 +26,6 @@ func _ready() -> void:
 	
 	if interactable_type == Enums.InteractableType.BRAIN_TERMINAL:
 		enabled = false
-		EventManager.shield_enabled_status.connect(_handle_shield_changes)
 		#EventManager.room_cleared.connect(_handle_adds_changes)
 
 func _calculate_interaction_zone(is_using_obj_asset: bool = true):
@@ -62,6 +61,7 @@ func _process(delta: float) -> void:
 			if current_player_status["interacting"]:
 				if event_trigger != null:
 					event_trigger._emit_signal()
+					player_reference.input_component._interacting = false
 					
 					if event_trigger._one_shot:
 						enabled = false

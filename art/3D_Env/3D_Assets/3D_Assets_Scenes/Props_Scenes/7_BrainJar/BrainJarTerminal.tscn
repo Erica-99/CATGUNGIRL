@@ -2,9 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://ce3qpsp68gcft" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/7_BrainJar/BrainJarTerminal.obj" id="1_dnykt"]
 [ext_resource type="Texture2D" uid="uid://cw1jubtsb8pbj" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Terminal/On/BrainJarTerminal_DefaultMaterial_BaseColor.png" id="2_1a03a"]
-[ext_resource type="PackedScene" uid="uid://ou3g778y2q8g" path="res://scenes/components/interactable_component/interactable_component.tscn" id="2_se4xh"]
 [ext_resource type="Texture2D" uid="uid://cmt6820pw8dn4" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Terminal/On/BrainJarTerminal_DefaultMaterial_Emissive.png" id="3_0nt7d"]
-[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="3_36cpf"]
 [ext_resource type="Texture2D" uid="uid://c7ln6yckke3vg" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Terminal/On/BrainJarTerminal_DefaultMaterial_Metallic.png" id="4_7iucu"]
 [ext_resource type="Texture2D" uid="uid://n5m5onbyyl7p" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Terminal/On/BrainJarTerminal_DefaultMaterial_Normal.png" id="5_rut6d"]
 [ext_resource type="Texture2D" uid="uid://bxdywwj1giatf" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Terminal/On/BrainJarTerminal_DefaultMaterial_Roughness.png" id="6_escjg"]
@@ -30,15 +28,6 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 transform = Transform3D(-2, 0, 3.019916e-07, 0, 2, 0, -3.019916e-07, 0, -2, 0, 0, 0)
 mesh = ExtResource("1_dnykt")
 surface_material_override/0 = SubResource("StandardMaterial3D_8oiad")
-
-[node name="InteractableComponent" parent="BrainJarTerminal_Mesh" unique_id=2140039813 node_paths=PackedStringArray("event_trigger") instance=ExtResource("2_se4xh")]
-interactable_type = 3
-event_trigger = NodePath("EventTrigger")
-enabled = false
-
-[node name="EventTrigger" parent="BrainJarTerminal_Mesh/InteractableComponent" unique_id=1311781014 instance=ExtResource("3_36cpf")]
-_signal_parameters = [false]
-signal_name = "shield_enabled_status"
 
 [node name="BrainJarTerminal_Collision" type="CollisionShape3D" parent="." unique_id=83825867]
 transform = Transform3D(-2, 0, 3.019916e-07, 0, 2, 0, -3.019916e-07, 0, -2, 0, 0, 0)

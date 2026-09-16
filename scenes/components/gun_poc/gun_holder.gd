@@ -44,7 +44,7 @@ func _ready() -> void:
 	EventManager.new_gun_equipped.emit(current_gun.gun_name)
 	EventManager.new_mag_loaded.emit(current_gun._current_ammo, current_gun.ammo_max)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var current_input_state = input_component.get_input_state()
 	# Switch to next gun (Pistol -> Shotgun -> Sniper)
 	if current_input_state.get("switch_gun", false):
@@ -66,6 +66,11 @@ func _switch_gun(slot_num: int):
 	if not allow_swapping:
 		return
 	
+	current_child_count = get_child_count()
+
+	if current_child_count <= 0 or current_gun == null:
+		return
+	
 	# For "next gun" swap (Q)
 	if slot_num < 0:
 		current_gun_index += 1
@@ -74,10 +79,11 @@ func _switch_gun(slot_num: int):
 	# For specific swap (1,2,3)
 	else:
 		# Don't swap to current gun
-		if slot_num == current_gun_index:
+		if slot_num >= current_child_count or slot_num == current_gun_index:
 			return
 		else:
 			current_gun_index = slot_num
+		
 	var rotation_save = current_gun.rotation.z
 	_deactivate_gun()
 	current_gun = get_child(current_gun_index)
@@ -89,6 +95,55 @@ func _switch_gun(slot_num: int):
 	
 	EventManager.new_gun_equipped.emit(current_gun.gun_name)
 	EventManager.new_mag_loaded.emit(current_gun._current_ammo, current_gun.ammo_max)
+
+func sacrifice_gun(sacrificed_gun: Gun) -> void:
+	if !is_instance_valid(sacrificed_gun):
+		return
+	
+	if sacrificed_gun.get_parent() != self:
+		return
+	
+	var sacrificed_name: String = sacrificed_gun.gun_name
+	var was_current_gun: bool = sacrificed_gun == current_gun
+	var removed_index: int = sacrificed_gun.get_index()
+	var rotation_save: float = sacrificed_gun.rotation.z
+	
+	if was_current_gun:
+		_deactivate_gun()
+		current_gun = null
+	
+	remove_child(sacrificed_gun)
+	sacrificed_gun.queue_free()
+	current_child_count = get_child_count()
+	
+	if current_child_count <= 0:
+		current_gun = null
+		current_gun_index = 0
+		allow_swapping = false
+		EventManager.enable_gun_ui.emit(false)
+	
+	elif was_current_gun:
+		current_gun_index = removed_index
+		
+		if current_gun_index >= current_child_count:
+			current_gun_index = 0
+		
+		current_gun = get_child(current_gun_index) as Gun
+		current_gun.rotation.z = rotation_save
+		current_gun._aim_angle = rotation_save
+		_activate_gun()
+		
+		EventManager.new_gun_equipped.emit(current_gun.gun_name)
+		EventManager.new_mag_loaded.emit(
+			current_gun._current_ammo,
+			current_gun.ammo_max
+		)
+	
+	else:
+		#the equipped gun remains active but its child index gets shifted
+		current_gun_index = current_gun.get_index()
+	
+	EventManager.gun_sacrificed.emit(sacrificed_name)
 
 func _deactivate_gun():
 	current_gun.active = false

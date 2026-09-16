@@ -1,13 +1,11 @@
 [gd_scene format=3 uid="uid://ccgg2t71rdo0l"]
 
+[ext_resource type="Script" uid="uid://dawdwjrkswtqg" path="res://scenes/levels/Stages/panning_camera.gd" id="1_mywdw"]
 [ext_resource type="PackedScene" uid="uid://wn4bdivbwbsn" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/BrainJarScreenTemplate.tscn" id="2_o5d64"]
 [ext_resource type="ArrayMesh" uid="uid://ce3qpsp68gcft" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/7_BrainJar/BrainJarTerminal.obj" id="5_3q0ox"]
 [ext_resource type="PackedScene" uid="uid://d1isfmus58oku" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/IndustrialLight1.tscn" id="5_coglk"]
 [ext_resource type="PackedScene" uid="uid://btcwaxl38nip5" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeSets/HandlebarSmall.tscn" id="5_mxr2x"]
-[ext_resource type="Texture2D" uid="uid://cw1jubtsb8pbj" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Terminal/On/BrainJarTerminal_DefaultMaterial_BaseColor.png" id="6_tdm0h"]
-[ext_resource type="Texture2D" uid="uid://cmt6820pw8dn4" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Terminal/On/BrainJarTerminal_DefaultMaterial_Emissive.png" id="7_g8f1e"]
-[ext_resource type="Texture2D" uid="uid://c7ln6yckke3vg" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Terminal/On/BrainJarTerminal_DefaultMaterial_Metallic.png" id="8_b5j8h"]
-[ext_resource type="Texture2D" uid="uid://n5m5onbyyl7p" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Terminal/On/BrainJarTerminal_DefaultMaterial_Normal.png" id="9_k126o"]
+[ext_resource type="Script" uid="uid://4t3uo3s2mf8e" path="res://scenes/levels/Stages/camera_pan_node.gd" id="7_8vmub"]
 [ext_resource type="PackedScene" uid="uid://br8eqclc5secj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/Rails/RailFull.tscn" id="9_uoh3v"]
 [ext_resource type="Texture2D" uid="uid://bxdywwj1giatf" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Terminal/On/BrainJarTerminal_DefaultMaterial_Roughness.png" id="10_7peoo"]
 [ext_resource type="PackedScene" uid="uid://bpjabu4plwqym" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/Rails/RailDiagonal.tscn" id="10_e2mff"]
@@ -100,19 +98,8 @@ volumetric_fog_density = 0.0643
 volumetric_fog_albedo = Color(0, 0, 0, 1)
 volumetric_fog_length = 276.11
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8oiad"]
-albedo_texture = ExtResource("6_tdm0h")
-metallic = 1.0
-metallic_texture = ExtResource("8_b5j8h")
-roughness_texture = ExtResource("10_7peoo")
-emission_enabled = true
-emission_energy_multiplier = 5.0
-emission_texture = ExtResource("7_g8f1e")
-normal_enabled = true
-normal_texture = ExtResource("9_k126o")
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dnykt"]
-points = PackedVector3Array(-0.356143, 0.010629859, -0.33937576, -0.3435232, 0.010629859, -0.350066, -0.3435232, -5e-06, -0.33937576, -0.356143, 0.010629859, 0.3393178, -0.356143, 1.402537, -0.33944428, 0.34345347, 0.010629859, -0.350066, -0.3435232, 1.421008, -0.350066, -0.3435232, -5e-06, 0.3393178, 0.34345347, -5e-06, -0.33937576, -0.3435232, 0.010629859, 0.34993953, -0.356143, 1.2746388, 0.3393178, -0.356143, 1.4184892, -0.33944428, 0.356143, 0.010629859, -0.33937576, 0.34345347, 1.421008, -0.350066, 0.356143, 1.402537, -0.33944428, -0.3435232, 1.4295439, -0.3397184, 0.34345347, -5e-06, 0.3393178, 0.34345347, 0.010629859, 0.34993953, -0.15847945, 1.2213246, 0.35000807, -0.3435232, 1.2725399, 0.34993953, -0.3435232, 1.2854136, 0.33959192, -0.356143, 1.3280929, 0.08741176, 0.356143, 0.010629859, 0.3393178, 0.34345347, 1.4295439, -0.3397184, 0.356143, 1.4184892, -0.33944428, 0.34345347, 1.2725399, 0.34993953, 0.15840971, 1.2213246, 0.35000807, -0.15840973, 1.2725399, 0.35000807, 0.34345347, 1.2854136, 0.33959192, 0.356143, 1.2746388, 0.3393178, 0.356143, 1.3280929, 0.08741176, 0.15833998, 1.2725399, 0.35000807)
+[sub_resource type="BoxShape3D" id="BoxShape3D_o5d64"]
+size = Vector3(20.489685, 17.532715, 13.72467)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8vmub"]
 size = Vector3(12.6278105, 1.7686896, 3.8273802)
@@ -224,6 +211,18 @@ _data = {
 }
 
 [node name="Stage6" type="Node3D" unique_id=1033722064]
+
+[node name="RailCamera" type="Node3D" parent="." unique_id=1204773297]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.623193, 31.221176)
+script = ExtResource("1_mywdw")
+default_offset = Vector3(0, 5, 30)
+Player_Target_Ratio = 0.4
+
+[node name="Camera" type="Camera3D" parent="RailCamera" unique_id=1522276125]
+
+[node name="PlayerCamTarget" type="Node3D" parent="RailCamera" unique_id=412088629]
+
+[node name="Player_rotation_pivot" type="Node3D" parent="RailCamera" unique_id=47312281]
 
 [node name="Player" parent="." unique_id=1349193765 instance=ExtResource("13_7yaim")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124, 2.14, 0)
@@ -509,134 +508,93 @@ omni_range = 7.8113503
 
 [node name="TerminalProps" type="Node3D" parent="Interactive/Terminals" unique_id=2063101417]
 
-[node name="BrainJarTerminal" parent="Interactive/Terminals/TerminalProps" unique_id=366402759 instance=ExtResource("31_oxwui")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -69, 10.2, -8)
+[node name="TerminalGroup1" type="Node3D" parent="Interactive/Terminals/TerminalProps" unique_id=10179901]
 
-[node name="BrainJarTerminal2" parent="Interactive/Terminals/TerminalProps" unique_id=1115267105 instance=ExtResource("31_oxwui")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -69, 40.2, -8)
+[node name="BrainJarTerminal24" parent="Interactive/Terminals/TerminalProps/TerminalGroup1" unique_id=1172441246 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.0606601, -227, 40.2, -10)
 
-[node name="BrainJarTerminal3" parent="Interactive/Terminals/TerminalProps" unique_id=1670510788 instance=ExtResource("31_oxwui")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -19, 10.2, -8)
-
-[node name="BrainJarTerminal4" parent="Interactive/Terminals/TerminalProps" unique_id=1770246225 instance=ExtResource("31_oxwui")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -19, 40.2, -8)
-
-[node name="BrainJarTerminal5" parent="Interactive/Terminals/TerminalProps" unique_id=538193210 instance=ExtResource("31_oxwui")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -229, 10.2, -8)
-
-[node name="BrainJarTerminal6" parent="Interactive/Terminals/TerminalProps" unique_id=101438954 instance=ExtResource("31_oxwui")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -229, 40.2, -8)
-
-[node name="BrainJarTerminal7" type="StaticBody3D" parent="Interactive/Terminals/TerminalProps" unique_id=355513012]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -179, 10.2, -8)
-
-[node name="BrainJarTerminal_Mesh" type="MeshInstance3D" parent="Interactive/Terminals/TerminalProps/BrainJarTerminal7" unique_id=522974769]
-transform = Transform3D(-2, 0, 3.019916e-07, 0, 2, 0, -3.019916e-07, 0, -2, 0, 0, 0)
-mesh = ExtResource("5_3q0ox")
-surface_material_override/0 = SubResource("StandardMaterial3D_8oiad")
-
-[node name="InteractableComponent" parent="Interactive/Terminals/TerminalProps/BrainJarTerminal7/BrainJarTerminal_Mesh" unique_id=2140039813 node_paths=PackedStringArray("event_trigger") instance=ExtResource("11_b08dn")]
-interactable_type = 3
-event_trigger = NodePath("EventTrigger")
-enabled = false
-
-[node name="EventTrigger" parent="Interactive/Terminals/TerminalProps/BrainJarTerminal7/BrainJarTerminal_Mesh/InteractableComponent" unique_id=1311781014 instance=ExtResource("12_waufx")]
-_signal_parameters = [false]
-signal_name = "shield_enabled_status"
-
-[node name="BrainJarTerminal_Collision" type="CollisionShape3D" parent="Interactive/Terminals/TerminalProps/BrainJarTerminal7" unique_id=83825867]
-transform = Transform3D(-2, 0, 3.019916e-07, 0, 2, 0, -3.019916e-07, 0, -2, 0, 0, 0)
-visible = false
-shape = SubResource("ConvexPolygonShape3D_dnykt")
-
-[node name="BrainJarTerminal8" parent="Interactive/Terminals/TerminalProps" unique_id=832899734 instance=ExtResource("31_oxwui")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -179, 40.2, -8)
-
-[node name="BrainJarTerminal9" parent="Interactive/Terminals/TerminalProps" unique_id=2123405156 instance=ExtResource("31_oxwui")]
-transform = Transform3D(1.0606601, 0, -1.0606601, 0, 1.5, 0, 1.0606601, 0, 1.0606601, -21, 10.2, -10)
-
-[node name="BrainJarTerminal10" parent="Interactive/Terminals/TerminalProps" unique_id=2070626455 instance=ExtResource("31_oxwui")]
-transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.0606601, -17, 10.2, -10)
-
-[node name="BrainJarTerminal11" parent="Interactive/Terminals/TerminalProps" unique_id=558333159 instance=ExtResource("31_oxwui")]
-transform = Transform3D(1.0606601, 0, -1.0606601, 0, 1.5, 0, 1.0606601, 0, 1.0606601, -21, 40.2, -10)
-
-[node name="BrainJarTerminal12" parent="Interactive/Terminals/TerminalProps" unique_id=1174995437 instance=ExtResource("31_oxwui")]
-transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.0606601, -17, 40.2, -10)
-
-[node name="BrainJarTerminal13" parent="Interactive/Terminals/TerminalProps" unique_id=1954858008 instance=ExtResource("31_oxwui")]
-transform = Transform3D(1.0606601, 0, -1.0606601, 0, 1.5, 0, 1.0606601, 0, 1.0606601, -71, 10.2, -10)
-
-[node name="BrainJarTerminal14" parent="Interactive/Terminals/TerminalProps" unique_id=1992031895 instance=ExtResource("31_oxwui")]
-transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.0606601, -67, 10.2, -10)
-
-[node name="BrainJarTerminal15" parent="Interactive/Terminals/TerminalProps" unique_id=1900656630 instance=ExtResource("31_oxwui")]
-transform = Transform3D(1.0606601, 0, -1.0606601, 0, 1.5, 0, 1.0606601, 0, 1.0606601, -71, 40.2, -10)
-
-[node name="BrainJarTerminal16" parent="Interactive/Terminals/TerminalProps" unique_id=196257627 instance=ExtResource("31_oxwui")]
-transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.0606601, -67, 40.2, -10)
-
-[node name="BrainJarTerminal17" type="StaticBody3D" parent="Interactive/Terminals/TerminalProps" unique_id=546859960]
-transform = Transform3D(1.0606601, 0, -1.0606601, 0, 1.5, 0, 1.0606601, 0, 1.0606601, -181, 10.2, -10)
-
-[node name="BrainJarTerminal_Mesh" type="MeshInstance3D" parent="Interactive/Terminals/TerminalProps/BrainJarTerminal17" unique_id=331250761]
-transform = Transform3D(-2, 0, 3.019916e-07, 0, 2, 0, -3.019916e-07, 0, -2, 0, 0, 0)
-mesh = ExtResource("5_3q0ox")
-surface_material_override/0 = SubResource("StandardMaterial3D_8oiad")
-
-[node name="InteractableComponent" parent="Interactive/Terminals/TerminalProps/BrainJarTerminal17/BrainJarTerminal_Mesh" unique_id=514121652 node_paths=PackedStringArray("event_trigger") instance=ExtResource("11_b08dn")]
-interactable_type = 3
-event_trigger = NodePath("EventTrigger")
-enabled = false
-
-[node name="EventTrigger" parent="Interactive/Terminals/TerminalProps/BrainJarTerminal17/BrainJarTerminal_Mesh/InteractableComponent" unique_id=120433972 instance=ExtResource("12_waufx")]
-_signal_parameters = [false]
-signal_name = "shield_enabled_status"
-
-[node name="BrainJarTerminal_Collision" type="CollisionShape3D" parent="Interactive/Terminals/TerminalProps/BrainJarTerminal17" unique_id=810200307]
-transform = Transform3D(-2, 0, 3.019916e-07, 0, 2, 0, -3.019916e-07, 0, -2, 0, 0, 0)
-visible = false
-shape = SubResource("ConvexPolygonShape3D_dnykt")
-
-[node name="BrainJarTerminal18" type="StaticBody3D" parent="Interactive/Terminals/TerminalProps" unique_id=1362434122]
-transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.0606601, -177, 10.2, -10)
-
-[node name="BrainJarTerminal_Mesh" type="MeshInstance3D" parent="Interactive/Terminals/TerminalProps/BrainJarTerminal18" unique_id=2139451780]
-transform = Transform3D(-2, 0, 3.019916e-07, 0, 2, 0, -3.019916e-07, 0, -2, 0, 0, 0)
-mesh = ExtResource("5_3q0ox")
-surface_material_override/0 = SubResource("StandardMaterial3D_8oiad")
-
-[node name="InteractableComponent" parent="Interactive/Terminals/TerminalProps/BrainJarTerminal18/BrainJarTerminal_Mesh" unique_id=607417731 node_paths=PackedStringArray("event_trigger") instance=ExtResource("11_b08dn")]
-interactable_type = 3
-event_trigger = NodePath("EventTrigger")
-enabled = false
-
-[node name="EventTrigger" parent="Interactive/Terminals/TerminalProps/BrainJarTerminal18/BrainJarTerminal_Mesh/InteractableComponent" unique_id=1050803585 instance=ExtResource("12_waufx")]
-_signal_parameters = [false]
-signal_name = "shield_enabled_status"
-
-[node name="BrainJarTerminal_Collision" type="CollisionShape3D" parent="Interactive/Terminals/TerminalProps/BrainJarTerminal18" unique_id=620240546]
-transform = Transform3D(-2, 0, 3.019916e-07, 0, 2, 0, -3.019916e-07, 0, -2, 0, 0, 0)
-visible = false
-shape = SubResource("ConvexPolygonShape3D_dnykt")
-
-[node name="BrainJarTerminal19" parent="Interactive/Terminals/TerminalProps" unique_id=1936115532 instance=ExtResource("31_oxwui")]
-transform = Transform3D(1.0606601, 0, -1.0606601, 0, 1.5, 0, 1.0606601, 0, 1.0606601, -181, 40.2, -10)
-
-[node name="BrainJarTerminal20" parent="Interactive/Terminals/TerminalProps" unique_id=97068587 instance=ExtResource("31_oxwui")]
-transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.0606601, -177, 40.2, -10)
-
-[node name="BrainJarTerminal21" parent="Interactive/Terminals/TerminalProps" unique_id=1224879742 instance=ExtResource("31_oxwui")]
-transform = Transform3D(1.0606601, 0, -1.0606601, 0, 1.5, 0, 1.0606601, 0, 1.0606601, -231, 10.2, -10)
-
-[node name="BrainJarTerminal22" parent="Interactive/Terminals/TerminalProps" unique_id=311001283 instance=ExtResource("31_oxwui")]
-transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.0606601, -227, 10.2, -10)
-
-[node name="BrainJarTerminal23" parent="Interactive/Terminals/TerminalProps" unique_id=1824774430 instance=ExtResource("31_oxwui")]
+[node name="BrainJarTerminal23" parent="Interactive/Terminals/TerminalProps/TerminalGroup1" unique_id=1824774430 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.0606601, 0, -1.0606601, 0, 1.5, 0, 1.0606601, 0, 1.0606601, -231, 40.2, -10)
 
-[node name="BrainJarTerminal24" parent="Interactive/Terminals/TerminalProps" unique_id=1172441246 instance=ExtResource("31_oxwui")]
-transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.0606601, -227, 40.2, -10)
+[node name="BrainJarTerminal6" parent="Interactive/Terminals/TerminalProps/TerminalGroup1" unique_id=101438954 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -229, 40.2, -8)
+
+[node name="TerminalGroup2" type="Node3D" parent="Interactive/Terminals/TerminalProps" unique_id=85642060]
+
+[node name="BrainJarTerminal8" parent="Interactive/Terminals/TerminalProps/TerminalGroup2" unique_id=832899734 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -179, 40.2, -8)
+
+[node name="BrainJarTerminal19" parent="Interactive/Terminals/TerminalProps/TerminalGroup2" unique_id=1936115532 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.0606601, 0, -1.0606601, 0, 1.5, 0, 1.0606601, 0, 1.0606601, -181, 40.2, -10)
+
+[node name="BrainJarTerminal20" parent="Interactive/Terminals/TerminalProps/TerminalGroup2" unique_id=97068587 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.0606601, -177, 40.2, -10)
+
+[node name="TerminalGroup3" type="Node3D" parent="Interactive/Terminals/TerminalProps" unique_id=401165618]
+
+[node name="BrainJarTerminal2" parent="Interactive/Terminals/TerminalProps/TerminalGroup3" unique_id=1115267105 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -69, 40.2, -8)
+
+[node name="BrainJarTerminal16" parent="Interactive/Terminals/TerminalProps/TerminalGroup3" unique_id=196257627 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.0606601, -67, 40.2, -10)
+
+[node name="BrainJarTerminal15" parent="Interactive/Terminals/TerminalProps/TerminalGroup3" unique_id=1900656630 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.0606601, 0, -1.0606601, 0, 1.5, 0, 1.0606601, 0, 1.0606601, -71, 40.2, -10)
+
+[node name="TerminalGroup4" type="Node3D" parent="Interactive/Terminals/TerminalProps" unique_id=1701303138]
+
+[node name="BrainJarTerminal4" parent="Interactive/Terminals/TerminalProps/TerminalGroup4" unique_id=1770246225 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -19, 40.2, -8)
+
+[node name="BrainJarTerminal12" parent="Interactive/Terminals/TerminalProps/TerminalGroup4" unique_id=1174995437 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.0606601, -17, 40.2, -10)
+
+[node name="BrainJarTerminal11" parent="Interactive/Terminals/TerminalProps/TerminalGroup4" unique_id=558333159 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.0606601, 0, -1.0606601, 0, 1.5, 0, 1.0606601, 0, 1.0606601, -21, 40.2, -10)
+
+[node name="TerminalGroup5" type="Node3D" parent="Interactive/Terminals/TerminalProps" unique_id=1084070238]
+
+[node name="BrainJarTerminal5" parent="Interactive/Terminals/TerminalProps/TerminalGroup5" unique_id=538193210 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -229, 10.2, -8)
+
+[node name="BrainJarTerminal22" parent="Interactive/Terminals/TerminalProps/TerminalGroup5" unique_id=311001283 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.0606601, -227, 10.2, -10)
+
+[node name="BrainJarTerminal21" parent="Interactive/Terminals/TerminalProps/TerminalGroup5" unique_id=1224879742 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.0606601, 0, -1.0606601, 0, 1.5, 0, 1.0606601, 0, 1.0606601, -231, 10.2, -10)
+
+[node name="TerminalGroup6" type="Node3D" parent="Interactive/Terminals/TerminalProps" unique_id=1941295873]
+
+[node name="BrainJarTerminal7" parent="Interactive/Terminals/TerminalProps/TerminalGroup6" unique_id=355513012 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -179, 10.2, -8)
+
+[node name="BrainJarTerminal18" parent="Interactive/Terminals/TerminalProps/TerminalGroup6" unique_id=1362434122 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.0606601, -177, 10.2, -10)
+
+[node name="BrainJarTerminal17" parent="Interactive/Terminals/TerminalProps/TerminalGroup6" unique_id=546859960 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.0606601, 0, -1.0606601, 0, 1.5, 0, 1.0606601, 0, 1.0606601, -181, 10.2, -10)
+
+[node name="TerminalGroup7" type="Node3D" parent="Interactive/Terminals/TerminalProps" unique_id=624757043]
+
+[node name="BrainJarTerminal" parent="Interactive/Terminals/TerminalProps/TerminalGroup7" unique_id=366402759 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -69, 10.2, -8)
+
+[node name="BrainJarTerminal14" parent="Interactive/Terminals/TerminalProps/TerminalGroup7" unique_id=1992031895 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.0606601, -67, 10.2, -10)
+
+[node name="BrainJarTerminal13" parent="Interactive/Terminals/TerminalProps/TerminalGroup7" unique_id=1954858008 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.0606601, 0, -1.0606601, 0, 1.5, 0, 1.0606601, 0, 1.0606601, -71, 10.2, -10)
+
+[node name="TerminalGroup8" type="Node3D" parent="Interactive/Terminals/TerminalProps" unique_id=1210891904]
+
+[node name="BrainJarTerminal3" parent="Interactive/Terminals/TerminalProps/TerminalGroup8" unique_id=1670510788 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -19, 10.2, -8)
+
+[node name="BrainJarTerminal10" parent="Interactive/Terminals/TerminalProps/TerminalGroup8" unique_id=2070626455 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.0606601, -17, 10.2, -10)
+
+[node name="BrainJarTerminal9" parent="Interactive/Terminals/TerminalProps/TerminalGroup8" unique_id=2123405156 instance=ExtResource("31_oxwui")]
+transform = Transform3D(1.0606601, 0, -1.0606601, 0, 1.5, 0, 1.0606601, 0, 1.0606601, -21, 10.2, -10)
 
 [node name="InteractiveZones" type="Node3D" parent="Interactive/Terminals" unique_id=1919106703]
 
@@ -674,11 +632,35 @@ visible = false
 
 [node name="Reactors" type="Node3D" parent="Interactive" unique_id=261082351]
 
+[node name="BrainReactorLeft" parent="Interactive/Reactors" unique_id=944632863 instance=ExtResource("32_oxwui")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
+
+[node name="BrainReactorRight" parent="Interactive/Reactors" unique_id=531911111 instance=ExtResource("32_oxwui")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
+
+[node name="CameraPanNode1" type="Node3D" parent="Interactive" unique_id=1018793133]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135.89229, 4.3836174, 0)
+script = ExtResource("7_8vmub")
+reset_on_exit = true
+
+[node name="Area" type="Area3D" parent="Interactive/CameraPanNode1" unique_id=832953900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.363087, 0, 0)
+collision_layer = 512
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactive/CameraPanNode1/Area" unique_id=2083641597]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.32317, 5.494629, 0.5645447)
+shape = SubResource("BoxShape3D_o5d64")
+
+[node name="CameraTarget" type="Node3D" parent="Interactive/CameraPanNode1" unique_id=48895379]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.028801, 32.55161, 86.376274)
+
 [node name="Enemies" type="Node3D" parent="." unique_id=1092297902]
 
-[node name="BrainJar" parent="Enemies" unique_id=1593347133 instance=ExtResource("14_wj6kf")]
+[node name="BrainJar" parent="Enemies" unique_id=1593347133 node_paths=PackedStringArray("terminals") instance=ExtResource("14_wj6kf")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -124, 13.711103, 0)
 visible = false
+terminals = NodePath("../../Interactive/Terminals/InteractiveZones")
 
 [node name="EnemyManager" parent="Enemies" unique_id=18369620 instance=ExtResource("16_h2frl")]
 
@@ -5779,7 +5761,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
 [node name="BrainPipeR" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=1748327767 instance=ExtResource("71_mywdw")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
 
-[node name="LeftBrainReactor" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=944632863 instance=ExtResource("32_oxwui")]
+[node name="LeftBrainReactor" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=1599425003 instance=ExtResource("32_oxwui")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 0, -45)
 
 [node name="RightBrainReactor" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=146908358 instance=ExtResource("32_oxwui")]
@@ -5797,6 +5779,10 @@ transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
 
 [node name="45Ramp" parent="." unique_id=1091835218 instance=ExtResource("49_7jlaj")]
 transform = Transform3D(4.37114e-08, -2.6981513e-07, 3.6639314, -3.8213718e-15, -3.0863254, -3.2031105e-07, 1.0000002, 0, -1.6015554e-07, -218.99635, 9.806785, -1.2710238)
+[connection signal="removecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
+[connection signal="updatecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
+[connection signal="body_entered" from="Interactive/CameraPanNode1/Area" to="Interactive/CameraPanNode1" method="_on_area_body_entered"]
+[connection signal="body_exited" from="Interactive/CameraPanNode1/Area" to="Interactive/CameraPanNode1" method="_on_area_body_exited"]
 
 [editable path="Props/MultMiscProps/PanopticonCrane"]
 [editable path="Props/MultMiscProps/PanopticonCrane2"]

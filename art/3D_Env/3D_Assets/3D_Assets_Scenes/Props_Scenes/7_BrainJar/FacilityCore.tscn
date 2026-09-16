@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dhhx4j7l7h7kq" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/FacilityCore/Phase1/FacilityCore_DefaultMaterial_Normal.png" id="5_fvryi"]
 [ext_resource type="Texture2D" uid="uid://ct7vq40tq4ghh" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/FacilityCore/Phase1/FacilityCore_DefaultMaterial_Roughness.png" id="6_8bwsa"]
 [ext_resource type="ArrayMesh" uid="uid://bupkpy4yvhjl2" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/7_BrainJar/FacilityFire.obj" id="7_4rwa3"]
+[ext_resource type="PackedScene" uid="uid://ou3g778y2q8g" path="res://scenes/components/interactable_component/interactable_component.tscn" id="7_8bwsa"]
+[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="8_ck546"]
 [ext_resource type="Material" uid="uid://n0bbv4rcjrc1" path="res://art/TechArt/2_VFX/projectiles/fire_projectile/prefabs/M_fire_body.tres" id="8_owwxf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4xfn1"]
@@ -29,6 +31,16 @@ data = PackedVector3Array(-3.7772, 0.1472, 2.7440999, -3.777, 0.0021, 2.7443, -3
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("1_4xfn1")
 surface_material_override/0 = SubResource("StandardMaterial3D_4xfn1")
+
+[node name="InteractableComponent" parent="FacilityCore_Mesh" unique_id=2140039813 node_paths=PackedStringArray("event_trigger") instance=ExtResource("7_8bwsa")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+interactable_type = 5
+interaction_distance = 10.0
+event_trigger = NodePath("EventTrigger")
+
+[node name="EventTrigger" parent="FacilityCore_Mesh/InteractableComponent" unique_id=1311781014 instance=ExtResource("8_ck546")]
+_one_shot = false
+signal_name = "gun_sacrifice_requested"
 
 [node name="FacilityCore_Collision" type="CollisionShape3D" parent="." unique_id=1140559383]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
