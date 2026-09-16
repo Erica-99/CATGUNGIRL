@@ -1844,10 +1844,11 @@ libraries/ = SubResource("AnimationLibrary_gisjq")
 transform = Transform3D(1, 0, 0, 0, 1, -8.742278e-08, 0, 8.742278e-08, 1, -0.463, 0.533, 0.222)
 
 [node name="Sprite3D" type="AnimatedSprite3D" parent="PlayerVisuals/ROOT_P/FRONTARM_P" unique_id=1505299299]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.47929928, -0.30686638, 1.4901161e-08)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.47929928, 1.5940129, -1.6391277e-07)
 sprite_frames = SubResource("SpriteFrames_kvr6h")
 animation = &"Arm"
 autoplay = "Arm"
+frame_progress = 0.7674194
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerVisuals/ROOT_P/FRONTARM_P" unique_id=1319203326]
 root_node = NodePath("../Sprite3D")
@@ -1997,10 +1998,12 @@ team_component = NodePath("../TeamComponent")
 team_component = NodePath("../../TeamComponent")
 
 [node name="Shotgun" parent="GunHolder" unique_id=1775432672 node_paths=PackedStringArray("team_component") instance=ExtResource("34_haoly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.52761424, 0.16629946, 0.37561297)
 visible = false
 team_component = NodePath("../../TeamComponent")
 
 [node name="Sniper" parent="GunHolder" unique_id=170427884 node_paths=PackedStringArray("team_component") instance=ExtResource("35_gisjq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5137575, 0.12729812, 0.3773042)
 visible = false
 team_component = NodePath("../../TeamComponent")
 
