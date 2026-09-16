@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://2cm4kbh0jgjy" path="res://scenes/components/level_components/bossfight/brain_jar_terminal_group.gd" id="4_o5d64"]
 [ext_resource type="PackedScene" uid="uid://d1isfmus58oku" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/IndustrialLight1.tscn" id="5_coglk"]
 [ext_resource type="PackedScene" uid="uid://btcwaxl38nip5" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeSets/HandlebarSmall.tscn" id="5_mxr2x"]
+[ext_resource type="Material" uid="uid://c2qi20n2bfyah" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/TerminalActive.tres" id="5_ypbdf"]
+[ext_resource type="Material" uid="uid://bpr70jmt82mc2" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/TerminalInactive.tres" id="6_wsdjh"]
 [ext_resource type="Script" uid="uid://4t3uo3s2mf8e" path="res://scenes/levels/Stages/camera_pan_node.gd" id="7_8vmub"]
 [ext_resource type="PackedScene" uid="uid://br8eqclc5secj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/Rails/RailFull.tscn" id="9_uoh3v"]
 [ext_resource type="PackedScene" uid="uid://bpjabu4plwqym" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/Rails/RailDiagonal.tscn" id="10_e2mff"]
@@ -442,6 +444,8 @@ script = ExtResource("4_o5d64")
 interaction_console = NodePath("../../InteractiveZones/BrainJarConsole7")
 terminal_light = NodePath("SpotLight3D51")
 terminal_visuals = [NodePath("BrainJarTerminal24"), NodePath("BrainJarTerminal23"), NodePath("BrainJarTerminal6")]
+active_material = ExtResource("5_ypbdf")
+inactive_material = ExtResource("6_wsdjh")
 
 [node name="BrainJarTerminal24" parent="Interactive/Terminals/TerminalProps/TerminalGroup1" unique_id=1172441246 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.0606601, -227, 40.2, -10)
@@ -465,6 +469,8 @@ script = ExtResource("4_o5d64")
 interaction_console = NodePath("../../InteractiveZones/BrainJarConsole5")
 terminal_light = NodePath("SpotLight3D52")
 terminal_visuals = [NodePath("BrainJarTerminal8"), NodePath("BrainJarTerminal19"), NodePath("BrainJarTerminal20")]
+active_material = ExtResource("5_ypbdf")
+inactive_material = ExtResource("6_wsdjh")
 
 [node name="BrainJarTerminal8" parent="Interactive/Terminals/TerminalProps/TerminalGroup2" unique_id=832899734 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -179, 40.2, -8)
@@ -488,6 +494,8 @@ script = ExtResource("4_o5d64")
 interaction_console = NodePath("../../InteractiveZones/BrainJarConsole3")
 terminal_light = NodePath("SpotLight3D64")
 terminal_visuals = [NodePath("BrainJarTerminal2"), NodePath("BrainJarTerminal16"), NodePath("BrainJarTerminal15")]
+active_material = ExtResource("5_ypbdf")
+inactive_material = ExtResource("6_wsdjh")
 
 [node name="BrainJarTerminal2" parent="Interactive/Terminals/TerminalProps/TerminalGroup3" unique_id=1115267105 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -69, 40.2, -8)
@@ -511,6 +519,8 @@ script = ExtResource("4_o5d64")
 interaction_console = NodePath("../../InteractiveZones/BrainJarConsole")
 terminal_light = NodePath("SpotLight3D54")
 terminal_visuals = [NodePath("BrainJarTerminal4"), NodePath("BrainJarTerminal12"), NodePath("BrainJarTerminal11")]
+active_material = ExtResource("5_ypbdf")
+inactive_material = ExtResource("6_wsdjh")
 
 [node name="BrainJarTerminal4" parent="Interactive/Terminals/TerminalProps/TerminalGroup4" unique_id=1770246225 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -19, 40.2, -8)
@@ -534,6 +544,8 @@ script = ExtResource("4_o5d64")
 interaction_console = NodePath("../../InteractiveZones/BrainJarConsole8")
 terminal_light = NodePath("SpotLight3D50")
 terminal_visuals = [NodePath("BrainJarTerminal5"), NodePath("BrainJarTerminal22"), NodePath("BrainJarTerminal21")]
+active_material = ExtResource("5_ypbdf")
+inactive_material = ExtResource("6_wsdjh")
 
 [node name="BrainJarTerminal5" parent="Interactive/Terminals/TerminalProps/TerminalGroup5" unique_id=538193210 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -229, 10.2, -8)
@@ -557,6 +569,8 @@ script = ExtResource("4_o5d64")
 interaction_console = NodePath("../../InteractiveZones/BrainJarConsole6")
 terminal_light = NodePath("SpotLight3D49")
 terminal_visuals = [NodePath("BrainJarTerminal7"), NodePath("BrainJarTerminal18"), NodePath("BrainJarTerminal17")]
+active_material = ExtResource("5_ypbdf")
+inactive_material = ExtResource("6_wsdjh")
 
 [node name="BrainJarTerminal7" parent="Interactive/Terminals/TerminalProps/TerminalGroup6" unique_id=355513012 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -179, 10.2, -8)
@@ -580,6 +594,8 @@ script = ExtResource("4_o5d64")
 interaction_console = NodePath("../../InteractiveZones/BrainJarConsole4")
 terminal_light = NodePath("SpotLight3D63")
 terminal_visuals = [NodePath("BrainJarTerminal"), NodePath("BrainJarTerminal14"), NodePath("BrainJarTerminal13")]
+active_material = ExtResource("5_ypbdf")
+inactive_material = ExtResource("6_wsdjh")
 
 [node name="BrainJarTerminal" parent="Interactive/Terminals/TerminalProps/TerminalGroup7" unique_id=366402759 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -69, 10.2, -8)
@@ -603,6 +619,8 @@ script = ExtResource("4_o5d64")
 interaction_console = NodePath("../../InteractiveZones/BrainJarConsole2")
 terminal_light = NodePath("SpotLight3D53")
 terminal_visuals = [NodePath("BrainJarTerminal3"), NodePath("BrainJarTerminal10"), NodePath("BrainJarTerminal9")]
+active_material = ExtResource("5_ypbdf")
+inactive_material = ExtResource("6_wsdjh")
 
 [node name="BrainJarTerminal3" parent="Interactive/Terminals/TerminalProps/TerminalGroup8" unique_id=1670510788 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -19, 10.2, -8)
