@@ -72,6 +72,11 @@ func _process(delta: float) -> void:
 			input_component._switch_gun_three = false
 			_switch_gun(2)
 
+func _updategunvisuals(gun):
+	
+	pass
+
+
 func _switch_gun(slot_num: int):
 	if not allow_swapping:
 		return
