@@ -1,20 +1,32 @@
 [gd_scene format=3 uid="uid://cgl5ipcguaba2"]
 
 [ext_resource type="ArrayMesh" uid="uid://b7eth0d6bmnhf" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/3_WareHouse/FloorShootingWareHouse.obj" id="1_fmy8l"]
-[ext_resource type="Texture2D" uid="uid://b8ukl81h6bnh3" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/3_WareHouse/Floor/TextureTrimSheetFloorW.png" id="2_ay7xk"]
+[ext_resource type="Texture2D" uid="uid://cowsdtf1u4bnu" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/3_WareHouse/FloorRoof/FloorWareHouse_Base_color.png" id="2_5souu"]
+[ext_resource type="Texture2D" uid="uid://dh18hn73wc6wl" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/3_WareHouse/FloorRoof/FloorWareHouse_Height.png" id="3_dyel7"]
+[ext_resource type="Texture2D" uid="uid://cjdkdyd7eh4tg" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/3_WareHouse/FloorRoof/FloorWareHouse_Base_metalness.png" id="4_hu3bf"]
+[ext_resource type="Texture2D" uid="uid://dsnh3a4v6uqiq" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/3_WareHouse/FloorRoof/FloorWareHouse_Normal_OpenGL.png" id="5_me083"]
+[ext_resource type="Texture2D" uid="uid://cuvoc0oc1xldr" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/3_WareHouse/FloorRoof/FloorWareHouse_Specular_roughness.png" id="6_2htt0"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ay7xk"]
-albedo_texture = ExtResource("2_ay7xk")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbls1"]
+albedo_texture = ExtResource("2_5souu")
+metallic = 1.0
+metallic_texture = ExtResource("4_hu3bf")
+roughness_texture = ExtResource("6_2htt0")
+normal_enabled = true
+normal_texture = ExtResource("5_me083")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("3_dyel7")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vdufd"]
-points = PackedVector3Array(1.0013099, 0.100005, 2.499758, 1.0013099, -0.100006, 2.499758, 1.0013099, 0.100005, -2.500242, -3.001934, 0.100005, 2.499758, -3.001934, -0.100006, 2.499758, 1.0013099, -0.100006, -2.500242, -3.001934, 0.100005, -2.500242, -3.001934, -0.100006, -2.500242)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5souu"]
+points = PackedVector3Array(1.5023329, 0.100005, 2.499758, 1.5023329, -0.100006, 2.499758, 1.5023329, 0.100005, -2.500242, -2.500911, 0.100005, 2.499758, -2.500911, -0.100006, 2.499758, 1.5023329, -0.100006, -2.500242, -2.500911, 0.100005, -2.500242, -2.500911, -0.100006, -2.500242)
 
 [node name="FloorShootingWareHouse" type="StaticBody3D" unique_id=1396051659]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="FloorShootingWareHouse_Mesh" type="MeshInstance3D" parent="." unique_id=1655955516]
 mesh = ExtResource("1_fmy8l")
-surface_material_override/0 = SubResource("StandardMaterial3D_ay7xk")
+surface_material_override/0 = SubResource("StandardMaterial3D_hbls1")
 
-[node name="FloorShootingWareHouse_Collision" type="CollisionShape3D" parent="." unique_id=768144791]
-shape = SubResource("ConvexPolygonShape3D_vdufd")
+[node name="FloorShootingWareHouse_Collision" type="CollisionShape3D" parent="." unique_id=1193919649]
+shape = SubResource("ConvexPolygonShape3D_5souu")

@@ -1,7 +1,19 @@
 [gd_scene format=3 uid="uid://dcpva7aa78k11"]
 
 [ext_resource type="ArrayMesh" uid="uid://b4mlstf60ff57" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/0_MultipleMisc/SpeakerConePivot.obj" id="1_lw54t"]
+[ext_resource type="Texture2D" uid="uid://ckdc4khwfwqss" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/SpeakerCone/SpeakerCone_BC.png" id="2_mior8"]
 [ext_resource type="ArrayMesh" uid="uid://cb00ww8d27rwm" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/0_MultipleMisc/SpeakerConeCone.obj" id="2_riyfm"]
+[ext_resource type="Texture2D" uid="uid://brq3858q0i4p" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/SpeakerCone/SpeakerCone_M.png" id="3_pojgl"]
+[ext_resource type="Texture2D" uid="uid://ibhx5meh78pi" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/SpeakerCone/SpeakerCone_N.png" id="4_2mejs"]
+[ext_resource type="Texture2D" uid="uid://byo1nc6fjdegq" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/SpeakerCone/SpeakerCone_R.png" id="5_1jn3u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8nkja"]
+albedo_texture = ExtResource("2_mior8")
+metallic = 1.0
+metallic_texture = ExtResource("3_pojgl")
+roughness_texture = ExtResource("5_1jn3u")
+normal_enabled = true
+normal_texture = ExtResource("4_2mejs")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lw54t"]
 size = Vector3(0.467716, 0.663372, 0.438263)
@@ -14,6 +26,7 @@ points = PackedVector3Array(-1.3184897, 0.5052671, 0.10049927, -1.3184897, 0.505
 [node name="SpeakerConePivot_Mesh" type="MeshInstance3D" parent="." unique_id=1757958770]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 mesh = ExtResource("1_lw54t")
+surface_material_override/0 = SubResource("StandardMaterial3D_8nkja")
 
 [node name="SpeakerConePivot_Collision" type="CollisionShape3D" parent="." unique_id=1883961240]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.234163, 0, 0.00021450222)
@@ -24,6 +37,7 @@ shape = SubResource("BoxShape3D_lw54t")
 [node name="SpeakerConeCone_Mesh" type="MeshInstance3D" parent="Node3D" unique_id=1218985124]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 mesh = ExtResource("2_riyfm")
+surface_material_override/0 = SubResource("StandardMaterial3D_8nkja")
 
 [node name="SpeakerConeCone_Collision" type="CollisionShape3D" parent="Node3D" unique_id=1651624903]
 shape = SubResource("ConvexPolygonShape3D_mlhnv")

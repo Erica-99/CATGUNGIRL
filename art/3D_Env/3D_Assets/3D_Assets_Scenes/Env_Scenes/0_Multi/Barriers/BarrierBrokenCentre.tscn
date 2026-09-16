@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bgluk4kipx1st"]
+
+[ext_resource type="ArrayMesh" uid="uid://cy8gbbiiqfqal" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/Barriers/BarrierFullBrokenCentre.obj" id="1_at0h7"]
+[ext_resource type="Texture2D" uid="uid://bvdcx0l0twqkp" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/BrokenCentre/BarrierBrokenCentre_Base_color.png" id="2_vprou"]
+[ext_resource type="Texture2D" uid="uid://cc15usvqixd1x" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/BrokenCentre/BarrierBrokenCentre_Mixed_AO.png" id="3_6pu2t"]
+[ext_resource type="Texture2D" uid="uid://txqgkp2e2f5j" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/BrokenCentre/BarrierBrokenCentre_Height.png" id="4_2vjky"]
+[ext_resource type="Texture2D" uid="uid://d3utvedaswbel" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/BrokenCentre/BarrierBrokenCentre_Base_metalness.png" id="5_pyfmo"]
+[ext_resource type="Texture2D" uid="uid://bq2lne5gyegvo" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/BrokenCentre/BarrierBrokenCentre_Normal_OpenGL.png" id="6_0mgqa"]
+[ext_resource type="Texture2D" uid="uid://8xuawgsig65h" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/BrokenCentre/BarrierBrokenCentre_Specular_roughness.png" id="7_c471f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dyb6b"]
+albedo_texture = ExtResource("2_vprou")
+metallic = 1.0
+metallic_texture = ExtResource("5_pyfmo")
+roughness_texture = ExtResource("7_c471f")
+normal_enabled = true
+normal_texture = ExtResource("6_0mgqa")
+ao_enabled = true
+ao_texture = ExtResource("3_6pu2t")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("4_2vjky")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_at0h7"]
+points = PackedVector3Array(-0.79169405, 0.950109, 3.0516627, -0.79169405, 0.950109, 2.979847, -2.500911, 0.80476236, 2.7794533, -2.500911, 0.79684746, 2.7985249, -2.500911, 0.7778311, 2.8063912, -0.82841456, 0.7583008, 3.078148, 0.64872885, 0.876305, 3.0516627, 2.5004213, 0.80476236, 2.7794533, -2.500911, 0.79684746, 2.7603817, 2.5004213, 0.79684746, 2.7603817, -2.500911, 0.05130352, 2.6029415, -0.82939374, 0.7494608, 3.074922, -0.8323314, 0.7101946, 3.0607176, -0.832821, 0.70063496, 3.0572653, -0.8122575, 0.69899035, 3.0572653, -0.7490982, 0.6940564, 3.0572653, -0.7446917, 0.751825, 3.078148, -0.8078511, 0.7567589, 3.078148, 0.71482587, 0.6883, 3.075488, 2.5004213, 0.7778311, 2.8063912, 2.5004213, 0.79684746, 2.7985249, 2.500911, 0.099923715, 2.6029415, 2.500911, 0.099923715, 2.5, -2.500911, 0.45794514, 2.5771353, 2.5004213, 0.45794514, 2.5771353, -2.500911, 0.05130352, 2.5, -0.86562467, -0.100005, 2.6747007, -0.7285347, 0.69251454, 3.0572653, -0.7280451, 0.70207405, 3.0607176, -0.72461796, 0.7413403, 3.074922, -0.72412825, 0.7502831, 3.078148, 0.6129875, 0.6650692, 3.075488, 0.71678424, 0.6795628, 3.0722623, 2.500911, 0.05130352, 2.6029415, 2.5004213, 0.4389288, 2.5692692, 2.500911, 0.05130352, 2.5, -2.500911, 0.099923715, 2.5, -0.8710103, 0.38372996, 2.5576677, -2.500911, 0.4389288, 2.5692692, -0.86562467, -0.100005, 2.5, 0.86513495, -0.100005, 2.6747007, 0.78239155, -0.08869798, 2.681718, 0.7716203, -0.04090011, 2.711033, 0.68789744, 0.32729766, 2.9161239, 0.6257174, 0.608637, 3.0546055, 0.6149461, 0.656332, 3.0722623, 0.7074816, 0.6272421, 3.0546055, 0.72559714, 0.64122176, 3.0580575, 0.6457913, 0.6131598, 3.0546055, 0.7275555, 0.63186777, 3.0546055, 0.86513495, -0.100005, 2.5)
+
+[node name="BarrierBrokenCentre" type="StaticBody3D" unique_id=1137095866]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="BarrierFullBrokenCentre_Mesh" type="MeshInstance3D" parent="." unique_id=1313324597]
+mesh = ExtResource("1_at0h7")
+surface_material_override/0 = SubResource("StandardMaterial3D_dyb6b")
+
+[node name="BarrierFullBrokenCentre_Collision" type="CollisionShape3D" parent="." unique_id=362070478]
+shape = SubResource("ConvexPolygonShape3D_at0h7")

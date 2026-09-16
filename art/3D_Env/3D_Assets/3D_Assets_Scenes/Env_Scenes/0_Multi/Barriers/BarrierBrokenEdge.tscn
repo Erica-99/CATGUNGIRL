@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dre8rpkvq88dv"]
+
+[ext_resource type="ArrayMesh" uid="uid://6sb5le3dxs5n" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/Barriers/BarrierFullBrokenEdge.obj" id="1_ey7u7"]
+[ext_resource type="Texture2D" uid="uid://shdcw2yi6a8b" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/BrokenEdge/BarrierBrokenEdge_Base_color.png" id="2_6meit"]
+[ext_resource type="Texture2D" uid="uid://dq3687b0ekf78" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/BrokenEdge/BarrierBrokenEdge_Mixed_AO.png" id="3_g0hnw"]
+[ext_resource type="Texture2D" uid="uid://cw7jhbkyg3bb7" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/BrokenEdge/BarrierBrokenEdge_Height.png" id="4_h7ulg"]
+[ext_resource type="Texture2D" uid="uid://bu4wlmesawvv4" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/BrokenEdge/BarrierBrokenEdge_Base_metalness.png" id="5_u0td4"]
+[ext_resource type="Texture2D" uid="uid://dgyu831i400e7" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/BrokenEdge/BarrierBrokenEdge_Normal_OpenGL.png" id="6_lddvj"]
+[ext_resource type="Texture2D" uid="uid://dwimtuu0x4p4o" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/BrokenEdge/BarrierBrokenEdge_Specular_roughness.png" id="7_nyp4v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lkiq3"]
+albedo_texture = ExtResource("2_6meit")
+metallic = 1.0
+metallic_texture = ExtResource("5_u0td4")
+roughness_texture = ExtResource("7_nyp4v")
+normal_enabled = true
+normal_texture = ExtResource("6_lddvj")
+ao_enabled = true
+ao_texture = ExtResource("3_g0hnw")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("4_h7ulg")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ey7u7"]
+points = PackedVector3Array(0.86514306, 1.0025539, 3.0516627, 0.86514306, 1.0025539, 2.979847, 0.8014927, 1.0025539, 3.0516627, 0.8857219, 0.8068201, 3.078148, 2.5004325, 0.77784306, 2.8063912, 2.5004325, 0.7967896, 2.7985249, 2.5004325, 0.80473036, 2.7794533, 0.8014927, 1.0025539, 2.979847, 2.5004325, 0.7967896, 2.7603817, 0.90055776, 0.80500895, 2.7522323, 0.78091407, 0.8068201, 3.078148, -0.8553325, 0.8975125, 3.0516627, 0.8857219, 0.748866, 3.0572653, 2.5009112, 0.0513286, 2.6029415, -0.90319, 0.6904941, 3.0777516, 2.5009112, 0.099948645, 2.6029415, 2.5009112, 0.099948645, 2.5, 0.76655674, 0.80500895, 2.7522323, -0.787375, 0.70749027, 2.7522323, -0.8553325, 0.8975125, 2.979847, 2.5004325, 0.45784235, 2.5771353, 0.90055776, 0.46606177, 2.5689862, -0.8002964, 0.7081868, 3.0777516, -0.8830899, 0.69397694, 3.0777516, -0.9175472, 0.8863675, 3.0516627, 0.86514306, -0.100104034, 2.6747007, -0.8950542, 0.64284927, 3.0603778, -0.89361846, 0.63337606, 3.056869, 2.5009112, 0.0513286, 2.5, -2.3877285, -0.420662, 2.6029415, -2.1943843, 0.46118587, 2.8393846, -2.3054135, 0.010231435, 2.7200313, 0.90055776, 0.43889588, 2.5576677, 2.5004325, 0.43889588, 2.5692692, 0.8014927, 0.099948645, 2.5, 0.76655674, 0.46606177, 2.5689862, -0.7304245, 0.373419, 2.5689862, -0.80077505, 0.7052613, 2.7522323, -1.5650587, 0.60300595, 2.7745297, -0.9175472, 0.8863675, 2.979847, -2.1943843, 0.48821247, 2.8124466, -2.1943843, 0.48027164, 2.8315182, -0.72276735, -0.19887656, 2.6747007, -2.3877285, -0.420662, 2.5, -2.3125923, 0.027784795, 2.7121084, -2.388207, -0.37218124, 2.6029415, 0.76655674, 0.43889588, 2.5576677, -0.6959672, 0.009116948, 2.5, -0.72563875, 0.3465317, 2.5576677, -0.7438246, 0.37119, 2.5689862, -0.9194615, 0.6850609, 2.7522323, -0.86251116, 0.3508504, 2.5689862, -2.1943843, 0.48027164, 2.793375, -2.3154635, 0.03516838, 2.6930933, -2.388207, -0.37218124, 2.5, -1.6157875, -0.13172796, 2.5, -0.73903894, 0.3443027, 2.5576677, -0.8577254, 0.3241024, 2.5576677, -0.8491111, 0.35321867, 2.5689862, -2.1943843, 0.46118587, 2.7855086, -2.3125923, 0.027784795, 2.6740217)
+
+[node name="BarrierBrokenEdge" type="StaticBody3D" unique_id=419497401]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="BarrierFullBrokenEdge_Mesh" type="MeshInstance3D" parent="." unique_id=37487565]
+mesh = ExtResource("1_ey7u7")
+surface_material_override/0 = SubResource("StandardMaterial3D_lkiq3")
+
+[node name="BarrierFullBrokenEdge_Collision" type="CollisionShape3D" parent="." unique_id=442913373]
+shape = SubResource("ConvexPolygonShape3D_ey7u7")

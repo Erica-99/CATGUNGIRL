@@ -12,7 +12,7 @@ class_name ScrubAttack
 
 # Information gained from state machine
 var actor: CharacterBody3D
-var anim: AnimatedSprite3D
+var anim: AnimationPlayer
 var target: CharacterBody3D
 var gun_component: Node3D
 var slow_down_speed: float
@@ -29,16 +29,25 @@ func enter() -> void:
 	pass
 
 func exit() -> void:
-	gun_component._is_firing = false
+	if gun_component is BaseGun:
+		gun_component.active = false
+	else:
+		gun_component._is_firing = false
 
 func update(_delta: float) -> void:
 	var direction = sign(target.global_position.x - actor.global_position.x)
 	actor.facing = direction
 	
 	if actor.can_shoot.is_colliding():
-		gun_component._is_firing = false
+		if gun_component is BaseGun:
+			gun_component.active = false
+		else:
+			gun_component._is_firing = false
 	else:
-		gun_component._is_firing = true
+		if gun_component is BaseGun:
+			gun_component.active = true
+		else:
+			gun_component._is_firing = true
 
 func physics_update(delta: float) -> void:
 	actor.velocity.x = move_toward(actor.velocity.x, 0, slow_down_speed * delta)

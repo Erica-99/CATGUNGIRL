@@ -7,7 +7,7 @@ extends State
 class_name ScrubFlee
 
 var actor: CharacterBody3D
-var anim: AnimatedSprite3D
+var anim: AnimationPlayer
 var target: CharacterBody3D
 var flee_speed: float
 var flee_acceleration: float
@@ -45,4 +45,4 @@ func physics_update(delta: float) -> void:
 
 func _on_flee_area_3d_body_exited(body: Node3D) -> void:
 	if !actor.is_dead:
-		transitioned.emit(self, "scrubattack")
+		transitioned.emit(self, "switchscrubattack")

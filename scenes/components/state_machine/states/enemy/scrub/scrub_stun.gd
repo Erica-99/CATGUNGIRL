@@ -15,7 +15,7 @@ class_name ScrubStun
 
 # Information gained from state machine
 var actor: CharacterBody3D
-var anim: AnimatedSprite3D
+var anim: AnimationPlayer
 var slow_down_speed: float
 var total_stun_time: float
 var stun_timer: float = 0.0
@@ -53,7 +53,7 @@ func _go_to_next_state():
 		transitioned.emit(self, "scrubflee")
 	elif len(att_range_area_3d.get_overlapping_bodies()) != 0:
 		#state_machine.on_child_transition(state_machine.current_state, "scrubattack")
-		transitioned.emit(self, "scrubattack")
+		transitioned.emit(self, "switchscrubattack")
 	else:
 		#state_machine.on_child_transition(state_machine.current_state, "scrubchase")
-		transitioned.emit(self, "scrubchase")
+		transitioned.emit(self, "switchscrubchase")

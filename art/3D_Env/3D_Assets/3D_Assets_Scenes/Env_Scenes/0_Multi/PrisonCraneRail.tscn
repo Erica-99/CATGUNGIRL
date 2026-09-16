@@ -1,9 +1,29 @@
 [gd_scene format=3 uid="uid://c8fwk5km02euh"]
 
 [ext_resource type="ArrayMesh" uid="uid://dbacrj1jggjd5" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/PrisonRail.obj" id="1_s7ka7"]
+[ext_resource type="Texture2D" uid="uid://nwyy8jbjdiut" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRail/PrisonRail_Base_color.png" id="2_6x5l2"]
+[ext_resource type="Texture2D" uid="uid://cujuclgdb3kg2" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRail/PrisonRail_Mixed_AO.png" id="3_wuy5b"]
+[ext_resource type="Texture2D" uid="uid://dx3d5d5fi1mc2" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRail/PrisonRail_Height.png" id="4_07ola"]
+[ext_resource type="Texture2D" uid="uid://cbp56bldj70r1" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRail/PrisonRail_Base_metalness.png" id="5_y46gh"]
+[ext_resource type="Texture2D" uid="uid://c10rrmme2w2u4" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRail/PrisonRail_Normal_OpenGL.png" id="6_7qv51"]
+[ext_resource type="Texture2D" uid="uid://c2owxvd2u6kv3" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRail/PrisonRail_Specular_roughness.png" id="7_8bk7w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_acvvl"]
+albedo_texture = ExtResource("2_6x5l2")
+metallic = 1.0
+metallic_texture = ExtResource("5_y46gh")
+roughness_texture = ExtResource("7_8bk7w")
+normal_enabled = true
+normal_texture = ExtResource("6_7qv51")
+ao_enabled = true
+ao_texture = ExtResource("3_wuy5b")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("4_07ola")
 
 [node name="PrisonCraneRail" type="StaticBody3D" unique_id=722171053]
 
 [node name="PrisonRail" type="MeshInstance3D" parent="." unique_id=1016540394]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("1_s7ka7")
+surface_material_override/0 = SubResource("StandardMaterial3D_acvvl")

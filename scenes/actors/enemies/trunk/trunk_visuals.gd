@@ -2,7 +2,7 @@ extends Node3D
 @onready var sprite_pivot = $Torso
 @onready var platform_check: RayCast3D = $"../PlatformCheck"
 @onready var object_check: RayCast3D = $"../ObjectCheck"
-@onready var anim_manager = $TorsoAnims
+@onready var anim_manager = $AnimationPlayer
 
 
 
@@ -29,7 +29,10 @@ func _on_state_machine_state_changed(prev: String, new: String) -> void:
 		anim_manager.play("Idle")
 	elif new == 'trunkchase':
 		anim_manager.play('StepStart')
-
+	elif new == 'trunkstun':
+		anim_manager.play('Stun')
+	elif new == 'trunkdeath':
+		anim_manager.play('Death1')
 	pass # Replace with function body.
 
 

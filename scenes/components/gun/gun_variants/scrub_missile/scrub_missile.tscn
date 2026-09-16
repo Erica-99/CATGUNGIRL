@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://bkis2t5h6f25"]
+
+[ext_resource type="PackedScene" uid="uid://cib7lo1lbwb5j" path="res://scenes/components/gun/base_gun/base_gun.tscn" id="1_w84fu"]
+[ext_resource type="PackedScene" uid="uid://bt57arw8qv0ya" path="res://scenes/actors/missile/missile.tscn" id="2_wnaie"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eyrdn"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.43072295, 0.90990365, 0.9999998, 1)
+emission_energy_multiplier = 2.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_vrje1"]
+material = SubResource("StandardMaterial3D_eyrdn")
+radius = 0.06
+height = 0.09
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3agye"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.7794714, 0.40008292, 1, 1)
+emission_energy_multiplier = 3.8
+
+[sub_resource type="SphereMesh" id="SphereMesh_d7023"]
+material = SubResource("StandardMaterial3D_3agye")
+radius = 0.07
+height = 0.1
+
+[node name="ScrubMissile" unique_id=814655304 node_paths=PackedStringArray("bullet_emitter", "_normal_flash", "_perfect_flash") instance=ExtResource("1_w84fu")]
+gun_name = "Sniper"
+bullet_emitter = NodePath("BulletEmitter")
+_normal_flash = NodePath("Muzzle/NormalMuzzleFlash")
+_perfect_flash = NodePath("Muzzle/PerfectMuzzleFlash")
+aim_speed = 8.0
+controller_aim_speed = 3.5
+aim_settled_threshold = 98.0
+perfect_damage_multiplier = 1.5
+perfect_shot_max_interval = 1.0
+laser_convergence_speed = 0.73
+spam_window = 0.6
+spam_aim_multiplier = 0.4
+recoil_amount = 0.35
+recoil_recovery = 5.0
+wobble_amount = 0.1
+wobble_speed = 7.0
+
+[node name="AmmoComponent" parent="." index="0" unique_id=761015893 node_paths=PackedStringArray("gun_link")]
+gun_link = NodePath("..")
+ammo_max = 1
+
+[node name="BulletEmitter" parent="." index="1" unique_id=1440563695 node_paths=PackedStringArray("muzzle")]
+muzzle = NodePath("../Muzzle")
+bullet_scene = ExtResource("2_wnaie")
+full_auto = false
+bullet_damage = 50.0
+bullet_knockback = 0.0
+bullet_scale = 1.5
+bullet_velocity_multiplier = 5.0
+base_aim_spread = 5.0
+
+[node name="Muzzle" type="Marker3D" parent="." index="2" unique_id=311695695]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2476225, 0.7716577, 0)
+
+[node name="NormalMuzzleFlash" type="CPUParticles3D" parent="Muzzle" index="0" unique_id=1390696933]
+emitting = false
+amount = 14
+lifetime = 0.15000000000000002
+one_shot = true
+speed_scale = 1.2
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_vrje1")
+gravity = Vector3(0, -0.5, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 9.0
+
+[node name="PerfectMuzzleFlash" type="CPUParticles3D" parent="Muzzle" index="1" unique_id=1478561826]
+emitting = false
+amount = 16
+lifetime = 0.15000000000000002
+one_shot = true
+speed_scale = 1.2
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_d7023")
+gravity = Vector3(0, -1, 0)
+initial_velocity_min = 6.0
+initial_velocity_max = 10.0
+color = Color(0.43669105, 0.99999994, 0.96197826, 1)

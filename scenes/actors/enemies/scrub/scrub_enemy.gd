@@ -6,7 +6,7 @@ extends CharacterBody3D
 @onready var flee_area_3d: Area3D = $FleeArea3D
 
 @export_category("Node References")
-@export var animator: AnimatedSprite3D
+@export var animator: AnimationPlayer
 @export var state_machine: StateMachine
 @onready var can_shoot: RayCast3D = $CanShoot
 @onready var softCollider = $SoftCollider
@@ -92,6 +92,9 @@ func _ready() -> void:
 func _process(delta):
 	if in_attacking_range:
 		can_shoot.target_position = can_shoot.to_local(get_tree().get_first_node_in_group("player").global_position)
+	
+	if state_machine.current_state_name != "ScrubAttack" and gun_component is BaseGun:
+		gun_component.rotation.z = -PI/2
 
 func _physics_process(delta: float) -> void:
 	var added_velo = 0
