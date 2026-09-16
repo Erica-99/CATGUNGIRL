@@ -369,44 +369,74 @@ transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 2
 visible = false
 shape = SubResource("ConcavePolygonShape3D_p42ql")
 
-[node name="Node3D" type="Node3D" parent="." unique_id=156463641]
+[node name="Decor" type="Node3D" parent="." unique_id=156463641]
 
-[node name="BarrierFull2" type="MeshInstance3D" parent="Node3D" unique_id=1135228427]
+[node name="BarrierFull2" type="MeshInstance3D" parent="Decor" unique_id=1135228427]
 transform = Transform3D(0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071068, -4.7163067, 0, 4.715933)
 mesh = ExtResource("15_1mvpt")
 surface_material_override/0 = SubResource("StandardMaterial3D_aiyl6")
 
-[node name="BarrierFull3" type="MeshInstance3D" parent="Node3D" unique_id=1260370981]
+[node name="BarrierFull3" type="MeshInstance3D" parent="Decor" unique_id=1260370981]
 transform = Transform3D(0.96592593, 0, 0.25881913, 0, 1, 0, -0.25881913, 0, 0.96592593, 1.7259648, 0, 6.4424076)
 mesh = ExtResource("15_1mvpt")
 surface_material_override/0 = SubResource("StandardMaterial3D_fnckr")
 
-[node name="BarrierFull4" type="MeshInstance3D" parent="Node3D" unique_id=624082239]
+[node name="BarrierFull4" type="MeshInstance3D" parent="Decor" unique_id=624082239]
 transform = Transform3D(0.7071068, 0, 0.70710695, 0, 1, 0, -0.70710695, 0, 0.7071068, 4.743624, 0, 4.698453)
 mesh = ExtResource("15_1mvpt")
 surface_material_override/0 = SubResource("StandardMaterial3D_uq655")
 
-[node name="BarrierFull" type="MeshInstance3D" parent="Node3D" unique_id=1840847965]
+[node name="BarrierFull" type="MeshInstance3D" parent="Decor" unique_id=1840847965]
 transform = Transform3D(0.96592593, 0, -0.25881907, 0, 1, 0, 0.25881907, 0, 0.96592593, -1.7258694, 0, 6.445531)
 mesh = ExtResource("15_1mvpt")
 surface_material_override/0 = SubResource("StandardMaterial3D_e7mai")
 
-[node name="BarrierFull5" type="MeshInstance3D" parent="Node3D" unique_id=242255512]
+[node name="BarrierFull5" type="MeshInstance3D" parent="Decor" unique_id=242255512]
 transform = Transform3D(-0.7071069, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.7071069, 4.716306, 0, -4.7159333)
 mesh = ExtResource("15_1mvpt")
 surface_material_override/0 = SubResource("StandardMaterial3D_mvbbh")
 
-[node name="BarrierFull6" type="MeshInstance3D" parent="Node3D" unique_id=1847294460]
+[node name="BarrierFull6" type="MeshInstance3D" parent="Decor" unique_id=1847294460]
 transform = Transform3D(-0.96592593, 0, -0.25881922, 0, 1, 0, 0.25881922, 0, -0.96592593, -1.7259654, 0, -6.4424076)
 mesh = ExtResource("15_1mvpt")
 surface_material_override/0 = SubResource("StandardMaterial3D_5q07q")
 
-[node name="BarrierFull7" type="MeshInstance3D" parent="Node3D" unique_id=2117254003]
+[node name="BarrierFull7" type="MeshInstance3D" parent="Decor" unique_id=2117254003]
 transform = Transform3D(-0.70710677, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.70710677, -4.7436247, 0, -4.6984525)
 mesh = ExtResource("15_1mvpt")
 surface_material_override/0 = SubResource("StandardMaterial3D_wg1bo")
 
-[node name="BarrierFull8" type="MeshInstance3D" parent="Node3D" unique_id=1197196896]
+[node name="BarrierFull8" type="MeshInstance3D" parent="Decor" unique_id=1197196896]
 transform = Transform3D(-0.96592593, 0, 0.25881898, 0, 1, 0, -0.25881898, 0, -0.96592593, 1.7258688, 0, -6.445531)
 mesh = ExtResource("15_1mvpt")
 surface_material_override/0 = SubResource("StandardMaterial3D_xvlnk")
+
+[node name="PanopticonBridge_CollisionGPU_01" type="GPUParticlesCollisionBox3D" parent="." unique_id=1552602452]
+transform = Transform3D(1, 0, 0, 0, 0.7202836, 0, 0, 0, 5.2156377, -15.287201, -0.38756204, 0)
+visible = false
+size = Vector3(24.587494, 1.3319702, 2)
+
+[node name="PanopticonBridge_CollisionGPU_02" type="GPUParticlesCollisionBox3D" parent="." unique_id=52543727]
+transform = Transform3D(1, 0, 0, 0, 0.7202836, 0, 0, 0, 5.2156377, 15.29114, -0.38756204, 0)
+visible = false
+size = Vector3(24.587494, 1.3319702, 2)
+
+[node name="PanopticonBridge_CollisionGPU_03" type="GPUParticlesCollisionBox3D" parent="." unique_id=1877667173]
+transform = Transform3D(1, 0, 0, 0, 0.7202836, 0, 0, 0, 5.2156377, 5.8230762, 6.6456327, 0)
+visible = false
+size = Vector3(3.7791862, 1.1112976, 2)
+
+[node name="PanopticonBridge_CollisionGPU_04" type="GPUParticlesCollisionBox3D" parent="." unique_id=1495572017]
+transform = Transform3D(1, 0, 0, 0, 0.7202836, 0, 0, 0, 5.2156377, -5.7916207, 6.6456327, 0)
+visible = false
+size = Vector3(3.7791862, 1.1112976, 2)
+
+[node name="PanopticonBridge_CollisionGPU_05" type="GPUParticlesCollisionBox3D" parent="." unique_id=876031805]
+transform = Transform3D(1, 0, 0, 0, 0.7202836, 0, 0, 0, 5.2156377, -5.3354874, 7.6426396, 0)
+visible = false
+size = Vector3(2.8837752, 1.6409836, 2)
+
+[node name="PanopticonBridge_CollisionGPU_06" type="GPUParticlesCollisionBox3D" parent="." unique_id=1805281847]
+transform = Transform3D(1, 0, 0, 0, 0.7202836, 0, 0, 0, 5.2156377, 5.3487716, 7.6426396, 0)
+visible = false
+size = Vector3(2.8837752, 1.6409836, 2)

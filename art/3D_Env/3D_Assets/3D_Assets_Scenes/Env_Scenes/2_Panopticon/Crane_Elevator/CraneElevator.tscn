@@ -751,6 +751,7 @@ mesh = ExtResource("1_j5jq4")
 surface_material_override/0 = SubResource("StandardMaterial3D_ai3b1")
 
 [node name="CellCranePrt_01_Collision" type="CollisionShape3D" parent="Crane_Mesh_Collision" unique_id=471111214]
+visible = false
 shape = SubResource("ConcavePolygonShape3D_8q5gf")
 
 [node name="CellCranePrt_02" type="StaticBody3D" parent="Crane_Mesh_Collision" unique_id=1673710615]
@@ -761,6 +762,7 @@ mesh = ExtResource("2_6rgu2")
 surface_material_override/0 = SubResource("StandardMaterial3D_duciv")
 
 [node name="CellCranePrt_02_Collision" type="CollisionShape3D" parent="Crane_Mesh_Collision/CellCranePrt_02" unique_id=875208441]
+visible = false
 shape = SubResource("ConcavePolygonShape3D_418eg")
 
 [node name="CellCranePrt_03" type="StaticBody3D" parent="Crane_Mesh_Collision/CellCranePrt_02" unique_id=814485517]
@@ -771,6 +773,7 @@ mesh = ExtResource("3_oav2g")
 surface_material_override/0 = SubResource("StandardMaterial3D_6x56b")
 
 [node name="CellCranePrt_03_Collision" type="CollisionShape3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03" unique_id=1419199250]
+visible = false
 shape = SubResource("ConcavePolygonShape3D_r6uef")
 
 [node name="CellCranePrt_03_5_Mesh" type="MeshInstance3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03" unique_id=20319645]
@@ -780,6 +783,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_gbedd")
 
 [node name="CellCranePrt_03_5_Collision" type="CollisionShape3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03" unique_id=1905599469]
 transform = Transform3D(1.0000002, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000002, 0, 0, 0)
+visible = false
 shape = SubResource("ConcavePolygonShape3D_51hxw")
 
 [node name="CellCranePrt_04" type="StaticBody3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03" unique_id=1857568644]
@@ -790,7 +794,23 @@ mesh = ExtResource("4_cy3mo")
 surface_material_override/0 = SubResource("StandardMaterial3D_p2rge")
 
 [node name="CellCranePrt_04_Collision" type="CollisionShape3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04" unique_id=1375424760]
+visible = false
 shape = SubResource("ConcavePolygonShape3D_o31nt")
+
+[node name="CellCranePrt_04_CollisionGPU_01" type="GPUParticlesCollisionBox3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04" unique_id=1381859876]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 1.8626451e-09, 0, 1.8710723, -1.5942822, -2.2610693, -4.7683716e-07)
+visible = false
+size = Vector3(5.199585, 1.5336914, 2)
+
+[node name="CellCranePrt_04_CollisionGPU_02" type="GPUParticlesCollisionBox3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04" unique_id=1180198138]
+transform = Transform3D(0.9988997, -0.046897244, 0, 0.046897244, 0.9988997, 0, 0, 0, 1.8710723, -6.5073957, -1.8420669, 0)
+visible = false
+size = Vector3(5.199585, 0.46600342, 2)
+
+[node name="CellCranePrt_04_CollisionGPU_03" type="GPUParticlesCollisionBox3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04" unique_id=570211493]
+transform = Transform3D(0.9993246, 0.036748365, -3.7252903e-09, -0.036748365, 0.9993246, 0, 0, 0, 1.8710722, -6.486847, -2.7061968, 0)
+visible = false
+size = Vector3(5.199585, 0.46600342, 2)
 
 [node name="CellCraneScoop" type="StaticBody3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04" unique_id=1385203236]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.792175, -2.6761813, 0)
@@ -800,6 +820,7 @@ mesh = ExtResource("5_y3kyf")
 surface_material_override/0 = SubResource("StandardMaterial3D_njxlx")
 
 [node name="CellCraneScoop_Collision" type="CollisionShape3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop" unique_id=1882510903]
+visible = false
 shape = SubResource("ConvexPolygonShape3D_p2rge")
 
 [node name="PrisonCell2" type="StaticBody3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop" unique_id=1430763070]
@@ -822,22 +843,27 @@ surface_material_override/0 = SubResource("StandardMaterial3D_7cjwf")
 
 [node name="Cell_Collision_01" type="CollisionShape3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop/PrisonCell2" unique_id=478816225]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0006713867, 0.92954916, 0.06751251)
+visible = false
 shape = SubResource("BoxShape3D_8i2uk")
 
 [node name="Cell_Collision_02" type="CollisionShape3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop/PrisonCell2" unique_id=770097402]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002822876, -0.9269999, 0.0027770996)
+visible = false
 shape = SubResource("BoxShape3D_k5dx3")
 
 [node name="Cell_Collision_03" type="CollisionShape3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop/PrisonCell2" unique_id=1658943574]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9289839, -0.0007171631, 0.001083374)
+visible = false
 shape = SubResource("BoxShape3D_hp7oy")
 
 [node name="Cell_Collision_04" type="CollisionShape3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop/PrisonCell2" unique_id=1203019691]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0020141602, -0.06704712, 1.0611223)
+visible = false
 shape = SubResource("BoxShape3D_jfv3m")
 
 [node name="Cell_Collision_05" type="CollisionShape3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop/PrisonCell2" unique_id=1219426400]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0017089844, -0.07019043, -1.061562)
+visible = false
 shape = SubResource("BoxShape3D_n30ef")
 
 [node name="CellArm_01_Mesh" type="MeshInstance3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop/PrisonCell2" unique_id=331174773]
@@ -860,6 +886,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_wq6g3")
 
 [node name="CellDoor_Collision" type="CollisionShape3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop/PrisonCell2/CellArm_01_Mesh/CellArm_02_Mesh/CellDoor" unique_id=976431651]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+visible = false
 shape = SubResource("ConvexPolygonShape3D_puijb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04/CellCraneScoop/PrisonCell2" unique_id=1404468319]
@@ -877,10 +904,12 @@ material = SubResource("StandardMaterial3D_hp7oy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04" unique_id=542249124]
 transform = Transform3D(1.0367408, 0, -4.6938658e-07, 0, 1, 0, 1.3038516e-08, 0, 2.5992484, -9.45918, -2.4696863, 0.015644073)
+visible = false
 shape = SubResource("BoxShape3D_ddti2")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Crane_Mesh_Collision/CellCranePrt_02/CellCranePrt_03/CellCranePrt_04" unique_id=478480699]
 transform = Transform3D(7.6364717, 0, -4.0978193e-07, 0, 1.4654, 0, 8.940697e-08, 0, 2.2226038, -4.2143593, -2.288658, 0.0026955605)
+visible = false
 shape = SubResource("BoxShape3D_wygjh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=91268566]
