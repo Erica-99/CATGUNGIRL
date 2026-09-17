@@ -55,6 +55,8 @@ func _description_text_for(step: TutorialStep) -> String:
 
 func _on_anim_finished(anim_name: StringName) -> void:
 	if anim_name != "Close":
+		if anim_name == "Open":
+			TutorialManager.finished_opening.emit()
 		return
 	
 	_is_open = false

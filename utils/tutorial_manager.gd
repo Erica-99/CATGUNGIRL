@@ -2,14 +2,21 @@ extends Node
 
 signal step_shown(step: TutorialStep)
 signal sequence_finished
+signal finished_opening
 
 var _steps: Array[TutorialStep] = []
 var _index: int = -1
 var _current_step: TutorialStep = null
 var _completion_callable: Callable = Callable()
 var _pressed_actions: Dictionary = {}
+var _detection_enabled: bool = false
+
+func _ready() -> void:
+	finished_opening.connect(_enable_detection)
 
 func _process(_delta: float) -> void:
+	if not _detection_enabled:
+		return
 	if _current_step == null or _current_step.completion_mode != TutorialStep.CompletionMode.BUTTON_PRESS:
 		return
 	if _current_step.buttons.is_empty():
@@ -35,6 +42,7 @@ func start(steps: Array[TutorialStep]) -> void:
 
 func _advance() -> void:
 	_disconnect_current()
+	_detection_enabled = false
 	_index += 1
 	
 	# if array has unfilled slots, do not show empty tutorial UI
@@ -69,15 +77,16 @@ func _advance() -> void:
 
 # manual step completion
 func complete_current_step() -> void:
-	if _current_step:
+	if _current_step and _detection_enabled:
 		_advance()
 
 func _on_step_completed() -> void:
-	_advance()
+	if _detection_enabled:
+		_advance()
 
 # only advances if the event's first argument matches weapon_name
 func _on_step_completed_with_arg(arg) -> void:
-	if str(arg) == _current_step.weapon_name:
+	if str(arg) == _current_step.weapon_name and _detection_enabled:
 		_advance()
 
 # stop listening for previous steps requirement
@@ -91,3 +100,7 @@ func _signal_arg_count(signal_name: StringName) -> int:
 		if sig.name == signal_name:
 			return sig.args.size()
 	return 0
+
+# disable completion detection lockout for when the popup fully loads
+func _enable_detection() -> void:
+	_detection_enabled = true
