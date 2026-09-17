@@ -121,6 +121,7 @@ func _ready() -> void:
 	state_machine.init(blackboard)
 	brain_spider_visuals.apply_surface_rotation()
 	health_comp.killed.connect(_on_health_component_killed)
+	health_comp.knocked_back.connect(take_knockback)
 
 func _on_health_component_killed(_killing_blow: DamageHealInstance, _health_before_death: Variant) -> void:
 	start_death()
@@ -265,3 +266,17 @@ func show_spider_visual() -> void:
 
 func is_explosion_effect_playing() -> bool:
 	return brain_spider_visuals.is_explosion_playing()
+
+## When taking damage, get pushed back 
+func take_knockback(knockback_direction: Vector3, knockback_strength: float):
+	# Different knockback handling for on the floor/in the air
+	# When on the floor knock up-left/right
+	# print("Knocked back " + str(knockback_direction) + str(knockback_strength))
+	if spider_mode == SpiderMode.FLOOR:
+		if knockback_direction.x >= 0:
+			velocity += Vector3(knockback_strength, knockback_strength/log(10), 0)
+		else:
+			velocity += Vector3(-knockback_strength, knockback_strength/log(10), 0)
+	# When not on the floor get knocked down to the ground
+	#else:
+		#velocity = knockback_direction * knockback_strength
