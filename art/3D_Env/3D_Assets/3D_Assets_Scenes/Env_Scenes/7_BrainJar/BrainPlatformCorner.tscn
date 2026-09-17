@@ -22,33 +22,10 @@ roughness_texture = ExtResource("5_n3503")
 normal_enabled = true
 normal_texture = ExtResource("4_s3qkq")
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2x558"]
-data = PackedVector3Array(-5.0004, 0, 0, -5.0004, -0.19999999, 0, -0.0001, 0, 0, -0.0001, 0, 0, -5.0004, -0.19999999, 0, 0, -0.19999999, 0, 0, -0.19999999, 5, -0.0001, 0, 5, 0, -0.19999999, 0, 0, -0.19999999, 0, -0.0001, 0, 5, -0.0001, 0, 0, -5.0004, -0.19999999, 2.5, -5.0004, 0, 2.5, -2.5005, -0.19999999, 5, -2.5005, -0.19999999, 5, -5.0004, 0, 2.5, -2.5005, 0, 5, -2.5005, -0.19999999, 5, 0, -0.19999999, 5, -5.0004, -0.19999999, 2.5, -5.0004, -0.19999999, 2.5, 0, -0.19999999, 5, -5.0004, -0.19999999, 0, -5.0004, -0.19999999, 0, 0, -0.19999999, 5, 0, -0.19999999, 0, -0.0001, 0, 5, 0, -0.19999999, 5, -2.5005, 0, 5, -2.5005, 0, 5, 0, -0.19999999, 5, -2.5005, -0.19999999, 5, -5.0004, 0, 2.5, -5.0004, -0.19999999, 2.5, -5.0004, 0, 0, -5.0004, 0, 0, -5.0004, -0.19999999, 2.5, -5.0004, -0.19999999, 0, -2.5005, 0, 5, -5.0004, 0, 2.5, -0.0001, 0, 5, -0.0001, 0, 5, -5.0004, 0, 2.5, -0.0001, 0, 0, -0.0001, 0, 0, -5.0004, 0, 2.5, -5.0004, 0, 0)
-
-[node name="BrainPlatformCorner" type="StaticBody3D" unique_id=1743438253]
+[node name="BrainPlatformCorner" type="Node3D" unique_id=900430809]
 
 [node name="BrainPlatformCorner_Mesh" type="MeshInstance3D" parent="." unique_id=603310456]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("1_2x558")
 surface_material_override/0 = SubResource("StandardMaterial3D_h6nge")
 surface_material_override/1 = SubResource("StandardMaterial3D_dgpsx")
-
-[node name="BrainPlatformCorner_Collision" type="CollisionShape3D" parent="." unique_id=68341104]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-visible = false
-shape = SubResource("ConcavePolygonShape3D_2x558")
-
-[node name="BrainPlatformCorner_CollisionGPU_01" type="GPUParticlesCollisionBox3D" parent="." unique_id=105074302]
-transform = Transform3D(1, 0, 0, 0, 0.19793001, 0, 0, 0, 1, -4.99463, -0.20119621, 2.5303187)
-visible = false
-size = Vector3(10.000488, 2, 5.051758)
-
-[node name="BrainPlatformCorner_CollisionGPU_02" type="GPUParticlesCollisionBox3D" parent="." unique_id=1173026552]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 0.19793001, 0, -1, 0, -4.371139e-08, -2.5143871, -0.20119621, 5.0097632)
-visible = false
-size = Vector3(10.000488, 2, 5.051758)
-
-[node name="BrainPlatformCorner_CollisionGPU_03" type="GPUParticlesCollisionBox3D" parent="." unique_id=1662389411]
-transform = Transform3D(0.70710677, 0, -0.70710677, 0, 0.19793001, 0, 0.70710677, 0, 0.70710677, -5.396, -0.201, 5.441)
-visible = false
-size = Vector3(7.0253906, 2, 5.051758)
