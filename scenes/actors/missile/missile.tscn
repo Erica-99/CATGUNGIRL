@@ -44,6 +44,7 @@ point_count = 2
 curve = SubResource("Curve_p52p4")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fnu65"]
+particle_flag_align_y = true
 emission_shape = 1
 emission_sphere_radius = 0.2
 direction = Vector3(0, -1, 0)
@@ -58,7 +59,7 @@ scale_curve = SubResource("CurveTexture_5qgwv")
 color_ramp = SubResource("GradientTexture1D_3dyd2")
 alpha_curve = SubResource("CurveTexture_ydenc")
 
-[sub_resource type="SphereMesh" id="SphereMesh_f20kl"]
+[sub_resource type="SphereMesh" id="SphereMesh_oiy2e"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_deyi8"]
 texture = ExtResource("8_e74af")
@@ -381,7 +382,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -393,7 +394,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -520,16 +521,18 @@ texture = ExtResource("3_epqap")
 [node name="ExplosionParticles" type="GPUParticles3D" parent="sprite_P" unique_id=1990370287]
 transform = Transform3D(1.9995424, -0.042816, 0, 0.042816, 1.9995424, 0, 0, 0, 2, -0.0067494586, -0.07694137, -0.14833394)
 material_override = ExtResource("8_oiy2e")
+emitting = false
 amount = 40
 lifetime = 0.3
 explosiveness = 0.22
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_fnu65")
-draw_pass_1 = SubResource("SphereMesh_f20kl")
+draw_pass_1 = SubResource("SphereMesh_oiy2e")
 
 [node name="FireRing" type="GPUParticles3D" parent="sprite_P" unique_id=1508987122]
 transform = Transform3D(0.9997711, -0.021408, 0, 0.021408, 0.9997711, 0, 0, 0, 1, -0.0061449185, -0.105173945, -0.14833394)
 material_override = SubResource("ShaderMaterial_hwlb2")
+emitting = false
 amount = 40
 lifetime = 0.2
 explosiveness = 0.8
