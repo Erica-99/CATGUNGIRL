@@ -14,6 +14,8 @@ class_name EnemySpawner
 # TODO: replace with other enemy types when others are in game
 const CONVICT_PREFAB = preload("res://scenes/actors/enemies/convict/convict_enemy.tscn")
 const SCRUB_PREFAB = preload("res://scenes/actors/enemies/scrub/scrub.tscn")
+const TRUNK_PREFAB = preload("res://scenes/actors/enemies/trunk/trunk.tscn")
+const BRAINSPIDER_PREFAB = preload("res://scenes/actors/enemies/brain_spider/brain_spider.tscn")
 # how much should be sliced for path comparison
 const COMPARE_SLICE: int = 2
 
@@ -32,10 +34,15 @@ func _ready() -> void:
 	
 	for enemy in possible_spawns:
 		var prefab
-		if enemy == Enums.EnemyType.CONVICT:
-			prefab = CONVICT_PREFAB
-		else:
-			prefab = SCRUB_PREFAB
+		match enemy:
+			Enums.EnemyType.CONVICT:
+				prefab = CONVICT_PREFAB
+			Enums.EnemyType.SCRUB:
+				prefab = SCRUB_PREFAB
+			Enums.EnemyType.TRUNK:
+				prefab = TRUNK_PREFAB
+			Enums.EnemyType.BRAINSPIDER:
+				prefab = BRAINSPIDER_PREFAB
 		possible_prefabs.append(prefab)
 
 # actually start spawning timer

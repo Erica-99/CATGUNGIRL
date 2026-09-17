@@ -88,5 +88,7 @@ shape = SubResource("BoxShape3D_lh1xp")
 [node name="EnemyManager" parent="Enemies" unique_id=18369620 instance=ExtResource("5_x31qf")]
 
 [node name="EnemySpawner" parent="Enemies/EnemyManager" unique_id=1110059721 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("6_4gk6r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 7, 0)
 linked_enemy_manager = NodePath("..")
+possible_spawns = Array[int]([2, 3])
+wave_enemies = Array[int]([])
