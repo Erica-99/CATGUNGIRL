@@ -3,16 +3,21 @@ extends Resource
 
 @export_group("Popup Text")
 @export var title: String = "PLACEHOLDER TITLE"
-@export_multiline var description: String = "Placeholder Description, introduce concepts here"
+
+## Default description - always used if the other description_gamepad or 
+## description_playstation don't apply or are left empty
+@export_multiline var description_kbm: String = "Placeholder Description, introduce concepts here"
+
+## shown instead of Description KBM when the player is using an xbox/generic controller
+## leave empty to just reuse Description
+@export_multiline var description_gamepad: String = ""
+
+## shown instead of 'Description Gamepad' specifically for PlayStation controllers
+## leave empty to just reuse Description Gamepad
+@export_multiline var description_playstation: String = ""
+
+## static task, (e.g. "walk left and right")
 @export var task: String = "Whatever task the player must commit to dismiss the instruction"
-
-## shown instead of Task when the player is using a controller
-## leave empty to just reuse Task
-@export var task_gamepad: String = ""
-
-## shown instead of 'Task Gamepad' specifically for PlayStation controllers 
-## leave empty to just reuse Task Gamepad
-@export var task_playstation: String = ""
 
 @export_group("How This Step Completes")
 enum CompletionMode {

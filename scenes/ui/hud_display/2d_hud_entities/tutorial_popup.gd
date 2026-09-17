@@ -31,27 +31,27 @@ func _on_sequence_finished() -> void:
 
 func _on_input_device_changed(_using_controller: bool) -> void:
 	if _displayed_step:
-		task_label.text = _task_text_for(_displayed_step)
+		description_label.text = _description_text_for(_displayed_step)
 
 func _display_step(step: TutorialStep) -> void:
 	_displayed_step = step
 	title_label.text = step.title
-	description_label.text = step.description
-	task_label.text = _task_text_for(step)
+	description_label.text = _description_text_for(step)
+	task_label.text = step.task
 	anim.play("Open")
 	_is_open = true
 
-func _task_text_for(step: TutorialStep) -> String:
+func _description_text_for(step: TutorialStep) -> String:
 	if not InputDeviceManager.is_using_controller():
-		return step.task
+		return step.description_kbm
 	
-	if InputDeviceManager.get_controller_family() == &"playstation" and step.task_playstation != "":
-		return step.task_playstation
+	if InputDeviceManager.get_controller_family() == &"playstation" and step.description_playstation != "":
+		return step.description_playstation
 	
-	if step.task_gamepad != "":
-		return step.task_gamepad
+	if step.description_gamepad != "":
+		return step.description_gamepad
 	
-	return step.task
+	return step.description_kbm
 
 func _on_anim_finished(anim_name: StringName) -> void:
 	if anim_name != "Close":
