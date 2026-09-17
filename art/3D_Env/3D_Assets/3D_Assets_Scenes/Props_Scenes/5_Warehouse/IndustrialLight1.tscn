@@ -1,16 +1,81 @@
 [gd_scene format=3 uid="uid://d1isfmus58oku"]
 
 [ext_resource type="ArrayMesh" uid="uid://cddseum5yp1m3" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/5_Warehouse/IndustrialLight1.obj" id="1_nfvx3"]
+[ext_resource type="Texture2D" uid="uid://nays7vy62ylg" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/0_MultipleMisc/IndustrialLight/IndustrialLight_BC.png" id="2_rtnp2"]
+[ext_resource type="Texture2D" uid="uid://bagvbf1gwmiy4" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/0_MultipleMisc/IndustrialLight/IndustrialLight_M.png" id="3_2h3wb"]
+[ext_resource type="Texture2D" uid="uid://iil1bqym32j7" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/0_MultipleMisc/IndustrialLight/IndustrialLight_N.png" id="4_13xiu"]
+[ext_resource type="Texture2D" uid="uid://08c5uslabuou" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/0_MultipleMisc/IndustrialLight/IndustrialLight_R.png" id="5_loyt6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7o8av"]
+albedo_texture = ExtResource("2_rtnp2")
+metallic = 1.0
+metallic_texture = ExtResource("3_2h3wb")
+roughness_texture = ExtResource("5_loyt6")
+normal_enabled = true
+normal_texture = ExtResource("4_13xiu")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oihx5"]
 points = PackedVector3Array(-0.05600076, -0.117679, -0.11310519, -0.120697, -0.04467102, -0.042884007, -0.12067337, -0.035916515, -0.08439187, -0.05601258, -0.114200234, -0.12508148, -1.1816621e-05, -0.117679, -0.11310519, -0.05600076, -0.117679, 0.113068014, -0.120697, 0.04464799, -0.042884007, -0.12067337, -2.3037195e-05, -0.09796747, -0.120697, -0.04467102, 0.042809635, -0.09904101, -0.039579585, -0.13560721, -0.09183416, -0.059691913, -0.13166471, -0.05601258, -0.08222325, -0.15974574, 0, -0.114200234, -0.12508148, -1.1816621e-05, -0.117679, 0.113068014, -0.05601258, -0.114200234, 0.1250071, -0.12067337, -0.035916515, 0.0843547, -0.05600076, 0.117679, -0.11310519, -0.12067337, 0.035893485, -0.08439187, -0.120697, 0.04464799, 0.042809635, -0.09904101, 0.039556548, -0.13560721, -0.09904101, -2.3037195e-05, -0.14315748, -0.12067337, -2.3037195e-05, 0.09793028, -0.05601258, -0.044509754, -0.186525, 0, -0.08222325, -0.15974574, 0, -0.114200234, 0.1250071, -0.05601258, -0.08222325, 0.15970856, -0.09183416, -0.059691913, 0.13162753, -0.09904101, -0.039579585, 0.13557002, -1.1816621e-05, 0.11765596, -0.11310519, 0, 0.1141772, -0.12508148, -0.05601258, 0.1141772, -0.12508148, -0.05600076, 0.117679, 0.113068014, -0.09183416, 0.05966887, -0.13166471, -0.12067337, 0.035893485, 0.0843547, -0.05601258, 0.044486716, -0.186525, -0.05601258, -2.3037195e-05, -0.189984, -0.09904101, -2.3037195e-05, 0.14312029, -0.09904101, 0.039556548, 0.13557002, 0, -0.044509754, -0.186525, 0, -0.08222325, 0.15970856, -0.05601258, -0.044509754, 0.18648782, -1.1816621e-05, 0.11765596, 0.113068014, 0, 0.082200214, -0.15974574, 0, 0.1141772, 0.1250071, -0.05601258, 0.082200214, -0.15974574, -0.05601258, 0.1141772, 0.1250071, -0.09183416, 0.05966887, 0.13162753, 0, 0.044486716, -0.186525, 0, -2.3037195e-05, -0.189984, -0.05601258, -2.3037195e-05, 0.189984, -0.05601258, 0.044486716, 0.18648782, 0, -0.044509754, 0.18648782, 0, 0.082200214, 0.15970856, -0.05601258, 0.082200214, 0.15970856, 0, -2.3037195e-05, 0.189984, 0, 0.044486716, 0.18648782)
+
+[sub_resource type="Animation" id="Animation_2h3wb"]
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IndustrialLightLight:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.5, 0, -0.2), Vector3(-0.5, 0, 0.2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IndustrialLightLight:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [2.0, 10.0, 2.0, 10.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2h3wb"]
+_data = {
+&"RESET": SubResource("Animation_2h3wb")
+}
 
 [node name="IndustrialLight1" type="StaticBody3D" unique_id=1599503383]
 
 [node name="IndustrialLight1_Mesh" type="MeshInstance3D" parent="." unique_id=1990620047]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+layers = 16384
 mesh = ExtResource("1_nfvx3")
+surface_material_override/0 = SubResource("StandardMaterial3D_7o8av")
 
 [node name="IndustrialLight1_Collision" type="CollisionShape3D" parent="." unique_id=1148399515]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+visible = false
 shape = SubResource("ConvexPolygonShape3D_oihx5")
+
+[node name="IndustrialLightLight" type="OmniLight3D" parent="." unique_id=923913914]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -0.2)
+layers = 16384
+light_color = Color(0.99999076, 0.2450245, 0.19003737, 1)
+light_energy = 2.0
+light_size = 0.1
+light_specular = 1.5
+shadow_enabled = true
+shadow_bias = 0.01
+shadow_normal_bias = 10.0
+shadow_blur = 0.0
+omni_range = 47.88582
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1832952988]
+libraries/ = SubResource("AnimationLibrary_2h3wb")
+autoplay = &"RESET"

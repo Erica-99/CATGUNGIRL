@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="4_4p71r"]
 [ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="5_xi3ex"]
 [ext_resource type="Script" uid="uid://da3n34oh0bagw" path="res://scenes/actors/player/audio_caller.gd" id="7_28j07"]
-[ext_resource type="SpriteFrames" uid="uid://vtbk6tputppd" path="res://art/2d_assets/real_world/enemy_convict/Convict_Head1.tres" id="7_kdnv2"]
+[ext_resource type="SpriteFrames" uid="uid://dvepkc65g3a5" path="res://art/2d_assets/real_world/enemy_convict/Convict_Head1.tres" id="7_kdnv2"]
 [ext_resource type="SpriteFrames" uid="uid://d1vyji2y36l1p" path="res://art/2d_assets/real_world/enemy_convict/Convict_Body1.tres" id="8_2lv2l"]
 [ext_resource type="Script" uid="uid://ddjs1cw5jtwqb" path="res://scenes/components/state_machine/state_machine.gd" id="12_resq1"]
 [ext_resource type="Script" uid="uid://drxvsuwj3prjk" path="res://scenes/components/state_machine/states/enemy/convict/convict_idle.gd" id="13_l1l22"]
@@ -210,6 +210,18 @@ tracks/7/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../VFX_target:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.53404325, 0.120693445, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_28j07"]
 resource_name = "Death2"
@@ -309,6 +321,18 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../VFX_target:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.39624447, 0.94161725, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_q6lyk"]
@@ -410,6 +434,18 @@ tracks/7/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../VFX_target:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.3248281, 0.94161725, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_kdnv2"]
 resource_name = "Death4"
@@ -509,6 +545,18 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../VFX_target:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.25609976, 0.059176683, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_4p71r"]
@@ -723,6 +771,18 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../VFX_target:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.053640306, 0.81362605, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_mjfjc"]
@@ -1002,11 +1062,15 @@ attack_hitbox = NodePath("AttackHitbox3D")
 attack_cooldown_min = 1.0
 attack_cooldown_max = 1.5
 
+[node name="VFX_target" type="Node3D" parent="." unique_id=300429819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.053640306, 0.81362605, 0)
+
 [node name="Visuals" type="Node3D" parent="." unique_id=1400416479]
 script = ExtResource("2_leh5i")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals" unique_id=750356507]
 libraries/ = SubResource("AnimationLibrary_xi3ex")
+autoplay = &"Idle"
 playback_auto_capture = false
 
 [node name="Sprite_Pivot" type="Node3D" parent="Visuals" unique_id=569478775]
@@ -1020,8 +1084,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.091317296, 0.98001194, 0)
 transform = Transform3D(0.13018179, 0, 0, 0, 0.13018179, 0, 0, 0, 1, 0, 0, 0.048760533)
 sprite_frames = ExtResource("7_kdnv2")
 animation = &"Heads"
-frame = 14
-frame_progress = 0.56379896
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Visuals/Sprite_Pivot/Body_PIV" unique_id=2039047409]
 transform = Transform3D(0.35466167, 0, 0, 0, 0.35466167, 0, 0, 0, 2.4584076, -0.06221962, 0.054442495, 0)

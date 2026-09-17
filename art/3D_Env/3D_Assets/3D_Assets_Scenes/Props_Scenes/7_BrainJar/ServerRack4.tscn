@@ -1,6 +1,22 @@
 [gd_scene format=3 uid="uid://ba63jkd1jefr2"]
 
 [ext_resource type="ArrayMesh" uid="uid://dbkxchuods0nv" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/7_BrainJar/ServerRack4.obj" id="1_es4p6"]
+[ext_resource type="Texture2D" uid="uid://byxplkijfxwl5" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/ServerRacksAll/ServerRacksAll_DefaultMaterial_BaseColor.png" id="2_wgda6"]
+[ext_resource type="Texture2D" uid="uid://fbxl4sdkf5m5" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/ServerRacksAll/ServerRacksAll_DefaultMaterial_Emissive.png" id="3_jjomy"]
+[ext_resource type="Texture2D" uid="uid://mxa30juld7mp" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/ServerRacksAll/ServerRacksAll_DefaultMaterial_Metallic.png" id="4_l2ulo"]
+[ext_resource type="Texture2D" uid="uid://dc7y2cjgeb8n1" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/ServerRacksAll/ServerRacksAll_DefaultMaterial_Normal.png" id="5_xf7ed"]
+[ext_resource type="Texture2D" uid="uid://ir64xaxx4e3f" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/ServerRacksAll/ServerRacksAll_DefaultMaterial_Roughness.png" id="6_a6l6w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8berv"]
+albedo_texture = ExtResource("2_wgda6")
+metallic = 1.0
+metallic_texture = ExtResource("4_l2ulo")
+roughness_texture = ExtResource("6_a6l6w")
+emission_enabled = true
+emission_energy_multiplier = 20.0
+emission_texture = ExtResource("3_jjomy")
+normal_enabled = true
+normal_texture = ExtResource("5_xf7ed")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_es4p6"]
 size = Vector3(1.2365611, 2.4, 1.2)
@@ -10,7 +26,9 @@ size = Vector3(1.2365611, 2.4, 1.2)
 [node name="ServerRack4_Mesh" type="MeshInstance3D" parent="." unique_id=525668990]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("1_es4p6")
+surface_material_override/0 = SubResource("StandardMaterial3D_8berv")
 
 [node name="ServerRack4_Collision" type="CollisionShape3D" parent="." unique_id=1643835858]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.036560893, 2.4, 0)
+visible = false
 shape = SubResource("BoxShape3D_es4p6")

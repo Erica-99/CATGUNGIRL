@@ -34,6 +34,8 @@ var route_point_reached_distance: float = 1.0
 var routing_to_dive_spot: bool = false
 
 var convict_piv
+var stinger_call: StingerComponent
+var id: String
 
 func init(blackboard_dict: Dictionary) -> void:
 	super(blackboard_dict)
@@ -51,6 +53,9 @@ func init(blackboard_dict: Dictionary) -> void:
 	dive_launch_force = blackboard["dive_launch_force"]
 	convict_route_points = blackboard["convict_route_points"]
 	convict_piv = blackboard["convict_piv"]
+	stinger_call = blackboard["stinger_call"]
+	id = blackboard["id"]
+	
 
 func enter() -> void:
 	# TODO: update with more intricated targetting
@@ -62,6 +67,10 @@ func enter() -> void:
 	dive_timer = 0
 	current_route_point = null
 	routing_to_dive_spot = false
+	
+	var hostile_sting: int = randi_range(0, 3)
+	if hostile_sting == 0:
+		stinger_call.play_stinger("convict_hostile_" + id)
 
 
 

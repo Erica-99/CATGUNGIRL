@@ -68,7 +68,14 @@ var action_pending: bool = false
 var enemy_manager: EnemyManager
 var blackboard : Dictionary 
 
+
+
 @onready var Convict_Piv = $Visuals
+
+@export_category("Death Screen Info")
+@export var attack_death_screen_id: StringName = &"convict_attack"
+@export var power_dive_death_screen_id: StringName = &"convict_power_dive"
+@onready var id = get_id()
 
 func _ready() -> void:
 	health_comp.set_max_health(health)
@@ -79,6 +86,7 @@ func _ready() -> void:
 	damage_instance.type = Enums.DamageType.NORMAL
 	damage_instance.knockback = 0 # TODO: change for implementing knockback
 	damage_instance.source = get_path()
+	damage_instance.death_screen_id = attack_death_screen_id
 	attack_hitbox.damage_or_heal_instance = damage_instance
 	
 	var room_convict_route_points: Array = []
@@ -114,6 +122,7 @@ func _ready() -> void:
 		"convict_route_points": room_convict_route_points,
 		"convict_piv": Convict_Piv,
 		"gravity": GRAVITY,
+		"id": id,
 	}
 		
 	# Change initial state based on Inspector values
@@ -147,6 +156,7 @@ func apply_soft_collision(delta: float) -> void:
 func _on_health_component_killed(killing_blow: DamageHealInstance, health_before_death: Variant) -> void:
 	# Possibly implement knockback affects here
 	is_dead = true
+	stinger_caller.play_stinger("convict_death_" + id)
 	state_machine.on_child_transition(state_machine.current_state, "convictdeath")
 
 # Hitstun "flinching", can be improved due to some jank with pounce, might not be needed with knockback implemented
@@ -196,3 +206,24 @@ func take_knockback(knockback_direction: Vector3, knockback_strength: float):
 	# When in the air knock in the direction of the attack
 	else:
 		velocity = knockback_direction * knockback_strength
+		
+func get_id() -> String:
+	var case = randi_range(0, 6)
+	match case:
+		0:
+			return "f1"
+		1:
+			return "f2"
+		2:
+			return "f3"
+		3:
+			return "f4"
+		4:
+			return "m1"
+		5:
+			return "m4"
+		6:
+			return "m5"
+		_:
+			return ""
+		

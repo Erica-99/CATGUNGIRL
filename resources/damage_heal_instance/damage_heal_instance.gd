@@ -8,3 +8,4 @@ extends Resource
 @export var direction: Vector3 = Vector3(0,0,0)
 @export var stun_time: float = 0.0
 @export var source: NodePath
+@export var death_screen_id: StringName = &"default"

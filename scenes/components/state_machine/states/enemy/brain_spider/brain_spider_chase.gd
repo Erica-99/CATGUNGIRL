@@ -3,9 +3,10 @@ extends State
 var actor: BrainSpider
 var detonation_area: Area3D
 var target: CharacterBody3D
-
+var anim: AnimationPlayer
 func init(blackboard_dict: Dictionary) -> void:
 	super(blackboard_dict)
+	anim = blackboard["anim"]
 	actor = blackboard["actor"]
 	detonation_area = blackboard["detonation_area"]
 	target = blackboard["target"]
@@ -35,12 +36,14 @@ func physics_update(delta: float) -> void:
 	if actor.target == null or !is_instance_valid(actor.target):
 		actor.velocity.x = move_toward(actor.velocity.x, 0.0, actor.acceleration * delta)
 		actor.apply_soft_collision(delta)
+		anim.play("Scurry")
 		actor.move_and_slide()
 		return
 	
 	var move_direction: float = sign(actor.target.global_position.x - actor.global_position.x)
 	
 	if move_direction != 0.0:
+		actor.brain_spider_visuals.face_direction(move_direction)
 		actor.velocity.x = move_toward(actor.velocity.x, move_direction * actor.move_speed, actor.acceleration * delta)
 	
 	actor.apply_soft_collision(delta)

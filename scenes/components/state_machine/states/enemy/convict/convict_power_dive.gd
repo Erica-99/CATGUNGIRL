@@ -12,6 +12,7 @@ enum DivePhase {
 var actor: CharacterBody3D
 var anim: AnimationPlayer
 var target: CharacterBody3D
+var attack_hitbox: Area3D
 
 var windup_duration: float
 var dive_launch_force: float
@@ -34,6 +35,7 @@ func init(blackboard_dict: Dictionary) -> void:
 	super(blackboard_dict)
 	actor = blackboard["actor"]
 	anim = blackboard["anim"]
+	attack_hitbox = blackboard["attack_hitbox"]
 	dive_launch_force = blackboard["dive_launch_force"]
 	dive_charge_duration = blackboard["dive_charge_duration"]
 	dive_speed = blackboard["dive_speed"]
@@ -114,6 +116,10 @@ func _start_dive() -> void:
 	
 	dive_direction = dive_direction.normalized()
 	dive_velocity = dive_direction * dive_speed
+	
+	if attack_hitbox != null and attack_hitbox.damage_or_heal_instance != null:
+		attack_hitbox.damage_or_heal_instance.death_screen_id = actor.power_dive_death_screen_id
+	
 	#anim.play("ConvictPowerDive")
 
 func _update_dive(delta: float) -> void:
@@ -142,3 +148,6 @@ func exit() -> void:
 	phase_timer = 0.0
 	dive_direction = Vector3.ZERO
 	locked_target_position = Vector3.ZERO
+	
+	if attack_hitbox != null and attack_hitbox.damage_or_heal_instance != null:
+		attack_hitbox.damage_or_heal_instance.death_screen_id = actor.attack_death_screen_id

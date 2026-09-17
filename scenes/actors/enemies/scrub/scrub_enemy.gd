@@ -4,14 +4,20 @@ extends CharacterBody3D
 @onready var detection_area_3d: Area3D = $DetectionArea3D
 @onready var att_range_area_3d: Area3D = $AttRangeArea3D
 @onready var flee_area_3d: Area3D = $FleeArea3D
+@onready var death_detector: Area3D = $DeathDetector
+@onready var death_explosion: AnimatedSprite3D = $DeathExplosion
 
 @export_category("Node References")
 @export var animator: AnimationPlayer
 @export var state_machine: StateMachine
+@export var stinger_caller: StingerComponent
 @onready var can_shoot: RayCast3D = $CanShoot
 @onready var softCollider = $SoftCollider
 
+@onready var VFX_spawn = $Explosion_target
+
 var is_dead: bool = false
+var explosion_gpu_emitter = preload("res://art/TechArt/1_Shaders/explosion_test.tscn")
 
 @export_category("Starting State Variables")
 @export var start_aggroed: bool
@@ -55,7 +61,14 @@ var time: float = 0.0
 @export var frequency: float = 3.0
 @export var amplitude: float = 2.0
 
+@onready var id: String = get_id()
+
 signal facing_changed(scrub: CharacterBody3D)
+
+# death detector variables
+var death_speed = 3                        #randf_range(10.0, 70.0)
+var launch_speed = Vector3.ZERO
+var explosion_playing: bool = false
 
 var blackboard: Dictionary
 
@@ -79,6 +92,8 @@ func _ready() -> void:
 		"flee_acceleration": flee_acceleration,
 		"slow_down_speed": slow_down_speed,
 		"target": get_tree().get_first_node_in_group("player") as CharacterBody3D,
+		"stinger_call": stinger_caller,
+		"id": id
 	}
 	# Change initial state based on Inspector values
 	if start_aggroed:
@@ -98,6 +113,14 @@ func _process(delta):
 		can_shoot.target_position = can_shoot.to_local(get_tree().get_first_node_in_group("player").global_position)
 
 func _physics_process(delta: float) -> void:
+	if is_dead:
+		await get_tree().create_timer(0.5).timeout
+		velocity += launch_speed
+		if explosion_playing:
+			velocity = Vector3.ZERO
+		move_and_slide()
+		return
+	
 	var added_velo = 0
 	if !too_far_floor_detection.is_colliding():
 		added_velo += -1
@@ -157,7 +180,11 @@ func _physics_process(delta: float) -> void:
 func _on_health_component_killed(killing_blow: DamageHealInstance, health_before_death: Variant) -> void:
 	# Possibly implement knockback affects here
 	is_dead = true
+	#death_detector.monitoring = true
+	print("Death Detector Monitoring: ", death_detector.monitoring)
+	stinger_caller.play_stinger("scrub_death_" + id, true)
 	state_machine.on_child_transition(state_machine.current_state, "scrubdeath")
+	_scrub_death()
 
 func _on_health_component_health_changed(old_health: float, new_health: float, damage_or_heal_instance: DamageHealInstance) -> void:
 	if !detected_player && !is_dead:
@@ -192,3 +219,40 @@ func _return_from_stun():
 		state_machine.on_child_transition(state_machine.current_state, "scrubattack")
 	else:
 		state_machine.on_child_transition(state_machine.current_state, "scrubchase")
+
+func _scrub_death():
+	rotation.z = deg_to_rad(randi_range(0, 360))
+	var launch_direction = transform.basis.y
+	launch_speed = launch_direction.normalized() * death_speed
+
+
+func get_id() -> String:
+	var case = randi_range(0, 5)
+	match case:
+		0:
+			return "f1"
+		1:
+			return "m1"
+		2:
+			return "m2"
+		3:
+			return "m3"
+		4:
+			return "m4"
+		5:
+			return "m5"
+		_:
+			return ""
+		
+
+
+func _on_death_detector_body_entered(body: Node3D) -> void:
+	if is_dead:
+		var explosion_VFX = explosion_gpu_emitter.instantiate()
+		var VFX_spawn_node = get_tree().current_scene.get_node_or_null("VFX")
+		if VFX_spawn_node == null:
+			push_warning("No VFX node found in current scene")
+			return
+		explosion_VFX.global_position = VFX_spawn.global_position
+		VFX_spawn_node.add_child(explosion_VFX)
+		queue_free()
