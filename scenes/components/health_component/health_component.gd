@@ -128,7 +128,6 @@ func _should_ignore_damage(damage_or_heal_instance: DamageHealInstance) -> bool:
 	return health_owner.is_in_group("player")
 
 func set_stun(stun_version: State, stun_time: float) -> void:
-	print("Stun Attempted")
 	stun_version.total_stun_time = stun_time
 	state_machine.current_state.transitioned.emit(state_machine.current_state, stun_version.name.to_lower())
 

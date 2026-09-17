@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="1_fmmif"]
 [ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict/convict_enemy.tscn" id="2_myflo"]
 [ext_resource type="PackedScene" uid="uid://bls076phgmcus" path="res://scenes/actors/enemies/scrub/scrub.tscn" id="3_myflo"]
+[ext_resource type="PackedScene" uid="uid://4l4kw7i1ga4c" path="res://scenes/actors/enemies/brain_spider/brain_spider.tscn" id="4_yt8p2"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_yt8p2"]
 
@@ -11,7 +12,7 @@
 [node name="KnockbackTesting" type="Node3D" unique_id=1605022950]
 
 [node name="Convict" parent="." unique_id=1506947017 instance=ExtResource("2_myflo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.729294, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.73356, 2, 0)
 health = 999
 
 [node name="Ground" type="MeshInstance3D" parent="." unique_id=801685126]
@@ -30,5 +31,8 @@ shape = SubResource("BoxShape3D_0liot")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.073, 2, 0.5)
 
 [node name="Scrub" parent="." unique_id=1090872008 instance=ExtResource("3_myflo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.969065, 11.174584, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.56797, 11.174584, 0)
 health = 999
+
+[node name="BrainSpider" parent="." unique_id=166394742 instance=ExtResource("4_yt8p2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.518429, 3.432454, 0)
