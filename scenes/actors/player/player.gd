@@ -18,6 +18,9 @@ signal player_dead()
 
 @export var gun_arm_node: Node3D
 
+@export var invuln_duration: float = 0.5
+var invuln_timer: float = 1
+
 @export_category("Movement Variables")
 @export var speed: float = 22.5
 @export var acceleration: float = 30.0
@@ -112,6 +115,7 @@ func _ready() -> void:
 	}
 	
 	movement_state_machine.init(blackboard)
+	health_component.health_changed.connect(activate_invuln)
 	health_component.killed.connect(_on_health_component_killed)
 	gun_holder.enemy_hit.connect(_on_gun_enemy_hit)
 	gun_holder.current_gun_charge_progress_changed.connect(_on_gun_charge_progress)
@@ -127,6 +131,12 @@ func _process(_delta: float) -> void:
 	
 	if current_state["movement"] != 0 and blackboard["enable_facing_updates"]:
 		set_facing(sign(current_state["movement"]))
+	
+	# Updating invulnerability timer
+	if invuln_timer < invuln_duration and health_component.damageable == false:
+		invuln_timer += _delta
+		if invuln_timer >= invuln_duration:
+			deactivate_invuln()
 	
 	## Debug damage input
 	#if Input.is_action_just_pressed("debug_damage"):
@@ -308,3 +318,20 @@ func _handle_debug_player_invisible() -> void:
 			continue
 		
 		node.visible = !DebugManager.player_invisible
+
+# Handling the player's global immunity state after taking damage.
+## Activates an invulnerability state, making health component undamagable
+func activate_invuln(_prev_health, current_health, damage_or_heal_instance):
+	# Conditions for attacks that would activate invulnerability state
+	if !damage_or_heal_instance.is_heal and damage_or_heal_instance.amount >= 5 and current_health > 0:
+		print("Activated invuln")
+		for sprite in get_tree().get_nodes_in_group("player_sprites"):
+			sprite.modulate = Color(1,1,1,0.5)
+		invuln_timer = 0
+		health_component.damageable = false
+
+func deactivate_invuln():
+	print("Deactivated invuln")
+	for sprite in get_tree().get_nodes_in_group("player_sprites"):
+			sprite.modulate = Color(1,1,1,1)
+	health_component.damageable = true

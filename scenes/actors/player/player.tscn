@@ -1480,8 +1480,8 @@ script = ExtResource("1_qdyt2")
 hit_heal_fraction = 0.1
 movement_state_machine = NodePath("MovementStateMachine")
 gun_arm_node = NodePath("PlayerVisuals/ROOT_P/GUN_P")
-wall_jump_vertical_velocity = 30.0
 jump_velocity = 35.0
+wall_jump_vertical_velocity = 30.0
 debug_hidden_nodes = [NodePath("PlayerVisuals"), NodePath("GunHolder")]
 input_component = NodePath("PlayerInput")
 mantle_detector = NodePath("MantleDetector")
@@ -1508,7 +1508,7 @@ autoplay = &"RunStand"
 [node name="NECK_P" type="Node3D" parent="PlayerVisuals/ROOT_P/BODY_P/TORSO_P" unique_id=73984414]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21824265, 0.50923264, 0)
 
-[node name="Ros_Torso" type="AnimatedSprite3D" parent="PlayerVisuals/ROOT_P/BODY_P/TORSO_P" unique_id=1023372734]
+[node name="Ros_Torso" type="AnimatedSprite3D" parent="PlayerVisuals/ROOT_P/BODY_P/TORSO_P" unique_id=1023372734 groups=["player_sprites"]]
 transform = Transform3D(0.165, 0, 0, 0, 0.165, 0, 0, 0, 0.165, 0, -0.21496248, 1.8792617e-08)
 sprite_frames = SubResource("SpriteFrames_mayqp")
 animation = &"Idle"
@@ -1519,7 +1519,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03616512, 0.6665413, -5.82
 
 [node name="HEAD_AIM" type="Node3D" parent="PlayerVisuals/ROOT_P/BODY_P/TORSO_P/HEAD_P" unique_id=1651623248]
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="PlayerVisuals/ROOT_P/BODY_P/TORSO_P/HEAD_P/HEAD_AIM" unique_id=54134315]
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="PlayerVisuals/ROOT_P/BODY_P/TORSO_P/HEAD_P/HEAD_AIM" unique_id=54134315 groups=["player_sprites"]]
 transform = Transform3D(0.155, 0, 0, 0, 0.155, 0, 0, 0, 0.155, 0.09906888, 0.18988168, 0.05178921)
 sorting_offset = -5.0
 sprite_frames = SubResource("SpriteFrames_4v6kl")
@@ -1530,7 +1530,7 @@ transform = Transform3D(1, 0, 0, 0, 1, -8.742278e-08, 0, 8.742278e-08, 1, 0.04, 
 
 [node name="GUN_AIM" type="Node3D" parent="PlayerVisuals/ROOT_P/GUN_P" unique_id=897534301]
 
-[node name="Ros_Gun_Sprite" type="AnimatedSprite3D" parent="PlayerVisuals/ROOT_P/GUN_P/GUN_AIM" unique_id=1008635135]
+[node name="Ros_Gun_Sprite" type="AnimatedSprite3D" parent="PlayerVisuals/ROOT_P/GUN_P/GUN_AIM" unique_id=1008635135 groups=["player_sprites"]]
 transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, 0.6230711, 0.5157032, -0.18119152)
 sorting_offset = -10.0
 sprite_frames = SubResource("SpriteFrames_hjnn3")
@@ -1543,7 +1543,7 @@ libraries/ = SubResource("AnimationLibrary_75awx")
 [node name="MuzzleFlash_P" type="Node3D" parent="PlayerVisuals/ROOT_P/GUN_P/GUN_AIM" unique_id=1265077713]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8967885, 0.20617592, -1.8024465e-08)
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="PlayerVisuals/ROOT_P/GUN_P/GUN_AIM/MuzzleFlash_P" unique_id=398450413]
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="PlayerVisuals/ROOT_P/GUN_P/GUN_AIM/MuzzleFlash_P" unique_id=398450413 groups=["player_sprites"]]
 transform = Transform3D(0.5824651, 0, 0, 0, 0.13680483, 0, 0, 0, 0.305, 0.12104654, 0.016289055, -0.3526454)
 sorting_offset = -20.0
 sprite_frames = SubResource("SpriteFrames_v116r")
