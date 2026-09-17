@@ -2,7 +2,8 @@ extends Node
 
 enum FightState {
 	TERMINALS,
-	WAITING_FOR_BLOCKED_SHOT,
+	WAITING_FOR_HEALING_HIT,
+	HEALING_DAMAGE,
 	WAITING_FOR_SACRIFICE,
 	WAITING_FOR_DAMAGE,
 	FINAL_VULNERABILITY,
@@ -24,6 +25,10 @@ var fight_state: FightState = FightState.TERMINALS
 var gun_sacrifice_interactable: Node
 ## Order and requirements of fight phases
 @export var fight_phases: Array[BrainJarPhase] = []
+
+@export_category("Damage Healing")
+@export var damage_heal_delay: float = 0.15
+@export var damage_heal_duration: float = 0.75
 
 var current_phase_index: int = 0
 var activated_terminal_count: int = 0
@@ -57,16 +62,17 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 		_update_health_display(new_health)
 		return
 	
-	if fight_state == FightState.TERMINALS or fight_state == FightState.WAITING_FOR_SACRIFICE or fight_state == FightState.COMPLETE:
+	if fight_state == FightState.TERMINALS or fight_state == FightState.WAITING_FOR_SACRIFICE or fight_state == FightState.HEALING_DAMAGE or fight_state == FightState.COMPLETE:
 		health_component.current_health = old_health
-		_update_health_display(old_health)
+		
+		if fight_state != FightState.HEALING_DAMAGE:
+			_update_health_display(old_health)
+	
 		return
 	
 	match fight_state:
-		FightState.WAITING_FOR_BLOCKED_SHOT:
-			health_component.current_health = old_health
-			_update_health_display(old_health)
-			_advance_phase()
+		FightState.WAITING_FOR_HEALING_HIT:
+			_play_damage_heal(new_health, old_health)
 		
 		FightState.WAITING_FOR_DAMAGE:
 			var controlled_health: float = _apply_damage_segment(old_health)
@@ -93,6 +99,21 @@ func _apply_damage_segment(old_health: float) -> float:
 func _update_health_display(new_health: float) -> void:
 	health = new_health
 	health_bar.health = health
+
+func _play_damage_heal(damaged_health: float, restored_health: float) -> void:
+	fight_state = FightState.HEALING_DAMAGE
+	
+	# Restore the real health immediately so hit dosnt kill boss
+	health_component.current_health = restored_health
+	
+	# Display damage before visually healing
+	_update_health_display(damaged_health)
+	_enable_shields()
+	
+	var heal_tween: Tween = create_tween()
+	heal_tween.tween_interval(damage_heal_delay)
+	heal_tween.tween_method(_update_health_display, damaged_health, restored_health, damage_heal_duration)
+	heal_tween.finished.connect(_advance_phase)
 
 func _disable_shields(signal_val = false):
 	if !signal_val:
@@ -201,8 +222,8 @@ func _complete_terminal_phase() -> void:
 	var phase: BrainJarPhase = fight_phases[current_phase_index]
 	
 	match phase.completion_type:
-		BrainJarPhase.CompletionType.BLOCK_SHOT_AND_ADVANCE:
-			fight_state = FightState.WAITING_FOR_BLOCKED_SHOT
+		BrainJarPhase.CompletionType.DAMAGE_HEAL_AND_ADVANCE:
+			fight_state = FightState.WAITING_FOR_HEALING_HIT
 			_disable_shields()
 		
 		BrainJarPhase.CompletionType.SACRIFICE_THEN_DAMAGE:
