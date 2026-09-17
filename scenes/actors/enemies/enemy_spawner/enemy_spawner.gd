@@ -5,6 +5,7 @@ class_name EnemySpawner
 # exported vars
 @export var base_spawn_delay: float = 2.0
 @export var linked_enemy_manager: EnemyManager
+#@export var spawn_trigger: Area3D
 
 # reference vars
 @onready var spawn_delay_timer: Timer = $SpawnDelayTimer
@@ -27,10 +28,17 @@ var possible_prefabs: Array = []
 @export_category("Wave Settings")
 @export var wave_spawner = false
 @export var wave_enemies: Array[Enums.EnemyType] = [Enums.EnemyType.CONVICT, Enums.EnemyType.SCRUB]
+@export var has_trigger = false
+@export var spawn_trigger: Area3D
+
+var spawn_ids: Array = []
+var can_spawn = true
+
 
 func _ready() -> void:
 	# link up spawn signal
 	EventManager.spawn_enemy.connect(_spawn_enemy)
+	linked_enemy_manager.child_exiting_tree.connect(_remove_id_)
 	
 	for enemy in possible_spawns:
 		var prefab
@@ -48,14 +56,27 @@ func _ready() -> void:
 # actually start spawning timer
 func _spawn_enemy(custom_delay: float, spawner_path: NodePath):
 	if wave_spawner:
-		for wave_enemy in wave_enemies:
-			var enemy
-			if wave_enemy == Enums.EnemyType.CONVICT:
-				enemy = CONVICT_PREFAB
+		if can_spawn:
+			for wave_enemy in wave_enemies:
+				var enemy
+				match wave_enemy:
+					Enums.EnemyType.CONVICT:
+							enemy = CONVICT_PREFAB
+					Enums.EnemyType.SCRUB:
+						enemy = SCRUB_PREFAB
+					Enums.EnemyType.TRUNK:
+						enemy = TRUNK_PREFAB
+					Enums.EnemyType.BRAINSPIDER:
+						enemy = BRAINSPIDER_PREFAB
+				enemy = enemy.instantiate()
+				spawn_ids.append(enemy.get_instance_id())
+				_add_to_manager(enemy)
+			print(spawn_ids)
+			if has_trigger:
+				spawn_trigger.active = false
 			else:
-				enemy = SCRUB_PREFAB
-			enemy = enemy.instantiate()
-			_add_to_manager(enemy)
+				can_spawn = false
+			print("Spawning has been set to: ", can_spawn)
 	else:
 		if enemies.get_path_to(self) == spawner_path.slice(COMPARE_SLICE):
 			if custom_delay == 0:
@@ -73,3 +94,13 @@ func _add_to_manager(enemy): # owner must be assigned for enemy manager to recog
 	enemy.owner = linked_enemy_manager
 	enemy.global_position = spawn_point.global_position
 	linked_enemy_manager._check_enemies_remaining(enemy)
+
+func _remove_id_(enemy: CharacterBody3D):
+	var id = enemy.get_instance_id()
+	if id in spawn_ids:
+		spawn_ids.erase(id)
+	if spawn_ids.is_empty():
+		if has_trigger:
+			spawn_trigger.active = true
+		else:
+			can_spawn = true

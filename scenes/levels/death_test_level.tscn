@@ -43,7 +43,7 @@ visible = false
 shape = SubResource("BoxShape3D_birtj")
 
 [node name="Player" parent="." unique_id=1349193765 instance=ExtResource("2_4036w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.073, 2, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.073, 3, 0.5)
 
 [node name="PlayerRespawn" type="Node3D" parent="." unique_id=139962297]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.415524, 2, 0.5)
@@ -91,4 +91,12 @@ shape = SubResource("BoxShape3D_lh1xp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 7, 0)
 linked_enemy_manager = NodePath("..")
 possible_spawns = Array[int]([2, 3])
-wave_enemies = Array[int]([])
+wave_spawner = true
+wave_enemies = Array[int]([0, 0, 0])
+
+[node name="EnemySpawner2" parent="Enemies/EnemyManager" unique_id=1896058311 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("6_4gk6r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 7, 0)
+linked_enemy_manager = NodePath("..")
+possible_spawns = Array[int]([2, 3])
+wave_spawner = true
+wave_enemies = Array[int]([1, 3])
