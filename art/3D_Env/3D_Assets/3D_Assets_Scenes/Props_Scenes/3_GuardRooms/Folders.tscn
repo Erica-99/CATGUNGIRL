@@ -14,9 +14,17 @@ roughness_texture = ExtResource("5_avnua")
 normal_enabled = true
 normal_texture = ExtResource("4_1pcwb")
 
-[node name="Folders" type="Node3D" unique_id=2053275797]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4kggl"]
+points = PackedVector3Array(-0.15, 0, -0.134973, -0.15, 0, 0.13502799, -0.15, 0.34996575, -0.134973, 0.15, 0, -0.12292127, 0.15, 0, 0.122949824, -0.15, 0.34996575, 0.13502799, 0.15, 0.34996575, -0.12292127, 0.15, 0.34996575, 0.122949824)
+
+[node name="Folders" type="StaticBody3D" unique_id=1146875503]
 
 [node name="Folders_Mesh" type="MeshInstance3D" parent="." unique_id=1084519770]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("1_r1tyg")
 surface_material_override/0 = SubResource("StandardMaterial3D_3n30e")
+
+[node name="Folders_Collision" type="CollisionShape3D" parent="." unique_id=1921496486]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+visible = false
+shape = SubResource("ConvexPolygonShape3D_4kggl")

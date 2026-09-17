@@ -14,9 +14,17 @@ normal_texture = ExtResource("4_e4tcg")
 heightmap_scale = 1.0
 heightmap_texture = ExtResource("3_r170f")
 
-[node name="WoodenCrate5" type="Node3D" unique_id=1477556104]
+[sub_resource type="BoxShape3D" id="BoxShape3D_gnvp6"]
+size = Vector3(0.6, 0.682329, 0.6)
+
+[node name="WoodenCrate5" type="StaticBody3D" unique_id=625367743]
 transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 0, 0)
 
 [node name="WoodenCrate5_Mesh" type="MeshInstance3D" parent="." unique_id=1809546740]
 mesh = ExtResource("1_nywjo")
 surface_material_override/0 = SubResource("StandardMaterial3D_e4tcg")
+
+[node name="WoodenCrate5_Collision" type="CollisionShape3D" parent="." unique_id=1731919699]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3421525, 0)
+visible = false
+shape = SubResource("BoxShape3D_gnvp6")

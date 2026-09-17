@@ -18,12 +18,18 @@ emission_texture = ExtResource("3_xuoku")
 normal_enabled = true
 normal_texture = ExtResource("5_kaa7c")
 
-[node name="LightPortable" type="Node3D" unique_id=2036387140]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yeom4"]
+points = PackedVector3Array(-0.30444413, 0, -0.5904, -0.321598, 0.089823075, -0.000115573406, -0.30043188, 0.13537279, -0.4621024, -0.28287098, 0.06788582, -0.5904, 0.27244896, 0, -0.5904, -0.30444413, 0, 0.5904, -0.30043188, 0.13537279, 0.4619869, -0.030738294, 0.71371853, -0.41714048, -0.004745811, 0.7693992, -0.4621024, -0.15255977, 0.45238602, -0.5116877, 0.011884689, 0.35761708, -0.5904, 0.27244896, 0.119976826, -0.5904, 0.27244896, 0, 0.5904, -0.28287098, 0.06788582, 0.5904, -0.15255977, 0.45238602, 0.5115721, -0.004745811, 0.7693992, 0.4619869, -0.030738294, 0.71371853, 0.41702485, 0.01647845, 0.814949, -0.000115573406, 0.10248035, 0.7193823, -0.4621024, 0.23779231, 0.5441236, -0.3277945, 0.25285286, 0.5764312, -0.000115573406, 0.27244896, 0.119976826, 0.5904, 0.011884689, 0.35761708, 0.5904, 0.10248035, 0.7193823, 0.4619869, 0.12370461, 0.76493204, -0.000115573406, 0.23779231, 0.5441236, 0.32767892)
+
+[node name="LightPortable" type="StaticBody3D" unique_id=137147419]
 
 [node name="LightPortable_Mesh" type="MeshInstance3D" parent="." unique_id=878024995]
 mesh = ExtResource("1_yeom4")
 surface_material_override/0 = SubResource("StandardMaterial3D_dq6v6")
 surface_material_override/1 = SubResource("StandardMaterial3D_dq6v6")
+
+[node name="LightPortable_Collision" type="CollisionShape3D" parent="." unique_id=1871530209]
+shape = SubResource("ConvexPolygonShape3D_yeom4")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1889582615]
 transform = Transform3D(-3.8227142e-08, 0.4849623, 0.8745351, 2.1198375e-08, 0.8745351, -0.4849623, -1, 0, -4.3711392e-08, 0, 0.4060111, 0)

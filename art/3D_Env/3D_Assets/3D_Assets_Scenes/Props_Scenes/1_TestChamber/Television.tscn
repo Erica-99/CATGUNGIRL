@@ -29,7 +29,10 @@ animations = [{
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lw88b"]
 albedo_color = Color(0.00734123, 0.023479354, 0.122697614, 1)
 
-[node name="Television" type="Node3D" unique_id=1809194051]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u0q5s"]
+points = PackedVector3Array(-5.0517335, -0.100583315, -0.61473334, 5.0517335, 5.2653074, 0.80606663, 5.0517335, 5.2653074, 0.17452271, -5.0517335, 5.2653074, 0.80606663, 5.0517335, 0.057005405, 0.016810581, 5.0517335, 0.68841016, -0.61473334, -5.0517335, 5.2653074, 0.17452271, -5.0517335, 0.057005405, 0.016810581, 5.0517335, 4.791491, 0.80606663, -5.0517335, 0.68841016, -0.61473334, 5.0517335, -0.100583315, -0.61473334, -5.0517335, 4.791491, 0.80606663, 5.0517335, 4.4757886, 0.016810581, 5.0517335, -0.100583315, -0.14104064, -5.0517335, 4.4757886, 0.016810581, -5.0517335, -0.100583315, -0.14104064)
+
+[node name="Television" type="StaticBody3D" unique_id=1230489901]
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=634855209]
 transform = Transform3D(0.7698354, 0, 0, 0, 0.59317845, -0.15535566, 0, 0.09619081, 0.9580296, 0, 2.476935, 0.13949203)
@@ -45,3 +48,6 @@ autoplay = "default"
 [node name="Television_Mesh" type="MeshInstance3D" parent="." unique_id=446709253]
 mesh = ExtResource("1_xwf68")
 surface_material_override/0 = SubResource("StandardMaterial3D_lw88b")
+
+[node name="Television_Collision" type="CollisionShape3D" parent="." unique_id=1908289494]
+shape = SubResource("ConvexPolygonShape3D_u0q5s")

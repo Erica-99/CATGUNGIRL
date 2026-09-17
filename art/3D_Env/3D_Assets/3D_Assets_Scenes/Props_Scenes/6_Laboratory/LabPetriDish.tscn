@@ -15,9 +15,17 @@ roughness_texture = ExtResource("5_nkkv5")
 normal_enabled = true
 normal_texture = ExtResource("4_qrjro")
 
-[node name="LabPetriDish" type="Node3D" unique_id=1861939140]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bcfw6"]
+points = PackedVector3Array(0, 0, -0.036269, -0.025646757, 0, -0.025646757, 0, 0.008707148, -0.036269, 0.025639657, 0, -0.025646757, -0.025646757, 0.008707148, -0.025646757, -0.036269, 0, 0, 0.025639657, 0.008707148, -0.025646757, 0.036269, 0, 0, -0.036269, 0.008707148, 0, -0.025646757, 0, 0.025639657, 0.036269, 0.008707148, 0, 0.025639657, 0, 0.025639657, -0.025646757, 0.008707148, 0.025639657, 0, 0, 0.036269, 0.025639657, 0.008707148, 0.025639657, 0, 0.008707148, 0.036269)
+
+[node name="LabPetriDish" type="StaticBody3D" unique_id=1186725690]
 
 [node name="LabPetriDish_Mesh" type="MeshInstance3D" parent="." unique_id=1852222597]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 mesh = ExtResource("1_cnscb")
 surface_material_override/0 = SubResource("StandardMaterial3D_wtp64")
+
+[node name="LabPetriDish_Collision" type="CollisionShape3D" parent="." unique_id=1502356473]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+visible = false
+shape = SubResource("ConvexPolygonShape3D_bcfw6")

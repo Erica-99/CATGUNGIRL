@@ -14,9 +14,17 @@ roughness_texture = ExtResource("5_xdb2y")
 normal_enabled = true
 normal_texture = ExtResource("4_aeb62")
 
-[node name="FilingCabinet1" type="Node3D" unique_id=774366978]
+[sub_resource type="BoxShape3D" id="BoxShape3D_382ed"]
+size = Vector3(0.51363003, 1, 0.5)
+
+[node name="FilingCabinet1" type="StaticBody3D" unique_id=832642569]
 
 [node name="FilingCabinet1_Mesh" type="MeshInstance3D" parent="." unique_id=956664324]
 transform = Transform3D(-1.3113416e-07, 0, 3, 0, 3, 0, -3, 0, -1.3113416e-07, 0, 0, 0)
 mesh = ExtResource("1_xomfr")
 surface_material_override/0 = SubResource("StandardMaterial3D_oieqf")
+
+[node name="FilingCabinet1_Colission" type="CollisionShape3D" parent="." unique_id=1502838054]
+transform = Transform3D(-1.3113416e-07, 0, 3, 0, 3, 0, -3, 0, -1.3113416e-07, -0.003390041, 1.5, 0.067799985)
+visible = false
+shape = SubResource("BoxShape3D_382ed")

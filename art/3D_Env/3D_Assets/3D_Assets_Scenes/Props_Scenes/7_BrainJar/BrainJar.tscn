@@ -6,11 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b70vp8a436iji" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/BrainJar/BrainJar_DefaultMaterial_Metallic.png" id="4_ol3ac"]
 [ext_resource type="Texture2D" uid="uid://c5pb1qat2rm2c" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/BrainJar/BrainJar_DefaultMaterial_Normal.png" id="5_2ke1v"]
 [ext_resource type="Texture2D" uid="uid://bpvf4k8kiyace" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/BrainJar/BrainJar_DefaultMaterial_Roughness.png" id="6_8q1sb"]
-[ext_resource type="ArrayMesh" uid="uid://ccq14ldymcyat" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/7_BrainJar/BrainJarClaw.obj" id="7_qmdp3"]
-[ext_resource type="Texture2D" uid="uid://cdi8gxa04ceyu" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/Claw/BrainJarClaw_DefaultMaterial_BaseColor.png" id="8_vs3c6"]
-[ext_resource type="Texture2D" uid="uid://drt5xb43vwrri" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/Claw/BrainJarClaw_DefaultMaterial_Metallic.png" id="9_ofra6"]
-[ext_resource type="Texture2D" uid="uid://cu5mevgm0wjip" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/Claw/BrainJarClaw_DefaultMaterial_Normal.png" id="10_nlf1a"]
-[ext_resource type="Texture2D" uid="uid://cxrkqxl201h66" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/Claw/BrainJarClaw_DefaultMaterial_Roughness.png" id="11_llnhy"]
+[ext_resource type="PackedScene" uid="uid://clm22s3mtbem5" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/BrainJarClaw.tscn" id="7_6l20t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qmdp3"]
 albedo_texture = ExtResource("2_wpb1v")
@@ -25,14 +21,6 @@ normal_texture = ExtResource("5_2ke1v")
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_2h2a8"]
 height = 8.467653
 radius = 2.651851
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u3qcc"]
-albedo_texture = ExtResource("8_vs3c6")
-metallic = 1.0
-metallic_texture = ExtResource("9_ofra6")
-roughness_texture = ExtResource("11_llnhy")
-normal_enabled = true
-normal_texture = ExtResource("10_nlf1a")
 
 [node name="BrainJar" type="StaticBody3D" unique_id=561627710]
 
@@ -65,9 +53,7 @@ spot_angle = 48.924397
 
 [node name="Claw" type="Node3D" parent="." unique_id=241411028]
 
-[node name="BrainJarClaw_Mesh" type="MeshInstance3D" parent="Claw" unique_id=694983926]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -16, 1)
-mesh = ExtResource("7_qmdp3")
-surface_material_override/0 = SubResource("StandardMaterial3D_u3qcc")
+[node name="BrainJarClaw" parent="Claw" unique_id=1617358941 instance=ExtResource("7_6l20t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1132945858]
