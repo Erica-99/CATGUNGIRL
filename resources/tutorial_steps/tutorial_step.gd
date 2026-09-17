@@ -3,7 +3,7 @@ extends Resource
 
 @export_group("Popup Text")
 @export var title: String = "PLACEHOLDER TITLE"
-@export var description: String = "Placeholder Description, introduce concepts here"
+@export_multiline var description: String = "Placeholder Description, introduce concepts here"
 @export var task: String = "Whatever task the player must commit to dismiss the instruction"
 
 ## shown instead of Task when the player is using a controller
