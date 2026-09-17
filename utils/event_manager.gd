@@ -22,6 +22,8 @@ signal player_interest_rank_changed(new_rank)
 signal new_mag_loaded(ammo: int, capacity: int)
 signal shots_fired(shots: int)
 signal shots_loaded(shots: int)
+signal primary_fire_used(gun_name: String)
+signal alt_fire_used(gun_name: String)
 
 signal new_gun_equipped(gun_name: String)
 signal enable_gun_ui(enabled: bool)

@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://by82v1in0qac5" path="res://art/UI/HUD/Guns/Pistol with grapple hook.png" id="8_xj1pg"]
 [ext_resource type="Texture2D" uid="uid://b323gltk7mlxa" path="res://art/UI/HUD/Guns/shotgun.png" id="9_vm65q"]
 [ext_resource type="Texture2D" uid="uid://dhbbj142fa8mo" path="res://art/UI/HUD/Guns/sniper rifle.png" id="10_bws33"]
+[ext_resource type="Script" uid="uid://wa4ebjvpor76" path="res://scenes/ui/hud_display/2d_hud_entities/tutorial_popup.gd" id="11_tutpop"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hc7wi"]
 bg_color = Color(0.4862745, 0.5529412, 1, 0.29411766)
@@ -524,6 +525,7 @@ offset_left = 78.0
 offset_top = 36.0
 offset_right = 578.0
 offset_bottom = 286.0
+script = ExtResource("11_tutpop")
 
 [node name="TutorialAnims" type="AnimationPlayer" parent="Tutorial Popups" unique_id=1135957915]
 libraries/ = SubResource("AnimationLibrary_ls2up")
@@ -558,11 +560,13 @@ layout_mode = 2
 [node name="Title" type="RichTextLabel" parent="Tutorial Popups/Content/MarginContainer/VBoxContainer" unique_id=741784644]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
 text = "PLACEHOLDER TITLE"
 fit_content = true
 
 [node name="Description" type="RichTextLabel" parent="Tutorial Popups/Content/MarginContainer/VBoxContainer" unique_id=1716965385]
 layout_mode = 2
+bbcode_enabled = true
 text = "Placeholder Description, introduce concepts here"
 fit_content = true
 
@@ -573,6 +577,7 @@ size_flags_vertical = 3
 [node name="Task" type="RichTextLabel" parent="Tutorial Popups/Content/MarginContainer/VBoxContainer" unique_id=1351520020]
 layout_mode = 2
 size_flags_vertical = 8
+bbcode_enabled = true
 text = "Whatever task the player must commit to dismiss the instruction"
 fit_content = true
 
