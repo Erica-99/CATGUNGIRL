@@ -700,10 +700,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.028801, 32.55161, 86.37627
 
 [node name="Enemies" type="Node3D" parent="." unique_id=1092297902]
 
-[node name="BrainJar" parent="Enemies" unique_id=1593347133 node_paths=PackedStringArray("terminals") instance=ExtResource("14_wj6kf")]
+[node name="BrainJar" parent="Enemies" unique_id=1593347133 node_paths=PackedStringArray("terminals", "facility_core") instance=ExtResource("14_wj6kf")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -124, 13.711103, 0)
 visible = false
 terminals = NodePath("../../Interactive/Terminals/TerminalProps")
+facility_core = NodePath("../../Environment/BrainJarRoom/BrainJarComponents/FacilityCore")
 
 [node name="EnemyManager" parent="Enemies" unique_id=18369620 instance=ExtResource("16_h2frl")]
 
