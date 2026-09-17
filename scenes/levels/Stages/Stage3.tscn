@@ -86,6 +86,7 @@
 [ext_resource type="PackedScene" uid="uid://co7fptrpmkvog" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/A_SparesAndPlaceholders/LightCeiling.tscn" id="81_wtq1c"]
 [ext_resource type="PackedScene" uid="uid://u0ps1hxqgdbr" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/HighBayLight.tscn" id="86_y6pi2"]
 [ext_resource type="PackedScene" uid="uid://8268415ukuhp" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/4_Panopticon/LightRailPanopticon.tscn" id="87_i8msr"]
+[ext_resource type="PackedScene" uid="uid://4rsfb5kh40wj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/B_Collisions/45Ramp.tscn" id="88_clbst"]
 [ext_resource type="PackedScene" uid="uid://d1isfmus58oku" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/IndustrialLight1.tscn" id="88_m4oo8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aiqfw"]
@@ -1157,7 +1158,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.042, 127.696, 0)
 [node name="Interactive" type="Node3D" parent="." unique_id=546830450]
 
 [node name="PrisonCell" parent="Interactive" unique_id=832090815 instance=ExtResource("14_6h3re")]
-transform = Transform3D(-2.4999995, 0, -2.185569e-07, 0, 2.5, 0, 2.185569e-07, 0, -2.4999995, 122.61171, 3.013, 0.041212082)
+transform = Transform3D(-2.4999995, 0, -2.185569e-07, 0, 2.5, 0, 2.185569e-07, 0, -2.4999995, 123.43627, 3.013, 3)
 
 [node name="CameraPanNode" type="Node3D" parent="Interactive" unique_id=1002179877]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.88017, 20.99137, -2.7971554)
@@ -2181,7 +2182,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0.041212082)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -125.80115, 0.041212082)
 
 [node name="PanopticonElevatorPlatform" parent="Environment/Layer_01" unique_id=1754411523 instance=ExtResource("10_okgl3")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.03299713, 0.39600003, 0.07821202)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.033000946, 0.3798567, 3.037)
 
 [node name="FloorShootingPanopticon" parent="Environment/Layer_01" unique_id=1196948271 instance=ExtResource("5_lj0hr")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 67.027, 0.041212082)
@@ -2495,6 +2496,9 @@ transform = Transform3D(-2, -1.7484554e-07, 0, 1.7484555e-07, -1.9999999, 0, 0, 
 [node name="PanopticonCraneRailBroken8" parent="Environment/Layer_01" unique_id=1918572414 instance=ExtResource("19_murac")]
 transform = Transform3D(-2, 0, -1.7484554e-07, 0, 1.9999998, 0, 1.7484555e-07, 0, -1.9999998, 74.395, 0, -10.413788)
 
+[node name="45Ramp" parent="Environment/Layer_01" unique_id=2094150326 instance=ExtResource("88_clbst")]
+transform = Transform3D(-8.0604295e-08, 1.8073931e-14, -1.4505488, 3.224172e-07, 2.364849, 0, 1.8440114, -4.1348332e-07, -6.34055e-08, -37.9564, 70.6507, -0.24496174)
+
 [node name="Layer_02" type="Node3D" parent="Environment" unique_id=738127830]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.916, 126, 0)
 
@@ -2706,13 +2710,13 @@ transform = Transform3D(-2.157444, 0, -0.6386956, 0, 2.2499998, 0, 0.6386956, 0,
 transform = Transform3D(-1.884101, -0.51115096, -1.118653, -0.4395188, 2.1911693, -0.26095682, 1.1486876, 0, -1.934687, 71.094536, 4.386383, -21.499552)
 
 [node name="PrisonCell" parent="Environment/Layer_02/CellsAssortment3" unique_id=1030322063 instance=ExtResource("14_6h3re")]
-transform = Transform3D(2.2499995, 0, -0.00031418784, 0, 2.25, 0, 0.00031418784, 0, 2.2499995, -27.126617, -56.315742, 0.23909545)
+transform = Transform3D(2.2499995, 0, -0.00031418784, 0, 2.25, 0, 0.00031418784, 0, 2.2499995, -33.611023, -56.315742, -0.31287932)
 
 [node name="Cranes_02" type="Node3D" parent="Environment/Layer_02" unique_id=341717374]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.050476, -126, 0)
 
 [node name="CellCranePrt_03" type="StaticBody3D" parent="Environment/Layer_02/Cranes_02" unique_id=1485266783]
-transform = Transform3D(-1.9999999, 0, -1.7484554e-07, 0, 2, 0, 1.7484554e-07, 0, -1.9999999, 16.268948, 72.39765, 0)
+transform = Transform3D(-1.9999999, 0, -1.7484554e-07, 0, 2, 0, 1.7484554e-07, 0, -1.9999999, 11.378765, 72.39765, 0)
 
 [node name="CellCranePrt_03_Mesh" type="MeshInstance3D" parent="Environment/Layer_02/Cranes_02/CellCranePrt_03" unique_id=1507511642]
 transform = Transform3D(0.9999999, 0, -7.1054274e-15, 0, 1, 0, 7.1054274e-15, 0, 0.9999999, 0, 0, -0.020605922)
@@ -2736,7 +2740,7 @@ shape = SubResource("ConcavePolygonShape3D_pm7ig")
 transform = Transform3D(0.7157093, -0.26919284, -1.848052, 0.7976214, 1.83359, 0.041814756, 1.6886566, -0.7519865, 0.76351553, 20.8187, 75.69021, 8.292257)
 
 [node name="CellCranePrt_02_Mesh" type="MeshInstance3D" parent="Environment/Layer_02/Cranes_02/CellCranePrt_02" unique_id=1887620771]
-transform = Transform3D(0.9999999, -2.9802322e-08, -2.9802322e-08, -2.9802322e-08, 0.99999976, 0, 0, 2.9802322e-08, 0.9999999, 0.017398834, -0.00774765, 0.007866859)
+transform = Transform3D(0.94627035, 0.016006976, 0.3229794, 0.030713752, 0.9898099, -0.1390414, -0.321914, 0.1414907, 0.93613636, 1.2664928, -0.56398964, 0.57263654)
 mesh = ExtResource("20_lk7tg")
 surface_material_override/0 = SubResource("StandardMaterial3D_gsbvn")
 
@@ -2745,7 +2749,7 @@ transform = Transform3D(0.9999999, -2.9802322e-08, -2.9802322e-08, -2.9802322e-0
 shape = SubResource("ConcavePolygonShape3D_rsbjq")
 
 [node name="CellCranePrt_04" type="StaticBody3D" parent="Environment/Layer_02/Cranes_02" unique_id=1481662341]
-transform = Transform3D(-0.19610392, 0, 1.9903619, 0.5871721, 1.9109898, 0.057852164, -1.9017806, 0.59001553, -0.18737628, 45.048603, 73.87961, 0.20377159)
+transform = Transform3D(-0.19610392, 0, 1.9903619, 0.5871721, 1.9109898, 0.057852164, -1.9017806, 0.59001553, -0.18737628, 40.6893, 74.069595, -0.15106916)
 
 [node name="CellCranePrt_04_Mesh" type="MeshInstance3D" parent="Environment/Layer_02/Cranes_02/CellCranePrt_04" unique_id=1416628082]
 transform = Transform3D(1, 2.9802322e-08, -7.450581e-09, 5.9604645e-08, 1.0000002, 5.5879354e-09, 1.4901161e-08, 0, 1.0000002, -0.019595146, 0.0060806274, -0.0019302368)
@@ -3798,6 +3802,9 @@ transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 5, 4
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 175, 130.51346, -12.687115)
 
 [node name="VFX" type="Node3D" parent="." unique_id=1460483519]
+
+[node name="45Ramp" parent="." unique_id=914720184 instance=ExtResource("88_clbst")]
+transform = Transform3D(-8.3332117e-07, 0, -0.9999998, 0, 0.06681018, 0, 19.064167, 0, -4.3711378e-08, 34.724224, 0.07040602, -0.045533895)
 
 [connection signal="removecameratween" from="Interactive/CameraPanNode" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="Interactive/CameraPanNode" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]

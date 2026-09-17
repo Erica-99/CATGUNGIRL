@@ -81,7 +81,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bn0y7klu6axly" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/PrisonRailCranePrt02.obj" id="59_qhut5"]
 [ext_resource type="ArrayMesh" uid="uid://dkpon4gwwcus5" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/PrisonRailCranePrt03.obj" id="60_6itfv"]
 [ext_resource type="PackedScene" uid="uid://7ndrvtyokajf" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/WallPlainMidPrison.tscn" id="62_6itfv"]
-[ext_resource type="PackedScene" path="res://scenes/components/tutorial_trigger/tutorial_trigger.tscn" id="85_x0gst"]
+[ext_resource type="PackedScene" path="res://scenes/components/tutorial_trigger/tutorial_trigger.tscn" id="85_ttrig"]
 [ext_resource type="Script" uid="uid://crdw2cwt2ffb5" path="res://resources/tutorial_steps/tutorial_step.gd" id="86_g074a"]
 [ext_resource type="Resource" uid="uid://dlv4d7mqu3xcy" path="res://resources/tutorial_steps/stage_1_intro_tutorial/movement_tutorial_step.tres" id="87_yxmou"]
 [ext_resource type="Resource" uid="uid://cddpqf08ei3o4" path="res://resources/tutorial_steps/stage_1_intro_tutorial/fire_tutorial_step.tres" id="88_3c7cn"]
@@ -89,6 +89,15 @@
 [ext_resource type="Resource" uid="uid://dy3jhtdqf5diw" path="res://resources/tutorial_steps/stage_1_intro_tutorial/interact_tutorial_step.tres" id="89_nqvtq"]
 [ext_resource type="Resource" uid="uid://ddm44lu0eblvc" path="res://resources/tutorial_steps/stage_1_intro_tutorial/reload_tutorial_step.tres" id="91_v1rce"]
 [ext_resource type="Resource" uid="uid://i475dd553b7q" path="res://resources/tutorial_steps/stage_1_intro_tutorial/grapple_tutorial_step.tres" id="92_3k85b"]
+[ext_resource type="PackedScene" uid="uid://6rxc5ulb6sxc" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/World_Lore/Enlist.tscn" id="72_lraim"]
+[ext_resource type="PackedScene" uid="uid://556rwa2pdmor" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Lying_Convict.tscn" id="72_x0gst"]
+[ext_resource type="PackedScene" uid="uid://bx8juwy6m3hvf" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/World_Lore/Will_Portrait.tscn" id="73_4scdv"]
+[ext_resource type="PackedScene" uid="uid://c3xj7l00asao0" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/file_exploiter.tscn" id="74_nqvtq"]
+[ext_resource type="PackedScene" uid="uid://dfwubrqbnpy7l" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/Hostile_architecture.tscn" id="75_v1rce"]
+[ext_resource type="PackedScene" uid="uid://ddim4ukeuv6rp" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Impaled_Convict.tscn" id="77_3k85b"]
+[ext_resource type="PackedScene" uid="uid://bxoxckf5ed1td" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Scrub_Crashed.tscn" id="78_g3qdj"]
+[ext_resource type="PackedScene" uid="uid://bubvp3c5n2saa" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/GIGI_GunSystem.tscn" id="85_x0gst"]
+[ext_resource type="PackedScene" uid="uid://xwmm12eihkbq" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Meat_lumps.tscn" id="92_4scdv"]
 [ext_resource type="PackedScene" uid="uid://co7fptrpmkvog" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/A_SparesAndPlaceholders/LightCeiling.tscn" id="96_g3qdj"]
 [ext_resource type="Script" uid="uid://4t3uo3s2mf8e" path="res://scenes/levels/Stages/camera_pan_node.gd" id="123_emoyc"]
 [ext_resource type="PackedScene" uid="uid://c10iyc1w0tn8i" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/WallObservation.tscn" id="123_tatg8"]
@@ -1024,183 +1033,6 @@ transform = Transform3D(-1.3113416e-07, 0, 3, 0, 3, 0, -3, 0, -1.3113416e-07, 10
 [node name="IndustrialLight9" parent="Props/IndustrialLight" unique_id=1982026212 instance=ExtResource("15_oeecs")]
 transform = Transform3D(-1.3113416e-07, 0, 3, 0, 3, 0, -3, 0, -1.3113416e-07, 121.7, 8.2, -6.687)
 
-[node name="CeilingLight14" type="OmniLight3D" parent="Props/IndustrialLight/IndustrialLight9" unique_id=784536799]
-transform = Transform3D(0.33333334, -8.881784e-16, -5.293956e-23, 0, -1.4570463e-08, 0.33333334, -8.881784e-16, -0.33333334, -1.4570463e-08, -0.38883662, 0, 0)
-light_color = Color(0.99999076, 0.2450245, 0.19003737, 1)
-light_energy = 10.0
-light_size = 0.098
-light_specular = 1.28
-shadow_enabled = true
-shadow_bias = 1.3
-shadow_normal_bias = 10.0
-shadow_blur = 0.0
-omni_range = 47.88582
-
-[node name="CeilingLight15" type="OmniLight3D" parent="Props/IndustrialLight/IndustrialLight9" unique_id=801540977]
-transform = Transform3D(0.33333334, -4.440892e-15, -1.5881868e-22, 0, -1.4570463e-08, 0.33333334, -4.440892e-15, -0.33333334, -1.4570463e-08, -0.3975922, 0, -21.13065)
-light_color = Color(0.99999076, 0.2450245, 0.19003737, 1)
-light_energy = 10.0
-light_size = 0.098
-light_specular = 1.28
-shadow_enabled = true
-shadow_bias = 1.3
-shadow_normal_bias = 10.0
-shadow_blur = 0.0
-omni_range = 47.88582
-
-[node name="CeilingLight20" type="OmniLight3D" parent="Props/IndustrialLight/IndustrialLight9" unique_id=2090803696]
-transform = Transform3D(0.33333334, -5.3290705e-15, -2.646978e-22, 0, -1.4570463e-08, 0.33333334, -5.3290705e-15, -0.33333334, -1.4570463e-08, 2.4114792, -0.8823751, -28.875237)
-light_color = Color(0.99999076, 0.2450245, 0.19003737, 1)
-light_energy = 10.0
-light_size = 0.09
-light_specular = 1.28
-shadow_enabled = true
-shadow_normal_bias = 10.0
-shadow_blur = 0.0
-omni_range = 47.88582
-
-[node name="CeilingLight21" type="OmniLight3D" parent="Props/IndustrialLight/IndustrialLight9" unique_id=2000674630]
-transform = Transform3D(0.33333334, -5.3290705e-15, -2.646978e-22, 0, -1.4570463e-08, 0.33333334, -5.3290705e-15, -0.33333334, -1.4570463e-08, 3.088816, 1.5685971, 9.7395935)
-light_color = Color(0.99999076, 0.2450245, 0.19003737, 1)
-light_energy = 10.0
-light_specular = 1.28
-shadow_enabled = true
-shadow_bias = 1.3
-shadow_normal_bias = 10.0
-shadow_blur = 0.0
-omni_range = 47.88582
-
-[node name="CeilingLight22" type="OmniLight3D" parent="Props/IndustrialLight/IndustrialLight9" unique_id=1328543508]
-transform = Transform3D(0.33333334, -5.3290705e-15, -2.646978e-22, 0, -1.4570463e-08, 0.33333334, -5.3290705e-15, -0.33333334, -1.4570463e-08, 3.0888164, 1.5685971, 5.7395935)
-light_color = Color(0.99999076, 0.2450245, 0.19003737, 1)
-light_energy = 10.0
-light_specular = 1.28
-shadow_enabled = true
-shadow_bias = 1.3
-shadow_normal_bias = 10.0
-shadow_blur = 0.0
-omni_range = 47.88582
-
-[node name="CeilingLight23" type="OmniLight3D" parent="Props/IndustrialLight/IndustrialLight9" unique_id=1126418883]
-transform = Transform3D(0.33333334, -5.3290705e-15, -2.646978e-22, 0, -1.4570463e-08, 0.33333334, -5.3290705e-15, -0.33333334, -1.4570463e-08, 1.0903602, -0.49808764, 4.710705)
-light_color = Color(0.99999076, 0.2450245, 0.19003737, 1)
-light_energy = 10.0
-light_size = 0.197
-light_specular = 1.28
-shadow_enabled = true
-shadow_bias = 1.3
-shadow_normal_bias = 10.0
-shadow_blur = 0.0
-omni_range = 47.88582
-
-[node name="CeilingLight24" type="OmniLight3D" parent="Props/IndustrialLight/IndustrialLight9" unique_id=1536416065]
-transform = Transform3D(0.33333334, -5.3290705e-15, -2.646978e-22, 0, -1.4570463e-08, 0.33333334, -5.3290705e-15, -0.33333334, -1.4570463e-08, 1.0903599, -0.49808764, 10.710705)
-light_color = Color(0.99999076, 0.2450245, 0.19003737, 1)
-light_energy = 10.0
-light_size = 0.197
-light_specular = 1.28
-shadow_enabled = true
-shadow_bias = 1.3
-shadow_normal_bias = 10.0
-shadow_blur = 0.0
-omni_range = 47.88582
-
-[node name="CeilingLight25" type="OmniLight3D" parent="Props/IndustrialLight/IndustrialLight9" unique_id=1769887906]
-transform = Transform3D(0.33333334, -5.3290705e-15, -2.646978e-22, 0, -1.4570463e-08, 0.33333334, -5.3290705e-15, -0.33333334, -1.4570463e-08, 2.2466004, 0.095183134, 12.781872)
-light_color = Color(0.99999076, 0.2450245, 0.19003737, 1)
-light_energy = 10.0
-light_size = 0.238
-light_specular = 1.5
-shadow_enabled = true
-shadow_bias = 1.3
-shadow_normal_bias = 10.0
-shadow_blur = 0.0
-omni_range = 47.88582
-
-[node name="CeilingLight26" type="OmniLight3D" parent="Props/IndustrialLight/IndustrialLight9" unique_id=1010967643]
-transform = Transform3D(0.33333334, -5.3290705e-15, -2.646978e-22, 0, -1.4570463e-08, 0.33333334, -5.3290705e-15, -0.33333334, -1.4570463e-08, 2.2466004, 1.5704501, 18.86824)
-light_color = Color(0.99999076, 0.2450245, 0.19003737, 1)
-light_energy = 10.0
-light_size = 0.238
-light_specular = 1.5
-shadow_enabled = true
-shadow_bias = 1.3
-shadow_normal_bias = 10.0
-shadow_blur = 0.0
-omni_range = 47.88582
-
-[node name="CeilingLight27" type="OmniLight3D" parent="Props/IndustrialLight/IndustrialLight9" unique_id=591880660]
-transform = Transform3D(0.33333334, -5.3290705e-15, -2.646978e-22, 0, -1.4570463e-08, 0.33333334, -5.3290705e-15, -0.33333334, -1.4570463e-08, 2.2465994, 1.5704501, 23.31752)
-light_color = Color(0.99999076, 0.2450245, 0.19003737, 1)
-light_energy = 10.0
-light_size = 0.238
-light_specular = 1.5
-shadow_enabled = true
-shadow_bias = 1.3
-shadow_normal_bias = 10.0
-shadow_blur = 0.0
-omni_range = 47.88582
-
-[node name="CeilingLight28" type="OmniLight3D" parent="Props/IndustrialLight/IndustrialLight9" unique_id=1780684851]
-transform = Transform3D(0.33333334, -5.3290705e-15, -2.646978e-22, 0, -1.4570463e-08, 0.33333334, -5.3290705e-15, -0.33333334, -1.4570463e-08, 2.2465994, 0.11300111, 29.444595)
-light_color = Color(0.99999076, 0.2450245, 0.19003737, 1)
-light_energy = 10.0
-light_size = 0.238
-light_specular = 1.5
-shadow_enabled = true
-shadow_bias = 1.3
-shadow_normal_bias = 10.0
-shadow_blur = 0.0
-omni_range = 47.88582
-
-[node name="CeilingLight16" type="OmniLight3D" parent="Props/IndustrialLight/IndustrialLight9" unique_id=1897979165]
-transform = Transform3D(0.33333334, -5.3290705e-15, -2.646978e-22, 0, -1.4570463e-08, 0.33333334, -5.3290705e-15, -0.33333334, -1.4570463e-08, -0.39759266, 0, -15.570162)
-light_color = Color(0.99999076, 0.2450245, 0.19003737, 1)
-light_energy = 10.0
-light_size = 0.098
-light_specular = 1.28
-shadow_enabled = true
-shadow_bias = 1.3
-shadow_normal_bias = 10.0
-shadow_blur = 0.0
-omni_range = 47.88582
-
-[node name="CeilingLight17" type="OmniLight3D" parent="Props/IndustrialLight/IndustrialLight9" unique_id=1291465429]
-transform = Transform3D(0.33333334, -5.3290705e-15, -2.646978e-22, 0, -1.4570463e-08, 0.33333334, -5.3290705e-15, -0.33333334, -1.4570463e-08, -0.39759302, 0, -12.236828)
-light_color = Color(0.99999076, 0.2450245, 0.19003737, 1)
-light_energy = 10.0
-light_size = 0.098
-light_specular = 1.28
-shadow_enabled = true
-shadow_bias = 1.3
-shadow_normal_bias = 10.0
-shadow_blur = 0.0
-omni_range = 47.88582
-
-[node name="CeilingLight18" type="OmniLight3D" parent="Props/IndustrialLight/IndustrialLight9" unique_id=1536457968]
-transform = Transform3D(0.33333334, -5.3290705e-15, -2.646978e-22, 0, -1.4570463e-08, 0.33333334, -5.3290705e-15, -0.33333334, -1.4570463e-08, -0.39759338, 0, -8.903492)
-light_color = Color(0.99999076, 0.2450245, 0.19003737, 1)
-light_energy = 10.0
-light_size = 0.098
-light_specular = 1.28
-shadow_enabled = true
-shadow_bias = 1.3
-shadow_normal_bias = 10.0
-shadow_blur = 0.0
-omni_range = 47.88582
-
-[node name="CeilingLight19" type="OmniLight3D" parent="Props/IndustrialLight/IndustrialLight9" unique_id=577590471]
-transform = Transform3D(0.33333334, -5.3290705e-15, -2.646978e-22, 0, -1.4570463e-08, 0.33333334, -5.3290705e-15, -0.33333334, -1.4570463e-08, -0.39759386, 0, -5.57016)
-light_color = Color(0.99999076, 0.2450245, 0.19003737, 1)
-light_energy = 10.0
-light_size = 0.098
-light_specular = 1.28
-shadow_enabled = true
-shadow_bias = 1.3
-shadow_normal_bias = 10.0
-shadow_blur = 0.0
-omni_range = 47.88582
-
 [node name="IndustrialLight12" parent="Props/IndustrialLight" unique_id=1136463410 instance=ExtResource("15_oeecs")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 154.82834, 6.785857, -10.022317)
 
@@ -1945,6 +1777,28 @@ transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 170.
 [node name="PowercellLarge3" parent="Props/Other" unique_id=8179600 instance=ExtResource("51_dnrph")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 199.94583, 8.919618, -12.890817)
 
+[node name="2D_Posters" type="Node3D" parent="Props" unique_id=590890931]
+
+[node name="Enlist" parent="Props/2D_Posters" unique_id=56375923 instance=ExtResource("72_lraim")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 45.269924, 4.6974325, 3.5335202)
+
+[node name="File_Exploiter" parent="Props/2D_Posters" unique_id=1119518296 instance=ExtResource("74_nqvtq")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 155.23308, 6.0376663, -10.064179)
+
+[node name="HostileArchitecture" parent="Props/2D_Posters" unique_id=1333764258 instance=ExtResource("75_v1rce")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.7297, 5.5920496, -14.940098)
+
+[node name="2D_Corpses" type="Node3D" parent="Props" unique_id=722687240]
+
+[node name="LyingConvict" parent="Props/2D_Corpses" unique_id=1235913099 instance=ExtResource("72_x0gst")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.10137, 1.1637552, -11.237484)
+
+[node name="ImpaledConvict" parent="Props/2D_Corpses" unique_id=889351681 instance=ExtResource("77_3k85b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.09048, 1.0664933, 3.1750278)
+
+[node name="ScrubCrashed" parent="Props/2D_Corpses" unique_id=2089480923 instance=ExtResource("78_g3qdj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200.71062, 0.68806237, -6.5467396)
+
 [node name="Interactive" type="Node3D" parent="." unique_id=1604478648]
 
 [node name="DoorBasic" parent="Interactive" unique_id=1555562335 instance=ExtResource("2_ohrdm")]
@@ -2382,9 +2236,18 @@ autoplay = &"Intro"
 
 [node name="VFX2" type="Node3D" parent="." unique_id=915792707]
 
-[node name="TutorialTrigger" parent="." unique_id=885435014 node_paths=PackedStringArray("door_to_unlock") instance=ExtResource("85_x0gst")]
+[node name="TutorialTrigger" parent="." unique_id=885435014 node_paths=PackedStringArray("door_to_unlock") instance=ExtResource("85_ttrig")]
 steps = Array[ExtResource("86_g074a")]([ExtResource("87_yxmou"), ExtResource("88_4scdv"), ExtResource("89_nqvtq"), ExtResource("88_3c7cn"), ExtResource("91_v1rce"), ExtResource("92_3k85b")])
 door_to_unlock = NodePath("../Interactive/DoorBasic")
+
+[node name="WillPortrait" parent="." unique_id=2105078253 instance=ExtResource("73_4scdv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.347645, 12.974404, -16.639408)
+
+[node name="MeatLumps" parent="." unique_id=720032926 instance=ExtResource("92_4scdv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.368645, 9.140897, -12.48376)
+
+[node name="GunPodium" parent="." unique_id=1135966921 instance=ExtResource("85_x0gst")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11074698, 0.19126523, -10.822699)
 
 [connection signal="removecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
