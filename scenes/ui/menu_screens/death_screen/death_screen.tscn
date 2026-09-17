@@ -11,6 +11,49 @@
 [ext_resource type="Resource" uid="uid://dofs26t161ls3" path="res://resources/death_screen/scrub_death_pistol_info.tres" id="8_qw0yo"]
 [ext_resource type="Resource" uid="uid://8wc5h5m250tp" path="res://resources/death_screen/trunk_death_melee_info.tres" id="9_2e7b3"]
 [ext_resource type="Resource" uid="uid://dlgi1t2m4haec" path="res://resources/death_screen/missile_death_info.tres" id="9_lajjf"]
+[ext_resource type="Shader" uid="uid://dygl2w2rchrye" path="res://scenes/ui/menu_screens/death_screen/death_screen.tres" id="11_e8ww7"]
+[ext_resource type="Material" uid="uid://cmur55xonuryo" path="res://art/TechArt/1_Shaders/redtext.tres" id="12_nbtyr"]
+[ext_resource type="FontFile" uid="uid://lewieybq5kel" path="res://scenes/ui/fonts/GiantRobotArmy-Medium.ttf" id="13_tatv4"]
+[ext_resource type="Shader" uid="uid://cgnyiqb4mip0s" path="res://scenes/ui/menu_screens/death_screen/RedText.tres" id="15_nbtyr"]
+[ext_resource type="StyleBox" uid="uid://da18ggvgwhndn" path="res://art/TechArt/5_ButtonTextures/SelectBox.tres" id="16_tatv4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8m3l7"]
+shader = ExtResource("11_e8ww7")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mldj4"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tatv4"]
+shader = ExtResource("15_nbtyr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p41jq"]
+shader = ExtResource("15_nbtyr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nbtyr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p41jq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7on5h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m7rmm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jy3fi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gkmdg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8p3nt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nerbq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hw0vl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8m3l7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f05u3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_thgeg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_atbqo"]
 
 [node name="DeathScreen" type="Control" unique_id=1186847470]
 layout_mode = 3
@@ -30,17 +73,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_g5nha")
 expand_mode = 1
 stretch_mode = 6
 
 [node name="MainPanel" type="PanelContainer" parent="." unique_id=840537453]
+material = SubResource("ShaderMaterial_8m3l7")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mldj4")
 
 [node name="MarginContainer" type="MarginContainer" parent="MainPanel" unique_id=2067237225]
 layout_mode = 2
@@ -53,8 +97,11 @@ theme_override_constants/margin_bottom = 40
 layout_mode = 2
 
 [node name="YouDiedLabel" type="Label" parent="MainPanel/MarginContainer/ScreenVBox" unique_id=2114177545]
+material = ExtResource("12_nbtyr")
 layout_mode = 2
-theme_override_font_sizes/font_size = 135
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("13_tatv4")
+theme_override_font_sizes/font_size = 128
 text = "You Died"
 horizontal_alignment = 1
 
@@ -72,6 +119,7 @@ expand_mode = 1
 stretch_mode = 6
 
 [node name="EnemyInfoLabel" type="Label" parent="MainPanel/MarginContainer/ScreenVBox/ContentArea" unique_id=937882609]
+material = SubResource("ShaderMaterial_tatv4")
 layout_mode = 0
 offset_left = 1150.0
 offset_top = 620.885
@@ -84,6 +132,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="TipLabel" type="Label" parent="MainPanel/MarginContainer/ScreenVBox/ContentArea" unique_id=1529355784]
+material = SubResource("ShaderMaterial_p41jq")
 layout_mode = 0
 offset_left = 20.0
 offset_top = 660.0
@@ -94,12 +143,23 @@ text = "Tip: Dont die next time"
 autowrap_mode = 3
 
 [node name="ContinueButton" type="Button" parent="MainPanel/MarginContainer/ScreenVBox/ContentArea" unique_id=179650829]
+material = SubResource("ShaderMaterial_nbtyr")
 layout_mode = 0
 offset_left = 100.0
 offset_top = 60.0
 offset_right = 600.0
-offset_bottom = 205.0
+offset_bottom = 202.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.1882353, 0.011764706, 1)
+theme_override_colors/font_hover_color = Color(1, 0.42352942, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.1882353, 0.011764706, 1)
+theme_override_fonts/font = ExtResource("13_tatv4")
 theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p41jq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7on5h")
+theme_override_styles/hover = ExtResource("16_tatv4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_m7rmm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jy3fi")
 text = "Continue"
 
 [node name="ReturnToMenuButton" type="Button" parent="MainPanel/MarginContainer/ScreenVBox/ContentArea" unique_id=345921465]
@@ -108,7 +168,17 @@ offset_left = 100.0
 offset_top = 230.0
 offset_right = 600.0
 offset_bottom = 375.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.1882353, 0.011764706, 1)
+theme_override_colors/font_hover_color = Color(1, 0.42358288, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.1882353, 0.011764706, 1)
+theme_override_fonts/font = ExtResource("13_tatv4")
 theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gkmdg")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8p3nt")
+theme_override_styles/hover = ExtResource("16_tatv4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_nerbq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hw0vl")
 text = "Back To Menu"
 
 [node name="ChangeDifficultyButton" type="Button" parent="MainPanel/MarginContainer/ScreenVBox/ContentArea" unique_id=559185809]
@@ -117,5 +187,15 @@ offset_left = 60.0
 offset_top = 400.0
 offset_right = 644.0
 offset_bottom = 545.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.1882353, 0.011764706, 1)
+theme_override_colors/font_hover_color = Color(1, 0.42352942, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.1897483, 0.012920001, 1)
+theme_override_fonts/font = ExtResource("13_tatv4")
 theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8m3l7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_f05u3")
+theme_override_styles/hover = ExtResource("16_tatv4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_thgeg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_atbqo")
 text = "Change Difficulty"
