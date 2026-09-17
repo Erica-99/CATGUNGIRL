@@ -8,10 +8,13 @@ class_name MissileHomeIn
 var body : CharacterBody3D
 var player: CharacterBody3D
 var current_speed : float
+var anims: AnimationPlayer
 
 func enter():
 	body = blackboard["actor"]
 	player = blackboard["player"]
+	anims = blackboard['anims']
+	anims.play('Activate')
 	current_speed = 0
 
 func physics_update(delta):
