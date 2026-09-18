@@ -21,8 +21,20 @@ heightmap_enabled = true
 heightmap_scale = 0.0
 heightmap_texture = ExtResource("4_cknqm")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_bocxv"]
-size = Vector3(1.0068359, 0.7292993, 0.5724411)
+[sub_resource type="BoxShape3D" id="BoxShape3D_sh428"]
+size = Vector3(1.282284, 1.3247566, 1.3221366)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_es25r"]
+size = Vector3(1.282284, 2.0894547, 0.81194377)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cknqm"]
+size = Vector3(1.282284, 2.4661405, 0.5578475)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5m5rs"]
+size = Vector3(1.282284, 2.987648, 1.0739608)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wryy6"]
+size = Vector3(1.282284, 1.9810561, 2.1108122)
 
 [node name="VentAirIntake" type="StaticBody3D" unique_id=351188729]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -31,27 +43,22 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("1_1bunn")
 surface_material_override/0 = SubResource("StandardMaterial3D_dsqq6")
 
-[node name="VentilationBlock_Mesh_01" type="CollisionShape3D" parent="VentilationBlock_Mesh" unique_id=1428219938]
-transform = Transform3D(0.9681367, 0, 0, 0, 1, 0, 0, 0, 1, 0.00044578314, -0.10113716, 0.4946289)
-visible = false
-shape = SubResource("BoxShape3D_bocxv")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=840859498]
+transform = Transform3D(1, 0, 0, 0, 0.49999997, -0.86602545, 0, 0.86602545, 0.49999997, 0, -0.71593416, 0.12880342)
+shape = SubResource("BoxShape3D_sh428")
 
-[node name="VentilationBlock_Mesh_02" type="CollisionShape3D" parent="VentilationBlock_Mesh" unique_id=1928569436]
-transform = Transform3D(1, 0, 0, 0, 1.3969592, 0, 0, 0, 1, 0.0034179688, -0.505651, -0.5319951)
-visible = false
-shape = SubResource("BoxShape3D_bocxv")
+[node name="VentilationBlock_Collision4" type="CollisionShape3D" parent="." unique_id=1713381336]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0.47642428, -0.052197605)
+shape = SubResource("BoxShape3D_es25r")
 
-[node name="VentilationBlock_Mesh_03" type="CollisionShape3D" parent="VentilationBlock_Mesh" unique_id=2063154861]
-transform = Transform3D(1, 0, 0, 0, 0.651674, -0.88452387, 0, 1.2356439, 0.46649465, 0.0034179688, -0.92364246, -0.0026361197)
-visible = false
-shape = SubResource("BoxShape3D_bocxv")
+[node name="VentilationBlock_Collision3" type="CollisionShape3D" parent="." unique_id=1099113887]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27189958, -0.7909323)
+shape = SubResource("BoxShape3D_cknqm")
 
-[node name="VentilationBlock_Mesh_04" type="CollisionShape3D" parent="VentilationBlock_Mesh" unique_id=1672173134]
-transform = Transform3D(1, 0, 0, 0, 0.99544114, -0.70159346, 0, 0.98009735, 0.7125771, 0.0034179688, 0.86616313, -0.44486782)
-visible = false
-shape = SubResource("BoxShape3D_bocxv")
+[node name="VentilationBlock_Collision2" type="CollisionShape3D" parent="." unique_id=1359094252]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5077059, -0.53287566)
+shape = SubResource("BoxShape3D_5m5rs")
 
-[node name="VentilationBlock_Mesh_05" type="CollisionShape3D" parent="VentilationBlock_Mesh" unique_id=802932462]
-transform = Transform3D(1, 0, 0, 0, 1.3969557, 0.0021118522, 0, -0.002950251, 0.99999744, 0.0034179688, 0.99593914, -0.7828815)
-visible = false
-shape = SubResource("BoxShape3D_bocxv")
+[node name="VentilationBlock_Collision" type="CollisionShape3D" parent="." unique_id=1000643375]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0042338967, -0.014449954)
+shape = SubResource("BoxShape3D_wryy6")

@@ -1400,6 +1400,26 @@ shadow_normal_bias = 0.72
 shadow_blur = 0.0
 omni_range = 18.392912
 
+[node name="CeilingLight9" type="OmniLight3D" parent="Lighting" unique_id=233384498]
+transform = Transform3D(1, 1.1920929e-07, 5.2108035e-15, 0, -4.371139e-08, 1, 1.1920929e-07, -1, -4.371139e-08, 280.00055, 66.908, 0.2749982)
+light_color = Color(0.7612285, 0.82377905, 0.8003766, 1)
+light_energy = 10.0
+light_specular = 0.128
+shadow_enabled = true
+shadow_normal_bias = 0.72
+shadow_blur = 0.0
+omni_range = 18.392912
+
+[node name="CeilingLight10" type="OmniLight3D" parent="Lighting" unique_id=2043508482]
+transform = Transform3D(1, 1.1920929e-07, 5.2108035e-15, 0, -4.371139e-08, 1, 1.1920929e-07, -1, -4.371139e-08, 270.00055, 66.908, 0.2749982)
+light_color = Color(0.7612285, 0.82377905, 0.8003766, 1)
+light_energy = 10.0
+light_specular = 0.128
+shadow_enabled = true
+shadow_normal_bias = 0.72
+shadow_blur = 0.0
+omni_range = 18.392912
+
 [node name="CeilingLight5" type="OmniLight3D" parent="Lighting" unique_id=451449774]
 transform = Transform3D(1, 1.1920929e-07, 5.2108035e-15, 0, -4.371139e-08, 1, 1.1920929e-07, -1, -4.371139e-08, 15.000535, 16.332209, 0.27499866)
 light_color = Color(0.8738098, 0.79259324, 0.6931964, 1)
@@ -2013,7 +2033,13 @@ transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 159.
 transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 169.8, 0, 0)
 
 [node name="FloorLaboratory" parent="Environment/Floor" unique_id=1101159966 instance=ExtResource("86_1s6dl")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 290, 58.8, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 270.2, 58.8, 0)
+
+[node name="FloorLaboratory2" parent="Environment/Floor" unique_id=974400313 instance=ExtResource("86_1s6dl")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 290.2, 58.8, 0)
+
+[node name="FloorLaboratory3" parent="Environment/Floor" unique_id=1618293450 instance=ExtResource("86_1s6dl")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 280.2, 58.8, 0)
 
 [node name="FloorBrokenSideLaboratory3" parent="Environment/Floor" unique_id=1125467791 instance=ExtResource("89_abaql")]
 transform = Transform3D(1.9696518, -0.3470901, 0, 0.3470901, 1.9696518, 0, 0, 0, 2, 310.87888, 16.51029, 0)
@@ -2348,7 +2374,13 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 260, 8.4, -50)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 260, 16.8, -50)
 
 [node name="WallPlainBaseLaboratory3" parent="Environment/Wall" unique_id=262101260 instance=ExtResource("13_wkrmj")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 270, 58.8, 0)
+
+[node name="WallPlainBaseLaboratory4" parent="Environment/Wall" unique_id=455468243 instance=ExtResource("13_wkrmj")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 290, 58.8, 0)
+
+[node name="WallPlainBaseLaboratory5" parent="Environment/Wall" unique_id=1113253343 instance=ExtResource("13_wkrmj")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 280, 58.8, 0)
 
 [node name="WallBasePrison" parent="Environment/Wall" unique_id=1606666106 instance=ExtResource("42_o4o51")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -20, 0, 0)
@@ -2370,7 +2402,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 170, 33.6, 0)
 [node name="Door" type="Node3D" parent="Environment" unique_id=281427386]
 
 [node name="DoorExit" parent="Environment/Door" unique_id=863191425 instance=ExtResource("5_1ex6n")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 285, 58.8, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 265, 58.8, 0)
 
 [node name="LevelEnd" parent="Environment/Door/DoorExit" unique_id=914563996 instance=ExtResource("25_ijawq")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.288002, 1.0524979, 0)
@@ -2807,10 +2839,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 265, 25.2, -40)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 265, 33.6, -40)
 
 [node name="DoorwaySingleLaboratory" parent="Environment/Door" unique_id=2128691099 instance=ExtResource("8_a8ljp")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 285, 58.8, 0)
-
-[node name="DoorwaySingleLaboratory2" parent="Environment/Door" unique_id=1936140797 instance=ExtResource("8_a8ljp")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 285, 58.8, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 265, 58.8, 0)
 
 [node name="DoorBasicLocked" parent="Environment/Door" unique_id=1555562335 instance=ExtResource("18_0x6sw")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5, 0, 0)
@@ -3547,7 +3576,13 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 310.2, 83.4, 0)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 300.2, 83.4, 0)
 
 [node name="RoofLaboratory4" parent="Environment/Roof" unique_id=316157158 instance=ExtResource("14_c2k2n")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 269.8, 67.2, 0)
+
+[node name="RoofLaboratory7" parent="Environment/Roof" unique_id=834023907 instance=ExtResource("14_c2k2n")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 289.8, 67.2, 0)
+
+[node name="RoofLaboratory8" parent="Environment/Roof" unique_id=2092251000 instance=ExtResource("14_c2k2n")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 279.8, 67.2, 0)
 
 [node name="Elevator" type="Node3D" parent="Environment" unique_id=1733706444]
 
@@ -3600,16 +3635,19 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 310, 75.4, 0)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 300, 75.4, 0)
 
 [node name="VentAirIntake" parent="Environment/Elevator" unique_id=351188729 instance=ExtResource("10_qmdqw")]
-transform = Transform3D(-8.742277e-08, 0, -1.9999999, 0, 2, 0, 1.9999999, 0, -8.742277e-08, 312.68237, 23.835348, 0)
+transform = Transform3D(-8.742277e-08, 0, -1.9999999, 0, 2, 0, 1.9999999, 0, -8.742277e-08, 312.68237, 25.835348, 0)
 
 [node name="VentAirIntake3" parent="Environment/Elevator" unique_id=862609578 instance=ExtResource("10_qmdqw")]
-transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 312.68237, 42.242104, 0)
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 312.68237, 40.242104, 0)
+
+[node name="VentAirIntake5" parent="Environment/Elevator" unique_id=117056091 instance=ExtResource("10_qmdqw")]
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 312.68237, 55.242104, 0)
 
 [node name="VentAirIntake2" parent="Environment/Elevator" unique_id=88499763 instance=ExtResource("10_qmdqw")]
-transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 297.32895, 32.225456, 0)
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 297.32895, 33.225456, 0)
 
 [node name="VentAirIntake4" parent="Environment/Elevator" unique_id=25830024 instance=ExtResource("10_qmdqw")]
-transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 297.33926, 51.841164, 0)
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 297.33926, 48.841164, 0)
 
 [node name="Props" type="Node3D" parent="." unique_id=348907942]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0005351901, 0, 0)
@@ -3880,7 +3918,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_6dvot")
 shape = SubResource("ConcavePolygonShape3D_6wxrx")
 
 [node name="WoodenCrate9" type="StaticBody3D" parent="Props/Crates" unique_id=206549869]
-transform = Transform3D(3.0237272, 0, 1.7626895, 0, 3.5, 0, -1.7626895, 0, 3.0237272, 116.42133, 21.982338, 0.9537896)
+transform = Transform3D(3.0237272, 0, 1.7626895, 0, 3.5, 0, -1.7626895, 0, 3.0237272, 116.42133, 21.982338, 0.70047843)
 
 [node name="WoodenCrate5_Mesh" type="MeshInstance3D" parent="Props/Crates/WoodenCrate9" unique_id=497205062]
 mesh = ExtResource("58_6p41p")
@@ -5047,7 +5085,13 @@ transform = Transform3D(1, 0, -1.1920929e-07, 0, 1, 0, 1.1920929e-07, 0, 1, 280,
 transform = Transform3D(1, 0, -1.1920929e-07, 0, 1, 0, 1.1920929e-07, 0, 1, 270, 16.488136, 0.27499962)
 
 [node name="LightCeiling6" parent="Props/Lighting Based" unique_id=547377237 instance=ExtResource("73_x52mc")]
+transform = Transform3D(1, 0, -1.1920929e-07, 0, 1, 0, 1.1920929e-07, 0, 1, 270, 66.908, 0.27499914)
+
+[node name="LightCeiling16" parent="Props/Lighting Based" unique_id=5547507 instance=ExtResource("73_x52mc")]
 transform = Transform3D(1, 0, -1.1920929e-07, 0, 1, 0, 1.1920929e-07, 0, 1, 290, 66.908, 0.27499914)
+
+[node name="LightCeiling17" parent="Props/Lighting Based" unique_id=979491537 instance=ExtResource("73_x52mc")]
+transform = Transform3D(1, 0, -1.1920929e-07, 0, 1, 0, 1.1920929e-07, 0, 1, 280, 66.908, 0.27499914)
 
 [node name="LightCeiling5" parent="Props/Lighting Based" unique_id=336366872 instance=ExtResource("73_x52mc")]
 transform = Transform3D(1, 0, -1.1920929e-07, 0, 1, 0, 1.1920929e-07, 0, 1, 15, 16.408, 0.27499962)
