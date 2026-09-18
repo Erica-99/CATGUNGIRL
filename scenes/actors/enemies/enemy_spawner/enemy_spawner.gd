@@ -21,13 +21,19 @@ const BRAINSPIDER_PREFAB = preload("res://scenes/actors/enemies/brain_spider/bra
 const COMPARE_SLICE: int = 2
 
 #@export var possible_spawns: Array = [CONVICT_PREFAB, SCRUB_PREFAB]
-@export var possible_spawns: Array[Enums.EnemyType] = [Enums.EnemyType.CONVICT, Enums.EnemyType.SCRUB]
+@export var possible_spawns: Array[Enums.EnemyType] = [Enums.EnemyType.CONVICT, Enums.EnemyType.SCRUB, Enums.EnemyType.TRUNK, Enums.EnemyType.BRAINSPIDER]
 var possible_prefabs: Array = []
 
+#Randomiser Settings
+@export_category("Randomiser Settings")
+@export var randomiser = false
+@export var random_spawns: int
 #Wave Settings
 @export_category("Wave Settings")
 @export var wave_spawner = false
 @export var wave_enemies: Array[Enums.EnemyType] = [Enums.EnemyType.CONVICT, Enums.EnemyType.SCRUB]
+#EventTrigger Settings
+@export_category("EventTrigger Settings")
 @export var has_trigger = false    ##If you are using an EventTrigger to spawn enemies, tick this in the 'Inspector' to make it TRUE
 @export var spawn_trigger: Area3D
 
@@ -56,13 +62,13 @@ func _ready() -> void:
 # actually start spawning timer
 func _spawn_enemy(custom_delay: float, spawner_path: NodePath):
 	linked_enemy_manager.child_exiting_tree.connect(_remove_id_)
-	print("Spawner",  get_instance_id(), " link to EnemyManager has been connected.")
 	print(get_parent_node_3d())
-	if wave_spawner:
-		#Check if the spawner is allowed to spawn new enemies
-		if can_spawn:
+	var enemy
+	#Check if the spawner is allowed to spawn new enemies
+	if can_spawn:
+		if wave_spawner:
+			print("WAVE SPAWNER")
 			for wave_enemy in wave_enemies:
-				var enemy
 				match wave_enemy:
 					Enums.EnemyType.CONVICT:
 						enemy = CONVICT_PREFAB
@@ -76,18 +82,36 @@ func _spawn_enemy(custom_delay: float, spawner_path: NodePath):
 				#Add the enemy's ID to the array
 				spawn_ids.append(enemy.get_instance_id())
 				_add_to_manager(enemy)
-			print(spawn_ids)
 			#Prevent the spawner from creating new enemies
 			can_spawn = false
 			#This is only relevant if the spawner is triggered through an EventTrigger Area3D
 			if has_trigger:
 				spawn_trigger.active = false
-			print("Spawner ", get_instance_id(), " has been set to: ", can_spawn)
-	else:
-		if enemies.get_path_to(self) == spawner_path.slice(COMPARE_SLICE):
-			if custom_delay == 0:
-				custom_delay = base_spawn_delay
+		elif randomiser:
+			print("RANDOMISER")
+			var i = 0
+			print("Random Spawns: ", random_spawns)
+			while i < random_spawns:
+				var random = randi_range(0, 3)
+				enemy = possible_prefabs[random].instantiate()
+				spawn_ids.append(enemy.get_instance_id())
+				_add_to_manager(enemy)
+				i += 1
+		else:
+			if enemies.get_path_to(self) == spawner_path.slice(COMPARE_SLICE):
+				if custom_delay == 0:
+					custom_delay = base_spawn_delay
 			spawn_delay_timer.start(custom_delay)
+		#Prevent the spawner from creating new enemies
+		can_spawn = false
+		print("Spawner ", get_instance_id(), " can_spawn is set to: ", can_spawn)
+		#This is only relevant if the spawner is triggered through an EventTrigger Area3D
+		if has_trigger:
+			spawn_trigger.active = false
+	else:
+		print("Spawner ", get_instance_id(), " currently occupied!")
+		return
+	print("Spawner ", get_instance_id(), " current children are: ", spawn_ids)
 
 # create enemy
 func _on_spawn_delay_timer_timeout() -> void:
@@ -109,9 +133,8 @@ func _remove_id_(enemy: CharacterBody3D):
 		spawn_ids.erase(id)
 	#Allow spawner to create new enemies if all previously spawned enemies have been defeated
 	if spawn_ids.is_empty():
+		print("Spawner ", get_instance_id(), " currently vacant!")
 		linked_enemy_manager.child_exiting_tree.disconnect(_remove_id_)
-		print("Spawner",  get_instance_id(), " link to EnemyManager has been disconnected.")
 		can_spawn = true
-		print("Spawner ", get_instance_id(), " has been set to: ", can_spawn)
 		if has_trigger:
 			spawn_trigger.active = true
