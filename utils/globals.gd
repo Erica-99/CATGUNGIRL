@@ -42,6 +42,11 @@ func _ready() -> void:
 func _device_updated(using_controller: bool) -> void:
 	var controller = InputDeviceManager.get_controller_family()
 	
+	# handle keyboard
+	if not InputDeviceManager.is_using_controller():
+		EventManager.controller_status.emit("keyboard")
+		return
+	
 	# if controller, then emit controller
 	if controller == &"playstation" or controller == &"xbox":
 		EventManager.controller_status.emit(controller)
