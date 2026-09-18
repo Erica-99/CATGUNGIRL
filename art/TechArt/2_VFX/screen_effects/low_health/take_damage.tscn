@@ -1,7 +1,6 @@
-[gd_scene format=3 uid="uid://dcoomix7u1wac"]
+[gd_scene format=3 uid="uid://b2ml53dsmr8mx"]
 
-[ext_resource type="Material" uid="uid://cbq84axynsypm" path="res://art/TechArt/2_VFX/screen_effects/vignette/prefabs/M_vignette.tres" id="1_nsv06"]
-[ext_resource type="Script" uid="uid://viypp7bpthwm" path="res://art/TechArt/2_VFX/screen_effects/scripts/screen_effect_preview.gd" id="2_m1ff1"]
+[ext_resource type="Material" uid="uid://dde38cki7gg8q" path="res://art/TechArt/2_VFX/screen_effects/take_damage/prefabs/M_take_damage.tres" id="1_cpsr7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rtxs8"]
 
@@ -13,12 +12,12 @@ background_mode = 2
 sky = SubResource("Sky_tt2gc")
 glow_enabled = true
 
-[node name="vignette" type="Node3D" unique_id=1953528991]
+[node name="low_health" type="Node3D" unique_id=1953528991]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1672333993]
 
 [node name="TextureRect" type="ColorRect" parent="Camera3D" unique_id=812033098]
-material = ExtResource("1_nsv06")
+material = ExtResource("1_cpsr7")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -26,7 +25,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("2_m1ff1")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=525876574]
 environment = SubResource("Environment_hv82r")
