@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cbq84axynsypm"]
+
+[ext_resource type="Shader" uid="uid://b1lj6u0tutynw" path="res://art/TechArt/2_VFX/screen_effects/vignette/Vignette.tres" id="1_6ny8m"]
+[ext_resource type="Texture2D" uid="uid://cccu48i402er5" path="res://art/TechArt/2_VFX/shield/tex/T_Lu_Noise_13.png" id="2_rpnvs"]
+
+[resource]
+shader = ExtResource("1_6ny8m")
+shader_parameter/ColorParameter = Color(0, 1.2985337, 1.975, 1)
+shader_parameter/uv_tiling = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/vignette_pow = 4.0
+shader_parameter/vignette_intensity = 4.435
+shader_parameter/noise_scale = Vector2(1, 1)
+shader_parameter/noise_offset = Vector2(0, 0)
+shader_parameter/scroll_speed = Vector2(0, 0.075)
+shader_parameter/toggle_scroll = false
+shader_parameter/noise_texutre = ExtResource("2_rpnvs")
+shader_parameter/toggle_breathing = true
+shader_parameter/breathe_speed = 2.05
