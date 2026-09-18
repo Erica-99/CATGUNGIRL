@@ -7,7 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://bwjuhhi62r2ot" path="res://art/2d_assets/real_world/UI/pistol_bullet_icon.tscn" id="3_7c4j5"]
 [ext_resource type="PackedScene" uid="uid://d0bck3rf10len" path="res://art/2d_assets/real_world/UI/shotgun_bullet_icon.tscn" id="4_jop4h"]
 [ext_resource type="PackedScene" uid="uid://ddj7xjcety3sc" path="res://art/2d_assets/real_world/UI/sniper_bullet_icon.tscn" id="5_mrwyo"]
+[ext_resource type="Shader" uid="uid://cwbxhxst617bb" path="res://scenes/ui/hud_display/panel_gradient.tres" id="6_5t4p4"]
 [ext_resource type="PackedScene" uid="uid://b83rx2yi7uwng" path="res://debug/DebugMenu.tscn" id="7_68ye3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7c4j5"]
+shader = ExtResource("6_5t4p4")
 
 [node name="HUD" type="CanvasLayer" unique_id=1982623268]
 layer = 15
@@ -36,6 +40,171 @@ bullet_icons = Dictionary[String, PackedScene]({
 "Shotgun": ExtResource("4_jop4h"),
 "Sniper": ExtResource("5_mrwyo")
 })
+
+[node name="ControlText" type="Control" parent="SubViewportContainer/SubViewport/AmmoCount" unique_id=1561427095]
+anchors_preset = 0
+offset_left = -58.0
+offset_top = 423.0
+offset_right = -18.0
+offset_bottom = 463.0
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/AmmoCount/ControlText" unique_id=1398504398]
+layout_mode = 0
+offset_left = 51.0
+offset_top = -150.0
+offset_right = 54.0
+offset_bottom = 50.0
+color = Color(1, 0.3764706, 0.9843137, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="SubViewportContainer/SubViewport/AmmoCount/ControlText" unique_id=604286927]
+material = SubResource("ShaderMaterial_7c4j5")
+layout_mode = 0
+offset_left = -197.0
+offset_top = -150.0
+offset_right = 53.0
+offset_bottom = 50.0
+color = Color(1, 0.3764706, 0.9843137, 0.26666668)
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewportContainer/SubViewport/AmmoCount/ControlText" unique_id=1449244240]
+layout_mode = 0
+offset_left = -166.0
+offset_top = -150.0
+offset_right = 53.085007
+offset_bottom = 50.039993
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ContextList" type="VBoxContainer" parent="SubViewportContainer/SubViewport/AmmoCount/ControlText/MarginContainer" unique_id=1724304683]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.21
+theme_override_constants/separation = 8
+
+[node name="InteractControls" type="HBoxContainer" parent="SubViewportContainer/SubViewport/AmmoCount/ControlText/MarginContainer/ContextList" unique_id=1284416490]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Interact" type="RichTextLabel" parent="SubViewportContainer/SubViewport/AmmoCount/ControlText/MarginContainer/ContextList/InteractControls" unique_id=1753314547]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 12.3
+text = "Interact"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="E" type="RichTextLabel" parent="SubViewportContainer/SubViewport/AmmoCount/ControlText/MarginContainer/ContextList/InteractControls" unique_id=446796881]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.23137255, 1, 1, 1)
+text = "E"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="JumpControls" type="HBoxContainer" parent="SubViewportContainer/SubViewport/AmmoCount/ControlText/MarginContainer/ContextList" unique_id=1927456778]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Jump" type="RichTextLabel" parent="SubViewportContainer/SubViewport/AmmoCount/ControlText/MarginContainer/ContextList/JumpControls" unique_id=1549172534]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.6
+text = "Jump/Wall Jump"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="Space" type="RichTextLabel" parent="SubViewportContainer/SubViewport/AmmoCount/ControlText/MarginContainer/ContextList/JumpControls" unique_id=838958600]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.23137255, 1, 1, 1)
+text = "Space
+"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="DashControls" type="HBoxContainer" parent="SubViewportContainer/SubViewport/AmmoCount/ControlText/MarginContainer/ContextList" unique_id=323289228]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Dash" type="RichTextLabel" parent="SubViewportContainer/SubViewport/AmmoCount/ControlText/MarginContainer/ContextList/DashControls" unique_id=1761150917]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.6
+text = "Dash"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="Shift" type="RichTextLabel" parent="SubViewportContainer/SubViewport/AmmoCount/ControlText/MarginContainer/ContextList/DashControls" unique_id=1817922923]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.23137255, 1, 1, 1)
+text = "Shift
+"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="FireControls" type="HBoxContainer" parent="SubViewportContainer/SubViewport/AmmoCount/ControlText/MarginContainer/ContextList" unique_id=1793214725]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Fire" type="RichTextLabel" parent="SubViewportContainer/SubViewport/AmmoCount/ControlText/MarginContainer/ContextList/FireControls" unique_id=961329377]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.62
+text = "Shoot"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="LeftClick" type="RichTextLabel" parent="SubViewportContainer/SubViewport/AmmoCount/ControlText/MarginContainer/ContextList/FireControls" unique_id=1828246990]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.23137255, 1, 1, 1)
+text = "Left Click
+"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="AltFireControls" type="HBoxContainer" parent="SubViewportContainer/SubViewport/AmmoCount/ControlText/MarginContainer/ContextList" unique_id=94198282]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="SpecialAttack" type="RichTextLabel" parent="SubViewportContainer/SubViewport/AmmoCount/ControlText/MarginContainer/ContextList/AltFireControls" unique_id=1851075608]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.25
+text = "Special Attack"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="RightClick" type="RichTextLabel" parent="SubViewportContainer/SubViewport/AmmoCount/ControlText/MarginContainer/ContextList/AltFireControls" unique_id=543498779]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.23137255, 1, 1, 1)
+text = "Right Click"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="ReloadControls" type="HBoxContainer" parent="SubViewportContainer/SubViewport/AmmoCount/ControlText/MarginContainer/ContextList" unique_id=1378913698]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Reload" type="RichTextLabel" parent="SubViewportContainer/SubViewport/AmmoCount/ControlText/MarginContainer/ContextList/ReloadControls" unique_id=111012468]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 11.2
+text = "Reload
+"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="R" type="RichTextLabel" parent="SubViewportContainer/SubViewport/AmmoCount/ControlText/MarginContainer/ContextList/ReloadControls" unique_id=163238910]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.23137255, 1, 1, 1)
+text = "R"
+fit_content = true
+horizontal_alignment = 2
 
 [node name="Healthbar" parent="SubViewportContainer/SubViewport" unique_id=90995781 instance=ExtResource("2_rix7v")]
 visible = false
