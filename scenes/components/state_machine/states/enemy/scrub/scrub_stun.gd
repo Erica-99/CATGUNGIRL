@@ -26,9 +26,10 @@ func init(blackboard_dict : Dictionary) -> void:
 	anim = blackboard["anim"]
 	slow_down_speed = blackboard["slow_down_speed"]
 
-#func enter() -> void:
+func enter() -> void:
 	#print("Stun Started")
 	#print("Initial Total Stun Time = %f" %total_stun_time)
+	stun_timer = 0.0
 
 #func exit() -> void:
 	#pass

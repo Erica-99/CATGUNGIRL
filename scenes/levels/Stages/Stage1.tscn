@@ -88,7 +88,15 @@
 [ext_resource type="PackedScene" uid="uid://dfwubrqbnpy7l" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/Hostile_architecture.tscn" id="75_v1rce"]
 [ext_resource type="PackedScene" uid="uid://ddim4ukeuv6rp" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Impaled_Convict.tscn" id="77_3k85b"]
 [ext_resource type="PackedScene" uid="uid://bxoxckf5ed1td" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Scrub_Crashed.tscn" id="78_g3qdj"]
+[ext_resource type="PackedScene" uid="uid://kc58ovt5ugti" path="res://scenes/components/tutorial_trigger/tutorial_trigger.tscn" id="85_ttrig"]
 [ext_resource type="PackedScene" uid="uid://bubvp3c5n2saa" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/GIGI_GunSystem.tscn" id="85_x0gst"]
+[ext_resource type="Script" uid="uid://crdw2cwt2ffb5" path="res://resources/tutorial_steps/tutorial_step.gd" id="86_g074a"]
+[ext_resource type="Resource" uid="uid://dlv4d7mqu3xcy" path="res://resources/tutorial_steps/stage_1_intro_tutorial/movement_tutorial_step.tres" id="87_yxmou"]
+[ext_resource type="Resource" uid="uid://cddpqf08ei3o4" path="res://resources/tutorial_steps/stage_1_intro_tutorial/fire_tutorial_step.tres" id="88_3c7cn"]
+[ext_resource type="Resource" uid="uid://g0584puy43u" path="res://resources/tutorial_steps/stage_1_intro_tutorial/jump_dash_step.tres" id="88_4scdv"]
+[ext_resource type="Resource" uid="uid://dy3jhtdqf5diw" path="res://resources/tutorial_steps/stage_1_intro_tutorial/interact_tutorial_step.tres" id="89_nqvtq"]
+[ext_resource type="Resource" uid="uid://ddm44lu0eblvc" path="res://resources/tutorial_steps/stage_1_intro_tutorial/reload_tutorial_step.tres" id="91_v1rce"]
+[ext_resource type="Resource" uid="uid://i475dd553b7q" path="res://resources/tutorial_steps/stage_1_intro_tutorial/grapple_tutorial_step.tres" id="92_3k85b"]
 [ext_resource type="PackedScene" uid="uid://xwmm12eihkbq" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Meat_lumps.tscn" id="92_4scdv"]
 [ext_resource type="PackedScene" uid="uid://co7fptrpmkvog" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/A_SparesAndPlaceholders/LightCeiling.tscn" id="96_g3qdj"]
 [ext_resource type="Script" uid="uid://4t3uo3s2mf8e" path="res://scenes/levels/Stages/camera_pan_node.gd" id="123_emoyc"]
@@ -1853,6 +1861,7 @@ visible = false
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.2, -1)
 collision_layer = 0
 door_to_unlock = NodePath("../DoorBasic")
+unlock_door_on_pickup = false
 
 [node name="GunPodiumGun" parent="Interactive" unique_id=1733078243 instance=ExtResource("21_5y7s6")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.2, -1)
@@ -2223,6 +2232,10 @@ libraries/ = SubResource("AnimationLibrary_ovhx5")
 autoplay = &"Intro"
 
 [node name="VFX2" type="Node3D" parent="." unique_id=915792707]
+
+[node name="TutorialTrigger" parent="." unique_id=885435014 node_paths=PackedStringArray("door_to_unlock") instance=ExtResource("85_ttrig")]
+steps = Array[ExtResource("86_g074a")]([ExtResource("87_yxmou"), ExtResource("88_4scdv"), ExtResource("89_nqvtq"), ExtResource("88_3c7cn"), ExtResource("91_v1rce"), ExtResource("92_3k85b")])
+door_to_unlock = NodePath("../Interactive/DoorBasic")
 
 [node name="WillPortrait" parent="." unique_id=2105078253 instance=ExtResource("73_4scdv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.347645, 12.974404, -16.639408)

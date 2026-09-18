@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://6fka3i3f8yey"]
+
+[ext_resource type="SpriteFrames" uid="uid://cbv3hnugbma00" path="res://art/2d_assets/real_world/Trunks/TrunkHealthy.tres" id="1_1d77s"]
+
+[node name="TrunkCorpse" type="Node3D" unique_id=469888350]
+
+[node name="TrunkMesh" type="Node3D" parent="." unique_id=574855283]
+
+[node name="Torso" type="Node3D" parent="TrunkMesh" unique_id=106234138]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2460823, 0)
+
+[node name="Fist_P" type="Node3D" parent="TrunkMesh/Torso" unique_id=487965306]
+transform = Transform3D(0.9927573, -0.120136835, 0, 0.120136835, 0.9927573, 0, 0, 0, 1, -0.579, 2.031, 0.205)
+
+[node name="TorsoSprite" type="AnimatedSprite3D" parent="TrunkMesh/Torso" unique_id=2017350818]
+transform = Transform3D(0.395, 0, 0, 0, 0.395, 0, 0, 0, 0.395, 0, 0.6870544, -1.6662663)
+flip_h = true
+shaded = true
+sprite_frames = ExtResource("1_1d77s")
+animation = &"Death"
+autoplay = "Death"
+frame = 23
+frame_progress = 1.0
+
+[node name="Blaster_P" type="Node3D" parent="TrunkMesh/Torso" unique_id=1673951262]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 0.7227286, 1.8866687, -0.10522938)

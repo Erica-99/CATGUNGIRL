@@ -3,8 +3,8 @@ class_name BrainJarPhase
 
 ## Determines what happens after all terminals for this phase are activated
 enum CompletionType {
-	## Boss ignores first shot then advances to next phase
-	BLOCK_SHOT_AND_ADVANCE,
+	## Boss takes damage, heals, then advances to next phase
+	DAMAGE_HEAL_AND_ADVANCE,
 	
 	## Sacrifice chute becomes available. Boss becomes vulnerable after a gun is sacrificed
 	SACRIFICE_THEN_DAMAGE,
@@ -18,4 +18,4 @@ enum CompletionType {
 
 ## Action performed after the required terminals have been activated
 @export var completion_type: CompletionType = \
-	CompletionType.BLOCK_SHOT_AND_ADVANCE
+	CompletionType.DAMAGE_HEAL_AND_ADVANCE
