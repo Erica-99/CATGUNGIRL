@@ -26,6 +26,9 @@ var current_gun_index: int = 0
 
 var allow_swapping: bool
 
+var gun_scale_x: float = 1
+var gun_scale_y: float = 1
+
 func _ready() -> void:
 	#for guns in guns_available:
 		#var gun = guns.instantiate()
@@ -72,10 +75,6 @@ func _process(delta: float) -> void:
 			input_component._switch_gun_three = false
 			_switch_gun(2)
 
-func _updategunvisuals(gun):
-	
-	pass
-
 
 func _switch_gun(slot_num: int):
 	if not allow_swapping:
@@ -96,6 +95,7 @@ func _switch_gun(slot_num: int):
 	var rotation_save = current_gun.rotation.z
 	_deactivate_gun()
 	current_gun = get_child(current_gun_index)
+	_set_gun_scale()
 	current_gun.rotation.z = rotation_save
 	_activate_gun()
 	print("GUN SWITCHED TO: ")
@@ -142,3 +142,18 @@ func _on_current_gun_charge_started() -> void:
 
 func _on_current_gun_charge_ended() -> void:
 	current_gun_charge_ended.emit()
+
+func _direction_changed(new_facing) -> void:
+	if new_facing == -1.0:
+		gun_scale_x = 1
+		gun_scale_y = -1
+	else:
+		gun_scale_x = 1
+		gun_scale_y = 1
+	
+	_set_gun_scale()
+
+func _set_gun_scale() -> void:
+	if current_gun.gun_pivot != null:
+		current_gun.gun_pivot.scale.x = gun_scale_x
+		current_gun.gun_pivot.scale.y = gun_scale_y

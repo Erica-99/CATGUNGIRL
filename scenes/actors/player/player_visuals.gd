@@ -43,7 +43,7 @@ func _new_gun_equipped(newgun):
 	pass
 
 func _process(delta: float) -> void:
-	print(str($ROOT_P/GUN_P/GUN_AIM.rotation.z))
+	#print(str($ROOT_P/GUN_P/GUN_AIM.rotation.z))
 	
 	gun_pivot.rotation.z = gun_holder.current_gun.rotation.z
 	if current_action == 'playercrouch':
@@ -80,6 +80,7 @@ func _on_request_ability_animation(animation_name: String) -> void:
 		RosAnims.play(animation_name)
 
 func _on_player_facing_changed(new_facing: float) -> void:
+	gun_holder._direction_changed(new_facing)
 	if new_facing == -1.0:
 		torso_pivot.scale.x = -1
 		gun_pivot.scale.x = 1

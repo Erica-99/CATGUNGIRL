@@ -93,4 +93,7 @@ func _try_fire() -> void:
 
 func _play_shoot_animation():
 	gun_link.Gun_Animation.stop()
+	#muzzle.visible = false
 	gun_link.Gun_Animation.play("Fire")
+	#await gun_link.Gun_Animation.animation_finished
+	#muzzle.visible = true

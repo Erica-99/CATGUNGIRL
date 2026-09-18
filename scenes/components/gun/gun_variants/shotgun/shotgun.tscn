@@ -556,16 +556,17 @@ _data = {
 &"RESET": SubResource("Animation_haoly")
 }
 
-[node name="Shotgun" unique_id=814655304 node_paths=PackedStringArray("bullet_emitter", "Gun_Animation", "Muzzle_VFX", "_normal_flash", "_perfect_flash", "ability") instance=ExtResource("1_0qjdp")]
+[node name="Shotgun" unique_id=814655304 node_paths=PackedStringArray("bullet_emitter", "Gun_Animation", "Muzzle_VFX", "_normal_flash", "_perfect_flash", "ability", "gun_pivot") instance=ExtResource("1_0qjdp")]
 script = ExtResource("2_yiurq")
 pellet_amount = 10
 gun_name = "Shotgun"
 bullet_emitter = NodePath("BulletEmitter")
 Gun_Animation = NodePath("GUN_AIM/Hand_Anims")
 Muzzle_VFX = NodePath("GUN_AIM/MuzzleFlash_P/AnimationPlayer")
-_normal_flash = NodePath("BulletEmitter/Muzzle/NormalMuzzleFlash")
-_perfect_flash = NodePath("BulletEmitter/Muzzle/PerfectMuzzleFlash")
-ability = NodePath("AirblastComponent")
+_normal_flash = NodePath("GUN_AIM/Muzzle/NormalMuzzleFlash")
+_perfect_flash = NodePath("GUN_AIM/Muzzle/PerfectMuzzleFlash")
+ability = NodePath("GUN_AIM/AirblastComponent")
+gun_pivot = NodePath("GUN_AIM")
 aim_speed = 6.0
 controller_aim_speed = 3.5
 aim_settled_threshold = 98.0
@@ -586,7 +587,7 @@ reload_time = 1.0
 reload_full = false
 
 [node name="BulletEmitter" parent="." index="1" unique_id=1440563695 node_paths=PackedStringArray("muzzle")]
-muzzle = NodePath("Muzzle")
+muzzle = NodePath("../GUN_AIM/Muzzle")
 fire_rate = 0.05
 full_auto = false
 bullet_damage = 3.0
@@ -596,12 +597,14 @@ bullet_velocity_multiplier = 0.75
 bullet_range = 12.0
 base_aim_spread = 10.0
 
-[node name="Muzzle" type="Marker3D" parent="BulletEmitter" index="0" unique_id=1791331979]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7252373, 0.29785186, 0)
+[node name="GUN_AIM" type="Node3D" parent="." index="2" unique_id=84771904]
 
-[node name="LaserComponent" parent="BulletEmitter/Muzzle" index="0" unique_id=1046289513 instance=ExtResource("4_ljaet")]
+[node name="Muzzle" type="Marker3D" parent="GUN_AIM" index="0" unique_id=1791331979]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7252373, -0.11322105, 0)
 
-[node name="NormalMuzzleFlash" type="CPUParticles3D" parent="BulletEmitter/Muzzle" index="1" unique_id=2106322446]
+[node name="LaserComponent" parent="GUN_AIM/Muzzle" index="0" unique_id=1046289513 instance=ExtResource("4_ljaet")]
+
+[node name="NormalMuzzleFlash" type="CPUParticles3D" parent="GUN_AIM/Muzzle" index="1" unique_id=2106322446]
 emitting = false
 amount = 14
 lifetime = 0.15000000000000002
@@ -613,7 +616,7 @@ gravity = Vector3(0, -0.5, 0)
 initial_velocity_min = 5.0
 initial_velocity_max = 9.0
 
-[node name="PerfectMuzzleFlash" type="CPUParticles3D" parent="BulletEmitter/Muzzle" index="2" unique_id=1038759442]
+[node name="PerfectMuzzleFlash" type="CPUParticles3D" parent="GUN_AIM/Muzzle" index="2" unique_id=1038759442]
 emitting = false
 amount = 16
 lifetime = 0.15000000000000002
@@ -626,8 +629,8 @@ initial_velocity_min = 6.0
 initial_velocity_max = 10.0
 color = Color(0.43669105, 0.99999994, 0.96197826, 1)
 
-[node name="AirblastComponent" parent="." index="2" unique_id=1197172489 node_paths=PackedStringArray("shotgun") instance=ExtResource("3_ycd5o")]
-shotgun = NodePath("..")
+[node name="AirblastComponent" parent="GUN_AIM" index="1" unique_id=1197172489 node_paths=PackedStringArray("shotgun") instance=ExtResource("3_ycd5o")]
+shotgun = NodePath("../..")
 charge_time = 0.05
 slow_down_speed = 200.0
 slow_down_target = 0.1
@@ -636,19 +639,17 @@ blast_damage = 15.0
 blast_knockback = 40.0
 blast_stun_time = 1.0
 
-[node name="GUN_AIM" type="Node3D" parent="." index="3" unique_id=84771904]
-
-[node name="Ros_Gun_Sprite" type="AnimatedSprite3D" parent="GUN_AIM" index="0" unique_id=1248318484]
+[node name="Ros_Gun_Sprite" type="AnimatedSprite3D" parent="GUN_AIM" index="2" unique_id=1248318484]
 transform = Transform3D(0.4980543, 0, 0, 0, 0.4980543, 0, 0, 0, 0.17, 0.49210525, -0.3089053, -0.18119152)
 sorting_offset = 5.0
 sprite_frames = SubResource("SpriteFrames_oei08")
 animation = &"Fire"
 autoplay = "Idle"
 
-[node name="Hand_Anims" type="AnimationPlayer" parent="GUN_AIM" index="1" unique_id=1230187364]
+[node name="Hand_Anims" type="AnimationPlayer" parent="GUN_AIM" index="3" unique_id=1230187364]
 libraries/ = SubResource("AnimationLibrary_2mpm0")
 
-[node name="MuzzleFlash_P" type="Node3D" parent="GUN_AIM" index="2" unique_id=267056443]
+[node name="MuzzleFlash_P" type="Node3D" parent="GUN_AIM" index="4" unique_id=267056443]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8967885, 0.20617592, -1.8024465e-08)
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="GUN_AIM/MuzzleFlash_P" index="0" unique_id=362392095]
@@ -661,5 +662,5 @@ autoplay = "Idle"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GUN_AIM/MuzzleFlash_P" index="1" unique_id=1257914882]
 libraries/ = SubResource("AnimationLibrary_lx7vq")
 
-[connection signal="perfect_window_changed" from="." to="BulletEmitter/Muzzle/LaserComponent" method="on_perfect_window_changed"]
-[connection signal="spread_changed" from="." to="BulletEmitter/Muzzle/LaserComponent" method="on_spread_changed"]
+[connection signal="perfect_window_changed" from="." to="GUN_AIM/Muzzle/LaserComponent" method="on_perfect_window_changed"]
+[connection signal="spread_changed" from="." to="GUN_AIM/Muzzle/LaserComponent" method="on_spread_changed"]
