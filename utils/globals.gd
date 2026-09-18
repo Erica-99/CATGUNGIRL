@@ -39,18 +39,33 @@ func _ready() -> void:
 	current_meme_index = randi_range(0, len(meme_image_array) - 1)
 	
 	Input.joy_connection_changed.connect(_controller_status_changed)
+	InputDeviceManager.input_device_changed.connect(_device_updated)
 
+# this checks the Input.joy_connection_changed signal
 func _controller_status_changed(device_id: int, connected: bool) -> void:
+	# if no controller connected, then kbm must have been used
 	if !connected:
 		EventManager.controller_status.emit("keyboard")
+		is_using_controller = false
 		return
-		
+	
+	# get controller details
 	var controller = InputDeviceManager.get_controller_family()
 	
+	# check if it is playstation or xbox, if so then yes we are using controller
 	if controller == &"playstation" or controller == &"xbox":
 		EventManager.controller_status.emit(controller)
+		is_using_controller = true
 	else:
+		# if something else, then set back as kbm
 		EventManager.controller_status.emit("keyboard")
+		is_using_controller = false
+
+# this checks the status of actual input from InputDeviceManager
+func _device_updated(using_controller: bool) -> void:
+	# if signal does not match input signal, check status again
+	if is_using_controller != using_controller:
+		_controller_status_changed(0, using_controller)
 
 func _add_one_to_insanity() -> void:
 	var prev_insanity = global_insanity_level
