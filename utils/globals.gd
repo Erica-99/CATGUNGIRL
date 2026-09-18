@@ -14,14 +14,6 @@ const link_to_meme_dir = "res://scenes/ui/menu_screens/loading_screen/meme_image
 var meme_image_array: Array[Texture2D] = []
 var current_meme_index: int = 0
 
-
-func _ready() -> void:
-	EventManager.connect("increase_insanity_rank", _add_one_to_insanity)
-	EventManager.connect("increase_meme_index", _increment_global_meme_index)
-	_retrieve_images(link_to_meme_dir)
-	# get random starter index (so it doesnt start from index 0 each time)
-	current_meme_index = randi_range(0, len(meme_image_array) - 1)
-
 # Dictionary of Levels and their UIDs, to be used
 # by SceneLoader in menus, level transition points, etc.
 const LEVEL_PATHS: Dictionary = {
@@ -35,6 +27,33 @@ const LEVEL_PATHS: Dictionary = {
 	"Stage6": "res://scenes/levels/Stages/Stage6.tscn",
 	"main_menu": "res://scenes/ui/menu_screens/main_menu.tscn"
 }
+
+
+func _ready() -> void:
+	EventManager.connect("increase_insanity_rank", _add_one_to_insanity)
+	EventManager.connect("increase_meme_index", _increment_global_meme_index)
+	_retrieve_images(link_to_meme_dir)
+	# get random starter index (so it doesnt start from index 0 each time)
+	current_meme_index = randi_range(0, len(meme_image_array) - 1)
+	
+	InputDeviceManager.input_device_changed.connect(_device_updated)
+
+# this checks the status of actual input from InputDeviceManager
+func _device_updated(using_controller: bool) -> void:
+	var controller = InputDeviceManager.get_controller_family()
+	
+	# handle keyboard
+	if not InputDeviceManager.is_using_controller():
+		EventManager.controller_status.emit("keyboard")
+		return
+	
+	# if controller, then emit controller
+	if controller == &"playstation" or controller == &"xbox":
+		EventManager.controller_status.emit(controller)
+	else:
+		# if something else, then set back as kbm
+		EventManager.controller_status.emit("keyboard")
+	
 
 func _add_one_to_insanity() -> void:
 	var prev_insanity = global_insanity_level

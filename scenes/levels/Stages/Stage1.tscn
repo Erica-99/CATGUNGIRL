@@ -88,6 +88,7 @@
 [ext_resource type="PackedScene" uid="uid://dfwubrqbnpy7l" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/Hostile_architecture.tscn" id="75_v1rce"]
 [ext_resource type="PackedScene" uid="uid://ddim4ukeuv6rp" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Impaled_Convict.tscn" id="77_3k85b"]
 [ext_resource type="PackedScene" uid="uid://bxoxckf5ed1td" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Scrub_Crashed.tscn" id="78_g3qdj"]
+[ext_resource type="PackedScene" uid="uid://boy26drjvtxj3" path="res://scenes/components/dialogue_component/dialogue_renderer.tscn" id="85_44hq7"]
 [ext_resource type="PackedScene" uid="uid://kc58ovt5ugti" path="res://scenes/components/tutorial_trigger/tutorial_trigger.tscn" id="85_ttrig"]
 [ext_resource type="PackedScene" uid="uid://bubvp3c5n2saa" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/GIGI_GunSystem.tscn" id="85_x0gst"]
 [ext_resource type="Script" uid="uid://crdw2cwt2ffb5" path="res://resources/tutorial_steps/tutorial_step.gd" id="86_g074a"]
@@ -1866,6 +1867,14 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.2, -1)
 collision_layer = 0
 door_to_unlock = NodePath("../DoorBasic")
 unlock_door_on_pickup = false
+
+[node name="InteractableComponent" parent="Interactive/GunPodium/GunPodium_Mesh" parent_id_path=PackedInt32Array(786548764, 1164015310) index="0" unique_id=2140039813 node_paths=PackedStringArray("dialogue_renderer")]
+dialogue_renderer = NodePath("DialogueRenderer")
+
+[node name="DialogueRenderer" parent="Interactive/GunPodium/GunPodium_Mesh/InteractableComponent" index="2" unique_id=780065543 instance=ExtResource("85_44hq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.977342, 0)
+size_of_viewport = Vector2(1000, 100)
+is_system_interact = true
 
 [node name="GunPodiumGun" parent="Interactive" unique_id=1733078243 instance=ExtResource("21_5y7s6")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.2, -1)
