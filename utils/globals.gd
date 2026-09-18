@@ -14,8 +14,6 @@ const link_to_meme_dir = "res://scenes/ui/menu_screens/loading_screen/meme_image
 var meme_image_array: Array[Texture2D] = []
 var current_meme_index: int = 0
 
-var is_using_controller: bool = false
-
 # Dictionary of Levels and their UIDs, to be used
 # by SceneLoader in menus, level transition points, etc.
 const LEVEL_PATHS: Dictionary = {
@@ -38,34 +36,19 @@ func _ready() -> void:
 	# get random starter index (so it doesnt start from index 0 each time)
 	current_meme_index = randi_range(0, len(meme_image_array) - 1)
 	
-	Input.joy_connection_changed.connect(_controller_status_changed)
 	InputDeviceManager.input_device_changed.connect(_device_updated)
-
-# this checks the Input.joy_connection_changed signal
-func _controller_status_changed(device_id: int, connected: bool) -> void:
-	# if no controller connected, then kbm must have been used
-	if !connected:
-		EventManager.controller_status.emit("keyboard")
-		is_using_controller = false
-		return
-	
-	# get controller details
-	var controller = InputDeviceManager.get_controller_family()
-	
-	# check if it is playstation or xbox, if so then yes we are using controller
-	if controller == &"playstation" or controller == &"xbox":
-		EventManager.controller_status.emit(controller)
-		is_using_controller = true
-	else:
-		# if something else, then set back as kbm
-		EventManager.controller_status.emit("keyboard")
-		is_using_controller = false
 
 # this checks the status of actual input from InputDeviceManager
 func _device_updated(using_controller: bool) -> void:
-	# if signal does not match input signal, check status again
-	if is_using_controller != using_controller:
-		_controller_status_changed(0, using_controller)
+	var controller = InputDeviceManager.get_controller_family()
+	
+	# if controller, then emit controller
+	if controller == &"playstation" or controller == &"xbox":
+		EventManager.controller_status.emit(controller)
+	else:
+		# if something else, then set back as kbm
+		EventManager.controller_status.emit("keyboard")
+	
 
 func _add_one_to_insanity() -> void:
 	var prev_insanity = global_insanity_level
