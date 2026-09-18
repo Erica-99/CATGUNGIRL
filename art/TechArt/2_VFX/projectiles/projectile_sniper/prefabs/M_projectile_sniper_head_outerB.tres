@@ -1,0 +1,35 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://doftnnsel600n"]
+
+[ext_resource type="Shader" uid="uid://c55ld2gcdap51" path="res://art/TechArt/2_VFX/projectiles/projectile_alt/VS_projectile_shell.tres" id="1_31qfc"]
+[ext_resource type="Gradient" uid="uid://bf1l1noj81h8o" path="res://art/TechArt/2_VFX/projectiles/projectile_sniper/prefabs/gradient.tres" id="2_hrgtx"]
+[ext_resource type="Texture2D" uid="uid://5yqrm8aquq64" path="res://art/TechArt/2_VFX/projectiles/projectile_sniper/prefabs/g2d_displacement_mask.tres" id="3_7juik"]
+[ext_resource type="Texture2D" uid="uid://bby265yhhaa1y" path="res://art/TechArt/2_VFX/projectiles/projectile_sniper/prefabs/g2d_displacement_noise.tres" id="4_278iu"]
+[ext_resource type="Texture2D" uid="uid://8fk5k1sbqvwh" path="res://art/TechArt/2_VFX/projectiles/projectile_sniper/tex/T_VFX_Noise_019.png" id="5_d7f5r"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sjj07"]
+gradient = ExtResource("2_hrgtx")
+use_hdr = true
+
+[sub_resource type="Gradient" id="Gradient_kjf06"]
+offsets = PackedFloat32Array(0, 0.0781759, 0.579805, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bjqnk"]
+gradient = SubResource("Gradient_kjf06")
+fill_from = Vector2(1, 1)
+
+[resource]
+render_priority = 1
+shader = ExtResource("1_31qfc")
+shader_parameter/time_scale = 1.0
+shader_parameter/displacement_speed = 2.86
+shader_parameter/displacement_texture = ExtResource("4_278iu")
+shader_parameter/displacement_mask_texture = ExtResource("3_7juik")
+shader_parameter/displacement_scale = 0.45
+shader_parameter/dissolve_step = 0.1
+shader_parameter/mask1_scale = Vector2(1, 0.7)
+shader_parameter/mask1_scroll = Vector2(-0.33, 1.92)
+shader_parameter/mask1_texture = ExtResource("5_d7f5r")
+shader_parameter/mask3_texture = SubResource("GradientTexture2D_bjqnk")
+shader_parameter/mask_power = 0.2
+shader_parameter/color_ramp = SubResource("GradientTexture1D_sjj07")
