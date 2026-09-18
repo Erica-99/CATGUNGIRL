@@ -52,26 +52,30 @@ offset_bottom = 835.0
 [node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/ControlText" unique_id=1398504398]
 layout_mode = 0
 offset_left = 51.0
-offset_top = -150.0
+offset_top = -203.0
 offset_right = 54.0
-offset_bottom = 50.0
+offset_bottom = 47.0
 color = Color(1, 0.3764706, 0.9843137, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="SubViewportContainer/SubViewport/ControlText" unique_id=604286927]
 material = SubResource("ShaderMaterial_7c4j5")
 layout_mode = 0
 offset_left = -197.0
-offset_top = -150.0
+offset_top = -202.0
 offset_right = 53.0
-offset_bottom = 50.0
+offset_bottom = 48.0
 color = Color(1, 0.3764706, 0.9843137, 0.26666668)
 
 [node name="MarginContainer" type="MarginContainer" parent="SubViewportContainer/SubViewport/ControlText" unique_id=1449244240]
-layout_mode = 0
-offset_left = -166.0
-offset_top = -150.0
-offset_right = 53.085007
-offset_bottom = 50.039993
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -245.99998
+offset_top = -197.0
+offset_right = 11.3450165
+offset_bottom = 197.0
+grow_horizontal = 0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -81,7 +85,7 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.21
-theme_override_constants/separation = 8
+theme_override_constants/separation = 15
 
 [node name="InteractControls" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ControlText/MarginContainer/ContextList" unique_id=1284416490]
 custom_minimum_size = Vector2(100, 0)
@@ -98,8 +102,10 @@ horizontal_alignment = 2
 [node name="E" type="RichTextLabel" parent="SubViewportContainer/SubViewport/ControlText/MarginContainer/ContextList/InteractControls" unique_id=446796881]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 6.35
 theme_override_colors/default_color = Color(0.23137255, 1, 1, 1)
-text = "E"
+bbcode_enabled = true
+text = "[img=30]res://art/UI/Glyphs/KBM/Dark/E_Key_Dark.png[/img] - [img=30]res://art/UI/Glyphs/Xbox/XboxSeriesX_X.png[/img]"
 fit_content = true
 horizontal_alignment = 2
 
@@ -110,7 +116,7 @@ layout_mode = 2
 [node name="Jump" type="RichTextLabel" parent="SubViewportContainer/SubViewport/ControlText/MarginContainer/ContextList/JumpControls" unique_id=1549172534]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.6
+size_flags_stretch_ratio = 2.0
 text = "Jump/Wall Jump"
 fit_content = true
 horizontal_alignment = 2
@@ -118,8 +124,10 @@ horizontal_alignment = 2
 [node name="Space" type="RichTextLabel" parent="SubViewportContainer/SubViewport/ControlText/MarginContainer/ContextList/JumpControls" unique_id=838958600]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.37
 theme_override_colors/default_color = Color(0.23137255, 1, 1, 1)
-text = "Space
+bbcode_enabled = true
+text = "[img=45]res://art/UI/Glyphs/KBM/Dark/Space_Key_Dark.png[/img] - [img=30]res://art/UI/Glyphs/Xbox/XboxSeriesX_A.png[/img]
 "
 fit_content = true
 horizontal_alignment = 2
@@ -139,8 +147,10 @@ horizontal_alignment = 2
 [node name="Shift" type="RichTextLabel" parent="SubViewportContainer/SubViewport/ControlText/MarginContainer/ContextList/DashControls" unique_id=1817922923]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.24
 theme_override_colors/default_color = Color(0.23137255, 1, 1, 1)
-text = "Shift
+bbcode_enabled = true
+text = "[img=30]res://art/UI/Glyphs/KBM/Dark/E_Key_Dark.png[/img] - [img=30]res://art/UI/Glyphs/Xbox/XboxSeriesX_B.png[/img]
 "
 fit_content = true
 horizontal_alignment = 2
@@ -160,8 +170,10 @@ horizontal_alignment = 2
 [node name="LeftClick" type="RichTextLabel" parent="SubViewportContainer/SubViewport/ControlText/MarginContainer/ContextList/FireControls" unique_id=1828246990]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.75
 theme_override_colors/default_color = Color(0.23137255, 1, 1, 1)
-text = "Left Click
+bbcode_enabled = true
+text = "[img=30]res://art/UI/Glyphs/KBM/Dark/Mouse_Left_Key_Dark.png[/img] - [img=30]res://art/UI/Glyphs/Xbox/XboxSeriesX_RT.png[/img]
 "
 fit_content = true
 horizontal_alignment = 2
@@ -181,29 +193,10 @@ horizontal_alignment = 2
 [node name="RightClick" type="RichTextLabel" parent="SubViewportContainer/SubViewport/ControlText/MarginContainer/ContextList/AltFireControls" unique_id=543498779]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.65
 theme_override_colors/default_color = Color(0.23137255, 1, 1, 1)
-text = "Right Click"
-fit_content = true
-horizontal_alignment = 2
-
-[node name="ReloadControls" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ControlText/MarginContainer/ContextList" unique_id=1378913698]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-
-[node name="Reload" type="RichTextLabel" parent="SubViewportContainer/SubViewport/ControlText/MarginContainer/ContextList/ReloadControls" unique_id=111012468]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 11.2
-text = "Reload
-"
-fit_content = true
-horizontal_alignment = 2
-
-[node name="R" type="RichTextLabel" parent="SubViewportContainer/SubViewport/ControlText/MarginContainer/ContextList/ReloadControls" unique_id=163238910]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/default_color = Color(0.23137255, 1, 1, 1)
-text = "R"
+bbcode_enabled = true
+text = "[img=30]res://art/UI/Glyphs/KBM/Dark/Mouse_Right_Key_Dark.png[/img] - [img=30]res://art/UI/Glyphs/Xbox/XboxSeriesX_LT.png[/img]"
 fit_content = true
 horizontal_alignment = 2
 
