@@ -14,6 +14,7 @@ signal enemy_killed(enemy)
 signal player_hit_by_enemy()
 signal current_killstreak(killstreak: int)
 signal gun_picked_up
+signal dummy_hit
 
 signal player_health_initialised(init_current_health, init_max_health)
 signal player_health_changed(old_health, new_health, damage_or_heal_instance)
