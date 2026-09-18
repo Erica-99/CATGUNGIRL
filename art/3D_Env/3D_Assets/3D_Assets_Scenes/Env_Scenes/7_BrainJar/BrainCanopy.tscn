@@ -2,8 +2,13 @@
 
 [ext_resource type="ArrayMesh" uid="uid://bh7qcvchhi0tp" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/7_BrainJar/BrainCanopy.obj" id="1_7t8ed"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7t8ed"]
+albedo_color = Color(0, 0, 0, 1)
+metallic = 1.0
+
 [node name="BrainCanopy" type="Node3D" unique_id=1922873456]
 
 [node name="BrainCanopy_Mesh" type="MeshInstance3D" parent="." unique_id=1172075503]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("1_7t8ed")
+surface_material_override/0 = SubResource("StandardMaterial3D_7t8ed")
