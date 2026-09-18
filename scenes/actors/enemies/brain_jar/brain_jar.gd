@@ -20,13 +20,11 @@ func _on_health_component_health_initialised(init_current_health: float, init_ma
 func _on_health_component_health_changed(old_health: float, new_health: float, damage_or_heal_instance: DamageHealInstance) -> void:	
 	if ((old_health - new_health) > (health_bar.max_value / 5)) or ((old_health - new_health) < (health_bar.max_value / 5)):
 		new_health = health - (health_bar.max_value / 5)
-	
 	health = new_health
 	health_bar.health = health
 	if health > 0:
 		_enable_shields()
-		EventManager.spawn_enemy.emit(0.1, get_path_to($"../EnemyManager/EnemySpawner"))
-		EventManager.spawn_enemy.emit(0.1, get_path_to($"../EnemyManager/EnemySpawner2"))
+		EventManager.spawn_enemy.emit(0.1, get_path_to($"../EnemyDoorFrame"))
 	else:
 		# Play out death sequence (e.g. animations, cutscene)
 		queue_free()
