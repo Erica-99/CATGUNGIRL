@@ -1,6 +1,8 @@
 extends State
 class_name MissileDetonate
 
+
+
 @export var explosion_scene: PackedScene
 
 var body: CharacterBody3D

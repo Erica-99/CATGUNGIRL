@@ -14,7 +14,10 @@ extends CharacterBody3D
 @onready var can_shoot: RayCast3D = $CanShoot
 @onready var softCollider = $SoftCollider
 
+@onready var VFX_spawn = $Explosion_target
+
 var is_dead: bool = false
+var explosion_gpu_emitter = preload("res://art/TechArt/1_Shaders/explosion_test.tscn")
 
 @export_category("Starting State Variables")
 @export var start_aggroed: bool
@@ -28,6 +31,7 @@ var is_dead: bool = false
 @export var grenade: PackedScene
 
 @export_category("Stat Variables")
+@export var health: int = 35
 @export var direction: int = 1
 @export var move_speed: float = 10
 @export var patrol_speed: float
@@ -70,6 +74,9 @@ var blackboard: Dictionary
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	health_comp.set_max_health(health)
+	health_comp.set_health(health)
+	health_comp.knocked_back.connect(take_knockback)
 	# Blackboard contains the information states will use
 	blackboard = {
 		# Actor for movement stats
@@ -188,6 +195,11 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 	elif damage_or_heal_instance.amount == body_hitstun_threshold:
 		_apply_hitstun(body_hitstun_duration)
 
+## When taking damage, get pushed back 
+func take_knockback(knockback_direction: Vector3, knockback_strength: float):
+	# Only needs to handle air knockback
+	velocity += knockback_direction * knockback_strength
+
 # When stun time finishes, return to Idle state.
 func _on_scrub_stun_timer_finished() -> void:
 	print("Stun Finished: Pt 2")
@@ -236,8 +248,11 @@ func get_id() -> String:
 
 func _on_death_detector_body_entered(body: Node3D) -> void:
 	if is_dead:
-		death_explosion.visible = true
-		death_explosion.play("explode")
-		explosion_playing = true
-		await death_explosion.animation_finished
+		var explosion_VFX = explosion_gpu_emitter.instantiate()
+		var VFX_spawn_node = get_tree().current_scene.get_node_or_null("VFX")
+		if VFX_spawn_node == null:
+			push_warning("No VFX node found in current scene")
+			return
+		explosion_VFX.global_position = VFX_spawn.global_position
+		VFX_spawn_node.add_child(explosion_VFX)
 		queue_free()

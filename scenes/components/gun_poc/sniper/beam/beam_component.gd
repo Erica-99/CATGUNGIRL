@@ -90,3 +90,4 @@ func _fire_beam() -> void:
 	
 	sniper._time_since_last_shot = 0.0
 	sniper._handle_ammo()
+	EventManager.alt_fire_used.emit("Sniper")
