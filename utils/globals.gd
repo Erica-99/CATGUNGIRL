@@ -14,13 +14,7 @@ const link_to_meme_dir = "res://scenes/ui/menu_screens/loading_screen/meme_image
 var meme_image_array: Array[Texture2D] = []
 var current_meme_index: int = 0
 
-
-func _ready() -> void:
-	EventManager.connect("increase_insanity_rank", _add_one_to_insanity)
-	EventManager.connect("increase_meme_index", _increment_global_meme_index)
-	_retrieve_images(link_to_meme_dir)
-	# get random starter index (so it doesnt start from index 0 each time)
-	current_meme_index = randi_range(0, len(meme_image_array) - 1)
+var is_using_controller: bool = false
 
 # Dictionary of Levels and their UIDs, to be used
 # by SceneLoader in menus, level transition points, etc.
@@ -35,6 +29,25 @@ const LEVEL_PATHS: Dictionary = {
 	"Stage6": "res://scenes/levels/Stages/Stage6.tscn",
 	"main_menu": "res://scenes/ui/menu_screens/main_menu.tscn"
 }
+
+
+func _ready() -> void:
+	EventManager.connect("increase_insanity_rank", _add_one_to_insanity)
+	EventManager.connect("increase_meme_index", _increment_global_meme_index)
+	_retrieve_images(link_to_meme_dir)
+	# get random starter index (so it doesnt start from index 0 each time)
+	current_meme_index = randi_range(0, len(meme_image_array) - 1)
+	
+	# check initial controller status
+	# if true, then a controller is connected
+	if Input.get_connected_joypads().size() != 0:
+		is_using_controller = true
+	
+	Input.joy_connection_changed.connect(_controller_status_changed)
+
+func _controller_status_changed(device_id: int, connected: bool) -> void:
+	print(Input.get_joy_name(device_id))
+	EventManager.controller_status.emit(connected)
 
 func _add_one_to_insanity() -> void:
 	var prev_insanity = global_insanity_level

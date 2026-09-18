@@ -42,3 +42,5 @@ signal set_door_openable_state(door: Node3D, openable: bool)
 signal start_animation
 
 signal increase_meme_index()
+
+signal controller_status(controller_connected: bool)
