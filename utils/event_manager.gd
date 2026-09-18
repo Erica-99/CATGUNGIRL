@@ -44,4 +44,4 @@ signal start_animation
 
 signal increase_meme_index()
 
-signal controller_status(controller_connected: bool)
+signal controller_status(controller_type: String)

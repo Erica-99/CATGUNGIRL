@@ -18,8 +18,15 @@ class_name DialogueRenderer
 
 @export var is_system_interact: bool = false
 
-const KEYBOARD_INTERACT_PROMPT: String = "Press 'E' to interact."
-const CONTROLLER_INTERACT_PROMPT: String = "Press 'X' to interact."
+const KEYBOARD_INTERACT_PROMPT: String = "Press [img height=80]res://art/UI/Glyphs/KBM/Dark/E_Key_Dark.png[/img] to interact."
+const XBOX_INTERACT_PROMPT: String = "Press [img height=80]res://art/UI/Glyphs/Xbox/XboxSeriesX_X.png[/img] to interact."
+const PLAYSTATION_INTERACT_PROMPT: String = "Press [img height=80]res://art/UI/Glyphs/PS5/PS5_Square.png[/img] to interact."
+
+var prompt_mapping: Dictionary = {
+	"keyboard": KEYBOARD_INTERACT_PROMPT,
+	"xbox": XBOX_INTERACT_PROMPT,
+	"playstation": PLAYSTATION_INTERACT_PROMPT,
+}
 
 var interact_string = KEYBOARD_INTERACT_PROMPT
 
@@ -30,11 +37,8 @@ func _ready() -> void:
 	EventManager.controller_status.connect(_update_interact_string)
 	
 
-func _update_interact_string(controller_status: bool) -> void:
-	if controller_status:
-		interact_string = CONTROLLER_INTERACT_PROMPT
-	else:
-		interact_string = KEYBOARD_INTERACT_PROMPT
+func _update_interact_string(controller_type: String) -> void:
+	interact_string = prompt_mapping[controller_type]
 	
 	dialogue_component._update_bubble_text(interact_string)
 

@@ -38,16 +38,19 @@ func _ready() -> void:
 	# get random starter index (so it doesnt start from index 0 each time)
 	current_meme_index = randi_range(0, len(meme_image_array) - 1)
 	
-	# check initial controller status
-	# if true, then a controller is connected
-	if Input.get_connected_joypads().size() != 0:
-		is_using_controller = true
-	
 	Input.joy_connection_changed.connect(_controller_status_changed)
 
 func _controller_status_changed(device_id: int, connected: bool) -> void:
-	print(Input.get_joy_name(device_id))
-	EventManager.controller_status.emit(connected)
+	if !connected:
+		EventManager.controller_status.emit("keyboard")
+		return
+		
+	var controller = InputDeviceManager.get_controller_family()
+	
+	if controller == &"playstation" or controller == &"xbox":
+		EventManager.controller_status.emit(controller)
+	else:
+		EventManager.controller_status.emit("keyboard")
 
 func _add_one_to_insanity() -> void:
 	var prev_insanity = global_insanity_level

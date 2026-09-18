@@ -36,7 +36,7 @@ func get_controller_family() -> StringName:
 	
 	var joy_name := Input.get_joy_name(joypads[0]).to_lower()
 	
-	if "xbox" in joy_name:
+	if "xbox" in joy_name or "xinput" in joy_name:
 		return &"xbox"
 	if "playstation" in joy_name or "dualshock" in joy_name or "dualsense" in joy_name or "sony" in joy_name \
 			or "ps3" in joy_name or "ps4" in joy_name or "ps5" in joy_name:
