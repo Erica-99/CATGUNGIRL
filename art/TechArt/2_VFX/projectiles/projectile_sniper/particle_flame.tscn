@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cxdtvytlwnoef"]
+
+[ext_resource type="Shader" uid="uid://b2vqiukoud0ne" path="res://art/TechArt/2_VFX/projectiles/projectile_alt/VS_particle_soft.tres" id="1_ux7gt"]
+[ext_resource type="Texture2D" uid="uid://dgkbv4jad4qii" path="res://art/TechArt/2_VFX/projectiles/projectile_sniper/tex/T_VFX_smoke_1.PNG" id="2_k5btp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bofdh"]
+render_priority = 0
+shader = ExtResource("1_ux7gt")
+shader_parameter/mask1_texture = ExtResource("2_k5btp")
+
+[sub_resource type="Curve" id="Curve_6bfne"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_f4wm0"]
+texture_mode = 1
+curve = SubResource("Curve_6bfne")
+
+[sub_resource type="Curve" id="Curve_nfqi8"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0.915337), 0.0, 0.0, 0, 0, Vector2(1, 1.34601), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7f02m"]
+curve = SubResource("Curve_nfqi8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gxcbm"]
+emission_shape = 1
+emission_sphere_radius = 0.1
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(0, 0, 1)
+spread = 0.0
+initial_velocity_min = 2.0
+initial_velocity_max = 5.0
+radial_velocity_min = 1.2
+radial_velocity_max = 2.5
+gravity = Vector3(0, 0, 0)
+scale_min = 0.8
+scale_max = 1.2
+scale_curve = SubResource("CurveTexture_7f02m")
+color = Color(2.4, 0.6, 0.1, 1)
+alpha_curve = SubResource("CurveTexture_f4wm0")
+
+[sub_resource type="QuadMesh" id="QuadMesh_xj3qp"]
+
+[node name="flame" type="GPUParticles3D" unique_id=2097976407]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_bofdh")
+cast_shadow = 0
+amount = 30
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_gxcbm")
+draw_pass_1 = SubResource("QuadMesh_xj3qp")

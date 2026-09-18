@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://byc5jvcatmoah"]
+
+[ext_resource type="Shader" uid="uid://c6pu50xwalgmt" path="res://art/TechArt/2_VFX/projectiles/projectile_alt/VS_projectile_core.tres" id="1_1l7c5"]
+
+[sub_resource type="Gradient" id="Gradient_core"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_core"]
+gradient = SubResource("Gradient_core")
+fill_from = Vector2(0.14529915, 0)
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_1l7c5")
+shader_parameter/col2 = Color(1, 0.44705886, 0, 1)
+shader_parameter/col1 = Color(0.83203125, 0.35101318, 0, 1)
+shader_parameter/color_smoothness = 1.0
+shader_parameter/mask1_texture = SubResource("GradientTexture2D_core")
+shader_parameter/alpha_smoothness = 1.0
+shader_parameter/alpha_multiplier = 1.0
+shader_parameter/emission_mult = 1.0
