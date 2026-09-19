@@ -93,10 +93,14 @@ func _spawn_enemy(custom_delay: float, spawner_path: NodePath):
 			print("Random Spawns: ", random_spawns)
 			while i < random_spawns:
 				var random = randi_range(0, 3)
-				enemy = possible_prefabs[random].instantiate()
-				spawn_ids.append(enemy.get_instance_id())
-				_add_to_manager(enemy)
-				i += 1
+				if random == Enums.EnemyType.TRUNK and linked_enemy_manager.has_node("Trunk"):
+					random_spawns += 1
+					continue
+				else:
+					enemy = possible_prefabs[random].instantiate()
+					spawn_ids.append(enemy.get_instance_id())
+					_add_to_manager(enemy)
+					i += 1
 		else:
 			if enemies.get_path_to(self) == spawner_path.slice(COMPARE_SLICE):
 				if custom_delay == 0:
@@ -118,7 +122,7 @@ func _on_spawn_delay_timer_timeout() -> void:
 	var random_prefab = possible_prefabs[randi_range(0, possible_prefabs.size() - 1)]
 	var enemy = random_prefab.instantiate()
 	_add_to_manager(enemy)
-	
+
 func _add_to_manager(enemy): # owner must be assigned for enemy manager to recognise an enemy as a child
 	linked_enemy_manager.add_child(enemy)
 	enemy.owner = linked_enemy_manager
