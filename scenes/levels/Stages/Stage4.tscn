@@ -499,6 +499,9 @@ adjustment_enabled = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_bs6b4"]
 size = Vector3(11.524498, 7.2834473, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_gdwyr"]
+size = Vector3(5.2734375, 16.263214, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_x2xyk"]
 size = Vector3(1, 8, 6)
 
@@ -1032,31 +1035,40 @@ shadow_normal_bias = 10.0
 shadow_blur = 0.0
 omni_range = 47.88582
 
-[node name="DATES_POPUPS" type="Node" parent="." unique_id=697093068]
+[node name="DIALOGUE_TRIGGERS" type="Node" parent="." unique_id=697093068]
 
-[node name="SheriffPopup" parent="DATES_POPUPS" unique_id=788031286 instance=ExtResource("58_k3b3x")]
+[node name="SheriffPopup" parent="DIALOGUE_TRIGGERS" unique_id=788031286 instance=ExtResource("58_k3b3x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 159.84161, 37.539032, 0)
 _signal_parameters = [4]
 signal_name = "activate_popup"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DATES_POPUPS/SheriffPopup" unique_id=595214372]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DIALOGUE_TRIGGERS/SheriffPopup" unique_id=595214372]
 shape = SubResource("BoxShape3D_bs6b4")
 debug_color = Color(0.919504, 0.13431916, 0.6161928, 0.41960785)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="DATES_POPUPS/SheriffPopup" unique_id=1340969705]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="DIALOGUE_TRIGGERS/SheriffPopup" unique_id=1340969705]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -41.995598, 0)
 shape = SubResource("BoxShape3D_bs6b4")
 debug_color = Color(0.919504, 0.13431916, 0.6161928, 0.41960785)
 
-[node name="RememberPopup" parent="DATES_POPUPS" unique_id=124983181 instance=ExtResource("58_k3b3x")]
+[node name="RememberPopup" parent="DIALOGUE_TRIGGERS" unique_id=124983181 instance=ExtResource("58_k3b3x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 220, 37.737, 0)
 _signal_parameters = [3]
 signal_name = "activate_popup"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DATES_POPUPS/RememberPopup" unique_id=557406143]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DIALOGUE_TRIGGERS/RememberPopup" unique_id=557406143]
 transform = Transform3D(6.4063177, 0, 0, 0, 1, 0, 0, 0, 3.265722, 0, 0, 0)
 shape = SubResource("BoxShape3D_bs6b4")
 debug_color = Color(0.919504, 0.13431916, 0.6161928, 0.41960785)
+
+[node name="SniperUnlock" parent="DIALOGUE_TRIGGERS" unique_id=1311781014 instance=ExtResource("58_k3b3x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.955925, 2.1501174, 0)
+_signal_parameters = ["sniper"]
+signal_name = "unlock_gun"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DIALOGUE_TRIGGERS/SniperUnlock" unique_id=1641569499]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.083984375, 6.1990514, 0)
+shape = SubResource("BoxShape3D_gdwyr")
 
 [node name="RoomOneSpawnConvict" parent="." unique_id=1019019784 instance=ExtResource("58_k3b3x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.150856, 12.848594, 3.8146973e-06)
