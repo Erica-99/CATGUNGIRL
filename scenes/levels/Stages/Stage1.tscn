@@ -86,6 +86,7 @@
 [ext_resource type="PackedScene" uid="uid://bx8juwy6m3hvf" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/World_Lore/Will_Portrait.tscn" id="73_4scdv"]
 [ext_resource type="PackedScene" uid="uid://c3xj7l00asao0" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/file_exploiter.tscn" id="74_nqvtq"]
 [ext_resource type="PackedScene" uid="uid://dfwubrqbnpy7l" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/Hostile_architecture.tscn" id="75_v1rce"]
+[ext_resource type="PackedScene" uid="uid://ctulbbuyu35x" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/World_Lore/BJ_Watches.tscn" id="76_v1rce"]
 [ext_resource type="PackedScene" uid="uid://ddim4ukeuv6rp" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Impaled_Convict.tscn" id="77_3k85b"]
 [ext_resource type="PackedScene" uid="uid://bxoxckf5ed1td" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Scrub_Crashed.tscn" id="78_g3qdj"]
 [ext_resource type="PackedScene" uid="uid://boy26drjvtxj3" path="res://scenes/components/dialogue_component/dialogue_renderer.tscn" id="85_44hq7"]
@@ -1781,24 +1782,33 @@ transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 199.
 [node name="2D_Posters" type="Node3D" parent="Props" unique_id=590890931]
 
 [node name="Enlist" parent="Props/2D_Posters" unique_id=56375923 instance=ExtResource("72_lraim")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 45.269924, 4.6974325, 3.5335202)
+transform = Transform3D(1.5917735, 0, 0, 0, 1.6230817, 0, 0, 0, 1, 56.672512, 5.64106, -6.60374)
 
 [node name="File_Exploiter" parent="Props/2D_Posters" unique_id=1119518296 instance=ExtResource("74_nqvtq")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 155.23308, 6.0376663, -10.064179)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 155.23308, 5.941147, 3.3750534)
 
 [node name="HostileArchitecture" parent="Props/2D_Posters" unique_id=1333764258 instance=ExtResource("75_v1rce")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.7297, 5.5920496, -14.940098)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 145.02199, 5.5920496, -14.940098)
+
+[node name="WillPortrait" parent="Props/2D_Posters" unique_id=2105078253 instance=ExtResource("73_4scdv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.347645, 12.974404, -16.639408)
+
+[node name="BJ_Watches" parent="Props/2D_Posters" unique_id=1517328070 instance=ExtResource("76_v1rce")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.66294, 18.600609, -4.900006)
 
 [node name="2D_Corpses" type="Node3D" parent="Props" unique_id=722687240]
 
 [node name="LyingConvict" parent="Props/2D_Corpses" unique_id=1235913099 instance=ExtResource("72_x0gst")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.10137, 1.1637552, -11.237484)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.10137, 1.228018, -11.237484)
 
 [node name="ImpaledConvict" parent="Props/2D_Corpses" unique_id=889351681 instance=ExtResource("77_3k85b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.09048, 1.0664933, 3.1750278)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.638535, 1.480171, -1.9263186)
 
 [node name="ScrubCrashed" parent="Props/2D_Corpses" unique_id=2089480923 instance=ExtResource("78_g3qdj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200.71062, 0.68806237, -6.5467396)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189.17981, 0.8884221, -7.9195457)
+
+[node name="MeatLumps" parent="Props/2D_Corpses" unique_id=720032926 instance=ExtResource("92_4scdv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.368645, 9.140897, -6.6810308)
 
 [node name="Interactive" type="Node3D" parent="." unique_id=1604478648]
 
