@@ -66,4 +66,4 @@ func _on_att_range_area_3d_body_exited(body: Node3D) -> void:
 
 func _on_flee_area_3d_body_entered(body: Node3D) -> void:
 	if !actor.is_dead:
-		transitioned.emit(self, "scrubflee")
+		transitioned.emit(self, "switchscrubflee")

@@ -5,7 +5,7 @@
 #   - Idle
 
 extends State
-class_name ScrubStun
+class_name SwitchScrubStun
 
 @export var failsafe_max_stun_duration: float = 8
 @export var att_range_area_3d: Area3D
@@ -51,10 +51,10 @@ func physics_update(delta: float) -> void:
 func _go_to_next_state():
 	if len(flee_area_3d.get_overlapping_bodies()) != 0:
 		#state_machine.on_child_transition(state_machine.current_state, "scrubflee")
-		transitioned.emit(self, "scrubflee")
+		transitioned.emit(self, "switchscrubflee")
 	elif len(att_range_area_3d.get_overlapping_bodies()) != 0:
 		#state_machine.on_child_transition(state_machine.current_state, "scrubattack")
-		transitioned.emit(self, "scrubattack")
+		transitioned.emit(self, "switchscrubattack")
 	else:
 		#state_machine.on_child_transition(state_machine.current_state, "scrubchase")
-		transitioned.emit(self, "scrubchase")
+		transitioned.emit(self, "switchscrubchase")
