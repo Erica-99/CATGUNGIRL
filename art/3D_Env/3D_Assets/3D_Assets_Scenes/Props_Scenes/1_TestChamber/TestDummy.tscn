@@ -21,8 +21,6 @@ stencil_mode = 3
 stencil_flags = 2
 stencil_reference = 2
 
-[node name="TestDummy" type="Node3D" unique_id=666016919]
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hcyxg"]
 radius = 0.2890625
 height = 1.0993652
@@ -33,11 +31,11 @@ radius = 0.2159412
 [node name="TestDummy" type="StaticBody3D" unique_id=669336158]
 script = ExtResource("1_su75b")
 
-[node name="TestDummyStand_Mesh" type="MeshInstance3D" parent="Node3D" unique_id=976191908]
+[node name="Node3D#TestDummyStand_Mesh" type="MeshInstance3D" parent="." unique_id=976191908]
 mesh = ExtResource("2_lvsuk")
 surface_material_override/0 = SubResource("StandardMaterial3D_m1byu")
 
-[node name="TestDummy_Mesh" type="MeshInstance3D" parent="Node3D" unique_id=1846877387]
+[node name="Node3D#TestDummy_Mesh" type="MeshInstance3D" parent="." unique_id=1846877387]
 mesh = ExtResource("1_merlg")
 surface_material_override/0 = SubResource("StandardMaterial3D_m1byu")
 surface_material_override/1 = SubResource("StandardMaterial3D_m1byu")

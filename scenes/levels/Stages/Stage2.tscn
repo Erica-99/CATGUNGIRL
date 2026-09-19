@@ -104,12 +104,12 @@
 [ext_resource type="PackedScene" uid="uid://b8c8ldqk7w0t6" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Scrub_Torso.tscn" id="87_keve1"]
 [ext_resource type="PackedScene" uid="uid://ck4m03bswvsjg" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/Lost_Hook.tscn" id="88_ss6sb"]
 [ext_resource type="PackedScene" uid="uid://cpopgmurx621g" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/World_Lore/Pineapple_On_Pizza.tscn" id="89_08fg1"]
+[ext_resource type="PackedScene" uid="uid://bpds7cyyg8gb7" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Rubble.tscn" id="91_448ww"]
 [ext_resource type="ArrayMesh" uid="uid://dfp31v0xojxo1" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/3_GuardRooms/ChairSteel.obj" id="92_mrlkm"]
 [ext_resource type="Texture2D" uid="uid://cfpectu8idpc6" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/2_Prison/GuardRoom/ChairSteel/ChairSteel_BC.png" id="93_xeu56"]
 [ext_resource type="Texture2D" uid="uid://bbbyc2e2y6jgb" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/2_Prison/GuardRoom/ChairSteel/ChairSteel_M.png" id="94_gbvye"]
 [ext_resource type="Texture2D" uid="uid://cdhhw56x03mr" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/2_Prison/GuardRoom/ChairSteel/ChairSteel_N.png" id="95_hwccm"]
 [ext_resource type="Texture2D" uid="uid://dacnpmdtfyfit" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/2_Prison/GuardRoom/ChairSteel/ChairSteel_R.png" id="96_er66k"]
-[ext_resource type="PackedScene" uid="uid://bpds7cyyg8gb7" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Rubble.tscn" id="91_448ww"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sbpx0"]
 size = Vector3(22.905502, 13.890747, 13.72467)
@@ -2055,11 +2055,6 @@ transform = Transform3D(6.832996e-15, -2.6, -4.3711395e-08, -1.5632072e-07, -1.1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3683262, 14.543289, -25)
 visible = false
 
-[node name="VFX" type="Node3D" parent="." unique_id=1886492453]
-
-[node name="DoorLargeBasic" parent="." unique_id=101148383 instance=ExtResource("80_75qhx")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5, -25.2, 0)
-
 [node name="LetThemRaccook" parent="2D_Props/Posters" unique_id=1758641376 instance=ExtResource("86_dc4ih")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.87775, -14.903053, -14.954335)
 
@@ -2107,6 +2102,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.30998, -22.92499, 2.639944
 [node name="VFX" type="Node3D" parent="." unique_id=1886492453]
 
 [node name="DoorLargeBasic" parent="." unique_id=101148383 instance=ExtResource("80_75qhx")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5, -25.2, 0)
+
+[node name="VFX2" type="Node3D" parent="." unique_id=612439091]
+
+[node name="DoorLargeBasic2" parent="." unique_id=1710527537 instance=ExtResource("80_75qhx")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5, -25.2, 0)
 
 [connection signal="removecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
