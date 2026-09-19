@@ -57,22 +57,23 @@ func _ready() -> void:
 		EventManager.new_mag_loaded.emit(current_gun.ammo_component._current_ammo, current_gun.ammo_component.ammo_max)
 
 func _process(_delta: float) -> void:
-	var current_input_state = input_component.get_input_state()
-	# Switch to next gun (Pistol -> Shotgun -> Sniper)
-	if current_input_state.get("switch_gun", false):
-		input_component._switch_gun = false
-		_switch_gun(-1)
-	
-	# Switch to specific gun
-	if current_input_state.get("switch_gun_one", false):
-		input_component._switch_gun_one = false
-		_switch_gun(0)
-	if current_input_state.get("switch_gun_two", false):
-		input_component._switch_gun_two = false
-		_switch_gun(1)
-	if current_input_state.get("switch_gun_three", false):
-		input_component._switch_gun_three = false
-		_switch_gun(2)
+	if input_component != null:
+		var current_input_state = input_component.get_input_state()
+		# Switch to next gun (Pistol -> Shotgun -> Sniper)
+		if current_input_state.get("switch_gun", false):
+			input_component._switch_gun = false
+			_switch_gun(-1)
+		
+		# Switch to specific gun
+		if current_input_state.get("switch_gun_one", false):
+			input_component._switch_gun_one = false
+			_switch_gun(0)
+		if current_input_state.get("switch_gun_two", false):
+			input_component._switch_gun_two = false
+			_switch_gun(1)
+		if current_input_state.get("switch_gun_three", false):
+			input_component._switch_gun_three = false
+			_switch_gun(2)
 
 func _switch_gun(slot_num: int):
 	if not allow_swapping:
