@@ -1876,7 +1876,6 @@ visible = false
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.2, -1)
 collision_layer = 0
 door_to_unlock = NodePath("../DoorBasic")
-unlock_door_on_pickup = false
 
 [node name="InteractableComponent" parent="Interactive/GunPodium/GunPodium_Mesh" parent_id_path=PackedInt32Array(786548764, 1164015310) index="0" unique_id=2140039813 node_paths=PackedStringArray("dialogue_renderer")]
 dialogue_renderer = NodePath("DialogueRenderer")
@@ -2266,7 +2265,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.347645, 12.974404, -16.639
 [node name="MeatLumps" parent="." unique_id=2009025508 instance=ExtResource("92_4scdv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.368645, 9.140897, -12.48376)
 
-[node name="GunPodium" parent="." unique_id=1135966921 instance=ExtResource("85_x0gst")]
+[node name="BackgroundGunPodium" parent="." unique_id=1135966921 instance=ExtResource("85_x0gst")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11074698, 0.19126523, -10.822699)
 
 [connection signal="removecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
