@@ -50,7 +50,7 @@ signal increase_meme_index() #what? - Fernando
 
 signal brain_jar_terminal_activated
 
-signal increase_meme_index()
+
 
 signal controller_status(controller_type: String)
 

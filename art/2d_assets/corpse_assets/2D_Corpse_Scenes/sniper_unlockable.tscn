@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://d2ki8nmtk07x8"]
+
+[ext_resource type="Texture2D" uid="uid://bbmtrp0kyq3eb" path="res://art/2d_assets/corpse_assets/Images/corpse_with_sniper_rifle.png" id="1_b4oo4"]
+[ext_resource type="Texture2D" uid="uid://bqulp651och76" path="res://art/2d_assets/corpse_assets/Images/corpse_without_sniper_rifle.png" id="2_kv1wt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4yp18"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_b4oo4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_kv1wt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="sniper_Unlockable" type="Node3D" unique_id=1001534482]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1374841085]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+centered = false
+offset = Vector2(-414, -26.82)
+sprite_frames = SubResource("SpriteFrames_4yp18")
