@@ -579,9 +579,6 @@ adjustment_enabled = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_bs6b4"]
 size = Vector3(11.524498, 7.2834473, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_gdwyr"]
-size = Vector3(5.2734375, 16.263214, 1)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_x2xyk"]
 size = Vector3(1, 8, 6)
 
@@ -1472,15 +1469,6 @@ signal_name = "activate_popup"
 transform = Transform3D(6.4063177, 0, 0, 0, 1, 0, 0, 0, 3.265722, 0, 0, 0)
 shape = SubResource("BoxShape3D_bs6b4")
 debug_color = Color(0.919504, 0.13431916, 0.6161928, 0.41960785)
-
-[node name="SniperUnlock" parent="DIALOGUE_TRIGGERS" unique_id=1311781014 instance=ExtResource("58_k3b3x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.955925, 2.1501174, 0)
-_signal_parameters = ["sniper"]
-signal_name = "unlock_gun"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DIALOGUE_TRIGGERS/SniperUnlock" unique_id=1641569499]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.083984375, 6.1990514, 0)
-shape = SubResource("BoxShape3D_gdwyr")
 
 [node name="RoomOneSpawnConvict" parent="." unique_id=1019019784 instance=ExtResource("58_k3b3x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.150856, 12.848594, 3.8146973e-06)
@@ -5382,7 +5370,7 @@ transform = Transform3D(-4.3711378e-07, 0, -0.77971745, 0, 0.3024684, 0, 1.99999
 
 [node name="Corpses" type="Node3D" parent="Props/2D_Assets" unique_id=691046981]
 
-[node name="sniper_Unlockable" parent="Props/2D_Assets/Corpses" unique_id=1001534482 instance=ExtResource("151_1u0q4")]
+[node name="sniper_unlockable" parent="Props/2D_Assets/Corpses" unique_id=1001534482 instance=ExtResource("151_1u0q4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.165382, 0.33410954, -1.2683158)
 
 [node name="Before_Trunks" type="Node3D" parent="Props/2D_Assets/Corpses" unique_id=1487515162]
