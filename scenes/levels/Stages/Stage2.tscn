@@ -92,7 +92,6 @@
 [ext_resource type="PackedScene" uid="uid://ctpgo67g4y3mk" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/VentilationPipe1.tscn" id="78_o4lmb"]
 [ext_resource type="PackedScene" uid="uid://4rsfb5kh40wj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/B_Collisions/45Ramp.tscn" id="79_vwyjr"]
 [ext_resource type="PackedScene" uid="uid://dbm4o7gs6g22" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorLargeBasic(Locked).tscn" id="80_75qhx"]
-[ext_resource type="PackedScene" uid="uid://c3xj7l00asao0" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/file_exploiter.tscn" id="80_slitr"]
 [ext_resource type="PackedScene" uid="uid://dw60nghbaa5w6" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Disintegrated.tscn" id="81_fqval"]
 [ext_resource type="Script" uid="uid://4t3uo3s2mf8e" path="res://scenes/levels/Stages/camera_pan_node.gd" id="82_esa2w"]
 [ext_resource type="PackedScene" uid="uid://bxoxckf5ed1td" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Scrub_Crashed.tscn" id="82_lx8in"]
@@ -110,6 +109,8 @@
 [ext_resource type="Texture2D" uid="uid://bbbyc2e2y6jgb" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/2_Prison/GuardRoom/ChairSteel/ChairSteel_M.png" id="94_gbvye"]
 [ext_resource type="Texture2D" uid="uid://cdhhw56x03mr" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/2_Prison/GuardRoom/ChairSteel/ChairSteel_N.png" id="95_hwccm"]
 [ext_resource type="Texture2D" uid="uid://dacnpmdtfyfit" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/2_Prison/GuardRoom/ChairSteel/ChairSteel_R.png" id="96_er66k"]
+[ext_resource type="PackedScene" uid="uid://d20i8l34obly3" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/Security.tscn" id="102_hwccm"]
+[ext_resource type="PackedScene" uid="uid://bhp4qyqpd7hsc" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/shotgun_unlockable.tscn" id="109_hwccm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sbpx0"]
 size = Vector3(22.905502, 13.890747, 13.72467)
@@ -135,9 +136,6 @@ adjustment_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_setcc"]
 size = Vector3(1.010086, 16.356148, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_b8rbg"]
-size = Vector3(5.30542, 7.790039, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ixfw5"]
 albedo_texture = ExtResource("9_o4acx")
@@ -719,15 +717,6 @@ signal_name = "activate_popup"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8438663, 8.401869, 0)
 shape = SubResource("BoxShape3D_setcc")
 debug_color = Color(0.91764706, 0.13333334, 0.6156863, 0.41960785)
-
-[node name="ShotgunUnlock" parent="DIALOGUE_TRIGGERS" unique_id=1403541315 instance=ExtResource("30_djn4x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.186584, -23.643663, 0)
-_signal_parameters = ["shotgun"]
-signal_name = "unlock_gun"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DIALOGUE_TRIGGERS/ShotgunUnlock" unique_id=2086604652]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41711426, 2.5131836, 0)
-shape = SubResource("BoxShape3D_b8rbg")
 
 [node name="Enemies" type="Node3D" parent="." unique_id=218442623]
 
@@ -2051,10 +2040,6 @@ transform = Transform3D(6.832996e-15, -2.6, -4.3711395e-08, -1.5632072e-07, -1.1
 
 [node name="Posters" type="Node3D" parent="2D_Props" unique_id=293166215]
 
-[node name="File_Exploiter" parent="2D_Props/Posters" unique_id=997203607 instance=ExtResource("80_slitr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3683262, 14.543289, -25)
-visible = false
-
 [node name="LetThemRaccook" parent="2D_Props/Posters" unique_id=1758641376 instance=ExtResource("86_dc4ih")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.87775, -14.903053, -14.954335)
 
@@ -2066,6 +2051,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.683895, -3.5692644, -26.67
 
 [node name="AcceptBliss" parent="2D_Props/Posters" unique_id=1517328070 instance=ExtResource("85_dc4ih")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.421986, 14.666203, -24.931496)
+
+[node name="Security" parent="2D_Props/Posters" unique_id=39454366 instance=ExtResource("102_hwccm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.041725, -19.552134, -16.55143)
 
 [node name="Corpses" type="Node3D" parent="2D_Props" unique_id=101059581]
 
@@ -2094,10 +2082,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.48346, -23.927492, -3.8603
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.56611, -15.137807, -2.0654638)
 
 [node name="ScrubCrashed2" parent="2D_Props/Corpses" unique_id=332418208 instance=ExtResource("82_lx8in")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 110.1406, -24.237347, -3.9052105)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 113.76971, -16.144825, 0.88120556)
 
-[node name="Disintegrated" parent="2D_Props" unique_id=1104983045 instance=ExtResource("91_448ww")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.30998, -22.92499, 2.639944)
+[node name="Shotgun_Unlockable" parent="2D_Props/Corpses" unique_id=1001534482 instance=ExtResource("109_hwccm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.77213, -24.86589, -0.5503416)
+
+[node name="Rubble" parent="2D_Props/Corpses" unique_id=302094260 instance=ExtResource("91_448ww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.82405, -24.99999, 2.7364883)
 
 [node name="VFX" type="Node3D" parent="." unique_id=1886492453]
 
