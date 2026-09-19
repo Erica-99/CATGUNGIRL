@@ -1,12 +1,13 @@
 extends Node
 
 var current_level: String
+# provides a reference to the current scene
+var current_scene_reference: Node
 
 # Whatever else we need here i guess
 
 var global_insanity_level: int = 0
 var health_percent_lost_per_insanity: float = 10
-
 
 # variables for loading_screen.gd image loading
 # has to be done in globals otherwise loading_screen.gd is gonna re-load all the files every time it gets instantiated
@@ -32,11 +33,20 @@ const LEVEL_PATHS: Dictionary = {
 func _ready() -> void:
 	EventManager.connect("increase_insanity_rank", _add_one_to_insanity)
 	EventManager.connect("increase_meme_index", _increment_global_meme_index)
+	EventManager.connect("base_scene_updated", _update_base_scene)
 	_retrieve_images(link_to_meme_dir)
 	# get random starter index (so it doesnt start from index 0 each time)
 	current_meme_index = randi_range(0, len(meme_image_array) - 1)
 	
 	InputDeviceManager.input_device_changed.connect(_device_updated)
+	
+	# set reference
+	current_scene_reference = get_tree().current_scene
+
+# legit updates the base scene reference
+# allows other entities to reference this scene
+func _update_base_scene(new_scene: Node) -> void:
+	current_scene_reference = new_scene
 
 # this checks the status of actual input from InputDeviceManager
 func _device_updated(using_controller: bool) -> void:

@@ -45,3 +45,5 @@ signal start_animation
 signal increase_meme_index()
 
 signal controller_status(controller_type: String)
+
+signal base_scene_updated(new_scene: Node)
