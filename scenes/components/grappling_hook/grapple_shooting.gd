@@ -13,6 +13,7 @@ func enter() -> void:
 	_setup_grapple()
 	time_elapsed = 0
 	AudioManager.play_sfx("grapple_shoot")
+	EventManager.alt_fire_used.emit("Grapple")
 
 func exit() -> void:
 	do_fire_loop = false

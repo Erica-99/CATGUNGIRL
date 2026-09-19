@@ -8,6 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://vnh1mohlmhni" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Normal_OpenGL.png" id="6_rmm0a"]
 [ext_resource type="Texture2D" uid="uid://drpgycg7mebgy" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Specular_roughness.png" id="7_3ngre"]
 [ext_resource type="ArrayMesh" uid="uid://ckswbgels33vw" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/PrisonRailDoor.obj" id="8_t0y45"]
+[ext_resource type="Texture2D" uid="uid://douxwlagyddi2" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoor/PrisonRailDoor_Base_color.png" id="9_xla10"]
+[ext_resource type="Texture2D" uid="uid://cyy251qs2ib8k" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoor/PrisonRailDoor_Mixed_AO.png" id="10_7myll"]
+[ext_resource type="Texture2D" uid="uid://bk1ww3w8smupl" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoor/PrisonRailDoor_Height.png" id="11_i6h0x"]
+[ext_resource type="Texture2D" uid="uid://dttc38t4pb2w6" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoor/PrisonRailDoor_Base_metalness.png" id="12_xtac7"]
+[ext_resource type="Texture2D" uid="uid://b2auods61mh3m" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoor/PrisonRailDoor_Normal_OpenGL.png" id="13_b2vnq"]
+[ext_resource type="Texture2D" uid="uid://trsmyjp5v7hh" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoor/PrisonRailDoor_Specular_roughness.png" id="14_r7ave"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nqbn2"]
 albedo_texture = ExtResource("2_a1brn")
@@ -24,6 +30,32 @@ heightmap_texture = ExtResource("4_didrf")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_t0y45"]
 points = PackedVector3Array(-0.099879, -0.100005, -2.500488, -0.099879, 4.10165, -2.500488, 0.09985945, -0.100005, -2.500488, -0.099879, -0.100005, 2.500209, 0.099879, 4.10165, -2.500488, -0.099879, 4.10165, 2.500209, 0.099879, 0.09987798, -2.500488, 0.09985945, -0.100005, 2.500209, 0.099879, 4.10165, 2.500209, 0.099879, 0.09987798, 2.500209)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yp8co"]
+albedo_texture = ExtResource("9_xla10")
+metallic = 1.0
+metallic_texture = ExtResource("12_xtac7")
+roughness_texture = ExtResource("14_r7ave")
+normal_enabled = true
+normal_texture = ExtResource("13_b2vnq")
+ao_enabled = true
+ao_texture = ExtResource("10_7myll")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("11_i6h0x")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8pp35"]
+albedo_texture = ExtResource("9_xla10")
+metallic = 1.0
+metallic_texture = ExtResource("12_xtac7")
+roughness_texture = ExtResource("14_r7ave")
+normal_enabled = true
+normal_texture = ExtResource("13_b2vnq")
+ao_enabled = true
+ao_texture = ExtResource("10_7myll")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("11_i6h0x")
 
 [sub_resource type="Animation" id="Animation_t5cew"]
 length = 0.001
@@ -299,14 +331,25 @@ mesh = ExtResource("1_3hton")
 surface_material_override/0 = SubResource("StandardMaterial3D_nqbn2")
 
 [node name="DoorwayPrisonRailLaboratory_Collision" type="CollisionShape3D" parent="." unique_id=1319437198]
+visible = false
 shape = SubResource("ConvexPolygonShape3D_t0y45")
+
+[node name="DoorwayPrisonRailLaboratory_CollisionGPU_01" type="GPUParticlesCollisionBox3D" parent="." unique_id=192628111]
+transform = Transform3D(0.100525856, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6699944, -0.009429932)
+size = Vector3(2, 3.5461655, 3.1206665)
+
+[node name="DoorwayPrisonRailLaboratory_CollisionGPU_02" type="GPUParticlesCollisionBox3D" parent="." unique_id=49420958]
+transform = Transform3D(0.100525856, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.0017323, -0.009429932)
+size = Vector3(2, 0.21281433, 3.1206665)
 
 [node name="PrisonRailDoor" type="MeshInstance3D" parent="." unique_id=1775983206]
 mesh = ExtResource("8_t0y45")
+surface_material_override/0 = SubResource("StandardMaterial3D_yp8co")
 
 [node name="PrisonRailDoor2" type="MeshInstance3D" parent="." unique_id=743811965]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
 mesh = ExtResource("8_t0y45")
+surface_material_override/0 = SubResource("StandardMaterial3D_8pp35")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=648387443]
 libraries/ = SubResource("AnimationLibrary_t0y45")

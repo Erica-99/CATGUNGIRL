@@ -51,8 +51,25 @@ surface_material_override/0 = SubResource("StandardMaterial3D_tl0dy")
 
 [node name="FloorMeshCentreBroken_02_Collision" type="CollisionShape3D" parent="." unique_id=1445638426]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.058, 0)
+visible = false
 shape = SubResource("ConcavePolygonShape3D_tl0dy")
 
 [node name="FloorMeshCentreBroken_01_Mesh" type="MeshInstance3D" parent="." unique_id=1107359663]
 mesh = ExtResource("3_p28mn")
 surface_material_override/0 = SubResource("StandardMaterial3D_cpff2")
+
+[node name="FloorMeshCentreBroken_CollisionGPU_01" type="GPUParticlesCollisionBox3D" parent="." unique_id=204818734]
+transform = Transform3D(1, 0, 0, 0, 0.110832155, 0, 0, 0, 2.502444, -1.7625732, 0, 0)
+size = Vector3(1.4680176, 2, 2)
+
+[node name="FloorMeshCentreBroken_CollisionGPU_02" type="GPUParticlesCollisionBox3D" parent="." unique_id=91483953]
+transform = Transform3D(1, 0, 0, 0, 0.110832155, 0, 0, 0, 2.502444, 1.768743, 0, 0)
+size = Vector3(1.4680176, 2, 2)
+
+[node name="FloorMeshCentreBroken_CollisionGPU_03" type="GPUParticlesCollisionBox3D" parent="." unique_id=16659515]
+transform = Transform3D(1, 0, 0, 0, 0.110832155, 0, 0, 0, 2.502444, -0.0003466606, 0, -1.8456746)
+size = Vector3(2.0460205, 2, 0.52490234)
+
+[node name="FloorMeshCentreBroken_CollisionGPU_04" type="GPUParticlesCollisionBox3D" parent="." unique_id=741543151]
+transform = Transform3D(1, 0, 0, 0, 0.110832155, 0, 0, 0, 2.502444, -0.0003466606, 0, 1.8448087)
+size = Vector3(2.0460205, 2, 0.52490234)

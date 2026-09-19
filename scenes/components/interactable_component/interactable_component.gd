@@ -26,7 +26,6 @@ func _ready() -> void:
 	
 	if interactable_type == Enums.InteractableType.BRAIN_TERMINAL:
 		enabled = false
-		EventManager.shield_enabled_status.connect(_handle_shield_changes)
 		#EventManager.room_cleared.connect(_handle_adds_changes)
 
 func _calculate_interaction_zone(is_using_obj_asset: bool = true):
@@ -62,6 +61,7 @@ func _process(delta: float) -> void:
 			if current_player_status["interacting"]:
 				if event_trigger != null:
 					event_trigger._emit_signal()
+					player_reference.input_component._interacting = false
 					
 					if event_trigger._one_shot:
 						enabled = false
@@ -89,11 +89,18 @@ func _on_interaction_range_body_entered(body: Node3D) -> void:
 				_play_interact_animation("open")
 
 func _on_interaction_range_body_exited(body: Node3D) -> void:
-	if body.name == "Player" && enabled:
-		player_in_range = false
-		if interactable_type == Enums.InteractableType.DOOR:
-			_play_interact_animation("close")
-		EventManager.system_message.emit("", false)
+	if body.name != "Player":
+		return
+	
+	player_in_range = false
+	
+	if body == player_reference:
+		player_reference = null
+	
+	if enabled and interactable_type == Enums.InteractableType.DOOR:
+		_play_interact_animation("close")
+	
+	EventManager.system_message.emit("", false)
 
 func _handle_shield_changes(status: bool):
 	shields_up = status
