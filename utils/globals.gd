@@ -1,12 +1,13 @@
 extends Node
 
 var current_level: String
+# provides a reference to the current scene
+var current_scene_reference: Node
 
 # Whatever else we need here i guess
 
 var global_insanity_level: int = 0
 var health_percent_lost_per_insanity: float = 10
-
 
 # variables for loading_screen.gd image loading
 # has to be done in globals otherwise loading_screen.gd is gonna re-load all the files every time it gets instantiated
@@ -14,13 +15,12 @@ const link_to_meme_dir = "res://scenes/ui/menu_screens/loading_screen/meme_image
 var meme_image_array: Array[Texture2D] = []
 var current_meme_index: int = 0
 
-
-func _ready() -> void:
-	EventManager.connect("increase_insanity_rank", _add_one_to_insanity)
-	EventManager.connect("increase_meme_index", _increment_global_meme_index)
-	_retrieve_images(link_to_meme_dir)
-	# get random starter index (so it doesnt start from index 0 each time)
-	current_meme_index = randi_range(0, len(meme_image_array) - 1)
+const gun_indexes: Dictionary[String, int] = {
+	"pistol": 0,
+	"shotgun": 1,
+	"sniper": 2
+}
+var unlocked_guns: Array[int] = [0]
 
 # Dictionary of Levels and their UIDs, to be used
 # by SceneLoader in menus, level transition points, etc.
@@ -35,6 +35,50 @@ const LEVEL_PATHS: Dictionary = {
 	"Stage6": "res://scenes/levels/Stages/Stage6.tscn",
 	"main_menu": "res://scenes/ui/menu_screens/main_menu.tscn"
 }
+
+
+func _ready() -> void:
+	EventManager.connect("increase_insanity_rank", _add_one_to_insanity)
+	EventManager.connect("increase_meme_index", _increment_global_meme_index)
+	EventManager.connect("base_scene_updated", _update_base_scene)
+	EventManager.connect("unlock_gun", _unlock_gun)
+	_retrieve_images(link_to_meme_dir)
+	# get random starter index (so it doesnt start from index 0 each time)
+	current_meme_index = randi_range(0, len(meme_image_array) - 1)
+	
+	InputDeviceManager.input_device_changed.connect(_device_updated)
+	
+	# set reference
+	current_scene_reference = get_tree().current_scene
+
+# unlocks a new gun with the given name
+func _unlock_gun(gun_name: String) -> void:
+	if gun_name in gun_indexes.keys():
+		var gun_index = gun_indexes[gun_name]
+		if gun_index not in unlocked_guns:
+			unlocked_guns.append(gun_index)
+
+# legit updates the base scene reference
+# allows other entities to reference this scene
+func _update_base_scene(new_scene: Node) -> void:
+	current_scene_reference = new_scene
+
+# this checks the status of actual input from InputDeviceManager
+func _device_updated(using_controller: bool) -> void:
+	var controller = InputDeviceManager.get_controller_family()
+	
+	# handle keyboard
+	if not InputDeviceManager.is_using_controller():
+		EventManager.controller_status.emit("keyboard")
+		return
+	
+	# if controller, then emit controller
+	if controller == &"playstation" or controller == &"xbox":
+		EventManager.controller_status.emit(controller)
+	else:
+		# if something else, then set back as kbm
+		EventManager.controller_status.emit("keyboard")
+	
 
 func _add_one_to_insanity() -> void:
 	var prev_insanity = global_insanity_level

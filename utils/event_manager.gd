@@ -14,6 +14,7 @@ signal enemy_killed(enemy)
 signal player_hit_by_enemy()
 signal current_killstreak(killstreak: int)
 signal gun_picked_up
+signal dummy_hit
 
 signal gun_sacrifice_requested
 signal gun_sacrificed(gun_name: String)
@@ -30,6 +31,7 @@ signal alt_fire_used(gun_name: String)
 
 signal new_gun_equipped(gun_name: String)
 signal enable_gun_ui(enabled: bool)
+signal unlock_gun(gun_name: String)
 
 signal room_cleared(room_ID: Enums.Room, is_clear: bool)
 signal spawn_enemy(custom_delay: float, spawner_path: NodePath)
@@ -47,3 +49,9 @@ signal start_animation
 signal increase_meme_index() #what? - Fernando
 
 signal brain_jar_terminal_activated
+
+signal increase_meme_index()
+
+signal controller_status(controller_type: String)
+
+signal base_scene_updated(new_scene: Node)

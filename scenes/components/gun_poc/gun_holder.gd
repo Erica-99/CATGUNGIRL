@@ -73,17 +73,22 @@ func _switch_gun(slot_num: int):
 	
 	# For "next gun" swap (Q)
 	if slot_num < 0:
+		if Globals.unlocked_guns.size() == 1:
+			return
 		current_gun_index += 1
-		if current_gun_index == current_child_count:
+		while (not current_gun_index in Globals.unlocked_guns) and current_gun_index < Globals.unlocked_guns.max():
+			current_gun_index += 1
+		if current_gun_index not in Globals.unlocked_guns:
 			current_gun_index = 0
 	# For specific swap (1,2,3)
 	else:
 		# Don't swap to current gun
 		if slot_num >= current_child_count or slot_num == current_gun_index:
 			return
-		else:
+		elif slot_num in Globals.unlocked_guns:
 			current_gun_index = slot_num
-		
+		else:
+			return
 	var rotation_save = current_gun.rotation.z
 	_deactivate_gun()
 	current_gun = get_child(current_gun_index)

@@ -6,6 +6,7 @@ extends Node3D
 @export var interaction_distance: float = 4.0
 @export var event_trigger: Node
 @export var enabled: bool = true
+@export var dialogue_renderer: DialogueRenderer = null
 
 # bools for Brain Console, what needs to happen for consoles to activate
 var shields_up: bool = false
@@ -59,6 +60,9 @@ func _process(delta: float) -> void:
 				_play_interact_animation("open")
 		else:
 			if current_player_status["interacting"]:
+				if dialogue_renderer:
+					if dialogue_renderer.is_system_interact:
+						dialogue_renderer._interact_animation()
 				if event_trigger != null:
 					event_trigger._emit_signal()
 					player_reference.input_component._interacting = false
@@ -82,8 +86,12 @@ func _on_interaction_range_body_entered(body: Node3D) -> void:
 	if body.name == "Player" && enabled:
 		player_in_range = true
 		player_reference = body
+		
 		if require_interaction:
-			EventManager.system_message.emit("Press E to interact.", true)
+			if dialogue_renderer != null:
+				dialogue_renderer._add_interact_bubble()
+			else:
+				EventManager.system_message.emit("Press E to interact.", true)
 		else:
 			if interactable_type == Enums.InteractableType.DOOR:
 				_play_interact_animation("open")

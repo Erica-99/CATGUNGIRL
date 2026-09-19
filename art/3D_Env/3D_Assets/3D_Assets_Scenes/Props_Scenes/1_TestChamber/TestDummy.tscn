@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://dnuawo7ady5q"]
 
 [ext_resource type="ArrayMesh" uid="uid://hnlewxamoafk" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/1_TestChamber/TestDummy.obj" id="1_merlg"]
+[ext_resource type="Script" uid="uid://dkjexqmkemkrr" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/test_dummy.gd" id="1_su75b"]
 [ext_resource type="Texture2D" uid="uid://d1ama0ua3owem" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/1_TestChamber/TestDummy/TestDummyTexture_BC.png" id="2_aqyng"]
 [ext_resource type="ArrayMesh" uid="uid://bbaqnnnr3ikwo" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/1_TestChamber/TestDummyStand.obj" id="2_lvsuk"]
 [ext_resource type="Texture2D" uid="uid://dtda4qld3jetk" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/1_TestChamber/TestDummy/TestDummyTexture_M.png" id="3_hcyxg"]
 [ext_resource type="Texture2D" uid="uid://dw6q287kn8vdt" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/1_TestChamber/TestDummy/TestDummyTexture_N.png" id="4_uhjne"]
 [ext_resource type="Texture2D" uid="uid://lnxp703rb04k" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/1_TestChamber/TestDummy/TestDummyTexture_R.png" id="5_su75b"]
+[ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="7_hcyxg"]
+[ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="8_uhjne"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1byu"]
 albedo_texture = ExtResource("2_aqyng")
@@ -20,7 +23,15 @@ stencil_reference = 2
 
 [node name="TestDummy" type="Node3D" unique_id=666016919]
 
-[node name="Node3D" type="Node3D" parent="." unique_id=1014079981]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hcyxg"]
+radius = 0.2890625
+height = 1.0993652
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hcyxg"]
+radius = 0.2159412
+
+[node name="TestDummy" type="StaticBody3D" unique_id=669336158]
+script = ExtResource("1_su75b")
 
 [node name="TestDummyStand_Mesh" type="MeshInstance3D" parent="Node3D" unique_id=976191908]
 mesh = ExtResource("2_lvsuk")
@@ -32,3 +43,29 @@ surface_material_override/0 = SubResource("StandardMaterial3D_m1byu")
 surface_material_override/1 = SubResource("StandardMaterial3D_m1byu")
 surface_material_override/2 = SubResource("StandardMaterial3D_m1byu")
 surface_material_override/3 = SubResource("StandardMaterial3D_m1byu")
+
+[node name="HurtboxComponent" parent="." unique_id=338394069 node_paths=PackedStringArray("health_component") instance=ExtResource("7_hcyxg")]
+health_component = NodePath("../HealthComponent")
+damage_multiplier = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtboxComponent" unique_id=1464028011]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022613525, 1.0937896, -0.0018005371)
+shape = SubResource("CapsuleShape3D_hcyxg")
+
+[node name="HurtboxComponent2" parent="." unique_id=242602835 node_paths=PackedStringArray("health_component") instance=ExtResource("7_hcyxg")]
+health_component = NodePath("../HealthComponent")
+damage_multiplier = 0.0
+is_headshot = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtboxComponent2" unique_id=1951779728]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02119641, 1.8110985, 0)
+shape = SubResource("SphereShape3D_hcyxg")
+
+[node name="HealthComponent" parent="." unique_id=236252344 instance=ExtResource("8_uhjne")]
+starting_health = 1.0
+max_health = 1.0
+healable = false
+knockbackable = false
+killable = false
+
+[connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]

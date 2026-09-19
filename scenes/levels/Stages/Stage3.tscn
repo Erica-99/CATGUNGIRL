@@ -89,6 +89,20 @@
 [ext_resource type="PackedScene" uid="uid://u0ps1hxqgdbr" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/HighBayLight.tscn" id="86_y6pi2"]
 [ext_resource type="PackedScene" uid="uid://8268415ukuhp" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/4_Panopticon/LightRailPanopticon.tscn" id="87_i8msr"]
 [ext_resource type="PackedScene" uid="uid://d1isfmus58oku" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/IndustrialLight1.tscn" id="88_m4oo8"]
+[ext_resource type="PackedScene" uid="uid://556rwa2pdmor" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Lying_Convict.tscn" id="89_ei5br"]
+[ext_resource type="PackedScene" uid="uid://ddim4ukeuv6rp" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Impaled_Convict.tscn" id="90_vyn8v"]
+[ext_resource type="PackedScene" uid="uid://db5fkg6225guu" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/severed_arm.tscn" id="91_oughf"]
+[ext_resource type="PackedScene" uid="uid://demee3fear7mn" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/severed_legs.tscn" id="92_l4l4g"]
+[ext_resource type="PackedScene" uid="uid://bxoxckf5ed1td" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Scrub_Crashed.tscn" id="93_1548b"]
+[ext_resource type="PackedScene" uid="uid://bpds7cyyg8gb7" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Rubble.tscn" id="94_14hds"]
+[ext_resource type="PackedScene" uid="uid://cxcthhfatcnna" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Melting_Convict.tscn" id="95_tg5mw"]
+[ext_resource type="PackedScene" uid="uid://b8c8ldqk7w0t6" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Scrub_Torso.tscn" id="96_baq28"]
+[ext_resource type="PackedScene" uid="uid://xwmm12eihkbq" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Meat_lumps.tscn" id="97_7e0hq"]
+[ext_resource type="PackedScene" uid="uid://dw60nghbaa5w6" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Disintegrated.tscn" id="98_q1ohj"]
+[ext_resource type="PackedScene" uid="uid://cnm40lu51bpdw" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/World_Lore/Beware_Redivivus.tscn" id="99_51x26"]
+[ext_resource type="PackedScene" uid="uid://dp7w74qay70c" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/World_Lore/Accept_Bliss.tscn" id="101_4nat2"]
+[ext_resource type="PackedScene" uid="uid://ctulbbuyu35x" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/World_Lore/BJ_Watches.tscn" id="102_6v0vc"]
+[ext_resource type="PackedScene" uid="uid://bsekmkigv7je" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/Phantom_Vs_Opera.tscn" id="103_ufdkb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aiqfw"]
 size = Vector3(1, 12.658752, 1)
@@ -3628,6 +3642,54 @@ transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 5, 4
 
 [node name="IndustrialLight2" parent="." unique_id=1567467053 instance=ExtResource("88_m4oo8")]
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 175, 130.51346, -9.728327)
+
+[node name="2D_Props" type="Node3D" parent="." unique_id=468968398]
+
+[node name="Corpses" type="Node3D" parent="2D_Props" unique_id=382895559]
+
+[node name="LyingConvict" parent="2D_Props/Corpses" unique_id=1235913099 instance=ExtResource("89_ei5br")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.387435, 1.2385212, -9.769216)
+
+[node name="ImpaledConvict" parent="2D_Props/Corpses" unique_id=889351681 instance=ExtResource("90_vyn8v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.872643, 6.3730326, -5.558799)
+
+[node name="Severed_Hand" parent="2D_Props/Corpses" unique_id=395530572 instance=ExtResource("91_oughf")]
+transform = Transform3D(1, 0, 0, 0, 0.91721314, 0.3983969, 0, -0.3983969, 0.91721314, 87.916885, 0.59159744, -3.0055842)
+
+[node name="Severed_Legs" parent="2D_Props/Corpses" unique_id=1232343456 instance=ExtResource("92_l4l4g")]
+transform = Transform3D(0.93872184, 0, -0.3446757, 0, 1, 0, 0.3446757, 0, 0.93872184, 126.21501, 10.346452, -2.094659)
+
+[node name="Rubble" parent="2D_Props/Corpses" unique_id=1864665879 instance=ExtResource("94_14hds")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.15581, 68.92472, 7.9970055)
+
+[node name="MeltingConvict" parent="2D_Props/Corpses" unique_id=162277555 instance=ExtResource("95_tg5mw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.024918, 69.287, -0.3023281)
+
+[node name="ScrubTorso" parent="2D_Props/Corpses" unique_id=426037799 instance=ExtResource("96_baq28")]
+transform = Transform3D(0.96974856, 0, 0.24410588, 0, 1, 0, -0.24410588, 0, 0.96974856, 45.771366, 126.8935, -5.727792)
+
+[node name="MeatLumps" parent="2D_Props/Corpses" unique_id=720032926 instance=ExtResource("97_7e0hq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.86912, 126.8625, 7.4004083)
+
+[node name="Disintegrated" parent="2D_Props/Corpses" unique_id=811472489 instance=ExtResource("98_q1ohj")]
+transform = Transform3D(0.9101421, 0, -0.41429615, 0, 1, 0, 0.41429615, 0, 0.9101421, 118.89261, 127.71125, -5.647059)
+
+[node name="ScrubCrashed" parent="2D_Props/Corpses" unique_id=2089480923 instance=ExtResource("93_1548b")]
+transform = Transform3D(0.80474585, -0.10414181, -1.7659224, 0.12493621, 1.3299216, -0.03541507, 0.92632097, -0.08889753, 1.5389305, 135.74176, 5.946916, 12.384408)
+
+[node name="Posters" type="Node3D" parent="2D_Props" unique_id=1360428358]
+
+[node name="Beware_Redivivus" parent="2D_Props/Posters" unique_id=1517328070 instance=ExtResource("99_51x26")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 40.484505, 2.731675, -5.110424)
+
+[node name="AcceptBliss" parent="2D_Props/Posters" unique_id=1163934586 instance=ExtResource("101_4nat2")]
+transform = Transform3D(0.4881339, 0, 0.8727686, 0, 1.0000001, 0, -0.87276876, 0, 0.4881338, 39.729294, 128.90163, -5.321966)
+
+[node name="BJ_Watches" parent="2D_Props/Posters" unique_id=1078633704 instance=ExtResource("102_6v0vc")]
+transform = Transform3D(0.99984187, 0, 0.017783968, 0, 1, 0, -0.017783968, 0, 0.99984187, 42.333263, 102.717834, 4.3987184)
+
+[node name="PhantomVsOpera" parent="2D_Props/Posters" unique_id=705704835 instance=ExtResource("103_ufdkb")]
+transform = Transform3D(0.83722275, 0, -0.546862, 0, 1, 0, 0.546862, 0, 0.83722275, 140.12776, 129.14658, -4.1850066)
 
 [connection signal="removecameratween" from="Interactive/CameraPanNode" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="Interactive/CameraPanNode" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
