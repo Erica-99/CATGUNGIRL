@@ -1539,11 +1539,8 @@ autoplay = &"Idle"
 [node name="VFX_target" type="Node3D" parent="." unique_id=721602745]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03300625, 0.71813583, 0)
 
-[node name="Explosion_target" type="Node3D" parent="." unique_id=1931670990 node_paths=PackedStringArray("gun_aim_p", "gun_sprite")]
+[node name="Explosion_target" type="Node3D" parent="." unique_id=1931670990]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3519532, 0.10535097, 0)
-script = ExtResource("3_dosxg")
-gun_aim_p = NodePath("../Scrub_Mesh/Visual_MOVE_P/Torso_P/Gun_P/Gun_AIM_P")
-gun_sprite = NodePath("../Scrub_Mesh/Visual_MOVE_P/Torso_P/Gun_P/Gun_AIM_P/AnimatedSprite3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1549018224]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1880244, -0.671875, 0)
@@ -1654,9 +1651,11 @@ debug_color = Color(0.77217674, 0.44468626, 0, 0.33333334)
 
 [node name="TooFarFloorDetection" type="RayCast3D" parent="." unique_id=1270795744]
 target_position = Vector3(0, -10, 0)
+collision_mask = 129
 
 [node name="EnvironmentTooClose" type="Area3D" parent="." unique_id=150321329]
 collision_layer = 0
+collision_mask = 129
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EnvironmentTooClose" unique_id=1395732953]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
@@ -1675,6 +1674,8 @@ debug_color = Color(0, 0.61960787, 0.5686275, 0.41960785)
 [node name="StingerComponent" parent="." unique_id=392420070 instance=ExtResource("32_xxogl")]
 
 [node name="DeathDetector" type="Area3D" parent="." unique_id=944403690]
+collision_layer = 0
+collision_mask = 129
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeathDetector" unique_id=1754639694]
 shape = SubResource("SphereShape3D_xxogl")
