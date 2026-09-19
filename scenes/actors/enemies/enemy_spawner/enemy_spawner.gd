@@ -67,7 +67,6 @@ func _spawn_enemy(custom_delay: float, spawner_path: NodePath):
 	#Check if the spawner is allowed to spawn new enemies
 	if can_spawn:
 		if wave_spawner:
-			print("WAVE SPAWNER")
 			for wave_enemy in wave_enemies:
 				match wave_enemy:
 					Enums.EnemyType.CONVICT:
@@ -88,19 +87,19 @@ func _spawn_enemy(custom_delay: float, spawner_path: NodePath):
 			if has_trigger:
 				spawn_trigger.active = false
 		elif randomiser:
-			print("RANDOMISER")
 			var i = 0
-			print("Random Spawns: ", random_spawns)
 			while i < random_spawns:
 				var random = randi_range(0, 3)
 				if random == Enums.EnemyType.TRUNK and linked_enemy_manager.has_node("Trunk"):
-					random_spawns += 1
 					continue
-				else:
-					enemy = possible_prefabs[random].instantiate()
-					spawn_ids.append(enemy.get_instance_id())
-					_add_to_manager(enemy)
-					i += 1
+				enemy = possible_prefabs[random].instantiate()
+				if str(enemy.name) == "BrainSpider":
+					enemy.spider_mode = BrainSpider.SpiderMode.values().pick_random()
+					if enemy.spider_mode == 1:
+						enemy.surface_type = BrainSpider.SurfaceType.values().pick_random()
+				spawn_ids.append(enemy.get_instance_id())
+				_add_to_manager(enemy)
+				i += 1
 		else:
 			if enemies.get_path_to(self) == spawner_path.slice(COMPARE_SLICE):
 				if custom_delay == 0:
@@ -108,14 +107,10 @@ func _spawn_enemy(custom_delay: float, spawner_path: NodePath):
 			spawn_delay_timer.start(custom_delay)
 		#Prevent the spawner from creating new enemies
 		can_spawn = false
-		print("Spawner ", get_instance_id(), " can_spawn is set to: ", can_spawn)
 		#This is only relevant if the spawner is triggered through an EventTrigger Area3D
 		if has_trigger:
 			spawn_trigger.active = false
-	else:
-		print("Spawner ", get_instance_id(), " currently occupied!")
-		return
-	print("Spawner ", get_instance_id(), " current children are: ", spawn_ids)
+	print("Spawner ", get_instance_id(), " has the following children: ", spawn_ids)
 
 # create enemy
 func _on_spawn_delay_timer_timeout() -> void:
@@ -137,7 +132,6 @@ func _remove_id_(enemy: CharacterBody3D):
 		spawn_ids.erase(id)
 	#Allow spawner to create new enemies if all previously spawned enemies have been defeated
 	if spawn_ids.is_empty():
-		print("Spawner ", get_instance_id(), " currently vacant!")
 		linked_enemy_manager.child_exiting_tree.disconnect(_remove_id_)
 		can_spawn = true
 		if has_trigger:

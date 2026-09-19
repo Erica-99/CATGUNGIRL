@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dld0qjmojk1t8" path="res://scenes/actors/enemies/enemy_manager/enemy_manager.tscn" id="5_x31qf"]
 [ext_resource type="PackedScene" uid="uid://bqxkqmc0c1lue" path="res://scenes/actors/enemies/enemy_spawner/enemy_spawner.tscn" id="6_4gk6r"]
 [ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="7_4gk6r"]
+[ext_resource type="PackedScene" uid="uid://4l4kw7i1ga4c" path="res://scenes/actors/enemies/brain_spider/brain_spider.tscn" id="8_lh1xp"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_vvhd2"]
 
@@ -104,3 +105,7 @@ wave_spawner = true
 wave_enemies = Array[int]([3, 3])
 has_trigger = true
 spawn_trigger = NodePath("../../../EventTrigger")
+
+[node name="BrainSpider" parent="." unique_id=166394742 instance=ExtResource("8_lh1xp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 0)
+spider_mode = 1
