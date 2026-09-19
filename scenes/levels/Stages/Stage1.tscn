@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://dnuawo7ady5q" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/TestDummy.tscn" id="18_jph5v"]
 [ext_resource type="Texture2D" uid="uid://bud3cu1m3u43b" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt02/PrisonRailCranePrt02_Base_color.png" id="18_xwepp"]
 [ext_resource type="Texture2D" uid="uid://c12ijio6s5sv" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt02/PrisonRailCranePrt02_Mixed_AO.png" id="19_bmcii"]
+[ext_resource type="PackedScene" uid="uid://c24i5tmt2brj2" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/Television.tscn" id="19_ewyc7"]
 [ext_resource type="Texture2D" uid="uid://c3giaasttot1l" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt03/PrisonRailCranePrt03_Base_color.png" id="19_ncrw4"]
 [ext_resource type="Texture2D" uid="uid://c4ptaq0bjw1k5" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt01/PrisonRailCranePrt01Cable_Height.png" id="19_qys1n"]
 [ext_resource type="PackedScene" uid="uid://0te5grryooui" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/3_GuardRooms/Bin.tscn" id="19_v4gt6"]
@@ -92,8 +93,6 @@
 [ext_resource type="PackedScene" uid="uid://kc58ovt5ugti" path="res://scenes/components/tutorial_trigger/tutorial_trigger.tscn" id="85_ttrig"]
 [ext_resource type="PackedScene" uid="uid://bubvp3c5n2saa" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/GIGI_GunSystem.tscn" id="85_x0gst"]
 [ext_resource type="Script" uid="uid://crdw2cwt2ffb5" path="res://resources/tutorial_steps/tutorial_step.gd" id="86_g074a"]
-[ext_resource type="PackedScene" uid="uid://45ibti2apf6v" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/controller_display.tscn" id="86_r1v12"]
-[ext_resource type="PackedScene" uid="uid://bdq7gxhltegkq" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/Keybooard_Display.tscn" id="87_tx7sn"]
 [ext_resource type="Resource" uid="uid://dlv4d7mqu3xcy" path="res://resources/tutorial_steps/stage_1_intro_tutorial/movement_tutorial_step.tres" id="87_yxmou"]
 [ext_resource type="Resource" uid="uid://cddpqf08ei3o4" path="res://resources/tutorial_steps/stage_1_intro_tutorial/fire_tutorial_step.tres" id="88_3c7cn"]
 [ext_resource type="Resource" uid="uid://g0584puy43u" path="res://resources/tutorial_steps/stage_1_intro_tutorial/jump_dash_step.tres" id="88_4scdv"]
@@ -1797,9 +1796,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.347645, 12.974404, -16.639
 [node name="BJ_Watches" parent="Props/2D_Posters" unique_id=1517328070 instance=ExtResource("76_v1rce")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.66294, 18.600609, -4.900006)
 
-[node name="WillPortrait2" parent="Props/2D_Posters" unique_id=1908690552 instance=ExtResource("73_4scdv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.347645, 12.974404, -16.639408)
-
 [node name="2D_Corpses" type="Node3D" parent="Props" unique_id=722687240]
 
 [node name="LyingConvict" parent="Props/2D_Corpses" unique_id=1235913099 instance=ExtResource("72_x0gst")]
@@ -1812,10 +1808,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.638535, 1.480171, -1.9263
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189.17981, 0.8884221, -7.9195457)
 
 [node name="MeatLumps" parent="Props/2D_Corpses" unique_id=720032926 instance=ExtResource("92_4scdv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.712688, 9.140897, -8.838406)
-
-[node name="MeatLumps2" parent="Props/2D_Corpses" unique_id=77493181 instance=ExtResource("92_4scdv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.368645, 9.140897, -12.48376)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.368645, 9.140897, -6.6810308)
 
 [node name="Interactive" type="Node3D" parent="." unique_id=1604478648]
 
@@ -1867,11 +1860,17 @@ collision_layer = 0
 [node name="TestDummy2" parent="Interactive" unique_id=435308937 instance=ExtResource("18_jph5v")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 18.510084, 8.6, 0)
 
-[node name="Controller_Layout" parent="Interactive" unique_id=1230489901 instance=ExtResource("86_r1v12")]
+[node name="Television" parent="Interactive" unique_id=1230489901 instance=ExtResource("19_ewyc7")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -9.398563, 8.606749, -9.117573)
+
+[node name="AnimatedSprite3D2" parent="Interactive/Television" index="1" unique_id=1155210467]
+visible = false
+
+[node name="Television2" parent="Interactive" unique_id=264735797 instance=ExtResource("19_ewyc7")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 9.933203, 8.606749, -9.117573)
 
-[node name="KBM_Layout" parent="Interactive" unique_id=1546166875 instance=ExtResource("87_tx7sn")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -9.0019455, 8.606749, -9.117573)
+[node name="AnimatedSprite3D" parent="Interactive/Television2" index="0" unique_id=634855209]
+visible = false
 
 [node name="GunPodium" parent="Interactive" unique_id=786548764 node_paths=PackedStringArray("door_to_unlock") instance=ExtResource("20_gufy2")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.2, -1)
@@ -2261,15 +2260,12 @@ autoplay = &"Intro"
 steps = Array[ExtResource("86_g074a")]([ExtResource("87_yxmou"), ExtResource("88_4scdv"), ExtResource("89_nqvtq"), ExtResource("88_3c7cn"), ExtResource("91_v1rce"), ExtResource("92_3k85b")])
 door_to_unlock = NodePath("../Interactive/DoorBasic")
 
-<<<<<<< Updated upstream
 [node name="WillPortrait" parent="." unique_id=2128177294 instance=ExtResource("73_4scdv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.347645, 12.974404, -16.639408)
 
 [node name="MeatLumps" parent="." unique_id=2009025508 instance=ExtResource("92_4scdv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.368645, 9.140897, -12.48376)
 
-=======
->>>>>>> Stashed changes
 [node name="GunPodium" parent="." unique_id=1135966921 instance=ExtResource("85_x0gst")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11074698, 0.19126523, -10.822699)
 
@@ -2314,5 +2310,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11074698, 0.19126523, -10.8
 [editable path="Interactive/DoorSlidingBasic4"]
 [editable path="Interactive/TestDummy"]
 [editable path="Interactive/TestDummy2"]
+[editable path="Interactive/Television"]
+[editable path="Interactive/Television2"]
 [editable path="Interactive/GunPodium"]
 [editable path="Interactive/GunPodiumGun"]
