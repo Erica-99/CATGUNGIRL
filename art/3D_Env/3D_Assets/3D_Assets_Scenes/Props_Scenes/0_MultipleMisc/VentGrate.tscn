@@ -22,18 +22,10 @@ roughness_texture = ExtResource("5_apxla")
 normal_enabled = true
 normal_texture = ExtResource("4_eihxu")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_rny0v"]
-size = Vector3(0.048203997, 0.845345, 0.891724)
-
-[node name="VentGrate" type="StaticBody3D" unique_id=243230628]
+[node name="VentGrate" type="Node3D" unique_id=353010234]
 
 [node name="VentGrate_Mesh" type="MeshInstance3D" parent="." unique_id=170698943]
 transform = Transform3D(-2, 0, 3.019916e-07, 0, 2, 0, -3.019916e-07, 0, -2, 0, 0, 0)
 mesh = ExtResource("1_rny0v")
 surface_material_override/0 = SubResource("StandardMaterial3D_8dnbt")
 surface_material_override/1 = SubResource("StandardMaterial3D_hjmgy")
-
-[node name="VentGrate_Collision" type="CollisionShape3D" parent="." unique_id=172120475]
-transform = Transform3D(-2, 0, 3.019916e-07, 0, 2, 0, -3.019916e-07, 0, -2, 0.019336, 0.848999, 2.9196547e-09)
-visible = false
-shape = SubResource("BoxShape3D_rny0v")

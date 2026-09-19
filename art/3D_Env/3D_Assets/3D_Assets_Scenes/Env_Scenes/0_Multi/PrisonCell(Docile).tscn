@@ -153,22 +153,27 @@ surface_material_override/0 = SubResource("StandardMaterial3D_1xba6")
 
 [node name="Cell_Collision_01" type="CollisionShape3D" parent="." unique_id=2116809765]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0006713867, 0.9336537, 0.06751251)
+visible = false
 shape = SubResource("BoxShape3D_yi5x7")
 
 [node name="Cell_Collision_02" type="CollisionShape3D" parent="." unique_id=1772666096]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002822876, -0.9269999, 0.0027770996)
+visible = false
 shape = SubResource("BoxShape3D_3yo5u")
 
 [node name="Cell_Collision_03" type="CollisionShape3D" parent="." unique_id=348507262]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9289839, -0.0007171631, 0.001083374)
+visible = false
 shape = SubResource("BoxShape3D_xroih")
 
 [node name="Cell_Collision_04" type="CollisionShape3D" parent="." unique_id=544484403]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0020141602, -0.06704712, 1.0611223)
+visible = false
 shape = SubResource("BoxShape3D_i5slr")
 
 [node name="Cell_Collision_05" type="CollisionShape3D" parent="." unique_id=720463932]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0017089844, -0.07019043, -1.061562)
+visible = false
 shape = SubResource("BoxShape3D_4u21t")
 
 [node name="CellArm_01_Mesh" type="MeshInstance3D" parent="." unique_id=526687668]
@@ -200,3 +205,7 @@ material = SubResource("StandardMaterial3D_8okpm")
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.99298126, 0.7008265, 0.91025925)
 mesh = ExtResource("7_8okpm")
 surface_material_override/0 = SubResource("StandardMaterial3D_w3whg")
+
+[node name="Cell_CollisionGPU" type="GPUParticlesCollisionBox3D" parent="." unique_id=1381890089]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.2731934, 0, 0, 0)
+visible = false

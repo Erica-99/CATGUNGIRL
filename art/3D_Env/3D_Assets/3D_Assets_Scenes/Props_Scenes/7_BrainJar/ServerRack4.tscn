@@ -18,17 +18,9 @@ emission_texture = ExtResource("3_jjomy")
 normal_enabled = true
 normal_texture = ExtResource("5_xf7ed")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_es4p6"]
-size = Vector3(1.2365611, 2.4, 1.2)
-
-[node name="ServerRack4" type="StaticBody3D" unique_id=144134728]
+[node name="ServerRack4" type="Node3D" unique_id=2088082382]
 
 [node name="ServerRack4_Mesh" type="MeshInstance3D" parent="." unique_id=525668990]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("1_es4p6")
 surface_material_override/0 = SubResource("StandardMaterial3D_8berv")
-
-[node name="ServerRack4_Collision" type="CollisionShape3D" parent="." unique_id=1643835858]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.036560893, 2.4, 0)
-visible = false
-shape = SubResource("BoxShape3D_es4p6")

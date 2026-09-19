@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://3rxrkwhddxbe"]
 
 [ext_resource type="ArrayMesh" uid="uid://s2xnge8r7gaw" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/7_BrainJar/BrainReactor.obj" id="1_m2imi"]
-[ext_resource type="Texture2D" uid="uid://df1cksfremuvl" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Reactor/BrainReactorTexturingModel_DefaultMaterial_BaseColor.png" id="2_u6aye"]
-[ext_resource type="Texture2D" uid="uid://cv5i66qsp6s5a" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Reactor/BrainReactorTexturingModel_DefaultMaterial_Emissive.png" id="3_d1l24"]
-[ext_resource type="Texture2D" uid="uid://bwirexs5clfji" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Reactor/BrainReactorTexturingModel_DefaultMaterial_Metallic.png" id="4_8oj7a"]
-[ext_resource type="Texture2D" uid="uid://cwklivntvxgtd" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Reactor/BrainReactorTexturingModel_DefaultMaterial_Normal.png" id="5_1w4e2"]
-[ext_resource type="Texture2D" uid="uid://covte0lmqwdrb" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Reactor/BrainReactorTexturingModel_DefaultMaterial_Roughness.png" id="6_3rh01"]
+[ext_resource type="Texture2D" uid="uid://df1cksfremuvl" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/Reactor/BrainReactorTexturingModel_DefaultMaterial_BaseColor.png" id="2_u6aye"]
+[ext_resource type="Texture2D" uid="uid://cv5i66qsp6s5a" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/Reactor/BrainReactorTexturingModel_DefaultMaterial_Emissive.png" id="3_d1l24"]
+[ext_resource type="Texture2D" uid="uid://bwirexs5clfji" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/Reactor/BrainReactorTexturingModel_DefaultMaterial_Metallic.png" id="4_8oj7a"]
+[ext_resource type="Texture2D" uid="uid://cwklivntvxgtd" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/Reactor/BrainReactorTexturingModel_DefaultMaterial_Normal.png" id="5_1w4e2"]
+[ext_resource type="Texture2D" uid="uid://covte0lmqwdrb" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/Reactor/BrainReactorTexturingModel_DefaultMaterial_Roughness.png" id="6_3rh01"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4wewy"]
 albedo_texture = ExtResource("2_u6aye")
@@ -40,10 +40,7 @@ emission_texture = ExtResource("3_d1l24")
 normal_enabled = true
 normal_texture = ExtResource("5_1w4e2")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_u6aye"]
-size = Vector3(9.821114, 17.382948, 9.821112)
-
-[node name="BrainReactor" type="StaticBody3D" unique_id=944632863]
+[node name="BrainReactor" type="Node3D" unique_id=1141398503]
 
 [node name="BrainReactor_Mesh" type="MeshInstance3D" parent="." unique_id=956447302]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -52,10 +49,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_4wewy")
 surface_material_override/1 = SubResource("StandardMaterial3D_pl1g1")
 surface_material_override/2 = SubResource("StandardMaterial3D_b47nn")
 
-[node name="BrainReactor_Collision" type="CollisionShape3D" parent="." unique_id=317077631]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.5357599, 17.292715, 0.535758)
-shape = SubResource("BoxShape3D_u6aye")
-
 [node name="SpotLight3D44" type="OmniLight3D" parent="." unique_id=1122774701]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 light_color = Color(4.8571644, 2.5281954, 0, 1)
@@ -63,5 +56,14 @@ light_energy = 0.985
 light_indirect_energy = 0.1
 light_volumetric_fog_energy = 0.1
 shadow_enabled = true
+shadow_blur = 2.333
+omni_range = 31.283148
+
+[node name="SpotLight3D45" type="OmniLight3D" parent="." unique_id=1320633305]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 34.223198, 0)
+light_color = Color(4.8571644, 2.5281954, 0, 1)
+light_energy = 0.985
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
 shadow_blur = 2.333
 omni_range = 31.283148

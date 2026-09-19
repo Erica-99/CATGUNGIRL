@@ -7,6 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://0m33qxdqhrfp" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Base_metalness.png" id="5_aith1"]
 [ext_resource type="Texture2D" uid="uid://502420uyft1k" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Normal_OpenGL.png" id="6_0kkv5"]
 [ext_resource type="Texture2D" uid="uid://ccuxlmt0vkg4f" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Specular_roughness.png" id="7_i5uwm"]
+[ext_resource type="ArrayMesh" uid="uid://cjqxoi4ml7vuk" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/CellBasePlacement.obj" id="8_mcaqf"]
+[ext_resource type="Texture2D" uid="uid://damivd5el7ix5" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/CellBasePlacement/CellBasePlacement_Base_color.png" id="9_7i223"]
+[ext_resource type="Texture2D" uid="uid://tljygt4opg0r" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/CellBasePlacement/CellBasePlacement_Mixed_AO.png" id="10_k2hu6"]
+[ext_resource type="Texture2D" uid="uid://gd7hf5lf5vsj" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/CellBasePlacement/CellBasePlacement_Height.png" id="11_hugt4"]
+[ext_resource type="Texture2D" uid="uid://du78p8nbry7fg" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/CellBasePlacement/CellBasePlacement_Base_metalness.png" id="12_86g2v"]
+[ext_resource type="Texture2D" uid="uid://b2dw8ltyfm3c5" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/CellBasePlacement/CellBasePlacement_Normal_OpenGL.png" id="13_fxia1"]
+[ext_resource type="Texture2D" uid="uid://bkeucgamlfsjf" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/CellBasePlacement/CellBasePlacement_Specular_roughness.png" id="14_3e2cw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ctiav"]
 albedo_texture = ExtResource("2_7fvg6")
@@ -21,9 +28,26 @@ heightmap_enabled = true
 heightmap_scale = 0.0
 heightmap_texture = ExtResource("4_spm5n")
 
-[node name="WallCellsBasePrison" type="StaticBody3D" unique_id=1079452789]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_psk3l"]
+albedo_texture = ExtResource("9_7i223")
+metallic = 1.0
+metallic_texture = ExtResource("12_86g2v")
+roughness_texture = ExtResource("14_3e2cw")
+normal_enabled = true
+normal_texture = ExtResource("13_fxia1")
+ao_enabled = true
+ao_texture = ExtResource("10_k2hu6")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("11_hugt4")
+
+[node name="WallCellsBasePrison" type="Node3D" unique_id=600599870]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="WallCellsBasePrison_Mesh" type="MeshInstance3D" parent="." unique_id=620759585]
 mesh = ExtResource("1_yln3m")
 surface_material_override/0 = SubResource("StandardMaterial3D_ctiav")
+
+[node name="CellBasePlacement" type="MeshInstance3D" parent="." unique_id=170902391]
+mesh = ExtResource("8_mcaqf")
+surface_material_override/0 = SubResource("StandardMaterial3D_psk3l")
