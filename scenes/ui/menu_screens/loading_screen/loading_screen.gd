@@ -60,7 +60,7 @@ func _ready() -> void:
 func _on_load_finished() -> void:
 	var scene = ResourceLoader.load_threaded_get(next_scene)
 	get_tree().change_scene_to_packed(scene)
-	await get_tree().process_frame
+	await Engine.get_main_loop().process_frame
 	# sends a signal containing new scene reference
 	EventManager.base_scene_updated.emit(get_tree().current_scene)
 	loading_complete.emit()
