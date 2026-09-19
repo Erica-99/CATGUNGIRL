@@ -4,6 +4,7 @@ var actor: BrainSpider
 var detonation_area: Area3D
 var target: CharacterBody3D
 var anim: AnimationPlayer
+
 func init(blackboard_dict: Dictionary) -> void:
 	super(blackboard_dict)
 	anim = blackboard["anim"]
@@ -41,10 +42,19 @@ func physics_update(delta: float) -> void:
 		return
 	
 	var move_direction: float = sign(actor.target.global_position.x - actor.global_position.x)
+	actor.update_surface_check(Vector3.RIGHT, move_direction, Vector3.DOWN)
 	
 	if move_direction != 0.0:
 		actor.brain_spider_visuals.face_direction(move_direction)
-		actor.velocity.x = move_toward(actor.velocity.x, move_direction * actor.move_speed, actor.acceleration * delta)
+		
+		if actor.can_take_step:
+			actor.velocity.x = move_toward(actor.velocity.x, move_direction * actor.move_speed, actor.acceleration * delta)
+		else:
+			actor.velocity.x = 0.0
 	
 	actor.apply_soft_collision(delta)
+	
+	if !actor.can_take_step:
+		actor.velocity.x = 0.0
+	
 	actor.move_and_slide()
