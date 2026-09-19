@@ -25,8 +25,10 @@ normal_texture = ExtResource("6_trygd")
 height = 1.351631
 radius = 0.229815
 
-[node name="GunPodium" type="StaticBody3D" unique_id=786548764]
+[node name="GunPodium" type="StaticBody3D" unique_id=786548764 node_paths=PackedStringArray("interactable_component")]
 script = ExtResource("1_rcle8")
+unlock_door_on_pickup = false
+interactable_component = NodePath("GunPodium_Mesh/InteractableComponent")
 
 [node name="GunPodium_Mesh" type="MeshInstance3D" parent="." unique_id=1164015310]
 mesh = ExtResource("1_mephn")
@@ -38,6 +40,7 @@ interactable_type = 4
 interactable_load_type = 1
 interaction_distance = 1.0
 event_trigger = NodePath("EventTrigger")
+enabled = false
 
 [node name="EventTrigger" parent="GunPodium_Mesh/InteractableComponent" unique_id=1311781014 instance=ExtResource("3_rcle8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6673406, 0)

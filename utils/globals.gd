@@ -15,6 +15,13 @@ const link_to_meme_dir = "res://scenes/ui/menu_screens/loading_screen/meme_image
 var meme_image_array: Array[Texture2D] = []
 var current_meme_index: int = 0
 
+const gun_indexes: Dictionary[String, int] = {
+	"pistol": 0,
+	"shotgun": 1,
+	"sniper": 2
+}
+var unlocked_guns: Array[int] = [0]
+
 # Dictionary of Levels and their UIDs, to be used
 # by SceneLoader in menus, level transition points, etc.
 const LEVEL_PATHS: Dictionary = {
@@ -34,6 +41,7 @@ func _ready() -> void:
 	EventManager.connect("increase_insanity_rank", _add_one_to_insanity)
 	EventManager.connect("increase_meme_index", _increment_global_meme_index)
 	EventManager.connect("base_scene_updated", _update_base_scene)
+	EventManager.connect("unlock_gun", _unlock_gun)
 	_retrieve_images(link_to_meme_dir)
 	# get random starter index (so it doesnt start from index 0 each time)
 	current_meme_index = randi_range(0, len(meme_image_array) - 1)
@@ -42,6 +50,13 @@ func _ready() -> void:
 	
 	# set reference
 	current_scene_reference = get_tree().current_scene
+
+# unlocks a new gun with the given name
+func _unlock_gun(gun_name: String) -> void:
+	if gun_name in gun_indexes.keys():
+		var gun_index = gun_indexes[gun_name]
+		if gun_index not in unlocked_guns:
+			unlocked_guns.append(gun_index)
 
 # legit updates the base scene reference
 # allows other entities to reference this scene

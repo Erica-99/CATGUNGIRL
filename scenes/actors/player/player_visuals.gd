@@ -43,9 +43,9 @@ func _new_gun_equipped(newgun):
 	pass
 
 func _process(delta: float) -> void:
-	#print(str($ROOT_P/GUN_P/GUN_AIM.rotation.z))
+	if gun_holder.current_gun != null:
+		gun_pivot.rotation.z = gun_holder.current_gun.rotation.z
 	
-	gun_pivot.rotation.z = gun_holder.current_gun.rotation.z
 	if current_action == 'playercrouch':
 		if Input.is_action_pressed("move_left") == true or Input.is_action_pressed("move_right") == true:
 			pass
