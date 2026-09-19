@@ -79,6 +79,9 @@ func _try_fire() -> void:
 	if !ammo_component._check_if_can_shoot() and !DebugManager.infinite_ammo:
 		return
 
+	if gun_link._fire_cooldown > 0.0:
+		return
+
 	if bullet_scene == null or muzzle == null:
 		print("Bullet scene or muzzle is currently null. Cannot fire.")
 		return
