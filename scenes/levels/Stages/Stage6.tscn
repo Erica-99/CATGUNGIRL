@@ -18,7 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://crxpi7vrp2sce" path="res://scenes/actors/enemies/brain_jar/brain_jar.tscn" id="14_wj6kf"]
 [ext_resource type="PackedScene" uid="uid://exdqryhd2x6v" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/3_GuardRooms/FilingCabinet1.tscn" id="16_112gr"]
 [ext_resource type="PackedScene" uid="uid://dld0qjmojk1t8" path="res://scenes/actors/enemies/enemy_manager/enemy_manager.tscn" id="16_h2frl"]
-[ext_resource type="PackedScene" uid="uid://bqxkqmc0c1lue" path="res://scenes/actors/enemies/enemy_spawner/enemy_spawner.tscn" id="17_nqip8"]
 [ext_resource type="PackedScene" uid="uid://qmb01fn4g6i" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/3_GuardRooms/Folders.tscn" id="17_s04or"]
 [ext_resource type="PackedScene" uid="uid://ckewheevah8ml" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeConnector.tscn" id="17_wc852"]
 [ext_resource type="PackedScene" uid="uid://w8n8ng11l4f0" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeShapeR.tscn" id="18_7g6st"]
@@ -1338,77 +1337,37 @@ facility_core = NodePath("../../Environment/BrainJarRoom/BrainJarComponents/Faci
 
 [node name="EnemyManager" parent="Enemies" unique_id=18369620 instance=ExtResource("16_h2frl")]
 
-[node name="EnemySpawner1" parent="Enemies/EnemyManager" unique_id=1842844758 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("17_nqip8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -239, 17.918274, 0)
-linked_enemy_manager = NodePath("..")
-possible_spawns = Array[int]([0])
-wave_spawner = true
-
-[node name="EnemySpawner2" parent="Enemies/EnemyManager" unique_id=1179718066 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("17_nqip8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -239, 47.918274, 0)
-linked_enemy_manager = NodePath("..")
-possible_spawns = Array[int]([0])
-wave_spawner = true
-
-[node name="EnemySpawner3" parent="Enemies/EnemyManager" unique_id=1270364651 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("17_nqip8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -169, 17.918274, 0)
-linked_enemy_manager = NodePath("..")
-possible_spawns = Array[int]([0])
-wave_spawner = true
-
-[node name="EnemySpawner4" parent="Enemies/EnemyManager" unique_id=2098915714 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("17_nqip8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -169, 47.918274, 0)
-linked_enemy_manager = NodePath("..")
-possible_spawns = Array[int]([0])
-wave_spawner = true
-
-[node name="EnemySpawner5" parent="Enemies/EnemyManager" unique_id=741829977 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("17_nqip8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 47.918274, 0)
-linked_enemy_manager = NodePath("..")
-possible_spawns = Array[int]([0])
-wave_spawner = true
-
-[node name="EnemySpawner6" parent="Enemies/EnemyManager" unique_id=942460092 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("17_nqip8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 17.918274, 0)
-linked_enemy_manager = NodePath("..")
-possible_spawns = Array[int]([0])
-wave_spawner = true
-
-[node name="EnemySpawner7" parent="Enemies/EnemyManager" unique_id=1515334159 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("17_nqip8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79, 17.918274, 0)
-linked_enemy_manager = NodePath("..")
-possible_spawns = Array[int]([0])
-wave_spawner = true
-
-[node name="EnemySpawner8" parent="Enemies/EnemyManager" unique_id=794486292 node_paths=PackedStringArray("linked_enemy_manager") instance=ExtResource("17_nqip8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79, 47.918274, 0)
-linked_enemy_manager = NodePath("..")
-possible_spawns = Array[int]([0])
-wave_spawner = true
-
-[node name="EnemyDoorFrame" parent="Enemies" unique_id=2002850953 instance=ExtResource("32_rjdl7")]
+[node name="EnemyDoorFrame" parent="Enemies" unique_id=2002850953 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("32_rjdl7")]
 transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, -79, 10.2, -15.000003)
+enemy_manager = NodePath("../EnemyManager")
 
-[node name="EnemyDoorFrame2" parent="Enemies" unique_id=272939438 instance=ExtResource("32_rjdl7")]
+[node name="EnemyDoorFrame2" parent="Enemies" unique_id=272939438 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("32_rjdl7")]
 transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, -79, 40.2, -15.000003)
+enemy_manager = NodePath("../EnemyManager")
 
-[node name="EnemyDoorFrame3" parent="Enemies" unique_id=144385858 instance=ExtResource("32_rjdl7")]
+[node name="EnemyDoorFrame3" parent="Enemies" unique_id=144385858 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("32_rjdl7")]
 transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, -169, 10.2, -14.999997)
+enemy_manager = NodePath("../EnemyManager")
 
-[node name="EnemyDoorFrame4" parent="Enemies" unique_id=632732022 instance=ExtResource("32_rjdl7")]
+[node name="EnemyDoorFrame4" parent="Enemies" unique_id=632732022 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("32_rjdl7")]
 transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, -169, 40.2, -14.999997)
+enemy_manager = NodePath("../EnemyManager")
 
-[node name="EnemyDoorFrame5" parent="Enemies" unique_id=1195938645 instance=ExtResource("32_rjdl7")]
+[node name="EnemyDoorFrame5" parent="Enemies" unique_id=1195938645 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("32_rjdl7")]
 transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, -9, 10.2, -15.000003)
+enemy_manager = NodePath("../EnemyManager")
 
-[node name="EnemyDoorFrame6" parent="Enemies" unique_id=1862890776 instance=ExtResource("32_rjdl7")]
+[node name="EnemyDoorFrame6" parent="Enemies" unique_id=1862890776 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("32_rjdl7")]
 transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, -9, 40.2, -15.000003)
+enemy_manager = NodePath("../EnemyManager")
 
-[node name="EnemyDoorFrame7" parent="Enemies" unique_id=371220747 instance=ExtResource("32_rjdl7")]
+[node name="EnemyDoorFrame7" parent="Enemies" unique_id=371220747 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("32_rjdl7")]
 transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, -239, 10.2, -14.999997)
+enemy_manager = NodePath("../EnemyManager")
 
-[node name="EnemyDoorFrame8" parent="Enemies" unique_id=1951694659 instance=ExtResource("32_rjdl7")]
+[node name="EnemyDoorFrame8" parent="Enemies" unique_id=1951694659 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("32_rjdl7")]
 transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, -239, 40.2, -14.999997)
+enemy_manager = NodePath("../EnemyManager")
 
 [node name="Props" type="Node3D" parent="." unique_id=1376791517]
 

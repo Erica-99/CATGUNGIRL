@@ -62,4 +62,6 @@ enum Room {
 enum EnemyType {
 	CONVICT,
 	SCRUB,
+	TRUNK,
+	BRAINSPIDER
 }

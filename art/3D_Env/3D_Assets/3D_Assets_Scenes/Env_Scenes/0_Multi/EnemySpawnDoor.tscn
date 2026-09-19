@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://casbl5hg2jrqe"]
 
+[ext_resource type="Script" uid="uid://dogajyp6lli8j" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/enemy_spawn_door.gd" id="1_mf8u2"]
 [ext_resource type="ArrayMesh" uid="uid://ct4gb0gcuvnwt" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/EnemyDoorFrame.obj" id="1_nq7mv"]
 [ext_resource type="Texture2D" uid="uid://bvvvjuwyum0gd" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/EnemyDoor/EnemyDoorFrame_BC.png" id="2_55l5f"]
 [ext_resource type="PackedScene" uid="uid://31p1lmnr7xwr" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/EnemyDoorPanels.fbx" id="2_ndun2"]
+[ext_resource type="PackedScene" uid="uid://bqxkqmc0c1lue" path="res://scenes/actors/enemies/enemy_spawner/enemy_spawner.tscn" id="3_e5345"]
 [ext_resource type="Texture2D" uid="uid://btbcaddka0v3h" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/EnemyDoor/EnemyDoorFrame_M.png" id="3_odabn"]
 [ext_resource type="Texture2D" uid="uid://b52wca5hyxhx2" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/EnemyDoor/EnemyDoorFrame_N.png" id="4_8g1d3"]
 [ext_resource type="Texture2D" uid="uid://b157cmt4fn67k" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/EnemyDoor/EnemyDoorFrame_R.png" id="5_62v3b"]
@@ -218,6 +220,11 @@ mesh = ExtResource("1_nq7mv")
 surface_material_override/0 = SubResource("StandardMaterial3D_t8r6f")
 
 [node name="EnemyDoorFrame_Panels" parent="." unique_id=758510334 instance=ExtResource("2_ndun2")]
+
+[node name="EnemySpawner" parent="." unique_id=1110059721 instance=ExtResource("3_e5345")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5)
+randomiser = true
+random_spawns = 2
 
 [node name="Door_026" parent="EnemyDoorFrame_Panels" index="0" unique_id=1585828930]
 surface_material_override/0 = SubResource("StandardMaterial3D_nvx00")
