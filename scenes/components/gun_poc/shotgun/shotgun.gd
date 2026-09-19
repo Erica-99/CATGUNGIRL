@@ -4,6 +4,7 @@ extends Gun
 @export var pellet_amount: int = 10
 
 func _shoot(damage, bullet_scale):
+	AudioManager.play_sfx("shotgun_shoot")
 	for i in pellet_amount:
 		_spawn_bullet(damage, bullet_scale)
 

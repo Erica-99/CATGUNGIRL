@@ -259,7 +259,6 @@ func _shoot_handler():
 		rotation.z = _current_target_angle
 		damage = bullet_damage * perfect_damage_multiplier
 		perfect_shot_fired.emit()
-		AudioManager.play_sfx("laser_perfect")
 		_perfect_flash.restart()
 		Muzzle_VFX.stop()
 		Muzzle_VFX.play("Perfect")
@@ -268,13 +267,11 @@ func _shoot_handler():
 		_is_spamming = true
 		_spam_count += 1
 		# print("spam shot, count: ", _spam_count)
-		AudioManager.play_sfx("laser_imperfect")
 		_normal_flash.restart()
 		Muzzle_VFX.stop()
 		Muzzle_VFX.play("Imperfect")
 	else: # Normal shot
 		# print("normal shot, damage: ", bullet_damage)
-		AudioManager.play_sfx("laser_imperfect")
 		_normal_flash.restart()
 		Muzzle_VFX.stop()
 		Muzzle_VFX.play("Imperfect")
