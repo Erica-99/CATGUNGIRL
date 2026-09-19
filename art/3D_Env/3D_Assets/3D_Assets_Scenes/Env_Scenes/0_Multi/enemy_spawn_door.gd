@@ -1,4 +1,4 @@
-extends StaticBody3D
+extends Node3D
 
 @export var enemy_manager: EnemyManager
 

@@ -110,7 +110,6 @@ func _spawn_enemy(custom_delay: float, spawner_path: NodePath):
 		#This is only relevant if the spawner is triggered through an EventTrigger Area3D
 		if has_trigger:
 			spawn_trigger.active = false
-	print("Spawner ", get_instance_id(), " has the following children: ", spawn_ids)
 
 # create enemy
 func _on_spawn_delay_timer_timeout() -> void:
