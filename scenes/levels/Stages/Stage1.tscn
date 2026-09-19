@@ -96,6 +96,7 @@
 [ext_resource type="Resource" uid="uid://cddpqf08ei3o4" path="res://resources/tutorial_steps/stage_1_intro_tutorial/fire_tutorial_step.tres" id="88_3c7cn"]
 [ext_resource type="Resource" uid="uid://g0584puy43u" path="res://resources/tutorial_steps/stage_1_intro_tutorial/jump_dash_step.tres" id="88_4scdv"]
 [ext_resource type="Resource" uid="uid://dy3jhtdqf5diw" path="res://resources/tutorial_steps/stage_1_intro_tutorial/interact_tutorial_step.tres" id="89_nqvtq"]
+[ext_resource type="PackedScene" uid="uid://4l4kw7i1ga4c" path="res://scenes/actors/enemies/brain_spider/brain_spider.tscn" id="90_202ki"]
 [ext_resource type="Resource" uid="uid://ddm44lu0eblvc" path="res://resources/tutorial_steps/stage_1_intro_tutorial/reload_tutorial_step.tres" id="91_v1rce"]
 [ext_resource type="Resource" uid="uid://i475dd553b7q" path="res://resources/tutorial_steps/stage_1_intro_tutorial/grapple_tutorial_step.tres" id="92_3k85b"]
 [ext_resource type="PackedScene" uid="uid://xwmm12eihkbq" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Meat_lumps.tscn" id="92_4scdv"]
@@ -2165,6 +2166,9 @@ debug_color = Color(0.919504, 0.13431916, 0.6161928, 0.41960785)
 [node name="Enemies" type="Node3D" parent="." unique_id=1148700225]
 
 [node name="RoomOne" parent="Enemies" unique_id=1450252011 instance=ExtResource("24_2ao7q")]
+
+[node name="BrainSpider" parent="Enemies/RoomOne" unique_id=166394742 instance=ExtResource("90_202ki")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.996794, 2.6919909, 0)
 
 [node name="RoomTwo" parent="Enemies" unique_id=18369620 instance=ExtResource("24_2ao7q")]
 room_ID = 1
