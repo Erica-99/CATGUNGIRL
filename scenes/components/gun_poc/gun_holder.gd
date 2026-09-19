@@ -19,6 +19,13 @@ const SNIPER_PREFAB = preload("res://scenes/components/gun_poc/sniper/sniper.tsc
 
 # can make this instead an export var for better customisation (for the poc i am being lazy)
 const guns_available = [PISTOL_PREFAB, SHOTGUN_PREFAB, SNIPER_PREFAB]
+const gun_indexes: Dictionary[String, int] = {
+	"pistol": 0,
+	"shotgun": 1,
+	"sniper": 2
+}
+
+var unlocked_guns: Array[int] = [0]
 
 var current_child_count: int = 0
 var current_gun_index: int = 0
