@@ -245,7 +245,7 @@ tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0, 0.08695652, 0.2173913, 0.3478261, 0.47826087, 0.65217394, 0.7826087, 0.95652175),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
+"update": 0,
 "values": [Vector3(-0.458, 0.428, 0.222), Vector3(-0.518, 0.383, 0.222), Vector3(-0.454, 0.484, 0.222), Vector3(-0.455, 0.52, 0.222), Vector3(-0.386, 0.547, 0.222), Vector3(-0.36, 0.532, 0.222), Vector3(-0.352, 0.533, 0.222), Vector3(-0.407, 0.534, 0.222)]
 }
 
@@ -562,7 +562,7 @@ tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0, 0.13043478, 0.26086956, 0.39130434, 0.5217391, 0.65217394, 0.7826087, 0.9130435),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
+"update": 0,
 "values": [Vector3(-0.218, 0.428, 0.222), Vector3(-0.253, 0.378, 0.222), Vector3(0.052, 0.325, 0.222), Vector3(0.064, 0.523, 0.222), Vector3(-0.01, 0.491, 0.222), Vector3(-0.054, 0.336, 0.222), Vector3(-0.265, 0.333, 0.222), Vector3(-0.227, 0.475, 0.222)]
 }
 
@@ -680,7 +680,7 @@ tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0, 0.13043478, 0.26086956, 0.39130434, 0.5217391, 0.65217394, 0.7826087, 0.9130435),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
+"update": 0,
 "values": [Vector3(-0.218, 0.428, 0.222), Vector3(-0.253, 0.378, 0.222), Vector3(0.052, 0.325, 0.222), Vector3(0.064, 0.523, 0.222), Vector3(-0.01, 0.491, 0.222), Vector3(-0.054, 0.336, 0.222), Vector3(-0.265, 0.333, 0.222), Vector3(-0.227, 0.475, 0.222)]
 }
 
@@ -1842,9 +1842,11 @@ libraries/ = SubResource("AnimationLibrary_gisjq")
 
 [node name="FRONTARM_P" type="Node3D" parent="PlayerVisuals/ROOT_P" unique_id=1442007247]
 transform = Transform3D(1, 0, 0, 0, 1, -8.742278e-08, 0, 8.742278e-08, 1, -0.463, 0.533, 0.222)
+visible = false
 
 [node name="Sprite3D" type="AnimatedSprite3D" parent="PlayerVisuals/ROOT_P/FRONTARM_P" unique_id=1505299299]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.47929928, 1.5940129, -1.6391277e-07)
+visible = false
 sprite_frames = SubResource("SpriteFrames_kvr6h")
 animation = &"Arm"
 autoplay = "Arm"
@@ -1997,12 +1999,10 @@ team_component = NodePath("../TeamComponent")
 team_component = NodePath("../../TeamComponent")
 
 [node name="Shotgun" parent="GunHolder" unique_id=1775432672 node_paths=PackedStringArray("team_component") instance=ExtResource("34_haoly")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.52761424, 0.16629946, 0.37561297)
 visible = false
 team_component = NodePath("../../TeamComponent")
 
 [node name="Sniper" parent="GunHolder" unique_id=170427884 node_paths=PackedStringArray("team_component") instance=ExtResource("35_gisjq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5137575, 0.12729812, 0.3773042)
 visible = false
 team_component = NodePath("../../TeamComponent")
 

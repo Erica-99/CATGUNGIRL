@@ -23,6 +23,8 @@ var input_component: Node
 
 @export var change_visibility_on_active_switch: bool = true
 @export var gun_pivot: Node3D = null
+@export var gun_sprite: AnimatedSprite3D = null
+@export var offset: float = 0.0
 
 @export_group("Aim")
 @export var aim_speed: float = 8.0		# gun rotation speed towards mouse (lower = more delay)

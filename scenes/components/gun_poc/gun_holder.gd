@@ -95,11 +95,11 @@ func _switch_gun(slot_num: int):
 	var rotation_save = current_gun.rotation.z
 	_deactivate_gun()
 	current_gun = get_child(current_gun_index)
-	_set_gun_scale()
+	_set_gun_scale(1)
+	#current_gun.apply_offset()
+	#position.x = current_gun.offset
 	current_gun.rotation.z = rotation_save
 	_activate_gun()
-	print("GUN SWITCHED TO: ")
-	print(current_gun)
 	
 	if input_component:
 		EventManager.new_gun_equipped.emit(current_gun.gun_name)
@@ -144,6 +144,8 @@ func _on_current_gun_charge_ended() -> void:
 	current_gun_charge_ended.emit()
 
 func _direction_changed(new_facing) -> void:
+	print(position)
+	position.x *= -1
 	if new_facing == -1.0:
 		gun_scale_x = 1
 		gun_scale_y = -1
@@ -151,9 +153,12 @@ func _direction_changed(new_facing) -> void:
 		gun_scale_x = 1
 		gun_scale_y = 1
 	
-	_set_gun_scale()
+	_set_gun_scale(new_facing)
 
-func _set_gun_scale() -> void:
+func _set_gun_scale(new_facing) -> void:
 	if current_gun.gun_pivot != null:
 		current_gun.gun_pivot.scale.x = gun_scale_x
 		current_gun.gun_pivot.scale.y = gun_scale_y
+		
+	#if current_gun.gun_sprite != null:
+		#current_gun.gun_sprite.position.x = current_gun.offset * new_facing
