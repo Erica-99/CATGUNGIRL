@@ -1,26 +1,49 @@
 [gd_scene format=3 uid="uid://bhp4qyqpd7hsc"]
 
+[ext_resource type="Script" uid="uid://bvei03n6h0bwv" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/gun_pickup_visuals.gd" id="1_4yp18"]
 [ext_resource type="Texture2D" uid="uid://be0n1yk18vmxt" path="res://art/2d_assets/corpse_assets/Images/shotgun_interactible.png" id="1_40gj1"]
 [ext_resource type="Texture2D" uid="uid://qplqkglk60gn" path="res://art/2d_assets/corpse_assets/Images/shotgun_interacted_with.png" id="2_r40xg"]
+[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="3_r40xg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4yp18"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_40gj1")
-}, {
-"duration": 1.0,
 "texture": ExtResource("2_r40xg")
 }],
 "loop": true,
-"name": &"default",
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_40gj1")
+}],
+"loop": true,
+"name": &"holding_shotgun",
 "speed": 5.0
 }]
 
-[node name="Shotgun_Unlockable" type="Node3D" unique_id=1001534482]
+[sub_resource type="BoxShape3D" id="BoxShape3D_4yp18"]
+size = Vector3(1.4559937, 10.154175, 1)
+
+[node name="Shotgun_Unlockable" type="Node3D" unique_id=1001534482 node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_4yp18")
+sprite = NodePath("AnimatedSprite3D")
+held_gun_name = "shotgun"
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1374841085]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 centered = false
 offset = Vector2(-414, -26.82)
 sprite_frames = SubResource("SpriteFrames_4yp18")
+animation = &"holding_shotgun"
+autoplay = "holding_shotgun"
+
+[node name="ShotgunUnlock" parent="." unique_id=1311781014 instance=ExtResource("3_r40xg")]
+_signal_parameters = ["shotgun"]
+signal_name = "unlock_gun"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShotgunUnlock" unique_id=1452871599]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08218384, 4.862732, 0)
+shape = SubResource("BoxShape3D_4yp18")
