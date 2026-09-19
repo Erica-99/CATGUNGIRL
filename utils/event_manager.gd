@@ -55,3 +55,5 @@ signal increase_meme_index()
 signal controller_status(controller_type: String)
 
 signal base_scene_updated(new_scene: Node)
+
+signal tutorial_step_started(step_name: String)
