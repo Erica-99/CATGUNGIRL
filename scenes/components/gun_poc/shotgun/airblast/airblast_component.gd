@@ -84,4 +84,6 @@ func _fire_blast():
 		if !DebugManager.infinite_ammo:
 			shotgun.ammo_component._current_ammo -= 2
 			EventManager.shots_fired.emit(2)
+
+		EventManager.alt_fire_used.emit("Shotgun")
 	

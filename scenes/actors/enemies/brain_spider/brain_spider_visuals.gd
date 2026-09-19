@@ -3,21 +3,21 @@ class_name BrainSpiderVisuals
 
 @onready var brain_spider: BrainSpider = $".."
 @onready var body_visual: AnimatedSprite3D = $Visuals/AnimatedSprite3D
-@onready var explosion_visual: AnimatedSprite3D = $Visuals/ExplosionVisual
+@onready var explosion_visual: AnimationPlayer = $Visuals/Explosion/Explosion/explode_anims
+
 
 func _ready() -> void:
 	show_spider_visual()
 
 func show_spider_visual() -> void:
 	body_visual.visible = true
-	explosion_visual.visible = false
+
 
 func show_explosion_visual() -> void:
 	body_visual.visible = false
-	explosion_visual.visible = true
-	explosion_visual.frame = 0
-	explosion_visual.play("default")
-
+	explosion_visual.play("Explode")
+	
+	
 func is_explosion_playing() -> bool:
 	return explosion_visual.is_playing()
 
@@ -33,3 +33,14 @@ func apply_surface_rotation() -> void:
 			rotation.z = -PI / 2.0
 		BrainSpider.SurfaceType.RIGHT_WALL:
 			rotation.z = PI / 2.0
+
+func face_direction(direction: float) -> void:
+	if direction == 0.0:
+		return
+	
+	var should_flip: bool = direction < 0.0
+	
+	if brain_spider.spider_mode == BrainSpider.SpiderMode.WALL_CEILING and brain_spider.surface_type == BrainSpider.SurfaceType.CEILING:
+		should_flip = !should_flip
+	
+	body_visual.flip_h = should_flip

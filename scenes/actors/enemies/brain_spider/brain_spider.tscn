@@ -1,150 +1,551 @@
 [gd_scene format=3 uid="uid://4l4kw7i1ga4c"]
 
 [ext_resource type="Script" uid="uid://bx3cch7eqxmiy" path="res://scenes/actors/enemies/brain_spider/brain_spider.gd" id="1_fjoht"]
-[ext_resource type="SpriteFrames" uid="uid://vtbk6tputppd" path="res://art/2d_assets/real_world/enemy_convict/Convict_Head1.tres" id="1_iobuc"]
+[ext_resource type="SpriteFrames" uid="uid://vtbk6tputppd" path="res://art/2d_assets/real_world/BrainSpiders/Brain_Spider.tres" id="1_iobuc"]
 [ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="1_lgmbn"]
 [ext_resource type="PackedScene" uid="uid://d4ne67jtrsmhn" path="res://scenes/bullet/sniper_beam.tscn" id="2_jv02q"]
 [ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="2_luyx4"]
 [ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="3_c43gv"]
 [ext_resource type="Script" uid="uid://bs3ju2i8at5e" path="res://scenes/actors/enemies/brain_spider/brain_spider_visuals.gd" id="3_c6328"]
-[ext_resource type="Texture2D" uid="uid://d13e6m33m6vyo" path="res://art/2d_assets/real_world/vfx/explosiondotgif.png" id="3_hh7i0"]
 [ext_resource type="PackedScene" uid="uid://c6wep4oftfyke" path="res://scenes/components/state_machine/state_machine.tscn" id="4_iobuc"]
 [ext_resource type="Script" uid="uid://dpwol7txodmxp" path="res://scenes/components/soft_collision.gd" id="5_c43gv"]
 [ext_resource type="Script" uid="uid://ckbdwmxo5r6p0" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_idle.gd" id="7_b3mpv"]
+[ext_resource type="PackedScene" uid="uid://csd06hicr5wny" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="8_3f5fc"]
 [ext_resource type="Script" uid="uid://hkfr65k60uhn" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_chase.gd" id="8_hh7i0"]
 [ext_resource type="Script" uid="uid://cexabo1e6yx6k" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_death.gd" id="9_jq4cx"]
+[ext_resource type="Script" uid="uid://y2ix2xo5owxw" path="res://resources/damage_heal_instance/damage_heal_instance.gd" id="9_vsnr6"]
 [ext_resource type="Script" uid="uid://c74c3xocthoxl" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_explode.gd" id="10_dwws2"]
+[ext_resource type="Material" uid="uid://drkjm5tcceqdf" path="res://art/TechArt/1_Shaders/ExplosionShader.tres" id="11_5jp2h"]
 [ext_resource type="Script" uid="uid://gs162ktdk81a" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_surface_chase.gd" id="12_0umjx"]
+[ext_resource type="Shader" uid="uid://cyxi7gf3tb6pe" path="res://art/TechArt/1_Shaders/s_streaks.tres" id="12_b31jq"]
 [ext_resource type="Script" uid="uid://dp3kifbyh42ts" path="res://scenes/components/gun_component/laser.gd" id="13_jq4cx"]
 [ext_resource type="Script" uid="uid://cjqn2hw06rk6f" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_aim.gd" id="13_jv02q"]
 [ext_resource type="Script" uid="uid://54ums46u7kgu" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_laser.gd" id="14_c6328"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ps8eh"]
-atlas = ExtResource("3_hh7i0")
-region = Rect2(600, 200, 200, 200)
+[sub_resource type="Animation" id="Animation_2gu7b"]
+resource_name = "Scurry"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Death"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite3D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.39999998),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 13]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.157, 0.049)]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0mrkf"]
-atlas = ExtResource("3_hh7i0")
-region = Rect2(800, 200, 200, 200)
+[sub_resource type="Animation" id="Animation_rxtbj"]
+resource_name = "Scurry"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Emerge"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite3D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 21]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.013463229, 0.048760533)]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bsw3o"]
-atlas = ExtResource("3_hh7i0")
-region = Rect2(0, 400, 200, 200)
+[sub_resource type="Animation" id="Animation_nt2bq"]
+resource_name = "Scurry"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [&"Turret"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite3D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 13]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.013463229, 0.048760533)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ExplosionLight:light_energy")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.26666665, 0.36666667, 0.46666664, 0.56666666, 0.66666657, 0.7666667, 0.8666666, 0.96666676),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [5.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0, 5.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PassiveLight:light_energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.26666668, 0.8666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1.0, 0.0]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_41j15"]
-atlas = ExtResource("3_hh7i0")
-region = Rect2(200, 400, 200, 200)
+[sub_resource type="Animation" id="Animation_c6328"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Turret"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite3D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.013463229, 0.048760533)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ExplosionLight:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PassiveLight:light_energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_preo6"]
-atlas = ExtResource("3_hh7i0")
-region = Rect2(400, 400, 200, 200)
+[sub_resource type="Animation" id="Animation_3krs4"]
+resource_name = "Scurry"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [&"Scurry"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite3D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.39999998),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 13]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.013463229, 0.048760533)]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_towbn"]
-atlas = ExtResource("3_hh7i0")
-region = Rect2(600, 400, 200, 200)
+[sub_resource type="Animation" id="Animation_5iimw"]
+resource_name = "Scurry"
+length = 0.8333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [&"Turret"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite3D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 13]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.013463229, 0.048760533)]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_85lgf"]
-atlas = ExtResource("3_hh7i0")
-region = Rect2(800, 400, 200, 200)
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2gu7b"]
+_data = {
+&"Death": SubResource("Animation_2gu7b"),
+&"Emerge": SubResource("Animation_rxtbj"),
+&"Explode": SubResource("Animation_nt2bq"),
+&"RESET": SubResource("Animation_c6328"),
+&"Scurry": SubResource("Animation_3krs4"),
+&"Turret": SubResource("Animation_5iimw")
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vjatw"]
-atlas = ExtResource("3_hh7i0")
-region = Rect2(0, 600, 200, 200)
+[sub_resource type="Resource" id="Resource_shv1t"]
+script = ExtResource("9_vsnr6")
+death_screen_id = &"missile"
+metadata/_custom_type_script = "uid://y2ix2xo5owxw"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fufqt"]
-atlas = ExtResource("3_hh7i0")
-region = Rect2(200, 600, 200, 200)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nk3wx"]
+radius = 2.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bt0l5"]
-atlas = ExtResource("3_hh7i0")
-region = Rect2(0, 0, 200, 200)
+[sub_resource type="Curve" id="Curve_e5xwv"]
+_data = [Vector2(0.54820937, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 4.721918, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_34dad"]
-atlas = ExtResource("3_hh7i0")
-region = Rect2(200, 0, 200, 200)
+[sub_resource type="CurveTexture" id="CurveTexture_spref"]
+texture_mode = 1
+curve = SubResource("Curve_e5xwv")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y2knb"]
-atlas = ExtResource("3_hh7i0")
-region = Rect2(400, 0, 200, 200)
+[sub_resource type="Gradient" id="Gradient_7b8vt"]
+offsets = PackedFloat32Array(0.27596438, 0.611276)
+colors = PackedColorArray(0.029673591, 0.029673591, 0.029673591, 1, 1, 1, 1, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b1o88"]
-atlas = ExtResource("3_hh7i0")
-region = Rect2(600, 0, 200, 200)
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_p3uh3"]
+gradient = SubResource("Gradient_7b8vt")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0xjqt"]
-atlas = ExtResource("3_hh7i0")
-region = Rect2(800, 0, 200, 200)
+[sub_resource type="Curve" id="Curve_4xa2b"]
+_data = [Vector2(0.00826446, 0.9929956), 0.0, 0.17199303, 0, 0, Vector2(0.5013774, 0.5587284), -0.55273145, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_567ni"]
-atlas = ExtResource("3_hh7i0")
-region = Rect2(0, 200, 200, 200)
+[sub_resource type="CurveTexture" id="CurveTexture_ksm6d"]
+curve = SubResource("Curve_4xa2b")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xbrsj"]
-atlas = ExtResource("3_hh7i0")
-region = Rect2(200, 200, 200, 200)
+[sub_resource type="Curve" id="Curve_1vvhc"]
+_data = [Vector2(0, 0.46767235), 0.0, 2.4483955, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kkq58"]
-atlas = ExtResource("3_hh7i0")
-region = Rect2(400, 200, 200, 200)
+[sub_resource type="CurveTexture" id="CurveTexture_jlfec"]
+curve = SubResource("Curve_1vvhc")
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_hh7i0"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ps8eh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0mrkf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bsw3o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_41j15")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_preo6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_towbn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_85lgf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vjatw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fufqt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bt0l5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_34dad")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y2knb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b1o88")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0xjqt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_567ni")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xbrsj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kkq58")
-}],
-"loop": false,
-"name": &"default",
-"speed": 5.0
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4ib7s"]
+emission_shape = 1
+emission_sphere_radius = 0.2
+radial_velocity_min = 7.9999776
+radial_velocity_max = 9.999977
+radial_velocity_curve = SubResource("CurveTexture_ksm6d")
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_jlfec")
+color_ramp = SubResource("GradientTexture1D_p3uh3")
+alpha_curve = SubResource("CurveTexture_spref")
+
+[sub_resource type="SphereMesh" id="SphereMesh_nbvf6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_spref"]
+render_priority = 0
+shader = ExtResource("12_b31jq")
+shader_parameter/Streak_Colour = Color(1.8247963, 0.6180314, 0, 1)
+
+[sub_resource type="Curve" id="Curve_7b8vt"]
+_data = [Vector2(0, 0), 0.0, 1.3675787, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_p3uh3"]
+curve = SubResource("Curve_7b8vt")
+
+[sub_resource type="Curve" id="Curve_ksm6d"]
+_data = [Vector2(0, 0.5307111), 0.0, 2.0938768, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1vvhc"]
+curve = SubResource("Curve_ksm6d")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jlfec"]
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 7.0
+scale_curve = SubResource("CurveTexture_1vvhc")
+alpha_curve = SubResource("CurveTexture_p3uh3")
+hue_variation_min = -1.0
+hue_variation_max = -2.2351742e-08
+
+[sub_resource type="QuadMesh" id="QuadMesh_4ib7s"]
+size = Vector2(0.25, 1)
+center_offset = Vector3(0, 0.4, 0)
+
+[sub_resource type="Animation" id="Animation_e5xwv"]
+resource_name = "Explode"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ExplosionParticles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StreakParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OmniLight3D:light_energy")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [10.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_spref"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ExplosionParticles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StreakParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OmniLight3D:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7b8vt"]
+_data = {
+&"Explode": SubResource("Animation_e5xwv"),
+&"RESET": SubResource("Animation_spref")
+}
+
+[sub_resource type="Animation" id="Animation_shv1t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitboxComponent:monitorable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_183jd"]
+resource_name = "default"
+length = 4.0
+step = 0.05
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"delete_self"
 }]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitboxComponent:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_shv1t"]
+_data = {
+&"RESET": SubResource("Animation_shv1t"),
+&"default": SubResource("Animation_183jd")
+}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iobuc"]
 size = Vector3(1, 1.5, 1)
@@ -156,21 +557,24 @@ radius = 0.7
 radius = 12.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iobuc"]
-radius = 9.0
+radius = 5.297996
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_b3mpv"]
 radius = 2.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fmqj0"]
 
-[node name="BrainSpider" type="CharacterBody3D" unique_id=166394742 node_paths=PackedStringArray("state_machine", "start_idle", "start_floor_aggro", "start_surface_aggro")]
+[node name="BrainSpider" type="CharacterBody3D" unique_id=166394742 node_paths=PackedStringArray("animator", "state_machine", "start_idle", "start_floor_aggro", "start_surface_aggro")]
 collision_layer = 4
 collision_mask = 129
 script = ExtResource("1_fjoht")
+animator = NodePath("SpiderPivot/Visuals/AnimationPlayer")
 state_machine = NodePath("StateMachine")
 start_idle = NodePath("StateMachine/BrainSpiderIdle")
 start_floor_aggro = NodePath("StateMachine/BrainSpiderChase")
 start_surface_aggro = NodePath("StateMachine/BrainSpiderSurfaceChase")
+move_speed = 16.0
+acceleration = 40.0
 laser_cooldown = 1.5
 laser_scene = ExtResource("2_jv02q")
 fall_death_max_time = 2.0
@@ -201,18 +605,74 @@ collision_mask = 3
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="SpiderPivot/Visuals" unique_id=697202520]
-transform = Transform3D(0.13018179, 0, 0, 0, 0.13018179, 0, 0, 0, 1, 0, 0, 0.048760533)
+transform = Transform3D(0.19243045, 0, 0, 0, 0.19243045, 0, 0, 0, 1, 0, 0.013463229, 0.048760533)
 sprite_frames = ExtResource("1_iobuc")
-animation = &"Heads"
-frame = 14
-frame_progress = 0.56379896
+animation = &"Turret"
+frame = 1
 
-[node name="ExplosionVisual" type="AnimatedSprite3D" parent="SpiderPivot/Visuals" unique_id=960346810]
-transform = Transform3D(5.5, 0, 0, 0, 5.5, 0, 0, 0, 5.5, 0, 2.861555, 0.055)
-visible = false
-sprite_frames = SubResource("SpriteFrames_hh7i0")
-autoplay = "default"
-speed_scale = 6.0
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpiderPivot/Visuals" unique_id=1976738997]
+libraries/ = SubResource("AnimationLibrary_2gu7b")
+
+[node name="PassiveLight" type="OmniLight3D" parent="SpiderPivot/Visuals" unique_id=1009198376]
+light_color = Color(0, 1, 0, 1)
+
+[node name="ExplosionLight" type="OmniLight3D" parent="SpiderPivot/Visuals" unique_id=409387958]
+light_color = Color(1, 0, 0, 1)
+light_energy = 0.0
+omni_range = 8.0
+
+[node name="Explosion" type="Node3D" parent="SpiderPivot/Visuals" unique_id=1074334678]
+
+[node name="HitboxComponent" parent="SpiderPivot/Visuals/Explosion" unique_id=1965125698 node_paths=PackedStringArray("team_component") instance=ExtResource("8_3f5fc")]
+team_component = NodePath("../TeamComponent")
+damage_or_heal_instance = SubResource("Resource_shv1t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpiderPivot/Visuals/Explosion/HitboxComponent" unique_id=1608720344]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_nk3wx")
+
+[node name="TeamComponent" parent="SpiderPivot/Visuals/Explosion" unique_id=2076917082 instance=ExtResource("2_luyx4")]
+team = 2
+
+[node name="Explosion" type="Node3D" parent="SpiderPivot/Visuals/Explosion" unique_id=479124397]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="ExplosionParticles" type="GPUParticles3D" parent="SpiderPivot/Visuals/Explosion/Explosion" unique_id=1498985460]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.028239012, 0)
+material_override = ExtResource("11_5jp2h")
+emitting = false
+amount = 40
+lifetime = 0.7
+one_shot = true
+explosiveness = 0.8
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_4ib7s")
+draw_pass_1 = SubResource("SphereMesh_nbvf6")
+
+[node name="StreakParticles" type="GPUParticles3D" parent="SpiderPivot/Visuals/Explosion/Explosion" unique_id=375584048]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.024339199, 0)
+material_override = SubResource("ShaderMaterial_spref")
+emitting = false
+amount = 16
+lifetime = 0.7
+one_shot = true
+explosiveness = 0.9
+randomness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_jlfec")
+draw_pass_1 = SubResource("QuadMesh_4ib7s")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SpiderPivot/Visuals/Explosion/Explosion" unique_id=989610659]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+light_color = Color(1, 0.41687015, 0, 1)
+omni_range = 10.0
+
+[node name="explode_anims" type="AnimationPlayer" parent="SpiderPivot/Visuals/Explosion/Explosion" unique_id=583848547]
+libraries/ = SubResource("AnimationLibrary_7b8vt")
+autoplay = &"RESET"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpiderPivot/Visuals/Explosion" unique_id=35875649]
+libraries/ = SubResource("AnimationLibrary_shv1t")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1966061484]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
@@ -222,7 +682,7 @@ shape = SubResource("BoxShape3D_iobuc")
 starting_health = 10.0
 max_health = 10.0
 
-[node name="TeamComponent" parent="." unique_id=2076917082 instance=ExtResource("2_luyx4")]
+[node name="TeamComponent" parent="." unique_id=1341756982 instance=ExtResource("2_luyx4")]
 team = 2
 
 [node name="BodyHurtbox" parent="." unique_id=338394069 node_paths=PackedStringArray("team_component", "health_component") instance=ExtResource("3_c43gv")]

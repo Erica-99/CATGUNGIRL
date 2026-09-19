@@ -1,0 +1,205 @@
+[gd_scene format=3 uid="uid://dfeu51eipu2bh"]
+
+[ext_resource type="Script" uid="uid://cb6o1ixtmjkya" path="res://scenes/ui/hud_display/interact_prompt.gd" id="1_jg6of"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dkpv5"]
+bg_color = Color(0, 1, 1, 0.21100001)
+skew = Vector2(-0.2, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.1428257, 1, 0, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dkpv5"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Animation" id="Animation_dkpv5"]
+resource_name = "Appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_i3ufb"]
+resource_name = "Dissappear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jg6of"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2m06i"]
+resource_name = "Selected"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.033333335, 0.03333333, 0.33333334, 0.8666667, 0.99999994),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.71, 0), Vector3(0, 0.71, 0), Vector3(0, 4.145, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(-0.03333334, 0.06666667, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.215, 1.215, 1.215), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i3ufb"]
+_data = {
+&"Appear": SubResource("Animation_dkpv5"),
+&"Dissappear": SubResource("Animation_i3ufb"),
+&"RESET": SubResource("Animation_jg6of"),
+&"Selected": SubResource("Animation_2m06i")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dkpv5"]
+radius = 5.0
+
+[node name="InteractPrompt" type="Node3D" unique_id=2067636420]
+script = ExtResource("1_jg6of")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=453293907]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(550, 100)
+
+[node name="Control" type="Control" parent="SubViewport" unique_id=446551694]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -275.0
+offset_right = 275.0
+offset_bottom = 80.0
+grow_horizontal = 2
+
+[node name="Panel" type="Panel" parent="SubViewport/Control" unique_id=401080167]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -125.0
+offset_right = 124.99982
+offset_bottom = 80.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dkpv5")
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport/Control/Panel" unique_id=1328865031]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.1
+offset_right = 24.099289
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SubViewport/Control/Panel/MarginContainer" unique_id=572942475]
+clip_contents = false
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+text = "Interact"
+fit_content = true
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1395345531]
+billboard = 1
+texture = SubResource("ViewportTexture_dkpv5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1832601213]
+libraries/ = SubResource("AnimationLibrary_i3ufb")
+autoplay = &"Appear"
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1020020166]
+collision_layer = 2048
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=28569032]
+shape = SubResource("SphereShape3D_dkpv5")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

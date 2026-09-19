@@ -99,6 +99,7 @@ func _switch_gun(slot_num: int):
 	#current_gun.apply_offset()
 	#position.x = current_gun.offset
 	current_gun.rotation.z = rotation_save
+	current_gun._aim_angle = rotation_save 
 	_activate_gun()
 	
 	if input_component:

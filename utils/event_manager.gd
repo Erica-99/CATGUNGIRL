@@ -14,6 +14,7 @@ signal enemy_killed(enemy)
 signal player_hit_by_enemy()
 signal current_killstreak(killstreak: int)
 signal gun_picked_up
+signal dummy_hit
 
 signal player_health_initialised(init_current_health, init_max_health)
 signal player_health_changed(old_health, new_health, damage_or_heal_instance)
@@ -22,6 +23,8 @@ signal player_interest_rank_changed(new_rank)
 signal new_mag_loaded(ammo: int, capacity: int)
 signal shots_fired(shots: int)
 signal shots_loaded(shots: int)
+signal primary_fire_used(gun_name: String)
+signal alt_fire_used(gun_name: String)
 
 signal new_gun_equipped(gun_name: String)
 signal enable_gun_ui(enabled: bool)
@@ -38,3 +41,9 @@ signal shield_enabled_status(status: bool)
 signal set_door_openable_state(door: Node3D, openable: bool)
 
 signal start_animation
+
+signal increase_meme_index()
+
+signal controller_status(controller_type: String)
+
+signal base_scene_updated(new_scene: Node)

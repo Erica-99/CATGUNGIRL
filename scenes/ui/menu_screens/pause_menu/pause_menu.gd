@@ -23,8 +23,20 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
+		if not _can_pause():
+			return
 		_toggle_pause()
 		get_viewport().set_input_as_handled()
+
+func _can_pause() -> bool:
+	# no pausing during loading screen
+	if get_tree().get_first_node_in_group("loading_screen") != null:
+		return false
+	# no pausing in menu screen
+	var current_scene = get_tree().current_scene
+	if current_scene and current_scene.scene_file_path == Globals.LEVEL_PATHS["main_menu"]:
+		return false
+	return true
 
 func _toggle_pause() -> void:
 	_is_paused = not _is_paused

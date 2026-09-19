@@ -1,13 +1,53 @@
 [gd_scene format=3 uid="uid://bd2mcyu2kk757"]
 
-[ext_resource type="ArrayMesh" uid="uid://c33f2d8bvn4af" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/BulkheadDoor.obj" id="1_qsoon"]
-[ext_resource type="ArrayMesh" uid="uid://byncekeykxmcr" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/Bulkhead.obj" id="2_j0fkv"]
+[ext_resource type="ArrayMesh" uid="uid://bwpy5lv5b5p87" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/Doors/DoorBulkhead.obj" id="1_qsoon"]
+[ext_resource type="ArrayMesh" uid="uid://dwdekelrmb56l" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/Doors/DoorwayBulkhead.obj" id="2_j0fkv"]
+[ext_resource type="Texture2D" uid="uid://6ht32qspda2s" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorBulkHead/DoorBulkhead_Base_color.png" id="2_sdd8q"]
+[ext_resource type="Texture2D" uid="uid://dqanna5wlu2s8" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorBulkHead/DoorBulkhead_Base_metalness.png" id="3_173gh"]
+[ext_resource type="Texture2D" uid="uid://qqmgxanymhyy" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorBulkHead/DoorBulkhead_Mixed_AO.png" id="3_khn5b"]
+[ext_resource type="Texture2D" uid="uid://hnrux60tmxw7" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorBulkHead/DoorBulkhead_Specular_roughness.png" id="4_em8qx"]
+[ext_resource type="Texture2D" uid="uid://c1oj2n6xqdbkl" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorBulkHead/DoorBulkhead_Height.png" id="4_fbqc1"]
+[ext_resource type="Texture2D" uid="uid://b54u1wuwgb3kv" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorBulkHead/DoorBulkhead_Normal_OpenGL.png" id="6_iqwkk"]
+[ext_resource type="Texture2D" uid="uid://dtem4tprap0yj" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorwayBulkHead/DoorwayBulkHead_Base_color.png" id="9_k7pkc"]
+[ext_resource type="Texture2D" uid="uid://c4x2v7w32c2xw" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorwayBulkHead/DoorwayBulkHead_Mixed_AO.png" id="10_xqh6i"]
+[ext_resource type="Texture2D" uid="uid://d0fd7grkpre05" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorwayBulkHead/DoorwayBulkHead_Height.png" id="11_pg7m2"]
+[ext_resource type="Texture2D" uid="uid://b6oqq83bb2mkp" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorwayBulkHead/DoorwayBulkHead_Base_metalness.png" id="12_ftr7c"]
+[ext_resource type="Texture2D" uid="uid://b4mmwi1nok7ue" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorwayBulkHead/DoorwayBulkHead_Normal_OpenGL.png" id="13_yyth3"]
+[ext_resource type="Texture2D" uid="uid://dvisu1day3vck" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorwayBulkHead/DoorwayBulkHead_Specular_roughness.png" id="14_bl2ar"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qsoon"]
+albedo_texture = ExtResource("2_sdd8q")
+metallic = 1.0
+metallic_texture = ExtResource("3_173gh")
+roughness_texture = ExtResource("4_em8qx")
+normal_enabled = true
+normal_texture = ExtResource("6_iqwkk")
+ao_enabled = true
+ao_texture = ExtResource("3_khn5b")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("4_fbqc1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ixy2"]
+albedo_texture = ExtResource("9_k7pkc")
+metallic = 1.0
+metallic_texture = ExtResource("12_ftr7c")
+roughness_texture = ExtResource("14_bl2ar")
+normal_enabled = true
+normal_texture = ExtResource("13_yyth3")
+ao_enabled = true
+ao_texture = ExtResource("10_xqh6i")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("11_pg7m2")
 
 [node name="DoorBulkhead" type="Node3D" unique_id=791955780]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
-[node name="BulkheadDoor" type="MeshInstance3D" parent="." unique_id=105288050]
+[node name="DoorBulkhead_Mesh" type="MeshInstance3D" parent="." unique_id=2092042305]
 mesh = ExtResource("1_qsoon")
+surface_material_override/0 = SubResource("StandardMaterial3D_qsoon")
 
-[node name="Bulkhead" type="MeshInstance3D" parent="." unique_id=1751396788]
+[node name="DoorwayBulkhead_Mesh" type="MeshInstance3D" parent="." unique_id=136234197]
 mesh = ExtResource("2_j0fkv")
+surface_material_override/0 = SubResource("StandardMaterial3D_7ixy2")

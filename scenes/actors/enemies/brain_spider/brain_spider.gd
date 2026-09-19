@@ -85,6 +85,12 @@ enum SurfaceType {
 ##Temporary timing delay for spider morph animation
 @export var morph_spider_time: float = 0.7
 
+@export_category("Death Screen Info")
+##Death screen info used if player is killed by Spider explosion
+@export var explosion_death_screen_id: StringName = &"brain_spider_explosion"
+##Death screen info used if player is killed by Spider laser.
+@export var laser_death_screen_id: StringName = &"brain_spider_laser"
+
 var is_dying: bool = false
 var is_dead: bool = false
 var target: CharacterBody3D = null
@@ -115,6 +121,7 @@ func _ready() -> void:
 	state_machine.init(blackboard)
 	brain_spider_visuals.apply_surface_rotation()
 	health_comp.killed.connect(_on_health_component_killed)
+	health_comp.knocked_back.connect(take_knockback)
 
 func _on_health_component_killed(_killing_blow: DamageHealInstance, _health_before_death: Variant) -> void:
 	start_death()
@@ -143,6 +150,7 @@ func damage_players_in_explosion_area() -> void:
 		damage_instance.is_heal = false
 		damage_instance.type = Enums.DamageType.EXPLOSIVE
 		damage_instance.source = get_path()
+		damage_instance.death_screen_id = explosion_death_screen_id
 		player_health.take_damage_or_heal(damage_instance)
 
 func apply_soft_collision(delta: float) -> void:
@@ -233,6 +241,7 @@ func fire_laser() -> void:
 	damage_instance.is_heal = false
 	damage_instance.type = Enums.DamageType.NORMAL
 	damage_instance.source = get_path()
+	damage_instance.death_screen_id = laser_death_screen_id
 	var laser_beam = laser_scene.instantiate()
 	get_tree().root.add_child(laser_beam)
 	laser_beam.initialize(locked_laser_direction, damage_instance, team_component, 1.0)
@@ -257,3 +266,17 @@ func show_spider_visual() -> void:
 
 func is_explosion_effect_playing() -> bool:
 	return brain_spider_visuals.is_explosion_playing()
+
+## When taking damage, get pushed back 
+func take_knockback(knockback_direction: Vector3, knockback_strength: float):
+	# Different knockback handling for on the floor/in the air
+	# When on the floor knock up-left/right
+	# print("Knocked back " + str(knockback_direction) + str(knockback_strength))
+	if spider_mode == SpiderMode.FLOOR:
+		if knockback_direction.x >= 0:
+			velocity += Vector3(knockback_strength, knockback_strength/log(10), 0)
+		else:
+			velocity += Vector3(-knockback_strength, knockback_strength/log(10), 0)
+	# When not on the floor get knocked down to the ground
+	#else:
+		#velocity = knockback_direction * knockback_strength
