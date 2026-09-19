@@ -28,6 +28,7 @@ signal alt_fire_used(gun_name: String)
 
 signal new_gun_equipped(gun_name: String)
 signal enable_gun_ui(enabled: bool)
+signal unlock_gun(gun_name: String)
 
 signal room_cleared(room_ID: Enums.Room, is_clear: bool)
 signal spawn_enemy(custom_delay: float, spawner_path: NodePath)
