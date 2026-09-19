@@ -2,6 +2,7 @@ extends Node
 
 enum FightState {
 	TERMINALS,
+	PLAYING_ANIMATION,
 	WAITING_FOR_HEALING_HIT,
 	HEALING_DAMAGE,
 	WAITING_FOR_SACRIFICE,
@@ -30,6 +31,13 @@ var gun_sacrifice_interactable: Node
 @export var damage_heal_delay: float = 0.15
 @export var damage_heal_duration: float = 0.75
 
+@export_category("Boss Animation")
+@export var boss_animation_player: AnimationPlayer
+@export var intro_trigger: Area3D
+@export var intro_animation_name: StringName
+@export var after_four_terminals_animation_name: StringName
+
+var intro_played: bool = false
 var current_phase_index: int = 0
 var activated_terminal_count: int = 0
 var available_terminals: Array[Node] = []
@@ -41,8 +49,11 @@ func _ready() -> void:
 	EventManager.brain_jar_terminal_activated.connect(_on_terminal_activated)
 	EventManager.gun_sacrificed.connect(_on_gun_sacrificed)
 	
-	shields = $Shields/CollisionShape3D
+	shields = $BrainJarJar/Shields/BrainJar_Collision
 	health_bar.init_health(health)
+	
+	if intro_trigger != null and !intro_trigger.body_entered.is_connected(_on_intro_trigger_body_entered):
+		intro_trigger.body_entered.connect(_on_intro_trigger_body_entered)
 	
 	if facility_core != null:
 		gun_sacrifice_interactable = facility_core.get_node_or_null("FacilityCore_Mesh/InteractableComponent")
@@ -52,7 +63,6 @@ func _ready() -> void:
 	
 	_set_gun_sacrifice_enabled(false)
 	_enable_shields()
-	call_deferred("_start_fight")
 
 func _on_health_component_health_initialised(init_current_health: float, init_max_health: float) -> void:
 	health = init_max_health
@@ -62,7 +72,7 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 		_update_health_display(new_health)
 		return
 	
-	if fight_state == FightState.TERMINALS or fight_state == FightState.WAITING_FOR_SACRIFICE or fight_state == FightState.HEALING_DAMAGE or fight_state == FightState.COMPLETE:
+	if fight_state == FightState.TERMINALS or fight_state == FightState.PLAYING_ANIMATION or fight_state == FightState.WAITING_FOR_SACRIFICE or fight_state == FightState.HEALING_DAMAGE or fight_state == FightState.COMPLETE:
 		health_component.current_health = old_health
 		
 		if fight_state != FightState.HEALING_DAMAGE:
@@ -223,8 +233,7 @@ func _complete_terminal_phase() -> void:
 	
 	match phase.completion_type:
 		BrainJarPhase.CompletionType.DAMAGE_HEAL_AND_ADVANCE:
-			fight_state = FightState.WAITING_FOR_HEALING_HIT
-			_disable_shields()
+			_play_after_four_terminals_animation()
 		
 		BrainJarPhase.CompletionType.SACRIFICE_THEN_DAMAGE:
 			fight_state = FightState.WAITING_FOR_SACRIFICE
@@ -274,3 +283,27 @@ func _finish_fight() -> void:
 	fight_state = FightState.COMPLETE
 	_set_gun_sacrifice_enabled(false)
 	queue_free()
+
+func _on_intro_trigger_body_entered(body: Node3D) -> void:
+	if intro_played or !body.is_in_group("player"):
+		return
+	
+	intro_played = true	
+	boss_animation_player.play(intro_animation_name)
+	var finished_animation: StringName = await boss_animation_player.animation_finished
+	
+	if finished_animation == intro_animation_name:
+		_start_fight()
+
+func _play_after_four_terminals_animation() -> void:
+	fight_state = FightState.PLAYING_ANIMATION
+	_enable_shields()
+	boss_animation_player.play(after_four_terminals_animation_name)
+	var finished_animation: StringName = await boss_animation_player.animation_finished
+	
+	if finished_animation == after_four_terminals_animation_name:
+		_open_healing_hit_window()
+
+func _open_healing_hit_window() -> void:
+	fight_state = FightState.WAITING_FOR_HEALING_HIT
+	_disable_shields()

@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="13_7yaim"]
 [ext_resource type="PackedScene" uid="uid://c8gqrcyucic0n" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/BrainJarTerminalOff.tscn" id="13_mywdw"]
 [ext_resource type="PackedScene" uid="uid://dh3ij31rc4n7m" path="res://scenes/components/level_components/bossfight/brain_jar_console.tscn" id="14_5hpc0"]
-[ext_resource type="PackedScene" uid="uid://crxpi7vrp2sce" path="res://scenes/actors/enemies/brain_jar/brain_jar.tscn" id="14_wj6kf"]
 [ext_resource type="PackedScene" uid="uid://exdqryhd2x6v" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/3_GuardRooms/FilingCabinet1.tscn" id="16_112gr"]
 [ext_resource type="PackedScene" uid="uid://dld0qjmojk1t8" path="res://scenes/actors/enemies/enemy_manager/enemy_manager.tscn" id="16_h2frl"]
 [ext_resource type="PackedScene" uid="uid://qmb01fn4g6i" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/3_GuardRooms/Folders.tscn" id="17_s04or"]
@@ -1328,12 +1327,6 @@ transform = Transform3D(1.2398491, 0, 0, 0, 1.1999998, 0, 0, 0, 1.1999998, -204.
 shape = SubResource("BoxShape3D_oc6pb")
 
 [node name="Enemies" type="Node3D" parent="." unique_id=1092297902]
-
-[node name="BrainJar" parent="Enemies" unique_id=1593347133 node_paths=PackedStringArray("terminals", "facility_core") instance=ExtResource("14_wj6kf")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -124, 13.711103, 0)
-visible = false
-terminals = NodePath("../../Interactive/Terminals/TerminalProps")
-facility_core = NodePath("../../Environment/BrainJarRoom/BrainJarComponents/FacilityCore")
 
 [node name="EnemyManager" parent="Enemies" unique_id=18369620 instance=ExtResource("16_h2frl")]
 
@@ -7518,8 +7511,11 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 0, 0)
 [node name="FacilityCore" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=913940677 instance=ExtResource("30_ewsem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
 
-[node name="BrainJar" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=561627710 instance=ExtResource("36_mxr2x")]
+[node name="BrainJar" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=561627710 node_paths=PackedStringArray("terminals", "facility_core", "intro_trigger") instance=ExtResource("36_mxr2x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124.00054, -0.0007839203, -14.999931)
+terminals = NodePath("../../../../Interactive/Terminals/TerminalProps")
+facility_core = NodePath("../FacilityCore")
+intro_trigger = NodePath("../../../../CameraPanNode1/Area")
 
 [node name="ReactorPipeL" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=965618633 instance=ExtResource("29_rm42m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
