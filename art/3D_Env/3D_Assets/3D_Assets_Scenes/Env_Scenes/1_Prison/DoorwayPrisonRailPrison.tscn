@@ -8,6 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://502420uyft1k" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Normal_OpenGL.png" id="6_mucqo"]
 [ext_resource type="Texture2D" uid="uid://ccuxlmt0vkg4f" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Specular_roughness.png" id="7_t5cew"]
 [ext_resource type="ArrayMesh" uid="uid://ckswbgels33vw" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/PrisonRailDoor.obj" id="8_xsce0"]
+[ext_resource type="Texture2D" uid="uid://douxwlagyddi2" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoor/PrisonRailDoor_Base_color.png" id="9_tv4k6"]
+[ext_resource type="Texture2D" uid="uid://cyy251qs2ib8k" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoor/PrisonRailDoor_Mixed_AO.png" id="10_uy2wh"]
+[ext_resource type="Texture2D" uid="uid://bk1ww3w8smupl" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoor/PrisonRailDoor_Height.png" id="11_hfsqw"]
+[ext_resource type="Texture2D" uid="uid://dttc38t4pb2w6" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoor/PrisonRailDoor_Base_metalness.png" id="12_ixuxp"]
+[ext_resource type="Texture2D" uid="uid://b2auods61mh3m" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoor/PrisonRailDoor_Normal_OpenGL.png" id="13_4l1f4"]
+[ext_resource type="Texture2D" uid="uid://trsmyjp5v7hh" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoor/PrisonRailDoor_Specular_roughness.png" id="14_8pm70"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3nqmm"]
 albedo_texture = ExtResource("2_r1nn0")
@@ -24,6 +30,19 @@ heightmap_texture = ExtResource("4_vch1l")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xsce0"]
 points = PackedVector3Array(-0.099879, -0.100005, -2.500488, -0.099879, 4.10165, -2.500488, 0.099879, -0.100005, -2.500488, -0.099879, -0.100005, 2.500209, 0.099879, 4.10165, -2.500488, -0.099879, 4.10165, 2.500209, 0.099879, -0.100005, 2.500209, 0.099879, 4.10165, 2.500209)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oooqa"]
+albedo_texture = ExtResource("9_tv4k6")
+metallic = 1.0
+metallic_texture = ExtResource("12_ixuxp")
+roughness_texture = ExtResource("14_8pm70")
+normal_enabled = true
+normal_texture = ExtResource("13_4l1f4")
+ao_enabled = true
+ao_texture = ExtResource("10_uy2wh")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("11_hfsqw")
 
 [sub_resource type="Animation" id="Animation_t5cew"]
 length = 0.001
@@ -298,15 +317,28 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("1_rbvji")
 surface_material_override/0 = SubResource("StandardMaterial3D_3nqmm")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=929955157]
+[node name="DoorwayPrisonRailPrison_Collision" type="CollisionShape3D" parent="." unique_id=929955157]
+visible = false
 shape = SubResource("ConvexPolygonShape3D_xsce0")
+
+[node name="DoorwayPrisonRailPrison_CollisionGPU" type="GPUParticlesCollisionBox3D" parent="." unique_id=465486954]
+transform = Transform3D(0.10047269, 0, 0, 0, 1, 0, 0, 0, 1.5759289, 0, 1.6664581, -0.008471966)
+visible = false
+size = Vector3(2, 3.5292053, 2.006836)
+
+[node name="DoorwayPrisonRailPrison_CollisionGPU2" type="GPUParticlesCollisionBox3D" parent="." unique_id=1552171586]
+transform = Transform3D(0.10047269, 0, 0, 0, 1, 0, 0, 0, 2.478681, 0, 3.9867477, 0.00027251244)
+visible = false
+size = Vector3(2, 0.2089386, 2.0074463)
 
 [node name="PrisonRailDoor" type="MeshInstance3D" parent="." unique_id=151096342]
 mesh = ExtResource("8_xsce0")
+surface_material_override/0 = SubResource("StandardMaterial3D_oooqa")
 
 [node name="PrisonRailDoor2" type="MeshInstance3D" parent="." unique_id=658551115]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
 mesh = ExtResource("8_xsce0")
+surface_material_override/0 = SubResource("StandardMaterial3D_oooqa")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=608583690]
 libraries/ = SubResource("AnimationLibrary_t5cew")

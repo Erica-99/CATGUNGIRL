@@ -72,19 +72,6 @@ heightmap_texture = ExtResource("11_x0d8j")
 [sub_resource type="BoxShape3D" id="BoxShape3D_f260d"]
 size = Vector3(0.33666992, 29.410212, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6gytr"]
-albedo_texture = ExtResource("16_iendk")
-metallic = 1.0
-metallic_texture = ExtResource("19_7f1ew")
-roughness_texture = ExtResource("21_g3lai")
-normal_enabled = true
-normal_texture = ExtResource("20_curhi")
-ao_enabled = true
-ao_texture = ExtResource("17_1is63")
-heightmap_enabled = true
-heightmap_scale = 0.0
-heightmap_texture = ExtResource("18_wqahf")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pctf1"]
 albedo_texture = ExtResource("23_o0a5y")
 metallic = 1.0
@@ -124,6 +111,19 @@ heightmap_enabled = true
 heightmap_scale = 1.0
 heightmap_texture = ExtResource("27_3ege0")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6gytr"]
+albedo_texture = ExtResource("16_iendk")
+metallic = 1.0
+metallic_texture = ExtResource("19_7f1ew")
+roughness_texture = ExtResource("21_g3lai")
+normal_enabled = true
+normal_texture = ExtResource("20_curhi")
+ao_enabled = true
+ao_texture = ExtResource("17_1is63")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("18_wqahf")
+
 [node name="PanopticonWalls" type="StaticBody3D" unique_id=842184407]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
@@ -137,85 +137,111 @@ surface_material_override/0 = SubResource("StandardMaterial3D_c40gj")
 
 [node name="PanopticonWalls_Collision_001" type="CollisionShape3D" parent="." unique_id=768091935]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 5, -37.36221, -14.707191, 0)
+visible = false
 shape = SubResource("BoxShape3D_f260d")
 
 [node name="PanopticonWalls_Collision_002" type="CollisionShape3D" parent="." unique_id=1859355876]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 5, -37.36221, 18.886675, 0)
+visible = false
 shape = SubResource("BoxShape3D_f260d")
 
 [node name="PanopticonWalls_Collision_003" type="CollisionShape3D" parent="." unique_id=287768322]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 5, 37.368, 18.887, 0)
+visible = false
 shape = SubResource("BoxShape3D_f260d")
 
 [node name="PanopticonWalls_Collision_004" type="CollisionShape3D" parent="." unique_id=451714895]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 5, 37.368, -14.707, 0)
+visible = false
 shape = SubResource("BoxShape3D_f260d")
 
-[node name="PanopticonPillars" type="MeshInstance3D" parent="." unique_id=1493382315]
-mesh = ExtResource("15_i65xw")
-surface_material_override/0 = SubResource("StandardMaterial3D_6gytr")
+[node name="Decor" type="Node3D" parent="." unique_id=631304161]
 
-[node name="PanopticonRingAlternate" type="MeshInstance3D" parent="." unique_id=791127741]
+[node name="PanopticonRingAlternate" type="MeshInstance3D" parent="Decor" unique_id=791127741]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.479718, 0)
 mesh = ExtResource("16_x0d8j")
 surface_material_override/0 = SubResource("StandardMaterial3D_pctf1")
 
-[node name="PanopticonRingSmall" type="MeshInstance3D" parent="." unique_id=626896253]
+[node name="PanopticonRingSmall" type="MeshInstance3D" parent="Decor" unique_id=626896253]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.051817656, 0)
 mesh = ExtResource("17_uwogv")
 surface_material_override/0 = SubResource("StandardMaterial3D_yp62f")
 
-[node name="PanopticonRingSmall11" type="MeshInstance3D" parent="." unique_id=81589513]
+[node name="PanopticonRingSmall11" type="MeshInstance3D" parent="Decor" unique_id=81589513]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2860327, 0)
 mesh = ExtResource("17_uwogv")
 surface_material_override/0 = SubResource("StandardMaterial3D_yp62f")
 
-[node name="PanopticonRingSmall2" type="MeshInstance3D" parent="." unique_id=1777423438]
+[node name="PanopticonRingSmall2" type="MeshInstance3D" parent="Decor" unique_id=1777423438]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.179968, 0)
 mesh = ExtResource("17_uwogv")
 surface_material_override/0 = SubResource("StandardMaterial3D_yp62f")
 
-[node name="PanopticonRingSmall3" type="MeshInstance3D" parent="." unique_id=9229305]
+[node name="PanopticonRingSmall3" type="MeshInstance3D" parent="Decor" unique_id=9229305]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.39448, 0)
 mesh = ExtResource("17_uwogv")
 surface_material_override/0 = SubResource("StandardMaterial3D_yp62f")
 
-[node name="PanopticonRingSmall4" type="MeshInstance3D" parent="." unique_id=1441683899]
+[node name="PanopticonRingSmall4" type="MeshInstance3D" parent="Decor" unique_id=1441683899]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.591721, 0)
 mesh = ExtResource("17_uwogv")
 surface_material_override/0 = SubResource("StandardMaterial3D_yp62f")
 
-[node name="PanopticonRingSmall5" type="MeshInstance3D" parent="." unique_id=1886499875]
+[node name="PanopticonRingSmall5" type="MeshInstance3D" parent="Decor" unique_id=1886499875]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16.78896, 0)
 mesh = ExtResource("17_uwogv")
 surface_material_override/0 = SubResource("StandardMaterial3D_yp62f")
 
-[node name="PanopticonRingSmall6" type="MeshInstance3D" parent="." unique_id=785105844]
+[node name="PanopticonRingSmall6" type="MeshInstance3D" parent="Decor" unique_id=785105844]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -21.020744, 0)
 mesh = ExtResource("17_uwogv")
 surface_material_override/0 = SubResource("StandardMaterial3D_yp62f")
 
-[node name="PanopticonRingSmall7" type="MeshInstance3D" parent="." unique_id=898375363]
+[node name="PanopticonRingSmall7" type="MeshInstance3D" parent="Decor" unique_id=898375363]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -25.235256, 0)
 mesh = ExtResource("17_uwogv")
 surface_material_override/0 = SubResource("StandardMaterial3D_yp62f")
 
-[node name="PanopticonRingSmall8" type="MeshInstance3D" parent="." unique_id=973074432]
+[node name="PanopticonRingSmall8" type="MeshInstance3D" parent="Decor" unique_id=973074432]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -29.415224, 0)
 mesh = ExtResource("17_uwogv")
 surface_material_override/0 = SubResource("StandardMaterial3D_yp62f")
 
-[node name="PanopticonRingSmall9" type="MeshInstance3D" parent="." unique_id=816078331]
+[node name="PanopticonRingSmall9" type="MeshInstance3D" parent="Decor" unique_id=816078331]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25.189304, 0)
 mesh = ExtResource("17_uwogv")
 surface_material_override/0 = SubResource("StandardMaterial3D_yp62f")
 
-[node name="PanopticonRingSmall10" type="MeshInstance3D" parent="." unique_id=287607493]
+[node name="PanopticonRingSmall10" type="MeshInstance3D" parent="Decor" unique_id=287607493]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 29.490183, 0)
 mesh = ExtResource("17_uwogv")
 surface_material_override/0 = SubResource("StandardMaterial3D_yp62f")
 
-[node name="PanopticonRing" type="MeshInstance3D" parent="." unique_id=1681315050]
+[node name="PanopticonRing" type="MeshInstance3D" parent="Decor" unique_id=1681315050]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.035625, 0)
 mesh = ExtResource("18_nix86")
 surface_material_override/0 = SubResource("StandardMaterial3D_ishvq")
+
+[node name="PanopticonPillars" type="MeshInstance3D" parent="Decor" unique_id=1493382315]
+mesh = ExtResource("15_i65xw")
+surface_material_override/0 = SubResource("StandardMaterial3D_6gytr")
+
+[node name="PanopticonWalls_CollisionGPU_01" type="GPUParticlesCollisionBox3D" parent="." unique_id=206391147]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.6559663, -37.364597, -14.5997925, 0)
+visible = false
+size = Vector3(0.34692383, 29.416138, 2)
+
+[node name="PanopticonWalls_CollisionGPU_02" type="GPUParticlesCollisionBox3D" parent="." unique_id=239684010]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.6559663, -37.364597, 18.90905, 0)
+visible = false
+size = Vector3(0.34692383, 29.59621, 2)
+
+[node name="PanopticonWalls_CollisionGPU_03" type="GPUParticlesCollisionBox3D" parent="." unique_id=1238035846]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.6559663, 37.35481, -14.5997925, 0)
+visible = false
+size = Vector3(0.34692383, 29.416138, 2)
+
+[node name="PanopticonWalls_CollisionGPU_04" type="GPUParticlesCollisionBox3D" parent="." unique_id=115095470]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.6559663, 37.35481, 18.90905, 0)
+visible = false
+size = Vector3(0.34692383, 29.59621, 2)

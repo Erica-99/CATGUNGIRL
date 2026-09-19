@@ -20,7 +20,9 @@ var current_action
 
 
 func _process(delta: float) -> void:
-	gun_pivot.rotation.z = gun_holder.current_gun.rotation.z
+	if gun_holder.current_gun != null:
+		gun_pivot.rotation.z = gun_holder.current_gun.rotation.z
+	
 	if current_action == 'playercrouch':
 		if Input.is_action_pressed("move_left") == true or Input.is_action_pressed("move_right") == true:
 			pass

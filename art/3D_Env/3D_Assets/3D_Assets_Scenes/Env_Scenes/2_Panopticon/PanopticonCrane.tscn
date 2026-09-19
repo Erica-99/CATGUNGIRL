@@ -151,6 +151,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_yvc0o")
 visible = false
 shape = SubResource("ConcavePolygonShape3D_guwib")
 
+[node name="CellCranePrt_01_CollisionGPU" type="GPUParticlesCollisionBox3D" parent="." unique_id=1311803456]
+transform = Transform3D(1.3172369, 0, 0, 0, 1, 0, 0, 0, 1, -5.8677974, 2.5041504, 1.042846)
+visible = false
+size = Vector3(2.062378, 2.4458618, 2.7010498)
+
 [node name="CellCranePrt_02" type="StaticBody3D" parent="." unique_id=277764821]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8589745, 0, 0.9917402)
 
@@ -161,6 +166,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_fhy1j")
 [node name="CellCranePrt_02_Collision" type="CollisionShape3D" parent="CellCranePrt_02" unique_id=2090679224]
 visible = false
 shape = SubResource("ConcavePolygonShape3D_rsbjq")
+
+[node name="CellCranePrt_02_CollisionGPU" type="GPUParticlesCollisionBox3D" parent="CellCranePrt_02" unique_id=177110207]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.1229391, -3.923706, 0, 0)
+visible = false
+size = Vector3(9.847412, 2, 2)
 
 [node name="CellCranePrt_03" type="StaticBody3D" parent="CellCranePrt_02" unique_id=642780748]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6659946, 1.2034652, 0.00025975704)
@@ -181,6 +191,26 @@ surface_material_override/0 = SubResource("StandardMaterial3D_tkt10")
 visible = false
 shape = SubResource("ConcavePolygonShape3D_m0lhm")
 
+[node name="CellCranePrt_03_Collision_01" type="GPUParticlesCollisionBox3D" parent="CellCranePrt_02/CellCranePrt_03" unique_id=771232696]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65206337, 4.8236046, -0.01119554)
+visible = false
+size = Vector3(3.9247437, 6.1485596, 2.6187134)
+
+[node name="CellCranePrt_03_Collision_02" type="GPUParticlesCollisionBox3D" parent="CellCranePrt_02/CellCranePrt_03" unique_id=6508100]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.1045055, -0.86216164, 4.841095, -0.01119554)
+visible = false
+size = Vector3(5.631706, 0.20360565, 2.6187134)
+
+[node name="CellCranePrt_03_Collision_03" type="GPUParticlesCollisionBox3D" parent="CellCranePrt_02/CellCranePrt_03" unique_id=2128071606]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.1045055, -14.595179, 3.7951214, -0.0032156706)
+visible = false
+size = Vector3(6.1371746, 0.12621689, 2.8923492)
+
+[node name="CellCranePrt_03_Collision_04" type="GPUParticlesCollisionBox3D" parent="CellCranePrt_02/CellCranePrt_03" unique_id=414844834]
+transform = Transform3D(1.392975, -0.4354898, 0, 0.109727375, 5.5284886, 0, 0, 0, 0.70206887, -8.58889, 2.3979044, -0.01119554)
+visible = false
+size = Vector3(6.712614, 0.35601616, 2.6187134)
+
 [node name="CellCranePrt_04" type="StaticBody3D" parent="CellCranePrt_02/CellCranePrt_03" unique_id=243888549]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.64303, 0.99453473, 0)
 
@@ -191,6 +221,21 @@ surface_material_override/0 = SubResource("StandardMaterial3D_l5i4i")
 [node name="CellCranePrt_04_Collision" type="CollisionShape3D" parent="CellCranePrt_02/CellCranePrt_03/CellCranePrt_04" unique_id=1043265140]
 visible = false
 shape = SubResource("ConcavePolygonShape3D_wtd74")
+
+[node name="CellCranePrt_04_CollisionGPU_01" type="GPUParticlesCollisionBox3D" parent="CellCranePrt_02/CellCranePrt_03/CellCranePrt_04" unique_id=2073933836]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.8710723, -1.5942822, -2.2610693, 0)
+visible = false
+size = Vector3(5.199585, 1.5336914, 2)
+
+[node name="CellCranePrt_04_CollisionGPU_02" type="GPUParticlesCollisionBox3D" parent="CellCranePrt_02/CellCranePrt_03/CellCranePrt_04" unique_id=2104055545]
+transform = Transform3D(0.9988997, -0.046897244, 0, 0.046897244, 0.9988997, 0, 0, 0, 1.8710723, -6.5073967, -1.8420668, 0)
+visible = false
+size = Vector3(5.199585, 0.46600342, 2)
+
+[node name="CellCranePrt_04_CollisionGPU_03" type="GPUParticlesCollisionBox3D" parent="CellCranePrt_02/CellCranePrt_03/CellCranePrt_04" unique_id=299495039]
+transform = Transform3D(0.9993246, 0.036748365, 0, -0.036748365, 0.9993246, 0, 0, 0, 1.8710722, -6.486847, -2.7061968, 0)
+visible = false
+size = Vector3(5.199585, 0.46600342, 2)
 
 [node name="CellCraneScoop" type="StaticBody3D" parent="CellCranePrt_02/CellCranePrt_03/CellCranePrt_04" unique_id=1106637968]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.792175, -2.6761813, 0)

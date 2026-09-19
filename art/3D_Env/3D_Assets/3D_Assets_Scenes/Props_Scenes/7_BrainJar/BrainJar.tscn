@@ -1,12 +1,44 @@
 [gd_scene format=3 uid="uid://ynlj1dj4j1ck"]
 
 [ext_resource type="ArrayMesh" uid="uid://b068i6nshetjv" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/7_BrainJar/BrainJar.obj" id="1_2h2a8"]
+[ext_resource type="Script" uid="uid://beimtc28jvrur" path="res://scenes/actors/enemies/brain_jar/brain_jar.gd" id="1_fwyud"]
+[ext_resource type="Material" uid="uid://5r4i2tu72qvh" path="res://art/TechArt/2_VFX/BrainJarLuca/BrainJarShield.tres" id="1_vs3c6"]
+[ext_resource type="Script" uid="uid://bkhvy2ej22ebj" path="res://scenes/actors/enemies/brain_jar/brain_jar_phase.gd" id="2_8peww"]
 [ext_resource type="Texture2D" uid="uid://cq6gcm3clhxf8" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/BrainJar/BrainJar_DefaultMaterial_BaseColor.png" id="2_wpb1v"]
 [ext_resource type="Texture2D" uid="uid://bsqle7qco4yfg" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/BrainJar/BrainJar_DefaultMaterial_Emissive.png" id="3_6l20t"]
 [ext_resource type="Texture2D" uid="uid://b70vp8a436iji" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/BrainJar/BrainJar_DefaultMaterial_Metallic.png" id="4_ol3ac"]
 [ext_resource type="Texture2D" uid="uid://c5pb1qat2rm2c" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/BrainJar/BrainJar_DefaultMaterial_Normal.png" id="5_2ke1v"]
 [ext_resource type="Texture2D" uid="uid://bpvf4k8kiyace" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/BrainJar/BrainJar_DefaultMaterial_Roughness.png" id="6_8q1sb"]
-[ext_resource type="PackedScene" uid="uid://clm22s3mtbem5" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/BrainJarClaw.tscn" id="7_6l20t"]
+[ext_resource type="ArrayMesh" uid="uid://ccq14ldymcyat" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/7_BrainJar/BrainJarClaw.obj" id="7_qmdp3"]
+[ext_resource type="Texture2D" uid="uid://cdi8gxa04ceyu" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/Claw/BrainJarClaw_DefaultMaterial_BaseColor.png" id="8_vs3c6"]
+[ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="9_8peww"]
+[ext_resource type="Texture2D" uid="uid://drt5xb43vwrri" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/Claw/BrainJarClaw_DefaultMaterial_Metallic.png" id="9_ofra6"]
+[ext_resource type="Texture2D" uid="uid://cu5mevgm0wjip" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/Claw/BrainJarClaw_DefaultMaterial_Normal.png" id="10_nlf1a"]
+[ext_resource type="Texture2D" uid="uid://cxrkqxl201h66" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/Claw/BrainJarClaw_DefaultMaterial_Roughness.png" id="11_llnhy"]
+[ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="15_va6w0"]
+[ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="16_eqov4"]
+[ext_resource type="PackedScene" uid="uid://crat6xosq5ywu" path="res://scenes/ui/brain_jar/brain_jar_health.tscn" id="17_5plmc"]
+
+[sub_resource type="Resource" id="Resource_va6w0"]
+script = ExtResource("2_8peww")
+metadata/_custom_type_script = "uid://bkhvy2ej22ebj"
+
+[sub_resource type="Resource" id="Resource_eqov4"]
+script = ExtResource("2_8peww")
+completion_type = 1
+metadata/_custom_type_script = "uid://bkhvy2ej22ebj"
+
+[sub_resource type="Resource" id="Resource_5plmc"]
+script = ExtResource("2_8peww")
+terminal_count = 5
+completion_type = 1
+metadata/_custom_type_script = "uid://bkhvy2ej22ebj"
+
+[sub_resource type="Resource" id="Resource_tlqwa"]
+script = ExtResource("2_8peww")
+terminal_count = 6
+completion_type = 2
+metadata/_custom_type_script = "uid://bkhvy2ej22ebj"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qmdp3"]
 albedo_texture = ExtResource("2_wpb1v")
@@ -22,18 +54,123 @@ normal_texture = ExtResource("5_2ke1v")
 height = 8.467653
 radius = 2.651851
 
-[node name="BrainJar" type="StaticBody3D" unique_id=561627710]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u3qcc"]
+albedo_texture = ExtResource("8_vs3c6")
+metallic = 1.0
+metallic_texture = ExtResource("9_ofra6")
+roughness_texture = ExtResource("11_llnhy")
+normal_enabled = true
+normal_texture = ExtResource("10_nlf1a")
 
-[node name="BrainJar_Mesh" type="MeshInstance3D" parent="." unique_id=229465353]
+[sub_resource type="Animation" id="Animation_ofra6"]
+resource_name = "After 4 Terminals"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BrainJarJar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 10, -100), Vector3(0, 10, 15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Claw/BrainJarClaw_Mesh:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -6, -100), Vector3(0, -6, 15)]
+}
+
+[sub_resource type="Animation" id="Animation_qmdp3"]
+resource_name = "Intro Animation"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Claw/BrainJarClaw_Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 2.8, 3, 3.2, 3.4333334, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -16, -100), Vector3(0, -16, 0), Vector3(0, -16, 0), Vector3(0, -6, 0), Vector3(0, -5, 0), Vector3(0, -6.4615383, 0), Vector3(0, -6, 0), Vector3(0, -6, 0), Vector3(0, -6, -100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BrainJarJar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2, 2.8, 3, 3.2, 3.4333334, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 10, 0), Vector3(0, 11, 0), Vector3(0, 9.538462, 0), Vector3(0, 10, 0), Vector3(0, 10, 0), Vector3(0, 10, -100)]
+}
+
+[sub_resource type="Animation" id="Animation_vs3c6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Claw/BrainJarClaw_Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -16, -100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BrainJarJar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ofra6"]
+_data = {
+&"After 4 Terminals": SubResource("Animation_ofra6"),
+&"Intro Animation": SubResource("Animation_qmdp3"),
+&"RESET": SubResource("Animation_vs3c6")
+}
+
+[node name="BrainJar" type="Node3D" unique_id=750473655 node_paths=PackedStringArray("health_bar", "health_component", "boss_animation_player")]
+script = ExtResource("1_fwyud")
+health_bar = NodePath("BrainJarHealth")
+health_component = NodePath("HealthComponent")
+fight_phases = Array[ExtResource("2_8peww")]([SubResource("Resource_va6w0"), SubResource("Resource_eqov4"), SubResource("Resource_5plmc"), SubResource("Resource_tlqwa")])
+damage_heal_delay = 2.5
+damage_heal_duration = 1.0
+boss_animation_player = NodePath("AnimationPlayer")
+intro_animation_name = &"Intro Animation"
+after_four_terminals_animation_name = &"After 4 Terminals"
+
+[node name="BrainJarJar" type="StaticBody3D" parent="." unique_id=275430662]
+
+[node name="BrainJar_Mesh" type="MeshInstance3D" parent="BrainJarJar" unique_id=229465353]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 3.5834951, 0)
+material_overlay = ExtResource("1_vs3c6")
 mesh = ExtResource("1_2h2a8")
 surface_material_override/0 = SubResource("StandardMaterial3D_qmdp3")
 
-[node name="BrainJar_Collision" type="CollisionShape3D" parent="." unique_id=1756320084]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 14.078677, 0)
-shape = SubResource("CylinderShape3D_2h2a8")
-
-[node name="SurroundingGlow" type="OmniLight3D" parent="." unique_id=1029619693]
+[node name="SurroundingGlow" type="OmniLight3D" parent="BrainJarJar" unique_id=1029619693]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
 light_color = Color(0.7411765, 1, 0.13725491, 1)
 light_energy = 0.75
@@ -44,16 +181,56 @@ shadow_normal_bias = 10.0
 shadow_opacity = 0.72
 omni_range = 45.730404
 
-[node name="JarFillLight" type="SpotLight3D" parent="." unique_id=1735536268]
+[node name="JarFillLight" type="SpotLight3D" parent="BrainJarJar" unique_id=1735536268]
 transform = Transform3D(1, 0, 0, 0, 0.97421676, 0.22561425, 0, -0.22561425, 0.97421676, 0, 14.036755, 15)
 light_color = Color(0.6117647, 1, 0.05490196, 1)
 light_energy = 11.778
 spot_range = 31.508793
 spot_angle = 48.924397
 
+[node name="HurtboxComponent" parent="BrainJarJar" unique_id=338394069 node_paths=PackedStringArray("team_component", "health_component") instance=ExtResource("9_8peww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 100)
+team_component = NodePath("../../TeamComponent")
+health_component = NodePath("../../HealthComponent")
+
+[node name="BrainJar_Collision" type="CollisionShape3D" parent="BrainJarJar/HurtboxComponent" unique_id=1756320084]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 24.078678, -100)
+shape = SubResource("CylinderShape3D_2h2a8")
+debug_color = Color(0.05260718, 0.65040857, 9.62615e-07, 0.41960785)
+
+[node name="Shields" type="StaticBody3D" parent="BrainJarJar" unique_id=1974368709]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 100)
+
+[node name="BrainJar_Collision" type="CollisionShape3D" parent="BrainJarJar/Shields" unique_id=46381169]
+transform = Transform3D(2.72, 0, 0, 0, 2.72, 0, 0, 0, 2.72, 0, 24.078678, -100)
+shape = SubResource("CylinderShape3D_2h2a8")
+debug_color = Color(0.05260718, 0.65040857, 9.62615e-07, 0.41960785)
+
 [node name="Claw" type="Node3D" parent="." unique_id=241411028]
 
-[node name="BrainJarClaw" parent="Claw" unique_id=1617358941 instance=ExtResource("7_6l20t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16, 1)
+[node name="BrainJarClaw_Mesh" type="MeshInstance3D" parent="Claw" unique_id=694983926]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -16, -100)
+mesh = ExtResource("7_qmdp3")
+surface_material_override/0 = SubResource("StandardMaterial3D_u3qcc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1132945858]
+libraries/ = SubResource("AnimationLibrary_ofra6")
+
+[node name="TeamComponent" parent="." unique_id=2076917082 instance=ExtResource("15_va6w0")]
+team = 2
+
+[node name="HealthComponent" parent="." unique_id=236252344 instance=ExtResource("16_eqov4")]
+current_health = 50.0
+max_health = 50.0
+healable = false
+
+[node name="BrainJarHealth" parent="." unique_id=785711252 instance=ExtResource("17_5plmc")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -206.0
+offset_right = 206.0
+grow_horizontal = 2
+
+[connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
+[connection signal="health_initialised" from="HealthComponent" to="." method="_on_health_component_health_initialised"]

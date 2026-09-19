@@ -19,9 +19,6 @@ roughness_texture = ExtResource("5_luo6o")
 normal_enabled = true
 normal_texture = ExtResource("4_2nocg")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_odtgt"]
-size = Vector3(7.614442, 2.786527, 2.16255)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v8xdy"]
 albedo_texture = ExtResource("7_dg882")
 metallic = 1.0
@@ -30,17 +27,12 @@ roughness_texture = ExtResource("10_6keds")
 normal_enabled = true
 normal_texture = ExtResource("9_dw2gc")
 
-[node name="ShipmentContainerBlue" type="StaticBody3D" unique_id=1687539826]
+[node name="ShipmentContainerBlue" type="Node3D" unique_id=1614219830]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="ShipmentContainer_Mesh" type="MeshInstance3D" parent="." unique_id=1385366026]
 mesh = ExtResource("1_ub0gi")
 surface_material_override/0 = SubResource("StandardMaterial3D_pab8s")
-
-[node name="ShipmentContainer_Collision" type="CollisionShape3D" parent="." unique_id=690726965]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3932635, 0)
-visible = false
-shape = SubResource("BoxShape3D_odtgt")
 
 [node name="ShipmentContainerBars_Mesh" type="MeshInstance3D" parent="." unique_id=439537080]
 mesh = ExtResource("6_qarrt")
