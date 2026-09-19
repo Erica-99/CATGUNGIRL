@@ -35,7 +35,7 @@ func enter() -> void:
 	blood_VFX.global_position = VFX_spawn.global_position
 	VFX_spawn_node.add_child(blood_VFX)
 	
-	AudioManager.play_sfx("gore_1")
+	AudioManager.play_sfx("enemy_death")
 	randomize()
 	var deathid = 'Death' + str(randi_range(1,3))
 	print(deathid)
