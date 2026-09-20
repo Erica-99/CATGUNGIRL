@@ -249,12 +249,6 @@ scale_max = 10.0
 scale_curve = SubResource("CurveTexture_fufqt")
 alpha_curve = SubResource("CurveTexture_bt0l5")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0mrkf"]
-cull_mode = 2
-
-[sub_resource type="QuadMesh" id="QuadMesh_bsw3o"]
-material = SubResource("StandardMaterial3D_0mrkf")
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_ps8eh"]
 atlas = ExtResource("3_qiyor")
 region = Rect2(600, 200, 200, 200)
@@ -444,7 +438,6 @@ one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_0mrkf")
-draw_pass_1 = SubResource("QuadMesh_bsw3o")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=801283218]
 transform = Transform3D(1.1924881e-08, 1, 0, -1, 1.1924881e-08, 0, 0, 0, 1, -0.10581371, -0.06666792, 0)
