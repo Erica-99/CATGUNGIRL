@@ -7,3 +7,6 @@ func _ready() -> void:
 
 func delete_self() -> void:
 	queue_free()
+
+func explode_sound() -> void:
+	AudioManager.play_sfx_at_location("missile_explode", self.global_position)

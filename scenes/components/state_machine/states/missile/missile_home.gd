@@ -1,6 +1,8 @@
 extends State
 class_name MissileHomeIn
 
+@export var missile_ref: CharacterBody3D
+
 @export var acceleration : float = 2.0
 @export var max_speed : float = 20
 @export var turn_rate : float = 2
@@ -13,6 +15,8 @@ func enter():
 	body = blackboard["actor"]
 	player = blackboard["player"]
 	current_speed = 0
+	
+	AudioManager.play_sfx_at_location("missile_lock", missile_ref.global_position)
 
 func physics_update(delta):
 	# Ensure player is present
