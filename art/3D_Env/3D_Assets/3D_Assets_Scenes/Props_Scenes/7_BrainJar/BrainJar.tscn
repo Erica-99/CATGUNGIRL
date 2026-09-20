@@ -151,13 +151,15 @@ _data = {
 &"RESET": SubResource("Animation_vs3c6")
 }
 
-[node name="BrainJar" type="Node3D" unique_id=750473655 node_paths=PackedStringArray("health_bar", "health_component", "boss_animation_player")]
+[node name="BrainJar" type="Node3D" unique_id=750473655 node_paths=PackedStringArray("health_bar", "health_component", "boss_mesh", "boss_animation_player")]
 script = ExtResource("1_fwyud")
 health_bar = NodePath("BrainJarHealth")
 health_component = NodePath("HealthComponent")
 fight_phases = Array[ExtResource("2_8peww")]([SubResource("Resource_va6w0"), SubResource("Resource_eqov4"), SubResource("Resource_5plmc"), SubResource("Resource_tlqwa")])
 damage_heal_delay = 2.5
 damage_heal_duration = 1.0
+boss_mesh = NodePath("BrainJarJar/BrainJar_Mesh")
+shield_overlay_material = ExtResource("1_vs3c6")
 boss_animation_player = NodePath("AnimationPlayer")
 intro_animation_name = &"Intro Animation"
 after_four_terminals_animation_name = &"After 4 Terminals"
@@ -202,7 +204,7 @@ debug_color = Color(0.05260718, 0.65040857, 9.62615e-07, 0.41960785)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 100)
 
 [node name="BrainJar_Collision" type="CollisionShape3D" parent="BrainJarJar/Shields" unique_id=46381169]
-transform = Transform3D(2.72, 0, 0, 0, 2.72, 0, 0, 0, 2.72, 0, 24.078678, -100)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.059928894, 24.078676, -99.94313)
 shape = SubResource("CylinderShape3D_2h2a8")
 debug_color = Color(0.05260718, 0.65040857, 9.62615e-07, 0.41960785)
 

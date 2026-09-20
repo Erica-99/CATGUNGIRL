@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://e7n5o8wneak4"]
+
+[ext_resource type="Shader" uid="uid://md4q8iih4m3u" path="res://art/TechArt/2_VFX/projectiles/projectile_alt/VS_particle_hard.tres" id="1_77dva"]
+[ext_resource type="Texture2D" uid="uid://bpnfbtotkjam6" path="res://art/TechArt/1_Shaders/Spatial/AuraOutline/tex/T_aura_noise.png" id="2_hfevn"]
+[ext_resource type="ArrayMesh" uid="uid://ooqdado48egc" path="res://art/TechArt/2_VFX/projectiles/projectile_sniper/models/donut.obj" id="3_umlm3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7dtgs"]
+render_priority = -1
+shader = ExtResource("1_77dva")
+shader_parameter/mask1_scale = Vector2(1, 1)
+shader_parameter/mask1_texture = ExtResource("2_hfevn")
+shader_parameter/proximity_fade_distance = 0.5
+
+[sub_resource type="Curve" id="Curve_t1u5r"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 2.0274656, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_fmxqt"]
+texture_mode = 1
+curve = SubResource("Curve_t1u5r")
+
+[sub_resource type="Gradient" id="Gradient_ahqbg"]
+offsets = PackedFloat32Array(0, 0.53107345)
+colors = PackedColorArray(1, 1, 1, 1, 0.255659, 0.255659, 0.255659, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tdmr3"]
+gradient = SubResource("Gradient_ahqbg")
+
+[sub_resource type="Curve" id="Curve_4hhsu"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_2guq6"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0.43681), 0.0, 4.32116, 0, 0, Vector2(1, 2), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_mwx78"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0.484663), 0.0, 4.29346, 0, 0, Vector2(1, 2), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_f13gm"]
+curve_x = SubResource("Curve_4hhsu")
+curve_y = SubResource("Curve_2guq6")
+curve_z = SubResource("Curve_mwx78")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rjfl7"]
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.8
+scale_max = 1.2
+scale_curve = SubResource("CurveXYZTexture_f13gm")
+color = Color(1, 0.5563965, 0.3828125, 1)
+color_ramp = SubResource("GradientTexture1D_tdmr3")
+alpha_curve = SubResource("CurveTexture_fmxqt")
+
+[node name="rings" type="GPUParticles3D" unique_id=726528489]
+material_override = SubResource("ShaderMaterial_7dtgs")
+cast_shadow = 0
+amount = 7
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_rjfl7")
+draw_pass_1 = ExtResource("3_umlm3")

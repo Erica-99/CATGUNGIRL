@@ -8,6 +8,7 @@
 [ext_resource type="Material" uid="uid://c2qi20n2bfyah" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/TerminalActive.tres" id="5_ypbdf"]
 [ext_resource type="Material" uid="uid://bpr70jmt82mc2" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/TerminalInactive.tres" id="6_wsdjh"]
 [ext_resource type="Script" uid="uid://4t3uo3s2mf8e" path="res://scenes/levels/Stages/camera_pan_node.gd" id="7_8vmub"]
+[ext_resource type="Material" uid="uid://fun6o58788i6" path="res://art/TechArt/2_VFX/BrainJarLuca/TerminalBaseShader.tres" id="8_52obh"]
 [ext_resource type="PackedScene" uid="uid://br8eqclc5secj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/Rails/RailFull.tscn" id="9_uoh3v"]
 [ext_resource type="PackedScene" uid="uid://bpjabu4plwqym" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/Rails/RailDiagonal.tscn" id="10_e2mff"]
 [ext_resource type="PackedScene" uid="uid://k4bj1vh7ofsj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorExit.tscn" id="11_a31f2"]
@@ -114,6 +115,7 @@
 [ext_resource type="Texture2D" uid="uid://clc8uf0t8tjpt" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/7_BrainJar/Platforms/PlatformsAll_DefaultMaterial_Roughness.png" id="89_78cli"]
 [ext_resource type="ArrayMesh" uid="uid://cmmb3ptciwade" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/7_BrainJar/BrainPlatformHalf.obj" id="90_m7hdr"]
 [ext_resource type="ArrayMesh" uid="uid://dogofkelwisn6" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/7_BrainJar/BrainPlatformCorner.obj" id="92_rucap"]
+[ext_resource type="ArrayMesh" uid="uid://bmutfrb651hqm" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/7_BrainJar/FacilityCoreHatch.obj" id="113_uv2lo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o5d64"]
 size = Vector3(20.489685, 17.532715, 13.72467)
@@ -140,6 +142,118 @@ volumetric_fog_length = 276.11
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oc6pb"]
 size = Vector3(16.487522, 3.2554748, 4.809863)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aoiei"]
+albedo_color = Color(0, 0, 0, 1)
+metallic = 1.0
+metallic_specular = 0.3
+roughness = 0.0
+
+[sub_resource type="Animation" id="Animation_s2yuo"]
+resource_name = "Active"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-123.903, 57.205, -40)]
+}
+
+[sub_resource type="Animation" id="Animation_o5d64"]
+resource_name = "CutsceneIdle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-123.942, 13.245, -3.039), Vector3(-123.942, 13.965, -3.039)]
+}
+
+[sub_resource type="Animation" id="Animation_oo4g3"]
+resource_name = "CutsceneLiftUp"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-123.942, 13.245, -3.039), Vector3(-123.942, 44.531, -16.458), Vector3(-123.942, 55, -40)]
+}
+
+[sub_resource type="Animation" id="Animation_ypbdf"]
+resource_name = "Cutscene_DropDown"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 2.5333333, 2.5666666, 2.6, 2.6333334, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-123.92689, 57.205368, -3.038515), Vector3(-123.927, 13.245, -3.039), Vector3(-125.042, 13.245, -3.039), Vector3(-124.012, 13.245, -3.039), Vector3(-123.067, 13.245, -3.039), Vector3(-123.942, 13.245, -3.039), Vector3(-123.942, 13.245, -3.039)]
+}
+
+[sub_resource type="Animation" id="Animation_wsdjh"]
+resource_name = "PreFightIdle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-123.92689, 57.205368, -3.038515)]
+}
+
+[sub_resource type="Animation" id="Animation_lqc63"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-123.92689, 57.205368, -3.038515)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oo4g3"]
+_data = {
+&"Active": SubResource("Animation_s2yuo"),
+&"CutsceneIdle": SubResource("Animation_o5d64"),
+&"CutsceneLiftUp": SubResource("Animation_oo4g3"),
+&"Cutscene_DropDown": SubResource("Animation_ypbdf"),
+&"PreFightIdle": SubResource("Animation_wsdjh"),
+&"RESET": SubResource("Animation_lqc63")
+}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0kj4w"]
 albedo_texture = ExtResource("34_uv2lo")
@@ -348,112 +462,6 @@ metallic_texture = SubResource("CompressedTexture2D_f0k0j")
 roughness_texture = SubResource("CompressedTexture2D_hbb0b")
 normal_enabled = true
 normal_texture = SubResource("CompressedTexture2D_bpya8")
-
-[sub_resource type="Animation" id="Animation_s2yuo"]
-resource_name = "Active"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-123.903, 57.205, -40)]
-}
-
-[sub_resource type="Animation" id="Animation_o5d64"]
-resource_name = "CutsceneIdle"
-length = 4.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-123.942, 13.245, -3.039), Vector3(-123.942, 13.965, -3.039)]
-}
-
-[sub_resource type="Animation" id="Animation_oo4g3"]
-resource_name = "CutsceneLiftUp"
-length = 5.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2, 4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(-123.942, 13.245, -3.039), Vector3(-123.942, 44.531, -16.458), Vector3(-123.942, 55, -40)]
-}
-
-[sub_resource type="Animation" id="Animation_ypbdf"]
-resource_name = "Cutscene_DropDown"
-length = 4.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.5, 2.5333333, 2.5666666, 2.6, 2.6333334, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-123.92689, 57.205368, -3.038515), Vector3(-123.927, 13.245, -3.039), Vector3(-125.042, 13.245, -3.039), Vector3(-124.012, 13.245, -3.039), Vector3(-123.067, 13.245, -3.039), Vector3(-123.942, 13.245, -3.039), Vector3(-123.942, 13.245, -3.039)]
-}
-
-[sub_resource type="Animation" id="Animation_wsdjh"]
-resource_name = "PreFightIdle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-123.92689, 57.205368, -3.038515)]
-}
-
-[sub_resource type="Animation" id="Animation_lqc63"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-123.92689, 57.205368, -3.038515)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_oo4g3"]
-_data = {
-&"Active": SubResource("Animation_s2yuo"),
-&"CutsceneIdle": SubResource("Animation_o5d64"),
-&"CutsceneLiftUp": SubResource("Animation_oo4g3"),
-&"Cutscene_DropDown": SubResource("Animation_ypbdf"),
-&"PreFightIdle": SubResource("Animation_wsdjh"),
-&"RESET": SubResource("Animation_lqc63")
-}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43uhj"]
 albedo_texture = ExtResource("86_amhjc")
@@ -696,6 +704,7 @@ terminal_light = NodePath("SpotLight3D51")
 terminal_visuals = [NodePath("BrainJarTerminal24"), NodePath("BrainJarTerminal23"), NodePath("BrainJarTerminal6")]
 active_material = ExtResource("5_ypbdf")
 inactive_material = ExtResource("6_wsdjh")
+material_overlay = ExtResource("8_52obh")
 
 [node name="BrainJarTerminal24" parent="Interactive/Terminals/TerminalProps/TerminalGroup1" unique_id=1172441246 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.0606601, 0, 1.0606601, 0, 1.5, 0, -1.0606601, 0, 1.0606601, -227, 40.2, -10)
@@ -721,6 +730,7 @@ terminal_light = NodePath("SpotLight3D52")
 terminal_visuals = [NodePath("BrainJarTerminal8"), NodePath("BrainJarTerminal19"), NodePath("BrainJarTerminal20")]
 active_material = ExtResource("5_ypbdf")
 inactive_material = ExtResource("6_wsdjh")
+material_overlay = ExtResource("8_52obh")
 
 [node name="BrainJarTerminal8" parent="Interactive/Terminals/TerminalProps/TerminalGroup2" unique_id=832899734 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -179, 40.2, -8)
@@ -746,6 +756,7 @@ terminal_light = NodePath("SpotLight3D64")
 terminal_visuals = [NodePath("BrainJarTerminal2"), NodePath("BrainJarTerminal16"), NodePath("BrainJarTerminal15")]
 active_material = ExtResource("5_ypbdf")
 inactive_material = ExtResource("6_wsdjh")
+material_overlay = ExtResource("8_52obh")
 
 [node name="BrainJarTerminal2" parent="Interactive/Terminals/TerminalProps/TerminalGroup3" unique_id=1115267105 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -69, 40.2, -8)
@@ -771,6 +782,7 @@ terminal_light = NodePath("SpotLight3D54")
 terminal_visuals = [NodePath("BrainJarTerminal4"), NodePath("BrainJarTerminal12"), NodePath("BrainJarTerminal11")]
 active_material = ExtResource("5_ypbdf")
 inactive_material = ExtResource("6_wsdjh")
+material_overlay = ExtResource("8_52obh")
 
 [node name="BrainJarTerminal4" parent="Interactive/Terminals/TerminalProps/TerminalGroup4" unique_id=1770246225 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -19, 40.2, -8)
@@ -796,6 +808,7 @@ terminal_light = NodePath("SpotLight3D50")
 terminal_visuals = [NodePath("BrainJarTerminal5"), NodePath("BrainJarTerminal22"), NodePath("BrainJarTerminal21")]
 active_material = ExtResource("5_ypbdf")
 inactive_material = ExtResource("6_wsdjh")
+material_overlay = ExtResource("8_52obh")
 
 [node name="BrainJarTerminal5" parent="Interactive/Terminals/TerminalProps/TerminalGroup5" unique_id=538193210 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -229, 10.2, -8)
@@ -821,6 +834,7 @@ terminal_light = NodePath("SpotLight3D49")
 terminal_visuals = [NodePath("BrainJarTerminal7"), NodePath("BrainJarTerminal18"), NodePath("BrainJarTerminal17")]
 active_material = ExtResource("5_ypbdf")
 inactive_material = ExtResource("6_wsdjh")
+material_overlay = ExtResource("8_52obh")
 
 [node name="BrainJarTerminal7" parent="Interactive/Terminals/TerminalProps/TerminalGroup6" unique_id=355513012 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -179, 10.2, -8)
@@ -846,6 +860,7 @@ terminal_light = NodePath("SpotLight3D63")
 terminal_visuals = [NodePath("BrainJarTerminal"), NodePath("BrainJarTerminal14"), NodePath("BrainJarTerminal13")]
 active_material = ExtResource("5_ypbdf")
 inactive_material = ExtResource("6_wsdjh")
+material_overlay = ExtResource("8_52obh")
 
 [node name="BrainJarTerminal" parent="Interactive/Terminals/TerminalProps/TerminalGroup7" unique_id=366402759 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -69, 10.2, -8)
@@ -871,6 +886,7 @@ terminal_light = NodePath("SpotLight3D53")
 terminal_visuals = [NodePath("BrainJarTerminal3"), NodePath("BrainJarTerminal10"), NodePath("BrainJarTerminal9")]
 active_material = ExtResource("5_ypbdf")
 inactive_material = ExtResource("6_wsdjh")
+material_overlay = ExtResource("8_52obh")
 
 [node name="BrainJarTerminal3" parent="Interactive/Terminals/TerminalProps/TerminalGroup8" unique_id=1670510788 instance=ExtResource("31_oxwui")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -19, 10.2, -8)
@@ -1361,6 +1377,50 @@ enemy_manager = NodePath("../EnemyManager")
 [node name="EnemyDoorFrame8" parent="Enemies" unique_id=1951694659 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("32_rjdl7")]
 transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, -239, 40.2, -14.999997)
 enemy_manager = NodePath("../EnemyManager")
+
+[node name="BrainJarComponents" type="Node3D" parent="Enemies" unique_id=543131545]
+
+[node name="FacilityCore" parent="Enemies/BrainJarComponents" unique_id=913940677 instance=ExtResource("30_ewsem")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
+
+[node name="BrainJar" parent="Enemies/BrainJarComponents" unique_id=561627710 node_paths=PackedStringArray("terminals", "facility_core", "facility_core_hatch", "intro_trigger") instance=ExtResource("36_mxr2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124.00054, -0.0007839203, -14.999931)
+terminals = NodePath("../../../Interactive/Terminals/TerminalProps")
+facility_core = NodePath("../FacilityCore")
+facility_core_hatch = NodePath("FacilityCoreHatch")
+intro_trigger = NodePath("../../../CameraPanNode1/Area")
+
+[node name="FacilityCoreHatch" type="MeshInstance3D" parent="Enemies/BrainJarComponents/BrainJar" unique_id=1945856805]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.6166277, 0)
+mesh = ExtResource("113_uv2lo")
+surface_material_override/0 = SubResource("StandardMaterial3D_aoiei")
+
+[node name="ReactorPipeL" parent="Enemies/BrainJarComponents" unique_id=965618633 instance=ExtResource("29_rm42m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
+
+[node name="ReactorPipeR" parent="Enemies/BrainJarComponents" unique_id=1220722081 instance=ExtResource("29_rm42m")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
+
+[node name="BrainPipeL" parent="Enemies/BrainJarComponents" unique_id=455552606 instance=ExtResource("71_mywdw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
+
+[node name="BrainPipeR" parent="Enemies/BrainJarComponents" unique_id=1748327767 instance=ExtResource("71_mywdw")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
+
+[node name="WiresL" parent="Enemies/BrainJarComponents" unique_id=290541380 instance=ExtResource("72_8vmub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
+
+[node name="WiresR" parent="Enemies/BrainJarComponents" unique_id=2139112390 instance=ExtResource("72_8vmub")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
+
+[node name="BrainJar_Root_P" type="Node3D" parent="Enemies" unique_id=705346624]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.92689, 57.205368, -3.038515)
+
+[node name="Brainjar Anims" type="AnimationPlayer" parent="Enemies/BrainJar_Root_P" unique_id=1787086687]
+libraries/ = SubResource("AnimationLibrary_oo4g3")
+
+[node name="BrainFace" parent="Enemies/BrainJar_Root_P" unique_id=636526495 instance=ExtResource("2_o5d64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -103)
 
 [node name="Props" type="Node3D" parent="." unique_id=1376791517]
 
@@ -3732,15 +3792,6 @@ surface_material_override/2 = SubResource("StandardMaterial3D_umdcy")
 surface_material_override/3 = SubResource("StandardMaterial3D_umdcy")
 surface_material_override/4 = SubResource("StandardMaterial3D_umdcy")
 surface_material_override/5 = SubResource("StandardMaterial3D_umdcy")
-
-[node name="BrainJar_Root_P" type="Node3D" parent="Environment" unique_id=705346624]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.92689, 57.205368, -3.038515)
-
-[node name="Brainjar Anims" type="AnimationPlayer" parent="Environment/BrainJar_Root_P" unique_id=1787086687]
-libraries/ = SubResource("AnimationLibrary_oo4g3")
-
-[node name="BrainFace" parent="Environment/BrainJar_Root_P" unique_id=636526495 instance=ExtResource("2_o5d64")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -103)
 
 [node name="BrainJarRoom" type="Node3D" parent="Environment" unique_id=712403107]
 
@@ -7505,35 +7556,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.962, 0, -15.052)
 
 [node name="DoorExit" parent="Environment/BrainJarRoom/ENV" unique_id=863191425 instance=ExtResource("11_a31f2")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 0, 0)
-
-[node name="BrainJarComponents" type="Node3D" parent="Environment/BrainJarRoom" unique_id=543131545]
-
-[node name="FacilityCore" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=913940677 instance=ExtResource("30_ewsem")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
-
-[node name="BrainJar" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=561627710 node_paths=PackedStringArray("terminals", "facility_core", "intro_trigger") instance=ExtResource("36_mxr2x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124.00054, -0.0007839203, -14.999931)
-terminals = NodePath("../../../../Interactive/Terminals/TerminalProps")
-facility_core = NodePath("../FacilityCore")
-intro_trigger = NodePath("../../../../CameraPanNode1/Area")
-
-[node name="ReactorPipeL" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=965618633 instance=ExtResource("29_rm42m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
-
-[node name="ReactorPipeR" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=1220722081 instance=ExtResource("29_rm42m")]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
-
-[node name="BrainPipeL" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=455552606 instance=ExtResource("71_mywdw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
-
-[node name="BrainPipeR" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=1748327767 instance=ExtResource("71_mywdw")]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
-
-[node name="WiresL" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=290541380 instance=ExtResource("72_8vmub")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
-
-[node name="WiresR" parent="Environment/BrainJarRoom/BrainJarComponents" unique_id=2139112390 instance=ExtResource("72_8vmub")]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
 
 [node name="VFX" type="Node3D" parent="." unique_id=1761748796]
 

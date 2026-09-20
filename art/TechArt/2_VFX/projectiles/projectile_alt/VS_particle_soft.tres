@@ -1,0 +1,40 @@
+[gd_resource type="VisualShader" format=3 uid="uid://b2vqiukoud0ne"]
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_dhlml"]
+parameter_name = "mask1_texture"
+texture_type = 1
+texture_filter = 2
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_xmyfn"]
+expanded_output_ports = [0]
+source = 5
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_c6oux"]
+expanded_output_ports = [0]
+input_name = "color"
+
+[sub_resource type="VisualShaderNodeSmoothStep" id="VisualShaderNodeSmoothStep_0xgiq"]
+
+[sub_resource type="VisualShaderNodeBillboard" id="VisualShaderNodeBillboard_1k1bh"]
+billboard_type = 3
+keep_scale = true
+
+[resource]
+flags/unshaded = true
+flags/shadows_disabled = true
+flags/ambient_light_disabled = true
+flags/fog_disabled = true
+nodes/vertex/2/node = SubResource("VisualShaderNodeBillboard_1k1bh")
+nodes/vertex/2/position = Vector2(-200, 300)
+nodes/vertex/connections = PackedInt32Array(2, 0, 0, 10)
+nodes/fragment/0/position = Vector2(780, -440)
+nodes/fragment/5/node = SubResource("VisualShaderNodeTexture2DParameter_dhlml")
+nodes/fragment/5/position = Vector2(-460, -100)
+nodes/fragment/6/node = SubResource("VisualShaderNodeTexture_xmyfn")
+nodes/fragment/6/position = Vector2(-80, 20)
+nodes/fragment/7/node = SubResource("VisualShaderNodeInput_c6oux")
+nodes/fragment/7/position = Vector2(-120, -220)
+nodes/fragment/8/node = SubResource("VisualShaderNodeSmoothStep_0xgiq")
+nodes/fragment/8/position = Vector2(320, -80)
+nodes/fragment/connections = PackedInt32Array(5, 0, 6, 2, 7, 4, 8, 0, 6, 0, 8, 2, 7, 0, 0, 0, 8, 0, 0, 1)
