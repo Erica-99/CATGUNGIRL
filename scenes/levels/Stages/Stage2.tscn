@@ -10,8 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://catre0c2fcyak" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt01/PrisonRailCranePrt01Cable_Mixed_AO.png" id="10_qn4fw"]
 [ext_resource type="Texture2D" uid="uid://c4ptaq0bjw1k5" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt01/PrisonRailCranePrt01Cable_Height.png" id="11_3rmdv"]
 [ext_resource type="Texture2D" uid="uid://c12ijio6s5sv" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt02/PrisonRailCranePrt02_Mixed_AO.png" id="11_036lr"]
+[ext_resource type="PackedScene" uid="uid://kc58ovt5ugti" path="res://scenes/components/tutorial_trigger/tutorial_trigger.tscn" id="11_er66k"]
 [ext_resource type="Texture2D" uid="uid://c3giaasttot1l" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt03/PrisonRailCranePrt03_Base_color.png" id="11_ktb7l"]
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="12_4vd0f"]
+[ext_resource type="Script" uid="uid://crdw2cwt2ffb5" path="res://resources/tutorial_steps/tutorial_step.gd" id="12_bnsy6"]
 [ext_resource type="PackedScene" uid="uid://bh1bw5y78peor" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/PrisonCrane.tscn" id="12_djn4x"]
 [ext_resource type="Texture2D" uid="uid://dx0lxycx66r5p" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt02/PrisonRailCranePrt02_Height.png" id="12_ifn3l"]
 [ext_resource type="Texture2D" uid="uid://dos4sx8mv7217" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt01/PrisonRailCranePrt01Cable_Base_metalness.png" id="12_ljbqk"]
@@ -129,6 +131,25 @@ adjustment_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qqjj2"]
 size = Vector3(1, 8.005737, 1)
+
+[sub_resource type="Resource" id="Resource_t6bai"]
+script = ExtResource("12_bnsy6")
+title = "Gun Swapping"
+description_kbm = "You've found a new gun!
+
+Swap between your guns by pressing [img height=48]res://art/UI/Glyphs/KBM/Dark/Q_Key_Dark.png[/img]/[img height=48]res://art/UI/Glyphs/KBM/Dark/Mouse_Middle_Key_Dark.png[/img], or by pressing the corresponding number key for that gun.
+
+[img height=48]res://art/UI/Glyphs/KBM/Dark/1_Key_Dark.png[/img] Pistol
+[img height=48]res://art/UI/Glyphs/KBM/Dark/2_Key_Dark.png[/img] Shotgun"
+description_gamepad = "You've found a new gun!
+
+Swap between your guns by pressing [img height=48]res://art/UI/Glyphs/Xbox/XboxSeriesX_Y.png[/img]."
+description_playstation = "You've found a new gun!
+
+Swap between your guns by pressing [img height=48]res://art/UI/Glyphs/PS5/PS5_Triangle.png[/img]."
+task = ""
+completion_mode = 2
+metadata/_custom_type_script = "uid://crdw2cwt2ffb5"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ixfw5"]
 albedo_texture = ExtResource("9_o4acx")
@@ -688,12 +709,17 @@ omni_range = 18.392912
 
 [node name="EventTrigger" parent="EVENT_TRIGGERS" unique_id=1311781014 instance=ExtResource("10_axvnb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.531136, -23.887568, 0)
-_signal_parameters = ["OpeningTutorial"]
+_signal_parameters = ["WeaponSwapping"]
 signal_name = "initiate_tutorial_sequence"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EVENT_TRIGGERS/EventTrigger" unique_id=724333614]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.958435, 0)
 shape = SubResource("BoxShape3D_qqjj2")
+
+[node name="TutorialTrigger" parent="EVENT_TRIGGERS" unique_id=432983102 instance=ExtResource("11_er66k")]
+sequence_name = "WeaponSwapping"
+steps = Array[ExtResource("12_bnsy6")]([SubResource("Resource_t6bai")])
+autostart = false
 
 [node name="Enemies" type="Node3D" parent="." unique_id=218442623]
 
