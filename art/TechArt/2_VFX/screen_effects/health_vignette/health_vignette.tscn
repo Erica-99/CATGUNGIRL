@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dr68e2vg6njr3"]
+
+[ext_resource type="Script" uid="uid://bxfr88cjcr5jq" path="res://art/TechArt/2_VFX/screen_effects/health_vignette/health_vignette.gd" id="1_hv"]
+[ext_resource type="Material" uid="uid://dli1ugahqislj" path="res://art/TechArt/2_VFX/screen_effects/low_health/prefabs/M_low_health.tres" id="2_low"]
+[ext_resource type="Material" uid="uid://dde38cki7gg8q" path="res://art/TechArt/2_VFX/screen_effects/take_damage/prefabs/M_take_damage.tres" id="3_dmg"]
+
+[node name="HealthVignette" type="CanvasLayer" unique_id=914561492 node_paths=PackedStringArray("low_health_rect", "damage_rect")]
+layer = 6
+script = ExtResource("1_hv")
+low_health_rect = NodePath("LowHealth")
+damage_rect = NodePath("TakeDamage")
+low_health_threshold = 0.45
+low_health_min_strength = 0.261
+low_health_curve = 0.3535543
+low_health_fade = 0.25
+damage_flash_time = 0.29
+
+[node name="LowHealth" type="ColorRect" parent="." unique_id=2100935839]
+material = ExtResource("2_low")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TakeDamage" type="ColorRect" parent="." unique_id=1519155874]
+material = ExtResource("3_dmg")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
