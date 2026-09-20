@@ -1,54 +1,35 @@
 [gd_resource type="VisualShader" format=3 uid="uid://md4q8iih4m3u"]
 
 [sub_resource type="VisualShaderNodeProximityFade" id="VisualShaderNodeProximityFade_f3akq"]
-linked_parent_graph_frame = 21
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_iiw5r"]
-linked_parent_graph_frame = 21
 operator = 2
 
-[sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_d3t5n"]
-size = Vector2(853.0001, 651.00006)
-title = "MASK"
-attached_nodes = PackedInt32Array(3, 4, 5, 6)
-
-[sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_atu3f"]
-size = Vector2(824.0004, 835)
-title = "DISSOLVE"
-attached_nodes = PackedInt32Array(7, 8, 9, 10, 11)
-
 [sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_mb2an"]
-linked_parent_graph_frame = 20
 parameter_name = "mask1_scale"
 default_value_enabled = true
 default_value = Vector2(1, 1)
 
 [sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_ljxvg"]
-linked_parent_graph_frame = 20
 function = 1
 
 [sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_ro5ih"]
-linked_parent_graph_frame = 20
 parameter_name = "mask1_texture"
 texture_type = 1
 texture_repeat = 2
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_uwgix"]
 expanded_output_ports = [0]
-linked_parent_graph_frame = 20
 source = 5
 texture_type = 1
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_rv224"]
 expanded_output_ports = [0]
-linked_parent_graph_frame = 21
 input_name = "color"
 
 [sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_oadh5"]
-linked_parent_graph_frame = 21
 
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_rfwxd"]
-linked_parent_graph_frame = 21
 parameter_name = "proximity_fade_distance"
 default_value_enabled = true
 default_value = 0.5
@@ -64,7 +45,7 @@ nodes/fragment/3/position = Vector2(-1680, 300)
 nodes/fragment/4/node = SubResource("VisualShaderNodeUVFunc_ljxvg")
 nodes/fragment/4/position = Vector2(-1380, 260)
 nodes/fragment/5/node = SubResource("VisualShaderNodeTexture2DParameter_ro5ih")
-nodes/fragment/5/position = Vector2(-1680, 520)
+nodes/fragment/5/position = Vector2(-1680, 580)
 nodes/fragment/6/node = SubResource("VisualShaderNodeTexture_uwgix")
 nodes/fragment/6/position = Vector2(-1100, 300)
 nodes/fragment/7/node = SubResource("VisualShaderNodeInput_rv224")
@@ -77,8 +58,4 @@ nodes/fragment/10/node = SubResource("VisualShaderNodeProximityFade_f3akq")
 nodes/fragment/10/position = Vector2(-360, 320)
 nodes/fragment/11/node = SubResource("VisualShaderNodeFloatOp_iiw5r")
 nodes/fragment/11/position = Vector2(-100, 140)
-nodes/fragment/20/node = SubResource("VisualShaderNodeFrame_d3t5n")
-nodes/fragment/20/position = Vector2(-1720, 220)
-nodes/fragment/21/node = SubResource("VisualShaderNodeFrame_atu3f")
-nodes/fragment/21/position = Vector2(-720, -220)
 nodes/fragment/connections = PackedInt32Array(3, 0, 4, 1, 4, 0, 6, 0, 5, 0, 6, 2, 7, 4, 8, 0, 6, 1, 8, 1, 9, 0, 10, 0, 8, 0, 11, 0, 10, 0, 11, 1, 7, 0, 0, 0, 11, 0, 0, 1)
