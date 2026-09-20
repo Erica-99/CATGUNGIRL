@@ -27,6 +27,7 @@ func enter():
 	angular_v = Vector3(0, 0, randf_range(-0.5, 0.5))
 	timer = 0.0
 	
+	AudioManager.play_sfx_at_location("missile_launch", missile_ref.global_position)
 
 func physics_update(delta):
 	timer += delta
