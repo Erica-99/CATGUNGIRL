@@ -14,7 +14,14 @@ extends Node3D
 
 @onready var hand_pivot = $ROOT_P/GUN_P
 @onready var gun_pivot = $ROOT_P/GUN_P/GUN_AIM
-@onready var gun_holder: Node3D = $"../GunHolder"
+@onready var gun_holder: Node3D = $"../GUNS_P/GunHolder"
+
+@onready var guns_pivot = $"../GUNS_P"
+@onready var sniper_pivot = $"../GUNS_P/GunHolder/Sniper/GUN_AIM"
+@onready var shotgun_pivot = $"../GUNS_P/GunHolder/Shotgun/GUN_AIM"
+@onready var pistol_pivot = $"../GUNS_P/GunHolder/Pistol/GUN_AIM"
+
+
 
 @onready var Playeroot = $".."
 var current_action 
@@ -83,12 +90,21 @@ func _on_player_facing_changed(new_facing: float) -> void:
 	gun_holder._direction_changed(new_facing)
 	if new_facing == -1.0:
 		torso_pivot.scale.x = -1
-		gun_pivot.scale.x = 1
-		gun_pivot.scale.y = -1
+		sniper_pivot.scale.x = 1
+		sniper_pivot.scale.y = -1
+		shotgun_pivot.scale.x = 1
+		shotgun_pivot.scale.y = -1
+		pistol_pivot.scale.x = 1
+		pistol_pivot.scale.y = -1
+		
 	else:
+		sniper_pivot.scale.x = 1
+		sniper_pivot.scale.y = 1
+		shotgun_pivot.scale.x = 1
+		shotgun_pivot.scale.y = 1
+		pistol_pivot.scale.x = 1
+		pistol_pivot.scale.y = 1
 		torso_pivot.scale.x = 1
-		gun_pivot.scale.x = 1
-		gun_pivot.scale.y = 1
 	pass # Replace with function body.
 
 

@@ -82,7 +82,7 @@ var player_invisible_last_frame: bool = false
 var blackboard: Dictionary
 @onready var health_component = $HealthComponent
 @onready var hurtbox_component = $HurtboxComponent
-@onready var gun_holder: Node3D = $GunHolder
+@onready var gun_holder: Node3D = $GUNS_P/GunHolder
 
 ## This is to know what scene to reload when the player dies
 var currentScene
