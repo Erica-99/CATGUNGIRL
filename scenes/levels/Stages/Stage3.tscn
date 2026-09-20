@@ -50,7 +50,6 @@
 [ext_resource type="Texture2D" uid="uid://cbj50u5clm68" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCranePrt01/CellCranePrt.01_Base_metalness.png" id="42_cey8m"]
 [ext_resource type="PackedScene" uid="uid://rlu4e0ohmycv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwaySingleMidPrison.tscn" id="43_lj0hr"]
 [ext_resource type="Texture2D" uid="uid://c5dpqlvrx7hdy" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCranePrt01/CellCranePrt.01_Normal_OpenGL.png" id="43_n0rqr"]
-[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="43_onijq"]
 [ext_resource type="Texture2D" uid="uid://dbmdinp3oks6s" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCranePrt01/CellCranePrt.01_Specular_roughness.png" id="44_r7lcn"]
 [ext_resource type="PackedScene" uid="uid://dld0qjmojk1t8" path="res://scenes/actors/enemies/enemy_manager/enemy_manager.tscn" id="46_ix7p3"]
 [ext_resource type="Texture2D" uid="uid://ckus68wdcngxf" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCranePrt02/CellCranePrt.02_Base_color.png" id="46_r7lcn"]
@@ -103,9 +102,6 @@
 [ext_resource type="PackedScene" uid="uid://dp7w74qay70c" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/World_Lore/Accept_Bliss.tscn" id="101_4nat2"]
 [ext_resource type="PackedScene" uid="uid://ctulbbuyu35x" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/World_Lore/BJ_Watches.tscn" id="102_6v0vc"]
 [ext_resource type="PackedScene" uid="uid://bsekmkigv7je" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/Phantom_Vs_Opera.tscn" id="103_ufdkb"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_aiqfw"]
-size = Vector3(1, 12.658752, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qyq0w"]
 size = Vector3(28.873047, 19.592224, 10)
@@ -1142,7 +1138,6 @@ heightmap_texture = ExtResource("27_6h3re")
 points = PackedVector3Array(3.651531, 0.100005, 3.356353, 3.651531, -0.000293, 3.356353, 3.651531, 0.100005, -3.356354, 0, 0.100005, 3.356353, 0, -0.000293, 3.356353, 3.651531, -0.000293, -3.356354, 0, 0.100005, -3.356354, 0, -0.000293, -3.356354)
 
 [node name="StageTwo" type="Node3D" unique_id=282651265]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.958496, -2.3043976, -2.7261047)
 
 [node name="RailCamera" type="Node3D" parent="." unique_id=1750321250]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.623193, 31.221176)
@@ -1163,26 +1158,6 @@ collision_mask = 129
 
 [node name="DATES_POPUPS" type="Node" parent="." unique_id=1021129407]
 
-[node name="ElevatorPopup1" parent="DATES_POPUPS" unique_id=1311781014 instance=ExtResource("43_onijq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.686966, 2.9467964, 0)
-_signal_parameters = [1]
-signal_name = "activate_popup"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DATES_POPUPS/ElevatorPopup1" unique_id=822542712]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.453186, 3.2217712, 3)
-shape = SubResource("BoxShape3D_aiqfw")
-debug_color = Color(0.919504, 0.13431916, 0.6161928, 0.41960785)
-
-[node name="ElevatorPopup2" parent="DATES_POPUPS" unique_id=962811605 instance=ExtResource("43_onijq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.71146, 68.2495, 0)
-_signal_parameters = [2]
-signal_name = "activate_popup"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DATES_POPUPS/ElevatorPopup2" unique_id=1272388420]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5165863, 3.2217712, 3)
-shape = SubResource("BoxShape3D_aiqfw")
-debug_color = Color(0.919504, 0.13431916, 0.6161928, 0.41960785)
-
 [node name="Enemies" type="Node3D" parent="." unique_id=732558009]
 
 [node name="EmptyManager" parent="Enemies" unique_id=1088774491 instance=ExtResource("46_ix7p3")]
@@ -1199,13 +1174,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136, 130, 3)
 [node name="EnemyManager" parent="Enemies" unique_id=18369620 instance=ExtResource("46_ix7p3")]
 
 [node name="Convict" parent="Enemies/EnemyManager" unique_id=1506947017 instance=ExtResource("48_gs35e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.62843, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.62843, 2, 3)
 
 [node name="Convict2" parent="Enemies/EnemyManager" unique_id=812056497 instance=ExtResource("48_gs35e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83, 2, 3)
 
 [node name="Convict3" parent="Enemies/EnemyManager" unique_id=617763196 instance=ExtResource("48_gs35e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114, 13, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114, 13, 3)
 
 [node name="Convict6" parent="Enemies/EnemyManager" unique_id=1448404921 instance=ExtResource("48_gs35e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.63096, 69.250336, 3)
@@ -3877,6 +3852,8 @@ transform = Transform3D(0.99984187, 0, 0.017783968, 0, 1, 0, -0.017783968, 0, 0.
 
 [node name="PhantomVsOpera" parent="2D_Props/Posters" unique_id=705704835 instance=ExtResource("103_ufdkb")]
 transform = Transform3D(0.83722275, 0, -0.546862, 0, 1, 0, 0.546862, 0, 0.83722275, 140.12776, 129.14658, -4.1850066)
+
+[node name="VFX" type="Node3D" parent="." unique_id=1607142219]
 
 [connection signal="removecameratween" from="Interactive/CameraPanNode" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="Interactive/CameraPanNode" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]

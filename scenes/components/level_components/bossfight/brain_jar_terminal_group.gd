@@ -9,6 +9,9 @@ class_name BrainJarTerminalGroup
 @export var active_material: Material
 @export var inactive_material: Material
 
+@export_category("Terminal Overlay VFX")
+@export var material_overlay: Material
+
 var terminal_meshes: Array[MeshInstance3D] = []
 
 func _ready() -> void:
@@ -22,10 +25,14 @@ func _ready() -> void:
 
 func set_active_visual(is_active: bool) -> void:
 	var selected_material: Material = active_material if is_active else inactive_material
+	var selected_overlay: Material = material_overlay if is_active else null
 	
-	if selected_material != null:
-		for terminal_mesh in terminal_meshes:
+	for terminal_mesh in terminal_meshes:
+		if selected_material != null:
 			terminal_mesh.set_surface_override_material(0, selected_material)
+		
+		terminal_mesh.material_overlay = selected_overlay
+		print("Applied overlay to ", terminal_mesh.name, ": ", selected_overlay)
 	
 	if terminal_light != null:
 		terminal_light.visible = is_active

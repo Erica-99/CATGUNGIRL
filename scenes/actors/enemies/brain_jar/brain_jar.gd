@@ -23,6 +23,7 @@ var fight_state: FightState = FightState.TERMINALS
 @export var terminals: Node3D
 ## Gun sacrifice object
 @export var facility_core: Node3D
+@export var facility_core_hatch: Node3D
 var gun_sacrifice_interactable: Node
 ## Order and requirements of fight phases
 @export var fight_phases: Array[BrainJarPhase] = []
@@ -30,6 +31,10 @@ var gun_sacrifice_interactable: Node
 @export_category("Damage Healing")
 @export var damage_heal_delay: float = 0.15
 @export var damage_heal_duration: float = 0.75
+
+@export_category("Shield Visual VFX")
+@export var boss_mesh: MeshInstance3D
+@export var shield_overlay_material: Material
 
 @export_category("Boss Animation")
 @export var boss_animation_player: AnimationPlayer
@@ -129,10 +134,17 @@ func _disable_shields(signal_val = false):
 	if !signal_val:
 		shields.disabled = true
 		health_component.damageable = true
-
+		
+		if boss_mesh != null:
+			boss_mesh.material_overlay = null
+	
 func _enable_shields():
 	shields.disabled = false
 	health_component.damageable = false
+	
+	if boss_mesh != null:
+		boss_mesh.material_overlay = shield_overlay_material
+	
 	EventManager.shield_enabled_status.emit(true)
 
 func _start_fight() -> void:
@@ -256,6 +268,10 @@ func _set_gun_sacrifice_enabled(enabled: bool) -> void:
 		return
 	
 	gun_sacrifice_interactable.set("enabled", enabled)
+	
+	# Open/close hatch: visible when closed (enabled = false), hidden when open (enabled = true)
+	if facility_core_hatch != null:
+		facility_core_hatch.visible = !enabled
 	
 	if !enabled:
 		EventManager.system_message.emit("", false)
