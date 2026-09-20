@@ -42,7 +42,6 @@
 [ext_resource type="Texture2D" uid="uid://bij2a38mj3nfv" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt03/PrisonRailCranePrt03_Height.png" id="21_f2j4k"]
 [ext_resource type="Texture2D" uid="uid://bem848xqtm77e" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt02/PrisonRailCranePrt02_Base_metalness.png" id="21_opnci"]
 [ext_resource type="Texture2D" uid="uid://ce76k8i0gn0n2" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt02/PrisonRailCranePrt02_Normal_OpenGL.png" id="22_6q6ja"]
-[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="22_cj1de"]
 [ext_resource type="Texture2D" uid="uid://dvwrmftjhu57d" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt03/PrisonRailCranePrt03_Base_metalness.png" id="22_jx5wa"]
 [ext_resource type="Texture2D" uid="uid://dp1g4o4dio8lb" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt01/PrisonRailCranePrt01Cable_Specular_roughness.png" id="22_voksi"]
 [ext_resource type="Texture2D" uid="uid://bnjmepajwcxfv" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt02/PrisonRailCranePrt02_Specular_roughness.png" id="23_5c544"]
@@ -186,9 +185,6 @@ fog_depth_curve = 0.5000009
 fog_depth_begin = 123.1
 fog_depth_end = 274.5
 adjustment_enabled = true
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_fxtw2"]
-size = Vector3(9.30127, 7.2834473, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mausv"]
 albedo_texture = ExtResource("17_0n1ur")
@@ -2151,16 +2147,6 @@ environment = SubResource("Environment_nym5h")
 [node name="VFX" type="Node3D" parent="." unique_id=974720759]
 
 [node name="DATES_POPUPS" type="Node" parent="." unique_id=983173156]
-
-[node name="ConvictPopup" parent="DATES_POPUPS" unique_id=1311781014 instance=ExtResource("22_cj1de")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.02658, 2.9467964, 0)
-_signal_parameters = [0]
-signal_name = "activate_popup"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DATES_POPUPS/ConvictPopup" unique_id=496084148]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.58653, 1.079, 0)
-shape = SubResource("BoxShape3D_fxtw2")
-debug_color = Color(0.919504, 0.13431916, 0.6161928, 0.41960785)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=1148700225]
 
