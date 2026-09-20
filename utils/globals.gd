@@ -38,6 +38,8 @@ const LEVEL_PATHS: Dictionary = {
 
 
 func _ready() -> void:
+	unlocked_guns = [0]
+	
 	EventManager.connect("increase_insanity_rank", _add_one_to_insanity)
 	EventManager.connect("increase_meme_index", _increment_global_meme_index)
 	EventManager.connect("base_scene_updated", _update_base_scene)
@@ -57,6 +59,9 @@ func _unlock_gun(gun_name: String) -> void:
 		var gun_index = gun_indexes[gun_name]
 		if gun_index not in unlocked_guns:
 			unlocked_guns.append(gun_index)
+
+func _reset_game() -> void:
+	unlocked_guns = [0]
 
 # legit updates the base scene reference
 # allows other entities to reference this scene

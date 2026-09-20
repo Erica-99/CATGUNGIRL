@@ -1,6 +1,282 @@
 [gd_scene format=3 uid="uid://0pq5rnqkr4to"]
 
+[ext_resource type="Texture2D" uid="uid://b8xjjli0nctmv" path="res://art/2d_assets/ui/MainMenu/TitleSide3.png" id="1_4ttpn"]
+[ext_resource type="Script" uid="uid://cnepfgf6h44c2" path="res://scenes/ui/end_screen.gd" id="1_wgyui"]
+[ext_resource type="Texture2D" uid="uid://c5ep8fh5f04th" path="res://art/2d_assets/ui/MainMenu/TeamPlaceholderLogo.png" id="2_n8r4t"]
+
+[sub_resource type="Animation" id="Animation_n8r4t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CGG:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RichTextLabel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect:color:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CGG:modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("RichTextLabel:theme_override_colors/default_color:a")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Control:modulate:a")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_wgyui"]
+resource_name = "game_end"
+length = 12.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CGG:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2, 3, 5.5, 6.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 1.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RichTextLabel:theme_override_colors/default_color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2, 3, 5.5, 6.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 1.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CGG:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RichTextLabel:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Control:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Control:modulate:a")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 7.5, 8.5, 11, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 1.0, 0.0]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(12.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_restart_game"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_53v5j"]
+resource_name = "hidden"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CGG:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RichTextLabel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e4cmn"]
+_data = {
+&"RESET": SubResource("Animation_n8r4t"),
+&"game_end": SubResource("Animation_wgyui"),
+&"hidden": SubResource("Animation_53v5j")
+}
+
 [node name="EndScreen" type="CanvasLayer" unique_id=1133412871]
+script = ExtResource("1_wgyui")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1159644936]
 anchors_preset = 15
@@ -10,3 +286,185 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 color = Color(0, 0, 0, 1)
+
+[node name="CGG" type="TextureRect" parent="." unique_id=1288357432]
+visible = false
+offset_left = 533.0
+offset_top = 148.0
+offset_right = 2533.0
+offset_bottom = 1176.0
+texture = ExtResource("1_4ttpn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1373444588]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -281.0
+offset_top = -30.0
+offset_right = 283.0
+offset_bottom = 203.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "Thank you for playing our demo!
+
+We hope you had fun."
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="." unique_id=2071656655]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=1469051239]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 396.0
+offset_top = 334.0
+offset_right = 1495.0
+offset_bottom = 1006.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer" unique_id=957524200]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/VBoxContainer" unique_id=1477958719]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Kyden Hurst"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Control/HBoxContainer/VBoxContainer" unique_id=1072646784]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Erica Thompson"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Control/HBoxContainer/VBoxContainer" unique_id=1777115418]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Luca Scaramuzzino"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Control/HBoxContainer/VBoxContainer" unique_id=1406228589]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Mason Krysko"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="Control/HBoxContainer/VBoxContainer" unique_id=1360873480]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Alvin Ngu"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="Control/HBoxContainer/VBoxContainer" unique_id=1191803179]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Miles Anderson"
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="Control/HBoxContainer/VBoxContainer" unique_id=1750372898]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Eddie Zheng"
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="Control/HBoxContainer/VBoxContainer" unique_id=1910840403]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Corey Chan"
+horizontal_alignment = 1
+
+[node name="Label9" type="Label" parent="Control/HBoxContainer/VBoxContainer" unique_id=1747733086]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Travis Stella"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/HBoxContainer" unique_id=1762710294]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/VBoxContainer2" unique_id=2114939009]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Colby Roberts"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Control/HBoxContainer/VBoxContainer2" unique_id=822180539]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Emily Hocking"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Control/HBoxContainer/VBoxContainer2" unique_id=1348522797]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Fernando Diaz Escobar"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Control/HBoxContainer/VBoxContainer2" unique_id=1446337528]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Danny Cao"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="Control/HBoxContainer/VBoxContainer2" unique_id=723293681]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Andrew Baseggio"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="Control/HBoxContainer/VBoxContainer2" unique_id=1867381644]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Michael Adamopoulos"
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="Control/HBoxContainer/VBoxContainer2" unique_id=1030898543]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Thomas Hodge"
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="Control/HBoxContainer/VBoxContainer2" unique_id=1782467207]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Raphael Zoiti (Composer)"
+horizontal_alignment = 1
+
+[node name="Label9" type="Label" parent="Control/HBoxContainer/VBoxContainer2" unique_id=2078023194]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Nancee Kilpatrik (Voices)"
+horizontal_alignment = 1
+
+[node name="TeamPlaceholderLogo" type="TextureRect" parent="Control" unique_id=1101957291]
+layout_mode = 0
+offset_left = 803.0
+offset_top = 28.0
+offset_right = 1144.094
+offset_bottom = 332.0
+texture = ExtResource("2_n8r4t")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=848572177]
+libraries/ = SubResource("AnimationLibrary_e4cmn")
+autoplay = &"hidden"
