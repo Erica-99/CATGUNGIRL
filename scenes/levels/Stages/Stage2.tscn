@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cear303gej657"]
 
-[ext_resource type="Script" uid="uid://dawdwjrkswtqg" path="res://scenes/levels/Stages/panning_camera.gd" id="1_75qhx"]
+[ext_resource type="Script" path="res://scenes/levels/Stages/panning_camera.gd" id="1_75qhx"]
+[ext_resource type="Script" uid="uid://4glb1vhq6wmq" path="res://scenes/levels/Stages/stage.gd" id="1_axvnb"]
 [ext_resource type="PackedScene" uid="uid://cue2gdrvswqwe" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Mesh/FloorMeshEdge.tscn" id="3_fporf"]
 [ext_resource type="PackedScene" uid="uid://co7fptrpmkvog" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/A_SparesAndPlaceholders/LightCeiling.tscn" id="8_564b6"]
 [ext_resource type="PackedScene" uid="uid://k4bj1vh7ofsj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorExit.tscn" id="9_f12kt"]
@@ -88,7 +89,7 @@
 [ext_resource type="PackedScene" uid="uid://4rsfb5kh40wj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/B_Collisions/45Ramp.tscn" id="79_vwyjr"]
 [ext_resource type="PackedScene" uid="uid://dbm4o7gs6g22" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorLargeBasic(Locked).tscn" id="80_75qhx"]
 [ext_resource type="PackedScene" uid="uid://dw60nghbaa5w6" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Disintegrated.tscn" id="81_fqval"]
-[ext_resource type="Script" uid="uid://4t3uo3s2mf8e" path="res://scenes/levels/Stages/camera_pan_node.gd" id="82_esa2w"]
+[ext_resource type="Script" path="res://scenes/levels/Stages/camera_pan_node.gd" id="82_esa2w"]
 [ext_resource type="PackedScene" uid="uid://bxoxckf5ed1td" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Scrub_Crashed.tscn" id="82_lx8in"]
 [ext_resource type="PackedScene" uid="uid://xwmm12eihkbq" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Meat_lumps.tscn" id="83_cddd1"]
 [ext_resource type="PackedScene" uid="uid://556rwa2pdmor" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Lying_Convict.tscn" id="84_448ww"]
@@ -330,6 +331,8 @@ normal_texture = ExtResource("95_hwccm")
 size = Vector3(2.121054, 4.283148, 2.121054)
 
 [node name="StageTwo" type="Node3D" unique_id=1996110792]
+script = ExtResource("1_axvnb")
+music_ref = "music_med"
 
 [node name="RailCamera" type="Node3D" parent="." unique_id=814891532]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.623193, 31.221176)
