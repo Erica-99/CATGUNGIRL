@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://xvdux0xbg54m"]
 
-[ext_resource type="Script" uid="uid://dawdwjrkswtqg" path="res://scenes/levels/Stages/panning_camera.gd" id="1_6h3re"]
+[ext_resource type="Script" path="res://scenes/levels/Stages/panning_camera.gd" id="1_6h3re"]
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="1_6qhdc"]
+[ext_resource type="Script" uid="uid://4glb1vhq6wmq" path="res://scenes/levels/Stages/stage.gd" id="1_ei5br"]
 [ext_resource type="PackedScene" uid="uid://bt342tsy3excl" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/ElevatorPanopticon.tscn" id="2_1woh0"]
 [ext_resource type="PackedScene" uid="uid://cvybenralblx6" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/PanopticonBridge.tscn" id="3_t5wms"]
 [ext_resource type="PackedScene" uid="uid://0jvpofncsmg4" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/FloorShootingPanopticon.tscn" id="5_lj0hr"]
@@ -46,7 +47,7 @@
 [ext_resource type="Texture2D" uid="uid://c6uci2c212727" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCranePrt01/CellCranePrt.01_Mixed_AO.png" id="40_jaog8"]
 [ext_resource type="PackedScene" uid="uid://cf56x5mffkcgr" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwayNoneMidPrison.tscn" id="41_ah5gb"]
 [ext_resource type="Texture2D" uid="uid://brgmm5r772s87" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCranePrt01/CellCranePrt.01_Height.png" id="41_kcm3w"]
-[ext_resource type="Script" uid="uid://4t3uo3s2mf8e" path="res://scenes/levels/Stages/camera_pan_node.gd" id="41_murac"]
+[ext_resource type="Script" path="res://scenes/levels/Stages/camera_pan_node.gd" id="41_murac"]
 [ext_resource type="Texture2D" uid="uid://cbj50u5clm68" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCranePrt01/CellCranePrt.01_Base_metalness.png" id="42_cey8m"]
 [ext_resource type="PackedScene" uid="uid://rlu4e0ohmycv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwaySingleMidPrison.tscn" id="43_lj0hr"]
 [ext_resource type="Texture2D" uid="uid://c5dpqlvrx7hdy" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCranePrt01/CellCranePrt.01_Normal_OpenGL.png" id="43_n0rqr"]
@@ -63,7 +64,7 @@
 [ext_resource type="PackedScene" uid="uid://dh1ouxldd8xy5" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwayNoneBasePrison.tscn" id="52_vyn8v"]
 [ext_resource type="PackedScene" uid="uid://doqjtagulhsfs" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwaySingleBasePrison.tscn" id="53_lk7tg"]
 [ext_resource type="PackedScene" uid="uid://dfpvd6sa7ppg6" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/PanopticonWallsAlternate.tscn" id="53_vrydf"]
-[ext_resource type="Script" uid="uid://05ax0kjhvug4" path="res://scenes/levels/Stages/falling_cell_p.gd" id="55_tb4re"]
+[ext_resource type="Script" path="res://scenes/levels/Stages/falling_cell_p.gd" id="55_tb4re"]
 [ext_resource type="Texture2D" uid="uid://8vrgg6gsi71t" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCranePrt04/CellCranePrt.04_Base_color.png" id="61_x7ttn"]
 [ext_resource type="Texture2D" uid="uid://dy7di4av807b1" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCranePrt03/CellCranePrt.03_Base_color.png" id="62_liwko"]
 [ext_resource type="Texture2D" uid="uid://cr0jqtdrxf65a" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCranePrt04/CellCranePrt.04_Mixed_AO.png" id="62_mrxti"]
@@ -1137,7 +1138,9 @@ heightmap_texture = ExtResource("27_6h3re")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6h3re"]
 points = PackedVector3Array(3.651531, 0.100005, 3.356353, 3.651531, -0.000293, 3.356353, 3.651531, 0.100005, -3.356354, 0, 0.100005, 3.356353, 0, -0.000293, 3.356353, 3.651531, -0.000293, -3.356354, 0, 0.100005, -3.356354, 0, -0.000293, -3.356354)
 
-[node name="StageTwo" type="Node3D" unique_id=282651265]
+[node name="StageThree" type="Node3D" unique_id=282651265]
+script = ExtResource("1_ei5br")
+music_ref = "music_high"
 
 [node name="RailCamera" type="Node3D" parent="." unique_id=1750321250]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.623193, 31.221176)

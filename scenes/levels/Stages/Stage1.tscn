@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dhd47imi6qm6a"]
 
-[ext_resource type="Script" uid="uid://dawdwjrkswtqg" path="res://scenes/levels/Stages/panning_camera.gd" id="1_3j6m3"]
+[ext_resource type="Script" path="res://scenes/levels/Stages/panning_camera.gd" id="1_3j6m3"]
+[ext_resource type="Script" uid="uid://4glb1vhq6wmq" path="res://scenes/levels/Stages/stage.gd" id="1_6gdgj"]
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="1_ruvr1"]
 [ext_resource type="PackedScene" uid="uid://dsp60dlsho3gr" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorBasic.tscn" id="2_ohrdm"]
 [ext_resource type="PackedScene" uid="uid://cue2gdrvswqwe" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Mesh/FloorMeshEdge.tscn" id="3_b1r7n"]
@@ -115,7 +116,7 @@
 [ext_resource type="Resource" uid="uid://i475dd553b7q" path="res://resources/tutorial_steps/stage_1_intro_tutorial/grapple_tutorial_step.tres" id="92_3k85b"]
 [ext_resource type="PackedScene" uid="uid://xwmm12eihkbq" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Meat_lumps.tscn" id="92_4scdv"]
 [ext_resource type="PackedScene" uid="uid://co7fptrpmkvog" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/A_SparesAndPlaceholders/LightCeiling.tscn" id="96_g3qdj"]
-[ext_resource type="Script" uid="uid://4t3uo3s2mf8e" path="res://scenes/levels/Stages/camera_pan_node.gd" id="123_emoyc"]
+[ext_resource type="Script" path="res://scenes/levels/Stages/camera_pan_node.gd" id="123_emoyc"]
 [ext_resource type="PackedScene" uid="uid://c10iyc1w0tn8i" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/WallObservation.tscn" id="123_tatg8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3nqmm"]
@@ -572,6 +573,8 @@ _data = {
 }
 
 [node name="StageOne" type="Node3D" unique_id=1668100898]
+script = ExtResource("1_6gdgj")
+music_ref = "music_low"
 
 [node name="RailCamera" type="Node3D" parent="." unique_id=1199109627]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.623193, 31.221176)

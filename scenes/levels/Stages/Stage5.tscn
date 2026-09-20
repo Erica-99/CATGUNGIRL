@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://35uiv1vpc6lf"]
 
-[ext_resource type="Script" uid="uid://dawdwjrkswtqg" path="res://scenes/levels/Stages/panning_camera.gd" id="1_5csjs"]
+[ext_resource type="Script" path="res://scenes/levels/Stages/panning_camera.gd" id="1_5csjs"]
+[ext_resource type="Script" uid="uid://4glb1vhq6wmq" path="res://scenes/levels/Stages/stage.gd" id="1_dwhu5"]
 [ext_resource type="PackedScene" uid="uid://d1isfmus58oku" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/IndustrialLight1.tscn" id="2_4rc05"]
 [ext_resource type="PackedScene" uid="uid://2q8156sdqttw" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/OilDrumBlack.tscn" id="2_toh17"]
 [ext_resource type="PackedScene" uid="uid://bmllqy5j541cg" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/OilDrumDefault.tscn" id="2_ufe4p"]
@@ -18,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://c4yfokojr0teg" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/AcidVat/AcidVat_DefaultMaterial_Metallic.png" id="10_crkb1"]
 [ext_resource type="PackedScene" uid="uid://bpub13ubiqu2e" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/4_Laboratory/FloorBrokenSideLaboratory.tscn" id="10_yi4fc"]
 [ext_resource type="ArrayMesh" uid="uid://cievitltb64t" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/6_Laboratory/AcidVatRoom/AcidVatAcid.obj" id="11_6rbe4"]
-[ext_resource type="Script" uid="uid://4t3uo3s2mf8e" path="res://scenes/levels/Stages/camera_pan_node.gd" id="11_blh81"]
+[ext_resource type="Script" path="res://scenes/levels/Stages/camera_pan_node.gd" id="11_blh81"]
 [ext_resource type="Texture2D" uid="uid://dxckx3qudkmxq" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/AcidVat/AcidVat_DefaultMaterial_Normal.png" id="11_kktfr"]
 [ext_resource type="PackedScene" uid="uid://c5xx8wdnj5ww3" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/4_Laboratory/DoorwayNoneMidLaboratory.tscn" id="11_q88yf"]
 [ext_resource type="Texture2D" uid="uid://bx5xob55x4ifb" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/AcidVat/AcidVat_DefaultMaterial_Roughness.png" id="12_5wjmh"]
@@ -412,7 +413,9 @@ points = PackedVector3Array(-0.11306763, 2, 0.14998043, -0.16348314, 1.9498825, 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_eqrhj"]
 points = PackedVector3Array(-0.11306763, 2, 0.14998043, -0.16348314, 1.9498825, 0.2, -0.08321047, 1.9167972, 0.2, -0.033284664, 1.9669147, 0.14998043, -0.11306763, 2, 0.04998042, -4.8878236, 2, 0.14998043, -4.8374085, 1.9498825, 0.2, -0.050415993, 1.8367267, 0.2, -9.536743e-07, 1.8872358, 0.14998043, -0.033284664, 1.9669147, 0.04998042, -0.08321047, 1.9167972, 0, -0.16348314, 1.9498825, 0, -4.8878236, 2, 0.04998042, -4.9676065, 1.9669147, 0.14998043, -4.917681, 1.9167972, 0.2, -0.050415993, 0.9629992, 0.2, -9.536743e-07, 1.8872358, 0.04998042, -9.536743e-07, 0.912686, 0.14998043, -0.050415993, 1.8367267, 0, -4.8374085, 1.9498825, 0, -4.917681, 1.9167972, 0, -4.9676065, 1.9669147, 0.04998042, -5.000401, 1.8872358, 0.14998043, -4.950475, 1.8367267, 0.2, -0.08321047, 0.8829287, 0.2, -9.536743e-07, 0.912686, 0.04998042, -0.033284664, 0.8328113, 0.14998043, -0.050415993, 0.9629992, 0, -4.950475, 1.8367267, 0, -5.000401, 1.8872358, 0.04998042, -5.000401, 0.912686, 0.14998043, -4.950475, 0.9629992, 0.2, -0.8502059, 0, 0.2, -0.033284664, 0.8328113, 0.04998042, -0.08321047, 0.8829287, 0, -0.8002801, 0, 0.14998043, -4.950475, 0.9629992, 0, -5.000401, 0.912686, 0.04998042, -4.9676065, 0.8328113, 0.14998043, -4.917681, 0.8829287, 0.2, -4.154601, 0, 0.2, -0.8002801, 0, 0.04998042, -0.8502059, 0, 0, -4.917681, 0.8829287, 0, -4.9676065, 0.8328113, 0.04998042, -4.204527, 0, 0.14998043, -4.154601, 0, 0, -4.204527, 0, 0.04998042)
 
-[node name="Stage4" type="Node3D" unique_id=1167791451]
+[node name="StageFive" type="Node3D" unique_id=1167791451]
+script = ExtResource("1_dwhu5")
+music_ref = "music_high"
 
 [node name="RailCamera" type="Node3D" parent="." unique_id=711019821]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.623193, 31.221176)
