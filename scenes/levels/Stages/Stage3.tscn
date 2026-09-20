@@ -1138,7 +1138,6 @@ heightmap_texture = ExtResource("27_6h3re")
 points = PackedVector3Array(3.651531, 0.100005, 3.356353, 3.651531, -0.000293, 3.356353, 3.651531, 0.100005, -3.356354, 0, 0.100005, 3.356353, 0, -0.000293, 3.356353, 3.651531, -0.000293, -3.356354, 0, 0.100005, -3.356354, 0, -0.000293, -3.356354)
 
 [node name="StageTwo" type="Node3D" unique_id=282651265]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.958496, -2.3043976, -2.7261047)
 
 [node name="RailCamera" type="Node3D" parent="." unique_id=1750321250]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.623193, 31.221176)
@@ -1175,13 +1174,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136, 130, 3)
 [node name="EnemyManager" parent="Enemies" unique_id=18369620 instance=ExtResource("46_ix7p3")]
 
 [node name="Convict" parent="Enemies/EnemyManager" unique_id=1506947017 instance=ExtResource("48_gs35e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.62843, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.62843, 2, 3)
 
 [node name="Convict2" parent="Enemies/EnemyManager" unique_id=812056497 instance=ExtResource("48_gs35e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83, 2, 3)
 
 [node name="Convict3" parent="Enemies/EnemyManager" unique_id=617763196 instance=ExtResource("48_gs35e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114, 13, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114, 13, 3)
 
 [node name="Convict6" parent="Enemies/EnemyManager" unique_id=1448404921 instance=ExtResource("48_gs35e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.63096, 69.250336, 3)
@@ -3853,6 +3852,8 @@ transform = Transform3D(0.99984187, 0, 0.017783968, 0, 1, 0, -0.017783968, 0, 0.
 
 [node name="PhantomVsOpera" parent="2D_Props/Posters" unique_id=705704835 instance=ExtResource("103_ufdkb")]
 transform = Transform3D(0.83722275, 0, -0.546862, 0, 1, 0, 0.546862, 0, 0.83722275, 140.12776, 129.14658, -4.1850066)
+
+[node name="VFX" type="Node3D" parent="." unique_id=1607142219]
 
 [connection signal="removecameratween" from="Interactive/CameraPanNode" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="Interactive/CameraPanNode" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
