@@ -104,7 +104,13 @@ surface_material_override/0 = SubResource("StandardMaterial3D_kkoim")
 
 [node name="PanopticonConnectorBase_Collision" type="CollisionShape3D" parent="." unique_id=714399658]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.581, 0, 0)
+visible = false
 shape = SubResource("ConvexPolygonShape3D_56bpn")
+
+[node name="PanopticonConnectorBase_CollisionGPU" type="GPUParticlesCollisionBox3D" parent="." unique_id=734089587]
+transform = Transform3D(1, 0, 0, 0, 0.550235, 0, 0, 0, 3.323577, -0.06379688, 0.0477331, 0)
+visible = false
+size = Vector3(1.9960632, 0.18615723, 2)
 
 [node name="PanopticonConnectorBasePrt01_Static" type="StaticBody3D" parent="." unique_id=962217161]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.926, -0.05, 0)
@@ -122,7 +128,13 @@ surface_material_override/0 = SubResource("StandardMaterial3D_xp0ep")
 
 [node name="PanopticonConnectorBasePrt02_Collision" type="CollisionShape3D" parent="PanopticonConnectorBasePrt01_Static" unique_id=860605030]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0002567768, 0.05, 0)
+visible = false
 shape = SubResource("ConvexPolygonShape3D_esdbt")
+
+[node name="PanopticonConnectorBasePrt02_CollisionGPU" type="GPUParticlesCollisionBox3D" parent="PanopticonConnectorBasePrt01_Static" unique_id=899649381]
+transform = Transform3D(1, 0, 0, 0, 0.550235, 0, 0, 0, 3.323577, 1.8141481, 0.09895131, 0)
+visible = false
+size = Vector3(3.6385498, 0.18615723, 2)
 
 [node name="PanopticonConnectorBasePrt02_Static" type="StaticBody3D" parent="PanopticonConnectorBasePrt01_Static" unique_id=2024603186]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6516933, -0.0002104193, 0)
@@ -135,6 +147,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_dedja")
 
 [node name="PanopticonConnectorBasePrt03_Collision" type="CollisionShape3D" parent="PanopticonConnectorBasePrt01_Static/PanopticonConnectorBasePrt02_Static" unique_id=1392501887]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05021042, 0)
+visible = false
 shape = SubResource("ConvexPolygonShape3D_cvhde")
 
 [node name="PanopticonConnectorBasePrt04_Mesh" type="MeshInstance3D" parent="PanopticonConnectorBasePrt01_Static/PanopticonConnectorBasePrt02_Static" unique_id=1311944880]
@@ -144,4 +157,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_8cl86")
 
 [node name="PanopticonConnectorBasePrt04_Collision" type="CollisionShape3D" parent="PanopticonConnectorBasePrt01_Static/PanopticonConnectorBasePrt02_Static" unique_id=589391508]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05021042, 0)
+visible = false
 shape = SubResource("ConvexPolygonShape3D_3awxa")
+
+[node name="PanopticonConnectorBasePrt04_CollisionGPU" type="GPUParticlesCollisionBox3D" parent="PanopticonConnectorBasePrt01_Static/PanopticonConnectorBasePrt02_Static" unique_id=1055284973]
+transform = Transform3D(1, 0, 0, 0, 0.550235, 0, 0, 0, 3.323577, 1.9644775, 0.103269815, 0)
+visible = false
+size = Vector3(3.939209, 0.18615723, 2)

@@ -11,18 +11,10 @@ roughness_texture = ExtResource("4_rtljp")
 normal_enabled = true
 normal_texture = ExtResource("3_00jpi")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6xa1q"]
-points = PackedVector3Array(-0.6279245, 0.0002, -0.62792456, 0.6399921, 0.21027246, 0.64, 0.5599926, 1.031938, 0.56, 0.6399921, 0.21027246, -0.64, -0.56, 1.0319375, 0.5599995, -0.56, 1.0319375, -0.5599995, -0.6279245, 0.0002, 0.62792456, 0.5599926, 1.031938, -0.56, 0.62791675, 0.0002, 0.62792456, 0.62791675, 0.0002, -0.62792456, -0.63999987, 0.21027246, -0.64, -0.63999987, 0.21027246, 0.64)
-
-[node name="BrickPallet" type="StaticBody3D" unique_id=1901038926]
+[node name="BrickPallet" type="Node3D" unique_id=1640243542]
 
 [node name="BrickPallet_Mesh" type="MeshInstance3D" parent="." unique_id=1064963668]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("1_cbur7")
 surface_material_override/0 = SubResource("StandardMaterial3D_slmc7")
 surface_material_override/1 = SubResource("StandardMaterial3D_slmc7")
-
-[node name="BrickPallet_Collision" type="CollisionShape3D" parent="." unique_id=2035511876]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-visible = false
-shape = SubResource("ConvexPolygonShape3D_6xa1q")

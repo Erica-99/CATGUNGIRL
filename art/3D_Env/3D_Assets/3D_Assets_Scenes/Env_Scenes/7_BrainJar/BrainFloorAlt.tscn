@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://2sfngtaod2fr"]
+
+[ext_resource type="ArrayMesh" uid="uid://7rd4u5wd6l00" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/7_BrainJar/BrainFloorAlt.obj" id="1_ei1di"]
+[ext_resource type="Texture2D" uid="uid://ekso5bnecmr" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/7_BrainJar/FloorSquareAlt/BrainFloorAlt_DefaultMaterial_BaseColor.png" id="2_tlnpb"]
+[ext_resource type="Texture2D" uid="uid://3qe853ioo202" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/7_BrainJar/FloorSquareAlt/BrainFloorAlt_DefaultMaterial_Metallic.png" id="3_f0k0j"]
+[ext_resource type="Texture2D" uid="uid://d0htvyyjctbyp" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/7_BrainJar/FloorSquareAlt/BrainFloorAlt_DefaultMaterial_Normal.png" id="4_bpya8"]
+[ext_resource type="Texture2D" uid="uid://dg6yw3dy7c4nd" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/7_BrainJar/FloorSquareAlt/BrainFloorAlt_DefaultMaterial_Roughness.png" id="5_hbb0b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_umdcy"]
+albedo_texture = ExtResource("2_tlnpb")
+metallic = 1.0
+metallic_texture = ExtResource("3_f0k0j")
+roughness_texture = ExtResource("5_hbb0b")
+normal_enabled = true
+normal_texture = ExtResource("4_bpya8")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tlnpb"]
+load_path = "res://.godot/imported/BrainFloorAlt_DefaultMaterial_BaseColor.png-7499adba8d038a29a5847cda51970d03.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f0k0j"]
+load_path = "res://.godot/imported/BrainFloorAlt_DefaultMaterial_Metallic.png-987360f6c395203a1c381c0d6c923496.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bpya8"]
+load_path = "res://.godot/imported/BrainFloorAlt_DefaultMaterial_Normal.png-c03f85d7d0ae168e14834343feb362ed.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hbb0b"]
+load_path = "res://.godot/imported/BrainFloorAlt_DefaultMaterial_Roughness.png-ec023d090792db60b4818a8d067ba33b.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vldg0"]
+transparency = 1
+albedo_texture = SubResource("CompressedTexture2D_tlnpb")
+metallic = 1.0
+metallic_texture = SubResource("CompressedTexture2D_f0k0j")
+roughness_texture = SubResource("CompressedTexture2D_hbb0b")
+normal_enabled = true
+normal_texture = SubResource("CompressedTexture2D_bpya8")
+
+[node name="BrainFloorAlt" type="Node3D" unique_id=1963815982]
+
+[node name="BrainFloorAlt_Mesh" type="MeshInstance3D" parent="." unique_id=1803041733]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = ExtResource("1_ei1di")
+surface_material_override/0 = SubResource("StandardMaterial3D_umdcy")
+surface_material_override/1 = SubResource("StandardMaterial3D_vldg0")
+surface_material_override/2 = SubResource("StandardMaterial3D_umdcy")
+surface_material_override/3 = SubResource("StandardMaterial3D_umdcy")
+surface_material_override/4 = SubResource("StandardMaterial3D_umdcy")
+surface_material_override/5 = SubResource("StandardMaterial3D_umdcy")
+
+[node name="BrainFloorAlt_CollisionGPU" type="GPUParticlesCollisionBox3D" parent="." unique_id=1192718422]
+transform = Transform3D(1, 0, 0, 0, 0.19229996, 0, 0, 0, 1, -2.4989662, -0.2492447, 2.4974518)
+visible = false
+size = Vector3(5.0000076, 2.574646, 5.0117493)

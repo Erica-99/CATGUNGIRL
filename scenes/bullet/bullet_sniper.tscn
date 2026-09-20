@@ -1,0 +1,12 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://bx3yqkplme1o" path="res://scenes/bullet/bullet.tscn" id="1_bullet"]
+[ext_resource type="PackedScene" uid="uid://dxtd47mq1s4ru" path="res://art/TechArt/2_VFX/projectiles/projectile_sniper/projectile_sniper_fast.tscn" id="2_vfx"]
+
+[node name="bullet_sniper" instance=ExtResource("1_bullet")]
+
+[node name="AnimatedSprite3D" parent="." index="3"]
+visible = false
+
+[node name="VFX" parent="." instance=ExtResource("2_vfx")]
+transform = Transform3D(0.667, 0, 0, 0, 0.667, 0, 0, 0, 0.667, 0, 0, 0)

@@ -240,7 +240,9 @@ func _try_fire() -> void:
 	
 	#Play Gun Animation
 	_play_shoot_animation()
-	
+
+	EventManager.primary_fire_used.emit(gun_name)
+
 	# handle perfect shots etc - probably needs to be decomposed better, but ok for proof of concept and initial work
 	# override in other children of GUN!!!!
 	_shoot_handler()

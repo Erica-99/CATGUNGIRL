@@ -14,17 +14,9 @@ roughness_texture = ExtResource("4_htbid")
 normal_enabled = true
 normal_texture = ExtResource("3_tq58w")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_3nv8i"]
-size = Vector3(0.4, 0.234291, 0.305764)
-
-[node name="CardboardBox" type="StaticBody3D" unique_id=1296518487]
+[node name="CardboardBox" type="Node3D" unique_id=875909910]
 
 [node name="CardboardBox_Mesh" type="MeshInstance3D" parent="." unique_id=972944508]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_vsth7")
 mesh = ExtResource("1_k7fo2")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1455661549]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.234291, 0)
-visible = false
-shape = SubResource("BoxShape3D_3nv8i")

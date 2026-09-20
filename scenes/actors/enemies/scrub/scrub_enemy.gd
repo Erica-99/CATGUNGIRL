@@ -16,6 +16,7 @@ extends CharacterBody3D
 
 @onready var VFX_spawn = $Explosion_target
 
+var movement_plane_z: float
 var is_dead: bool = false
 var explosion_gpu_emitter = preload("res://art/TechArt/1_Shaders/explosion_test.tscn")
 
@@ -74,6 +75,7 @@ var blackboard: Dictionary
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	movement_plane_z = global_position.z
 	health_comp.set_max_health(health)
 	health_comp.set_health(health)
 	health_comp.knocked_back.connect(take_knockback)
@@ -130,7 +132,7 @@ func _physics_process(delta: float) -> void:
 	
 	time += delta
 	velocity.y = cos(time * frequency) * amplitude + added_velo
-	global_position.z = 0
+	global_position.z = movement_plane_z
 	#print("velo y calced is : " + str(velocity.y))
 	
 	# Soft Collision physics effects to avoid overlap.
