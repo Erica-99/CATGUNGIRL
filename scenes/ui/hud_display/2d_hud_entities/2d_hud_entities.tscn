@@ -13,6 +13,7 @@
 [ext_resource type="Shader" uid="uid://c3qsckdedsk87" path="res://scenes/ui/hud_display/2d_hud_entities/2d_hud_entities.tres" id="9_wg2f8"]
 [ext_resource type="Texture2D" uid="uid://dhbbj142fa8mo" path="res://art/UI/HUD/Guns/sniper rifle.png" id="10_bws33"]
 [ext_resource type="Script" uid="uid://wa4ebjvpor76" path="res://scenes/ui/hud_display/2d_hud_entities/tutorial_popup.gd" id="11_tutpop"]
+[ext_resource type="StyleBox" uid="uid://tlooqci204cu" path="res://art/StyleBoxes/tutorial_popup_stylebox.tres" id="14_85gk0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hc7wi"]
 bg_color = Color(0.4862745, 0.5529412, 1, 0.29411766)
@@ -210,7 +211,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [250.0]
+"values": [330.0]
 }
 
 [sub_resource type="Animation" id="Animation_bvdp4"]
@@ -238,7 +239,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [250.0, 0.0]
+"values": [330.0, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_vfk2w"]
@@ -293,7 +294,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.76666665),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 250.0]
+"values": [0.0, 330.0]
 }
 
 [sub_resource type="Animation" id="Animation_mc8cy"]
@@ -333,17 +334,6 @@ _data = {
 }
 
 [sub_resource type="Theme" id="Theme_vm65q"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bws33"]
-bg_color = Color(0, 1, 1, 0.627451)
-skew = Vector2(-0.095, 0.01)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(1, 0.3764706, 0.9843137, 1)
-expand_margin_left = 45.0
-expand_margin_right = 100.0
 
 [node name="2DHudEntities" type="Control" unique_id=1605915058]
 layout_mode = 3
@@ -548,13 +538,14 @@ offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_vm65q")
-theme_override_styles/panel = SubResource("StyleBoxFlat_bws33")
+theme_override_styles/panel = ExtResource("14_85gk0")
 
 [node name="MarginContainer" type="MarginContainer" parent="Tutorial Popups/Content" unique_id=89677704]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+layout_mode = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 506.0
+offset_bottom = 328.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_top = 5
@@ -573,7 +564,15 @@ fit_content = true
 [node name="Description" type="RichTextLabel" parent="Tutorial Popups/Content/MarginContainer/VBoxContainer" unique_id=1716965385]
 layout_mode = 2
 bbcode_enabled = true
-text = "Placeholder Description, introduce concepts here"
+text = "Placeholder Description, introduce concepts here
+fdsfdsfs
+
+sfs
+fs
+fsf
+s
+sfs
+fsf"
 fit_content = true
 
 [node name="Textbreaker" type="Control" parent="Tutorial Popups/Content/MarginContainer/VBoxContainer" unique_id=535896422]
@@ -586,5 +585,13 @@ size_flags_vertical = 8
 bbcode_enabled = true
 text = "Whatever task the player must commit to dismiss the instruction"
 fit_content = true
+
+[node name="PanelContainer" type="PanelContainer" parent="Tutorial Popups" unique_id=673429352]
+visible = false
+custom_minimum_size = Vector2(500, 250)
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 330.0
+theme_override_styles/panel = ExtResource("14_85gk0")
 
 [connection signal="animation_finished" from="GunIcon/GunAnimations" to="GunIcon" method="_on_gun_animations_animation_finished"]
