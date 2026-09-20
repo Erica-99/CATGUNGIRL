@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://co7fptrpmkvog" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/A_SparesAndPlaceholders/LightCeiling.tscn" id="8_564b6"]
 [ext_resource type="PackedScene" uid="uid://k4bj1vh7ofsj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorExit.tscn" id="9_f12kt"]
 [ext_resource type="Texture2D" uid="uid://c3cgla0k3a1id" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt01/PrisonRailCranePrt01Cable_Base_color.png" id="9_o4acx"]
+[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="10_axvnb"]
 [ext_resource type="Texture2D" uid="uid://bud3cu1m3u43b" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt02/PrisonRailCranePrt02_Base_color.png" id="10_pqlkt"]
 [ext_resource type="Texture2D" uid="uid://catre0c2fcyak" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt01/PrisonRailCranePrt01Cable_Mixed_AO.png" id="10_qn4fw"]
 [ext_resource type="Texture2D" uid="uid://c4ptaq0bjw1k5" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt01/PrisonRailCranePrt01Cable_Height.png" id="11_3rmdv"]
@@ -125,6 +126,9 @@ fog_depth_curve = 0.5000009
 fog_depth_begin = 123.1
 fog_depth_end = 274.5
 adjustment_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qqjj2"]
+size = Vector3(1, 8.005737, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ixfw5"]
 albedo_texture = ExtResource("9_o4acx")
@@ -680,7 +684,16 @@ shadow_normal_bias = 0.72
 shadow_blur = 0.0
 omni_range = 18.392912
 
-[node name="DIALOGUE_TRIGGERS" type="Node" parent="." unique_id=1535957502]
+[node name="EVENT_TRIGGERS" type="Node" parent="." unique_id=1535957502]
+
+[node name="EventTrigger" parent="EVENT_TRIGGERS" unique_id=1311781014 instance=ExtResource("10_axvnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.531136, -23.887568, 0)
+_signal_parameters = ["OpeningTutorial"]
+signal_name = "initiate_tutorial_sequence"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EVENT_TRIGGERS/EventTrigger" unique_id=724333614]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.958435, 0)
+shape = SubResource("BoxShape3D_qqjj2")
 
 [node name="Enemies" type="Node3D" parent="." unique_id=218442623]
 

@@ -57,3 +57,5 @@ signal controller_status(controller_type: String)
 signal base_scene_updated(new_scene: Node)
 
 signal tutorial_step_started(step_name: String)
+
+signal initiate_tutorial_sequence(sequence_name: String)
