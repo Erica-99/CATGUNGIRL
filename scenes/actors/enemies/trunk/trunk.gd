@@ -1,9 +1,12 @@
 extends CharacterBody3D
 
 @export_category("Node References")
-@export var animator: AnimatedSprite3D
+@export var animator: AnimationPlayer
 @export var animation_manager: AnimationPlayer
 @export var state_machine: StateMachine
+@export var missile_launcher: MissileLauncher
+@export var stinger_caller: StingerComponent
+@export var sfx_caller: Node
 
 @export_category("Starting State Variables")
 @export var start_aggroed: bool
@@ -29,7 +32,7 @@ extends CharacterBody3D
 
 #Trunk Visual Code
 @onready var InjuredFrames = preload("res://art/2d_assets/real_world/Trunks/TrunkInjured.tres")
-@onready var sprite_anims = $TrunkMesh/TorsoAnims
+@onready var sprite_anims = $TrunkMesh/AnimationPlayer
 @onready var torso_sprite = $TrunkMesh/Torso/TorsoSprite
 var current_step: String
 
@@ -65,6 +68,9 @@ var facing: float = 1.0:
 @export var melee_lunge_duration: float = 0.1
 @export var melee_recovery_time: float = 2
 
+@export_category("Trunk Armour")
+@export var armour_break_recovery_time: float = 2
+
 @export_category("Attack Variables")
 @export var melee_damage: float = 30.0
 @export var melee_hitbox: Area3D
@@ -87,8 +93,17 @@ var past_object_collider_status: bool = false
 @onready var outranged_timer: Timer = $OutrangedTimer
 @onready var platform_check: RayCast3D = $PlatformCheck
 @onready var object_check: RayCast3D = $ObjectCheck
-@onready var animation_player: AnimationPlayer = $TrunkMesh/TorsoAnims
+@onready var animation_player: AnimationPlayer = $TrunkMesh/AnimationPlayer
 @onready var chase_range: Area3D = $ChaseRange
+
+
+@export_category("Death Screen Info")
+@export var melee_death_screen_id: StringName = &"trunk_melee"
+
+# recovery time is set within trunk_melee and on armour break - they both override the recovery_time blackboard variable
+# this const just sets the default when having not been overwritten yet
+# less magic numbers = gigi will be happy with u
+const BASE_RECOVERY_TIME = 5.0
 
 var damage_instance: DamageHealInstance = DamageHealInstance.new()
 
@@ -110,6 +125,7 @@ func _ready() -> void:
 	damage_instance.type = Enums.DamageType.NORMAL
 	damage_instance.knockback = 0
 	damage_instance.source = get_path()
+	damage_instance.death_screen_id = melee_death_screen_id
 	melee_hitbox.damage_or_heal_instance = damage_instance
 	
 	outranged_timer.wait_time = time_till_outrange
@@ -138,9 +154,13 @@ func _ready() -> void:
 		"melee_lunge_distance": melee_lunge_distance,
 		"melee_lunge_duration": melee_lunge_duration,
 		"melee_recovery_time": melee_recovery_time,
+		"armour_break_recovery_time": armour_break_recovery_time,
 		"xpos_distance_vert_offset": xpos_distance_vert_offset,
 		"vert_threshold": vert_threshold,
+		"recovery_time": BASE_RECOVERY_TIME,
 		"target": get_tree().get_first_node_in_group("player") as CharacterBody3D,
+		"missile_launcher": missile_launcher,
+		"stinger_call": stinger_caller,
 	}
 	# Change initial state based on Inspector values
 	if start_aggroed:
@@ -165,6 +185,7 @@ func _on_health_component_killed(killing_blow: DamageHealInstance, health_before
 	is_dead = true
 	sprite_anims.play("Idle")
 	sprite_anims.stop()
+	stinger_caller.play_stinger("trunk_death", true)
 	state_machine.on_child_transition(state_machine.current_state, "trunkdeath")
 
 func _on_health_component_health_changed(old_health: float, new_health: float, damage_or_heal_instance: DamageHealInstance) -> void:
@@ -172,10 +193,9 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 		detected_player = true
 		state_machine.on_child_transition(state_machine.current_state, "trunkchase")
 	
-	if new_health < health_comp.starting_health and change_sprite_on_half_hp and !under_half_hp:
+	if new_health <= (health_comp.starting_health / 2) and change_sprite_on_half_hp and !under_half_hp:
 		under_half_hp = true
 		
-		torso_sprite.sprite_frames = InjuredFrames
 		#print("yo im under half hp rn type shit")
 
 func _reset_step_handler():
@@ -192,13 +212,14 @@ func _take_step():
 
 
 func _on_torso_anims_animation_finished(anim_name: StringName) -> void:
-	if anim_name == 'PunchStart':
-		animation_player.play("PunchActive")
-	if anim_name == 'StepFront' or anim_name == 'StepBack':
-		step_handler.start()
-	elif anim_name == 'StepStart':
-		animation_player.play('StepBack')
-	pass # Replace with function body.
+	if state_machine.current_state != state_machine.states["trunkstun"]:
+		if anim_name == 'PunchStart':
+			animation_player.play("PunchActive")
+		if anim_name == 'StepFront' or anim_name == 'StepBack':
+			step_handler.start()
+		elif anim_name == 'StepStart':
+			animation_player.play('StepBack')
+	
 func _step(currentstep):
 	if currentstep == 'StepFront':
 		animation_player.play("StepBack")
@@ -237,3 +258,9 @@ func _handle_collision_check():
 
 func _on_outranged_timer_timeout() -> void:
 	state_machine.on_child_transition(state_machine.current_state, "trunkoutranged")
+
+func call_sfx_at_current_location(sfx_ref: String) -> void:
+	if sfx_caller == null:
+		return
+		
+	sfx_caller.play_sfx_at_location(sfx_ref, global_position)

@@ -2,7 +2,7 @@ extends Control
 
 
 @onready var anims = $GunAnimations
-@onready var sprite = $Guns
+@onready var sprite = $gun_P/Guns
 
 var currentgun = 'Pistol'
 var targetgun = 'Pistol'

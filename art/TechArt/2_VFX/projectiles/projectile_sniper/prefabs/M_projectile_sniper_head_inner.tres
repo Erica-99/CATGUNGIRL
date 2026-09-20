@@ -1,0 +1,26 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b3ppcxq3y3p73"]
+
+[ext_resource type="Shader" uid="uid://dc0lk4ot12o8x" path="res://art/TechArt/2_VFX/projectiles/projectile_alt/VS_projectile_head.tres" id="1_qanqg"]
+[ext_resource type="Texture2D" uid="uid://b8nho6ss6h77o" path="res://art/TechArt/2_VFX/projectiles/projectile_alt/tex/T_Lu_Noise_22.png" id="2_8wfui"]
+
+[sub_resource type="Gradient" id="Gradient_head"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_head"]
+gradient = SubResource("Gradient_head")
+fill_from = Vector2(0.17948718, 0)
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_qanqg")
+shader_parameter/secondary_color = Color(0.90234375, 0.38067627, 0, 1)
+shader_parameter/primary_color = Color(1, 0.28125, 0, 1)
+shader_parameter/color_smoothness = 0.5
+shader_parameter/mask1_scale = Vector2(1, 0.9)
+shader_parameter/mask1_texture = SubResource("GradientTexture2D_head")
+shader_parameter/mask2_scale = Vector2(2, 1)
+shader_parameter/mask2_scroll = Vector2(0, -0.5)
+shader_parameter/time_scale = 1.0
+shader_parameter/mask2_texture = ExtResource("2_8wfui")
+shader_parameter/alpha_smoothness = 1.0
+shader_parameter/alpha_multiplier = 0.999999977648
+shader_parameter/emission_strength = 2.56

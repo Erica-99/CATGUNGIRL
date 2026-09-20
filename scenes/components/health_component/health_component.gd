@@ -6,6 +6,7 @@ class_name HealthComponent
 
 signal health_initialised(init_current_health: float, init_max_health: float)
 signal health_changed(old_health: float, new_health: float, damage_or_heal_instance: DamageHealInstance)
+signal knocked_back(knockback_direction: Vector3, knockback_strength: float)
 signal killed(killing_blow: DamageHealInstance, health_before_death)
 
 ## Stun Variables
@@ -46,6 +47,7 @@ var _max_health: float
 @export_category("Damage States")
 @export var damageable: bool = true
 @export var healable: bool = true
+@export var knockbackable: bool = true
 @export var killable: bool = true
 
 @onready var original_max_health = _max_health
@@ -80,6 +82,9 @@ func set_health(value: float) -> void:
 
 ## Take the specified damage or heal instance
 func take_damage_or_heal(damage_or_heal_instance: DamageHealInstance) -> void:
+	if _should_ignore_damage(damage_or_heal_instance):
+		return
+		
 	if damageable and not damage_or_heal_instance.is_heal:		
 		var prev_health = current_health
 		current_health -= damage_or_heal_instance.amount
@@ -99,10 +104,28 @@ func take_damage_or_heal(damage_or_heal_instance: DamageHealInstance) -> void:
 			if !(state_machine.current_state is EnemyDeath):
 				set_stun(stun_state, damage_or_heal_instance.stun_time)
 		
+		# If knockbackable, emit a signal to the owner for them to calculate knockback
+		if knockbackable and damage_or_heal_instance.knockback > 0:
+			knocked_back.emit(damage_or_heal_instance.direction, damage_or_heal_instance.knockback)
+			
+		
 	elif healable and damage_or_heal_instance.is_heal:
 		var prev_health = current_health
 		current_health += damage_or_heal_instance.amount
 		health_changed.emit(prev_health, current_health, damage_or_heal_instance)
+
+func _should_ignore_damage(damage_or_heal_instance: DamageHealInstance) -> bool:
+	if !DebugManager.god_mode:
+		return false
+	
+	if damage_or_heal_instance.is_heal:
+		return false
+	
+	var health_owner = get_parent()
+	if health_owner == null:
+		return false
+	
+	return health_owner.is_in_group("player")
 
 func set_stun(stun_version: State, stun_time: float) -> void:
 	stun_version.total_stun_time = stun_time
@@ -111,11 +134,6 @@ func set_stun(stun_version: State, stun_time: float) -> void:
 ## _process(delta) allows for updates independent of actual framerate.
 func _process(delta):
 	pass
-
-func _on_insanity_component_insanity_gained(amount, buffer):
-	min_health += amount
-	current_health = min_health + buffer
-	print("Insanity Damage Taken - Insanity: " + str(min_health))
 
 func set_health_to_min() -> void:
 	current_health = min_health

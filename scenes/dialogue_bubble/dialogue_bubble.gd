@@ -1,11 +1,15 @@
 extends PanelContainer
 
+class_name DialogueBubble
+
 # references
 @onready var rich_text_label: RichTextLabel = $RichTextLabel
 
 # export vars
 @export var linear_transparency_decrease: float = 0.5
 @export var textbox_colour: Color = Color.BLACK
+
+@export var system_popup_stylebox: StyleBoxFlat = null
 
 # runtime vars
 var rate_of_transparency: float = 0
@@ -30,7 +34,15 @@ func _ready() -> void:
 	if type == Enums.BubbleType.POPUP:
 		rich_text_label.autowrap_mode = TextServer.AUTOWRAP_WORD
 		rich_text_label.size_flags_vertical = Control.SIZE_EXPAND
+	
+	if type == Enums.BubbleType.SYSTEM:
+		rich_text_label.add_theme_font_size_override("normal_font_size", 60)
+		add_theme_stylebox_override("panel", system_popup_stylebox)
+		#var style_box = get_theme_stylebox("panel").duplicate()
+		#style_box.bg_color = Color("6347de78")
+		#add_theme_stylebox_override("panel", style_box)
 		
+	
 	#elif type == Enums.BubbleType.RUNTIME:
 		#var new_background = StyleBoxTexture.new()
 		#new_background.texture = load("res://resources/dialogue/slanted_dialogue.png")
@@ -61,8 +73,13 @@ func _kill_tween() -> void:
 		typewriter_tween.kill()
 		rich_text_label.visible_ratio = 1.0
 
-func _set_type(type: Enums.BubbleType) -> void:
-	type = type
+func _set_type(passed_type: Enums.BubbleType) -> void:
+	type = passed_type
+	
+	if type == Enums.BubbleType.SYSTEM:
+		size.y = 200
+		
+		
 	#if type == Enums.BubbleType.SYSTEM:
 		#set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
 		

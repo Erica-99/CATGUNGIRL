@@ -1,14 +1,24 @@
 extends CharacterBody3D
 @onready var too_far_floor_detection: RayCast3D = $TooFarFloorDetection
 @onready var environment_too_close: Area3D = $EnvironmentTooClose
+@onready var detection_area_3d: Area3D = $DetectionArea3D
+@onready var att_range_area_3d: Area3D = $AttRangeArea3D
+@onready var flee_area_3d: Area3D = $FleeArea3D
+@onready var death_detector: Area3D = $DeathDetector
+@onready var death_explosion: AnimatedSprite3D = $DeathExplosion
 
 @export_category("Node References")
-@export var animator: AnimatedSprite3D
+@export var animator: AnimationPlayer
 @export var state_machine: StateMachine
+@export var stinger_caller: StingerComponent
 @onready var can_shoot: RayCast3D = $CanShoot
 @onready var softCollider = $SoftCollider
 
+@onready var VFX_spawn = $Explosion_target
+
+var movement_plane_z: float
 var is_dead: bool = false
+var explosion_gpu_emitter = preload("res://art/TechArt/1_Shaders/explosion_test.tscn")
 
 @export_category("Starting State Variables")
 @export var start_aggroed: bool
@@ -22,6 +32,7 @@ var is_dead: bool = false
 @export var grenade: PackedScene
 
 @export_category("Stat Variables")
+@export var health: int = 35
 @export var direction: int = 1
 @export var move_speed: float = 10
 @export var patrol_speed: float
@@ -51,12 +62,23 @@ var time: float = 0.0
 @export var frequency: float = 3.0
 @export var amplitude: float = 2.0
 
+@onready var id: String = get_id()
+
 signal facing_changed(scrub: CharacterBody3D)
+
+# death detector variables
+var death_speed = 3                        #randf_range(10.0, 70.0)
+var launch_speed = Vector3.ZERO
+var explosion_playing: bool = false
 
 var blackboard: Dictionary
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	movement_plane_z = global_position.z
+	health_comp.set_max_health(health)
+	health_comp.set_health(health)
+	health_comp.knocked_back.connect(take_knockback)
 	# Blackboard contains the information states will use
 	blackboard = {
 		# Actor for movement stats
@@ -72,6 +94,8 @@ func _ready() -> void:
 		"flee_acceleration": flee_acceleration,
 		"slow_down_speed": slow_down_speed,
 		"target": get_tree().get_first_node_in_group("player") as CharacterBody3D,
+		"stinger_call": stinger_caller,
+		"id": id
 	}
 	# Change initial state based on Inspector values
 	if start_aggroed:
@@ -91,6 +115,14 @@ func _process(delta):
 		can_shoot.target_position = can_shoot.to_local(get_tree().get_first_node_in_group("player").global_position)
 
 func _physics_process(delta: float) -> void:
+	if is_dead:
+		await get_tree().create_timer(0.5).timeout
+		velocity += launch_speed
+		if explosion_playing:
+			velocity = Vector3.ZERO
+		move_and_slide()
+		return
+	
 	var added_velo = 0
 	if !too_far_floor_detection.is_colliding():
 		added_velo += -1
@@ -100,7 +132,7 @@ func _physics_process(delta: float) -> void:
 	
 	time += delta
 	velocity.y = cos(time * frequency) * amplitude + added_velo
-	global_position.z = 0
+	global_position.z = movement_plane_z
 	#print("velo y calced is : " + str(velocity.y))
 	
 	# Soft Collision physics effects to avoid overlap.
@@ -150,48 +182,11 @@ func _physics_process(delta: float) -> void:
 func _on_health_component_killed(killing_blow: DamageHealInstance, health_before_death: Variant) -> void:
 	# Possibly implement knockback affects here
 	is_dead = true
+	#death_detector.monitoring = true
+	print("Death Detector Monitoring: ", death_detector.monitoring)
+	stinger_caller.play_stinger("scrub_death_" + id, true)
 	state_machine.on_child_transition(state_machine.current_state, "scrubdeath")
-
-# When player enters detection range, move to attack
-# For a possible specific case, if they are in detection but
-# not attack range move to chase.
-# TODO: Improve by utilising more detection logic than just an area
-func _on_detection_area_3d_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player") && !is_dead:
-		if detected_player == false:
-			detected_player = true
-			if in_attacking_range:
-				state_machine.on_child_transition(state_machine.current_state, "scrubattack")
-			else:
-				state_machine.on_child_transition(state_machine.current_state, "scrubchase")
-
-# When player enters attack range, check off that theyre in range
-# If player has been detected, move to attack state
-func _on_att_range_area_3d_body_entered(body):
-	if body.is_in_group("player") && !is_dead:
-		in_attacking_range = true
-		if detected_player:
-			state_machine.on_child_transition(state_machine.current_state, "scrubattack")
-
-# When player leaves attack range, check of that they're out of range
-# If they have been detected, move to chase
-func _on_att_range_area_3d_body_exited(body):
-	if body.is_in_group("player") && !is_dead:
-		in_attacking_range = true
-		if detected_player:
-			state_machine.on_child_transition(state_machine.current_state, "scrubchase")
-
-# When player enters flee range, move to flee
-func _on_flee_area_3d_body_entered(body):
-	if body.is_in_group("player") && !is_dead:
-		state_machine.on_child_transition(state_machine.current_state, "scrubflee")
-
-# When player exits flee range, move to attack
-# TODO: Improve flee logic so that Scrub tries to make distance/
-#    stops fleeing if they are blocked.
-func _on_flee_area_3d_body_exited(body):
-	if body.is_in_group("player") && !is_dead:
-		state_machine.on_child_transition(state_machine.current_state, "scrubattack")
+	_scrub_death()
 
 func _on_health_component_health_changed(old_health: float, new_health: float, damage_or_heal_instance: DamageHealInstance) -> void:
 	if !detected_player && !is_dead:
@@ -202,9 +197,64 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 	elif damage_or_heal_instance.amount == body_hitstun_threshold:
 		_apply_hitstun(body_hitstun_duration)
 
+## When taking damage, get pushed back 
+func take_knockback(knockback_direction: Vector3, knockback_strength: float):
+	# Only needs to handle air knockback
+	velocity += knockback_direction * knockback_strength
+
+# When stun time finishes, return to Idle state.
+func _on_scrub_stun_timer_finished() -> void:
+	print("Stun Finished: Pt 2")
+	state_machine.on_child_transition(state_machine.current_state, "scrubidle")
+
 func _apply_hitstun(duration: float) -> void:
 	velocity.x = 0.0	# remove velocity.x and velocity.z and replace with
 	velocity.z = 0.0	# velocity = Vector3.ZERO if scrubs should fall on hitstun
 	#animator.pause()
 	#await get_tree().create_timer(duration).timeout
 	#animator.play()
+
+func _return_from_stun():
+	if len(flee_area_3d.get_overlapping_bodies()) != 0:
+		state_machine.on_child_transition(state_machine.current_state, "scrubflee")
+	elif len(att_range_area_3d.get_overlapping_bodies()) != 0:
+		state_machine.on_child_transition(state_machine.current_state, "scrubattack")
+	else:
+		state_machine.on_child_transition(state_machine.current_state, "scrubchase")
+
+func _scrub_death():
+	rotation.z = deg_to_rad(randi_range(0, 360))
+	var launch_direction = transform.basis.y
+	launch_speed = launch_direction.normalized() * death_speed
+
+
+func get_id() -> String:
+	var case = randi_range(0, 5)
+	match case:
+		0:
+			return "f1"
+		1:
+			return "m1"
+		2:
+			return "m2"
+		3:
+			return "m3"
+		4:
+			return "m4"
+		5:
+			return "m5"
+		_:
+			return ""
+		
+
+
+func _on_death_detector_body_entered(body: Node3D) -> void:
+	if is_dead:
+		var explosion_VFX = explosion_gpu_emitter.instantiate()
+		var VFX_spawn_node = get_tree().current_scene.get_node_or_null("VFX")
+		if VFX_spawn_node == null:
+			push_warning("No VFX node found in current scene")
+			return
+		explosion_VFX.global_position = VFX_spawn.global_position
+		VFX_spawn_node.add_child(explosion_VFX)
+		queue_free()

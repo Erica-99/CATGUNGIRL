@@ -16,21 +16,26 @@ class_name ScrubIdle
 
 # Information gained from state machine
 var actor: CharacterBody3D
-var anim: AnimatedSprite3D
+var anim: AnimationPlayer
 var slow_down_speed: float
+
+var stinger_call: StingerComponent
+var id: String
 
 func init(blackboard_dict : Dictionary) -> void:
 	super(blackboard_dict)
 	actor = blackboard["actor"]
 	anim = blackboard["anim"]
 	slow_down_speed = blackboard["slow_down_speed"]
+	stinger_call = blackboard["stinger_call"]
+	id = blackboard["id"]
 	
 
 func enter() -> void:
 	pass
 
 func exit() -> void:
-	pass
+	stinger_call.play_stinger("stinger_hostile_" + id)
 
 func update(_delta: float) -> void:
 	pass
@@ -40,3 +45,17 @@ func physics_update(delta: float) -> void:
 	#anim.play("idle")
 	
 	actor.move_and_slide()
+
+
+func _on_detection_area_3d_body_entered(body: Node3D) -> void:
+		if !actor.is_dead:
+			actor.detected_player = true
+			if actor.in_attacking_range:
+				transitioned.emit(self, "scrubattack")
+			else:
+				transitioned.emit(self, "scrubchase")
+
+
+func _on_flee_area_3d_body_entered(body: Node3D) -> void:
+	if !actor.is_dead:
+		transitioned.emit(self, "scrubflee")

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://t63arhqgvhgn"]
+
+[ext_resource type="ArrayMesh" uid="uid://b4vf3wpl1lumv" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/Barriers/BarrierCorner.obj" id="1_rggtr"]
+[ext_resource type="Texture2D" uid="uid://tlq5pvdp2bo8" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/Corner/BarrierCorner_Base_color.png" id="2_mxqmp"]
+[ext_resource type="Texture2D" uid="uid://bwdki0a574ka0" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/Corner/BarrierCorner_Mixed_AO.png" id="3_sa1a2"]
+[ext_resource type="Texture2D" uid="uid://pjq4ytvhfb7s" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/Corner/BarrierCorner_Height.png" id="4_8mx2d"]
+[ext_resource type="Texture2D" uid="uid://do56oplcn8paa" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/Corner/BarrierCorner_Base_metalness.png" id="5_jg5cy"]
+[ext_resource type="Texture2D" uid="uid://cbftbebxo3kl2" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/Corner/BarrierCorner_Normal_OpenGL.png" id="6_usrgw"]
+[ext_resource type="Texture2D" uid="uid://c5n7ji2dkswh1" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/Corner/BarrierCorner_Specular_roughness.png" id="7_8xb0t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o02ih"]
+albedo_texture = ExtResource("2_mxqmp")
+metallic = 1.0
+metallic_texture = ExtResource("5_jg5cy")
+roughness_texture = ExtResource("7_8xb0t")
+normal_enabled = true
+normal_texture = ExtResource("6_usrgw")
+ao_enabled = true
+ao_texture = ExtResource("3_sa1a2")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("4_8mx2d")
+
+[node name="BarrierCorner" type="Node3D" unique_id=6908207]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="BarrierCorner_Mesh" type="MeshInstance3D" parent="." unique_id=855481134]
+mesh = ExtResource("1_rggtr")
+surface_material_override/0 = SubResource("StandardMaterial3D_o02ih")

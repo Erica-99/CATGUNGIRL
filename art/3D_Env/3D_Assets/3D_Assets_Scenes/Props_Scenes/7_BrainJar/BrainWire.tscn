@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bakqempgc71sk"]
+
+[ext_resource type="ArrayMesh" uid="uid://bcjpogeeb6cfa" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/7_BrainJar/BrainWire.obj" id="1_s1ugq"]
+[ext_resource type="Texture2D" uid="uid://djon020svga1v" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Pipes/BJWIRETEXTURING_DefaultMaterial_BaseColor.png" id="2_eouvp"]
+[ext_resource type="Texture2D" uid="uid://bjuogqyoajkv2" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Pipes/BJWIRETEXTURING_DefaultMaterial_Metallic.png" id="3_nikr4"]
+[ext_resource type="Texture2D" uid="uid://dn33lrs46vfyr" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Pipes/BJWIRETEXTURING_DefaultMaterial_Normal.png" id="4_qpyc3"]
+[ext_resource type="Texture2D" uid="uid://mdubxodavmpw" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/Pipes/BJWIRETEXTURING_DefaultMaterial_Roughness.png" id="5_7p35x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s1ugq"]
+albedo_texture = ExtResource("2_eouvp")
+metallic = 1.0
+metallic_texture = ExtResource("3_nikr4")
+roughness_texture = ExtResource("5_7p35x")
+normal_enabled = true
+normal_texture = ExtResource("4_qpyc3")
+
+[node name="BrainWire" type="Node3D" unique_id=692072136]
+
+[node name="BrainWire_Mesh" type="MeshInstance3D" parent="." unique_id=57994322]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = ExtResource("1_s1ugq")
+surface_material_override/0 = SubResource("StandardMaterial3D_s1ugq")

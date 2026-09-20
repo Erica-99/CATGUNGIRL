@@ -5,6 +5,7 @@ extends Area3D
 @export var hit_sfx_ref: String
 
 @export var damage_multiplier: float = 1.0
+@export var is_headshot: bool = false
 
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)

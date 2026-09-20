@@ -12,6 +12,8 @@ var cancelled = false
 func enter() -> void:
 	_setup_grapple()
 	time_elapsed = 0
+	AudioManager.play_sfx("grapple_shoot")
+	EventManager.alt_fire_used.emit("Grapple")
 
 func exit() -> void:
 	do_fire_loop = false
@@ -42,6 +44,7 @@ func physics_update(_delta: float) -> void:
 	var travelled_distance = (hook_object.global_position - blackboard["rope_attach_point"].global_position).length()
 	
 	if hook_object.collided:
+		AudioManager.play_sfx("grapple_impact")
 		transitioned.emit(self, "GrappleReeling")
 		return
 	elif travelled_distance > blackboard["max_grapple_distance"]:

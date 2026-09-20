@@ -11,10 +11,13 @@ class_name ScrubChase
 
 # Information gained from state machine
 var actor: CharacterBody3D
-var anim: AnimatedSprite3D
+var anim: AnimationPlayer
 var target: CharacterBody3D
 var chase_speed: float
 var chase_acceleration: float
+
+var stinger_call: StingerComponent
+var id: String
 
 func init(blackboard_dict : Dictionary) -> void:
 	super(blackboard_dict)
@@ -23,9 +26,14 @@ func init(blackboard_dict : Dictionary) -> void:
 	target = blackboard["target"]
 	chase_speed = blackboard["chase_speed"]
 	chase_acceleration = blackboard["chase_acceleration"]
+	stinger_call = blackboard["stinger_call"]
+	id = blackboard["id"]
 
 func enter() -> void:
-	pass
+	var hostile_sting: int = randi_range(0, 3)
+	if hostile_sting == 0:
+		stinger_call.play_stinger("scrub_hostile_" + id)
+
 
 func exit() -> void:
 	pass
@@ -41,3 +49,15 @@ func physics_update(delta: float) -> void:
 	actor.velocity.x = move_toward(actor.velocity.x, target_velocity, chase_acceleration * delta)
 	actor.move_and_slide()
 	
+
+
+func _on_att_range_area_3d_body_entered(body: Node3D) -> void:
+	if !actor.is_dead:
+		actor.in_attacking_range = true
+		if actor.detected_player:
+			transitioned.emit(self, "scrubattack")
+
+
+func _on_flee_area_3d_body_entered(body: Node3D) -> void:
+	if !actor.is_dead:
+		transitioned.emit(self, "scrubflee")

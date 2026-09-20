@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bpjabu4plwqym"]
+
+[ext_resource type="ArrayMesh" uid="uid://dnjendn8aj44b" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/7_BrainJar/Rails/RailDiagonal.obj" id="1_ge0ef"]
+[ext_resource type="Texture2D" uid="uid://x68vdj7r6ry2" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/7_BrainJar/RailsAll/RailALLTEXTURE_DefaultMaterial_BaseColor.png" id="2_qsr8m"]
+[ext_resource type="Texture2D" uid="uid://47d1ddhu1xa6" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/7_BrainJar/RailsAll/RailALLTEXTURE_DefaultMaterial_Metallic.png" id="3_8ktog"]
+[ext_resource type="Texture2D" uid="uid://cb6wmkndh412j" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/7_BrainJar/RailsAll/RailALLTEXTURE_DefaultMaterial_Normal.png" id="4_v6oco"]
+[ext_resource type="Texture2D" uid="uid://5biodi6k0mfm" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/7_BrainJar/RailsAll/RailALLTEXTURE_DefaultMaterial_Roughness.png" id="5_t60oo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gyuhg"]
+albedo_texture = ExtResource("2_qsr8m")
+metallic = 1.0
+metallic_texture = ExtResource("3_8ktog")
+roughness_texture = ExtResource("5_t60oo")
+normal_enabled = true
+normal_texture = ExtResource("4_v6oco")
+
+[node name="RailDiagonal" type="Node3D" unique_id=874844850]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="RailDiagonal_Mesh" type="MeshInstance3D" parent="." unique_id=1850857752]
+mesh = ExtResource("1_ge0ef")
+surface_material_override/0 = SubResource("StandardMaterial3D_gyuhg")

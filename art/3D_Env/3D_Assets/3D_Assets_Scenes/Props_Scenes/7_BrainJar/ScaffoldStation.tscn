@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://mooe02l1trdi"]
+
+[ext_resource type="ArrayMesh" uid="uid://b3e0am6w1rtn" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/7_BrainJar/ScaffoldStation.obj" id="1_dg8xv"]
+[ext_resource type="Texture2D" uid="uid://bgc658x4ef1kg" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/ScaffoldStation/ScaffoldStation_DefaultMaterial_BaseColor.png" id="2_xewnv"]
+[ext_resource type="Texture2D" uid="uid://roax6xpkeuvy" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/ScaffoldStation/ScaffoldStation_DefaultMaterial_Emissive.png" id="3_waymc"]
+[ext_resource type="Texture2D" uid="uid://3ppxkjjxylpo" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/ScaffoldStation/ScaffoldStation_DefaultMaterial_Metallic.png" id="4_apsow"]
+[ext_resource type="Texture2D" uid="uid://bjwbggi86oy4u" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/ScaffoldStation/ScaffoldStation_DefaultMaterial_Normal.png" id="5_puky3"]
+[ext_resource type="Texture2D" uid="uid://b3ox4v82hu6r3" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/OtherProps/ScaffoldStation/ScaffoldStation_DefaultMaterial_Roughness.png" id="6_jbfuo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6cenx"]
+albedo_texture = ExtResource("2_xewnv")
+metallic = 1.0
+metallic_texture = ExtResource("4_apsow")
+roughness_texture = ExtResource("6_jbfuo")
+emission_enabled = true
+emission_energy_multiplier = 2.5
+emission_texture = ExtResource("3_waymc")
+normal_enabled = true
+normal_texture = ExtResource("5_puky3")
+
+[node name="ScaffoldStation" type="Node3D" unique_id=1620986139]
+
+[node name="ScaffoldStation_Mesh" type="MeshInstance3D" parent="." unique_id=1349717260]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = ExtResource("1_dg8xv")
+surface_material_override/0 = SubResource("StandardMaterial3D_6cenx")
+surface_material_override/1 = SubResource("StandardMaterial3D_6cenx")
+surface_material_override/2 = SubResource("StandardMaterial3D_6cenx")
+surface_material_override/3 = SubResource("StandardMaterial3D_6cenx")
+surface_material_override/4 = SubResource("StandardMaterial3D_6cenx")
+surface_material_override/5 = SubResource("StandardMaterial3D_6cenx")
+surface_material_override/6 = SubResource("StandardMaterial3D_6cenx")

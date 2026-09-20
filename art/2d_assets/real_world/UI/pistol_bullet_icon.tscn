@@ -90,12 +90,6 @@ _data = {
 &"Spawn": SubResource("Animation_t8j33")
 }
 
-[sub_resource type="Gradient" id="Gradient_1c5rx"]
-interpolation_mode = 2
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_qufh4"]
-gradient = SubResource("Gradient_1c5rx")
-
 [node name="PistolBulletIcon" type="Control" unique_id=167410703]
 layout_mode = 3
 anchors_preset = 0
@@ -110,12 +104,3 @@ offset = Vector2(0, -1400)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=98164184]
 libraries/ = SubResource("AnimationLibrary_wt66f")
 autoplay = &"Spawn"
-
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1663375117]
-position = Vector2(1.0000038, -41.999996)
-scale = Vector2(0.1439922, 12.887302)
-energy = 1.69
-blend_mode = 2
-range_z_min = -1010
-texture = SubResource("GradientTexture1D_qufh4")
-texture_scale = 2.86

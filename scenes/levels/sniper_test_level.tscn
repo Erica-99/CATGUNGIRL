@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://dorx3rr8gqa5b"]
+
+[ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="1_nkdhv"]
+[ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict/convict_enemy.tscn" id="2_0itga"]
+[ext_resource type="PackedScene" uid="uid://bls076phgmcus" path="res://scenes/actors/enemies/scrub/scrub.tscn" id="3_0itga"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gwuhk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sfbe8"]
+
+[node name="SniperTestLevel" type="Node3D" unique_id=1164818839]
+
+[node name="World" type="Node3D" parent="." unique_id=1563336539]
+
+[node name="Ground" type="MeshInstance3D" parent="World" unique_id=988003655]
+transform = Transform3D(164.03009, 0, 0, 0, 1, 0, 0, 0, 1, 47.82827, 0, 0)
+mesh = SubResource("BoxMesh_gwuhk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Ground" unique_id=669943074]
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground/StaticBody3D" unique_id=419817608]
+shape = SubResource("BoxShape3D_sfbe8")
+
+[node name="Ground2" type="MeshInstance3D" parent="World" unique_id=1941526941]
+transform = Transform3D(164.03009, 0, 0, 0, 1, 0, 0, 0, 1, -55.27146, -1.8700848, 0)
+mesh = SubResource("BoxMesh_gwuhk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Ground2" unique_id=134960324]
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground2/StaticBody3D" unique_id=2126926553]
+shape = SubResource("BoxShape3D_sfbe8")
+
+[node name="Player" parent="." unique_id=1349193765 groups=["Player"] instance=ExtResource("1_nkdhv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.592749, 2.4815655, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=2019014886]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.0746927, 11.460891)
+projection = 1
+size = 20.0
+
+[node name="Convict" parent="." unique_id=1506947017 instance=ExtResource("2_0itga")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.73081, 2, 0)
+
+[node name="Convict2" parent="." unique_id=1765490224 instance=ExtResource("2_0itga")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.966744, 2, 0)
+
+[node name="Convict3" parent="." unique_id=2036965087 instance=ExtResource("2_0itga")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.356707, 2, 0)
+
+[node name="Convict4" parent="." unique_id=1550375816 instance=ExtResource("2_0itga")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.434635, 2, 0)
+
+[node name="Scrub" parent="." unique_id=1090872008 instance=ExtResource("3_0itga")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.963463, 1.8278599, 0)
+patroller = false
+
+[node name="Scrub2" parent="." unique_id=1656491593 instance=ExtResource("3_0itga")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.75784, 1.8278599, 0)
+axis_lock_linear_x = true
+patroller = false
+
+[node name="Scrub3" parent="." unique_id=1080754900 instance=ExtResource("3_0itga")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.176666, 1.8278599, 0)
+patroller = false
+
+[node name="Scrub4" parent="." unique_id=1399443470 instance=ExtResource("3_0itga")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.422848, 1.8278599, 0)
+patroller = false

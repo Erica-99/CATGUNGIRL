@@ -3,7 +3,7 @@ class_name TrunkOutranged
 
 # Information gained from state machine
 var actor: CharacterBody3D
-var anim: AnimatedSprite3D
+var anim: AnimationPlayer
 var target: CharacterBody3D
 var slow_down_speed: float
 
