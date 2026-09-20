@@ -1,6 +1,8 @@
 extends State
 class_name MissileSpawn
 
+@export var missile_ref: CharacterBody3D
+
 @export var burst_duration := 0.5
 @export var burst_velocity:= 4
 @export var burst_damp = 5
@@ -24,6 +26,8 @@ func enter():
 	# Set Randomised Angluar Velocity
 	angular_v = Vector3(0, 0, randf_range(-0.5, 0.5))
 	timer = 0.0
+	
+	AudioManager.play_sfx_at_location("missile_launch", missile_ref.global_position)
 
 func physics_update(delta):
 	timer += delta

@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://b4rhhpxamfoqj" path="res://art/TechArt/2_VFX/generic/IntenseNoise.png" id="24_nkxfa"]
 [ext_resource type="PackedScene" uid="uid://1cp7l8jl2mma" path="res://scenes/components/stinger_component/stinger_component.tscn" id="24_ogs6v"]
 [ext_resource type="Texture2D" uid="uid://dg0x0psfntdaa" path="res://art/TechArt/2_VFX/shield/tex/Noise_12.tga" id="26_5s34u"]
+[ext_resource type="Script" uid="uid://da3n34oh0bagw" path="res://scenes/actors/player/audio_caller.gd" id="28_7vrv7"]
 
 [sub_resource type="Animation" id="Animation_yqeo7"]
 resource_name = "Death"
@@ -775,6 +776,20 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector3(0.698, 1.807, -0.105), Vector3(0.898, 1.807, -0.105), Vector3(0.693, 2.422, -0.105), Vector3(0.588, 2.472, -0.105)]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("..")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["trunk_footstep"],
+"method": &"call_sfx_at_current_location"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_688n6"]
 length = 0.001
@@ -988,6 +1003,31 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector3(1.123, 2.292, -0.105), Vector3(1.253, 1.652, -0.105), Vector3(1.253, 1.652, -0.105), Vector3(1.163, 2.292, -0.105), Vector3(0.998, 2.662, -0.105)]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../AudioCaller")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("..")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["trunk_footstep"],
+"method": &"call_sfx_at_current_location"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_ge31e"]
 resource_name = "step"
@@ -1078,6 +1118,20 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector3(0.998, 2.662, -0.105), Vector3(1.463, 1.507, -0.105), Vector3(1.378, 1.724, -0.105), Vector3(1.268, 2.162, -0.105), Vector3(1.093, 2.487, -0.105)]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("..")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["trunk_footstep"],
+"method": &"call_sfx_at_current_location"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_nkxfa"]
 resource_name = "StepStart"
@@ -1153,6 +1207,20 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0.723, 1.892, -0.105), Vector3(0.828, 1.773, -0.105), Vector3(0.833, 2.212, -0.105), Vector3(0.648, 2.417, -0.105)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["trunk_footstep"],
+"method": &"call_sfx_at_current_location"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_xs26g"]
@@ -3340,7 +3408,7 @@ _data = {
 &"ShieldBreak": SubResource("Animation_n8t23")
 }
 
-[node name="Trunk" type="CharacterBody3D" unique_id=400593386 node_paths=PackedStringArray("animator", "animation_manager", "state_machine", "missile_launcher", "stinger_caller", "start_idle", "start_patrol", "start_aggro", "melee_hitbox")]
+[node name="Trunk" type="CharacterBody3D" unique_id=400593386 node_paths=PackedStringArray("animator", "animation_manager", "state_machine", "missile_launcher", "stinger_caller", "sfx_caller", "start_idle", "start_patrol", "start_aggro", "melee_hitbox")]
 collision_layer = 4
 collision_mask = 129
 script = ExtResource("1_usk1l")
@@ -3349,6 +3417,7 @@ animation_manager = NodePath("TrunkMesh/AnimationPlayer")
 state_machine = NodePath("StateMachine")
 missile_launcher = NodePath("TrunkMesh/Torso/Blaster_P/BlasterSprite/MissileLauncher")
 stinger_caller = NodePath("StingerComponent")
+sfx_caller = NodePath("AudioCaller")
 start_idle = NodePath("StateMachine/TrunkIdle")
 start_patrol = NodePath("StateMachine/TrunkPatrol")
 start_aggro = NodePath("StateMachine/TrunkChase")
@@ -3406,7 +3475,7 @@ autoplay = "Idle"
 frame = 6
 
 [node name="MissileLauncher" parent="TrunkMesh/Torso/Blaster_P/BlasterSprite" unique_id=1269207243 instance=ExtResource("9_ge31e")]
-transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, 2.2476115, 1.2223349, 0)
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 2.8857396, 2.5540802, 0)
 
 [node name="Blaster_anims" type="AnimationPlayer" parent="TrunkMesh/Torso/Blaster_P" unique_id=1024380017]
 libraries/ = SubResource("AnimationLibrary_iop4c")
@@ -3528,6 +3597,7 @@ collision_layer = 9
 collision_mask = 16
 script = ExtResource("21_qrlkp")
 team_component = NodePath("../TeamComponent")
+hit_sfx_ref = "trunk_shield_hit"
 break_sources = Array[String](["BeamComponent", "AirblastComponent"])
 stinger_caller = NodePath("../StingerComponent")
 
@@ -3550,6 +3620,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16113561, 2.206633, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.76134944, 0.52330434, 0)
 
 [node name="StingerComponent" parent="." unique_id=392420070 instance=ExtResource("24_ogs6v")]
+
+[node name="AudioCaller" type="Node" parent="." unique_id=2124426979]
+script = ExtResource("28_7vrv7")
 
 [connection signal="cant_step" from="." to="TrunkMesh" method="_on_trunk_cant_step"]
 [connection signal="facing_changed" from="." to="TrunkMesh" method="_on_trunk_facing_changed"]
