@@ -22,7 +22,8 @@ func enter():
 	asp = AudioManager.play_sfx_at_location("missile_move", missile_ref.global_position)
 
 func update(delta):
-	asp.global_position = missile_ref.global_position
+	#asp.global_position = missile_ref.global_position
+	pass
 
 func physics_update(delta):
 	# Ensure player is present
