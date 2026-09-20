@@ -23,12 +23,22 @@ func _ready() -> void:
 	_set_alpha(low_health_rect, 0.0)
 	_set_alpha(damage_rect, 0.0)
 
-	var player := get_tree().get_first_node_in_group("player")
-	if player:
-		var health: HealthComponent = player.get_node("HealthComponent")
-		_max_health = health.max_health
-		_update_low_health(health.current_health)
 	EventManager.player_health_changed.connect(_on_player_health_changed)
+	EventManager.player_health_initialised.connect(_on_player_health_initialised)
+	_read_player_health.call_deferred()
+
+func _read_player_health() -> void:
+	var player := get_tree().get_first_node_in_group("player")
+	if player == null:
+		return
+	var health: HealthComponent = player.get_node_or_null("HealthComponent")
+	if health == null:
+		return
+	_on_player_health_initialised(health.current_health, health.max_health)
+
+func _on_player_health_initialised(current_health: float, max_health: float) -> void:
+	_max_health = max_health
+	_update_low_health(current_health)
 
 func _on_player_health_changed(old_health: float, new_health: float, damage: DamageHealInstance) -> void:
 	if new_health < old_health and damage.type != Enums.DamageType.DECAY:
@@ -49,6 +59,8 @@ func _update_low_health(health: float) -> void:
 	_low_health_tween.tween_property(low_health_rect.material, COLOR_ALPHA, _low_health_strength(health), low_health_fade)
 
 func _low_health_strength(health: float) -> float:
+	if _max_health <= 0.0:
+		return 0.0
 	var health_ratio := health / _max_health
 	if health_ratio >= low_health_threshold:
 		return 0.0
