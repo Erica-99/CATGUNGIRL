@@ -99,6 +99,7 @@ func _input(event):
 			using_controller = false
 
 func _process(delta: float) -> void:
+	
 	# in hindsight, the is_reloading should probably have a set of interactions for attempted bulletshots whilst reload but anyways...
 	if !active:
 		return

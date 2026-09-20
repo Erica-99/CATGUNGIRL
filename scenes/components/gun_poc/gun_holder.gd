@@ -12,6 +12,8 @@ signal current_gun_charge_started
 @export var Muzzle_VFX: AnimationPlayer
 @export var team_component: Node
 
+@export var front_gun_pivot: Node3D
+
 #const PISTOL_PREFAB = preload("res://scenes/components/gun_poc/pistol/pistol.tscn")
 #const PISTOL_PREFAB = preload("res://scenes/components/gun/gun_variants/pistol/pistol.tscn")
 #const SHOTGUN_PREFAB = preload("res://scenes/components/gun_poc/shotgun/shotgun.tscn")
@@ -56,7 +58,15 @@ func _ready() -> void:
 		EventManager.new_gun_equipped.emit(current_gun.gun_name)
 		EventManager.new_mag_loaded.emit(current_gun.ammo_component._current_ammo, current_gun.ammo_component.ammo_max)
 
+func _update_front_gun_position():
+	if current_gun.gun_name == "Pistol":
+		current_gun.global_position = current_gun.gun_pivot.global_position
+	else:
+		current_gun.global_position = front_gun_pivot.global_position
+	pass
+
 func _process(_delta: float) -> void:
+	_update_front_gun_position()
 	if input_component != null:
 		var current_input_state = input_component.get_input_state()
 		# Switch to next gun (Pistol -> Shotgun -> Sniper)
