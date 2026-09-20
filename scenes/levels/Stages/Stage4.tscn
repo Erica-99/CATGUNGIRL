@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://bsdva1ben1wdk"]
 
-[ext_resource type="Script" uid="uid://dawdwjrkswtqg" path="res://scenes/levels/Stages/panning_camera.gd" id="1_c7g71"]
+[ext_resource type="Script" path="res://scenes/levels/Stages/panning_camera.gd" id="1_c7g71"]
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="1_eg5o7"]
+[ext_resource type="Script" uid="uid://4glb1vhq6wmq" path="res://scenes/levels/Stages/stage.gd" id="1_tvq7q"]
 [ext_resource type="PackedScene" uid="uid://cue2gdrvswqwe" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Mesh/FloorMeshEdge.tscn" id="3_7mswh"]
 [ext_resource type="PackedScene" uid="uid://1ca03h2i7po8" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Mesh/FloorMeshCentreBroken.tscn" id="3_k70p3"]
-[ext_resource type="Script" uid="uid://4t3uo3s2mf8e" path="res://scenes/levels/Stages/camera_pan_node.gd" id="4_88vs6"]
+[ext_resource type="Script" path="res://scenes/levels/Stages/camera_pan_node.gd" id="4_88vs6"]
 [ext_resource type="PackedScene" uid="uid://cvckts4bqdso3" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Mesh/FloorMeshCentre.tscn" id="4_t3u5g"]
 [ext_resource type="PackedScene" uid="uid://k4bj1vh7ofsj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorExit.tscn" id="5_1ex6n"]
 [ext_resource type="PackedScene" uid="uid://c7r1lxlcn4fbw" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Mesh/FloorMeshCentreBrokenSide.tscn" id="6_defdb"]
@@ -820,7 +821,9 @@ roughness_texture = ExtResource("82_1s6dl")
 normal_enabled = true
 normal_texture = ExtResource("81_0524g")
 
-[node name="StageThree" type="Node3D" unique_id=535640616]
+[node name="StageFour" type="Node3D" unique_id=535640616]
+script = ExtResource("1_tvq7q")
+music_ref = "music_med"
 
 [node name="RailCamera" type="Node3D" parent="." unique_id=1490590084]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.623193, 31.221176)
