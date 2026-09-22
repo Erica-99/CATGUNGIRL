@@ -3,8 +3,30 @@
 [ext_resource type="Script" uid="uid://beimtc28jvrur" path="res://scenes/actors/enemies/brain_jar/brain_jar.gd" id="1_kd81k"]
 [ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="1_x5j37"]
 [ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="2_kd81k"]
+[ext_resource type="Script" uid="uid://bkhvy2ej22ebj" path="res://scenes/actors/enemies/brain_jar/brain_jar_phase.gd" id="2_xjw4s"]
 [ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="3_w3sch"]
 [ext_resource type="PackedScene" uid="uid://crat6xosq5ywu" path="res://scenes/ui/brain_jar/brain_jar_health.tscn" id="5_w3sch"]
+
+[sub_resource type="Resource" id="Resource_fy0l2"]
+script = ExtResource("2_xjw4s")
+metadata/_custom_type_script = "uid://bkhvy2ej22ebj"
+
+[sub_resource type="Resource" id="Resource_gc66l"]
+script = ExtResource("2_xjw4s")
+completion_type = 1
+metadata/_custom_type_script = "uid://bkhvy2ej22ebj"
+
+[sub_resource type="Resource" id="Resource_odx0o"]
+script = ExtResource("2_xjw4s")
+terminal_count = 5
+completion_type = 1
+metadata/_custom_type_script = "uid://bkhvy2ej22ebj"
+
+[sub_resource type="Resource" id="Resource_cdak4"]
+script = ExtResource("2_xjw4s")
+terminal_count = 6
+completion_type = 2
+metadata/_custom_type_script = "uid://bkhvy2ej22ebj"
 
 [sub_resource type="BoxMesh" id="BoxMesh_xjw4s"]
 
@@ -17,8 +39,11 @@ radius = 2.0
 [node name="BrainJar" type="Node3D" unique_id=1593347133 node_paths=PackedStringArray("health_bar", "health_component")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 script = ExtResource("1_kd81k")
-health_bar = NodePath("BrainJarHealth")
+health_bar = NodePath("Container/VBoxContainer/MarginContainer/BrainJarHealth")
 health_component = NodePath("HealthComponent")
+fight_phases = Array[ExtResource("2_xjw4s")]([SubResource("Resource_fy0l2"), SubResource("Resource_gc66l"), SubResource("Resource_odx0o"), SubResource("Resource_cdak4")])
+damage_heal_delay = 2.5
+damage_heal_duration = 1.0
 
 [node name="C U B E" type="MeshInstance3D" parent="." unique_id=119508935]
 mesh = SubResource("BoxMesh_xjw4s")
@@ -52,13 +77,59 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 shape = SubResource("SphereShape3D_kd81k")
 debug_color = Color(3.2969565e-06, 0.6499113, 0.13647258, 0.41960785)
 
-[node name="BrainJarHealth" parent="." unique_id=785711252 instance=ExtResource("5_w3sch")]
+[node name="Container" type="Control" parent="." unique_id=39684312]
+layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -206.0
-offset_right = 206.0
+offset_left = -211.62
+offset_right = 211.62
+offset_bottom = 40.0
 grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container" unique_id=1315154830]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="ScreenGap" type="Control" parent="Container/VBoxContainer" unique_id=162640225]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Container/VBoxContainer" unique_id=594364551]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="BrainJarHealth" parent="Container/VBoxContainer/MarginContainer" unique_id=785711252 instance=ExtResource("5_w3sch")]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="Container/VBoxContainer" unique_id=86123460]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Container/VBoxContainer/MarginContainer2" unique_id=732301890]
+custom_minimum_size = Vector2(180.475, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/default_color = Color(1, 0.21960784, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.7875321, 7.727392e-05, 4.1199924e-05, 1)
+theme_override_constants/shadow_outline_size = -1
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/shadow_offset_y = 0
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true
+text = "[center] WARDEN 6 - 'BRAINJAR'"
+fit_content = true
 
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="health_initialised" from="HealthComponent" to="." method="_on_health_component_health_initialised"]

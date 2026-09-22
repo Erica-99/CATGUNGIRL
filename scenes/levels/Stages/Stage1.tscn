@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dhd47imi6qm6a"]
 
-[ext_resource type="Script" uid="uid://dawdwjrkswtqg" path="res://scenes/levels/Stages/panning_camera.gd" id="1_3j6m3"]
+[ext_resource type="Script" path="res://scenes/levels/Stages/panning_camera.gd" id="1_3j6m3"]
+[ext_resource type="Script" uid="uid://4glb1vhq6wmq" path="res://scenes/levels/Stages/stage.gd" id="1_6gdgj"]
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="1_ruvr1"]
 [ext_resource type="PackedScene" uid="uid://dsp60dlsho3gr" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorBasic.tscn" id="2_ohrdm"]
 [ext_resource type="PackedScene" uid="uid://cue2gdrvswqwe" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Mesh/FloorMeshEdge.tscn" id="3_b1r7n"]
@@ -14,47 +15,59 @@
 [ext_resource type="PackedScene" uid="uid://c08wu3qjtxvd" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/WallCellsBasePrison.tscn" id="12_64kyh"]
 [ext_resource type="PackedScene" uid="uid://ms7yhmwowtnu" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/FloorShootingPrison.tscn" id="13_prt1h"]
 [ext_resource type="PackedScene" uid="uid://bojsmqie6xi4c" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorBasicLocked.tscn" id="14_2bdqd"]
+[ext_resource type="ArrayMesh" uid="uid://btg7uf5fq70gn" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/1_Prison/DoorwayPrisonRailPrison.obj" id="14_6gdgj"]
 [ext_resource type="PackedScene" uid="uid://doqjtagulhsfs" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwaySingleBasePrison.tscn" id="14_ruvr1"]
 [ext_resource type="PackedScene" uid="uid://dpfolakvg67dt" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeSets/PipeNetwork1.tscn" id="15_5y7s6"]
 [ext_resource type="PackedScene" uid="uid://b3ig2tp4e62bo" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeSets/SuperLongDistancePipe.tscn" id="15_ewyc7"]
 [ext_resource type="PackedScene" uid="uid://d1isfmus58oku" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/IndustrialLight1.tscn" id="15_oeecs"]
 [ext_resource type="PackedScene" uid="uid://k4bj1vh7ofsj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorExit.tscn" id="15_th7oq"]
 [ext_resource type="PackedScene" uid="uid://bncqrcy5rw3pp" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/3_GuardRooms/FilingCabinet4.tscn" id="15_wfw32"]
+[ext_resource type="Texture2D" uid="uid://coio8xeekyrxq" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Base_color.png" id="15_x768c"]
+[ext_resource type="Texture2D" uid="uid://djuu0spniu0gp" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Mixed_AO.png" id="16_lj8ni"]
 [ext_resource type="PackedScene" uid="uid://11pckncgaxu4" path="res://scenes/components/level_components/level_transitions/level_end.tscn" id="16_oeecs"]
 [ext_resource type="PackedScene" uid="uid://qmb01fn4g6i" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/3_GuardRooms/Folders.tscn" id="16_v5ylw"]
 [ext_resource type="Texture2D" uid="uid://c3cgla0k3a1id" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt01/PrisonRailCranePrt01Cable_Base_color.png" id="17_0n1ur"]
 [ext_resource type="PackedScene" uid="uid://co6ykbcwegkyg" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/FuseBox.tscn" id="17_64kyh"]
+[ext_resource type="Texture2D" uid="uid://cvdxlc7lgtoc1" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Height.png" id="17_jsqmv"]
 [ext_resource type="PackedScene" uid="uid://dl1dvclonvae4" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/PrisonCell(Active).tscn" id="17_krhad"]
+[ext_resource type="Texture2D" uid="uid://0m33qxdqhrfp" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Base_metalness.png" id="18_cx5vn"]
 [ext_resource type="Texture2D" uid="uid://catre0c2fcyak" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt01/PrisonRailCranePrt01Cable_Mixed_AO.png" id="18_dtord"]
 [ext_resource type="PackedScene" uid="uid://dnuawo7ady5q" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/TestDummy.tscn" id="18_jph5v"]
 [ext_resource type="Texture2D" uid="uid://bud3cu1m3u43b" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt02/PrisonRailCranePrt02_Base_color.png" id="18_xwepp"]
 [ext_resource type="Texture2D" uid="uid://c12ijio6s5sv" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt02/PrisonRailCranePrt02_Mixed_AO.png" id="19_bmcii"]
-[ext_resource type="PackedScene" uid="uid://c24i5tmt2brj2" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/Television.tscn" id="19_ewyc7"]
 [ext_resource type="Texture2D" uid="uid://c3giaasttot1l" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt03/PrisonRailCranePrt03_Base_color.png" id="19_ncrw4"]
 [ext_resource type="Texture2D" uid="uid://c4ptaq0bjw1k5" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt01/PrisonRailCranePrt01Cable_Height.png" id="19_qys1n"]
+[ext_resource type="Texture2D" uid="uid://502420uyft1k" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Normal_OpenGL.png" id="19_tatg8"]
 [ext_resource type="PackedScene" uid="uid://0te5grryooui" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/3_GuardRooms/Bin.tscn" id="19_v4gt6"]
 [ext_resource type="Texture2D" uid="uid://dx0lxycx66r5p" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt02/PrisonRailCranePrt02_Height.png" id="20_3ubu5"]
 [ext_resource type="Texture2D" uid="uid://dos4sx8mv7217" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt01/PrisonRailCranePrt01Cable_Base_metalness.png" id="20_awa0o"]
 [ext_resource type="PackedScene" uid="uid://54en40jmuuar" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/3_GuardRooms/PhoneMount.tscn" id="20_gqdjt"]
 [ext_resource type="PackedScene" uid="uid://b5iexscfcb83b" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/GunPodium.tscn" id="20_gufy2"]
+[ext_resource type="Texture2D" uid="uid://ccuxlmt0vkg4f" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Specular_roughness.png" id="20_rpc8p"]
 [ext_resource type="Texture2D" uid="uid://dauiuu0r6aswk" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt03/PrisonRailCranePrt03_Mixed_AO.png" id="20_vm2sj"]
 [ext_resource type="PackedScene" uid="uid://xc4xlrvpu6gv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/GunPodiumGun.tscn" id="21_5y7s6"]
 [ext_resource type="Texture2D" uid="uid://ym4mt768wd1f" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt01/PrisonRailCranePrt01Cable_Normal_OpenGL.png" id="21_ahc83"]
 [ext_resource type="Texture2D" uid="uid://bij2a38mj3nfv" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt03/PrisonRailCranePrt03_Height.png" id="21_f2j4k"]
 [ext_resource type="Texture2D" uid="uid://bem848xqtm77e" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt02/PrisonRailCranePrt02_Base_metalness.png" id="21_opnci"]
+[ext_resource type="ArrayMesh" uid="uid://ckswbgels33vw" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/PrisonRailDoor.obj" id="21_ovhx5"]
 [ext_resource type="Texture2D" uid="uid://ce76k8i0gn0n2" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt02/PrisonRailCranePrt02_Normal_OpenGL.png" id="22_6q6ja"]
-[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="22_cj1de"]
 [ext_resource type="Texture2D" uid="uid://dvwrmftjhu57d" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt03/PrisonRailCranePrt03_Base_metalness.png" id="22_jx5wa"]
+[ext_resource type="Texture2D" uid="uid://douxwlagyddi2" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoor/PrisonRailDoor_Base_color.png" id="22_rovfg"]
 [ext_resource type="Texture2D" uid="uid://dp1g4o4dio8lb" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt01/PrisonRailCranePrt01Cable_Specular_roughness.png" id="22_voksi"]
+[ext_resource type="Texture2D" uid="uid://cyy251qs2ib8k" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoor/PrisonRailDoor_Mixed_AO.png" id="23_3j6m3"]
 [ext_resource type="Texture2D" uid="uid://bnjmepajwcxfv" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt02/PrisonRailCranePrt02_Specular_roughness.png" id="23_5c544"]
 [ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict/convict_enemy.tscn" id="23_v5ylw"]
 [ext_resource type="Texture2D" uid="uid://bevy5emjwa8ph" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt03/PrisonRailCranePrt03_Normal_OpenGL.png" id="23_x4ehs"]
 [ext_resource type="PackedScene" uid="uid://dld0qjmojk1t8" path="res://scenes/actors/enemies/enemy_manager/enemy_manager.tscn" id="24_2ao7q"]
 [ext_resource type="Texture2D" uid="uid://bk5bn24i7jvhh" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt03/PrisonRailCranePrt03_Specular_roughness.png" id="24_2qri5"]
+[ext_resource type="Texture2D" uid="uid://bk1ww3w8smupl" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoor/PrisonRailDoor_Height.png" id="24_emoyc"]
 [ext_resource type="PackedScene" uid="uid://bls076phgmcus" path="res://scenes/actors/enemies/scrub/scrub.tscn" id="25_6l7h5"]
+[ext_resource type="Texture2D" uid="uid://dttc38t4pb2w6" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoor/PrisonRailDoor_Base_metalness.png" id="25_uhx6n"]
+[ext_resource type="Texture2D" uid="uid://b2auods61mh3m" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoor/PrisonRailDoor_Normal_OpenGL.png" id="26_j57er"]
 [ext_resource type="PackedScene" uid="uid://bgnpboigg42pb" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/3_GuardRooms/Desk.tscn" id="26_ohrdm"]
 [ext_resource type="PackedScene" uid="uid://t6186i4fjihc" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/SpeakerModern.tscn" id="27_2bdqd"]
 [ext_resource type="PackedScene" uid="uid://c5vncayclpa5t" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/3_GuardRooms/ChairSteel.tscn" id="27_b1r7n"]
+[ext_resource type="Texture2D" uid="uid://trsmyjp5v7hh" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoor/PrisonRailDoor_Specular_roughness.png" id="27_ncrw4"]
 [ext_resource type="PackedScene" uid="uid://b8qto5sawjpis" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/3_GuardRooms/ComputerRig.tscn" id="28_xshw8"]
 [ext_resource type="PackedScene" uid="uid://clg1kec6jsi1e" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/3_GuardRooms/Folder.tscn" id="29_uwi0l"]
 [ext_resource type="PackedScene" uid="uid://cf56x5mffkcgr" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwayNoneMidPrison.tscn" id="31_qhut5"]
@@ -86,13 +99,256 @@
 [ext_resource type="PackedScene" uid="uid://bx8juwy6m3hvf" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/World_Lore/Will_Portrait.tscn" id="73_4scdv"]
 [ext_resource type="PackedScene" uid="uid://c3xj7l00asao0" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/file_exploiter.tscn" id="74_nqvtq"]
 [ext_resource type="PackedScene" uid="uid://dfwubrqbnpy7l" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/Hostile_architecture.tscn" id="75_v1rce"]
+[ext_resource type="PackedScene" uid="uid://ctulbbuyu35x" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/World_Lore/BJ_Watches.tscn" id="76_v1rce"]
 [ext_resource type="PackedScene" uid="uid://ddim4ukeuv6rp" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Impaled_Convict.tscn" id="77_3k85b"]
 [ext_resource type="PackedScene" uid="uid://bxoxckf5ed1td" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Scrub_Crashed.tscn" id="78_g3qdj"]
+[ext_resource type="PackedScene" uid="uid://boy26drjvtxj3" path="res://scenes/components/dialogue_component/dialogue_renderer.tscn" id="85_44hq7"]
+[ext_resource type="PackedScene" uid="uid://kc58ovt5ugti" path="res://scenes/components/tutorial_trigger/tutorial_trigger.tscn" id="85_ttrig"]
 [ext_resource type="PackedScene" uid="uid://bubvp3c5n2saa" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/GIGI_GunSystem.tscn" id="85_x0gst"]
+[ext_resource type="Script" uid="uid://crdw2cwt2ffb5" path="res://resources/tutorial_steps/tutorial_step.gd" id="86_g074a"]
+[ext_resource type="PackedScene" uid="uid://cc7k8lyrct2yv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/controller_layout.tscn" id="86_r1v12"]
+[ext_resource type="PackedScene" uid="uid://bkx663dgq5ri4" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/KBM_layout.tscn" id="87_tx7sn"]
+[ext_resource type="Resource" uid="uid://dlv4d7mqu3xcy" path="res://resources/tutorial_steps/stage_1_intro_tutorial/movement_tutorial_step.tres" id="87_yxmou"]
+[ext_resource type="Resource" uid="uid://cddpqf08ei3o4" path="res://resources/tutorial_steps/stage_1_intro_tutorial/fire_tutorial_step.tres" id="88_3c7cn"]
+[ext_resource type="Resource" uid="uid://g0584puy43u" path="res://resources/tutorial_steps/stage_1_intro_tutorial/jump_dash_step.tres" id="88_4scdv"]
+[ext_resource type="Resource" uid="uid://dy3jhtdqf5diw" path="res://resources/tutorial_steps/stage_1_intro_tutorial/interact_tutorial_step.tres" id="89_nqvtq"]
+[ext_resource type="Resource" uid="uid://ddm44lu0eblvc" path="res://resources/tutorial_steps/stage_1_intro_tutorial/reload_tutorial_step.tres" id="91_v1rce"]
+[ext_resource type="Resource" uid="uid://i475dd553b7q" path="res://resources/tutorial_steps/stage_1_intro_tutorial/grapple_tutorial_step.tres" id="92_3k85b"]
 [ext_resource type="PackedScene" uid="uid://xwmm12eihkbq" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Meat_lumps.tscn" id="92_4scdv"]
 [ext_resource type="PackedScene" uid="uid://co7fptrpmkvog" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/A_SparesAndPlaceholders/LightCeiling.tscn" id="96_g3qdj"]
-[ext_resource type="Script" uid="uid://4t3uo3s2mf8e" path="res://scenes/levels/Stages/camera_pan_node.gd" id="123_emoyc"]
+[ext_resource type="Script" path="res://scenes/levels/Stages/camera_pan_node.gd" id="123_emoyc"]
 [ext_resource type="PackedScene" uid="uid://c10iyc1w0tn8i" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/WallObservation.tscn" id="123_tatg8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3nqmm"]
+albedo_texture = ExtResource("15_x768c")
+metallic = 1.0
+metallic_texture = ExtResource("18_cx5vn")
+roughness_texture = ExtResource("20_rpc8p")
+normal_enabled = true
+normal_texture = ExtResource("19_tatg8")
+ao_enabled = true
+ao_texture = ExtResource("16_lj8ni")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("17_jsqmv")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tv4k6"]
+size = Vector3(0.20032501, 0.41333008, 4.9869385)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uy2wh"]
+size = Vector3(0.20032501, 0.20953369, 4.9869385)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oooqa"]
+albedo_texture = ExtResource("22_rovfg")
+metallic = 1.0
+metallic_texture = ExtResource("25_uhx6n")
+roughness_texture = ExtResource("27_ncrw4")
+normal_enabled = true
+normal_texture = ExtResource("26_j57er")
+ao_enabled = true
+ao_texture = ExtResource("23_3j6m3")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("24_emoyc")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hfsqw"]
+size = Vector3(0.2, 3.1226501, 2.2878113)
+
+[sub_resource type="Animation" id="Animation_tv4k6"]
+resource_name = "Closed"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrisonRailDoor_02:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PrisonRailDoor_02:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PrisonRailDoor_01:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PrisonRailDoor_01:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4l1f4"]
+resource_name = "Closing"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrisonRailDoor_02:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8333333, 1.0666667, 1.2666667, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -1.6117574), Vector3(0, 0, -0.2686262), Vector3(0, 0, -0.2686262), Vector3(0, 0, -0.2686262), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PrisonRailDoor_01:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8333333, 1.0666667, 1.2666667, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 1.612), Vector3(0, 0, 0.26866674), Vector3(0, 0, 0.26866674), Vector3(0, 0, 0.26866674), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ixuxp"]
+resource_name = "Open"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrisonRailDoor_02:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -1.6117574)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PrisonRailDoor_01:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 1.612)]
+}
+
+[sub_resource type="Animation" id="Animation_uy2wh"]
+resource_name = "Opening"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrisonRailDoor_02:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6333333, 0.93333334, 1.1666666, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -1.452), Vector3(0, 0, -1.452), Vector3(0, 0, -1.452), Vector3(0, 0, -1.6117574)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PrisonRailDoor_01:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6333333, 0.93333334, 1.1666666, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 1.4515957), Vector3(0, 0, 1.4515957), Vector3(0, 0, 1.4515957), Vector3(0, 0, 1.612)]
+}
+
+[sub_resource type="Animation" id="Animation_hfsqw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrisonRailDoor_02:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PrisonRailDoor_02:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PrisonRailDoor_01:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PrisonRailDoor_01:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ixuxp"]
+_data = {
+&"Closed": SubResource("Animation_tv4k6"),
+&"Closing": SubResource("Animation_4l1f4"),
+&"Open": SubResource("Animation_ixuxp"),
+&"Opening": SubResource("Animation_uy2wh"),
+&"RESET": SubResource("Animation_hfsqw")
+}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6x05"]
 albedo_texture = ExtResource("17_0n1ur")
@@ -175,9 +431,6 @@ fog_depth_curve = 0.5000009
 fog_depth_begin = 123.1
 fog_depth_end = 274.5
 adjustment_enabled = true
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_fxtw2"]
-size = Vector3(9.30127, 7.2834473, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mausv"]
 albedo_texture = ExtResource("17_0n1ur")
@@ -320,6 +573,8 @@ _data = {
 }
 
 [node name="StageOne" type="Node3D" unique_id=1668100898]
+script = ExtResource("1_6gdgj")
+music_ref = "music_low"
 
 [node name="RailCamera" type="Node3D" parent="." unique_id=1199109627]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.623193, 31.221176)
@@ -614,8 +869,59 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 150, 0, -10)
 [node name="DoorwayPrisonRailPrison" parent="Environment" unique_id=466471037 instance=ExtResource("56_a3ov2")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 45, 16.8, 0)
 
-[node name="DoorwayPrisonRailPrison3" parent="Environment" unique_id=708239747 instance=ExtResource("56_a3ov2")]
+[node name="DoorwayPrisonRailPrison3" type="StaticBody3D" parent="Environment" unique_id=708239747]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -25, 8.4, 0)
+
+[node name="DoorwayPrisonRailPrison_Mesh" type="MeshInstance3D" parent="Environment/DoorwayPrisonRailPrison3" unique_id=1877230586]
+mesh = ExtResource("14_6gdgj")
+surface_material_override/0 = SubResource("StandardMaterial3D_3nqmm")
+
+[node name="DoorwayPrisonRailPrison_Collision_01" type="CollisionShape3D" parent="Environment/DoorwayPrisonRailPrison3" unique_id=1568972765]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.247925e-05, 0.10656738, 0.0037231445)
+shape = SubResource("BoxShape3D_tv4k6")
+
+[node name="DoorwayPrisonRailPrison_Collision_02" type="CollisionShape3D" parent="Environment/DoorwayPrisonRailPrison3" unique_id=1700892544]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.247925e-05, 3.9968739, 0.0037231445)
+shape = SubResource("BoxShape3D_uy2wh")
+
+[node name="DoorwayPrisonRailPrison_CollisionGPU_01" type="GPUParticlesCollisionBox3D" parent="Environment/DoorwayPrisonRailPrison3" unique_id=465486954]
+transform = Transform3D(0.10047269, 0, 0, 0, 1, 0, 0, 0, 1.5759289, 0, 1.6664581, -0.008471966)
+visible = false
+size = Vector3(2, 3.5292053, 2.006836)
+
+[node name="DoorwayPrisonRailPrison_CollisionGPU_02" type="GPUParticlesCollisionBox3D" parent="Environment/DoorwayPrisonRailPrison3" unique_id=1552171586]
+transform = Transform3D(0.10047269, 0, 0, 0, 1, 0, 0, 0, 2.478681, 0, 3.9867477, 0.00027251244)
+visible = false
+size = Vector3(2, 0.2089386, 2.0074463)
+
+[node name="PrisonRailDoor_01" type="StaticBody3D" parent="Environment/DoorwayPrisonRailPrison3" unique_id=647697957]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0, 0)
+
+[node name="PrisonRailDoor_Mesh_01" type="MeshInstance3D" parent="Environment/DoorwayPrisonRailPrison3/PrisonRailDoor_01" unique_id=151096342]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0, 0)
+mesh = ExtResource("21_ovhx5")
+surface_material_override/0 = SubResource("StandardMaterial3D_oooqa")
+
+[node name="PrisonRailDoor_Collision_01" type="CollisionShape3D" parent="Environment/DoorwayPrisonRailPrison3/PrisonRailDoor_01" unique_id=1645092404]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 1.8762027, 1.1440581)
+visible = false
+shape = SubResource("BoxShape3D_hfsqw")
+
+[node name="PrisonRailDoor_02" type="StaticBody3D" parent="Environment/DoorwayPrisonRailPrison3" unique_id=1273916700]
+
+[node name="PrisonRailDoor_Mesh_02" type="MeshInstance3D" parent="Environment/DoorwayPrisonRailPrison3/PrisonRailDoor_02" unique_id=658551115]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
+mesh = ExtResource("21_ovhx5")
+surface_material_override/0 = SubResource("StandardMaterial3D_oooqa")
+
+[node name="PrisonRailDoor_Collision_02" type="CollisionShape3D" parent="Environment/DoorwayPrisonRailPrison3/PrisonRailDoor_02" unique_id=888861802]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.727392e-07, 1.876, -1.144)
+visible = false
+shape = SubResource("BoxShape3D_hfsqw")
+
+[node name="PrisonRailDoor_AnimationPlayer" type="AnimationPlayer" parent="Environment/DoorwayPrisonRailPrison3" unique_id=636822427]
+libraries/ = SubResource("AnimationLibrary_ixuxp")
+autoplay = &"Open"
 
 [node name="DoorwayPrisonRailPrison2" parent="Environment" unique_id=323179958 instance=ExtResource("56_a3ov2")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 135, 16.8, 0)
@@ -1772,24 +2078,33 @@ transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 199.
 [node name="2D_Posters" type="Node3D" parent="Props" unique_id=590890931]
 
 [node name="Enlist" parent="Props/2D_Posters" unique_id=56375923 instance=ExtResource("72_lraim")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 45.269924, 4.6974325, 3.5335202)
+transform = Transform3D(1.5917735, 0, 0, 0, 1.6230817, 0, 0, 0, 1, 56.672512, 5.64106, -6.60374)
 
 [node name="File_Exploiter" parent="Props/2D_Posters" unique_id=1119518296 instance=ExtResource("74_nqvtq")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 155.23308, 6.0376663, -10.064179)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 155.23308, 5.941147, 3.3750534)
 
 [node name="HostileArchitecture" parent="Props/2D_Posters" unique_id=1333764258 instance=ExtResource("75_v1rce")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.7297, 5.5920496, -14.940098)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 145.02199, 5.5920496, -14.940098)
+
+[node name="WillPortrait" parent="Props/2D_Posters" unique_id=2105078253 instance=ExtResource("73_4scdv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.347645, 12.974404, -16.639408)
+
+[node name="BJ_Watches" parent="Props/2D_Posters" unique_id=1517328070 instance=ExtResource("76_v1rce")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.66294, 18.600609, -4.900006)
 
 [node name="2D_Corpses" type="Node3D" parent="Props" unique_id=722687240]
 
 [node name="LyingConvict" parent="Props/2D_Corpses" unique_id=1235913099 instance=ExtResource("72_x0gst")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.10137, 1.1637552, -11.237484)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.10137, 1.228018, -11.237484)
 
 [node name="ImpaledConvict" parent="Props/2D_Corpses" unique_id=889351681 instance=ExtResource("77_3k85b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.09048, 1.0664933, 3.1750278)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.638535, 1.480171, -1.9263186)
 
 [node name="ScrubCrashed" parent="Props/2D_Corpses" unique_id=2089480923 instance=ExtResource("78_g3qdj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200.71062, 0.68806237, -6.5467396)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189.17981, 0.8884221, -7.9195457)
+
+[node name="MeatLumps" parent="Props/2D_Corpses" unique_id=720032926 instance=ExtResource("92_4scdv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.368645, 9.140897, -6.6810308)
 
 [node name="Interactive" type="Node3D" parent="." unique_id=1604478648]
 
@@ -1827,35 +2142,34 @@ enemy_manager = NodePath("../../Enemies/RoomOne")
 
 [node name="TestDummy" parent="Interactive" unique_id=669336158 instance=ExtResource("18_jph5v")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 18.510084, 0.2, -1)
-collision_layer = 0
 
 [node name="TestDummy3" parent="Interactive" unique_id=173144000 instance=ExtResource("18_jph5v")]
 transform = Transform3D(1.0250254, 0, 1.0951362, 0, 1.5, 0, -1.0951362, 0, 1.0250254, 16.45037, 0.2, -11.027395)
-collision_layer = 0
 
 [node name="TestDummy4" parent="Interactive" unique_id=310635492 instance=ExtResource("18_jph5v")]
 transform = Transform3D(-0.9766384, 0, 1.1384981, 0, 1.5, 0, -1.1384981, 0, -0.9766384, -18.486298, 0.2, -10.79426)
-collision_layer = 0
 
 [node name="TestDummy2" parent="Interactive" unique_id=435308937 instance=ExtResource("18_jph5v")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 18.510084, 8.6, 0)
 
-[node name="Television" parent="Interactive" unique_id=1230489901 instance=ExtResource("19_ewyc7")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -9.398563, 8.606749, -9.117573)
-
-[node name="AnimatedSprite3D2" parent="Interactive/Television" index="1" unique_id=1155210467]
-visible = false
-
-[node name="Television2" parent="Interactive" unique_id=264735797 instance=ExtResource("19_ewyc7")]
+[node name="Controller_TV" parent="Interactive" unique_id=1230489901 instance=ExtResource("86_r1v12")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 9.933203, 8.606749, -9.117573)
 
-[node name="AnimatedSprite3D" parent="Interactive/Television2" index="0" unique_id=634855209]
-visible = false
+[node name="KBM_TV" parent="Interactive" unique_id=1941959621 instance=ExtResource("87_tx7sn")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -11.602428, 8.606749, -9.117573)
 
 [node name="GunPodium" parent="Interactive" unique_id=786548764 node_paths=PackedStringArray("door_to_unlock") instance=ExtResource("20_gufy2")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.2, -1)
 collision_layer = 0
 door_to_unlock = NodePath("../DoorBasic")
+
+[node name="InteractableComponent" parent="Interactive/GunPodium/GunPodium_Mesh" parent_id_path=PackedInt32Array(786548764, 1164015310) index="0" unique_id=2140039813 node_paths=PackedStringArray("dialogue_renderer")]
+dialogue_renderer = NodePath("DialogueRenderer")
+
+[node name="DialogueRenderer" parent="Interactive/GunPodium/GunPodium_Mesh/InteractableComponent" index="2" unique_id=780065543 instance=ExtResource("85_44hq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.977342, 0)
+size_of_viewport = Vector2(1000, 100)
+is_system_interact = true
 
 [node name="GunPodiumGun" parent="Interactive" unique_id=1733078243 instance=ExtResource("21_5y7s6")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.2, -1)
@@ -2133,16 +2447,6 @@ environment = SubResource("Environment_nym5h")
 
 [node name="DATES_POPUPS" type="Node" parent="." unique_id=983173156]
 
-[node name="ConvictPopup" parent="DATES_POPUPS" unique_id=1311781014 instance=ExtResource("22_cj1de")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.02658, 2.9467964, 0)
-_signal_parameters = [0]
-signal_name = "activate_popup"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DATES_POPUPS/ConvictPopup" unique_id=496084148]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.58653, 1.079, 0)
-shape = SubResource("BoxShape3D_fxtw2")
-debug_color = Color(0.919504, 0.13431916, 0.6161928, 0.41960785)
-
 [node name="Enemies" type="Node3D" parent="." unique_id=1148700225]
 
 [node name="RoomOne" parent="Enemies" unique_id=1450252011 instance=ExtResource("24_2ao7q")]
@@ -2227,13 +2531,18 @@ autoplay = &"Intro"
 
 [node name="VFX2" type="Node3D" parent="." unique_id=915792707]
 
-[node name="WillPortrait" parent="." unique_id=2105078253 instance=ExtResource("73_4scdv")]
+[node name="TutorialTrigger" parent="." unique_id=885435014 node_paths=PackedStringArray("door_to_unlock") instance=ExtResource("85_ttrig")]
+sequence_name = "OpeningTutorial"
+steps = Array[ExtResource("86_g074a")]([ExtResource("87_yxmou"), ExtResource("88_4scdv"), ExtResource("89_nqvtq"), ExtResource("88_3c7cn"), ExtResource("91_v1rce"), ExtResource("92_3k85b")])
+door_to_unlock = NodePath("../Interactive/DoorBasic")
+
+[node name="WillPortrait" parent="." unique_id=2128177294 instance=ExtResource("73_4scdv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.347645, 12.974404, -16.639408)
 
-[node name="MeatLumps" parent="." unique_id=720032926 instance=ExtResource("92_4scdv")]
+[node name="MeatLumps" parent="." unique_id=2009025508 instance=ExtResource("92_4scdv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.368645, 9.140897, -12.48376)
 
-[node name="GunPodium" parent="." unique_id=1135966921 instance=ExtResource("85_x0gst")]
+[node name="BackgroundGunPodium" parent="." unique_id=1135966921 instance=ExtResource("85_x0gst")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11074698, 0.19126523, -10.822699)
 
 [connection signal="removecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
@@ -2277,7 +2586,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11074698, 0.19126523, -10.8
 [editable path="Interactive/DoorSlidingBasic4"]
 [editable path="Interactive/TestDummy"]
 [editable path="Interactive/TestDummy2"]
-[editable path="Interactive/Television"]
-[editable path="Interactive/Television2"]
 [editable path="Interactive/GunPodium"]
 [editable path="Interactive/GunPodiumGun"]

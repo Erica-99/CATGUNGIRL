@@ -12,6 +12,7 @@ class_name BrainSpider
 @onready var health_comp = $HealthComponent
 @onready var team_component = $TeamComponent
 @onready var brain_spider_visuals: BrainSpiderVisuals = $SpiderPivot
+@onready var surface_check: RayCast3D = $SurfaceCheck
 
 @export_category("Node References")
 @export var animator: AnimationPlayer
@@ -46,6 +47,10 @@ enum SurfaceType {
 @export var acceleration: float = 20.0
 ##Gravity strength for surface sticking and death falling
 @export var gravity: float = 50.0
+
+@export_category("Surface Check")
+@export var surface_check_forward_distance: float = 1.0
+@export var surface_check_length: float = 2.0
 
 @export_category("Explosion Variables")
 ##Damage of self destruct explosion
@@ -98,6 +103,7 @@ var laser_cooldown_timer: float = 0.0
 var locked_laser_direction: Vector3 = Vector3.RIGHT
 var is_in_turret_form: bool = false
 var blackboard: Dictionary
+var can_take_step: bool = true
 
 func _ready() -> void:
 	blackboard = {
@@ -121,6 +127,7 @@ func _ready() -> void:
 	state_machine.init(blackboard)
 	brain_spider_visuals.apply_surface_rotation()
 	health_comp.killed.connect(_on_health_component_killed)
+	health_comp.knocked_back.connect(take_knockback)
 
 func _on_health_component_killed(_killing_blow: DamageHealInstance, _health_before_death: Variant) -> void:
 	start_death()
@@ -181,6 +188,16 @@ func get_surface_move_axis() -> Vector3:
 			return Vector3.UP
 	
 	return Vector3.RIGHT
+
+func update_surface_check(move_axis: Vector3, move_direction: float, surface_direction: Vector3) -> void:
+	if is_zero_approx(move_direction):
+		can_take_step = true
+		return
+	
+	surface_check.position = move_axis.normalized() * move_direction * surface_check_forward_distance
+	surface_check.target_position = surface_direction.normalized() * surface_check_length
+	surface_check.force_raycast_update()
+	can_take_step = surface_check.is_colliding()
 
 func get_surface_gravity_direction() -> Vector3:
 	match surface_type:
@@ -265,3 +282,17 @@ func show_spider_visual() -> void:
 
 func is_explosion_effect_playing() -> bool:
 	return brain_spider_visuals.is_explosion_playing()
+
+## When taking damage, get pushed back 
+func take_knockback(knockback_direction: Vector3, knockback_strength: float):
+	# Different knockback handling for on the floor/in the air
+	# When on the floor knock up-left/right
+	# print("Knocked back " + str(knockback_direction) + str(knockback_strength))
+	if spider_mode == SpiderMode.FLOOR:
+		if knockback_direction.x >= 0:
+			velocity += Vector3(knockback_strength, knockback_strength/log(10), 0)
+		else:
+			velocity += Vector3(-knockback_strength, knockback_strength/log(10), 0)
+	# When not on the floor get knocked down to the ground
+	#else:
+		#velocity = knockback_direction * knockback_strength

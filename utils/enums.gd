@@ -42,6 +42,7 @@ enum InteractableType {
 	ELEVATOR,
 	BRAIN_TERMINAL,
 	PICKUP,
+	GUN_SACRIFICE,
 }
 
 enum BubbleType {
@@ -61,4 +62,6 @@ enum Room {
 enum EnemyType {
 	CONVICT,
 	SCRUB,
+	TRUNK,
+	BRAINSPIDER
 }

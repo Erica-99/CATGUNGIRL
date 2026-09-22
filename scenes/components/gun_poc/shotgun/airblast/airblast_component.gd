@@ -81,7 +81,11 @@ func _fire_blast():
 		actor.velocity = -aim_dir * launch_speed
 		request_animation(player_knockback_animation_name)
 		
+		AudioManager.play_sfx("missile_explode")
+		
 		if !DebugManager.infinite_ammo:
 			shotgun._current_ammo -= 2
 			EventManager.shots_fired.emit(2)
+
+		EventManager.alt_fire_used.emit("Shotgun")
 	

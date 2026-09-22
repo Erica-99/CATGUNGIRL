@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://d2ki8nmtk07x8"]
+
+[ext_resource type="Texture2D" uid="uid://bbmtrp0kyq3eb" path="res://art/2d_assets/corpse_assets/Images/corpse_with_sniper_rifle.png" id="1_b4oo4"]
+[ext_resource type="Script" uid="uid://bvei03n6h0bwv" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/gun_pickup_visuals.gd" id="1_lf51a"]
+[ext_resource type="Texture2D" uid="uid://bqulp651och76" path="res://art/2d_assets/corpse_assets/Images/corpse_without_sniper_rifle.png" id="2_kv1wt"]
+[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="3_kv1wt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4yp18"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kv1wt")
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_b4oo4")
+}],
+"loop": true,
+"name": &"sniper_held",
+"speed": 5.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lf51a"]
+size = Vector3(1.4960938, 15.961519, 1)
+
+[node name="sniper_Unlockable" type="Node3D" unique_id=1001534482 node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_lf51a")
+sprite = NodePath("AnimatedSprite3D")
+held_gun_name = "sniper"
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1374841085]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+centered = false
+offset = Vector2(-414, -26.82)
+sprite_frames = SubResource("SpriteFrames_4yp18")
+animation = &"sniper_held"
+autoplay = "sniper_held"
+
+[node name="SniperUnlock" parent="." unique_id=1311781014 instance=ExtResource("3_kv1wt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.268)
+_signal_parameters = ["sniper"]
+signal_name = "unlock_gun"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SniperUnlock" unique_id=1724111285]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25195313, 7.5741763, 0)
+shape = SubResource("BoxShape3D_lf51a")

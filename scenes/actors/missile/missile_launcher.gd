@@ -23,7 +23,8 @@ func _process(delta: float) -> void:
 func launch_missile() -> void:
 	var new_missile = MISSILE.instantiate() as CharacterBody3D
 	
-	get_tree().root.add_child(new_missile)
+	#Globals.current_scene_reference.add_child(new_missile)
+	get_tree().current_scene.add_child(new_missile)
 	new_missile.global_position = global_position
 
 # Testing Scene Function Only

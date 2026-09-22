@@ -32,17 +32,26 @@ func physics_update(delta: float) -> void:
 		return
 	
 	var surface_move_axis: Vector3 = actor.get_surface_move_axis()
+	var surface_direction: Vector3 = actor.get_surface_gravity_direction()
 	var target_offset: Vector3 = actor.target.global_position - actor.global_position
 	var move_direction: float = sign(target_offset.dot(surface_move_axis))
 	var target_velocity: Vector3 = surface_move_axis * move_direction * actor.move_speed
+	actor.update_surface_check(surface_move_axis, move_direction, surface_direction)
 	
 	if move_direction != 0.0:
 		actor.brain_spider_visuals.face_direction(move_direction)
+		
+		if !actor.can_take_step:
+			target_velocity = Vector3.ZERO
+			actor.velocity -= surface_move_axis * actor.velocity.dot(surface_move_axis)
 	
 	actor.velocity = actor.velocity.move_toward(target_velocity, actor.acceleration * delta)
-	actor.velocity += actor.get_surface_gravity_direction() * actor.gravity * delta
+	actor.velocity += surface_direction * actor.gravity * delta
 	actor.velocity.z = 0
-	
-	actor.animator.play('Scurry')
+	actor.animator.play("Scurry")
 	actor.apply_soft_collision(delta)
+	
+	if !actor.can_take_step:
+		actor.velocity -= surface_move_axis * actor.velocity.dot(surface_move_axis)
+	
 	actor.move_and_slide()

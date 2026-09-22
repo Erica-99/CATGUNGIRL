@@ -88,5 +88,8 @@ func _fire_beam() -> void:
 	var hb = beam.get_node("HitboxComponent")
 	hb.damage_dealt.connect(func(dmg): enemy_hit.emit(dmg))
 	
+	AudioManager.play_sfx("sniper_shoot")
+	
 	sniper._time_since_last_shot = 0.0
 	sniper._handle_ammo()
+	EventManager.alt_fire_used.emit("Sniper")

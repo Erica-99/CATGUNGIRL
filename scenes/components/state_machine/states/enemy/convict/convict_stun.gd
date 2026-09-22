@@ -20,7 +20,7 @@ func init(blackboard_dict: Dictionary) -> void:
 	slow_down_speed = blackboard["slow_down_speed"]
 
 func enter() -> void:
-	pass
+	stun_timer = 0.0
 
 func update(_delta: float) -> void:
 	stun_timer += _delta

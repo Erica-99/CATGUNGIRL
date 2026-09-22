@@ -104,6 +104,11 @@ func _make_all_bubbles_transparent() -> void:
 		if bubble is PanelContainer:
 			bubble.can_disappear = true
 
+func _update_bubble_text(new_text: String) -> void:
+	for child in get_children():
+		if child is DialogueBubble:
+			child.rich_text_label.text = new_text
+
 # chucking this stuff here so its out of the way lol
 # these are just the unit tests for dialogue loading
 func _debug_tests_for_linking() -> void:

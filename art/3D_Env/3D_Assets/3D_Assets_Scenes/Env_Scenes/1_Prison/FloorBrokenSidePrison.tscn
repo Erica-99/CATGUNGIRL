@@ -9,19 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://dqbmkyoo6y5r2" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/FloorRoof/Floor_RoofPrison_Normal_OpenGL.png" id="8_44st2"]
 [ext_resource type="Texture2D" uid="uid://dn0pmjhi73ibf" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/FloorRoof/Floor_RoofPrison_Specular_roughness.png" id="9_ml1et"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_83r4d"]
-albedo_texture = ExtResource("4_g67sh")
-metallic = 1.0
-metallic_texture = ExtResource("7_ylw7e")
-roughness_texture = ExtResource("9_ml1et")
-normal_enabled = true
-normal_texture = ExtResource("8_44st2")
-ao_enabled = true
-ao_texture = ExtResource("5_vgl37")
-heightmap_enabled = true
-heightmap_scale = 0.0
-heightmap_texture = ExtResource("6_axsq7")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xcmra"]
 albedo_texture = ExtResource("4_g67sh")
 metallic = 1.0
@@ -35,13 +22,55 @@ heightmap_enabled = true
 heightmap_scale = 0.0
 heightmap_texture = ExtResource("6_axsq7")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_83r4d"]
+albedo_texture = ExtResource("4_g67sh")
+metallic = 1.0
+metallic_texture = ExtResource("7_ylw7e")
+roughness_texture = ExtResource("9_ml1et")
+normal_enabled = true
+normal_texture = ExtResource("8_44st2")
+ao_enabled = true
+ao_texture = ExtResource("5_vgl37")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("6_axsq7")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_83r4d"]
+size = Vector3(1.3601685, 0.2, 4.9716187)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g67sh"]
+size = Vector3(2.4875793, 0.2, 1.9763641)
+
 [node name="FloorBrokenSidePrison" type="StaticBody3D" unique_id=182992622]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="RebarEdge_Mesh" type="MeshInstance3D" parent="." unique_id=1154885482]
+mesh = ExtResource("3_rwuer")
+surface_material_override/0 = SubResource("StandardMaterial3D_xcmra")
 
 [node name="FloorBrokenSidePrison_Mesh" type="MeshInstance3D" parent="." unique_id=1388799136]
 mesh = ExtResource("1_i1bhl")
 surface_material_override/0 = SubResource("StandardMaterial3D_83r4d")
 
-[node name="RebarEdge_Mesh" type="MeshInstance3D" parent="." unique_id=1154885482]
-mesh = ExtResource("3_rwuer")
-surface_material_override/0 = SubResource("StandardMaterial3D_xcmra")
+[node name="FloorBrokenSideLaboratory_Collision_01" type="CollisionShape3D" parent="." unique_id=1239528630]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8199158, 0, 0.00039672852)
+shape = SubResource("BoxShape3D_83r4d")
+
+[node name="FloorBrokenSideLaboratory_Collision_02" type="CollisionShape3D" parent="." unique_id=33791621]
+transform = Transform3D(0.9895509, -0.14418349, 0, 0.14418349, 0.9895509, 0, 0, 0, 1, -0.0765979, -0.17801188, -0.063835144)
+shape = SubResource("BoxShape3D_g67sh")
+
+[node name="FloorBrokenSidePrison_CollisionGPU_01" type="GPUParticlesCollisionBox3D" parent="." unique_id=1715854909]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.4914136, 0.6517334, -0.007843018, 0)
+visible = false
+size = Vector3(3.6867676, 0.19464111, 2)
+
+[node name="FloorBrokenSidePrison_CollisionGPU_02" type="GPUParticlesCollisionBox3D" parent="." unique_id=1575012884]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.4914136, -1.8433533, -0.007843018, -1.7396101)
+visible = false
+size = Vector3(1.319397, 0.19464111, 0.6035156)
+
+[node name="FloorBrokenSidePrison_CollisionGPU_03" type="GPUParticlesCollisionBox3D" parent="." unique_id=1417415938]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.4914136, -1.8433533, -0.007843018, 1.724923)
+visible = false
+size = Vector3(1.319397, 0.19464111, 0.6035156)

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bgsxy7x62gxql" path="res://scenes/bullet/bullet.gd" id="1_beam"]
 [ext_resource type="PackedScene" uid="uid://csd06hicr5wny" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="2_beam"]
+[ext_resource type="PackedScene" uid="uid://buc7li2ysoaid" path="res://art/TechArt/2_VFX/projectiles/projectile_sniper/projectile_sniper_railgun.tscn" id="3_0dj6r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_beam_body"]
 
@@ -33,5 +34,9 @@ shape = SubResource("BoxShape3D_beam_body")
 shape = SubResource("BoxShape3D_beam_hitbox")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1149786042]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 mesh = SubResource("BoxMesh_beam")
 surface_material_override/0 = SubResource("StandardMaterial3D_beam")
+
+[node name="VFX" parent="." unique_id=428503552 instance=ExtResource("3_0dj6r")]
+transform = Transform3D(8, 0, 0, 0, 4, 0, 0, 0, 4, 18, 0, 0)

@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dde38cki7gg8q"]
+
+[ext_resource type="Shader" uid="uid://b1lj6u0tutynw" path="res://art/TechArt/2_VFX/screen_effects/vignette/Vignette.tres" id="1_bayad"]
+[ext_resource type="Texture2D" uid="uid://b1rvlmi4l6ev6" path="res://art/TechArt/2_VFX/screen_effects/low_health/tex/T_Noise21.png" id="2_bayad"]
+
+[resource]
+shader = ExtResource("1_bayad")
+shader_parameter/ColorParameter = Color(1.975, 0, 0, 1)
+shader_parameter/uv_tiling = Vector2(0.785, 0.995)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/vignette_pow = 4.0
+shader_parameter/vignette_intensity = 12.0
+shader_parameter/noise_scale = Vector2(1, 1)
+shader_parameter/noise_offset = Vector2(0, 0)
+shader_parameter/scroll_speed = Vector2(0, 0.075)
+shader_parameter/toggle_scroll = false
+shader_parameter/noise_texutre = ExtResource("2_bayad")
+shader_parameter/toggle_breathing = true
+shader_parameter/breathe_speed = 2.05
