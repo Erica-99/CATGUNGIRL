@@ -67,5 +67,6 @@ func physics_update(delta):
 		transitioned.emit(self, "missiledetonate")
 
 func exit() -> void:
-	asp.stop()
-	asp.finished.emit()
+	#asp.stop()
+	#asp.finished.emit()
+	pass
