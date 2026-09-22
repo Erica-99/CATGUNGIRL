@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://b4lfkofqrlxwy" path="res://scenes/ui/menu_screens/main_menu.gd" id="1_dtles"]
 [ext_resource type="Texture2D" uid="uid://bwaq30tkw5icx" path="res://art/2d_assets/ui/MainMenu/MenuBG.jpg" id="1_r06k5"]
-[ext_resource type="Texture2D" uid="uid://c5ep8fh5f04th" path="res://art/2d_assets/ui/MainMenu/TeamPlaceholderLogo.png" id="1_vx7c8"]
 [ext_resource type="Texture2D" uid="uid://d05v7dyl3lkw2" path="res://art/2d_assets/ui/MainMenu/CATGUNGIRLS Menu1.png" id="2_jdahc"]
 [ext_resource type="Texture2D" uid="uid://cn6shr3f0tj86" path="res://art/2d_assets/ui/MainMenu/CATGUNGIRLS Menu2.png" id="3_r06k5"]
 [ext_resource type="Texture2D" uid="uid://wuxdcpxm7w0c" path="res://art/2d_assets/ui/MainMenu/MenuVignette.png" id="4_dtles"]
 [ext_resource type="Texture2D" uid="uid://c34pw772srnjq" path="res://art/2d_assets/ui/MainMenu/TitleSide1.png" id="5_son0w"]
 [ext_resource type="Texture2D" uid="uid://cco8h0ju3h1ha" path="res://art/2d_assets/ui/MainMenu/TitleSide2.png" id="6_r3fav"]
 [ext_resource type="Texture2D" uid="uid://b8xjjli0nctmv" path="res://art/2d_assets/ui/MainMenu/TitleSide3.png" id="7_lrllm"]
+[ext_resource type="Texture2D" uid="uid://clchhijhllbf4" path="res://art/2d_assets/ui/MainMenu/DOAlogo.png" id="9_dtles"]
 
 [sub_resource type="Animation" id="Animation_jdahc"]
 resource_name = "Intro"
@@ -56,10 +56,10 @@ tracks/3/path = NodePath("TeamPlaceHolder:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.03333333, 0.8, 3.0666666, 3.9666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0.033333335, 0.3, 0.43333334, 3.0666666, 3.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -204,6 +204,18 @@ tracks/15/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(-1000, 459), Vector2(-1000, 459), Vector2(13, 459)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("TeamPlaceHolder:scale")
+tracks/16/interp = 2
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0.33333334, 0.43333334, 0.53333336),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.015, 0.015), Vector2(0.485, 0.485), Vector2(0.415, 0.415)]
 }
 
 [sub_resource type="Animation" id="Animation_dtles"]
@@ -400,6 +412,18 @@ tracks/15/keys = {
 "update": 0,
 "values": [Vector2(13, 459)]
 }
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("TeamPlaceHolder:scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.535, 0.535)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r06k5"]
 _data = {
@@ -513,6 +537,7 @@ mouse_filter = 2
 [node name="TeamPlaceHolder" type="Sprite2D" parent="." unique_id=930437747]
 visible = false
 position = Vector2(926, 536)
-texture = ExtResource("1_vx7c8")
+scale = Vector2(0.535, 0.535)
+texture = ExtResource("9_dtles")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
