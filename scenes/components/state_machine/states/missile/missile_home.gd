@@ -21,8 +21,8 @@ func enter():
 	anims.play('Activate')
 	current_speed = 0
 	
-	AudioManager.play_sfx_at_location("missile_lock", missile_ref.global_position)
-	asp = AudioManager.play_sfx_at_location("missile_move", missile_ref.global_position)
+	#AudioManager.play_sfx_at_location("missile_lock", missile_ref.global_position)
+	#asp = AudioManager.play_sfx_at_location("missile_move", missile_ref.global_position)
 
 func update(delta):
 	#asp.global_position = missile_ref.global_position
