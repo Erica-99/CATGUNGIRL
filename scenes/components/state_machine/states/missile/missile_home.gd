@@ -10,12 +10,15 @@ class_name MissileHomeIn
 var body : CharacterBody3D
 var player: CharacterBody3D
 var current_speed : float
+var anims: AnimationPlayer
 
 var asp: AudioStreamPlayer3D
 
 func enter():
 	body = blackboard["actor"]
 	player = blackboard["player"]
+	anims = blackboard['anims']
+	anims.play('Activate')
 	current_speed = 0
 	
 	AudioManager.play_sfx_at_location("missile_lock", missile_ref.global_position)
