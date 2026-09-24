@@ -6,9 +6,49 @@
 albedo_color = Color(0, 0, 0, 1)
 metallic = 1.0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_7t8ed"]
+size = Vector3(0.19934082, 6.5666056, 18.864399)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iwr7a"]
+size = Vector3(0.19934082, 7.60944, 18.538227)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_35qpi"]
+size = Vector3(0.19934082, 13.78444, 18.538227)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s0kyb"]
+size = Vector3(0.19934082, 85.02484, 18.538227)
+
 [node name="BrainCanopy" type="Node3D" unique_id=1922873456]
 
 [node name="BrainCanopy_Mesh" type="MeshInstance3D" parent="." unique_id=1172075503]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("1_7t8ed")
 surface_material_override/0 = SubResource("StandardMaterial3D_7t8ed")
+
+[node name="BrainCanopy_Collision_01" type="CollisionShape3D" parent="." unique_id=813454227]
+transform = Transform3D(1.4945991, 1.3289745, 0, -1.3289745, 1.4945991, 0, 0, 0, 2, -125.73662, 84.69428, 11.132)
+shape = SubResource("BoxShape3D_7t8ed")
+
+[node name="BrainCanopy_Collision_02" type="CollisionShape3D" parent="." unique_id=1211657045]
+transform = Transform3D(1.3358209, 1.4884833, 0, -1.4884833, 1.3358209, 0, 0, 0, 2, -115.65693, 94.72972, 11.458172)
+shape = SubResource("BoxShape3D_iwr7a")
+
+[node name="BrainCanopy_Collision_03" type="CollisionShape3D" parent="." unique_id=1579221709]
+transform = Transform3D(0.8463751, 1.8120843, 0, -1.8120843, 0.8463751, 0, 0, 0, 2, -97.55308, 105.60047, 11.458172)
+shape = SubResource("BoxShape3D_35qpi")
+
+[node name="BrainCanopy_Collision_04" type="CollisionShape3D" parent="." unique_id=1207693639]
+transform = Transform3D(1.495596, -1.3278524, 0, 1.3278524, 1.495596, 0, 0, 0, 2, 125.737, 84.694, 11.132)
+shape = SubResource("BoxShape3D_7t8ed")
+
+[node name="BrainCanopy_Collision_05" type="CollisionShape3D" parent="." unique_id=1382890303]
+transform = Transform3D(1.3356651, -1.488623, 0, 1.488623, 1.3356651, 0, 0, 0, 2, 115.657, 94.73, 11.458)
+shape = SubResource("BoxShape3D_iwr7a")
+
+[node name="BrainCanopy_Collision_06" type="CollisionShape3D" parent="." unique_id=1861547071]
+transform = Transform3D(0.8452365, -1.8126156, 0, 1.8126156, 0.8452365, 0, 0, 0, 2, 97.553, 105.6, 11.458)
+shape = SubResource("BoxShape3D_35qpi")
+
+[node name="BrainCanopy_Collision_07" type="CollisionShape3D" parent="." unique_id=517654187]
+transform = Transform3D(-8.742278e-08, -2, 0, 2, -8.742278e-08, 0, 0, 0, 2, -0.06474304, 111.44073, 11.458)
+shape = SubResource("BoxShape3D_s0kyb")
