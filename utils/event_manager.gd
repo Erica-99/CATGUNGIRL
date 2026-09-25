@@ -33,7 +33,6 @@ signal new_gun_equipped(gun_name: String)
 signal enable_gun_ui(enabled: bool)
 signal unlock_gun(gun_name: String)
 
-signal narrative_give_pistol
 signal narrative_unlock_shotgun
 signal narrative_unlock_sniper
 signal narrative_trigger_sacrifice_window
