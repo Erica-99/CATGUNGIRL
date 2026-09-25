@@ -2,6 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://drx7g7gow5ugb" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/6B_Lab/Syringe.fbx" id="1_vojte"]
 
-[node name="Beaker1" type="StaticBody3D" unique_id=306728926]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vojte"]
+transparency = 1
+albedo_color = Color(0.38446665, 0.433493, 0.433493, 0.60784316)
+
+[node name="Beaker1" type="Node3D" unique_id=818023424]
 
 [node name="Syringe" parent="." unique_id=1705750869 instance=ExtResource("1_vojte")]
+
+[node name="Stand_002" parent="Syringe" index="0" unique_id=1352389382]
+surface_material_override/0 = SubResource("StandardMaterial3D_vojte")
+
+[editable path="Syringe"]

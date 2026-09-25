@@ -2,6 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://dv88i5qkjtu4y" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/6B_Lab/Beaker1.fbx" id="1_qu887"]
 
-[node name="Beaker1" type="StaticBody3D" unique_id=306728926]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qu887"]
+transparency = 1
+albedo_color = Color(0.89411765, 1, 1, 0.20392157)
+
+[node name="Beaker1" type="Node3D" unique_id=542511501]
 
 [node name="Beaker1" parent="." unique_id=1781563458 instance=ExtResource("1_qu887")]
+
+[node name="Beaker1" parent="Beaker1" index="0" unique_id=1998812913]
+surface_material_override/0 = SubResource("StandardMaterial3D_qu887")
+
+[editable path="Beaker1"]

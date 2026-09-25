@@ -2,8 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://ngl8amh8bwxw" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/6B_Lab/BridgeSciFi.fbx" id="1_tevl1"]
 
-[node name="BridgeSciFi" type="StaticBody3D" unique_id=306728926]
+[sub_resource type="BoxShape3D" id="BoxShape3D_tevl1"]
+
+[node name="BridgeSciFi" type="Node3D" unique_id=2135080238]
 
 [node name="BridgeSciFi" parent="." unique_id=1354835851 instance=ExtResource("1_tevl1")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BridgeSciFi" unique_id=1930071147]
+transform = Transform3D(5.8028207, 0, 0, 0, 1.538848, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_tevl1")
 
 [editable path="BridgeSciFi"]
