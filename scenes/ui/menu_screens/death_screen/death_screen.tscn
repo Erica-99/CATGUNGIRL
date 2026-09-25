@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://dojkmtkhx0ec7"]
+
+[ext_resource type="Script" uid="uid://rsmj8rap6soj" path="res://scenes/ui/menu_screens/death_screen/death_screen.gd" id="1_blny2"]
+[ext_resource type="Texture2D" uid="uid://bl6hhcuc8law" path="res://art/2d_assets/visual_novel/vn_gigi/Gigi_Scarred.png" id="1_g5nha"]
+[ext_resource type="Resource" uid="uid://b8mbc5kk8symc" path="res://resources/death_screen/default_death_info.tres" id="2_gaqod"]
+[ext_resource type="Script" uid="uid://b0en6f1a27iwi" path="res://scenes/ui/menu_screens/death_screen/death_screen_info.gd" id="2_tqtpg"]
+[ext_resource type="Resource" uid="uid://jiepgyx0gq8j" path="res://resources/death_screen/brain_spider_death_explosion_info.tres" id="4_qw0yo"]
+[ext_resource type="Resource" uid="uid://dwk1xu5yiqy2v" path="res://resources/death_screen/brain_spider_death_laser_info.tres" id="5_lajjf"]
+[ext_resource type="Resource" uid="uid://u60ilhdctm2f" path="res://resources/death_screen/convict_death_attack_info.tres" id="6_e8ww7"]
+[ext_resource type="Resource" uid="uid://d182qia84jdhr" path="res://resources/death_screen/convict_death_power_dive_info.tres" id="7_g3a3j"]
+[ext_resource type="Resource" uid="uid://dofs26t161ls3" path="res://resources/death_screen/scrub_death_pistol_info.tres" id="8_qw0yo"]
+[ext_resource type="Resource" uid="uid://8wc5h5m250tp" path="res://resources/death_screen/trunk_death_melee_info.tres" id="9_2e7b3"]
+[ext_resource type="Resource" uid="uid://dlgi1t2m4haec" path="res://resources/death_screen/missile_death_info.tres" id="9_lajjf"]
+
+[node name="DeathScreen" type="Control" unique_id=1186847470]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_blny2")
+default_death_info = ExtResource("2_gaqod")
+death_infos = Array[ExtResource("2_tqtpg")]([ExtResource("4_qw0yo"), ExtResource("5_lajjf"), ExtResource("6_e8ww7"), ExtResource("7_g3a3j"), ExtResource("8_qw0yo"), ExtResource("9_lajjf"), ExtResource("9_2e7b3")])
+
+[node name="Background" type="TextureRect" parent="." unique_id=1623824727]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_g5nha")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="MainPanel" type="PanelContainer" parent="." unique_id=840537453]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel" unique_id=2067237225]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="ScreenVBox" type="VBoxContainer" parent="MainPanel/MarginContainer" unique_id=1467807262]
+layout_mode = 2
+
+[node name="YouDiedLabel" type="Label" parent="MainPanel/MarginContainer/ScreenVBox" unique_id=2114177545]
+layout_mode = 2
+theme_override_font_sizes/font_size = 135
+text = "You Died"
+horizontal_alignment = 1
+
+[node name="ContentArea" type="Control" parent="MainPanel/MarginContainer/ScreenVBox" unique_id=1021888008]
+layout_mode = 2
+
+[node name="EnemyImage" type="TextureRect" parent="MainPanel/MarginContainer/ScreenVBox/ContentArea" unique_id=765999562]
+layout_mode = 0
+offset_left = 1150.0
+offset_right = 1750.0
+offset_bottom = 600.0
+size_flags_horizontal = 3
+texture = ExtResource("1_g5nha")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="EnemyInfoLabel" type="Label" parent="MainPanel/MarginContainer/ScreenVBox/ContentArea" unique_id=937882609]
+layout_mode = 0
+offset_left = 1150.0
+offset_top = 620.885
+offset_right = 1750.0
+offset_bottom = 767.885
+scale = Vector2(1.0235194, 1)
+theme_override_font_sizes/font_size = 52
+text = "Random, loud, and sometimes blows up"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="TipLabel" type="Label" parent="MainPanel/MarginContainer/ScreenVBox/ContentArea" unique_id=1529355784]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 660.0
+offset_right = 920.0
+offset_bottom = 795.0
+theme_override_font_sizes/font_size = 50
+text = "Tip: Dont die next time"
+autowrap_mode = 3
+
+[node name="ContinueButton" type="Button" parent="MainPanel/MarginContainer/ScreenVBox/ContentArea" unique_id=179650829]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 60.0
+offset_right = 600.0
+offset_bottom = 205.0
+theme_override_font_sizes/font_size = 70
+text = "Continue"
+
+[node name="ReturnToMenuButton" type="Button" parent="MainPanel/MarginContainer/ScreenVBox/ContentArea" unique_id=345921465]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 230.0
+offset_right = 600.0
+offset_bottom = 375.0
+theme_override_font_sizes/font_size = 70
+text = "Back To Menu"
+
+[node name="ChangeDifficultyButton" type="Button" parent="MainPanel/MarginContainer/ScreenVBox/ContentArea" unique_id=559185809]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 400.0
+offset_right = 644.0
+offset_bottom = 545.0
+theme_override_font_sizes/font_size = 70
+text = "Change Difficulty"

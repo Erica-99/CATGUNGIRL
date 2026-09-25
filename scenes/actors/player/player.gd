@@ -14,6 +14,9 @@ signal player_charge_ended()
 ## Signal for when the player is D E D
 signal player_dead()
 
+const GUN_SACRIFICE_MENU_SCENE = preload("res://scenes/ui/hud_display/gun_sacrifice_menu/gun_sacrifice_menu.tscn")
+var gun_sacrifice_menu: GunSacrificeMenu = null
+
 @export var movement_state_machine: StateMachine
 
 @export var gun_arm_node: Node3D
@@ -58,8 +61,16 @@ signal player_dead()
 var facing: float
 var enable_facing_updates: bool = true
 var speed_multiplier: float = 1.0
+var is_dead: bool = false
 # gun enabled by default
 @export var has_gun: bool = true
+
+@export_category("Debug")
+##Controls no clip speed
+@export var no_clip_speed: float = 25.0
+##Nodes hidden when invisible debug is on
+@export var debug_hidden_nodes: Array[Node3D] = []
+var player_invisible_last_frame: bool = false
 
 @export_category("Movement Dependencies")
 @export var input_component: InputComponent
@@ -76,8 +87,17 @@ var blackboard: Dictionary
 ## This is to know what scene to reload when the player dies
 var currentScene
 
+## no clip debug variables
+var no_clip_enabled_last_frame: bool = false
+var original_collision_layer: int
+var original_collision_mask: int
+var original_state_machine_process_mode: int
+
 func _ready() -> void:
 	Engine.max_fps = 60
+	original_collision_layer = collision_layer
+	original_collision_mask = collision_mask
+	original_state_machine_process_mode = movement_state_machine.process_mode
 	blackboard = {
 	"actor": self,
 	"input_component": input_component,
@@ -95,15 +115,18 @@ func _ready() -> void:
 	}
 	
 	movement_state_machine.init(blackboard)
+	health_component.killed.connect(_on_health_component_killed)
 	gun_holder.enemy_hit.connect(_on_gun_enemy_hit)
 	gun_holder.current_gun_charge_progress_changed.connect(_on_gun_charge_progress)
 	gun_holder.current_gun_charge_ended.connect(_on_gun_charge_ended)
 	gun_holder.current_gun_charge_started.connect(_on_gun_charge_started)
+	EventManager.gun_sacrifice_requested.connect(_open_gun_sacrifice_menu)
 	
 	EventManager.gun_picked_up.connect(_equip_gun)
 	_set_gun_enabled(has_gun)
 
 func _process(_delta: float) -> void:
+	_handle_debug_player_invisible()
 	var current_state = input_component.get_input_state()
 	
 	if current_state["movement"] != 0 and blackboard["enable_facing_updates"]:
@@ -141,7 +164,10 @@ func _process(_delta: float) -> void:
 		debug_damage.stun_time = 0
 		debug_damage.source = ^"."
 		health_component.take_damage_or_heal(debug_damage)
-		_on_insanity_component_insanity_death()
+
+func _physics_process(delta: float) -> void:
+	if _handle_debug_no_clip(delta):
+		return
 
 func _on_health_component_health_initialised(init_current_health, init_max_health):
 	EventManager.player_health_initialised.emit(init_current_health, init_max_health)
@@ -149,15 +175,31 @@ func _on_health_component_health_initialised(init_current_health, init_max_healt
 func _on_health_component_health_changed(old_health, new_health, damage_or_heal_instance):
 	EventManager.player_health_changed.emit(old_health, new_health, damage_or_heal_instance)
 
+func _on_health_component_killed(killing_blow: DamageHealInstance, _health_before_death: Variant) -> void:
+	go_to_death_screen(killing_blow)
+
 func _on_insanity_component_insanity_gained(amount, buffer):
 	EventManager.player_insanity_gained.emit(amount, buffer)
 
 ## When Insanity reaches max, game over
-func _on_insanity_component_insanity_death():
-	## TODO: Death stuff
+func _on_insanity_component_insanity_death() -> void:
+	go_to_death_screen(null)
+
+func go_to_death_screen(killing_blow: DamageHealInstance) -> void:
+	if is_dead:
+		return
+	
+	is_dead = true
+	velocity = Vector3.ZERO
 	player_dead.emit()
 	print("PLAYER IS DEAD")
-	SceneLoader._load_scene(get_tree().current_scene.scene_file_path)
+	DeathManager.load_death_screen(get_death_screen_id(killing_blow), get_tree().current_scene.scene_file_path)
+
+func get_death_screen_id(killing_blow: DamageHealInstance) -> StringName:
+	if killing_blow == null:
+		return &"default"
+	
+	return killing_blow.death_screen_id
 
 func _on_insanity_component_interest_rank_changed(new_rank):
 	EventManager.player_interest_rank_changed.emit(new_rank)
@@ -186,12 +228,60 @@ func _equip_gun() -> void:
 	_set_gun_enabled(true)
 
 func _set_gun_enabled(enabled: bool) -> void:
-	gun_holder.current_gun.process_mode = Node.PROCESS_MODE_INHERIT if enabled else Node.PROCESS_MODE_DISABLED
-	gun_holder.current_gun.visible = enabled
+	if gun_holder.current_gun != null:
+		gun_holder.current_gun.process_mode = Node.PROCESS_MODE_INHERIT if enabled else Node.PROCESS_MODE_DISABLED
+		gun_holder.current_gun.visible = enabled
+	
 	gun_arm_node.visible = enabled
 	gun_holder.allow_swapping = enabled
 	EventManager.enable_gun_ui.emit(enabled)
+
+func sacrifice_gun(selected_gun: Gun) -> void:
+	if !has_gun or !is_instance_valid(selected_gun):
+		return
 	
+	#prevent new gun from using ability after unpausing
+	input_component._ability_held = false
+	
+	#let an active ability finish its normal cleanup before gun is deleted.
+	if selected_gun == gun_holder.current_gun:
+		if is_instance_valid(selected_gun.ability):
+			selected_gun.ability.cancel_ability()
+	
+	speed_multiplier = 1.0
+	gun_holder.sacrifice_gun(selected_gun)
+	
+	if gun_holder.current_gun == null:
+		has_gun = false
+		_set_gun_enabled(false)
+
+func _open_gun_sacrifice_menu() -> void:
+	input_component._interacting = false
+	
+	if !has_gun or is_instance_valid(gun_sacrifice_menu):
+		return
+	
+	var current_scene := get_tree().current_scene
+	
+	if current_scene == null:
+		return
+	
+	gun_sacrifice_menu = (GUN_SACRIFICE_MENU_SCENE.instantiate() as GunSacrificeMenu)
+	
+	if gun_sacrifice_menu == null:
+		push_error("Could not instantiate the gun sacrifice menu.")
+		return
+	
+	current_scene.add_child(gun_sacrifice_menu)
+	gun_sacrifice_menu.gun_selected.connect(sacrifice_gun)
+	gun_sacrifice_menu.tree_exited.connect(_on_sacrifice_menu_closed)
+	
+	if !gun_sacrifice_menu.open_menu(gun_holder):
+		gun_sacrifice_menu.queue_free()
+
+func _on_sacrifice_menu_closed() -> void:
+	gun_sacrifice_menu = null
+
 func set_facing(new_facing: float) -> void:
 	if new_facing == 0.0:
 		return
@@ -219,3 +309,54 @@ func get_wall_jump_dir(input_dir: float) -> float:
 		if is_too_steep and is_valid_wall_angle and sign(input_dir) == -sign(normal.x):
 			return sign(normal.x)
 	return 0.0
+
+func _handle_debug_no_clip(delta: float) -> bool:
+	if !DebugManager.no_clip:
+		if no_clip_enabled_last_frame:
+			_set_debug_no_clip_enabled(false)
+		return false
+	
+	if !no_clip_enabled_last_frame:
+		_set_debug_no_clip_enabled(true)
+	
+	var move_direction: Vector3 = _get_no_clip_move_direction()
+	velocity = move_direction * no_clip_speed
+	global_position += velocity * delta
+	global_position.z = 0.0
+	return true
+
+func _get_no_clip_move_direction() -> Vector3:
+	var input_state = input_component.get_input_state()
+	var move_direction: Vector3 = Vector3.ZERO
+	
+	move_direction.x = input_state["movement"]
+	move_direction.y = Input.get_axis("move_down", "move_up")
+	
+	if move_direction.length() > 0.0:
+		move_direction = move_direction.normalized()
+	
+	return move_direction
+
+func _set_debug_no_clip_enabled(enabled: bool) -> void:
+	no_clip_enabled_last_frame = enabled
+	velocity = Vector3.ZERO
+	
+	if enabled:
+		collision_mask = 0
+		movement_state_machine.process_mode = Node.PROCESS_MODE_DISABLED
+	else:
+		collision_layer = original_collision_layer
+		collision_mask = original_collision_mask
+		movement_state_machine.process_mode = original_state_machine_process_mode
+
+func _handle_debug_player_invisible() -> void:
+	if player_invisible_last_frame == DebugManager.player_invisible:
+		return
+	
+	player_invisible_last_frame = DebugManager.player_invisible
+	
+	for node in debug_hidden_nodes:
+		if node == null:
+			continue
+		
+		node.visible = !DebugManager.player_invisible

@@ -4,6 +4,10 @@ extends Area3D
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 @onready var head_hurtbox: Area3D = $"../HeadHurtbox"
 
+@onready var shield_anims: AnimationPlayer = $AnimationPlayer
+@onready var InjuredFrames = preload("res://art/2d_assets/real_world/Trunks/TrunkInjured.tres")
+@onready var torso_sprite = $"../TrunkMesh/Torso/TorsoSprite"
+
 @export_category("Hitbox Details")
 @export var team_component: Node
 @export var hit_sfx_ref: String
@@ -13,6 +17,9 @@ extends Area3D
 @export var is_broken: bool = false
 @export var break_sources: Array[String]
 @export var head_multiplier_on_break: float = 1.0
+
+@export_category("Other")
+@export var stinger_caller: StingerComponent
 
 signal break_shield()
 
@@ -35,9 +42,11 @@ func _on_area_entered(hitbox: Area3D) -> void:
 # altered from original hurtbox component - just for armour
 func take_hit(hitbox: Area3D) -> void:
 	if hit_sfx_ref != "":
-		AudioManager.play_sfx(hit_sfx_ref)
+		AudioManager.play_sfx_at_location(hit_sfx_ref, self.global_position)
 	hitbox.call("register_hit", self)
 	if hitbox.damage_or_heal_instance != null:
+		shield_anims.play("RESET")
+		shield_anims.play("Deflected")
 		var break_hit_detected = false
 		# break_sources define a string segment of a node path
 		# this node path corresponds to the origin of a projectile emitted
@@ -68,6 +77,17 @@ func _on_break_shield() -> void:
 # set variables for break
 # disconnected from _on_break_shield() so it can be ran without sending trunk to trunkstun state
 func _break_shield():
+	torso_sprite.sprite_frames = InjuredFrames
+	stinger_caller.play_stinger("trunk_break")
+	AudioManager.play_sfx_at_location("trunk_shield_break", self.global_position)
 	collision_shape_3d.disabled = true
-	shader_shield.visible = false
+	shield_anims.play("ShieldBreak")
 	head_hurtbox.damage_multiplier = head_multiplier_on_break
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "Deflected":
+		shield_anims.play("Active")
+	if anim_name == "Shield_Break":
+		shader_shield.visible = false
+	pass # Replace with function body.

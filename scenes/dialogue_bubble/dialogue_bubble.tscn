@@ -3,12 +3,21 @@
 [ext_resource type="Script" uid="uid://cf7km8yhkt4s7" path="res://scenes/dialogue_bubble/dialogue_bubble.gd" id="2_y14hn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qv3ax"]
-bg_color = Color(0.38757378, 0.27899572, 0.8710878, 0.23921569)
+bg_color = Color(0.3882353, 0.2784314, 0.87058824, 0.47058824)
 skew = Vector2(0.4, 0)
 corner_radius_top_left = 5
 corner_radius_bottom_right = 5
 expand_margin_left = 10.0
 expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dkpv5"]
+bg_color = Color(0, 1, 1, 0.21100001)
+skew = Vector2(-0.2, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.1428257, 1, 0, 1)
 
 [node name="DialogueBubble" type="PanelContainer" unique_id=1013339003]
 texture_filter = 1
@@ -28,6 +37,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qv3ax")
 script = ExtResource("2_y14hn")
 textbox_colour = Color(1, 1, 1, 1)
+system_popup_stylebox = SubResource("StyleBoxFlat_dkpv5")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1241823225]
 layout_mode = 2

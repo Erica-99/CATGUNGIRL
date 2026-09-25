@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bgluk4kipx1st"]
+
+[ext_resource type="ArrayMesh" uid="uid://cy8gbbiiqfqal" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/Barriers/BarrierFullBrokenCentre.obj" id="1_at0h7"]
+[ext_resource type="Texture2D" uid="uid://bvdcx0l0twqkp" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/BrokenCentre/BarrierBrokenCentre_Base_color.png" id="2_vprou"]
+[ext_resource type="Texture2D" uid="uid://cc15usvqixd1x" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/BrokenCentre/BarrierBrokenCentre_Mixed_AO.png" id="3_6pu2t"]
+[ext_resource type="Texture2D" uid="uid://txqgkp2e2f5j" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/BrokenCentre/BarrierBrokenCentre_Height.png" id="4_2vjky"]
+[ext_resource type="Texture2D" uid="uid://d3utvedaswbel" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/BrokenCentre/BarrierBrokenCentre_Base_metalness.png" id="5_pyfmo"]
+[ext_resource type="Texture2D" uid="uid://bq2lne5gyegvo" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/BrokenCentre/BarrierBrokenCentre_Normal_OpenGL.png" id="6_0mgqa"]
+[ext_resource type="Texture2D" uid="uid://8xuawgsig65h" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/BrokenCentre/BarrierBrokenCentre_Specular_roughness.png" id="7_c471f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dyb6b"]
+albedo_texture = ExtResource("2_vprou")
+metallic = 1.0
+metallic_texture = ExtResource("5_pyfmo")
+roughness_texture = ExtResource("7_c471f")
+normal_enabled = true
+normal_texture = ExtResource("6_0mgqa")
+ao_enabled = true
+ao_texture = ExtResource("3_6pu2t")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("4_2vjky")
+
+[node name="BarrierBrokenCentre" type="Node3D" unique_id=1105827319]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="BarrierFullBrokenCentre_Mesh" type="MeshInstance3D" parent="." unique_id=1313324597]
+mesh = ExtResource("1_at0h7")
+surface_material_override/0 = SubResource("StandardMaterial3D_dyb6b")

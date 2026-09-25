@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://cjku3tspjt4ep" path="res://scenes/ui/dating/gigi_date.tscn" id="14_ioa2x"]
 [ext_resource type="Texture2D" uid="uid://cd8hxjh4vv0tl" path="res://art/2d_assets/ui/real_world/tutPopup0 complete 2.png" id="15_bvmuw"]
 [ext_resource type="Script" uid="uid://b3wyfqrf023lh" path="res://scenes/components/camera_component/InsanityTut.gd" id="15_e435g"]
+[ext_resource type="PackedScene" uid="uid://dr68e2vg6njr3" path="res://art/TechArt/2_VFX/screen_effects/health_vignette/health_vignette.tscn" id="16_hvfx"]
+[ext_resource type="PackedScene" uid="uid://0pq5rnqkr4to" path="res://scenes/ui/end_screen.tscn" id="18_ylbr4"]
 
 [sub_resource type="Resource" id="Resource_434qr"]
 script = ExtResource("3_6tqft")
@@ -170,6 +172,8 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("4_2yc4p")
 
+[node name="HealthVignette" parent="OverlayVisuals" unique_id=1187613098 instance=ExtResource("16_hvfx")]
+
 [node name="ScreenPulseCanvas" type="CanvasLayer" parent="OverlayVisuals" unique_id=442988470 node_paths=PackedStringArray("screen_pulse")]
 layer = 10
 script = ExtResource("5_x1u5e")
@@ -221,5 +225,9 @@ texture = ExtResource("15_bvmuw")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="OverlayVisuals/CanvasLayer" unique_id=1808529594]
 libraries/ = SubResource("AnimationLibrary_0slx5")
 autoplay = &"idle gone"
+
+[node name="EndScreen" parent="OverlayVisuals" unique_id=1133412871 instance=ExtResource("18_ylbr4")]
+layer = 100
+visible = false
 
 [connection signal="animation_finished" from="OverlayVisuals/CanvasLayer/AnimationPlayer" to="OverlayVisuals/CanvasLayer" method="_on_animation_player_animation_finished"]

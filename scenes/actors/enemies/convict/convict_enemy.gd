@@ -8,8 +8,10 @@ const GRAVITY = 50
 @export var health_comp: Node
 @export var state_machine: StateMachine
 @onready var softCollider: Area3D = $SoftCollider
-@export var audio_caller: Node
+@export var sfx_caller: Node
+@export var stinger_caller: StingerComponent
 
+var movement_plane_z: float
 var is_dead: bool = false
 
 @export_category("Starting State Variables")
@@ -20,6 +22,7 @@ var is_dead: bool = false
 @export var start_aggro: State
 
 @export_category("Stat Variables")
+@export var health: int = 40
 # Change direction to -1 to start facing the other way
 @export var direction: int = 1
 @export var patrol_speed: float
@@ -65,15 +68,26 @@ var action_pending: bool = false
 var enemy_manager: EnemyManager
 var blackboard : Dictionary 
 
+
+
 @onready var Convict_Piv = $Visuals
 
+@export_category("Death Screen Info")
+@export var attack_death_screen_id: StringName = &"convict_attack"
+@export var power_dive_death_screen_id: StringName = &"convict_power_dive"
+@onready var id = get_id()
+
 func _ready() -> void:
+	movement_plane_z = global_position.z
+	health_comp.set_max_health(health)
+	health_comp.set_health(health)
 	# Set up Attack
 	damage_instance.amount = attack_damage
 	damage_instance.is_heal = false
 	damage_instance.type = Enums.DamageType.NORMAL
 	damage_instance.knockback = 0 # TODO: change for implementing knockback
 	damage_instance.source = get_path()
+	damage_instance.death_screen_id = attack_death_screen_id
 	attack_hitbox.damage_or_heal_instance = damage_instance
 	
 	var room_convict_route_points: Array = []
@@ -81,6 +95,8 @@ func _ready() -> void:
 
 	if enemy_manager != null:
 		room_convict_route_points =	 enemy_manager.get_convict_route_points()
+	
+	health_comp.knocked_back.connect(take_knockback)
 	
 	# Populates blackboard and distributes it to all states
 	blackboard = {
@@ -103,9 +119,13 @@ func _ready() -> void:
 		"dive_recovery_duration": dive_recovery_duration,
 		"attack_cooldown_min": attack_cooldown_min,
 		"attack_cooldown_max": attack_cooldown_max,
+		"stinger_call": stinger_caller,
 		"convict_route_points": room_convict_route_points,
-		"gravity": GRAVITY
+		"convict_piv": Convict_Piv,
+		"gravity": GRAVITY,
+		"id": id,
 	}
+		
 	# Change initial state based on Inspector values
 	if start_aggroed:
 		state_machine.initial_state = start_aggro
@@ -119,18 +139,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	# Basic gravity implementation
 	velocity.y -= GRAVITY * delta
-	
-	position.z = 0
-	
-	# Direction facing transformation
-	if velocity.x < 0: # LEFT
-		direction = -1
-		#sprite.flip_h = true
-		Convict_Piv.scale.x = -1
-	elif velocity.x > 0: # RIGHT
-		direction = 1
-		#sprite.flip_h = false
-		Convict_Piv.scale.x = 1
+	global_position.z = movement_plane_z
 
 func apply_soft_collision(delta: float) -> void:
 	if !softCollider.is_colliding():
@@ -148,6 +157,7 @@ func apply_soft_collision(delta: float) -> void:
 func _on_health_component_killed(killing_blow: DamageHealInstance, health_before_death: Variant) -> void:
 	# Possibly implement knockback affects here
 	is_dead = true
+	stinger_caller.play_stinger("convict_death_" + id)
 	state_machine.on_child_transition(state_machine.current_state, "convictdeath")
 
 # Hitstun "flinching", can be improved due to some jank with pounce, might not be needed with knockback implemented
@@ -167,12 +177,11 @@ func _apply_hitstun(duration: float) -> void:
 func _on_attack_hitbox_3d_body_exited(body: Node3D) -> void:
 	target_in_hitbox = false
 
-
 func call_sfx_at_current_location(sfx_ref: String) -> void:
-	if audio_caller == null:
+	if sfx_caller == null:
 		return
 		
-	audio_caller.play_sfx_at_location(sfx_ref, global_position)
+	sfx_caller.play_sfx_at_location(sfx_ref, global_position)
 
 func _get_enemy_manager() -> EnemyManager:
 	var current: Node = get_parent()
@@ -184,3 +193,38 @@ func _get_enemy_manager() -> EnemyManager:
 		current = current.get_parent()
 	
 	return null
+
+## When taking damage, get pushed back 
+func take_knockback(knockback_direction: Vector3, knockback_strength: float):
+	# Different knockback handling for on the floor/in the air
+	# When on the floor knock up-left/right
+	# print("Knocked back " + str(knockback_direction) + str(knockback_strength))
+	if is_on_floor():
+		if knockback_direction.x >= 0:
+			velocity += Vector3(knockback_strength, knockback_strength/log(10), 0)
+		else:
+			velocity += Vector3(-knockback_strength, knockback_strength/log(10), 0)
+	# When in the air knock in the direction of the attack
+	else:
+		velocity = knockback_direction * knockback_strength
+		
+func get_id() -> String:
+	var case = randi_range(0, 6)
+	match case:
+		0:
+			return "f1"
+		1:
+			return "f2"
+		2:
+			return "f3"
+		3:
+			return "f4"
+		4:
+			return "m1"
+		5:
+			return "m4"
+		6:
+			return "m5"
+		_:
+			return ""
+		

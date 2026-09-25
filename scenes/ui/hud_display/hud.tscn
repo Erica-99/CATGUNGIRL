@@ -7,6 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://bwjuhhi62r2ot" path="res://art/2d_assets/real_world/UI/pistol_bullet_icon.tscn" id="3_7c4j5"]
 [ext_resource type="PackedScene" uid="uid://d0bck3rf10len" path="res://art/2d_assets/real_world/UI/shotgun_bullet_icon.tscn" id="4_jop4h"]
 [ext_resource type="PackedScene" uid="uid://ddj7xjcety3sc" path="res://art/2d_assets/real_world/UI/sniper_bullet_icon.tscn" id="5_mrwyo"]
+[ext_resource type="Shader" uid="uid://cwbxhxst617bb" path="res://scenes/ui/hud_display/panel_gradient.tres" id="6_5t4p4"]
+[ext_resource type="PackedScene" uid="uid://b83rx2yi7uwng" path="res://debug/DebugMenu.tscn" id="7_68ye3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7c4j5"]
+shader = ExtResource("6_5t4p4")
 
 [node name="HUD" type="CanvasLayer" unique_id=1982623268]
 layer = 15
@@ -14,6 +19,7 @@ layer = 15
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=2032202655]
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1690512817]
@@ -25,18 +31,180 @@ render_target_update_mode = 4
 [node name="2DHudEntities" parent="SubViewportContainer/SubViewport" unique_id=1605915058 instance=ExtResource("1_0mwgc")]
 
 [node name="AmmoCount" parent="SubViewportContainer/SubViewport" unique_id=76601130 instance=ExtResource("2_5t4p4")]
-offset_left = 1740.0
-offset_top = 552.0
-offset_right = 1890.0
-offset_bottom = 1052.0
+offset_left = 1759.0
+offset_top = 372.0
+offset_right = 1909.0
+offset_bottom = 872.0
 bullet_icons = Dictionary[String, PackedScene]({
 "Pistol": ExtResource("3_7c4j5"),
 "Shotgun": ExtResource("4_jop4h"),
 "Sniper": ExtResource("5_mrwyo")
 })
 
+[node name="ControlText" type="Control" parent="SubViewportContainer/SubViewport" unique_id=1561427095]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1701.0
+offset_top = 795.0
+offset_right = 1741.0
+offset_bottom = 835.0
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/ControlText" unique_id=1398504398]
+layout_mode = 0
+offset_left = 51.0
+offset_top = -203.0
+offset_right = 54.0
+offset_bottom = 47.0
+color = Color(1, 0.3764706, 0.9843137, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="SubViewportContainer/SubViewport/ControlText" unique_id=604286927]
+material = SubResource("ShaderMaterial_7c4j5")
+layout_mode = 0
+offset_left = -197.0
+offset_top = -202.0
+offset_right = 53.0
+offset_bottom = 48.0
+color = Color(1, 0.3764706, 0.9843137, 0.26666668)
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewportContainer/SubViewport/ControlText" unique_id=1449244240]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -245.99998
+offset_top = -197.0
+offset_right = 11.3450165
+offset_bottom = 197.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ContextList" type="VBoxContainer" parent="SubViewportContainer/SubViewport/ControlText/MarginContainer" unique_id=1724304683]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.21
+theme_override_constants/separation = 15
+
+[node name="InteractControls" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ControlText/MarginContainer/ContextList" unique_id=1284416490]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Interact" type="RichTextLabel" parent="SubViewportContainer/SubViewport/ControlText/MarginContainer/ContextList/InteractControls" unique_id=1753314547]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 12.3
+text = "Interact"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="E" type="RichTextLabel" parent="SubViewportContainer/SubViewport/ControlText/MarginContainer/ContextList/InteractControls" unique_id=446796881]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 6.35
+theme_override_colors/default_color = Color(0.23137255, 1, 1, 1)
+bbcode_enabled = true
+text = "[img=30]res://art/UI/Glyphs/KBM/Dark/E_Key_Dark.png[/img] - [img=30]res://art/UI/Glyphs/Xbox/XboxSeriesX_X.png[/img]"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="JumpControls" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ControlText/MarginContainer/ContextList" unique_id=1927456778]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Jump" type="RichTextLabel" parent="SubViewportContainer/SubViewport/ControlText/MarginContainer/ContextList/JumpControls" unique_id=1549172534]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "Jump/Wall Jump"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="Space" type="RichTextLabel" parent="SubViewportContainer/SubViewport/ControlText/MarginContainer/ContextList/JumpControls" unique_id=838958600]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.37
+theme_override_colors/default_color = Color(0.23137255, 1, 1, 1)
+bbcode_enabled = true
+text = "[img=45]res://art/UI/Glyphs/KBM/Dark/Space_Key_Dark.png[/img] - [img=30]res://art/UI/Glyphs/Xbox/XboxSeriesX_A.png[/img]
+"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="DashControls" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ControlText/MarginContainer/ContextList" unique_id=323289228]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Dash" type="RichTextLabel" parent="SubViewportContainer/SubViewport/ControlText/MarginContainer/ContextList/DashControls" unique_id=1761150917]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.6
+text = "Dash"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="Shift" type="RichTextLabel" parent="SubViewportContainer/SubViewport/ControlText/MarginContainer/ContextList/DashControls" unique_id=1817922923]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.24
+theme_override_colors/default_color = Color(0.23137255, 1, 1, 1)
+bbcode_enabled = true
+text = "[img=30]res://art/UI/Glyphs/KBM/Dark/Shift_Key_Dark.png[/img] - [img=30]res://art/UI/Glyphs/Xbox/XboxSeriesX_B.png[/img]
+"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="FireControls" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ControlText/MarginContainer/ContextList" unique_id=1793214725]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Fire" type="RichTextLabel" parent="SubViewportContainer/SubViewport/ControlText/MarginContainer/ContextList/FireControls" unique_id=961329377]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.62
+text = "Shoot"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="LeftClick" type="RichTextLabel" parent="SubViewportContainer/SubViewport/ControlText/MarginContainer/ContextList/FireControls" unique_id=1828246990]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.75
+theme_override_colors/default_color = Color(0.23137255, 1, 1, 1)
+bbcode_enabled = true
+text = "[img=30]res://art/UI/Glyphs/KBM/Dark/Mouse_Left_Key_Dark.png[/img] - [img=30]res://art/UI/Glyphs/Xbox/XboxSeriesX_RT.png[/img]
+"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="AltFireControls" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ControlText/MarginContainer/ContextList" unique_id=94198282]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="SpecialAttack" type="RichTextLabel" parent="SubViewportContainer/SubViewport/ControlText/MarginContainer/ContextList/AltFireControls" unique_id=1851075608]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.25
+text = "Special Attack"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="RightClick" type="RichTextLabel" parent="SubViewportContainer/SubViewport/ControlText/MarginContainer/ContextList/AltFireControls" unique_id=543498779]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.65
+theme_override_colors/default_color = Color(0.23137255, 1, 1, 1)
+bbcode_enabled = true
+text = "[img=30]res://art/UI/Glyphs/KBM/Dark/Mouse_Right_Key_Dark.png[/img] - [img=30]res://art/UI/Glyphs/Xbox/XboxSeriesX_LT.png[/img]"
+fit_content = true
+horizontal_alignment = 2
+
 [node name="Healthbar" parent="SubViewportContainer/SubViewport" unique_id=90995781 instance=ExtResource("2_rix7v")]
 visible = false
+
+[node name="DebugMenu" parent="SubViewportContainer" unique_id=1334771727 instance=ExtResource("7_68ye3")]
+layout_mode = 2
 
 [node name="Jitter" type="Node" parent="SubViewportContainer" unique_id=88277945]
 script = ExtResource("2_hqnrr")

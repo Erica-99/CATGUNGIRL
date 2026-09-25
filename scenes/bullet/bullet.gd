@@ -22,6 +22,7 @@ func initialize(direction: Vector3, damage_instance: DamageHealInstance, team_co
 
 	if hitbox_component != null:
 		# pass damage data to hitbox
+		damage_instance.direction = _direction
 		hitbox_component.damage_or_heal_instance = damage_instance
 		# pass player TeamComponent so hitbox knows who fired bullet
 		hitbox_component.team_component = team_comp

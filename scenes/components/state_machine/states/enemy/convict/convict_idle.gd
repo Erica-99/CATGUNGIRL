@@ -9,17 +9,25 @@ var actor: CharacterBody3D
 var anim: AnimationPlayer
 var slow_down_speed: float
 
+var stinger_call: StingerComponent
+var id : String
+
 func init(blackboard_dict: Dictionary) -> void:
 	super(blackboard_dict)
 	actor = blackboard["actor"]
 	anim = blackboard["anim"]
 	slow_down_speed = blackboard["slow_down_speed"]
+	stinger_call = blackboard["stinger_call"]
+	id = blackboard["id"]
 
 func physics_update(_delta: float) -> void:
 	actor.velocity.x = move_toward(actor.velocity.x, 0, slow_down_speed * _delta)
 	anim.play("Idle")
 	actor.apply_soft_collision(_delta)
 	actor.move_and_slide()
+
+func exit() -> void:
+	stinger_call.play_stinger("convict_alert_" + id)
 
 func _on_detection_area_3d_body_entered(body):
 	if body.is_in_group("player"):

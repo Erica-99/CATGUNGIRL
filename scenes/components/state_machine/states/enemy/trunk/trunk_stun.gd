@@ -14,15 +14,17 @@ var animation_manager: AnimationPlayer
 var recovery_time: float
 var stun_timer: float = 0.0
 
+
+
 func init(blackboard_dict: Dictionary) -> void:
 	super(blackboard_dict)
+	
 	actor = blackboard["actor"]
 	animation_manager = blackboard["animation_manager"]
 	recovery_time = blackboard["recovery_time"]
 
 func enter() -> void:
 	stun_timer = 0.0
-
 func exit() -> void:
 	pass
 

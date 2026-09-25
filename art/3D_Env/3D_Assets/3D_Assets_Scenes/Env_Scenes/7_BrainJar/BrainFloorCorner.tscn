@@ -11,4 +11,10 @@ data = PackedVector3Array(-5.0004, -0.19999999, 0, 0, -0.19999999, 5, 0, -0.1999
 mesh = ExtResource("1_b2ehu")
 
 [node name="BrainFloorCorner_Collision" type="CollisionShape3D" parent="." unique_id=1445646642]
+visible = false
 shape = SubResource("ConcavePolygonShape3D_nn4fk")
+
+[node name="BrainFloorCorner_CollisionGPU" type="GPUParticlesCollisionBox3D" parent="." unique_id=249077459]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -1.2599171, -0.099723816, 1.2517384)
+visible = false
+size = Vector3(3.501587, 0.20198059, 7.051483)
