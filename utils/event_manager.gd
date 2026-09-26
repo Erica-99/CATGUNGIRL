@@ -1,6 +1,6 @@
 extends Node
 
-signal activate_popup(popup_id: int)
+signal activate_popup(popup_id: String)
 signal pre_date_sequence(date_id: int)
 signal activate_date(date_id: int)
 
