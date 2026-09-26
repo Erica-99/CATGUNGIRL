@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cear303gej657"]
 
-[ext_resource type="Script" path="res://scenes/levels/Stages/panning_camera.gd" id="1_75qhx"]
+[ext_resource type="Script" uid="uid://dawdwjrkswtqg" path="res://scenes/levels/Stages/panning_camera.gd" id="1_75qhx"]
 [ext_resource type="Script" uid="uid://4glb1vhq6wmq" path="res://scenes/levels/Stages/stage.gd" id="1_axvnb"]
 [ext_resource type="PackedScene" uid="uid://cue2gdrvswqwe" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Mesh/FloorMeshEdge.tscn" id="3_fporf"]
 [ext_resource type="PackedScene" uid="uid://co7fptrpmkvog" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/A_SparesAndPlaceholders/LightCeiling.tscn" id="8_564b6"]
@@ -89,7 +89,7 @@
 [ext_resource type="PackedScene" uid="uid://4rsfb5kh40wj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/B_Collisions/45Ramp.tscn" id="79_vwyjr"]
 [ext_resource type="PackedScene" uid="uid://dbm4o7gs6g22" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorLargeBasic(Locked).tscn" id="80_75qhx"]
 [ext_resource type="PackedScene" uid="uid://dw60nghbaa5w6" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Disintegrated.tscn" id="81_fqval"]
-[ext_resource type="Script" path="res://scenes/levels/Stages/camera_pan_node.gd" id="82_esa2w"]
+[ext_resource type="Script" uid="uid://4t3uo3s2mf8e" path="res://scenes/levels/Stages/camera_pan_node.gd" id="82_esa2w"]
 [ext_resource type="PackedScene" uid="uid://bxoxckf5ed1td" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Scrub_Crashed.tscn" id="82_lx8in"]
 [ext_resource type="PackedScene" uid="uid://xwmm12eihkbq" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Meat_lumps.tscn" id="83_cddd1"]
 [ext_resource type="PackedScene" uid="uid://556rwa2pdmor" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Lying_Convict.tscn" id="84_448ww"]
@@ -106,6 +106,8 @@
 [ext_resource type="Texture2D" uid="uid://cdhhw56x03mr" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/2_Prison/GuardRoom/ChairSteel/ChairSteel_N.png" id="95_hwccm"]
 [ext_resource type="Texture2D" uid="uid://dacnpmdtfyfit" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/2_Prison/GuardRoom/ChairSteel/ChairSteel_R.png" id="96_er66k"]
 [ext_resource type="PackedScene" uid="uid://d20i8l34obly3" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/Security.tscn" id="102_hwccm"]
+[ext_resource type="PackedScene" uid="uid://c7l1q8t5qgmxu" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Barriers/BarrierCornerInner.tscn" id="108_xeu56"]
+[ext_resource type="PackedScene" uid="uid://bdbsdyb4y30ee" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Barriers/BarrierCentre.tscn" id="109_gbvye"]
 [ext_resource type="PackedScene" uid="uid://bhp4qyqpd7hsc" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/shotgun_unlockable.tscn" id="109_hwccm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sbpx0"]
@@ -1539,10 +1541,16 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 50, -8.4, 0)
 [node name="BarrierFull9" parent="Environment" unique_id=676684439 instance=ExtResource("55_ljbqk")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 90, -16.8, -10)
 
+[node name="BarrierFull10" parent="Environment" unique_id=192959582 instance=ExtResource("55_ljbqk")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 80, -16.8, 0)
+
+[node name="BarrierFull14" parent="Environment" unique_id=15312347 instance=ExtResource("55_ljbqk")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 80, -16.8, 0)
+
 [node name="BarrierFull11" parent="Environment" unique_id=1909565857 instance=ExtResource("55_ljbqk")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 110, -16.8, 0)
 
-[node name="BarrierFull13" parent="Environment" unique_id=192959582 instance=ExtResource("55_ljbqk")]
+[node name="BarrierFull13" parent="Environment" unique_id=110323085 instance=ExtResource("55_ljbqk")]
 transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 110, -16.8, 0)
 
 [node name="BarrierFull12" parent="Environment" unique_id=22885145 instance=ExtResource("55_ljbqk")]
@@ -1554,8 +1562,8 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 100, -16.8, -10)
 [node name="BarrierCorner" parent="Environment" unique_id=326435535 instance=ExtResource("54_3rmdv")]
 transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 110, -16.8, 0)
 
-[node name="BarrierCorner2" parent="Environment" unique_id=1550381768 instance=ExtResource("54_3rmdv")]
-transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 90, -16.8, -10)
+[node name="BarrierCorner2" parent="Environment" unique_id=6908207 instance=ExtResource("54_3rmdv")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 80, -16.8, 0)
 
 [node name="Props" type="Node3D" parent="." unique_id=1981854926]
 
@@ -2098,6 +2106,18 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5, -25.2, 0)
 
 [node name="DoorLargeBasic2" parent="." unique_id=1710527537 instance=ExtResource("80_75qhx")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5, -25.2, 0)
+
+[node name="BarrierCornerInner" parent="." unique_id=2029254472 instance=ExtResource("108_xeu56")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 80, -16.8, -10)
+
+[node name="BarrierCornerInner2" parent="." unique_id=963803995 instance=ExtResource("108_xeu56")]
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 110, -16.8, -10)
+
+[node name="BarrierCentre" parent="." unique_id=2058316411 instance=ExtResource("109_gbvye")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 95, -16.8, -10)
+
+[node name="BarrierCentre2" parent="." unique_id=565032538 instance=ExtResource("109_gbvye")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 115, -16.8, 0)
 
 [connection signal="removecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]

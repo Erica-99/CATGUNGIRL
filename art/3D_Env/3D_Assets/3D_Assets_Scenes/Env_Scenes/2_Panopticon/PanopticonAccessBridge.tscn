@@ -14,6 +14,13 @@
 [ext_resource type="Texture2D" uid="uid://dp0ruh7q1e3j4" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/MeshFloor_Normal_OpenGL.png" id="6_ecs26"]
 [ext_resource type="Texture2D" uid="uid://yqnqdapvh0af" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/PanopticonAccess/PanopticonAccessBridge/PanopticonAccessBridge_Specular_roughness.png" id="7_1h761"]
 [ext_resource type="Texture2D" uid="uid://c4ek3iwrnnxp1" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/MeshFloor_Roughness.png" id="7_m0en7"]
+[ext_resource type="ArrayMesh" uid="uid://djl5yy21lr031" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/2_Panopticon/PanopticonBridgeGuide.obj" id="15_idb82"]
+[ext_resource type="Texture2D" uid="uid://cbqms88sf01wu" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Bridge/PanopticonBridgeGuide/PanopticonBridgeGuide_Base_color.png" id="16_1eogb"]
+[ext_resource type="Texture2D" uid="uid://bubo4i1n64kav" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Bridge/PanopticonBridgeGuide/PanopticonBridgeGuide_Mixed_AO.png" id="17_43xa3"]
+[ext_resource type="Texture2D" uid="uid://dpbod8vdan5hj" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Bridge/PanopticonBridgeGuide/PanopticonBridgeGuide_Height.png" id="18_6acvk"]
+[ext_resource type="Texture2D" uid="uid://pirtnd85lhw8" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Bridge/PanopticonBridgeGuide/PanopticonBridgeGuide_Base_metalness.png" id="19_gnvlf"]
+[ext_resource type="Texture2D" uid="uid://cgwv2cfl1g7ai" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Bridge/PanopticonBridgeGuide/PanopticonBridgeGuide_Normal_OpenGL.png" id="20_yx33b"]
+[ext_resource type="Texture2D" uid="uid://c7sxl2sn0u1cb" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Bridge/PanopticonBridgeGuide/PanopticonBridgeGuide_Specular_roughness.png" id="21_c8tc0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s8yfx"]
 albedo_texture = ExtResource("2_6jdal")
@@ -48,6 +55,19 @@ heightmap_texture = ExtResource("4_16ul0")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1e6ah"]
 points = PackedVector3Array(5.621415, 1.8e-05, -2.177907, 5.621415, 0.100005, -2.177907, 25.185753, 1.8e-05, -2.177907, 5.621415, 1.8e-05, 2.177907, 5.621415, 0.100005, 2.177907, 25.185753, 0.100005, -2.177907, 25.185753, 1.8e-05, 2.177907, 25.185753, 0.100005, 2.177907)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sq4gt"]
+albedo_texture = ExtResource("16_1eogb")
+metallic = 1.0
+metallic_texture = ExtResource("19_gnvlf")
+roughness_texture = ExtResource("21_c8tc0")
+normal_enabled = true
+normal_texture = ExtResource("20_yx33b")
+ao_enabled = true
+ao_texture = ExtResource("17_43xa3")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("18_6acvk")
+
 [node name="PanopticonAccessBridge" type="StaticBody3D" unique_id=1912763938]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
@@ -72,3 +92,13 @@ shape = SubResource("ConvexPolygonShape3D_1e6ah")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.4985807, 12.246399, -0.054595947, 0)
 visible = false
 size = Vector3(26.492798, 0.3164673, 2)
+
+[node name="PanopticonBridgeGuide_Mesh_01" type="MeshInstance3D" parent="." unique_id=1934532929]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.429248, 0.1018969, 0)
+mesh = ExtResource("15_idb82")
+surface_material_override/0 = SubResource("StandardMaterial3D_sq4gt")
+
+[node name="PanopticonBridgeGuide_Mesh_02" type="MeshInstance3D" parent="." unique_id=1893264271]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.389614, 0.1018969, 0)
+mesh = ExtResource("15_idb82")
+surface_material_override/0 = SubResource("StandardMaterial3D_sq4gt")

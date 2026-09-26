@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://xvdux0xbg54m"]
 
-[ext_resource type="Script" path="res://scenes/levels/Stages/panning_camera.gd" id="1_6h3re"]
+[ext_resource type="Script" uid="uid://dawdwjrkswtqg" path="res://scenes/levels/Stages/panning_camera.gd" id="1_6h3re"]
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="1_6qhdc"]
 [ext_resource type="Script" uid="uid://4glb1vhq6wmq" path="res://scenes/levels/Stages/stage.gd" id="1_ei5br"]
 [ext_resource type="PackedScene" uid="uid://bt342tsy3excl" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/ElevatorPanopticon.tscn" id="2_1woh0"]
@@ -47,7 +47,7 @@
 [ext_resource type="Texture2D" uid="uid://c6uci2c212727" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCranePrt01/CellCranePrt.01_Mixed_AO.png" id="40_jaog8"]
 [ext_resource type="PackedScene" uid="uid://cf56x5mffkcgr" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwayNoneMidPrison.tscn" id="41_ah5gb"]
 [ext_resource type="Texture2D" uid="uid://brgmm5r772s87" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCranePrt01/CellCranePrt.01_Height.png" id="41_kcm3w"]
-[ext_resource type="Script" path="res://scenes/levels/Stages/camera_pan_node.gd" id="41_murac"]
+[ext_resource type="Script" uid="uid://4t3uo3s2mf8e" path="res://scenes/levels/Stages/camera_pan_node.gd" id="41_murac"]
 [ext_resource type="Texture2D" uid="uid://cbj50u5clm68" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCranePrt01/CellCranePrt.01_Base_metalness.png" id="42_cey8m"]
 [ext_resource type="PackedScene" uid="uid://rlu4e0ohmycv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwaySingleMidPrison.tscn" id="43_lj0hr"]
 [ext_resource type="Texture2D" uid="uid://c5dpqlvrx7hdy" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCranePrt01/CellCranePrt.01_Normal_OpenGL.png" id="43_n0rqr"]
@@ -64,7 +64,7 @@
 [ext_resource type="PackedScene" uid="uid://dh1ouxldd8xy5" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwayNoneBasePrison.tscn" id="52_vyn8v"]
 [ext_resource type="PackedScene" uid="uid://doqjtagulhsfs" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwaySingleBasePrison.tscn" id="53_lk7tg"]
 [ext_resource type="PackedScene" uid="uid://dfpvd6sa7ppg6" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/PanopticonWallsAlternate.tscn" id="53_vrydf"]
-[ext_resource type="Script" path="res://scenes/levels/Stages/falling_cell_p.gd" id="55_tb4re"]
+[ext_resource type="Script" uid="uid://05ax0kjhvug4" path="res://scenes/levels/Stages/falling_cell_p.gd" id="55_tb4re"]
 [ext_resource type="Texture2D" uid="uid://8vrgg6gsi71t" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCranePrt04/CellCranePrt.04_Base_color.png" id="61_x7ttn"]
 [ext_resource type="Texture2D" uid="uid://dy7di4av807b1" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCranePrt03/CellCranePrt.03_Base_color.png" id="62_liwko"]
 [ext_resource type="Texture2D" uid="uid://cr0jqtdrxf65a" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCranePrt04/CellCranePrt.04_Mixed_AO.png" id="62_mrxti"]
@@ -3644,15 +3644,6 @@ transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 10.4
 [node name="PanopticonCraneRail55" parent="Environment/Layer_00" unique_id=1653944612 instance=ExtResource("12_niyru")]
 transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, -10.450001, 66, -71.39)
 
-[node name="PanopticonAccessBridge2" parent="Environment/Layer_00" unique_id=821816084 instance=ExtResource("11_r5xyd")]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 72.388, 67.02, 3)
-
-[node name="PanopticonAccessBridge3" parent="Environment/Layer_00" unique_id=708239995 instance=ExtResource("11_r5xyd")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -72.388, 67.02, 3)
-
-[node name="FloorShootingPanopticon2" parent="Environment/Layer_00" unique_id=1276369123 instance=ExtResource("5_lj0hr")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 67.02, 3)
-
 [node name="PanopticonWalls4" parent="Environment/Layer_00" unique_id=1829673124 instance=ExtResource("53_vrydf")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 3)
 
@@ -3825,13 +3816,13 @@ transform = Transform3D(1, 0, 0, 0, 0.91721314, 0.3983969, 0, -0.3983969, 0.9172
 transform = Transform3D(0.93872184, 0, -0.3446757, 0, 1, 0, 0.3446757, 0, 0.93872184, 126.21501, 10.346452, -2.094659)
 
 [node name="Rubble" parent="2D_Props/Corpses" unique_id=1864665879 instance=ExtResource("94_14hds")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.15581, 68.92472, 7.9970055)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.15581, 67.19559, 7.9970055)
 
 [node name="MeltingConvict" parent="2D_Props/Corpses" unique_id=162277555 instance=ExtResource("95_tg5mw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.024918, 69.287, -0.3023281)
 
 [node name="ScrubTorso" parent="2D_Props/Corpses" unique_id=426037799 instance=ExtResource("96_baq28")]
-transform = Transform3D(0.96974856, 0, 0.24410588, 0, 1, 0, -0.24410588, 0, 0.96974856, 45.771366, 126.8935, -5.727792)
+transform = Transform3D(0.96974856, 0, 0.24410588, 0, 1, 0, -0.24410588, 0, 0.96974856, 45.771366, 126.77093, -5.727792)
 
 [node name="MeatLumps" parent="2D_Props/Corpses" unique_id=720032926 instance=ExtResource("97_7e0hq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.86912, 126.8625, 7.4004083)
@@ -3840,7 +3831,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.86912, 126.8625, 7.4004083
 transform = Transform3D(0.9101421, 0, -0.41429615, 0, 1, 0, 0.41429615, 0, 0.9101421, 118.89261, 127.71125, -5.647059)
 
 [node name="ScrubCrashed" parent="2D_Props/Corpses" unique_id=2089480923 instance=ExtResource("93_1548b")]
-transform = Transform3D(0.80474585, -0.10414181, -1.7659224, 0.12493621, 1.3299216, -0.03541507, 0.92632097, -0.08889753, 1.5389305, 135.74176, 5.946916, 12.384408)
+transform = Transform3D(0.8022343, -0.14295286, -1.7617029, 0.18732528, 1.3213856, -0.021482825, 0.9179459, -0.14472222, 1.5440159, 135.74176, 5.17641, 12.384408)
 
 [node name="Posters" type="Node3D" parent="2D_Props" unique_id=1360428358]
 
@@ -3848,7 +3839,7 @@ transform = Transform3D(0.80474585, -0.10414181, -1.7659224, 0.12493621, 1.32992
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 40.484505, 2.731675, -5.110424)
 
 [node name="AcceptBliss" parent="2D_Props/Posters" unique_id=1163934586 instance=ExtResource("101_4nat2")]
-transform = Transform3D(0.4881339, 0, 0.8727686, 0, 1.0000001, 0, -0.87276876, 0, 0.4881338, 39.729294, 128.90163, -5.321966)
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 0.99999976, 89.89874, 130.23549, -4.216767)
 
 [node name="BJ_Watches" parent="2D_Props/Posters" unique_id=1078633704 instance=ExtResource("102_6v0vc")]
 transform = Transform3D(0.99984187, 0, 0.017783968, 0, 1, 0, -0.017783968, 0, 0.99984187, 42.333263, 102.717834, 4.3987184)
