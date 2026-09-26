@@ -95,6 +95,8 @@
 [ext_resource type="Texture2D" uid="uid://dq8nlwih6tnya" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/SmallLight/SmallLight_Base_metalness.png" id="93_0x2vj"]
 [ext_resource type="Texture2D" uid="uid://b3n1qfp5ls7ye" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/SmallLight/SmallLight_Normal_OpenGL.png" id="94_5d53b"]
 [ext_resource type="Texture2D" uid="uid://dvl0rvyslvng" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/SmallLight/SmallLight_Specular_roughness.png" id="95_ge3hr"]
+[ext_resource type="QuadMesh" uid="uid://bkqyj0frj2ef7" path="res://art/3D_Env/3D_Assets/3D_Textures/Env_Effects_Textures/Spark_quad_mesh.tres" id="96_o6qgi"]
+[ext_resource type="Texture2D" uid="uid://by2rrwp7x5x6h" path="res://art/3D_Env/3D_Assets/3D_Textures/Env_Effects_Textures/Spark.png" id="97_wn1gc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ai3b1"]
 albedo_texture = ExtResource("3_siryc")
@@ -715,6 +717,29 @@ emission_enabled = true
 emission = Color(0, 1, 0, 1)
 emission_energy_multiplier = 5.0
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lun2u"]
+particle_flag_align_y = true
+radial_velocity_min = 4.9999776
+radial_velocity_max = 46.099976
+gravity = Vector3(0, -45.915, 0)
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8wlfu"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("97_wn1gc")
+emission_enabled = true
+emission = Color(1, 0.5254902, 0.22745098, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_8wlfu"]
+lightmap_size_hint = Vector2i(7, 7)
+material = SubResource("StandardMaterial3D_8wlfu")
+size = Vector2(0.3, 0.3)
+center_offset = Vector3(0, 0.425, 0)
+
 [sub_resource type="Animation" id="Animation_6rgu2"]
 length = 0.001
 tracks/0/type = "value"
@@ -728,6 +753,102 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Crane_Mesh_Collision/Sparking/Sparking_Big:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Crane_Mesh_Collision/Sparking/Sparking_Small:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Crane_Mesh_Collision/Sparking/OrangeGlow:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Crane_Mesh_Collision/Sparking/WhiteGlow:light_energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Crane_Mesh_Collision/Sparking2/Sparking_Big:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Crane_Mesh_Collision/Sparking2/Sparking_Small:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Crane_Mesh_Collision/Sparking2/OrangeGlow:light_energy")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [4.8719788]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Crane_Mesh_Collision/Sparking2/WhiteGlow:light_energy")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.8735368]
 }
 
 [sub_resource type="Animation" id="Animation_oav2g"]
@@ -745,6 +866,102 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(-1.5, -1.5, -1.5, -1.5),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, -16, 0), Vector3(0, -16, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Crane_Mesh_Collision/Sparking/Sparking_Big:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.4000001, 4.666667, 4.866667, 6.443333, 6.633333, 9.733334, 9.933333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, true, false, false, true, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Crane_Mesh_Collision/Sparking/Sparking_Small:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.4000001, 4.666667, 4.866667, 6.443333, 6.633333, 9.733334, 9.933333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, true, false, false, true, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Crane_Mesh_Collision/Sparking/OrangeGlow:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.4000001, 1.5666667, 1.7333333, 1.9200001, 2.22, 2.3333335, 2.61, 2.68, 2.83, 2.91, 3.34, 3.41, 3.76, 3.83, 4.16, 4.27, 4.58, 4.666667, 4.866667, 6.643333, 6.833333, 7.1333327, 7.3199997, 7.6199994, 7.733333, 8.043333, 8.113333, 8.263333, 8.343333, 8.773333, 8.843333, 9.193333, 9.263332, 9.433333, 9.733334, 9.933333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 0.0, 0.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Crane_Mesh_Collision/Sparking/WhiteGlow:light_energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.4000001, 1.5666667, 1.74, 1.9300001, 2.2, 2.3400002, 2.56, 2.68, 2.83, 2.91, 3.32, 3.41, 3.75, 3.85, 4.17, 4.28, 4.57, 4.666667, 4.866667, 6.643333, 6.833333, 7.1399994, 7.3299994, 7.5999994, 7.74, 7.993333, 8.113333, 8.263333, 8.343333, 8.753333, 8.843333, 9.183332, 9.283333, 9.423333, 9.733334, 9.933333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 3.0, 1.0, 3.0, 1.0, 3.0, 1.0, 3.0, 1.0, 3.0, 1.0, 3.0, 1.0, 3.0, 1.0, 3.0, 1.0, 0.0, 0.0, 1.0, 3.0, 1.0, 3.0, 1.0, 3.0, 1.0, 3.0, 1.0, 3.0, 1.0, 3.0, 1.0, 3.0, 1.0, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Crane_Mesh_Collision/Sparking2/Sparking_Big:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.4000001, 4.666667, 4.866667, 6.443333, 6.633333, 9.442935, 9.733334, 9.933333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, true, false, false, true, true, true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Crane_Mesh_Collision/Sparking2/Sparking_Small:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.4000001, 4.666667, 4.866667, 6.443333, 6.633333, 9.442935, 9.733334, 9.933333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, true, false, false, true, true, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Crane_Mesh_Collision/Sparking2/OrangeGlow:light_energy")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.4000001, 1.5666667, 1.7333333, 1.9200001, 2.22, 2.3333335, 2.61, 2.68, 2.83, 2.91, 3.34, 3.41, 3.76, 3.83, 4.16, 4.27, 4.58, 4.666667, 4.866667, 6.643333, 6.833333, 7.1333327, 7.3199997, 7.6199994, 7.733333, 8.043333, 8.113333, 8.263333, 8.343333, 8.773333, 8.843333, 9.193333, 9.263332, 9.433333, 9.442935, 9.733334, 9.933333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 0.0, 0.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 4.8719788, 1.0, 0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Crane_Mesh_Collision/Sparking2/WhiteGlow:light_energy")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.4000001, 1.5666667, 1.74, 1.9300001, 2.2, 2.3400002, 2.56, 2.68, 2.83, 2.91, 3.32, 3.41, 3.75, 3.85, 4.17, 4.28, 4.57, 4.666667, 4.866667, 6.643333, 6.833333, 7.1399994, 7.3299994, 7.5999994, 7.74, 7.993333, 8.113333, 8.263333, 8.343333, 8.753333, 8.843333, 9.183332, 9.283333, 9.423333, 9.733334, 9.933333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 3.0, 1.0, 3.0, 1.0, 3.0, 1.0, 3.0, 1.0, 3.0, 1.0, 3.0, 1.0, 3.0, 1.0, 3.0, 1.0, 0.0, 0.0, 1.0, 3.0, 1.0, 3.0, 1.0, 3.0, 1.0, 3.0, 1.0, 3.0, 1.0, 3.0, 1.0, 3.0, 1.0, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cy3mo"]
@@ -1022,6 +1239,82 @@ surface_material_override/0 = SubResource("StandardMaterial3D_k3uxo")
 transform = Transform3D(0.08648003, 0, 0, 0, 0.26437512, 0, 0, 0, 0.08648003, 1.041285, 0.6994451, 0.9105445)
 height = 1.0303955
 material = SubResource("StandardMaterial3D_hp7oy")
+
+[node name="Sparking" type="StaticBody3D" parent="Crane_Mesh_Collision" unique_id=1886870196]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.29955274, -1.9263132, 0.3863369)
+
+[node name="Sparking_Big" type="GPUParticles3D" parent="Crane_Mesh_Collision/Sparking" unique_id=1323378168]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+amount = 50
+lifetime = 0.9
+explosiveness = 0.25
+randomness = 1.0
+fixed_fps = 60
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_lun2u")
+draw_pass_1 = ExtResource("96_o6qgi")
+
+[node name="Sparking_Small" type="GPUParticles3D" parent="Crane_Mesh_Collision/Sparking" unique_id=1289499512]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+amount = 80
+lifetime = 0.3
+explosiveness = 0.35
+randomness = 1.0
+fixed_fps = 60
+collision_base_size = 0.3
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_lun2u")
+draw_pass_1 = SubResource("QuadMesh_8wlfu")
+
+[node name="OrangeGlow" type="OmniLight3D" parent="Crane_Mesh_Collision/Sparking" unique_id=1425878216]
+light_color = Color(1, 0.5254902, 0.22745098, 1)
+shadow_enabled = true
+shadow_opacity = 0.73
+
+[node name="WhiteGlow" type="OmniLight3D" parent="Crane_Mesh_Collision/Sparking" unique_id=1958271419]
+light_specular = 4.756
+shadow_enabled = true
+shadow_opacity = 0.73
+omni_range = 1.8761383
+
+[node name="Sparking2" type="StaticBody3D" parent="Crane_Mesh_Collision" unique_id=531329033]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.29955274, 2.0649767, 0.3863369)
+
+[node name="Sparking_Big" type="GPUParticles3D" parent="Crane_Mesh_Collision/Sparking2" unique_id=744482533]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+amount = 50
+lifetime = 0.9
+explosiveness = 0.25
+randomness = 1.0
+fixed_fps = 60
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_lun2u")
+draw_pass_1 = ExtResource("96_o6qgi")
+
+[node name="Sparking_Small" type="GPUParticles3D" parent="Crane_Mesh_Collision/Sparking2" unique_id=1723603226]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+amount = 80
+lifetime = 0.3
+explosiveness = 0.35
+randomness = 1.0
+fixed_fps = 60
+collision_base_size = 0.3
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_lun2u")
+draw_pass_1 = SubResource("QuadMesh_8wlfu")
+
+[node name="OrangeGlow" type="OmniLight3D" parent="Crane_Mesh_Collision/Sparking2" unique_id=965330088]
+light_color = Color(1, 0.5254902, 0.22745098, 1)
+light_energy = 4.8719788
+shadow_enabled = true
+shadow_opacity = 0.73
+
+[node name="WhiteGlow" type="OmniLight3D" parent="Crane_Mesh_Collision/Sparking2" unique_id=1470959020]
+light_energy = 2.8735368
+light_specular = 4.756
+shadow_enabled = true
+shadow_opacity = 0.73
+omni_range = 1.8761383
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=91268566]
 callback_mode_process = 0

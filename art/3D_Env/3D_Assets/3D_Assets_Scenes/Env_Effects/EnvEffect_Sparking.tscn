@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://bro5axofhsk8p"]
+
+[ext_resource type="QuadMesh" uid="uid://bkqyj0frj2ef7" path="res://art/3D_Env/3D_Assets/3D_Textures/Env_Effects_Textures/Spark_quad_mesh.tres" id="1_lun2u"]
+[ext_resource type="Texture2D" uid="uid://by2rrwp7x5x6h" path="res://art/3D_Env/3D_Assets/3D_Textures/Env_Effects_Textures/Spark.png" id="1_t5jej"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lun2u"]
+particle_flag_align_y = true
+radial_velocity_min = 4.9999776
+radial_velocity_max = 46.099976
+gravity = Vector3(0, -76.595, 0)
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8wlfu"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("1_t5jej")
+emission_enabled = true
+emission = Color(1, 0.5254902, 0.22745098, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_8wlfu"]
+lightmap_size_hint = Vector2i(7, 7)
+material = SubResource("StandardMaterial3D_8wlfu")
+size = Vector2(0.3, 0.3)
+center_offset = Vector3(0, 0.425, 0)
+
+[sub_resource type="Animation" id="Animation_lun2u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OrangeGlow:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WhiteGlow:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [7.224]
+}
+
+[sub_resource type="Animation" id="Animation_8wlfu"]
+resource_name = "Sparking"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OrangeGlow:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.26666668, 0.3, 0.5, 0.6297848, 0.6666667, 0.8, 0.96311814),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 5.844, 1.0, 5.844, 1.0, 5.844, 1.0, 5.844, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WhiteGlow:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1633, 0.2705742, 0.30322972, 0.49916276, 0.6344499, 0.6624403, 0.7977274, 0.961005),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3oiiq"]
+_data = {
+&"RESET": SubResource("Animation_lun2u"),
+&"Sparking": SubResource("Animation_8wlfu")
+}
+
+[node name="Sparking" type="StaticBody3D" unique_id=1886870196]
+
+[node name="Sparking_Big" type="GPUParticles3D" parent="." unique_id=1323378168]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+amount = 50
+lifetime = 0.9
+explosiveness = 0.25
+randomness = 1.0
+fixed_fps = 60
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_lun2u")
+draw_pass_1 = ExtResource("1_lun2u")
+
+[node name="Sparking_Small" type="GPUParticles3D" parent="." unique_id=1289499512]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+amount = 80
+lifetime = 0.3
+explosiveness = 0.35
+randomness = 1.0
+fixed_fps = 60
+collision_base_size = 0.3
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_lun2u")
+draw_pass_1 = SubResource("QuadMesh_8wlfu")
+
+[node name="OrangeGlow" type="OmniLight3D" parent="." unique_id=1425878216]
+light_color = Color(1, 0.5254902, 0.22745098, 1)
+shadow_enabled = true
+shadow_opacity = 0.73
+
+[node name="WhiteGlow" type="OmniLight3D" parent="." unique_id=1958271419]
+light_energy = 7.224
+light_specular = 4.756
+shadow_enabled = true
+shadow_opacity = 0.73
+omni_range = 1.8761383
+
+[node name="SparkAnimationPlayer" type="AnimationPlayer" parent="." unique_id=5785945]
+libraries/ = SubResource("AnimationLibrary_3oiiq")
+autoplay = &"Sparking"

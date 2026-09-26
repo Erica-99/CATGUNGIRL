@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://k4bj1vh7ofsj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorExit.tscn" id="9_4t8ow"]
 [ext_resource type="PackedScene" uid="uid://b6levdtv4ncso" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/PanopticonElevatorPlatform.tscn" id="10_okgl3"]
 [ext_resource type="PackedScene" uid="uid://jdesv2xhdtvx" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/PanopticonAccessBridge.tscn" id="11_r5xyd"]
+[ext_resource type="PackedScene" uid="uid://bro5axofhsk8p" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Effects/EnvEffect_Sparking.tscn" id="11_vyn8v"]
 [ext_resource type="PackedScene" uid="uid://xnrufhd38t56" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/PanopticonCraneRail.tscn" id="12_niyru"]
 [ext_resource type="PackedScene" uid="uid://ckjadvesqstsq" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/PrisonCell(Docile).tscn" id="13_murac"]
 [ext_resource type="PackedScene" uid="uid://dl1dvclonvae4" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/PrisonCell(Active).tscn" id="14_6h3re"]
@@ -1203,7 +1204,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 130, 3)
 [node name="Interactive" type="Node3D" parent="." unique_id=546830450]
 
 [node name="PrisonCell" parent="Interactive" unique_id=832090815 instance=ExtResource("14_6h3re")]
-transform = Transform3D(-2.4999995, 0, -2.185569e-07, 0, 2.5, 0, 2.185569e-07, 0, -2.4999995, 123.43627, 3.013, 3)
+transform = Transform3D(-2.4999995, 0, -2.185569e-07, 0, 2.5, 0, 2.185569e-07, 0, -2.4999995, 123.43627, 2.9605584, 3)
 
 [node name="CameraPanNode" type="Node3D" parent="Interactive" unique_id=1002179877]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.88017, 20.99137, -2.7971554)
@@ -1297,6 +1298,12 @@ level_name = "Stage4"
 
 [node name="PanopticonCrane" type="StaticBody3D" parent="Background/CraneBackground" unique_id=1825676035]
 transform = Transform3D(-8.742277e-08, 0, 1.9999999, 0, 2, 0, -1.9999999, 0, -8.742277e-08, 79.42639, 70.42116, -71.95815)
+
+[node name="Sparking" parent="Background/CraneBackground/PanopticonCrane" unique_id=1886870196 instance=ExtResource("11_vyn8v")]
+transform = Transform3D(0.99999946, 0, -7.1054274e-15, 0, 1, 0, 7.1054274e-15, 0, 0.99999946, -1.8986206, 1.7198181, 0.38587952)
+
+[node name="Sparking2" parent="Background/CraneBackground/PanopticonCrane" unique_id=2060446907 instance=ExtResource("11_vyn8v")]
+transform = Transform3D(0.9999994, 0, -1.0658141e-14, 0, 1, 0, 1.0658141e-14, 0, 0.9999994, -1.8986206, -2.2041092, 0.38587952)
 
 [node name="CellCranePrt_01_Mesh" type="MeshInstance3D" parent="Background/CraneBackground/PanopticonCrane" unique_id=1650597706]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -1.5, 0, 0)
@@ -1962,6 +1969,9 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -74.39523, 0, -7.455)
 [node name="PanopticonCraneRail12" parent="Environment/Layer_01" unique_id=177132561 instance=ExtResource("12_niyru")]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 74.395, 40, -7.455002)
 
+[node name="PanopticonCraneRailBroken9" parent="Environment/Layer_01" unique_id=510793569 instance=ExtResource("19_murac")]
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 74.395, 60, -7.455)
+
 [node name="PanopticonCraneRail13" parent="Environment/Layer_01" unique_id=450228840 instance=ExtResource("12_niyru")]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 74.395, -40, -7.455002)
 
@@ -2304,9 +2314,6 @@ transform = Transform3D(0.37414593, 0, -2.2186747, 0, 2.2500002, 0, 2.2186747, 0
 
 [node name="PrisonCell3" parent="Environment/Layer_01" unique_id=1073650531 instance=ExtResource("14_6h3re")]
 transform = Transform3D(-2.25, 0, -3.3974055e-07, 0, 2.25, 0, 3.3974055e-07, 0, -2.25, -36.44171, 2.7169616, 3)
-
-[node name="PanopticonCraneRail35" parent="Environment/Layer_01" unique_id=1668295948 instance=ExtResource("12_niyru")]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 74.395, 60, -7.455002)
 
 [node name="PanopticonCraneRail36" parent="Environment/Layer_01" unique_id=1428016198 instance=ExtResource("12_niyru")]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 74.395, 60, 13.455)
@@ -3493,9 +3500,6 @@ transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, -10.
 
 [node name="PanopticonCraneRail46" parent="Environment/Layer_02" unique_id=1613036658 instance=ExtResource("12_niyru")]
 transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 10.455238, 54, -71.395)
-
-[node name="PanopticonCraneRailBroken9" parent="Environment/Layer_02" unique_id=982987844 instance=ExtResource("19_murac")]
-transform = Transform3D(-2, 0, -1.7484554e-07, 0, 1.9999998, 0, 1.7484555e-07, 0, -1.9999998, 74.395004, -46, -7.455)
 
 [node name="PanopticonWalls3" parent="Environment/Layer_02" unique_id=718283707 instance=ExtResource("53_vrydf")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 3)
