@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://x4f2jperscm2"]
+
+[ext_resource type="Texture2D" uid="uid://cqqyu4ryihwo4" path="res://art/2d_assets/Headshot particle.png" id="1_xswov"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ou1pn"]
+transparency = 1
+albedo_texture = ExtResource("1_xswov")
+emission_enabled = true
+emission = Color(0.3783243, 0.6988734, 0.5400101, 1)
+emission_energy_multiplier = 4.86
+proximity_fade_enabled = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_u3o25"]
+material = SubResource("StandardMaterial3D_ou1pn")
+size = Vector2(1, 4)
+
+[node name="Headshot_VFX" type="Node3D" unique_id=1741053268]
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=1262161781]
+emitting = false
+amount = 16
+lifetime = 1.12
+speed_scale = 2.0
+explosiveness = 0.71
+lifetime_randomness = 0.67
+fixed_fps = 60
+mesh = SubResource("QuadMesh_u3o25")
+emission_shape = 1
+emission_sphere_radius = 1.65
+particle_flag_align_y = true
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 45.37
+gravity = Vector3(0, 9, 0)
+initial_velocity_max = 39.6
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+orbit_velocity_curve = null
+linear_accel_max = 57.43
+scale_amount_min = 0.5
+scale_amount_max = 3.2
