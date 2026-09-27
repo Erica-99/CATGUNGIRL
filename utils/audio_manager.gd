@@ -72,6 +72,9 @@ func play_music(track_ref: String):
 	else:
 		push_error("Music track not found")
 
+#func _on_brain_jar_phase_started(phase_index: int) -> void:
+	#play_music()
+
 # Play global sound effect (best for menu, UI, most player sounds, etc.)
 func play_sfx(sfx_ref: String):
 	
