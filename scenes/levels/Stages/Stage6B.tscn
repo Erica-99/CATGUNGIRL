@@ -111,6 +111,8 @@
 [ext_resource type="PackedScene" uid="uid://11pckncgaxu4" path="res://scenes/components/level_components/level_transitions/level_end.tscn" id="114_ilcbw"]
 [ext_resource type="PackedScene" uid="uid://0te5grryooui" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/3_GuardRooms/Bin.tscn" id="115_t1bfd"]
 [ext_resource type="PackedScene" uid="uid://ddk1ekr7wnuj1" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/A_SparesAndPlaceholders/VentAirIntake.tscn" id="116_eadp7"]
+[ext_resource type="PackedScene" uid="uid://dsux5aknnciia" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/WallPlainBasePrison.tscn" id="117_ha723"]
+[ext_resource type="PackedScene" uid="uid://7ndrvtyokajf" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/WallPlainMidPrison.tscn" id="118_t1bfd"]
 [ext_resource type="Script" uid="uid://4t3uo3s2mf8e" path="res://scenes/levels/Stages/camera_pan_node.gd" id="123_t7fv6"]
 [ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="124_lclcc"]
 [ext_resource type="PackedScene" uid="uid://dld0qjmojk1t8" path="res://scenes/actors/enemies/enemy_manager/enemy_manager.tscn" id="125_4psah"]
@@ -145,6 +147,26 @@ size = Vector3(82.19137, 17.532715, 13.72467)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j57er"]
 size = Vector3(80.365814, 17.532715, 13.72467)
+
+[sub_resource type="Environment" id="Environment_eadp7"]
+background_mode = 1
+glow_enabled = true
+glow_normalized = true
+glow_strength = 1.5
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 0.0
+fog_density = 1.0
+fog_sky_affect = 0.0
+fog_height = 70.0
+fog_height_density = -1.0
+fog_depth_curve = 0.076946825
+fog_depth_begin = 100.0
+fog_depth_end = 125.0
+volumetric_fog_density = 0.0643
+volumetric_fog_albedo = Color(0, 0, 0, 1)
+volumetric_fog_length = 276.11
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fxtw2"]
 size = Vector3(9.30127, 7.2834473, 1)
@@ -348,6 +370,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -35, 25.2, 0)
 
 [node name="WallMultiLevelBasePrison5" parent="Environment" unique_id=635377237 instance=ExtResource("10_xlajn")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -15, 25.2, 0)
+visible = false
 
 [node name="WallMultiLevelBasePrison8" parent="Environment" unique_id=745047474 instance=ExtResource("10_xlajn")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -25, 25.2, 0)
@@ -833,6 +856,9 @@ shadow_enabled = true
 spot_range = 21.146
 spot_angle = 63.43
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting" unique_id=2046125412]
+environment = SubResource("Environment_eadp7")
+
 [node name="DATES_POPUPS" type="Node" parent="." unique_id=983173156]
 
 [node name="ConvictPopup" parent="DATES_POPUPS" unique_id=1311781014 instance=ExtResource("124_lclcc")]
@@ -952,7 +978,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.161703, 8.568169, -10.688
 transform = Transform3D(0.9504398, 0, -0.31090868, 0, 1, 0, 0.31090868, 0, 0.9504398, -8.305206, 8.568169, -10.131985)
 
 [node name="BrainJarTerminal" parent="." unique_id=366402759 instance=ExtResource("26_5g2ht")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -22.436146, 25.009401, -3.1478677)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -24.22517, 25.009401, -3.1478677)
 
 [node name="FuseBox" parent="." unique_id=436417353 instance=ExtResource("71_yuyn0")]
 transform = Transform3D(-0.030224532, 0, 0.99954313, 0, 1, 0, -0.99954313, 0, -0.030224532, -18.125832, 5.2751365, -14.854226)
@@ -1255,7 +1281,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30.041798, 16.116703, -0.6368
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -39.86514, 24.984701, 1.0586257)
 
 [node name="EnemyDoorFrame" parent="." unique_id=2112200868 instance=ExtResource("57_0h5cq")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -9.859644, 24.95549, -5.8033295)
+transform = Transform3D(-1.9999042, 0, -0.01958226, 0, 2, 0, 0.01958226, 0, -1.9999042, -15, 25, -4.9504647)
 
 [node name="DoorwaySingleBaseLaboratory" parent="." unique_id=1936140797 instance=ExtResource("59_n3kry")]
 
@@ -1408,6 +1434,24 @@ transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 57.5
 
 [node name="VentAirIntake2" parent="." unique_id=401025872 instance=ExtResource("116_eadp7")]
 transform = Transform3D(-8.742277e-08, 0, 1.9999999, 0, 2, 0, -1.9999999, 0, -8.742277e-08, 32.292545, 29.074524, -5.0467644)
+
+[node name="WallPlainBasePrison" parent="." unique_id=1669431150 instance=ExtResource("117_ha723")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -15, 25.2, 0)
+
+[node name="WallPlainBasePrison2" parent="." unique_id=1291624563 instance=ExtResource("117_ha723")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -5, 25.2, -10)
+
+[node name="WallPlainBasePrison3" parent="." unique_id=1508381794 instance=ExtResource("117_ha723")]
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, -25, 25.2, -10)
+
+[node name="WallPlainMidPrison" parent="." unique_id=1125147099 instance=ExtResource("118_t1bfd")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -15, 33.6, 0)
+
+[node name="WallPlainMidPrison2" parent="." unique_id=858864318 instance=ExtResource("118_t1bfd")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -5, 33.6, -10)
+
+[node name="WallPlainMidPrison3" parent="." unique_id=124439565 instance=ExtResource("118_t1bfd")]
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, -25, 33.6, -10)
 
 [connection signal="removecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
