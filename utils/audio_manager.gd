@@ -12,6 +12,22 @@ extends Node
 @export_category("Stingers")
 @export var enemy_stingers: Array[CallableSFX]
 
+# which stems of the combat music are audible at each intensity [stem 1, stem 2, stem 3]
+const COMBAT_LAYERS: Dictionary = {
+	Enums.MusicIntensity.OFF:  [false, false, false],
+	Enums.MusicIntensity.LOW:  [true,  false, false],
+	Enums.MusicIntensity.MID:  [true,  true,  false],
+	Enums.MusicIntensity.HIGH: [true,  true,  true],
+}
+# volume (db) each stem fades up to when they're on [stem 1, stem 2, stem 3]
+const STEM_VOLUMES_DB: Array[float] = [0.0, 3.0, 6.0]
+# how long (seconds) a combat music stem takes to fade in or out
+const LAYER_FADE_TIME: float = 1.0
+# volume a stem sits at while it's faded out
+const SILENT_DB: float = -80.0
+
+var layer_tween: Tween
+
 var music_dict: Dictionary
 var sfx_dict: Dictionary
 var stinger_dict: Dictionary
@@ -55,6 +71,8 @@ func _ready() -> void:
 		add_child(asp)
 		sfx_3D_pool.append(asp)
 	#endregion
+	
+	EventManager.music_intensity_changed.connect(fade_combat_layers)
 
 # Play music track
 func play_music(track_ref: String):
@@ -67,10 +85,42 @@ func play_music(track_ref: String):
 		var track: MusicTrack = music_dict[track_ref]
 		music_player.stream = track.music_track
 		music_player.volume_db = track.volume
+		# combat music starts silent, then fades in to LOW
+		if track.music_track is AudioStreamSynchronized:
+			_silence_combat_layers()
+			fade_combat_layers(Enums.MusicIntensity.LOW)
 		# Play Stream
 		music_player.play()
 	else:
 		push_error("Music track not found")
+
+# fades each stem of the combat music in or out to match the intensity (COMBAT_LAYERS)
+func fade_combat_layers(intensity: Enums.MusicIntensity) -> void:
+	var combat_music := music_player.stream as AudioStreamSynchronized
+	if combat_music == null:
+		return # other music is playing
+	
+	if layer_tween:
+		layer_tween.kill()
+	layer_tween = create_tween().set_parallel()
+	
+	var layers: Array = COMBAT_LAYERS[intensity]
+	for layer in layers.size():
+		# fade in linear volume
+		var from: float = db_to_linear(combat_music.get_sync_stream_volume(layer))
+		var to: float = db_to_linear(STEM_VOLUMES_DB[layer]) if layers[layer] else 0.0
+		layer_tween.tween_method(_set_layer_volume.bind(combat_music, layer), from, to, LAYER_FADE_TIME)
+
+func _set_layer_volume(linear_volume: float, combat_music: AudioStreamSynchronized, layer: int) -> void:
+	combat_music.set_sync_stream_volume(layer, max(linear_to_db(linear_volume), SILENT_DB))
+
+func _silence_combat_layers() -> void:
+	if layer_tween:
+		layer_tween.kill()
+	
+	var combat_music := music_player.stream as AudioStreamSynchronized
+	for layer in combat_music.stream_count:
+		combat_music.set_sync_stream_volume(layer, SILENT_DB)
 
 # Play global sound effect (best for menu, UI, most player sounds, etc.)
 func play_sfx(sfx_ref: String):
