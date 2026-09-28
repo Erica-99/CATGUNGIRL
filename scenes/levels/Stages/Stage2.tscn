@@ -133,7 +133,7 @@ fog_depth_end = 274.5
 adjustment_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qqjj2"]
-size = Vector3(8.411499, 8.005737, 1)
+size = Vector3(55.207985, 22.685944, 1)
 
 [sub_resource type="Resource" id="Resource_t6bai"]
 script = ExtResource("12_bnsy6")
@@ -718,24 +718,13 @@ omni_range = 18.392912
 [node name="EVENT_TRIGGERS" type="Node" parent="." unique_id=1535957502]
 
 [node name="WeaponSwapTrigger" parent="EVENT_TRIGGERS" unique_id=1311781014 instance=ExtResource("10_axvnb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.567154, -21.531391, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.542946, -18.468708, 0)
 active = false
-activate_on_event = "unlock_gun"
+activate_on_event = "narrative_unlock_shotgun"
 _signal_parameters = ["WeaponSwapping"]
 signal_name = "initiate_tutorial_sequence"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EVENT_TRIGGERS/WeaponSwapTrigger" unique_id=724333614]
-shape = SubResource("BoxShape3D_qqjj2")
-debug_color = Color(0.18431373, 0.6431373, 0, 0.41960785)
-
-[node name="PopupMeeting" parent="EVENT_TRIGGERS" unique_id=1854923386 instance=ExtResource("10_axvnb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.567154, -21.531391, 0)
-active = false
-activate_on_event = "unlock_gun"
-_signal_parameters = ["3_punk_meeting"]
-signal_name = "activate_popup"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="EVENT_TRIGGERS/PopupMeeting" unique_id=2010020097]
 shape = SubResource("BoxShape3D_qqjj2")
 debug_color = Color(0.18431373, 0.6431373, 0, 0.41960785)
 
