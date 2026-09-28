@@ -21,6 +21,8 @@ var sfx_3D_pool: Array[AudioStreamPlayer3D]
 
 var hotseat: AudioStreamPlayer3D
 
+var music_base_volume
+
 func _ready() -> void:
 	#region Audio Dictionary Construction
 	# Build MusicTrack Dictionary
@@ -262,3 +264,22 @@ func bypass_hotseat(asp3d: AudioStreamPlayer3D, ref: String):
 	asp3d.pitch_scale = res.pitch_scale + randf_range(-res.pitch_random_shift, res.pitch_random_shift)
 	
 	asp3d.play()
+
+# Lower the sounds of non-dialogue audio when audio is playing
+func dialogue_ducking(active: bool):
+	var bus_index := AudioServer.get_bus_index("Music")
+	if active:
+		#print("Before lowering: " + str(AudioServer.get_bus_volume_linear(bus_index)))
+		print("Lowering music")
+		music_base_volume = AudioServer.get_bus_volume_linear(bus_index)
+		#AudioServer.set_bus_volume_linear(bus_index, music_base_volume * 0.5)
+		print("After lowering: " + str(AudioServer.get_bus_volume_linear(bus_index)))
+		# TODO: this does work conceptually, though at the moment lowering the music bus
+		# doesn't actually lower the music, which it probably should. You can test the idea
+		# by changing .get_bus_index to "Master"
+		
+	else:
+		#print("Before raising: " + str(AudioServer.get_bus_volume_linear(bus_index)))
+		print("Returning music")
+		AudioServer.set_bus_volume_linear(bus_index, music_base_volume)
+		#print("After raising: " + str(AudioServer.get_bus_volume_linear(bus_index)))

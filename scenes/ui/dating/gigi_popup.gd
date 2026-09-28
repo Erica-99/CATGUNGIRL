@@ -41,6 +41,7 @@ func _popup_start(popup_id: String):
 	popup_active = true
 	current_popup_scene = DialogueProcessor._get_dating_scene(CustomResourceLoader.popup_dialogue_path + "gigi_popups", str(popup_id))
 	popup_dialogue = DialogueProcessor._get_next_dating_dialogue(current_popup_scene)
+	AudioManager.dialogue_ducking(true)
 	_display()
 
 # displays dialogue on screen
@@ -114,6 +115,7 @@ func _increment_date_stage(value: Dictionary):
 		_display()
 
 func _end_popup():
+	AudioManager.dialogue_ducking(false)
 	popup_active = false
 	visible = false
 
