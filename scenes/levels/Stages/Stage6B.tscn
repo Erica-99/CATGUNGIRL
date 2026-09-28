@@ -26,6 +26,11 @@
 [ext_resource type="PackedScene" uid="uid://b3krra1e3n0g8" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/Trolley.tscn" id="32_62t83"]
 [ext_resource type="PackedScene" uid="uid://ctpgo67g4y3mk" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/VentilationPipe1.tscn" id="32_tjdxi"]
 [ext_resource type="PackedScene" uid="uid://b84sa20ecduh4" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/LabTestTubes.tscn" id="33_l0fhi"]
+[ext_resource type="Script" uid="uid://2cm4kbh0jgjy" path="res://scenes/components/level_components/bossfight/brain_jar_terminal_group.gd" id="35_hux1r"]
+[ext_resource type="Material" uid="uid://c2qi20n2bfyah" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/TerminalActive.tres" id="36_4bsyr"]
+[ext_resource type="PackedScene" uid="uid://dh3ij31rc4n7m" path="res://scenes/components/level_components/bossfight/brain_jar_console.tscn" id="36_t1bfd"]
+[ext_resource type="Material" uid="uid://bpr70jmt82mc2" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/TerminalInactive.tres" id="37_tgq31"]
+[ext_resource type="Material" uid="uid://fun6o58788i6" path="res://art/TechArt/2_VFX/BrainJarLuca/TerminalBaseShader.tres" id="38_7wqfy"]
 [ext_resource type="PackedScene" uid="uid://cc0gqiu6epwfo" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/CardboardBox.tscn" id="39_260qo"]
 [ext_resource type="PackedScene" uid="uid://dvd3vuytfv8bh" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/MetalShelves.tscn" id="40_ovelr"]
 [ext_resource type="PackedScene" uid="uid://u0ps1hxqgdbr" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/HighBayLight.tscn" id="41_rnruy"]
@@ -129,15 +134,6 @@ roughness = 0.3
 albedo_color = Color(0.6399979, 0.72550595, 0.7825793, 1)
 metallic = 1.0
 roughness = 0.6
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vye6i"]
-points = PackedVector3Array(-0.14107618, 0.08232379, -0.6177761, 0.14174286, 2.344876, 0.65490943, -0.14107618, 2.344876, 0.65490943, 0.14174286, 0.08232379, 0.65490943, 0.14174286, 2.344876, -0.6177761, -0.14107618, 2.344876, -0.6177761, -0.14107618, 0.08232379, 0.65490943, 0.14174286, 0.08232379, -0.6177761)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_thmh5"]
-size = Vector3(1, 0.8257446, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_kvlv1"]
-size = Vector3(0.8179016, 0.50561523, 1.1655273)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uhx6n"]
 size = Vector3(20.489685, 17.532715, 13.72467)
@@ -268,7 +264,6 @@ Player_Target_Ratio = 0.4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9633865, 2.14, 0)
 collision_mask = 129
 hit_heal_fraction = 0.15
-has_gun = false
 
 [node name="Environment" type="Node3D" parent="." unique_id=929020045]
 
@@ -571,23 +566,10 @@ transform = Transform3D(0.26, 0, 0, 0, -0.0111915665, -0.25888547, 0, 0.12048133
 
 [node name="DoorExit" parent="Interactive" unique_id=863191425 instance=ExtResource("113_yjafr")]
 
-[node name="DoorExit2" type="StaticBody3D" parent="Interactive" unique_id=394417087]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -39.952927, 24.947172, 0)
+[node name="DoorExit2" type="StaticBody3D" parent="Interactive" unique_id=394417087 node_paths=PackedStringArray("shield_mesh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.384525, 24.947172, 0)
 script = ExtResource("20_gtg7c")
-
-[node name="DoorSlidingExit_Collision" type="CollisionShape3D" parent="Interactive/DoorExit2" unique_id=1146573450]
-visible = false
-shape = SubResource("ConvexPolygonShape3D_vye6i")
-
-[node name="DoorwaySlidingBasic_Collision2" type="CollisionShape3D" parent="Interactive/DoorExit2" unique_id=1658961867]
-transform = Transform3D(0.59946984, 0, 0, 0, 0.679035, 0, 0, 0, 1, -0.0007171631, 2.6015267, -0.0026855469)
-visible = false
-shape = SubResource("BoxShape3D_thmh5")
-
-[node name="DoorwaySlidingBasic_Collision" type="CollisionShape3D" parent="Interactive/DoorExit2" unique_id=142326310]
-transform = Transform3D(3.2458947, 0, 0, 0, 0.35226288, 0, 0, 0, 1, -0.0007171631, 2.7185051, -0.0026855469)
-visible = false
-shape = SubResource("BoxShape3D_kvlv1")
+shield_mesh = NodePath("../../FinalDoor/FinalDoor/defaultMaterial")
 
 [node name="LevelEnd" parent="Interactive/DoorExit2" unique_id=914563996 instance=ExtResource("114_ilcbw")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.11778259, 1.2896835, 0)
@@ -962,6 +944,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.530695, 3.096906, -10.179
 [node name="LabTestTubes2" parent="Enemies/RoomFive" unique_id=965407361 instance=ExtResource("33_l0fhi")]
 transform = Transform3D(0.8677741, 0, -0.4969588, 0, 1, 0, 0.4969588, 0, 0.8677741, -10.387153, 3.096906, -10.179512)
 
+[node name="Terminal" parent="Enemies" unique_id=279547323 instance=ExtResource("125_4psah")]
+room_ID = 4
+
 [node name="LabCabinet" parent="." unique_id=863456316 instance=ExtResource("20_qi6dq")]
 transform = Transform3D(0.9833502, 0, -0.18172067, 0, 1, 0, 0.18172067, 0, 0.9833502, -7.1654234, 0.20000839, -9.809982)
 
@@ -977,8 +962,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.161703, 8.568169, -10.688
 [node name="LabCabinet4" parent="." unique_id=1173330277 instance=ExtResource("20_qi6dq")]
 transform = Transform3D(0.9504398, 0, -0.31090868, 0, 1, 0, 0.31090868, 0, 0.9504398, -8.305206, 8.568169, -10.131985)
 
-[node name="BrainJarTerminal" parent="." unique_id=366402759 instance=ExtResource("26_5g2ht")]
+[node name="TerminalGroup" type="Node3D" parent="." unique_id=836969059 node_paths=PackedStringArray("interaction_console", "terminal_visuals")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -24.22517, 25.009401, -3.1478677)
+script = ExtResource("35_hux1r")
+interaction_console = NodePath("BrainJarConsole")
+terminal_visuals = [NodePath("BrainJarTerminal")]
+start_active = true
+active_material = ExtResource("36_4bsyr")
+inactive_material = ExtResource("37_tgq31")
+material_overlay = ExtResource("38_7wqfy")
+
+[node name="BrainJarTerminal" parent="TerminalGroup" unique_id=366402759 instance=ExtResource("26_5g2ht")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="BrainJarConsole" parent="TerminalGroup" unique_id=578323982 instance=ExtResource("36_t1bfd")]
+transform = Transform3D(1.36, 0, 0, 0, 1.36, 0, 0, 0, 1.36, 0, 1.758, 2)
+visible = false
+
+[node name="InteractableComponent" parent="TerminalGroup/BrainJarConsole" index="0" unique_id=2140039813]
+interactable_type = 1
+
+[node name="EventTrigger" parent="TerminalGroup/BrainJarConsole/InteractableComponent" index="1" unique_id=1311781014]
+_signal_parameters = [0.1, NodePath("../../../../EnemyDoorFrame/EnemySpawner")]
+signal_name = "spawn_enemy"
 
 [node name="FuseBox" parent="." unique_id=436417353 instance=ExtResource("71_yuyn0")]
 transform = Transform3D(-0.030224532, 0, 0.99954313, 0, 1, 0, -0.99954313, 0, -0.030224532, -18.125832, 5.2751365, -14.854226)
@@ -1280,8 +1286,16 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30.041798, 16.116703, -0.6368
 [node name="FinalDoor" parent="." unique_id=2092611838 instance=ExtResource("21_l8a18")]
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -39.86514, 24.984701, 1.0586257)
 
-[node name="EnemyDoorFrame" parent="." unique_id=2112200868 instance=ExtResource("57_0h5cq")]
+[node name="defaultMaterial" parent="FinalDoor/FinalDoor" parent_id_path=PackedInt32Array(2092611838, 1903052867) index="0" unique_id=118421685]
+surface_material_override/0 = null
+surface_material_override/1 = null
+
+[node name="EnemyDoorFrame" parent="." unique_id=2112200868 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("57_0h5cq")]
 transform = Transform3D(-1.9999042, 0, -0.01958226, 0, 2, 0, 0.01958226, 0, -1.9999042, -15, 25, -4.9504647)
+enemy_manager = NodePath("../Enemies/Terminal")
+
+[node name="EnemySpawner" parent="EnemyDoorFrame" index="2" unique_id=1110059721]
+possible_spawns = Array[int]([0, 1, 1, 0])
 
 [node name="DoorwaySingleBaseLaboratory" parent="." unique_id=1936140797 instance=ExtResource("59_n3kry")]
 
@@ -1453,6 +1467,8 @@ transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -5, 
 [node name="WallPlainMidPrison3" parent="." unique_id=124439565 instance=ExtResource("118_t1bfd")]
 transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, -25, 33.6, -10)
 
+[node name="VFX" type="Node3D" parent="." unique_id=536083855]
+
 [connection signal="removecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
 [connection signal="body_entered" from="Interactive/CameraPanNode1/Area" to="Interactive/CameraPanNode1" method="_on_area_body_entered"]
@@ -1469,12 +1485,15 @@ transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, -25,
 [connection signal="updatecameratween" from="Interactive/CameraPanNode2" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
 [connection signal="body_entered" from="Interactive/CameraPanNode2/Area" to="Interactive/CameraPanNode2" method="_on_area_body_entered"]
 [connection signal="body_exited" from="Interactive/CameraPanNode2/Area" to="Interactive/CameraPanNode2" method="_on_area_body_exited"]
-[connection signal="stage_cleared" from="Enemies/RoomFive" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]
+[connection signal="stage_cleared" from="Enemies/Terminal" to="Interactive/DoorExit2" method="_on_enemy_manager_stage_cleared"]
 
 [editable path="Interactive/DoorBasic"]
 [editable path="Interactive/DoorExit"]
+[editable path="TerminalGroup/BrainJarConsole"]
 [editable path="FinalDoor"]
 [editable path="FinalDoor/FinalDoor"]
+[editable path="EnemyDoorFrame"]
+[editable path="EnemyDoorFrame/EnemyDoorFrame_Panels"]
 [editable path="TankExperimentation"]
 [editable path="TankExperimentation2"]
 [editable path="TankExperimentation3"]
