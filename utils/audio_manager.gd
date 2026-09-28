@@ -55,6 +55,8 @@ func _ready() -> void:
 		add_child(asp)
 		sfx_3D_pool.append(asp)
 	#endregion
+	
+	EventManager.brainjar_phase_started.connect(_on_brain_jar_phase_started)
 
 # Play music track
 func play_music(track_ref: String):
@@ -72,8 +74,9 @@ func play_music(track_ref: String):
 	else:
 		push_error("Music track not found")
 
-#func _on_brain_jar_phase_started(phase_index: int) -> void:
-	#play_music()
+func _on_brain_jar_phase_started(phase_index: int) -> void:
+	var music_ref: String = "music_bj_phs" + str(phase_index)
+	play_music(music_ref)
 
 # Play global sound effect (best for menu, UI, most player sounds, etc.)
 func play_sfx(sfx_ref: String):
