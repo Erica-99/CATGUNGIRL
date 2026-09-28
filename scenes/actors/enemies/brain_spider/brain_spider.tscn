@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://csd06hicr5wny" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="8_3f5fc"]
 [ext_resource type="Script" uid="uid://hkfr65k60uhn" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_chase.gd" id="8_hh7i0"]
 [ext_resource type="Script" uid="uid://cexabo1e6yx6k" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_death.gd" id="9_jq4cx"]
-[ext_resource type="Script" uid="uid://y2ix2xo5owxw" path="res://resources/damage_heal_instance/damage_heal_instance.gd" id="9_vsnr6"]
 [ext_resource type="Script" uid="uid://c74c3xocthoxl" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_explode.gd" id="10_dwws2"]
 [ext_resource type="Material" uid="uid://drkjm5tcceqdf" path="res://art/TechArt/1_Shaders/ExplosionShader.tres" id="11_5jp2h"]
 [ext_resource type="Script" uid="uid://gs162ktdk81a" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_surface_chase.gd" id="12_0umjx"]
@@ -321,13 +320,7 @@ _data = {
 &"Turret": SubResource("Animation_5iimw")
 }
 
-[sub_resource type="Resource" id="Resource_shv1t"]
-script = ExtResource("9_vsnr6")
-death_screen_id = &"missile"
-metadata/_custom_type_script = "uid://y2ix2xo5owxw"
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_nk3wx"]
-radius = 2.0
+[sub_resource type="SphereShape3D" id="SphereShape3D_rxtbj"]
 
 [sub_resource type="Curve" id="Curve_e5xwv"]
 _data = [Vector2(0.54820937, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 4.721918, 0.0, 0, 0]
@@ -565,6 +558,7 @@ radius = 2.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_fmqj0"]
 
 [node name="BrainSpider" type="CharacterBody3D" unique_id=166394742 node_paths=PackedStringArray("animator", "state_machine", "start_idle", "start_floor_aggro", "start_surface_aggro")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 collision_layer = 4
 collision_mask = 129
 script = ExtResource("1_fjoht")
@@ -625,13 +619,11 @@ omni_range = 8.0
 
 [node name="Explosion" type="Node3D" parent="SpiderPivot/Visuals" unique_id=1074334678]
 
-[node name="HitboxComponent" parent="SpiderPivot/Visuals/Explosion" unique_id=1965125698 node_paths=PackedStringArray("team_component") instance=ExtResource("8_3f5fc")]
-team_component = NodePath("../TeamComponent")
-damage_or_heal_instance = SubResource("Resource_shv1t")
+[node name="HitboxComponent" parent="SpiderPivot/Visuals/Explosion" unique_id=1965125698 instance=ExtResource("8_3f5fc")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SpiderPivot/Visuals/Explosion/HitboxComponent" unique_id=1608720344]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-shape = SubResource("CylinderShape3D_nk3wx")
+transform = Transform3D(4, 0, 0, 0, -1.7484555e-07, -4, 0, 4, -1.7484555e-07, 0, 0, 0)
+shape = SubResource("SphereShape3D_rxtbj")
 
 [node name="TeamComponent" parent="SpiderPivot/Visuals/Explosion" unique_id=2076917082 instance=ExtResource("2_luyx4")]
 team = 2
