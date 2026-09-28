@@ -433,6 +433,9 @@ fog_depth_begin = 123.1
 fog_depth_end = 274.5
 adjustment_enabled = true
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_x768c"]
+size = Vector3(1, 20, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mausv"]
 albedo_texture = ExtResource("17_0n1ur")
 metallic = 1.0
@@ -572,9 +575,6 @@ _data = {
 &"Intro": SubResource("Animation_tatg8"),
 &"RESET": SubResource("Animation_rpc8p")
 }
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_lj8ni"]
-size = Vector3(10, 1, 1)
 
 [node name="StageOne" type="Node3D" unique_id=1668100898]
 script = ExtResource("1_6gdgj")
@@ -2170,6 +2170,10 @@ door_to_unlock = NodePath("../DoorBasic")
 [node name="InteractableComponent" parent="Interactive/GunPodium/GunPodium_Mesh" parent_id_path=PackedInt32Array(786548764, 1164015310) index="0" unique_id=2140039813 node_paths=PackedStringArray("dialogue_renderer")]
 dialogue_renderer = NodePath("DialogueRenderer")
 
+[node name="EventTrigger" parent="Interactive/GunPodium/GunPodium_Mesh/InteractableComponent" index="1" unique_id=1311781014]
+_signal_parameters = ["1_cozy_meeting"]
+signal_name = "activate_popup"
+
 [node name="DialogueRenderer" parent="Interactive/GunPodium/GunPodium_Mesh/InteractableComponent" index="2" unique_id=780065543 instance=ExtResource("85_44hq7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.977342, 0)
 size_of_viewport = Vector2(1000, 100)
@@ -2449,7 +2453,16 @@ environment = SubResource("Environment_nym5h")
 
 [node name="VFX" type="Node3D" parent="." unique_id=974720759]
 
-[node name="DATES_POPUPS" type="Node" parent="." unique_id=983173156]
+[node name="EVENT_TRIGGERS" type="Node" parent="." unique_id=983173156]
+
+[node name="PopupYell" parent="EVENT_TRIGGERS" unique_id=782554053 instance=ExtResource("119_x768c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.377172, 10.104255, 0)
+_signal_parameters = ["0_cozy_yell"]
+signal_name = "activate_popup"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EVENT_TRIGGERS/PopupYell" unique_id=2046622752]
+shape = SubResource("BoxShape3D_x768c")
+debug_color = Color(0.18271238, 0.6429914, 0, 0.41960785)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=1148700225]
 
@@ -2548,14 +2561,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.368645, 9.140897, -12.4837
 
 [node name="BackgroundGunPodium" parent="." unique_id=1135966921 instance=ExtResource("85_x0gst")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11074698, 0.19126523, -10.822699)
-
-[node name="EventTrigger" parent="." unique_id=1311781014 instance=ExtResource("119_x768c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.573421, 1.924159, 0)
-_signal_parameters = ["0_cozy_yell"]
-signal_name = "activate_popup"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="EventTrigger" unique_id=2046622752]
-shape = SubResource("BoxShape3D_lj8ni")
 
 [connection signal="removecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]

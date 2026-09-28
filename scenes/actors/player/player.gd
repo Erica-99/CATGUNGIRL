@@ -235,7 +235,6 @@ func _set_gun_enabled(enabled: bool) -> void:
 	gun_arm_node.visible = enabled
 	gun_holder.allow_swapping = enabled
 	EventManager.enable_gun_ui.emit(enabled)
-	EventManager.activate_popup.emit("1_cozy_meeting")
 
 func sacrifice_gun(selected_gun: Gun) -> void:
 	if !has_gun or !is_instance_valid(selected_gun):
