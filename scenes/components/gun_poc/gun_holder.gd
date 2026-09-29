@@ -66,8 +66,8 @@ func _update_front_gun_position():
 	pass
 
 func _process(_delta: float) -> void:
-	_update_front_gun_position()
 	if input_component != null:
+		_update_front_gun_position()
 		var current_input_state = input_component.get_input_state()
 		# Switch to next gun (Pistol -> Shotgun -> Sniper)
 		if current_input_state.get("switch_gun", false):
