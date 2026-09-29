@@ -128,6 +128,7 @@
 [ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict/convict_enemy.tscn" id="126_ker76"]
 [ext_resource type="PackedScene" uid="uid://bls076phgmcus" path="res://scenes/actors/enemies/scrub/scrub.tscn" id="127_0dffa"]
 [ext_resource type="PackedScene" uid="uid://yvma87vdtlyv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6B_Lab/Cone.tscn" id="128_jgoex"]
+[ext_resource type="PackedScene" uid="uid://4l4kw7i1ga4c" path="res://scenes/actors/enemies/brain_spider/brain_spider.tscn" id="129_uif3s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_flo5n"]
 albedo_color = Color(0.6114719, 0.6536162, 0.6536162, 1)
@@ -894,7 +895,7 @@ shape = SubResource("BoxShape3D_fxtw2")
 debug_color = Color(0.919504, 0.13431916, 0.6161928, 0.41960785)
 
 [node name="Forklift" parent="DATES_POPUPS/ConvictPopup" unique_id=500869341 instance=ExtResource("20_cbeae")]
-transform = Transform3D(1.1925337, 0, 1.6055725, 0, 2, 0, -1.6055725, 0, 1.1925337, -40.734314, 14.055393, 0.74875355)
+transform = Transform3D(1.1925336, 0, 1.6055725, 0, 2, 0, -1.6055725, 0, 1.1925336, -40.734314, 14.055393, 0.74875355)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=1148700225]
 
@@ -936,14 +937,8 @@ room_ID = 4
 [node name="Scrub2" parent="Enemies/RoomFive" unique_id=1918494423 instance=ExtResource("127_0dffa")]
 transform = Transform3D(0.9999723, 0.00729109, -0.0014908338, -0.007284907, 0.999965, 0.00411179, 0.0015207593, -0.0041008163, 0.99999046, -50.770817, 12, 0)
 
-[node name="Scrub5" parent="Enemies/RoomFive" unique_id=653338644 instance=ExtResource("127_0dffa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.097183, 20.307669, -0.025702238)
-
-[node name="Scrub4" parent="Enemies/RoomFive" unique_id=2137699923 instance=ExtResource("127_0dffa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.738586, 3.426362, -0.4134407)
-
-[node name="Scrub6" parent="Enemies/RoomFive" unique_id=1090872008 instance=ExtResource("127_0dffa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.101841, 12, 0)
+[node name="Scrub3" parent="Enemies/RoomFive" unique_id=1090872008 instance=ExtResource("127_0dffa")]
+transform = Transform3D(0.9999723, 0.00729109, -0.0014908338, -0.007284907, 0.999965, 0.00411179, 0.0015207593, -0.0041008163, 0.99999046, 14.229183, 33, 0)
 
 [node name="Beaker1" parent="Enemies/RoomFive" unique_id=1156423500 instance=ExtResource("49_4yrlg")]
 transform = Transform3D(1.9662995, 0.36560357, -4.828227e-11, -0.3571337, 1.9207466, 0.4280046, 0.07824, -0.4207926, 1.9536663, -21.167782, 17.096039, -13.853462)
@@ -1542,6 +1537,26 @@ transform = Transform3D(0.7241675, -0.020025449, -0.19411428, 0.02073187, 0.7497
 
 [node name="Cone10" parent="." unique_id=1077580476 instance=ExtResource("128_jgoex")]
 transform = Transform3D(0.18956637, 0.03986071, -0.72455204, -0.0146901775, 0.74892503, 0.037358135, 0.72549903, 0.0047492683, 0.19007534, 21.50201, 24.907942, -3.8974419)
+
+[node name="BrainSpider" parent="." unique_id=166394742 instance=ExtResource("129_uif3s")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -49.849, 1.498, 0)
+
+[node name="BrainSpider2" parent="." unique_id=1527218093 instance=ExtResource("129_uif3s")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -51.848953, 22.533655, 0)
+spider_mode = 1
+
+[node name="BrainSpider3" parent="." unique_id=1836650691 instance=ExtResource("129_uif3s")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -24.848953, 22.533655, 0)
+spider_mode = 1
+
+[node name="BrainSpider4" parent="." unique_id=412403872 instance=ExtResource("129_uif3s")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 19.151, 38.534, 0)
+spider_mode = 1
+
+[node name="BrainSpider5" parent="." unique_id=1281385716 instance=ExtResource("129_uif3s")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.849, 13.534, 0)
+spider_mode = 1
+surface_type = 2
 
 [connection signal="removecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
