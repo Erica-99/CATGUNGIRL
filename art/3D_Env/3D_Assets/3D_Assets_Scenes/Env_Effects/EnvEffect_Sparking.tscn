@@ -1,7 +1,26 @@
 [gd_scene format=3 uid="uid://bro5axofhsk8p"]
 
-[ext_resource type="QuadMesh" uid="uid://bkqyj0frj2ef7" path="res://art/3D_Env/3D_Assets/3D_Textures/Env_Effects_Textures/Spark_quad_mesh.tres" id="1_lun2u"]
 [ext_resource type="Texture2D" uid="uid://by2rrwp7x5x6h" path="res://art/3D_Env/3D_Assets/3D_Textures/Env_Effects_Textures/Spark.png" id="1_t5jej"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t5jej"]
+particle_flag_align_y = true
+radial_velocity_min = 4.9999776
+radial_velocity_max = 46.099976
+gravity = Vector3(0, -76.595, 0)
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t5jej"]
+transparency = 1
+albedo_texture = ExtResource("1_t5jej")
+emission_enabled = true
+emission = Color(1, 0.5254902, 0.22745098, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_lun2u"]
+material = SubResource("StandardMaterial3D_t5jej")
+center_offset = Vector3(0, 0.305, 0)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lun2u"]
 particle_flag_align_y = true
@@ -12,7 +31,7 @@ collision_mode = 1
 collision_friction = 1.0
 collision_bounce = 1.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8wlfu"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lun2u"]
 transparency = 1
 cull_mode = 2
 albedo_texture = ExtResource("1_t5jej")
@@ -22,7 +41,7 @@ emission_energy_multiplier = 5.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_8wlfu"]
 lightmap_size_hint = Vector2i(7, 7)
-material = SubResource("StandardMaterial3D_8wlfu")
+material = SubResource("StandardMaterial3D_lun2u")
 size = Vector2(0.3, 0.3)
 center_offset = Vector3(0, 0.425, 0)
 
@@ -96,9 +115,9 @@ lifetime = 0.9
 explosiveness = 0.25
 randomness = 1.0
 fixed_fps = 60
-trail_enabled = true
-process_material = SubResource("ParticleProcessMaterial_lun2u")
-draw_pass_1 = ExtResource("1_lun2u")
+collision_base_size = 1.0
+process_material = SubResource("ParticleProcessMaterial_t5jej")
+draw_pass_1 = SubResource("QuadMesh_lun2u")
 
 [node name="Sparking_Small" type="GPUParticles3D" parent="." unique_id=1289499512]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
@@ -107,8 +126,7 @@ lifetime = 0.3
 explosiveness = 0.35
 randomness = 1.0
 fixed_fps = 60
-collision_base_size = 0.3
-trail_enabled = true
+collision_base_size = 1.0
 process_material = SubResource("ParticleProcessMaterial_lun2u")
 draw_pass_1 = SubResource("QuadMesh_8wlfu")
 
