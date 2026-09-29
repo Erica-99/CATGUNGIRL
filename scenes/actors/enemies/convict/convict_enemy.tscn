@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://dvq0qrn20mwvt"]
 
 [ext_resource type="Script" uid="uid://dtxlwrmatnv5x" path="res://scenes/actors/enemies/convict/convict_enemy.gd" id="1_awmif"]
-[ext_resource type="Script" path="res://scenes/actors/enemies/convict/ConvictVisuals.gd" id="2_leh5i"]
+[ext_resource type="Script" uid="uid://e8ljkdr283u8" path="res://scenes/actors/enemies/convict/ConvictVisuals.gd" id="2_leh5i"]
 [ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="3_pee7w"]
 [ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="4_4p71r"]
 [ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="5_xi3ex"]
 [ext_resource type="Script" uid="uid://da3n34oh0bagw" path="res://scenes/actors/player/audio_caller.gd" id="7_28j07"]
 [ext_resource type="SpriteFrames" uid="uid://dvepkc65g3a5" path="res://art/2d_assets/real_world/enemy_convict/Convict_Head1.tres" id="7_kdnv2"]
 [ext_resource type="SpriteFrames" uid="uid://d1vyji2y36l1p" path="res://art/2d_assets/real_world/enemy_convict/Convict_Body1.tres" id="8_2lv2l"]
+[ext_resource type="PackedScene" uid="uid://x4f2jperscm2" path="res://scenes/VFX/headshot_vfx.tscn" id="9_q6lyk"]
 [ext_resource type="Script" uid="uid://ddjs1cw5jtwqb" path="res://scenes/components/state_machine/state_machine.gd" id="12_resq1"]
 [ext_resource type="Script" uid="uid://drxvsuwj3prjk" path="res://scenes/components/state_machine/states/enemy/convict/convict_idle.gd" id="13_l1l22"]
 [ext_resource type="Script" uid="uid://bngvrrah86suo" path="res://scenes/components/state_machine/states/enemy/convict/convict_patrol.gd" id="14_41wpr"]
@@ -1125,6 +1126,9 @@ is_headshot = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025838926, 1.0454437, 0)
 shape = SubResource("BoxShape3D_a68hs")
 debug_color = Color(0.9201433, 0.7565305, 1, 0.41960785)
+
+[node name="Headshot_VFX" parent="HeadHurtbox/CollisionShape3D" unique_id=1741053268 instance=ExtResource("9_q6lyk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.073648915, 0.031351447, -1.2579811)
 
 [node name="StateMachine" type="Node" parent="." unique_id=1781968313 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("12_resq1")

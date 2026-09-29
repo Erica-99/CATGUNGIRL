@@ -16,15 +16,17 @@ material = SubResource("StandardMaterial3D_ou1pn")
 size = Vector2(0.25, 1)
 
 [sub_resource type="Curve" id="Curve_xswov"]
-_data = [Vector2(0, 0.1685394), 0.0, 0.0, 0, 0, Vector2(0.38297874, 0.3820225), 3.8022475, 3.8022475, 0, 0, Vector2(0.6702128, 1), 0.0, 0.0, 0, 0, Vector2(0.9148936, 0.6629214), -3.3445697, -3.3445697, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.1685394), 0.0, 0.0, 0, 0, Vector2(0.29787233, 0.30337083), 2.020517, 2.020517, 0, 0, Vector2(0.53723407, 1), 0.0, 0.0, 0, 0, Vector2(0.80319154, 0.6741574), -2.3560925, -2.3560925, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 5
 
 [node name="Headshot_VFX" type="Node3D" unique_id=1741053268]
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=1262161781]
 transform = Transform3D(2.5965424, 0, 0, 0, 3.4772868, 0, 0, 0, 1, 0, 0, 0)
+emitting = false
 amount = 32
 lifetime = 0.05
+one_shot = true
 preprocess = 0.01
 speed_scale = 0.2
 explosiveness = 0.88

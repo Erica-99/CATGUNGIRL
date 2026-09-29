@@ -17,6 +17,7 @@
 [ext_resource type="Material" uid="uid://drkjm5tcceqdf" path="res://art/TechArt/1_Shaders/ExplosionShader.tres" id="11_5jp2h"]
 [ext_resource type="Script" uid="uid://gs162ktdk81a" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_surface_chase.gd" id="12_0umjx"]
 [ext_resource type="Shader" uid="uid://cyxi7gf3tb6pe" path="res://art/TechArt/1_Shaders/s_streaks.tres" id="12_b31jq"]
+[ext_resource type="PackedScene" uid="uid://x4f2jperscm2" path="res://scenes/VFX/headshot_vfx.tscn" id="12_rxtbj"]
 [ext_resource type="Script" uid="uid://dp3kifbyh42ts" path="res://scenes/components/gun_component/laser.gd" id="13_jq4cx"]
 [ext_resource type="Script" uid="uid://cjqn2hw06rk6f" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_aim.gd" id="13_jv02q"]
 [ext_resource type="Script" uid="uid://54ums46u7kgu" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_laser.gd" id="14_c6328"]
@@ -687,6 +688,9 @@ health_component = NodePath("../HealthComponent")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 shape = SubResource("SphereShape3D_fjoht")
 debug_color = Color(0.5352921, 0.41064504, 1, 0.41960785)
+
+[node name="Headshot_VFX" parent="BodyHurtbox" unique_id=1741053268 instance=ExtResource("12_rxtbj")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.009410858, 0.17096709, 0.50006104)
 
 [node name="StateMachine" parent="." unique_id=1499026333 node_paths=PackedStringArray("initial_state") instance=ExtResource("4_iobuc")]
 initial_state = NodePath("BrainSpiderIdle")
