@@ -51,7 +51,7 @@ func enter() -> void:
 	dive_direction = Vector3.ZERO
 	locked_target_position = Vector3.ZERO
 	actor.velocity = Vector3.ZERO
-	# anim.play("ConvictPowerDiveWindup")
+	anim.play("Slam_Initiate")
 
 func physics_update(_delta: float) -> void:
 	match phase:
@@ -82,6 +82,7 @@ func _start_launch() -> void:
 	phase_timer = 0.0
 	actor.velocity = Vector3.ZERO
 	actor.velocity.y = dive_launch_force
+	anim.play('Slam_Start')
 	#anim.play("ConvictPowerDiveLaunch")
 
 func _update_launch() -> void:
@@ -90,6 +91,7 @@ func _update_launch() -> void:
 		_start_charge()
 
 func _start_charge() -> void:
+	anim.play("Slam_Loop")
 	phase = DivePhase.CHARGE
 	phase_timer = 0.0
 	actor.velocity = Vector3.ZERO
@@ -120,7 +122,7 @@ func _start_dive() -> void:
 	if attack_hitbox != null and attack_hitbox.damage_or_heal_instance != null:
 		attack_hitbox.damage_or_heal_instance.death_screen_id = actor.power_dive_death_screen_id
 	
-	#anim.play("ConvictPowerDive")
+
 
 func _update_dive(delta: float) -> void:
 	dive_velocity.y -= gravity * dive_gravity_multiplier * delta
@@ -134,7 +136,7 @@ func _start_recovery() -> void:
 	phase = DivePhase.RECOVERY
 	phase_timer = 0.0
 	actor.velocity.x = 0.0
-	#anim.play("ConvictPowerDiveRecovery") if u wanna get fancy id say
+	anim.play("Slam_Recovery")
 
 func _update_recovery(delta: float) -> void:
 	phase_timer += delta
