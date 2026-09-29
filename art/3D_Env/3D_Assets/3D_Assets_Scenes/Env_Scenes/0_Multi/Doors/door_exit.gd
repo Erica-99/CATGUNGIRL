@@ -2,7 +2,7 @@ extends StaticBody3D
 
 var unlocked_colour
 var level_end
-
+@export var shield_mesh: GeometryInstance3D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	##Get the LevelEnd component
@@ -15,10 +15,18 @@ func _ready() -> void:
 
 
 func _change_door_lighting():
+	if !has_node("EXITHERECYLINDER") or !has_node("EXITHERECYLINDER2"):
+		return
+	
 	$EXITHERECYLINDER.material_override = unlocked_colour
 	$EXITHERECYLINDER2.material_override = unlocked_colour
 
 
 func _on_enemy_manager_stage_cleared() -> void:
 	_change_door_lighting()
-	level_end.monitoring = true
+	
+	if shield_mesh != null:
+		shield_mesh.material_overlay = null
+	
+	if level_end != null:
+		level_end.set_deferred("monitoring", true)
