@@ -84,6 +84,7 @@
 [ext_resource type="PackedScene" uid="uid://ckkjv4pfh7tik" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/AcidVatRoom/AcidVat.tscn" id="45_1hh6s"]
 [ext_resource type="PackedScene" uid="uid://b61rhgk3qi27n" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/AcidVatRoom/TankExperimentation.tscn" id="45_21hio"]
 [ext_resource type="PackedScene" uid="uid://cslp0wcty1crc" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/SteelBeamVertical.tscn" id="46_1hh6s"]
+[ext_resource type="PackedScene" uid="uid://yvma87vdtlyv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6B_Lab/Cone.tscn" id="46_88i24"]
 [ext_resource type="PackedScene" uid="uid://mooe02l1trdi" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/ScaffoldStation.tscn" id="46_ui48n"]
 [ext_resource type="PackedScene" uid="uid://b1p88l2y8q31k" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/SteelBeamDiagonal.tscn" id="47_k6pqx"]
 [ext_resource type="PackedScene" uid="uid://c2b8o2oly7jf2" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/Rails/RailCorner.tscn" id="47_ui48n"]
@@ -150,6 +151,8 @@
 [ext_resource type="PackedScene" uid="uid://be7ep4ykads06" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/Wyrdwood.tscn" id="146_je64n"]
 [ext_resource type="PackedScene" uid="uid://grwxleqavgq1" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/World_Lore/Wash_Hands.tscn" id="147_um8f0"]
 [ext_resource type="PackedScene" uid="uid://6uli0o1pqyth" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/Springbound.tscn" id="148_a0273"]
+[ext_resource type="PackedScene" uid="uid://cbdqjgjrwr14b" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6B_Lab/Hazmatsuit.tscn" id="151_qof5w"]
+[ext_resource type="PackedScene" uid="uid://ctcpwyd8a67ib" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6B_Lab/Sink.tscn" id="152_4h38x"]
 
 [sub_resource type="Environment" id="Environment_2e20y"]
 background_mode = 1
@@ -544,6 +547,27 @@ shadow_normal_bias = 10.0
 shadow_blur = 0.0
 omni_range = 18.392912
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Lighting/StorageRoom" unique_id=2124376538]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -225, 42, -14)
+light_color = Color(1, 0.16000003, 0.16000003, 1)
+light_energy = 7.102
+shadow_enabled = true
+omni_range = 18.057627
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lighting/StorageRoom" unique_id=384483074]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -201, 42, -14)
+light_color = Color(1, 0.16000003, 0.16000003, 1)
+light_energy = 7.102
+shadow_enabled = true
+omni_range = 18.057627
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lighting/StorageRoom" unique_id=1506357044]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -177, 42, -14)
+light_color = Color(1, 0.16000003, 0.16000003, 1)
+light_energy = 7.102
+shadow_enabled = true
+omni_range = 18.057627
+
 [node name="AcidVatRoom" type="Node3D" parent="Lighting" unique_id=51395004]
 
 [node name="HighBayLights" type="Node3D" parent="Lighting/AcidVatRoom" unique_id=1164576490]
@@ -625,6 +649,13 @@ shadow_reverse_cull_face = true
 shadow_opacity = 0.0
 shadow_blur = 10.0
 omni_range = 120.03847
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lighting/AcidVatRoom" unique_id=487347050]
+transform = Transform3D(0.9434049, -0.02226124, 0.33089513, -0.14516115, 0.8693742, 0.47235233, -0.2981869, -0.49365267, 0.81694055, -158.7311, 6, 4.8134494)
+light_energy = 9.0
+spot_range = 12.873765
+spot_angle = 88.23376
+spot_angle_attenuation = 7.4642572
 
 [node name="LabRoom" type="Node3D" parent="Lighting" unique_id=1484342102]
 
@@ -759,7 +790,7 @@ mesh = ExtResource("7_sfjjq")
 surface_material_override/0 = SubResource("StandardMaterial3D_ybcy6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactive/AcidVat5" unique_id=506276314]
-transform = Transform3D(1.8995467, 0, 0, 0, 1.9999999, 0, 0, 0, 1.9999999, 0, 0, 0)
+transform = Transform3D(1.8, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_tpemm")
 
 [node name="AcidVatAcid" type="Node3D" parent="Interactive/AcidVat5" unique_id=533429664]
@@ -810,7 +841,7 @@ mesh = ExtResource("7_sfjjq")
 surface_material_override/0 = SubResource("StandardMaterial3D_ybcy6")
 
 [node name="AcidVat_CollisionShape" type="CollisionShape3D" parent="Interactive/AcidVat11" unique_id=875289307]
-transform = Transform3D(1.9004757, 0, 0, 0, 1.9999999, 0, 0, 0, 1.9999999, 0, 0, 0)
+transform = Transform3D(1.8, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_uvo1k")
 
 [node name="AcidVatAcid" type="Node3D" parent="Interactive/AcidVat11" unique_id=107626673]
@@ -1141,9 +1172,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.734425, 26.296028, 0)
 [node name="Scrub4" parent="Enemies/Room Two" unique_id=328394186 instance=ExtResource("21_dgb42")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -146.73442, 26.296028, 0)
 
-[node name="Trunk" parent="Enemies/Room Two" unique_id=400593386 instance=ExtResource("41_1hh6s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -190.41913, 11.308638, 0)
-
 [node name="Trunk2" parent="Enemies/Room Two" unique_id=13695225 instance=ExtResource("41_1hh6s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.96228, 23.298864, 0)
 
@@ -1166,6 +1194,12 @@ transform = Transform3D(-1.7320508, 1, -1.5142069e-07, 1, 1.7320508, 8.742278e-0
 
 [node name="FloorBrokenSideLaboratory2" parent="Enemies/Room Three" unique_id=829717872 instance=ExtResource("10_yi4fc")]
 transform = Transform3D(1.9220608, -0.5528852, -1.6553674e-09, 0.5528852, 1.9220608, 9.0491575e-08, -2.342486e-08, -8.742278e-08, 2, -179.71622, 32.218967, 0)
+
+[node name="Cone" parent="Enemies/Room Three" unique_id=1393563968 instance=ExtResource("46_88i24")]
+transform = Transform3D(0.78461134, -0.18001077, 0.5932801, 0.229359, 0.97330916, -0.008009024, -0.5760032, 0.14235806, 0.8049564, -0.1769011, 7.4125147, -3.5414026)
+
+[node name="Cone2" parent="Enemies/Room Three" unique_id=1741042335 instance=ExtResource("46_88i24")]
+transform = Transform3D(0.8130603, 0.13744983, 0.5657212, -0.08958872, 0.9896951, -0.11170235, -0.575245, 0.04013848, 0.8169957, -8.185028, 7.7760735, -3.5414026)
 
 [node name="Environment" type="Node3D" parent="." unique_id=505890401]
 
@@ -3917,6 +3951,12 @@ transform = Transform3D(-3, 0, -1.7484555e-07, 0, 2, 0, 2.6226832e-07, 0, -2, -8
 [node name="FloorMeshEdge23" parent="Environment/Platforms_Floors/FloorMeshEdge" unique_id=1171436467 instance=ExtResource("9_ta8ps")]
 transform = Transform3D(3, 0, 0, 0, 2, 0, 0, 0, 2, -102.5, 8.4, -10)
 
+[node name="FloorMeshEdge32" parent="Environment/Platforms_Floors/FloorMeshEdge" unique_id=1076088666 instance=ExtResource("9_ta8ps")]
+transform = Transform3D(-3, 0, -1.7484555e-07, 0, 2, 0, 2.6226832e-07, 0, -2, -87.5, 8.4, 0)
+
+[node name="FloorMeshEdge35" parent="Environment/Platforms_Floors/FloorMeshEdge" unique_id=584909118 instance=ExtResource("9_ta8ps")]
+transform = Transform3D(3, 0, 0, 0, 2, 0, 0, 0, 2, -102.5, 8.4, 0)
+
 [node name="FloorMeshEdge5" parent="Environment/Platforms_Floors/FloorMeshEdge" unique_id=488822616 instance=ExtResource("9_ta8ps")]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, -30, 16.8, 0)
 
@@ -4971,12 +5011,6 @@ transform = Transform3D(1.984212, 0.250805, 0, -0.250805, 1.984212, 0, 0, 0, 2, 
 
 [node name="FloorMeshEdgeBroken2" parent="Environment/Platforms_Floors" unique_id=1486634821 instance=ExtResource("61_huagb")]
 transform = Transform3D(-2, 0, -1.7484555e-07, -2.9796459e-08, 1.9707447, 0.34083182, 1.7228795e-07, 0.34083182, -1.9707447, -140, 7.5465717, -0.040826797)
-
-[node name="FloorMeshEdgeBroken3" parent="Environment/Platforms_Floors" unique_id=901295574 instance=ExtResource("61_huagb")]
-transform = Transform3D(1.9318516, 0.5176381, 0, -0.5176381, 1.9318516, 0, 0, 0, 2, -105.08005, 7.09, 0)
-
-[node name="FloorMeshEdgeBroken4" parent="Environment/Platforms_Floors" unique_id=1549591694 instance=ExtResource("61_huagb")]
-transform = Transform3D(-2, 1.0379637e-08, -2.7411463e-07, -1.0560859e-07, 1.8153791, 0.8392845, 2.5316672e-07, 0.8392845, -1.8153791, -85, 6.281, -0.441)
 
 [node name="FloorBrokenSideLaboratory" parent="Environment/Platforms_Floors" unique_id=299416912 instance=ExtResource("10_yi4fc")]
 transform = Transform3D(-1.9863291, 0.23344548, -1.736504e-07, 0.23344548, 1.9863291, 2.0408452e-08, 1.7484555e-07, 0, -2, -10.225763, 7.8282146, 0)
@@ -6722,7 +6756,7 @@ transform = Transform3D(0.9795928, 0, 0.20099244, 0, 1, 0, -0.20099244, 0, 0.979
 transform = Transform3D(6.4552703, 0, 4.7254086, 0, 8, 0, -4.7254086, 0, 6.4552703, -29.226254, 33.80001, -7.3110876)
 
 [node name="WoodenPallet" parent="Props/Crates" unique_id=1418901303 instance=ExtResource("75_8wid8")]
-transform = Transform3D(3.3736193, 0, -0.93203753, 0, 3.5, 0, 0.93203753, 0, 3.3736193, -128.15665, 0.42177725, 1.2299513)
+transform = Transform3D(3.3736193, 0, -0.93203753, 0, 3.5, 0, 0.93203753, 0, 3.3736193, -127.81166, 0.42177725, 1.2299513)
 
 [node name="StorageRoom" type="Node3D" parent="Props" unique_id=1451510717]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -190, 0, 0)
@@ -8550,36 +8584,36 @@ transform = Transform3D(0.0042485083, 0.95916927, -1.1532459, -1.499906, 0.01523
 transform = Transform3D(1.087611, 0, -1.0330065, 0, 1.5, 0, 1.0330065, 0, 1.087611, -128.87918, 1.1160216, -0.20083332)
 
 [node name="OilDrum_Mesh" type="MeshInstance3D" parent="Props/OilDrums/OilDrum34" unique_id=1088353223]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.16675949, 0, -0.15839005)
 mesh = ExtResource("119_sagpo")
 surface_material_override/0 = SubResource("StandardMaterial3D_vcr25")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Props/OilDrums/OilDrum34" unique_id=1562984983]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.16696548, 0, -0.1585846)
 shape = SubResource("ConcavePolygonShape3D_pouj7")
 
 [node name="OilDrum35" type="StaticBody3D" parent="Props/OilDrums" unique_id=2086587897]
 transform = Transform3D(-0.7018715, 0, 1.3256608, 0, 1.5, 0, -1.3256608, 0, -0.7018715, -126.89054, 1.1160216, 0.73319674)
 
 [node name="OilDrum_Mesh" type="MeshInstance3D" parent="Props/OilDrums/OilDrum35" unique_id=1877514224]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+transform = Transform3D(3.0000002, 0, 0, 0, 3, 0, 0, 0, 3.0000002, -0.107616425, 0, 0.20326233)
 mesh = ExtResource("119_sagpo")
 surface_material_override/0 = SubResource("StandardMaterial3D_vcr25")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Props/OilDrums/OilDrum35" unique_id=1620545440]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+transform = Transform3D(3.0000002, 0, 0, 0, 3, 0, 0, 0, 3.0000002, -0.10774994, 0, 0.2035141)
 shape = SubResource("ConcavePolygonShape3D_w5jan")
 
 [node name="OilDrum36" type="StaticBody3D" parent="Props/OilDrums" unique_id=310592821]
 transform = Transform3D(-1.4521035, 0, -0.37602615, 0, 1.5, 0, 0.37602615, 0, -1.4521035, -128.74289, 1.1160216, 1.961061)
 
 [node name="OilDrum_Mesh" type="MeshInstance3D" parent="Props/OilDrums/OilDrum36" unique_id=1400098214]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.22264862, 0, -0.057655334)
 mesh = ExtResource("119_sagpo")
 surface_material_override/0 = SubResource("StandardMaterial3D_vcr25")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Props/OilDrums/OilDrum36" unique_id=2035119911]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.22292328, 0, -0.057725906)
 shape = SubResource("ConcavePolygonShape3D_1uun0")
 
 [node name="OilDrum37" type="StaticBody3D" parent="Props/OilDrums" unique_id=692018239]
@@ -8733,6 +8767,45 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -180.05147, 23.13953, -26.592
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -173.2472, 44.203506, -26.510986)
 
 [node name="VFX" type="Node3D" parent="." unique_id=1235820252]
+
+[node name="HazmarSuit" parent="." unique_id=306728926 instance=ExtResource("151_qof5w")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -21.622513, 14.33, -5.014)
+
+[node name="HazmarSuit2" parent="." unique_id=1426863576 instance=ExtResource("151_qof5w")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -18.317513, 14.33, -5.014)
+
+[node name="HazmarSuit3" parent="." unique_id=1879475122 instance=ExtResource("151_qof5w")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -14.894419, 14.33, -5.014)
+
+[node name="LabCabinet" parent="." unique_id=94114826 instance=ExtResource("152_4h38x")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10, 8.6, -3.9275985)
+
+[node name="Cone" parent="." unique_id=1702498081 instance=ExtResource("46_88i24")]
+transform = Transform3D(0.66363096, 0, 0.3494194, 0, 0.75, 0, -0.3494194, 0, 0.66363096, -143.56776, 0.2448502, -3.19281)
+
+[node name="Cone2" parent="." unique_id=98656812 instance=ExtResource("46_88i24")]
+transform = Transform3D(0.74896246, 0, -0.039435, 0, 0.75, 0, 0.039435, 0, 0.74896246, -143.22797, 0.2448502, 3.4098454)
+
+[node name="Cone3" parent="." unique_id=1070200970 instance=ExtResource("46_88i24")]
+transform = Transform3D(-0.7023436, 0, -0.26308456, 0, 0.75, 0, 0.26308456, 0, -0.7023436, -157.01495, 0.2448502, 3.408106)
+
+[node name="Cone5" parent="." unique_id=1956264597 instance=ExtResource("46_88i24")]
+transform = Transform3D(-0.7023436, 0, -0.26308456, 0, 0.75, 0, 0.26308456, 0, -0.7023436, -177.40874, 33.805508, -6.5499277)
+
+[node name="Cone6" parent="." unique_id=154815173 instance=ExtResource("46_88i24")]
+transform = Transform3D(-0.67181873, 0, 0.3334061, 0, 0.75, 0, -0.3334061, 0, -0.67181873, -183.27264, 33.805508, -6.5499277)
+
+[node name="Cone7" parent="." unique_id=251831449 instance=ExtResource("46_88i24")]
+transform = Transform3D(0.7023436, 0, 0.2630845, 0, 0.75, 0, -0.2630845, 0, 0.7023436, -195.81697, 33.805508, -6.549928)
+
+[node name="Cone9" parent="." unique_id=1297427464 instance=ExtResource("46_88i24")]
+transform = Transform3D(0.6243429, 0, -0.41556692, 0, 0.75, 0, 0.41556692, 0, 0.6243429, -202.27266, 33.805508, -6.549928)
+
+[node name="Cone8" parent="." unique_id=1032006482 instance=ExtResource("46_88i24")]
+transform = Transform3D(0.67181873, 0, -0.33340615, 0, 0.75, 0, 0.33340615, 0, 0.67181873, -189.88608, 33.805508, -6.549927)
+
+[node name="Cone4" parent="." unique_id=657822032 instance=ExtResource("46_88i24")]
+transform = Transform3D(-0.73803735, 0, 0.13341904, 0, 0.75, 0, -0.13341904, 0, -0.73803735, -156.62007, 0.2448502, -3.191069)
 
 [connection signal="removecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
