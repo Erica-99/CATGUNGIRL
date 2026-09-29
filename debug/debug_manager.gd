@@ -9,7 +9,6 @@ var player_invisible: bool = false
 var no_aggro: bool = false
 var pause_enemies: bool = false
 var infinite_ammo: bool = false
-var all_guns_unlocked: bool = false
 
 func set_no_clip(enabled: bool) -> void:
 	no_clip = enabled
@@ -35,8 +34,9 @@ func set_infinite_ammo(enabled: bool) -> void:
 	infinite_ammo = enabled
 
 func unlock_all_guns() -> void:
-	all_guns_unlocked = true
-	print("Unlock All Guns")
+	Globals._unlock_gun("pistol")
+	Globals._unlock_gun("shotgun")
+	Globals._unlock_gun("sniper")
 
 func kill_all_enemies() -> void:
 	var enemy_managers: Array = []
@@ -60,4 +60,3 @@ func reset_debug_values() -> void:
 	no_aggro = false
 	pause_enemies = false
 	infinite_ammo = false
-	all_guns_unlocked = false

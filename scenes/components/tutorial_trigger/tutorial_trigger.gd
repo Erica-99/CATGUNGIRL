@@ -2,6 +2,8 @@ extends Node
 
 signal finished
 
+@export var sequence_name: String
+
 @export var steps: Array[TutorialStep] = []
 @export var autostart: bool = true
 
@@ -9,7 +11,12 @@ signal finished
 @export var door_to_unlock: Node3D
 
 func _ready() -> void:
+	EventManager.initiate_tutorial_sequence.connect(_on_tutorial_sequence_triggered)
 	if autostart:
+		start()
+
+func _on_tutorial_sequence_triggered(requested_sequence_name: String) -> void:
+	if requested_sequence_name == sequence_name:
 		start()
 
 func start() -> void:

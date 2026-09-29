@@ -7,9 +7,6 @@ class_name EnemyDeath
 var death_gpu_emitter = preload("res://scenes/VFX/blood_spurt_medium_vfx.tscn")
 var explosion_gpu_emitter = preload("res://art/TechArt/1_Shaders/explosion_test.tscn")
 var trunk_corpse = preload('res://art/TechArt/4_Misc/trunk_corpse_prop.tscn')
-
-@onready var VFX_spawn_node = $"../../../../../VFX"
-
 var actor: CharacterBody3D
 var anim: AnimationPlayer
 
@@ -35,7 +32,7 @@ func enter() -> void:
 	blood_VFX.global_position = VFX_spawn.global_position
 	VFX_spawn_node.add_child(blood_VFX)
 	
-	AudioManager.play_sfx("gore_1")
+	AudioManager.play_sfx("enemy_death")
 	randomize()
 	var deathid = 'Death' + str(randi_range(1,3))
 	print(deathid)

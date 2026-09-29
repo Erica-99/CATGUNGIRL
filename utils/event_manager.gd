@@ -33,6 +33,9 @@ signal new_gun_equipped(gun_name: String)
 signal enable_gun_ui(enabled: bool)
 signal unlock_gun(gun_name: String)
 
+signal narrative_unlock_shotgun
+signal narrative_unlock_sniper
+
 signal room_cleared(room_ID: Enums.Room, is_clear: bool)
 signal spawn_enemy(custom_delay: float, spawner_path: NodePath)
 
@@ -50,10 +53,12 @@ signal increase_meme_index() #what? - Fernando
 
 signal brain_jar_terminal_activated
 
-
+signal brainjar_killed
 
 signal controller_status(controller_type: String)
 
 signal base_scene_updated(new_scene: Node)
 
 signal tutorial_step_started(step_name: String)
+
+signal initiate_tutorial_sequence(sequence_name: String)

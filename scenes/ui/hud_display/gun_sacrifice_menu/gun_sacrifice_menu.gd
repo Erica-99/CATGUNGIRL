@@ -32,6 +32,9 @@ func open_menu(gun_holder: Node3D) -> bool:
 		if child is not Gun:
 			continue
 		
+		if child.get_index() in gun_holder.gun_indexes_sacrificed:
+			continue
+		
 		var button := _get_button_for_gun(child)
 		
 		if button != null:

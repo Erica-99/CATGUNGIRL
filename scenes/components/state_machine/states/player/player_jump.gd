@@ -24,6 +24,8 @@ func enter() -> void:
 	jump_vel = actor.jump_velocity
 	if not actor.is_on_floor():
 		jump_velocity_applied = true
+	
+	AudioManager.play_sfx("jump_launch")
 
 func exit() -> void:
 	jump_velocity_applied = false

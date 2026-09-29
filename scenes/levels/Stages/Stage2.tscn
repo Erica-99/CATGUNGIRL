@@ -1,16 +1,20 @@
 [gd_scene format=3 uid="uid://cear303gej657"]
 
 [ext_resource type="Script" uid="uid://dawdwjrkswtqg" path="res://scenes/levels/Stages/panning_camera.gd" id="1_75qhx"]
+[ext_resource type="Script" uid="uid://4glb1vhq6wmq" path="res://scenes/levels/Stages/stage.gd" id="1_axvnb"]
 [ext_resource type="PackedScene" uid="uid://cue2gdrvswqwe" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Mesh/FloorMeshEdge.tscn" id="3_fporf"]
 [ext_resource type="PackedScene" uid="uid://co7fptrpmkvog" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/A_SparesAndPlaceholders/LightCeiling.tscn" id="8_564b6"]
 [ext_resource type="PackedScene" uid="uid://k4bj1vh7ofsj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorExit.tscn" id="9_f12kt"]
 [ext_resource type="Texture2D" uid="uid://c3cgla0k3a1id" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt01/PrisonRailCranePrt01Cable_Base_color.png" id="9_o4acx"]
+[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="10_axvnb"]
 [ext_resource type="Texture2D" uid="uid://bud3cu1m3u43b" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt02/PrisonRailCranePrt02_Base_color.png" id="10_pqlkt"]
 [ext_resource type="Texture2D" uid="uid://catre0c2fcyak" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt01/PrisonRailCranePrt01Cable_Mixed_AO.png" id="10_qn4fw"]
 [ext_resource type="Texture2D" uid="uid://c4ptaq0bjw1k5" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt01/PrisonRailCranePrt01Cable_Height.png" id="11_3rmdv"]
 [ext_resource type="Texture2D" uid="uid://c12ijio6s5sv" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt02/PrisonRailCranePrt02_Mixed_AO.png" id="11_036lr"]
+[ext_resource type="PackedScene" uid="uid://kc58ovt5ugti" path="res://scenes/components/tutorial_trigger/tutorial_trigger.tscn" id="11_er66k"]
 [ext_resource type="Texture2D" uid="uid://c3giaasttot1l" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt03/PrisonRailCranePrt03_Base_color.png" id="11_ktb7l"]
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="12_4vd0f"]
+[ext_resource type="Script" uid="uid://crdw2cwt2ffb5" path="res://resources/tutorial_steps/tutorial_step.gd" id="12_bnsy6"]
 [ext_resource type="PackedScene" uid="uid://bh1bw5y78peor" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/PrisonCrane.tscn" id="12_djn4x"]
 [ext_resource type="Texture2D" uid="uid://dx0lxycx66r5p" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt02/PrisonRailCranePrt02_Height.png" id="12_ifn3l"]
 [ext_resource type="Texture2D" uid="uid://dos4sx8mv7217" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailSystem/PrisonRailCranePrt01/PrisonRailCranePrt01Cable_Base_metalness.png" id="12_ljbqk"]
@@ -102,6 +106,8 @@
 [ext_resource type="Texture2D" uid="uid://cdhhw56x03mr" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/2_Prison/GuardRoom/ChairSteel/ChairSteel_N.png" id="95_hwccm"]
 [ext_resource type="Texture2D" uid="uid://dacnpmdtfyfit" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/2_Prison/GuardRoom/ChairSteel/ChairSteel_R.png" id="96_er66k"]
 [ext_resource type="PackedScene" uid="uid://d20i8l34obly3" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/Security.tscn" id="102_hwccm"]
+[ext_resource type="PackedScene" uid="uid://c7l1q8t5qgmxu" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Barriers/BarrierCornerInner.tscn" id="108_xeu56"]
+[ext_resource type="PackedScene" uid="uid://bdbsdyb4y30ee" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Barriers/BarrierCentre.tscn" id="109_gbvye"]
 [ext_resource type="PackedScene" uid="uid://bhp4qyqpd7hsc" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/shotgun_unlockable.tscn" id="109_hwccm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sbpx0"]
@@ -125,6 +131,28 @@ fog_depth_curve = 0.5000009
 fog_depth_begin = 123.1
 fog_depth_end = 274.5
 adjustment_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qqjj2"]
+size = Vector3(1, 8.005737, 1)
+
+[sub_resource type="Resource" id="Resource_t6bai"]
+script = ExtResource("12_bnsy6")
+title = "Gun Swapping"
+description_kbm = "You've found a new gun!
+
+Swap between your guns by pressing [img height=48]res://art/UI/Glyphs/KBM/Dark/Q_Key_Dark.png[/img]/[img height=48]res://art/UI/Glyphs/KBM/Dark/Mouse_Middle_Key_Dark.png[/img], or by pressing the corresponding number key for that gun.
+
+[img height=48]res://art/UI/Glyphs/KBM/Dark/1_Key_Dark.png[/img] Pistol
+[img height=48]res://art/UI/Glyphs/KBM/Dark/2_Key_Dark.png[/img] Shotgun"
+description_gamepad = "You've found a new gun!
+
+Swap between your guns by pressing [img height=48]res://art/UI/Glyphs/Xbox/XboxSeriesX_Y.png[/img]."
+description_playstation = "You've found a new gun!
+
+Swap between your guns by pressing [img height=48]res://art/UI/Glyphs/PS5/PS5_Triangle.png[/img]."
+task = ""
+completion_mode = 2
+metadata/_custom_type_script = "uid://crdw2cwt2ffb5"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ixfw5"]
 albedo_texture = ExtResource("9_o4acx")
@@ -305,6 +333,8 @@ normal_texture = ExtResource("95_hwccm")
 size = Vector3(2.121054, 4.283148, 2.121054)
 
 [node name="StageTwo" type="Node3D" unique_id=1996110792]
+script = ExtResource("1_axvnb")
+music_ref = "music_med"
 
 [node name="RailCamera" type="Node3D" parent="." unique_id=814891532]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.623193, 31.221176)
@@ -680,7 +710,21 @@ shadow_normal_bias = 0.72
 shadow_blur = 0.0
 omni_range = 18.392912
 
-[node name="DIALOGUE_TRIGGERS" type="Node" parent="." unique_id=1535957502]
+[node name="EVENT_TRIGGERS" type="Node" parent="." unique_id=1535957502]
+
+[node name="EventTrigger" parent="EVENT_TRIGGERS" unique_id=1311781014 instance=ExtResource("10_axvnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.531136, -23.887568, 0)
+_signal_parameters = ["WeaponSwapping"]
+signal_name = "initiate_tutorial_sequence"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EVENT_TRIGGERS/EventTrigger" unique_id=724333614]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.958435, 0)
+shape = SubResource("BoxShape3D_qqjj2")
+
+[node name="TutorialTrigger" parent="EVENT_TRIGGERS" unique_id=432983102 instance=ExtResource("11_er66k")]
+sequence_name = "WeaponSwapping"
+steps = Array[ExtResource("12_bnsy6")]([SubResource("Resource_t6bai")])
+autostart = false
 
 [node name="Enemies" type="Node3D" parent="." unique_id=218442623]
 
@@ -1497,10 +1541,16 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 50, -8.4, 0)
 [node name="BarrierFull9" parent="Environment" unique_id=676684439 instance=ExtResource("55_ljbqk")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 90, -16.8, -10)
 
+[node name="BarrierFull10" parent="Environment" unique_id=192959582 instance=ExtResource("55_ljbqk")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 80, -16.8, 0)
+
+[node name="BarrierFull14" parent="Environment" unique_id=15312347 instance=ExtResource("55_ljbqk")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 80, -16.8, 0)
+
 [node name="BarrierFull11" parent="Environment" unique_id=1909565857 instance=ExtResource("55_ljbqk")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 110, -16.8, 0)
 
-[node name="BarrierFull13" parent="Environment" unique_id=192959582 instance=ExtResource("55_ljbqk")]
+[node name="BarrierFull13" parent="Environment" unique_id=110323085 instance=ExtResource("55_ljbqk")]
 transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 110, -16.8, 0)
 
 [node name="BarrierFull12" parent="Environment" unique_id=22885145 instance=ExtResource("55_ljbqk")]
@@ -1512,8 +1562,8 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 100, -16.8, -10)
 [node name="BarrierCorner" parent="Environment" unique_id=326435535 instance=ExtResource("54_3rmdv")]
 transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 110, -16.8, 0)
 
-[node name="BarrierCorner2" parent="Environment" unique_id=1550381768 instance=ExtResource("54_3rmdv")]
-transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 90, -16.8, -10)
+[node name="BarrierCorner2" parent="Environment" unique_id=6908207 instance=ExtResource("54_3rmdv")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 80, -16.8, 0)
 
 [node name="Props" type="Node3D" parent="." unique_id=1981854926]
 
@@ -2056,6 +2106,18 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5, -25.2, 0)
 
 [node name="DoorLargeBasic2" parent="." unique_id=1710527537 instance=ExtResource("80_75qhx")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5, -25.2, 0)
+
+[node name="BarrierCornerInner" parent="." unique_id=2029254472 instance=ExtResource("108_xeu56")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 80, -16.8, -10)
+
+[node name="BarrierCornerInner2" parent="." unique_id=963803995 instance=ExtResource("108_xeu56")]
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 110, -16.8, -10)
+
+[node name="BarrierCentre" parent="." unique_id=2058316411 instance=ExtResource("109_gbvye")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 95, -16.8, -10)
+
+[node name="BarrierCentre2" parent="." unique_id=565032538 instance=ExtResource("109_gbvye")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 115, -16.8, 0)
 
 [connection signal="removecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]

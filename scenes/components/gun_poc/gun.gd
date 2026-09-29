@@ -23,6 +23,7 @@ const HITBOX_SCENE = preload("res://scenes/components/hitbox_component/hitbox_co
 @export var reload_time: float = 3.0
 @export var reload_full: bool = true 	# differentiates full mag reloaders (pistol)
 										# and single shot reloaders (shotgun)
+@export var reload_sound: String
 var single_reload_timer: float = 0 # to control changing reload times (e.g. 1.0 -> 0.5 -> 0.5 -> 0.5)
 
 @export_group("Normal Fire")
@@ -135,6 +136,7 @@ func _process(delta: float) -> void:
 		if _current_ammo != ammo_max:
 			single_reload_timer += delta
 			if single_reload_timer > reload_time:
+				AudioManager.play_sfx(reload_sound)
 				_current_ammo += 1
 				single_reload_timer = reload_time / 2.0
 				if active: EventManager.shots_loaded.emit(1)
@@ -261,7 +263,6 @@ func _shoot_handler():
 		rotation.z = _current_target_angle
 		damage = bullet_damage * perfect_damage_multiplier
 		perfect_shot_fired.emit()
-		AudioManager.play_sfx("laser_perfect")
 		_perfect_flash.restart()
 		Muzzle_VFX.stop()
 		Muzzle_VFX.play("Perfect")
@@ -270,13 +271,11 @@ func _shoot_handler():
 		_is_spamming = true
 		_spam_count += 1
 		# print("spam shot, count: ", _spam_count)
-		AudioManager.play_sfx("laser_imperfect")
 		_normal_flash.restart()
 		Muzzle_VFX.stop()
 		Muzzle_VFX.play("Imperfect")
 	else: # Normal shot
 		# print("normal shot, damage: ", bullet_damage)
-		AudioManager.play_sfx("laser_imperfect")
 		_normal_flash.restart()
 		Muzzle_VFX.stop()
 		Muzzle_VFX.play("Imperfect")
@@ -306,6 +305,7 @@ func _handle_ammo():
 	if _current_ammo <= 0 and reload_full: 
 		_is_reloading = true
 		reload_timer.start(reload_time)
+		AudioManager.play_sfx(reload_sound)
 
 func _handle_debug_infinite_ammo() -> void:
 	if !DebugManager.infinite_ammo:

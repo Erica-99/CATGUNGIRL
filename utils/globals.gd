@@ -38,10 +38,14 @@ const LEVEL_PATHS: Dictionary = {
 
 
 func _ready() -> void:
+	unlocked_guns = [0]
+	
 	EventManager.connect("increase_insanity_rank", _add_one_to_insanity)
 	EventManager.connect("increase_meme_index", _increment_global_meme_index)
 	EventManager.connect("base_scene_updated", _update_base_scene)
 	EventManager.connect("unlock_gun", _unlock_gun)
+	EventManager.connect("narrative_unlock_shotgun", _narrative_unlock_shotgun)
+	EventManager.connect("narrative_unlock_sniper", _narrative_unlock_sniper)
 	_retrieve_images(link_to_meme_dir)
 	# get random starter index (so it doesnt start from index 0 each time)
 	current_meme_index = randi_range(0, len(meme_image_array) - 1)
@@ -57,6 +61,18 @@ func _unlock_gun(gun_name: String) -> void:
 		var gun_index = gun_indexes[gun_name]
 		if gun_index not in unlocked_guns:
 			unlocked_guns.append(gun_index)
+
+# shotgun unlock shortcut signal for use by dialogue
+func _narrative_unlock_shotgun() -> void:
+	_unlock_gun("shotgun")
+
+# sniper unlock shortcut signal for use by dialogue
+func _narrative_unlock_sniper() -> void:
+	_unlock_gun("sniper")
+
+# use this to reset any game-global variables. called when loading main menu.
+func _reset_game() -> void:
+	unlocked_guns = [0]
 
 # legit updates the base scene reference
 # allows other entities to reference this scene

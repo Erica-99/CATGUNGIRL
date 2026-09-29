@@ -298,6 +298,7 @@ func _advance_phase() -> void:
 func _finish_fight() -> void:
 	fight_state = FightState.COMPLETE
 	_set_gun_sacrifice_enabled(false)
+	EventManager.brainjar_killed.emit()
 	queue_free()
 
 func _on_intro_trigger_body_entered(body: Node3D) -> void:

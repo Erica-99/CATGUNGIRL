@@ -32,6 +32,8 @@ scale_max = 1.2
 color = Color(3, 0.482, 0.2, 1)
 alpha_curve = SubResource("CurveTexture_sparks_alpha")
 
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_s4fiu"]
+
 [node name="projectile_sniper_fast" unique_id=428503552 instance=ExtResource("1_base")]
 
 [node name="core" parent="." index="0" unique_id=880307277]
@@ -55,11 +57,10 @@ local_coords = true
 transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0)
 material_override = ExtResource("3_trail")
 cast_shadow = 0
+mesh = SubResource("ImmediateMesh_s4fiu")
 script = ExtResource("4_trail")
 fromWidth = 0.08
-toWidth = 0.0
 lifespan = 0.1
 startColor = Color(1, 0.35, 0.05, 1)
 endColor = Color(1, 0.35, 0.05, 0)
 colorInterpolationMode = 1
-

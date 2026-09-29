@@ -6,6 +6,7 @@ extends CharacterBody3D
 @export var state_machine: StateMachine
 @export var missile_launcher: MissileLauncher
 @export var stinger_caller: StingerComponent
+@export var sfx_caller: Node
 
 @export_category("Starting State Variables")
 @export var start_aggroed: bool
@@ -257,3 +258,9 @@ func _handle_collision_check():
 
 func _on_outranged_timer_timeout() -> void:
 	state_machine.on_child_transition(state_machine.current_state, "trunkoutranged")
+
+func call_sfx_at_current_location(sfx_ref: String) -> void:
+	if sfx_caller == null:
+		return
+		
+	sfx_caller.play_sfx_at_location(sfx_ref, global_position)

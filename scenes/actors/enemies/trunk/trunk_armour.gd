@@ -42,7 +42,7 @@ func _on_area_entered(hitbox: Area3D) -> void:
 # altered from original hurtbox component - just for armour
 func take_hit(hitbox: Area3D) -> void:
 	if hit_sfx_ref != "":
-		AudioManager.play_sfx(hit_sfx_ref)
+		AudioManager.play_sfx_at_location(hit_sfx_ref, self.global_position)
 	hitbox.call("register_hit", self)
 	if hitbox.damage_or_heal_instance != null:
 		shield_anims.play("RESET")
@@ -79,6 +79,7 @@ func _on_break_shield() -> void:
 func _break_shield():
 	torso_sprite.sprite_frames = InjuredFrames
 	stinger_caller.play_stinger("trunk_break")
+	AudioManager.play_sfx_at_location("trunk_shield_break", self.global_position)
 	collision_shape_3d.disabled = true
 	shield_anims.play("ShieldBreak")
 	head_hurtbox.damage_multiplier = head_multiplier_on_break

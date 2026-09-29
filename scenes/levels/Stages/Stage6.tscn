@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://ccgg2t71rdo0l"]
 
-[ext_resource type="Script" uid="uid://dawdwjrkswtqg" path="res://scenes/levels/Stages/panning_camera.gd" id="1_mywdw"]
+[ext_resource type="Script" uid="uid://4glb1vhq6wmq" path="res://scenes/levels/Stages/stage.gd" id="1_ernso"]
+[ext_resource type="Script" path="res://scenes/levels/Stages/panning_camera.gd" id="1_mywdw"]
 [ext_resource type="PackedScene" uid="uid://wn4bdivbwbsn" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/BrainJarScreenTemplate.tscn" id="2_o5d64"]
-[ext_resource type="Script" uid="uid://2cm4kbh0jgjy" path="res://scenes/components/level_components/bossfight/brain_jar_terminal_group.gd" id="4_o5d64"]
+[ext_resource type="Script" path="res://scenes/components/level_components/bossfight/brain_jar_terminal_group.gd" id="4_o5d64"]
 [ext_resource type="PackedScene" uid="uid://d1isfmus58oku" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/IndustrialLight1.tscn" id="5_coglk"]
 [ext_resource type="PackedScene" uid="uid://btcwaxl38nip5" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeSets/HandlebarSmall.tscn" id="5_mxr2x"]
 [ext_resource type="Material" uid="uid://c2qi20n2bfyah" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/TerminalActive.tres" id="5_ypbdf"]
 [ext_resource type="Material" uid="uid://bpr70jmt82mc2" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/TerminalInactive.tres" id="6_wsdjh"]
-[ext_resource type="Script" uid="uid://4t3uo3s2mf8e" path="res://scenes/levels/Stages/camera_pan_node.gd" id="7_8vmub"]
+[ext_resource type="Script" path="res://scenes/levels/Stages/camera_pan_node.gd" id="7_8vmub"]
 [ext_resource type="Material" uid="uid://fun6o58788i6" path="res://art/TechArt/2_VFX/BrainJarLuca/TerminalBaseShader.tres" id="8_52obh"]
 [ext_resource type="PackedScene" uid="uid://br8eqclc5secj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/Rails/RailFull.tscn" id="9_uoh3v"]
 [ext_resource type="PackedScene" uid="uid://bpjabu4plwqym" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/Rails/RailDiagonal.tscn" id="10_e2mff"]
@@ -532,6 +533,8 @@ normal_enabled = true
 normal_texture = ExtResource("88_f2173")
 
 [node name="Stage6" type="Node3D" unique_id=1033722064]
+script = ExtResource("1_ernso")
+music_ref = "music_brain"
 
 [node name="RailCamera" type="Node3D" parent="." unique_id=1204773297]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.623193, 31.221176)

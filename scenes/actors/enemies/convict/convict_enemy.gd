@@ -11,7 +11,7 @@ const GRAVITY = 50
 @export var sfx_caller: Node
 @export var stinger_caller: StingerComponent
 
-
+var movement_plane_z: float
 var is_dead: bool = false
 
 @export_category("Starting State Variables")
@@ -78,6 +78,7 @@ var blackboard : Dictionary
 @onready var id = get_id()
 
 func _ready() -> void:
+	movement_plane_z = global_position.z
 	health_comp.set_max_health(health)
 	health_comp.set_health(health)
 	# Set up Attack
@@ -138,7 +139,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	# Basic gravity implementation
 	velocity.y -= GRAVITY * delta
-	position.z = 0
+	global_position.z = movement_plane_z
 
 func apply_soft_collision(delta: float) -> void:
 	if !softCollider.is_colliding():

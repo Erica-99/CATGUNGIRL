@@ -10,6 +10,19 @@
 [ext_resource type="Texture2D" uid="uid://c4ek3iwrnnxp1" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Mesh/MeshFloor_Roughness.png" id="7_p5snm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yvbm7"]
+albedo_texture = ExtResource("2_yvbm7")
+metallic = 1.0
+metallic_texture = ExtResource("5_6770o")
+roughness_texture = ExtResource("7_p5snm")
+normal_enabled = true
+normal_texture = ExtResource("6_lga12")
+ao_enabled = true
+ao_texture = ExtResource("3_cfcd0")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("4_eoe78")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_njqmm"]
 transparency = 1
 albedo_texture = ExtResource("2_yvbm7")
 metallic = 1.0
@@ -26,20 +39,6 @@ heightmap_texture = ExtResource("4_eoe78")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yvbm7"]
 points = PackedVector3Array(-2.500911, -0.100005, -2.500938, -2.500911, -0.100005, 2.499062, -2.500911, 0.100004986, -2.500938, 2.500911, -0.100005, -2.500938, -2.500911, 0.100004986, 2.499062, 2.500911, -0.100005, 2.499062, 2.500911, 0.100004986, -2.500938, 2.500911, 0.100004986, 2.499062)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_njqmm"]
-transparency = 1
-albedo_texture = ExtResource("2_yvbm7")
-metallic = 1.0
-metallic_texture = ExtResource("5_6770o")
-roughness_texture = ExtResource("7_p5snm")
-normal_enabled = true
-normal_texture = ExtResource("6_lga12")
-ao_enabled = true
-ao_texture = ExtResource("3_cfcd0")
-heightmap_enabled = true
-heightmap_scale = 0.0
-heightmap_texture = ExtResource("4_eoe78")
-
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cfcd0"]
 points = PackedVector3Array(-2.50091, 0.010589, -2.359406, -2.50091, 0.010589, 2.35753, -2.50091, 0.040424995, -2.359406, 2.500911, 0.010589, -2.359406, -2.50091, 0.040424995, 2.35753, 2.500911, 0.010589, 2.35753, 2.500911, 0.040424995, -2.359406, 2.500911, 0.040424995, 2.35753)
 
@@ -51,13 +50,14 @@ collision_layer = 128
 mesh = ExtResource("1_3012g")
 surface_material_override/0 = SubResource("StandardMaterial3D_yvbm7")
 
-[node name="FloorMeshEdge_01_Collision" type="CollisionShape3D" parent="." unique_id=832086698]
-shape = SubResource("ConvexPolygonShape3D_yvbm7")
-
 [node name="FloorMeshEdge_02_Mesh" type="MeshInstance3D" parent="." unique_id=989447191]
 sorting_offset = -1.0
 mesh = ExtResource("2_ektr5")
 surface_material_override/0 = SubResource("StandardMaterial3D_njqmm")
+
+[node name="FloorMeshEdge_01_Collision" type="CollisionShape3D" parent="." unique_id=832086698]
+visible = false
+shape = SubResource("ConvexPolygonShape3D_yvbm7")
 
 [node name="FloorMeshEdge_02_Collision" type="CollisionShape3D" parent="." unique_id=1264382350]
 visible = false

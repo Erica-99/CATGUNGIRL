@@ -50,6 +50,9 @@ emission_texture = ExtResource("3_6l20t")
 normal_enabled = true
 normal_texture = ExtResource("5_2ke1v")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_8peww"]
+size = Vector3(5.303702, 8.467653, 5.059022)
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_2h2a8"]
 height = 8.467653
 radius = 2.651851
@@ -158,7 +161,7 @@ health_component = NodePath("HealthComponent")
 fight_phases = Array[ExtResource("2_8peww")]([SubResource("Resource_va6w0"), SubResource("Resource_eqov4"), SubResource("Resource_5plmc"), SubResource("Resource_tlqwa")])
 damage_heal_delay = 2.5
 damage_heal_duration = 1.0
-boss_mesh = NodePath("BrainJarJar/BrainJar_Mesh")
+boss_mesh = NodePath("BrainJarJar/BrainJarJar_Mesh")
 shield_overlay_material = ExtResource("1_vs3c6")
 boss_animation_player = NodePath("AnimationPlayer")
 intro_animation_name = &"Intro Animation"
@@ -166,11 +169,15 @@ after_four_terminals_animation_name = &"After 4 Terminals"
 
 [node name="BrainJarJar" type="StaticBody3D" parent="." unique_id=275430662]
 
-[node name="BrainJar_Mesh" type="MeshInstance3D" parent="BrainJarJar" unique_id=229465353]
+[node name="BrainJarJar_Mesh" type="MeshInstance3D" parent="BrainJarJar" unique_id=229465353]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 3.5834951, 0)
 material_overlay = ExtResource("1_vs3c6")
 mesh = ExtResource("1_2h2a8")
 surface_material_override/0 = SubResource("StandardMaterial3D_qmdp3")
+
+[node name="BrainJarJar_Collision" type="CollisionShape3D" parent="BrainJarJar" unique_id=429240394]
+transform = Transform3D(1.9, 0, 0, 0, 1.9, 0, 0, 0, 1.9, 0, 14.108316, 1.9073486e-06)
+shape = SubResource("BoxShape3D_8peww")
 
 [node name="SurroundingGlow" type="OmniLight3D" parent="BrainJarJar" unique_id=1029619693]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
