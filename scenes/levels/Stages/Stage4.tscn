@@ -188,6 +188,7 @@
 [ext_resource type="PackedScene" uid="uid://grwxleqavgq1" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/World_Lore/Wash_Hands.tscn" id="169_cbmvo"]
 [ext_resource type="PackedScene" uid="uid://xl10yh16bf0o" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/Photosensitivity.tscn" id="170_v17lw"]
 [ext_resource type="PackedScene" uid="uid://cnm40lu51bpdw" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/World_Lore/Beware_Redivivus.tscn" id="171_2l15r"]
+[ext_resource type="PackedScene" uid="uid://yvma87vdtlyv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6B_Lab/Cone.tscn" id="189_itw04"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ib8r7"]
 emission_shape = 3
@@ -5807,6 +5808,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.741405, 37.411465, -26.449
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 305, 17, -4.2527103)
 
 [node name="VFX" type="Node3D" parent="." unique_id=643050096]
+
+[node name="Cone" parent="." unique_id=1393563968 instance=ExtResource("189_itw04")]
+transform = Transform3D(0.6585611, 0.020470168, 0.35829908, -0.017981175, 0.7497206, -0.009782902, -0.3584326, 6.9849193e-10, 0.65880656, -22.155762, 8.621056, -3.3291364)
+
+[node name="Cone2" parent="." unique_id=2116030790 instance=ExtResource("189_itw04")]
+transform = Transform3D(0.5670135, 0.016793026, -0.49062583, -0.012699014, 0.74981195, 0.01098821, 0.49074885, 6.9849193e-10, 0.5671557, -22.155762, 8.64484, 3.0363479)
+
+[node name="Cone3" parent="." unique_id=1427704634 instance=ExtResource("189_itw04")]
+transform = Transform3D(0.68805057, 0, -0.29847348, 0, 0.75, 0, 0.29847348, 0, 0.68805057, 43.55406, 33.84169, -2.8644667)
+
+[node name="Cone4" parent="." unique_id=1260168199 instance=ExtResource("189_itw04")]
+transform = Transform3D(0.74008465, 0, -0.12155163, 0, 0.75, 0, 0.12155163, 0, 0.74008465, 45.141804, 33.84169, 3.0391955)
+
+[node name="Cone5" parent="." unique_id=1769917776 instance=ExtResource("189_itw04")]
+transform = Transform3D(-0.44267964, 0, 0.6054211, 0, 0.75, 0, -0.6054211, 0, -0.44267964, 54.597675, 33.84169, 3.051035)
+
+[node name="Cone6" parent="." unique_id=2065688328 instance=ExtResource("189_itw04")]
+transform = Transform3D(-0.57703304, 0, 0.47909594, 0, 0.75, 0, -0.47909594, 0, -0.57703304, 56.098183, 33.84169, -2.876308)
+
+[node name="Cone7" parent="." unique_id=1434458641 instance=ExtResource("189_itw04")]
+transform = Transform3D(0.6945561, 0, 0.28300482, 0, 0.75, 0, -0.28300482, 0, 0.6945561, 301.2211, 8.64485, -11.168143)
+
+[node name="Cone8" parent="." unique_id=1295460196 instance=ExtResource("189_itw04")]
+transform = Transform3D(0.27031505, 0, 0.6995925, 0, 0.7500001, 0, -0.6995925, 0, 0.27031505, 309.02832, 8.64485, -12.256518)
+
+[node name="Cone9" parent="." unique_id=505138122 instance=ExtResource("189_itw04")]
+transform = Transform3D(0.27031505, 0, 0.6995925, 0, 0.7500001, 0, -0.6995925, 0, 0.27031505, 299.5178, 8.64485, -17.286093)
 
 [connection signal="area_entered" from="Interactive/BridgeBroken/TrunkEventTrigger" to="Interactive/BridgeBroken/TrunkEventTrigger" method="_on_area_entered"]
 [connection signal="animation_finished" from="Interactive/BridgeBroken/TrunkEventTrigger/TrunkEventAnims" to="Interactive/BridgeBroken/TrunkEventTrigger" method="_on_trunk_event_anims_animation_finished"]

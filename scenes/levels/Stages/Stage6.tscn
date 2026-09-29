@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://ccgg2t71rdo0l"]
 
 [ext_resource type="Script" uid="uid://4glb1vhq6wmq" path="res://scenes/levels/Stages/stage.gd" id="1_ernso"]
-[ext_resource type="Script" path="res://scenes/levels/Stages/panning_camera.gd" id="1_mywdw"]
+[ext_resource type="Script" uid="uid://dawdwjrkswtqg" path="res://scenes/levels/Stages/panning_camera.gd" id="1_mywdw"]
 [ext_resource type="PackedScene" uid="uid://wn4bdivbwbsn" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/BrainJarScreenTemplate.tscn" id="2_o5d64"]
-[ext_resource type="Script" path="res://scenes/components/level_components/bossfight/brain_jar_terminal_group.gd" id="4_o5d64"]
+[ext_resource type="Script" uid="uid://2cm4kbh0jgjy" path="res://scenes/components/level_components/bossfight/brain_jar_terminal_group.gd" id="4_o5d64"]
 [ext_resource type="PackedScene" uid="uid://d1isfmus58oku" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/IndustrialLight1.tscn" id="5_coglk"]
 [ext_resource type="PackedScene" uid="uid://btcwaxl38nip5" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeSets/HandlebarSmall.tscn" id="5_mxr2x"]
 [ext_resource type="Material" uid="uid://c2qi20n2bfyah" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/TerminalActive.tres" id="5_ypbdf"]
 [ext_resource type="Material" uid="uid://bpr70jmt82mc2" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/7_BrainJar/BrainJarComponents/TerminalInactive.tres" id="6_wsdjh"]
-[ext_resource type="Script" path="res://scenes/levels/Stages/camera_pan_node.gd" id="7_8vmub"]
+[ext_resource type="Script" uid="uid://4t3uo3s2mf8e" path="res://scenes/levels/Stages/camera_pan_node.gd" id="7_8vmub"]
 [ext_resource type="Material" uid="uid://fun6o58788i6" path="res://art/TechArt/2_VFX/BrainJarLuca/TerminalBaseShader.tres" id="8_52obh"]
 [ext_resource type="PackedScene" uid="uid://br8eqclc5secj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/Rails/RailFull.tscn" id="9_uoh3v"]
 [ext_resource type="PackedScene" uid="uid://bpjabu4plwqym" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/Rails/RailDiagonal.tscn" id="10_e2mff"]
@@ -116,6 +116,8 @@
 [ext_resource type="Texture2D" uid="uid://clc8uf0t8tjpt" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/7_BrainJar/Platforms/PlatformsAll_DefaultMaterial_Roughness.png" id="89_78cli"]
 [ext_resource type="ArrayMesh" uid="uid://cmmb3ptciwade" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/7_BrainJar/BrainPlatformHalf.obj" id="90_m7hdr"]
 [ext_resource type="ArrayMesh" uid="uid://dogofkelwisn6" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/7_BrainJar/BrainPlatformCorner.obj" id="92_rucap"]
+[ext_resource type="Texture2D" uid="uid://kaq84m6845ac" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/7_BrainJar/Platforms/PlatformsAll_DefaultMaterial_Emissive.png" id="100_aoiei"]
+[ext_resource type="PackedScene" uid="uid://yvma87vdtlyv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6B_Lab/Cone.tscn" id="105_f8ekq"]
 [ext_resource type="ArrayMesh" uid="uid://bmutfrb651hqm" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/7_BrainJar/FacilityCoreHatch.obj" id="113_uv2lo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o5d64"]
@@ -464,6 +466,17 @@ roughness_texture = SubResource("CompressedTexture2D_hbb0b")
 normal_enabled = true
 normal_texture = SubResource("CompressedTexture2D_bpya8")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f8ekq"]
+albedo_texture = ExtResource("86_amhjc")
+metallic = 1.0
+metallic_texture = ExtResource("87_m4pc7")
+roughness_texture = ExtResource("89_78cli")
+emission_enabled = true
+emission_energy_multiplier = 5.0
+emission_texture = ExtResource("100_aoiei")
+normal_enabled = true
+normal_texture = ExtResource("88_f2173")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43uhj"]
 albedo_texture = ExtResource("86_amhjc")
 metallic = 1.0
@@ -474,14 +487,6 @@ normal_texture = ExtResource("88_f2173")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ohyp3"]
 data = PackedVector3Array(-0.0001, 0, 5, 0, -0.19999999, 5, -5.0004, 0, 5, -5.0004, 0, 5, 0, -0.19999999, 5, -5.0004, -0.19999999, 5, -5.0004, -0.19999999, 5, 0, -0.19999999, 5, -5.0004, -0.19999999, 0, -5.0004, -0.19999999, 0, 0, -0.19999999, 5, 0, -0.19999999, 0, -0.0001, 0, 5, -5.0004, 0, 5, -0.0001, 0, 0, -0.0001, 0, 0, -5.0004, 0, 5, -5.0004, 0, 0, -5.0004, 0, 5, -5.0004, -0.19999999, 5, -5.0004, 0, 0, -5.0004, 0, 0, -5.0004, -0.19999999, 5, -5.0004, -0.19999999, 0, -5.0004, 0, 0, -5.0004, -0.19999999, 0, -0.0001, 0, 0, -0.0001, 0, 0, -5.0004, -0.19999999, 0, 0, -0.19999999, 0, 0, -0.19999999, 5, -0.0001, 0, 5, 0, -0.19999999, 0, 0, -0.19999999, 0, -0.0001, 0, 5, -0.0001, 0, 0)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_man6j"]
-albedo_texture = ExtResource("86_amhjc")
-metallic = 1.0
-metallic_texture = ExtResource("87_m4pc7")
-roughness_texture = ExtResource("89_78cli")
-normal_enabled = true
-normal_texture = ExtResource("88_f2173")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cki2u"]
 albedo_texture = ExtResource("86_amhjc")
@@ -494,14 +499,6 @@ normal_texture = ExtResource("88_f2173")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xijxx"]
 data = PackedVector3Array(0, 0, 5, 0, -0.19999999, 5, -2.5003998, 0, 5, -2.5003998, 0, 5, 0, -0.19999999, 5, -2.5003998, -0.19999999, 5, -2.5003998, -0.19999999, 5, 0, -0.19999999, 5, -2.5003998, -0.19999999, 0, -2.5003998, -0.19999999, 0, 0, -0.19999999, 5, 0, -0.19999999, 0, 0, 0, 5, -2.5003998, 0, 5, 0, 0, 0, 0, 0, 0, -2.5003998, 0, 5, -2.5003998, 0, 0, -2.5003998, 0, 5, -2.5003998, -0.19999999, 5, -2.5003998, 0, 0, -2.5003998, 0, 0, -2.5003998, -0.19999999, 5, -2.5003998, -0.19999999, 0, -2.5003998, 0, 0, -2.5003998, -0.19999999, 0, 0, 0, 0, 0, 0, 0, -2.5003998, -0.19999999, 0, 0, -0.19999999, 0, 0, -0.19999999, 5, 0, 0, 5, 0, -0.19999999, 0, 0, -0.19999999, 0, 0, 0, 5, 0, 0, 0)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h6nge"]
-albedo_texture = ExtResource("86_amhjc")
-metallic = 1.0
-metallic_texture = ExtResource("87_m4pc7")
-roughness_texture = ExtResource("89_78cli")
-normal_enabled = true
-normal_texture = ExtResource("88_f2173")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dgpsx"]
 albedo_texture = ExtResource("86_amhjc")
 metallic = 1.0
@@ -513,16 +510,16 @@ normal_texture = ExtResource("88_f2173")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2x558"]
 data = PackedVector3Array(-5.0004, 0, 0, -5.0004, -0.19999999, 0, -0.0001, 0, 0, -0.0001, 0, 0, -5.0004, -0.19999999, 0, 0, -0.19999999, 0, 0, -0.19999999, 5, -0.0001, 0, 5, 0, -0.19999999, 0, 0, -0.19999999, 0, -0.0001, 0, 5, -0.0001, 0, 0, -5.0004, -0.19999999, 2.5, -5.0004, 0, 2.5, -2.5005, -0.19999999, 5, -2.5005, -0.19999999, 5, -5.0004, 0, 2.5, -2.5005, 0, 5, -2.5005, -0.19999999, 5, 0, -0.19999999, 5, -5.0004, -0.19999999, 2.5, -5.0004, -0.19999999, 2.5, 0, -0.19999999, 5, -5.0004, -0.19999999, 0, -5.0004, -0.19999999, 0, 0, -0.19999999, 5, 0, -0.19999999, 0, -0.0001, 0, 5, 0, -0.19999999, 5, -2.5005, 0, 5, -2.5005, 0, 5, 0, -0.19999999, 5, -2.5005, -0.19999999, 5, -5.0004, 0, 2.5, -5.0004, -0.19999999, 2.5, -5.0004, 0, 0, -5.0004, 0, 0, -5.0004, -0.19999999, 2.5, -5.0004, -0.19999999, 0, -2.5005, 0, 5, -5.0004, 0, 2.5, -0.0001, 0, 5, -0.0001, 0, 5, -5.0004, 0, 2.5, -0.0001, 0, 0, -0.0001, 0, 0, -5.0004, 0, 2.5, -5.0004, 0, 0)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_52obh"]
-size = Vector3(5, 0.2, 5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3lnxx"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h6nge"]
 albedo_texture = ExtResource("86_amhjc")
 metallic = 1.0
 metallic_texture = ExtResource("87_m4pc7")
 roughness_texture = ExtResource("89_78cli")
 normal_enabled = true
 normal_texture = ExtResource("88_f2173")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_52obh"]
+size = Vector3(5, 0.2, 5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ernso"]
 albedo_texture = ExtResource("86_amhjc")
@@ -689,8 +686,8 @@ spot_range = 84.32649
 spot_angle = 89.99
 
 [node name="KeyLight" type="DirectionalLight3D" parent="Lighting/LightingPassPreFight" unique_id=191180585]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123, 148, 0)
-light_color = Color(0.16253604, 0, 0, 1)
+transform = Transform3D(1, 0, 0, 0, 0.5000002, 0.86602545, 0, -0.86602545, 0.5000002, -123, 148, 0)
+light_color = Color(0.8495397, 0.00016665272, 9.0004505e-05, 1)
 light_energy = 0.2
 light_bake_mode = 1
 
@@ -4685,7 +4682,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 10.2, -5)
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform2" unique_id=621053924]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform2" unique_id=905346918]
@@ -4701,7 +4698,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 40.2, -5)
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform114" unique_id=1149239117]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform114" unique_id=888804856]
@@ -4747,7 +4744,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 10.2, -5)
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform94" unique_id=562861951]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform94" unique_id=370408622]
@@ -4781,7 +4778,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 40.2, -5)
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform11" unique_id=987428798]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform11" unique_id=785120890]
@@ -4794,7 +4791,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 40.2, -5)
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform12" unique_id=381226432]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform12" unique_id=1744302337]
@@ -4834,7 +4831,7 @@ surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 [node name="BrainPlatform_Mesh2" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform21" unique_id=1797339]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform21" unique_id=1461756815]
@@ -4847,7 +4844,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -234, 10.2, -5)
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform22" unique_id=388570531]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform22" unique_id=176163905]
@@ -4922,7 +4919,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 40.2, -5)
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform31" unique_id=839881418]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform31" unique_id=438080269]
@@ -4935,7 +4932,7 @@ transform = Transform3D(0.9920688, -0.12569688, 0, 0.12569688, 0.9920688, 0, 0, 
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform32" unique_id=334575486]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform32" unique_id=694722242]
@@ -4963,7 +4960,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -164, 10.2, -5)
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform41" unique_id=2135735388]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform41" unique_id=119611219]
@@ -4976,7 +4973,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -174, 10.2, -5)
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform42" unique_id=1629076103]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform42" unique_id=968397425]
@@ -5010,7 +5007,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -164, 40.2, -5)
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform51" unique_id=498509159]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform51" unique_id=768192309]
@@ -5023,7 +5020,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -174, 40.2, -5)
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform52" unique_id=1125816234]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform52" unique_id=1310859492]
@@ -5039,7 +5036,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154, 10.2, -5)
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform101" unique_id=1489921535]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform101" unique_id=1287026977]
@@ -5055,7 +5052,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154, 40.2, -5)
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform103" unique_id=1993735749]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform103" unique_id=340860438]
@@ -5080,7 +5077,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 10.2, -5)
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform61" unique_id=1949317393]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform61" unique_id=391029389]
@@ -5099,7 +5096,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, 10.2, -5)
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform62" unique_id=1982773646]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform62" unique_id=588563153]
@@ -5130,7 +5127,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 40.2, -5)
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform71" unique_id=1521658392]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform71" unique_id=1247810868]
@@ -5143,7 +5140,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, 40.2, -5)
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform72" unique_id=1760914179]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform72" unique_id=1384498688]
@@ -5162,7 +5159,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84, 10.2, -5)
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform97" unique_id=974924179]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform97" unique_id=1705100521]
@@ -5178,7 +5175,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84, 40.2, -5)
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform99" unique_id=495636031]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform99" unique_id=1917152051]
@@ -5263,7 +5260,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224, 30.2, -5)
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform183" unique_id=1904518537]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform183" unique_id=281591137]
@@ -5297,7 +5294,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154, 25.2, -5)
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform208" unique_id=1344876207]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform208" unique_id=11853065]
@@ -5337,7 +5334,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, 25.2, -5)
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform157" unique_id=1335452467]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform157" unique_id=1220187893]
@@ -5350,7 +5347,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84, 25.2, -5)
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform206" unique_id=1748629489]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform206" unique_id=285680110]
@@ -5471,7 +5468,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 10.200001, -5)
 [node name="BrainPlatformHalf_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf3" unique_id=887001794]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("90_m7hdr")
-surface_material_override/0 = SubResource("StandardMaterial3D_man6j")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_cki2u")
 
 [node name="BrainPlatformHalf_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf3" unique_id=2017754860]
@@ -5484,12 +5481,42 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -64,
 [node name="BrainPlatformHalf_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf39" unique_id=1844001797]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("90_m7hdr")
-surface_material_override/0 = SubResource("StandardMaterial3D_man6j")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_cki2u")
 
 [node name="BrainPlatformHalf_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf39" unique_id=1793407940]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_xijxx")
+
+[node name="Cone" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf39" unique_id=1393563968 instance=ExtResource("105_f8ekq")]
+transform = Transform3D(-0.54121137, 0, -0.5192208, 0, 0.75, 0, 0.5192208, 0, -0.54121137, 176.50034, 0.04483986, 1.8759046)
+
+[node name="Cone2" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf39" unique_id=713415190 instance=ExtResource("105_f8ekq")]
+transform = Transform3D(-0.2799715, 0, -0.69578445, 0, 0.75, 0, 0.69578445, 0, -0.2799715, 168.05424, 0.04483986, 2.1045861)
+
+[node name="Cone3" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf39" unique_id=582762296 instance=ExtResource("105_f8ekq")]
+transform = Transform3D(-0.6896297, 0, 0.29480648, 0, 0.7500001, 0, -0.29480648, 0, -0.6896297, 168.05424, 20.04484, 1.6657512)
+
+[node name="Cone4" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf39" unique_id=1449794386 instance=ExtResource("105_f8ekq")]
+transform = Transform3D(-0.47796696, 0, -0.5779684, 0, 0.75000006, 0, 0.5779684, 0, -0.47796696, 168.05424, 20.04484, 10.6657505)
+
+[node name="Cone7" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf39" unique_id=766254376 instance=ExtResource("105_f8ekq")]
+transform = Transform3D(-0.47796696, 0, -0.5779684, 0, 0.75000006, 0, 0.5779684, 0, -0.47796696, -52.093147, 20.04484, 12.481804)
+
+[node name="Cone8" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf39" unique_id=1089953152 instance=ExtResource("105_f8ekq")]
+transform = Transform3D(-0.7278672, 0, -0.18085721, 0, 0.75000006, 0, 0.18085721, 0, -0.7278672, -53.211037, 20.04484, 1.9550934)
+
+[node name="Cone9" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf39" unique_id=315970855 instance=ExtResource("105_f8ekq")]
+transform = Transform3D(-0.7278672, 0, -0.18085721, 0, 0.75000006, 0, 0.18085721, 0, -0.7278672, -57.04828, 0.04483986, 8.755558)
+
+[node name="Cone10" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf39" unique_id=697374003 instance=ExtResource("105_f8ekq")]
+transform = Transform3D(-0.32468975, 0, -0.6760744, 0, 0.75000024, 0, 0.6760744, 0, -0.32468975, -61.898182, 0.04483986, 1.8540375)
+
+[node name="Cone5" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf39" unique_id=1384320893 instance=ExtResource("105_f8ekq")]
+transform = Transform3D(-0.6766008, 0.14509791, 0.2892368, 0.1334184, 0.7358306, -0.057034403, -0.29480648, -1.2684862e-08, -0.6896297, 178.05424, 28.94999, 1.6657503)
+
+[node name="Cone6" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf39" unique_id=125428562 instance=ExtResource("105_f8ekq")]
+transform = Transform3D(-0.47796696, 0, -0.5779684, 0, 0.75000006, 0, 0.5779684, 0, -0.47796696, 178.58315, 30.044842, 11.66184)
 
 [node name="BrainPlatformHalf40" parent="Environment/BrainJarRoom/ENV/Platforms" unique_id=1992003922 instance=ExtResource("27_idgl4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 10.200001, -15)
@@ -5500,7 +5527,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 20.2, -5)
 [node name="BrainPlatformHalf_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf9" unique_id=707036112]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("90_m7hdr")
-surface_material_override/0 = SubResource("StandardMaterial3D_man6j")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_cki2u")
 
 [node name="BrainPlatformHalf_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf9" unique_id=1633028310]
@@ -5516,7 +5543,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 30.2, -5)
 [node name="BrainPlatformHalf_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf16" unique_id=773342413]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("90_m7hdr")
-surface_material_override/0 = SubResource("StandardMaterial3D_man6j")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_cki2u")
 
 [node name="BrainPlatformHalf_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf16" unique_id=52338879]
@@ -5532,7 +5559,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 30.2, -5)
 [node name="BrainPlatformHalf_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf18" unique_id=1348159043]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("90_m7hdr")
-surface_material_override/0 = SubResource("StandardMaterial3D_man6j")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_cki2u")
 
 [node name="BrainPlatformHalf_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf18" unique_id=1023376099]
@@ -5548,7 +5575,7 @@ transform = Transform3D(-0.98037237, -0.050137177, -0.19067402, -0.06971651, 0.9
 [node name="BrainPlatformHalf_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf46" unique_id=679731293]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("90_m7hdr")
-surface_material_override/0 = SubResource("StandardMaterial3D_man6j")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_cki2u")
 
 [node name="BrainPlatformHalf_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf46" unique_id=1032765925]
@@ -5561,7 +5588,7 @@ transform = Transform3D(-0.9659258, 0.25881904, -8.444392e-08, 0.25881904, 0.965
 [node name="BrainPlatformHalf_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf54" unique_id=1606510983]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("90_m7hdr")
-surface_material_override/0 = SubResource("StandardMaterial3D_man6j")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_cki2u")
 
 [node name="BrainPlatformHalf_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf54" unique_id=1155173983]
@@ -5580,7 +5607,7 @@ transform = Transform3D(-0.9659258, 0.25881904, -8.444392e-08, 0.25881904, 0.965
 [node name="BrainPlatformHalf_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf70" unique_id=1916107983]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("90_m7hdr")
-surface_material_override/0 = SubResource("StandardMaterial3D_man6j")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_cki2u")
 
 [node name="BrainPlatformHalf_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf70" unique_id=1298459252]
@@ -5596,7 +5623,7 @@ transform = Transform3D(-0.9659258, 0.25881904, -8.444392e-08, 0.25881904, 0.965
 [node name="BrainPlatformHalf_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf73" unique_id=763259368]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("90_m7hdr")
-surface_material_override/0 = SubResource("StandardMaterial3D_man6j")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_cki2u")
 
 [node name="BrainPlatformHalf_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf73" unique_id=16134808]
@@ -5609,7 +5636,7 @@ transform = Transform3D(0.9199174, -0.39211234, 1.6697533e-07, 0.39211234, 0.919
 [node name="BrainPlatformHalf_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf63" unique_id=2049093101]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("90_m7hdr")
-surface_material_override/0 = SubResource("StandardMaterial3D_man6j")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_cki2u")
 
 [node name="BrainPlatformHalf_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf63" unique_id=410648562]
@@ -5625,7 +5652,7 @@ transform = Transform3D(0.96592593, -0.25881907, 1.718667e-07, 0.25881907, 0.965
 [node name="BrainPlatformHalf_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf56" unique_id=521816987]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("90_m7hdr")
-surface_material_override/0 = SubResource("StandardMaterial3D_man6j")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_cki2u")
 
 [node name="BrainPlatformHalf_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf56" unique_id=121637016]
@@ -5641,7 +5668,7 @@ transform = Transform3D(0.96592593, -0.25881907, 1.718667e-07, 0.25881907, 0.965
 [node name="BrainPlatformHalf_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf58" unique_id=742654217]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("90_m7hdr")
-surface_material_override/0 = SubResource("StandardMaterial3D_man6j")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_cki2u")
 
 [node name="BrainPlatformHalf_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf58" unique_id=1674663778]
@@ -5657,7 +5684,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184, 10.200001, -5)
 [node name="BrainPlatformHalf_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf42" unique_id=287091809]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("90_m7hdr")
-surface_material_override/0 = SubResource("StandardMaterial3D_man6j")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_cki2u")
 
 [node name="BrainPlatformHalf_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf42" unique_id=700385179]
@@ -5670,7 +5697,7 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -224
 [node name="BrainPlatformHalf_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf43" unique_id=320401452]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("90_m7hdr")
-surface_material_override/0 = SubResource("StandardMaterial3D_man6j")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_cki2u")
 
 [node name="BrainPlatformHalf_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf43" unique_id=1263297339]
@@ -5689,7 +5716,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -74,
 [node name="BrainPlatformCorner_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformCorner11" unique_id=603310456]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("92_rucap")
-surface_material_override/0 = SubResource("StandardMaterial3D_h6nge")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_dgpsx")
 
 [node name="BrainPlatformCorner_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformCorner11" unique_id=68341104]
@@ -5740,7 +5767,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 30.2, -5)
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform15" unique_id=484067391]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform15" unique_id=1876936685]
@@ -5765,7 +5792,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 20.2, -5)
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform76" unique_id=379348496]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform76" unique_id=836041434]
@@ -5778,7 +5805,7 @@ transform = Transform3D(-0.9659258, 0.25881904, -8.444392e-08, 0.25881904, 0.965
 [node name="BrainPlatformHalf_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf52" unique_id=959292580]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("90_m7hdr")
-surface_material_override/0 = SubResource("StandardMaterial3D_man6j")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_cki2u")
 
 [node name="BrainPlatformHalf_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf52" unique_id=616304447]
@@ -5794,7 +5821,7 @@ transform = Transform3D(-0.99999994, -1.2861781e-21, -2.5631059e-07, -4.552991e-
 [node name="BrainPlatformHalf_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf61" unique_id=1618223914]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("90_m7hdr")
-surface_material_override/0 = SubResource("StandardMaterial3D_man6j")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_cki2u")
 
 [node name="BrainPlatformHalf_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf61" unique_id=1239696257]
@@ -5810,7 +5837,7 @@ transform = Transform3D(-0.99999994, -1.2861781e-21, -2.5631059e-07, -4.552991e-
 [node name="BrainPlatformHalf_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf62" unique_id=1988540643]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("90_m7hdr")
-surface_material_override/0 = SubResource("StandardMaterial3D_man6j")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_cki2u")
 
 [node name="BrainPlatformHalf_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf62" unique_id=475782761]
@@ -5832,7 +5859,7 @@ transform = Transform3D(0.5, -0.86602545, 1.0552859e-07, 0.86602545, 0.5, 1.3752
 [node name="BrainPlatformHalf_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf51" unique_id=1228360481]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("90_m7hdr")
-surface_material_override/0 = SubResource("StandardMaterial3D_man6j")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_cki2u")
 
 [node name="BrainPlatformHalf_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf51" unique_id=1995883400]
@@ -5845,7 +5872,7 @@ transform = Transform3D(-0.8660253, 0.5, -8.4443855e-08, 0.5, 0.8660253, 1.10049
 [node name="BrainPlatformHalf_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf66" unique_id=1530780377]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("90_m7hdr")
-surface_material_override/0 = SubResource("StandardMaterial3D_man6j")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_cki2u")
 
 [node name="BrainPlatformHalf_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatformHalf66" unique_id=2023797433]
@@ -5858,7 +5885,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -244, 10.2, -5)
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform184" unique_id=11616225]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform184" unique_id=696299385]
@@ -5890,7 +5917,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -244, 20.2, -5)
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform203" unique_id=1873583478]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform203" unique_id=2128987847]
@@ -5927,7 +5954,7 @@ transform = Transform3D(-0.9659259, 0.25881904, -8.444392e-08, 0.25881904, 0.965
 [node name="BrainPlatform_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform200" unique_id=159648321]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("85_uat2i")
-surface_material_override/0 = SubResource("StandardMaterial3D_43uhj")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_43uhj")
 
 [node name="BrainPlatform_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/BrainPlatform200" unique_id=44855764]
@@ -6011,7 +6038,7 @@ transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 
 [node name="BrainPlatformCorner_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral/BrainPlatformCorner" unique_id=129034705]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("92_rucap")
-surface_material_override/0 = SubResource("StandardMaterial3D_h6nge")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_dgpsx")
 
 [node name="BrainPlatformCorner_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral/BrainPlatformCorner" unique_id=318305377]
@@ -6039,7 +6066,7 @@ transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 
 [node name="BrainPlatformCorner_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral/BrainPlatformCorner3" unique_id=338392887]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("92_rucap")
-surface_material_override/0 = SubResource("StandardMaterial3D_h6nge")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_dgpsx")
 
 [node name="BrainPlatformCorner_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral/BrainPlatformCorner3" unique_id=932461941]
@@ -6067,7 +6094,7 @@ transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 
 [node name="BrainPlatformCorner_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral/BrainPlatformCorner5" unique_id=1878683116]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("92_rucap")
-surface_material_override/0 = SubResource("StandardMaterial3D_h6nge")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_dgpsx")
 
 [node name="BrainPlatformCorner_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral/BrainPlatformCorner5" unique_id=1085059248]
@@ -6098,7 +6125,7 @@ transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 
 [node name="BrainPlatformCorner_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral2/BrainPlatformCorner" unique_id=467855337]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("92_rucap")
-surface_material_override/0 = SubResource("StandardMaterial3D_h6nge")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_dgpsx")
 
 [node name="BrainPlatformCorner_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral2/BrainPlatformCorner" unique_id=1614946277]
@@ -6126,7 +6153,7 @@ transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 
 [node name="BrainPlatformCorner_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral2/BrainPlatformCorner3" unique_id=1126201866]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("92_rucap")
-surface_material_override/0 = SubResource("StandardMaterial3D_h6nge")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_dgpsx")
 
 [node name="BrainPlatformCorner_Collision" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral2/BrainPlatformCorner3" unique_id=437201431]
@@ -6154,7 +6181,7 @@ transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 
 [node name="BrainPlatformCorner_Mesh" type="MeshInstance3D" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral2/BrainPlatformCorner5" unique_id=977386414]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("92_rucap")
-surface_material_override/0 = SubResource("StandardMaterial3D_3lnxx")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ekq")
 surface_material_override/1 = SubResource("StandardMaterial3D_ernso")
 
 [node name="BrainPlatformCorner_Collision4" type="CollisionShape3D" parent="Environment/BrainJarRoom/ENV/Platforms/DropdownCentral2/BrainPlatformCorner5" unique_id=1883830976]

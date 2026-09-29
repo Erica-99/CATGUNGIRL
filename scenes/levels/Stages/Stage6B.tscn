@@ -127,6 +127,7 @@
 [ext_resource type="PackedScene" uid="uid://dld0qjmojk1t8" path="res://scenes/actors/enemies/enemy_manager/enemy_manager.tscn" id="125_4psah"]
 [ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict/convict_enemy.tscn" id="126_ker76"]
 [ext_resource type="PackedScene" uid="uid://bls076phgmcus" path="res://scenes/actors/enemies/scrub/scrub.tscn" id="127_0dffa"]
+[ext_resource type="PackedScene" uid="uid://yvma87vdtlyv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6B_Lab/Cone.tscn" id="128_jgoex"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_flo5n"]
 albedo_color = Color(0.6114719, 0.6536162, 0.6536162, 1)
@@ -193,6 +194,9 @@ ao_texture = ExtResource("63_gm2ln")
 heightmap_enabled = true
 heightmap_scale = 0.0
 heightmap_texture = ExtResource("65_hdsyg")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gtkkf"]
+size = Vector3(0.33132, 2.227179, 1.2392011)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_thmh5"]
 albedo_texture = ExtResource("70_lv6o7")
@@ -1322,7 +1326,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30.041798, 16.116703, -0.6368
 [node name="FinalDoor" parent="." unique_id=2092611838 instance=ExtResource("21_l8a18")]
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -39.86514, 24.984701, 1.0586257)
 
-[node name="defaultMaterial" parent="FinalDoor/FinalDoor" parent_id_path=PackedInt32Array(2092611838, 1903052867) index="0" unique_id=615371970]
+[node name="defaultMaterial" parent="FinalDoor/FinalDoor" parent_id_path=PackedInt32Array(2092611838, 1903052867) index="0" unique_id=1995173026]
 surface_material_override/0 = SubResource("StandardMaterial3D_qdsdf")
 surface_material_override/1 = null
 
@@ -1360,6 +1364,10 @@ script = ExtResource("20_gtg7c")
 [node name="DoorSlidingExit_Mesh" type="MeshInstance3D" parent="DoorExit" unique_id=1728184330]
 mesh = ExtResource("61_eskkc")
 surface_material_override/0 = SubResource("StandardMaterial3D_60dnn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorExit" unique_id=1833122117]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2135946, 0.019525528)
+shape = SubResource("BoxShape3D_gtkkf")
 
 [node name="DoorwaySlidingExit_Mesh" type="MeshInstance3D" parent="DoorExit" unique_id=1996083026]
 mesh = ExtResource("69_0gle7")
@@ -1504,6 +1512,36 @@ transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -5, 
 transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, -25, 33.6, -10)
 
 [node name="VFX" type="Node3D" parent="." unique_id=536083855]
+
+[node name="Cone" parent="." unique_id=1393563968 instance=ExtResource("128_jgoex")]
+transform = Transform3D(0.57016844, 0, -0.48724526, 0, 0.75, 0, 0.48724526, 0, 0.57016844, -26.94132, 8.64485, -5.274748)
+
+[node name="Cone4" parent="." unique_id=7997020 instance=ExtResource("128_jgoex")]
+transform = Transform3D(0.32384, 0, -0.67648184, 0, 0.75, 0, 0.67648184, 0, 0.32384, -21.054382, 8.64485, 3.5752697)
+
+[node name="Cone3" parent="." unique_id=1066094551 instance=ExtResource("128_jgoex")]
+transform = Transform3D(0.71280134, 0, -0.23326854, 0, 0.75, 0, 0.23326854, 0, 0.71280134, -29.153185, 8.64485, 3.4813347)
+
+[node name="Cone2" parent="." unique_id=420798114 instance=ExtResource("128_jgoex")]
+transform = Transform3D(0.14858952, 0, -0.7351335, 0, 0.7500001, 0, 0.7351335, 0, 0.14858952, -20.84508, 8.64485, -3.5902433)
+
+[node name="Cone5" parent="." unique_id=1231405508 instance=ExtResource("128_jgoex")]
+transform = Transform3D(0.5632448, 0.11652419, -0.4813286, -0.088584565, 0.7408927, 0.07570113, 0.48724526, 9.389419e-09, 0.5701684, -48.26107, 16.855646, -3.4657593)
+
+[node name="Cone7" parent="." unique_id=333308123 instance=ExtResource("128_jgoex")]
+transform = Transform3D(0.7076774, 0.089764714, -0.23159176, -0.08531256, 0.7446087, 0.02791906, 0.23326856, -2.0252984e-09, 0.71280134, -45.485317, 16.576956, 3.4813347)
+
+[node name="Cone6" parent="." unique_id=1102134947 instance=ExtResource("128_jgoex")]
+transform = Transform3D(-0.24762832, -0.07007188, 0.7044642, -0.059251364, 0.7457499, 0.053350843, -0.7054571, -0.038039055, -0.25176093, -33.408028, 16.558582, 3.7099068)
+
+[node name="Cone8" parent="." unique_id=1854099202 instance=ExtResource("128_jgoex")]
+transform = Transform3D(-0.4935018, -0.09380631, 0.5569166, -0.072911784, 0.74397486, 0.06070471, -0.56003535, -0.014197223, -0.49865687, -32.338352, 16.757126, -3.6943295)
+
+[node name="Cone9" parent="." unique_id=1094773060 instance=ExtResource("128_jgoex")]
+transform = Transform3D(0.7241675, -0.020025449, -0.19411428, 0.02073187, 0.7497134, 0, 0.19404009, -0.005365802, 0.7244443, 8.973776, 25.000772, 4.0400033)
+
+[node name="Cone10" parent="." unique_id=1077580476 instance=ExtResource("128_jgoex")]
+transform = Transform3D(0.18956637, 0.03986071, -0.72455204, -0.0146901775, 0.74892503, 0.037358135, 0.72549903, 0.0047492683, 0.19007534, 21.50201, 24.907942, -3.8974419)
 
 [connection signal="removecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
