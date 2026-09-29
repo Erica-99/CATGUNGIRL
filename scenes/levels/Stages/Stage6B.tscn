@@ -6,15 +6,22 @@
 [ext_resource type="PackedScene" uid="uid://ckrhba4t8exg1" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/WallMultiLevelBasePrison.tscn" id="10_xlajn"]
 [ext_resource type="PackedScene" uid="uid://brju4y4mox0ev" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6B_Lab/RollerShelf.tscn" id="15_tjdxi"]
 [ext_resource type="PackedScene" uid="uid://ieim7fwdyugo" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6B_Lab/Bucket.tscn" id="16_260qo"]
+[ext_resource type="ArrayMesh" uid="uid://dagxirtys48lt" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/4_Laboratory/DoorwaySingleBaseLaboratory.obj" id="16_yi4ap"]
+[ext_resource type="Texture2D" uid="uid://boajeduprdcum" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Base_color.png" id="17_0gle7"]
 [ext_resource type="PackedScene" uid="uid://2dumj6fip3b1" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/4_Laboratory/WallPlainBaseLaboratory.tscn" id="17_3bs56"]
 [ext_resource type="PackedScene" uid="uid://ctcpwyd8a67ib" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6B_Lab/Sink.tscn" id="17_ovelr"]
 [ext_resource type="PackedScene" uid="uid://2t0fwb2gvhs3" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/4_Laboratory/DoorwayNoneBaseLaboratory.tscn" id="18_0p0c2"]
 [ext_resource type="PackedScene" uid="uid://o8lyfup8cxj6" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6B_Lab/Beaker1.tscn" id="18_6yx88"]
+[ext_resource type="Texture2D" uid="uid://cqjmuyra8pf8y" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Mixed_AO.png" id="18_lv6o7"]
 [ext_resource type="PackedScene" uid="uid://c4lspsys5kax3" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/4_Laboratory/DoorwayLargeBaseLaboratory.tscn" id="18_udxpj"]
 [ext_resource type="PackedScene" uid="uid://ukr8s37yqom1" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/4_Laboratory/WallBaseLaboratory.tscn" id="19_w0jam"]
+[ext_resource type="Texture2D" uid="uid://c4by1atd5xpq6" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Height.png" id="19_xdtj1"]
 [ext_resource type="PackedScene" uid="uid://lwj26gr6bvpq" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/Forklift.tscn" id="20_cbeae"]
 [ext_resource type="PackedScene" uid="uid://dup1x3y6suf0g" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6B_Lab/LabCabinet.tscn" id="20_qi6dq"]
+[ext_resource type="Texture2D" uid="uid://b42dldjildi6x" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Base_metalness.png" id="20_xlh28"]
 [ext_resource type="PackedScene" uid="uid://ls5wg3ha5l7u" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6B_Lab/FinalDoor.tscn" id="21_l8a18"]
+[ext_resource type="Texture2D" uid="uid://vnh1mohlmhni" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Normal_OpenGL.png" id="21_v2bcf"]
+[ext_resource type="Texture2D" uid="uid://drpgycg7mebgy" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Specular_roughness.png" id="22_1kj5b"]
 [ext_resource type="PackedScene" uid="uid://c5vncayclpa5t" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/3_GuardRooms/ChairSteel.tscn" id="25_gq1xd"]
 [ext_resource type="PackedScene" uid="uid://dbtlwlyu6425" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/BrainJarTerminal.tscn" id="26_5g2ht"]
 [ext_resource type="PackedScene" uid="uid://mtb08p1he0i6" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/LabFlask.tscn" id="29_3gehs"]
@@ -93,6 +100,22 @@
 [ext_resource type="PackedScene" uid="uid://bls076phgmcus" path="res://scenes/actors/enemies/scrub/scrub.tscn" id="127_0dffa"]
 [ext_resource type="PackedScene" uid="uid://yvma87vdtlyv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6B_Lab/Cone.tscn" id="128_jgoex"]
 [ext_resource type="PackedScene" uid="uid://4l4kw7i1ga4c" path="res://scenes/actors/enemies/brain_spider/brain_spider.tscn" id="129_uif3s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sywo3"]
+albedo_texture = ExtResource("17_0gle7")
+metallic = 1.0
+metallic_texture = ExtResource("20_xlh28")
+roughness_texture = ExtResource("22_1kj5b")
+normal_enabled = true
+normal_texture = ExtResource("21_v2bcf")
+ao_enabled = true
+ao_texture = ExtResource("18_lv6o7")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("19_xdtj1")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yi4ap"]
+size = Vector3(0.199758, 4.2016554, 5.000697)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1kj5b"]
 albedo_texture = ExtResource("95_0gle7")
@@ -386,7 +409,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -20, 8.4, 0)
 transform = Transform3D(-1.9874189, 0.2239785, -1.7374568e-07, 0.2239785, 1.9874189, 1.9580822e-08, 1.7484555e-07, 0, -2, -49.81306, 16.288, 0)
 
 [node name="FloorBrokenSideLaboratory2" parent="Environment" unique_id=515180801 instance=ExtResource("55_gtg7c")]
-transform = Transform3D(1.9875357, -0.22293785, 0, 0.22293785, 1.9875357, 0, 0, 0, 2, -29.972193, 16.288, 0)
+transform = Transform3D(1.9875357, -0.22293785, 0, 0.22293785, 1.9875357, 0, 0, 0, 2, -29.972193, 16.265097, 0)
 
 [node name="FloorBrokenSideLaboratory3" parent="Environment" unique_id=915136358 instance=ExtResource("55_gtg7c")]
 transform = Transform3D(-1.9874189, 0.2239785, -1.7374568e-07, 0.2239785, 1.9874189, 1.9580822e-08, 1.7484555e-07, 0, -2, 9.946917, 24.64362, 0)
@@ -460,8 +483,22 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -35, 33.6, 0)
 [node name="DoorwayNoneBaseLaboratory11" parent="Environment" unique_id=254500173 instance=ExtResource("18_0p0c2")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -35, 25.2, -10)
 
-[node name="DoorwaySingleBaseLaboratory3" parent="Environment" unique_id=829434999 instance=ExtResource("59_n3kry")]
+[node name="DoorwaySingleBaseLaboratory3" type="StaticBody3D" parent="Environment" unique_id=829434999]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -35, 25.2, 0)
+
+[node name="DoorwaySingleBaseLaboratory_Mesh" type="MeshInstance3D" parent="Environment/DoorwaySingleBaseLaboratory3" unique_id=6711529]
+mesh = ExtResource("16_yi4ap")
+surface_material_override/0 = SubResource("StandardMaterial3D_sywo3")
+
+[node name="DoorwaySingleBaseLaboratory_Collision" type="CollisionShape3D" parent="Environment/DoorwaySingleBaseLaboratory3" unique_id=1274191613]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.996095e-06, 2.0008228, -0.00013947487)
+visible = false
+shape = SubResource("BoxShape3D_yi4ap")
+
+[node name="DoorwaySingleBaseLaboratory_CollisionGPU" type="GPUParticlesCollisionBox3D" parent="Environment/DoorwaySingleBaseLaboratory3" unique_id=2080127325]
+transform = Transform3D(0.10314105, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2129955, 0)
+visible = false
+size = Vector3(2, 1.7714233, 2)
 
 [node name="DoorwayNoneMidLaboratory4" parent="Environment" unique_id=529438117 instance=ExtResource("88_rfnt8")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 35, 33.6, 0)
@@ -608,7 +645,7 @@ inactive_material = ExtResource("37_tgq31")
 material_overlay = ExtResource("38_7wqfy")
 
 [node name="BrainJarTerminal" parent="Props/TerminalGroup" unique_id=366402759 instance=ExtResource("26_5g2ht")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25053787, 0)
 
 [node name="BrainJarConsole" parent="Props/TerminalGroup" unique_id=578323982 instance=ExtResource("36_t1bfd")]
 transform = Transform3D(1.36, 0, 0, 0, 1.36, 0, 0, 0, 1.36, 0, 1.758, 2)
@@ -688,7 +725,7 @@ transform = Transform3D(1.49725, 0, -0.09078887, 0, 1.5, 0, 0.09078887, 0, 1.497
 transform = Transform3D(1.326028, 0, -0.70117736, 0, 1.5, 0, 0.70117736, 0, 1.326028, -53.0123, 0.3819189, -12.169033)
 
 [node name="MetalShelves2" parent="Props" unique_id=1963946253 instance=ExtResource("40_ovelr")]
-transform = Transform3D(1.49725, 0, -0.09078887, 0, 1.5, 0, 0.09078887, 0, 1.49725, -53.607094, 8.773332, -1.9259348)
+transform = Transform3D(1.49725, 0, -0.09078887, 0, 1.5, 0, 0.09078887, 0, 1.49725, -53.607094, 8.773332, -3.0836408)
 
 [node name="HighBayLight" parent="Props" unique_id=1692028619 instance=ExtResource("41_rnruy")]
 transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, -30.026115, 33.885, -0.016)
@@ -799,7 +836,7 @@ transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -24.341492, 6.1787167, 
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -26.826193, 6.1787167, -14.914651)
 
 [node name="TankExperimentation" parent="Props" unique_id=1743607033 instance=ExtResource("94_yi4ap")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -42.774315, 15.624136, -8.89816)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -47.774315, 15.624136, -8.89816)
 
 [node name="TankExperimentation_Mesh" parent="Props/TankExperimentation" index="0" unique_id=914390176]
 surface_material_override/0 = SubResource("StandardMaterial3D_1kj5b")
@@ -808,7 +845,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_1kj5b")
 light_energy = 1.523
 
 [node name="TankExperimentation2" parent="Props" unique_id=333199461 instance=ExtResource("94_yi4ap")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -42.20981, 15.624136, -11.262633)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -47.20981, 15.624136, -11.262633)
 
 [node name="TankExperimentation_Mesh" parent="Props/TankExperimentation2" index="0" unique_id=914390176]
 surface_material_override/0 = SubResource("StandardMaterial3D_1kj5b")
@@ -817,7 +854,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_1kj5b")
 light_energy = 1.523
 
 [node name="TankExperimentation3" parent="Props" unique_id=134063965 instance=ExtResource("94_yi4ap")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.1650047, 15.624136, -11.262633)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.16500473, 15.624136, -11.262633)
 
 [node name="TankExperimentation_Mesh" parent="Props/TankExperimentation3" index="0" unique_id=914390176]
 surface_material_override/0 = SubResource("StandardMaterial3D_1kj5b")
@@ -916,7 +953,7 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -45.807686, 8.600014, -
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -32.27397, 0.09745741, -9.992732)
 
 [node name="AcidVat4" parent="Props" unique_id=339568078 instance=ExtResource("31_3geyl")]
-transform = Transform3D(-0.17243302, 0, -0.24549305, 0, 0.29999998, 0, 0.24549305, 0, -0.17243302, -52.39875, 0.14390063, -0.504652)
+transform = Transform3D(-0.17243302, 0, -0.24549305, 0, 0.29999998, 0, 0.24549305, 0, -0.17243302, -51.709602, 0.14390063, -3.504652)
 
 [node name="Trolley" parent="Props" unique_id=501260814 instance=ExtResource("32_62t83")]
 transform = Transform3D(0.705649, 0, 0.70856154, 0, 1, 0, -0.70856154, 0, 0.705649, -25.210688, 0.2061928, -10.872228)
@@ -1039,7 +1076,7 @@ possible_spawns = Array[int]([0, 1, 1, 0])
 [node name="FinalDoor" parent="Interactive" unique_id=2092611838 instance=ExtResource("21_l8a18")]
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -35, 25.2, 2.4521542)
 
-[node name="defaultMaterial" parent="Interactive/FinalDoor/FinalDoor" parent_id_path=PackedInt32Array(2092611838, 1903052867) index="0" unique_id=874433525]
+[node name="defaultMaterial" parent="Interactive/FinalDoor/FinalDoor" parent_id_path=PackedInt32Array(2092611838, 1903052867) index="0" unique_id=1995173026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1157596, 0, 0.049209595)
 surface_material_override/0 = SubResource("StandardMaterial3D_qdsdf")
 surface_material_override/1 = null
@@ -1282,7 +1319,7 @@ shape = SubResource("BoxShape3D_fxtw2")
 debug_color = Color(0.919504, 0.13431916, 0.6161928, 0.41960785)
 
 [node name="Forklift" parent="DATES_POPUPS/ConvictPopup" unique_id=500869341 instance=ExtResource("20_cbeae")]
-transform = Transform3D(1.1925336, 0, 1.6055725, 0, 2, 0, -1.6055725, 0, 1.1925336, -40.734314, 14.055393, 0.74875355)
+transform = Transform3D(1.7888006, 0, 2.4083588, 0, 3, 0, -2.4083588, 0, 1.7888006, -33.734314, 14.055393, 0.74875355)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=1148700225]
 
@@ -1322,10 +1359,10 @@ room_ID = 3
 room_ID = 4
 
 [node name="Scrub2" parent="Enemies/RoomFive" unique_id=1918494423 instance=ExtResource("127_0dffa")]
-transform = Transform3D(0.9999723, 0.00729109, -0.0014908338, -0.007284907, 0.999965, 0.00411179, 0.0015207593, -0.0041008163, 0.99999046, -40.849407, 12, 0)
+transform = Transform3D(0.9999723, 0.00729109, -0.0014908338, -0.007284907, 0.999965, 0.00411179, 0.0015207593, -0.0041008163, 0.99999046, -4.849407, 12, 0)
 
 [node name="Scrub3" parent="Enemies/RoomFive" unique_id=1090872008 instance=ExtResource("127_0dffa")]
-transform = Transform3D(0.9999723, 0.00729109, -0.0014908338, -0.007284907, 0.999965, 0.00411179, 0.0015207593, -0.0041008163, 0.99999046, 14.229183, 33, 0)
+transform = Transform3D(0.9999723, 0.00729109, -0.0014908338, -0.007284907, 0.999965, 0.00411179, 0.0015207593, -0.0041008163, 0.99999046, 18.229183, 33, 0)
 
 [node name="Terminal" parent="Enemies" unique_id=279547323 instance=ExtResource("125_4psah")]
 room_ID = 4
@@ -1333,54 +1370,49 @@ room_ID = 4
 [node name="VFX" type="Node3D" parent="." unique_id=536083855]
 
 [node name="Cone" parent="." unique_id=1393563968 instance=ExtResource("128_jgoex")]
-transform = Transform3D(0.57016844, 0, -0.48724526, 0, 0.75, 0, 0.48724526, 0, 0.57016844, -26.94132, 8.64485, -5.274748)
+transform = Transform3D(0.57016844, 0, -0.48724526, 0, 0.75, 0, 0.48724526, 0, 0.57016844, -21.94132, 8.64485, -5.274748)
 
 [node name="Cone4" parent="." unique_id=7997020 instance=ExtResource("128_jgoex")]
-transform = Transform3D(0.32384, 0, -0.67648184, 0, 0.75, 0, 0.67648184, 0, 0.32384, -21.054382, 8.64485, 3.5752697)
+transform = Transform3D(0.32384, 0, -0.67648184, 0, 0.75, 0, 0.67648184, 0, 0.32384, -16.054382, 8.64485, 3.5752697)
 
 [node name="Cone3" parent="." unique_id=1066094551 instance=ExtResource("128_jgoex")]
-transform = Transform3D(0.71280134, 0, -0.23326854, 0, 0.75, 0, 0.23326854, 0, 0.71280134, -29.153185, 8.64485, 3.4813347)
+transform = Transform3D(0.71280134, 0, -0.23326854, 0, 0.75, 0, 0.23326854, 0, 0.71280134, -24.153185, 8.64485, 3.4813347)
 
 [node name="Cone2" parent="." unique_id=420798114 instance=ExtResource("128_jgoex")]
-transform = Transform3D(0.14858952, 0, -0.7351335, 0, 0.7500001, 0, 0.7351335, 0, 0.14858952, -20.84508, 8.64485, -3.5902433)
+transform = Transform3D(0.14858952, 0, -0.7351335, 0, 0.7500001, 0, 0.7351335, 0, 0.14858952, -15.845079, 8.64485, -3.5902433)
 
 [node name="Cone5" parent="." unique_id=1231405508 instance=ExtResource("128_jgoex")]
-transform = Transform3D(0.5632448, 0.11652419, -0.4813286, -0.088584565, 0.7408927, 0.07570113, 0.48724526, 9.389419e-09, 0.5701684, -48.26107, 16.855646, -3.4657593)
+transform = Transform3D(0.56754243, 0.07189733, -0.48500115, -0.08727597, 0.74485826, 0.008289736, 0.4824712, 0.05016556, 0.5720183, -48.26107, 16.331072, -3.4657593)
 
 [node name="Cone7" parent="." unique_id=333308123 instance=ExtResource("128_jgoex")]
-transform = Transform3D(0.7076774, 0.089764714, -0.23159176, -0.08531256, 0.7446087, 0.02791906, 0.23326856, -2.0252984e-09, 0.71280134, -45.485317, 16.576956, 3.4813347)
+transform = Transform3D(0.71129125, 0.048791073, -0.2327744, -0.046371143, 0.7484111, 0.015175243, 0.23326856, -2.0252984e-09, 0.71280134, -46.046455, 16.052258, 3.805039)
 
 [node name="Cone6" parent="." unique_id=1102134947 instance=ExtResource("128_jgoex")]
-transform = Transform3D(-0.24762832, -0.07007188, 0.7044642, -0.059251364, 0.7457499, 0.053350843, -0.7054571, -0.038039055, -0.25176093, -33.408028, 16.558582, 3.7099068)
+transform = Transform3D(-0.24097337, -0.13976237, 0.6963461, -0.0822334, 0.73587996, 0.11923985, -0.70545703, -0.03803905, -0.25176093, -33.408028, 16.011105, 3.7099068)
 
 [node name="Cone8" parent="." unique_id=1854099202 instance=ExtResource("128_jgoex")]
-transform = Transform3D(-0.4935018, -0.09380631, 0.5569166, -0.072911784, 0.74397486, 0.06070471, -0.56003535, -0.014197223, -0.49865687, -32.338352, 16.757126, -3.6943295)
+transform = Transform3D(-0.49486536, -0.06043392, 0.56031764, -0.017904842, 0.7469848, 0.06475393, -0.5632827, 0.029349396, -0.49431857, -32.32573, 16.06728, -3.6661928)
 
 [node name="Cone9" parent="." unique_id=1094773060 instance=ExtResource("128_jgoex")]
-transform = Transform3D(0.7241675, -0.020025449, -0.19411428, 0.02073187, 0.7497134, 0, 0.19404009, -0.005365802, 0.7244443, 8.973776, 25.000772, 4.0400033)
+transform = Transform3D(0.72168964, 0.06700732, -0.19280596, -0.06334467, 0.74698144, 0.022499401, 0.1940401, -0.0053658024, 0.7244443, 13.973776, 24.353352, 4.0400033)
 
 [node name="Cone10" parent="." unique_id=1077580476 instance=ExtResource("128_jgoex")]
-transform = Transform3D(0.18956637, 0.03986071, -0.72455204, -0.0146901775, 0.74892503, 0.037358135, 0.72549903, 0.0047492683, 0.19007534, 21.50201, 24.907942, -3.8974419)
+transform = Transform3D(0.18950516, -0.079024434, -0.7213479, 0.0154596325, 0.7458102, -0.077642865, 0.725499, 0.004749268, 0.19007534, 26.50201, 24.383368, -3.8974419)
 
 [node name="BrainSpider" parent="." unique_id=166394742 instance=ExtResource("129_uif3s")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -49.849, 1.498, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -45.849, 1.498, 0)
 
 [node name="BrainSpider2" parent="." unique_id=1527218093 instance=ExtResource("129_uif3s")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -51.848953, 22.533655, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -48.848953, 22.533655, 0)
 spider_mode = 1
 
 [node name="BrainSpider3" parent="." unique_id=1836650691 instance=ExtResource("129_uif3s")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -24.848953, 22.533655, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -21.848953, 22.533655, 0)
 spider_mode = 1
 
 [node name="BrainSpider4" parent="." unique_id=412403872 instance=ExtResource("129_uif3s")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 19.151, 38.534, 0)
 spider_mode = 1
-
-[node name="BrainSpider5" parent="." unique_id=1281385716 instance=ExtResource("129_uif3s")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.849, 13.534, 0)
-spider_mode = 1
-surface_type = 2
 
 [connection signal="removecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
