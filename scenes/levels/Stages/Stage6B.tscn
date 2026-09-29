@@ -57,10 +57,14 @@
 [ext_resource type="Texture2D" uid="uid://b38ean0mauxf4" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorSlidingExit/DoorSlidingExit_Base_color.png" id="62_urinm"]
 [ext_resource type="Texture2D" uid="uid://bouboh0hdbtq1" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorSlidingExit/DoorSlidingExit_Mixed_AO.png" id="63_gm2ln"]
 [ext_resource type="Texture2D" uid="uid://dl8h2i1b2ovsr" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorSlidingExit/DoorSlidingExit_Emission_color.png" id="64_c6orf"]
+[ext_resource type="Texture2D" uid="uid://beldjkbkkc522" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/FinalDoor/FinalDoor_BC.png" id="65_gtkkf"]
 [ext_resource type="Texture2D" uid="uid://ddp8birxdgs4q" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorSlidingExit/DoorSlidingExit_Height.png" id="65_hdsyg"]
+[ext_resource type="Texture2D" uid="uid://dhi57oowhtcqa" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/FinalDoor/FinalDoor_M.png" id="66_jgoex"]
 [ext_resource type="Texture2D" uid="uid://cmm17ve2hu2ls" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorSlidingExit/DoorSlidingExit_Base_metalness.png" id="66_mxwfw"]
 [ext_resource type="PackedScene" uid="uid://bvolfs8exkrw1" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/FireAlarm.tscn" id="66_q6npw"]
 [ext_resource type="Texture2D" uid="uid://bvuexoa6gmbcq" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorSlidingExit/DoorSlidingExit_Normal_OpenGL.png" id="67_3geyl"]
+[ext_resource type="Texture2D" uid="uid://3w27pfs2wowc" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/FinalDoor/FinalDoor_N.png" id="67_uif3s"]
+[ext_resource type="Texture2D" uid="uid://bf4wdrwapwxtx" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/FinalDoor/FinalDoor_R.png" id="68_1rgpq"]
 [ext_resource type="Texture2D" uid="uid://cyfqbpd2nxx05" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorSlidingExit/DoorSlidingExit_Specular_roughness.png" id="68_yi4ap"]
 [ext_resource type="ArrayMesh" uid="uid://b6ba1imm8am10" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/DoorwaySlidingExit.obj" id="69_0gle7"]
 [ext_resource type="Texture2D" uid="uid://crkyrngmttpnm" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorwaySlidingExit/DoorwaySlidingExit_Base_color.png" id="70_lv6o7"]
@@ -166,6 +170,14 @@ volumetric_fog_length = 276.11
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fxtw2"]
 size = Vector3(9.30127, 7.2834473, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qdsdf"]
+albedo_texture = ExtResource("65_gtkkf")
+metallic = 1.0
+metallic_texture = ExtResource("66_jgoex")
+roughness_texture = ExtResource("68_1rgpq")
+normal_enabled = true
+normal_texture = ExtResource("67_uif3s")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_60dnn"]
 albedo_texture = ExtResource("62_urinm")
@@ -802,6 +814,30 @@ shadow_enabled = true
 spot_range = 21.146
 spot_angle = 63.43
 
+[node name="SpotLight3D16" type="SpotLight3D" parent="Lighting" unique_id=671161291]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 38.381878, 32.79871, 0.023)
+light_color = Color(0.66194296, 0.6762347, 0.58509547, 1)
+light_energy = 2.183
+light_indirect_energy = 4.173
+light_volumetric_fog_energy = 0.18
+light_size = 0.01
+light_specular = 8.548
+shadow_enabled = true
+spot_range = 21.146
+spot_angle = 63.43
+
+[node name="SpotLight3D17" type="SpotLight3D" parent="Lighting" unique_id=48778183]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 51.24072, 32.79871, 0.023)
+light_color = Color(0.66194296, 0.6762347, 0.58509547, 1)
+light_energy = 2.183
+light_indirect_energy = 4.173
+light_volumetric_fog_energy = 0.18
+light_size = 0.01
+light_specular = 8.548
+shadow_enabled = true
+spot_range = 21.146
+spot_angle = 63.43
+
 [node name="SpotLight3D15" type="SpotLight3D" parent="Lighting" unique_id=309792386]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -35, 34.134, 0.023)
 light_color = Color(0.66194296, 0.6762347, 0.58509547, 1)
@@ -1286,8 +1322,8 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30.041798, 16.116703, -0.6368
 [node name="FinalDoor" parent="." unique_id=2092611838 instance=ExtResource("21_l8a18")]
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -39.86514, 24.984701, 1.0586257)
 
-[node name="defaultMaterial" parent="FinalDoor/FinalDoor" parent_id_path=PackedInt32Array(2092611838, 1903052867) index="0" unique_id=118421685]
-surface_material_override/0 = null
+[node name="defaultMaterial" parent="FinalDoor/FinalDoor" parent_id_path=PackedInt32Array(2092611838, 1903052867) index="0" unique_id=615371970]
+surface_material_override/0 = SubResource("StandardMaterial3D_qdsdf")
 surface_material_override/1 = null
 
 [node name="EnemyDoorFrame" parent="." unique_id=2112200868 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("57_0h5cq")]
