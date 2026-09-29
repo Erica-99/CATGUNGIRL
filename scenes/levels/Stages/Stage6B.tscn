@@ -69,6 +69,7 @@
 [ext_resource type="PackedScene" uid="uid://bihvrgq70v1mq" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/4_Laboratory/RoofLaboratory.tscn" id="89_3efef"]
 [ext_resource type="PackedScene" uid="uid://cschs0x82o57w" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/4_Laboratory/WallMultiLevelBaseLaboratory.tscn" id="90_eskkc"]
 [ext_resource type="PackedScene" uid="uid://bitrucit7ifuv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/4_Laboratory/WallPlainMidLaboratory.tscn" id="91_urinm"]
+[ext_resource type="Script" uid="uid://chvc3xyfwjiok" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/door_exit.gd" id="94_0gle7"]
 [ext_resource type="PackedScene" uid="uid://b61rhgk3qi27n" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/AcidVatRoom/TankExperimentation.tscn" id="94_yi4ap"]
 [ext_resource type="Texture2D" uid="uid://gddo8576q0c2" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/TankExperimentation/TankExperimentation_DefaultMaterial_BaseColor.png" id="95_0gle7"]
 [ext_resource type="Texture2D" uid="uid://d0s8dqgysoh8s" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/TankExperimentation/TankExperimentation_DefaultMaterial_Emissive.png" id="96_lv6o7"]
@@ -1076,12 +1077,16 @@ possible_spawns = Array[int]([0, 1, 1, 0])
 [node name="FinalDoor" parent="Interactive" unique_id=2092611838 instance=ExtResource("21_l8a18")]
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -35, 25.2, 2.4521542)
 
-[node name="defaultMaterial" parent="Interactive/FinalDoor/FinalDoor" parent_id_path=PackedInt32Array(2092611838, 1903052867) index="0" unique_id=1995173026]
+[node name="defaultMaterial" parent="Interactive/FinalDoor/FinalDoor" parent_id_path=PackedInt32Array(2092611838, 1903052867) index="0" unique_id=118421685]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1157596, 0, 0.049209595)
 surface_material_override/0 = SubResource("StandardMaterial3D_qdsdf")
 surface_material_override/1 = null
 
-[node name="LevelEnd" parent="Interactive/FinalDoor" unique_id=914563996 instance=ExtResource("114_ilcbw")]
+[node name="DoorExit2" type="StaticBody3D" parent="Interactive/FinalDoor" unique_id=1613544780 node_paths=PackedStringArray("shield_mesh")]
+script = ExtResource("94_0gle7")
+shield_mesh = NodePath("../FinalDoor/defaultMaterial")
+
+[node name="LevelEnd" parent="Interactive/FinalDoor/DoorExit2" unique_id=914563996 instance=ExtResource("114_ilcbw")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 1.1140231, 1.0174332, 0.09769249)
 monitoring = false
 level_name = "Stage6"
@@ -1430,6 +1435,7 @@ spider_mode = 1
 [connection signal="updatecameratween" from="Interactive/CameraPanNode2" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
 [connection signal="body_entered" from="Interactive/CameraPanNode2/Area" to="Interactive/CameraPanNode2" method="_on_area_body_entered"]
 [connection signal="body_exited" from="Interactive/CameraPanNode2/Area" to="Interactive/CameraPanNode2" method="_on_area_body_exited"]
+[connection signal="stage_cleared" from="Enemies/Terminal" to="Interactive/FinalDoor/DoorExit2" method="_on_enemy_manager_stage_cleared"]
 
 [editable path="Props/TerminalGroup/BrainJarConsole"]
 [editable path="Props/TankExperimentation"]
