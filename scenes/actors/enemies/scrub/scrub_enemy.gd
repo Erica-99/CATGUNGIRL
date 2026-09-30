@@ -67,7 +67,7 @@ var time: float = 0.0
 signal facing_changed(scrub: CharacterBody3D)
 
 # death detector variables
-var death_speed = 3                        #randf_range(10.0, 70.0)
+var death_speed = 1.2                        #randf_range(10.0, 70.0)
 var launch_speed = Vector3.ZERO
 var explosion_playing: bool = false
 
@@ -255,6 +255,6 @@ func _on_death_detector_body_entered(body: Node3D) -> void:
 		if VFX_spawn_node == null:
 			push_warning("No VFX node found in current scene")
 			return
-		explosion_VFX.global_position = VFX_spawn.global_position
 		VFX_spawn_node.add_child(explosion_VFX)
+		explosion_VFX.global_position = VFX_spawn.global_position
 		queue_free()
