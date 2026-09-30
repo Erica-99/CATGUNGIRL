@@ -47,12 +47,12 @@ signal shield_enabled_status(status: bool)
 
 signal set_door_openable_state(door: Node3D, openable: bool)
 
-signal start_animation	
+signal start_animation
 
 signal increase_meme_index() #what? - Fernando
 
 signal brain_jar_terminal_activated
-
+signal brainjar_phase_started(phase_index: int)
 signal brainjar_killed
 
 signal controller_status(controller_type: String)
