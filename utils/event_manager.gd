@@ -37,6 +37,9 @@ signal narrative_unlock_shotgun
 signal narrative_unlock_sniper
 
 signal room_cleared(room_ID: Enums.Room, is_clear: bool)
+
+signal music_intensity_changed(new_intensity: Enums.MusicIntensity)
+
 signal spawn_enemy(custom_delay: float, spawner_path: NodePath)
 
 signal start_elevator()
