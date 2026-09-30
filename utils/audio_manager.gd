@@ -73,6 +73,7 @@ func _ready() -> void:
 	#endregion
 	
 	EventManager.music_intensity_changed.connect(fade_combat_layers)
+	EventManager.brainjar_phase_started.connect(_on_brain_jar_phase_started)
 
 # Play music track
 func play_music(track_ref: String):
@@ -121,6 +122,10 @@ func _silence_combat_layers() -> void:
 	var combat_music := music_player.stream as AudioStreamSynchronized
 	for layer in combat_music.stream_count:
 		combat_music.set_sync_stream_volume(layer, SILENT_DB)
+
+func _on_brain_jar_phase_started(phase_index: int) -> void:
+	var music_ref: String = "music_bj_phs" + str(phase_index)
+	play_music(music_ref)
 
 # Play global sound effect (best for menu, UI, most player sounds, etc.)
 func play_sfx(sfx_ref: String):
