@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+class_name Missile
+
 @export var state_machine: StateMachine
 
 var blackboard: Dictionary
