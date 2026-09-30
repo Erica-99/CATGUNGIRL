@@ -87,7 +87,6 @@
 [ext_resource type="PackedScene" uid="uid://co7fptrpmkvog" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/A_SparesAndPlaceholders/LightCeiling.tscn" id="81_wtq1c"]
 [ext_resource type="PackedScene" uid="uid://4rsfb5kh40wj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/B_Collisions/45Ramp.tscn" id="84_clbst"]
 [ext_resource type="PackedScene" uid="uid://bucrwtuwyjfqs" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/PanopticonBillboard.tscn" id="84_m4oo8"]
-[ext_resource type="PackedScene" uid="uid://yvma87vdtlyv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6B_Lab/Cone.tscn" id="86_oughf"]
 [ext_resource type="PackedScene" uid="uid://u0ps1hxqgdbr" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/HighBayLight.tscn" id="86_y6pi2"]
 [ext_resource type="PackedScene" uid="uid://8268415ukuhp" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/4_Panopticon/LightRailPanopticon.tscn" id="87_i8msr"]
 [ext_resource type="PackedScene" uid="uid://d1isfmus58oku" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/IndustrialLight1.tscn" id="88_m4oo8"]
@@ -105,6 +104,8 @@
 [ext_resource type="PackedScene" uid="uid://dp7w74qay70c" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/World_Lore/Accept_Bliss.tscn" id="101_4nat2"]
 [ext_resource type="PackedScene" uid="uid://ctulbbuyu35x" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/World_Lore/BJ_Watches.tscn" id="102_6v0vc"]
 [ext_resource type="PackedScene" uid="uid://bsekmkigv7je" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/Phantom_Vs_Opera.tscn" id="103_ufdkb"]
+[ext_resource type="PackedScene" uid="uid://befg08ebvtbma" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Effects/EnvEffect_SparkExplsion.tscn" id="105_oughf"]
+[ext_resource type="PackedScene" uid="uid://p4j7l6t1wvoa" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Effects/EnvEffect_Fire.tscn" id="106_l4l4g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qyq0w"]
 size = Vector3(28.873047, 19.592224, 10)
@@ -2610,15 +2611,6 @@ transform = Transform3D(-2, 0, -1.7484554e-07, 0, 1.9999998, 0, 1.7484555e-07, 0
 [node name="45Ramp" parent="Environment/Layer_01" unique_id=2094150326 instance=ExtResource("84_clbst")]
 transform = Transform3D(-1.4703004e-07, 0, -0.9999998, 0, 0.065412246, 0, 3.3636553, 0, -4.3711378e-08, -55.218884, 0.07040596, 4.3060656)
 
-[node name="Cone" parent="Environment/Layer_01" unique_id=1393563968 instance=ExtResource("86_oughf")]
-transform = Transform3D(0.7792286, 0, 0.6267398, 0, 1, 0, -0.6267398, 0, 0.7792286, 34.59867, 0.115245864, 7.3362045)
-
-[node name="Cone2" parent="Environment/Layer_01" unique_id=1334290914 instance=ExtResource("86_oughf")]
-transform = Transform3D(0.91778237, 0, 0.39708382, 0, 1, 0, -0.39708382, 0, 0.91778237, 31.74958, 0.11524634, -2.6881413)
-
-[node name="Cone3" parent="Environment/Layer_01" unique_id=629280846 instance=ExtResource("86_oughf")]
-transform = Transform3D(0.5136611, 0, 0.8579932, 0, 1, 0, -0.8579932, 0, 0.5136611, 29.715668, 0.11524634, -4.6567636)
-
 [node name="Layer_02" type="Node3D" parent="Environment" unique_id=738127830]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.916, 126, 0)
 
@@ -3661,12 +3653,6 @@ transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, -10.
 [node name="PanopticonWalls4" parent="Environment/Layer_00" unique_id=1829673124 instance=ExtResource("53_vrydf")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 3)
 
-[node name="Cone" parent="Environment/Layer_00" unique_id=23506148 instance=ExtResource("86_oughf")]
-transform = Transform3D(0.9851723, 0, -0.17156804, 0, 1, 0, 0.17156804, 0, 0.9851723, -53.58542, 252.34485, 0.33513832)
-
-[node name="Cone2" parent="Environment/Layer_00" unique_id=2130345407 instance=ExtResource("86_oughf")]
-transform = Transform3D(-0.26658237, 0, 0.9638122, 0, 1, 0, -0.9638122, 0, -0.26658237, -53.58542, 252.34485, 10.657762)
-
 [node name="Props" type="Node3D" parent="." unique_id=1920549022]
 
 [node name="LightCeiling15" parent="Props" unique_id=1312508579 instance=ExtResource("81_wtq1c")]
@@ -3868,6 +3854,33 @@ transform = Transform3D(0.99984187, 0, 0.017783968, 0, 1, 0, -0.017783968, 0, 0.
 transform = Transform3D(0.83722275, 0, -0.546862, 0, 1, 0, 0.546862, 0, 0.83722275, 140.12776, 129.14658, -4.1850066)
 
 [node name="VFX" type="Node3D" parent="." unique_id=1607142219]
+
+[node name="EnvEffectSpark" parent="VFX" unique_id=602658946 instance=ExtResource("105_oughf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.81539, 3.3869445, -3.8111796)
+
+[node name="EnvEffectSpark2" parent="VFX" unique_id=935408074 instance=ExtResource("105_oughf")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 95.65151, 70.65956, -3.6588602)
+
+[node name="EnvEffectSpark3" parent="VFX" unique_id=1538811753 instance=ExtResource("105_oughf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.65338, 129.81978, -3.7476962)
+
+[node name="EnvEffectFire" parent="VFX" unique_id=381884369 instance=ExtResource("106_l4l4g")]
+transform = Transform3D(0.406687, 0.4671972, -0.78506833, -0.7542627, 0.65657246, 0, 0.51545423, 0.59214777, 0.61940914, 18.744614, 130.9373, -15.690408)
+
+[node name="EnvEffectFire2" parent="VFX" unique_id=213862269 instance=ExtResource("106_l4l4g")]
+transform = Transform3D(0.9173937, 0.39798057, 0, -0.39798057, 0.9173937, 0, 0, 0, 1, 28.154686, 79.82279, 6.647466)
+
+[node name="EnvEffectFire3" parent="VFX" unique_id=1286815718 instance=ExtResource("106_l4l4g")]
+transform = Transform3D(0.3593127, -0.93321705, 0, 0.93321705, 0.3593127, 0, 0, 0, 1, 158.40292, 132.37665, -18.438326)
+
+[node name="EnvEffectSpark4" parent="VFX" unique_id=2114679027 instance=ExtResource("105_oughf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.56003, 9.46857, 6.077632)
+
+[node name="EnvEffectSpark5" parent="VFX" unique_id=1211483811 instance=ExtResource("105_oughf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.64035, 3.8476086, 6.303653)
+
+[node name="EnvEffectFire4" parent="VFX" unique_id=1031620447 instance=ExtResource("106_l4l4g")]
+transform = Transform3D(0.15626208, -0.9877155, 0, 0.9877155, 0.15626208, 0, 0, 0, 1, 160.52202, 5.9482527, 13.449988)
 
 [connection signal="removecameratween" from="Interactive/CameraPanNode" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="Interactive/CameraPanNode" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]

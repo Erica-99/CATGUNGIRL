@@ -102,6 +102,8 @@
 [ext_resource type="Resource" uid="uid://i475dd553b7q" path="res://resources/tutorial_steps/stage_1_intro_tutorial/grapple_tutorial_step.tres" id="92_3k85b"]
 [ext_resource type="PackedScene" uid="uid://xwmm12eihkbq" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Meat_lumps.tscn" id="92_4scdv"]
 [ext_resource type="PackedScene" uid="uid://co7fptrpmkvog" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/A_SparesAndPlaceholders/LightCeiling.tscn" id="96_g3qdj"]
+[ext_resource type="PackedScene" uid="uid://p4j7l6t1wvoa" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Effects/EnvEffect_Fire.tscn" id="107_07lsr"]
+[ext_resource type="PackedScene" uid="uid://befg08ebvtbma" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Effects/EnvEffect_SparkExplsion.tscn" id="108_mx3rv"]
 [ext_resource type="QuadMesh" uid="uid://bkqyj0frj2ef7" path="res://art/3D_Env/3D_Assets/3D_Textures/Env_Effects_Textures/Spark_quad_mesh.tres" id="110_lj8ni"]
 [ext_resource type="Texture2D" uid="uid://by2rrwp7x5x6h" path="res://art/3D_Env/3D_Assets/3D_Textures/Env_Effects_Textures/Spark.png" id="111_jsqmv"]
 [ext_resource type="Script" uid="uid://4t3uo3s2mf8e" path="res://scenes/levels/Stages/camera_pan_node.gd" id="123_emoyc"]
@@ -267,6 +269,55 @@ ao_texture = ExtResource("20_vm2sj")
 heightmap_enabled = true
 heightmap_texture = ExtResource("21_f2j4k")
 
+[sub_resource type="Curve" id="Curve_klw4q"]
+_data = [Vector2(0, 0.79775286), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2t1us"]
+curve = SubResource("Curve_klw4q")
+
+[sub_resource type="Curve" id="Curve_cnc3q"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.22471917), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gagtn"]
+curve = SubResource("Curve_cnc3q")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_07lsr"]
+emission_shape_scale = Vector3(1.5, 0.01, 1.5)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(1, 0.2, 1)
+spread = 100.0
+flatness = 1.0
+initial_velocity_min = -5.0
+initial_velocity_max = 5.0
+angular_velocity_min = -360.0
+angular_velocity_max = 359.99997
+gravity = Vector3(0, 0.2, 0)
+scale_curve = SubResource("CurveTexture_gagtn")
+alpha_curve = SubResource("CurveTexture_2t1us")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_olwk8"]
+load_path = "res://.godot/imported/Dust.png-292e5ce09f8d8110d5b92ff7e7756ba3.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ftjx"]
+transparency = 1
+blend_mode = 1
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_color = Color(0.6789437, 0.6789437, 0.6789437, 1)
+albedo_texture = SubResource("CompressedTexture2D_olwk8")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_mx3rv"]
+material = SubResource("StandardMaterial3D_5ftjx")
+size = Vector2(2, 2)
+
 [sub_resource type="Animation" id="Animation_tatg8"]
 resource_name = "Intro"
 length = 7.0
@@ -402,6 +453,18 @@ tracks/10/keys = {
 "update": 0,
 "values": [1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 0.0]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("EnvEffectDust/Dust:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(5.76),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_rpc8p"]
 length = 0.001
@@ -536,6 +599,18 @@ tracks/10/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [1.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("EnvEffectDust/Dust:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ovhx5"]
@@ -2368,6 +2443,12 @@ environment = SubResource("Environment_nym5h")
 
 [node name="VFX" type="Node3D" parent="." unique_id=974720759]
 
+[node name="EnvEffectFire" parent="VFX" unique_id=381884369 instance=ExtResource("107_07lsr")]
+transform = Transform3D(0.638714, -0.769444, 0, 0.769444, 0.638714, 0, 0, 0, 1, 208.78134, 4.190143, -8.9290285)
+
+[node name="EnvEffectSpark" parent="VFX" unique_id=602658946 instance=ExtResource("108_mx3rv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170.06087, 9.609537, -11.647783)
+
 [node name="DATES_POPUPS" type="Node" parent="." unique_id=983173156]
 
 [node name="Enemies" type="Node3D" parent="." unique_id=1148700225]
@@ -2522,11 +2603,21 @@ surface_material_override/0 = SubResource("StandardMaterial3D_n2mqi")
 [node name="PrisonCell" parent="Ross Cell Anim/Cell Anim/PrisonCrane/PrisonRailCranePrt01/PrisonRailCranePrt02" unique_id=861874070 instance=ExtResource("17_krhad")]
 transform = Transform3D(1.1250001, 0, 0, 0, 1.1250001, 0, 0, 0, 1.125, 0.009502411, -1.4347391, 0)
 
+[node name="EnvEffectDust" type="StaticBody3D" parent="Ross Cell Anim" unique_id=112066998]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.777794, -4.0800357, 9.536743e-07)
+
+[node name="Dust" type="GPUParticles3D" parent="Ross Cell Anim/EnvEffectDust" unique_id=920278564]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.010494232, 0)
+emitting = false
+amount = 30
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_07lsr")
+draw_pass_1 = SubResource("QuadMesh_mx3rv")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Ross Cell Anim" unique_id=1879101190]
 libraries/ = SubResource("AnimationLibrary_ovhx5")
 autoplay = &"Intro"
-
-[node name="VFX2" type="Node3D" parent="." unique_id=915792707]
 
 [node name="TutorialTrigger" parent="." unique_id=885435014 node_paths=PackedStringArray("door_to_unlock") instance=ExtResource("85_ttrig")]
 sequence_name = "OpeningTutorial"
@@ -2541,6 +2632,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.368645, 9.140897, -12.4837
 
 [node name="BackgroundGunPodium" parent="." unique_id=1135966921 instance=ExtResource("85_x0gst")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11074698, 0.19126523, -10.822699)
+
+[node name="EnvEffectFire" parent="." unique_id=70569599 instance=ExtResource("107_07lsr")]
+transform = Transform3D(0.7767613, -0.6297949, 0, 0.6297949, 0.7767613, 0, 0, 0, 1, 111.18774, 4.292289, 2.5403101)
 
 [connection signal="removecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]

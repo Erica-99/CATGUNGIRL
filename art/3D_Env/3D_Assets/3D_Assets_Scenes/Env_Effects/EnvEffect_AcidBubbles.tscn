@@ -43,9 +43,12 @@ point_count = 2
 curve = SubResource("Curve_buumd")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fflpu"]
-radial_velocity_min = 2.9999776
-radial_velocity_max = 5.9999776
-gravity = Vector3(0, 10, 0)
+direction = Vector3(1, 1, 0)
+initial_velocity_min = 0.19999999
+initial_velocity_max = 3.0
+radial_velocity_min = 0.99997765
+radial_velocity_max = 2.9999776
+gravity = Vector3(0, 1, 0)
 scale_curve = SubResource("CurveTexture_vkgee")
 collision_mode = 1
 collision_friction = 0.0
@@ -110,7 +113,7 @@ draw_pass_1 = SubResource("QuadMesh_ksfdc")
 [node name="AcidBubbles_Floating" type="GPUParticles3D" parent="." unique_id=590446926]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23346364, 0)
 amount = 3
-lifetime = 0.6
+lifetime = 1.2
 explosiveness = 0.34
 randomness = 1.0
 collision_base_size = 1.0

@@ -2,11 +2,19 @@
 
 [ext_resource type="Texture2D" uid="uid://by2rrwp7x5x6h" path="res://art/3D_Env/3D_Assets/3D_Textures/Env_Effects_Textures/Spark.png" id="2_78qjh"]
 
+[sub_resource type="Curve" id="Curve_7qnlf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4cqde"]
+curve = SubResource("Curve_7qnlf")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4cqde"]
 particle_flag_align_y = true
 radial_velocity_min = 4.9999776
 radial_velocity_max = 46.099976
 gravity = Vector3(0, -76.595, 0)
+scale_curve = SubResource("CurveTexture_4cqde")
 collision_mode = 1
 collision_friction = 1.0
 collision_bounce = 1.0
@@ -20,15 +28,22 @@ emission_energy_multiplier = 5.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_7qnlf"]
 material = SubResource("StandardMaterial3D_t5jej")
+size = Vector2(0.5, 0.5)
 center_offset = Vector3(0, 0.305, 0)
+
+[sub_resource type="Curve" id="Curve_78qjh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ua1ve"]
+curve = SubResource("Curve_78qjh")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ua1ve"]
 particle_flag_align_y = true
 radial_velocity_min = 4.9999776
 radial_velocity_max = 46.099976
 gravity = Vector3(0, -76.595, 0)
-scale_over_velocity_min = 1.0
-scale_over_velocity_max = 10.0
+scale_curve = SubResource("CurveTexture_ua1ve")
 collision_mode = 1
 collision_friction = 1.0
 collision_bounce = 1.0
@@ -44,16 +59,14 @@ emission_energy_multiplier = 5.0
 [sub_resource type="QuadMesh" id="QuadMesh_lctdy"]
 lightmap_size_hint = Vector2i(7, 7)
 material = SubResource("StandardMaterial3D_8wlfu")
-size = Vector2(0.3, 0.3)
+size = Vector2(0.1, 0.1)
 center_offset = Vector3(0, 0.425, 0)
 
 [node name="EnvEffectSpark" type="StaticBody3D" unique_id=602658946]
 
 [node name="SparExplosion_Big" type="GPUParticles3D" parent="." unique_id=1300317847]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
-amount = 20
-lifetime = 1.5
-explosiveness = 0.93
+amount = 10
+explosiveness = 1.0
 randomness = 1.0
 fixed_fps = 60
 collision_base_size = 1.0
@@ -61,10 +74,9 @@ process_material = SubResource("ParticleProcessMaterial_4cqde")
 draw_pass_1 = SubResource("QuadMesh_7qnlf")
 
 [node name="SparkExplosion_Small" type="GPUParticles3D" parent="." unique_id=698704591]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
-amount = 30
-lifetime = 3.0
-explosiveness = 0.96
+amount = 15
+lifetime = 1.5
+explosiveness = 1.0
 randomness = 1.0
 fixed_fps = 60
 collision_base_size = 1.0
