@@ -8,6 +8,7 @@ class_name BaseGun
 # some attached nodes will be forced (such as the BulletEmitter), others will be optional (i.e. attached handling for Player aiming etc idk)
 
 @export var gun_name: String
+@export var can_perfect_shot: bool = false
 
 @onready var ammo_component: AmmoComponent = $AmmoComponent
 @export var bullet_emitter: Node3D
@@ -138,8 +139,10 @@ func _process(delta: float) -> void:
 		else:
 			var spread = 1.0 - clampf(_time_since_last_shot / laser_convergence_speed, 0.0, 1.0)
 			spread_changed.emit(spread)
-		var in_window = not _is_charging and _is_aim_settled() and _time_since_last_shot < perfect_shot_max_interval
-		perfect_window_changed.emit(in_window)
+		
+		if can_perfect_shot:
+			var in_window = not _is_charging and _is_aim_settled() and _time_since_last_shot < perfect_shot_max_interval
+			perfect_window_changed.emit(in_window)
 	
 	else:
 		# if not in range, cannot shoot
@@ -221,7 +224,7 @@ func _is_aim_settled() -> bool:
 func _shoot_handler():
 	var damage = bullet_emitter.bullet_damage
 	## Perfect shot
-	if _is_aim_settled() and _time_since_last_shot < perfect_shot_max_interval:
+	if _is_aim_settled() and _time_since_last_shot < perfect_shot_max_interval and can_perfect_shot:
 		_is_spamming = false
 		_spam_count = 0
 		print("Perfect Shot fired, damage: ", bullet_emitter.bullet_damage * perfect_damage_multiplier)
