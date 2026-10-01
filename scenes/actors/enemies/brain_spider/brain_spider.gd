@@ -13,6 +13,7 @@ class_name BrainSpider
 @onready var team_component = $TeamComponent
 @onready var brain_spider_visuals: BrainSpiderVisuals = $SpiderPivot
 @onready var surface_check: RayCast3D = $SurfaceCheck
+@onready var explosion_hitbox: Area3D = $SpiderPivot/Visuals/Explosion/HitboxComponent
 
 @export_category("Node References")
 @export var animator: AnimationPlayer
@@ -142,22 +143,25 @@ func start_death() -> void:
 	state_machine.on_child_transition(state_machine.current_state, "brainspiderdeath")
 
 func damage_players_in_explosion_area() -> void:
+	var damage_instance := DamageHealInstance.new()
+	damage_instance.amount = explosion_damage
+	damage_instance.is_heal = false
+	damage_instance.type = Enums.DamageType.EXPLOSIVE
+	damage_instance.source = get_path()
+	damage_instance.death_screen_id = explosion_death_screen_id
+	explosion_hitbox.set("team_component", team_component)
+	explosion_hitbox.set("damage_or_heal_instance", damage_instance)
+	
 	for body in explosion_area_3d.get_overlapping_bodies():
 		if !body.is_in_group("player"):
 			continue
 		
-		var player_health: HealthComponent = body.get_node_or_null("HealthComponent")
+		var player_hurtbox := body.find_child("HurtboxComponent", true, false) as Area3D
 		
-		if player_health == null:
+		if player_hurtbox == null:
 			continue
 		
-		var damage_instance = DamageHealInstance.new()
-		damage_instance.amount = explosion_damage
-		damage_instance.is_heal = false
-		damage_instance.type = Enums.DamageType.EXPLOSIVE
-		damage_instance.source = get_path()
-		damage_instance.death_screen_id = explosion_death_screen_id
-		player_health.take_damage_or_heal(damage_instance)
+		player_hurtbox.call("take_hit", explosion_hitbox)
 
 func apply_soft_collision(delta: float) -> void:
 	if softCollider.is_colliding():

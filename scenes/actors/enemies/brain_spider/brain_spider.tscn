@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bs3ju2i8at5e" path="res://scenes/actors/enemies/brain_spider/brain_spider_visuals.gd" id="3_c6328"]
 [ext_resource type="PackedScene" uid="uid://c6wep4oftfyke" path="res://scenes/components/state_machine/state_machine.tscn" id="4_iobuc"]
 [ext_resource type="Script" uid="uid://dpwol7txodmxp" path="res://scenes/components/soft_collision.gd" id="5_c43gv"]
+[ext_resource type="Resource" uid="uid://kwya6skfcqto" path="res://resources/damage_heal_instance/damage_heal_instance.tres" id="7_5iimw"]
 [ext_resource type="Script" uid="uid://ckbdwmxo5r6p0" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_idle.gd" id="7_b3mpv"]
 [ext_resource type="PackedScene" uid="uid://csd06hicr5wny" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="8_3f5fc"]
 [ext_resource type="Script" uid="uid://hkfr65k60uhn" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_chase.gd" id="8_hh7i0"]
@@ -621,10 +622,12 @@ omni_range = 8.0
 [node name="Explosion" type="Node3D" parent="SpiderPivot/Visuals" unique_id=1074334678]
 
 [node name="HitboxComponent" parent="SpiderPivot/Visuals/Explosion" unique_id=1965125698 instance=ExtResource("8_3f5fc")]
+damage_or_heal_instance = ExtResource("7_5iimw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SpiderPivot/Visuals/Explosion/HitboxComponent" unique_id=1608720344]
 transform = Transform3D(4, 0, 0, 0, -1.7484555e-07, -4, 0, 4, -1.7484555e-07, 0, 0, 0)
 shape = SubResource("SphereShape3D_rxtbj")
+disabled = true
 
 [node name="TeamComponent" parent="SpiderPivot/Visuals/Explosion" unique_id=2076917082 instance=ExtResource("2_luyx4")]
 team = 2
