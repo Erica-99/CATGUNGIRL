@@ -31,6 +31,16 @@ func take_hit(hitbox: Area3D) -> void:
 			dmg_heal_instance.amount *= clampf(damage_multiplier, 0, 1)
 		else:
 			dmg_heal_instance.amount *= damage_multiplier
+		
+		# ONLY APPLY IF HITBOX HAS AN ASSIGNED ENVIRONMENT CHECK RAYCAST
+		if "environment_check" in hitbox and hitbox.environment_check != null:
+			var obstructed_damage = hitbox.call("handle_obstructed_hit", self)
+			
+			# -1 means continue as per usual (see handle_obstructed_hit in hitbox for additional details)
+			if obstructed_damage != -1:
+				# forcibly set obstructed damage amount
+				dmg_heal_instance.amount = obstructed_damage
+		
 		health_component.take_damage_or_heal(dmg_heal_instance)
 		hitbox.call("register_damage_dealt", dmg_heal_instance.amount * float(not dmg_heal_instance.is_heal))
 	
