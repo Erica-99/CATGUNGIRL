@@ -70,3 +70,7 @@ func exit() -> void:
 	#asp.stop()
 	#asp.finished.emit()
 	pass
+
+
+func _on_auto_explode_timer_timeout() -> void:
+	transitioned.emit(self, "missiledetonate")

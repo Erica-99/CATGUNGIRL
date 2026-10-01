@@ -21,3 +21,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == 'Activate':
 		anims.play('Active')
 	pass # Replace with function body.
+
+
+func _on_health_component_killed(killing_blow: DamageHealInstance, health_before_death: Variant) -> void:
+	state_machine.on_child_transition(state_machine.current_state, "missiledetonate")
