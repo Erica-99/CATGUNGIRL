@@ -5,9 +5,8 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	EventManager.unlock_gun.connect(_remove_gun_from_hands)
-	pass # Replace with function body.
+	EventManager.narrative_unlock_shotgun.connect(_remove_gun_from_hands)
+	EventManager.narrative_unlock_sniper.connect(_remove_gun_from_hands)
 
-func _remove_gun_from_hands(gun_name: String) -> void:
-	if gun_name == held_gun_name:
-		sprite.play("empty")
+func _remove_gun_from_hands() -> void:
+	sprite.play("empty")
