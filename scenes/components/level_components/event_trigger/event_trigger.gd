@@ -46,7 +46,7 @@ func _ready():
 	notify_property_list_changed()
 	# Connecting a signal name to activate the event trigger
 	if EventManager.has_signal(activate_on_event):
-		EventManager[activate_on_event].connect(activate)
+		EventManager.activate_on_event.connect(activate)
 
 func activate(_filler = null): #filler argument avoids errors from signals with values
 	active = true
