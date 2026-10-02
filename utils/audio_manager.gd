@@ -12,6 +12,9 @@ extends Node
 @export_category("Stingers")
 @export var enemy_stingers: Array[CallableSFX]
 
+@export_category("Dialogue")
+@export var dialogue_player: AudioStreamPlayer
+
 # which stems of the combat music are audible at each intensity [stem 1, stem 2, stem 3]
 const COMBAT_LAYERS: Dictionary = {
 	Enums.MusicIntensity.OFF:  [false, false, false],
@@ -219,6 +222,20 @@ func play_stinger(asp3d: AudioStreamPlayer3D, stinger_ref: String, bypass: bool 
 		take_hotseat(asp3d, stinger_ref)
 	else:
 		play_fallback(asp3d, stinger_ref)
+
+# Plays dialogue from a file and provides reference to the AudioStreamPlayer to the caller of the
+# method so it can detect when it finished.
+func play_dialogue_file(filepath: String) -> AudioStreamPlayer:
+	if filepath == "":
+		return null
+	elif not ResourceLoader.exists(filepath, "AudioStreamMP3"):
+		push_error("Could not find dialogue file at " + filepath)
+		return null
+	else:
+		var dialogue_audio = load(filepath)
+		dialogue_player.stream = dialogue_audio
+		dialogue_player.play()
+		return dialogue_player
 
 # Retrieves a sound effect resource from a SoundEffect or SoundEffectPool in the sfx_dict, that matches sfx_ref
 func get_sfx_from_dict(sfx_ref: String) -> SoundEffect:

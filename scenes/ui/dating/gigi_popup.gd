@@ -9,11 +9,15 @@ extends BoxContainer
 ## You can change this to however long you want before the popup closes
 var _delay = 5
 
+var forced_dialogue_additional_delay = 0.5
+
 # runtime vars
 var popup_active = false
 var current_popup_scene = []
 var popup_dialogue = {}
 var requires_option_selection = false
+
+var dialogue_player_reference: AudioStreamPlayer
 
 # consts
 const SECONDS_PER_CHARACTER = 0.05
@@ -63,7 +67,7 @@ func _display():
 	# play voice lines if any
 	var voice_line = popup_dialogue["audio_file"]
 	if voice_line != "":
-		AudioManager.play_sfx(voice_line) # Or however dialogue will be played by the AudioManager
+		dialogue_player_reference = AudioManager.play_dialogue_file(voice_line)
 	
 	# Trigger event
 	DialogueProcessor._check_and_trigger_dialogue_event(popup_dialogue)
@@ -86,12 +90,12 @@ func _display():
 	else:
 		# Simple way to make sure popup time matches voice clip
 		# Use whichever is longer, sound_clip length or _delay
-		if voice_line != "":
+		if voice_line != "" and dialogue_player_reference != null:
 			await get_tree().create_timer(
 				maxf(
-					AudioManager.get_sfx_from_dict(voice_line).sound_clip.get_length(),
+					dialogue_player_reference.stream.get_length(),
 					_delay
-				) + 2
+				) + forced_dialogue_additional_delay
 			).timeout
 			_increment_date_stage(popup_dialogue)
 		else:
