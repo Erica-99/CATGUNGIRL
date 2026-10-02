@@ -29,8 +29,8 @@ func enter() -> void:
 		push_warning("No VFX node found in current scene")
 		return
 
-	blood_VFX.global_position = VFX_spawn.global_position
 	VFX_spawn_node.add_child(blood_VFX)
+	blood_VFX.global_position = VFX_spawn.global_position
 	
 	AudioManager.play_sfx("enemy_death")
 	randomize()
@@ -54,10 +54,10 @@ func spawn_explosion():
 		if VFX_spawn_node == null:
 			push_warning("No VFX node found in current scene")
 			return
-		explosion_VFX.global_position = VFX_spawn.global_position
-		corpse_prop.global_position = actor.global_position
 		VFX_spawn_node.add_child(explosion_VFX)
 		VFX_spawn_node.add_child(corpse_prop)
+		explosion_VFX.global_position = VFX_spawn.global_position
+		corpse_prop.global_position = actor.global_position
 		
 func update(_delta: float) -> void:
 	fade_time += _delta
