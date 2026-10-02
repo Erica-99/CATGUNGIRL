@@ -344,7 +344,7 @@ func dialogue_ducking(active: bool):
 		#print("Before lowering: " + str(AudioServer.get_bus_volume_linear(bus_index)))
 		print("Lowering music")
 		music_base_volume = AudioServer.get_bus_volume_linear(bus_index)
-		#AudioServer.set_bus_volume_linear(bus_index, music_base_volume * 0.5)
+		AudioServer.set_bus_volume_linear(bus_index, music_base_volume * 0.7)
 		print("After lowering: " + str(AudioServer.get_bus_volume_linear(bus_index)))
 		# TODO: this does work conceptually, though at the moment lowering the music bus
 		# doesn't actually lower the music, which it probably should. You can test the idea
