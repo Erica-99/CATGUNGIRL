@@ -6,10 +6,13 @@
 [ext_resource type="Script" uid="uid://dxm4eiklqta28" path="res://scenes/components/state_machine/states/missile/missile_home.gd" id="4_a5ply"]
 [ext_resource type="Script" uid="uid://b58vefkia0mhm" path="res://scenes/components/state_machine/states/missile/missile_detonate.gd" id="5_epe2e"]
 [ext_resource type="PackedScene" uid="uid://b7kxu4jab6vwf" path="res://scenes/actors/missile/explosion.tscn" id="6_5lpuf"]
-[ext_resource type="Texture2D" uid="uid://cjntybrxpfrkm" path="res://art/2d_assets/missiles/Trunks_var.png" id="7_oiy2e"]
+[ext_resource type="Texture2D" uid="uid://cjntybrxpfrkm" path="res://art/2d_assets/Missiles/Trunks_var.png" id="7_oiy2e"]
 [ext_resource type="Texture2D" uid="uid://b4rhhpxamfoqj" path="res://art/TechArt/2_VFX/generic/IntenseNoise.png" id="8_e74af"]
 [ext_resource type="Material" uid="uid://drkjm5tcceqdf" path="res://art/TechArt/1_Shaders/ExplosionShader.tres" id="8_oiy2e"]
 [ext_resource type="Texture2D" uid="uid://djjglaalfp0ib" path="res://art/TechArt/2_VFX/generic/Explosion_Streaks.png" id="9_oiy2e"]
+[ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="11_deyi8"]
+[ext_resource type="PackedScene" uid="uid://i1e70lb7xot4" path="res://scenes/components/team_component/team_component.tscn" id="12_nsehu"]
+[ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="13_3dyd2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i0qyu"]
 size = Vector3(0.7, 1.5, 1)
@@ -484,7 +487,7 @@ _data = {
 
 [node name="Missile" type="CharacterBody3D" unique_id=1058796648 node_paths=PackedStringArray("state_machine") groups=["projectiles"]]
 collision_layer = 0
-collision_mask = 3
+collision_mask = 135
 axis_lock_linear_z = true
 script = ExtResource("1_5lpuf")
 state_machine = NodePath("StateMachine")
@@ -547,4 +550,25 @@ draw_pass_1 = SubResource("QuadMesh_44oql")
 libraries/ = SubResource("AnimationLibrary_e74af")
 autoplay = &"Active"
 
+[node name="HurtboxComponent" parent="." unique_id=338394069 node_paths=PackedStringArray("team_component", "health_component") instance=ExtResource("11_deyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+team_component = NodePath("../TeamComponent")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtboxComponent" unique_id=420804963]
+shape = SubResource("BoxShape3D_i0qyu")
+
+[node name="TeamComponent" parent="." unique_id=2076917082 instance=ExtResource("12_nsehu")]
+
+[node name="HealthComponent" parent="." unique_id=236252344 instance=ExtResource("13_3dyd2")]
+starting_health = 1.0
+max_health = 1.0
+
+[node name="AutoExplodeTimer" type="Timer" parent="." unique_id=134645479]
+wait_time = 8.0
+one_shot = true
+autostart = true
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]
+[connection signal="timeout" from="AutoExplodeTimer" to="StateMachine/MissileHome" method="_on_auto_explode_timer_timeout"]

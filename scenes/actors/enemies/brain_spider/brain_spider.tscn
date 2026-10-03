@@ -8,7 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="3_c43gv"]
 [ext_resource type="Script" uid="uid://bs3ju2i8at5e" path="res://scenes/actors/enemies/brain_spider/brain_spider_visuals.gd" id="3_c6328"]
 [ext_resource type="PackedScene" uid="uid://c6wep4oftfyke" path="res://scenes/components/state_machine/state_machine.tscn" id="4_iobuc"]
+[ext_resource type="AudioStream" uid="uid://h5mw5jplwvat" path="res://audio/sound_clips/Trunk_Shield_Break.mp3" id="4_vsnr6"]
+[ext_resource type="AudioStream" uid="uid://cdsre2334lhpf" path="res://audio/sound_clips/Sniper_Laser_Shot.mp3" id="5_5jp2h"]
 [ext_resource type="Script" uid="uid://dpwol7txodmxp" path="res://scenes/components/soft_collision.gd" id="5_c43gv"]
+[ext_resource type="AudioStream" uid="uid://crrsi02yb3g0o" path="res://audio/sound_clips/Trunk_Missile_LockOn.mp3" id="6_b31jq"]
+[ext_resource type="Resource" uid="uid://kwya6skfcqto" path="res://resources/damage_heal_instance/damage_heal_instance.tres" id="7_5iimw"]
 [ext_resource type="Script" uid="uid://ckbdwmxo5r6p0" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_idle.gd" id="7_b3mpv"]
 [ext_resource type="PackedScene" uid="uid://csd06hicr5wny" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="8_3f5fc"]
 [ext_resource type="Script" uid="uid://hkfr65k60uhn" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_chase.gd" id="8_hh7i0"]
@@ -17,9 +21,12 @@
 [ext_resource type="Material" uid="uid://drkjm5tcceqdf" path="res://art/TechArt/1_Shaders/ExplosionShader.tres" id="11_5jp2h"]
 [ext_resource type="Script" uid="uid://gs162ktdk81a" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_surface_chase.gd" id="12_0umjx"]
 [ext_resource type="Shader" uid="uid://cyxi7gf3tb6pe" path="res://art/TechArt/1_Shaders/s_streaks.tres" id="12_b31jq"]
+[ext_resource type="PackedScene" uid="uid://x4f2jperscm2" path="res://scenes/VFX/headshot_vfx.tscn" id="12_rxtbj"]
 [ext_resource type="Script" uid="uid://dp3kifbyh42ts" path="res://scenes/components/gun_component/laser.gd" id="13_jq4cx"]
 [ext_resource type="Script" uid="uid://cjqn2hw06rk6f" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_aim.gd" id="13_jv02q"]
 [ext_resource type="Script" uid="uid://54ums46u7kgu" path="res://scenes/components/state_machine/states/enemy/brain_spider/brain_spider_laser.gd" id="14_c6328"]
+[ext_resource type="PackedScene" uid="uid://1cp7l8jl2mma" path="res://scenes/components/stinger_component/stinger_component.tscn" id="23_nt2bq"]
+[ext_resource type="AudioStream" uid="uid://jdxg2216jjb4" path="res://audio/sound_clips/Scrub Charge Up.mp3" id="24_3f5fc"]
 
 [sub_resource type="Animation" id="Animation_2gu7b"]
 resource_name = "Scurry"
@@ -557,13 +564,14 @@ radius = 2.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fmqj0"]
 
-[node name="BrainSpider" type="CharacterBody3D" unique_id=166394742 node_paths=PackedStringArray("animator", "state_machine", "start_idle", "start_floor_aggro", "start_surface_aggro")]
+[node name="BrainSpider" type="CharacterBody3D" unique_id=166394742 node_paths=PackedStringArray("animator", "state_machine", "stinger_caller", "start_idle", "start_floor_aggro", "start_surface_aggro")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 collision_layer = 4
 collision_mask = 129
 script = ExtResource("1_fjoht")
 animator = NodePath("SpiderPivot/Visuals/AnimationPlayer")
 state_machine = NodePath("StateMachine")
+stinger_caller = NodePath("StingerComponent")
 start_idle = NodePath("StateMachine/BrainSpiderIdle")
 start_floor_aggro = NodePath("StateMachine/BrainSpiderChase")
 start_surface_aggro = NodePath("StateMachine/BrainSpiderSurfaceChase")
@@ -571,6 +579,13 @@ move_speed = 16.0
 acceleration = 40.0
 laser_cooldown = 1.5
 laser_scene = ExtResource("2_jv02q")
+laser_charge_sound = ExtResource("24_3f5fc")
+laser_power_down_sound = ExtResource("4_vsnr6")
+laser_power_down_pitch = 4.0
+laser_shot_sound = ExtResource("5_5jp2h")
+laser_shot_pitch = 2.0
+explosion_countdown_sound = ExtResource("6_b31jq")
+explosion_countdown_pitch = 0.7
 fall_death_max_time = 2.0
 
 [node name="SurfaceCheck" type="RayCast3D" parent="." unique_id=1854856336]
@@ -620,10 +635,12 @@ omni_range = 8.0
 [node name="Explosion" type="Node3D" parent="SpiderPivot/Visuals" unique_id=1074334678]
 
 [node name="HitboxComponent" parent="SpiderPivot/Visuals/Explosion" unique_id=1965125698 instance=ExtResource("8_3f5fc")]
+damage_or_heal_instance = ExtResource("7_5iimw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SpiderPivot/Visuals/Explosion/HitboxComponent" unique_id=1608720344]
 transform = Transform3D(4, 0, 0, 0, -1.7484555e-07, -4, 0, 4, -1.7484555e-07, 0, 0, 0)
 shape = SubResource("SphereShape3D_rxtbj")
+disabled = true
 
 [node name="TeamComponent" parent="SpiderPivot/Visuals/Explosion" unique_id=2076917082 instance=ExtResource("2_luyx4")]
 team = 2
@@ -688,6 +705,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 shape = SubResource("SphereShape3D_fjoht")
 debug_color = Color(0.5352921, 0.41064504, 1, 0.41960785)
 
+[node name="Headshot_VFX" parent="BodyHurtbox" unique_id=1741053268 instance=ExtResource("12_rxtbj")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.009410858, 0.17096709, 0.50006104)
+
 [node name="StateMachine" parent="." unique_id=1499026333 node_paths=PackedStringArray("initial_state") instance=ExtResource("4_iobuc")]
 initial_state = NodePath("BrainSpiderIdle")
 
@@ -747,3 +767,7 @@ script = ExtResource("5_c43gv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SoftCollider" unique_id=931580870]
 shape = SubResource("SphereShape3D_fmqj0")
+
+[node name="StingerComponent" parent="." unique_id=392420070 instance=ExtResource("23_nt2bq")]
+pitch_scale = 0.9
+bus = &"SFX"

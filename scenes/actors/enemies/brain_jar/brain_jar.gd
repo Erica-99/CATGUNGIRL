@@ -214,6 +214,8 @@ func _start_current_phase() -> void:
 		interactable.set("enabled", true)
 		terminal_group.set_active_visual(true)
 		active_terminals.append(terminal_group)
+	
+	EventManager.emit_signal("brainjar_phase_started", current_phase_index)
 
 func _on_terminal_activated() -> void:
 	if fight_state != FightState.TERMINALS:

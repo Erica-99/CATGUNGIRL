@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://bky5phrwc32e8" path="res://scenes/bullet/ScrubBullet.tscn" id="11_m88xv"]
 [ext_resource type="Texture2D" uid="uid://cxnbfk6xowxcb" path="res://art/2d_assets/Scrubs/ScrubHand2.png" id="12_oagyr"]
 [ext_resource type="Script" uid="uid://briciybelpcwe" path="res://scenes/components/state_machine/states/enemy/enemy_death.gd" id="21_m88xv"]
+[ext_resource type="PackedScene" uid="uid://x4f2jperscm2" path="res://scenes/VFX/headshot_vfx.tscn" id="21_oagyr"]
 [ext_resource type="Script" uid="uid://rwkg37dkkbs1" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_patrol.gd" id="22_bmk6k"]
 [ext_resource type="Script" uid="uid://dpwol7txodmxp" path="res://scenes/components/soft_collision.gd" id="22_hw6pp"]
 [ext_resource type="Script" uid="uid://d1xvpcaucwgpw" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_stun.gd" id="25_m0g3o"]
@@ -1584,6 +1585,9 @@ is_headshot = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012021974, 0.9222485, 0)
 shape = SubResource("BoxShape3D_t6mem")
 debug_color = Color(0.9201433, 0.7565305, 1, 0.41960785)
+
+[node name="Headshot_VFX" parent="HeadHurtbox" unique_id=1741053268 instance=ExtResource("21_oagyr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07056613, 1.0137236, 0.5)
 
 [node name="StateMachine" parent="." unique_id=1499026333 node_paths=PackedStringArray("initial_state") instance=ExtResource("4_apte0")]
 initial_state = NodePath("ScrubIdle")
