@@ -111,8 +111,22 @@
 [ext_resource type="PackedScene" uid="uid://c7l1q8t5qgmxu" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Barriers/BarrierCornerInner.tscn" id="108_xeu56"]
 [ext_resource type="PackedScene" uid="uid://bdbsdyb4y30ee" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Barriers/BarrierCentre.tscn" id="109_gbvye"]
 [ext_resource type="PackedScene" uid="uid://bhp4qyqpd7hsc" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/shotgun_unlockable.tscn" id="109_hwccm"]
+[ext_resource type="ArrayMesh" uid="uid://btg7uf5fq70gn" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/1_Prison/DoorwayPrisonRailPrison.obj" id="110_1b80s"]
 [ext_resource type="PackedScene" uid="uid://yvma87vdtlyv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6B_Lab/Cone.tscn" id="110_gbvye"]
 [ext_resource type="PackedScene" uid="uid://befg08ebvtbma" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Effects/EnvEffect_SparkExplsion.tscn" id="111_hwccm"]
+[ext_resource type="Texture2D" uid="uid://coio8xeekyrxq" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Base_color.png" id="111_p1qmc"]
+[ext_resource type="Texture2D" uid="uid://djuu0spniu0gp" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Mixed_AO.png" id="112_vhlci"]
+[ext_resource type="Texture2D" uid="uid://cvdxlc7lgtoc1" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Height.png" id="113_5cxmg"]
+[ext_resource type="Texture2D" uid="uid://0m33qxdqhrfp" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Base_metalness.png" id="114_veag6"]
+[ext_resource type="Texture2D" uid="uid://502420uyft1k" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Normal_OpenGL.png" id="115_jgxnf"]
+[ext_resource type="Texture2D" uid="uid://ccuxlmt0vkg4f" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Specular_roughness.png" id="116_20pci"]
+[ext_resource type="ArrayMesh" uid="uid://ckswbgels33vw" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/PrisonRailDoor.obj" id="117_6jowi"]
+[ext_resource type="Texture2D" uid="uid://douxwlagyddi2" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoor/PrisonRailDoor_Base_color.png" id="118_rcipq"]
+[ext_resource type="Texture2D" uid="uid://cyy251qs2ib8k" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoor/PrisonRailDoor_Mixed_AO.png" id="119_onojg"]
+[ext_resource type="Texture2D" uid="uid://bk1ww3w8smupl" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoor/PrisonRailDoor_Height.png" id="120_3lj4b"]
+[ext_resource type="Texture2D" uid="uid://dttc38t4pb2w6" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoor/PrisonRailDoor_Base_metalness.png" id="121_5pwml"]
+[ext_resource type="Texture2D" uid="uid://b2auods61mh3m" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoor/PrisonRailDoor_Normal_OpenGL.png" id="122_esn20"]
+[ext_resource type="Texture2D" uid="uid://trsmyjp5v7hh" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoor/PrisonRailDoor_Specular_roughness.png" id="123_t545s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sbpx0"]
 size = Vector3(22.905502, 13.890747, 13.72467)
@@ -157,56 +171,6 @@ Swap between your guns by pressing [img height=48]res://art/UI/Glyphs/PS5/PS5_Tr
 task = ""
 completion_mode = 2
 metadata/_custom_type_script = "uid://crdw2cwt2ffb5"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ixfw5"]
-albedo_texture = ExtResource("9_o4acx")
-metallic = 1.0
-metallic_texture = ExtResource("12_ljbqk")
-roughness_texture = ExtResource("14_mqpts")
-normal_enabled = true
-normal_texture = ExtResource("13_fmjon")
-ao_enabled = true
-ao_texture = ExtResource("10_qn4fw")
-heightmap_enabled = true
-heightmap_scale = 0.0
-heightmap_texture = ExtResource("11_3rmdv")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o4acx"]
-albedo_texture = ExtResource("10_pqlkt")
-metallic = 1.0
-metallic_texture = ExtResource("13_lucwu")
-roughness_texture = ExtResource("15_xw7aa")
-normal_enabled = true
-normal_texture = ExtResource("14_3mn6x")
-ao_enabled = true
-ao_texture = ExtResource("11_036lr")
-heightmap_enabled = true
-heightmap_scale = 0.0
-heightmap_texture = ExtResource("12_ifn3l")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pqlkt"]
-albedo_texture = ExtResource("11_ktb7l")
-metallic = 1.0
-metallic_texture = ExtResource("14_kgxtv")
-roughness_texture = ExtResource("16_nvi70")
-normal_enabled = true
-normal_texture = ExtResource("15_mbmqo")
-ao_enabled = true
-ao_texture = ExtResource("12_nyqx6")
-heightmap_enabled = true
-heightmap_texture = ExtResource("13_7s74f")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_036lr"]
-albedo_texture = ExtResource("11_ktb7l")
-metallic = 1.0
-metallic_texture = ExtResource("14_kgxtv")
-roughness_texture = ExtResource("16_nvi70")
-normal_enabled = true
-normal_texture = ExtResource("15_mbmqo")
-ao_enabled = true
-ao_texture = ExtResource("12_nyqx6")
-heightmap_enabled = true
-heightmap_texture = ExtResource("13_7s74f")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8gloo"]
 albedo_texture = ExtResource("9_o4acx")
@@ -258,56 +222,6 @@ ao_texture = ExtResource("12_nyqx6")
 heightmap_enabled = true
 heightmap_texture = ExtResource("13_7s74f")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_he5rc"]
-albedo_texture = ExtResource("9_o4acx")
-metallic = 1.0
-metallic_texture = ExtResource("12_ljbqk")
-roughness_texture = ExtResource("14_mqpts")
-normal_enabled = true
-normal_texture = ExtResource("13_fmjon")
-ao_enabled = true
-ao_texture = ExtResource("10_qn4fw")
-heightmap_enabled = true
-heightmap_scale = 0.0
-heightmap_texture = ExtResource("11_3rmdv")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qn4fw"]
-albedo_texture = ExtResource("10_pqlkt")
-metallic = 1.0
-metallic_texture = ExtResource("13_lucwu")
-roughness_texture = ExtResource("15_xw7aa")
-normal_enabled = true
-normal_texture = ExtResource("14_3mn6x")
-ao_enabled = true
-ao_texture = ExtResource("11_036lr")
-heightmap_enabled = true
-heightmap_scale = 0.0
-heightmap_texture = ExtResource("12_ifn3l")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3mn6x"]
-albedo_texture = ExtResource("11_ktb7l")
-metallic = 1.0
-metallic_texture = ExtResource("14_kgxtv")
-roughness_texture = ExtResource("16_nvi70")
-normal_enabled = true
-normal_texture = ExtResource("15_mbmqo")
-ao_enabled = true
-ao_texture = ExtResource("12_nyqx6")
-heightmap_enabled = true
-heightmap_texture = ExtResource("13_7s74f")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xw7aa"]
-albedo_texture = ExtResource("11_ktb7l")
-metallic = 1.0
-metallic_texture = ExtResource("14_kgxtv")
-roughness_texture = ExtResource("16_nvi70")
-normal_enabled = true
-normal_texture = ExtResource("15_mbmqo")
-ao_enabled = true
-ao_texture = ExtResource("12_nyqx6")
-heightmap_enabled = true
-heightmap_texture = ExtResource("13_7s74f")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vwyjr"]
 albedo_color = Color(1, 0.40089107, 0.38878706, 1)
 emission_enabled = true
@@ -335,6 +249,175 @@ normal_texture = ExtResource("95_hwccm")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bnsy6"]
 size = Vector3(2.121054, 4.283148, 2.121054)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3nqmm"]
+albedo_texture = ExtResource("111_p1qmc")
+metallic = 1.0
+metallic_texture = ExtResource("114_veag6")
+roughness_texture = ExtResource("116_20pci")
+normal_enabled = true
+normal_texture = ExtResource("115_jgxnf")
+ao_enabled = true
+ao_texture = ExtResource("112_vhlci")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("113_5cxmg")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tv4k6"]
+size = Vector3(0.20032501, 0.41333008, 4.9869385)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uy2wh"]
+size = Vector3(0.20032501, 0.20953369, 4.9869385)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oooqa"]
+albedo_texture = ExtResource("118_rcipq")
+metallic = 1.0
+metallic_texture = ExtResource("121_5pwml")
+roughness_texture = ExtResource("123_t545s")
+normal_enabled = true
+normal_texture = ExtResource("122_esn20")
+ao_enabled = true
+ao_texture = ExtResource("119_onojg")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("120_3lj4b")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hfsqw"]
+size = Vector3(0.2, 3.1226501, 2.2878113)
+
+[sub_resource type="Animation" id="Animation_gphbj"]
+resource_name = "MovingCell"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrisonCrane6:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(7.381422, 16.79339, 0), Vector3(73.9162, 16.79339, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorwayPrisonRailPrison/PrisonRailDoor_01:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.39999998, 0.56666666, 0.78, 1.7667, 2.3333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 0.5358867, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.173, 0, 0), Vector3(0.173, 0, 0), Vector3(0.173, 0, 0.1), Vector3(0.173, 0, 0.1), Vector3(0.173, 0, 2.173)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DoorwayPrisonRailPrison/PrisonRailDoor_01:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.1000334, 1.6333667),
+"transitions": PackedFloat32Array(1, 0.59460354, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1.4864097, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DoorwayPrisonRailPrison/PrisonRailDoor_02:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.39999998, 0.56666666, 0.78, 1.7667, 2.3333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 0.5358867, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.173, 0, 0), Vector3(0.173, 0, 0), Vector3(0.173, 0, -0.1), Vector3(0.173, 0, -0.1), Vector3(0.173, 0, -2.173)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DoorwayPrisonRailPrison/PrisonRailDoor_02:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.1000334, 1.6333667),
+"transitions": PackedFloat32Array(1, 0.59460354, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -1.4870205, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1b80s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PrisonCrane6:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(7.381422, 16.79339, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorwayPrisonRailPrison/PrisonRailDoor_01:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DoorwayPrisonRailPrison/PrisonRailDoor_01:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DoorwayPrisonRailPrison/PrisonRailDoor_02:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DoorwayPrisonRailPrison/PrisonRailDoor_02:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p1qmc"]
+_data = {
+&"MovingCell": SubResource("Animation_gphbj"),
+&"RESET": SubResource("Animation_1b80s")
+}
 
 [node name="StageTwo" type="Node3D" unique_id=1996110792]
 script = ExtResource("1_axvnb")
@@ -714,6 +797,26 @@ shadow_normal_bias = 0.72
 shadow_blur = 0.0
 omni_range = 18.392912
 
+[node name="CeilingLight25" type="SpotLight3D" parent="Lighting" unique_id=758707786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.041016, 23.07135, -6.4171486)
+light_color = Color(2.6034334, 2.6034334, 2.6034334, 1)
+light_energy = 16.0
+light_specular = 1.28
+shadow_bias = 1.3
+shadow_normal_bias = 10.0
+shadow_blur = 0.0
+spot_angle = 29.082682
+
+[node name="CeilingLight26" type="SpotLight3D" parent="Lighting" unique_id=2106104909]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.041016, 23.07135, -6.4171486)
+light_color = Color(2.6034334, 2.6034334, 2.6034334, 1)
+light_energy = 16.0
+light_specular = 1.28
+shadow_bias = 1.3
+shadow_normal_bias = 10.0
+shadow_blur = 0.0
+spot_angle = 29.082682
+
 [node name="EVENT_TRIGGERS" type="Node" parent="." unique_id=1535957502]
 
 [node name="EventTrigger" parent="EVENT_TRIGGERS" unique_id=1311781014 instance=ExtResource("10_axvnb")]
@@ -979,51 +1082,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 54.713, -8.4, 0)
 [node name="PrisonCell12" parent="Environment/PrisonCrane4" unique_id=1338422193 instance=ExtResource("28_bel3r")]
 transform = Transform3D(1.125, 0, 0, 0, 1.125, 0, 0, 0, 1.125, 0, 1.6300001, 0)
 
-[node name="PrisonCrane3" type="StaticBody3D" parent="Environment" unique_id=1223110205]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 44.022385, 16.8, 0)
-
-[node name="PrisonRailCranePrt01" type="MeshInstance3D" parent="Environment/PrisonCrane3" unique_id=2042612978]
-mesh = ExtResource("17_maeby")
-surface_material_override/0 = SubResource("StandardMaterial3D_ixfw5")
-
-[node name="PrisonRailCranePrt02" type="MeshInstance3D" parent="Environment/PrisonCrane3/PrisonRailCranePrt01" unique_id=1987740934]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5134134, 0)
-mesh = ExtResource("18_b4ysr")
-surface_material_override/0 = SubResource("StandardMaterial3D_o4acx")
-
-[node name="PrisonRailCranePrt03" type="MeshInstance3D" parent="Environment/PrisonCrane3/PrisonRailCranePrt01/PrisonRailCranePrt02" unique_id=1653983456]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -3.065, 0)
-mesh = ExtResource("19_6wva2")
-surface_material_override/0 = SubResource("StandardMaterial3D_pqlkt")
-
-[node name="PrisonRailCranePrt04" type="MeshInstance3D" parent="Environment/PrisonCrane3/PrisonRailCranePrt01/PrisonRailCranePrt02" unique_id=163761096]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.3, -3.065, 0)
-mesh = ExtResource("19_6wva2")
-surface_material_override/0 = SubResource("StandardMaterial3D_036lr")
-
-[node name="PrisonCell9" parent="Environment/PrisonCrane3" unique_id=1430763070 instance=ExtResource("28_bel3r")]
-transform = Transform3D(1.125, 0, 0, 0, 1.125, 0, 0, 0, 1.125, 0, 2.077774, 0)
-
-[node name="CeilingLight21" type="SpotLight3D" parent="Environment/PrisonCrane3" unique_id=758707786]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 3.0093155, 3.1356754, -3.2085743)
-light_color = Color(2.6034334, 2.6034334, 2.6034334, 1)
-light_energy = 16.0
-light_specular = 1.28
-shadow_bias = 1.3
-shadow_normal_bias = 10.0
-shadow_blur = 0.0
-spot_angle = 29.082682
-
-[node name="CeilingLight22" type="SpotLight3D" parent="Environment/PrisonCrane3" unique_id=2106104909]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -6.9906845, 3.1356754, -3.2085743)
-light_color = Color(2.6034334, 2.6034334, 2.6034334, 1)
-light_energy = 16.0
-light_specular = 1.28
-shadow_bias = 1.3
-shadow_normal_bias = 10.0
-shadow_blur = 0.0
-spot_angle = 29.082682
-
 [node name="PrisonCrane5" type="StaticBody3D" parent="Environment" unique_id=1372321457]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 24.296753, -8.4, 0)
 
@@ -1049,39 +1107,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_lucwu")
 [node name="PrisonCell2" parent="Environment/PrisonCrane5/PrisonRailCranePrt01/PrisonRailCranePrt02" unique_id=2068928649 instance=ExtResource("20_0yyri")]
 transform = Transform3D(1.125, 0, 0, 0, 1.125, 0, 0, 0, 1.125, -0.058843613, -1.4379063, 0.0013586283)
 
-[node name="PrisonCrane" parent="Environment" unique_id=1118647347 instance=ExtResource("12_djn4x")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 55.95731, 16.8, 0)
-
-[node name="PrisonCell11" parent="Environment/PrisonCrane" unique_id=161586493 instance=ExtResource("20_0yyri")]
-transform = Transform3D(-1.125, 0, -9.8350625e-08, 0, 1.125, 0, 9.8350625e-08, 0, -1.125, 0, 1.6337519, 0)
-
 [node name="PrisonCell10" parent="Environment" unique_id=974115329 instance=ExtResource("28_bel3r")]
 transform = Transform3D(2.2222989, 0.3519776, 0, -0.3519776, 2.2222989, 0, 0, 0, 2.2499998, -5.1963487, -5.378984, 0)
-
-[node name="PrisonCrane2" type="StaticBody3D" parent="Environment" unique_id=1763486373]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30.867, 16.8, 0)
-
-[node name="PrisonRailCranePrt01" type="MeshInstance3D" parent="Environment/PrisonCrane2" unique_id=763220834]
-mesh = ExtResource("17_maeby")
-surface_material_override/0 = SubResource("StandardMaterial3D_he5rc")
-
-[node name="PrisonRailCranePrt02" type="MeshInstance3D" parent="Environment/PrisonCrane2/PrisonRailCranePrt01" unique_id=1703412487]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.065071, 0)
-mesh = ExtResource("18_b4ysr")
-surface_material_override/0 = SubResource("StandardMaterial3D_qn4fw")
-
-[node name="PrisonRailCranePrt03" type="MeshInstance3D" parent="Environment/PrisonCrane2/PrisonRailCranePrt01/PrisonRailCranePrt02" unique_id=993714661]
-transform = Transform3D(0.9945237, -0.104511105, 0, 0.104511105, 0.9945237, 0, 0, 0, 1, 0.30063438, -2.8187675, 2.3841858e-07)
-mesh = ExtResource("19_6wva2")
-surface_material_override/0 = SubResource("StandardMaterial3D_3mn6x")
-
-[node name="PrisonRailCranePrt04" type="MeshInstance3D" parent="Environment/PrisonCrane2/PrisonRailCranePrt01/PrisonRailCranePrt02" unique_id=1279439788]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.2148695, -3.0650005, 0)
-mesh = ExtResource("19_6wva2")
-surface_material_override/0 = SubResource("StandardMaterial3D_xw7aa")
-
-[node name="PrisonCell8" parent="Environment/PrisonCrane2" unique_id=1837785664 instance=ExtResource("28_bel3r")]
-transform = Transform3D(1.0936711, 0.25931907, -0.047561318, -0.25955114, 1.0946498, 0, 0.04627821, 0.010972972, 1.1239941, -0.2599964, 1.6092863, 0)
 
 [node name="PrisonCraneRail3" parent="Environment" unique_id=279155394 instance=ExtResource("21_q4g22")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 16.8, 0)
@@ -1250,12 +1277,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 8.4, -20)
 
 [node name="DoorwayNoneMidPrison18" parent="Environment" unique_id=795942685 instance=ExtResource("19_mvfv7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 16.8, -10)
-
-[node name="DoorwayPrisonRailPrison3" parent="Environment" unique_id=1993707874 instance=ExtResource("21_setcc")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 55, 16.8, 0)
-
-[node name="DoorwayPrisonRailPrison" parent="Environment" unique_id=466471037 instance=ExtResource("21_setcc")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 25, 16.8, 0)
 
 [node name="DoorwayNoneMidPrison19" parent="Environment" unique_id=1029178566 instance=ExtResource("19_mvfv7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 16.8, -20)
@@ -2109,11 +2130,126 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.82405, -24.99999, 2.736488
 [node name="EnvEffectSpark" parent="VFX" unique_id=602658946 instance=ExtResource("111_hwccm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.242336, -2.153413, 2.7747068)
 
-[node name="EnvEffectSpark2" parent="VFX" unique_id=1921413620 instance=ExtResource("111_hwccm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.988552, 23.119518, 2.4246588)
-
 [node name="DoorBasic_Malfunctioning" parent="VFX" unique_id=1555562335 instance=ExtResource("108_er66k")]
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 70, -16.8, -15.2)
+
+[node name="MovingCellCrane" type="StaticBody3D" parent="VFX" unique_id=1870792034]
+
+[node name="DoorwayPrisonRailPrison3" type="StaticBody3D" parent="VFX/MovingCellCrane" unique_id=1993707874]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 55, 16.8, 0)
+
+[node name="DoorwayPrisonRailPrison_Mesh" type="MeshInstance3D" parent="VFX/MovingCellCrane/DoorwayPrisonRailPrison3" unique_id=1877230586]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+mesh = ExtResource("110_1b80s")
+surface_material_override/0 = SubResource("StandardMaterial3D_3nqmm")
+
+[node name="DoorwayPrisonRailPrison_Collision_01" type="CollisionShape3D" parent="VFX/MovingCellCrane/DoorwayPrisonRailPrison3" unique_id=1568972765]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.247925e-05, 0.10656738, 0.0037231445)
+shape = SubResource("BoxShape3D_tv4k6")
+
+[node name="DoorwayPrisonRailPrison_Collision_02" type="CollisionShape3D" parent="VFX/MovingCellCrane/DoorwayPrisonRailPrison3" unique_id=1700892544]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.247925e-05, 3.9968739, 0.0037231445)
+shape = SubResource("BoxShape3D_uy2wh")
+
+[node name="DoorwayPrisonRailPrison_CollisionGPU_01" type="GPUParticlesCollisionBox3D" parent="VFX/MovingCellCrane/DoorwayPrisonRailPrison3" unique_id=465486954]
+transform = Transform3D(0.10047269, 0, 0, 0, 1, 0, 0, 0, 1.5759289, 0, 1.6664581, -0.008471966)
+visible = false
+size = Vector3(2, 3.5292053, 2.006836)
+
+[node name="DoorwayPrisonRailPrison_CollisionGPU_02" type="GPUParticlesCollisionBox3D" parent="VFX/MovingCellCrane/DoorwayPrisonRailPrison3" unique_id=1552171586]
+transform = Transform3D(0.10047269, 0, 0, 0, 1, 0, 0, 0, 2.478681, 0, 3.9867477, 0.00027251244)
+visible = false
+size = Vector3(2, 0.2089386, 2.0074463)
+
+[node name="PrisonRailDoor_01" type="StaticBody3D" parent="VFX/MovingCellCrane/DoorwayPrisonRailPrison3" unique_id=647697957]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0, 0)
+
+[node name="PrisonRailDoor_Mesh_01" type="MeshInstance3D" parent="VFX/MovingCellCrane/DoorwayPrisonRailPrison3/PrisonRailDoor_01" unique_id=151096342]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0, 0)
+mesh = ExtResource("117_6jowi")
+surface_material_override/0 = SubResource("StandardMaterial3D_oooqa")
+
+[node name="PrisonRailDoor_Collision_01" type="CollisionShape3D" parent="VFX/MovingCellCrane/DoorwayPrisonRailPrison3/PrisonRailDoor_01" unique_id=1645092404]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 1.8762027, 1.1440581)
+visible = false
+shape = SubResource("BoxShape3D_hfsqw")
+
+[node name="PrisonRailDoor_02" type="StaticBody3D" parent="VFX/MovingCellCrane/DoorwayPrisonRailPrison3" unique_id=1273916700]
+
+[node name="PrisonRailDoor_Mesh_02" type="MeshInstance3D" parent="VFX/MovingCellCrane/DoorwayPrisonRailPrison3/PrisonRailDoor_02" unique_id=658551115]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
+mesh = ExtResource("117_6jowi")
+surface_material_override/0 = SubResource("StandardMaterial3D_oooqa")
+
+[node name="PrisonRailDoor_Collision_02" type="CollisionShape3D" parent="VFX/MovingCellCrane/DoorwayPrisonRailPrison3/PrisonRailDoor_02" unique_id=888861802]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.727392e-07, 1.876, -1.144)
+visible = false
+shape = SubResource("BoxShape3D_hfsqw")
+
+[node name="DoorwayPrisonRailPrison" type="StaticBody3D" parent="VFX/MovingCellCrane" unique_id=466471037]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 25, 16.8, 0)
+
+[node name="DoorwayPrisonRailPrison_Mesh" type="MeshInstance3D" parent="VFX/MovingCellCrane/DoorwayPrisonRailPrison" unique_id=632625739]
+mesh = ExtResource("110_1b80s")
+surface_material_override/0 = SubResource("StandardMaterial3D_3nqmm")
+
+[node name="DoorwayPrisonRailPrison_Collision_01" type="CollisionShape3D" parent="VFX/MovingCellCrane/DoorwayPrisonRailPrison" unique_id=424285286]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.247925e-05, 0.10656738, 0.0037231445)
+shape = SubResource("BoxShape3D_tv4k6")
+
+[node name="DoorwayPrisonRailPrison_Collision_02" type="CollisionShape3D" parent="VFX/MovingCellCrane/DoorwayPrisonRailPrison" unique_id=1396845247]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.247925e-05, 3.9968739, 0.0037231445)
+shape = SubResource("BoxShape3D_uy2wh")
+
+[node name="DoorwayPrisonRailPrison_CollisionGPU_01" type="GPUParticlesCollisionBox3D" parent="VFX/MovingCellCrane/DoorwayPrisonRailPrison" unique_id=591454244]
+transform = Transform3D(0.10047269, 0, 0, 0, 1, 0, 0, 0, 1.5759289, 0, 1.6664581, -0.008471966)
+visible = false
+size = Vector3(2, 3.5292053, 2.006836)
+
+[node name="DoorwayPrisonRailPrison_CollisionGPU_02" type="GPUParticlesCollisionBox3D" parent="VFX/MovingCellCrane/DoorwayPrisonRailPrison" unique_id=1261147805]
+transform = Transform3D(0.10047269, 0, 0, 0, 1, 0, 0, 0, 2.478681, 0, 3.9867477, 0.00027251244)
+visible = false
+size = Vector3(2, 0.2089386, 2.0074463)
+
+[node name="PrisonRailDoor_01" type="StaticBody3D" parent="VFX/MovingCellCrane/DoorwayPrisonRailPrison" unique_id=1713948846]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0, 0)
+
+[node name="PrisonRailDoor_Mesh_01" type="MeshInstance3D" parent="VFX/MovingCellCrane/DoorwayPrisonRailPrison/PrisonRailDoor_01" unique_id=1947785647]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0, 0)
+mesh = ExtResource("117_6jowi")
+surface_material_override/0 = SubResource("StandardMaterial3D_oooqa")
+
+[node name="PrisonRailDoor_Collision_01" type="CollisionShape3D" parent="VFX/MovingCellCrane/DoorwayPrisonRailPrison/PrisonRailDoor_01" unique_id=16660242]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 1.8762027, 1.1440581)
+visible = false
+shape = SubResource("BoxShape3D_hfsqw")
+
+[node name="PrisonRailDoor_02" type="StaticBody3D" parent="VFX/MovingCellCrane/DoorwayPrisonRailPrison" unique_id=905651187]
+
+[node name="PrisonRailDoor_Mesh_02" type="MeshInstance3D" parent="VFX/MovingCellCrane/DoorwayPrisonRailPrison/PrisonRailDoor_02" unique_id=45482691]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
+mesh = ExtResource("117_6jowi")
+surface_material_override/0 = SubResource("StandardMaterial3D_oooqa")
+
+[node name="PrisonRailDoor_Collision_02" type="CollisionShape3D" parent="VFX/MovingCellCrane/DoorwayPrisonRailPrison/PrisonRailDoor_02" unique_id=1656709069]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.727392e-07, 1.876, -1.144)
+visible = false
+shape = SubResource("BoxShape3D_hfsqw")
+
+[node name="PrisonCrane6" parent="VFX/MovingCellCrane" unique_id=2088652765 instance=ExtResource("12_djn4x")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 7.381422, 16.79339, 0)
+
+[node name="PrisonCell12" parent="VFX/MovingCellCrane/PrisonCrane6" unique_id=1430763070 instance=ExtResource("28_bel3r")]
+transform = Transform3D(1.125, 0, 0, 0, 1.125, 0, 0, 0, 1.125, 0, 1.6300001, 0)
+
+[node name="EnvEffectSpark" parent="VFX/MovingCellCrane/PrisonCrane6" unique_id=1688091822 instance=ExtResource("111_hwccm")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.013956785, 3.4992294, 1.7971091)
+
+[node name="EnvEffectSpark2" parent="VFX/MovingCellCrane/PrisonCrane6" unique_id=1351535355 instance=ExtResource("111_hwccm")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.013956785, 3.496951, -1.8452108)
+
+[node name="AnimationPlayerMovingCell" type="AnimationPlayer" parent="VFX/MovingCellCrane" unique_id=1123990912]
+libraries/ = SubResource("AnimationLibrary_p1qmc")
 
 [node name="DoorLargeBasic" parent="." unique_id=104802693 instance=ExtResource("80_75qhx")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5, -25.2, 0)

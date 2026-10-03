@@ -50,148 +50,116 @@ heightmap_texture = ExtResource("11_hfsqw")
 [sub_resource type="BoxShape3D" id="BoxShape3D_hfsqw"]
 size = Vector3(0.2, 3.1226501, 2.2878113)
 
-[sub_resource type="Animation" id="Animation_tv4k6"]
-resource_name = "Closed"
-length = 2.5
+[sub_resource type="Animation" id="Animation_hfsqw"]
+resource_name = "PrisonRailDoorClosing"
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PrisonRailDoor_02:rotation")
+tracks/0/path = NodePath("PrisonRailDoor_01:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.7, 1.5666665, 1.8, 2, 2.4),
+"transitions": PackedFloat32Array(1.3, 1, 1.3, 1, 1.4142138, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0.173, 0, 2.173), Vector3(0.173, 0, 0.1), Vector3(0.173, 0, 0.1), Vector3(0.173, 0, 0), Vector3(0.173, 0, 0), Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PrisonRailDoor_02:position")
+tracks/1/path = NodePath("PrisonRailDoor_01:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.8666667, 1.3, 2.4),
+"transitions": PackedFloat32Array(1.3, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0, 1.4864097, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PrisonRailDoor_01:rotation")
+tracks/2/path = NodePath("PrisonRailDoor_02:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.7, 1.5666665, 1.8, 2, 2.4),
+"transitions": PackedFloat32Array(1.3, 1, 1.3, 1, 1.3, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0.173, 0, -2.173), Vector3(0.173, 0, -0.1), Vector3(0.173, 0, -0.1), Vector3(0.173, 0, 0), Vector3(0.173, 0, 0), Vector3(0, 0, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("PrisonRailDoor_01:position")
+tracks/3/path = NodePath("PrisonRailDoor_02:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.8666667, 1.3, 2.4),
+"transitions": PackedFloat32Array(1.3, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0, -1.4870205, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_4l1f4"]
-resource_name = "Closing"
-length = 1.5
+[sub_resource type="Animation" id="Animation_tv4k6"]
+resource_name = "PrisonRailDoorOpening"
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PrisonRailDoor_02:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8333333, 1.0666667, 1.2666667, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, -1.6117574), Vector3(0, 0, -0.2686262), Vector3(0, 0, -0.2686262), Vector3(0, 0, -0.2686262), Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PrisonRailDoor_01:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.8333333, 1.0666667, 1.2666667, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 1.612), Vector3(0, 0, 0.26866674), Vector3(0, 0, 0.26866674), Vector3(0, 0, 0.26866674), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_ixuxp"]
-resource_name = "Open"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PrisonRailDoor_02:position")
+tracks/0/path = NodePath("PrisonRailDoor_01:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.29996657, 0.46663326, 0.67996657, 0.9999666, 1.4),
+"transitions": PackedFloat32Array(0.5176324, 1, 1, 1, 1.4142138, 1),
 "update": 0,
-"values": [Vector3(0, 0, -1.6117574)]
+"values": [Vector3(0, 0, 0), Vector3(0.173, 0, 0), Vector3(0.173, 0, 0), Vector3(0.173, 0, 0.1), Vector3(0.173, 0, 0.1), Vector3(0.173, 0, 2.173)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PrisonRailDoor_01:position")
+tracks/1/path = NodePath("PrisonRailDoor_01:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.9999666, 1.3999667),
+"transitions": PackedFloat32Array(1, 1.4142138, 1),
 "update": 0,
-"values": [Vector3(0, 0, 1.612)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1.4864097, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PrisonRailDoor_02:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.29996657, 0.46663326, 0.67996657, 0.9999666, 1.4),
+"transitions": PackedFloat32Array(0.5176324, 1, 1, 1, 1.4142138, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.173, 0, 0), Vector3(0.173, 0, 0), Vector3(0.173, 0, -0.1), Vector3(0.173, 0, -0.1), Vector3(0.173, 0, -2.173)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PrisonRailDoor_02:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 1.4),
+"transitions": PackedFloat32Array(1, 1.4142138, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -1.4870205, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_uy2wh"]
-resource_name = "Opening"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PrisonRailDoor_02:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6333333, 0.93333334, 1.1666666, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, -1.452), Vector3(0, 0, -1.452), Vector3(0, 0, -1.452), Vector3(0, 0, -1.6117574)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PrisonRailDoor_01:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6333333, 0.93333334, 1.1666666, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 1.4515957), Vector3(0, 0, 1.4515957), Vector3(0, 0, 1.4515957), Vector3(0, 0, 1.612)]
-}
-
-[sub_resource type="Animation" id="Animation_hfsqw"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PrisonRailDoor_02:rotation")
+tracks/0/path = NodePath("PrisonRailDoor_01:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -203,7 +171,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PrisonRailDoor_02:position")
+tracks/1/path = NodePath("PrisonRailDoor_01:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -215,7 +183,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PrisonRailDoor_01:rotation")
+tracks/2/path = NodePath("PrisonRailDoor_02:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -227,7 +195,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("PrisonRailDoor_01:position")
+tracks/3/path = NodePath("PrisonRailDoor_02:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -237,13 +205,15 @@ tracks/3/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ixuxp"]
+[sub_resource type="Animation" id="Animation_ixuxp"]
+resource_name = "test"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hfsqw"]
 _data = {
-&"Closed": SubResource("Animation_tv4k6"),
-&"Closing": SubResource("Animation_4l1f4"),
-&"Open": SubResource("Animation_ixuxp"),
-&"Opening": SubResource("Animation_uy2wh"),
-&"RESET": SubResource("Animation_hfsqw")
+&"PrisonRailDoorClosing": SubResource("Animation_hfsqw"),
+&"PrisonRailDoorOpening": SubResource("Animation_tv4k6"),
+&"RESET": SubResource("Animation_uy2wh"),
+&"test": SubResource("Animation_ixuxp")
 }
 
 [node name="DoorwayPrisonRailPrison" type="StaticBody3D" unique_id=466471037]
@@ -296,5 +266,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.727392e-07, 1.876, -1.144)
 visible = false
 shape = SubResource("BoxShape3D_hfsqw")
 
-[node name="PrisonRailDoor_AnimationPlayer" type="AnimationPlayer" parent="." unique_id=636822427]
-libraries/ = SubResource("AnimationLibrary_ixuxp")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=971649582]
+libraries/ = SubResource("AnimationLibrary_hfsqw")
+autoplay = &"PrisonRailDoorOpening"
