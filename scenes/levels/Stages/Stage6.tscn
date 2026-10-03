@@ -40,7 +40,7 @@
 [ext_resource type="PackedScene" uid="uid://dbtlwlyu6425" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/BrainJarTerminal.tscn" id="31_oxwui"]
 [ext_resource type="PackedScene" uid="uid://d3kvu3axqb0lu" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/ServerRack2.tscn" id="31_rjdl7"]
 [ext_resource type="PackedScene" uid="uid://c4dic5lfiwofb" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/ServerRack3.tscn" id="32_d3ojd"]
-[ext_resource type="PackedScene" uid="uid://3rxrkwhddxbe" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/BrainReactor.tscn" id="32_oxwui"]
+[ext_resource type="PackedScene" uid="uid://3rxrkwhddxbe" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/BrainReactorLeft.tscn" id="32_oxwui"]
 [ext_resource type="PackedScene" uid="uid://casbl5hg2jrqe" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/EnemySpawnDoor.tscn" id="32_rjdl7"]
 [ext_resource type="ArrayMesh" uid="uid://bgjw6p4a32rou" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/0_MultipleMisc/SteelBeamDiagonal.obj" id="33_52obh"]
 [ext_resource type="PackedScene" uid="uid://b8qto5sawjpis" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/3_GuardRooms/ComputerRig.tscn" id="33_aq1n5"]
@@ -118,6 +118,7 @@
 [ext_resource type="Texture2D" uid="uid://kaq84m6845ac" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/7_BrainJar/Platforms/PlatformsAll_DefaultMaterial_Emissive.png" id="100_aoiei"]
 [ext_resource type="PackedScene" uid="uid://yvma87vdtlyv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6B_Lab/Cone.tscn" id="105_f8ekq"]
 [ext_resource type="ArrayMesh" uid="uid://bmutfrb651hqm" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/7_BrainJar/FacilityCoreHatch.obj" id="113_uv2lo"]
+[ext_resource type="PackedScene" uid="uid://b8oobnb6vntie" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/BrainReactorRight.tscn" id="119_f8ekq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o5d64"]
 size = Vector3(20.489685, 17.532715, 13.72467)
@@ -127,6 +128,7 @@ background_mode = 1
 glow_enabled = true
 glow_normalized = true
 glow_strength = 1.5
+fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0, 0, 0, 1)
 fog_light_energy = 0.0
@@ -931,6 +933,12 @@ visible = false
 
 [node name="Reactors" type="Node3D" parent="Interactive" unique_id=261082351]
 
+[node name="BrainReactorLeft" parent="Interactive/Reactors" unique_id=1141398503 instance=ExtResource("32_oxwui")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 0.2, -45)
+
+[node name="BrainReactorRight" parent="Interactive/Reactors" unique_id=1752002559 instance=ExtResource("119_f8ekq")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -44, 0.2, -45)
+
 [node name="Collisions" type="StaticBody3D" parent="Interactive" unique_id=296483058]
 
 [node name="GPUCOLLISIONS" type="Node3D" parent="Interactive/Collisions" unique_id=478859740]
@@ -1328,6 +1336,21 @@ shape = SubResource("BoxShape3D_oc6pb")
 transform = Transform3D(1.2398491, 0, 0, 0, 1.1999998, 0, 0, 0, 1.1999998, -204.01376, 3.2440271, -0.7463851)
 shape = SubResource("BoxShape3D_oc6pb")
 
+[node name="FacilityCore" parent="Interactive" unique_id=913940677 instance=ExtResource("30_ewsem")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
+
+[node name="BrainJar" parent="Interactive" unique_id=561627710 node_paths=PackedStringArray("terminals", "facility_core", "facility_core_hatch", "intro_trigger") instance=ExtResource("36_mxr2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124.00054, -0.0007839203, -14.999931)
+terminals = NodePath("../Terminals/TerminalProps")
+facility_core = NodePath("../FacilityCore")
+facility_core_hatch = NodePath("FacilityCoreHatch")
+intro_trigger = NodePath("../../CameraPanNode1/Area")
+
+[node name="FacilityCoreHatch" type="MeshInstance3D" parent="Interactive/BrainJar" unique_id=1945856805]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.6166277, 0)
+mesh = ExtResource("113_uv2lo")
+surface_material_override/0 = SubResource("StandardMaterial3D_aoiei")
+
 [node name="Enemies" type="Node3D" parent="." unique_id=1092297902]
 
 [node name="EnemyManager" parent="Enemies" unique_id=18369620 instance=ExtResource("16_h2frl")]
@@ -1364,22 +1387,16 @@ enemy_manager = NodePath("../EnemyManager")
 transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, -239, 40.2, -14.999997)
 enemy_manager = NodePath("../EnemyManager")
 
+[node name="BrainJar_Root_P" type="Node3D" parent="Enemies" unique_id=705346624]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.92689, 57.205368, -3.038515)
+
+[node name="Brainjar Anims" type="AnimationPlayer" parent="Enemies/BrainJar_Root_P" unique_id=1787086687]
+libraries/ = SubResource("AnimationLibrary_oo4g3")
+
+[node name="BrainFace" parent="Enemies/BrainJar_Root_P" unique_id=636526495 instance=ExtResource("2_o5d64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -103)
+
 [node name="BrainJarComponents" type="Node3D" parent="Enemies" unique_id=543131545]
-
-[node name="FacilityCore" parent="Enemies/BrainJarComponents" unique_id=913940677 instance=ExtResource("30_ewsem")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
-
-[node name="BrainJar" parent="Enemies/BrainJarComponents" unique_id=561627710 node_paths=PackedStringArray("terminals", "facility_core", "facility_core_hatch", "intro_trigger") instance=ExtResource("36_mxr2x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124.00054, -0.0007839203, -14.999931)
-terminals = NodePath("../../../Interactive/Terminals/TerminalProps")
-facility_core = NodePath("../FacilityCore")
-facility_core_hatch = NodePath("FacilityCoreHatch")
-intro_trigger = NodePath("../../../CameraPanNode1/Area")
-
-[node name="FacilityCoreHatch" type="MeshInstance3D" parent="Enemies/BrainJarComponents/BrainJar" unique_id=1945856805]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.6166277, 0)
-mesh = ExtResource("113_uv2lo")
-surface_material_override/0 = SubResource("StandardMaterial3D_aoiei")
 
 [node name="BrainPipeL" parent="Enemies/BrainJarComponents" unique_id=455552606 instance=ExtResource("71_mywdw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
@@ -1392,18 +1409,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
 
 [node name="WiresR" parent="Enemies/BrainJarComponents" unique_id=2139112390 instance=ExtResource("72_8vmub")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
-
-[node name="BrainReactorLeft" parent="Enemies/BrainJarComponents" unique_id=1141398503 instance=ExtResource("32_oxwui")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204, 0, -45)
-
-[node name="BrainJar_Root_P" type="Node3D" parent="Enemies" unique_id=705346624]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.92689, 57.205368, -3.038515)
-
-[node name="Brainjar Anims" type="AnimationPlayer" parent="Enemies/BrainJar_Root_P" unique_id=1787086687]
-libraries/ = SubResource("AnimationLibrary_oo4g3")
-
-[node name="BrainFace" parent="Enemies/BrainJar_Root_P" unique_id=636526495 instance=ExtResource("2_o5d64")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -103)
 
 [node name="Props" type="Node3D" parent="." unique_id=1376791517]
 
