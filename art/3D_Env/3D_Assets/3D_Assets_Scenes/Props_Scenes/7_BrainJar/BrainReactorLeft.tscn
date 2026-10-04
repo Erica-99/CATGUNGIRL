@@ -519,7 +519,7 @@ tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
@@ -531,7 +531,7 @@ tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
@@ -561,7 +561,7 @@ tracks/17/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7b8vt"]
 _data = {
 &"RESET": SubResource("Animation_spref"),
-&"ReactorExplosion": ExtResource("8_8oj7a")
+&"ReactorExplosionLeft": ExtResource("8_8oj7a")
 }
 
 [node name="BrainReactorLeft" type="Node3D" unique_id=1141398503]
@@ -655,7 +655,6 @@ light_specular = 5.246
 omni_range = 1.4967337
 
 [node name="MiniExplosion1" type="Node3D" parent="." unique_id=478866304]
-visible = false
 
 [node name="ExplosionParticles" type="GPUParticles3D" parent="MiniExplosion1" unique_id=755056305]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5, 17.0352, 0)
@@ -683,7 +682,6 @@ process_material = SubResource("ParticleProcessMaterial_s6f8c")
 draw_pass_1 = SubResource("QuadMesh_0glge")
 
 [node name="MiniExplosion2" type="Node3D" parent="." unique_id=833451881]
-visible = false
 
 [node name="ExplosionParticles2" type="GPUParticles3D" parent="MiniExplosion2" unique_id=1557596219]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.7770996, 25.17062, 0)
@@ -711,7 +709,6 @@ process_material = SubResource("ParticleProcessMaterial_s6f8c")
 draw_pass_1 = SubResource("QuadMesh_0glge")
 
 [node name="MiniExplosion3" type="Node3D" parent="." unique_id=1278320001]
-visible = false
 
 [node name="ExplosionParticles3" type="GPUParticles3D" parent="MiniExplosion3" unique_id=715478505]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.071041, 9.965694, 4.988513)
@@ -739,11 +736,11 @@ process_material = SubResource("ParticleProcessMaterial_s6f8c")
 draw_pass_1 = SubResource("QuadMesh_0glge")
 
 [node name="MainExplosion" type="Node3D" parent="." unique_id=295]
-visible = false
 
 [node name="MainExplosionParticles" type="GPUParticles3D" parent="MainExplosion" unique_id=145134876]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.07104111, 16.965694, -0.011487007)
 material_override = ExtResource("7_8oj7a")
+emitting = false
 amount = 10
 lifetime = 0.7
 one_shot = true
@@ -755,6 +752,7 @@ draw_pass_1 = SubResource("SphereMesh_0ex1g")
 [node name="MainStreakParticles1" type="GPUParticles3D" parent="MainExplosion" unique_id=1823935851]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.18810654, 9.006485, -0.038905144)
 material_override = SubResource("ShaderMaterial_12mkw")
+emitting = false
 amount = 35
 lifetime = 0.7
 one_shot = true
@@ -792,7 +790,6 @@ draw_pass_1 = SubResource("QuadMesh_0glge")
 
 [node name="BackingExplosion" type="Node3D" parent="." unique_id=479124397]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 17, 0)
-visible = false
 
 [node name="ExplosionParticles" type="GPUParticles3D" parent="BackingExplosion" unique_id=1498985460]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.028239012, 0)
