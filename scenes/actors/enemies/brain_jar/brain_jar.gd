@@ -6,7 +6,6 @@ enum FightState {
 	WAITING_FOR_HEALING_HIT,
 	HEALING_DAMAGE,
 	WAITING_FOR_SACRIFICE,
-	WAITING_FOR_DAMAGE,
 	FINAL_VULNERABILITY,
 	COMPLETE,
 }
@@ -88,14 +87,6 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 	match fight_state:
 		FightState.WAITING_FOR_HEALING_HIT:
 			_play_damage_heal(new_health, old_health)
-		
-		FightState.WAITING_FOR_DAMAGE:
-			var controlled_health: float = _apply_damage_segment(old_health)
-			
-			if controlled_health <= health_component.min_health:
-				_finish_fight()
-			else:
-				_advance_phase()
 		
 		FightState.FINAL_VULNERABILITY:
 			var controlled_health: float = _apply_damage_segment(old_health)
@@ -249,7 +240,7 @@ func _complete_terminal_phase() -> void:
 		BrainJarPhase.CompletionType.DAMAGE_HEAL_AND_ADVANCE:
 			_play_after_four_terminals_animation()
 		
-		BrainJarPhase.CompletionType.SACRIFICE_THEN_DAMAGE:
+		BrainJarPhase.CompletionType.SACRIFICE_DAMAGE_AND_ADVANCE:
 			fight_state = FightState.WAITING_FOR_SACRIFICE
 			_set_gun_sacrifice_enabled(true)
 		
@@ -262,8 +253,12 @@ func _on_gun_sacrificed(_gun_name: String) -> void:
 		return
 	
 	_set_gun_sacrifice_enabled(false)
-	fight_state = FightState.WAITING_FOR_DAMAGE
-	_disable_shields()
+	var controlled_health: float = _apply_damage_segment(health_component.current_health)
+	
+	if controlled_health <= health_component.min_health:
+		_finish_fight()
+	else:
+		_advance_phase()
 
 func _set_gun_sacrifice_enabled(enabled: bool) -> void:
 	if gun_sacrifice_interactable == null:
