@@ -294,7 +294,7 @@ func _advance_phase() -> void:
 	if current_phase_index >= fight_phases.size():
 		return
 	
-	EventManager.spawn_enemy.emit(0.1, get_path_to($"../EnemyManager/EnemyDoorFrame"))
+	EventManager.spawn_enemy.emit(0.1, get_path_to($"../../EnemyDoorFrame"))
 	_start_current_phase()
 
 func _finish_fight() -> void:
