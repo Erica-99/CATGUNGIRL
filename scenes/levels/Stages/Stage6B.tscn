@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://drpgycg7mebgy" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/4_Laboratory/Walls/WallLaboratory_Specular_roughness.png" id="22_1kj5b"]
 [ext_resource type="PackedScene" uid="uid://c5vncayclpa5t" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/3_GuardRooms/ChairSteel.tscn" id="25_gq1xd"]
 [ext_resource type="PackedScene" uid="uid://dbtlwlyu6425" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/BrainJarTerminal.tscn" id="26_5g2ht"]
+[ext_resource type="PackedScene" uid="uid://cs7ybs08guab4" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6B_Lab/Scissors.tscn" id="26_xlh28"]
 [ext_resource type="PackedScene" uid="uid://mtb08p1he0i6" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/LabFlask.tscn" id="29_3gehs"]
 [ext_resource type="PackedScene" uid="uid://ckkjv4pfh7tik" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/AcidVatRoom/AcidVat.tscn" id="31_3geyl"]
 [ext_resource type="PackedScene" uid="uid://b3krra1e3n0g8" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/Trolley.tscn" id="32_62t83"]
@@ -79,6 +80,8 @@
 [ext_resource type="PackedScene" uid="uid://bqbcx0g61dffh" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/LabBottleSpray.tscn" id="102_2pd4f"]
 [ext_resource type="PackedScene" uid="uid://b8mgks4mhehhj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/SecurityHandReader.tscn" id="102_m7b7v"]
 [ext_resource type="PackedScene" uid="uid://dablnp31mjysx" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/LabDrawersCorner.tscn" id="103_dyhej"]
+[ext_resource type="PackedScene" uid="uid://eybsnixhndfu" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6B_Lab/LabChair.tscn" id="103_v2bcf"]
+[ext_resource type="PackedScene" uid="uid://t6j8mclilc6c" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6B_Lab/Scalpel.tscn" id="104_1kj5b"]
 [ext_resource type="PackedScene" uid="uid://bsfa44fgq7srb" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/LabDrawerSingle.tscn" id="104_r3ib4"]
 [ext_resource type="PackedScene" uid="uid://dc66mdtqwfbgf" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/LabFridge.tscn" id="105_3ijyw"]
 [ext_resource type="PackedScene" uid="uid://cdpubj18pspqe" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/LabMicroscope.tscn" id="106_2p23k"]
@@ -618,6 +621,9 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -25, 33.6, -10)
 [node name="DoorwayNoneMidLaboratory6" parent="Environment" unique_id=518931511 instance=ExtResource("88_rfnt8")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5, 33.6, -10)
 
+[node name="Scissors" parent="Environment" unique_id=94114826 instance=ExtResource("26_xlh28")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.53149, 17.00001, -6.324973)
+
 [node name="Props" type="Node3D" parent="." unique_id=559079368]
 
 [node name="LabCabinet" parent="Props" unique_id=863456316 instance=ExtResource("20_qi6dq")]
@@ -1068,16 +1074,16 @@ shape = SubResource("BoxShape3D_uhx6n")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.028803, 1.5672941, 17.515985)
 
 [node name="EnemyDoorFrame" parent="Interactive" unique_id=2112200868 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("57_0h5cq")]
-transform = Transform3D(-1.9999042, 0, -0.01958226, 0, 2, 0, 0.01958226, 0, -1.9999042, -15, 25, -4.9504647)
+transform = Transform3D(-1.9999042, 0, -0.01958226, 0, 2, 0, 0.01958226, 0, -1.9999042, -9.218758, 25, -4.9504647)
 enemy_manager = NodePath("../../Enemies/Terminal")
 
-[node name="EnemySpawner" parent="Interactive/EnemyDoorFrame" index="2" unique_id=1110059721]
+[node name="EnemySpawner" parent="Interactive/EnemyDoorFrame" index="1" unique_id=1110059721]
 possible_spawns = Array[int]([0, 1, 1, 0])
 
 [node name="FinalDoor" parent="Interactive" unique_id=2092611838 instance=ExtResource("21_l8a18")]
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -35, 25.2, 2.4521542)
 
-[node name="defaultMaterial" parent="Interactive/FinalDoor/FinalDoor" parent_id_path=PackedInt32Array(2092611838, 1903052867) index="0" unique_id=874433525]
+[node name="defaultMaterial" parent="Interactive/FinalDoor/FinalDoor" parent_id_path=PackedInt32Array(2092611838, 1903052867) index="0" unique_id=615371970]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1157596, 0, 0.049209595)
 surface_material_override/0 = SubResource("StandardMaterial3D_qdsdf")
 surface_material_override/1 = null
@@ -1383,11 +1389,8 @@ transform = Transform3D(0.32384, 0, -0.67648184, 0, 0.75, 0, 0.67648184, 0, 0.32
 [node name="Cone3" parent="." unique_id=1066094551 instance=ExtResource("128_jgoex")]
 transform = Transform3D(0.71280134, 0, -0.23326854, 0, 0.75, 0, 0.23326854, 0, 0.71280134, -24.153185, 8.64485, 3.4813347)
 
-[node name="Cone2" parent="." unique_id=420798114 instance=ExtResource("128_jgoex")]
-transform = Transform3D(0.14858952, 0, -0.7351335, 0, 0.7500001, 0, 0.7351335, 0, 0.14858952, -15.845079, 8.64485, -3.5902433)
-
 [node name="Cone5" parent="." unique_id=1231405508 instance=ExtResource("128_jgoex")]
-transform = Transform3D(0.56754243, 0.07189733, -0.48500115, -0.08727597, 0.74485826, 0.008289736, 0.4824712, 0.05016556, 0.5720183, -48.26107, 16.331072, -3.4657593)
+transform = Transform3D(-0.2885579, 0.62762177, -0.2921047, -0.6876094, -0.2965019, 0.04219009, -0.08017346, 0.28403747, 0.6894888, -44.477093, 9.280735, -3.4657593)
 
 [node name="Cone7" parent="." unique_id=333308123 instance=ExtResource("128_jgoex")]
 transform = Transform3D(0.71129125, 0.048791073, -0.2327744, -0.046371143, 0.7484111, 0.015175243, 0.23326856, -2.0252984e-09, 0.71280134, -46.046455, 16.052258, 3.805039)
@@ -1419,6 +1422,30 @@ spider_mode = 1
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 19.151, 38.534, 0)
 spider_mode = 1
 
+[node name="LabChair" parent="." unique_id=2067186600 instance=ExtResource("103_v2bcf")]
+transform = Transform3D(-0.7102223, 0, 0.7039776, 0, 1, 0, -0.7039776, 0, -0.7102223, -27.579079, 0.20000985, -8.307711)
+
+[node name="LabChair3" parent="." unique_id=1496455175 instance=ExtResource("103_v2bcf")]
+transform = Transform3D(-0.7038432, 0.13372672, 0.69765455, 0.09497571, 0.9910182, -0.09414063, -0.7039775, 5.0095816e-09, -0.71022224, -53.0363, 16.850622, 2.0507383)
+
+[node name="LabChair2" parent="." unique_id=1470964373 instance=ExtResource("103_v2bcf")]
+transform = Transform3D(0.97443205, -0.07894257, 0.21035747, 0.21125871, 0.003149578, -0.9774253, 0.07649797, 0.9968742, 0.019746393, -1.2013083, 9.720483, -4.7105846)
+
+[node name="Scissors" parent="." unique_id=703018566 instance=ExtResource("26_xlh28")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.82789, 8.60001, -9.464769)
+
+[node name="Scissors2" parent="." unique_id=268270955 instance=ExtResource("26_xlh28")]
+transform = Transform3D(0.7794473, -0.20584875, 0.59168243, 0.6264677, 0.25611582, -0.73616785, -9.770936e-09, 0.9444739, 0.32858643, -12.962749, 9.280068, -8.659972)
+
+[node name="Scissors3" parent="." unique_id=249998518 instance=ExtResource("104_1kj5b")]
+transform = Transform3D(0.8762943, -0.346969, 0.33424735, 0.4731205, 0.7506796, -0.4611262, -0.09091621, 0.5622214, 0.82197416, -37.464718, 1.6468658, -6.1813054)
+
+[node name="Scissors4" parent="." unique_id=1300507092 instance=ExtResource("104_1kj5b")]
+transform = Transform3D(-0.0022749978, -0.11007515, 0.9939207, 0.9926025, 0.120401405, 0.015606246, -0.12138731, 0.9866038, 0.10898698, -10.708021, 3.2153635, -14.595828)
+
+[node name="Scissors5" parent="." unique_id=579772566 instance=ExtResource("104_1kj5b")]
+transform = Transform3D(-0.7525559, 0.61277896, -0.24116689, -0.0006985637, 0.36547795, 0.93081975, 0.658528, 0.7006623, -0.27461448, -36.105515, 17.221506, -10.487722)
+
 [connection signal="removecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
 [connection signal="body_entered" from="Interactive/CameraPanNode1/Area" to="Interactive/CameraPanNode1" method="_on_area_body_entered"]
@@ -1442,6 +1469,5 @@ spider_mode = 1
 [editable path="Props/TankExperimentation2"]
 [editable path="Props/TankExperimentation3"]
 [editable path="Interactive/EnemyDoorFrame"]
-[editable path="Interactive/EnemyDoorFrame/EnemyDoorFrame_Panels"]
 [editable path="Interactive/FinalDoor"]
 [editable path="Interactive/FinalDoor/FinalDoor"]

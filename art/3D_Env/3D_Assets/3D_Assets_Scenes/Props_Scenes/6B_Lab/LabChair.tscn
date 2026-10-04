@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://eybsnixhndfu"]
+
+[ext_resource type="PackedScene" uid="uid://bnvbeyj7dgrym" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/6B_Lab/LabChair.fbx" id="1_fx2h6"]
+[ext_resource type="Texture2D" uid="uid://odce17lc6q46" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/LabChair/LabChair_BC.png" id="2_8q3dw"]
+[ext_resource type="Texture2D" uid="uid://fbm030btp8i4" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/LabChair/LabChair_M.png" id="3_p2oi4"]
+[ext_resource type="Texture2D" uid="uid://ro18b3cbebmc" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/LabChair/LabChair_N.png" id="4_0g3pu"]
+[ext_resource type="Texture2D" uid="uid://uvhmt84ldtdc" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/LabChair/LabChair_R.png" id="5_f5o73"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bbhmx"]
+albedo_texture = ExtResource("2_8q3dw")
+metallic = 1.0
+metallic_texture = ExtResource("3_p2oi4")
+roughness_texture = ExtResource("5_f5o73")
+normal_enabled = true
+normal_scale = 1.2
+normal_texture = ExtResource("4_0g3pu")
+
+[node name="LabChair" type="Node3D" unique_id=2067186600]
+
+[node name="LabChair" parent="." unique_id=522923607 instance=ExtResource("1_fx2h6")]
+
+[node name="Circle_005" parent="LabChair" index="0" unique_id=406426109]
+transform = Transform3D(350, 0, 0, 0, -1.5298985e-05, 350, 0, -350, -1.5298985e-05, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_bbhmx")
+
+[editable path="LabChair"]
