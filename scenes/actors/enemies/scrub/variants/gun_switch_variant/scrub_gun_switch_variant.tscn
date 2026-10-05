@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://c87477w5qq6u7" path="res://scenes/actors/enemies/scrub/variants/gun_switch_variant/scrub_mesh.gd" id="2_rsgxf"]
 [ext_resource type="Texture2D" uid="uid://b5lvfa600pj2n" path="res://art/2d_assets/Scrubs/CyberScrubs/CS_Torso.png" id="3_kb34y"]
 [ext_resource type="Texture2D" uid="uid://peatqvjk631d" path="res://art/2d_assets/Scrubs/CyberScrubs/CS_head.png" id="5_bf5nj"]
+[ext_resource type="PackedScene" uid="uid://x4f2jperscm2" path="res://scenes/VFX/headshot_vfx.tscn" id="5_ixi5f"]
 [ext_resource type="Texture2D" uid="uid://cuyy0858wvl50" path="res://art/2d_assets/Scrubs/CyberScrubs/CS_BackLeg.png" id="7_wvbbu"]
 [ext_resource type="Texture2D" uid="uid://chdok5qw8k0q4" path="res://art/2d_assets/Scrubs/CyberScrubs/CS_FrontLeg.png" id="8_wvbbu"]
 [ext_resource type="Texture2D" uid="uid://dwefgdaqqqgy2" path="res://art/2d_assets/Scrubs/CyberScrubs/CS_hand.png" id="9_hn2bn"]
@@ -1679,6 +1680,9 @@ sorting_offset = 2.0
 flip_h = true
 sprite_frames = SubResource("SpriteFrames_uh1gn")
 autoplay = "default"
+
+[node name="Headshot_VFX" parent="Scrub_Mesh/Visual_MOVE_P/Torso_P/Head_P/AnimatedSprite3D" unique_id=1741053268 instance=ExtResource("5_ixi5f")]
+transform = Transform3D(1.6949165, 0, 0, 0, 1.6949165, 0, 0, 0, 1.6949154, -0.73932433, 2.6523328, 0.7155553)
 
 [node name="Legs_P" type="Node3D" parent="Scrub_Mesh/Visual_MOVE_P/Torso_P" unique_id=221195692]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10699412, -1.9302051, -0.30831146)
