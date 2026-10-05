@@ -117,6 +117,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cmmb3ptciwade" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/7_BrainJar/BrainPlatformHalf.obj" id="90_m7hdr"]
 [ext_resource type="ArrayMesh" uid="uid://dogofkelwisn6" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/7_BrainJar/BrainPlatformCorner.obj" id="92_rucap"]
 [ext_resource type="ArrayMesh" uid="uid://bmutfrb651hqm" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/7_BrainJar/FacilityCoreHatch.obj" id="113_uv2lo"]
+[ext_resource type="Script" uid="uid://byepcs525oexf" path="res://scenes/levels/Stages/boss_checkpoint.gd" id="118_aoiei"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o5d64"]
 size = Vector3(20.489685, 17.532715, 13.72467)
@@ -7564,6 +7565,15 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 0, 0)
 [node name="VFX" type="Node3D" parent="." unique_id=1761748796]
 
 [node name="VFX2" type="Node3D" parent="." unique_id=1844348877]
+
+[node name="BossCheckpoint" type="Node3D" parent="." unique_id=1131138434 node_paths=PackedStringArray("checkpoint_player", "checkpoint_boss", "checkpoint_spawn")]
+script = ExtResource("118_aoiei")
+checkpoint_player = NodePath("../Player")
+checkpoint_boss = NodePath("../Enemies/BrainJarComponents/BrainJar")
+checkpoint_spawn = NodePath("Marker3D")
+
+[node name="Marker3D" type="Marker3D" parent="BossCheckpoint" unique_id=1835537968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.15518, 0.9232955, 0)
 
 [connection signal="removecameratween" from="CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]

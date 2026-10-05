@@ -153,7 +153,6 @@ func _start_fight() -> void:
 		if terminal is BrainJarTerminalGroup:
 			available_terminals.append(terminal)
 	
-	available_terminals.shuffle()
 	_start_current_phase()
 
 func _start_current_phase() -> void:
@@ -321,3 +320,33 @@ func _play_after_four_terminals_animation() -> void:
 func _open_healing_hit_window() -> void:
 	fight_state = FightState.WAITING_FOR_HEALING_HIT
 	_disable_shields()
+
+func restore_checkpoint(state: Dictionary) -> bool:
+	var phase_index: int = int(state.get("boss_phase_index", -1))
+	
+	if phase_index < 1 or phase_index >= fight_phases.size():
+		return false
+	
+	if terminals == null or boss_animation_player == null:
+		return false
+	
+	if !boss_animation_player.has_animation(after_four_terminals_animation_name):
+		return false
+	
+	intro_played = true
+	current_phase_index = phase_index
+	var restored_health: float = clampf(float(state.get("boss_health", health_component.max_health)), health_component.min_health, health_component.max_health)
+	health_component.current_health = restored_health
+	_update_health_display(restored_health)
+	# restore pose reached after the first terminal phase
+	var checkpoint_animation: Animation = \
+		boss_animation_player.get_animation(after_four_terminals_animation_name)
+
+	boss_animation_player.stop(true)
+	boss_animation_player.assigned_animation = \
+		after_four_terminals_animation_name
+	boss_animation_player.seek(checkpoint_animation.length, true, true)
+	_start_fight()
+	# recreate enemy spawn normally triggered by advancing
+	EventManager.spawn_enemy.emit(0.1, get_path_to($"../../EnemyDoorFrame"))
+	return true
