@@ -102,7 +102,6 @@
 [ext_resource type="Resource" uid="uid://i475dd553b7q" path="res://resources/tutorial_steps/stage_1_intro_tutorial/grapple_tutorial_step.tres" id="92_3k85b"]
 [ext_resource type="PackedScene" uid="uid://xwmm12eihkbq" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Meat_lumps.tscn" id="92_4scdv"]
 [ext_resource type="PackedScene" uid="uid://co7fptrpmkvog" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/A_SparesAndPlaceholders/LightCeiling.tscn" id="96_g3qdj"]
-[ext_resource type="Script" uid="uid://bya3gldxnfky1" path="res://scenes/levels/Stages/tutorial_checkpoint.gd" id="119_x768c"]
 [ext_resource type="ArrayMesh" uid="uid://cpkoiojl5v124" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/DoorwayPrisonRailFrame.obj" id="100_0n1ur"]
 [ext_resource type="ArrayMesh" uid="uid://btg7uf5fq70gn" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/1_Prison/DoorwayPrisonRailPrison.obj" id="100_cx5vn"]
 [ext_resource type="Texture2D" uid="uid://cpqvae5a5jg0m" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoorSystem/DoorwayPrisonRailFrame/DoorwayPrisonRailFrame_Base_color.png" id="101_dtord"]
@@ -127,6 +126,7 @@
 [ext_resource type="Texture2D" uid="uid://b6r6ee6ptyno" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoorSystem/PrisonRailDoorPrt_02/PrisonRailDoorPrt_02_Height.png" id="117_5isfi"]
 [ext_resource type="Texture2D" uid="uid://ccn3nrb0hcsei" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoorSystem/PrisonRailDoorPrt_02/PrisonRailDoorPrt_02_Base_metalness.png" id="118_lg5jc"]
 [ext_resource type="Texture2D" uid="uid://b66gkvbeisi0n" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoorSystem/PrisonRailDoorPrt_02/PrisonRailDoorPrt_02_Normal_OpenGL.png" id="119_b152w"]
+[ext_resource type="Script" uid="uid://bya3gldxnfky1" path="res://scenes/levels/Stages/tutorial_checkpoint.gd" id="119_x768c"]
 [ext_resource type="Texture2D" uid="uid://cwn4mnswh323p" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoorSystem/PrisonRailDoorPrt_02/PrisonRailDoorPrt_02_Specular_roughness.png" id="120_j4f4c"]
 [ext_resource type="ArrayMesh" uid="uid://b66ahr4f8qxn7" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/PrisonRailDoorPrt_01a.obj" id="121_toxrj"]
 [ext_resource type="Texture2D" uid="uid://dmcmaetyrq0ni" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoorSystem/PrisonRailDoorPrt_01a/PrisonRailDoorPrt_01a_Base_color.png" id="122_t42yw"]
@@ -2928,6 +2928,7 @@ intro_animation_player = NodePath("../Ross Cell Anim/AnimationPlayerIntro")
 
 [node name="Marker3D" type="Marker3D" parent="TutorialCheckpoint" unique_id=1823104839]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58, 0)
+
 [node name="EnvEffectFire" parent="." unique_id=70569599 instance=ExtResource("107_07lsr")]
 transform = Transform3D(0.7767613, -0.6297949, 0, 0.6297949, 0.7767613, 0, 0, 0, 1, 111.18774, 4.292289, 2.5403101)
 

@@ -288,7 +288,7 @@ func _advance_phase() -> void:
 	if current_phase_index >= fight_phases.size():
 		return
 	
-	EventManager.spawn_enemy.emit(0.1, get_path_to($"../../EnemyDoorFrame"))
+	EventManager.spawn_enemy.emit(0.1, get_path_to($"../../Enemies/EnemyDoorFrame"))
 	_start_current_phase()
 
 func _finish_fight() -> void:
@@ -348,5 +348,5 @@ func restore_checkpoint(state: Dictionary) -> bool:
 	boss_animation_player.seek(checkpoint_animation.length, true, true)
 	_start_fight()
 	# recreate enemy spawn normally triggered by advancing
-	EventManager.spawn_enemy.emit(0.1, get_path_to($"../../EnemyDoorFrame"))
+	EventManager.spawn_enemy.emit(0.1, get_path_to($"../../Enemies/EnemyDoorFrame"))
 	return true
