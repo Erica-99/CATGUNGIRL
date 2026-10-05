@@ -33,6 +33,7 @@ const LEVEL_PATHS: Dictionary = {
 	"Stage4": "res://scenes/levels/Stages/Stage4.tscn",
 	"Stage5": "res://scenes/levels/Stages/Stage5.tscn",
 	"Stage6": "res://scenes/levels/Stages/Stage6.tscn",
+	"Stage6B":"res://scenes/levels/Stages/Stage6B.tscn",
 	"main_menu": "res://scenes/ui/menu_screens/main_menu.tscn"
 }
 
