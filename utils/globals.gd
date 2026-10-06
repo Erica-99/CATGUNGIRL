@@ -33,6 +33,7 @@ const LEVEL_PATHS: Dictionary = {
 	"Stage4": "res://scenes/levels/Stages/Stage4.tscn",
 	"Stage5": "res://scenes/levels/Stages/Stage5.tscn",
 	"Stage6": "res://scenes/levels/Stages/Stage6.tscn",
+	"Stage6B":"res://scenes/levels/Stages/Stage6B.tscn",
 	"main_menu": "res://scenes/ui/menu_screens/main_menu.tscn"
 }
 
@@ -73,6 +74,7 @@ func _narrative_unlock_sniper() -> void:
 # use this to reset any game-global variables. called when loading main menu.
 func _reset_game() -> void:
 	unlocked_guns = [0]
+	CheckpointManager.clear_checkpoint()
 
 # legit updates the base scene reference
 # allows other entities to reference this scene

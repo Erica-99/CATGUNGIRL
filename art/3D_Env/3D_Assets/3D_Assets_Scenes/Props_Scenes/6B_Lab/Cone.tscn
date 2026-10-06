@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://yvma87vdtlyv"]
+
+[ext_resource type="ArrayMesh" uid="uid://c84sg3gqk1sm1" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/6B_Lab/ConeTest.obj" id="1_dj3ru"]
+[ext_resource type="Texture2D" uid="uid://c3s5483uou0dq" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/Cone/Cone_BC.png" id="2_37itx"]
+[ext_resource type="Texture2D" uid="uid://d3vjef6hn6ead" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/Cone/Cone_M.png" id="3_rpmhy"]
+[ext_resource type="Texture2D" uid="uid://taqniyq40o7q" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/Cone/Cone_N.png" id="4_xu8x4"]
+[ext_resource type="Texture2D" uid="uid://dsid7memu6a1n" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/Cone/Cone_R.png" id="5_rpdtp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f15ua"]
+albedo_texture = ExtResource("2_37itx")
+metallic = 1.0
+metallic_texture = ExtResource("3_rpmhy")
+roughness_texture = ExtResource("5_rpdtp")
+normal_enabled = true
+normal_texture = ExtResource("4_xu8x4")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_37itx"]
+points = PackedVector3Array(-0.0019569397, -0.448399, -10.000002, -8.484732, -0.448399, -9.933439, -0.0019569397, 0.27009434, -10.000002, 8.482775, -0.448399, -9.933439, -9.504701, -0.448399, -9.504701, -8.484732, 0.27009434, -9.933439, 0.6832428, 17.990505, -1.4741583, 8.482775, 0.27009434, -9.933439, 9.502743, -0.448399, -9.504701, -9.933439, -0.448399, -8.484732, -9.504701, 0.27009434, -9.504701, 0.1213789, 17.959583, -1.3625679, 0.679327, 18.057808, -1.3821459, 1.2470646, 18.02143, -1.3625679, 9.502743, 0.27009434, -9.504701, 9.931482, -0.448399, -8.484732, -10.000002, -0.448399, -0.0019569397, -9.933439, 0.27009434, -8.484732, -0.6754112, 17.915928, -0.56382084, -0.35630322, 17.932299, -1.0434608, 0.15270233, 18.028704, -1.2764292, 2.057558, 18.134205, -0.0019569397, 1.2079096, 18.086912, -1.2764292, 1.7227888, 18.046894, -1.0434608, 9.931482, 0.27009434, -8.484732, 2.0418959, 18.065084, -0.56382084, 9.998045, -0.448399, -0.0019569397, -10.000002, 0.27009434, -0.0019569397, -9.933439, -0.448399, 8.482775, -0.78700066, 17.908651, -0.0019569397, -0.6989031, 17.981411, -0.0019569397, -0.5931864, 17.986868, -0.5285826, -0.29365635, 18.003239, -0.97689915, 0.15270233, 18.028704, 1.2744722, 1.6542683, 18.110558, 0.9749422, 1.9537992, 18.126928, 0.52662563, 2.1554432, 18.07236, -0.0019569397, 1.9537992, 18.126928, -0.5285826, 1.6542683, 18.110558, -0.97689915, 0.679327, 18.057808, 1.378231, 1.2079096, 18.086912, 1.2744722, 9.998045, 0.27009434, -0.0019569397, 9.931482, -0.448399, 8.482775, -9.933439, 0.27009434, 8.482775, -9.504701, -0.448399, 9.502743, -0.6754112, 17.915928, 0.5618639, -0.5931864, 17.986868, 0.52662563, 0.1213789, 17.959583, 1.3606119, 0.6832428, 17.990505, 1.4722013, -0.29365635, 18.003239, 0.9749422, 1.7227888, 18.046894, 1.039547, 2.0418959, 18.065084, 0.5618639, 1.2470646, 18.02143, 1.3606119, 9.931482, 0.27009434, 8.482775, 9.502743, -0.448399, 9.502743, -9.504701, 0.27009434, 9.502743, -8.484732, -0.448399, 9.931482, -0.35630322, 17.932299, 1.039547, -8.484732, 0.27009434, 9.931482, 8.482775, 0.27009434, 9.931482, -0.0019569397, 0.27009434, 9.998045, 9.502743, 0.27009434, 9.502743, 8.482775, -0.448399, 9.931482, -0.0019569397, -0.448399, 9.998045)
+
+[node name="Cone" type="StaticBody3D" unique_id=1393563968]
+
+[node name="Cone_Mesh" type="MeshInstance3D" parent="." unique_id=1561037428]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = ExtResource("1_dj3ru")
+surface_material_override/0 = SubResource("StandardMaterial3D_f15ua")
+
+[node name="Cone_Collision" type="CollisionShape3D" parent="." unique_id=1065814551]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_37itx")
