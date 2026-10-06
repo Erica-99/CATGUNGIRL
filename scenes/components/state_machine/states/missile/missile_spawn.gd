@@ -46,3 +46,7 @@ func physics_update(delta):
 			transitioned.emit(self, "missilehome")
 	
 	body.move_and_slide()
+	
+	# Collision Check
+	if body.get_last_slide_collision() != null:
+		transitioned.emit(self, "missiledetonate")

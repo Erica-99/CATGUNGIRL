@@ -1,0 +1,247 @@
+extends CharacterBody3D
+@onready var too_far_floor_detection: RayCast3D = $TooFarFloorDetection
+@onready var environment_too_close: Area3D = $EnvironmentTooClose
+@onready var detection_area_3d: Area3D = $DetectionArea3D
+@onready var att_range_area_3d: Area3D = $AttRangeArea3D
+@onready var flee_area_3d: Area3D = $FleeArea3D
+@onready var gun_switch_zone: Area3D = $GunSwitchZone
+@onready var gun_switch_timer: Timer = $GunSwitchTimer
+
+@export var gun_sprite: AnimatedSprite3D
+
+@export_category("Node References")
+@export var animator: AnimationPlayer
+@export var state_machine: StateMachine
+@onready var can_shoot: RayCast3D = $CanShoot
+@onready var softCollider = $SoftCollider
+
+var is_dead: bool = false
+
+@export_category("Starting State Variables")
+@export var start_aggroed: bool
+@export var patroller: bool
+@export var start_idle: State
+@export var start_patrol: State
+@export var start_aggro: State
+
+@onready var health_comp = $HealthComponent
+# set initial gun from gun switch list
+@export var gun_component: Node3D
+@export var gun_switcher: Node3D
+@export var base_visual_gun_node: Node3D
+@export var grenade: PackedScene
+
+@export_category("Stat Variables")
+@export var direction: int = 1
+@export var move_speed: float = 10
+@export var patrol_speed: float
+@export var chase_speed: float
+@export var chase_acceleration: float = 5.0
+@export var flee_speed: float
+@export var flee_acceleration: float = 5.0
+@export var slow_down_speed: float = 30
+var facing: float = 1.0:
+	set(value):
+		if value != facing:
+			facing = value
+			facing_changed.emit(self)
+
+@export_category("Hitstun Variables")
+@export var body_hitstun_threshold: float
+@export var body_hitstun_duration: float
+@export var head_hitstun_threshold: float
+@export var head_hitstun_duration: float
+
+@export_category("Shotgun Attacking State Variables")
+@export var shotgun_flee_range_radius: float = 5.0
+@export var shotgun_attack_range_radius: float = 12.0
+
+@export_category("Sniper Attacking State Variables")
+@export var sniper_flee_range_radius: float = 10.0
+@export var sniper_attack_range_radius: float = 24.0
+
+# Maybe this should move to the Scrub Gun
+@export_category("State Controlling Variables")
+@export var detected_player: bool = false
+var in_attacking_range: bool
+
+var time: float = 0.0
+@export var frequency: float = 3.0
+@export var amplitude: float = 2.0
+
+signal facing_changed(scrub: CharacterBody3D)
+signal gun_change()
+
+var blackboard: Dictionary
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	# Blackboard contains the information states will use
+	blackboard = {
+		# Actor for movement stats
+		"actor": self,
+		"anim": animator,
+		"direction": direction,
+		"gun_component": gun_component,
+		"grenade": grenade,
+		"patrol_speed": patrol_speed,
+		"chase_speed": chase_speed,
+		"chase_acceleration": chase_acceleration,
+		"flee_speed": flee_speed,
+		"flee_acceleration": flee_acceleration,
+		"slow_down_speed": slow_down_speed,
+		"target": get_tree().get_first_node_in_group("player") as CharacterBody3D,
+	}
+	# Change initial state based on Inspector values
+	if start_aggroed:
+		state_machine.initial_state = start_aggro
+	else:
+		if patroller:
+			state_machine.initial_state = start_patrol
+		else:
+			state_machine.initial_state = start_idle
+	# Initialise state machine with Scrub information
+	state_machine.init(blackboard)
+	
+	# reparent to current gun
+	base_visual_gun_node.reparent(gun_component, true)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if in_attacking_range:
+		can_shoot.target_position = can_shoot.to_local(get_tree().get_first_node_in_group("player").global_position)
+	
+	if state_machine.current_state_name != "SwitchScrubAttack":
+		gun_component.rotation.z = -PI/2
+
+func _physics_process(delta: float) -> void:
+	var added_velo = 0
+	if !too_far_floor_detection.is_colliding():
+		added_velo += -1
+	else:
+		if environment_too_close.get_overlapping_bodies():
+			added_velo += 1
+	
+	time += delta
+	velocity.y = cos(time * frequency) * amplitude + added_velo
+	global_position.z = 0
+	#print("velo y calced is : " + str(velocity.y))
+	
+	# Soft Collision physics effects to avoid overlap.
+	if softCollider.is_colliding():
+		var push_vel = softCollider.get_push_vector() * delta * 12
+		push_vel.z = 0
+		velocity += push_vel
+		var vertical_push: float = 0.0
+		
+		for area in softCollider.get_overlapping_areas():
+			if area == softCollider:
+				continue
+			
+			var other_scrub = area.get_parent()
+			
+			if other_scrub == self:
+				continue
+			
+			var height_difference: float = global_position.y - other_scrub.global_position.y
+			
+			if abs(height_difference) <= 0.15:
+				if get_instance_id() > other_scrub.get_instance_id():
+					vertical_push += 1.0
+				else:
+					vertical_push -= 1.0
+			else:
+				vertical_push += sign(height_difference)
+		
+		velocity.y += vertical_push * delta * 50
+	
+	move_and_slide()
+	pass
+	# Direction facing transformation
+	#if velocity.x < 0: # LEFT
+		#direction = -1
+		#animator.flip_h = true
+	#elif velocity.x > 0: # RIGHT
+		#direction = 1
+		#animator.flip_h = false
+	
+	#direction = sign(velocity.x)
+	#if direction != facing && direction != 0.0:
+		#facing_changed.emit(direction)
+
+
+# health comp killed taken from convict code
+func _on_health_component_killed(killing_blow: DamageHealInstance, health_before_death: Variant) -> void:
+	# Possibly implement knockback affects here
+	is_dead = true
+	state_machine.on_child_transition(state_machine.current_state, "scrubdeath")
+
+func _on_health_component_health_changed(old_health: float, new_health: float, damage_or_heal_instance: DamageHealInstance) -> void:
+	if !detected_player && !is_dead:
+		detected_player = true
+		if gun_switch_timer.is_stopped():
+			gun_switch_timer.start()
+		state_machine.on_child_transition(state_machine.current_state, "switchscrubchase")
+	if damage_or_heal_instance.amount > head_hitstun_threshold:
+		_apply_hitstun(head_hitstun_duration)
+	elif damage_or_heal_instance.amount == body_hitstun_threshold:
+		_apply_hitstun(body_hitstun_duration)
+
+# When stun time finishes, return to Idle state.
+func _on_scrub_stun_timer_finished() -> void:
+	print("Stun Finished: Pt 2")
+	state_machine.on_child_transition(state_machine.current_state, "switchscrubidle")
+
+func _apply_hitstun(duration: float) -> void:
+	velocity.x = 0.0	# remove velocity.x and velocity.z and replace with
+	velocity.z = 0.0	# velocity = Vector3.ZERO if scrubs should fall on hitstun
+	#animator.pause()
+	#await get_tree().create_timer(duration).timeout
+	#animator.play()
+
+func _return_from_stun():
+	if len(flee_area_3d.get_overlapping_bodies()) != 0:
+		state_machine.on_child_transition(state_machine.current_state, "scrubflee")
+	elif len(att_range_area_3d.get_overlapping_bodies()) != 0:
+		state_machine.on_child_transition(state_machine.current_state, "switchscrubattack")
+	else:
+		state_machine.on_child_transition(state_machine.current_state, "switchscrubchase")
+
+
+# when timer times out, check where player is and change gun equipped based off that
+func _on_gun_switch_timer_timeout() -> void:
+	# reset to default vars for current (to be switched) gun
+	gun_component.active = false
+	gun_component.in_range = false
+	gun_component.rotation.z = -PI/2
+	# if inside, switch to shotty, if outside, switch to sniper
+	# switch then set radius etc.
+	if len(gun_switch_zone.get_overlapping_bodies()) != 0:
+		gun_component = gun_switcher._switch_gun_by_name("Shotgun")
+		flee_area_3d.get_child(0).shape.radius = shotgun_flee_range_radius
+		att_range_area_3d.get_child(0).shape.radius = shotgun_attack_range_radius
+	else:
+		gun_component = gun_switcher._switch_gun_by_name("Sniper")
+		flee_area_3d.get_child(0).shape.radius = sniper_flee_range_radius
+		att_range_area_3d.get_child(0).shape.radius = sniper_attack_range_radius
+	
+	# set new vars
+	gun_component.active = true
+	# give full ammo etc.
+	gun_component.ammo_component._current_ammo = gun_component.ammo_component.ammo_max
+	gun_component.in_range = false
+	if len(att_range_area_3d.get_overlapping_bodies()) > 0: 
+		gun_component.in_range = true
+		
+	gun_component.rotation.z = -PI/2
+	
+	# reparent and change visual appearance
+	base_visual_gun_node.reparent(gun_component, true)
+	gun_sprite.play(gun_component.gun_name)
+	
+	# emit change for visuals to be checked
+	gun_change.emit()
+	
+	# stun as per below - might be ongoing issues
+	#state_machine.on_child_transition(state_machine.current_state, "scrubstun")
+	

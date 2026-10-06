@@ -19,6 +19,12 @@ size = Vector3(30, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_pm0vx"]
 size = Vector3(30, 1, 1)
 
+[sub_resource type="BoxMesh" id="BoxMesh_pm0vx"]
+size = Vector3(1, 20, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a8lvo"]
+size = Vector3(1, 20, 1)
+
 [node name="ScrubTestLevel" type="Node3D" unique_id=922912552]
 
 [node name="World" type="Node3D" parent="." unique_id=1704519241]
@@ -61,6 +67,16 @@ mesh = SubResource("BoxMesh_l84o4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/MeshInstance3D3/StaticBody3D" unique_id=1782071684]
 shape = SubResource("BoxShape3D_pm0vx")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="World" unique_id=1791614364]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.229802, 14.191441, 0)
+mesh = SubResource("BoxMesh_pm0vx")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/MeshInstance3D4" unique_id=1429007372]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/MeshInstance3D4/StaticBody3D" unique_id=407168260]
+shape = SubResource("BoxShape3D_a8lvo")
 
 [node name="Player" parent="." unique_id=1349193765 groups=["Player"] instance=ExtResource("1_qccgu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.592749, 2.4815655, 0)

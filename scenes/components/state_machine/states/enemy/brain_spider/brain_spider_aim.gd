@@ -8,7 +8,9 @@ var aim_locked: bool = false
 var turret_ready: bool = false
 var morphing_to_spider: bool = false
 var anim: AnimationPlayer
-
+var charge_sound_played: bool = false
+var shake_time: float = 0.0
+var visual_start_position: Vector3
 
 func init(blackboard_dict: Dictionary) -> void:
 	super(blackboard_dict)
@@ -24,6 +26,9 @@ func enter() -> void:
 	morphing_to_spider = false
 	actor.velocity = Vector3.ZERO
 	actor.laser.visible = false
+	charge_sound_played = false
+	shake_time = 0.0
+	visual_start_position = actor.shake_visual.position
 	
 	if actor.is_in_turret_form:
 		actor.set_turret_damage_multiplier()
@@ -31,6 +36,12 @@ func enter() -> void:
 	#for when animation is added
 	if actor.animator != null and !actor.is_in_turret_form:
 		actor.animator.play("Turret")
+
+func exit() -> void:
+	actor.shake_visual.position = visual_start_position
+	
+	if !morphing_to_spider and actor.stinger_caller != null:
+		actor.stinger_caller.stop()
 
 func update(delta: float) -> void:
 	if actor.is_dying or actor.is_dead:
@@ -70,8 +81,22 @@ func update(delta: float) -> void:
 		actor.laser_cooldown_timer -= delta
 		return
 	
-	actor.laser.visible = true
+	if !charge_sound_played:
+		charge_sound_played = true
 	
+		if actor.stinger_caller != null and actor.laser_charge_sound != null:
+			actor.stinger_caller.stop()
+			actor.stinger_caller.stream = actor.laser_charge_sound
+			actor.stinger_caller.pitch_scale = actor.laser_charge_pitch
+			actor.stinger_caller.play()
+	
+	actor.laser.visible = true
+	shake_time += delta
+	var charge_progress: float = minf(aim_timer / maxf(actor.laser_track_time, 0.001), 1.0)
+	var shake_strength: float = actor.laser_charge_shake_strength * charge_progress
+	var horizontal_shake: float = sin(shake_time * actor.laser_charge_shake_speed) * shake_strength
+	actor.shake_visual.position = visual_start_position + Vector3(horizontal_shake, 0.0, 0.0)
+
 	if !aim_locked:
 		aim_timer += delta
 		
@@ -97,6 +122,18 @@ func physics_update(_delta: float) -> void:
 func start_morph_to_spider() -> void:
 	if morphing_to_spider:
 		return
+	
+	if charge_sound_played and actor.stinger_caller != null:
+		actor.stinger_caller.stop()
+		
+		if actor.laser_power_down_sound != null:
+			actor.stinger_caller.stream = actor.laser_power_down_sound
+			actor.stinger_caller.pitch_scale = actor.laser_power_down_pitch
+			actor.stinger_caller.play()
+	
+	charge_sound_played = false
+	
+	actor.shake_visual.position = visual_start_position
 	anim.play('Emerge')
 	morphing_to_spider = true
 	morph_timer = 0.0

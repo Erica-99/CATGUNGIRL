@@ -13,6 +13,9 @@ var paused_enemy_process_modes: Dictionary = {}
 signal stage_cleared
 
 func _ready() -> void:
+	# lets MusicIntensityManager find this room's enemies
+	add_to_group("enemy_managers")
+
 	# link up signals
 	EventManager.enemy_killed.connect(_check_enemies_remaining)
 

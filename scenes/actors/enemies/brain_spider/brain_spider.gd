@@ -12,11 +12,14 @@ class_name BrainSpider
 @onready var health_comp = $HealthComponent
 @onready var team_component = $TeamComponent
 @onready var brain_spider_visuals: BrainSpiderVisuals = $SpiderPivot
+@onready var shake_visual: Node3D = $SpiderPivot/Visuals
 @onready var surface_check: RayCast3D = $SurfaceCheck
+@onready var explosion_hitbox: Area3D = $SpiderPivot/Visuals/Explosion/HitboxComponent
 
 @export_category("Node References")
 @export var animator: AnimationPlayer
 @export var state_machine: StateMachine
+@export var stinger_caller: StingerComponent
 
 @export_category("Starting State Variables")
 @export var start_aggroed: bool
@@ -71,6 +74,18 @@ enum SurfaceType {
 @export var laser_scene: PackedScene
 ##Laser thickness
 @export var laser_size: float = 0.5
+@export var laser_charge_shake_strength: float = 0.08
+@export var laser_charge_shake_speed: float = 40.0
+
+@export_category("Audio")
+@export var laser_charge_sound: AudioStream
+@export_range(0.1, 4.0, 0.05) var laser_charge_pitch: float = 0.9
+@export var laser_power_down_sound: AudioStream
+@export_range(0.1, 4.0, 0.05) var laser_power_down_pitch: float = 1.0
+@export var laser_shot_sound: AudioStream
+@export_range(0.1, 4.0, 0.05) var laser_shot_pitch: float = 1.0
+@export var explosion_countdown_sound: AudioStream
+@export_range(0.1, 4.0, 0.05) var explosion_countdown_pitch: float = 1.0
 
 @export_category("Death Variables")
 ##Time death explosion stays active
@@ -142,22 +157,25 @@ func start_death() -> void:
 	state_machine.on_child_transition(state_machine.current_state, "brainspiderdeath")
 
 func damage_players_in_explosion_area() -> void:
+	var damage_instance := DamageHealInstance.new()
+	damage_instance.amount = explosion_damage
+	damage_instance.is_heal = false
+	damage_instance.type = Enums.DamageType.EXPLOSIVE
+	damage_instance.source = get_path()
+	damage_instance.death_screen_id = explosion_death_screen_id
+	explosion_hitbox.set("team_component", team_component)
+	explosion_hitbox.set("damage_or_heal_instance", damage_instance)
+	
 	for body in explosion_area_3d.get_overlapping_bodies():
 		if !body.is_in_group("player"):
 			continue
 		
-		var player_health: HealthComponent = body.get_node_or_null("HealthComponent")
+		var player_hurtbox := body.find_child("HurtboxComponent", true, false) as Area3D
 		
-		if player_health == null:
+		if player_hurtbox == null:
 			continue
 		
-		var damage_instance = DamageHealInstance.new()
-		damage_instance.amount = explosion_damage
-		damage_instance.is_heal = false
-		damage_instance.type = Enums.DamageType.EXPLOSIVE
-		damage_instance.source = get_path()
-		damage_instance.death_screen_id = explosion_death_screen_id
-		player_health.take_damage_or_heal(damage_instance)
+		player_hurtbox.call("take_hit", explosion_hitbox)
 
 func apply_soft_collision(delta: float) -> void:
 	if softCollider.is_colliding():
@@ -243,6 +261,12 @@ func aim_laser() -> void:
 func fire_laser() -> void:
 	if laser_scene == null:
 		return
+		
+	if stinger_caller != null and laser_shot_sound != null:
+		stinger_caller.stop()
+		stinger_caller.stream = laser_shot_sound
+		stinger_caller.pitch_scale = laser_shot_pitch
+		stinger_caller.play()
 	
 	var beam_start: Vector3 = laser_origin.global_position
 	var beam_end: Vector3 = beam_start + locked_laser_direction * laser_ray.target_position.length()

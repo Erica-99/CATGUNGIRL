@@ -67,7 +67,7 @@ var time: float = 0.0
 signal facing_changed(scrub: CharacterBody3D)
 
 # death detector variables
-var death_speed = 3                        #randf_range(10.0, 70.0)
+var death_speed = 1.2                        #randf_range(10.0, 70.0)
 var launch_speed = Vector3.ZERO
 var explosion_playing: bool = false
 
@@ -113,6 +113,9 @@ func _ready() -> void:
 func _process(delta):
 	if in_attacking_range:
 		can_shoot.target_position = can_shoot.to_local(get_tree().get_first_node_in_group("player").global_position)
+	
+	if state_machine.current_state_name != "ScrubAttack" and gun_component is BaseGun:
+		gun_component.rotation.z = -PI/2
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -255,6 +258,6 @@ func _on_death_detector_body_entered(body: Node3D) -> void:
 		if VFX_spawn_node == null:
 			push_warning("No VFX node found in current scene")
 			return
-		explosion_VFX.global_position = VFX_spawn.global_position
 		VFX_spawn_node.add_child(explosion_VFX)
+		explosion_VFX.global_position = VFX_spawn.global_position
 		queue_free()
