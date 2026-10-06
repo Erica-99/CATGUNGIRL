@@ -16,6 +16,13 @@ func enter() -> void:
 	actor.is_dying = true
 	actor.velocity = Vector3.ZERO
 	actor.laser.visible = false
+	
+	if actor.stinger_caller != null and actor.stinger_caller.stream == actor.laser_charge_sound:
+		actor.stinger_caller.stop()
+		actor.stinger_caller.stream = actor.laser_power_down_sound
+		actor.stinger_caller.pitch_scale = actor.laser_power_down_pitch
+		actor.stinger_caller.play()
+	
 	actor.is_in_turret_form = false
 	actor.show_spider_visual()
 	

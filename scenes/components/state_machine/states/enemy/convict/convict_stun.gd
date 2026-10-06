@@ -29,5 +29,5 @@ func update(_delta: float) -> void:
 
 func physics_update(_delta: float) -> void:
 	actor.velocity.x = move_toward(actor.velocity.x, 0, slow_down_speed * _delta)
-	anim.play("Idle")
+	anim.play("Stunned")
 	actor.move_and_slide()

@@ -14,6 +14,12 @@ func enter() -> void:
 	has_exploded = false
 	actor.velocity = Vector3.ZERO
 
+	if actor.stinger_caller != null and actor.explosion_countdown_sound != null:
+		actor.stinger_caller.stop()
+		actor.stinger_caller.stream = actor.explosion_countdown_sound
+		actor.stinger_caller.pitch_scale = actor.explosion_countdown_pitch
+		actor.stinger_caller.play()
+
 func update(delta: float) -> void:
 	if actor.is_dead:
 		return
@@ -24,6 +30,10 @@ func update(delta: float) -> void:
 		
 		if explosion_timer >= actor.explosion_delay:
 			has_exploded = true
+			
+			if actor.stinger_caller != null:
+				actor.stinger_caller.stop()
+			
 			actor.damage_players_in_explosion_area()
 			actor.show_explosion_effect()
 		
@@ -34,3 +44,7 @@ func update(delta: float) -> void:
 
 func physics_update(_delta: float) -> void:
 	actor.velocity = Vector3.ZERO
+
+func exit() -> void:
+	if actor.stinger_caller != null:
+		actor.stinger_caller.stop()

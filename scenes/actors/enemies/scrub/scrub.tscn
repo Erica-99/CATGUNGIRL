@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://bky5phrwc32e8" path="res://scenes/bullet/ScrubBullet.tscn" id="11_m88xv"]
 [ext_resource type="Texture2D" uid="uid://cxnbfk6xowxcb" path="res://art/2d_assets/Scrubs/ScrubHand2.png" id="12_oagyr"]
 [ext_resource type="Script" uid="uid://briciybelpcwe" path="res://scenes/components/state_machine/states/enemy/enemy_death.gd" id="21_m88xv"]
+[ext_resource type="PackedScene" uid="uid://x4f2jperscm2" path="res://scenes/VFX/headshot_vfx.tscn" id="21_oagyr"]
 [ext_resource type="Script" uid="uid://rwkg37dkkbs1" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_patrol.gd" id="22_bmk6k"]
 [ext_resource type="Script" uid="uid://dpwol7txodmxp" path="res://scenes/components/soft_collision.gd" id="22_hw6pp"]
 [ext_resource type="Script" uid="uid://d1xvpcaucwgpw" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_stun.gd" id="25_m0g3o"]
@@ -1448,14 +1449,10 @@ body_hitstun_duration = 0.15
 head_hitstun_threshold = 10.0
 head_hitstun_duration = 0.3
 
-[node name="VFX_target" type="Node3D" parent="." unique_id=721602745]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03300625, 0.71813583, 0)
-
-[node name="Explosion_target" type="Node3D" parent="." unique_id=1931670990]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3519532, 0.10535097, 0)
-
-[node name="Scrub_Mesh" type="Node3D" parent="." unique_id=326229984]
+[node name="Scrub_Mesh" type="Node3D" parent="." unique_id=326229984 node_paths=PackedStringArray("gun_aim_p", "gun_sprite")]
 script = ExtResource("3_dosxg")
+gun_aim_p = NodePath("Visual_MOVE_P/Torso_P/Gun_P/Gun_AIM_P")
+gun_sprite = NodePath("Visual_MOVE_P/Torso_P/Gun_P/Gun_AIM_P/AnimatedSprite3D")
 
 [node name="Visual_MOVE_P" type="Node3D" parent="Scrub_Mesh" unique_id=655061120]
 
@@ -1540,6 +1537,12 @@ root_node = NodePath("../Visual_MOVE_P")
 libraries/ = SubResource("AnimationLibrary_dxowq")
 autoplay = &"Idle"
 
+[node name="VFX_target" type="Node3D" parent="." unique_id=721602745]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03300625, 0.71813583, 0)
+
+[node name="Explosion_target" type="Node3D" parent="." unique_id=1931670990]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3519532, 0.10535097, 0)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1549018224]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1880244, -0.671875, 0)
 shape = SubResource("BoxShape3D_ly0j2")
@@ -1584,6 +1587,9 @@ is_headshot = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012021974, 0.9222485, 0)
 shape = SubResource("BoxShape3D_t6mem")
 debug_color = Color(0.9201433, 0.7565305, 1, 0.41960785)
+
+[node name="Headshot_VFX" parent="HeadHurtbox" unique_id=1741053268 instance=ExtResource("21_oagyr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07056613, 1.0137236, 0.5)
 
 [node name="StateMachine" parent="." unique_id=1499026333 node_paths=PackedStringArray("initial_state") instance=ExtResource("4_apte0")]
 initial_state = NodePath("ScrubIdle")
@@ -1651,9 +1657,11 @@ debug_color = Color(0.77217674, 0.44468626, 0, 0.33333334)
 
 [node name="TooFarFloorDetection" type="RayCast3D" parent="." unique_id=1270795744]
 target_position = Vector3(0, -10, 0)
+collision_mask = 129
 
 [node name="EnvironmentTooClose" type="Area3D" parent="." unique_id=150321329]
 collision_layer = 0
+collision_mask = 129
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EnvironmentTooClose" unique_id=1395732953]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
@@ -1672,6 +1680,8 @@ debug_color = Color(0, 0.61960787, 0.5686275, 0.41960785)
 [node name="StingerComponent" parent="." unique_id=392420070 instance=ExtResource("32_xxogl")]
 
 [node name="DeathDetector" type="Area3D" parent="." unique_id=944403690]
+collision_layer = 0
+collision_mask = 129
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeathDetector" unique_id=1754639694]
 shape = SubResource("SphereShape3D_xxogl")

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bdbsdyb4y30ee"]
+
+[ext_resource type="ArrayMesh" uid="uid://b5hnoq8vbwl8b" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/Barriers/BarrierCentre.obj" id="1_me0q3"]
+[ext_resource type="Texture2D" uid="uid://cdairfeubggfk" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/BarrierCentre/BarrierCentre_Base_color.png" id="2_l68qk"]
+[ext_resource type="Texture2D" uid="uid://bjv05rol871le" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/BarrierCentre/BarrierCentre_Mixed_AO.png" id="3_6o752"]
+[ext_resource type="Texture2D" uid="uid://g1r77n8uudun" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/BarrierCentre/BarrierCentre_Base_metalness.png" id="3_m671q"]
+[ext_resource type="Texture2D" uid="uid://bwas2rvc34men" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/BarrierCentre/BarrierCentre_Height.png" id="4_aqh2f"]
+[ext_resource type="Texture2D" uid="uid://bdakb101bjuyx" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/BarrierCentre/BarrierCentre_Normal_OpenGL.png" id="6_6putd"]
+[ext_resource type="Texture2D" uid="uid://dbemxwvntbih1" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Barriers/BarrierCentre/BarrierCentre_Specular_roughness.png" id="7_bqc4b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gwddc"]
+albedo_texture = ExtResource("2_l68qk")
+metallic = 1.0
+metallic_texture = ExtResource("3_m671q")
+roughness_texture = ExtResource("7_bqc4b")
+normal_enabled = true
+normal_texture = ExtResource("6_6putd")
+ao_enabled = true
+ao_texture = ExtResource("3_6o752")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("4_aqh2f")
+
+[node name="BarrierCentre" type="StaticBody3D" unique_id=2058316411]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="BarrierCentre_Mesh" type="MeshInstance3D" parent="." unique_id=702454432]
+mesh = ExtResource("1_me0q3")
+surface_material_override/0 = SubResource("StandardMaterial3D_gwddc")
