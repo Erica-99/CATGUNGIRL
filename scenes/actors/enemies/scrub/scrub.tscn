@@ -1569,6 +1569,7 @@ bullet_damage = 5.0
 [node name="BodyHurtbox" parent="." unique_id=338394069 node_paths=PackedStringArray("team_component", "health_component") instance=ExtResource("3_uw3am")]
 team_component = NodePath("../TeamComponent")
 health_component = NodePath("../HealthComponent")
+hit_sfx_ref = "hit_marker"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BodyHurtbox" unique_id=1386699745]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23101622, -0.28852847, 0)
@@ -1578,6 +1579,7 @@ debug_color = Color(0.75945634, 0.3475156, 1, 0.41960785)
 [node name="HeadHurtbox" parent="." unique_id=862406852 node_paths=PackedStringArray("team_component", "health_component") instance=ExtResource("3_uw3am")]
 team_component = NodePath("../TeamComponent")
 health_component = NodePath("../HealthComponent")
+hit_sfx_ref = "hit_marker"
 damage_multiplier = 1.5
 is_headshot = true
 
