@@ -7702,6 +7702,12 @@ checkpoint_spawn = NodePath("Marker3D")
 [node name="Marker3D" type="Marker3D" parent="BossCheckpoint" unique_id=1835537968]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.15518, 0.9232955, 0)
 
+[node name="VFX" type="Node3D" parent="." unique_id=1645937969]
+
+[node name="VFX1" type="Node3D" parent="." unique_id=1896441777]
+
+[node name="VFX2" type="Node3D" parent="." unique_id=634950123]
+
 [connection signal="removecameratween" from="CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
 [connection signal="body_entered" from="CameraPanNode1/Area" to="CameraPanNode1" method="_on_area_body_entered"]
