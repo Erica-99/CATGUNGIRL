@@ -113,6 +113,7 @@
 [ext_resource type="PackedScene" uid="uid://bhp4qyqpd7hsc" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/shotgun_unlockable.tscn" id="109_hwccm"]
 [ext_resource type="ArrayMesh" uid="uid://btg7uf5fq70gn" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/1_Prison/DoorwayPrisonRailPrison.obj" id="110_1b80s"]
 [ext_resource type="PackedScene" uid="uid://yvma87vdtlyv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6B_Lab/Cone.tscn" id="110_gbvye"]
+[ext_resource type="Texture2D" uid="uid://by2rrwp7x5x6h" path="res://art/3D_Env/3D_Assets/3D_Textures/Env_Effects_Textures/Spark.png" id="110_tioj8"]
 [ext_resource type="ArrayMesh" uid="uid://cpkoiojl5v124" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/DoorwayPrisonRailFrame.obj" id="110_u1een"]
 [ext_resource type="PackedScene" uid="uid://befg08ebvtbma" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Effects/EnvEffect_SparkExplsion.tscn" id="111_hwccm"]
 [ext_resource type="Texture2D" uid="uid://coio8xeekyrxq" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/1_Prison/Walls/WallPrison_Base_color.png" id="111_p1qmc"]
@@ -271,6 +272,66 @@ normal_texture = ExtResource("95_hwccm")
 [sub_resource type="BoxShape3D" id="BoxShape3D_bnsy6"]
 size = Vector3(2.121054, 4.283148, 2.121054)
 
+[sub_resource type="Curve" id="Curve_7qnlf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4cqde"]
+curve = SubResource("Curve_7qnlf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4cqde"]
+particle_flag_align_y = true
+radial_velocity_min = 4.9999776
+radial_velocity_max = 46.099976
+gravity = Vector3(0, -76.595, 0)
+scale_curve = SubResource("CurveTexture_4cqde")
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t5jej"]
+transparency = 1
+albedo_texture = ExtResource("110_tioj8")
+emission_enabled = true
+emission = Color(1, 0.5254902, 0.22745098, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_7qnlf"]
+material = SubResource("StandardMaterial3D_t5jej")
+size = Vector2(0.5, 0.5)
+center_offset = Vector3(0, 0.305, 0)
+
+[sub_resource type="Curve" id="Curve_78qjh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ua1ve"]
+curve = SubResource("Curve_78qjh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ua1ve"]
+particle_flag_align_y = true
+radial_velocity_min = 4.9999776
+radial_velocity_max = 46.099976
+gravity = Vector3(0, -76.595, 0)
+scale_curve = SubResource("CurveTexture_ua1ve")
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8wlfu"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("110_tioj8")
+emission_enabled = true
+emission = Color(1, 0.5254902, 0.22745098, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_lctdy"]
+lightmap_size_hint = Vector2i(7, 7)
+material = SubResource("StandardMaterial3D_8wlfu")
+size = Vector2(0.1, 0.1)
+center_offset = Vector3(0, 0.425, 0)
+
 [sub_resource type="Animation" id="Animation_gphbj"]
 resource_name = "MovingCell"
 length = 10.0
@@ -383,6 +444,54 @@ tracks/8/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, -1.11), Vector3(0, 0, -1.11), Vector3(0, 0, 0)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("PrisonCrane6/EnvEffectSpark/SparExplosion_Big:emitting")
+tracks/9/interp = 0
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 2.15, 5.43, 5.67),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("PrisonCrane6/EnvEffectSpark/SparkExplosion_Small:emitting")
+tracks/10/interp = 0
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 2.15, 5.43, 5.67),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("PrisonCrane6/EnvEffectSpark2/SparExplosion_Big:emitting")
+tracks/11/interp = 0
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 2.15, 5.43, 5.67),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("PrisonCrane6/EnvEffectSpark2/SparkExplosion_Small:emitting")
+tracks/12/interp = 0
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 2.15, 5.43, 5.67),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
 
 [sub_resource type="Animation" id="Animation_1b80s"]
 length = 0.001
@@ -493,6 +602,54 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("PrisonCrane6/EnvEffectSpark/SparExplosion_Big:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("PrisonCrane6/EnvEffectSpark/SparkExplosion_Small:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("PrisonCrane6/EnvEffectSpark2/SparExplosion_Big:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("PrisonCrane6/EnvEffectSpark2/SparkExplosion_Small:emitting")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p1qmc"]
@@ -2298,11 +2455,49 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 7.381422, 16.79339, 0)
 [node name="PrisonCell12" parent="VFX/MovingCellCrane/PrisonCrane6" unique_id=1430763070 instance=ExtResource("28_bel3r")]
 transform = Transform3D(1.123341, 0.061073933, 0, -0.061073933, 1.123341, 0, 0, 0, 1.125, 0, 1.6300001, 0)
 
-[node name="EnvEffectSpark" parent="VFX/MovingCellCrane/PrisonCrane6" unique_id=1688091822 instance=ExtResource("111_hwccm")]
+[node name="EnvEffectSpark" type="StaticBody3D" parent="VFX/MovingCellCrane/PrisonCrane6" unique_id=1688091822]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.013956785, 3.4992294, 1.7971091)
 
-[node name="EnvEffectSpark2" parent="VFX/MovingCellCrane/PrisonCrane6" unique_id=1351535355 instance=ExtResource("111_hwccm")]
+[node name="SparExplosion_Big" type="GPUParticles3D" parent="VFX/MovingCellCrane/PrisonCrane6/EnvEffectSpark" unique_id=1300317847]
+amount = 10
+explosiveness = 1.0
+randomness = 1.0
+fixed_fps = 60
+collision_base_size = 1.0
+process_material = SubResource("ParticleProcessMaterial_4cqde")
+draw_pass_1 = SubResource("QuadMesh_7qnlf")
+
+[node name="SparkExplosion_Small" type="GPUParticles3D" parent="VFX/MovingCellCrane/PrisonCrane6/EnvEffectSpark" unique_id=698704591]
+amount = 15
+lifetime = 1.5
+explosiveness = 1.0
+randomness = 1.0
+fixed_fps = 60
+collision_base_size = 1.0
+process_material = SubResource("ParticleProcessMaterial_ua1ve")
+draw_pass_1 = SubResource("QuadMesh_lctdy")
+
+[node name="EnvEffectSpark2" type="StaticBody3D" parent="VFX/MovingCellCrane/PrisonCrane6" unique_id=1351535355]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.013956785, 3.496951, -1.8452108)
+
+[node name="SparExplosion_Big" type="GPUParticles3D" parent="VFX/MovingCellCrane/PrisonCrane6/EnvEffectSpark2" unique_id=1393528299]
+amount = 10
+explosiveness = 1.0
+randomness = 1.0
+fixed_fps = 60
+collision_base_size = 1.0
+process_material = SubResource("ParticleProcessMaterial_4cqde")
+draw_pass_1 = SubResource("QuadMesh_7qnlf")
+
+[node name="SparkExplosion_Small" type="GPUParticles3D" parent="VFX/MovingCellCrane/PrisonCrane6/EnvEffectSpark2" unique_id=875243963]
+amount = 15
+lifetime = 1.5
+explosiveness = 1.0
+randomness = 1.0
+fixed_fps = 60
+collision_base_size = 1.0
+process_material = SubResource("ParticleProcessMaterial_ua1ve")
+draw_pass_1 = SubResource("QuadMesh_lctdy")
 
 [node name="AnimationPlayerMovingCell" type="AnimationPlayer" parent="VFX/MovingCellCrane" unique_id=1123990912]
 libraries/ = SubResource("AnimationLibrary_p1qmc")

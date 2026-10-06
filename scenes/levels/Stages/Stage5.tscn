@@ -97,6 +97,7 @@
 [ext_resource type="PackedScene" uid="uid://butl22j5b5b2w" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/WoodenCrates/WoodenCrate5.tscn" id="54_a8n4r"]
 [ext_resource type="PackedScene" uid="uid://p18vd3d0ego7" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/OilDrumAcid.tscn" id="55_hbcfl"]
 [ext_resource type="PackedScene" uid="uid://btgbsvw8t3xl8" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeSets/ReactorNetwork.tscn" id="56_ka3nc"]
+[ext_resource type="PackedScene" uid="uid://cwnndw0yvvixb" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorBasic_Malfunctioning.tscn" id="57_um8f0"]
 [ext_resource type="PackedScene" uid="uid://u0ps1hxqgdbr" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/HighBayLight.tscn" id="57_ux28k"]
 [ext_resource type="PackedScene" uid="uid://ocvw5odaevub" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/WoodenCrates/WoodenCrate4.tscn" id="58_t627y"]
 [ext_resource type="PackedScene" uid="uid://cuvclg8yah7jk" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/WoodenCrates/WoodenCrate3.tscn" id="59_dm0iu"]
@@ -2580,6 +2581,9 @@ transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -190, -0.2, 0)
 [node name="DoorwaySingleLaboratory" parent="Environment/Walls/Doorways/DoorwaySingleLaboratory" unique_id=1936140797 instance=ExtResource("22_mnn55")]
 transform = Transform3D(-2, 0, 0, 0, 2, 0, 0, 0, 2, -195, 0.2, 0)
 
+[node name="DoorwaySingleLaboratory4" parent="Environment/Walls/Doorways/DoorwaySingleLaboratory" unique_id=874199678 instance=ExtResource("22_mnn55")]
+transform = Transform3D(8.742278e-08, 1.7484555e-07, 2, 0, 2, -1.7484555e-07, 2, -7.642742e-15, -8.742278e-08, -190, 0.2, -5)
+
 [node name="DoorwaySingleLaboratory2" parent="Environment/Walls/Doorways/DoorwaySingleLaboratory" unique_id=379331053 instance=ExtResource("22_mnn55")]
 transform = Transform3D(-2, 0, 0, 0, 2, 0, 0, 0, 2, -205, 8.599999, 0)
 
@@ -2660,8 +2664,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10, 8.4, 0)
 [node name="WallPlainBaseLaboratory4" parent="Environment/Walls/Other" unique_id=1819539407 instance=ExtResource("12_pb1yh")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -20, 8.4, 0)
 
-[node name="WallPlainBaseLaboratory5" parent="Environment/Walls/Other" unique_id=1233039753 instance=ExtResource("12_pb1yh")]
-
 [node name="WallPlainBaseLaboratory6" parent="Environment/Walls/Other" unique_id=59422199 instance=ExtResource("12_pb1yh")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10, 0, 0)
 
@@ -2725,6 +2727,9 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -180, 33.6, -20)
 [node name="DoorwayLargeLaboratory" parent="Environment/Walls/Other" unique_id=1093577184 instance=ExtResource("14_3h5io")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -215, 0, 0)
 
+[node name="DoorBasic_Malfunctioning" parent="Environment/Walls/Other" unique_id=1555562335 instance=ExtResource("57_um8f0")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 1.0014963, 0, -5)
+
 [node name="DoorExit" parent="Environment/Walls" unique_id=1999725414 instance=ExtResource("17_1nyol")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5, 0, 0)
 
@@ -2735,10 +2740,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -215, 16.579865, -20)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -25, 8.4, 0)
 enemy_manager = NodePath("../../../Enemies/Room One")
 
-[node name="DoorBasicLocked" parent="Environment/Walls" unique_id=1074070208 instance=ExtResource("17_yf8gh")]
-transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, -5, 0, -5)
-
-[node name="DoorBasicLocked2" parent="Environment/Walls" unique_id=1555562335 instance=ExtResource("17_yf8gh")]
+[node name="DoorBasicLocked2" parent="Environment/Walls" unique_id=1034013810 instance=ExtResource("17_yf8gh")]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 15, 8.4, 0)
 
 [node name="DoorLargeBasic6" parent="Environment/Walls" unique_id=1648709815 instance=ExtResource("26_5csjs")]

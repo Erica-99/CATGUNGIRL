@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://xaev7cn0q0yy" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/3_WareHouse/WallPlainMidWareHouse.tscn" id="17_trxnv"]
 [ext_resource type="PackedScene" uid="uid://bojsmqie6xi4c" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorBasicLocked.tscn" id="18_0x6sw"]
 [ext_resource type="PackedScene" uid="uid://dd0xhengvef2y" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/3_WareHouse/WallBaseWareHouse.tscn" id="18_3yqvt"]
+[ext_resource type="PackedScene" uid="uid://ut53kwd5i1kj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorLargeBasic_Malfunctioning.tscn" id="18_ej7q2"]
 [ext_resource type="PackedScene" uid="uid://bitrucit7ifuv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/4_Laboratory/WallPlainMidLaboratory.tscn" id="19_pwujq"]
 [ext_resource type="PackedScene" uid="uid://cgl5ipcguaba2" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/3_WareHouse/FloorShootingWareHouse.tscn" id="19_vx7hd"]
 [ext_resource type="PackedScene" uid="uid://11pckncgaxu4" path="res://scenes/components/level_components/level_transitions/level_end.tscn" id="25_ijawq"]
@@ -41,6 +42,7 @@
 [ext_resource type="PackedScene" uid="uid://duhd2obxk5mwq" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/3_WareHouse/WallWindowWareHouse.tscn" id="33_1s6dl"]
 [ext_resource type="PackedScene" uid="uid://cungdm77df17h" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/WoodenCrates/WoodenCrate2.tscn" id="33_17mc6"]
 [ext_resource type="PackedScene" uid="uid://cc0gqiu6epwfo" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/CardboardBox.tscn" id="34_abaql"]
+[ext_resource type="PackedScene" uid="uid://bbk8r17tn3vc8" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/3_WareHouse/DoorwaySingleBaseWareHouse.tscn" id="34_j15h2"]
 [ext_resource type="PackedScene" uid="uid://67xdbiihshsl" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/WoodenCrates/WoodenCrate1.tscn" id="35_barxx"]
 [ext_resource type="PackedScene" uid="uid://ocvw5odaevub" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/WoodenCrates/WoodenCrate4.tscn" id="36_c7g71"]
 [ext_resource type="PackedScene" uid="uid://dvd3vuytfv8bh" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/MetalShelves.tscn" id="37_88vs6"]
@@ -175,6 +177,9 @@
 [ext_resource type="PackedScene" uid="uid://grwxleqavgq1" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/World_Lore/Wash_Hands.tscn" id="169_cbmvo"]
 [ext_resource type="PackedScene" uid="uid://xl10yh16bf0o" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/Photosensitivity.tscn" id="170_v17lw"]
 [ext_resource type="PackedScene" uid="uid://cnm40lu51bpdw" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/World_Lore/Beware_Redivivus.tscn" id="171_2l15r"]
+[ext_resource type="PackedScene" uid="uid://cwnndw0yvvixb" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorBasic_Malfunctioning.tscn" id="179_xgy0r"]
+[ext_resource type="PackedScene" uid="uid://p4j7l6t1wvoa" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Effects/EnvEffect_Fire.tscn" id="180_indcq"]
+[ext_resource type="PackedScene" uid="uid://befg08ebvtbma" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Effects/EnvEffect_SparkExplsion.tscn" id="181_i7bjc"]
 [ext_resource type="PackedScene" uid="uid://yvma87vdtlyv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6B_Lab/Cone.tscn" id="189_itw04"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ib8r7"]
@@ -1545,6 +1550,9 @@ wave_enemies = Array[int]([0])
 [node name="DoorBulkhead" parent="Enemies/Room One" unique_id=1797075630 instance=ExtResource("17_s5d6l")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 125, 8.4, -50)
 
+[node name="DoorLargeBasic_Malfunctioning" parent="Enemies/Room One" unique_id=101148383 instance=ExtResource("18_ej7q2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 25, 33.6, -20)
+
 [node name="Room Two" parent="Enemies" unique_id=1961159401 instance=ExtResource("26_cehyk")]
 room_ID = 1
 
@@ -2265,9 +2273,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 70, 8.4, -20)
 [node name="WallPlainRearWareHouse81" parent="Environment/Wall" unique_id=582122717 instance=ExtResource("17_trxnv")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 70, 16.8, -20)
 
-[node name="WallPlainRearWareHouse82" parent="Environment/Wall" unique_id=2035270827 instance=ExtResource("66_c3edl")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 80, 8.4, -20)
-
 [node name="WallPlainRearWareHouse83" parent="Environment/Wall" unique_id=1887683659 instance=ExtResource("17_trxnv")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 79.81598, 16.8, -20.065487)
 
@@ -2464,6 +2469,9 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 150, 33.6, 0)
 
 [node name="WallBaseWareHouse2" parent="Environment/Wall" unique_id=2127970504 instance=ExtResource("18_3yqvt")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 170, 33.6, 0)
+
+[node name="DoorwaySingleBaseWareHouse" parent="Environment/Wall" unique_id=1936140797 instance=ExtResource("34_j15h2")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 80, 8.4, -25.211218)
 
 [node name="Door" type="Node3D" parent="Environment" unique_id=281427386]
 
@@ -2958,9 +2966,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -10)
 [node name="DoorwayNoneBasePrison2" parent="Environment/Door" unique_id=518017876 instance=ExtResource("46_x06j8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -10)
 
-[node name="DoorLargeBasic9" parent="Environment/Door" unique_id=101148383 instance=ExtResource("26_8bdk2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 25, 33.6, -20)
-
 [node name="DoorLargeBasic11" parent="Environment/Door" unique_id=678549134 instance=ExtResource("26_8bdk2")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 145, 33.2, -20)
 
@@ -2969,9 +2974,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 175, 32.740944, -20)
 
 [node name="DoorLargeBasic15" parent="Environment/Door" unique_id=80003059 instance=ExtResource("26_8bdk2")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 265, 33.6, -20)
-
-[node name="DoorLargeBasic16" parent="Environment/Door" unique_id=1869432321 instance=ExtResource("26_8bdk2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 265, 33.6, 0)
 
 [node name="DoorLargeBasic17" parent="Environment/Door" unique_id=1082488602 instance=ExtResource("26_8bdk2")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 315, 8.4, 0)
@@ -3949,7 +3951,7 @@ transform = Transform3D(0.85481006, 0, 0.518941, 0, 1, 0, -0.518941, 0, 0.854810
 transform = Transform3D(-2.3269722, 0, -2.6144214, 0, 3.5, 0, 2.6144214, 0, -2.3269722, 86.02543, 9.190079, -21.119608)
 
 [node name="WoodenCrate112" parent="Props/Crates" unique_id=942969952 instance=ExtResource("30_0524g")]
-transform = Transform3D(3.7423987, 0, 1.4122509, 0, 4, 0, -1.4122509, 0, 3.7423987, 81.31557, 8.596603, -22.831955)
+transform = Transform3D(3.7423987, 0, 1.4122509, 0, 4, 0, -1.4122509, 0, 3.7423987, 82.06356, 8.596603, -20.59901)
 
 [node name="WoodenCrate135" type="StaticBody3D" parent="Props/Crates" unique_id=1346720630]
 transform = Transform3D(-8, 0, 6.993822e-07, 0, 8, 0, -6.993822e-07, 0, -8, 95.95802, 8.687557, 0.16804504)
@@ -3963,7 +3965,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3421525, 0)
 shape = SubResource("BoxShape3D_gnvp6")
 
 [node name="WoodenCrate113" parent="Props/Crates" unique_id=1938358507 instance=ExtResource("30_0524g")]
-transform = Transform3D(3.879027, 0, -0.9762939, 0, 4, 0, 0.9762939, 0, 3.879027, 81.31557, 11.345749, -22.831955)
+transform = Transform3D(3.879027, 0, -0.9762939, 0, 4, 0, 0.9762939, 0, 3.879027, 82.06356, 11.345749, -20.59901)
 
 [node name="WoodenCrate19" parent="Props/Crates" unique_id=1826749954 instance=ExtResource("35_barxx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.37454, 8.623549, -13.724136)
@@ -4439,7 +4441,7 @@ transform = Transform3D(3.2220814, 0, 1.3668177, 0, 3.5, 0, -1.3668177, 0, 3.222
 transform = Transform3D(1.752528, 0, -3.0296278, 0, 3.5, 0, 3.0296278, 0, 1.752528, 85.80115, 16.390076, -21.355404)
 
 [node name="WoodenCrate116" parent="Props/Crates" unique_id=1220634249 instance=ExtResource("33_17mc6")]
-transform = Transform3D(2.6601021, 0, -2.2746115, 0, 3.5, 0, 2.2746115, 0, 2.6601021, 81.32135, 14.07901, -22.87819)
+transform = Transform3D(2.6601021, 0, -2.2746115, 0, 3.5, 0, 2.2746115, 0, 2.6601021, 82.06934, 14.07901, -20.645245)
 
 [node name="WoodenCrate117" parent="Props/Crates" unique_id=954192284 instance=ExtResource("30_0524g")]
 transform = Transform3D(3.3751593, 0, -0.9264444, 0, 3.4999993, 0, 0.9264444, 0, 3.3751593, 85.57377, 12.79007, -22.052816)
@@ -5775,6 +5777,18 @@ transform = Transform3D(0.27031505, 0, 0.6995925, 0, 0.7500001, 0, -0.6995925, 0
 
 [node name="Cone9" parent="." unique_id=505138122 instance=ExtResource("189_itw04")]
 transform = Transform3D(0.27031505, 0, 0.6995925, 0, 0.7500001, 0, -0.6995925, 0, 0.27031505, 299.5178, 8.64485, -17.286093)
+
+[node name="DoorBasic_Malfunctioning" parent="." unique_id=89438189 instance=ExtResource("179_xgy0r")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 80, 8.4, -25)
+
+[node name="DoorLargeBasic_Malfunctioning" parent="." unique_id=2135341608 instance=ExtResource("18_ej7q2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 265, 33.5, 0)
+
+[node name="EnvEffectFire" parent="." unique_id=381884369 instance=ExtResource("180_indcq")]
+transform = Transform3D(0.47252, -0.8813198, 0, 0.8813198, 0.47252, 0, 0, 0, 1, 313.03043, 55.588326, -1.6498615)
+
+[node name="EnvEffectSpark" parent="." unique_id=602658946 instance=ExtResource("181_i7bjc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 298.46436, 34.372845, 1.2822828)
 
 [connection signal="area_entered" from="Interactive/BridgeBroken/TrunkEventTrigger" to="Interactive/BridgeBroken/TrunkEventTrigger" method="_on_area_entered"]
 [connection signal="animation_finished" from="Interactive/BridgeBroken/TrunkEventTrigger/TrunkEventAnims" to="Interactive/BridgeBroken/TrunkEventTrigger" method="_on_trunk_event_anims_animation_finished"]

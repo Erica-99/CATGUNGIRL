@@ -3882,6 +3882,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.64035, 3.8476086, 6.30365
 [node name="EnvEffectFire4" parent="VFX" unique_id=1031620447 instance=ExtResource("106_l4l4g")]
 transform = Transform3D(0.15626208, -0.9877155, 0, 0.9877155, 0.15626208, 0, 0, 0, 1, 160.52202, 5.9482527, 13.449988)
 
+[node name="EnvEffectFire" parent="." unique_id=1433026510 instance=ExtResource("106_l4l4g")]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.41751808, -0.9086685, 0, 0.9086685, 0.41751814, 69.48004, 4.724799, -6.517968)
+
 [connection signal="removecameratween" from="Interactive/CameraPanNode" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="Interactive/CameraPanNode" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
 [connection signal="body_entered" from="Interactive/CameraPanNode/Area" to="Interactive/CameraPanNode" method="_on_area_body_entered"]
