@@ -126,6 +126,7 @@
 [ext_resource type="Texture2D" uid="uid://b6r6ee6ptyno" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoorSystem/PrisonRailDoorPrt_02/PrisonRailDoorPrt_02_Height.png" id="117_5isfi"]
 [ext_resource type="Texture2D" uid="uid://ccn3nrb0hcsei" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoorSystem/PrisonRailDoorPrt_02/PrisonRailDoorPrt_02_Base_metalness.png" id="118_lg5jc"]
 [ext_resource type="Texture2D" uid="uid://b66gkvbeisi0n" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoorSystem/PrisonRailDoorPrt_02/PrisonRailDoorPrt_02_Normal_OpenGL.png" id="119_b152w"]
+[ext_resource type="Script" uid="uid://bya3gldxnfky1" path="res://scenes/levels/Stages/tutorial_checkpoint.gd" id="119_x768c"]
 [ext_resource type="Texture2D" uid="uid://cwn4mnswh323p" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoorSystem/PrisonRailDoorPrt_02/PrisonRailDoorPrt_02_Specular_roughness.png" id="120_j4f4c"]
 [ext_resource type="ArrayMesh" uid="uid://b66ahr4f8qxn7" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/PrisonRailDoorPrt_01a.obj" id="121_toxrj"]
 [ext_resource type="Texture2D" uid="uid://dmcmaetyrq0ni" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/PrisonRailDoorSystem/PrisonRailDoorPrt_01a/PrisonRailDoorPrt_01a_Base_color.png" id="122_t42yw"]
@@ -827,7 +828,7 @@ _data = {
 
 [node name="StageOne" type="Node3D" unique_id=1668100898]
 script = ExtResource("1_6gdgj")
-music_ref = "music_low"
+music_ref = "music_combat"
 
 [node name="RailCamera" type="Node3D" parent="." unique_id=1199109627]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.623193, 31.221176)
@@ -2917,6 +2918,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.368645, 9.140897, -12.4837
 
 [node name="BackgroundGunPodium" parent="." unique_id=1135966921 instance=ExtResource("85_x0gst")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11074698, 0.19126523, -10.822699)
+
+[node name="TutorialCheckpoint" type="Node3D" parent="." unique_id=37614527 node_paths=PackedStringArray("checkpoint_player", "checkpoint_spawn", "checkpoint_sequence", "intro_animation_player")]
+script = ExtResource("119_x768c")
+checkpoint_player = NodePath("../Player")
+checkpoint_spawn = NodePath("Marker3D")
+checkpoint_sequence = NodePath("../TutorialTrigger")
+intro_animation_player = NodePath("../Ross Cell Anim/AnimationPlayerIntro")
+
+[node name="Marker3D" type="Marker3D" parent="TutorialCheckpoint" unique_id=1823104839]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58, 0)
 
 [node name="EnvEffectFire" parent="." unique_id=70569599 instance=ExtResource("107_07lsr")]
 transform = Transform3D(0.7767613, -0.6297949, 0, 0.6297949, 0.7767613, 0, 0, 0, 1, 111.18774, 4.292289, 2.5403101)

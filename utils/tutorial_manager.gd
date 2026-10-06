@@ -103,6 +103,17 @@ func _signal_arg_count(signal_name: StringName) -> int:
 
 # disable completion detection lockout for when the popup fully loads
 func _enable_detection() -> void:
-	_detection_enabled = true
+	if _current_step == null:
+		return
 	
+	_detection_enabled = true
 	EventManager.tutorial_step_started.emit(_current_step.title)
+
+func stop() -> void:
+	_disconnect_current()
+	_steps = []
+	_index = -1
+	_current_step = null
+	_completion_callable = Callable()
+	_pressed_actions.clear()
+	_detection_enabled = false

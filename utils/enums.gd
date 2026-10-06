@@ -65,3 +65,11 @@ enum EnemyType {
 	TRUNK,
 	BRAINSPIDER
 }
+
+## combat music intensity (see MusicIntensityManager)
+enum MusicIntensity {
+	OFF,  ## menus, or the player is dead, or brainjar (has its own music)
+	LOW,  ## no enemies nearby
+	MID,  ## enemies nearby, none aggroed
+	HIGH, ## enemies aggroed
+}

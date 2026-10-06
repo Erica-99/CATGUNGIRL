@@ -1,7 +1,7 @@
 extends CanvasLayer
 class_name GunSacrificeMenu
 
-signal gun_selected(gun: Gun)
+signal gun_selected(gun: Node3D)
 
 @onready var menu_root: Control = $MenuRoot
 @onready var pistol_button: TextureButton = $MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions/PistolButton
@@ -29,7 +29,7 @@ func open_menu(gun_holder: Node3D) -> bool:
 	_hide_button(sniper_button)
 	
 	for child in gun_holder.get_children():
-		if child is not Gun:
+		if child is not Node3D:
 			continue
 		
 		if child.get_index() in gun_holder.gun_indexes_sacrificed:
@@ -55,8 +55,8 @@ func open_menu(gun_holder: Node3D) -> bool:
 	
 	return true
 
-func _get_button_for_gun(gun: Gun) -> TextureButton:
-	var gun_name_lower := gun.gun_name.to_lower()
+func _get_button_for_gun(gun: Node3D) -> TextureButton:
+	var gun_name_lower: String = str(gun.get("gun_name")).to_lower()
 	
 	if gun_name_lower.contains("pistol"):
 		return pistol_button
@@ -75,7 +75,7 @@ func _hide_button(button: TextureButton) -> void:
 	button.disabled = true
 
 func _on_gun_pressed(button: TextureButton) -> void:
-	var selected_gun := guns_by_button.get(button) as Gun
+	var selected_gun := guns_by_button.get(button) as Node3D
 	
 	if !is_instance_valid(selected_gun):
 		return

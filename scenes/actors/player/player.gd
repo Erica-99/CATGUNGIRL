@@ -82,7 +82,7 @@ var player_invisible_last_frame: bool = false
 var blackboard: Dictionary
 @onready var health_component = $HealthComponent
 @onready var hurtbox_component = $HurtboxComponent
-@onready var gun_holder: Node3D = $GunHolder
+@onready var gun_holder: Node3D = $GUNS_P/GunHolder
 
 ## This is to know what scene to reload when the player dies
 var currentScene
@@ -236,7 +236,7 @@ func _set_gun_enabled(enabled: bool) -> void:
 	gun_holder.allow_swapping = enabled
 	EventManager.enable_gun_ui.emit(enabled)
 
-func sacrifice_gun(selected_gun: Gun) -> void:
+func sacrifice_gun(selected_gun: Node3D) -> void:
 	if !has_gun or !is_instance_valid(selected_gun):
 		return
 	

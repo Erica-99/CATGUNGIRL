@@ -118,6 +118,7 @@
 [ext_resource type="Texture2D" uid="uid://kaq84m6845ac" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/7_BrainJar/Platforms/PlatformsAll_DefaultMaterial_Emissive.png" id="100_aoiei"]
 [ext_resource type="PackedScene" uid="uid://yvma87vdtlyv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6B_Lab/Cone.tscn" id="105_f8ekq"]
 [ext_resource type="ArrayMesh" uid="uid://bmutfrb651hqm" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/7_BrainJar/FacilityCoreHatch.obj" id="113_uv2lo"]
+[ext_resource type="Script" uid="uid://byepcs525oexf" path="res://scenes/levels/Stages/boss_checkpoint.gd" id="118_aoiei"]
 [ext_resource type="PackedScene" uid="uid://b8oobnb6vntie" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/BrainReactorRight.tscn" id="119_f8ekq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o5d64"]
@@ -523,7 +524,8 @@ normal_texture = ExtResource("88_f2173")
 
 [node name="Stage6" type="Node3D" unique_id=1033722064]
 script = ExtResource("1_ernso")
-music_ref = "music_brain"
+music_ref = "music_bj_intro"
+combat_music = false
 
 [node name="RailCamera" type="Node3D" parent="." unique_id=1204773297]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.623193, 31.221176)
@@ -7690,6 +7692,15 @@ transform = Transform3D(0.5416642, 0, 8.742278e-08, 0, 0.5, 0, -9.470757e-08, 0,
 
 [node name="RailFull356" parent="ScaffoldColumnRight" unique_id=504488030 instance=ExtResource("9_uoh3v")]
 transform = Transform3D(0.5416642, 0, 8.742278e-08, 0, 0.5, 0, -9.470757e-08, 0, 0.5, -43.9637, 15.099998, -12.65)
+
+[node name="BossCheckpoint" type="Node3D" parent="." unique_id=1131138434 node_paths=PackedStringArray("checkpoint_player", "checkpoint_boss", "checkpoint_spawn")]
+script = ExtResource("118_aoiei")
+checkpoint_player = NodePath("../Player")
+checkpoint_boss = NodePath("../Interactive/BrainJar")
+checkpoint_spawn = NodePath("Marker3D")
+
+[node name="Marker3D" type="Marker3D" parent="BossCheckpoint" unique_id=1835537968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.15518, 0.9232955, 0)
 
 [connection signal="removecameratween" from="CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]

@@ -74,6 +74,7 @@ func _narrative_unlock_sniper() -> void:
 # use this to reset any game-global variables. called when loading main menu.
 func _reset_game() -> void:
 	unlocked_guns = [0]
+	CheckpointManager.clear_checkpoint()
 
 # legit updates the base scene reference
 # allows other entities to reference this scene
