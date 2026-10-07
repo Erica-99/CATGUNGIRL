@@ -12,6 +12,9 @@ extends Node
 @export_category("Stingers")
 @export var enemy_stingers: Array[CallableSFX]
 
+@export_category("Dialogue")
+@export var dialogue_player: AudioStreamPlayer
+
 # which stems of the combat music are audible at each intensity [stem 1, stem 2, stem 3]
 const COMBAT_LAYERS: Dictionary = {
 	Enums.MusicIntensity.OFF:  [false, false, false],
@@ -36,6 +39,8 @@ var sfx_global_pool: Array[AudioStreamPlayer]
 var sfx_3D_pool: Array[AudioStreamPlayer3D]
 
 var hotseat: AudioStreamPlayer3D
+
+var music_base_volume
 
 func _ready() -> void:
 	#region Audio Dictionary Construction
@@ -218,6 +223,20 @@ func play_stinger(asp3d: AudioStreamPlayer3D, stinger_ref: String, bypass: bool 
 	else:
 		play_fallback(asp3d, stinger_ref)
 
+# Plays dialogue from a file and provides reference to the AudioStreamPlayer to the caller of the
+# method so it can detect when it finished.
+func play_dialogue_file(filepath: String) -> AudioStreamPlayer:
+	if filepath == "":
+		return null
+	elif not ResourceLoader.exists(filepath, "AudioStreamMP3"):
+		push_error("Could not find dialogue file at " + filepath)
+		return null
+	else:
+		var dialogue_audio = load(filepath)
+		dialogue_player.stream = dialogue_audio
+		dialogue_player.play()
+		return dialogue_player
+
 # Retrieves a sound effect resource from a SoundEffect or SoundEffectPool in the sfx_dict, that matches sfx_ref
 func get_sfx_from_dict(sfx_ref: String) -> SoundEffect:
 	if sfx_dict.has(sfx_ref):
@@ -317,3 +336,22 @@ func bypass_hotseat(asp3d: AudioStreamPlayer3D, ref: String):
 	asp3d.pitch_scale = res.pitch_scale + randf_range(-res.pitch_random_shift, res.pitch_random_shift)
 	
 	asp3d.play()
+
+# Lower the sounds of non-dialogue audio when audio is playing
+func dialogue_ducking(active: bool):
+	var bus_index := AudioServer.get_bus_index("Music")
+	if active:
+		#print("Before lowering: " + str(AudioServer.get_bus_volume_linear(bus_index)))
+		print("Lowering music")
+		music_base_volume = AudioServer.get_bus_volume_linear(bus_index)
+		AudioServer.set_bus_volume_linear(bus_index, music_base_volume * 0.7)
+		print("After lowering: " + str(AudioServer.get_bus_volume_linear(bus_index)))
+		# TODO: this does work conceptually, though at the moment lowering the music bus
+		# doesn't actually lower the music, which it probably should. You can test the idea
+		# by changing .get_bus_index to "Master"
+		
+	else:
+		#print("Before raising: " + str(AudioServer.get_bus_volume_linear(bus_index)))
+		print("Returning music")
+		AudioServer.set_bus_volume_linear(bus_index, music_base_volume)
+		#print("After raising: " + str(AudioServer.get_bus_volume_linear(bus_index)))

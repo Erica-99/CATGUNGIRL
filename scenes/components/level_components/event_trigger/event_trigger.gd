@@ -3,6 +3,7 @@ extends Area3D
 
 @export var active := true
 @export var _one_shot := true
+@export var activate_on_event: String
 
 @export_group("Signal")
 # --- All this below literally just makes a dropdown for signals. ---
@@ -43,9 +44,14 @@ var refresh_action = notify_property_list_changed
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	notify_property_list_changed()
+	# Connecting a signal name to activate the event trigger
+	if EventManager.has_signal(activate_on_event):
+		EventManager.connect(activate_on_event, activate)
 
-func activate():
+func activate(_filler = null): #filler argument avoids errors from signals with values
 	active = true
+	if has_overlapping_bodies():
+		_emit_signal()
 
 func deactivate():
 	active = false

@@ -24,7 +24,11 @@ var fight_state: FightState = FightState.TERMINALS
 @export var facility_core: Node3D
 @export var facility_core_hatch: Node3D
 var gun_sacrifice_interactable: Node
+var chute_animation_player: AnimationPlayer
 ## Order and requirements of fight phases
+@export var left_reactor: Node3D
+@export var right_reactor: Node3D
+var sacrifice_count: int = 0
 @export var fight_phases: Array[BrainJarPhase] = []
 
 @export_category("Damage Healing")
@@ -61,7 +65,8 @@ func _ready() -> void:
 	
 	if facility_core != null:
 		gun_sacrifice_interactable = facility_core.get_node_or_null("FacilityCore_Mesh/InteractableComponent")
-
+		chute_animation_player = facility_core.get_node_or_null("AnimationPlayer") as AnimationPlayer
+	
 	if gun_sacrifice_interactable == null:
 		push_error("Could not find the Facility Core InteractableComponent.")
 	
@@ -126,10 +131,16 @@ func _disable_shields(signal_val = false):
 		shields.disabled = true
 		health_component.damageable = true
 		
-		if boss_mesh != null:
+		if boss_animation_player != null:
+			boss_animation_player.play(&"ShieldFlickerOff")
+		elif boss_mesh != null:
 			boss_mesh.material_overlay = null
 	
 func _enable_shields():
+	if boss_animation_player != null:
+		if boss_animation_player.current_animation == &"ShieldFlickerOff":
+			boss_animation_player.stop(true)
+	
 	shields.disabled = false
 	health_component.damageable = false
 	
@@ -251,8 +262,15 @@ func _on_gun_sacrificed(_gun_name: String) -> void:
 	if fight_state != FightState.WAITING_FOR_SACRIFICE:
 		return
 	
+	fight_state = FightState.PLAYING_ANIMATION
+	_play_next_reactor_explosion()
+	boss_animation_player.play(&"ShieldFlickerOn")
 	_set_gun_sacrifice_enabled(false)
 	var controlled_health: float = _apply_damage_segment(health_component.current_health)
+	
+	if chute_animation_player != null:
+		chute_animation_player.play(&"Sacrifice")
+		await chute_animation_player.animation_finished
 	
 	if controlled_health <= health_component.min_health:
 		_finish_fight()
@@ -279,6 +297,12 @@ func _set_gun_sacrifice_enabled(enabled: bool) -> void:
 			event_trigger.call("activate")
 		else:
 			event_trigger.call("deactivate")
+	
+	if chute_animation_player != null:
+		if enabled:
+			chute_animation_player.play(&"ChuteOpen")
+		else:
+			chute_animation_player.play(&"RESET")
 
 func _advance_phase() -> void:
 	_set_gun_sacrifice_enabled(false)
@@ -350,3 +374,23 @@ func restore_checkpoint(state: Dictionary) -> bool:
 	# recreate enemy spawn normally triggered by advancing
 	EventManager.spawn_enemy.emit(0.1, get_path_to($"../../Enemies/EnemyDoorFrame"))
 	return true
+
+func _play_next_reactor_explosion() -> void:
+	sacrifice_count += 1
+	var reactor: Node3D
+	var animation_name: StringName
+	
+	if sacrifice_count == 1:
+		reactor = left_reactor
+		animation_name = &"ReactorExplosionLeft"
+	elif sacrifice_count == 2:
+		reactor = right_reactor
+		animation_name = &"ReactorExplosionRight"
+	else:
+		return
+	
+	if reactor == null:
+		return
+	
+	var reactor_anim := reactor.get_node("AnimationPlayer") as AnimationPlayer
+	reactor_anim.play(animation_name)
