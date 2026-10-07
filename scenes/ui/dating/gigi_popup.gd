@@ -14,6 +14,8 @@ var forced_dialogue_additional_delay = 0.5
 # Check when dialogue is playing so that if a new one starts it skips through and begins the new one
 var dialogue_playing: bool = false
 var dialogue_skip: bool = false
+var dialogue_playtime: float = 0
+var dialogue_length: float = 999
 signal dialogue_skip_finished
 
 # runtime vars
@@ -32,6 +34,14 @@ const LEEWAY_OF_TYPEWRITER = 0.8
 # connect popup to event handler
 func _ready() -> void:
 	EventManager.connect("activate_popup", _on_activate_popup)
+	EventManager.connect("player_health_changed", _on_player_health_changed)
+
+func _process(delta: float) -> void:
+	if dialogue_playing:
+		dialogue_playtime += delta
+		if dialogue_playtime > dialogue_length:
+			dialogue_playtime = 0
+			_increment_date_stage(popup_dialogue)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if !requires_option_selection:
@@ -57,16 +67,16 @@ func _popup_start(popup_id: String):
 		_display()
 	# If dialogue is currently playing, skip through it and wait for it to "finish" before playing
 	else:
-		dialogue_skip = true
 		_skip_currently_playing_dialogue()
 		await dialogue_skip_finished
-		print("Starting new dialogue after skip")
 		_popup_start(popup_id)
+		
 
 # displays dialogue on screen
 func _display():
 	# failsafe
 	if "dialogue" not in popup_dialogue.keys():
+		print("failsafe end_popup")
 		_end_popup()
 	
 	# When not skipping dialogue plays normally
@@ -108,16 +118,14 @@ func _display():
 			# Simple way to make sure popup time matches voice clip
 			# Use whichever is longer, sound_clip length or _delay
 			if voice_line != "" and dialogue_player_reference != null:
-				await get_tree().create_timer(
+				dialogue_length = (
 					maxf(
 						dialogue_player_reference.stream.get_length(),
 						_delay
 					) + forced_dialogue_additional_delay
-				).timeout
-				_increment_date_stage(popup_dialogue)
+				)
 			else:
-				await get_tree().create_timer(_delay + forced_dialogue_additional_delay).timeout
-				_increment_date_stage(popup_dialogue)
+				dialogue_length = (_delay + forced_dialogue_additional_delay)
 	# When skipping, increment date_stages without displaying/playing audio
 	else:
 		DialogueProcessor._check_and_trigger_dialogue_event(popup_dialogue)
@@ -126,17 +134,23 @@ func _display():
 # Skips the current active dialogue
 func _skip_currently_playing_dialogue():
 	if dialogue_playing:
-		print("Skipping currently playing dialogue")
+		# Activates skip
+		dialogue_skip = true
 		# Stop audio
 		dialogue_player_reference.stop()
-		_increment_date_stage(popup_dialogue)
-	
+		# Kill typewriter tween (otherwise next dialogue starts partway typed)
+		gigi_dialogue._kill_tween()
+		# Max out dialogue playtime to move to next dialogue
+		dialogue_playtime = 999
+
+func _on_player_health_changed(_old_health, new_health, _damage_or_heal_instance):
+	if new_health <= 0:
+		_skip_currently_playing_dialogue()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_skip_dialogue"):
 		if dialogue_playing:
 			print("Debug: dialogue skip")
-			dialogue_skip = true
 			_skip_currently_playing_dialogue()
 
 func _option_selected(value: Dictionary):
@@ -149,6 +163,7 @@ func _option_selected(value: Dictionary):
 func _increment_date_stage(value: Dictionary):
 	requires_option_selection = false
 	if value["next_id"] == "":
+		print("Next id is '', _end_popup called")
 		_end_popup()
 	else:
 		# continue dating loop
@@ -161,9 +176,9 @@ func _end_popup():
 	visible = false
 	dialogue_playing = false
 	if dialogue_skip:
-		dialogue_skip_finished.emit()
 		dialogue_skip = false
-	print("Dialogue ended: playing: " + str(dialogue_playing) + ", skipping: " + str(dialogue_skip))
+		dialogue_skip_finished.emit()
+	print("Dialogue ended: playing: " + str(dialogue_playing) + ", skipped: " + str(dialogue_skip))
 
 # Debug input
 #func _unhandled_input(event: InputEvent) -> void:
