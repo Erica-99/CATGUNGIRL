@@ -236,7 +236,7 @@ func _set_gun_enabled(enabled: bool) -> void:
 	gun_holder.allow_swapping = enabled
 	EventManager.enable_gun_ui.emit(enabled)
 
-func sacrifice_gun(selected_gun: Gun) -> void:
+func sacrifice_gun(selected_gun: Node3D) -> void:
 	if !has_gun or !is_instance_valid(selected_gun):
 		return
 	

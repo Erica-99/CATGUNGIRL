@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cs7ybs08guab4"]
+
+[ext_resource type="PackedScene" uid="uid://g7hqmxaggxms" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/6B_Lab/Scissors.fbx" id="1_bd132"]
+[ext_resource type="Texture2D" uid="uid://ddeam4o5vjdtf" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/Scissors/Scissors_BC.png" id="2_mx5jx"]
+[ext_resource type="Texture2D" uid="uid://byv522yq6ddwu" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/Scissors/Scissors_M.png" id="3_i6xgo"]
+[ext_resource type="Texture2D" uid="uid://bu2w5f43st64r" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/Scissors/Scissors_N.png" id="4_rr7ay"]
+[ext_resource type="Texture2D" uid="uid://c2avi544ixbbj" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/Scissors/Scissors_R.png" id="5_0og8m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hgtjt"]
+albedo_texture = ExtResource("2_mx5jx")
+metallic = 1.0
+metallic_texture = ExtResource("3_i6xgo")
+roughness_texture = ExtResource("5_0og8m")
+normal_enabled = true
+normal_texture = ExtResource("4_rr7ay")
+
+[node name="Scissors" type="Node3D" unique_id=94114826]
+
+[node name="Scissors" parent="." unique_id=1845603164 instance=ExtResource("1_bd132")]
+
+[node name="Cylinder_002" parent="Scissors" index="0" unique_id=1296292578]
+transform = Transform3D(300, 0, 0, 0, -1.3113417e-05, 300, 0, -300, -1.3113417e-05, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_hgtjt")
+
+[editable path="Scissors"]

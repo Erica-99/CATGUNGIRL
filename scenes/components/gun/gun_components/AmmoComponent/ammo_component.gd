@@ -21,21 +21,14 @@ class_name AmmoComponent
 var single_reload_timer: float = 0 # to control changing reload times (e.g. 1.0 -> 0.5 -> 0.5 -> 0.5)
 var _is_reloading: bool = false
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
 	if gun_link.team_component.team == Enums.Team.PLAYER:
-		_process_player_reload(delta)
-	
+		# if gun is active, handle reload
+		if gun_link.active:
+			_process_player_reload(delta)
 	else:
 		_process_enemy_reload(delta)
-
 
 func _process_player_reload(delta: float) -> void:
 	if DebugManager.infinite_ammo:
@@ -49,8 +42,6 @@ func _process_player_reload(delta: float) -> void:
 			single_reload_timer = reload_time / 2.0
 			if gun_link.active and gun_link.team_component.team == Enums.Team.PLAYER:
 				EventManager.shots_loaded.emit(1)
-
-
 
 # handles enemy specific reload (alot simpler than player reload)
 # checks ammo status and if it has fallen below a certain level, then begin reload timer

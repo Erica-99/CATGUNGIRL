@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cbdqjgjrwr14b"]
+
+[ext_resource type="PackedScene" uid="uid://cu2vlsbgi0x1j" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/6B_Lab/HazmatSuit.fbx" id="1_ed4ig"]
+[ext_resource type="Texture2D" uid="uid://bjhrwf7l71fwr" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/HazmatSuit/HazmatSuit_BC.png" id="2_v6nq7"]
+[ext_resource type="Texture2D" uid="uid://cyw3ucctd7lca" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/HazmatSuit/HazmatSuit_M.png" id="3_sdbts"]
+[ext_resource type="Texture2D" uid="uid://ba5lgpl4jrgfh" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/HazmatSuit/HazmatSuit_N.png" id="4_qla10"]
+[ext_resource type="Texture2D" uid="uid://duc5swcywfw2v" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/HazmatSuit/HazmatSuit_R.png" id="5_2k6ws"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kfk72"]
+albedo_texture = ExtResource("2_v6nq7")
+metallic = 1.0
+metallic_texture = ExtResource("3_sdbts")
+roughness_texture = ExtResource("5_2k6ws")
+normal_enabled = true
+normal_texture = ExtResource("4_qla10")
+
+[node name="HazmarSuit" type="StaticBody3D" unique_id=306728926]
+
+[node name="HazmatSuit" parent="." unique_id=1936349785 instance=ExtResource("1_ed4ig")]
+
+[node name="Plane" parent="HazmatSuit" index="0" unique_id=2021462767]
+surface_material_override/0 = SubResource("StandardMaterial3D_kfk72")
+
+[editable path="HazmatSuit"]

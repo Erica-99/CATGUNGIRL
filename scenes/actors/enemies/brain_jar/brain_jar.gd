@@ -6,7 +6,6 @@ enum FightState {
 	WAITING_FOR_HEALING_HIT,
 	HEALING_DAMAGE,
 	WAITING_FOR_SACRIFICE,
-	WAITING_FOR_DAMAGE,
 	FINAL_VULNERABILITY,
 	COMPLETE,
 }
@@ -25,7 +24,11 @@ var fight_state: FightState = FightState.TERMINALS
 @export var facility_core: Node3D
 @export var facility_core_hatch: Node3D
 var gun_sacrifice_interactable: Node
+var chute_animation_player: AnimationPlayer
 ## Order and requirements of fight phases
+@export var left_reactor: Node3D
+@export var right_reactor: Node3D
+var sacrifice_count: int = 0
 @export var fight_phases: Array[BrainJarPhase] = []
 
 @export_category("Damage Healing")
@@ -62,7 +65,8 @@ func _ready() -> void:
 	
 	if facility_core != null:
 		gun_sacrifice_interactable = facility_core.get_node_or_null("FacilityCore_Mesh/InteractableComponent")
-
+		chute_animation_player = facility_core.get_node_or_null("AnimationPlayer") as AnimationPlayer
+	
 	if gun_sacrifice_interactable == null:
 		push_error("Could not find the Facility Core InteractableComponent.")
 	
@@ -88,14 +92,6 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 	match fight_state:
 		FightState.WAITING_FOR_HEALING_HIT:
 			_play_damage_heal(new_health, old_health)
-		
-		FightState.WAITING_FOR_DAMAGE:
-			var controlled_health: float = _apply_damage_segment(old_health)
-			
-			if controlled_health <= health_component.min_health:
-				_finish_fight()
-			else:
-				_advance_phase()
 		
 		FightState.FINAL_VULNERABILITY:
 			var controlled_health: float = _apply_damage_segment(old_health)
@@ -135,10 +131,16 @@ func _disable_shields(signal_val = false):
 		shields.disabled = true
 		health_component.damageable = true
 		
-		if boss_mesh != null:
+		if boss_animation_player != null:
+			boss_animation_player.play(&"ShieldFlickerOff")
+		elif boss_mesh != null:
 			boss_mesh.material_overlay = null
 	
 func _enable_shields():
+	if boss_animation_player != null:
+		if boss_animation_player.current_animation == &"ShieldFlickerOff":
+			boss_animation_player.stop(true)
+	
 	shields.disabled = false
 	health_component.damageable = false
 	
@@ -162,7 +164,6 @@ func _start_fight() -> void:
 		if terminal is BrainJarTerminalGroup:
 			available_terminals.append(terminal)
 	
-	available_terminals.shuffle()
 	_start_current_phase()
 
 func _start_current_phase() -> void:
@@ -249,7 +250,7 @@ func _complete_terminal_phase() -> void:
 		BrainJarPhase.CompletionType.DAMAGE_HEAL_AND_ADVANCE:
 			_play_after_four_terminals_animation()
 		
-		BrainJarPhase.CompletionType.SACRIFICE_THEN_DAMAGE:
+		BrainJarPhase.CompletionType.SACRIFICE_DAMAGE_AND_ADVANCE:
 			fight_state = FightState.WAITING_FOR_SACRIFICE
 			_set_gun_sacrifice_enabled(true)
 		
@@ -261,9 +262,20 @@ func _on_gun_sacrificed(_gun_name: String) -> void:
 	if fight_state != FightState.WAITING_FOR_SACRIFICE:
 		return
 	
+	fight_state = FightState.PLAYING_ANIMATION
+	_play_next_reactor_explosion()
+	boss_animation_player.play(&"ShieldFlickerOn")
 	_set_gun_sacrifice_enabled(false)
-	fight_state = FightState.WAITING_FOR_DAMAGE
-	_disable_shields()
+	var controlled_health: float = _apply_damage_segment(health_component.current_health)
+	
+	if chute_animation_player != null:
+		chute_animation_player.play(&"Sacrifice")
+		await chute_animation_player.animation_finished
+	
+	if controlled_health <= health_component.min_health:
+		_finish_fight()
+	else:
+		_advance_phase()
 
 func _set_gun_sacrifice_enabled(enabled: bool) -> void:
 	if gun_sacrifice_interactable == null:
@@ -285,6 +297,12 @@ func _set_gun_sacrifice_enabled(enabled: bool) -> void:
 			event_trigger.call("activate")
 		else:
 			event_trigger.call("deactivate")
+	
+	if chute_animation_player != null:
+		if enabled:
+			chute_animation_player.play(&"ChuteOpen")
+		else:
+			chute_animation_player.play(&"RESET")
 
 func _advance_phase() -> void:
 	_set_gun_sacrifice_enabled(false)
@@ -294,7 +312,7 @@ func _advance_phase() -> void:
 	if current_phase_index >= fight_phases.size():
 		return
 	
-	EventManager.spawn_enemy.emit(0.1, get_path_to($"../EnemyManager/EnemyDoorFrame"))
+	EventManager.spawn_enemy.emit(0.1, get_path_to($"../../Enemies/EnemyDoorFrame"))
 	_start_current_phase()
 
 func _finish_fight() -> void:
@@ -326,3 +344,53 @@ func _play_after_four_terminals_animation() -> void:
 func _open_healing_hit_window() -> void:
 	fight_state = FightState.WAITING_FOR_HEALING_HIT
 	_disable_shields()
+
+func restore_checkpoint(state: Dictionary) -> bool:
+	var phase_index: int = int(state.get("boss_phase_index", -1))
+	
+	if phase_index < 1 or phase_index >= fight_phases.size():
+		return false
+	
+	if terminals == null or boss_animation_player == null:
+		return false
+	
+	if !boss_animation_player.has_animation(after_four_terminals_animation_name):
+		return false
+	
+	intro_played = true
+	current_phase_index = phase_index
+	var restored_health: float = clampf(float(state.get("boss_health", health_component.max_health)), health_component.min_health, health_component.max_health)
+	health_component.current_health = restored_health
+	_update_health_display(restored_health)
+	# restore pose reached after the first terminal phase
+	var checkpoint_animation: Animation = \
+		boss_animation_player.get_animation(after_four_terminals_animation_name)
+
+	boss_animation_player.stop(true)
+	boss_animation_player.assigned_animation = \
+		after_four_terminals_animation_name
+	boss_animation_player.seek(checkpoint_animation.length, true, true)
+	_start_fight()
+	# recreate enemy spawn normally triggered by advancing
+	EventManager.spawn_enemy.emit(0.1, get_path_to($"../../Enemies/EnemyDoorFrame"))
+	return true
+
+func _play_next_reactor_explosion() -> void:
+	sacrifice_count += 1
+	var reactor: Node3D
+	var animation_name: StringName
+	
+	if sacrifice_count == 1:
+		reactor = left_reactor
+		animation_name = &"ReactorExplosionLeft"
+	elif sacrifice_count == 2:
+		reactor = right_reactor
+		animation_name = &"ReactorExplosionRight"
+	else:
+		return
+	
+	if reactor == null:
+		return
+	
+	var reactor_anim := reactor.get_node("AnimationPlayer") as AnimationPlayer
+	reactor_anim.play(animation_name)

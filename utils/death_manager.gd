@@ -20,4 +20,5 @@ func load_last_death_level() -> void:
 	if level_path_to_load == "":
 		level_path_to_load = Globals.LEVEL_PATHS["main_menu"]
 	
+	CheckpointManager.prepare_retry(level_path_to_load)
 	get_tree().change_scene_to_file(level_path_to_load)

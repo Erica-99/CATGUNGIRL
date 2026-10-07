@@ -3,22 +3,29 @@
 [ext_resource type="ArrayMesh" uid="uid://cmmb3ptciwade" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/7_BrainJar/BrainPlatformHalf.obj" id="1_cagpo"]
 [ext_resource type="Texture2D" uid="uid://b8m65p8khfjru" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/7_BrainJar/Platforms/PlatformsAll_DefaultMaterial_BaseColor.png" id="2_tsgyo"]
 [ext_resource type="Texture2D" uid="uid://bewja02fywiev" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/7_BrainJar/Platforms/PlatformsAll_DefaultMaterial_Metallic.png" id="3_iog73"]
+[ext_resource type="Texture2D" uid="uid://kaq84m6845ac" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/7_BrainJar/Platforms/PlatformsAll_DefaultMaterial_Emissive.png" id="3_tgy0h"]
 [ext_resource type="Texture2D" uid="uid://cxk1o4dmx07d4" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/7_BrainJar/Platforms/PlatformsAll_DefaultMaterial_Normal.png" id="4_tgy0h"]
 [ext_resource type="Texture2D" uid="uid://clc8uf0t8tjpt" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/7_BrainJar/Platforms/PlatformsAll_DefaultMaterial_Roughness.png" id="5_trlo7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trlo7"]
+albedo_texture = ExtResource("2_tsgyo")
+metallic = 1.0
+metallic_texture = ExtResource("3_iog73")
+roughness_texture = ExtResource("5_trlo7")
+emission_enabled = true
+emission_energy_multiplier = 5.0
+emission_texture = ExtResource("3_tgy0h")
+normal_enabled = true
+normal_texture = ExtResource("4_tgy0h")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_man6j"]
 albedo_texture = ExtResource("2_tsgyo")
 metallic = 1.0
 metallic_texture = ExtResource("3_iog73")
 roughness_texture = ExtResource("5_trlo7")
-normal_enabled = true
-normal_texture = ExtResource("4_tgy0h")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cki2u"]
-albedo_texture = ExtResource("2_tsgyo")
-metallic = 1.0
-metallic_texture = ExtResource("3_iog73")
-roughness_texture = ExtResource("5_trlo7")
+emission_enabled = true
+emission_energy_multiplier = 5.0
+emission_texture = ExtResource("3_tgy0h")
 normal_enabled = true
 normal_texture = ExtResource("4_tgy0h")
 
@@ -27,8 +34,8 @@ normal_texture = ExtResource("4_tgy0h")
 [node name="BrainPlatformHalf_Mesh" type="MeshInstance3D" parent="." unique_id=887001794]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("1_cagpo")
-surface_material_override/0 = SubResource("StandardMaterial3D_man6j")
-surface_material_override/1 = SubResource("StandardMaterial3D_cki2u")
+surface_material_override/0 = SubResource("StandardMaterial3D_trlo7")
+surface_material_override/1 = SubResource("StandardMaterial3D_man6j")
 
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="." unique_id=1838958692]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5061035, -0.19049072, 4.9663086)
