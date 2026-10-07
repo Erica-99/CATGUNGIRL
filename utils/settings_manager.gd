@@ -4,8 +4,6 @@ signal gore_enabled_changed(enabled: bool)
 
 const SETTINGS_PATH := "user://settings.cfg"
 const DIALOGUE_BUS_NAME := "Dialogue"
-const MUSIC_BUS_NAME := "SettingsMusic"
-const SFX_BUS_NAME := "SFX"
 
 ## Shared absolute range every gun's aim speed slider is tunable across, so any gun
 ## can be tuned to feel as snappy (or as delayed) as any other
@@ -18,8 +16,6 @@ const SNIPER_PREFAB := preload("res://scenes/components/gun_poc/sniper/sniper.ts
 
 var master_volume: float = 1.0
 var dialogue_volume: float = 1.0
-var music_volume: float = 1.0
-var sfx_volume: float = 1.0
 ## Placeholder for the future execution/gore system
 var gore_enabled: bool = true
 
@@ -50,16 +46,6 @@ func set_dialogue_volume(value: float) -> void:
 	_apply_dialogue_volume()
 	_save_settings()
 
-func set_music_volume(value: float) -> void:
-	music_volume = clampf(value, 0.0, 1.0)
-	_apply_music_volume()
-	_save_settings()
-
-func set_sfx_volume(value: float) -> void:
-	sfx_volume = clampf(value, 0.0, 1.0)
-	_apply_sfx_volume()
-	_save_settings()
-
 func set_gore_enabled(enabled: bool) -> void:
 	gore_enabled = enabled
 	gore_enabled_changed.emit(gore_enabled)
@@ -88,14 +74,6 @@ func _apply_dialogue_volume() -> void:
 	var bus_index := AudioServer.get_bus_index(DIALOGUE_BUS_NAME)
 	AudioServer.set_bus_volume_db(bus_index, linear_to_db(dialogue_volume))
 
-func _apply_music_volume() -> void:
-	var bus_index := AudioServer.get_bus_index(MUSIC_BUS_NAME)
-	AudioServer.set_bus_volume_db(bus_index, linear_to_db(music_volume))
-	
-func _apply_sfx_volume() -> void:
-	var bus_index := AudioServer.get_bus_index(SFX_BUS_NAME)
-	AudioServer.set_bus_volume_db(bus_index, linear_to_db(sfx_volume))
-
 func _ensure_bus_exists(bus_name: String) -> void:
 	if AudioServer.get_bus_index(bus_name) == -1:
 		var bus_index := AudioServer.bus_count
@@ -106,8 +84,6 @@ func _save_settings() -> void:
 	var config := ConfigFile.new()
 	config.set_value("audio", "master_volume", master_volume)
 	config.set_value("audio", "dialogue_volume", dialogue_volume)
-	config.set_value("audio", "music_volume", music_volume)
-	config.set_value("audio", "sfx_volume", sfx_volume)
 	config.set_value("gameplay", "gore_enabled", gore_enabled)
 	config.set_value("controls", "aim_speed_values", aim_speed_values)
 	config.save(SETTINGS_PATH)
@@ -117,8 +93,6 @@ func _load_settings() -> void:
 	if config.load(SETTINGS_PATH) == OK:
 		master_volume = config.get_value("audio", "master_volume", 1.0)
 		dialogue_volume = config.get_value("audio", "dialogue_volume", 1.0)
-		music_volume = config.get_value("audio", "music_volume", 1.0)
-		sfx_volume = config.get_value("audio", "sfx_volume", 1.0)
 		gore_enabled = config.get_value("gameplay", "gore_enabled", true)
 		var saved_aim_speeds: Dictionary = config.get_value("controls", "aim_speed_values", {})
 		for gun_name in saved_aim_speeds:

@@ -1,17 +1,21 @@
 [gd_scene format=3 uid="uid://rcxtk5radxjs"]
 
 [ext_resource type="Script" uid="uid://dejv2kp4u4q7j" path="res://scenes/ui/menu_screens/pause_menu/pause_menu.gd" id="1_pause"]
-[ext_resource type="PackedScene" uid="uid://fmbjrf8ko2ds" path="res://scenes/ui/menu_screens/settings_panel/settings_panel.tscn" id="2_settings"]
+[ext_resource type="PackedScene" path="res://scenes/ui/menu_screens/settings_panel/settings_panel.tscn" id="2_settings"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
-bg_color = Color(0, 1, 1, 0.39215687)
-skew = Vector2(-0.05, 0)
+bg_color = Color(0.036221787, 0, 0.020698166, 0.9137255)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.8745098, 0, 0.8745098, 1)
 border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+corner_detail = 20
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_button"]
 
@@ -141,4 +145,3 @@ text = "Quit Game"
 
 [node name="SettingsPanel" parent="MenuRoot/CenterContainer" unique_id=1935283488 instance=ExtResource("2_settings")]
 visible = false
-layout_mode = 2

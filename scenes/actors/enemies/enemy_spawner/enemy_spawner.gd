@@ -61,8 +61,7 @@ func _ready() -> void:
 
 # actually start spawning timer
 func _spawn_enemy(custom_delay: float, spawner_path: NodePath):
-	if not linked_enemy_manager.is_connected("child_exiting_tree", _remove_id_):
-		linked_enemy_manager.child_exiting_tree.connect(_remove_id_)
+	linked_enemy_manager.child_exiting_tree.connect(_remove_id_)
 	print(get_parent_node_3d())
 	var enemy
 	#Check if the spawner is allowed to spawn new enemies

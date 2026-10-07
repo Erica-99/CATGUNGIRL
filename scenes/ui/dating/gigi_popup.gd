@@ -1,11 +1,10 @@
 extends BoxContainer
 
 # references
-@export var speaker_name: Label
-@export var gigi_image: TextureRect
-@export var gigi_dialogue: PanelContainer
-@export var grid_container: GridContainer
-@export var call_panel: PanelContainer
+@onready var speaker_name: Label = $HBoxContainer/VBoxContainer/SpeakerName
+@onready var gigi_image: TextureRect = $HBoxContainer/gigi_image
+@onready var gigi_dialogue: PanelContainer = $HBoxContainer/VBoxContainer/DialogueBubble
+@onready var grid_container: GridContainer = $HBoxContainer/VBoxContainer/GridContainer
 
 ## You can change this to however long you want before the popup closes
 var _delay = 5
@@ -64,9 +63,6 @@ func _display():
 	gigi_image.texture = null
 	if popup_dialogue["icon"] != "":
 		gigi_image.texture = load(popup_dialogue["icon"])
-		call_panel.visible = true
-	else:
-		call_panel.visible = false
 	
 	# play voice lines if any
 	var voice_line = popup_dialogue["audio_file"]

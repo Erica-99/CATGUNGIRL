@@ -143,7 +143,6 @@ func _ready() -> void:
 	brain_spider_visuals.apply_surface_rotation()
 	health_comp.killed.connect(_on_health_component_killed)
 	health_comp.knocked_back.connect(take_knockback)
-	position.z = 0
 
 func _on_health_component_killed(_killing_blow: DamageHealInstance, _health_before_death: Variant) -> void:
 	start_death()
