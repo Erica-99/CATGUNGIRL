@@ -1,44 +1,39 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene format=3 uid="uid://fmbjrf8ko2ds"]
 
-[ext_resource type="Script" path="res://scenes/ui/menu_screens/settings_panel/settings_panel.gd" id="1_settings"]
+[ext_resource type="Script" uid="uid://b6f1gdd8j2n6r" path="res://scenes/ui/menu_screens/settings_panel/settings_panel.gd" id="1_settings"]
 [ext_resource type="PackedScene" path="res://scenes/ui/menu_screens/controls_panel/controls_panel.tscn" id="2_controls"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
-bg_color = Color(0.036221787, 0, 0.020698166, 0.9137255)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vam7y"]
+bg_color = Color(0, 1, 1, 0.39215687)
+skew = Vector2(-0.05, 0)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.8745098, 0, 0.8745098, 1)
 border_blend = true
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-corner_detail = 20
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_button"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_focus"]
 
-[node name="SettingsPanel" type="PanelContainer"]
+[node name="SettingsPanel" type="PanelContainer" unique_id=1781260445]
 custom_minimum_size = Vector2(480, 0)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+theme_override_styles/panel = SubResource("StyleBoxFlat_vam7y")
 script = ExtResource("1_settings")
 
-[node name="AudioPage" type="MarginContainer" parent="."]
+[node name="AudioPage" type="MarginContainer" parent="." unique_id=685243437]
 layout_mode = 2
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 32
 
-[node name="VBoxContainer" type="VBoxContainer" parent="AudioPage"]
+[node name="VBoxContainer" type="VBoxContainer" parent="AudioPage" unique_id=1319813754]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="TitleLabel" type="Label" parent="AudioPage/VBoxContainer"]
+[node name="TitleLabel" type="Label" parent="AudioPage/VBoxContainer" unique_id=71334244]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.8745098, 0, 0.8745098, 1)
@@ -46,56 +41,90 @@ theme_override_font_sizes/font_size = 36
 text = "SETTINGS"
 horizontal_alignment = 1
 
-[node name="MasterVolumeRow" type="VBoxContainer" parent="AudioPage/VBoxContainer"]
+[node name="MasterVolumeRow" type="VBoxContainer" parent="AudioPage/VBoxContainer" unique_id=267470626]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="Label" type="Label" parent="AudioPage/VBoxContainer/MasterVolumeRow"]
+[node name="Label" type="Label" parent="AudioPage/VBoxContainer/MasterVolumeRow" unique_id=1120130166]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 18
 text = "Master Volume"
 
-[node name="MasterVolumeSlider" type="HSlider" parent="AudioPage/VBoxContainer/MasterVolumeRow"]
+[node name="MasterVolumeSlider" type="HSlider" parent="AudioPage/VBoxContainer/MasterVolumeRow" unique_id=583087574]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="DialogueVolumeRow" type="VBoxContainer" parent="AudioPage/VBoxContainer"]
+[node name="DialogueVolumeRow" type="VBoxContainer" parent="AudioPage/VBoxContainer" unique_id=1733574728]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="Label" type="Label" parent="AudioPage/VBoxContainer/DialogueVolumeRow"]
+[node name="Label" type="Label" parent="AudioPage/VBoxContainer/DialogueVolumeRow" unique_id=245202240]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 18
-text = "Dialogue Volume (coming soon)"
+text = "Dialogue Volume"
 
-[node name="DialogueVolumeSlider" type="HSlider" parent="AudioPage/VBoxContainer/DialogueVolumeRow"]
+[node name="DialogueVolumeSlider" type="HSlider" parent="AudioPage/VBoxContainer/DialogueVolumeRow" unique_id=649774487]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="GoreRow" type="HBoxContainer" parent="AudioPage/VBoxContainer"]
+[node name="MusicVolumeRow" type="VBoxContainer" parent="AudioPage/VBoxContainer" unique_id=1296757352]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="AudioPage/VBoxContainer/MusicVolumeRow" unique_id=145811794]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "Music Volume"
+
+[node name="MusicVolumeSlider" type="HSlider" parent="AudioPage/VBoxContainer/MusicVolumeRow" unique_id=1559314730]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="SFXVolumeRow" type="VBoxContainer" parent="AudioPage/VBoxContainer" unique_id=1697772269]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="AudioPage/VBoxContainer/SFXVolumeRow" unique_id=1932178159]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "Sound Effects Volume"
+
+[node name="SFXVolumeSlider" type="HSlider" parent="AudioPage/VBoxContainer/SFXVolumeRow" unique_id=956621799]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="GoreRow" type="HBoxContainer" parent="AudioPage/VBoxContainer" unique_id=1373031634]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Label" type="Label" parent="AudioPage/VBoxContainer/GoreRow"]
+[node name="Label" type="Label" parent="AudioPage/VBoxContainer/GoreRow" unique_id=1195777653]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 18
 text = "Gore (executes)"
 
-[node name="GoreToggle" type="CheckButton" parent="AudioPage/VBoxContainer/GoreRow"]
+[node name="GoreToggle" type="CheckButton" parent="AudioPage/VBoxContainer/GoreRow" unique_id=992144963]
 layout_mode = 2
 button_pressed = true
 
-[node name="ControlsButton" type="Button" parent="AudioPage/VBoxContainer"]
+[node name="ControlsButton" type="Button" parent="AudioPage/VBoxContainer" unique_id=1213013980]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8745098, 0, 0.8745098, 1)
@@ -103,12 +132,12 @@ theme_override_colors/font_pressed_color = Color(0, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0.5955917, 0.00025990605, 0.5955875, 1)
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxEmpty_button")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_button")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_button")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_button")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
 text = "Controls"
 
-[node name="BackButton" type="Button" parent="AudioPage/VBoxContainer"]
+[node name="BackButton" type="Button" parent="AudioPage/VBoxContainer" unique_id=294803753]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8745098, 0, 0.8745098, 1)
@@ -116,11 +145,10 @@ theme_override_colors/font_pressed_color = Color(0, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0.5955917, 0.00025990605, 0.5955875, 1)
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxEmpty_button")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_button")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_button")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_button")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
 text = "Back"
 
-[node name="ControlsPanel" parent="." instance=ExtResource("2_controls")]
+[node name="ControlsPanel" parent="." unique_id=1291155717 instance=ExtResource("2_controls")]
 visible = false
-layout_mode = 2
