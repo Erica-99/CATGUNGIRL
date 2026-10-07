@@ -7,6 +7,9 @@ signal gun_selected(gun: Node3D)
 @onready var pistol_button: TextureButton = $MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions/PistolButton
 @onready var shotgun_button: TextureButton = $MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions/ShotgunButton
 @onready var sniper_button: TextureButton = $MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions/SniperButton
+@onready var pistol_focus: ColorRect = $MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions/PistolButton/PistolFocus
+@onready var shotgun_focus: ColorRect = $MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions/ShotgunButton/ShotgunFocus
+@onready var sniper_focus: ColorRect = $MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions/SniperButton/SniperFocus
 
 var guns_by_button: Dictionary = {}
 var is_open: bool = false
@@ -18,6 +21,20 @@ func _ready() -> void:
 	pistol_button.pressed.connect(_on_gun_pressed.bind(pistol_button))
 	shotgun_button.pressed.connect(_on_gun_pressed.bind(shotgun_button))
 	sniper_button.pressed.connect(_on_gun_pressed.bind(sniper_button))
+
+func _process(delta: float) -> void:
+	if pistol_button.has_focus():
+		pistol_focus.visible = true
+		shotgun_focus.visible = false
+		sniper_focus.visible = false
+	elif shotgun_button.has_focus():
+		pistol_focus.visible = false
+		shotgun_focus.visible = true
+		sniper_focus.visible = false
+	elif sniper_button.has_focus():
+		pistol_focus.visible = false
+		shotgun_focus.visible = false
+		sniper_focus.visible = true
 
 func open_menu(gun_holder: Node3D) -> bool:
 	if is_open or get_tree().paused or !is_instance_valid(gun_holder):

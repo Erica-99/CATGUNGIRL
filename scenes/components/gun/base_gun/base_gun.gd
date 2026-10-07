@@ -29,7 +29,7 @@ var input_component: Node
 
 @export_group("Aim")
 @export var aim_speed: float = 8.0		# gun rotation speed towards mouse (lower = more delay)
-@export var controller_aim_speed = 3.5
+@export var mouse_speed = 775.0
 
 @export_group("Perfect Shot")
 @export var aim_settled_threshold: float = 98.0		# % of recoil recovered
@@ -63,7 +63,7 @@ var using_controller = false
 var controller_deadzone = 0.2
 var target_angle : float
 var mouse_pos := Vector2.ZERO
-var mouse_speed = 600.0
+
 
 var active: bool = false:
 	set(value):

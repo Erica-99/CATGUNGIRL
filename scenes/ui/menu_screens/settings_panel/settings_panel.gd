@@ -28,6 +28,11 @@ func _ready() -> void:
 			_show_audio_page()
 	)
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventJoypadButton:
+		if Input.is_action_just_pressed("ui_cancel"):
+			back_pressed.emit()
+
 func _on_controls_pressed() -> void:
 	audio_page.visible = false
 	controls_panel.visible = true
