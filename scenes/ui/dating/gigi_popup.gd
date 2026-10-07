@@ -11,6 +11,11 @@ var _delay = 5
 
 var forced_dialogue_additional_delay = 0.5
 
+# Check when dialogue is playing so that if a new one starts it skips through and begins the new one
+var dialogue_playing: bool = false
+var dialogue_skip: bool = false
+signal dialogue_skip_finished
+
 # runtime vars
 var popup_active = false
 var current_popup_scene = []
@@ -41,12 +46,22 @@ func _unhandled_input(event: InputEvent) -> void:
 
 # get values from JSON file via DialogueProcessor
 func _popup_start(popup_id: String):
-	visible = true
-	popup_active = true
-	current_popup_scene = DialogueProcessor._get_dating_scene(CustomResourceLoader.popup_dialogue_path + "gigi_popups", str(popup_id))
-	popup_dialogue = DialogueProcessor._get_next_dating_dialogue(current_popup_scene)
-	AudioManager.dialogue_ducking(true)
-	_display()
+	# When there isn't currently any dialogue playing, display normally
+	if !dialogue_playing:
+		visible = true
+		popup_active = true
+		current_popup_scene = DialogueProcessor._get_dating_scene(CustomResourceLoader.popup_dialogue_path + "gigi_popups", str(popup_id))
+		popup_dialogue = DialogueProcessor._get_next_dating_dialogue(current_popup_scene)
+		AudioManager.dialogue_ducking(true)
+		dialogue_playing = true
+		_display()
+	# If dialogue is currently playing, skip through it and wait for it to "finish" before playing
+	else:
+		dialogue_skip = true
+		_skip_currently_playing_dialogue()
+		await dialogue_skip_finished
+		print("Starting new dialogue after skip")
+		_popup_start(popup_id)
 
 # displays dialogue on screen
 func _display():
@@ -54,53 +69,75 @@ func _display():
 	if "dialogue" not in popup_dialogue.keys():
 		_end_popup()
 	
-	# get delay via popup char count	
-	_delay = SECONDS_PER_CHARACTER * popup_dialogue["dialogue"].length()
-	# set text - additional params determine how it should display (as typewriter)
-	gigi_dialogue._set_text(popup_dialogue["dialogue"], true, _delay * LEEWAY_OF_TYPEWRITER)
-	# set speaker name and image
-	speaker_name.text = popup_dialogue["origin"]
-	gigi_image.texture = null
-	if popup_dialogue["icon"] != "":
-		gigi_image.texture = load(popup_dialogue["icon"])
-	
-	# play voice lines if any
-	var voice_line = popup_dialogue["audio_file"]
-	if voice_line != "":
-		dialogue_player_reference = AudioManager.play_dialogue_file(voice_line)
-	
-	# Trigger event
-	DialogueProcessor._check_and_trigger_dialogue_event(popup_dialogue)
-	
-	# generate buttons
-	var options = popup_dialogue["options"]
-	if options.size() > 0:
-		requires_option_selection = true
-		for option in options:
-			var button = Button.new()
-			# set button values
-			button.text = option["option"]
-			button.focus_mode = Control.FOCUS_NONE
-			button.custom_minimum_size = Vector2(280, 100.0)
-			button.autowrap_mode = TextServer.AUTOWRAP_WORD
-			button.size_flags_vertical = Control.SIZE_EXPAND
-			# connect to handler
-			button.pressed.connect(_option_selected.bind(option))
-			grid_container.add_child(button)
-	else:
-		# Simple way to make sure popup time matches voice clip
-		# Use whichever is longer, sound_clip length or _delay
-		if voice_line != "" and dialogue_player_reference != null:
-			await get_tree().create_timer(
-				maxf(
-					dialogue_player_reference.stream.get_length(),
-					_delay
-				) + forced_dialogue_additional_delay
-			).timeout
-			_increment_date_stage(popup_dialogue)
+	# When not skipping dialogue plays normally
+	if !dialogue_skip:
+		# get delay via popup char count	
+		_delay = SECONDS_PER_CHARACTER * popup_dialogue["dialogue"].length()
+		# set text - additional params determine how it should display (as typewriter)
+		gigi_dialogue._set_text(popup_dialogue["dialogue"], true, _delay * LEEWAY_OF_TYPEWRITER)
+		# set speaker name and image
+		speaker_name.text = popup_dialogue["origin"]
+		gigi_image.texture = null
+		if popup_dialogue["icon"] != "":
+			gigi_image.texture = load(popup_dialogue["icon"])
+		
+		# play voice lines if any
+		var voice_line = popup_dialogue["audio_file"]
+		if voice_line != "":
+			dialogue_player_reference = AudioManager.play_dialogue_file(voice_line)
+		
+		# Trigger event
+		DialogueProcessor._check_and_trigger_dialogue_event(popup_dialogue)
+		
+		# generate buttons
+		var options = popup_dialogue["options"]
+		if options.size() > 0:
+			requires_option_selection = true
+			for option in options:
+				var button = Button.new()
+				# set button values
+				button.text = option["option"]
+				button.focus_mode = Control.FOCUS_NONE
+				button.custom_minimum_size = Vector2(280, 100.0)
+				button.autowrap_mode = TextServer.AUTOWRAP_WORD
+				button.size_flags_vertical = Control.SIZE_EXPAND
+				# connect to handler
+				button.pressed.connect(_option_selected.bind(option))
+				grid_container.add_child(button)
 		else:
-			await get_tree().create_timer(_delay + 2).timeout
-			_increment_date_stage(popup_dialogue)
+			# Simple way to make sure popup time matches voice clip
+			# Use whichever is longer, sound_clip length or _delay
+			if voice_line != "" and dialogue_player_reference != null:
+				await get_tree().create_timer(
+					maxf(
+						dialogue_player_reference.stream.get_length(),
+						_delay
+					) + forced_dialogue_additional_delay
+				).timeout
+				_increment_date_stage(popup_dialogue)
+			else:
+				await get_tree().create_timer(_delay + forced_dialogue_additional_delay).timeout
+				_increment_date_stage(popup_dialogue)
+	# When skipping, increment date_stages without displaying/playing audio
+	else:
+		DialogueProcessor._check_and_trigger_dialogue_event(popup_dialogue)
+		_increment_date_stage(popup_dialogue)
+
+# Skips the current active dialogue
+func _skip_currently_playing_dialogue():
+	if dialogue_playing:
+		print("Skipping currently playing dialogue")
+		# Stop audio
+		dialogue_player_reference.stop()
+		_increment_date_stage(popup_dialogue)
+	
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("debug_skip_dialogue"):
+		if dialogue_playing:
+			print("Debug: dialogue skip")
+			dialogue_skip = true
+			_skip_currently_playing_dialogue()
 
 func _option_selected(value: Dictionary):
 	# delete buttons
@@ -122,6 +159,11 @@ func _end_popup():
 	AudioManager.dialogue_ducking(false)
 	popup_active = false
 	visible = false
+	dialogue_playing = false
+	if dialogue_skip:
+		dialogue_skip_finished.emit()
+		dialogue_skip = false
+	print("Dialogue ended: playing: " + str(dialogue_playing) + ", skipping: " + str(dialogue_skip))
 
 # Debug input
 #func _unhandled_input(event: InputEvent) -> void:
