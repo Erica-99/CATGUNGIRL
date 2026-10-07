@@ -526,6 +526,7 @@ mouse_filter = 2
 color = Color(0.036221787, 0, 0.020698166, 1)
 
 [node name="Flash" type="ColorRect" parent="." unique_id=595271126]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -539,5 +540,13 @@ visible = false
 position = Vector2(926, 536)
 scale = Vector2(0.535, 0.535)
 texture = ExtResource("9_dtles")
+
+[node name="Label" type="Label" parent="." unique_id=1732121806]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 571.0
+offset_right = 657.0
+offset_bottom = 606.0
+text = "PRESS [img height=48]res://art/UI/Glyphs/PS5/PS5_Square.png[/img] TO BEGIN"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

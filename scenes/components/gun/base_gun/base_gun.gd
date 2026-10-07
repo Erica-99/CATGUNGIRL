@@ -61,6 +61,9 @@ var _enemy_bullets_fired: int = 0
 var using_controller = false
 var controller_deadzone = 0.2
 var target_angle : float
+var mouse_pos := Vector2.ZERO
+var mouse_speed = 600.0
+
 
 var active: bool = false:
 	set(value):
@@ -89,14 +92,22 @@ signal charge_started()
 
 func _ready() -> void:
 	_player_target = get_tree().get_first_node_in_group("player") as CharacterBody3D
+	mouse_pos = get_viewport().get_mouse_position()
+	print(Input.mouse_mode)
 
 func _input(event):
 	#Establish if the player is using KBM or a controller
-	if event is InputEventJoypadMotion:
+	if event is InputEventMouseMotion:
+		if event.relative.length() < 3.0:
+			return
+	elif event is InputEventJoypadMotion:
 		if abs(event.axis_value) > controller_deadzone:
 			using_controller = true
-	elif event is InputEventMouseMotion:
+	elif event is InputEventJoypadButton:
+		using_controller = true
+	elif event is InputEventMouseButton || event is InputEventKey:
 			using_controller = false
+
 
 func _process(delta: float) -> void:
 	
@@ -167,17 +178,20 @@ func _update_aim(mouse_world: Vector3, input_state: Dictionary, delta: float) ->
 		return
 	#Check if the player is using a controller
 	if using_controller:
-		var controller_input = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
-		if controller_input.length() > controller_deadzone:
-			controller_input.y *= -1
-			target_angle = controller_input.angle()
-			_current_target_angle = target_angle
-	else:
-		# direction vector from gun to mouse
-		var direction = mouse_world - global_position
-		direction.z = 0.0
-		target_angle = Vector2(direction.x, direction.y).angle()
-		_current_target_angle = target_angle
+		var control_direction = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
+		if control_direction != Vector2.ZERO:
+			#Update mouse position
+			mouse_pos += control_direction * mouse_speed * delta
+			mouse_pos = mouse_pos.clamp(Vector2.ZERO, get_viewport().get_visible_rect().size)
+			Input.warp_mouse(mouse_pos)
+		else:
+			mouse_pos = get_viewport().get_mouse_position()
+	
+	# direction vector from gun to mouse
+	var direction = mouse_world - global_position
+	direction.z = 0.0
+	target_angle = Vector2(direction.x, direction.y).angle()
+	_current_target_angle = target_angle
 	
 	var is_moving = input_state.get("movement", 0.0) != 0.0 or input_state.get("jumping", false)
 	var wobble: float = 0.0
