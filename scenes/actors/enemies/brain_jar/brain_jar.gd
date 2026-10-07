@@ -227,6 +227,9 @@ func _on_terminal_activated() -> void:
 	activated_terminal_count += 1
 	call_deferred("_update_terminal_visual_states")
 	
+	if current_phase_index == 2 and activated_terminal_count == 2:
+		EventManager.gun_sacrifice_requested.emit()
+	
 	if activated_terminal_count >= active_terminals.size():
 		_complete_terminal_phase()
 
@@ -259,6 +262,7 @@ func _complete_terminal_phase() -> void:
 		
 		BrainJarPhase.CompletionType.FINAL_VULNERABILITY:
 			fight_state = FightState.FINAL_VULNERABILITY
+			EventManager.activate_popup.emit("b8_death")
 			_disable_shields()
 
 func _on_gun_sacrificed(_gun_name: String) -> void:
@@ -320,7 +324,6 @@ func _advance_phase() -> void:
 
 func _finish_fight() -> void:
 	fight_state = FightState.COMPLETE
-	EventManager.activate_popup.emit("b8_death")
 	_set_gun_sacrifice_enabled(false)
 	EventManager.brainjar_killed.emit()
 	queue_free()
