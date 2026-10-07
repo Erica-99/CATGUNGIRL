@@ -1341,11 +1341,13 @@ shape = SubResource("BoxShape3D_oc6pb")
 [node name="FacilityCore" parent="Interactive" unique_id=913940677 instance=ExtResource("30_ewsem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
 
-[node name="BrainJar" parent="Interactive" unique_id=561627710 node_paths=PackedStringArray("terminals", "facility_core", "facility_core_hatch", "intro_trigger") instance=ExtResource("36_mxr2x")]
+[node name="BrainJar" parent="Interactive" unique_id=561627710 node_paths=PackedStringArray("terminals", "facility_core", "facility_core_hatch", "left_reactor", "right_reactor", "intro_trigger") instance=ExtResource("36_mxr2x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124.00054, -0.0007839203, -14.999931)
 terminals = NodePath("../Terminals/TerminalProps")
 facility_core = NodePath("../FacilityCore")
 facility_core_hatch = NodePath("FacilityCoreHatch")
+left_reactor = NodePath("../Reactors/BrainReactorLeft")
+right_reactor = NodePath("../Reactors/BrainReactorRight")
 intro_trigger = NodePath("../../CameraPanNode1/Area")
 
 [node name="FacilityCoreHatch" type="MeshInstance3D" parent="Interactive/BrainJar" unique_id=1945856805]
@@ -7703,10 +7705,6 @@ checkpoint_spawn = NodePath("Marker3D")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.15518, 0.9232955, 0)
 
 [node name="VFX" type="Node3D" parent="." unique_id=1645937969]
-
-[node name="VFX1" type="Node3D" parent="." unique_id=1896441777]
-
-[node name="VFX2" type="Node3D" parent="." unique_id=634950123]
 
 [connection signal="removecameratween" from="CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
