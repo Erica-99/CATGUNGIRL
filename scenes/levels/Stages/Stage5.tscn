@@ -81,6 +81,7 @@
 [ext_resource type="PackedScene" uid="uid://cxfad54eilwwy" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/LabBottle3L.tscn" id="41_g0ao8"]
 [ext_resource type="PackedScene" uid="uid://b807rxy07x7uo" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/LabBottle1L.tscn" id="42_7k77w"]
 [ext_resource type="PackedScene" uid="uid://bqbcx0g61dffh" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/LabBottleSpray.tscn" id="43_5mxuq"]
+[ext_resource type="PackedScene" uid="uid://du8yjoegqlyag" path="res://scenes/actors/enemies/scrub/variants/gun_switch_variant/scrub_gun_switch_variant.tscn" id="43_sagpo"]
 [ext_resource type="PackedScene" uid="uid://b3krra1e3n0g8" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/Trolley.tscn" id="44_i400n"]
 [ext_resource type="PackedScene" uid="uid://ckkjv4pfh7tik" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/AcidVatRoom/AcidVat.tscn" id="45_1hh6s"]
 [ext_resource type="PackedScene" uid="uid://b61rhgk3qi27n" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/AcidVatRoom/TankExperimentation.tscn" id="45_21hio"]
@@ -1172,7 +1173,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.775364, 8.624413, 0)
 
 [node name="Room One" parent="Enemies" unique_id=18369620 instance=ExtResource("19_rmes1")]
 
-[node name="Scrub" parent="Enemies/Room One" unique_id=1090872008 instance=ExtResource("21_dgb42")]
+[node name="GunSwitchScrub" parent="Enemies/Room One" unique_id=1090872008 instance=ExtResource("43_sagpo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 12, 0)
 
 [node name="Room Two" parent="Enemies" unique_id=934991332 instance=ExtResource("19_rmes1")]
@@ -1180,16 +1181,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 12, 0)
 [node name="Scrub2" parent="Enemies/Room Two" unique_id=913714548 instance=ExtResource("21_dgb42")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.734425, 26.296028, 0)
 
-[node name="Scrub4" parent="Enemies/Room Two" unique_id=328394186 instance=ExtResource("21_dgb42")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -146.73442, 26.296028, 0)
-
 [node name="Trunk2" parent="Enemies/Room Two" unique_id=13695225 instance=ExtResource("41_1hh6s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.96228, 23.298864, 0)
+
+[node name="GunSwitchScrub" parent="Enemies/Room Two" unique_id=1121337132 instance=ExtResource("43_sagpo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -191.73442, 36.29603, 0)
 
 [node name="Room Three" parent="Enemies" unique_id=1267570831 instance=ExtResource("19_rmes1")]
 
 [node name="Scrub6" parent="Enemies/Room Three" unique_id=1366744176 instance=ExtResource("21_dgb42")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -190.40831, 37, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -150.40831, 26, 0)
 
 [node name="Convict" parent="Enemies/Room Three" unique_id=1506947017 instance=ExtResource("20_dgb42")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -179.4108, 2.0535583, -0.0055770874)

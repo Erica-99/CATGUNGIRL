@@ -78,6 +78,7 @@
 [ext_resource type="Texture2D" uid="uid://bbamy4fhm0hut" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/TankExperimentation/TankExperimentation_DefaultMaterial_Metallic.png" id="97_xdtj1"]
 [ext_resource type="Texture2D" uid="uid://ldku1ydkp07g" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/TankExperimentation/TankExperimentation_DefaultMaterial_Normal.png" id="98_xlh28"]
 [ext_resource type="Texture2D" uid="uid://0kthvrk45dvd" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/TankExperimentation/TankExperimentation_DefaultMaterial_Roughness.png" id="99_v2bcf"]
+[ext_resource type="PackedScene" uid="uid://du8yjoegqlyag" path="res://scenes/actors/enemies/scrub/variants/gun_switch_variant/scrub_gun_switch_variant.tscn" id="101_v2bcf"]
 [ext_resource type="PackedScene" uid="uid://bqbcx0g61dffh" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/LabBottleSpray.tscn" id="102_2pd4f"]
 [ext_resource type="PackedScene" uid="uid://b8mgks4mhehhj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/SecurityHandReader.tscn" id="102_m7b7v"]
 [ext_resource type="PackedScene" uid="uid://dablnp31mjysx" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/LabDrawersCorner.tscn" id="103_dyhej"]
@@ -102,7 +103,6 @@
 [ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="124_lclcc"]
 [ext_resource type="PackedScene" uid="uid://dld0qjmojk1t8" path="res://scenes/actors/enemies/enemy_manager/enemy_manager.tscn" id="125_4psah"]
 [ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict/convict_enemy.tscn" id="126_ker76"]
-[ext_resource type="PackedScene" uid="uid://bls076phgmcus" path="res://scenes/actors/enemies/scrub/scrub.tscn" id="127_0dffa"]
 [ext_resource type="PackedScene" uid="uid://yvma87vdtlyv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6B_Lab/Cone.tscn" id="128_jgoex"]
 [ext_resource type="PackedScene" uid="uid://4l4kw7i1ga4c" path="res://scenes/actors/enemies/brain_spider/brain_spider.tscn" id="129_uif3s"]
 
@@ -1161,7 +1161,7 @@ surface_material_override/0 = null
 [node name="FinalDoor" parent="Interactive" unique_id=2092611838 instance=ExtResource("21_l8a18")]
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -35, 25.2, 2.4521542)
 
-[node name="defaultMaterial" parent="Interactive/FinalDoor/FinalDoor" parent_id_path=PackedInt32Array(2092611838, 1903052867) index="0" unique_id=1936571471]
+[node name="defaultMaterial" parent="Interactive/FinalDoor/FinalDoor" parent_id_path=PackedInt32Array(2092611838, 1903052867) index="0" unique_id=1995173026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1157596, 0, 0.049209595)
 surface_material_override/0 = SubResource("StandardMaterial3D_qdsdf")
 surface_material_override/1 = null
@@ -1456,10 +1456,10 @@ room_ID = 3
 [node name="RoomFive" parent="Enemies" unique_id=298313783 instance=ExtResource("125_4psah")]
 room_ID = 4
 
-[node name="Scrub2" parent="Enemies/RoomFive" unique_id=1918494423 instance=ExtResource("127_0dffa")]
+[node name="GunSwitchScrub" parent="Enemies/RoomFive" unique_id=1090872008 instance=ExtResource("101_v2bcf")]
 transform = Transform3D(0.9999723, 0.00729109, -0.0014908338, -0.007284907, 0.999965, 0.00411179, 0.0015207593, -0.0041008163, 0.99999046, -4.849407, 12, 0)
 
-[node name="Scrub3" parent="Enemies/RoomFive" unique_id=1090872008 instance=ExtResource("127_0dffa")]
+[node name="GunSwitchScrub2" parent="Enemies/RoomFive" unique_id=1498053331 instance=ExtResource("101_v2bcf")]
 transform = Transform3D(0.9999723, 0.00729109, -0.0014908338, -0.007284907, 0.999965, 0.00411179, 0.0015207593, -0.0041008163, 0.99999046, 18.229183, 33, 0)
 
 [node name="Terminal" parent="Enemies" unique_id=279547323 instance=ExtResource("125_4psah")]
