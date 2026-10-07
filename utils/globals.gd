@@ -47,6 +47,7 @@ func _ready() -> void:
 	EventManager.connect("unlock_gun", _unlock_gun)
 	EventManager.connect("narrative_unlock_shotgun", _narrative_unlock_shotgun)
 	EventManager.connect("narrative_unlock_sniper", _narrative_unlock_sniper)
+	EventManager.connect("brain_jar_suggest_sacrifice", _begin_sacrifice_dialogue)
 	_retrieve_images(link_to_meme_dir)
 	# get random starter index (so it doesnt start from index 0 each time)
 	current_meme_index = randi_range(0, len(meme_image_array) - 1)
@@ -70,6 +71,11 @@ func _narrative_unlock_shotgun() -> void:
 # sniper unlock shortcut signal for use by dialogue
 func _narrative_unlock_sniper() -> void:
 	_unlock_gun("sniper")
+
+# For use in brain jar fight, activate dialogue about sacrificing
+func _begin_sacrifice_dialogue() -> void:
+	await get_tree().create_timer(6.7).timeout
+	EventManager.activate_popup.emit("b4_suggestsacrifice")
 
 # use this to reset any game-global variables. called when loading main menu.
 func _reset_game() -> void:

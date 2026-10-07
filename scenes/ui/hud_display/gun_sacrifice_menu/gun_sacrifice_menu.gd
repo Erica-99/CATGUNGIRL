@@ -4,9 +4,9 @@ class_name GunSacrificeMenu
 signal gun_selected(gun: Node3D)
 
 @onready var menu_root: Control = $MenuRoot
-@onready var pistol_button: TextureButton = $MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions/PistolButton
-@onready var shotgun_button: TextureButton = $MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions/ShotgunButton
-@onready var sniper_button: TextureButton = $MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions/SniperButton
+@export var pistol_button: Button
+@export var shotgun_button: Button
+@export var sniper_button: Button
 
 var guns_by_button: Dictionary = {}
 var is_open: bool = false
@@ -55,7 +55,7 @@ func open_menu(gun_holder: Node3D) -> bool:
 	
 	return true
 
-func _get_button_for_gun(gun: Node3D) -> TextureButton:
+func _get_button_for_gun(gun: Node3D) -> Button:
 	var gun_name_lower: String = str(gun.get("gun_name")).to_lower()
 	
 	if gun_name_lower.contains("pistol"):
@@ -70,12 +70,20 @@ func _get_button_for_gun(gun: Node3D) -> TextureButton:
 	push_warning("No sacrifice menu button for gun: " + gun.gun_name)
 	return null
 
-func _hide_button(button: TextureButton) -> void:
+func _hide_button(button: Button) -> void:
 	button.hide()
 	button.disabled = true
 
-func _on_gun_pressed(button: TextureButton) -> void:
+func _on_gun_pressed(button: Button) -> void:
 	var selected_gun := guns_by_button.get(button) as Node3D
+	
+	match selected_gun.name:
+		"Pistol":
+			EventManager.activate_popup.emit("b5_kill_cozy")
+		"Shotgun":
+			EventManager.activate_popup.emit("b5_kill_punk")
+		"Sniper":
+			EventManager.activate_popup.emit("b5_kill_soldier")
 	
 	if !is_instance_valid(selected_gun):
 		return
