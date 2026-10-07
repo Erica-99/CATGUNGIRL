@@ -78,6 +78,7 @@
 [ext_resource type="Texture2D" uid="uid://bbamy4fhm0hut" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/TankExperimentation/TankExperimentation_DefaultMaterial_Metallic.png" id="97_xdtj1"]
 [ext_resource type="Texture2D" uid="uid://ldku1ydkp07g" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/TankExperimentation/TankExperimentation_DefaultMaterial_Normal.png" id="98_xlh28"]
 [ext_resource type="Texture2D" uid="uid://0kthvrk45dvd" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/TankExperimentation/TankExperimentation_DefaultMaterial_Roughness.png" id="99_v2bcf"]
+[ext_resource type="Script" uid="uid://go6pvvvxitrt" path="res://scenes/levels/Stages/respawner_loop.gd" id="102_1kj5b"]
 [ext_resource type="PackedScene" uid="uid://bqbcx0g61dffh" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/LabBottleSpray.tscn" id="102_2pd4f"]
 [ext_resource type="PackedScene" uid="uid://b8mgks4mhehhj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/SecurityHandReader.tscn" id="102_m7b7v"]
 [ext_resource type="PackedScene" uid="uid://dablnp31mjysx" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/LabDrawersCorner.tscn" id="103_dyhej"]
@@ -1086,6 +1087,7 @@ enemy_manager = NodePath("../../Enemies/Terminal")
 [node name="EnemySpawner" parent="Interactive/EnemyDoorFrame" index="1" unique_id=1110059721]
 possible_spawns = Array[int]([0, 1, 1, 0])
 wave_spawner = true
+wave_enemies = Array[int]([0, 1, 0, 3])
 
 [node name="RP1" parent="Interactive/EnemyDoorFrame/EnemyDoorPanels" parent_id_path=PackedInt32Array(2112200868, 150718717) index="0" unique_id=741448569]
 surface_material_override/0 = null
@@ -1467,6 +1469,16 @@ transform = Transform3D(0.9999723, 0.00729109, -0.0014908338, -0.007284907, 0.99
 [node name="Terminal" parent="Enemies" unique_id=279547323 instance=ExtResource("125_4psah")]
 room_ID = 4
 
+[node name="RespawnerLoop" type="Node" parent="Enemies" unique_id=2098735822 node_paths=PackedStringArray("respawn_event_trigger", "spawner")]
+script = ExtResource("102_1kj5b")
+respawn_event_trigger = NodePath("EventTrigger")
+spawner = NodePath("../../Interactive/EnemyDoorFrame/EnemySpawner")
+
+[node name="EventTrigger" parent="Enemies/RespawnerLoop" unique_id=185501017 instance=ExtResource("124_lclcc")]
+_one_shot = false
+_signal_parameters = [0.1, NodePath("../../../Interactive/EnemyDoorFrame/EnemySpawner")]
+signal_name = "spawn_enemy"
+
 [node name="VFX" type="Node3D" parent="." unique_id=536083855]
 
 [node name="Cone" parent="." unique_id=1393563968 instance=ExtResource("128_jgoex")]
@@ -1552,6 +1564,7 @@ transform = Transform3D(-0.7525559, 0.61277896, -0.24116689, -0.0006985637, 0.36
 [connection signal="body_entered" from="Interactive/CameraPanNode2/Area" to="Interactive/CameraPanNode2" method="_on_area_body_entered"]
 [connection signal="body_exited" from="Interactive/CameraPanNode2/Area" to="Interactive/CameraPanNode2" method="_on_area_body_exited"]
 [connection signal="stage_cleared" from="Enemies/Terminal" to="Interactive/FinalDoor/DoorExit2" method="_on_enemy_manager_stage_cleared"]
+[connection signal="stage_cleared" from="Enemies/Terminal" to="Enemies/RespawnerLoop" method="_on_terminal_stage_cleared"]
 
 [editable path="Props/TerminalGroup/BrainJarConsole"]
 [editable path="Props/TankExperimentation"]

@@ -6,7 +6,6 @@ var level_end
 @export var wait_for_event: String
 
 var event_condition_filled = true
-var enemies_defeated = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,14 +30,11 @@ func _change_door_lighting():
 
 
 func _on_enemy_manager_stage_cleared() -> void:
-	enemies_defeated = true
 	if event_condition_filled:
 		open_door()
 
 func _extra_event_triggered() -> void:
 	event_condition_filled = true
-	if enemies_defeated:
-		open_door()
 
 func open_door() -> void:
 	_change_door_lighting()

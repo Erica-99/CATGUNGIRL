@@ -12,6 +12,7 @@ func init(blackboard_dict: Dictionary) -> void:
 func enter() -> void:
 	actor.target = null
 	actor.velocity.x = 0.0
+	actor.position.z = 0
 
 func update(_delta: float) -> void:
 	if actor.is_dying or actor.is_dead:
