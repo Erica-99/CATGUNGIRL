@@ -11,6 +11,8 @@ signal gun_selected(gun: Gun)
 var guns_by_button: Dictionary = {}
 var is_open: bool = false
 
+var using_controller: bool = false
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	add_to_group("gun_sacrifice_menu")
@@ -18,6 +20,12 @@ func _ready() -> void:
 	pistol_button.pressed.connect(_on_gun_pressed.bind(pistol_button))
 	shotgun_button.pressed.connect(_on_gun_pressed.bind(shotgun_button))
 	sniper_button.pressed.connect(_on_gun_pressed.bind(sniper_button))
+
+func _input(event):
+	if event is InputEventJoypadMotion:
+		using_controller = true
+	else:
+		using_controller = false
 
 func open_menu(gun_holder: Node3D) -> bool:
 	if is_open or get_tree().paused or !is_instance_valid(gun_holder):
