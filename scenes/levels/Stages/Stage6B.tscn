@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://crxac1xke2wrx"]
 
 [ext_resource type="Script" uid="uid://dawdwjrkswtqg" path="res://scenes/levels/Stages/panning_camera.gd" id="1_jgoex"]
+[ext_resource type="Script" uid="uid://4glb1vhq6wmq" path="res://scenes/levels/Stages/stage.gd" id="1_v2bcf"]
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="2_uif3s"]
 [ext_resource type="PackedScene" uid="uid://dsp60dlsho3gr" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorBasic.tscn" id="3_1rgpq"]
 [ext_resource type="PackedScene" uid="uid://ckrhba4t8exg1" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/WallMultiLevelBasePrison.tscn" id="10_xlajn"]
@@ -172,7 +173,12 @@ volumetric_fog_length = 276.11
 [sub_resource type="BoxShape3D" id="BoxShape3D_fxtw2"]
 size = Vector3(9.30127, 7.2834473, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_v2bcf"]
+size = Vector3(9.151611, 3.666504, 6.4925537)
+
 [node name="Stage6B" type="Node3D" unique_id=1668100898]
+script = ExtResource("1_v2bcf")
+music_ref = "music_combat"
 
 [node name="RailCamera" type="Node3D" parent="." unique_id=1199109627]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.623193, 31.221176)
@@ -1155,7 +1161,7 @@ surface_material_override/0 = null
 [node name="FinalDoor" parent="Interactive" unique_id=2092611838 instance=ExtResource("21_l8a18")]
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -35, 25.2, 2.4521542)
 
-[node name="defaultMaterial" parent="Interactive/FinalDoor/FinalDoor" parent_id_path=PackedInt32Array(2092611838, 1903052867) index="0" unique_id=874433525]
+[node name="defaultMaterial" parent="Interactive/FinalDoor/FinalDoor" parent_id_path=PackedInt32Array(2092611838, 1903052867) index="0" unique_id=1936571471]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1157596, 0, 0.049209595)
 surface_material_override/0 = SubResource("StandardMaterial3D_qdsdf")
 surface_material_override/1 = null
@@ -1391,18 +1397,27 @@ environment = SubResource("Environment_eadp7")
 
 [node name="DATES_POPUPS" type="Node" parent="." unique_id=983173156]
 
-[node name="ConvictPopup" parent="DATES_POPUPS" unique_id=143372482 instance=ExtResource("124_lclcc")]
+[node name="???" parent="DATES_POPUPS" unique_id=143372482 instance=ExtResource("124_lclcc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.02658, 2.9467964, 0)
 _signal_parameters = [0]
 signal_name = "activate_popup"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DATES_POPUPS/ConvictPopup" unique_id=496084148]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DATES_POPUPS/???" unique_id=496084148]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9586487, 1.079, 0)
 shape = SubResource("BoxShape3D_fxtw2")
 debug_color = Color(0.919504, 0.13431916, 0.6161928, 0.41960785)
 
-[node name="Forklift" parent="DATES_POPUPS/ConvictPopup" unique_id=500869341 instance=ExtResource("20_cbeae")]
+[node name="Forklift" parent="DATES_POPUPS/???" unique_id=500869341 instance=ExtResource("20_cbeae")]
 transform = Transform3D(1.7888006, 0, 2.4083588, 0, 3, 0, -2.4083588, 0, 1.7888006, -33.734314, 14.055393, 0.74875355)
+
+[node name="DoorRoomDialogue" parent="DATES_POPUPS" unique_id=1601640856 instance=ExtResource("124_lclcc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.324177, 10.441436, 0)
+_signal_parameters = ["7_brainjar_door"]
+signal_name = "activate_popup"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DATES_POPUPS/DoorRoomDialogue" unique_id=334081084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5946045, -0.20727539, -0.006164551)
+shape = SubResource("BoxShape3D_v2bcf")
 
 [node name="Enemies" type="Node3D" parent="." unique_id=1148700225]
 
