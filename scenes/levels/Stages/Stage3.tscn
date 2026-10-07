@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://4glb1vhq6wmq" path="res://scenes/levels/Stages/stage.gd" id="1_ei5br"]
 [ext_resource type="PackedScene" uid="uid://bt342tsy3excl" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/ElevatorPanopticon.tscn" id="2_1woh0"]
 [ext_resource type="PackedScene" uid="uid://cvybenralblx6" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/PanopticonBridge.tscn" id="3_t5wms"]
+[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="4_vyn8v"]
 [ext_resource type="PackedScene" uid="uid://0jvpofncsmg4" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/FloorShootingPanopticon.tscn" id="5_lj0hr"]
 [ext_resource type="PackedScene" uid="uid://11pckncgaxu4" path="res://scenes/components/level_components/level_transitions/level_end.tscn" id="6_jaog8"]
 [ext_resource type="PackedScene" uid="uid://b17cpk4q25npy" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/PanopticonWalls.tscn" id="6_ngxgl"]
@@ -106,6 +107,9 @@
 [ext_resource type="PackedScene" uid="uid://bsekmkigv7je" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/Phantom_Vs_Opera.tscn" id="103_ufdkb"]
 [ext_resource type="PackedScene" uid="uid://befg08ebvtbma" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Effects/EnvEffect_SparkExplsion.tscn" id="105_oughf"]
 [ext_resource type="PackedScene" uid="uid://p4j7l6t1wvoa" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Effects/EnvEffect_Fire.tscn" id="106_l4l4g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iswtt"]
+size = Vector3(20, 20, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qyq0w"]
 size = Vector3(28.873047, 19.592224, 10)
@@ -1162,7 +1166,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.099172, 3)
 collision_mask = 129
 
-[node name="DATES_POPUPS" type="Node" parent="." unique_id=1021129407]
+[node name="EVENT_TRIGGERS" type="Node" parent="." unique_id=1021129407]
+
+[node name="PopupInterlude" parent="EVENT_TRIGGERS" unique_id=1311781014 instance=ExtResource("4_vyn8v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.16, 70.677, 0)
+_signal_parameters = ["4_punk_cozy_interlude"]
+signal_name = "activate_popup"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EVENT_TRIGGERS/PopupInterlude" unique_id=41191830]
+shape = SubResource("BoxShape3D_iswtt")
+debug_color = Color(0.18431373, 0.6431373, 0, 0.41960785)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=732558009]
 

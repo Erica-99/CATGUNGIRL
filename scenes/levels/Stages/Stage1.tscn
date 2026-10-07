@@ -101,6 +101,7 @@
 [ext_resource type="Resource" uid="uid://ddm44lu0eblvc" path="res://resources/tutorial_steps/stage_1_intro_tutorial/reload_tutorial_step.tres" id="91_v1rce"]
 [ext_resource type="Resource" uid="uid://i475dd553b7q" path="res://resources/tutorial_steps/stage_1_intro_tutorial/grapple_tutorial_step.tres" id="92_3k85b"]
 [ext_resource type="PackedScene" uid="uid://xwmm12eihkbq" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Meat_lumps.tscn" id="92_4scdv"]
+[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="95_qys1n"]
 [ext_resource type="PackedScene" uid="uid://co7fptrpmkvog" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/A_SparesAndPlaceholders/LightCeiling.tscn" id="96_g3qdj"]
 [ext_resource type="ArrayMesh" uid="uid://cpkoiojl5v124" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/DoorwayPrisonRailFrame.obj" id="100_0n1ur"]
 [ext_resource type="ArrayMesh" uid="uid://btg7uf5fq70gn" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/1_Prison/DoorwayPrisonRailPrison.obj" id="100_cx5vn"]
@@ -226,6 +227,9 @@ fog_depth_curve = 0.5000009
 fog_depth_begin = 123.1
 fog_depth_end = 274.5
 adjustment_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x768c"]
+size = Vector3(1, 20, 1)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lun2u"]
 particle_flag_align_y = true
@@ -2370,6 +2374,10 @@ door_to_unlock = NodePath("../DoorBasic")
 [node name="InteractableComponent" parent="Interactive/GunPodium/GunPodium_Mesh" parent_id_path=PackedInt32Array(786548764, 1164015310) index="0" unique_id=2140039813 node_paths=PackedStringArray("dialogue_renderer")]
 dialogue_renderer = NodePath("DialogueRenderer")
 
+[node name="EventTrigger" parent="Interactive/GunPodium/GunPodium_Mesh/InteractableComponent" index="1" unique_id=1311781014]
+_signal_parameters = ["1_cozy_meeting"]
+signal_name = "activate_popup"
+
 [node name="DialogueRenderer" parent="Interactive/GunPodium/GunPodium_Mesh/InteractableComponent" index="2" unique_id=780065543 instance=ExtResource("85_44hq7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.977342, 0)
 size_of_viewport = Vector2(1000, 100)
@@ -2655,7 +2663,16 @@ transform = Transform3D(0.638714, -0.769444, 0, 0.769444, 0.638714, 0, 0, 0, 1, 
 [node name="EnvEffectSpark" parent="VFX" unique_id=602658946 instance=ExtResource("108_mx3rv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170.06087, 9.609537, -11.647783)
 
-[node name="DATES_POPUPS" type="Node" parent="." unique_id=983173156]
+[node name="EVENT_TRIGGERS" type="Node" parent="." unique_id=983173156]
+
+[node name="0_cozy_yell" parent="EVENT_TRIGGERS" unique_id=1406650775 instance=ExtResource("95_qys1n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.834758, 0, 0)
+_signal_parameters = ["0_cozy_yell"]
+signal_name = "activate_popup"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EVENT_TRIGGERS/0_cozy_yell" unique_id=2046622752]
+shape = SubResource("BoxShape3D_x768c")
+debug_color = Color(0.18271238, 0.6429914, 0, 0.41960785)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=1148700225]
 

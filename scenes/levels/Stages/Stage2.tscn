@@ -173,7 +173,7 @@ fog_depth_end = 274.5
 adjustment_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qqjj2"]
-size = Vector3(1, 8.005737, 1)
+size = Vector3(55.207985, 22.685944, 1)
 
 [sub_resource type="Resource" id="Resource_t6bai"]
 script = ExtResource("12_bnsy6")
@@ -193,6 +193,59 @@ Swap between your guns by pressing [img height=48]res://art/UI/Glyphs/PS5/PS5_Tr
 task = ""
 completion_mode = 2
 metadata/_custom_type_script = "uid://crdw2cwt2ffb5"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xeu56"]
+size = Vector3(1, 20, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ixfw5"]
+albedo_texture = ExtResource("9_o4acx")
+metallic = 1.0
+metallic_texture = ExtResource("12_ljbqk")
+roughness_texture = ExtResource("14_mqpts")
+normal_enabled = true
+normal_texture = ExtResource("13_fmjon")
+ao_enabled = true
+ao_texture = ExtResource("10_qn4fw")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("11_3rmdv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o4acx"]
+albedo_texture = ExtResource("10_pqlkt")
+metallic = 1.0
+metallic_texture = ExtResource("13_lucwu")
+roughness_texture = ExtResource("15_xw7aa")
+normal_enabled = true
+normal_texture = ExtResource("14_3mn6x")
+ao_enabled = true
+ao_texture = ExtResource("11_036lr")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("12_ifn3l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pqlkt"]
+albedo_texture = ExtResource("11_ktb7l")
+metallic = 1.0
+metallic_texture = ExtResource("14_kgxtv")
+roughness_texture = ExtResource("16_nvi70")
+normal_enabled = true
+normal_texture = ExtResource("15_mbmqo")
+ao_enabled = true
+ao_texture = ExtResource("12_nyqx6")
+heightmap_enabled = true
+heightmap_texture = ExtResource("13_7s74f")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_036lr"]
+albedo_texture = ExtResource("11_ktb7l")
+metallic = 1.0
+metallic_texture = ExtResource("14_kgxtv")
+roughness_texture = ExtResource("16_nvi70")
+normal_enabled = true
+normal_texture = ExtResource("15_mbmqo")
+ao_enabled = true
+ao_texture = ExtResource("12_nyqx6")
+heightmap_enabled = true
+heightmap_texture = ExtResource("13_7s74f")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8gloo"]
 albedo_texture = ExtResource("9_o4acx")
@@ -762,6 +815,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 125, -25.2, 0)
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.5, 0)
 monitoring = false
 level_name = "Stage3"
+activate_on_event = "narrative_unlock_shotgun"
 
 [node name="DoorExit2" parent="Interactive" unique_id=581848990 instance=ExtResource("9_f12kt")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 125, -17.2, 0)
@@ -770,6 +824,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 125, -17.2, 0)
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.5, 0)
 monitoring = false
 level_name = "Stage3"
+activate_on_event = "narrative_unlock_shotgun"
 
 [node name="PrisonCell" parent="Interactive" unique_id=1449443355 instance=ExtResource("20_0yyri")]
 transform = Transform3D(2.25, 0, 0, 0, 2.25, 0, 0, 0, 2.25, 31.246552, -22.75604, 0)
@@ -1133,19 +1188,30 @@ spot_angle = 29.082682
 
 [node name="EVENT_TRIGGERS" type="Node" parent="." unique_id=1535957502]
 
-[node name="EventTrigger" parent="EVENT_TRIGGERS" unique_id=1311781014 instance=ExtResource("10_axvnb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.531136, -23.887568, 0)
+[node name="WeaponSwapTrigger" parent="EVENT_TRIGGERS" unique_id=1311781014 instance=ExtResource("10_axvnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.542946, -18.468708, 0)
+active = false
+activate_on_event = "narrative_unlock_shotgun"
 _signal_parameters = ["WeaponSwapping"]
 signal_name = "initiate_tutorial_sequence"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="EVENT_TRIGGERS/EventTrigger" unique_id=724333614]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.958435, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EVENT_TRIGGERS/WeaponSwapTrigger" unique_id=724333614]
 shape = SubResource("BoxShape3D_qqjj2")
+debug_color = Color(0.18431373, 0.6431373, 0, 0.41960785)
 
 [node name="TutorialTrigger" parent="EVENT_TRIGGERS" unique_id=432983102 instance=ExtResource("11_er66k")]
 sequence_name = "WeaponSwapping"
 steps = Array[ExtResource("12_bnsy6")]([SubResource("Resource_t6bai")])
 autostart = false
+
+[node name="PopupInterlude" parent="EVENT_TRIGGERS" unique_id=1038856586 instance=ExtResource("10_axvnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6574726, 9.170123, 0)
+_signal_parameters = ["2_cozy_interlude"]
+signal_name = "activate_popup"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EVENT_TRIGGERS/PopupInterlude" unique_id=333407342]
+shape = SubResource("BoxShape3D_xeu56")
+debug_color = Color(0.18271238, 0.6429914, 0, 0.41960785)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=218442623]
 
