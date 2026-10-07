@@ -1085,6 +1085,7 @@ enemy_manager = NodePath("../../Enemies/Terminal")
 
 [node name="EnemySpawner" parent="Interactive/EnemyDoorFrame" index="1" unique_id=1110059721]
 possible_spawns = Array[int]([0, 1, 1, 0])
+wave_spawner = true
 
 [node name="RP1" parent="Interactive/EnemyDoorFrame/EnemyDoorPanels" parent_id_path=PackedInt32Array(2112200868, 150718717) index="0" unique_id=741448569]
 surface_material_override/0 = null
@@ -1169,6 +1170,7 @@ surface_material_override/1 = null
 [node name="DoorExit2" type="StaticBody3D" parent="Interactive/FinalDoor" unique_id=1613544780 node_paths=PackedStringArray("shield_mesh")]
 script = ExtResource("94_0gle7")
 shield_mesh = NodePath("../FinalDoor/defaultMaterial")
+wait_for_event = "stage_6b_dialogue_completed"
 
 [node name="LevelEnd" parent="Interactive/FinalDoor/DoorExit2" unique_id=914563996 instance=ExtResource("114_ilcbw")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 1.1140231, 1.0174332, 0.09769249)
