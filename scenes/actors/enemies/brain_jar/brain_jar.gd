@@ -6,7 +6,6 @@ enum FightState {
 	WAITING_FOR_HEALING_HIT,
 	HEALING_DAMAGE,
 	WAITING_FOR_SACRIFICE,
-	WAITING_FOR_DAMAGE,
 	FINAL_VULNERABILITY,
 	COMPLETE,
 }
@@ -89,14 +88,6 @@ func _on_health_component_health_changed(old_health: float, new_health: float, d
 		FightState.WAITING_FOR_HEALING_HIT:
 			_play_damage_heal(new_health, old_health)
 		
-		FightState.WAITING_FOR_DAMAGE:
-			var controlled_health: float = _apply_damage_segment(old_health)
-			
-			if controlled_health <= health_component.min_health:
-				_finish_fight()
-			else:
-				_advance_phase()
-		
 		FightState.FINAL_VULNERABILITY:
 			var controlled_health: float = _apply_damage_segment(old_health)
 			
@@ -162,7 +153,6 @@ func _start_fight() -> void:
 		if terminal is BrainJarTerminalGroup:
 			available_terminals.append(terminal)
 	
-	available_terminals.shuffle()
 	_start_current_phase()
 
 func _start_current_phase() -> void:
@@ -249,7 +239,7 @@ func _complete_terminal_phase() -> void:
 		BrainJarPhase.CompletionType.DAMAGE_HEAL_AND_ADVANCE:
 			_play_after_four_terminals_animation()
 		
-		BrainJarPhase.CompletionType.SACRIFICE_THEN_DAMAGE:
+		BrainJarPhase.CompletionType.SACRIFICE_DAMAGE_AND_ADVANCE:
 			fight_state = FightState.WAITING_FOR_SACRIFICE
 			_set_gun_sacrifice_enabled(true)
 		
@@ -262,8 +252,12 @@ func _on_gun_sacrificed(_gun_name: String) -> void:
 		return
 	
 	_set_gun_sacrifice_enabled(false)
-	fight_state = FightState.WAITING_FOR_DAMAGE
-	_disable_shields()
+	var controlled_health: float = _apply_damage_segment(health_component.current_health)
+	
+	if controlled_health <= health_component.min_health:
+		_finish_fight()
+	else:
+		_advance_phase()
 
 func _set_gun_sacrifice_enabled(enabled: bool) -> void:
 	if gun_sacrifice_interactable == null:
@@ -294,7 +288,7 @@ func _advance_phase() -> void:
 	if current_phase_index >= fight_phases.size():
 		return
 	
-	EventManager.spawn_enemy.emit(0.1, get_path_to($"../EnemyManager/EnemyDoorFrame"))
+	EventManager.spawn_enemy.emit(0.1, get_path_to($"../../Enemies/EnemyDoorFrame"))
 	_start_current_phase()
 
 func _finish_fight() -> void:
@@ -326,3 +320,33 @@ func _play_after_four_terminals_animation() -> void:
 func _open_healing_hit_window() -> void:
 	fight_state = FightState.WAITING_FOR_HEALING_HIT
 	_disable_shields()
+
+func restore_checkpoint(state: Dictionary) -> bool:
+	var phase_index: int = int(state.get("boss_phase_index", -1))
+	
+	if phase_index < 1 or phase_index >= fight_phases.size():
+		return false
+	
+	if terminals == null or boss_animation_player == null:
+		return false
+	
+	if !boss_animation_player.has_animation(after_four_terminals_animation_name):
+		return false
+	
+	intro_played = true
+	current_phase_index = phase_index
+	var restored_health: float = clampf(float(state.get("boss_health", health_component.max_health)), health_component.min_health, health_component.max_health)
+	health_component.current_health = restored_health
+	_update_health_display(restored_health)
+	# restore pose reached after the first terminal phase
+	var checkpoint_animation: Animation = \
+		boss_animation_player.get_animation(after_four_terminals_animation_name)
+
+	boss_animation_player.stop(true)
+	boss_animation_player.assigned_animation = \
+		after_four_terminals_animation_name
+	boss_animation_player.seek(checkpoint_animation.length, true, true)
+	_start_fight()
+	# recreate enemy spawn normally triggered by advancing
+	EventManager.spawn_enemy.emit(0.1, get_path_to($"../../Enemies/EnemyDoorFrame"))
+	return true

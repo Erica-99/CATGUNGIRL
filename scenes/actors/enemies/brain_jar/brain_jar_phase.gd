@@ -6,8 +6,8 @@ enum CompletionType {
 	## Boss takes damage, heals, then advances to next phase
 	DAMAGE_HEAL_AND_ADVANCE,
 	
-	## Sacrifice chute becomes available. Boss becomes vulnerable after a gun is sacrificed
-	SACRIFICE_THEN_DAMAGE,
+	## Sacrifice chute becomes available. Sacrificing a gun damages the boss and advances to next phase
+	SACRIFICE_DAMAGE_AND_ADVANCE,
 	
 	## Boss becomes vulnerable without requiring  sacrifice
 	FINAL_VULNERABILITY,

@@ -4,6 +4,7 @@ class_name BrainJarTerminalGroup
 @export var interaction_console: Node3D
 @export var terminal_light: Light3D
 @export var terminal_visuals: Array[Node3D] = []
+@export var start_active: bool = false
 
 @export_category("Terminal Materials")
 @export var active_material: Material
@@ -21,7 +22,8 @@ func _ready() -> void:
 		if terminal_mesh != null:
 			terminal_meshes.append(terminal_mesh)
 	
-	set_active_visual(false)
+	set_active_visual(start_active)
+	set_process(start_active)
 
 func set_active_visual(is_active: bool) -> void:
 	var selected_material: Material = active_material if is_active else inactive_material
@@ -42,3 +44,10 @@ func get_interactable_component() -> Node:
 		return null
 	
 	return interaction_console.find_child("InteractableComponent", true, false)
+
+func _process(_delta: float) -> void:
+	var interactable: Node = get_interactable_component()
+	
+	if interactable != null and interactable.get("enabled") == false:
+		set_active_visual(false)
+		set_process(false)

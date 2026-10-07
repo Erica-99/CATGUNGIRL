@@ -126,7 +126,7 @@ func _switch_gun(slot_num: int):
 		EventManager.new_gun_equipped.emit(current_gun.gun_name)
 		EventManager.new_mag_loaded.emit(current_gun.ammo_component._current_ammo, current_gun.ammo_component.ammo_max)
 
-func sacrifice_gun(sacrificed_gun: Gun) -> void:
+func sacrifice_gun(sacrificed_gun: Node3D) -> void:
 	if !is_instance_valid(sacrificed_gun):
 		return
 	
@@ -154,17 +154,14 @@ func sacrifice_gun(sacrificed_gun: Gun) -> void:
 		current_gun_index = removed_index + 1
 		while (current_gun_index not in Globals.unlocked_guns) or current_gun_index in gun_indexes_sacrificed:
 			current_gun_index = wrapi(current_gun_index+1, 0, 3)
-				
-		current_gun = get_child(current_gun_index) as Gun
-		current_gun.rotation.z = rotation_save
-		current_gun._aim_angle = rotation_save
-		_activate_gun()
 		
+		current_gun = get_child(current_gun_index) as Node3D
+		_set_gun_scale(1)
+		current_gun.rotation.z = rotation_save
+		_activate_gun()
+
 		EventManager.new_gun_equipped.emit(current_gun.gun_name)
-		EventManager.new_mag_loaded.emit(
-			current_gun._current_ammo,
-			current_gun.ammo_max
-		)
+		EventManager.new_mag_loaded.emit(current_gun.ammo_component._current_ammo, current_gun.ammo_component.ammo_max)
 	
 	else:
 		#the equipped gun remains active but its child index gets shifted

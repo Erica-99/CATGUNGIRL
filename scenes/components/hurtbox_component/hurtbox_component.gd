@@ -22,7 +22,10 @@ func _on_area_entered(hitbox: Area3D) -> void:
 ## Handles taking damage by making callbacks to health component. Alerts the hitbox that a collision has occured.
 func take_hit(hitbox: Area3D) -> void:
 	if hit_sfx_ref != "":
-		AudioManager.play_sfx(hit_sfx_ref)
+		if team_component.team == Enums.Team.PLAYER:
+			AudioManager.play_sfx(hit_sfx_ref)
+		else:
+			AudioManager.play_sfx_at_location(hit_sfx_ref, self.global_position)
 	hitbox.call("register_hit", self)
 	if hitbox.damage_or_heal_instance != null and health_component != null:
 		var dmg_heal_instance = hitbox.damage_or_heal_instance.duplicate()
