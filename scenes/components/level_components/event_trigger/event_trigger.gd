@@ -55,7 +55,6 @@ func activate(_filler = null): #filler argument avoids errors from signals with 
 
 func deactivate():
 	active = false
-	queue_free()
 
 func _on_body_entered(body: Node3D) -> void:
 	_emit_signal()
