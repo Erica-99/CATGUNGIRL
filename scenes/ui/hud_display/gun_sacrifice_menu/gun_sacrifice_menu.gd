@@ -77,6 +77,14 @@ func _hide_button(button: TextureButton) -> void:
 func _on_gun_pressed(button: TextureButton) -> void:
 	var selected_gun := guns_by_button.get(button) as Node3D
 	
+	match selected_gun.name:
+		"Pistol":
+			EventManager.activate_popup.emit("b5_kill_cozy")
+		"Shotgun":
+			EventManager.activate_popup.emit("b5_kill_punk")
+		"Sniper":
+			EventManager.activate_popup.emit("b5_kill_soldier")
+	
 	if !is_instance_valid(selected_gun):
 		return
 	

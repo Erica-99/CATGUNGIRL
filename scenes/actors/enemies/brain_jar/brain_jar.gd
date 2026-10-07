@@ -125,6 +125,8 @@ func _play_damage_heal(damaged_health: float, restored_health: float) -> void:
 	heal_tween.tween_interval(damage_heal_delay)
 	heal_tween.tween_method(_update_health_display, damaged_health, restored_health, damage_heal_duration)
 	heal_tween.finished.connect(_advance_phase)
+	# Play dialogue about not being able to damage him
+	EventManager.activate_popup.emit("b3_damagetaken")
 
 func _disable_shields(signal_val = false):
 	if !signal_val:
@@ -248,6 +250,7 @@ func _complete_terminal_phase() -> void:
 	
 	match phase.completion_type:
 		BrainJarPhase.CompletionType.DAMAGE_HEAL_AND_ADVANCE:
+			EventManager.activate_popup.emit("b2_shieldsdown")
 			_play_after_four_terminals_animation()
 		
 		BrainJarPhase.CompletionType.SACRIFICE_DAMAGE_AND_ADVANCE:
@@ -317,6 +320,7 @@ func _advance_phase() -> void:
 
 func _finish_fight() -> void:
 	fight_state = FightState.COMPLETE
+	EventManager.activate_popup.emit("b8_death")
 	_set_gun_sacrifice_enabled(false)
 	EventManager.brainjar_killed.emit()
 	queue_free()
@@ -324,8 +328,12 @@ func _finish_fight() -> void:
 func _on_intro_trigger_body_entered(body: Node3D) -> void:
 	if intro_played or !body.is_in_group("player"):
 		return
-	
+	# Play intro dialogue
 	intro_played = true	
+	EventManager.activate_popup.emit("b1_prefight")
+	
+	# Emitted at the end of dialogue
+	await EventManager.brain_jar_intro_finished
 	boss_animation_player.play(intro_animation_name)
 	var finished_animation: StringName = await boss_animation_player.animation_finished
 	
@@ -383,9 +391,11 @@ func _play_next_reactor_explosion() -> void:
 	if sacrifice_count == 1:
 		reactor = left_reactor
 		animation_name = &"ReactorExplosionLeft"
+		EventManager.activate_popup.emit("b6_first_sacrifice_given")
 	elif sacrifice_count == 2:
 		reactor = right_reactor
 		animation_name = &"ReactorExplosionRight"
+		EventManager.activate_popup.emit("b7_second_sacrifice_given")
 	else:
 		return
 	
