@@ -360,4 +360,11 @@ func dialogue_ducking(active: bool):
 
 func cut_music() -> void:
 	music_player.stop()
+
+func cut_sfx() -> void:
+	for asp in sfx_global_pool:
+		asp.stop()
+	for asp3d in sfx_3D_pool:
+		asp3d.stop()
+	
 	

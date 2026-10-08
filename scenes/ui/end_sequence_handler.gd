@@ -22,6 +22,7 @@ func _register_final_gun(gun_name: String) -> void:
 	EventManager.slow_void.emit(true)
 	active = true
 	AudioManager.cut_music()
+	AudioManager.cut_sfx()
 	get_tree().paused = true
 
 
