@@ -1,24 +1,23 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://b0nfnmhh1q2b1"]
 
-[ext_resource type="Script" path="res://scenes/ui/menu_screens/controls_panel/controls_panel.gd" id="1_controls"]
+[ext_resource type="Script" uid="uid://cgs3pyy3ksqfb" path="res://scenes/ui/menu_screens/controls_panel/controls_panel.gd" id="1_controls"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_button"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_focus"]
 
-[node name="ControlsPanel" type="MarginContainer"]
-layout_mode = 2
+[node name="ControlsPanel" type="MarginContainer" unique_id=222921822]
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 32
 script = ExtResource("1_controls")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=820742715]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+[node name="TitleLabel" type="Label" parent="VBoxContainer" unique_id=904120373]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.8745098, 0, 0.8745098, 1)
@@ -26,37 +25,37 @@ theme_override_font_sizes/font_size = 36
 text = "CONTROLS"
 horizontal_alignment = 1
 
-[node name="PistolAimRow" type="VBoxContainer" parent="VBoxContainer"]
+[node name="PistolAimRow" type="VBoxContainer" parent="VBoxContainer" unique_id=115937296]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="HeaderRow" type="HBoxContainer" parent="VBoxContainer/PistolAimRow"]
+[node name="HeaderRow" type="HBoxContainer" parent="VBoxContainer/PistolAimRow" unique_id=1821071335]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/PistolAimRow/HeaderRow"]
+[node name="Label" type="Label" parent="VBoxContainer/PistolAimRow/HeaderRow" unique_id=1916375459]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 18
 text = "Pistol Aim Speed"
 
-[node name="ResetButton" type="Button" parent="VBoxContainer/PistolAimRow/HeaderRow"]
+[node name="ResetButton" type="Button" parent="VBoxContainer/PistolAimRow/HeaderRow" unique_id=716817642]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.5955917, 0.00025990605, 0.5955875, 1)
 theme_override_colors/font_pressed_color = Color(0, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0.8745098, 0, 0.8745098, 1)
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxEmpty_button")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_button")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_button")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_button")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
 text = "Reset"
 
-[node name="SliderRow" type="HBoxContainer" parent="VBoxContainer/PistolAimRow"]
+[node name="SliderRow" type="HBoxContainer" parent="VBoxContainer/PistolAimRow" unique_id=87688994]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Slider" type="HSlider" parent="VBoxContainer/PistolAimRow/SliderRow"]
+[node name="Slider" type="HSlider" parent="VBoxContainer/PistolAimRow/SliderRow" unique_id=72253007]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -65,7 +64,7 @@ max_value = 30.0
 step = 0.1
 value = 15.0
 
-[node name="SpinBox" type="SpinBox" parent="VBoxContainer/PistolAimRow/SliderRow"]
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/PistolAimRow/SliderRow" unique_id=950248551]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 min_value = 1.0
@@ -73,43 +72,43 @@ max_value = 30.0
 step = 0.1
 value = 15.0
 
-[node name="DefaultLabel" type="Label" parent="VBoxContainer/PistolAimRow"]
+[node name="DefaultLabel" type="Label" parent="VBoxContainer/PistolAimRow" unique_id=1750895705]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.5)
 theme_override_font_sizes/font_size = 13
 text = "Default: 15.0"
 
-[node name="ShotgunAimRow" type="VBoxContainer" parent="VBoxContainer"]
+[node name="ShotgunAimRow" type="VBoxContainer" parent="VBoxContainer" unique_id=430154221]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="HeaderRow" type="HBoxContainer" parent="VBoxContainer/ShotgunAimRow"]
+[node name="HeaderRow" type="HBoxContainer" parent="VBoxContainer/ShotgunAimRow" unique_id=30485886]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/ShotgunAimRow/HeaderRow"]
+[node name="Label" type="Label" parent="VBoxContainer/ShotgunAimRow/HeaderRow" unique_id=2092283402]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 18
 text = "Shotgun Aim Speed"
 
-[node name="ResetButton" type="Button" parent="VBoxContainer/ShotgunAimRow/HeaderRow"]
+[node name="ResetButton" type="Button" parent="VBoxContainer/ShotgunAimRow/HeaderRow" unique_id=948051172]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.5955917, 0.00025990605, 0.5955875, 1)
 theme_override_colors/font_pressed_color = Color(0, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0.8745098, 0, 0.8745098, 1)
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxEmpty_button")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_button")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_button")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_button")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
 text = "Reset"
 
-[node name="SliderRow" type="HBoxContainer" parent="VBoxContainer/ShotgunAimRow"]
+[node name="SliderRow" type="HBoxContainer" parent="VBoxContainer/ShotgunAimRow" unique_id=1483733964]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Slider" type="HSlider" parent="VBoxContainer/ShotgunAimRow/SliderRow"]
+[node name="Slider" type="HSlider" parent="VBoxContainer/ShotgunAimRow/SliderRow" unique_id=1401920716]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -118,7 +117,7 @@ max_value = 30.0
 step = 0.1
 value = 6.0
 
-[node name="SpinBox" type="SpinBox" parent="VBoxContainer/ShotgunAimRow/SliderRow"]
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/ShotgunAimRow/SliderRow" unique_id=1872703061]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 min_value = 1.0
@@ -126,43 +125,43 @@ max_value = 30.0
 step = 0.1
 value = 6.0
 
-[node name="DefaultLabel" type="Label" parent="VBoxContainer/ShotgunAimRow"]
+[node name="DefaultLabel" type="Label" parent="VBoxContainer/ShotgunAimRow" unique_id=176279534]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.5)
 theme_override_font_sizes/font_size = 13
 text = "Default: 6.0"
 
-[node name="SniperAimRow" type="VBoxContainer" parent="VBoxContainer"]
+[node name="SniperAimRow" type="VBoxContainer" parent="VBoxContainer" unique_id=2028672786]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="HeaderRow" type="HBoxContainer" parent="VBoxContainer/SniperAimRow"]
+[node name="HeaderRow" type="HBoxContainer" parent="VBoxContainer/SniperAimRow" unique_id=1090565657]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/SniperAimRow/HeaderRow"]
+[node name="Label" type="Label" parent="VBoxContainer/SniperAimRow/HeaderRow" unique_id=1142500940]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 18
 text = "Sniper Aim Speed"
 
-[node name="ResetButton" type="Button" parent="VBoxContainer/SniperAimRow/HeaderRow"]
+[node name="ResetButton" type="Button" parent="VBoxContainer/SniperAimRow/HeaderRow" unique_id=917001640]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.5955917, 0.00025990605, 0.5955875, 1)
 theme_override_colors/font_pressed_color = Color(0, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0.8745098, 0, 0.8745098, 1)
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxEmpty_button")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_button")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_button")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_button")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
 text = "Reset"
 
-[node name="SliderRow" type="HBoxContainer" parent="VBoxContainer/SniperAimRow"]
+[node name="SliderRow" type="HBoxContainer" parent="VBoxContainer/SniperAimRow" unique_id=380077318]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Slider" type="HSlider" parent="VBoxContainer/SniperAimRow/SliderRow"]
+[node name="Slider" type="HSlider" parent="VBoxContainer/SniperAimRow/SliderRow" unique_id=2131366398]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -171,7 +170,7 @@ max_value = 30.0
 step = 0.1
 value = 3.0
 
-[node name="SpinBox" type="SpinBox" parent="VBoxContainer/SniperAimRow/SliderRow"]
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/SniperAimRow/SliderRow" unique_id=847196142]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 min_value = 1.0
@@ -179,13 +178,13 @@ max_value = 30.0
 step = 0.1
 value = 3.0
 
-[node name="DefaultLabel" type="Label" parent="VBoxContainer/SniperAimRow"]
+[node name="DefaultLabel" type="Label" parent="VBoxContainer/SniperAimRow" unique_id=1042025723]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.5)
 theme_override_font_sizes/font_size = 13
 text = "Default: 3.0"
 
-[node name="BackButton" type="Button" parent="VBoxContainer"]
+[node name="BackButton" type="Button" parent="VBoxContainer" unique_id=581198356]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8745098, 0, 0.8745098, 1)
@@ -193,7 +192,7 @@ theme_override_colors/font_pressed_color = Color(0, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0.5955917, 0.00025990605, 0.5955875, 1)
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxEmpty_button")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_button")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_button")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_button")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
 text = "Back"

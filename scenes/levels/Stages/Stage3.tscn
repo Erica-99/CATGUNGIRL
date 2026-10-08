@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://xvdux0xbg54m"]
 
-[ext_resource type="Script" path="res://scenes/levels/Stages/panning_camera.gd" id="1_6h3re"]
+[ext_resource type="Script" uid="uid://dawdwjrkswtqg" path="res://scenes/levels/Stages/panning_camera.gd" id="1_6h3re"]
 [ext_resource type="PackedScene" uid="uid://x6ewayoj6cxb" path="res://scenes/actors/player/player.tscn" id="1_6qhdc"]
 [ext_resource type="Script" uid="uid://4glb1vhq6wmq" path="res://scenes/levels/Stages/stage.gd" id="1_ei5br"]
 [ext_resource type="PackedScene" uid="uid://bt342tsy3excl" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/ElevatorPanopticon.tscn" id="2_1woh0"]
 [ext_resource type="PackedScene" uid="uid://cvybenralblx6" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/PanopticonBridge.tscn" id="3_t5wms"]
+[ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="4_vyn8v"]
 [ext_resource type="PackedScene" uid="uid://0jvpofncsmg4" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/FloorShootingPanopticon.tscn" id="5_lj0hr"]
 [ext_resource type="PackedScene" uid="uid://11pckncgaxu4" path="res://scenes/components/level_components/level_transitions/level_end.tscn" id="6_jaog8"]
 [ext_resource type="PackedScene" uid="uid://b17cpk4q25npy" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/PanopticonWalls.tscn" id="6_ngxgl"]
@@ -12,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://k4bj1vh7ofsj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorExit.tscn" id="9_4t8ow"]
 [ext_resource type="PackedScene" uid="uid://b6levdtv4ncso" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/PanopticonElevatorPlatform.tscn" id="10_okgl3"]
 [ext_resource type="PackedScene" uid="uid://jdesv2xhdtvx" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/PanopticonAccessBridge.tscn" id="11_r5xyd"]
+[ext_resource type="PackedScene" uid="uid://bro5axofhsk8p" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Effects/EnvEffect_Sparking.tscn" id="11_vyn8v"]
 [ext_resource type="PackedScene" uid="uid://xnrufhd38t56" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/PanopticonCraneRail.tscn" id="12_niyru"]
 [ext_resource type="PackedScene" uid="uid://ckjadvesqstsq" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/PrisonCell(Docile).tscn" id="13_murac"]
 [ext_resource type="PackedScene" uid="uid://dl1dvclonvae4" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/PrisonCell(Active).tscn" id="14_6h3re"]
@@ -47,7 +49,7 @@
 [ext_resource type="Texture2D" uid="uid://c6uci2c212727" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCranePrt01/CellCranePrt.01_Mixed_AO.png" id="40_jaog8"]
 [ext_resource type="PackedScene" uid="uid://cf56x5mffkcgr" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwayNoneMidPrison.tscn" id="41_ah5gb"]
 [ext_resource type="Texture2D" uid="uid://brgmm5r772s87" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCranePrt01/CellCranePrt.01_Height.png" id="41_kcm3w"]
-[ext_resource type="Script" path="res://scenes/levels/Stages/camera_pan_node.gd" id="41_murac"]
+[ext_resource type="Script" uid="uid://4t3uo3s2mf8e" path="res://scenes/levels/Stages/camera_pan_node.gd" id="41_murac"]
 [ext_resource type="Texture2D" uid="uid://cbj50u5clm68" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCranePrt01/CellCranePrt.01_Base_metalness.png" id="42_cey8m"]
 [ext_resource type="PackedScene" uid="uid://rlu4e0ohmycv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwaySingleMidPrison.tscn" id="43_lj0hr"]
 [ext_resource type="Texture2D" uid="uid://c5dpqlvrx7hdy" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCranePrt01/CellCranePrt.01_Normal_OpenGL.png" id="43_n0rqr"]
@@ -64,7 +66,7 @@
 [ext_resource type="PackedScene" uid="uid://dh1ouxldd8xy5" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwayNoneBasePrison.tscn" id="52_vyn8v"]
 [ext_resource type="PackedScene" uid="uid://doqjtagulhsfs" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/1_Prison/DoorwaySingleBasePrison.tscn" id="53_lk7tg"]
 [ext_resource type="PackedScene" uid="uid://dfpvd6sa7ppg6" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/2_Panopticon/PanopticonWallsAlternate.tscn" id="53_vrydf"]
-[ext_resource type="Script" path="res://scenes/levels/Stages/falling_cell_p.gd" id="55_tb4re"]
+[ext_resource type="Script" uid="uid://05ax0kjhvug4" path="res://scenes/levels/Stages/falling_cell_p.gd" id="55_tb4re"]
 [ext_resource type="Texture2D" uid="uid://8vrgg6gsi71t" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCranePrt04/CellCranePrt.04_Base_color.png" id="61_x7ttn"]
 [ext_resource type="Texture2D" uid="uid://dy7di4av807b1" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCranePrt03/CellCranePrt.03_Base_color.png" id="62_liwko"]
 [ext_resource type="Texture2D" uid="uid://cr0jqtdrxf65a" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Cranes/CellCranePrt04/CellCranePrt.04_Mixed_AO.png" id="62_mrxti"]
@@ -89,6 +91,7 @@
 [ext_resource type="PackedScene" uid="uid://u0ps1hxqgdbr" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/HighBayLight.tscn" id="86_y6pi2"]
 [ext_resource type="PackedScene" uid="uid://8268415ukuhp" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/4_Panopticon/LightRailPanopticon.tscn" id="87_i8msr"]
 [ext_resource type="PackedScene" uid="uid://d1isfmus58oku" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/IndustrialLight1.tscn" id="88_m4oo8"]
+[ext_resource type="Material" uid="uid://cu6qh6xs6kpvr" path="res://art/Shaders/blackout.tres" id="89_14hds"]
 [ext_resource type="PackedScene" uid="uid://556rwa2pdmor" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Lying_Convict.tscn" id="89_ei5br"]
 [ext_resource type="PackedScene" uid="uid://ddim4ukeuv6rp" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Impaled_Convict.tscn" id="90_vyn8v"]
 [ext_resource type="PackedScene" uid="uid://db5fkg6225guu" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/severed_arm.tscn" id="91_oughf"]
@@ -103,6 +106,11 @@
 [ext_resource type="PackedScene" uid="uid://dp7w74qay70c" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/World_Lore/Accept_Bliss.tscn" id="101_4nat2"]
 [ext_resource type="PackedScene" uid="uid://ctulbbuyu35x" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/World_Lore/BJ_Watches.tscn" id="102_6v0vc"]
 [ext_resource type="PackedScene" uid="uid://bsekmkigv7je" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/Phantom_Vs_Opera.tscn" id="103_ufdkb"]
+[ext_resource type="PackedScene" uid="uid://befg08ebvtbma" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Effects/EnvEffect_SparkExplsion.tscn" id="105_oughf"]
+[ext_resource type="PackedScene" uid="uid://p4j7l6t1wvoa" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Effects/EnvEffect_Fire.tscn" id="106_l4l4g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iswtt"]
+size = Vector3(20, 20, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qyq0w"]
 size = Vector3(28.873047, 19.592224, 10)
@@ -533,6 +541,7 @@ volumetric_fog_enabled = true
 volumetric_fog_density = 0.04
 volumetric_fog_albedo = Color(0.8, 0.95, 1, 1)
 volumetric_fog_length = 11.93
+adjustment_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lk7tg"]
 transparency = 1
@@ -1138,9 +1147,12 @@ heightmap_texture = ExtResource("27_6h3re")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6h3re"]
 points = PackedVector3Array(3.651531, 0.100005, 3.356353, 3.651531, -0.000293, 3.356353, 3.651531, 0.100005, -3.356354, 0, 0.100005, 3.356353, 0, -0.000293, 3.356353, 3.651531, -0.000293, -3.356354, 0, 0.100005, -3.356354, 0, -0.000293, -3.356354)
 
+[sub_resource type="QuadMesh" id="QuadMesh_tg5mw"]
+material = ExtResource("89_14hds")
+
 [node name="StageThree" type="Node3D" unique_id=282651265]
 script = ExtResource("1_ei5br")
-music_ref = "music_high"
+music_ref = "music_combat"
 
 [node name="RailCamera" type="Node3D" parent="." unique_id=1750321250]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.623193, 31.221176)
@@ -1159,7 +1171,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.099172, 3)
 collision_mask = 129
 
-[node name="DATES_POPUPS" type="Node" parent="." unique_id=1021129407]
+[node name="EVENT_TRIGGERS" type="Node" parent="." unique_id=1021129407]
+
+[node name="PopupInterlude" parent="EVENT_TRIGGERS" unique_id=1311781014 instance=ExtResource("4_vyn8v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.16, 70.677, 0)
+_signal_parameters = ["4_punk_cozy_interlude"]
+signal_name = "activate_popup"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EVENT_TRIGGERS/PopupInterlude" unique_id=41191830]
+shape = SubResource("BoxShape3D_iswtt")
+debug_color = Color(0.18431373, 0.6431373, 0, 0.41960785)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=732558009]
 
@@ -1203,7 +1224,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 130, 3)
 [node name="Interactive" type="Node3D" parent="." unique_id=546830450]
 
 [node name="PrisonCell" parent="Interactive" unique_id=832090815 instance=ExtResource("14_6h3re")]
-transform = Transform3D(-2.4999995, 0, -2.185569e-07, 0, 2.5, 0, 2.185569e-07, 0, -2.4999995, 123.43627, 3.013, 3)
+transform = Transform3D(-2.4999995, 0, -2.185569e-07, 0, 2.5, 0, 2.185569e-07, 0, -2.4999995, 123.43627, 2.9605584, 3)
 
 [node name="CameraPanNode" type="Node3D" parent="Interactive" unique_id=1002179877]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.88017, 20.99137, -2.7971554)
@@ -1297,6 +1318,12 @@ level_name = "Stage4"
 
 [node name="PanopticonCrane" type="StaticBody3D" parent="Background/CraneBackground" unique_id=1825676035]
 transform = Transform3D(-8.742277e-08, 0, 1.9999999, 0, 2, 0, -1.9999999, 0, -8.742277e-08, 79.42639, 70.42116, -71.95815)
+
+[node name="Sparking" parent="Background/CraneBackground/PanopticonCrane" unique_id=1886870196 instance=ExtResource("11_vyn8v")]
+transform = Transform3D(0.99999946, 0, -7.1054274e-15, 0, 1, 0, 7.1054274e-15, 0, 0.99999946, -1.8986206, 1.7198181, 0.38587952)
+
+[node name="Sparking2" parent="Background/CraneBackground/PanopticonCrane" unique_id=2060446907 instance=ExtResource("11_vyn8v")]
+transform = Transform3D(0.9999994, 0, -1.0658141e-14, 0, 1, 0, 1.0658141e-14, 0, 0.9999994, -1.8986206, -2.2041092, 0.38587952)
 
 [node name="CellCranePrt_01_Mesh" type="MeshInstance3D" parent="Background/CraneBackground/PanopticonCrane" unique_id=1650597706]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -1.5, 0, 0)
@@ -1962,6 +1989,9 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -74.39523, 0, -7.455)
 [node name="PanopticonCraneRail12" parent="Environment/Layer_01" unique_id=177132561 instance=ExtResource("12_niyru")]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 74.395, 40, -7.455002)
 
+[node name="PanopticonCraneRailBroken9" parent="Environment/Layer_01" unique_id=510793569 instance=ExtResource("19_murac")]
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 74.395, 60, -7.455)
+
 [node name="PanopticonCraneRail13" parent="Environment/Layer_01" unique_id=450228840 instance=ExtResource("12_niyru")]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 74.395, -40, -7.455002)
 
@@ -2304,9 +2334,6 @@ transform = Transform3D(0.37414593, 0, -2.2186747, 0, 2.2500002, 0, 2.2186747, 0
 
 [node name="PrisonCell3" parent="Environment/Layer_01" unique_id=1073650531 instance=ExtResource("14_6h3re")]
 transform = Transform3D(-2.25, 0, -3.3974055e-07, 0, 2.25, 0, 3.3974055e-07, 0, -2.25, -36.44171, 2.7169616, 3)
-
-[node name="PanopticonCraneRail35" parent="Environment/Layer_01" unique_id=1668295948 instance=ExtResource("12_niyru")]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 74.395, 60, -7.455002)
 
 [node name="PanopticonCraneRail36" parent="Environment/Layer_01" unique_id=1428016198 instance=ExtResource("12_niyru")]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 74.395, 60, 13.455)
@@ -3494,9 +3521,6 @@ transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, -10.
 [node name="PanopticonCraneRail46" parent="Environment/Layer_02" unique_id=1613036658 instance=ExtResource("12_niyru")]
 transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 10.455238, 54, -71.395)
 
-[node name="PanopticonCraneRailBroken9" parent="Environment/Layer_02" unique_id=982987844 instance=ExtResource("19_murac")]
-transform = Transform3D(-2, 0, -1.7484554e-07, 0, 1.9999998, 0, 1.7484555e-07, 0, -1.9999998, 74.395004, -46, -7.455)
-
 [node name="PanopticonWalls3" parent="Environment/Layer_02" unique_id=718283707 instance=ExtResource("53_vrydf")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 3)
 
@@ -3644,17 +3668,34 @@ transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 10.4
 [node name="PanopticonCraneRail55" parent="Environment/Layer_00" unique_id=1653944612 instance=ExtResource("12_niyru")]
 transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, -10.450001, 66, -71.39)
 
-[node name="PanopticonAccessBridge2" parent="Environment/Layer_00" unique_id=821816084 instance=ExtResource("11_r5xyd")]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 72.388, 67.02, 3)
-
-[node name="PanopticonAccessBridge3" parent="Environment/Layer_00" unique_id=708239995 instance=ExtResource("11_r5xyd")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -72.388, 67.02, 3)
-
-[node name="FloorShootingPanopticon2" parent="Environment/Layer_00" unique_id=1276369123 instance=ExtResource("5_lj0hr")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 67.02, 3)
-
 [node name="PanopticonWalls4" parent="Environment/Layer_00" unique_id=1829673124 instance=ExtResource("53_vrydf")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 3)
+
+[node name="Masking" type="Node3D" parent="." unique_id=1585786589]
+
+[node name="Mesh1" type="MeshInstance3D" parent="Masking" unique_id=864715313]
+transform = Transform3D(30, 0, 0, 0, 300, 0, 0, 0, 1, 0, 167, 7)
+mesh = SubResource("QuadMesh_tg5mw")
+
+[node name="Mesh2" type="MeshInstance3D" parent="Masking" unique_id=376880799]
+transform = Transform3D(30, 0, 0, 0, 200, 0, 0, 0, 1, 0, -100, 7)
+mesh = SubResource("QuadMesh_tg5mw")
+
+[node name="Mesh3" type="MeshInstance3D" parent="Masking" unique_id=2009790591]
+transform = Transform3D(30, 0, 0, 0, 300, 0, 0, 0, 1, 179.5, -24, 7)
+mesh = SubResource("QuadMesh_tg5mw")
+
+[node name="Mesh4" type="MeshInstance3D" parent="Masking" unique_id=1039890197]
+transform = Transform3D(30, 0, 0, 0, 150, 0, 0, 0, 1, 179.5, 218, 7)
+mesh = SubResource("QuadMesh_tg5mw")
+
+[node name="Mesh5" type="MeshInstance3D" parent="Masking" unique_id=1682387523]
+transform = Transform3D(30, 0, 0, 0, 60, 0, 0, 0, 1, 200, 136.848, 7)
+mesh = SubResource("QuadMesh_tg5mw")
+
+[node name="Mesh6" type="MeshInstance3D" parent="Masking" unique_id=336958740]
+transform = Transform3D(30, 0, 0, 0, 60, 0, 0, 0, 1, -19.996683, 10, 7)
+mesh = SubResource("QuadMesh_tg5mw")
 
 [node name="Props" type="Node3D" parent="." unique_id=1920549022]
 
@@ -3825,13 +3866,13 @@ transform = Transform3D(1, 0, 0, 0, 0.91721314, 0.3983969, 0, -0.3983969, 0.9172
 transform = Transform3D(0.93872184, 0, -0.3446757, 0, 1, 0, 0.3446757, 0, 0.93872184, 126.21501, 10.346452, -2.094659)
 
 [node name="Rubble" parent="2D_Props/Corpses" unique_id=1864665879 instance=ExtResource("94_14hds")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.15581, 68.92472, 7.9970055)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.15581, 67.19559, 7.9970055)
 
 [node name="MeltingConvict" parent="2D_Props/Corpses" unique_id=162277555 instance=ExtResource("95_tg5mw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.024918, 69.287, -0.3023281)
 
 [node name="ScrubTorso" parent="2D_Props/Corpses" unique_id=426037799 instance=ExtResource("96_baq28")]
-transform = Transform3D(0.96974856, 0, 0.24410588, 0, 1, 0, -0.24410588, 0, 0.96974856, 45.771366, 126.8935, -5.727792)
+transform = Transform3D(0.96974856, 0, 0.24410588, 0, 1, 0, -0.24410588, 0, 0.96974856, 45.771366, 126.77093, -5.727792)
 
 [node name="MeatLumps" parent="2D_Props/Corpses" unique_id=720032926 instance=ExtResource("97_7e0hq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.86912, 126.8625, 7.4004083)
@@ -3840,23 +3881,53 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.86912, 126.8625, 7.4004083
 transform = Transform3D(0.9101421, 0, -0.41429615, 0, 1, 0, 0.41429615, 0, 0.9101421, 118.89261, 127.71125, -5.647059)
 
 [node name="ScrubCrashed" parent="2D_Props/Corpses" unique_id=2089480923 instance=ExtResource("93_1548b")]
-transform = Transform3D(0.80474585, -0.10414181, -1.7659224, 0.12493621, 1.3299216, -0.03541507, 0.92632097, -0.08889753, 1.5389305, 135.74176, 5.946916, 12.384408)
+transform = Transform3D(1.233408, 0, 0, 0, 1.3369517, 0, 0, 0, 2.3426573, 117.606384, 0.87561846, -2.01466)
 
 [node name="Posters" type="Node3D" parent="2D_Props" unique_id=1360428358]
 
 [node name="Beware_Redivivus" parent="2D_Props/Posters" unique_id=1517328070 instance=ExtResource("99_51x26")]
-transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 40.484505, 2.731675, -5.110424)
+transform = Transform3D(0.4363667, 0, 0.4363667, 0, 0.56819415, 0, -0.4363667, 0, 0.4363667, 40.656002, 2.9896305, -2.3298302)
 
 [node name="AcceptBliss" parent="2D_Props/Posters" unique_id=1163934586 instance=ExtResource("101_4nat2")]
-transform = Transform3D(0.4881339, 0, 0.8727686, 0, 1.0000001, 0, -0.87276876, 0, 0.4881338, 39.729294, 128.90163, -5.321966)
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 0.99999976, 89.89874, 130.06197, -4.216767)
 
 [node name="BJ_Watches" parent="2D_Props/Posters" unique_id=1078633704 instance=ExtResource("102_6v0vc")]
-transform = Transform3D(0.99984187, 0, 0.017783968, 0, 1, 0, -0.017783968, 0, 0.99984187, 42.333263, 102.717834, 4.3987184)
+transform = Transform3D(0.99984187, 0, 0.017783968, 0, 1, 0, -0.017783968, 0, 0.99984187, 42.333263, 102.717834, 7.38171)
 
 [node name="PhantomVsOpera" parent="2D_Props/Posters" unique_id=705704835 instance=ExtResource("103_ufdkb")]
-transform = Transform3D(0.83722275, 0, -0.546862, 0, 1, 0, 0.546862, 0, 0.83722275, 140.12776, 129.14658, -4.1850066)
+transform = Transform3D(0.82458067, 0, -0.5657444, 0, 1, 0, 0.5657444, 0, 0.82458067, 140.40056, 129.14658, -1.0373969)
 
 [node name="VFX" type="Node3D" parent="." unique_id=1607142219]
+
+[node name="EnvEffectSpark" parent="VFX" unique_id=602658946 instance=ExtResource("105_oughf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.81539, 3.3869445, -3.8111796)
+
+[node name="EnvEffectSpark2" parent="VFX" unique_id=935408074 instance=ExtResource("105_oughf")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 95.65151, 70.65956, -3.6588602)
+
+[node name="EnvEffectSpark3" parent="VFX" unique_id=1538811753 instance=ExtResource("105_oughf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.65338, 129.81978, -3.7476962)
+
+[node name="EnvEffectFire" parent="VFX" unique_id=381884369 instance=ExtResource("106_l4l4g")]
+transform = Transform3D(0.406687, 0.4671972, -0.78506833, -0.7542627, 0.65657246, 0, 0.51545423, 0.59214777, 0.61940914, 18.744614, 130.9373, -15.690408)
+
+[node name="EnvEffectFire2" parent="VFX" unique_id=213862269 instance=ExtResource("106_l4l4g")]
+transform = Transform3D(0.9173937, 0.39798057, 0, -0.39798057, 0.9173937, 0, 0, 0, 1, 28.154686, 79.82279, 6.647466)
+
+[node name="EnvEffectFire3" parent="VFX" unique_id=1286815718 instance=ExtResource("106_l4l4g")]
+transform = Transform3D(0.3593127, -0.93321705, 0, 0.93321705, 0.3593127, 0, 0, 0, 1, 158.40292, 132.37665, -18.438326)
+
+[node name="EnvEffectSpark4" parent="VFX" unique_id=2114679027 instance=ExtResource("105_oughf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.56003, 9.46857, 6.077632)
+
+[node name="EnvEffectSpark5" parent="VFX" unique_id=1211483811 instance=ExtResource("105_oughf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.64035, 3.8476086, 6.303653)
+
+[node name="EnvEffectFire4" parent="VFX" unique_id=1031620447 instance=ExtResource("106_l4l4g")]
+transform = Transform3D(0.15626208, -0.9877155, 0, 0.9877155, 0.15626208, 0, 0, 0, 1, 160.52202, 5.9482527, 13.449988)
+
+[node name="EnvEffectFire" parent="." unique_id=1433026510 instance=ExtResource("106_l4l4g")]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.41751808, -0.9086685, 0, 0.9086685, 0.41751814, 69.48004, 4.724799, -6.517968)
 
 [connection signal="removecameratween" from="Interactive/CameraPanNode" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="Interactive/CameraPanNode" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]

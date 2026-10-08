@@ -53,9 +53,13 @@ normal_texture = ExtResource("5_2ke1v")
 [sub_resource type="BoxShape3D" id="BoxShape3D_8peww"]
 size = Vector3(5.303702, 8.467653, 5.059022)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8peww"]
+height = 17.135956
+radius = 5.4248047
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_2h2a8"]
-height = 8.467653
-radius = 2.651851
+height = 17.135956
+radius = 5.4248047
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u3qcc"]
 albedo_texture = ExtResource("8_vs3c6")
@@ -146,12 +150,60 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BrainJarJar/BrainJarJar_Mesh:material_overlay")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_vs3c6")]
+}
+
+[sub_resource type="Animation" id="Animation_8peww"]
+resource_name = "ShieldFlickerOff"
+length = 1.5
+step = 0.041666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BrainJarJar/BrainJarJar_Mesh:material_overlay")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23, 0.34, 0.46961167, 0.55506146, 0.61012304, 0.6651845, 0.7272492, 0.822699, 0.99, 1.1666666, 1.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_vs3c6"), null, ExtResource("1_vs3c6"), null, ExtResource("1_vs3c6"), null, ExtResource("1_vs3c6"), null, ExtResource("1_vs3c6"), null, ExtResource("1_vs3c6"), null]
+}
+
+[sub_resource type="Animation" id="Animation_va6w0"]
+resource_name = "ShieldFlickerOn"
+length = 1.5000042
+step = 0.041666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BrainJarJar/BrainJarJar_Mesh:material_overlay")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23, 0.34, 0.46961167, 0.55506146, 0.61012304, 0.6651845, 0.7272492, 0.822699, 0.99, 1.1666666, 1.35, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_vs3c6"), null, ExtResource("1_vs3c6"), null, ExtResource("1_vs3c6"), null, ExtResource("1_vs3c6"), null, ExtResource("1_vs3c6"), null, ExtResource("1_vs3c6"), null, ExtResource("1_vs3c6")]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ofra6"]
 _data = {
 &"After 4 Terminals": SubResource("Animation_ofra6"),
 &"Intro Animation": SubResource("Animation_qmdp3"),
-&"RESET": SubResource("Animation_vs3c6")
+&"RESET": SubResource("Animation_vs3c6"),
+&"ShieldFlickerOff": SubResource("Animation_8peww"),
+&"ShieldFlickerOn": SubResource("Animation_va6w0")
 }
 
 [node name="BrainJar" type="Node3D" unique_id=750473655 node_paths=PackedStringArray("health_bar", "health_component", "boss_mesh", "boss_animation_player")]
@@ -175,8 +227,8 @@ material_overlay = ExtResource("1_vs3c6")
 mesh = ExtResource("1_2h2a8")
 surface_material_override/0 = SubResource("StandardMaterial3D_qmdp3")
 
-[node name="BrainJarJar_Collision" type="CollisionShape3D" parent="BrainJarJar" unique_id=429240394]
-transform = Transform3D(1.9, 0, 0, 0, 1.9, 0, 0, 0, 1.9, 0, 14.108316, 1.9073486e-06)
+[node name="BrainJarJar_Collision" type="CollisionShape3D" parent="BrainJarJar" unique_id=1809856673]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 14.108316, 1.9073486e-06)
 shape = SubResource("BoxShape3D_8peww")
 
 [node name="SurroundingGlow" type="OmniLight3D" parent="BrainJarJar" unique_id=1029619693]
@@ -203,17 +255,17 @@ team_component = NodePath("../../TeamComponent")
 health_component = NodePath("../../HealthComponent")
 
 [node name="BrainJar_Collision" type="CollisionShape3D" parent="BrainJarJar/HurtboxComponent" unique_id=1756320084]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 24.078678, -100)
-shape = SubResource("CylinderShape3D_2h2a8")
-debug_color = Color(0.05260718, 0.65040857, 9.62615e-07, 0.41960785)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.096638, -100)
+shape = SubResource("CylinderShape3D_8peww")
+debug_color = Color(0, 0.6530009, 0.0060103755, 0.41960785)
 
 [node name="Shields" type="StaticBody3D" parent="BrainJarJar" unique_id=1974368709]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 100)
 
 [node name="BrainJar_Collision" type="CollisionShape3D" parent="BrainJarJar/Shields" unique_id=46381169]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.059928894, 24.078676, -99.94313)
+transform = Transform3D(1.0941392, 0, 0, 0, 1.0610659, 0, 0, 0, 1, 0, 24.079, -99.943)
 shape = SubResource("CylinderShape3D_2h2a8")
-debug_color = Color(0.05260718, 0.65040857, 9.62615e-07, 0.41960785)
+debug_color = Color(0.85894537, 0.000749107, 0.8862509, 0.41960785)
 
 [node name="Claw" type="Node3D" parent="." unique_id=241411028]
 

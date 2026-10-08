@@ -1,0 +1,283 @@
+extends Node3D
+
+class_name BaseGun
+
+# base gun is designed to hold the absolute basics
+# most functionality is completed via the attached additional nodes
+# however, gun instances such as Pistol, Shotgun etc. shall inherit fom base gun to obtain the basics (then have customised attached nodes)
+# some attached nodes will be forced (such as the BulletEmitter), others will be optional (i.e. attached handling for Player aiming etc idk)
+
+@export var gun_name: String
+@export var can_perfect_shot: bool = false
+
+@onready var ammo_component: AmmoComponent = $AmmoComponent
+@export var bullet_emitter: Node3D
+var input_component: Node
+
+@export var team_component: Node = null		# player or enemy TeamComponent reference, passed to bullets
+@export var Gun_Animation: AnimationPlayer = null
+@export var Muzzle_VFX: AnimationPlayer = null
+@export var _normal_flash: CPUParticles3D
+@export var _perfect_flash: CPUParticles3D
+
+@export var ability: Ability = null
+
+@export var change_visibility_on_active_switch: bool = true
+@export var gun_pivot: Node3D = null
+@export var gun_sprite: AnimatedSprite3D = null
+@export var offset: float = 0.0
+
+@export_group("Aim")
+@export var aim_speed: float = 8.0		# gun rotation speed towards mouse (lower = more delay)
+@export var mouse_speed = 775.0
+
+@export_group("Perfect Shot")
+@export var aim_settled_threshold: float = 98.0		# % of recoil recovered
+@export var perfect_damage_multiplier: float = 1.5	# damage bonus for perfect shot
+@export var perfect_shot_max_interval: float = 1.0	# max seconds between shots for perfect shot to trigger
+@export var laser_convergence_speed: float = 0.73	# time to converge
+@export var spam_window: float = 0.6				# seconds after firing where next shot counts as spam
+@export var spam_aim_multiplier: float = 0.4		# lower = slower
+
+@export_group("Recoil and Wobble")
+@export var recoil_amount: float = 0.35		# higher = more
+@export var recoil_recovery: float = 5.0 	# higher = faster
+@export var wobble_amount: float = 0.1		# higher = more
+@export var wobble_speed: float = 7.0		# higher = faster
+
+@export_group("SFX")
+@export var reload_sfx: String
+@export var shoot_sfx: String
+
+var _is_spamming: bool = false
+var _spam_count: int = 0			# track spam count
+var _recoil_offset: float = 0.0 
+var _current_target_angle: float = 0.0	# stores current target angle for perfect shot detection
+var _time_since_last_shot: float = 999.0
+var _fire_cooldown: float = 0.0
+var _is_charging: bool = false
+var _charge_progress: float = 0.0	# beam
+var _wobble_time: float = 0.0
+var _player_target: CharacterBody3D = null
+
+var _enemy_bullets_fired: int = 0
+
+## Controller Aiming variables
+var using_controller = false
+var controller_deadzone = 0.2
+var target_angle : float
+var mouse_pos := Vector2.ZERO
+
+
+var active: bool = false:
+	set(value):
+		active = value
+		if change_visibility_on_active_switch:
+			visible = active
+		if ability != null:
+			ability.active = active
+
+# ONLY FOR ENEMIES
+var in_range: bool = false
+
+signal enemy_hit(damage: float)
+
+## perfect shot signal
+signal perfect_shot_fired()
+signal spread_changed(spread: float) # visual indicator 
+signal perfect_window_changed(active: bool) # for indicator flash
+
+## emitted every frame while charging, value is 0.0 to 1.0
+signal charge_progress_changed(progress: float)
+
+## Signal emitted when charging stops (fired or cancelled)
+signal charge_ended()
+signal charge_started()
+
+func _ready() -> void:
+	_player_target = get_tree().get_first_node_in_group("player") as CharacterBody3D
+	mouse_pos = get_viewport().get_mouse_position()
+
+func _input(event):
+	#Establish if the player is using KBM or a controller
+	if event is InputEventMouseMotion:
+		if event.relative.length() < 3.0:
+			return
+	elif event is InputEventJoypadMotion:
+		if abs(event.axis_value) > controller_deadzone:
+			using_controller = true
+	elif event is InputEventJoypadButton:
+		using_controller = true
+	elif event is InputEventMouseButton || event is InputEventKey:
+			using_controller = false
+
+func _process(delta: float) -> void:
+	
+	# in hindsight, the is_reloading should probably have a set of interactions for attempted bulletshots whilst reload but anyways...
+	if !active:
+		return
+	
+	# HANDLE PLAYER
+	if team_component.team == Enums.Team.PLAYER:
+		var current_input_state = input_component.get_input_state()
+		_update_aim(current_input_state.get("mouse_world_pos"), current_input_state, delta)
+		_fire_cooldown = maxf(_fire_cooldown - delta, 0.0)
+		_time_since_last_shot += delta
+		if _time_since_last_shot >= spam_window:
+			_is_spamming = false
+			_spam_count = 0
+		
+		if !ammo_component._is_reloading:
+			# normal fire (left click) read from input component
+			if current_input_state.get("fire_held", false):
+				if bullet_emitter.full_auto:
+					bullet_emitter._try_fire()
+				else: # buffer the checks for semi-auto firing
+					if bullet_emitter.semi_available:
+						bullet_emitter._try_fire()
+						
+			# input handling for special attack
+			_handle_special(current_input_state, delta)
+		
+		# buffer for semi auto firing
+		if !bullet_emitter.full_auto:
+			if input_component._fire_held:
+				bullet_emitter.semi_available = false
+			else:
+				bullet_emitter.semi_available = true
+			
+		if _is_charging:
+			spread_changed.emit(_charge_progress)
+		else:
+			var spread = 1.0 - clampf(_time_since_last_shot / laser_convergence_speed, 0.0, 1.0)
+			spread_changed.emit(spread)
+		
+		if can_perfect_shot:
+			var in_window = not _is_charging and _is_aim_settled() and _time_since_last_shot < perfect_shot_max_interval
+			perfect_window_changed.emit(in_window)
+	
+	else:
+		# if not in range, cannot shoot
+		if !in_range:
+			return
+		
+		# HANDLE NON-PLAYER
+		var direction = _player_target.global_position - global_position
+		direction.z = 0.0
+		var target_angle = Vector2(direction.x, direction.y).angle()
+		rotation.z = target_angle
+		
+		if ammo_component._check_if_can_shoot():
+			_fire_cooldown += delta
+			if _fire_cooldown > bullet_emitter.fire_rate:
+				_fire_cooldown = 0
+				_shoot(bullet_emitter.bullet_damage, bullet_emitter.bullet_scale)
+				ammo_component._handle_ammo()
+		#else:
+			#rotation.z = -PI/2
+
+
+func _update_aim(mouse_world: Vector3, input_state: Dictionary, delta: float) -> void:
+	if mouse_world == null:
+		return
+	#Check if the player is using a controller
+	if using_controller:
+		var control_direction = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
+		if control_direction != Vector2.ZERO:
+			#Update mouse position
+			mouse_pos += control_direction * mouse_speed * delta
+			mouse_pos = mouse_pos.clamp(Vector2.ZERO, get_viewport().get_visible_rect().size)
+			Input.warp_mouse(mouse_pos)
+		else:
+			mouse_pos = get_viewport().get_mouse_position()
+	
+	# direction vector from gun to mouse
+	var direction = mouse_world - global_position
+	direction.z = 0.0
+	target_angle = Vector2(direction.x, direction.y).angle()
+	_current_target_angle = target_angle
+	
+	var is_moving = input_state.get("movement", 0.0) != 0.0 or input_state.get("jumping", false)
+	var wobble: float = 0.0
+	if is_moving:
+		_wobble_time += delta
+		wobble = sin(_wobble_time * wobble_speed) * wobble_amount
+	else:
+		_wobble_time = 0.0
+	
+	#Set the current aim speed depending on user's input
+	var current_aim_speed
+	current_aim_speed = aim_speed
+	
+	if _is_spamming and not _is_aim_settled():
+		current_aim_speed = aim_speed * spam_aim_multiplier
+		
+	rotation.z = lerp_angle(rotation.z, target_angle + _recoil_offset + wobble, current_aim_speed * delta)
+	_recoil_offset = lerpf(_recoil_offset, 0.0, recoil_recovery * delta)
+	if abs(_recoil_offset) < 0.001:
+		_recoil_offset = 0.0
+	scale = Vector3(1.0, 1.0, 1.0)
+	## print to check recoil recovery
+	# if _is_aim_settled() and _time_since_last_shot < perfect_shot_max_interval:
+		# if not _has_printed_settle:
+			# print("aim settled: ", _time_since_last_shot, " seconds after last shot")
+			# _has_printed_settle = true
+
+
+func _handle_special(input_state: Dictionary, delta: float) -> void:
+	# overrided by instances of gun
+	pass
+
+
+func _is_aim_settled() -> bool:
+	return abs(_recoil_offset) < recoil_amount * (1.0 - aim_settled_threshold / 100.0)
+
+# player only aim handling
+func _shoot_handler():
+	var damage = bullet_emitter.bullet_damage
+	var is_perfect: bool = false
+	## Perfect shot
+	if _is_aim_settled() and _time_since_last_shot < perfect_shot_max_interval and can_perfect_shot:
+		_is_spamming = false
+		_spam_count = 0
+		print("Perfect Shot fired, damage: ", bullet_emitter.bullet_damage * perfect_damage_multiplier)
+		rotation.z = _current_target_angle
+		damage = bullet_emitter.bullet_damage * perfect_damage_multiplier
+		perfect_shot_fired.emit()
+		_perfect_flash.restart()
+		Muzzle_VFX.stop()
+		Muzzle_VFX.play("Perfect")
+		is_perfect = true
+	# Spam shot 
+	elif _time_since_last_shot < spam_window:
+		_is_spamming = true
+		_spam_count += 1
+		# print("spam shot, count: ", _spam_count)
+		_normal_flash.restart()
+		Muzzle_VFX.stop()
+		Muzzle_VFX.play("Imperfect")
+	else: # Normal shot
+		# print("normal shot, damage: ", bullet_damage)
+		_normal_flash.restart()
+		Muzzle_VFX.stop()
+		Muzzle_VFX.play("Imperfect")
+	# resets firing cooldown
+	_fire_cooldown = bullet_emitter.fire_rate
+	_shoot(damage, bullet_emitter.bullet_scale, is_perfect)
+	_recoil_offset += recoil_amount * sign(global_transform.basis.x.x)
+	_time_since_last_shot = 0.0
+	ammo_component.single_reload_timer = 0.0
+	# _has_printed_settle = false
+
+
+# visual handling for ENEMY (scrub)
+func _direction_change(direction: float):
+	bullet_emitter.muzzle.position.x *= -1
+
+
+func _shoot(damage, bullet_scale, is_perfect: bool = false):
+	bullet_emitter._spawn_bullet(damage, bullet_scale)
+	if is_perfect:
+		AudioManager.play_sfx("laser_perfect")
+	else:
+		AudioManager.play_sfx(shoot_sfx)

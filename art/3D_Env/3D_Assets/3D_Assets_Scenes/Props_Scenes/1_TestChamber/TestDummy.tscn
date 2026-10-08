@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://lnxp703rb04k" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/1_TestChamber/TestDummy/TestDummyTexture_R.png" id="5_su75b"]
 [ext_resource type="PackedScene" uid="uid://ct0x17kvi6e2b" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="7_hcyxg"]
 [ext_resource type="PackedScene" uid="uid://btodbwo4h5ooe" path="res://scenes/components/health_component/health_component.tscn" id="8_uhjne"]
+[ext_resource type="PackedScene" uid="uid://x4f2jperscm2" path="res://scenes/VFX/headshot_vfx.tscn" id="9_sx8hm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1byu"]
 albedo_texture = ExtResource("2_aqyng")
@@ -50,12 +51,13 @@ damage_multiplier = 0.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022613525, 1.0937896, -0.0018005371)
 shape = SubResource("CapsuleShape3D_hcyxg")
 
-[node name="HurtboxComponent2" parent="." unique_id=242602835 node_paths=PackedStringArray("health_component") instance=ExtResource("7_hcyxg")]
+[node name="HeadHitbox" parent="." unique_id=242602835 node_paths=PackedStringArray("health_component") instance=ExtResource("7_hcyxg")]
 health_component = NodePath("../HealthComponent")
+vfx = ExtResource("9_sx8hm")
 damage_multiplier = 0.0
 is_headshot = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtboxComponent2" unique_id=1951779728]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HeadHitbox" unique_id=1951779728]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02119641, 1.8110985, 0)
 shape = SubResource("SphereShape3D_hcyxg")
 

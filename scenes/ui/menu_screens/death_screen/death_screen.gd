@@ -29,29 +29,28 @@ func _ready() -> void:
 	continue_button.pressed.connect(_on_continue_button_pressed)
 	return_to_menu_button.pressed.connect(_on_return_to_menu_button_pressed)
 	change_difficulty_button.pressed.connect(_on_change_difficulty_button_pressed)
-
 	show_death_screen(DeathManager.last_death_id)
 
 func show_death_screen(death_id: StringName) -> void:
 	var death_info: DeathScreenInfo = get_death_info(death_id)
-
+	
 	get_tree().paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-
+	
 	you_died_label.text = "You Died"
 	enemy_info_label.text = get_enemy_info(death_info)
-
+	
 	if death_info == null:
 		tip_label.text = "Tip: Watch enemy patterns and use the environment to survive."
 		background.texture = null
 		enemy_image.texture = null
 		return
-
+	
 	if death_info.tip == "":
 		tip_label.text = "Tip: Watch enemy patterns and use the environment to survive."
 	else:
 		tip_label.text = "Tip: " + death_info.tip
-
+	
 	background.texture = death_info.background
 	enemy_image.texture = death_info.enemy_image
 
@@ -59,40 +58,42 @@ func get_death_info(death_id: StringName) -> DeathScreenInfo:
 	for death_info in death_infos:
 		if death_info == null:
 			continue
-
+		
 		if death_info.death_id == death_id:
 			return death_info
-
+	
 	return default_death_info
 
 func get_enemy_info(death_info: DeathScreenInfo) -> String:
 	if death_info == null or death_info.enemy_info == "":
 		return "Cause of death could not be identified."
-
+	
 	return death_info.enemy_info
 
 func _on_continue_button_pressed() -> void:
 	if is_leaving_death_screen:
 		return
-
+	
 	is_leaving_death_screen = true
 	disable_buttons()
 	get_tree().paused = false
-
+	
 	var level_path_to_load: String = DeathManager.last_death_level_path
-
+	
 	if level_path_to_load == "":
 		level_path_to_load = Globals.LEVEL_PATHS["main_menu"]
-
+	
+	CheckpointManager.prepare_retry(level_path_to_load)
 	load_scene(level_path_to_load)
 
 func _on_return_to_menu_button_pressed() -> void:
 	if is_leaving_death_screen:
 		return
-
+	
 	is_leaving_death_screen = true
 	disable_buttons()
 	get_tree().paused = false
+	CheckpointManager.clear_checkpoint()
 	load_scene(main_menu_scene_path)
 
 func _on_change_difficulty_button_pressed() -> void:
@@ -107,17 +108,15 @@ func load_scene(scene_path: String) -> void:
 	if scene_path == "":
 		print("Death screen tried to load an empty scene path.")
 		return
-
+	
 	var loading_screen = loading_screen_scene.instantiate()
 	loading_screen.next_scene = scene_path
 	loading_screen.run_in_background = false
 	loading_screen.gigi_jumpscare_visible = false
 	loading_screen.set_process(false)
-
 	get_tree().root.add_child(loading_screen)
-
 	await loading_screen.animation_player.animation_finished
 	await get_tree().process_frame
-
+	
 	if is_instance_valid(loading_screen):
 		loading_screen.set_process(true)

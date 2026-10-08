@@ -12,6 +12,25 @@ extends Node
 @export_category("Stingers")
 @export var enemy_stingers: Array[CallableSFX]
 
+@export_category("Dialogue")
+@export var dialogue_player: AudioStreamPlayer
+
+# which stems of the combat music are audible at each intensity [stem 1, stem 2, stem 3]
+const COMBAT_LAYERS: Dictionary = {
+	Enums.MusicIntensity.OFF:  [false, false, false],
+	Enums.MusicIntensity.LOW:  [true,  false, false],
+	Enums.MusicIntensity.MID:  [true,  true,  false],
+	Enums.MusicIntensity.HIGH: [true,  true,  true],
+}
+# volume (db) each stem fades up to when they're on [stem 1, stem 2, stem 3]
+const STEM_VOLUMES_DB: Array[float] = [0.0, 3.0, 6.0]
+# how long (seconds) a combat music stem takes to fade in or out
+const LAYER_FADE_TIME: float = 1.0
+# volume a stem sits at while it's faded out
+const SILENT_DB: float = -80.0
+
+var layer_tween: Tween
+
 var music_dict: Dictionary
 var sfx_dict: Dictionary
 var stinger_dict: Dictionary
@@ -21,7 +40,11 @@ var sfx_3D_pool: Array[AudioStreamPlayer3D]
 
 var hotseat: AudioStreamPlayer3D
 
+var music_base_volume
+
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	
 	#region Audio Dictionary Construction
 	# Build MusicTrack Dictionary
 	for music: MusicTrack in music_tracks:
@@ -55,6 +78,9 @@ func _ready() -> void:
 		add_child(asp)
 		sfx_3D_pool.append(asp)
 	#endregion
+	
+	EventManager.music_intensity_changed.connect(fade_combat_layers)
+	EventManager.brainjar_phase_started.connect(_on_brain_jar_phase_started)
 
 # Play music track
 func play_music(track_ref: String):
@@ -67,10 +93,46 @@ func play_music(track_ref: String):
 		var track: MusicTrack = music_dict[track_ref]
 		music_player.stream = track.music_track
 		music_player.volume_db = track.volume
+		# combat music starts silent, then fades in to LOW
+		if track.music_track is AudioStreamSynchronized:
+			_silence_combat_layers()
+			fade_combat_layers(Enums.MusicIntensity.LOW)
 		# Play Stream
 		music_player.play()
 	else:
 		push_error("Music track not found")
+
+# fades each stem of the combat music in or out to match the intensity (COMBAT_LAYERS)
+func fade_combat_layers(intensity: Enums.MusicIntensity) -> void:
+	var combat_music := music_player.stream as AudioStreamSynchronized
+	if combat_music == null:
+		return # other music is playing
+	
+	if layer_tween:
+		layer_tween.kill()
+	layer_tween = create_tween().set_parallel()
+	
+	var layers: Array = COMBAT_LAYERS[intensity]
+	for layer in layers.size():
+		# fade in linear volume
+		var from: float = db_to_linear(combat_music.get_sync_stream_volume(layer))
+		var to: float = db_to_linear(STEM_VOLUMES_DB[layer]) if layers[layer] else 0.0
+		layer_tween.tween_method(_set_layer_volume.bind(combat_music, layer), from, to, LAYER_FADE_TIME)
+
+func _set_layer_volume(linear_volume: float, combat_music: AudioStreamSynchronized, layer: int) -> void:
+	combat_music.set_sync_stream_volume(layer, max(linear_to_db(linear_volume), SILENT_DB))
+
+func _silence_combat_layers() -> void:
+	if layer_tween:
+		layer_tween.kill()
+	
+	var combat_music := music_player.stream as AudioStreamSynchronized
+	for layer in combat_music.stream_count:
+		combat_music.set_sync_stream_volume(layer, SILENT_DB)
+
+func _on_brain_jar_phase_started(phase_index: int) -> void:
+	var music_ref: String = "music_bj_phs" + str(phase_index)
+	play_music(music_ref)
 
 # Play global sound effect (best for menu, UI, most player sounds, etc.)
 func play_sfx(sfx_ref: String):
@@ -162,6 +224,20 @@ func play_stinger(asp3d: AudioStreamPlayer3D, stinger_ref: String, bypass: bool 
 		take_hotseat(asp3d, stinger_ref)
 	else:
 		play_fallback(asp3d, stinger_ref)
+
+# Plays dialogue from a file and provides reference to the AudioStreamPlayer to the caller of the
+# method so it can detect when it finished.
+func play_dialogue_file(filepath: String) -> AudioStreamPlayer:
+	if filepath == "":
+		return null
+	elif not ResourceLoader.exists(filepath, "AudioStreamMP3"):
+		push_error("Could not find dialogue file at " + filepath)
+		return null
+	else:
+		var dialogue_audio = load(filepath)
+		dialogue_player.stream = dialogue_audio
+		dialogue_player.play()
+		return dialogue_player
 
 # Retrieves a sound effect resource from a SoundEffect or SoundEffectPool in the sfx_dict, that matches sfx_ref
 func get_sfx_from_dict(sfx_ref: String) -> SoundEffect:
@@ -262,3 +338,33 @@ func bypass_hotseat(asp3d: AudioStreamPlayer3D, ref: String):
 	asp3d.pitch_scale = res.pitch_scale + randf_range(-res.pitch_random_shift, res.pitch_random_shift)
 	
 	asp3d.play()
+
+# Lower the sounds of non-dialogue audio when audio is playing
+func dialogue_ducking(active: bool):
+	var bus_index := AudioServer.get_bus_index("Music")
+	if active:
+		#print("Before lowering: " + str(AudioServer.get_bus_volume_linear(bus_index)))
+		print("Lowering music")
+		music_base_volume = AudioServer.get_bus_volume_linear(bus_index)
+		AudioServer.set_bus_volume_linear(bus_index, music_base_volume * 0.7)
+		print("After lowering: " + str(AudioServer.get_bus_volume_linear(bus_index)))
+		# TODO: this does work conceptually, though at the moment lowering the music bus
+		# doesn't actually lower the music, which it probably should. You can test the idea
+		# by changing .get_bus_index to "Master"
+		
+	else:
+		#print("Before raising: " + str(AudioServer.get_bus_volume_linear(bus_index)))
+		print("Returning music")
+		AudioServer.set_bus_volume_linear(bus_index, music_base_volume)
+		#print("After raising: " + str(AudioServer.get_bus_volume_linear(bus_index)))
+
+func cut_music() -> void:
+	music_player.stop()
+
+func cut_sfx() -> void:
+	for asp in sfx_global_pool:
+		asp.stop()
+	for asp3d in sfx_3D_pool:
+		asp3d.stop()
+	
+	

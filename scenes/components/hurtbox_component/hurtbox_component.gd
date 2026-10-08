@@ -3,6 +3,7 @@ extends Area3D
 @export var team_component: Node
 @export var health_component: Node
 @export var hit_sfx_ref: String
+@export var vfx: PackedScene
 
 @export var damage_multiplier: float = 1.0
 @export var is_headshot: bool = false
@@ -22,7 +23,19 @@ func _on_area_entered(hitbox: Area3D) -> void:
 ## Handles taking damage by making callbacks to health component. Alerts the hitbox that a collision has occured.
 func take_hit(hitbox: Area3D) -> void:
 	if hit_sfx_ref != "":
-		AudioManager.play_sfx(hit_sfx_ref)
+		if team_component.team == Enums.Team.PLAYER:
+			AudioManager.play_sfx(hit_sfx_ref)
+		else:
+			AudioManager.play_sfx_at_location(hit_sfx_ref, self.global_position)
+	if vfx:
+		var new_vfx = vfx.instantiate() as CPUParticles3D
+		if new_vfx:
+			get_tree().current_scene.add_child(new_vfx)
+			var collision_pos = $CollisionShape3D.global_position
+			new_vfx.global_position = collision_pos
+			new_vfx.play()
+			print("spawned vfx")
+	
 	hitbox.call("register_hit", self)
 	if hitbox.damage_or_heal_instance != null and health_component != null:
 		var dmg_heal_instance = hitbox.damage_or_heal_instance.duplicate()
@@ -31,6 +44,16 @@ func take_hit(hitbox: Area3D) -> void:
 			dmg_heal_instance.amount *= clampf(damage_multiplier, 0, 1)
 		else:
 			dmg_heal_instance.amount *= damage_multiplier
+		
+		# ONLY APPLY IF HITBOX HAS AN ASSIGNED ENVIRONMENT CHECK RAYCAST
+		if "environment_check" in hitbox and hitbox.environment_check != null:
+			var obstructed_damage = hitbox.call("handle_obstructed_hit", self)
+			
+			# -1 means continue as per usual (see handle_obstructed_hit in hitbox for additional details)
+			if obstructed_damage != -1:
+				# forcibly set obstructed damage amount
+				dmg_heal_instance.amount = obstructed_damage
+		
 		health_component.take_damage_or_heal(dmg_heal_instance)
 		hitbox.call("register_damage_dealt", dmg_heal_instance.amount * float(not dmg_heal_instance.is_heal))
 	

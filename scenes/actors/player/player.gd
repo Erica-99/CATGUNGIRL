@@ -16,6 +16,7 @@ signal player_dead()
 
 const GUN_SACRIFICE_MENU_SCENE = preload("res://scenes/ui/hud_display/gun_sacrifice_menu/gun_sacrifice_menu.tscn")
 var gun_sacrifice_menu: GunSacrificeMenu = null
+var selected_gun_to_be_sacrificed: Node3D = null
 
 @export var movement_state_machine: StateMachine
 
@@ -82,7 +83,7 @@ var player_invisible_last_frame: bool = false
 var blackboard: Dictionary
 @onready var health_component = $HealthComponent
 @onready var hurtbox_component = $HurtboxComponent
-@onready var gun_holder: Node3D = $GunHolder
+@onready var gun_holder: Node3D = $GUNS_P/GunHolder
 
 ## This is to know what scene to reload when the player dies
 var currentScene
@@ -121,6 +122,8 @@ func _ready() -> void:
 	gun_holder.current_gun_charge_ended.connect(_on_gun_charge_ended)
 	gun_holder.current_gun_charge_started.connect(_on_gun_charge_started)
 	EventManager.gun_sacrifice_requested.connect(_open_gun_sacrifice_menu)
+	EventManager.sacrifice_selected_gun.connect(sacrifice_gun)
+	EventManager.brainjar_killed.connect(_report_final_gun)
 	
 	EventManager.gun_picked_up.connect(_equip_gun)
 	_set_gun_enabled(has_gun)
@@ -190,6 +193,7 @@ func go_to_death_screen(killing_blow: DamageHealInstance) -> void:
 		return
 	
 	is_dead = true
+	selected_gun_to_be_sacrificed = null
 	velocity = Vector3.ZERO
 	player_dead.emit()
 	print("PLAYER IS DEAD")
@@ -236,7 +240,8 @@ func _set_gun_enabled(enabled: bool) -> void:
 	gun_holder.allow_swapping = enabled
 	EventManager.enable_gun_ui.emit(enabled)
 
-func sacrifice_gun(selected_gun: Gun) -> void:
+func sacrifice_gun() -> void:
+	var selected_gun = selected_gun_to_be_sacrificed
 	if !has_gun or !is_instance_valid(selected_gun):
 		return
 	
@@ -251,12 +256,18 @@ func sacrifice_gun(selected_gun: Gun) -> void:
 	speed_multiplier = 1.0
 	gun_holder.sacrifice_gun(selected_gun)
 	
+	selected_gun_to_be_sacrificed = null
+	
 	if gun_holder.current_gun == null:
 		has_gun = false
 		_set_gun_enabled(false)
 
+func mark_gun_for_sacrifice(selected_gun: Node3D):
+	selected_gun_to_be_sacrificed = selected_gun
+
 func _open_gun_sacrifice_menu() -> void:
 	input_component._interacting = false
+	selected_gun_to_be_sacrificed = null
 	
 	if !has_gun or is_instance_valid(gun_sacrifice_menu):
 		return
@@ -273,7 +284,7 @@ func _open_gun_sacrifice_menu() -> void:
 		return
 	
 	current_scene.add_child(gun_sacrifice_menu)
-	gun_sacrifice_menu.gun_selected.connect(sacrifice_gun)
+	gun_sacrifice_menu.gun_selected.connect(mark_gun_for_sacrifice)
 	gun_sacrifice_menu.tree_exited.connect(_on_sacrifice_menu_closed)
 	
 	if !gun_sacrifice_menu.open_menu(gun_holder):
@@ -360,3 +371,6 @@ func _handle_debug_player_invisible() -> void:
 			continue
 		
 		node.visible = !DebugManager.player_invisible
+
+func _report_final_gun() -> void:
+	EventManager.final_gun_reported.emit(gun_holder.current_gun.gun_name)

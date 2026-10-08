@@ -33,6 +33,7 @@ const LEVEL_PATHS: Dictionary = {
 	"Stage4": "res://scenes/levels/Stages/Stage4.tscn",
 	"Stage5": "res://scenes/levels/Stages/Stage5.tscn",
 	"Stage6": "res://scenes/levels/Stages/Stage6.tscn",
+	"Stage6B":"res://scenes/levels/Stages/Stage6B.tscn",
 	"main_menu": "res://scenes/ui/menu_screens/main_menu.tscn"
 }
 
@@ -44,6 +45,9 @@ func _ready() -> void:
 	EventManager.connect("increase_meme_index", _increment_global_meme_index)
 	EventManager.connect("base_scene_updated", _update_base_scene)
 	EventManager.connect("unlock_gun", _unlock_gun)
+	EventManager.connect("narrative_unlock_shotgun", _narrative_unlock_shotgun)
+	EventManager.connect("narrative_unlock_sniper", _narrative_unlock_sniper)
+	EventManager.connect("brain_jar_suggest_sacrifice", _begin_sacrifice_dialogue)
 	_retrieve_images(link_to_meme_dir)
 	# get random starter index (so it doesnt start from index 0 each time)
 	current_meme_index = randi_range(0, len(meme_image_array) - 1)
@@ -60,8 +64,26 @@ func _unlock_gun(gun_name: String) -> void:
 		if gun_index not in unlocked_guns:
 			unlocked_guns.append(gun_index)
 
+# shotgun unlock shortcut signal for use by dialogue
+func _narrative_unlock_shotgun() -> void:
+	_unlock_gun("shotgun")
+	EventManager.end_date_scene_lock.emit()
+
+# sniper unlock shortcut signal for use by dialogue
+func _narrative_unlock_sniper() -> void:
+	_unlock_gun("sniper")
+	EventManager.end_date_scene_lock.emit()
+
+# For use in brain jar fight, activate dialogue about sacrificing
+func _begin_sacrifice_dialogue() -> void:
+	await get_tree().create_timer(6.7).timeout
+	EventManager.activate_popup.emit("b4_suggestsacrifice")
+
+# use this to reset any game-global variables. called when loading main menu.
 func _reset_game() -> void:
 	unlocked_guns = [0]
+	CheckpointManager.clear_checkpoint()
+	get_tree().paused = false
 
 # legit updates the base scene reference
 # allows other entities to reference this scene

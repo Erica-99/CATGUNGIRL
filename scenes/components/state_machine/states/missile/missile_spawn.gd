@@ -12,11 +12,12 @@ var timer := 0.0
 var body: CharacterBody3D
 var launch_dir: Vector3
 var angular_v: Vector3
-
+var anims: AnimationPlayer 
 
 func enter():
 	body = blackboard["actor"]
-	
+	anims = blackboard['anims']
+	anims.play('Spawn')
 	# Determine Randomised direction to launch
 	var cone_radius := 0.4
 	var x := randf_range(-cone_radius, cone_radius)
@@ -45,3 +46,7 @@ func physics_update(delta):
 			transitioned.emit(self, "missilehome")
 	
 	body.move_and_slide()
+	
+	# Collision Check
+	if body.get_last_slide_collision() != null:
+		transitioned.emit(self, "missiledetonate")

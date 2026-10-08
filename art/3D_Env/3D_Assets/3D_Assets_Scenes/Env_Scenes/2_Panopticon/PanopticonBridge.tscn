@@ -69,6 +69,13 @@
 [ext_resource type="Texture2D" uid="uid://cxci6ehlnm3rm" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Bridge/PanopticonBridgeWire/PanopticonBridgeWire_Base_metalness.png" id="47_uq655"]
 [ext_resource type="Texture2D" uid="uid://denh8nifkqwb0" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Bridge/PanopticonBridgeWire/PanopticonBridgeWire_Normal_OpenGL.png" id="48_e7mai"]
 [ext_resource type="Texture2D" uid="uid://b7iw2th1eysi8" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Bridge/PanopticonBridgeWire/PanopticonBridgeWire_Specular_roughness.png" id="49_mvbbh"]
+[ext_resource type="ArrayMesh" uid="uid://djl5yy21lr031" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/2_Panopticon/PanopticonBridgeGuide.obj" id="50_wg1bo"]
+[ext_resource type="Texture2D" uid="uid://cbqms88sf01wu" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Bridge/PanopticonBridgeGuide/PanopticonBridgeGuide_Base_color.png" id="51_xvlnk"]
+[ext_resource type="Texture2D" uid="uid://bubo4i1n64kav" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Bridge/PanopticonBridgeGuide/PanopticonBridgeGuide_Mixed_AO.png" id="52_k0o3n"]
+[ext_resource type="Texture2D" uid="uid://dpbod8vdan5hj" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Bridge/PanopticonBridgeGuide/PanopticonBridgeGuide_Height.png" id="53_yghhd"]
+[ext_resource type="Texture2D" uid="uid://pirtnd85lhw8" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Bridge/PanopticonBridgeGuide/PanopticonBridgeGuide_Base_metalness.png" id="54_yclwj"]
+[ext_resource type="Texture2D" uid="uid://cgwv2cfl1g7ai" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Bridge/PanopticonBridgeGuide/PanopticonBridgeGuide_Normal_OpenGL.png" id="55_u1l7p"]
+[ext_resource type="Texture2D" uid="uid://c7sxl2sn0u1cb" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/2_Panopticon/Bridge/PanopticonBridgeGuide/PanopticonBridgeGuide_Specular_roughness.png" id="56_rtpdy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c05qn"]
 albedo_texture = ExtResource("2_vhe78")
@@ -170,6 +177,19 @@ ao_texture = ExtResource("45_aiyl6")
 heightmap_enabled = true
 heightmap_scale = 0.0
 heightmap_texture = ExtResource("46_fnckr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i0f23"]
+albedo_texture = ExtResource("51_xvlnk")
+metallic = 1.0
+metallic_texture = ExtResource("54_yclwj")
+roughness_texture = ExtResource("56_rtpdy")
+normal_enabled = true
+normal_texture = ExtResource("55_u1l7p")
+ao_enabled = true
+ao_texture = ExtResource("52_k0o3n")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("53_yghhd")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qfjaa"]
 albedo_texture = ExtResource("19_svrl3")
@@ -307,6 +327,9 @@ heightmap_enabled = true
 heightmap_scale = 0.0
 heightmap_texture = ExtResource("38_g33y8")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_e0qnk"]
+size = Vector3(15.394043, 3.3828125, 7.1901855)
+
 [node name="PanopticonBridge" type="StaticBody3D" unique_id=1484711535]
 
 [node name="Bridge" type="StaticBody3D" parent="." unique_id=665159845]
@@ -351,12 +374,31 @@ surface_material_override/0 = SubResource("StandardMaterial3D_g33y8")
 mesh = ExtResource("7_2kmfr")
 surface_material_override/0 = SubResource("StandardMaterial3D_yghhd")
 
+[node name="PanopticonBridgeGuide_Mesh" type="MeshInstance3D" parent="Bridge" unique_id=1366410292]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.647, 0.104487985, 0)
+mesh = ExtResource("50_wg1bo")
+surface_material_override/0 = SubResource("StandardMaterial3D_i0f23")
+
+[node name="PanopticonBridgeGuide_Mesh2" type="MeshInstance3D" parent="Bridge" unique_id=264810923]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.093, 0.104487985, 0)
+mesh = ExtResource("50_wg1bo")
+surface_material_override/0 = SubResource("StandardMaterial3D_i0f23")
+
+[node name="PanopticonBridgeGuide_Mesh3" type="MeshInstance3D" parent="Bridge" unique_id=1970622093]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.093442, 0.104144394, 0)
+mesh = ExtResource("50_wg1bo")
+surface_material_override/0 = SubResource("StandardMaterial3D_i0f23")
+
+[node name="PanopticonBridgeGuide_Mesh4" type="MeshInstance3D" parent="Bridge" unique_id=796731428]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.646532, 0.104144394, 0)
+mesh = ExtResource("50_wg1bo")
+surface_material_override/0 = SubResource("StandardMaterial3D_i0f23")
+
 [node name="PanopticonBridgeBearing_01_Mesh" type="MeshInstance3D" parent="." unique_id=2081863625]
 mesh = ExtResource("5_yfl1q")
 surface_material_override/0 = SubResource("StandardMaterial3D_qfjaa")
 
 [node name="PanopticonBridgeBearing_01_Collision" type="CollisionShape3D" parent="." unique_id=579910702]
-visible = false
 shape = SubResource("ConcavePolygonShape3D_lgxqh")
 
 [node name="PanopticonBridgeBearing_02_Mesh" type="MeshInstance3D" parent="." unique_id=365155033]
@@ -366,7 +408,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_e0qnk")
 
 [node name="PanopticonBridgeBearing_02_Collision" type="CollisionShape3D" parent="." unique_id=1203738295]
 transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 2.792, 0)
-visible = false
 shape = SubResource("ConcavePolygonShape3D_p42ql")
 
 [node name="Decor" type="Node3D" parent="." unique_id=156463641]
@@ -413,30 +454,28 @@ surface_material_override/0 = SubResource("StandardMaterial3D_xvlnk")
 
 [node name="PanopticonBridge_CollisionGPU_01" type="GPUParticlesCollisionBox3D" parent="." unique_id=1552602452]
 transform = Transform3D(1, 0, 0, 0, 0.7202836, 0, 0, 0, 5.2156377, -15.287201, -0.38756204, 0)
-visible = false
 size = Vector3(24.587494, 1.3319702, 2)
 
 [node name="PanopticonBridge_CollisionGPU_02" type="GPUParticlesCollisionBox3D" parent="." unique_id=52543727]
 transform = Transform3D(1, 0, 0, 0, 0.7202836, 0, 0, 0, 5.2156377, 15.29114, -0.38756204, 0)
-visible = false
 size = Vector3(24.587494, 1.3319702, 2)
 
 [node name="PanopticonBridge_CollisionGPU_03" type="GPUParticlesCollisionBox3D" parent="." unique_id=1877667173]
 transform = Transform3D(1, 0, 0, 0, 0.7202836, 0, 0, 0, 5.2156377, 5.8230762, 6.6456327, 0)
-visible = false
 size = Vector3(3.7791862, 1.1112976, 2)
 
 [node name="PanopticonBridge_CollisionGPU_04" type="GPUParticlesCollisionBox3D" parent="." unique_id=1495572017]
 transform = Transform3D(1, 0, 0, 0, 0.7202836, 0, 0, 0, 5.2156377, -5.7916207, 6.6456327, 0)
-visible = false
 size = Vector3(3.7791862, 1.1112976, 2)
 
 [node name="PanopticonBridge_CollisionGPU_05" type="GPUParticlesCollisionBox3D" parent="." unique_id=876031805]
 transform = Transform3D(1, 0, 0, 0, 0.7202836, 0, 0, 0, 5.2156377, -5.3354874, 7.6426396, 0)
-visible = false
 size = Vector3(2.8837752, 1.6409836, 2)
 
 [node name="PanopticonBridge_CollisionGPU_06" type="GPUParticlesCollisionBox3D" parent="." unique_id=1805281847]
 transform = Transform3D(1, 0, 0, 0, 0.7202836, 0, 0, 0, 5.2156377, 5.3487716, 7.6426396, 0)
-visible = false
 size = Vector3(2.8837752, 1.6409836, 2)
+
+[node name="No under bridge collision" type="CollisionShape3D" parent="." unique_id=569676823]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011474609, -2.5684962, -0.0076904297)
+shape = SubResource("BoxShape3D_e0qnk")

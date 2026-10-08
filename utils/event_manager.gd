@@ -1,6 +1,6 @@
 extends Node
 
-signal activate_popup(popup_id: int)
+signal activate_popup(popup_id: String)
 signal pre_date_sequence(date_id: int)
 signal activate_date(date_id: int)
 
@@ -18,6 +18,7 @@ signal dummy_hit
 
 signal gun_sacrifice_requested
 signal gun_sacrificed(gun_name: String)
+signal sacrifice_selected_gun
 
 signal player_health_initialised(init_current_health, init_max_health)
 signal player_health_changed(old_health, new_health, damage_or_heal_instance)
@@ -33,7 +34,13 @@ signal new_gun_equipped(gun_name: String)
 signal enable_gun_ui(enabled: bool)
 signal unlock_gun(gun_name: String)
 
+signal narrative_unlock_shotgun
+signal narrative_unlock_sniper
+
 signal room_cleared(room_ID: Enums.Room, is_clear: bool)
+
+signal music_intensity_changed(new_intensity: Enums.MusicIntensity)
+
 signal spawn_enemy(custom_delay: float, spawner_path: NodePath)
 
 signal start_elevator()
@@ -44,12 +51,14 @@ signal shield_enabled_status(status: bool)
 
 signal set_door_openable_state(door: Node3D, openable: bool)
 
-signal start_animation	
+signal start_animation
 
 signal increase_meme_index() #what? - Fernando
 
+signal brain_jar_intro_finished
 signal brain_jar_terminal_activated
-
+signal brainjar_phase_started(phase_index: int)
+signal brain_jar_suggest_sacrifice
 signal brainjar_killed
 
 signal controller_status(controller_type: String)
@@ -59,3 +68,15 @@ signal base_scene_updated(new_scene: Node)
 signal tutorial_step_started(step_name: String)
 
 signal initiate_tutorial_sequence(sequence_name: String)
+
+signal stage_6b_dialogue_completed
+
+signal play_comic(comic_name: String)
+signal total_comic_finished(comic_name: String)
+
+signal instant_void(visible: bool)
+signal slow_void(visible: bool)
+signal final_gun_reported(gun_name: String)
+signal do_credits
+
+signal stage_2_shotgun_ready_for_pickup

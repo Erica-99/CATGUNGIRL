@@ -40,6 +40,8 @@ var possible_prefabs: Array = []
 var spawn_ids: Array = []
 var can_spawn = true
 
+signal enemy_spawned
+
 
 func _ready() -> void:
 	# link up spawn signal
@@ -61,11 +63,13 @@ func _ready() -> void:
 
 # actually start spawning timer
 func _spawn_enemy(custom_delay: float, spawner_path: NodePath):
-	linked_enemy_manager.child_exiting_tree.connect(_remove_id_)
+	if not linked_enemy_manager.is_connected("child_exiting_tree", _remove_id_):
+		linked_enemy_manager.child_exiting_tree.connect(_remove_id_)
 	print(get_parent_node_3d())
 	var enemy
 	#Check if the spawner is allowed to spawn new enemies
 	if can_spawn:
+		enemy_spawned.emit()
 		if wave_spawner:
 			for wave_enemy in wave_enemies:
 				match wave_enemy:
@@ -88,6 +92,8 @@ func _spawn_enemy(custom_delay: float, spawner_path: NodePath):
 				spawn_trigger.active = false
 		elif randomiser:
 			var i = 0
+			await get_tree().create_timer(1.0).timeout
+			print("TIMER FINISHED!!")
 			while i < random_spawns:
 				var random = randi_range(0, 3)
 				if random == Enums.EnemyType.TRUNK and linked_enemy_manager.has_node("Trunk"):
@@ -110,6 +116,7 @@ func _spawn_enemy(custom_delay: float, spawner_path: NodePath):
 		#This is only relevant if the spawner is triggered through an EventTrigger Area3D
 		if has_trigger:
 			spawn_trigger.active = false
+
 
 # create enemy
 func _on_spawn_delay_timer_timeout() -> void:

@@ -1,53 +1,97 @@
 [gd_scene format=3 uid="uid://1hgtrlupdh8t"]
 
 [ext_resource type="Script" uid="uid://c16unwcucqelk" path="res://scenes/ui/dating/gigi_popup.gd" id="1_rc63n"]
-[ext_resource type="Texture2D" uid="uid://crng4f3f2avnf" path="res://icon.svg" id="1_rfouv"]
 [ext_resource type="PackedScene" uid="uid://divl5j2iem0hi" path="res://scenes/dialogue_bubble/dialogue_bubble.tscn" id="2_4b0uy"]
+[ext_resource type="Texture2D" uid="uid://dqgbq3infiupt" path="res://art/2d_assets/visual_novel/Cozy/cottage_smile.png" id="2_rc63n"]
 
-[node name="GiGiPopup" type="BoxContainer" unique_id=134709764]
-offset_right = 310.0
-offset_bottom = 488.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rc63n"]
+bg_color = Color(0, 1, 1, 0.627451)
+skew = Vector2(-0.05, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.3764706, 0.9843137, 1)
+expand_margin_left = 20.0
+expand_margin_top = 20.0
+expand_margin_right = 20.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ak7px"]
+bg_color = Color(1, 0.5176471, 0.7764706, 0.7882353)
+skew = Vector2(-0.05, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_color = Color(1, 0.3764706, 0.9843137, 1)
+expand_margin_bottom = 9.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_rc63n"]
+color = Color(1, 0.3764706, 0.9843137, 1)
+grow_begin = 14.0
+grow_end = 33.0
+thickness = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jmha8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="GiGiPopup" type="BoxContainer" unique_id=134709764 node_paths=PackedStringArray("speaker_name", "gigi_image", "gigi_dialogue", "grid_container", "call_panel")]
+custom_minimum_size = Vector2(1200, 1000)
+offset_top = -589.0
+offset_right = 1200.0
+offset_bottom = 411.0
+size_flags_vertical = 2
 vertical = true
 script = ExtResource("1_rc63n")
+speaker_name = NodePath("CallPanel/VBoxContainer/SpeakerName")
+gigi_image = NodePath("CallPanel/VBoxContainer/PanelContainer/gigi_image")
+gigi_dialogue = NodePath("DialogueBubble")
+grid_container = NodePath("")
+call_panel = NodePath("CallPanel")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=679600812]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1920164913]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_constants/separation = 11
-
-[node name="DialogueBubble" parent="HBoxContainer/VBoxContainer" unique_id=1148095700 instance=ExtResource("2_4b0uy")]
-custom_minimum_size = Vector2(800, 35)
-layout_mode = 2
-size_flags_horizontal = 4
-type = 2
-
-[node name="Spaghettibuffer" type="TextureRect" parent="HBoxContainer/VBoxContainer" unique_id=1688826689]
+[node name="CallPanel" type="PanelContainer" parent="." unique_id=769014905]
 layout_mode = 2
 size_flags_horizontal = 8
-size_flags_vertical = 0
-mouse_filter = 2
-expand_mode = 1
-stretch_mode = 5
+theme_override_styles/panel = SubResource("StyleBoxFlat_rc63n")
 
-[node name="GridContainer" type="GridContainer" parent="HBoxContainer/VBoxContainer" unique_id=1983819392]
+[node name="VBoxContainer" type="VBoxContainer" parent="CallPanel" unique_id=1920164913]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 10
-columns = 2
 
-[node name="gigi_image" type="TextureRect" parent="HBoxContainer" unique_id=32520337]
-custom_minimum_size = Vector2(310, 400)
+[node name="PanelContainer" type="PanelContainer" parent="CallPanel/VBoxContainer" unique_id=1817563584]
 layout_mode = 2
-size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ak7px")
+
+[node name="gigi_image" type="TextureRect" parent="CallPanel/VBoxContainer/PanelContainer" unique_id=32520337]
+clip_contents = true
+custom_minimum_size = Vector2(250, 350)
+layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 0
 mouse_filter = 2
-texture = ExtResource("1_rfouv")
-expand_mode = 1
-stretch_mode = 5
+texture = ExtResource("2_rc63n")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="CallPanel/VBoxContainer" unique_id=1266543697]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_rc63n")
+
+[node name="SpeakerName" type="Label" parent="CallPanel/VBoxContainer" unique_id=1336053980]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 0.3764706, 0.9843137, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.627451)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Soldier Gigi"
+horizontal_alignment = 1
+
+[node name="DialogueBubble" parent="." unique_id=1148095700 instance=ExtResource("2_4b0uy")]
+custom_minimum_size = Vector2(800, 35)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+theme_override_styles/panel = SubResource("StyleBoxFlat_jmha8")
+type = 2

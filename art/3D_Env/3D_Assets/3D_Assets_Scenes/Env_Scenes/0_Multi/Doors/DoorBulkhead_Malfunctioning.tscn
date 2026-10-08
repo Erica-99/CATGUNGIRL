@@ -1,0 +1,493 @@
+[gd_scene format=3 uid="uid://bcl68tr8l4pn0"]
+
+[ext_resource type="ArrayMesh" uid="uid://bwpy5lv5b5p87" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/Doors/DoorBulkhead.obj" id="1_ocos1"]
+[ext_resource type="Texture2D" uid="uid://6ht32qspda2s" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorBulkHead/DoorBulkhead_Base_color.png" id="2_luidb"]
+[ext_resource type="Texture2D" uid="uid://qqmgxanymhyy" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorBulkHead/DoorBulkhead_Mixed_AO.png" id="3_tmitj"]
+[ext_resource type="Texture2D" uid="uid://c1oj2n6xqdbkl" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorBulkHead/DoorBulkhead_Height.png" id="4_ag4jy"]
+[ext_resource type="Texture2D" uid="uid://dqanna5wlu2s8" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorBulkHead/DoorBulkhead_Base_metalness.png" id="5_4rcix"]
+[ext_resource type="Texture2D" uid="uid://b54u1wuwgb3kv" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorBulkHead/DoorBulkhead_Normal_OpenGL.png" id="6_hkvb0"]
+[ext_resource type="Texture2D" uid="uid://hnrux60tmxw7" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorBulkHead/DoorBulkhead_Specular_roughness.png" id="7_r8efj"]
+[ext_resource type="Texture2D" uid="uid://by2rrwp7x5x6h" path="res://art/3D_Env/3D_Assets/3D_Textures/Env_Effects_Textures/Spark.png" id="8_luidb"]
+[ext_resource type="ArrayMesh" uid="uid://dwdekelrmb56l" path="res://art/3D_Env/3D_Assets/3D_Models/Env_Models/0_Multi/Doors/DoorwayBulkhead.obj" id="8_sy4eg"]
+[ext_resource type="Texture2D" uid="uid://dtem4tprap0yj" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorwayBulkHead/DoorwayBulkHead_Base_color.png" id="9_kfqf6"]
+[ext_resource type="Texture2D" uid="uid://c4x2v7w32c2xw" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorwayBulkHead/DoorwayBulkHead_Mixed_AO.png" id="10_nl3mk"]
+[ext_resource type="Texture2D" uid="uid://d0fd7grkpre05" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorwayBulkHead/DoorwayBulkHead_Height.png" id="11_a5jb5"]
+[ext_resource type="Texture2D" uid="uid://b6oqq83bb2mkp" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorwayBulkHead/DoorwayBulkHead_Base_metalness.png" id="12_sf2v3"]
+[ext_resource type="Texture2D" uid="uid://b4mmwi1nok7ue" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorwayBulkHead/DoorwayBulkHead_Normal_OpenGL.png" id="13_abiri"]
+[ext_resource type="Texture2D" uid="uid://dvisu1day3vck" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/0_Multi/Doors/DoorwayBulkHead/DoorwayBulkHead_Specular_roughness.png" id="14_5ooey"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qsoon"]
+albedo_texture = ExtResource("2_luidb")
+metallic = 1.0
+metallic_texture = ExtResource("5_4rcix")
+roughness_texture = ExtResource("7_r8efj")
+normal_enabled = true
+normal_texture = ExtResource("6_hkvb0")
+ao_enabled = true
+ao_texture = ExtResource("3_tmitj")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("4_ag4jy")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t5jej"]
+particle_flag_align_y = true
+radial_velocity_min = 4.9999776
+radial_velocity_max = 46.099976
+gravity = Vector3(0, -76.595, 0)
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t5jej"]
+transparency = 1
+albedo_texture = ExtResource("8_luidb")
+emission_enabled = true
+emission = Color(1, 0.5254902, 0.22745098, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_lun2u"]
+material = SubResource("StandardMaterial3D_t5jej")
+center_offset = Vector3(0, 0.305, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lun2u"]
+particle_flag_align_y = true
+radial_velocity_min = 4.9999776
+radial_velocity_max = 46.099976
+gravity = Vector3(0, -76.595, 0)
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lun2u"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("8_luidb")
+emission_enabled = true
+emission = Color(1, 0.5254902, 0.22745098, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_8wlfu"]
+lightmap_size_hint = Vector2i(7, 7)
+material = SubResource("StandardMaterial3D_lun2u")
+size = Vector2(0.3, 0.3)
+center_offset = Vector3(0, 0.425, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ixy2"]
+albedo_texture = ExtResource("9_kfqf6")
+metallic = 1.0
+metallic_texture = ExtResource("12_sf2v3")
+roughness_texture = ExtResource("14_5ooey")
+normal_enabled = true
+normal_texture = ExtResource("13_abiri")
+ao_enabled = true
+ao_texture = ExtResource("10_nl3mk")
+heightmap_enabled = true
+heightmap_scale = 0.0
+heightmap_texture = ExtResource("11_a5jb5")
+
+[sub_resource type="Curve" id="Curve_klw4q"]
+_data = [Vector2(0, 0.79775286), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2t1us"]
+curve = SubResource("Curve_klw4q")
+
+[sub_resource type="Curve" id="Curve_cnc3q"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.22471917), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gagtn"]
+curve = SubResource("Curve_cnc3q")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_luidb"]
+emission_shape_scale = Vector3(12.965, 0.01, 2.32)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(1, 0.2, 1)
+spread = 100.0
+flatness = 1.0
+initial_velocity_min = -5.0
+initial_velocity_max = 5.0
+angular_velocity_min = -360.0
+angular_velocity_max = 359.99997
+gravity = Vector3(0, 0.2, 0)
+scale_curve = SubResource("CurveTexture_gagtn")
+alpha_curve = SubResource("CurveTexture_2t1us")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_olwk8"]
+load_path = "res://.godot/imported/Dust.png-292e5ce09f8d8110d5b92ff7e7756ba3.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ftjx"]
+transparency = 1
+blend_mode = 1
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_color = Color(0.6789437, 0.6789437, 0.6789437, 1)
+albedo_texture = SubResource("CompressedTexture2D_olwk8")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_tmitj"]
+material = SubResource("StandardMaterial3D_5ftjx")
+size = Vector2(2, 2)
+
+[sub_resource type="Animation" id="Animation_tmitj"]
+resource_name = "Bulkhead_Malfunctioning"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DoorBulkhead_Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.756, 2.1666667, 3.2333333, 3.7714894, 4),
+"transitions": PackedFloat32Array(0.53588706, 1, 1, 1, 0.29730177, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 3.9628637, 0), Vector3(0, 3.9628637, 0), Vector3(0, 4.466688, 0), Vector3(0, 4.466688, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorBulkhead_Mesh/Sparking/Sparking_Big:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.756, 2.1701856, 3.2414262, 3.7770464, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DoorBulkhead_Mesh/Sparking/Sparking_Small:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.756, 2.1701856, 3.2414262, 3.7770464, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DoorBulkhead_Mesh/Sparking/OrangeGlow:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.21240115, 0.35092363, 0.4802113, 0.78496075, 1.0435361, 1.2005283, 1.4036945, 1.5791564, 1.756, 2.1701856, 2.3641171, 2.5211093, 2.6873362, 2.8812678, 3.0474946, 3.2414262, 3.7770464, 3.8970993, 4, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 3.0, 1.0, 3.0, 1.0, 3.0, 1.0, 3.0, 0.0, 0.0, 5.0, 1.0, 3.0, 1.0, 3.0, 0.0, 0.0, 5.0, 0.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DoorBulkhead_Mesh/Sparking/WhiteGlow:light_energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.21240115, 0.35092363, 0.4802113, 0.78496075, 1.0435361, 1.2005283, 1.4036945, 1.5791564, 1.756, 2.1701856, 2.3641171, 2.5211093, 2.6873362, 2.8812678, 3.0474946, 3.2414262, 3.7770464, 3.8970993, 4.0079174, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [7.224, 3.0, 5.0, 3.0, 7.224, 3.0, 7.224, 3.0, 7.224, 0.0, 0.0, 7.0, 3.0, 7.0, 3.0, 7.0, 0.0, 0.0, 8.0, 0.0, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DoorBulkhead_Mesh/Sparking2/Sparking_Big:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.756, 2.1701856, 3.2414262, 3.7770464, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("DoorBulkhead_Mesh/Sparking2/Sparking_Small:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.756, 2.1701856, 3.2414262, 3.7770464, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("DoorBulkhead_Mesh/Sparking2/OrangeGlow:light_energy")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.21240115, 0.35092363, 0.4802113, 0.78496075, 1.0435361, 1.2005283, 1.4036945, 1.5791564, 1.756, 2.1701856, 2.3641171, 2.5211093, 2.6873362, 2.8812678, 3.0474946, 3.2414262, 3.7770464, 3.8970993, 4, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 3.0, 1.0, 3.0, 1.0, 3.0, 1.0, 3.0, 0.0, 0.0, 5.0, 1.0, 3.0, 1.0, 3.0, 0.0, 0.0, 5.0, 0.0, 0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("DoorBulkhead_Mesh/Sparking2/WhiteGlow:light_energy")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.21240115, 0.35092363, 0.4802113, 0.78496075, 1.0435361, 1.2005283, 1.4036945, 1.5791564, 1.756, 2.1701856, 2.3641171, 2.5211093, 2.6873362, 2.8812678, 3.0474946, 3.2414262, 3.7770464, 3.8970993, 4.0079174, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [7.224, 3.0, 5.0, 3.0, 7.224, 3.0, 7.224, 3.0, 7.224, 0.0, 0.0, 7.0, 3.0, 7.0, 3.0, 7.0, 0.0, 0.0, 8.0, 0.0, 0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("EnvEffectDust/Dust:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(3.9333334),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ag4jy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DoorBulkhead_Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorBulkhead_Mesh/Sparking/Sparking_Big:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DoorBulkhead_Mesh/Sparking/Sparking_Small:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DoorBulkhead_Mesh/Sparking/OrangeGlow:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DoorBulkhead_Mesh/Sparking/WhiteGlow:light_energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [7.224]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DoorBulkhead_Mesh/Sparking2/Sparking_Big:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("DoorBulkhead_Mesh/Sparking2/Sparking_Small:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("DoorBulkhead_Mesh/Sparking2/OrangeGlow:light_energy")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("DoorBulkhead_Mesh/Sparking2/WhiteGlow:light_energy")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("EnvEffectDust/Dust:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4rcix"]
+_data = {
+&"Bulkhead_Malfunctioning": SubResource("Animation_tmitj"),
+&"RESET": SubResource("Animation_ag4jy")
+}
+
+[node name="DoorBulkhead_Malfunctioning" type="StaticBody3D" unique_id=1797075630]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="DoorBulkhead_Mesh" type="MeshInstance3D" parent="." unique_id=2092042305]
+mesh = ExtResource("1_ocos1")
+surface_material_override/0 = SubResource("StandardMaterial3D_qsoon")
+
+[node name="Sparking" type="StaticBody3D" parent="DoorBulkhead_Mesh" unique_id=1886870196]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 3.3154354, 9.569889, -1.9579473)
+
+[node name="Sparking_Big" type="GPUParticles3D" parent="DoorBulkhead_Mesh/Sparking" unique_id=1323378168]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+amount = 50
+lifetime = 0.9
+explosiveness = 0.25
+randomness = 1.0
+fixed_fps = 60
+collision_base_size = 1.0
+process_material = SubResource("ParticleProcessMaterial_t5jej")
+draw_pass_1 = SubResource("QuadMesh_lun2u")
+
+[node name="Sparking_Small" type="GPUParticles3D" parent="DoorBulkhead_Mesh/Sparking" unique_id=1289499512]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+amount = 80
+lifetime = 0.3
+explosiveness = 0.35
+randomness = 1.0
+fixed_fps = 60
+collision_base_size = 1.0
+process_material = SubResource("ParticleProcessMaterial_lun2u")
+draw_pass_1 = SubResource("QuadMesh_8wlfu")
+
+[node name="OrangeGlow" type="OmniLight3D" parent="DoorBulkhead_Mesh/Sparking" unique_id=1425878216]
+light_color = Color(1, 0.5254902, 0.22745098, 1)
+shadow_enabled = true
+shadow_opacity = 0.73
+
+[node name="WhiteGlow" type="OmniLight3D" parent="DoorBulkhead_Mesh/Sparking" unique_id=1958271419]
+light_energy = 7.224
+light_specular = 4.756
+shadow_enabled = true
+shadow_opacity = 0.73
+omni_range = 1.8761383
+
+[node name="Sparking2" type="StaticBody3D" parent="DoorBulkhead_Mesh" unique_id=1391996006]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.217803, 9.569889, -1.9579473)
+
+[node name="Sparking_Big" type="GPUParticles3D" parent="DoorBulkhead_Mesh/Sparking2" unique_id=1999434460]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+emitting = false
+amount = 50
+lifetime = 0.9
+explosiveness = 0.25
+randomness = 1.0
+fixed_fps = 60
+collision_base_size = 1.0
+process_material = SubResource("ParticleProcessMaterial_t5jej")
+draw_pass_1 = SubResource("QuadMesh_lun2u")
+
+[node name="Sparking_Small" type="GPUParticles3D" parent="DoorBulkhead_Mesh/Sparking2" unique_id=743330003]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+emitting = false
+amount = 80
+lifetime = 0.3
+explosiveness = 0.35
+randomness = 1.0
+fixed_fps = 60
+collision_base_size = 1.0
+process_material = SubResource("ParticleProcessMaterial_lun2u")
+draw_pass_1 = SubResource("QuadMesh_8wlfu")
+
+[node name="OrangeGlow" type="OmniLight3D" parent="DoorBulkhead_Mesh/Sparking2" unique_id=1182907062]
+light_color = Color(1, 0.5254902, 0.22745098, 1)
+light_energy = 0.0
+shadow_enabled = true
+shadow_opacity = 0.73
+
+[node name="WhiteGlow" type="OmniLight3D" parent="DoorBulkhead_Mesh/Sparking2" unique_id=499394450]
+light_energy = 0.0
+light_specular = 4.756
+shadow_enabled = true
+shadow_opacity = 0.73
+omni_range = 1.8761383
+
+[node name="DoorwayBulkhead_Mesh" type="MeshInstance3D" parent="." unique_id=136234197]
+mesh = ExtResource("8_sy4eg")
+surface_material_override/0 = SubResource("StandardMaterial3D_7ixy2")
+
+[node name="EnvEffectDust" type="StaticBody3D" parent="." unique_id=112066998]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.057896376, 0, 0.76584625)
+
+[node name="Dust" type="GPUParticles3D" parent="EnvEffectDust" unique_id=920278564]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.3034902)
+emitting = false
+amount = 30
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_luidb")
+draw_pass_1 = SubResource("QuadMesh_tmitj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=27860156]
+libraries/ = SubResource("AnimationLibrary_4rcix")
+autoplay = &"Bulkhead_Malfunctioning"

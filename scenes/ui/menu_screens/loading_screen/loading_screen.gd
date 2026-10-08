@@ -21,6 +21,8 @@ var gigi_jumpscare_visible: bool = false
 signal loading_complete()
  
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	set_process(false)
 	# lets the pause menu know a load is in progress
 	add_to_group("loading_screen")
 	
@@ -47,6 +49,7 @@ func _ready() -> void:
 	if next_scene != null:
 		# loads next scene
 		ResourceLoader.load_threaded_request(next_scene)
+		set_process(true)
 	else:
 		print("Attempted to load null scene. Please provide loading screen with a valid scene on initialisation.")
 
@@ -58,9 +61,11 @@ func _ready() -> void:
 # Happens when the scene has been loaded and switch to.
 # Reverses loading screen animation to fade out
 func _on_load_finished() -> void:
+	set_process(false)
 	var scene = ResourceLoader.load_threaded_get(next_scene)
 	get_tree().change_scene_to_packed(scene)
 	await Engine.get_main_loop().process_frame
+	get_tree().paused = false
 	# sends a signal containing new scene reference
 	EventManager.base_scene_updated.emit(get_tree().current_scene)
 	loading_complete.emit()

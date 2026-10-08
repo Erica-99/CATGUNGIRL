@@ -98,7 +98,6 @@ center_offset = Vector3(0, 0.4, 0)
 
 [sub_resource type="Animation" id="Animation_e5xwv"]
 resource_name = "Explode"
-length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -198,7 +197,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_183jd"]
 resource_name = "default"
-length = 4.0
 step = 0.05
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -239,16 +237,16 @@ _data = {
 [node name="Explosion" type="Node3D" unique_id=1074334678]
 script = ExtResource("1_7nyiy")
 
-[node name="HitboxComponent" parent="." unique_id=1965125698 node_paths=PackedStringArray("team_component") instance=ExtResource("1_nk3wx")]
+[node name="HitboxComponent" parent="." unique_id=1965125698 node_paths=PackedStringArray("team_component", "environment_check") instance=ExtResource("1_nk3wx")]
 team_component = NodePath("../TeamComponent")
 damage_or_heal_instance = SubResource("Resource_shv1t")
+environment_check = NodePath("../CheckWallRayCast")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxComponent" unique_id=1608720344]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_nk3wx")
 
 [node name="TeamComponent" parent="." unique_id=2076917082 instance=ExtResource("3_183jd")]
-team = 2
 
 [node name="Explosion" type="Node3D" parent="." unique_id=479124397]
 
@@ -288,3 +286,5 @@ autoplay = &"Explode"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=35875649]
 libraries/ = SubResource("AnimationLibrary_shv1t")
+
+[node name="CheckWallRayCast" type="RayCast3D" parent="." unique_id=1720842801]

@@ -4,7 +4,8 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	EventManager.brainjar_killed.connect(_run_end_sequence)
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	EventManager.do_credits.connect(_run_end_sequence)
 
 func _run_end_sequence() -> void:
 	EventManager.begin_date_scene_lock.emit() # hack to cut off player input
