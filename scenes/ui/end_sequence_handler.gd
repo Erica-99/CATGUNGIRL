@@ -30,6 +30,7 @@ func _on_void_slow_void_finished(now_visible: bool) -> void:
 		if now_visible:
 			var comic_to_play = COMIC_LOOKUP[registered_final_gun]
 			EventManager.play_comic.emit(comic_to_play)
+			AudioManager.play_music("spooky")
 
 
 func _on_total_comic_finished(comic_name: String) -> void:

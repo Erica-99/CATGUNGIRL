@@ -10,7 +10,6 @@ var next_index_to_fade: int
 
 func _ready() -> void:
 	next_index_to_fade = 0
-	_fade_next()
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("fire"):

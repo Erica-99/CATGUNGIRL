@@ -4,6 +4,7 @@ signal slow_void_finished(now_visible: bool)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	EventManager.instant_void.connect(_activate_instant_void)
 	EventManager.slow_void.connect(_activate_slow_void)
 

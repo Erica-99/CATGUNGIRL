@@ -360,3 +360,4 @@ func dialogue_ducking(active: bool):
 
 func cut_music() -> void:
 	music_player.stop()
+	
