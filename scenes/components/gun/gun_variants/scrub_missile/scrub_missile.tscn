@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bkis2t5h6f25"]
 
 [ext_resource type="PackedScene" uid="uid://cib7lo1lbwb5j" path="res://scenes/components/gun/base_gun/base_gun.tscn" id="1_w84fu"]
-[ext_resource type="PackedScene" uid="uid://bt57arw8qv0ya" path="res://scenes/actors/missile/missile.tscn" id="2_wnaie"]
+[ext_resource type="PackedScene" uid="uid://b46w6hjmmvup2" path="res://scenes/actors/missile/missile_SCRUBS.tscn" id="2_w84fu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eyrdn"]
 albedo_color = Color(0, 0, 0, 1)
@@ -30,18 +30,6 @@ gun_name = "Sniper"
 bullet_emitter = NodePath("BulletEmitter")
 _normal_flash = NodePath("Muzzle/NormalMuzzleFlash")
 _perfect_flash = NodePath("Muzzle/PerfectMuzzleFlash")
-aim_speed = 8.0
-controller_aim_speed = 3.5
-aim_settled_threshold = 98.0
-perfect_damage_multiplier = 1.5
-perfect_shot_max_interval = 1.0
-laser_convergence_speed = 0.73
-spam_window = 0.6
-spam_aim_multiplier = 0.4
-recoil_amount = 0.35
-recoil_recovery = 5.0
-wobble_amount = 0.1
-wobble_speed = 7.0
 
 [node name="AmmoComponent" parent="." index="0" unique_id=761015893 node_paths=PackedStringArray("gun_link")]
 gun_link = NodePath("..")
@@ -50,7 +38,7 @@ ammo_max = 1
 [node name="BulletEmitter" parent="." index="1" unique_id=1440563695 node_paths=PackedStringArray("muzzle")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3849113, 0.002212882, 0)
 muzzle = NodePath("../Muzzle")
-bullet_scene = ExtResource("2_wnaie")
+bullet_scene = ExtResource("2_w84fu")
 full_auto = false
 bullet_damage = 50.0
 bullet_knockback = 0.0

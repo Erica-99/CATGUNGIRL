@@ -1672,7 +1672,7 @@ animation = &"Dead"
 autoplay = "default"
 
 [node name="Head_P" type="Node3D" parent="Scrub_Mesh/Visual_MOVE_P/Torso_P" unique_id=644978609]
-transform = Transform3D(0.9999996, 0, 0, 0, 0.9999996, 0, 0, 0, 1, 0.29732454, 0.040134728, 0.21237732)
+transform = Transform3D(0.9999995, 0, 0, 0, 0.9999995, 0, 0, 0, 1, 0.29732454, 0.040134728, 0.21237732)
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Scrub_Mesh/Visual_MOVE_P/Torso_P/Head_P" unique_id=491376275]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1388657, -1.7207423, 0)
@@ -1752,9 +1752,9 @@ team_component = NodePath("../TeamComponent")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6506206, 0.44911653, 0)
 team_component = NodePath("../../TeamComponent")
 
-[node name="ScrubShotgun" parent="GunHolder" unique_id=441850899 node_paths=PackedStringArray("team_component") instance=ExtResource("20_bvwpw")]
+[node name="ScrubShotgun" parent="GunHolder" unique_id=441850899 instance=ExtResource("20_bvwpw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6506206, 0.44911653, 0)
-team_component = NodePath("../../TeamComponent")
+team_component = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1549018224]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1880244, -0.671875, 0)
