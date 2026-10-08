@@ -31,6 +31,7 @@ func _on_body_entered(body):
 		loading_screen.next_scene = Globals.LEVEL_PATHS.get(level_name)
 		loading_screen.gigi_jumpscare_visible = loading_screen_jumpscare
 		add_child(loading_screen)
+		loading_screen.initialise()
 	
 	# old setup below (preserved just in case loading screens are not wanted)
 	#var scene_to_load = Globals.LEVEL_PATHS.get(level_name)

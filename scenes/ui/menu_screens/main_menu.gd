@@ -2,6 +2,8 @@ extends Control
 
 const LOADING_SCREEN_REFERENCE = preload("res://scenes/ui/menu_screens/loading_screen/loading_screen.tscn")
 
+@export var level_name_to_load: String
+
 func _ready() -> void:
 	AudioManager.play_music("music_menu")
 
@@ -14,5 +16,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_button_pressed() -> void:
 	var loading_screen = LOADING_SCREEN_REFERENCE.instantiate()
-	loading_screen.next_scene = Globals.LEVEL_PATHS["Stage1"]
+	loading_screen.next_scene = Globals.LEVEL_PATHS.get(level_name_to_load)
 	add_child(loading_screen)
+	loading_screen.initialise()

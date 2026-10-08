@@ -25,7 +25,8 @@ func _ready() -> void:
 	set_process(false)
 	# lets the pause menu know a load is in progress
 	add_to_group("loading_screen")
-	
+
+func initialise() -> void:
 	image_arr = Globals.meme_image_array
 	
 	# set values from instantiation
@@ -39,12 +40,6 @@ func _ready() -> void:
 	# if run_in_background is active, make canvas not visible (load in background)
 	visible = !run_in_background
 	
-	await animation_player.animation_finished
-	
-	# erase all projectiles
-	# this is done because the missile entity crashes if it cannot find a player (of which would have died)
-	get_tree().call_group("projectiles", "queue_free")
-	
 	#loading_screen_ready.emit()
 	if next_scene != null:
 		# loads next scene
@@ -52,6 +47,13 @@ func _ready() -> void:
 		set_process(true)
 	else:
 		print("Attempted to load null scene. Please provide loading screen with a valid scene on initialisation.")
+	
+	animation_player.play("transition")
+	await animation_player.animation_finished
+	
+	# erase all projectiles
+	# this is done because the missile entity crashes if it cannot find a player (of which would have died)
+	get_tree().call_group("projectiles", "queue_free")
 
 # Used to track the percentage of the load.
 # TODO: if we want to add a loading bar use this
@@ -63,6 +65,7 @@ func _ready() -> void:
 func _on_load_finished() -> void:
 	set_process(false)
 	var scene = ResourceLoader.load_threaded_get(next_scene)
+	next_scene = ""
 	get_tree().change_scene_to_packed(scene)
 	await Engine.get_main_loop().process_frame
 	get_tree().paused = false
@@ -78,8 +81,12 @@ func _on_load_finished() -> void:
 
 func _process(_delta: float) -> void:
 	var progress = []
-	ResourceLoader.load_threaded_get_status(next_scene, progress)
+	var status = ResourceLoader.load_threaded_get_status(next_scene, progress)
 	progress_bar.value = progress[0] * 100
 	
-	if progress[0] == 1:
+	if status == 3:
 		_on_load_finished()
+	elif status == 2:
+		push_error("export error. thread loading failed for "+ next_scene)
+	elif status == 0:
+		push_error("export error. Invalid scene path requested. Check capitalization " + next_scene)
