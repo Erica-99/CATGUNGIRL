@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cd8hxjh4vv0tl" path="res://art/2d_assets/ui/real_world/tutPopup0 complete 2.png" id="15_bvmuw"]
 [ext_resource type="Script" uid="uid://b3wyfqrf023lh" path="res://scenes/components/camera_component/InsanityTut.gd" id="15_e435g"]
 [ext_resource type="PackedScene" uid="uid://dr68e2vg6njr3" path="res://art/TechArt/2_VFX/screen_effects/health_vignette/health_vignette.tscn" id="16_hvfx"]
+[ext_resource type="Script" uid="uid://b0ald4bv7bki" path="res://scenes/ui/void.gd" id="18_c1rnt"]
 [ext_resource type="PackedScene" uid="uid://0pq5rnqkr4to" path="res://scenes/ui/end_screen.tscn" id="18_ylbr4"]
 [ext_resource type="PackedScene" uid="uid://ck1vuxmck4qgd" path="res://scenes/ui/comic.tscn" id="19_04dda"]
 
@@ -226,6 +227,19 @@ texture = ExtResource("15_bvmuw")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="OverlayVisuals/CanvasLayer" unique_id=1808529594]
 libraries/ = SubResource("AnimationLibrary_0slx5")
 autoplay = &"idle gone"
+
+[node name="Void" type="CanvasLayer" parent="OverlayVisuals" unique_id=2133202627]
+layer = 99
+visible = false
+script = ExtResource("18_c1rnt")
+
+[node name="ColorRect" type="ColorRect" parent="OverlayVisuals/Void" unique_id=1168234534]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="EndScreen" parent="OverlayVisuals" unique_id=1133412871 instance=ExtResource("18_ylbr4")]
 layer = 100

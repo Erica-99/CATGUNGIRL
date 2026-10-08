@@ -42,6 +42,10 @@ func _current_comic_finished() -> void:
 	current_actual_page_object.disconnect("comic_finished", _current_comic_finished)
 	current_page_index += 1
 	if current_page_index >= selected_comic.size():
+		if selected_comic_name == "start_comic":
+			EventManager.instant_void.emit(false)
+		else:
+			EventManager.instant_void.emit(true)
 		_fade_out()
 	else:
 		_fade_between()
