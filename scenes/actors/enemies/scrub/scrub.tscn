@@ -1579,7 +1579,8 @@ debug_color = Color(0.75945634, 0.3475156, 1, 0.41960785)
 [node name="HeadHurtbox" parent="." unique_id=862406852 node_paths=PackedStringArray("team_component", "health_component") instance=ExtResource("3_uw3am")]
 team_component = NodePath("../TeamComponent")
 health_component = NodePath("../HealthComponent")
-hit_sfx_ref = "hit_marker"
+hit_sfx_ref = "headshot_marker"
+vfx = ExtResource("21_oagyr")
 damage_multiplier = 1.5
 is_headshot = true
 
@@ -1587,9 +1588,6 @@ is_headshot = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012021974, 0.9222485, 0)
 shape = SubResource("BoxShape3D_t6mem")
 debug_color = Color(0.9201433, 0.7565305, 1, 0.41960785)
-
-[node name="Headshot_VFX" parent="HeadHurtbox" unique_id=1741053268 instance=ExtResource("21_oagyr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07056613, 1.0137236, 0.5)
 
 [node name="StateMachine" parent="." unique_id=1499026333 node_paths=PackedStringArray("initial_state") instance=ExtResource("4_apte0")]
 initial_state = NodePath("ScrubIdle")

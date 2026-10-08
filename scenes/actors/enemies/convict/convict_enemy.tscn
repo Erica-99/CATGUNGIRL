@@ -1666,7 +1666,8 @@ debug_color = Color(0.75945634, 0.3475156, 1, 0.41960785)
 [node name="HeadHurtbox" parent="." unique_id=1318567885 node_paths=PackedStringArray("team_component", "health_component") instance=ExtResource("5_xi3ex")]
 team_component = NodePath("../TeamComponent")
 health_component = NodePath("../HealthComponent")
-hit_sfx_ref = "hit_marker"
+hit_sfx_ref = "headshot_marker"
+vfx = ExtResource("9_q6lyk")
 damage_multiplier = 2.5
 is_headshot = true
 
@@ -1674,9 +1675,6 @@ is_headshot = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025838926, 1.0454437, 0)
 shape = SubResource("BoxShape3D_a68hs")
 debug_color = Color(0.9201433, 0.7565305, 1, 0.41960785)
-
-[node name="Headshot_VFX" parent="HeadHurtbox/CollisionShape3D" unique_id=1741053268 instance=ExtResource("9_q6lyk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.073648915, 0.031351447, -1.2579811)
 
 [node name="StateMachine" type="Node" parent="." unique_id=1781968313 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("12_resq1")
