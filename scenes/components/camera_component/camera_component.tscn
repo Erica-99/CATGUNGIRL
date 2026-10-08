@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://b0ald4bv7bki" path="res://scenes/ui/void.gd" id="18_c1rnt"]
 [ext_resource type="PackedScene" uid="uid://0pq5rnqkr4to" path="res://scenes/ui/end_screen.tscn" id="18_ylbr4"]
 [ext_resource type="PackedScene" uid="uid://ck1vuxmck4qgd" path="res://scenes/ui/comic.tscn" id="19_04dda"]
+[ext_resource type="Script" uid="uid://dd0qddpoftdn6" path="res://scenes/ui/end_sequence_handler.gd" id="21_rph6b"]
 
 [sub_resource type="Resource" id="Resource_434qr"]
 script = ExtResource("3_6tqft")
@@ -139,6 +140,76 @@ _data = {
 &"idle gone": SubResource("Animation_e435g")
 }
 
+[sub_resource type="Animation" id="Animation_rph6b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ibrvc"]
+resource_name = "blank"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_uicuq"]
+resource_name = "fade_in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_isppp"]
+resource_name = "fade_out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ycprl"]
+_data = {
+&"RESET": SubResource("Animation_rph6b"),
+&"blank": SubResource("Animation_ibrvc"),
+&"fade_in": SubResource("Animation_uicuq"),
+&"fade_out": SubResource("Animation_isppp")
+}
+
 [node name="CameraComponent" type="Camera3D" unique_id=974394070]
 size = 20.0
 script = ExtResource("1_osh5n")
@@ -241,6 +312,10 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
+[node name="VoidAnimationPlayer" type="AnimationPlayer" parent="OverlayVisuals/Void" unique_id=716206808]
+libraries/ = SubResource("AnimationLibrary_ycprl")
+autoplay = &"blank"
+
 [node name="EndScreen" parent="OverlayVisuals" unique_id=1133412871 instance=ExtResource("18_ylbr4")]
 layer = 100
 visible = false
@@ -248,4 +323,9 @@ visible = false
 [node name="Comic" parent="OverlayVisuals" unique_id=582528658 instance=ExtResource("19_04dda")]
 layer = 150
 
+[node name="EndSequenceHandler" type="Node" parent="." unique_id=288746355]
+script = ExtResource("21_rph6b")
+
 [connection signal="animation_finished" from="OverlayVisuals/CanvasLayer/AnimationPlayer" to="OverlayVisuals/CanvasLayer" method="_on_animation_player_animation_finished"]
+[connection signal="slow_void_finished" from="OverlayVisuals/Void" to="EndSequenceHandler" method="_on_void_slow_void_finished"]
+[connection signal="animation_finished" from="OverlayVisuals/Void/VoidAnimationPlayer" to="OverlayVisuals/Void" method="_on_void_animation_player_animation_finished"]

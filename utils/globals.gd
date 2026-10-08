@@ -81,6 +81,7 @@ func _begin_sacrifice_dialogue() -> void:
 func _reset_game() -> void:
 	unlocked_guns = [0]
 	CheckpointManager.clear_checkpoint()
+	get_tree().paused = false
 
 # legit updates the base scene reference
 # allows other entities to reference this scene

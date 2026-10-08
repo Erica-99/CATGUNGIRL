@@ -12,6 +12,7 @@ var debug_triggered = false
 
 func _ready() -> void:
 	EventManager.play_comic.connect(_play_comic)
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	
 
 func _process(delta: float) -> void:
