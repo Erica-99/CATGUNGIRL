@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cib4luwm0f2a4" path="res://art/2d_assets/ui/MainMenu/CGGMenu_02.png" id="7_dubb2"]
 [ext_resource type="Texture2D" uid="uid://clchhijhllbf4" path="res://art/2d_assets/ui/MainMenu/DOAlogo.png" id="9_dtles"]
 [ext_resource type="Texture2D" uid="uid://bqalkrnaoifjc" path="res://art/2d_assets/ui/MainMenu/CGGLogo_BlockAlt.png" id="9_son0w"]
+[ext_resource type="FontFile" uid="uid://c32t3gspwcffp" path="res://art/2d_assets/real_world/UI/ROBOTECH GP.ttf" id="11_r3fav"]
 
 [sub_resource type="Animation" id="Animation_r06k5"]
 resource_name = "Idle"
@@ -51,18 +52,6 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_son0w"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../DOA logo:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
 
 [sub_resource type="Animation" id="Animation_r3fav"]
 resource_name = "idle"
@@ -98,6 +87,67 @@ _data = {
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8wko1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e42jr"]
+
+[sub_resource type="Animation" id="Animation_lrllm"]
+resource_name = "PlayIdle"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Button:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Button:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(79, 547)]
+}
+
+[sub_resource type="Animation" id="Animation_dubb2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(79, 547)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Button:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7f5ur"]
+_data = {
+&"PlayIdle": SubResource("Animation_lrllm"),
+&"RESET": SubResource("Animation_dubb2")
+}
 
 [node name="MainMenu" type="Control" unique_id=1876848256]
 layout_mode = 3
@@ -176,6 +226,7 @@ texture = ExtResource("9_son0w")
 
 [node name="DOA logo" type="Sprite2D" parent="CanvasLayer" unique_id=150528056]
 position = Vector2(1718.9999, 855)
+rotation = 0.20769419
 scale = Vector2(0.136, 0.149)
 texture = ExtResource("9_dtles")
 
@@ -185,14 +236,25 @@ libraries/ = SubResource("AnimationLibrary_lrllm")
 autoplay = &"idle"
 
 [node name="Button" type="Button" parent="CanvasLayer" unique_id=533003005]
-offset_left = 82.0
-offset_top = 547.0
-offset_right = 388.0
-offset_bottom = 788.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -881.0
+offset_top = 7.0
+offset_right = -503.99945
+offset_bottom = 248.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.8745098, 0, 0.8745098, 1)
-theme_override_colors/font_pressed_color = Color(0, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(0.5955917, 0.00025990605, 0.5955875, 1)
-theme_override_font_sizes/font_size = 100
+theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(0.20392157, 0.7411765, 0.972549, 1)
+theme_override_colors/icon_normal_color = Color(0.14509805, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_r3fav")
+theme_override_font_sizes/font_size = 200
 theme_override_styles/normal = SubResource("StyleBoxEmpty_son0w")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_7f5ur")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_jdahc")
@@ -200,5 +262,28 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_8mwst")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_8wko1")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_e42jr")
 text = "PLAY"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Button" unique_id=1287928836]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = 12.0
+offset_right = -3.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.007843138, 0.95686275, 1, 1)
+theme_override_fonts/normal_font = ExtResource("11_r3fav")
+theme_override_font_sizes/normal_font_size = 200
+text = "PLAY
+"
+fit_content = true
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." unique_id=1227200572]
+libraries/ = SubResource("AnimationLibrary_7f5ur")
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
