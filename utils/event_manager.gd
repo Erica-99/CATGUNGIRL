@@ -78,3 +78,5 @@ signal instant_void(visible: bool)
 signal slow_void(visible: bool)
 signal final_gun_reported(gun_name: String)
 signal do_credits
+
+signal stage_2_shotgun_ready_for_pickup
