@@ -38,6 +38,7 @@ func _process_player_reload(delta: float) -> void:
 		single_reload_timer += delta
 		# reload one shot
 		if single_reload_timer > reload_time:
+			AudioManager.play_sfx(gun_link.reload_sfx)
 			_current_ammo += 1
 			single_reload_timer = reload_time / 2.0
 			if gun_link.active and gun_link.team_component.team == Enums.Team.PLAYER:
@@ -75,6 +76,7 @@ func _handle_ammo():
 	if _current_ammo <= 0 and reload_full: 
 		_is_reloading = true
 		reload_timer.start(reload_time)
+		AudioManager.play_sfx(gun_link.reload_sfx)
 
 
 func _handle_debug_infinite_ammo() -> void:
