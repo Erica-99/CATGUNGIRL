@@ -31,7 +31,9 @@ func take_hit(hitbox: Area3D) -> void:
 		var new_vfx = vfx.instantiate() as CPUParticles3D
 		if new_vfx:
 			get_tree().current_scene.add_child(new_vfx)
-			new_vfx.global_position = global_position
+			var collision_pos = $CollisionShape3D.global_position
+			new_vfx.global_position = collision_pos
+			new_vfx.play()
 			print("spawned vfx")
 	
 	hitbox.call("register_hit", self)

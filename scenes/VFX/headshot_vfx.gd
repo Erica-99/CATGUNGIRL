@@ -1,6 +1,6 @@
 extends CPUParticles3D
 
-func _ready() -> void:
+func play() -> void:
 	emitting = true
 
 func delete_self():
