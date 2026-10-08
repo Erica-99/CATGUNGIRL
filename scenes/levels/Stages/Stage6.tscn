@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://mj1tu2ctd5ct" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/BrainWall.tscn" id="22_do5uh"]
 [ext_resource type="PackedScene" uid="uid://bs4coexsxhqva" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeShapeU.tscn" id="22_getlh"]
 [ext_resource type="PackedScene" uid="uid://jmdfl4cvg822" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/BrainCanopy.tscn" id="23_wejp2"]
+[ext_resource type="Material" uid="uid://cu6qh6xs6kpvr" path="res://art/Shaders/blackout.tres" id="24_amhjc"]
 [ext_resource type="PackedScene" uid="uid://do5hf8d1cyu1s" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/BrainWallAngled.tscn" id="24_ow135"]
 [ext_resource type="PackedScene" uid="uid://dhvqotianxxj6" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/BrainBeams.tscn" id="25_snsbe"]
 [ext_resource type="PackedScene" uid="uid://tia5j8uydrvd" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/7_BrainJar/BrainPlatform.tscn" id="26_fkdyc"]
@@ -258,6 +259,12 @@ _data = {
 &"PreFightIdle": SubResource("Animation_wsdjh"),
 &"RESET": SubResource("Animation_lqc63")
 }
+
+[sub_resource type="QuadMesh" id="QuadMesh_m4pc7"]
+material = ExtResource("24_amhjc")
+
+[sub_resource type="QuadMesh" id="QuadMesh_amhjc"]
+material = ExtResource("24_amhjc")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0kj4w"]
 albedo_texture = ExtResource("34_uv2lo")
@@ -1405,6 +1412,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
 
 [node name="WiresR" parent="Enemies/BrainJarComponents" unique_id=2139112390 instance=ExtResource("72_8vmub")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0.2, -15)
+
+[node name="Masking" type="Node3D" parent="." unique_id=679402931]
+
+[node name="Mesh1" type="MeshInstance3D" parent="Masking" unique_id=1203677849]
+transform = Transform3D(270, 0, 0, 0, 30, 0, 0, 0, 1, -124.0292, -15.369137, 4.5)
+mesh = SubResource("QuadMesh_m4pc7")
+
+[node name="Mesh2" type="MeshInstance3D" parent="Masking" unique_id=15680592]
+transform = Transform3D(30, 0, 0, 0, 120, 0, 0, 0, 1, -269.32224, 30, 4.5)
+mesh = SubResource("QuadMesh_amhjc")
+
+[node name="Mesh3" type="MeshInstance3D" parent="Masking" unique_id=97223736]
+transform = Transform3D(30, 0, 0, 0, 120, 0, 0, 0, 1, 21.357788, 29.950811, 4.5)
+mesh = SubResource("QuadMesh_amhjc")
 
 [node name="Props" type="Node3D" parent="." unique_id=1376791517]
 

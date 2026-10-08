@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b57sm0u8nmkgd" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/4_Laboratory/DoorwaySingleBaseLaboratory.tscn" id="8_a8ljp"]
 [ext_resource type="PackedScene" uid="uid://ddk1ekr7wnuj1" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/A_SparesAndPlaceholders/VentAirIntake.tscn" id="10_qmdqw"]
 [ext_resource type="PackedScene" uid="uid://b16p1gdgu6tff" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/3_WareHouse/FloorWareHouse.tscn" id="11_lmug3"]
+[ext_resource type="Material" uid="uid://cu6qh6xs6kpvr" path="res://art/Shaders/blackout.tres" id="12_2pi73"]
 [ext_resource type="PackedScene" uid="uid://cv8vmfjhudskh" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/3_WareHouse/RoofWareHouse.tscn" id="12_h3ot2"]
 [ext_resource type="PackedScene" uid="uid://c4l4a1vw256dp" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/3_WareHouse/DoorwayLargeBaseWareHouse.tscn" id="13_51v7l"]
 [ext_resource type="PackedScene" uid="uid://2dumj6fip3b1" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/4_Laboratory/WallPlainBaseLaboratory.tscn" id="13_wkrmj"]
@@ -586,6 +587,9 @@ adjustment_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x2xyk"]
 size = Vector3(1, 8, 6)
+
+[sub_resource type="QuadMesh" id="QuadMesh_6ab3i"]
+material = ExtResource("12_2pi73")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e4tcg"]
 albedo_texture = ExtResource("59_h46ly")
@@ -3085,7 +3089,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 265, 8.4, 0)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 265, 33.6, -20)
 
 [node name="DoorLargeBasic2" parent="Environment/Door" unique_id=1034048902 instance=ExtResource("26_8bdk2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 175, 8.4, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 175, 8.4, -0.1)
 
 [node name="DoorLargeBasic3" parent="Environment/Door" unique_id=2025464019 instance=ExtResource("26_8bdk2")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 145, 8.4, 0)
@@ -3960,6 +3964,60 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 35, 33.6, -20)
 
 [node name="BarrierCentre38" parent="Environment/Elevator" unique_id=1675435922 instance=ExtResource("6_cbmvo")]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 35, 33.6, -20)
+
+[node name="Masking" type="Node3D" parent="." unique_id=178062007]
+
+[node name="Mesh1" type="MeshInstance3D" parent="Masking" unique_id=1065130256]
+transform = Transform3D(30, 0, 0, 0, 70, 0, 0, 0, 1, -39.981785, 10, 4.5)
+mesh = SubResource("QuadMesh_6ab3i")
+
+[node name="Mesh2" type="MeshInstance3D" parent="Masking" unique_id=2130438928]
+transform = Transform3D(60, 0, 0, 0, 30, 0, 0, 0, 1, -10, -15, 4.5)
+mesh = SubResource("QuadMesh_6ab3i")
+
+[node name="Mesh3" type="MeshInstance3D" parent="Masking" unique_id=234362066]
+transform = Transform3D(150, 0, 0, 0, 30, 0, 0, 0, 1, 80, -6.7693663, 4.5)
+mesh = SubResource("QuadMesh_6ab3i")
+
+[node name="Mesh4" type="MeshInstance3D" parent="Masking" unique_id=739030648]
+transform = Transform3D(60, 0, 0, 0, 40, 0, 0, 0, 1, -5, 36.4, 4.5)
+mesh = SubResource("QuadMesh_6ab3i")
+
+[node name="Mesh5" type="MeshInstance3D" parent="Masking" unique_id=1549759824]
+transform = Transform3D(300, 0, 0, 0, 30, 0, 0, 0, 1, 115.1, 65.4, 4.5)
+mesh = SubResource("QuadMesh_6ab3i")
+
+[node name="Mesh6" type="MeshInstance3D" parent="Masking" unique_id=988328589]
+transform = Transform3D(30, 0, 0, 0, 60, 0, 0, 0, 1, 160.0045, 3.548956, 4.5)
+mesh = SubResource("QuadMesh_6ab3i")
+
+[node name="Mesh7" type="MeshInstance3D" parent="Masking" unique_id=626234830]
+transform = Transform3D(30, 0, 0, 0, 10, 0, 0, 0, 1, 160.0045, 46.95608, 4.5)
+mesh = SubResource("QuadMesh_6ab3i")
+
+[node name="Mesh8" type="MeshInstance3D" parent="Masking" unique_id=1455057151]
+transform = Transform3D(30, 0, 0, 0, 42, 0, 0, 0, 1, 280.01346, 37.894466, 4.5)
+mesh = SubResource("QuadMesh_6ab3i")
+
+[node name="Mesh9" type="MeshInstance3D" parent="Masking" unique_id=474398706]
+transform = Transform3D(150, 0, 0, 0, 30, 0, 0, 0, 1, 229.56747, -23.62204, 4.5)
+mesh = SubResource("QuadMesh_6ab3i")
+
+[node name="Mesh10" type="MeshInstance3D" parent="Masking" unique_id=500895387]
+transform = Transform3D(30, 0, 0, 0, 100, 0, 0, 0, 1, 330.13525, 53.436802, 4.5)
+mesh = SubResource("QuadMesh_6ab3i")
+
+[node name="Mesh11" type="MeshInstance3D" parent="Masking" unique_id=14685605]
+transform = Transform3D(80, 0, 0, 0, 30, 0, 0, 0, 1, 305.17163, -6.7198677, 4.5)
+mesh = SubResource("QuadMesh_6ab3i")
+
+[node name="Mesh12" type="MeshInstance3D" parent="Masking" unique_id=1448716135]
+transform = Transform3D(30, 0, 0, 0, 40, 0, 0, 0, 1, 279.82108, 87.331856, 4.5)
+mesh = SubResource("QuadMesh_6ab3i")
+
+[node name="Mesh13" type="MeshInstance3D" parent="Masking" unique_id=1295771025]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 1, 305.88586, 98.35536, 4.5)
+mesh = SubResource("QuadMesh_6ab3i")
 
 [node name="Props" type="Node3D" parent="." unique_id=348907942]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0005351901, 0, 0)

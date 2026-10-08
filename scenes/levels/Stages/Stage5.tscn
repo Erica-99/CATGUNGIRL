@@ -116,6 +116,7 @@
 [ext_resource type="PackedScene" uid="uid://cuiixyvg2v83i" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeSets/HandlebarLong.tscn" id="68_uyrnt"]
 [ext_resource type="PackedScene" uid="uid://dcpva7aa78k11" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/SpeakerConePivot.tscn" id="69_4ml1o"]
 [ext_resource type="Texture2D" uid="uid://c6t63lr6jload" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/LabDrawers/LabDrawersAll_DefaultMaterial_Normal.png" id="69_eqrhj"]
+[ext_resource type="Material" uid="uid://cu6qh6xs6kpvr" path="res://art/Shaders/blackout.tres" id="70_2u0tw"]
 [ext_resource type="PackedScene" uid="uid://r048nyhlrbkb" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/Pipes/PipeSets/Wall2GroundCurve.tscn" id="70_8pmvl"]
 [ext_resource type="Texture2D" uid="uid://cd32j763v17gf" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/LabDrawers/LabDrawersAll_DefaultMaterial_Roughness.png" id="70_72kmp"]
 [ext_resource type="PackedScene" uid="uid://dh0mebvlppeee" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/SecurityCamera.tscn" id="72_bwxs4"]
@@ -334,6 +335,12 @@ size = Vector3(30.133144, 7.111191, 13.72467)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fs541"]
 size = Vector3(18.168772, 23.79773, 13.72467)
+
+[sub_resource type="QuadMesh" id="QuadMesh_bn67i"]
+material = ExtResource("70_2u0tw")
+
+[sub_resource type="QuadMesh" id="QuadMesh_xm64p"]
+material = ExtResource("70_2u0tw")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dt6xc"]
 albedo_texture = ExtResource("68_dqdeo")
@@ -6192,6 +6199,52 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -160, 16.8, 0)
 
 [node name="PrisonCraneRail2" parent="Environment" unique_id=306135235 instance=ExtResource("18_mnn55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -220, 16.8, 0)
+
+[node name="Masking" type="Node3D" parent="." unique_id=852019191]
+
+[node name="Mesh1" type="MeshInstance3D" parent="Masking" unique_id=1625044728]
+transform = Transform3D(30, 0, 0, 0, 60, 0, 0, 0, 1, -250, 42, 4.5)
+mesh = SubResource("QuadMesh_bn67i")
+
+[node name="Mesh2" type="MeshInstance3D" parent="Masking" unique_id=1730927437]
+transform = Transform3D(30, 0, 0, 0, 60, 0, 0, 0, 1, -230, 3.5, 4.5)
+mesh = SubResource("QuadMesh_bn67i")
+
+[node name="Mesh3" type="MeshInstance3D" parent="Masking" unique_id=1794677032]
+transform = Transform3D(80, 0, 0, 0, 30, 0, 0, 0, 1, -205.10681, 65.5, 4.5)
+mesh = SubResource("QuadMesh_xm64p")
+
+[node name="Mesh4" type="MeshInstance3D" parent="Masking" unique_id=235231936]
+transform = Transform3D(200, 0, 0, 0, 30, 0, 0, 0, 1, -95, 73.6, 4.5)
+mesh = SubResource("QuadMesh_xm64p")
+
+[node name="Mesh5" type="MeshInstance3D" parent="Masking" unique_id=733922753]
+transform = Transform3D(40, 0, 0, 0, 50, 0, 0, 0, 1, -5, 41.96, 4.5)
+mesh = SubResource("QuadMesh_bn67i")
+
+[node name="Mesh6" type="MeshInstance3D" parent="Masking" unique_id=702472754]
+transform = Transform3D(100, 0, 0, 0, 30, 0, 0, 0, 1, -175, -15.15, 4.5)
+mesh = SubResource("QuadMesh_xm64p")
+
+[node name="Mesh7" type="MeshInstance3D" parent="Masking" unique_id=889820152]
+transform = Transform3D(70, 0, 0, 0, 30, 0, 0, 0, 1, -94.9, -22.933079, 4.5)
+mesh = SubResource("QuadMesh_xm64p")
+
+[node name="Mesh8" type="MeshInstance3D" parent="Masking" unique_id=752447339]
+transform = Transform3D(80, 0, 0, 0, 30, 0, 0, 0, 1, -25, -15.15, 4.5)
+mesh = SubResource("QuadMesh_xm64p")
+
+[node name="Mesh9" type="MeshInstance3D" parent="Masking" unique_id=980353199]
+transform = Transform3D(40, 0, 0, 0, 10, 0, 0, 0, 1, -94.9, -5.1, 4.5)
+mesh = SubResource("QuadMesh_xm64p")
+
+[node name="Mesh10" type="MeshInstance3D" parent="Masking" unique_id=40443317]
+transform = Transform3D(30, 0, 0, 0, 70, 0, 0, 0, 1, 29.881916, 8.325148, 4.5)
+mesh = SubResource("QuadMesh_xm64p")
+
+[node name="Mesh11" type="MeshInstance3D" parent="Masking" unique_id=402131366]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 1, 10.08393, 3.4111753, 4.5)
+mesh = SubResource("QuadMesh_xm64p")
 
 [node name="Props" type="Node3D" parent="." unique_id=1676107825]
 

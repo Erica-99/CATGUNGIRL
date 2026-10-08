@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://c5vncayclpa5t" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/3_GuardRooms/ChairSteel.tscn" id="25_gq1xd"]
 [ext_resource type="PackedScene" uid="uid://dbtlwlyu6425" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/7_BrainJar/BrainJarTerminal.tscn" id="26_5g2ht"]
 [ext_resource type="PackedScene" uid="uid://cs7ybs08guab4" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6B_Lab/Scissors.tscn" id="26_xlh28"]
+[ext_resource type="Material" uid="uid://cu6qh6xs6kpvr" path="res://art/Shaders/blackout.tres" id="28_3646d"]
 [ext_resource type="PackedScene" uid="uid://mtb08p1he0i6" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/LabFlask.tscn" id="29_3gehs"]
 [ext_resource type="PackedScene" uid="uid://ckkjv4pfh7tik" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/AcidVatRoom/AcidVat.tscn" id="31_3geyl"]
 [ext_resource type="PackedScene" uid="uid://b3krra1e3n0g8" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/Trolley.tscn" id="32_62t83"]
@@ -123,6 +124,12 @@ heightmap_texture = ExtResource("19_xdtj1")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yi4ap"]
 size = Vector3(0.199758, 4.2016554, 5.000697)
+
+[sub_resource type="QuadMesh" id="QuadMesh_5e12d"]
+material = ExtResource("28_3646d")
+
+[sub_resource type="QuadMesh" id="QuadMesh_n3das"]
+material = ExtResource("28_3646d")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1kj5b"]
 albedo_texture = ExtResource("95_0gle7")
@@ -644,6 +651,40 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5, 33.6, -10)
 
 [node name="Scissors" parent="Environment" unique_id=94114826 instance=ExtResource("26_xlh28")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.53149, 17.00001, -6.324973)
+
+[node name="Masking" type="Node3D" parent="." unique_id=850968546]
+
+[node name="Mesh1" type="MeshInstance3D" parent="Masking" unique_id=2143762005]
+transform = Transform3D(30, 0, 0, 0, 60, 0, 0, 0, 1, -70.09305, 15, 4.5)
+mesh = SubResource("QuadMesh_5e12d")
+
+[node name="Mesh2" type="MeshInstance3D" parent="Masking" unique_id=416196362]
+transform = Transform3D(30, 0, 0, 0, 40, 0, 0, 0, 1, -49.854, 45.2, 4.5)
+mesh = SubResource("QuadMesh_5e12d")
+
+[node name="Mesh3" type="MeshInstance3D" parent="Masking" unique_id=1186135758]
+transform = Transform3D(100, 0, 0, 0, 30, 0, 0, 0, 1, -26.214008, -15.146545, 4.5)
+mesh = SubResource("QuadMesh_n3das")
+
+[node name="Mesh4" type="MeshInstance3D" parent="Masking" unique_id=894750939]
+transform = Transform3D(100, 0, 0, 0, 30, 0, 0, 0, 1, -2.5377007, 57.09918, 4.5)
+mesh = SubResource("QuadMesh_n3das")
+
+[node name="Mesh5" type="MeshInstance3D" parent="Masking" unique_id=2003601651]
+transform = Transform3D(50, 0, 0, 0, 30, 0, 0, 0, 1, 60.009853, 48.701263, 4.5)
+mesh = SubResource("QuadMesh_n3das")
+
+[node name="Mesh6" type="MeshInstance3D" parent="Masking" unique_id=1811706204]
+transform = Transform3D(50, 0, 0, 0, 30, 0, 0, 0, 1, 30.09991, 1.7081337, 4.5)
+mesh = SubResource("QuadMesh_n3das")
+
+[node name="Mesh7" type="MeshInstance3D" parent="Masking" unique_id=791823498]
+transform = Transform3D(50, 0, 0, 0, 30, 0, 0, 0, 1, 60.174942, 10.18872, 4.5)
+mesh = SubResource("QuadMesh_n3das")
+
+[node name="Mesh8" type="MeshInstance3D" parent="Masking" unique_id=964879523]
+transform = Transform3D(30, 0, 0, 0, 20, 0, 0, 0, 1, 80.021706, 26.916336, 4.5)
+mesh = SubResource("QuadMesh_5e12d")
 
 [node name="Props" type="Node3D" parent="." unique_id=559079368]
 
