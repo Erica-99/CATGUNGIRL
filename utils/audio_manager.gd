@@ -43,6 +43,8 @@ var hotseat: AudioStreamPlayer3D
 var music_base_volume
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	
 	#region Audio Dictionary Construction
 	# Build MusicTrack Dictionary
 	for music: MusicTrack in music_tracks:
@@ -355,3 +357,14 @@ func dialogue_ducking(active: bool):
 		print("Returning music")
 		AudioServer.set_bus_volume_linear(bus_index, music_base_volume)
 		#print("After raising: " + str(AudioServer.get_bus_volume_linear(bus_index)))
+
+func cut_music() -> void:
+	music_player.stop()
+
+func cut_sfx() -> void:
+	for asp in sfx_global_pool:
+		asp.stop()
+	for asp3d in sfx_3D_pool:
+		asp3d.stop()
+	
+	

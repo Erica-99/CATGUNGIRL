@@ -67,10 +67,12 @@ func _unlock_gun(gun_name: String) -> void:
 # shotgun unlock shortcut signal for use by dialogue
 func _narrative_unlock_shotgun() -> void:
 	_unlock_gun("shotgun")
+	EventManager.end_date_scene_lock.emit()
 
 # sniper unlock shortcut signal for use by dialogue
 func _narrative_unlock_sniper() -> void:
 	_unlock_gun("sniper")
+	EventManager.end_date_scene_lock.emit()
 
 # For use in brain jar fight, activate dialogue about sacrificing
 func _begin_sacrifice_dialogue() -> void:
@@ -81,6 +83,7 @@ func _begin_sacrifice_dialogue() -> void:
 func _reset_game() -> void:
 	unlocked_guns = [0]
 	CheckpointManager.clear_checkpoint()
+	get_tree().paused = false
 
 # legit updates the base scene reference
 # allows other entities to reference this scene

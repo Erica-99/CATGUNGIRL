@@ -123,6 +123,7 @@ func _ready() -> void:
 	gun_holder.current_gun_charge_started.connect(_on_gun_charge_started)
 	EventManager.gun_sacrifice_requested.connect(_open_gun_sacrifice_menu)
 	EventManager.sacrifice_selected_gun.connect(sacrifice_gun)
+	EventManager.brainjar_killed.connect(_report_final_gun)
 	
 	EventManager.gun_picked_up.connect(_equip_gun)
 	_set_gun_enabled(has_gun)
@@ -370,3 +371,6 @@ func _handle_debug_player_invisible() -> void:
 			continue
 		
 		node.visible = !DebugManager.player_invisible
+
+func _report_final_gun() -> void:
+	EventManager.final_gun_reported.emit(gun_holder.current_gun.gun_name)

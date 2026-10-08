@@ -70,3 +70,11 @@ signal tutorial_step_started(step_name: String)
 signal initiate_tutorial_sequence(sequence_name: String)
 
 signal stage_6b_dialogue_completed
+
+signal play_comic(comic_name: String)
+signal total_comic_finished(comic_name: String)
+
+signal instant_void(visible: bool)
+signal slow_void(visible: bool)
+signal final_gun_reported(gun_name: String)
+signal do_credits

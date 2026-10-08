@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://bs52qku0nsmds"]
+
+[ext_resource type="Script" uid="uid://dyjf7ci6ea3yt" path="res://scenes/ui/comic_page.gd" id="1_s1lbg"]
+[ext_resource type="Texture2D" uid="uid://bm1yqkruvcxow" path="res://art/2d_assets/comics/start_comic.png" id="2_s1lbg"]
+[ext_resource type="PackedScene" uid="uid://d4kitr2evbrso" path="res://scenes/ui/comic_pages/comic_polygon.tscn" id="3_qabm3"]
+
+[node name="ComicPageStart" type="Control" unique_id=1692056413 node_paths=PackedStringArray("page_image", "polygons")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s1lbg")
+page_image = NodePath("TextureRect")
+polygons = [NodePath("Control/Polygon2D"), NodePath("Control/Polygon2D2"), NodePath("Control/Polygon2D3"), NodePath("Control/Polygon2D4"), NodePath("Control/Polygon2D5"), NodePath("Control/Polygon2D6"), NodePath("Control/Polygon2D7"), NodePath("Control/Polygon2D8")]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=111497918]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=393829725]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_s1lbg")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Control" type="Control" parent="." unique_id=263357364]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Polygon2D" parent="Control" unique_id=1897134897 instance=ExtResource("3_qabm3")]
+position = Vector2(-238, 54)
+polygon = PackedVector2Array(1214, -88, -275, -88, -276, 424, 1214, 424)
+
+[node name="Polygon2D2" parent="Control" unique_id=499962297 instance=ExtResource("3_qabm3")]
+position = Vector2(-314, 673)
+polygon = PackedVector2Array(-200, -195, 1290, -195, 1290, 328, -200, 328)
+uv = PackedVector2Array(87.5, -6, 249.5, -5, 250.5, 25, 86.5, 43)
+
+[node name="Polygon2D3" parent="Control" unique_id=1128616786 instance=ExtResource("3_qabm3")]
+position = Vector2(105, 1207)
+polygon = PackedVector2Array(-619, -206, -82, -206, -82, 447, -619, 447)
+uv = PackedVector2Array(-226.5, -28, -162.5, -29, -5.5, -53, -3.5, 8, -230.5, 14)
+
+[node name="Polygon2D4" parent="Control" unique_id=1847943711 instance=ExtResource("3_qabm3")]
+position = Vector2(509, 1229)
+polygon = PackedVector2Array(-486, -228, 467, -228, 467, 425, -486, 425)
+uv = PackedVector2Array(-245.5, -18, 9.5, -56, 10.5, 34, -246.5, 39, -254.5, -7)
+
+[node name="Polygon2D5" parent="Control" unique_id=601623791 instance=ExtResource("3_qabm3")]
+position = Vector2(1137, -368)
+polygon = PackedVector2Array(-161, -207, 1282, -208, 1282, 334, -161, 334)
+uv = PackedVector2Array(-130.763, -36.46901, 123.336975, -37.569016, 65.203, 177.15607, -124.83728, 177.15607)
+
+[node name="Polygon2D6" parent="Control" unique_id=48737689 instance=ExtResource("3_qabm3")]
+position = Vector2(1353, 78)
+polygon = PackedVector2Array(-377, -112, 1066, -112, 1066, 927, -378, 927)
+uv = PackedVector2Array(-205.5, -32, 74.5, -31, 74.5, 70, -204.5, 72)
+
+[node name="Polygon2D7" parent="Control" unique_id=836052037 instance=ExtResource("3_qabm3")]
+position = Vector2(1180, 1165)
+polygon = PackedVector2Array(247, -160, -205, -160, -205, 489, 247, 489)
+
+[node name="Polygon2D8" parent="Control" unique_id=600910265 instance=ExtResource("3_qabm3")]
+position = Vector2(1631, 1165)
+polygon = PackedVector2Array(776, -160, -204, -160, -204, 489, 776, 489)

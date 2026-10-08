@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://d4kitr2evbrso"]
+
+[ext_resource type="Script" uid="uid://bm0uk0v55x11l" path="res://scenes/ui/comic_pages/comic_polygon.gd" id="1_cwtr8"]
+
+[sub_resource type="Animation" id="Animation_fah4l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_70g1n"]
+resource_name = "black"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cwtr8"]
+resource_name = "fade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_70g1n"]
+_data = {
+&"RESET": SubResource("Animation_fah4l"),
+&"black": SubResource("Animation_70g1n"),
+&"fade": SubResource("Animation_cwtr8")
+}
+
+[node name="Polygon2D" type="Polygon2D" unique_id=1897134897]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(775, 5, -201, -84, -204, 483, 776, 489)
+uv = PackedVector2Array(-0.5, -2, -167.5, -21, -167.76837, 59.595657, -0.27526855, 57.985153)
+script = ExtResource("1_cwtr8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=183772545]
+libraries/ = SubResource("AnimationLibrary_70g1n")
+autoplay = &"black"
