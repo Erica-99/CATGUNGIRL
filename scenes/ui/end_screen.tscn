@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://clchhijhllbf4" path="res://art/2d_assets/ui/MainMenu/DOAlogo.png" id="3_wgyui"]
 [ext_resource type="Texture2D" uid="uid://drjmr74c06xd3" path="res://art/2d_assets/real_world/BrainSpiders/BrainSpider_SPR.png" id="4_53v5j"]
 [ext_resource type="Texture2D" uid="uid://b7bg3f15pyrx8" path="res://art/2d_assets/corpse_assets/Images/lying_convict.png" id="5_e4cmn"]
+[ext_resource type="Texture2D" uid="uid://dmwtns3qcjfna" path="res://docs/resources/Alvin/Morale memes/aughhhh.png" id="6_dlhjq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6gt0s"]
 atlas = ExtResource("4_53v5j")
@@ -1802,6 +1803,14 @@ animations = [{
 "loop": false,
 "name": &"Turret",
 "speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_dlhjq")
+}],
+"loop": true,
+"name": &"face",
+"speed": 5.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w8f1j"]
@@ -5486,7 +5495,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -2145.0
-offset_bottom = 6582.0
+offset_bottom = 31728.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 50
@@ -5670,18 +5679,17 @@ custom_minimum_size = Vector2(300, 240.06)
 layout_mode = 2
 
 [node name="Icon" type="AnimatedSprite2D" parent="HBoxContainer2/Scrolling Credits/CreditList/Alvin/Control" unique_id=521957156]
-position = Vector2(333.23, 188.15)
-scale = Vector2(0.695, 0.695)
+position = Vector2(489, 119.31935)
+scale = Vector2(0.1, 0.030166233)
 sprite_frames = SubResource("SpriteFrames_h1n6l")
-animation = &"Scurry"
-centered = false
+animation = &"face"
 offset = Vector2(-87.165, -333.755)
 
 [node name="Description" type="RichTextLabel" parent="HBoxContainer2/Scrolling Credits/CreditList/Alvin" unique_id=482507471]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "[center] 3D Artist
+text = "[center] 2D Artist
 Designer
 Voice Actor (Enemies)"
 fit_content = true
