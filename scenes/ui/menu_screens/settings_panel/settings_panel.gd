@@ -28,19 +28,28 @@ func _ready() -> void:
 	back_button.pressed.connect(func() -> void: back_pressed.emit())
 	controls_panel.back_pressed.connect(_show_audio_page)
 
+
 # opens audio page first when clicking settings
 	visibility_changed.connect(func() -> void:
 		if visible:
 			_show_audio_page()
+			controls_button.grab_focus()
 	)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventJoypadButton:
+		if Input.is_action_just_pressed("ui_cancel"):
+			back_pressed.emit()
 
 func _on_controls_pressed() -> void:
 	audio_page.visible = false
 	controls_panel.visible = true
+	controls_panel.back_button.grab_focus()
 
 func _show_audio_page() -> void:
 	audio_page.visible = true
 	controls_panel.visible = false
+	back_button.grab_focus()
 	master_volume_slider.value = SettingsManager.master_volume
 	dialogue_volume_slider.value = SettingsManager.dialogue_volume
 	music_volume_slider.value = SettingsManager.music_volume
