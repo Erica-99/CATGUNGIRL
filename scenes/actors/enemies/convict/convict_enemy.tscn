@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://da3n34oh0bagw" path="res://scenes/actors/player/audio_caller.gd" id="7_28j07"]
 [ext_resource type="SpriteFrames" uid="uid://dvepkc65g3a5" path="res://art/2d_assets/real_world/enemy_convict/Convict_Head1.tres" id="7_kdnv2"]
 [ext_resource type="SpriteFrames" uid="uid://d1vyji2y36l1p" path="res://art/2d_assets/real_world/enemy_convict/Convict_Body1.tres" id="8_2lv2l"]
+[ext_resource type="PackedScene" uid="uid://x4f2jperscm2" path="res://scenes/VFX/headshot_vfx.tscn" id="9_q6lyk"]
 [ext_resource type="Script" uid="uid://ddjs1cw5jtwqb" path="res://scenes/components/state_machine/state_machine.gd" id="12_resq1"]
 [ext_resource type="Script" uid="uid://drxvsuwj3prjk" path="res://scenes/components/state_machine/states/enemy/convict/convict_idle.gd" id="13_l1l22"]
 [ext_resource type="Script" uid="uid://bngvrrah86suo" path="res://scenes/components/state_machine/states/enemy/convict/convict_patrol.gd" id="14_41wpr"]
@@ -1666,6 +1667,7 @@ debug_color = Color(0.75945634, 0.3475156, 1, 0.41960785)
 team_component = NodePath("../TeamComponent")
 health_component = NodePath("../HealthComponent")
 hit_sfx_ref = "hit_marker"
+vfx = ExtResource("9_q6lyk")
 damage_multiplier = 2.5
 is_headshot = true
 

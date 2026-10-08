@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://csd06hicr5wny" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="13_31nnk"]
 [ext_resource type="Shape3D" uid="uid://cxemkg2bdxscg" path="res://resources/hitboxes/enemies/trunk/trunk_melee_hb.tres" id="14_31nnk"]
 [ext_resource type="Script" uid="uid://c247lxsaigxo8" path="res://scenes/components/state_machine/states/enemy/trunk/trunk_stun.gd" id="18_qrlkp"]
+[ext_resource type="PackedScene" uid="uid://x4f2jperscm2" path="res://scenes/VFX/headshot_vfx.tscn" id="21_7vrv7"]
 [ext_resource type="Script" uid="uid://c76qn4ockcqyn" path="res://scenes/actors/enemies/trunk/trunk_armour.gd" id="21_qrlkp"]
 [ext_resource type="Texture2D" uid="uid://b4rhhpxamfoqj" path="res://art/TechArt/2_VFX/generic/IntenseNoise.png" id="24_nkxfa"]
 [ext_resource type="PackedScene" uid="uid://1cp7l8jl2mma" path="res://scenes/components/stinger_component/stinger_component.tscn" id="24_ogs6v"]
@@ -3538,6 +3539,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3917332, 0)
 team_component = NodePath("../TeamComponent")
 health_component = NodePath("../HealthComponent")
 hit_sfx_ref = "hit_marker"
+vfx = ExtResource("21_7vrv7")
 damage_multiplier = 0.0
 is_headshot = true
 

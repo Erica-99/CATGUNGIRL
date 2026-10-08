@@ -3,6 +3,7 @@ extends Area3D
 @export var team_component: Node
 @export var health_component: Node
 @export var hit_sfx_ref: String
+@export var vfx: PackedScene
 
 @export var damage_multiplier: float = 1.0
 @export var is_headshot: bool = false
@@ -26,6 +27,13 @@ func take_hit(hitbox: Area3D) -> void:
 			AudioManager.play_sfx(hit_sfx_ref)
 		else:
 			AudioManager.play_sfx_at_location(hit_sfx_ref, self.global_position)
+	if vfx:
+		var new_vfx = vfx.instantiate() as CPUParticles3D
+		if new_vfx:
+			get_tree().current_scene.add_child(new_vfx)
+			new_vfx.global_position = global_position
+			print("spawned vfx")
+	
 	hitbox.call("register_hit", self)
 	if hitbox.damage_or_heal_instance != null and health_component != null:
 		var dmg_heal_instance = hitbox.damage_or_heal_instance.duplicate()

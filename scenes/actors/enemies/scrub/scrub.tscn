@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://bky5phrwc32e8" path="res://scenes/bullet/ScrubBullet.tscn" id="11_m88xv"]
 [ext_resource type="Texture2D" uid="uid://cxnbfk6xowxcb" path="res://art/2d_assets/Scrubs/ScrubHand2.png" id="12_oagyr"]
 [ext_resource type="Script" uid="uid://briciybelpcwe" path="res://scenes/components/state_machine/states/enemy/enemy_death.gd" id="21_m88xv"]
+[ext_resource type="PackedScene" uid="uid://x4f2jperscm2" path="res://scenes/VFX/headshot_vfx.tscn" id="21_oagyr"]
 [ext_resource type="Script" uid="uid://rwkg37dkkbs1" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_patrol.gd" id="22_bmk6k"]
 [ext_resource type="Script" uid="uid://dpwol7txodmxp" path="res://scenes/components/soft_collision.gd" id="22_hw6pp"]
 [ext_resource type="Script" uid="uid://d1xvpcaucwgpw" path="res://scenes/components/state_machine/states/enemy/scrub/scrub_stun.gd" id="25_m0g3o"]
@@ -1579,6 +1580,7 @@ debug_color = Color(0.75945634, 0.3475156, 1, 0.41960785)
 team_component = NodePath("../TeamComponent")
 health_component = NodePath("../HealthComponent")
 hit_sfx_ref = "hit_marker"
+vfx = ExtResource("21_oagyr")
 damage_multiplier = 1.5
 is_headshot = true
 
