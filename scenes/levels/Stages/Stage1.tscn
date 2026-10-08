@@ -88,6 +88,7 @@
 [ext_resource type="PackedScene" uid="uid://ctulbbuyu35x" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/World_Lore/BJ_Watches.tscn" id="76_v1rce"]
 [ext_resource type="PackedScene" uid="uid://ddim4ukeuv6rp" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Impaled_Convict.tscn" id="77_3k85b"]
 [ext_resource type="PackedScene" uid="uid://bxoxckf5ed1td" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Scrub_Crashed.tscn" id="78_g3qdj"]
+[ext_resource type="Material" uid="uid://cu6qh6xs6kpvr" path="res://art/Shaders/blackout.tres" id="82_awa0o"]
 [ext_resource type="PackedScene" uid="uid://boy26drjvtxj3" path="res://scenes/components/dialogue_component/dialogue_renderer.tscn" id="85_44hq7"]
 [ext_resource type="PackedScene" uid="uid://kc58ovt5ugti" path="res://scenes/components/tutorial_trigger/tutorial_trigger.tscn" id="85_ttrig"]
 [ext_resource type="PackedScene" uid="uid://bubvp3c5n2saa" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/1_TestChamber/GIGI_GunSystem.tscn" id="85_x0gst"]
@@ -202,6 +203,9 @@ ao_enabled = true
 ao_texture = ExtResource("20_vm2sj")
 heightmap_enabled = true
 heightmap_texture = ExtResource("21_f2j4k")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ahc83"]
+material = ExtResource("82_awa0o")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uhx6n"]
 size = Vector3(20.489685, 17.532715, 13.72467)
@@ -2312,6 +2316,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.368645, 9.140897, -6.68103
 
 [node name="Cones" type="Node3D" parent="Props" unique_id=1941922329]
 
+[node name="Masking" type="Node3D" parent="." unique_id=1634236629]
+
+[node name="Mesh1" type="MeshInstance3D" parent="Masking" unique_id=923045157]
+transform = Transform3D(30, 0, 0, 0, 70, 0, 0, 0, 1, -40, 10, 4.5)
+mesh = SubResource("QuadMesh_ahc83")
+
+[node name="Mesh2" type="MeshInstance3D" parent="Masking" unique_id=548415060]
+transform = Transform3D(250, 0, 0, 0, 30, 0, 0, 0, 1, 100, -15, 4.5)
+mesh = SubResource("QuadMesh_ahc83")
+
+[node name="Mesh3" type="MeshInstance3D" parent="Masking" unique_id=2023137190]
+transform = Transform3D(30, 0, 0, 0, 70, 0, 0, 0, 1, 230, 10, 4.5)
+mesh = SubResource("QuadMesh_ahc83")
+
+[node name="Mesh4" type="MeshInstance3D" parent="Masking" unique_id=1332607558]
+transform = Transform3D(80, 0, 0, 0, 30, 0, 0, 0, 1, 4.9, 32, 4.5)
+mesh = SubResource("QuadMesh_ahc83")
+
+[node name="Mesh5" type="MeshInstance3D" parent="Masking" unique_id=531779916]
+transform = Transform3D(140, 0, 0, 0, 30, 0, 0, 0, 1, 90, 40.1, 4.5)
+mesh = SubResource("QuadMesh_ahc83")
+
+[node name="Mesh6" type="MeshInstance3D" parent="Masking" unique_id=2093863131]
+transform = Transform3D(80, 0, 0, 0, 30, 0, 0, 0, 1, 174.8, 32, 4.5)
+mesh = SubResource("QuadMesh_ahc83")
+
 [node name="Interactive" type="Node3D" parent="." unique_id=1604478648]
 
 [node name="DoorBasic" parent="Interactive" unique_id=1555562335 instance=ExtResource("2_ohrdm")]
@@ -2335,7 +2365,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 155, 8.4, 0)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 135, 8.4, 0)
 
 [node name="DoorExit" parent="Interactive" unique_id=863191425 instance=ExtResource("15_th7oq")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 215, 0, 0)
+transform = Transform3D(1.9999909, 0.0060388297, 0, -0.0060388297, 1.9999909, 0, 0, 0, 2, 215, 0, 0)
 
 [node name="LevelEnd" parent="Interactive/DoorExit" unique_id=914563996 instance=ExtResource("16_oeecs")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.11778259, 1.2896835, 0)
