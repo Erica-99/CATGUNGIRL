@@ -25,8 +25,6 @@ var unlocked_guns: Array[int] = [0]
 # Dictionary of Levels and their UIDs, to be used
 # by SceneLoader in menus, level transition points, etc.
 const LEVEL_PATHS: Dictionary = {
-	"test1": "res://scenes/levels/test_level.tscn",
-	"test2": "res://scenes/levels/gun_test_level.tscn",
 	"Stage1": "res://scenes/levels/Stages/Stage1.tscn",
 	"Stage2": "res://scenes/levels/Stages/Stage2.tscn",
 	"Stage3": "res://scenes/levels/Stages/Stage3.tscn",
@@ -40,6 +38,7 @@ const LEVEL_PATHS: Dictionary = {
 
 func _ready() -> void:
 	unlocked_guns = [0]
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	EventManager.connect("increase_insanity_rank", _add_one_to_insanity)
 	EventManager.connect("increase_meme_index", _increment_global_meme_index)

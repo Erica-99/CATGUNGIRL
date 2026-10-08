@@ -30,6 +30,7 @@ func _load_scene(_scene_path: String) -> void:
 	var new_load_screen = loading_screen.instantiate()
 	new_load_screen.next_scene = scene_path
 	add_child(new_load_screen)
+	new_load_screen.initialise()
 	
 	#progress_changed.connect(new_load_screen._on_progress_changed)
 	load_finished.connect(new_load_screen._on_load_finished)
