@@ -31,6 +31,7 @@ func _ready() -> void:
 		_setup_row(gun_name)
 	back_button.pressed.connect(func() -> void: back_pressed.emit())
 
+
 func _setup_row(gun_name: String) -> void:
 	var row: Dictionary = _rows[gun_name]
 	var slider: HSlider = row["slider"]

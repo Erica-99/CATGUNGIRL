@@ -2401,17 +2401,9 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.2, -1)
 collision_layer = 0
 door_to_unlock = NodePath("../DoorBasic")
 
-[node name="InteractableComponent" parent="Interactive/GunPodium/GunPodium_Mesh" parent_id_path=PackedInt32Array(786548764, 1164015310) index="0" unique_id=2140039813 node_paths=PackedStringArray("dialogue_renderer")]
-dialogue_renderer = NodePath("DialogueRenderer")
-
-[node name="EventTrigger" parent="Interactive/GunPodium/GunPodium_Mesh/InteractableComponent" index="1" unique_id=1311781014]
+[node name="EventTrigger" parent="Interactive/GunPodium/GunPodium_Mesh/InteractableComponent" parent_id_path=PackedInt32Array(786548764, 2140039813) index="2" unique_id=1311781014]
 _signal_parameters = ["1_cozy_meeting"]
 signal_name = "activate_popup"
-
-[node name="DialogueRenderer" parent="Interactive/GunPodium/GunPodium_Mesh/InteractableComponent" index="2" unique_id=780065543 instance=ExtResource("85_44hq7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.977342, 0)
-size_of_viewport = Vector2(1000, 100)
-is_system_interact = true
 
 [node name="GunPodiumGun" parent="Interactive" unique_id=1733078243 instance=ExtResource("21_5y7s6")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.2, -1)

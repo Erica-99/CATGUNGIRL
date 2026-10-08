@@ -100,11 +100,6 @@ func close_menu() -> void:
 	get_tree().paused = false
 	queue_free()
 
-func _unhandled_input(event: InputEvent) -> void:
-	if is_open and event.is_action_pressed("ui_cancel"):
-		get_viewport().set_input_as_handled()
-		close_menu()
-
 func _exit_tree() -> void:
 	if is_open:
 		get_tree().paused = false
