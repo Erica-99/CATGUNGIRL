@@ -45,6 +45,10 @@ var input_component: Node
 @export var wobble_amount: float = 0.1		# higher = more
 @export var wobble_speed: float = 7.0		# higher = faster
 
+@export_group("SFX")
+@export var reload_sfx: String
+@export var shoot_sfx: String
+
 var _is_spamming: bool = false
 var _spam_count: int = 0			# track spam count
 var _recoil_offset: float = 0.0 
@@ -231,6 +235,7 @@ func _is_aim_settled() -> bool:
 # player only aim handling
 func _shoot_handler():
 	var damage = bullet_emitter.bullet_damage
+	var is_perfect: bool = false
 	## Perfect shot
 	if _is_aim_settled() and _time_since_last_shot < perfect_shot_max_interval and can_perfect_shot:
 		_is_spamming = false
@@ -239,28 +244,26 @@ func _shoot_handler():
 		rotation.z = _current_target_angle
 		damage = bullet_emitter.bullet_damage * perfect_damage_multiplier
 		perfect_shot_fired.emit()
-		AudioManager.play_sfx("laser_perfect")
 		_perfect_flash.restart()
 		Muzzle_VFX.stop()
 		Muzzle_VFX.play("Perfect")
+		is_perfect = true
 	# Spam shot 
 	elif _time_since_last_shot < spam_window:
 		_is_spamming = true
 		_spam_count += 1
 		# print("spam shot, count: ", _spam_count)
-		AudioManager.play_sfx("laser_imperfect")
 		_normal_flash.restart()
 		Muzzle_VFX.stop()
 		Muzzle_VFX.play("Imperfect")
 	else: # Normal shot
 		# print("normal shot, damage: ", bullet_damage)
-		AudioManager.play_sfx("laser_imperfect")
 		_normal_flash.restart()
 		Muzzle_VFX.stop()
 		Muzzle_VFX.play("Imperfect")
 	# resets firing cooldown
 	_fire_cooldown = bullet_emitter.fire_rate
-	_shoot(damage, bullet_emitter.bullet_scale)
+	_shoot(damage, bullet_emitter.bullet_scale, is_perfect)
 	_recoil_offset += recoil_amount * sign(global_transform.basis.x.x)
 	_time_since_last_shot = 0.0
 	ammo_component.single_reload_timer = 0.0
@@ -272,5 +275,9 @@ func _direction_change(direction: float):
 	bullet_emitter.muzzle.position.x *= -1
 
 
-func _shoot(damage, bullet_scale):
+func _shoot(damage, bullet_scale, is_perfect: bool = false):
 	bullet_emitter._spawn_bullet(damage, bullet_scale)
+	if is_perfect:
+		AudioManager.play_sfx("laser_perfect")
+	else:
+		AudioManager.play_sfx(shoot_sfx)
