@@ -22,10 +22,12 @@ func _ready() -> void:
 	back_button.pressed.connect(func() -> void: back_pressed.emit())
 	controls_panel.back_pressed.connect(_show_audio_page)
 
+
 # opens audio page first when clicking settings
 	visibility_changed.connect(func() -> void:
 		if visible:
 			_show_audio_page()
+			controls_button.grab_focus()
 	)
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -36,7 +38,9 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_controls_pressed() -> void:
 	audio_page.visible = false
 	controls_panel.visible = true
+	controls_panel.back_button.grab_focus()
 
 func _show_audio_page() -> void:
 	audio_page.visible = true
 	controls_panel.visible = false
+	back_button.grab_focus()
