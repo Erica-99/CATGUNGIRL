@@ -22,10 +22,11 @@ func enter():
 	current_speed = 0
 	
 	AudioManager.play_sfx_at_location("missile_lock", missile_ref.global_position)
-	#asp = AudioManager.play_sfx_at_location("missile_move", missile_ref.global_position)
+	asp = AudioManager.play_sfx_at_location("missile_move", missile_ref.global_position)
 
 func update(delta):
-	#asp.global_position = missile_ref.global_position
+	if asp:
+		asp.global_position = missile_ref.global_position
 	pass
 
 func physics_update(delta):
@@ -67,8 +68,11 @@ func physics_update(delta):
 		transitioned.emit(self, "missiledetonate")
 
 func exit() -> void:
-	#asp.stop()
-	#asp.finished.emit()
+	if asp:
+		asp.stop()
+		asp.finished.emit()
+		
+	asp = null
 	pass
 
 

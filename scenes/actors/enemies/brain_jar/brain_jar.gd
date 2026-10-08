@@ -384,6 +384,7 @@ func restore_checkpoint(state: Dictionary) -> bool:
 	_start_fight()
 	# recreate enemy spawn normally triggered by advancing
 	EventManager.spawn_enemy.emit(0.1, get_path_to($"../../Enemies/EnemyDoorFrame"))
+	EventManager.activate_popup.emit("b3_damagetaken")
 	return true
 
 func _play_next_reactor_explosion() -> void:
