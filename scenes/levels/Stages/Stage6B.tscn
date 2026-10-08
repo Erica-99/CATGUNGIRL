@@ -677,12 +677,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25053787, 0)
 
 [node name="BrainJarConsole" parent="Props/TerminalGroup" unique_id=578323982 instance=ExtResource("36_t1bfd")]
 transform = Transform3D(1.36, 0, 0, 0, 1.36, 0, 0, 0, 1.36, 0, 1.758, 2)
-visible = false
 
 [node name="InteractableComponent" parent="Props/TerminalGroup/BrainJarConsole" index="0" unique_id=2140039813]
 interactable_type = 1
 
-[node name="EventTrigger" parent="Props/TerminalGroup/BrainJarConsole/InteractableComponent" index="1" unique_id=1311781014]
+[node name="EventTrigger" parent="Props/TerminalGroup/BrainJarConsole/InteractableComponent" index="2" unique_id=1311781014]
 _signal_parameters = [0.1, NodePath("../../../../../Interactive/EnemyDoorFrame2/EnemySpawner")]
 signal_name = "spawn_enemy"
 
@@ -1110,7 +1109,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.028803, 1.5672941, 17.5159
 transform = Transform3D(-1.9999042, 0, -0.01958226, 0, 2, 0, 0.01958226, 0, -1.9999042, -9.219, 25.4, -4.95)
 enemy_manager = NodePath("../../Enemies/Terminal")
 
-[node name="EnemySpawner" parent="Interactive/EnemyDoorFrame2" index="1" unique_id=1110059721]
+[node name="EnemySpawner" parent="Interactive/EnemyDoorFrame2" index="1" unique_id=1110059721 node_paths=PackedStringArray("linked_enemy_manager")]
+linked_enemy_manager = NodePath("../../../Enemies/Terminal")
 possible_spawns = Array[int]([0, 1, 1, 0])
 wave_spawner = true
 wave_enemies = Array[int]([0, 1, 0, 3])
@@ -1121,7 +1121,7 @@ root_node = NodePath("../../EnemyDoorFrame2")
 [node name="FinalDoor" parent="Interactive" unique_id=2092611838 instance=ExtResource("21_l8a18")]
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -35, 25.2, 2.4521542)
 
-[node name="defaultMaterial" parent="Interactive/FinalDoor/FinalDoor" parent_id_path=PackedInt32Array(2092611838, 1903052867) index="0" unique_id=1995173026]
+[node name="defaultMaterial" parent="Interactive/FinalDoor/FinalDoor" parent_id_path=PackedInt32Array(2092611838, 1903052867) index="0" unique_id=1936571471]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1157596, 0, 0.049209595)
 surface_material_override/0 = SubResource("StandardMaterial3D_qdsdf")
 surface_material_override/1 = null
@@ -1432,9 +1432,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 191.73442, -36.29603, 0)
 [node name="Terminal" parent="Enemies" unique_id=279547323 instance=ExtResource("125_4psah")]
 room_ID = 4
 
-[node name="RespawnerLoop" type="Node" parent="Enemies" unique_id=2098735822 node_paths=PackedStringArray("respawn_event_trigger")]
+[node name="RespawnerLoop" type="Node" parent="Enemies" unique_id=2098735822 node_paths=PackedStringArray("respawn_event_trigger", "spawner")]
 script = ExtResource("102_1kj5b")
 respawn_event_trigger = NodePath("EventTrigger")
+spawner = NodePath("../../Interactive/EnemyDoorFrame2/EnemySpawner")
 
 [node name="EventTrigger" parent="Enemies/RespawnerLoop" unique_id=185501017 instance=ExtResource("124_lclcc")]
 _one_shot = false

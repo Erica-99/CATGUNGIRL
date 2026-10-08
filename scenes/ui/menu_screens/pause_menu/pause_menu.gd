@@ -52,6 +52,7 @@ func _toggle_pause() -> void:
 func _show_main_panel() -> void:
 	main_panel.visible = true
 	settings_panel.visible = false
+	resume_button.grab_focus()
 
 func _on_resume_pressed() -> void:
 	_toggle_pause()
