@@ -21,20 +21,15 @@ func _ready() -> void:
 	pistol_button.pressed.connect(_on_gun_pressed.bind(pistol_button))
 	shotgun_button.pressed.connect(_on_gun_pressed.bind(shotgun_button))
 	sniper_button.pressed.connect(_on_gun_pressed.bind(sniper_button))
+	
+	#Set up the highlights for controller
+	pistol_button.focus_entered.connect(pistol_focus.show)
+	pistol_button.focus_exited.connect(pistol_focus.hide)
+	shotgun_button.focus_entered.connect(shotgun_focus.show)
+	shotgun_button.focus_exited.connect(shotgun_focus.hide)
+	sniper_button.focus_entered.connect(sniper_focus.show)
+	sniper_button.focus_exited.connect(sniper_focus.hide)
 
-func _process(delta: float) -> void:
-	if pistol_button.has_focus():
-		pistol_focus.visible = true
-		shotgun_focus.visible = false
-		sniper_focus.visible = false
-	elif shotgun_button.has_focus():
-		pistol_focus.visible = false
-		shotgun_focus.visible = true
-		sniper_focus.visible = false
-	elif sniper_button.has_focus():
-		pistol_focus.visible = false
-		shotgun_focus.visible = false
-		sniper_focus.visible = true
 
 func open_menu(gun_holder: Node3D) -> bool:
 	if is_open or get_tree().paused or !is_instance_valid(gun_holder):
