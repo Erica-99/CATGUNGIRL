@@ -108,6 +108,7 @@
 [ext_resource type="Texture2D" uid="uid://dacnpmdtfyfit" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/2_Prison/GuardRoom/ChairSteel/ChairSteel_R.png" id="96_er66k"]
 [ext_resource type="PackedScene" uid="uid://d20i8l34obly3" path="res://art/2d_assets/poster_decals/2D_Poster_Scenes/Capstone_References/Security.tscn" id="102_hwccm"]
 [ext_resource type="PackedScene" uid="uid://cwnndw0yvvixb" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorBasic_Malfunctioning.tscn" id="108_er66k"]
+[ext_resource type="Material" uid="uid://cu6qh6xs6kpvr" path="res://art/Shaders/blackout.tres" id="108_mhrlq"]
 [ext_resource type="PackedScene" uid="uid://c7l1q8t5qgmxu" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Barriers/BarrierCornerInner.tscn" id="108_xeu56"]
 [ext_resource type="PackedScene" uid="uid://bdbsdyb4y30ee" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Barriers/BarrierCentre.tscn" id="109_gbvye"]
 [ext_resource type="PackedScene" uid="uid://bhp4qyqpd7hsc" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/shotgun_unlockable.tscn" id="109_hwccm"]
@@ -274,6 +275,9 @@ normal_texture = ExtResource("95_hwccm")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bnsy6"]
 size = Vector3(2.121054, 4.283148, 2.121054)
+
+[sub_resource type="QuadMesh" id="QuadMesh_mhrlq"]
+material = ExtResource("108_mhrlq")
 
 [sub_resource type="Curve" id="Curve_7qnlf"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -2423,7 +2427,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.041725, -19.552134, -16.55
 [node name="Corpses" type="Node3D" parent="2D_Props" unique_id=101059581]
 
 [node name="Disintegrated" parent="2D_Props/Corpses" unique_id=395530572 instance=ExtResource("81_fqval")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.429567, 1.5865959, -7.976795)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.429567, 1.586596, -7.976795)
 
 [node name="ScrubCrashed" parent="2D_Props/Corpses" unique_id=2089480923 instance=ExtResource("82_lx8in")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.71655, -7.5846686, -12.819835)
@@ -2454,6 +2458,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.77213, -25.015932, -0.550
 
 [node name="Rubble" parent="2D_Props/Corpses" unique_id=302094260 instance=ExtResource("91_448ww")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.82405, -24.99999, 2.7364883)
+
+[node name="Masking" type="Node3D" parent="." unique_id=2099516202]
+
+[node name="Mesh1" type="MeshInstance3D" parent="Masking" unique_id=100374987]
+transform = Transform3D(30, 0, 0, 0, 80, 0, 0, 0, 1, -20, 0.5, 4.5)
+mesh = SubResource("QuadMesh_mhrlq")
+
+[node name="Mesh2" type="MeshInstance3D" parent="Masking" unique_id=360942545]
+transform = Transform3D(150, 0, 0, 0, 30, 0, 0, 0, 1, 54.228, -40.282, 4.5)
+mesh = SubResource("QuadMesh_mhrlq")
+
+[node name="Mesh3" type="MeshInstance3D" parent="Masking" unique_id=1601167262]
+transform = Transform3D(30, 0, 0, 0, 50, 0, 0, 0, 1, 140.222, -20, 4.5)
+mesh = SubResource("QuadMesh_mhrlq")
+
+[node name="Mesh4" type="MeshInstance3D" parent="Masking" unique_id=2101093852]
+transform = Transform3D(80, 0, 0, 0, 40, 0, 0, 0, 1, 95.413, 11.776, 4.5)
+mesh = SubResource("QuadMesh_mhrlq")
+
+[node name="Mesh5" type="MeshInstance3D" parent="Masking" unique_id=1381602209]
+transform = Transform3D(60, 0, 0, 0, 30, 0, 0, 0, 1, 39.944, 40.279, 4.5)
+mesh = SubResource("QuadMesh_mhrlq")
+
+[node name="Mesh6" type="MeshInstance3D" parent="Masking" unique_id=995888042]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 1, 9.785, 31.99, 4.5)
+mesh = SubResource("QuadMesh_mhrlq")
 
 [node name="VFX" type="Node3D" parent="." unique_id=1886492453]
 
