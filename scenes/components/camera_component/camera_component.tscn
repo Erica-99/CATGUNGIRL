@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://b3wyfqrf023lh" path="res://scenes/components/camera_component/InsanityTut.gd" id="15_e435g"]
 [ext_resource type="PackedScene" uid="uid://dr68e2vg6njr3" path="res://art/TechArt/2_VFX/screen_effects/health_vignette/health_vignette.tscn" id="16_hvfx"]
 [ext_resource type="PackedScene" uid="uid://0pq5rnqkr4to" path="res://scenes/ui/end_screen.tscn" id="18_ylbr4"]
+[ext_resource type="PackedScene" uid="uid://ck1vuxmck4qgd" path="res://scenes/ui/comic.tscn" id="19_04dda"]
 
 [sub_resource type="Resource" id="Resource_434qr"]
 script = ExtResource("3_6tqft")
@@ -229,5 +230,8 @@ autoplay = &"idle gone"
 [node name="EndScreen" parent="OverlayVisuals" unique_id=1133412871 instance=ExtResource("18_ylbr4")]
 layer = 100
 visible = false
+
+[node name="Comic" parent="OverlayVisuals" unique_id=582528658 instance=ExtResource("19_04dda")]
+layer = 150
 
 [connection signal="animation_finished" from="OverlayVisuals/CanvasLayer/AnimationPlayer" to="OverlayVisuals/CanvasLayer" method="_on_animation_player_animation_finished"]

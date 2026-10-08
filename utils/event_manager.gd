@@ -70,3 +70,6 @@ signal tutorial_step_started(step_name: String)
 signal initiate_tutorial_sequence(sequence_name: String)
 
 signal stage_6b_dialogue_completed
+
+signal play_comic(comic_name: String)
+signal total_comic_finished(comic_name: String)

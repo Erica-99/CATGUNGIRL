@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cjy8ip8eefp8n"]
+
+[ext_resource type="Script" uid="uid://dyjf7ci6ea3yt" path="res://scenes/ui/comic_page.gd" id="1_0nyt6"]
+[ext_resource type="Texture2D" uid="uid://rpkie11xowee" path="res://art/2d_assets/comics/Sniper2.png" id="2_0nyt6"]
+[ext_resource type="PackedScene" uid="uid://d4kitr2evbrso" path="res://scenes/ui/comic_pages/comic_polygon.tscn" id="3_e6igb"]
+
+[node name="ComicPageSniper2" type="Control" unique_id=1692056413 node_paths=PackedStringArray("page_image", "polygons")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0nyt6")
+page_image = NodePath("TextureRect")
+polygons = [NodePath("Control/Polygon2D"), NodePath("Control/Polygon2D2"), NodePath("Control/Polygon2D3"), NodePath("Control/Polygon2D4"), NodePath("Control/Polygon2D5")]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=393829725]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0nyt6")
+
+[node name="Control" type="Control" parent="." unique_id=263357364]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Polygon2D" parent="Control" unique_id=1897134897 instance=ExtResource("3_e6igb")]
+position = Vector2(172, 615)
+polygon = PackedVector2Array(265, -191, -182, -144, -182, 136, 270, 142, 296, 134)
+
+[node name="Polygon2D2" parent="Control" unique_id=499962297 instance=ExtResource("3_e6igb")]
+position = Vector2(710, 672)
+polygon = PackedVector2Array(-273, -248, 249, -305, 249, 60, 140, 91, -46, 89, -134, 88, -242, 77)
+uv = PackedVector2Array(87.5, -6, 249.5, -5, 250.5, 25, 86.5, 43)
+
+[node name="Polygon2D3" parent="Control" unique_id=1847943711 instance=ExtResource("3_e6igb")]
+position = Vector2(635, 989)
+polygon = PackedVector2Array(-647, -242, -189, -234, -180, -237, -171, -240, -161, -242, -150, -243, -137, -244, -120, -244, -110, -243, -97, -242, -85, -240, -75, -237, -66, -233, -57, -228, -51, -223, -46, -217, -42, -210, -40, -201, -40, -188, -41, -182, -43, -175, -47, -167, -55, -160, -63, -155, -67, -152, -78, 108, -661, 105)
+uv = PackedVector2Array(-245.5, -18, 9.5, -56, 10.5, 34, -246.5, 39, -254.5, -7)
+
+[node name="Polygon2D4" parent="Control" unique_id=1128616786 instance=ExtResource("3_e6igb")]
+position = Vector2(1177, 1013)
+polygon = PackedVector2Array(-609, -176, -605, -179, -597, -184, -589, -191, -585, -199, -583, -206, -582, -212, -582, -225, -584, -234, -588, -241, -593, -247, -599, -252, -601, -253, -325, -253, -323, -257, -320, -261, -317, -264, -313, -267, -309, -270, -302, -274, -295, -277, -289, -279, -282, -281, -275, -282, -267, -283, -255, -284, -240, -284, -230, -283, -219, -281, -140, -281, -219, 86, -270, 86, -620, 84)
+uv = PackedVector2Array(-226.5, -28, -162.5, -29, -5.5, -53, -3.5, 8, -230.5, 14)
+
+[node name="Polygon2D5" parent="Control" unique_id=601623791 instance=ExtResource("3_e6igb")]
+position = Vector2(1119, 767)
+polygon = PackedVector2Array(-161, -34, -160, -803, 814, -783, 823, 331, -161, 334, -161, 82, -154, 81, -148, 79, -142, 77, -135, 74, -130, 70, -124, 65, -120, 60, -117, 56, -114, 51, -112, 46, -110, 38, -109, 30, -110, 15, -111, 8, -113, 1, -116, -6, -121, -13, -125, -18, -130, -22, -134, -25, -140, -28, -147, -31, -153, -33)
+uv = PackedVector2Array(-130.763, -36.46901, 123.336975, -37.569016, 65.203, 177.15607, -124.83728, 177.15607)

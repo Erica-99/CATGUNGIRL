@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://ck1vuxmck4qgd"]
+
+[ext_resource type="Script" uid="uid://dtxv5f4d2f6mx" path="res://scenes/ui/comic.gd" id="1_0jrdk"]
+[ext_resource type="PackedScene" uid="uid://chr3u8iw4yi8y" path="res://scenes/ui/comic_pages/comic_page_pistol_1.tscn" id="1_baov8"]
+[ext_resource type="Texture2D" uid="uid://c28e2dtnatdva" path="res://art/2d_assets/comics/Pistol2.png" id="3_8oib1"]
+[ext_resource type="PackedScene" uid="uid://dtg0w6dpv033k" path="res://scenes/ui/comic_pages/comic_page_shotgun_1.tscn" id="3_coccl"]
+[ext_resource type="PackedScene" uid="uid://b6sav3x6lukgh" path="res://scenes/ui/comic_pages/comic_page_sniper_1.tscn" id="4_uhyae"]
+[ext_resource type="Texture2D" uid="uid://gd5x6qc6qqir" path="res://art/2d_assets/comics/Shotgun2.png" id="5_s3f63"]
+[ext_resource type="Texture2D" uid="uid://rpkie11xowee" path="res://art/2d_assets/comics/Sniper2.png" id="7_myjyp"]
+[ext_resource type="PackedScene" uid="uid://bs52qku0nsmds" path="res://scenes/ui/comic_pages/comic_page_start.tscn" id="8_s3f63"]
+
+[sub_resource type="Animation" id="Animation_8oib1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_afc18"]
+resource_name = "fade_between"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0.31)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_open_page"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_s3f63"]
+resource_name = "fade_in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_myjyp"]
+resource_name = "fade_out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_move_on"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_vbo4d"]
+resource_name = "load"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_afc18"]
+_data = {
+&"RESET": SubResource("Animation_8oib1"),
+&"fade_between": SubResource("Animation_afc18"),
+&"fade_in": SubResource("Animation_s3f63"),
+&"fade_out": SubResource("Animation_myjyp"),
+&"load": SubResource("Animation_vbo4d")
+}
+
+[node name="Comic" type="CanvasLayer" unique_id=582528658]
+visible = false
+script = ExtResource("1_0jrdk")
+comics = Dictionary[String, Array]({
+"end_pistol": [ExtResource("1_baov8"), ExtResource("3_8oib1")],
+"end_shotgun": [ExtResource("3_coccl"), ExtResource("5_s3f63")],
+"end_sniper": [ExtResource("4_uhyae"), ExtResource("7_myjyp")],
+"start_comic": [ExtResource("8_s3f63")]
+})
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1389029451]
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=27774712]
+libraries/ = SubResource("AnimationLibrary_afc18")
