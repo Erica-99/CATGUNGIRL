@@ -51,17 +51,15 @@ damage_multiplier = 0.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022613525, 1.0937896, -0.0018005371)
 shape = SubResource("CapsuleShape3D_hcyxg")
 
-[node name="HurtboxComponent2" parent="." unique_id=242602835 node_paths=PackedStringArray("health_component") instance=ExtResource("7_hcyxg")]
+[node name="HeadHitbox" parent="." unique_id=242602835 node_paths=PackedStringArray("health_component") instance=ExtResource("7_hcyxg")]
 health_component = NodePath("../HealthComponent")
+vfx = ExtResource("9_sx8hm")
 damage_multiplier = 0.0
 is_headshot = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtboxComponent2" unique_id=1951779728]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HeadHitbox" unique_id=1951779728]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02119641, 1.8110985, 0)
 shape = SubResource("SphereShape3D_hcyxg")
-
-[node name="Headshot_VFX" parent="HurtboxComponent2/CollisionShape3D" unique_id=1741053268 instance=ExtResource("9_sx8hm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0013203118, -0.0018939972, -2.0599365)
 
 [node name="HealthComponent" parent="." unique_id=236252344 instance=ExtResource("8_uhjne")]
 starting_health = 1.0
