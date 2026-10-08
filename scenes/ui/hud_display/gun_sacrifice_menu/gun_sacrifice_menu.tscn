@@ -3,7 +3,10 @@
 [ext_resource type="Script" uid="uid://s6fmxy8rwbn2" path="res://scenes/ui/hud_display/gun_sacrifice_menu/gun_sacrifice_menu.gd" id="1_cvrir"]
 [ext_resource type="Texture2D" uid="uid://by82v1in0qac5" path="res://art/UI/HUD/Guns/Pistol with grapple hook.png" id="1_dttor"]
 [ext_resource type="Texture2D" uid="uid://b323gltk7mlxa" path="res://art/UI/HUD/Guns/shotgun.png" id="2_cvrir"]
+[ext_resource type="Texture2D" uid="uid://b1ymbfhjejad6" path="res://art/2d_assets/ui/sacrifice_menu/cozy_face.png" id="2_lcpv4"]
 [ext_resource type="Texture2D" uid="uid://dhbbj142fa8mo" path="res://art/UI/HUD/Guns/sniper rifle.png" id="3_k7sju"]
+[ext_resource type="Texture2D" uid="uid://yixqxuj6q0a3" path="res://art/2d_assets/ui/sacrifice_menu/shotty_neutral.png" id="4_g4wa3"]
+[ext_resource type="Texture2D" uid="uid://byvgjv4wcukg1" path="res://art/2d_assets/ui/sacrifice_menu/sniper_neutral.png" id="6_hssrj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvrir"]
 bg_color = Color(0, 0, 0, 0.32941177)
@@ -14,10 +17,67 @@ expand_margin_top = 50.0
 expand_margin_right = 50.0
 expand_margin_bottom = 50.0
 
-[node name="GunSacrificeMenu" type="CanvasLayer" unique_id=1656353581]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gkho6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.4313402, 0.43134028, 0.43134007, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cqgon"]
+bg_color = Color(0.6, 0.6, 0.6, 0.3137255)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.43137255, 0.43137255, 0.43137255, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5c08p"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.43137255, 0.43137255, 0.43137255, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2s4fa"]
+bg_color = Color(0.6, 0.6, 0.6, 0.3137255)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.43137255, 0.43137255, 0.43137255, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2e4m"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.43137255, 0.43137255, 0.43137255, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57fin"]
+bg_color = Color(0.6, 0.6, 0.6, 0.3137255)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.43137255, 0.43137255, 0.43137255, 1)
+border_blend = true
+
+[node name="GunSacrificeMenu" type="CanvasLayer" unique_id=1656353581 node_paths=PackedStringArray("pistol_button", "shotgun_button", "sniper_button")]
 process_mode = 2
 layer = 19
 script = ExtResource("1_cvrir")
+pistol_button = NodePath("MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions/CozyButton")
+shotgun_button = NodePath("MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions/PunkButton")
+sniper_button = NodePath("MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions/SoldierButton")
 
 [node name="MenuRoot" type="Control" parent="." unique_id=316557577]
 layout_mode = 3
@@ -55,46 +115,88 @@ text = "Choose a gun to SACRIFICE"
 
 [node name="GunOptions" type="VBoxContainer" parent="MenuRoot/CenterContainer/PopupPanel/MenuContent" unique_id=1749905727]
 layout_mode = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 25
 
-[node name="PistolButton" type="TextureButton" parent="MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions" unique_id=2122178130]
-custom_minimum_size = Vector2(200, 250)
+[node name="CozyButton" type="Button" parent="MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions" unique_id=106848134]
+custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
-texture_normal = ExtResource("1_dttor")
-ignore_texture_size = true
+theme_override_styles/normal = SubResource("StyleBoxFlat_gkho6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cqgon")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions/CozyButton" unique_id=714474212]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 333.0
+theme_override_constants/separation = 380
+
+[node name="CozyImage" type="TextureRect" parent="MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions/CozyButton/HBoxContainer" unique_id=1611224486]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+texture = ExtResource("2_lcpv4")
+expand_mode = 5
 stretch_mode = 5
 
-[node name="PistolFocus" type="ColorRect" parent="MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions/PistolButton" unique_id=748989389]
-visible = false
-layout_mode = 0
-offset_right = 1283.0
-offset_bottom = 250.0
-color = Color(0.7529412, 0.92941177, 0.99607843, 0.23529412)
-
-[node name="ShotgunButton" type="TextureButton" parent="MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions" unique_id=1120895062]
-custom_minimum_size = Vector2(200, 250)
+[node name="PistolImage" type="TextureRect" parent="MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions/CozyButton/HBoxContainer" unique_id=308175084]
 layout_mode = 2
-texture_normal = ExtResource("2_cvrir")
-ignore_texture_size = true
+size_flags_horizontal = 3
+texture = ExtResource("1_dttor")
+expand_mode = 5
 stretch_mode = 5
 
-[node name="ShotgunFocus" type="ColorRect" parent="MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions/ShotgunButton" unique_id=182219892]
-visible = false
-layout_mode = 0
-offset_right = 1283.0
-offset_bottom = 250.0
-color = Color(0.7529412, 0.92941177, 0.99607843, 0.23529412)
-
-[node name="SniperButton" type="TextureButton" parent="MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions" unique_id=740308426]
-custom_minimum_size = Vector2(200, 250)
+[node name="PunkButton" type="Button" parent="MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions" unique_id=274349193]
+custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
-texture_normal = ExtResource("3_k7sju")
-ignore_texture_size = true
+theme_override_styles/normal = SubResource("StyleBoxFlat_5c08p")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2s4fa")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions/PunkButton" unique_id=925563424]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 0
+offset_right = 1264.0
+offset_bottom = 313.0
+theme_override_constants/separation = 300
+
+[node name="PunkImage" type="TextureRect" parent="MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions/PunkButton/HBoxContainer" unique_id=121518321]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+texture = ExtResource("4_g4wa3")
+expand_mode = 5
 stretch_mode = 5
 
-[node name="SniperFocus" type="ColorRect" parent="MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions/SniperButton" unique_id=1592753724]
-visible = false
+[node name="ShotgunImage" type="TextureRect" parent="MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions/PunkButton/HBoxContainer" unique_id=1177500365]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_cvrir")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="SoldierButton" type="Button" parent="MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions" unique_id=1941215457]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_x2e4m")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_57fin")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions/SoldierButton" unique_id=122118554]
+custom_minimum_size = Vector2(250, 250)
 layout_mode = 0
-offset_right = 1283.0
-offset_bottom = 250.0
-color = Color(0.7529412, 0.92941177, 0.99607843, 0.23529412)
+offset_right = 1282.0
+offset_bottom = 330.0
+theme_override_constants/separation = 100
+
+[node name="SoldierImage" type="TextureRect" parent="MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions/SoldierButton/HBoxContainer" unique_id=489005972]
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 2
+texture = ExtResource("6_hssrj")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="SniperImage" type="TextureRect" parent="MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions/SoldierButton/HBoxContainer" unique_id=1115002566]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_k7sju")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="SpaghettiControlMechanism" type="Control" parent="MenuRoot/CenterContainer/PopupPanel/MenuContent/GunOptions" unique_id=581007601]
+layout_mode = 2

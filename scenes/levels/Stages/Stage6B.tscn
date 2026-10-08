@@ -55,6 +55,7 @@
 [ext_resource type="PackedScene" uid="uid://casbl5hg2jrqe" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/EnemySpawnDoor.tscn" id="57_0h5cq"]
 [ext_resource type="PackedScene" uid="uid://b57sm0u8nmkgd" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/4_Laboratory/DoorwaySingleBaseLaboratory.tscn" id="59_n3kry"]
 [ext_resource type="PackedScene" uid="uid://bgnpboigg42pb" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/3_GuardRooms/Desk.tscn" id="61_8s4rr"]
+[ext_resource type="ArrayMesh" uid="uid://cqu7nt6y8nb7m" path="res://art/3D_Env/3D_Assets/3D_Models/Props_Models/6_Laboratory/AcidVatRoom/TankExperimentation.obj" id="63_1kj5b"]
 [ext_resource type="Texture2D" uid="uid://beldjkbkkc522" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/FinalDoor/FinalDoor_BC.png" id="65_gtkkf"]
 [ext_resource type="Texture2D" uid="uid://dhi57oowhtcqa" path="res://art/3D_Env/3D_Assets/3D_Textures/EnvTextures/6B_Lab/FinalDoor/FinalDoor_M.png" id="66_jgoex"]
 [ext_resource type="PackedScene" uid="uid://bvolfs8exkrw1" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/FireAlarm.tscn" id="66_q6npw"]
@@ -78,6 +79,8 @@
 [ext_resource type="Texture2D" uid="uid://bbamy4fhm0hut" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/TankExperimentation/TankExperimentation_DefaultMaterial_Metallic.png" id="97_xdtj1"]
 [ext_resource type="Texture2D" uid="uid://ldku1ydkp07g" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/TankExperimentation/TankExperimentation_DefaultMaterial_Normal.png" id="98_xlh28"]
 [ext_resource type="Texture2D" uid="uid://0kthvrk45dvd" path="res://art/3D_Env/3D_Assets/3D_Textures/Props_Textures/5_Laboratory/AcidVatRoom/TankExperimentation/TankExperimentation_DefaultMaterial_Roughness.png" id="99_v2bcf"]
+[ext_resource type="PackedScene" uid="uid://du8yjoegqlyag" path="res://scenes/actors/enemies/scrub/variants/gun_switch_variant/scrub_gun_switch_variant.tscn" id="101_v2bcf"]
+[ext_resource type="Script" uid="uid://go6pvvvxitrt" path="res://scenes/levels/Stages/respawner_loop.gd" id="102_1kj5b"]
 [ext_resource type="PackedScene" uid="uid://bqbcx0g61dffh" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/LabBottleSpray.tscn" id="102_2pd4f"]
 [ext_resource type="PackedScene" uid="uid://b8mgks4mhehhj" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/0_MultipleMisc/SecurityHandReader.tscn" id="102_m7b7v"]
 [ext_resource type="PackedScene" uid="uid://dablnp31mjysx" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6_Laboratory/LabDrawersCorner.tscn" id="103_dyhej"]
@@ -102,7 +105,6 @@
 [ext_resource type="PackedScene" uid="uid://dyuymcwkbnmrh" path="res://scenes/components/level_components/event_trigger/event_trigger.tscn" id="124_lclcc"]
 [ext_resource type="PackedScene" uid="uid://dld0qjmojk1t8" path="res://scenes/actors/enemies/enemy_manager/enemy_manager.tscn" id="125_4psah"]
 [ext_resource type="PackedScene" uid="uid://dvq0qrn20mwvt" path="res://scenes/actors/enemies/convict/convict_enemy.tscn" id="126_ker76"]
-[ext_resource type="PackedScene" uid="uid://bls076phgmcus" path="res://scenes/actors/enemies/scrub/scrub.tscn" id="127_0dffa"]
 [ext_resource type="PackedScene" uid="uid://yvma87vdtlyv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6B_Lab/Cone.tscn" id="128_jgoex"]
 [ext_resource type="PackedScene" uid="uid://4l4kw7i1ga4c" path="res://scenes/actors/enemies/brain_spider/brain_spider.tscn" id="129_uif3s"]
 
@@ -132,6 +134,19 @@ emission_energy_multiplier = 1.58
 emission_texture = ExtResource("96_lv6o7")
 normal_enabled = true
 normal_texture = ExtResource("98_xlh28")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vy2tf"]
+albedo_texture = ExtResource("95_0gle7")
+metallic = 1.0
+metallic_texture = ExtResource("97_xdtj1")
+roughness_texture = ExtResource("99_v2bcf")
+emission_energy_multiplier = 1.58
+emission_texture = ExtResource("96_lv6o7")
+normal_enabled = true
+normal_texture = ExtResource("98_xlh28")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1kj5b"]
+size = Vector3(3.720226, 6.9795475, 3.756565)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uhx6n"]
 size = Vector3(20.489685, 17.532715, 13.72467)
@@ -668,7 +683,7 @@ visible = false
 interactable_type = 1
 
 [node name="EventTrigger" parent="Props/TerminalGroup/BrainJarConsole/InteractableComponent" index="1" unique_id=1311781014]
-_signal_parameters = [0.1, NodePath("../../../../../Interactive/EnemyDoorFrame/EnemySpawner")]
+_signal_parameters = [0.1, NodePath("../../../../../Interactive/EnemyDoorFrame2/EnemySpawner")]
 signal_name = "spawn_enemy"
 
 [node name="FuseBox" parent="Props" unique_id=436417353 instance=ExtResource("71_yuyn0")]
@@ -878,6 +893,18 @@ light_energy = 1.523
 [node name="LabBottleSpray" parent="Props" unique_id=58966549 instance=ExtResource("102_2pd4f")]
 transform = Transform3D(0.7029231, 0, -0.7112658, 0, 1, 0, 0.7112658, 0, 0.7029231, -12.793045, 11.545182, -9.812884)
 
+[node name="StandableExperimentationTank" type="StaticBody3D" parent="Props" unique_id=809917334]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -6.1087437, 0, 0)
+
+[node name="TankExperimentation_Mesh2" type="MeshInstance3D" parent="Props/StandableExperimentationTank" unique_id=1635973660]
+transform = Transform3D(-3.9168736e-08, -0.8960762, -0.4439002, 1, -4.371139e-08, 2.7629906e-15, -1.9403492e-08, -0.4439002, 0.8960762, -8.471525, 2.1250381, 6.9622)
+mesh = ExtResource("63_1kj5b")
+surface_material_override/0 = SubResource("StandardMaterial3D_vy2tf")
+
+[node name="TankExperimentation_Collision" type="CollisionShape3D" parent="Props/StandableExperimentationTank" unique_id=2073349442]
+transform = Transform3D(-4.371139e-08, -0.99999976, 0, 1, -4.3711378e-08, 0, 0, 0, 0.99999976, -19.907253, 2.1250377, 1.2888961)
+shape = SubResource("BoxShape3D_1kj5b")
+
 [node name="LabDrawersCorner" parent="Props" unique_id=2026144016 instance=ExtResource("103_dyhej")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.885017, 17.005062, -12.2281)
 
@@ -1079,84 +1106,18 @@ shape = SubResource("BoxShape3D_uhx6n")
 [node name="CameraTarget" type="Node3D" parent="Interactive/CameraPanNode2" unique_id=702545634]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.028803, 1.5672941, 17.515985)
 
-[node name="EnemyDoorFrame" parent="Interactive" unique_id=2112200868 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("57_0h5cq")]
-transform = Transform3D(-1.9999042, 0, -0.01958226, 0, 2, 0, 0.01958226, 0, -1.9999042, -9.218758, 25, -4.9504647)
+[node name="EnemyDoorFrame2" parent="Interactive" unique_id=2112200868 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("57_0h5cq")]
+transform = Transform3D(-1.9999042, 0, -0.01958226, 0, 2, 0, 0.01958226, 0, -1.9999042, -9.219, 25.4, -4.95)
 enemy_manager = NodePath("../../Enemies/Terminal")
 
-[node name="EnemySpawner" parent="Interactive/EnemyDoorFrame" index="1" unique_id=1110059721]
+[node name="EnemySpawner" parent="Interactive/EnemyDoorFrame2" index="1" unique_id=1110059721 node_paths=PackedStringArray("linked_enemy_manager")]
+linked_enemy_manager = NodePath("../../../Enemies/Terminal")
 possible_spawns = Array[int]([0, 1, 1, 0])
+wave_spawner = true
+wave_enemies = Array[int]([0, 1, 0, 3])
 
-[node name="RP1" parent="Interactive/EnemyDoorFrame/EnemyDoorPanels" parent_id_path=PackedInt32Array(2112200868, 150718717) index="0" unique_id=741448569]
-surface_material_override/0 = null
-
-[node name="RP2" parent="Interactive/EnemyDoorFrame/EnemyDoorPanels" parent_id_path=PackedInt32Array(2112200868, 150718717) index="1" unique_id=1673403131]
-surface_material_override/0 = null
-
-[node name="RP3" parent="Interactive/EnemyDoorFrame/EnemyDoorPanels" parent_id_path=PackedInt32Array(2112200868, 150718717) index="2" unique_id=2111608413]
-surface_material_override/0 = null
-
-[node name="RP4" parent="Interactive/EnemyDoorFrame/EnemyDoorPanels" parent_id_path=PackedInt32Array(2112200868, 150718717) index="3" unique_id=145321078]
-surface_material_override/0 = null
-
-[node name="RP5" parent="Interactive/EnemyDoorFrame/EnemyDoorPanels" parent_id_path=PackedInt32Array(2112200868, 150718717) index="4" unique_id=1938696394]
-surface_material_override/0 = null
-
-[node name="RP6" parent="Interactive/EnemyDoorFrame/EnemyDoorPanels" parent_id_path=PackedInt32Array(2112200868, 150718717) index="5" unique_id=646879246]
-surface_material_override/0 = null
-
-[node name="RP7" parent="Interactive/EnemyDoorFrame/EnemyDoorPanels" parent_id_path=PackedInt32Array(2112200868, 150718717) index="6" unique_id=1522993730]
-surface_material_override/0 = null
-
-[node name="RP8" parent="Interactive/EnemyDoorFrame/EnemyDoorPanels" parent_id_path=PackedInt32Array(2112200868, 150718717) index="7" unique_id=214099422]
-surface_material_override/0 = null
-
-[node name="RP9" parent="Interactive/EnemyDoorFrame/EnemyDoorPanels" parent_id_path=PackedInt32Array(2112200868, 150718717) index="8" unique_id=2011596303]
-surface_material_override/0 = null
-
-[node name="RP10" parent="Interactive/EnemyDoorFrame/EnemyDoorPanels" parent_id_path=PackedInt32Array(2112200868, 150718717) index="9" unique_id=279874407]
-surface_material_override/0 = null
-
-[node name="RP11" parent="Interactive/EnemyDoorFrame/EnemyDoorPanels" parent_id_path=PackedInt32Array(2112200868, 150718717) index="10" unique_id=568310173]
-surface_material_override/0 = null
-
-[node name="RP12" parent="Interactive/EnemyDoorFrame/EnemyDoorPanels" parent_id_path=PackedInt32Array(2112200868, 150718717) index="11" unique_id=1170956917]
-surface_material_override/0 = null
-
-[node name="LP1" parent="Interactive/EnemyDoorFrame/EnemyDoorPanels" parent_id_path=PackedInt32Array(2112200868, 150718717) index="12" unique_id=1286611734]
-surface_material_override/0 = null
-
-[node name="LP2" parent="Interactive/EnemyDoorFrame/EnemyDoorPanels" parent_id_path=PackedInt32Array(2112200868, 150718717) index="13" unique_id=1327453385]
-surface_material_override/0 = null
-
-[node name="LP3" parent="Interactive/EnemyDoorFrame/EnemyDoorPanels" parent_id_path=PackedInt32Array(2112200868, 150718717) index="14" unique_id=1513144891]
-surface_material_override/0 = null
-
-[node name="LP4" parent="Interactive/EnemyDoorFrame/EnemyDoorPanels" parent_id_path=PackedInt32Array(2112200868, 150718717) index="15" unique_id=709229096]
-surface_material_override/0 = null
-
-[node name="LP5" parent="Interactive/EnemyDoorFrame/EnemyDoorPanels" parent_id_path=PackedInt32Array(2112200868, 150718717) index="16" unique_id=1297949834]
-surface_material_override/0 = null
-
-[node name="LP6" parent="Interactive/EnemyDoorFrame/EnemyDoorPanels" parent_id_path=PackedInt32Array(2112200868, 150718717) index="17" unique_id=826684558]
-surface_material_override/0 = null
-
-[node name="LP7" parent="Interactive/EnemyDoorFrame/EnemyDoorPanels" parent_id_path=PackedInt32Array(2112200868, 150718717) index="18" unique_id=1613675944]
-surface_material_override/0 = null
-
-[node name="LP8" parent="Interactive/EnemyDoorFrame/EnemyDoorPanels" parent_id_path=PackedInt32Array(2112200868, 150718717) index="19" unique_id=824317463]
-surface_material_override/0 = null
-
-[node name="LP9" parent="Interactive/EnemyDoorFrame/EnemyDoorPanels" parent_id_path=PackedInt32Array(2112200868, 150718717) index="20" unique_id=788733566]
-surface_material_override/0 = null
-
-[node name="LP10" parent="Interactive/EnemyDoorFrame/EnemyDoorPanels" parent_id_path=PackedInt32Array(2112200868, 150718717) index="21" unique_id=1300640844]
-surface_material_override/0 = null
-
-[node name="LP11" parent="Interactive/EnemyDoorFrame/EnemyDoorPanels" parent_id_path=PackedInt32Array(2112200868, 150718717) index="22" unique_id=1147035837]
-surface_material_override/0 = null
-
-[node name="LP12" parent="Interactive/EnemyDoorFrame/EnemyDoorPanels" parent_id_path=PackedInt32Array(2112200868, 150718717) index="23" unique_id=1158541378]
-surface_material_override/0 = null
+[node name="AnimationPlayer" parent="Interactive/EnemyDoorFrame2" index="2" unique_id=1517103991]
+root_node = NodePath("../../EnemyDoorFrame2")
 
 [node name="FinalDoor" parent="Interactive" unique_id=2092611838 instance=ExtResource("21_l8a18")]
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -35, 25.2, 2.4521542)
@@ -1169,6 +1130,7 @@ surface_material_override/1 = null
 [node name="DoorExit2" type="StaticBody3D" parent="Interactive/FinalDoor" unique_id=1613544780 node_paths=PackedStringArray("shield_mesh")]
 script = ExtResource("94_0gle7")
 shield_mesh = NodePath("../FinalDoor/defaultMaterial")
+wait_for_event = "stage_6b_dialogue_completed"
 
 [node name="LevelEnd" parent="Interactive/FinalDoor/DoorExit2" unique_id=914563996 instance=ExtResource("114_ilcbw")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 1.1140231, 1.0174332, 0.09769249)
@@ -1456,14 +1418,30 @@ room_ID = 3
 [node name="RoomFive" parent="Enemies" unique_id=298313783 instance=ExtResource("125_4psah")]
 room_ID = 4
 
-[node name="Scrub2" parent="Enemies/RoomFive" unique_id=1918494423 instance=ExtResource("127_0dffa")]
+[node name="GunSwitchScrub" parent="Enemies/RoomFive" unique_id=1090872008 instance=ExtResource("101_v2bcf")]
 transform = Transform3D(0.9999723, 0.00729109, -0.0014908338, -0.007284907, 0.999965, 0.00411179, 0.0015207593, -0.0041008163, 0.99999046, -4.849407, 12, 0)
 
-[node name="Scrub3" parent="Enemies/RoomFive" unique_id=1090872008 instance=ExtResource("127_0dffa")]
+[node name="VFX_target" type="Node3D" parent="Enemies/RoomFive/GunSwitchScrub" unique_id=393014233]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 191.73442, -36.29603, 0)
+
+[node name="GunSwitchScrub2" parent="Enemies/RoomFive" unique_id=1498053331 instance=ExtResource("101_v2bcf")]
 transform = Transform3D(0.9999723, 0.00729109, -0.0014908338, -0.007284907, 0.999965, 0.00411179, 0.0015207593, -0.0041008163, 0.99999046, 18.229183, 33, 0)
+
+[node name="VFX_target" type="Node3D" parent="Enemies/RoomFive/GunSwitchScrub2" unique_id=1670517626]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 191.73442, -36.29603, 0)
 
 [node name="Terminal" parent="Enemies" unique_id=279547323 instance=ExtResource("125_4psah")]
 room_ID = 4
+
+[node name="RespawnerLoop" type="Node" parent="Enemies" unique_id=2098735822 node_paths=PackedStringArray("respawn_event_trigger", "spawner")]
+script = ExtResource("102_1kj5b")
+respawn_event_trigger = NodePath("EventTrigger")
+spawner = NodePath("../../Interactive/EnemyDoorFrame2/EnemySpawner")
+
+[node name="EventTrigger" parent="Enemies/RespawnerLoop" unique_id=185501017 instance=ExtResource("124_lclcc")]
+_one_shot = false
+_signal_parameters = [0.1, NodePath("../../../Interactive/EnemyDoorFrame/EnemySpawner")]
+signal_name = "spawn_enemy"
 
 [node name="VFX" type="Node3D" parent="." unique_id=536083855]
 
@@ -1550,11 +1528,12 @@ transform = Transform3D(-0.7525559, 0.61277896, -0.24116689, -0.0006985637, 0.36
 [connection signal="body_entered" from="Interactive/CameraPanNode2/Area" to="Interactive/CameraPanNode2" method="_on_area_body_entered"]
 [connection signal="body_exited" from="Interactive/CameraPanNode2/Area" to="Interactive/CameraPanNode2" method="_on_area_body_exited"]
 [connection signal="stage_cleared" from="Enemies/Terminal" to="Interactive/FinalDoor/DoorExit2" method="_on_enemy_manager_stage_cleared"]
+[connection signal="stage_cleared" from="Enemies/Terminal" to="Enemies/RespawnerLoop" method="_on_terminal_stage_cleared"]
 
 [editable path="Props/TerminalGroup/BrainJarConsole"]
 [editable path="Props/TankExperimentation"]
 [editable path="Props/TankExperimentation2"]
 [editable path="Props/TankExperimentation3"]
-[editable path="Interactive/EnemyDoorFrame"]
+[editable path="Interactive/EnemyDoorFrame2"]
 [editable path="Interactive/FinalDoor"]
 [editable path="Interactive/FinalDoor/FinalDoor"]

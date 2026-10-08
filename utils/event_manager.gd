@@ -18,6 +18,7 @@ signal dummy_hit
 
 signal gun_sacrifice_requested
 signal gun_sacrificed(gun_name: String)
+signal sacrifice_selected_gun
 
 signal player_health_initialised(init_current_health, init_max_health)
 signal player_health_changed(old_health, new_health, damage_or_heal_instance)
@@ -54,8 +55,10 @@ signal start_animation
 
 signal increase_meme_index() #what? - Fernando
 
+signal brain_jar_intro_finished
 signal brain_jar_terminal_activated
 signal brainjar_phase_started(phase_index: int)
+signal brain_jar_suggest_sacrifice
 signal brainjar_killed
 
 signal controller_status(controller_type: String)
@@ -65,3 +68,5 @@ signal base_scene_updated(new_scene: Node)
 signal tutorial_step_started(step_name: String)
 
 signal initiate_tutorial_sequence(sequence_name: String)
+
+signal stage_6b_dialogue_completed

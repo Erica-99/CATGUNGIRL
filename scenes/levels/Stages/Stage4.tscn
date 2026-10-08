@@ -180,6 +180,8 @@
 [ext_resource type="PackedScene" uid="uid://cwnndw0yvvixb" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Scenes/0_Multi/Doors/DoorBasic_Malfunctioning.tscn" id="179_xgy0r"]
 [ext_resource type="PackedScene" uid="uid://p4j7l6t1wvoa" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Effects/EnvEffect_Fire.tscn" id="180_indcq"]
 [ext_resource type="PackedScene" uid="uid://befg08ebvtbma" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Env_Effects/EnvEffect_SparkExplsion.tscn" id="181_i7bjc"]
+[ext_resource type="Shader" uid="uid://b2vqiukoud0ne" path="res://art/TechArt/2_VFX/projectiles/projectile_alt/VS_particle_soft.tres" id="182_gwee7"]
+[ext_resource type="Texture2D" uid="uid://dgkbv4jad4qii" path="res://art/TechArt/2_VFX/projectiles/projectile_sniper/tex/T_VFX_smoke_1.PNG" id="183_2pi73"]
 [ext_resource type="PackedScene" uid="uid://yvma87vdtlyv" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/6B_Lab/Cone.tscn" id="189_itw04"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ib8r7"]
@@ -560,11 +562,8 @@ size = Vector3(28.009077, 8.45285, 13.72467)
 [sub_resource type="BoxShape3D" id="BoxShape3D_6350v"]
 size = Vector3(3.8337517, 8.45285, 13.72467)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_o4o51"]
-size = Vector3(84.34231, 8.45285, 13.72467)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_o7h8b"]
-size = Vector3(58.238537, 8.45285, 13.72467)
+size = Vector3(138.69489, 23.340683, 13.72467)
 
 [sub_resource type="Environment" id="Environment_0524g"]
 background_mode = 1
@@ -828,6 +827,92 @@ metallic_texture = ExtResource("80_m0mg7")
 roughness_texture = ExtResource("82_1s6dl")
 normal_enabled = true
 normal_texture = ExtResource("81_0524g")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bofdh"]
+render_priority = 0
+shader = ExtResource("182_gwee7")
+shader_parameter/mask1_texture = ExtResource("183_2pi73")
+
+[sub_resource type="Curve" id="Curve_gwee7"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_f4wm0"]
+texture_mode = 1
+curve = SubResource("Curve_gwee7")
+
+[sub_resource type="Curve" id="Curve_2pi73"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0.915337), 0.0, 0.0, 0, 0, Vector2(1, 1.34601), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7f02m"]
+curve = SubResource("Curve_2pi73")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6ab3i"]
+emission_shape = 1
+emission_sphere_radius = 0.1
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(0, 0, 1)
+spread = 0.0
+initial_velocity_min = 2.0
+initial_velocity_max = 5.44
+radial_velocity_min = 1.2
+radial_velocity_max = 2.5
+gravity = Vector3(0, 0, 0)
+scale_min = 0.79999995
+scale_max = 15.0
+scale_curve = SubResource("CurveTexture_7f02m")
+color = Color(2.2995894, 0.79005885, 0, 1)
+alpha_curve = SubResource("CurveTexture_f4wm0")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_xj3qp"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2pi73"]
+emission_shape = 1
+emission_sphere_radius = 0.1
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(0, 0, 1)
+spread = 159.851
+initial_velocity_min = 2.0
+initial_velocity_max = 10.0
+radial_velocity_min = 1.2
+radial_velocity_max = 2.5
+gravity = Vector3(0, 0, 0)
+scale_min = 0.79999995
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_7f02m")
+color = Color(2.2995894, 0.79005885, 0, 1)
+alpha_curve = SubResource("CurveTexture_f4wm0")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gwee7"]
+emission_shape = 1
+emission_sphere_radius = 0.1
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(0, 0, 1)
+spread = 0.0
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+radial_velocity_min = 1.2
+radial_velocity_max = 2.5
+gravity = Vector3(0, 0, 0)
+scale_min = 0.79999995
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_7f02m")
+color = Color(2.2995894, 0.79005885, 0, 1)
+alpha_curve = SubResource("CurveTexture_f4wm0")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
 
 [node name="StageFour" type="Node3D" unique_id=535640616]
 script = ExtResource("1_tvq7q")
@@ -1158,24 +1243,6 @@ shape = SubResource("BoxShape3D_6350v")
 [node name="CameraTarget" type="Node3D" parent="Interactive/CameraPanNode5" unique_id=391156809]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.562943, -0.25848007, 5.355547)
 
-[node name="CameraPanNode6" type="Node3D" parent="Interactive" unique_id=1177174105]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 179.9868, 26.860085, 0)
-script = ExtResource("4_88vs6")
-FOV = -15
-look_at_player = true
-
-[node name="Area" type="Area3D" parent="Interactive/CameraPanNode6" unique_id=1740892175]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.363087, 0, 0)
-collision_layer = 512
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactive/CameraPanNode6/Area" unique_id=795608134]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.054733, 0.95469666, 0.5645447)
-shape = SubResource("BoxShape3D_o4o51")
-
-[node name="CameraTarget" type="Node3D" parent="Interactive/CameraPanNode6" unique_id=740294493]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.568268, -13.6567955, 22.711172)
-
 [node name="CameraPanNode7" type="Node3D" parent="Interactive" unique_id=2129281544]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 259.26334, 13.656677, 0)
 script = ExtResource("4_88vs6")
@@ -1189,7 +1256,7 @@ collision_layer = 512
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactive/CameraPanNode7/Area" unique_id=576983456]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.002838, 0.95469666, 0.5645447)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.22534, 8.398613, 0.5645447)
 shape = SubResource("BoxShape3D_o7h8b")
 
 [node name="CameraTarget" type="Node3D" parent="Interactive/CameraPanNode7" unique_id=1796917829]
@@ -5079,7 +5146,7 @@ mesh = ExtResource("108_dqu6n")
 surface_material_override/0 = SubResource("StandardMaterial3D_82yyr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Shelves/MetalShelves2" unique_id=991686776]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46540928, -0.029418945)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4475491, -0.029418945)
 shape = SubResource("BoxShape3D_u4r1w")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Props/Shelves/MetalShelves2" unique_id=942551224]
@@ -5715,7 +5782,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 204.15904, -8.160479, -13.888
 transform = Transform3D(1.3431002, 0, 0, 0, 0.7797532, 0, 0, 0, 1, 219.84564, -8.19999, -16.095901)
 
 [node name="Rubble3" parent="Props/2D_Assets/Corpses/TRUNKS_Room/Rubble" unique_id=976589828 instance=ExtResource("156_g2dr1")]
-transform = Transform3D(2.0986156, 0, 0, 0, 1.9033911, 0, 0, 0, 1, 229.85649, -8.199987, -4.519679)
+transform = Transform3D(2.0986156, 0, 0, 0, 1.9033911, 0, 0, 0, 1, 229.85649, -8.199987, -7.463205)
 
 [node name="Rubble4" parent="Props/2D_Assets/Corpses/TRUNKS_Room/Rubble" unique_id=769085699 instance=ExtResource("156_g2dr1")]
 transform = Transform3D(0.57893884, 0, 0, 0, 0.49977356, 0, 0, 0, 1, 213.9987, -8.199989, 2.5638294)
@@ -5790,6 +5857,96 @@ transform = Transform3D(0.47252, -0.8813198, 0, 0.8813198, 0.47252, 0, 0, 0, 1, 
 [node name="EnvEffectSpark" parent="." unique_id=602658946 instance=ExtResource("181_i7bjc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 298.46436, 34.372845, 1.2822828)
 
+[node name="flame" type="GPUParticles3D" parent="." unique_id=2097976407]
+transform = Transform3D(-1.4595573, -0.34596616, 4.867662e-08, 6.556709e-08, -6.556709e-08, 1.5000002, -0.34596616, 1.4595573, 7.8921936e-08, 180.51418, -4.398611, 2.3508687)
+material_override = SubResource("ShaderMaterial_bofdh")
+cast_shadow = 0
+amount = 30
+lifetime = 0.5
+fixed_fps = 50
+process_material = SubResource("ParticleProcessMaterial_6ab3i")
+draw_pass_1 = SubResource("QuadMesh_xj3qp")
+
+[node name="flame9" type="GPUParticles3D" parent="." unique_id=1457432127]
+transform = Transform3D(-1.4595573, -0.34596616, 4.867662e-08, 6.556709e-08, -6.556709e-08, 1.5000002, -0.34596616, 1.4595573, 7.8921936e-08, 202.01427, -4.398611, -41.178516)
+material_override = SubResource("ShaderMaterial_bofdh")
+cast_shadow = 0
+amount = 30
+lifetime = 0.5
+fixed_fps = 50
+process_material = SubResource("ParticleProcessMaterial_2pi73")
+draw_pass_1 = SubResource("QuadMesh_xj3qp")
+
+[node name="flame3" type="GPUParticles3D" parent="." unique_id=1948006330]
+transform = Transform3D(-1.4595573, -0.34596616, 4.867662e-08, 6.556709e-08, -6.556709e-08, 1.5000002, -0.34596616, 1.4595573, 7.8921936e-08, 191.81145, -4.9255896, -19.492651)
+material_override = SubResource("ShaderMaterial_bofdh")
+cast_shadow = 0
+amount = 30
+lifetime = 0.5
+fixed_fps = 50
+process_material = SubResource("ParticleProcessMaterial_gwee7")
+draw_pass_1 = SubResource("QuadMesh_xj3qp")
+
+[node name="flame5" type="GPUParticles3D" parent="." unique_id=1694927150]
+transform = Transform3D(-1.4595573, -0.34596616, 4.867662e-08, 6.556709e-08, -6.556709e-08, 1.5000002, -0.34596616, 1.4595573, 7.8921936e-08, 228.1545, -4.9255896, -21.66817)
+material_override = SubResource("ShaderMaterial_bofdh")
+cast_shadow = 0
+amount = 30
+lifetime = 0.5
+fixed_fps = 50
+process_material = SubResource("ParticleProcessMaterial_gwee7")
+draw_pass_1 = SubResource("QuadMesh_xj3qp")
+
+[node name="flame6" type="GPUParticles3D" parent="." unique_id=1769375186]
+transform = Transform3D(-1.4595573, -0.34596616, 4.867662e-08, 6.556709e-08, -6.556709e-08, 1.5000002, -0.34596616, 1.4595573, 7.8921936e-08, 230.60878, -4.9255896, -17.80265)
+material_override = SubResource("ShaderMaterial_bofdh")
+cast_shadow = 0
+amount = 30
+lifetime = 0.5
+fixed_fps = 50
+process_material = SubResource("ParticleProcessMaterial_gwee7")
+draw_pass_1 = SubResource("QuadMesh_xj3qp")
+
+[node name="flame7" type="GPUParticles3D" parent="." unique_id=408359553]
+transform = Transform3D(-1.4595573, -0.34596616, 4.867662e-08, 6.556709e-08, -6.556709e-08, 1.5000002, -0.34596616, 1.4595573, 7.8921936e-08, 248.47118, -4.9255896, -16.762613)
+material_override = SubResource("ShaderMaterial_bofdh")
+cast_shadow = 0
+amount = 30
+lifetime = 0.5
+fixed_fps = 50
+process_material = SubResource("ParticleProcessMaterial_gwee7")
+draw_pass_1 = SubResource("QuadMesh_xj3qp")
+
+[node name="flame8" type="GPUParticles3D" parent="." unique_id=2005653159]
+transform = Transform3D(-1.4595573, -0.34596616, 4.867662e-08, 6.556709e-08, -6.556709e-08, 1.5000002, -0.34596616, 1.4595573, 7.8921936e-08, 250.15385, -4.9255896, -5.7718573)
+material_override = SubResource("ShaderMaterial_bofdh")
+cast_shadow = 0
+amount = 30
+lifetime = 0.5
+fixed_fps = 50
+process_material = SubResource("ParticleProcessMaterial_gwee7")
+draw_pass_1 = SubResource("QuadMesh_xj3qp")
+
+[node name="flame4" type="GPUParticles3D" parent="." unique_id=103597702]
+transform = Transform3D(-1.4595573, -0.34596616, 4.867662e-08, 6.556709e-08, -6.556709e-08, 1.5000002, -0.34596616, 1.4595573, 7.8921936e-08, 193.6457, -4.92559, -21.693577)
+material_override = SubResource("ShaderMaterial_bofdh")
+cast_shadow = 0
+amount = 30
+lifetime = 0.5
+fixed_fps = 50
+process_material = SubResource("ParticleProcessMaterial_gwee7")
+draw_pass_1 = SubResource("QuadMesh_xj3qp")
+
+[node name="flame2" type="GPUParticles3D" parent="." unique_id=1461220336]
+transform = Transform3D(-1.4595573, -0.34596616, 4.867662e-08, 6.556709e-08, -6.556709e-08, 1.5000002, -0.34596616, 1.4595573, 7.8921936e-08, 253.51418, -4.398611, 2.3508687)
+material_override = SubResource("ShaderMaterial_bofdh")
+cast_shadow = 0
+amount = 30
+lifetime = 0.5
+fixed_fps = 50
+process_material = SubResource("ParticleProcessMaterial_6ab3i")
+draw_pass_1 = SubResource("QuadMesh_xj3qp")
+
 [connection signal="area_entered" from="Interactive/BridgeBroken/TrunkEventTrigger" to="Interactive/BridgeBroken/TrunkEventTrigger" method="_on_area_entered"]
 [connection signal="animation_finished" from="Interactive/BridgeBroken/TrunkEventTrigger/TrunkEventAnims" to="Interactive/BridgeBroken/TrunkEventTrigger" method="_on_trunk_event_anims_animation_finished"]
 [connection signal="removecameratween" from="Interactive/CameraPanNode1" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
@@ -5812,10 +5969,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 298.46436, 34.372845, 1.28228
 [connection signal="updatecameratween" from="Interactive/CameraPanNode5" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
 [connection signal="body_entered" from="Interactive/CameraPanNode5/Area" to="Interactive/CameraPanNode5" method="_on_area_body_entered"]
 [connection signal="body_exited" from="Interactive/CameraPanNode5/Area" to="Interactive/CameraPanNode5" method="_on_area_body_exited"]
-[connection signal="removecameratween" from="Interactive/CameraPanNode6" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
-[connection signal="updatecameratween" from="Interactive/CameraPanNode6" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
-[connection signal="body_entered" from="Interactive/CameraPanNode6/Area" to="Interactive/CameraPanNode6" method="_on_area_body_entered"]
-[connection signal="body_exited" from="Interactive/CameraPanNode6/Area" to="Interactive/CameraPanNode6" method="_on_area_body_exited"]
 [connection signal="removecameratween" from="Interactive/CameraPanNode7" to="RailCamera" method="_on_camera_pan_node_removecameratween"]
 [connection signal="updatecameratween" from="Interactive/CameraPanNode7" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
 [connection signal="body_entered" from="Interactive/CameraPanNode7/Area" to="Interactive/CameraPanNode7" method="_on_area_body_entered"]

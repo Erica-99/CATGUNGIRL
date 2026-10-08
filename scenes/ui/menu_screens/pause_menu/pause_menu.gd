@@ -29,6 +29,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func _can_pause() -> bool:
+	# no pausing in sacrifice screen
+	if get_tree().get_first_node_in_group("gun_sacrifice_menu") != null:
+		return false
 	# no pausing during loading screen
 	if get_tree().get_first_node_in_group("loading_screen") != null:
 		return false
