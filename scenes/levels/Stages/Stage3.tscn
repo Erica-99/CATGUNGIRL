@@ -91,6 +91,7 @@
 [ext_resource type="PackedScene" uid="uid://u0ps1hxqgdbr" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/HighBayLight.tscn" id="86_y6pi2"]
 [ext_resource type="PackedScene" uid="uid://8268415ukuhp" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/4_Panopticon/LightRailPanopticon.tscn" id="87_i8msr"]
 [ext_resource type="PackedScene" uid="uid://d1isfmus58oku" path="res://art/3D_Env/3D_Assets/3D_Assets_Scenes/Props_Scenes/5_Warehouse/IndustrialLight1.tscn" id="88_m4oo8"]
+[ext_resource type="Material" uid="uid://cu6qh6xs6kpvr" path="res://art/Shaders/blackout.tres" id="89_14hds"]
 [ext_resource type="PackedScene" uid="uid://556rwa2pdmor" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Lying_Convict.tscn" id="89_ei5br"]
 [ext_resource type="PackedScene" uid="uid://ddim4ukeuv6rp" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/Impaled_Convict.tscn" id="90_vyn8v"]
 [ext_resource type="PackedScene" uid="uid://db5fkg6225guu" path="res://art/2d_assets/corpse_assets/2D_Corpse_Scenes/severed_arm.tscn" id="91_oughf"]
@@ -540,6 +541,7 @@ volumetric_fog_enabled = true
 volumetric_fog_density = 0.04
 volumetric_fog_albedo = Color(0.8, 0.95, 1, 1)
 volumetric_fog_length = 11.93
+adjustment_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lk7tg"]
 transparency = 1
@@ -1144,6 +1146,9 @@ heightmap_texture = ExtResource("27_6h3re")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6h3re"]
 points = PackedVector3Array(3.651531, 0.100005, 3.356353, 3.651531, -0.000293, 3.356353, 3.651531, 0.100005, -3.356354, 0, 0.100005, 3.356353, 0, -0.000293, 3.356353, 3.651531, -0.000293, -3.356354, 0, 0.100005, -3.356354, 0, -0.000293, -3.356354)
+
+[sub_resource type="QuadMesh" id="QuadMesh_tg5mw"]
+material = ExtResource("89_14hds")
 
 [node name="StageThree" type="Node3D" unique_id=282651265]
 script = ExtResource("1_ei5br")
@@ -3665,6 +3670,32 @@ transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, -10.
 
 [node name="PanopticonWalls4" parent="Environment/Layer_00" unique_id=1829673124 instance=ExtResource("53_vrydf")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 3)
+
+[node name="Masking" type="Node3D" parent="." unique_id=1585786589]
+
+[node name="Mesh1" type="MeshInstance3D" parent="Masking" unique_id=864715313]
+transform = Transform3D(30, 0, 0, 0, 300, 0, 0, 0, 1, 0, 167, 7)
+mesh = SubResource("QuadMesh_tg5mw")
+
+[node name="Mesh2" type="MeshInstance3D" parent="Masking" unique_id=376880799]
+transform = Transform3D(30, 0, 0, 0, 200, 0, 0, 0, 1, 0, -100, 7)
+mesh = SubResource("QuadMesh_tg5mw")
+
+[node name="Mesh3" type="MeshInstance3D" parent="Masking" unique_id=2009790591]
+transform = Transform3D(30, 0, 0, 0, 300, 0, 0, 0, 1, 179.5, -24, 7)
+mesh = SubResource("QuadMesh_tg5mw")
+
+[node name="Mesh4" type="MeshInstance3D" parent="Masking" unique_id=1039890197]
+transform = Transform3D(30, 0, 0, 0, 150, 0, 0, 0, 1, 179.5, 218, 7)
+mesh = SubResource("QuadMesh_tg5mw")
+
+[node name="Mesh5" type="MeshInstance3D" parent="Masking" unique_id=1682387523]
+transform = Transform3D(30, 0, 0, 0, 60, 0, 0, 0, 1, 200, 136.848, 7)
+mesh = SubResource("QuadMesh_tg5mw")
+
+[node name="Mesh6" type="MeshInstance3D" parent="Masking" unique_id=336958740]
+transform = Transform3D(30, 0, 0, 0, 60, 0, 0, 0, 1, -19.996683, 10, 7)
+mesh = SubResource("QuadMesh_tg5mw")
 
 [node name="Props" type="Node3D" parent="." unique_id=1920549022]
 
