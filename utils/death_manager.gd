@@ -13,6 +13,7 @@ func load_death_screen(death_id: StringName, level_path: String) -> void:
 	SceneLoader._load_scene(DEATH_SCREEN_SCENE_PATH)
 
 func load_last_death_level() -> void:
+	print("load_func_called")
 	get_tree().paused = false
 	
 	var level_path_to_load: String = last_death_level_path

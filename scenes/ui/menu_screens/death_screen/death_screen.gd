@@ -117,6 +117,7 @@ func load_scene(scene_path: String) -> void:
 	loading_screen.gigi_jumpscare_visible = false
 	loading_screen.set_process(false)
 	get_tree().root.add_child(loading_screen)
+	loading_screen.initialise()
 	await loading_screen.animation_player.animation_finished
 	await get_tree().process_frame
 	
