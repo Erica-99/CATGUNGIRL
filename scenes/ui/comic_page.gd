@@ -12,7 +12,7 @@ func _ready() -> void:
 	next_index_to_fade = 0
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("fire"):
+	if Input.is_action_just_pressed("fire") or Input.is_action_just_pressed("ui_accept"):
 		_fade_next()
 
 func _fade_next() -> void:
