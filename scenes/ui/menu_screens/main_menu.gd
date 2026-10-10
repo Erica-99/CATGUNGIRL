@@ -6,6 +6,7 @@ const LOADING_SCREEN_REFERENCE = preload("res://scenes/ui/menu_screens/loading_s
 
 func _ready() -> void:
 	AudioManager.play_music("music_menu")
+	Globals._reset_game()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventJoypadButton:
