@@ -32,10 +32,13 @@ grow_begin = 14.0
 grow_end = 33.0
 thickness = 6
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rc63n"]
+content_margin_top = 30.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jmha8"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[node name="GiGiPopup" type="BoxContainer" unique_id=134709764 node_paths=PackedStringArray("speaker_name", "gigi_image", "gigi_dialogue", "grid_container", "call_panel")]
+[node name="GiGiPopup" type="BoxContainer" unique_id=134709764 node_paths=PackedStringArray("speaker_name", "gigi_image", "gigi_dialogue", "call_panel")]
 custom_minimum_size = Vector2(1200, 1000)
 offset_top = -589.0
 offset_right = 1200.0
@@ -46,7 +49,6 @@ script = ExtResource("1_rc63n")
 speaker_name = NodePath("CallPanel/VBoxContainer/SpeakerName")
 gigi_image = NodePath("CallPanel/VBoxContainer/PanelContainer/gigi_image")
 gigi_dialogue = NodePath("DialogueBubble")
-grid_container = NodePath("")
 call_panel = NodePath("CallPanel")
 
 [node name="CallPanel" type="PanelContainer" parent="." unique_id=769014905]
@@ -87,6 +89,17 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 36
 text = "Soldier Gigi"
 horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1068832070]
+custom_minimum_size = Vector2(400, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rc63n")
+bbcode_enabled = true
+text = "Press [img=48]res://art/UI/Glyphs/KBM/Dark/B_Key_Dark.png[/img]/[img=48]res://art/UI/Glyphs/PS5/PS5_Share.png[/img]/[img=48]res://art/UI/Glyphs/Xbox/XboxSeriesX_View.png[/img] to skip dialogue."
+horizontal_alignment = 2
 
 [node name="DialogueBubble" parent="." unique_id=1148095700 instance=ExtResource("2_4b0uy")]
 custom_minimum_size = Vector2(800, 35)

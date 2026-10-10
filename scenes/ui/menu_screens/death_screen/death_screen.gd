@@ -6,9 +6,9 @@ class_name DeathScreen
 @onready var enemy_image: TextureRect = $MainPanel/MarginContainer/ScreenVBox/ContentArea/EnemyImage
 @onready var enemy_info_label: Label = $MainPanel/MarginContainer/ScreenVBox/ContentArea/EnemyInfoLabel
 @onready var tip_label: Label = $MainPanel/MarginContainer/ScreenVBox/ContentArea/TipLabel
-@onready var continue_button: Button = $MainPanel/MarginContainer/ScreenVBox/ContentArea/ContinueButton
-@onready var return_to_menu_button: Button = $MainPanel/MarginContainer/ScreenVBox/ContentArea/ReturnToMenuButton
-@onready var change_difficulty_button: Button = $MainPanel/MarginContainer/ScreenVBox/ContentArea/ChangeDifficultyButton
+@onready var continue_button: Button = $MainPanel/MarginContainer/ScreenVBox/ContentArea/OptionsVbox/ContinueButton
+@onready var return_to_menu_button: Button = $MainPanel/MarginContainer/ScreenVBox/ContentArea/OptionsVbox/ReturnToMenuButton
+#@onready var change_difficulty_button: Button = $MainPanel/MarginContainer/ScreenVBox/ContentArea/OptionsVbox/ChangeDifficultyButtonn
 
 @export_category("Scene Paths")
 ## Scene loaded when player chooses to return to main menu
@@ -28,7 +28,7 @@ var is_leaving_death_screen: bool = false
 func _ready() -> void:
 	continue_button.pressed.connect(_on_continue_button_pressed)
 	return_to_menu_button.pressed.connect(_on_return_to_menu_button_pressed)
-	change_difficulty_button.pressed.connect(_on_change_difficulty_button_pressed)
+	#change_difficulty_button.pressed.connect(_on_change_difficulty_button_pressed)
 	show_death_screen(DeathManager.last_death_id)
 
 func show_death_screen(death_id: StringName) -> void:
@@ -53,6 +53,8 @@ func show_death_screen(death_id: StringName) -> void:
 	
 	background.texture = death_info.background
 	enemy_image.texture = death_info.enemy_image
+	
+	continue_button.grab_focus()
 
 func get_death_info(death_id: StringName) -> DeathScreenInfo:
 	for death_info in death_infos:
@@ -102,7 +104,7 @@ func _on_change_difficulty_button_pressed() -> void:
 func disable_buttons() -> void:
 	continue_button.disabled = true
 	return_to_menu_button.disabled = true
-	change_difficulty_button.disabled = true
+	#change_difficulty_button.disabled = true
 
 func load_scene(scene_path: String) -> void:
 	if scene_path == "":
@@ -115,6 +117,7 @@ func load_scene(scene_path: String) -> void:
 	loading_screen.gigi_jumpscare_visible = false
 	loading_screen.set_process(false)
 	get_tree().root.add_child(loading_screen)
+	loading_screen.initialise()
 	await loading_screen.animation_player.animation_finished
 	await get_tree().process_frame
 	
