@@ -35,6 +35,7 @@ const LEVEL_PATHS: Dictionary = {
 	"main_menu": "res://scenes/ui/menu_screens/main_menu.tscn"
 }
 
+var intro_comic_played: bool = false
 
 func _ready() -> void:
 	unlocked_guns = [0]
@@ -81,6 +82,7 @@ func _begin_sacrifice_dialogue() -> void:
 # use this to reset any game-global variables. called when loading main menu.
 func _reset_game() -> void:
 	unlocked_guns = [0]
+	intro_comic_played = false
 	CheckpointManager.clear_checkpoint()
 	get_tree().paused = false
 

@@ -12,6 +12,7 @@ func _ready() -> void:
 
 	AudioManager.play_music(music_ref)
 	
-	if play_start_comic:
+	if play_start_comic and not Globals.intro_comic_played:
 		EventManager.instant_void.emit(true)
 		EventManager.play_comic.emit("start_comic")
+		Globals.intro_comic_played = true
