@@ -1166,42 +1166,50 @@ _signal_parameters = ["2_cozy_interlude"]
 signal_name = "activate_popup"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EVENT_TRIGGERS/PopupInterlude" unique_id=333407342]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9392924, 0, 0)
 shape = SubResource("BoxShape3D_xeu56")
 debug_color = Color(0.18271238, 0.6429914, 0, 0.41960785)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=218442623]
 
-[node name="Room One" parent="Enemies" unique_id=18369620 instance=ExtResource("20_q7nox")]
+[node name="Room One - Upper" parent="Enemies" unique_id=18369620 instance=ExtResource("20_q7nox")]
 
-[node name="Convict" parent="Enemies/Room One" unique_id=915649518 instance=ExtResource("21_n434r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.27639, -23.496223, 0)
+[node name="Scrub" parent="Enemies/Room One - Upper" unique_id=1090872008 instance=ExtResource("31_yfq6p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.46095, 19.011608, 0)
 
-[node name="Convict2" parent="Enemies/Room One" unique_id=1114115341 instance=ExtResource("21_n434r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.27639, -23.496223, 0)
+[node name="Convict2" parent="Enemies/Room One - Upper" unique_id=1114115341 instance=ExtResource("21_n434r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.393208, -3.4663355, 0)
 
-[node name="Convict3" parent="Enemies/Room One" unique_id=115792186 instance=ExtResource("21_n434r")]
+[node name="Room One - Lower" type="Node" parent="Enemies" unique_id=404016548]
+
+[node name="Scrub3" parent="Enemies/Room One - Lower" unique_id=1744272114 instance=ExtResource("31_yfq6p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.619091, -11.4095, 0)
+
+[node name="Convict3" parent="Enemies/Room One - Lower" unique_id=115792186 instance=ExtResource("21_n434r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.27639, -23.496223, 0)
 
-[node name="Convict4" parent="Enemies/Room One" unique_id=634646066 instance=ExtResource("21_n434r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.7015, -5.246746, 0)
+[node name="Convict4" parent="Enemies/Room One - Lower" unique_id=1506947017 instance=ExtResource("21_n434r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.10462, -14.400316, 0)
 
-[node name="Scrub" parent="Enemies/Room One" unique_id=1090872008 instance=ExtResource("31_yfq6p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.171127, 6.4609756, 0)
+[node name="Room Two - Connecting" type="Node" parent="Enemies" unique_id=1725940748]
 
-[node name="Scrub2" parent="Enemies/Room One" unique_id=1887419976 instance=ExtResource("31_yfq6p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.56813, -13.496223, 0)
+[node name="Scrub2" parent="Enemies/Room Two - Connecting" unique_id=1887419976 instance=ExtResource("31_yfq6p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.548256, -13.426582, -0.020219803)
 
-[node name="BarrierCorner" parent="Enemies/Room One" unique_id=619427228 instance=ExtResource("54_3rmdv")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 20, 0, -20)
+[node name="Convict" parent="Enemies/Room Two - Connecting" unique_id=915649518 instance=ExtResource("21_n434r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.95012, -23.084587, 0)
 
 [node name="Room Three" parent="Enemies" unique_id=1427173248 instance=ExtResource("20_q7nox")]
 room_ID = 2
 
-[node name="Scrub3" parent="Enemies/Room Three" unique_id=1744272114 instance=ExtResource("31_yfq6p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.093834, -13.496223, 0)
+[node name="Convict" parent="Enemies/Room Three" unique_id=1237894228 instance=ExtResource("21_n434r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.10284, -23.496223, 0)
 
-[node name="Convict" parent="Enemies/Room Three" unique_id=1506947017 instance=ExtResource("21_n434r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.26416, -23.496223, 0)
+[node name="Convict2" parent="Enemies/Room Three" unique_id=1104469679 instance=ExtResource("21_n434r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.78527, -14.634803, 0)
+
+[node name="Convict4" parent="Enemies/Room Three" unique_id=634646066 instance=ExtResource("21_n434r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.38758, -23.261784, 0)
 
 [node name="Environment" type="Node3D" parent="." unique_id=1954790070]
 
@@ -1872,6 +1880,9 @@ transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 50
 [node name="BarrierFull" parent="Environment" unique_id=1204649463 instance=ExtResource("55_ljbqk")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 40, 0, -20)
 
+[node name="BarrierCorner3" parent="Environment" unique_id=619427228 instance=ExtResource("54_3rmdv")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 20, 0, -20)
+
 [node name="BarrierFull2" parent="Environment" unique_id=1649725988 instance=ExtResource("55_ljbqk")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 50, 0, -20)
 
@@ -2406,7 +2417,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.87775, -14.903053, -14.954
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.60779, -19.386347, -16.541458)
 
 [node name="PineappleOnPizza" parent="2D_Props/Posters" unique_id=988902777 instance=ExtResource("89_08fg1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.683895, -3.5692644, -26.67883)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.393064, 5.7258105, -24.987856)
 
 [node name="AcceptBliss" parent="2D_Props/Posters" unique_id=1517328070 instance=ExtResource("85_dc4ih")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.421986, 14.666203, -24.931496)
@@ -2417,10 +2428,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.041725, -19.552134, -16.55
 [node name="Corpses" type="Node3D" parent="2D_Props" unique_id=101059581]
 
 [node name="Disintegrated" parent="2D_Props/Corpses" unique_id=395530572 instance=ExtResource("81_fqval")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.429567, 1.586596, -7.976795)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.615505, 1.5865963, -18.85699)
 
 [node name="ScrubCrashed" parent="2D_Props/Corpses" unique_id=2089480923 instance=ExtResource("82_lx8in")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.71655, -7.5846686, -12.819835)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.340584, -7.5846686, -20.397863)
 
 [node name="MeatLumps" parent="2D_Props/Corpses" unique_id=720032926 instance=ExtResource("83_cddd1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.835148, -24.387491, -6.553409)
@@ -2431,6 +2442,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2612753, -23.92749, -12.14
 [node name="ImpaledConvict" parent="2D_Props/Corpses" unique_id=889351681 instance=ExtResource("85_b8rbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.693626, -23.74467, 1.6303959)
 
+[node name="ImpaledConvict2" parent="2D_Props/Corpses" unique_id=1541344737 instance=ExtResource("85_b8rbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5975094, 1.5002282, -12.09586)
+
 [node name="ScrubTorso" parent="2D_Props/Corpses" unique_id=426037799 instance=ExtResource("87_keve1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.13821, -16.02734, -7.8844414)
 
@@ -2438,10 +2452,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.13821, -16.02734, -7.88444
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.48346, -23.927492, -5.6352253)
 
 [node name="Disintegrated2" parent="2D_Props/Corpses" unique_id=1908618148 instance=ExtResource("81_fqval")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.56611, -15.137807, -2.0654638)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.618416, -15.137807, -12.698103)
 
 [node name="ScrubCrashed2" parent="2D_Props/Corpses" unique_id=332418208 instance=ExtResource("82_lx8in")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 113.76971, -16.144825, 0.88120556)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 81.616684, -16.144825, 3.5431418)
 
 [node name="Shotgun_Unlockable" parent="2D_Props/Corpses" unique_id=1001534482 instance=ExtResource("109_hwccm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.77213, -25.015932, -0.5503416)
@@ -2454,7 +2468,7 @@ activate_on_event = "stage_2_shotgun_ready_for_pickup"
 script = ExtResource("107_qivqm")
 
 [node name="Rubble" parent="2D_Props/Corpses" unique_id=302094260 instance=ExtResource("91_448ww")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.82405, -24.99999, 2.7364883)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.82405, -24.99999, -8.102018)
 
 [node name="Masking" type="Node3D" parent="." unique_id=2099516202]
 
@@ -2745,7 +2759,7 @@ transform = Transform3D(0.30020642, 0, 0.95387423, 0, 1, 0, -0.95387423, 0, 0.30
 [connection signal="updatecameratween" from="Interactive/CameraPanNode4" to="RailCamera" method="_on_camera_pan_node_updatecameratween"]
 [connection signal="body_entered" from="Interactive/CameraPanNode4/Area" to="Interactive/CameraPanNode4" method="_on_area_body_entered"]
 [connection signal="body_exited" from="Interactive/CameraPanNode4/Area" to="Interactive/CameraPanNode4" method="_on_area_body_exited"]
-[connection signal="stage_cleared" from="Enemies/Room One" to="2D_Props/Corpses/Shotgun_Unlockable/Stage2EnemyChecker" method="_on_room_one_stage_cleared"]
+[connection signal="stage_cleared" from="Enemies/Room One - Upper" to="2D_Props/Corpses/Shotgun_Unlockable/Stage2EnemyChecker" method="_on_room_one_stage_cleared"]
 [connection signal="stage_cleared" from="Enemies/Room Three" to="Interactive/DoorExit" method="_on_enemy_manager_stage_cleared"]
 [connection signal="stage_cleared" from="Enemies/Room Three" to="2D_Props/Corpses/Shotgun_Unlockable/Stage2EnemyChecker" method="_on_room_three_stage_cleared"]
 
