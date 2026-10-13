@@ -232,6 +232,13 @@ func get_surface_gravity_direction() -> Vector3:
 func has_line_of_sight() -> bool:
 	if target == null or !is_instance_valid(target):
 		return false
+		
+	var max_laser_range: float = float(laser.get("max_range"))
+	var target_distance: float = laser_origin.global_position.distance_to(target.global_position)
+	
+	if target_distance > max_laser_range:
+		return false
+	
 	#Warning laser ray is also used for checking LOS
 	aim_laser()
 	laser_ray.force_raycast_update()
@@ -269,11 +276,25 @@ func fire_laser() -> void:
 		stinger_caller.pitch_scale = laser_shot_pitch
 		stinger_caller.play()
 	
+	laser_origin.global_rotation.z = Vector2(locked_laser_direction.x, locked_laser_direction.y).angle()
 	var beam_start: Vector3 = laser_origin.global_position
-	var beam_end: Vector3 = beam_start + locked_laser_direction * laser_ray.target_position.length()
+	var max_distance: float = float(laser.get("max_range"))
+	var beam_end: Vector3 = beam_start + locked_laser_direction * max_distance
+	
+	if is_instance_valid(target):
+		laser_ray.add_exception(target)
+
 	laser_ray.force_raycast_update()
 	if laser_ray.is_colliding():
-		beam_end = laser_ray.get_collision_point()
+		var collision_point: Vector3 = laser_ray.get_collision_point()
+		
+		if beam_start.distance_to(collision_point) < max_distance:
+			beam_end = collision_point
+	
+	if is_instance_valid(target):
+		laser_ray.remove_exception(target)
+
+	laser_ray.force_raycast_update()
 	
 	var beam_length: float = beam_start.distance_to(beam_end)
 	var beam_midpoint: Vector3 = beam_start + locked_laser_direction * (beam_length * 0.5)
