@@ -40,21 +40,21 @@ func physics_update(_delta: float) -> void:
 	var hook_object: Node3D = blackboard["current_grapple_hook"]
 	var start_pos: Vector3 = blackboard["fired_position"]
 	var end_pos: Vector3 = blackboard["target_position"]
-	
-	var travelled_distance = (hook_object.global_position - blackboard["rope_attach_point"].global_position).length()
+	var travelled_distance = hook_object.global_position.distance_to(start_pos)
 	
 	if hook_object.collided:
 		AudioManager.play_sfx("grapple_impact")
 		transitioned.emit(self, "GrappleReeling")
 		return
-	elif travelled_distance > blackboard["max_grapple_distance"]:
+	elif travelled_distance > blackboard["max_grapple_distance"] or hook_object.global_position.is_equal_approx(end_pos):
 		cancelled = true
+		transitioned.emit(self, "grappleretracted")
 		return
 	
 	var move_unit_vector = (end_pos - start_pos).normalized()
 	move_unit_vector = move_unit_vector * (_delta / blackboard["total_fire_time"]) * current_firing_curve.sample(time_elapsed / blackboard["total_fire_time"])
 	
-	hook_object.global_position += move_unit_vector
+	hook_object.global_position = hook_object.global_position.move_toward(end_pos, move_unit_vector.length())
 	time_elapsed += _delta
 
 func _setup_grapple() -> void:
