@@ -6,6 +6,7 @@ class_name Missile
 
 var blackboard: Dictionary
 var anims: AnimationPlayer
+var fired_by: Node = null
 
 func _ready() -> void:
 	blackboard = {

@@ -8,6 +8,7 @@ signal damage_dealt(total_damage: float)
 @export var environment_check: RayCast3D
 # WHERE OBSTRUCTED DAMAGE IS ZERO, NO DAMAGE IS DEALT
 @export var obstructed_damage: float = 0.0
+var ignored_actor: Node = null
 
 ## Called by the hurtbox that this hitbox hits
 func register_hit(hurtbox: Area3D) -> void:

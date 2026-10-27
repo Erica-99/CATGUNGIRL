@@ -12,6 +12,7 @@ func enter() -> void:
 	body.velocity = Vector3.ZERO
 	
 	var explosion = explosion_scene.instantiate()
+	explosion.get_node("HitboxComponent").ignored_actor = body.get("fired_by")
 	get_tree().root.add_child(explosion)
 	explosion.global_position = body.global_position
 	
