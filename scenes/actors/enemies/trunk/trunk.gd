@@ -181,8 +181,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_health_component_killed(killing_blow: DamageHealInstance, health_before_death: Variant) -> void:
+	if is_dead:
+		return
 	# Possibly implement knockback affects here
 	is_dead = true
+	missile_launcher.turn_off()
+	step_handler.stop()
+	outranged_timer.stop()
 	sprite_anims.play("Idle")
 	sprite_anims.stop()
 	stinger_caller.play_stinger("trunk_death", true)
@@ -212,6 +217,9 @@ func _take_step():
 
 
 func _on_torso_anims_animation_finished(anim_name: StringName) -> void:
+	if is_dead:
+		return
+	
 	if state_machine.current_state != state_machine.states["trunkstun"]:
 		if anim_name == 'PunchStart':
 			animation_player.play("PunchActive")
@@ -238,6 +246,9 @@ func _on_step_handler_timeout() -> void:
 
 
 func _handle_collision_check():
+	if is_dead:
+		return
+	
 	platform_check.force_raycast_update()
 	object_check.force_raycast_update()
 	# platform_check should always be colliding, object_check should never be colliding
@@ -257,6 +268,9 @@ func _handle_collision_check():
 				state_machine.on_child_transition(state_machine.current_state, "trunkchase")
 
 func _on_outranged_timer_timeout() -> void:
+	if is_dead:
+		return
+	
 	state_machine.on_child_transition(state_machine.current_state, "trunkoutranged")
 
 func call_sfx_at_current_location(sfx_ref: String) -> void:
