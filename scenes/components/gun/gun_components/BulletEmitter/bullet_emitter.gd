@@ -33,6 +33,10 @@ var semi_available: bool = true
 # spawns a singular bullet
 func _spawn_bullet(damage: float, size: float) -> void:
 	var bullet = bullet_scene.instantiate()
+	
+	if bullet is Missile:
+		bullet.fired_by = gun_link.team_component.get_parent()
+	
 	get_tree().root.add_child(bullet)
 	bullet.global_transform = muzzle.global_transform
 	

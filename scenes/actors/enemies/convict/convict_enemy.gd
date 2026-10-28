@@ -139,6 +139,12 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	# Basic gravity implementation
 	velocity.y -= GRAVITY * delta
+	
+	if is_dead:
+		velocity.x = 0.0
+		velocity.z = 0.0
+		move_and_slide()
+	
 	global_position.z = movement_plane_z
 
 func apply_soft_collision(delta: float) -> void:
