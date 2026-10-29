@@ -10,6 +10,7 @@ extends Node3D
 @export var ammo_component: AmmoComponent
 
 @export var audio_string_id: String = ""
+@export var death_screen_id: StringName = &""
 
 @export_group("Normal Fire")
 @export var fire_rate: float = 0.15			# min time (seconds) between shots
@@ -62,6 +63,9 @@ func _spawn_bullet(damage: float, size: float) -> void:
 	damage_instance.type = Enums.DamageType.NORMAL
 	damage_instance.knockback = bullet_knockback
 	damage_instance.source = get_path()
+	
+	if death_screen_id != &"":
+		damage_instance.death_screen_id = death_screen_id
 	
 	if bullet is not Missile:
 		bullet.initialize(aim_dir, damage_instance, gun_link.team_component, size, pierce_on_headshot)
