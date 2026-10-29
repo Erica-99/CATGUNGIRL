@@ -1161,7 +1161,7 @@ steps = Array[ExtResource("12_bnsy6")]([SubResource("Resource_t6bai")])
 autostart = false
 
 [node name="PopupInterlude" parent="EVENT_TRIGGERS" unique_id=1038856586 instance=ExtResource("10_axvnb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6574726, 9.170123, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2748117, 9.170123, 0)
 _signal_parameters = ["2_cozy_interlude"]
 signal_name = "activate_popup"
 
@@ -1174,16 +1174,17 @@ debug_color = Color(0.18271238, 0.6429914, 0, 0.41960785)
 [node name="Room One" parent="Enemies" unique_id=18369620 instance=ExtResource("20_q7nox")]
 
 [node name="Convict" parent="Enemies/Room One" unique_id=915649518 instance=ExtResource("21_n434r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.27639, -23.496223, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.59911, -23.496223, 0)
 
 [node name="Convict2" parent="Enemies/Room One" unique_id=1114115341 instance=ExtResource("21_n434r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.27639, -23.496223, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.26256, -21.685564, 0)
 
 [node name="Convict3" parent="Enemies/Room One" unique_id=115792186 instance=ExtResource("21_n434r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.27639, -23.496223, 0)
 
 [node name="Convict4" parent="Enemies/Room One" unique_id=634646066 instance=ExtResource("21_n434r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.7015, -5.246746, 0)
+patroller = false
 
 [node name="Scrub" parent="Enemies/Room One" unique_id=1090872008 instance=ExtResource("31_yfq6p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.171127, 6.4609756, 0)
@@ -1201,7 +1202,7 @@ room_ID = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.093834, -13.496223, 0)
 
 [node name="Convict" parent="Enemies/Room Three" unique_id=1506947017 instance=ExtResource("21_n434r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.26416, -23.496223, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.059044, -23.496223, 0)
 
 [node name="Environment" type="Node3D" parent="." unique_id=1954790070]
 
@@ -2406,10 +2407,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.87775, -14.903053, -14.954
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.60779, -19.386347, -16.541458)
 
 [node name="PineappleOnPizza" parent="2D_Props/Posters" unique_id=988902777 instance=ExtResource("89_08fg1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.683895, -3.5692644, -26.67883)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16198134, -4.1519494, -26.67883)
 
 [node name="AcceptBliss" parent="2D_Props/Posters" unique_id=1517328070 instance=ExtResource("85_dc4ih")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.421986, 14.666203, -24.931496)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.238266, 22.861107, -24.931496)
 
 [node name="Security" parent="2D_Props/Posters" unique_id=39454366 instance=ExtResource("102_hwccm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.041725, -19.552134, -16.55143)
@@ -2443,6 +2444,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.56611, -15.137807, -2.0654
 [node name="ScrubCrashed2" parent="2D_Props/Corpses" unique_id=332418208 instance=ExtResource("82_lx8in")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 113.76971, -16.144825, 0.88120556)
 
+[node name="Rubble" parent="2D_Props/Corpses" unique_id=302094260 instance=ExtResource("91_448ww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.82405, -24.99999, 2.7364883)
+
 [node name="Shotgun_Unlockable" parent="2D_Props/Corpses" unique_id=1001534482 instance=ExtResource("109_hwccm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.77213, -25.015932, -0.5503416)
 
@@ -2452,9 +2456,6 @@ activate_on_event = "stage_2_shotgun_ready_for_pickup"
 
 [node name="Stage2EnemyChecker" type="Node" parent="2D_Props/Corpses/Shotgun_Unlockable" unique_id=1814762831]
 script = ExtResource("107_qivqm")
-
-[node name="Rubble" parent="2D_Props/Corpses" unique_id=302094260 instance=ExtResource("91_448ww")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.82405, -24.99999, 2.7364883)
 
 [node name="Masking" type="Node3D" parent="." unique_id=2099516202]
 
